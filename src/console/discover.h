@@ -17,7 +17,7 @@
     along with Poqit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QBluetoothServiceDiscoveryAgent>
+#include <QBluetoothDeviceDiscoveryAgent>
 
 class Discover : public QObject
 {
