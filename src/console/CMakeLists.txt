@@ -1,5 +1,7 @@
 add_executable(
   poqit
+  discover.cpp
+  discover.h
   main.cpp
 )
 

@@ -24,6 +24,8 @@
 #include <QFileInfo>
 #include <QLoggingCategory>
 
+#include "discover.h"
+
 #if defined(Q_OS_UNIX)
 #include <unistd.h>
 #elif defined(Q_OS_WIN)
@@ -87,5 +89,7 @@ int main(int argc, char *argv[])
 
     /// \todo
 
-    return 0;
+    Discover d(&app);
+
+    return app.exec();
 }
