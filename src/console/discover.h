@@ -17,7 +17,7 @@
     along with Poqit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QBluetoothDeviceDiscoveryAgent>
+#include "pokitdevicedisoveryagent.h"
 
 class Discover : public QObject
 {
@@ -25,7 +25,7 @@ public:
     Discover(QObject * const parent);
 
 private:
-    QBluetoothDeviceDiscoveryAgent * discoveryAgent;
+    PokitDeviceDiscoveryAgent * discoveryAgent;
 
 //private slots:
 

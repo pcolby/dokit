@@ -19,47 +19,23 @@
 
 #include "discover.h"
 
-#include <QBluetoothAddress>
-#include <QBluetoothLocalDevice>
 #include <QCoreApplication>
 #include <QLowEnergyController>
-#include <QTimer>
 
 Discover::Discover(QObject * const parent) : QObject(parent)
 {
-    discoveryAgent = new QBluetoothDeviceDiscoveryAgent();
-    discoveryAgent->setLowEnergyDiscoveryTimeout(3000);
+    discoveryAgent = new PokitDeviceDiscoveryAgent(this);
 
-    connect(discoveryAgent, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered, this, [](const QBluetoothDeviceInfo &info) {
-        if (info.serviceUuids().contains(QBluetoothUuid(QStringLiteral("57d3a771-267c-4394-8872-78223e92aec5"))))
-        {
-            qDebug() << "discovered" << info.address() << info.name() << info.rssi()
-                     << info.majorDeviceClass() << info.serviceClasses()
-                     << info.serviceUuids() << info.manufacturerData() << info.manufacturerIds();
-
-            QLowEnergyController * c = QLowEnergyController::createCentral(info);
-            qDebug() << c;
-        }
+    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered, this, [](const QBluetoothDeviceInfo &info) {
+        QLowEnergyController * c = QLowEnergyController::createCentral(info);
+        qDebug() << c;
     });
 
-//    connect(discoveryAgent, &QBluetoothDeviceDiscoveryAgent::deviceUpdated, this, [](const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields) {
-//        if (info.name() == QLatin1String("PokitPro"))
-//        qDebug() << "updated" << info.address() << info.name() << info.rssi()
-//                 << info.majorDeviceClass() << info.serviceClasses()
-//                 << info.serviceUuids() << info.manufacturerData() << info.manufacturerIds();
-//    });
-
-    connect(discoveryAgent, &QBluetoothDeviceDiscoveryAgent::finished, this, []() {
+    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
         qDebug() << "discovery finished";
         QCoreApplication::quit();
     });
 
-//    connect(discoveryAgent, SIGNAL(deviceDiscovered(QBluetoothDeviceInfo)),
-//    this, SLOT(addDevice(QBluetoothDeviceInfo)));
-//    connect(discoveryAgent, SIGNAL(finished()), this, SLOT(scanFinished()));
-
-//    connect(ui->list, SIGNAL(itemActivated(QListWidgetItem*)),
-//    this, SLOT(itemActivated(QListWidgetItem*)));
-
-    discoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+    discoveryAgent->setLowEnergyDiscoveryTimeout(3000);
+    discoveryAgent->start();
 }

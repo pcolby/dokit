@@ -7,5 +7,6 @@ add_executable(
 
 target_link_libraries(
   poqit
+  PRIVATE PoqitLib
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)

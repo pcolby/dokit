@@ -25,6 +25,8 @@ POQIT_BEGIN_NAMESPACE
 
 class PokitDeviceDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
 {
+    Q_OBJECT
+
 public:
     PokitDeviceDiscoveryAgent(const QBluetoothAddress &deviceAdapter, QObject *parent=nullptr);
     PokitDeviceDiscoveryAgent(QObject * parent=nullptr);
