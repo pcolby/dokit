@@ -26,14 +26,39 @@ Discover::Discover(QObject * const parent) : QObject(parent)
 {
     discoveryAgent = new PokitDeviceDiscoveryAgent(this);
 
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered, this, [](const QBluetoothDeviceInfo &info) {
+    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered, this, [this](const QBluetoothDeviceInfo &info) {
         QLowEnergyController * c = QLowEnergyController::createCentral(info);
         qDebug() << c;
+        qDebug() << c->services().size();
+
+        connect(c, &QLowEnergyController::connected, this, [c]() {
+            qDebug() << "device connected";
+            c->discoverServices();
+        });
+
+        connect(c, &QLowEnergyController::serviceDiscovered, this, [c](const QBluetoothUuid &service) {
+            qDebug() << "service discovered" << service;
+            if (service == QUuid("57d3a771-267c-4394-8872-78223e92aec5")) {
+                qDebug() << "status";
+                QLowEnergyService * s = c->createServiceObject(service);
+                qDebug() << s;
+                if (s != nullptr) {
+                    s->discoverDetails();
+                }
+            }
+        });
+
+        connect(c, &QLowEnergyController::discoveryFinished, this, [c]() {
+            qDebug() << "service discovery finished" << c->services().size();
+            QCoreApplication::quit();
+        });
+
+        c->connectToDevice();
     });
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
-        qDebug() << "discovery finished";
-        QCoreApplication::quit();
+        qDebug() << "device discovery finished";
+//        QCoreApplication::quit();
     });
 
     discoveryAgent->setLowEnergyDiscoveryTimeout(3000);

@@ -67,27 +67,77 @@ void configureLogging(const QCommandLineParser &parser)
     qSetMessagePattern(messagePattern);
 }
 
+void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
+{
+    const QStringList commands = {
+        QLatin1String("info"),
+        QLatin1String("status"),
+        QLatin1String("meter"),
+        QLatin1String("dso"),
+        QLatin1String("logger"),
+        QLatin1String("scan"),
+        QLatin1String("set-name"),
+        QLatin1String("flash-led"),
+    };
+
+    const QStringList appArguments = app.arguments();
+    parser.parse(appArguments);
+    const QStringList posArguments = parser.positionalArguments();
+    QString errorText;
+    int commandIndex = -1;
+    if (posArguments.size() > 1) {
+        errorText = QObject::tr("More than one command: %1").arg(posArguments.join(QStringLiteral(", ")));
+    } else if (!posArguments.empty()) {
+        commandIndex = commands.indexOf(posArguments.first().toLower());
+        if (commandIndex < 0) {
+            errorText = QObject::tr("Unknown command: %1").arg(posArguments.first());
+        }
+    }
+    if (!errorText.isEmpty()) {
+         // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
+        const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
+            + errorText + QLatin1Char('\n');
+        fputs(qPrintable(message), stderr);
+        ::exit(EXIT_FAILURE);
+    }
+
+    parser.addOptions({
+        {{QStringLiteral("d"), QStringLiteral("device")},
+          QCoreApplication::translate("parseCommandLine", "Pokit device to use"),
+          QStringLiteral("name-or-address")}
+    });
+
+    // Add common options.
+    parser.setApplicationDescription(QStringLiteral(CMAKE_PROJECT_DESCRIPTION));
+    parser.addOptions({
+        {{QStringLiteral("debug")}, QStringLiteral("Enable debug output")},
+        { QStringLiteral("color"),
+          QCoreApplication::translate("parseCommandLine","Color the console output (default auto)"),
+          QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
+    });
+    parser.addPositionalArgument(
+        QStringLiteral("command"),
+        QCoreApplication::translate("parseCommandLine","One of: %1").arg(commands.join(QStringLiteral(", "))),
+        QStringLiteral("<command>"));
+    parser.addHelpOption();
+    parser.addVersionOption();
+
+    parser.process(appArguments);
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
     app.setApplicationName(QStringLiteral(CMAKE_PROJECT_NAME));
     app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));
 
-    // Parse the command line options.
     QCommandLineParser parser;
-    parser.setApplicationDescription(QStringLiteral(CMAKE_PROJECT_DESCRIPTION));
-    parser.addOptions({
-        {{QStringLiteral("d"), QStringLiteral("debug")}, QStringLiteral("Enable debug output")},
-        { QStringLiteral("color"),
-          QCoreApplication::translate("main","Color the console output (default auto)"),
-          QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
-    });
-    parser.addHelpOption();
-    parser.addVersionOption();
-    parser.process(app);
+    parseCommandLine(app, parser);
     configureLogging(parser);
 
-    /// \todo
+    qDebug() << parser.positionalArguments();
+    qDebug() << parser.values(QStringLiteral("command"));
+    qDebug() << parser.values(QStringLiteral("command2"));
 
     Discover d(&app);
 
