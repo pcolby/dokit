@@ -18,6 +18,7 @@
 */
 
 #include "pokitdevicedisoveryagent.h"
+#include "uuids.h"
 
 #include <QBluetoothUuid>
 #include <QDebug>
@@ -45,8 +46,7 @@ PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(QObject * parent)
 
 bool PokitDeviceDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
 {
-    /// \todo Lift this UUID to a set of constants somewhere else.
-    return info.serviceUuids().contains(QBluetoothUuid(QStringLiteral("57d3a771-267c-4394-8872-78223e92aec5")));
+    return info.serviceUuids().contains(QBluetoothUuid(QStringLiteral(POKIT_SERVICE_STATUS)));
 }
 
 void PokitDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)

@@ -4,6 +4,7 @@ add_library(PoqitLib SHARED
   pokitdevicedisoveryagent.cpp
   pokitdevicedisoveryagent.h
   poqit_global.h
+  uuids.h
 )
 
 target_link_libraries(
