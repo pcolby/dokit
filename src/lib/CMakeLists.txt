@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.0)
 
-add_library(PoqitLib SHARED
+add_library(QtPokit SHARED
   pokitdevicedisoveryagent.cpp
   pokitdevicedisoveryagent.h
-  poqit_global.h
+  qtpokit_global.h
   uuids.h
 )
 
 target_link_libraries(
-  PoqitLib
+  QtPokit
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 
-target_compile_definitions(PoqitLib PRIVATE POQIT_LIBRARY)
+target_compile_definitions(QtPokit PRIVATE QTPOKIT_LIBRARY)

@@ -1,20 +1,20 @@
 /*
     Copyright 2022 Paul Colby
 
-    This file is part of Poqit.
+    This file is part of QtPokit.
 
-    Poqit is free software: you can redistribute it and/or modify
+    QtPokit is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    Poqit is distributed in the hope that it will be useful,
+    QtPokit is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with Poqit.  If not, see <http://www.gnu.org/licenses/>.
+    along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /*!
@@ -22,14 +22,14 @@
  * Official UUIDs from Pokit's Bluetooth API Definition document.
  */
 
-#ifndef POQIT_UUIDS_H
-#define POQIT_UUIDS_H
+#ifndef QTPOKIT_UUIDS_H
+#define QTPOKIT_UUIDS_H
 
-#include "poqit_global.h"
+#include "qtpokit_global.h"
 
 #include <QDebug>
 
-POQIT_BEGIN_NAMESPACE
+QTPOKIT_BEGIN_NAMESPACE
 
 #define POKIT_SERVICE_MULTIMETER                "e7481d2f-5781-442e-bb9a-fd4e3441dadc"
 #define POKIT_CHARACTERISTIC_MM_SETTINGS        "53dc9a7a-bc19-4280-b76b-002d0e23b078"
@@ -62,6 +62,6 @@ POQIT_BEGIN_NAMESPACE
 #define POKIT_CHARACTERISTIC_GA_DEVICE_NAME      QBluetoothUuid::DeviceName             // 0x2A00
 #define POKIT_CHARACTERISTIC_GA_APPEARANCE       QBluetoothUuid::Appearance             // 0x2A01
 
-POQIT_END_NAMESPACE
+QTPOKIT_END_NAMESPACE
 
-#endif // POQIT_UUIDS_H
+#endif // QTPOKIT_UUIDS_H

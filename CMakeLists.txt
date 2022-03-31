@@ -7,10 +7,10 @@ endif()
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(
-  Poqit
+  QtPokit
   VERSION 0.1
   DESCRIPTION "Desktop applications for Pokit measuring devices"
- #HOMEPAGE_URL "https://github.com/pcolby/poqit"
+ #HOMEPAGE_URL "https://github.com/pcolby/pokit"
   LANGUAGES CXX)
 
 add_definitions(

@@ -1,12 +1,12 @@
 add_executable(
-  poqit
+  pokit
   discover.cpp
   discover.h
   main.cpp
 )
 
 target_link_libraries(
-  poqit
-  PRIVATE PoqitLib
+  pokit
+  PRIVATE QtPokit
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
