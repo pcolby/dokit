@@ -67,15 +67,37 @@ void configureLogging(const QCommandLineParser &parser)
     qSetMessagePattern(messagePattern);
 }
 
+enum class Command {
+    None, Info, Status, Meter, DSO, Logger, Scan, SetName, FlashLed
+};
+
+void showCliError(const QString &errorText, const int exitCode = EXIT_FAILURE) {
+    // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
+    const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
+        + errorText + QLatin1Char('\n');
+    fputs(qPrintable(message), stderr);
+    ::exit(exitCode);
+}
+
+Command getCliCommand(const QStringList &posArguments, const QMap<QString, Command> &supportedCommands) {
+    if (posArguments.isEmpty()) {
+        return Command::None;
+    }
+    if (posArguments.size() > 1) {
+        showCliError(QObject::tr("More than one command: %1").arg(posArguments.join(QStringLiteral(", "))));
+    }
+    const Command command = supportedCommands.value(posArguments.first().toLower(), Command::None);
+    if (command == Command::None) {
+        showCliError(QObject::tr("Unknown command: %1").arg(posArguments.first()));
+    }
+    return command;
+}
+
 void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
 {
     const QStringList appArguments = app.arguments();
 
-    enum class Command {
-        None, Info, Status, Meter, DSO, Logger, Scan, SetName, FlashLed
-    } command = Command::None;
-
-    const QMap<QString, Command> commands {
+    const QMap<QString, Command> supportedCommands {
         { QStringLiteral("info"),      Command::Info },
         { QStringLiteral("status"),    Command::Status },
         { QStringLiteral("meter"),     Command::Meter },
@@ -86,27 +108,9 @@ void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
         { QStringLiteral("flash-led"), Command::FlashLed },
     };
 
-    {
-        parser.parse(appArguments);
-        const QStringList posArguments = parser.positionalArguments();
-        if (!posArguments.isEmpty()) {
-            QString errorText;
-            if (posArguments.size() > 1) {
-                errorText = QObject::tr("More than one command: %1").arg(posArguments.join(QStringLiteral(", ")));
-            } else if (!commands.contains(posArguments.first().toLower())) {
-                errorText = QObject::tr("Unknown command: %1").arg(posArguments.first());
-            } else {
-                command = commands.value(posArguments.first().toLower());
-            }
-            if (!errorText.isEmpty()) {
-                 // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
-                const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
-                    + errorText + QLatin1Char('\n');
-                fputs(qPrintable(message), stderr);
-                ::exit(EXIT_FAILURE);
-            }
-        }
-    }
+    parser.parse(appArguments);
+    const QStringList posArguments = parser.positionalArguments();
+    const Command command = getCliCommand(posArguments, supportedCommands);
 
     // Add command-specific options.
     if ((command != Command::None) && (command != Command::Scan)) {
@@ -133,7 +137,7 @@ void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
     parser.addPositionalArgument(
         QStringLiteral("command"),
         QCoreApplication::translate("parseCommandLine","One of: %1")
-            .arg(commands.keys().join(QStringLiteral(", "))),
+            .arg(supportedCommands.keys().join(QStringLiteral(", "))),
         QStringLiteral("<command>"));
     parser.addPositionalArgument(
         QStringLiteral("scan"),QStringLiteral("Scan for Pokit devices within Bluetooth range"));
