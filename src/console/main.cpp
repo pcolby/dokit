@@ -69,46 +69,61 @@ void configureLogging(const QCommandLineParser &parser)
 
 void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
 {
-    const QStringList commands = {
-        QLatin1String("info"),
-        QLatin1String("status"),
-        QLatin1String("meter"),
-        QLatin1String("dso"),
-        QLatin1String("logger"),
-        QLatin1String("scan"),
-        QLatin1String("set-name"),
-        QLatin1String("flash-led"),
+    const QStringList appArguments = app.arguments();
+
+    enum class Command {
+        None, Info, Status, Meter, DSO, Logger, Scan, SetName, FlashLed
+    } command = Command::None;
+
+    const QMap<QString, Command> commands {
+        { QStringLiteral("info"),      Command::Info },
+        { QStringLiteral("status"),    Command::Status },
+        { QStringLiteral("meter"),     Command::Meter },
+        { QStringLiteral("dso"),       Command::DSO },
+        { QStringLiteral("logger"),    Command::Logger },
+        { QStringLiteral("scan"),      Command::Scan },
+        { QStringLiteral("set-name"),  Command::SetName },
+        { QStringLiteral("flash-led"), Command::FlashLed },
     };
 
-    const QStringList appArguments = app.arguments();
-    parser.parse(appArguments);
-    const QStringList posArguments = parser.positionalArguments();
-    QString errorText;
-    int commandIndex = -1;
-    if (posArguments.size() > 1) {
-        errorText = QObject::tr("More than one command: %1").arg(posArguments.join(QStringLiteral(", ")));
-    } else if (!posArguments.empty()) {
-        commandIndex = commands.indexOf(posArguments.first().toLower());
-        if (commandIndex < 0) {
-            errorText = QObject::tr("Unknown command: %1").arg(posArguments.first());
+    {
+        parser.parse(appArguments);
+        const QStringList posArguments = parser.positionalArguments();
+        if (!posArguments.isEmpty()) {
+            QString errorText;
+            if (posArguments.size() > 1) {
+                errorText = QObject::tr("More than one command: %1").arg(posArguments.join(QStringLiteral(", ")));
+            } else if (!commands.contains(posArguments.first().toLower())) {
+                errorText = QObject::tr("Unknown command: %1").arg(posArguments.first());
+            } else {
+                command = commands.value(posArguments.first().toLower());
+            }
+            if (!errorText.isEmpty()) {
+                 // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
+                const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
+                    + errorText + QLatin1Char('\n');
+                fputs(qPrintable(message), stderr);
+                ::exit(EXIT_FAILURE);
+            }
         }
     }
-    if (!errorText.isEmpty()) {
-         // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
-        const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
-            + errorText + QLatin1Char('\n');
-        fputs(qPrintable(message), stderr);
-        ::exit(EXIT_FAILURE);
+
+    // Add command-specific options.
+    if ((command != Command::None) && (command != Command::Scan)) {
+        parser.addOptions({
+            {{QStringLiteral("d"), QStringLiteral("device")},
+              QCoreApplication::translate("parseCommandLine", "Pokit device to use"),
+              QStringLiteral("name-or-address")}
+        });
+    }
+    if (command == Command::Scan) {
+        parser.addOptions({
+            {{QStringLiteral("timeout")}, QStringLiteral("t")},
+        });
     }
 
-    parser.addOptions({
-        {{QStringLiteral("d"), QStringLiteral("device")},
-          QCoreApplication::translate("parseCommandLine", "Pokit device to use"),
-          QStringLiteral("name-or-address")}
-    });
-
     // Add common options.
-    parser.setApplicationDescription(QStringLiteral(CMAKE_PROJECT_DESCRIPTION));
+    //parser.setApplicationDescription(QStringLiteral(CMAKE_PROJECT_DESCRIPTION));
     parser.addOptions({
         {{QStringLiteral("debug")}, QStringLiteral("Enable debug output")},
         { QStringLiteral("color"),
@@ -117,10 +132,18 @@ void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
     });
     parser.addPositionalArgument(
         QStringLiteral("command"),
-        QCoreApplication::translate("parseCommandLine","One of: %1").arg(commands.join(QStringLiteral(", "))),
+        QCoreApplication::translate("parseCommandLine","One of: %1")
+            .arg(commands.keys().join(QStringLiteral(", "))),
         QStringLiteral("<command>"));
+    parser.addPositionalArgument(
+        QStringLiteral("scan"),QStringLiteral("Scan for Pokit devices within Bluetooth range"));
     parser.addHelpOption();
     parser.addVersionOption();
+
+    switch (command) {
+    default:;
+
+    }
 
     parser.process(appArguments);
 }
