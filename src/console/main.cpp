@@ -105,7 +105,7 @@ void addCommonOptions(QCommandLineParser &parser)
     parser.addVersionOption();
 }
 
-void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
+Command parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
 {
     const QStringList appArguments = app.arguments();
 
@@ -150,6 +150,7 @@ void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
     }
 
     parser.process(appArguments);
+    return command;
 }
 
 int main(int argc, char *argv[])
@@ -159,14 +160,17 @@ int main(int argc, char *argv[])
     app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));
 
     QCommandLineParser parser;
-    parseCommandLine(app, parser);
+    const Command command = parseCommandLine(app, parser);
     configureLogging(parser);
 
-    qDebug() << parser.positionalArguments();
-    qDebug() << parser.values(QStringLiteral("command"));
-    qDebug() << parser.values(QStringLiteral("command2"));
-
-    Discover d(&app);
-
+    switch (command) {
+    case Command::Scan: {
+        Discover d(&app);
+        return app.exec();
+    }
+    default:
+        qWarning() << "not implemented";
+        return 0;
+    }
     return app.exec();
 }
