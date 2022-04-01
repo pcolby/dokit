@@ -18,6 +18,7 @@
 */
 
 #include "discover.h"
+#include "uuids.h"
 
 #include <QCoreApplication>
 #include <QLowEnergyController>
@@ -38,7 +39,7 @@ Discover::Discover(QObject * const parent) : QObject(parent)
 
         connect(c, &QLowEnergyController::serviceDiscovered, this, [c](const QBluetoothUuid &service) {
             qDebug() << "service discovered" << service;
-            if (service == QUuid("57d3a771-267c-4394-8872-78223e92aec5")) {
+            if (service == QBluetoothUuid(QStringLiteral(POKIT_SERVICE_STATUS))) {
                 qDebug() << "status";
                 QLowEnergyService * s = c->createServiceObject(service);
                 qDebug() << s;
