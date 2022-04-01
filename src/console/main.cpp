@@ -93,6 +93,18 @@ Command getCliCommand(const QStringList &posArguments, const QMap<QString, Comma
     return command;
 }
 
+void addCommonOptions(QCommandLineParser &parser)
+{
+    parser.addOptions({
+        {{QStringLiteral("debug")}, QStringLiteral("Enable debug output")},
+        { QStringLiteral("color"),
+          QCoreApplication::translate("parseCommandLine","Color the console output (default auto)"),
+          QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
+    });
+    parser.addHelpOption();
+    parser.addVersionOption();
+}
+
 void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
 {
     const QStringList appArguments = app.arguments();
@@ -109,8 +121,7 @@ void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
     };
 
     parser.parse(appArguments);
-    const QStringList posArguments = parser.positionalArguments();
-    const Command command = getCliCommand(posArguments, supportedCommands);
+    const Command command = getCliCommand(parser.positionalArguments(), supportedCommands);
 
     // Add command-specific options.
     if ((command != Command::None) && (command != Command::Scan)) {
@@ -126,27 +137,16 @@ void parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
         });
     }
 
-    // Add common options.
     //parser.setApplicationDescription(QStringLiteral(CMAKE_PROJECT_DESCRIPTION));
-    parser.addOptions({
-        {{QStringLiteral("debug")}, QStringLiteral("Enable debug output")},
-        { QStringLiteral("color"),
-          QCoreApplication::translate("parseCommandLine","Color the console output (default auto)"),
-          QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
-    });
-    parser.addPositionalArgument(
-        QStringLiteral("command"),
-        QCoreApplication::translate("parseCommandLine","One of: %1")
-            .arg(supportedCommands.keys().join(QStringLiteral(", "))),
-        QStringLiteral("<command>"));
-    parser.addPositionalArgument(
-        QStringLiteral("scan"),QStringLiteral("Scan for Pokit devices within Bluetooth range"));
-    parser.addHelpOption();
-    parser.addVersionOption();
 
-    switch (command) {
-    default:;
+    addCommonOptions(parser);
 
+    if (command == Command::None) {
+        parser.addPositionalArgument(
+            QStringLiteral("command"),
+            QCoreApplication::translate("parseCommandLine","One of: %1")
+                .arg(supportedCommands.keys().join(QStringLiteral(", "))),
+            QStringLiteral("<command>"));
     }
 
     parser.process(appArguments);
