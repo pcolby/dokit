@@ -79,22 +79,14 @@ void showCliError(const QString &errorText, const int exitCode = EXIT_FAILURE) {
     ::exit(exitCode);
 }
 
-Command getCliCommand(const QStringList &posArguments, const QMap<QString, Command> &supportedCommands) {
+Command getCliCommand(const QStringList &posArguments) {
     if (posArguments.isEmpty()) {
         return Command::None;
     }
     if (posArguments.size() > 1) {
         showCliError(QObject::tr("More than one command: %1").arg(posArguments.join(QStringLiteral(", "))));
     }
-    const Command command = supportedCommands.value(posArguments.first().toLower(), Command::None);
-    if (command == Command::None) {
-        showCliError(QObject::tr("Unknown command: %1").arg(posArguments.first()));
-    }
-    return command;
-}
 
-Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &parser)
-{
     const QMap<QString, Command> supportedCommands {
         { QStringLiteral("info"),      Command::Info },
         { QStringLiteral("status"),    Command::Status },
@@ -105,7 +97,15 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         { QStringLiteral("set-name"),  Command::SetName },
         { QStringLiteral("flash-led"), Command::FlashLed },
     };
+    const Command command = supportedCommands.value(posArguments.first().toLower(), Command::None);
+    if (command == Command::None) {
+        showCliError(QObject::tr("Unknown command: %1").arg(posArguments.first()));
+    }
+    return command;
+}
 
+Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &parser)
+{
     parser.addOptions({
         {{QStringLiteral("debug")},
           QCoreApplication::translate("parseCommandLine", "Enable debug output.")},
@@ -179,7 +179,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         QStringLiteral(" "));
 
     parser.parse(appArguments);
-    const Command command = getCliCommand(parser.positionalArguments(), supportedCommands);
+    const Command command = getCliCommand(parser.positionalArguments());
     if (command != Command::None) {
         parser.clearPositionalArguments();
     }
