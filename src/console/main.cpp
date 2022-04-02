@@ -106,6 +106,7 @@ Command getCliCommand(const QStringList &posArguments) {
 
 Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &parser)
 {
+    // Setupt the command line options.
     parser.addOptions({
         {{QStringLiteral("debug")},
           QCoreApplication::translate("parseCommandLine", "Enable debug output.")},
@@ -153,6 +154,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           QStringLiteral("duration")},
     });
 
+    // Add supported 'commands' (as positional arguments, so they'll appear in the help text).
     parser.addPositionalArgument(QStringLiteral("info"),
         QCoreApplication::translate("parseCommandLine", "Get Pokit device information"),
         QStringLiteral(" "));
@@ -178,8 +180,11 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         QCoreApplication::translate("parseCommandLine", "Flash Pokit device's LED"),
         QStringLiteral(" "));
 
+    // Do the initial parse, the see if we have a command specified yet.
     parser.parse(appArguments);
     const Command command = getCliCommand(parser.positionalArguments());
+
+    // If we have a (single, valid) command, then remove the commands list from the help text.
     if (command != Command::None) {
         parser.clearPositionalArguments();
     }
@@ -195,6 +200,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         ::exit(EXIT_SUCCESS);
     }
 
+    // Process the command for real (ie throw errors for unknown options, etc).
     parser.process(appArguments);
     return command;
 }
@@ -205,34 +211,22 @@ int main(int argc, char *argv[])
     app.setApplicationName(QStringLiteral(CMAKE_PROJECT_NAME));
     app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));
 
+    // Parse the command line.
     const QStringList appArguments = app.arguments();
     QCommandLineParser parser;
     const Command command = parseCommandLine(appArguments, parser);
     configureLogging(parser);
 
+    // Handle the given command.
     switch (command) {
     case Command::DSO:      break;
     case Command::FlashLed: break;
     case Command::Info:     break;
     case Command::Logger:   break;
     case Command::Meter:    break;
-    case Command::None: {
-        QCommandLineParser parser;
-        parser.setApplicationDescription(QStringLiteral("Use %1 <command> [-h|--help]"));
-        parser.addOptions({
-            {{QStringLiteral("scan")}, QStringLiteral("Scan stuff")},
-            { QStringLiteral("set-name"),
-              QCoreApplication::translate("parseCommandLine","Color the console output (default auto)"),
-              QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
-        });
-        fputs(qPrintable(parser.helpText()
-            .replace(QStringLiteral("[options]"), QStringLiteral("<command> [--help|options]"))
-            .replace(QStringLiteral("Options:"),  QStringLiteral("Commands:"))
-            .replace(QStringLiteral("  --"),      QStringLiteral("  "))
-           .append(QStringLiteral("\nUse fo..."))
-    ), stdout);
-        return EXIT_SUCCESS;
-    }
+    case Command::None:
+        fputs("Missing argument: <command>\nSee --help for usage information.\n", stderr);
+        return EXIT_FAILURE;
     case Command::Scan: {
         Discover d(&app);
         return app.exec();
