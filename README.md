@@ -12,7 +12,13 @@ This project is in very early stages of development, but aims to support both [P
 
 *To do: some notes on device x feature x platform x app support matrix.*
 
+## License
 
+The standalone, shared `QtPocket` library is freely available under the [LGPL]. And the rest of this
+project, including the dependant console and GUI apps, are freely available under the [GPL].
+
+[GPL]:         https://www.gnu.org/licenses/gpl-3.0.en.html "GNU General Public License"
+[LGPL]:        https://www.gnu.org/licenses/lgpl-3.0.html "GNU Lesser General Public License"
 [Pokit]:       https://www.pokitinnovations.com/ "Pokit Innovations"
 [Pokit Bluetooth API]: https://help.pokitmeter.com/hc/en-us/community/posts/360023523213-Bluetooth-API-Documentation
 [Pokit Meter]: https://www.pokitinnovations.com/pokit-meter/
