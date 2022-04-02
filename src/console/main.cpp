@@ -93,22 +93,8 @@ Command getCliCommand(const QStringList &posArguments, const QMap<QString, Comma
     return command;
 }
 
-void addCommonOptions(QCommandLineParser &parser)
+Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &parser)
 {
-    parser.addOptions({
-        {{QStringLiteral("debug")}, QStringLiteral("Enable debug output")},
-        { QStringLiteral("color"),
-          QCoreApplication::translate("parseCommandLine","Color the console output (default auto)"),
-          QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
-    });
-    parser.addHelpOption();
-    parser.addVersionOption();
-}
-
-Command parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser)
-{
-    const QStringList appArguments = app.arguments();
-
     const QMap<QString, Command> supportedCommands {
         { QStringLiteral("info"),      Command::Info },
         { QStringLiteral("status"),    Command::Status },
@@ -120,33 +106,93 @@ Command parseCommandLine(const QCoreApplication &app, QCommandLineParser &parser
         { QStringLiteral("flash-led"), Command::FlashLed },
     };
 
+    parser.addOptions({
+        {{QStringLiteral("debug")},
+          QCoreApplication::translate("parseCommandLine", "Enable debug output.")},
+        {{QStringLiteral("d"), QStringLiteral("device")},
+          QCoreApplication::translate("parseCommandLine", "Name or address of Pokit device(s) to use."),
+          QStringLiteral("name|addr")},
+        { QStringLiteral("color"),
+          QCoreApplication::translate("parseCommandLine", "Color the console output (default auto)."),
+          QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
+    });
+    parser.addHelpOption();
+    parser.addOptions({
+        {{QStringLiteral("interval")},
+          QCoreApplication::translate("parseCommandLine","Update interval for meter and logger modes"),
+          QStringLiteral("n[m][s]")},
+        {{QStringLiteral("mode")},
+          QCoreApplication::translate("parseCommandLine","@todo Needs more work."),
+          QStringLiteral("AC|DC")},
+        {{QStringLiteral("new-name")},
+          QCoreApplication::translate("parseCommandLine","New name for Pokit device."),
+          QStringLiteral("name")},
+        {{QStringLiteral("output")},
+          QCoreApplication::translate("parseCommandLine","Format for output (default text)."),
+          QStringLiteral("text|json"), QStringLiteral("text")},
+        {{QStringLiteral("range")},
+          QCoreApplication::translate("parseCommandLine","Desired measurement range (default auto)."),
+          QStringLiteral("auto|n[m|K|M][V|A|O[hms]"), QStringLiteral("auto")},
+        {{QStringLiteral("samples")},
+          QCoreApplication::translate("parseCommandLine","Number of samples to acquire"),
+          QStringLiteral("samples")},
+        {{QStringLiteral("timeout")},
+          QCoreApplication::translate("parseCommandLine","@todo"),
+          QStringLiteral("seconds")},
+        {{QStringLiteral("trigger-level")},
+          QCoreApplication::translate("parseCommandLine","Level to trigger DSO acquisition."),
+          QStringLiteral("n[m][V|A]")},
+        {{QStringLiteral("trigger-mode")},
+          QCoreApplication::translate("parseCommandLine","Mode to trigger DSO acquisition (default free)."),
+          QStringLiteral("free|rising|falling"), QStringLiteral("free")},
+    });
+    parser.addVersionOption();
+    parser.addOptions({
+        {{QStringLiteral("window")},
+          QCoreApplication::translate("parseCommandLine","Sampling window for DSO acquisition"),
+          QStringLiteral("duration")},
+    });
+
+    parser.addPositionalArgument(QStringLiteral("info"),
+        QCoreApplication::translate("parseCommandLine", "Get Pokit device information"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("status"),
+        QCoreApplication::translate("parseCommandLine", "Get Pokit device status"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("meter"),
+        QCoreApplication::translate("parseCommandLine", "Access Pokit device's multimeter mode"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("dso"),
+        QCoreApplication::translate("parseCommandLine", "Access Pokit device's DSO mode"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("logger"),
+        QCoreApplication::translate("parseCommandLine", "Access Pokit device's data logger mode"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("scan"),
+        QCoreApplication::translate("parseCommandLine", "Scan Bluetooth for Pokit devices"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("set-name"),
+        QCoreApplication::translate("parseCommandLine", "Set Pokit device's name"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("flash-led"),
+        QCoreApplication::translate("parseCommandLine", "Flash Pokit device's LED"),
+        QStringLiteral(" "));
+
     parser.parse(appArguments);
     const Command command = getCliCommand(parser.positionalArguments(), supportedCommands);
-
-    // Add command-specific options.
-    if ((command != Command::None) && (command != Command::Scan)) {
-        parser.addOptions({
-            {{QStringLiteral("d"), QStringLiteral("device")},
-              QCoreApplication::translate("parseCommandLine", "Pokit device to use"),
-              QStringLiteral("name-or-address")}
-        });
-    }
-    if (command == Command::Scan) {
-        parser.addOptions({
-            {{QStringLiteral("timeout")}, QStringLiteral("t")},
-        });
+    if (command != Command::None) {
+        parser.clearPositionalArguments();
     }
 
-    //parser.setApplicationDescription(QStringLiteral(CMAKE_PROJECT_DESCRIPTION));
-
-    addCommonOptions(parser);
-
-    if (command == Command::None) {
-        parser.addPositionalArgument(
-            QStringLiteral("command"),
-            QCoreApplication::translate("parseCommandLine","One of: %1")
-                .arg(supportedCommands.keys().join(QStringLiteral(", "))),
-            QStringLiteral("<command>"));
+    // Handle -h|--help explicitly, so we can tweak the output to include the <command> info.
+    if (parser.isSet(QStringLiteral("help"))) {
+        const QString commandString = (command == Command::None) ? QStringLiteral("<command>")
+                : parser.positionalArguments().constFirst();
+        fputs(qPrintable(parser.helpText()
+            .replace(QStringLiteral("[options]"), commandString + QStringLiteral(" [options]"))
+            .replace(QStringLiteral("Arguments:"),  QStringLiteral("Command:"))
+        ), stdout);
+        ::exit(EXIT_SUCCESS);
     }
 
     parser.process(appArguments);
@@ -159,18 +205,40 @@ int main(int argc, char *argv[])
     app.setApplicationName(QStringLiteral(CMAKE_PROJECT_NAME));
     app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));
 
+    const QStringList appArguments = app.arguments();
     QCommandLineParser parser;
-    const Command command = parseCommandLine(app, parser);
+    const Command command = parseCommandLine(appArguments, parser);
     configureLogging(parser);
 
     switch (command) {
+    case Command::DSO:      break;
+    case Command::FlashLed: break;
+    case Command::Info:     break;
+    case Command::Logger:   break;
+    case Command::Meter:    break;
+    case Command::None: {
+        QCommandLineParser parser;
+        parser.setApplicationDescription(QStringLiteral("Use %1 <command> [-h|--help]"));
+        parser.addOptions({
+            {{QStringLiteral("scan")}, QStringLiteral("Scan stuff")},
+            { QStringLiteral("set-name"),
+              QCoreApplication::translate("parseCommandLine","Color the console output (default auto)"),
+              QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
+        });
+        fputs(qPrintable(parser.helpText()
+            .replace(QStringLiteral("[options]"), QStringLiteral("<command> [--help|options]"))
+            .replace(QStringLiteral("Options:"),  QStringLiteral("Commands:"))
+            .replace(QStringLiteral("  --"),      QStringLiteral("  "))
+           .append(QStringLiteral("\nUse fo..."))
+    ), stdout);
+        return EXIT_SUCCESS;
+    }
     case Command::Scan: {
         Discover d(&app);
         return app.exec();
     }
-    default:
-        qWarning() << "not implemented";
-        return 0;
+    case Command::Status:   break;
+    case Command::SetName:  break;
     }
     return app.exec();
 }
