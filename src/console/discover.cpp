@@ -83,41 +83,107 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
 
 QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
 {
+    #define TEST_THEN_RETURN(value) if (minorClass == QBluetoothDeviceInfo::value) return QLatin1String(#value)
     switch (majorClass) {
     case QBluetoothDeviceInfo::MiscellaneousDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedMiscellaneous);
         break;
     case QBluetoothDeviceInfo::ComputerDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedComputer);
+        TEST_THEN_RETURN(DesktopComputer);
+        TEST_THEN_RETURN(ServerComputer);
+        TEST_THEN_RETURN(LaptopComputer);
+        TEST_THEN_RETURN(HandheldClamShellComputer);
+        TEST_THEN_RETURN(HandheldComputer);
+        TEST_THEN_RETURN(WearableComputer);
         break;
     case QBluetoothDeviceInfo::PhoneDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedPhone);
+        TEST_THEN_RETURN(CellularPhone);
+        TEST_THEN_RETURN(CordlessPhone);
+        TEST_THEN_RETURN(SmartPhone);
+        TEST_THEN_RETURN(WiredModemOrVoiceGatewayPhone);
+        TEST_THEN_RETURN(CommonIsdnAccessPhone);
         break;
     case QBluetoothDeviceInfo::NetworkDevice:
-        /// \todo
+        TEST_THEN_RETURN(NetworkFullService);
+        TEST_THEN_RETURN(NetworkLoadFactorOne);
+        TEST_THEN_RETURN(NetworkLoadFactorTwo);
+        TEST_THEN_RETURN(NetworkLoadFactorThree);
+        TEST_THEN_RETURN(NetworkLoadFactorFour);
+        TEST_THEN_RETURN(NetworkLoadFactorFive);
+        TEST_THEN_RETURN(NetworkLoadFactorSix);
+        TEST_THEN_RETURN(NetworkNoService);
         break;
     case QBluetoothDeviceInfo::AudioVideoDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedAudioVideoDevice);
+        TEST_THEN_RETURN(WearableHeadsetDevice);
+        TEST_THEN_RETURN(HandsFreeDevice);
+        TEST_THEN_RETURN(Microphone);
+        TEST_THEN_RETURN(Loudspeaker);
+        TEST_THEN_RETURN(Headphones);
+        TEST_THEN_RETURN(PortableAudioDevice);
+        TEST_THEN_RETURN(CarAudio);
+        TEST_THEN_RETURN(SetTopBox);
+        TEST_THEN_RETURN(HiFiAudioDevice);
+        TEST_THEN_RETURN(Vcr);
+        TEST_THEN_RETURN(VideoCamera);
+        TEST_THEN_RETURN(Camcorder);
+        TEST_THEN_RETURN(VideoMonitor);
+        TEST_THEN_RETURN(VideoDisplayAndLoudspeaker);
+        TEST_THEN_RETURN(VideoConferencing);
+        TEST_THEN_RETURN(GamingDevice);
         break;
     case QBluetoothDeviceInfo::PeripheralDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedPeripheral);
+        TEST_THEN_RETURN(KeyboardPeripheral);
+        TEST_THEN_RETURN(PointingDevicePeripheral);
+        TEST_THEN_RETURN(KeyboardWithPointingDevicePeripheral);
+        TEST_THEN_RETURN(JoystickPeripheral);
+        TEST_THEN_RETURN(GamepadPeripheral);
+        TEST_THEN_RETURN(RemoteControlPeripheral);
+        TEST_THEN_RETURN(SensingDevicePeripheral);
+        TEST_THEN_RETURN(DigitizerTabletPeripheral);
+        TEST_THEN_RETURN(CardReaderPeripheral);
         break;
     case QBluetoothDeviceInfo::ImagingDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedImagingDevice);
+        TEST_THEN_RETURN(ImageDisplay);
+        TEST_THEN_RETURN(ImageCamera);
+        TEST_THEN_RETURN(ImageScanner);
+        TEST_THEN_RETURN(ImagePrinter);
         break;
     case QBluetoothDeviceInfo::WearableDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedWearableDevice);
+        TEST_THEN_RETURN(WearableWristWatch);
+        TEST_THEN_RETURN(WearablePager);
+        TEST_THEN_RETURN(WearableJacket);
+        TEST_THEN_RETURN(WearableHelmet);
+        TEST_THEN_RETURN(WearableGlasses);
         break;
     case QBluetoothDeviceInfo::ToyDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedToy);
+        TEST_THEN_RETURN(ToyRobot);
+        TEST_THEN_RETURN(ToyVehicle);
+        TEST_THEN_RETURN(ToyDoll);
+        TEST_THEN_RETURN(ToyController);
+        TEST_THEN_RETURN(ToyGame);
         break;
     case QBluetoothDeviceInfo::HealthDevice:
-        /// \todo
+        TEST_THEN_RETURN(UncategorizedHealthDevice);
+        TEST_THEN_RETURN(HealthBloodPressureMonitor);
+        TEST_THEN_RETURN(HealthThermometer);
+        TEST_THEN_RETURN(HealthWeightScale);
+        TEST_THEN_RETURN(HealthGlucoseMeter);
+        TEST_THEN_RETURN(HealthPulseOximeter);
+        TEST_THEN_RETURN(HealthDataDisplay);
+        TEST_THEN_RETURN(HealthStepCounter);
         break;
     case QBluetoothDeviceInfo::UncategorizedDevice:
         // There are no minor classes defined (in Qt) for uncategorized devices.
         break;
     }
+    #undef TEST_THEN_RETURN
     // Fallback to just converting the unsigned integer to a string.
     return QString::number(minorClass);
 }
