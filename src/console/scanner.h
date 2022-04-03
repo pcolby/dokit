@@ -17,12 +17,15 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "pokitdevicedisoveryagent.h"
+#include <QBluetoothDeviceInfo>
+#include <QObject>
 
-class Discover : public QObject
+class PokitDeviceDiscoveryAgent;
+
+class Scanner : public QObject
 {
 public:
-    Discover(QObject * const parent);
+    Scanner(QObject * const parent);
 
 private:
     PokitDeviceDiscoveryAgent * discoveryAgent;

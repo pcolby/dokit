@@ -1,8 +1,8 @@
 add_executable(
   pokit
-  discover.cpp
-  discover.h
   main.cpp
+  scanner.cpp
+  scanner.h
 )
 
 target_link_libraries(

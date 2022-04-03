@@ -24,7 +24,7 @@
 #include <QFileInfo>
 #include <QLoggingCategory>
 
-#include "discover.h"
+#include "scanner.h"
 
 #if defined(Q_OS_UNIX)
 #include <unistd.h>
@@ -232,7 +232,7 @@ int main(int argc, char *argv[])
         fputs("Missing argument: <command>\nSee --help for usage information.\n", stderr);
         return EXIT_FAILURE;
     case Command::Scan: {
-        Discover d(&app);
+        Scanner scanner(&app);
         return app.exec();
     }
     case Command::Status:   break;

@@ -17,7 +17,7 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "discover.h"
+#include "scanner.h"
 #include "utils.h"
 #include "uuids.h"
 
@@ -27,12 +27,14 @@
 #include <QJsonObject>
 #include <QLowEnergyController>
 
-Discover::Discover(QObject * const parent) : QObject(parent)
+#include "pokitdevicedisoveryagent.h"
+
+Scanner::Scanner(QObject * const parent) : QObject(parent)
 {
     discoveryAgent = new PokitDeviceDiscoveryAgent(this);
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,
-            this, &Discover::deviceDiscovered);
+            this, &Scanner::deviceDiscovered);
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceUpdated, this, [this](const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields) {
         qDebug() << "devid eupdatyed";
@@ -55,7 +57,7 @@ Discover::Discover(QObject * const parent) : QObject(parent)
     discoveryAgent->start();
 }
 
-void Discover::deviceDiscovered(const QBluetoothDeviceInfo &info)
+void Scanner::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     QLowEnergyController * c = QLowEnergyController::createCentral(info);
     qDebug() << c;
