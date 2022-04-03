@@ -27,8 +27,6 @@
 
 #include "qtpokit_global.h"
 
-#include <QDebug>
-
 QTPOKIT_BEGIN_NAMESPACE
 
 #define POKIT_SERVICE_MULTIMETER                "e7481d2f-5781-442e-bb9a-fd4e3441dadc"

@@ -4,6 +4,7 @@ add_library(QtPokit SHARED
   pokitdevicedisoveryagent.cpp
   pokitdevicedisoveryagent.h
   qtpokit_global.h
+  utils.h
   uuids.h
 )
 
