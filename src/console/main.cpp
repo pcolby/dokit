@@ -50,7 +50,7 @@ void configureLogging(const QCommandLineParser &parser)
 
     if (parser.isSet(QStringLiteral("debug"))) {
         messagePattern.prepend(QStringLiteral("%{time process} %{type} %{function} "));
-        QLoggingCategory::defaultCategory()->setEnabled(QtDebugMsg, true);
+        QLoggingCategory::setFilterRules(QStringLiteral("pokit.*.debug=true"));
     }
 
     const QString color = parser.value(QStringLiteral("color"));

@@ -23,6 +23,8 @@
 #include <QBluetoothUuid>
 #include <QDebug>
 
+Q_LOGGING_CATEGORY(pokitDiscovery, "pokit.ble.discovery", QtInfoMsg)
+
 PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
     const QBluetoothAddress &deviceAdapter, QObject *parent)
     : QBluetoothDeviceDiscoveryAgent(deviceAdapter, parent)
@@ -64,7 +66,7 @@ void PokitDeviceDiscoveryAgent::onDeviceDiscovered(const QBluetoothDeviceInfo &i
 {
     if (!isPokitDevice(info)) return;
 
-    qDebug() << "discovered" << info.address() << info.name() << info.rssi()
+    qCDebug(pokitDiscovery) << "discovered" << info.address() << info.name() << info.rssi()
              << info.majorDeviceClass() << info.serviceClasses()
              << info.serviceUuids() << info.manufacturerData() << info.manufacturerIds();
 
@@ -76,7 +78,7 @@ void PokitDeviceDiscoveryAgent::onDeviceUpdated(const QBluetoothDeviceInfo &info
 {
     if (!isPokitDevice(info)) return;
 
-    qDebug() << "updated" << info.address() << info.name() << info.rssi()
+    qCDebug(pokitDiscovery) << "updated" << info.address() << info.name() << info.rssi()
              << info.majorDeviceClass() << info.serviceClasses()
              << info.serviceUuids() << info.manufacturerData() << info.manufacturerIds();
 
