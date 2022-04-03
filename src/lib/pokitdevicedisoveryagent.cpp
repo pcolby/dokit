@@ -18,12 +18,12 @@
 */
 
 #include "pokitdevicedisoveryagent.h"
+
+#include "logging.h"
 #include "uuids.h"
 
 #include <QBluetoothUuid>
 #include <QDebug>
-
-Q_LOGGING_CATEGORY(pokitDiscovery, "pokit.ble.discovery", QtInfoMsg)
 
 PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
     const QBluetoothAddress &deviceAdapter, QObject *parent)

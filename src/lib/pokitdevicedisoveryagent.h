@@ -18,11 +18,8 @@
 */
 
 #include <QBluetoothDeviceDiscoveryAgent>
-#include <QLoggingCategory>
 
 #include "qtpokit_global.h"
-
-Q_DECLARE_LOGGING_CATEGORY(pokitDiscovery);
 
 QTPOKIT_BEGIN_NAMESPACE
 

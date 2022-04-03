@@ -27,6 +27,8 @@
 
 #include "qtpokit_global.h"
 
+#include "logging.h"
+
 #include <QBluetoothAddress>
 #include <QBluetoothDeviceInfo>
 #include <QBluetoothUuid>
@@ -93,7 +95,7 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
     QTPOKIT_IF_EQUAL_THEN_RETURN(HealthDevice);
     QTPOKIT_IF_EQUAL_THEN_RETURN(UncategorizedDevice);
     #undef QTPOKIT_IF_EQUAL_THEN_RETURN
-    qDebug() << "unknown major class" << majorClass;
+    qCDebug(pokitUtils) << "unknown major class" << majorClass;
     return QString(); // Null QString indicates unknown minor class.
 }
 
@@ -208,7 +210,7 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const
         break;
     }
     #undef QTPOKIT_IF_EQUAL_THEN_RETURN
-    qDebug() << "unknown minor class" << minorClass << "for major class" << majorClass;
+    qCDebug(pokitUtils) << "unknown minor class" << minorClass << "for major class" << majorClass;
     return QString(); // Null QString indicates unknown minor class.
 }
 
