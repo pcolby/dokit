@@ -23,7 +23,6 @@
 
 #include <QCoreApplication>
 #include <QJsonDocument>
-#include <QLowEnergyController> ///< \todo Remove this when related experimental code is removed.
 
 #include "pokitdevicedisoveryagent.h"
 
@@ -35,18 +34,6 @@ Scanner::Scanner(QObject * const parent) : QObject(parent)
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,
             this, &Scanner::deviceDiscovered);
-
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceUpdated, this, [this](const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields) {
-        qCDebug(pokitScanner) << "devid eupdatyed";
-        QLowEnergyController * c = QLowEnergyController::createCentral(info);
-
-        connect(c, &QLowEnergyController::connected, this, [c]() {
-            qCDebug(pokitScanner) << "device connected";
-            c->discoverServices();
-        });
-
-        fputs(QJsonDocument(toJsonObject(info)).toJson(), stdout);
-    });
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
         qCDebug(pokitScanner) << "Finished scanning for Pokit devices.";
@@ -66,31 +53,5 @@ void Scanner::start(const int timeout)
 
 void Scanner::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
-    QLowEnergyController * c = QLowEnergyController::createCentral(info);
-
-    connect(c, &QLowEnergyController::connected, this, [c]() {
-        qCDebug(pokitScanner) << "device connected";
-        c->discoverServices();
-    });
-
     fputs(QJsonDocument(toJsonObject(info)).toJson(), stdout);
-
-//    connect(c, &QLowEnergyController::serviceDiscovered, this, [c](const QBluetoothUuid &service) {
-//        qDebug() << "service discovered" << service;
-//        if (service == QBluetoothUuid(QStringLiteral(POKIT_SERVICE_STATUS))) {
-//            qDebug() << "status";
-//            QLowEnergyService * s = c->createServiceObject(service);
-//            qDebug() << s;
-//            if (s != nullptr) {
-//                s->discoverDetails();
-//            }
-//        }
-//    });
-
-//    connect(c, &QLowEnergyController::discoveryFinished, this, [c]() {
-//        qDebug() << "service discovery finished" << c->services().size();
-//        QCoreApplication::quit();
-//    });
-
-//    c->connectToDevice();
 }
