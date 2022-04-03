@@ -41,27 +41,7 @@ Discover::Discover(QObject * const parent) : QObject(parent)
             c->discoverServices();
         });
 
-        QJsonObject json{
-            { QLatin1String("address"), info.address().toString() },
-            { QLatin1String("name"), info.name() },
-            { QLatin1String("isCached"), info.isCached() },
-            { QLatin1String("majorDeviceClass"), info.majorDeviceClass() },
-            { QLatin1String("majorDeviceClass"), toJsonValue(info.majorDeviceClass()) },
-            { QLatin1String("minorDeviceClass"), toJsonValue(info.majorDeviceClass(), info.minorDeviceClass()) },
-            { QLatin1String("signalStrength"), info.rssi() },
-            { QLatin1String("serviceUuids"), toJsonArray(info.serviceUuids()) },
-
-        };
-        if (!info.deviceUuid().isNull()) {
-            json.insert(QLatin1String("deviceUuid"), info.deviceUuid().toString());
-        }
-        if (!info.manufacturerData().isEmpty()) {
-            json.insert(QLatin1String("manufacturerData"), toJsonArray(info.manufacturerData()));
-        }
-        if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {
-            json.insert(QLatin1String("serviceClasses"), toJsonArray(info.serviceClasses()));
-        }
-        fputs(QJsonDocument(json).toJson(), stdout);
+        fputs(QJsonDocument(toJsonObject(info)).toJson(), stdout);
 
         connect(c, &QLowEnergyController::serviceDiscovered, this, [c](const QBluetoothUuid &service) {
             qDebug() << "service discovered" << service;
