@@ -1,5 +1,7 @@
 add_executable(
   pokit
+  informer.cpp
+  informer.h
   main.cpp
   scanner.cpp
   scanner.h

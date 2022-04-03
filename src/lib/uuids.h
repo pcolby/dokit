@@ -49,6 +49,7 @@ QTPOKIT_BEGIN_NAMESPACE
 #define POKIT_CHARACTERISTIC_STATUS_DEVICE_NAME "7f0375de-077e-4555-8f78-800494509cc3"
 #define POKIT_CHARACTERISTIC_STATUS_FLASH_LED   "ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e"
 
+/// \todo Should we keep these, or comment them out?
 #define POKIT_SERVICE_DEVICE_INFO                QBluetoothUuid::DeviceInformation      // 0x180A
 #define POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER QBluetoothUuid::ManufacturerNameString // 0x2A29
 #define POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER QBluetoothUuid::ModelNumberString      // 0x2A24

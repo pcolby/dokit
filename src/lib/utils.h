@@ -39,7 +39,7 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
-QJsonArray toJsonArray(const QBluetoothDeviceInfo::ServiceClasses &classes)
+inline QJsonArray toJsonArray(const QBluetoothDeviceInfo::ServiceClasses &classes)
 {
     QJsonArray array;
     #define QTPOKIT_IF_SET_THEN_APPEND(flag) \
@@ -57,7 +57,7 @@ QJsonArray toJsonArray(const QBluetoothDeviceInfo::ServiceClasses &classes)
     return array;
 }
 
-QJsonArray toJsonArray(const QList<QBluetoothUuid> &uuids)
+inline QJsonArray toJsonArray(const QList<QBluetoothUuid> &uuids)
 {
     QJsonArray array;
     for (const QBluetoothUuid &uuid: uuids) {
@@ -66,7 +66,7 @@ QJsonArray toJsonArray(const QList<QBluetoothUuid> &uuids)
     return array;
 }
 
-QJsonArray toJsonArray(const QMultiHash<quint16, QByteArray> &data)
+inline QJsonArray toJsonArray(const QMultiHash<quint16, QByteArray> &data)
 {
     QJsonArray array;
     for (auto iter = data.cbegin(); iter != data.cend(); ++iter) {
@@ -78,7 +78,7 @@ QJsonArray toJsonArray(const QMultiHash<quint16, QByteArray> &data)
     return array;
 }
 
-QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
+inline QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
 {
     #define QTPOKIT_IF_EQUAL_THEN_RETURN(value) \
         if (majorClass == QBluetoothDeviceInfo::value) \
@@ -99,13 +99,13 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
     return QString(); // Null QString indicates unknown minor class.
 }
 
-QJsonValue toJsonValue(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
+inline QJsonValue toJsonValue(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
 {
     const QString string = toString(majorClass);
     return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));
 }
 
-QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
+inline QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
 {
     #define QTPOKIT_IF_EQUAL_THEN_RETURN(value) \
         if (minorClass == QBluetoothDeviceInfo::value) \
@@ -214,13 +214,13 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const
     return QString(); // Null QString indicates unknown minor class.
 }
 
-QJsonValue toJsonValue(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
+inline QJsonValue toJsonValue(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
 {
     const QString string = toString(majorClass, minorClass);
     return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));
 }
 
-QJsonObject toJsonObject(const QBluetoothDeviceInfo &info) {
+inline QJsonObject toJsonObject(const QBluetoothDeviceInfo &info) {
     QJsonObject json{
         { QLatin1String("address"), info.address().toString() },
         { QLatin1String("name"), info.name() },

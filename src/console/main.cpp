@@ -24,6 +24,7 @@
 #include <QFileInfo>
 #include <QLoggingCategory>
 
+#include "informer.h"
 #include "scanner.h"
 
 #if defined(Q_OS_UNIX)
@@ -221,11 +222,21 @@ int main(int argc, char *argv[])
     const Command command = parseCommandLine(appArguments, parser);
     configureLogging(parser);
 
+    /// \todo Handle required and ignored options in a generalised fashion.
+
     // Handle the given command.
     switch (command) {
     case Command::DSO:      break;
     case Command::FlashLed: break;
-    case Command::Info:     break;
+    case Command::Info: {
+        const QStringList devices = parser.values(QLatin1String("device"));
+        for (const QString &device: devices) {
+            qDebug() << device;
+            Informer i(&app);
+            return app.exec();
+        }
+        return EXIT_FAILURE;
+    } break;
     case Command::Logger:   break;
     case Command::Meter:    break;
     case Command::None:
