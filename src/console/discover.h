@@ -27,7 +27,6 @@ public:
 private:
     PokitDeviceDiscoveryAgent * discoveryAgent;
 
-//private slots:
-
-
+private slots:
+    void deviceDiscovered(const QBluetoothDeviceInfo &info);
 };
