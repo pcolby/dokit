@@ -78,7 +78,13 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
     TEST_THEN_RETURN(HealthDevice);
     TEST_THEN_RETURN(UncategorizedDevice);
     #undef TEST_THEN_RETURN
-    return QString::number(majorClass);
+    return QString(); // Null QString indicates unknown minor class.
+}
+
+QJsonValue toJsonValue(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
+{
+    const QString string = toString(majorClass);
+    return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));
 }
 
 QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
@@ -184,8 +190,13 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const
         break;
     }
     #undef TEST_THEN_RETURN
-    // Fallback to just converting the unsigned integer to a string.
-    return QString::number(minorClass);
+    return QString(); // Null QString indicates unknown minor class.
+}
+
+QJsonValue toJsonValue(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
+{
+    const QString string = toString(majorClass, minorClass);
+    return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));
 }
 
 Discover::Discover(QObject * const parent) : QObject(parent)
@@ -207,8 +218,8 @@ Discover::Discover(QObject * const parent) : QObject(parent)
             { QLatin1String("name"), info.name() },
             { QLatin1String("isCached"), info.isCached() },
             { QLatin1String("majorDeviceClass"), info.majorDeviceClass() },
-            { QLatin1String("majorDeviceClass"), toString(info.majorDeviceClass()) },
-            { QLatin1String("minorDeviceClass"), toString(info.majorDeviceClass(), info.minorDeviceClass()) },
+            { QLatin1String("majorDeviceClass"), toJsonValue(info.majorDeviceClass()) },
+            { QLatin1String("minorDeviceClass"), toJsonValue(info.majorDeviceClass(), info.minorDeviceClass()) },
             { QLatin1String("signalStrength"), info.rssi() },
             { QLatin1String("serviceUuids"), toJsonArray(info.serviceUuids()) },
 
