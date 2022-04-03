@@ -65,11 +65,7 @@ void PokitDeviceDiscoveryAgent::start()
 void PokitDeviceDiscoveryAgent::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     if (!isPokitDevice(info)) return;
-
-    qCDebug(pokitDiscovery) << "discovered" << info.address() << info.name() << info.rssi()
-             << info.majorDeviceClass() << info.serviceClasses()
-             << info.serviceUuids() << info.manufacturerData() << info.manufacturerIds();
-
+    qCDebug(pokitDiscovery) << "discovered" << info.name() << info.address();
     emit pokitDeviceDiscovered(info);
 }
 
@@ -77,10 +73,6 @@ void PokitDeviceDiscoveryAgent::onDeviceUpdated(const QBluetoothDeviceInfo &info
                                                 QBluetoothDeviceInfo::Fields updatedFields)
 {
     if (!isPokitDevice(info)) return;
-
-    qCDebug(pokitDiscovery) << "updated" << info.address() << info.name() << info.rssi()
-             << info.majorDeviceClass() << info.serviceClasses()
-             << info.serviceUuids() << info.manufacturerData() << info.manufacturerIds();
-
+    qCDebug(pokitDiscovery) << "updated" << info.name() << info.address() << info.rssi();
     emit pokitDeviceUpdated(info, updatedFields);
 }
