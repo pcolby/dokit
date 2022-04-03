@@ -129,17 +129,17 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
                 if (state == QLowEnergyService::ServiceDiscovered) {
                     QLowEnergyCharacteristic c = s2->characteristic(POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER);
                     qDebug() << c.name() << c.value() << c.isValid();
+                    c = s2->characteristic(POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER);
+                    qDebug() << c.name() << c.value() << c.isValid();
+                    c = s2->characteristic(POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV);
+                    qDebug() << c.name() << c.value() << c.isValid();
+                    c = s2->characteristic(POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV);
+                    qDebug() << c.name() << c.value() << c.isValid();
+                    c = s2->characteristic(POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV);
+                    qDebug() << c.name() << c.value() << c.isValid();
                 }
             });
             s2->discoverDetails();
-
-
-
-//        #define POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER QBluetoothUuid::ModelNumberString      // 0x2A24
-//        #define POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV QBluetoothUuid::FirmwareRevisionString // 0x2A26
-//        #define POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV QBluetoothUuid::SoftwareRevisionString // 0x2A28
-//        #define POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV QBluetoothUuid::HardwareRevisionString // 0x2A27
-
         }
     });
 
