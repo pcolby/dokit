@@ -22,8 +22,10 @@
 #include "uuids.h"
 
 #include <QCoreApplication>
+#include <QDataStream>
 #include <QLoggingCategory>
 #include <QLowEnergyController>
+#include <QtEndian>
 
 #include "pokitdevicedisoveryagent.h"
 
@@ -35,7 +37,7 @@ Q_LOGGING_CATEGORY(pokitInformer, "pokit.ui.informer", QtInfoMsg);
 
 Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr)
 {
-    QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String("...")), QString(), 0);
+    QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String("5C:02:72:09:AA:25")), QString(), 0);
     qDebug() << toJsonObject(info);
     controller = QLowEnergyController::createCentral(info);
 
@@ -51,6 +53,9 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
         }
     });
 
+    QLowEnergyService * s = controller->createServiceObject(QBluetoothUuid(QLatin1String(POKIT_SERVICE_STATUS)), this);
+    qDebug() << "first service" << s;
+
     connect(controller, &QLowEnergyController::connected, this, [this]() {
         qDebug() << "connected" << controller->services().size();
         controller->discoverServices();
@@ -62,6 +67,80 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
 
     connect(controller, &QLowEnergyController::discoveryFinished, this, [this]() {
         qDebug() << "service discovery finished" << controller->services().size();
+        QLowEnergyService * s = controller->createServiceObject(QBluetoothUuid(QLatin1String(POKIT_SERVICE_STATUS)), this);
+        qDebug() << "second service" << s;
+        if (s) {
+            qDebug() << "second service" << s->serviceName() << s->serviceUuid();
+            connect(s, QOverload<QLowEnergyService::ServiceError>::of(&QLowEnergyService::error),
+                    this, [](const QLowEnergyService::ServiceError error) {
+                qCritical() << "ServcieError:" << error;
+                QCoreApplication::quit();
+            });
+
+            connect(s, &QLowEnergyService::stateChanged, this, [s](const QLowEnergyService::ServiceState state) {
+                qDebug() << "s1 state chnaged" << state;
+                if (state == QLowEnergyService::ServiceDiscovered) {
+                    QLowEnergyCharacteristic c = s->characteristic(QUuid(POKIT_CHARACTERISTIC_STATUS_DEVICE));
+                    qDebug() << c.name() << c.value().length() << c.value() << c.isValid();
+                    if (c.isValid()) {
+                        Q_ASSERT(c.value().length() == 20); /// \todo Proper error handling.
+
+                        // Both of the following methods produce the same, correct results. Will
+                        // settle on one when refactoring into library classes.
+
+                        // The bytearray-indexing method.
+                        qDebug() << "version major" << qFromLittleEndian<quint8>(c.value().mid(0,1));
+                        qDebug() << "version minor" << qFromLittleEndian<quint8>(c.value().mid(1,1));
+                        qDebug() << "max voltage" << qFromLittleEndian<quint16>(c.value().mid(2,2));
+                        qDebug() << "max current" << qFromLittleEndian<quint16>(c.value().mid(4,2));
+                        qDebug() << "max resistance" << qFromLittleEndian<quint16>(c.value().mid(6,2));
+                        qDebug() << "max sample rate" << qFromLittleEndian<quint16>(c.value().mid(8,2));
+                        qDebug() << "max buff size" << qFromLittleEndian<quint16>(c.value().mid(10,2));
+                        qDebug() << "max cap mask" << qFromLittleEndian<quint16>(c.value().mid(12,2));
+                        qDebug() << "mac addr" << c.value().mid(14);
+
+                        // The datastream method.
+                        QDataStream str(c.value());
+                        str.setByteOrder(QDataStream::LittleEndian);
+                        quint8 v1,v2;
+                        quint16 maxV, maxC, maxR, maxS, buff, mask;
+                        str >> v1 >> v2 >> maxV >> maxC >> maxR >> maxS >> buff >> mask;
+                        qDebug() << "version major" << v1;
+                        qDebug() << "version minor" << v2;
+                        qDebug() << "max voltage" << maxV;
+                        qDebug() << "max current" << maxC;
+                        qDebug() << "max resistance" << maxR;
+                        qDebug() << "max sample rate" << maxS;
+                        qDebug() << "max buff size" << buff;
+                        qDebug() << "max cap mask" << mask;
+                        //qDebug() << "mac addr" << str;
+                    }
+                }
+            });
+            s->discoverDetails();
+        }
+
+        QLowEnergyService * s2 = controller->createServiceObject(POKIT_SERVICE_DEVICE_INFO, this);
+        qDebug() << "second service s2" << s2;
+        if (s2) {
+            qDebug() << "second service s2" << s2->serviceName() << s2->serviceUuid();
+            connect(s2, &QLowEnergyService::stateChanged, this, [s2](const QLowEnergyService::ServiceState state) {
+                qDebug() << "s2 state chnaged" << state;
+                if (state == QLowEnergyService::ServiceDiscovered) {
+                    QLowEnergyCharacteristic c = s2->characteristic(POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER);
+                    qDebug() << c.name() << c.value() << c.isValid();
+                }
+            });
+            s2->discoverDetails();
+
+
+
+//        #define POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER QBluetoothUuid::ModelNumberString      // 0x2A24
+//        #define POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV QBluetoothUuid::FirmwareRevisionString // 0x2A26
+//        #define POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV QBluetoothUuid::SoftwareRevisionString // 0x2A28
+//        #define POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV QBluetoothUuid::HardwareRevisionString // 0x2A27
+
+        }
     });
 
     connect(controller, QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
