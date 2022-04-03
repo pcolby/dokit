@@ -233,6 +233,7 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     case Command::Scan: {
         Scanner scanner(&app);
+        scanner.start(parser.value(QStringLiteral("timeout")).toInt());
         return app.exec();
     }
     case Command::Status:   break;

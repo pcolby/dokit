@@ -22,12 +22,12 @@
 #include "uuids.h"
 
 #include <QCoreApplication>
-#include <QJsonArray>
 #include <QJsonDocument>
-#include <QJsonObject>
-#include <QLowEnergyController>
+#include <QLowEnergyController> ///< \todo Remove this when related experimental code is removed.
 
 #include "pokitdevicedisoveryagent.h"
+
+Q_LOGGING_CATEGORY(pokitScanner, "pokit.ui.scanner", QtInfoMsg);
 
 Scanner::Scanner(QObject * const parent) : QObject(parent)
 {
@@ -37,11 +37,11 @@ Scanner::Scanner(QObject * const parent) : QObject(parent)
             this, &Scanner::deviceDiscovered);
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceUpdated, this, [this](const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields) {
-        qDebug() << "devid eupdatyed";
+        qCDebug(pokitScanner) << "devid eupdatyed";
         QLowEnergyController * c = QLowEnergyController::createCentral(info);
 
         connect(c, &QLowEnergyController::connected, this, [c]() {
-            qDebug() << "device connected";
+            qCDebug(pokitScanner) << "device connected";
             c->discoverServices();
         });
 
@@ -49,22 +49,27 @@ Scanner::Scanner(QObject * const parent) : QObject(parent)
     });
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
-        qDebug() << "device discovery finished";
+        qCDebug(pokitScanner) << "Finished scanning for Pokit devices.";
         QCoreApplication::quit();
     });
+}
 
-    discoveryAgent->setLowEnergyDiscoveryTimeout(3000); ///< \todo Set this from CLI.
+void Scanner::start(const int timeout)
+{
+    Q_ASSERT(discoveryAgent);
+    qCDebug(pokitScanner).noquote().nospace() << "Scanning for Pokit devices (with "
+        << (timeout ? QLocale().toString(timeout)+QLatin1String("ms") : QLatin1String("no"))
+        << " timeout).";
+    discoveryAgent->setLowEnergyDiscoveryTimeout(timeout);
     discoveryAgent->start();
 }
 
 void Scanner::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     QLowEnergyController * c = QLowEnergyController::createCentral(info);
-    qDebug() << c;
-    qDebug() << c->services().size();
 
     connect(c, &QLowEnergyController::connected, this, [c]() {
-        qDebug() << "device connected";
+        qCDebug(pokitScanner) << "device connected";
         c->discoverServices();
     });
 
