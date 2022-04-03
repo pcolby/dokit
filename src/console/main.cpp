@@ -49,7 +49,11 @@ void configureLogging(const QCommandLineParser &parser)
     QString messagePattern = QStringLiteral("%{if-category}%{category}: %{endif}%{message}");
 
     if (parser.isSet(QStringLiteral("debug"))) {
-        messagePattern.prepend(QStringLiteral("%{time process} %{type} %{function} "));
+        #ifdef QT_MESSAGELOGCONTEXT
+        // %{file}, %{line} and %{function} are only available when QT_MESSAGELOGCONTEXT is set.
+        messagePattern.prepend(QStringLiteral("%{function} "));
+        #endif
+        messagePattern.prepend(QStringLiteral("%{time process} %{type} "));
         QLoggingCategory::setFilterRules(QStringLiteral("pokit.*.debug=true"));
     }
 
