@@ -32,8 +32,10 @@ PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
     connect(this, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this, &PokitDeviceDiscoveryAgent::onDeviceDiscovered);
 
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Signal added in Qt 5.12.
     connect(this, &QBluetoothDeviceDiscoveryAgent::deviceUpdated,
             this, &PokitDeviceDiscoveryAgent::onDeviceUpdated);
+    #endif
 }
 
 PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(QObject * parent)
