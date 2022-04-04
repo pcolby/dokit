@@ -29,6 +29,23 @@ cmake --build <tmp-build-dir>
 ctest --test-dir <tmp-build-dir> --verbose
 ~~~
 
+### Documentation
+
+Configure the same as above, but build the `doc` and (optionally) `doc-internal` targets.
+
+~~~{.sh}
+cmake -E make_directory <tmp-build-dir>
+cmake -S <path-to-cloned-repo> -B <tmp-build-dir>
+cmake --build <tmp-build-dir> --target doc doc-internal
+# ls <tmp-build-dir>/doc/public    # Library end-user documentation
+# ls <tmp-build-dir>/doc/internal  # Internal developer documentation
+~~~
+
+These are regularly published to Github Pages via Github Actions:
+
+* [public end-user docs](https://pcolby.github.io/qtpokit/main/doc/index.html)
+* [internal dev docs](https://pcolby.github.io/qtpokit/main/int/index.html)
+
 ## License
 
 The standalone, shared `QtPocket` library is freely available under the [LGPL]. And the rest of this
