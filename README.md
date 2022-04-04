@@ -43,8 +43,8 @@ cmake --build <tmp-build-dir> --target doc doc-internal
 
 These are regularly published to Github Pages via Github Actions:
 
-* [public end-user docs](https://pcolby.github.io/qtpokit/main/doc/index.html)
-* [internal dev docs](https://pcolby.github.io/qtpokit/main/int/index.html)
+* [public end-user docs](https://pcolby.github.io/pokit/main/doc/index.html)
+* [internal dev docs](https://pcolby.github.io/pokit/main/int/index.html)
 
 ## License
 
