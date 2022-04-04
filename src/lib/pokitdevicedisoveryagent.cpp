@@ -42,8 +42,10 @@ PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(QObject * parent)
     connect(this, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this, &PokitDeviceDiscoveryAgent::onDeviceDiscovered);
 
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Signal added in Qt 5.12.
     connect(this, &QBluetoothDeviceDiscoveryAgent::deviceUpdated,
             this, &PokitDeviceDiscoveryAgent::onDeviceUpdated);
+    #endif
 }
 
 bool PokitDeviceDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
@@ -69,6 +71,7 @@ void PokitDeviceDiscoveryAgent::onDeviceDiscovered(const QBluetoothDeviceInfo &i
     emit pokitDeviceDiscovered(info);
 }
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
 void PokitDeviceDiscoveryAgent::onDeviceUpdated(const QBluetoothDeviceInfo &info,
                                                 QBluetoothDeviceInfo::Fields updatedFields)
 {
@@ -76,3 +79,4 @@ void PokitDeviceDiscoveryAgent::onDeviceUpdated(const QBluetoothDeviceInfo &info
     qCDebug(pokitDiscovery) << "Updated Pokit device" << info.name() << info.address() << info.rssi();
     emit pokitDeviceUpdated(info, updatedFields);
 }
+#endif

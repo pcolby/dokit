@@ -39,11 +39,15 @@ public slots:
 
 private slots:
     void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     void onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
+    #endif
 
 signals:
     void pokitDeviceDiscovered(const QBluetoothDeviceInfo &info);
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     void pokitDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
+    #endif
 };
 
 QTPOKIT_END_NAMESPACE
