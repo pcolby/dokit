@@ -50,6 +50,7 @@ QTPOKIT_BEGIN_NAMESPACE
 #define POKIT_CHARACTERISTIC_STATUS_FLASH_LED   "ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e"
 
 /// \todo Should we keep these, or comment them out?
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 #define POKIT_SERVICE_DEVICE_INFO                QBluetoothUuid::DeviceInformation      // 0x180A
 #define POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER QBluetoothUuid::ManufacturerNameString // 0x2A29
 #define POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER QBluetoothUuid::ModelNumberString      // 0x2A24
@@ -60,7 +61,18 @@ QTPOKIT_BEGIN_NAMESPACE
 #define POKIT_SERVICE_GENERIC_ACCCESS            QBluetoothUuid::GenericAccess          // 0x1800
 #define POKIT_CHARACTERISTIC_GA_DEVICE_NAME      QBluetoothUuid::DeviceName             // 0x2A00
 #define POKIT_CHARACTERISTIC_GA_APPEARANCE       QBluetoothUuid::Appearance             // 0x2A01
+#else /// \todo No doubt we could simplify these with some clever macros (if we keep them at all).
+#define POKIT_SERVICE_DEVICE_INFO                QBluetoothUuid::ServiceClassUuid::DeviceInformation        // 0x180A
+#define POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER QBluetoothUuid::CharacteristicType::ManufacturerNameString // 0x2A29
+#define POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER QBluetoothUuid::CharacteristicType::ModelNumberString      // 0x2A24
+#define POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV QBluetoothUuid::CharacteristicType::FirmwareRevisionString // 0x2A26
+#define POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV QBluetoothUuid::CharacteristicType::SoftwareRevisionString // 0x2A28
+#define POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV QBluetoothUuid::CharacteristicType::HardwareRevisionString // 0x2A27
 
+#define POKIT_SERVICE_GENERIC_ACCCESS            QBluetoothUuid::ServiceClassUuid::GenericAccess            // 0x1800
+#define POKIT_CHARACTERISTIC_GA_DEVICE_NAME      QBluetoothUuid::CharacteristicType::DeviceName             // 0x2A00
+#define POKIT_CHARACTERISTIC_GA_APPEARANCE       QBluetoothUuid::CharacteristicType::Appearance             // 0x2A01
+#endif
 QTPOKIT_END_NAMESPACE
 
 #endif // QTPOKIT_UUIDS_H

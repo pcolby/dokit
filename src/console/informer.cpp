@@ -71,7 +71,11 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
         qDebug() << "second service" << s;
         if (s) {
             qDebug() << "second service" << s->serviceName() << s->serviceUuid();
+            #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
             connect(s, QOverload<QLowEnergyService::ServiceError>::of(&QLowEnergyService::error),
+            #else
+            connect(s, &QLowEnergyService::errorOccurred,
+            #endif
                     this, [](const QLowEnergyService::ServiceError error) {
                 qCritical() << "ServcieError:" << error;
                 QCoreApplication::quit();
@@ -79,7 +83,11 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
 
             connect(s, &QLowEnergyService::stateChanged, this, [s](const QLowEnergyService::ServiceState state) {
                 qDebug() << "s1 state chnaged" << state;
+                #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
                 if (state == QLowEnergyService::ServiceDiscovered) {
+                #else
+                if (state == QLowEnergyService::RemoteServiceDiscovered) {
+                #endif
                     QLowEnergyCharacteristic c = s->characteristic(QUuid(POKIT_CHARACTERISTIC_STATUS_DEVICE));
                     qDebug() << c.name() << c.value().length() << c.value() << c.isValid();
                     if (c.isValid()) {
@@ -126,7 +134,11 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
             qDebug() << "second service s2" << s2->serviceName() << s2->serviceUuid();
             connect(s2, &QLowEnergyService::stateChanged, this, [s2](const QLowEnergyService::ServiceState state) {
                 qDebug() << "s2 state chnaged" << state;
+                #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
                 if (state == QLowEnergyService::ServiceDiscovered) {
+                #else
+                if (state == QLowEnergyService::RemoteServiceDiscovered) {
+                #endif
                     QLowEnergyCharacteristic c = s2->characteristic(POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER);
                     qDebug() << c.name() << c.value() << c.isValid();
                     c = s2->characteristic(POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER);
@@ -143,7 +155,11 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
         }
     });
 
+    #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
     connect(controller, QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
+    #else
+    connect(controller, &QLowEnergyController::errorOccurred,
+    #endif
             this, [](const QLowEnergyController::Error error) {
         qCritical() << "Error:" << error;
         QCoreApplication::quit();
