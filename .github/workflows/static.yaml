@@ -1,0 +1,45 @@
+name: Static Analysis
+
+on: [push, pull_request]
+
+jobs:
+  CodeQL:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Qt
+      run: sudo apt update && sudo apt upgrade && sudo apt install qtbase5-dev
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: cpp
+    - name: Build
+      run: |
+        cmake -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake --build "$RUNNER_TEMP"
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+
+  Cppcheck:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Cppcheck
+      run: sudo apt update && sudo apt upgrade && sudo apt install cppcheck
+    - uses: actions/checkout@v3
+    - name: Perform Cppcheck Analysis
+      run: |
+        cppcheck \
+           -DQTPOKIT_NAMESPACE=qtpockit --enable=all --error-exitcode=1 -Isrc \
+           --suppress=missingInclude \
+           --xml --xml-version=2 src test 2> "$RUNNER_TEMP/cppcheck.xml"
+    - name: Generate Report
+      if: ${{ failure() }}
+      run: |
+        cppcheck-htmlreport --title=QtPokit --file="$RUNNER_TEMP/cppcheck.xml" \
+          --report-dir="$RUNNER_TEMP/report" --source-dir="$GITHUB_WORKSPACE"
+    - name: Upload Report
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: Cppcheck HTML Report
+        path: "${{ runner.temp }}/report"

@@ -1,0 +1,54 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout main Branch
+      uses: actions/checkout@v3
+      with:
+        ref: main
+        path: main
+        submodules: true
+    - name: Checkout doc Branch
+      uses: actions/checkout@v3
+      with:
+        ref: doc
+        path: doc
+        submodules: true
+    - name: Install Doxygen
+      run: |
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install graphviz libclang1-9 libclang-cpp9 qtbase5-dev
+        wget --quiet https://doxygen.nl/files/doxygen-1.9.3.linux.bin.tar.gz --output-document "$RUNNER_TEMP/doxygen-1.9.3.linux.bin.tar.gz"
+        tar --extract --file "$RUNNER_TEMP/doxygen-1.9.3.linux.bin.tar.gz" --directory "$RUNNER_TEMP"
+        "$RUNNER_TEMP/doxygen-1.9.3/bin/doxygen" --version
+    - name: Build Docs
+      run: |
+        cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-1.9.3/bin/doxygen" -S "$GITHUB_WORKSPACE/main" -B "$RUNNER_TEMP"
+        cmake --build "$RUNNER_TEMP" --target doc doc-internal
+    - name: Install Docs
+      run: |
+        rm -rf "$GITHUB_WORKSPACE/doc/main/"{doc,int}
+        cp -a "$RUNNER_TEMP/doc/public" "$GITHUB_WORKSPACE/doc/main/doc"
+        cp -a "$RUNNER_TEMP/doc/internal" "$GITHUB_WORKSPACE/doc/main/int"
+    - name: Inspect Changes
+      run: |
+        git -C "$GITHUB_WORKSPACE/doc" status
+        git -C "$GITHUB_WORKSPACE/doc" diff
+    - name: Push Updated Docs
+      run: |
+        [[ -z $(git status --porcelain) ]] || {
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update generated docs for ${GITHUB_SHA}"
+          git push
+        }
+      working-directory: ${{ github.workspace }}/doc
