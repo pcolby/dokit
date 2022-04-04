@@ -45,7 +45,7 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        modules: qtconnectivity
+        modules: addons.qtconnectivity
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -73,7 +73,7 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        modules: qtconnectivity
+        modules: addons.qtconnectivity
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -112,14 +112,14 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        modules: qtconnectivity
+        modules: addons.qtconnectivity
         arch: ${{ matrix.arch }}
     - name: Install Qt (msvc)
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        modules: qtconnectivity
+        modules: addons.qtconnectivity
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
