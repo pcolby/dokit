@@ -86,7 +86,11 @@ inline QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass
     QTPOKIT_IF_EQUAL_THEN_RETURN(MiscellaneousDevice);
     QTPOKIT_IF_EQUAL_THEN_RETURN(ComputerDevice);
     QTPOKIT_IF_EQUAL_THEN_RETURN(PhoneDevice);
-    QTPOKIT_IF_EQUAL_THEN_RETURN(NetworkDevice);
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
+    QTPOKIT_IF_EQUAL_THEN_RETURN(LANAccessDevice): // Deprecated since Qt 5.13.
+    #else
+    QTPOKIT_IF_EQUAL_THEN_RETURN(NetworkDevice); // Added in Qt 5.13.
+    #endif
     QTPOKIT_IF_EQUAL_THEN_RETURN(AudioVideoDevice);
     QTPOKIT_IF_EQUAL_THEN_RETURN(PeripheralDevice);
     QTPOKIT_IF_EQUAL_THEN_RETURN(ImagingDevice);
@@ -131,7 +135,11 @@ inline QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass
         QTPOKIT_IF_EQUAL_THEN_RETURN(WiredModemOrVoiceGatewayPhone);
         QTPOKIT_IF_EQUAL_THEN_RETURN(CommonIsdnAccessPhone);
         break;
-    case QBluetoothDeviceInfo::NetworkDevice:
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
+    case QBluetoothDeviceInfo::LANAccessDevice: // Deprecated since Qt 5.13.
+    #else
+    case QBluetoothDeviceInfo::NetworkDevice: // Added in Qt 5.13.
+    #endif
         QTPOKIT_IF_EQUAL_THEN_RETURN(NetworkFullService);
         QTPOKIT_IF_EQUAL_THEN_RETURN(NetworkLoadFactorOne);
         QTPOKIT_IF_EQUAL_THEN_RETURN(NetworkLoadFactorTwo);
