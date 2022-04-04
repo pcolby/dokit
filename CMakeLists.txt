@@ -46,6 +46,7 @@ set(CMAKE_AUTORCC ON)
 find_package(QT REQUIRED COMPONENTS Core Network NAMES Qt6 Qt5)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Bluetooth)
 message("-- Found Qt ${Qt${QT_VERSION_MAJOR}_VERSION}")
+message("-- Found Qt Bluetooth ${Qt${QT_VERSION_MAJOR}Bluetooth_VERSION}")
 
 include(CTest)
 add_subdirectory(doc)
