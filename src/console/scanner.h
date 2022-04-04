@@ -25,7 +25,7 @@ class PokitDeviceDiscoveryAgent;
 class Scanner : public QObject
 {
 public:
-    Scanner(QObject * const parent);
+    explicit Scanner(QObject * const parent);
 
 public slots:
     void start(const int timeout = 0);

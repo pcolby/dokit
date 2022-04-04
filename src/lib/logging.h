@@ -29,6 +29,8 @@
 
 #include <QLoggingCategory>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 Q_DECLARE_LOGGING_CATEGORY(pokitDiscovery);
 Q_DECLARE_LOGGING_CATEGORY(pokitUtils);
 

@@ -28,7 +28,7 @@ class PokitDeviceDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
     Q_OBJECT
 
 public:
-    PokitDeviceDiscoveryAgent(const QBluetoothAddress &deviceAdapter, QObject *parent=nullptr);
+    explicit PokitDeviceDiscoveryAgent(const QBluetoothAddress &deviceAdapter, QObject *parent=nullptr);
     PokitDeviceDiscoveryAgent(QObject * parent=nullptr);
 
     static bool isPokitDevice(const QBluetoothDeviceInfo &info);

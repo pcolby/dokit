@@ -24,7 +24,7 @@ class QLowEnergyController;
 class Informer : public QObject
 {
 public:
-    Informer(QObject * const parent);
+    explicit Informer(QObject * const parent);
 
 public slots:
 
