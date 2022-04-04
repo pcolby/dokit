@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Qt
-      run: sudo apt update && sudo apt upgrade && sudo apt install qtbase5-dev
+      run: sudo apt update && sudo apt upgrade && sudo apt install qtbase5-dev qtconnectivity5-dev
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
