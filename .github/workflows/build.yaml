@@ -45,6 +45,7 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
+        modules: qtbluetooth
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -72,6 +73,7 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
+        modules: qtbluetooth
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -110,12 +112,14 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
+        modules: qtbluetooth
         arch: ${{ matrix.arch }}
     - name: Install Qt (msvc)
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
+        modules: qtbluetooth
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
