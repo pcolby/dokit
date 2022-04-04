@@ -87,7 +87,7 @@ inline QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass
     QTPOKIT_IF_EQUAL_THEN_RETURN(ComputerDevice);
     QTPOKIT_IF_EQUAL_THEN_RETURN(PhoneDevice);
     #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
-    QTPOKIT_IF_EQUAL_THEN_RETURN(LANAccessDevice): // Deprecated since Qt 5.13.
+    QTPOKIT_IF_EQUAL_THEN_RETURN(LANAccessDevice); // Deprecated since Qt 5.13.
     #else
     QTPOKIT_IF_EQUAL_THEN_RETURN(NetworkDevice); // Added in Qt 5.13.
     #endif
