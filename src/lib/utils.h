@@ -243,9 +243,11 @@ inline QJsonObject toJsonObject(const QBluetoothDeviceInfo &info) {
     if (!info.deviceUuid().isNull()) {
         json.insert(QLatin1String("deviceUuid"), info.deviceUuid().toString());
     }
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Added in Qt 5.12.
     if (!info.manufacturerData().isEmpty()) {
         json.insert(QLatin1String("manufacturerData"), toJsonArray(info.manufacturerData()));
     }
+    #endif
     if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {
         json.insert(QLatin1String("serviceClasses"), toJsonArray(info.serviceClasses()));
     }
