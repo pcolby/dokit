@@ -23,6 +23,7 @@
 
 #include <QCoreApplication>
 #include <QJsonDocument>
+#include <QLoggingCategory>
 
 #include "pokitdevicedisoveryagent.h"
 
