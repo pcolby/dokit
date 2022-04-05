@@ -115,13 +115,17 @@ jobs:
         - { qt: '5.9.9',  generator: 'MinGW Makefiles' }
         - { qt: '5.10.1', generator: 'MinGW Makefiles' }
         - { qt: '5.11.3', generator: 'MinGW Makefiles' }
+        # Exclude MinGW builds for 6.2.2+ for now, as 6.2.2 shifted to MinGW-w64 v11.2.0 for binary
+        # builds, and GitHub Windows runners only inlucde MinGW-w64 8.1.0 for now. See
+        # https://wiki.qt.io/MinGW#Toolchains_used_in_Qt_binary_packages and
+        # https://github.com/actions/virtual-environments/blob/main/images/win/Windows2022-Readme.md
+        - { qt: '6.2.4',  generator: 'MinGW Makefiles' }
+        - { qt: '6.3.0',  generator: 'MinGW Makefiles' }
         include:
         - { qt: '5.12.12', arch: win64_mingw73 }
         - { qt: '5.13.2',  arch: win64_mingw73 }
         - { qt: '5.14.2',  arch: win64_mingw73 }
         - { qt: '5.15.2',  arch: win64_mingw81 }
-        - { qt: '6.2.4',   arch: win64_mingw } # MinGW version suffix was dropped in Qt 6.2.2.
-        - { qt: '6.3.0',   arch: win64_mingw }
     steps:
     - uses: actions/checkout@v3
     - name: Install Qt (mingw)
