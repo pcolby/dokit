@@ -14,7 +14,7 @@ This project is in very early stages of development, but aims to support both [P
 
 ## Requirements
 
-* Qt5 v5.5+ or Qt6 *(note, will probably increase the v5.x version requirement sometime)*
+* Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]
 * a Qt-supported platform, such as Linux, MacOS or Windows
 * a [Pokit] device, such as a [Pokit Meter] or [Pokit Pro]
 
@@ -50,6 +50,9 @@ These are regularly published to Github Pages via Github Actions:
 
 The standalone, shared `QtPocket` library is freely available under the [LGPL]. And the rest of this
 project, including the dependant console and GUI apps, are freely available under the [GPL].
+
+[^minQt5]: The Qt BLE API was first [added in v5.4](https://doc.qt.io/qt-5/qtbluetooth-le-overview.html)
+[^minQt6]: The Qt Bluetooth module was [ported to Qt6 in v6.2](https://www.qt.io/blog/qt-6.2-lts-released)
 
 [CMake]:       https://cmake.org/
 [GPL]:         https://www.gnu.org/licenses/gpl-3.0.en.html "GNU General Public License"
