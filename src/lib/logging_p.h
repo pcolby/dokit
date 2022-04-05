@@ -22,8 +22,8 @@
  * QtPokit logging categories.
  */
 
-#ifndef QTPOKIT_LOGGING_H
-#define QTPOKIT_LOGGING_H
+#ifndef QTPOKIT_LOGGING_P_H
+#define QTPOKIT_LOGGING_P_H
 
 #include "qtpokit_global.h"
 
@@ -36,4 +36,4 @@ Q_DECLARE_LOGGING_CATEGORY(pokitUtils);
 
 QTPOKIT_END_NAMESPACE
 
-#endif // QTPOKIT_LOGGING_H
+#endif // QTPOKIT_LOGGING_P_H

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 add_library(QtPokit SHARED
   logging.cpp
-  logging.h
+  logging_p.h
   pokitdevicedisoveryagent.cpp
   pokitdevicedisoveryagent.h
   qtpokit_global.h

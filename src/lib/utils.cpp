@@ -24,7 +24,7 @@
 
 #include "utils.h"
 
-#include "logging.h"
+#include "logging_p.h"
 
 #include <QBluetoothAddress>
 #include <QDebug>

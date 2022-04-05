@@ -17,7 +17,7 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "logging.h"
+#include "logging_p.h"
 
 Q_LOGGING_CATEGORY(pokitDiscovery, "pokit.ble.discovery", QtInfoMsg)
 Q_LOGGING_CATEGORY(pokitUtils,     "pokit.utils",         QtInfoMsg)

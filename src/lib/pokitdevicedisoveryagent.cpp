@@ -19,7 +19,7 @@
 
 #include "pokitdevicedisoveryagent.h"
 
-#include "logging.h"
+#include "logging_p.h"
 #include "uuids.h"
 
 #include <QBluetoothUuid>
