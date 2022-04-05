@@ -233,6 +233,7 @@ int main(int argc, char *argv[])
         for (const QString &device: devices) {
             qDebug() << device;
             Informer i(&app);
+            Q_UNUSED(i) // Just to make cppcheck happy for now.
             return app.exec();
         }
         return EXIT_FAILURE;
