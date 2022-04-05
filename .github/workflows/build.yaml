@@ -45,7 +45,11 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        modules: addons.qtconnectivity
+        # We include both here, because Qt 6.2+ currently needs the 'addons' prefix, while
+        # earlier versions don't, and aqtinstall does not currently break on unknown modules.
+        # See https://github.com/miurahr/aqtinstall/issues/333 and
+        # https://github.com/jurplel/install-qt-action/issues/95
+        modules: qtconnectivity addons.qtconnectivity
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -73,7 +77,11 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        modules: addons.qtconnectivity
+        # We include both here, because Qt 6.2+ currently needs the 'addons' prefix, while
+        # earlier versions don't, and aqtinstall does not currently break on unknown modules.
+        # See https://github.com/miurahr/aqtinstall/issues/333 and
+        # https://github.com/jurplel/install-qt-action/issues/95
+        modules: qtconnectivity addons.qtconnectivity
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -112,14 +120,22 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        modules: addons.qtconnectivity
+        # We include both here, because Qt 6.2+ currently needs the 'addons' prefix, while
+        # earlier versions don't, and aqtinstall does not currently break on unknown modules.
+        # See https://github.com/miurahr/aqtinstall/issues/333 and
+        # https://github.com/jurplel/install-qt-action/issues/95
+        modules: qtconnectivity addons.qtconnectivity
         arch: ${{ matrix.arch }}
     - name: Install Qt (msvc)
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        modules: addons.qtconnectivity
+        # We include both here, because Qt 6.2+ currently needs the 'addons' prefix, while
+        # earlier versions don't, and aqtinstall does not currently break on unknown modules.
+        # See https://github.com/miurahr/aqtinstall/issues/333 and
+        # https://github.com/jurplel/install-qt-action/issues/95
+        modules: qtconnectivity addons.qtconnectivity
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
