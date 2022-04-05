@@ -487,8 +487,8 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   87</span>    QTPOKIT_IF_EQUAL_THEN_RETURN(ComputerDevice);</div>
 <div class="line"><span class="lineno">   88</span>    QTPOKIT_IF_EQUAL_THEN_RETURN(PhoneDevice);</div>
 <div class="line"><span class="lineno">   89</span><span class="preprocessor">    #if (QT_VERSION &lt; QT_VERSION_CHECK(5, 13, 0))</span></div>
-<div class="line"><span class="lineno">   90</span>    QTPOKIT_IF_EQUAL_THEN_RETURN(LANAccessDevice): <span class="comment">// Deprecated since Qt 5.13.</span></div>
-<div class="line"><span class="lineno">   91</span>    #else</div>
+<div class="line"><span class="lineno">   90</span>    QTPOKIT_IF_EQUAL_THEN_RETURN(LANAccessDevice); <span class="comment">// Deprecated since Qt 5.13.</span></div>
+<div class="line"><span class="lineno">   91</span><span class="preprocessor">    #else</span></div>
 <div class="line"><span class="lineno">   92</span>    QTPOKIT_IF_EQUAL_THEN_RETURN(NetworkDevice); <span class="comment">// Added in Qt 5.13.</span></div>
 <div class="line"><span class="lineno">   93</span><span class="preprocessor">    #endif</span></div>
 <div class="line"><span class="lineno">   94</span>    QTPOKIT_IF_EQUAL_THEN_RETURN(AudioVideoDevice);</div>

@@ -129,14 +129,18 @@ $(document).ready(function(){initNavTree('pokitdevicedisoveryagent_8h_source.htm
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">private</span> slots:</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> onDeviceDiscovered(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> onDeviceUpdated(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info, QBluetoothDeviceInfo::Fields updatedFields);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>signals:</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> pokitDeviceDiscovered(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> pokitDeviceUpdated(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info, QBluetoothDeviceInfo::Fields updatedFields);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>QTPOKIT_END_NAMESPACE</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Required signal, and Fields, added in Qt 5.12.</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> onDeviceUpdated(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info, QBluetoothDeviceInfo::Fields updatedFields);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>signals:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> pokitDeviceDiscovered(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Required signal, and Fields, added in Qt 5.12.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> pokitDeviceUpdated(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info, QBluetoothDeviceInfo::Fields updatedFields);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>QTPOKIT_END_NAMESPACE</div>
 <div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html">PokitDeviceDiscoveryAgent</a></div><div class="ttdef"><b>Definition:</b> pokitdevicedisoveryagent.h:27</div></div>
 <div class="ttc" id="aqtpokit__global_8h_html"><div class="ttname"><a href="qtpokit__global_8h.html">qtpokit_global.h</a></div><div class="ttdoc">Global QtPokit library macros.</div></div>
 </div><!-- fragment --></div><!-- contents -->
