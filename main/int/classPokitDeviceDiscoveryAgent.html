@@ -187,9 +187,11 @@ Private Slots</h2></td></tr>
 <div class="line"><span class="lineno">   32</span>    connect(<span class="keyword">this</span>, &amp;QBluetoothDeviceDiscoveryAgent::deviceDiscovered,</div>
 <div class="line"><span class="lineno">   33</span>            <span class="keyword">this</span>, &amp;PokitDeviceDiscoveryAgent::onDeviceDiscovered);</div>
 <div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>    connect(<span class="keyword">this</span>, &amp;QBluetoothDeviceDiscoveryAgent::deviceUpdated,</div>
-<div class="line"><span class="lineno">   36</span>            <span class="keyword">this</span>, &amp;PokitDeviceDiscoveryAgent::onDeviceUpdated);</div>
-<div class="line"><span class="lineno">   37</span>}</div>
+<div class="line"><span class="lineno">   35</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Signal added in Qt 5.12.</span></div>
+<div class="line"><span class="lineno">   36</span>    connect(<span class="keyword">this</span>, &amp;QBluetoothDeviceDiscoveryAgent::deviceUpdated,</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keyword">this</span>, &amp;PokitDeviceDiscoveryAgent::onDeviceUpdated);</div>
+<div class="line"><span class="lineno">   38</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><span class="lineno">   39</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -209,17 +211,17 @@ Private Slots</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00039">39</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>    : QBluetoothDeviceDiscoveryAgent(parent)</div>
-<div class="line"><span class="lineno">   41</span>{</div>
-<div class="line"><span class="lineno">   42</span>    connect(<span class="keyword">this</span>, &amp;QBluetoothDeviceDiscoveryAgent::deviceDiscovered,</div>
-<div class="line"><span class="lineno">   43</span>            <span class="keyword">this</span>, &amp;PokitDeviceDiscoveryAgent::onDeviceDiscovered);</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Signal added in Qt 5.12.</span></div>
-<div class="line"><span class="lineno">   46</span>    connect(<span class="keyword">this</span>, &amp;QBluetoothDeviceDiscoveryAgent::deviceUpdated,</div>
-<div class="line"><span class="lineno">   47</span>            <span class="keyword">this</span>, &amp;PokitDeviceDiscoveryAgent::onDeviceUpdated);</div>
-<div class="line"><span class="lineno">   48</span><span class="preprocessor">    #endif</span></div>
-<div class="line"><span class="lineno">   49</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00041">41</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>    : QBluetoothDeviceDiscoveryAgent(parent)</div>
+<div class="line"><span class="lineno">   43</span>{</div>
+<div class="line"><span class="lineno">   44</span>    connect(<span class="keyword">this</span>, &amp;QBluetoothDeviceDiscoveryAgent::deviceDiscovered,</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keyword">this</span>, &amp;PokitDeviceDiscoveryAgent::onDeviceDiscovered);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Signal added in Qt 5.12.</span></div>
+<div class="line"><span class="lineno">   48</span>    connect(<span class="keyword">this</span>, &amp;QBluetoothDeviceDiscoveryAgent::deviceUpdated,</div>
+<div class="line"><span class="lineno">   49</span>            <span class="keyword">this</span>, &amp;PokitDeviceDiscoveryAgent::onDeviceUpdated);</div>
+<div class="line"><span class="lineno">   50</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><span class="lineno">   51</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -248,10 +250,10 @@ Private Slots</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00051">51</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">return</span> info.serviceUuids().contains(QBluetoothUuid(QStringLiteral(POKIT_SERVICE_STATUS)));</div>
-<div class="line"><span class="lineno">   54</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00053">53</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">return</span> info.serviceUuids().contains(QBluetoothUuid(QStringLiteral(POKIT_SERVICE_STATUS)));</div>
+<div class="line"><span class="lineno">   56</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -279,12 +281,12 @@ Private Slots</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00067">67</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (!isPokitDevice(info)) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   70</span>    qCDebug(pokitDiscovery) &lt;&lt; <span class="stringliteral">&quot;Discovered Pokit device&quot;</span> &lt;&lt; info.name() &lt;&lt; info.address();</div>
-<div class="line"><span class="lineno">   71</span>    emit pokitDeviceDiscovered(info);</div>
-<div class="line"><span class="lineno">   72</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00069">69</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (!isPokitDevice(info)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   72</span>    qCDebug(pokitDiscovery) &lt;&lt; <span class="stringliteral">&quot;Discovered Pokit device&quot;</span> &lt;&lt; info.name() &lt;&lt; info.address();</div>
+<div class="line"><span class="lineno">   73</span>    emit pokitDeviceDiscovered(info);</div>
+<div class="line"><span class="lineno">   74</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -322,12 +324,12 @@ Private Slots</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00075">75</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span> (!isPokitDevice(info)) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   79</span>    qCDebug(pokitDiscovery) &lt;&lt; <span class="stringliteral">&quot;Updated Pokit device&quot;</span> &lt;&lt; info.name() &lt;&lt; info.address() &lt;&lt; info.rssi();</div>
-<div class="line"><span class="lineno">   80</span>    emit pokitDeviceUpdated(info, updatedFields);</div>
-<div class="line"><span class="lineno">   81</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00077">77</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>{</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">if</span> (!isPokitDevice(info)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   81</span>    qCDebug(pokitDiscovery) &lt;&lt; <span class="stringliteral">&quot;Updated Pokit device&quot;</span> &lt;&lt; info.name() &lt;&lt; info.address() &lt;&lt; info.rssi();</div>
+<div class="line"><span class="lineno">   82</span>    emit pokitDeviceUpdated(info, updatedFields);</div>
+<div class="line"><span class="lineno">   83</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -354,10 +356,10 @@ Private Slots</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00062">62</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
-<div class="line"><span class="lineno">   64</span>    QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
-<div class="line"><span class="lineno">   65</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00064">64</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
+<div class="line"><span class="lineno">   66</span>    QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
+<div class="line"><span class="lineno">   67</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -385,11 +387,11 @@ Private Slots</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00056">56</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>{</div>
-<div class="line"><span class="lineno">   58</span>    Q_ASSERT(methods == QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
-<div class="line"><span class="lineno">   59</span>    QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
-<div class="line"><span class="lineno">   60</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00058">58</a> of file <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html">pokitdevicedisoveryagent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{</div>
+<div class="line"><span class="lineno">   60</span>    Q_ASSERT(methods == QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
+<div class="line"><span class="lineno">   61</span>    QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
+<div class="line"><span class="lineno">   62</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
