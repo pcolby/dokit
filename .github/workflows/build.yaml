@@ -92,7 +92,7 @@ jobs:
         CXX: ${{ matrix.env.cxx }}
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-        cmake --build "$RUNNER_TEMP"
+        cmake --build "$RUNNER_TEMP" -- VERBOSE=1
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
@@ -155,5 +155,5 @@ jobs:
     - name: Build
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
-        cmake --build "%RUNNER_TEMP%" -- VERBOSE=1
+        cmake --build "%RUNNER_TEMP%"
     # \todo Run tests on Windows.
