@@ -145,5 +145,5 @@ jobs:
     - name: Build
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
-        cmake --build "%RUNNER_TEMP%"
+        cmake --build "%RUNNER_TEMP%" -- VERBOSE=1
     # \todo Run tests on Windows.
