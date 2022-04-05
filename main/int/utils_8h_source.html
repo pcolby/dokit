@@ -333,18 +333,20 @@ $(document).ready(function(){initNavTree('utils_8h_source.html',''); initResizab
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keywordflow">if</span> (!info.deviceUuid().isNull()) {</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;deviceUuid&quot;</span>), info.deviceUuid().toString());</div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    }</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">if</span> (!info.manufacturerData().isEmpty()) {</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;manufacturerData&quot;</span>), toJsonArray(info.manufacturerData()));</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    }</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordflow">if</span> (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;serviceClasses&quot;</span>), toJsonArray(info.serviceClasses()));</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    }</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordflow">return</span> json;</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>}</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><a class="code hl_define" href="qtpokit__global_8h.html#af2a5fcdf5ad6da4ea4f238aad0d29d65">QTPOKIT_END_NAMESPACE</a></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Added in Qt 5.12.</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">if</span> (!info.manufacturerData().isEmpty()) {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;manufacturerData&quot;</span>), toJsonArray(info.manufacturerData()));</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    }</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordflow">if</span> (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;serviceClasses&quot;</span>), toJsonArray(info.serviceClasses()));</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    }</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <span class="keywordflow">return</span> json;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>}</div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#endif </span><span class="comment">// QTPOKIT_UTILS_H</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><a class="code hl_define" href="qtpokit__global_8h.html#af2a5fcdf5ad6da4ea4f238aad0d29d65">QTPOKIT_END_NAMESPACE</a></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="preprocessor">#endif </span><span class="comment">// QTPOKIT_UTILS_H</span></div>
 <div class="ttc" id="alogging_8h_html"><div class="ttname"><a href="logging_8h.html">logging.h</a></div><div class="ttdoc">QtPokit logging categories.</div></div>
 <div class="ttc" id="aqtpokit__global_8h_html"><div class="ttname"><a href="qtpokit__global_8h.html">qtpokit_global.h</a></div><div class="ttdoc">Global QtPokit library macros.</div></div>
 <div class="ttc" id="aqtpokit__global_8h_html_ac5aca53b48a017f8db467922deee7983"><div class="ttname"><a href="qtpokit__global_8h.html#ac5aca53b48a017f8db467922deee7983">QTPOKIT_BEGIN_NAMESPACE</a></div><div class="ttdeci">#define QTPOKIT_BEGIN_NAMESPACE</div><div class="ttdoc">Macro for starting the QtPokit library's top-most namespace (if one is defined).</div><div class="ttdef"><b>Definition:</b> <a href="qtpokit__global_8h_source.html#l00070">qtpokit_global.h:70</a></div></div>

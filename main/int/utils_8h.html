@@ -369,14 +369,16 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  243</span>    <span class="keywordflow">if</span> (!info.deviceUuid().isNull()) {</div>
 <div class="line"><span class="lineno">  244</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;deviceUuid&quot;</span>), info.deviceUuid().toString());</div>
 <div class="line"><span class="lineno">  245</span>    }</div>
-<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">if</span> (!info.manufacturerData().isEmpty()) {</div>
-<div class="line"><span class="lineno">  247</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;manufacturerData&quot;</span>), toJsonArray(info.manufacturerData()));</div>
-<div class="line"><span class="lineno">  248</span>    }</div>
-<div class="line"><span class="lineno">  249</span>    <span class="keywordflow">if</span> (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</div>
-<div class="line"><span class="lineno">  250</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;serviceClasses&quot;</span>), toJsonArray(info.serviceClasses()));</div>
-<div class="line"><span class="lineno">  251</span>    }</div>
-<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">return</span> json;</div>
-<div class="line"><span class="lineno">  253</span>}</div>
+<div class="line"><span class="lineno">  246</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Added in Qt 5.12.</span></div>
+<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">if</span> (!info.manufacturerData().isEmpty()) {</div>
+<div class="line"><span class="lineno">  248</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;manufacturerData&quot;</span>), toJsonArray(info.manufacturerData()));</div>
+<div class="line"><span class="lineno">  249</span>    }</div>
+<div class="line"><span class="lineno">  250</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">if</span> (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</div>
+<div class="line"><span class="lineno">  252</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;serviceClasses&quot;</span>), toJsonArray(info.serviceClasses()));</div>
+<div class="line"><span class="lineno">  253</span>    }</div>
+<div class="line"><span class="lineno">  254</span>    <span class="keywordflow">return</span> json;</div>
+<div class="line"><span class="lineno">  255</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
