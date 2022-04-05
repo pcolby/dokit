@@ -23,7 +23,7 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
-class PokitDeviceDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
+class QTPOKIT_EXPORT PokitDeviceDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
 {
     Q_OBJECT
 
