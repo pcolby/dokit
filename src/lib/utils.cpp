@@ -19,7 +19,7 @@
 
 /*!
  * \file
- * Simple, general purpose, utility functions.
+ * Defines some simple general purpose, utility functions used by QtPokit.
  */
 
 #include "utils.h"
@@ -31,6 +31,9 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
+/*!
+ * Returns \a info as a JSON object.
+ */
 QJsonObject toJson(const QBluetoothDeviceInfo &info) {
     QJsonObject json{
         { QLatin1String("address"), info.address().toString() },
@@ -57,18 +60,34 @@ QJsonObject toJson(const QBluetoothDeviceInfo &info) {
     return json;
 }
 
+/*!
+ * Returns \a majorClass as a JSON value. This is equivalent to toString, except that if toString
+ * does not recognise \a majorClass, then \a majorClass is returned as a JSON number (not a string).
+ *
+ * \see toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
+ */
 QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
 {
     const QString string = toString(majorClass);
     return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));
 }
 
+/*!
+ * Returns \a minorClass as a JSON value. This is equivalent to toString, except that if toString
+ * does not recognise \a minorClass as a sub-class of \a majorClass, then \a minorClass is returned
+ * as a JSON number (not a string).
+ *
+ * \see toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
+ */
 QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
 {
     const QString string = toString(majorClass, minorClass);
     return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));
 }
 
+/*!
+ * Returns \a classes as a JSON array.
+ */
 QJsonArray toJson(const QBluetoothDeviceInfo::ServiceClasses &classes)
 {
     QJsonArray array;
@@ -87,6 +106,9 @@ QJsonArray toJson(const QBluetoothDeviceInfo::ServiceClasses &classes)
     return array;
 }
 
+/*!
+ * Returns \a uuids as a JSON array.
+ */
 QJsonArray toJson(const QList<QBluetoothUuid> &uuids)
 {
     QJsonArray array;
@@ -96,6 +118,9 @@ QJsonArray toJson(const QList<QBluetoothUuid> &uuids)
     return array;
 }
 
+/*!
+ * Returns Bluetooth manufacturer \a data as a JSON array.
+ */
 QJsonArray toJson(const QMultiHash<quint16, QByteArray> &data)
 {
     QJsonArray array;
@@ -108,6 +133,13 @@ QJsonArray toJson(const QMultiHash<quint16, QByteArray> &data)
     return array;
 }
 
+/*!
+ * Returns \a majorClass as a human-readable string, or a null QString if \a majorClass is not
+ * recognised.
+ *
+ * For example, if \a majorClass is \c QBluetoothDeviceInfo::ToyDevice, then the string `ToyDevice`
+ * is returned.
+ */
 QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
 {
     #define QTPOKIT_IF_EQUAL_THEN_RETURN(value) \
@@ -133,6 +165,13 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
     return QString(); // Null QString indicates unknown minor class.
 }
 
+/*!
+ * Returns \a minorClass as a human-readable string, or a null QString if \a minorClass is not
+ * recognised as a sub-class of \a majorClass.
+ *
+ * For example, if \a majorClass is \c QBluetoothDeviceInfo::ToyDevice, and \a minorClass is
+ * \c QBluetoothDeviceInfo::ToyRobot, then the string `ToyRobot` is returned.
+ */
 QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
 {
     #define QTPOKIT_IF_EQUAL_THEN_RETURN(value) \

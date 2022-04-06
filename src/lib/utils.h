@@ -19,7 +19,7 @@
 
 /*!
  * \file
- * Simple, general purpose, utility functions.
+ * Declares some simple general purpose, utility functions used by QtPokit.
  */
 
 #ifndef QTPOKIT_UTILS_H
