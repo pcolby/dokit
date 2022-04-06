@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "lpqtu",
+  0: "pqtu",
   1: "p",
-  2: "lqu",
+  2: "qu",
   3: "p",
   4: "qt"
 };

@@ -155,19 +155,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="scanner_8cpp_source.html#l00031">31</a> of file <a class="el" href="scanner_8cpp_source.html">scanner.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>                                       : QObject(parent)</div>
-<div class="line"><span class="lineno">   32</span>{</div>
-<div class="line"><span class="lineno">   33</span>    discoveryAgent = <span class="keyword">new</span> <a class="code hl_class" href="classPokitDeviceDiscoveryAgent.html">PokitDeviceDiscoveryAgent</a>(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>    connect(discoveryAgent, &amp;PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,</div>
-<div class="line"><span class="lineno">   36</span>            <span class="keyword">this</span>, &amp;Scanner::deviceDiscovered);</div>
-<div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>    connect(discoveryAgent, &amp;PokitDeviceDiscoveryAgent::finished, <span class="keyword">this</span>, []() {</div>
-<div class="line"><span class="lineno">   39</span>        qCDebug(pokitScanner) &lt;&lt; <span class="stringliteral">&quot;Finished scanning for Pokit devices.&quot;</span>;</div>
-<div class="line"><span class="lineno">   40</span>        QCoreApplication::quit();</div>
-<div class="line"><span class="lineno">   41</span>    });</div>
-<div class="line"><span class="lineno">   42</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scanner_8cpp_source.html#l00032">32</a> of file <a class="el" href="scanner_8cpp_source.html">scanner.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>                                       : QObject(parent)</div>
+<div class="line"><span class="lineno">   33</span>{</div>
+<div class="line"><span class="lineno">   34</span>    discoveryAgent = <span class="keyword">new</span> <a class="code hl_class" href="classPokitDeviceDiscoveryAgent.html">PokitDeviceDiscoveryAgent</a>(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    connect(discoveryAgent, &amp;PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keyword">this</span>, &amp;Scanner::deviceDiscovered);</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>    connect(discoveryAgent, &amp;PokitDeviceDiscoveryAgent::finished, <span class="keyword">this</span>, []() {</div>
+<div class="line"><span class="lineno">   40</span>        qCDebug(pokitScanner) &lt;&lt; <span class="stringliteral">&quot;Finished scanning for Pokit devices.&quot;</span>;</div>
+<div class="line"><span class="lineno">   41</span>        QCoreApplication::quit();</div>
+<div class="line"><span class="lineno">   42</span>    });</div>
+<div class="line"><span class="lineno">   43</span>}</div>
 <div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html">PokitDeviceDiscoveryAgent</a></div><div class="ttdef"><b>Definition:</b> <a href="pokitdevicedisoveryagent_8h_source.html#l00026">pokitdevicedisoveryagent.h:27</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -197,10 +197,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="scanner_8cpp_source.html#l00054">54</a> of file <a class="el" href="scanner_8cpp_source.html">scanner.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
-<div class="line"><span class="lineno">   56</span>    fputs(QJsonDocument(toJsonObject(info)).toJson(), stdout);</div>
-<div class="line"><span class="lineno">   57</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scanner_8cpp_source.html#l00055">55</a> of file <a class="el" href="scanner_8cpp_source.html">scanner.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>    fputs(QJsonDocument(toJsonObject(info)).toJson(), stdout);</div>
+<div class="line"><span class="lineno">   58</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -228,15 +228,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="scanner_8cpp_source.html#l00044">44</a> of file <a class="el" href="scanner_8cpp_source.html">scanner.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
-<div class="line"><span class="lineno">   46</span>    Q_ASSERT(discoveryAgent);</div>
-<div class="line"><span class="lineno">   47</span>    qCDebug(pokitScanner).noquote().nospace() &lt;&lt; <span class="stringliteral">&quot;Scanning for Pokit devices (with &quot;</span></div>
-<div class="line"><span class="lineno">   48</span>        &lt;&lt; (timeout ? QLocale().toString(timeout)+QLatin1String(<span class="stringliteral">&quot;ms&quot;</span>) : QLatin1String(<span class="stringliteral">&quot;no&quot;</span>))</div>
-<div class="line"><span class="lineno">   49</span>        &lt;&lt; <span class="stringliteral">&quot; timeout).&quot;</span>;</div>
-<div class="line"><span class="lineno">   50</span>    discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</div>
-<div class="line"><span class="lineno">   51</span>    discoveryAgent-&gt;start();</div>
-<div class="line"><span class="lineno">   52</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scanner_8cpp_source.html#l00045">45</a> of file <a class="el" href="scanner_8cpp_source.html">scanner.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
+<div class="line"><span class="lineno">   47</span>    Q_ASSERT(discoveryAgent);</div>
+<div class="line"><span class="lineno">   48</span>    qCDebug(pokitScanner).noquote().nospace() &lt;&lt; <span class="stringliteral">&quot;Scanning for Pokit devices (with &quot;</span></div>
+<div class="line"><span class="lineno">   49</span>        &lt;&lt; (timeout ? QLocale().toString(timeout)+QLatin1String(<span class="stringliteral">&quot;ms&quot;</span>) : QLatin1String(<span class="stringliteral">&quot;no&quot;</span>))</div>
+<div class="line"><span class="lineno">   50</span>        &lt;&lt; <span class="stringliteral">&quot; timeout).&quot;</span>;</div>
+<div class="line"><span class="lineno">   51</span>    discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</div>
+<div class="line"><span class="lineno">   52</span>    discoveryAgent-&gt;start();</div>
+<div class="line"><span class="lineno">   53</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

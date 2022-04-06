@@ -29,8 +29,8 @@ var NAVTREEINDEX0 =
 "informer_8cpp_source.html":[5,0,0,0,0,0,0,0],
 "informer_8h_source.html":[5,0,0,0,0,0,0,1],
 "logging_8cpp_source.html":[5,0,0,0,0,0,2,0],
-"logging_8h.html":[5,0,0,0,0,0,2,1],
-"logging_8h_source.html":[5,0,0,0,0,0,2,1],
+"logging__p_8h.html":[5,0,0,0,0,0,2,1],
+"logging__p_8h_source.html":[5,0,0,0,0,0,2,1],
 "pages.html":[],
 "pokitdevicedisoveryagent_8cpp_source.html":[5,0,0,0,0,0,2,2],
 "pokitdevicedisoveryagent_8h_source.html":[5,0,0,0,0,0,2,3],
@@ -42,9 +42,11 @@ var NAVTREEINDEX0 =
 "scanner_8cpp_source.html":[5,0,0,0,0,0,0,3],
 "scanner_8h_source.html":[5,0,0,0,0,0,0,4],
 "todo.html":[3],
-"utils_8h.html":[5,0,0,0,0,0,2,5],
-"utils_8h_source.html":[5,0,0,0,0,0,2,5],
-"uuids_8h.html":[5,0,0,0,0,0,2,6],
-"uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8":[5,0,0,0,0,0,2,6,0],
-"uuids_8h_source.html":[5,0,0,0,0,0,2,6]
+"utils_8cpp.html":[5,0,0,0,0,0,2,5],
+"utils_8cpp_source.html":[5,0,0,0,0,0,2,5],
+"utils_8h.html":[5,0,0,0,0,0,2,6],
+"utils_8h_source.html":[5,0,0,0,0,0,2,6],
+"uuids_8h.html":[5,0,0,0,0,0,2,7],
+"uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8":[5,0,0,0,0,0,2,7,0],
+"uuids_8h_source.html":[5,0,0,0,0,0,2,7]
 };

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logging_2eh_0',['logging.h',['../logging_8h.html',1,'']]]
+  ['qtpokit_5fglobal_2eh_0',['qtpokit_global.h',['../qtpokit__global_8h.html',1,'']]]
 ];
