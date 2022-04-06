@@ -38,7 +38,7 @@ Q_LOGGING_CATEGORY(pokitInformer, "pokit.ui.informer", QtInfoMsg);
 Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr)
 {
     QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String("5C:02:72:09:AA:25")), QString(), 0);
-    qDebug() << toJsonObject(info);
+    qDebug() << toJson(info);
     controller = QLowEnergyController::createCentral(info);
 
     connect(controller, &QLowEnergyController::serviceDiscovered, this, [this](const QBluetoothUuid &service) {

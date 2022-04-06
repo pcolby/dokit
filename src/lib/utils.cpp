@@ -31,7 +31,7 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
-QJsonArray toJsonArray(const QBluetoothDeviceInfo::ServiceClasses &classes)
+QJsonArray toJson(const QBluetoothDeviceInfo::ServiceClasses &classes)
 {
     QJsonArray array;
     #define QTPOKIT_IF_SET_THEN_APPEND(flag) \
@@ -49,7 +49,7 @@ QJsonArray toJsonArray(const QBluetoothDeviceInfo::ServiceClasses &classes)
     return array;
 }
 
-QJsonArray toJsonArray(const QList<QBluetoothUuid> &uuids)
+QJsonArray toJson(const QList<QBluetoothUuid> &uuids)
 {
     QJsonArray array;
     for (const QBluetoothUuid &uuid: uuids) {
@@ -58,7 +58,7 @@ QJsonArray toJsonArray(const QList<QBluetoothUuid> &uuids)
     return array;
 }
 
-QJsonArray toJsonArray(const QMultiHash<quint16, QByteArray> &data)
+QJsonArray toJson(const QMultiHash<quint16, QByteArray> &data)
 {
     QJsonArray array;
     for (auto iter = data.cbegin(); iter != data.cend(); ++iter) {
@@ -95,7 +95,7 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
     return QString(); // Null QString indicates unknown minor class.
 }
 
-QJsonValue toJsonValue(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
+QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
 {
     const QString string = toString(majorClass);
     return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));
@@ -214,22 +214,22 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const
     return QString(); // Null QString indicates unknown minor class.
 }
 
-QJsonValue toJsonValue(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
+QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
 {
     const QString string = toString(majorClass, minorClass);
     return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));
 }
 
-QJsonObject toJsonObject(const QBluetoothDeviceInfo &info) {
+QJsonObject toJson(const QBluetoothDeviceInfo &info) {
     QJsonObject json{
         { QLatin1String("address"), info.address().toString() },
         { QLatin1String("name"), info.name() },
         { QLatin1String("isCached"), info.isCached() },
         { QLatin1String("majorDeviceClass"), info.majorDeviceClass() },
-        { QLatin1String("majorDeviceClass"), toJsonValue(info.majorDeviceClass()) },
-        { QLatin1String("minorDeviceClass"), toJsonValue(info.majorDeviceClass(), info.minorDeviceClass()) },
+        { QLatin1String("majorDeviceClass"), toJson(info.majorDeviceClass()) },
+        { QLatin1String("minorDeviceClass"), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },
         { QLatin1String("signalStrength"), info.rssi() },
-        { QLatin1String("serviceUuids"), toJsonArray(info.serviceUuids()) },
+        { QLatin1String("serviceUuids"), toJson(info.serviceUuids()) },
 
     };
     if (!info.deviceUuid().isNull()) {
@@ -237,11 +237,11 @@ QJsonObject toJsonObject(const QBluetoothDeviceInfo &info) {
     }
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Added in Qt 5.12.
     if (!info.manufacturerData().isEmpty()) {
-        json.insert(QLatin1String("manufacturerData"), toJsonArray(info.manufacturerData()));
+        json.insert(QLatin1String("manufacturerData"), toJson(info.manufacturerData()));
     }
     #endif
     if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {
-        json.insert(QLatin1String("serviceClasses"), toJsonArray(info.serviceClasses()));
+        json.insert(QLatin1String("serviceClasses"), toJson(info.serviceClasses()));
     }
     return json;
 }

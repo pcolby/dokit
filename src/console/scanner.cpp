@@ -54,5 +54,5 @@ void Scanner::start(const int timeout)
 
 void Scanner::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
-    fputs(QJsonDocument(toJsonObject(info)).toJson(), stdout);
+    fputs(QJsonDocument(toJson(info)).toJson(), stdout);
 }
