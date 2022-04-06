@@ -31,6 +31,44 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
+QJsonObject toJson(const QBluetoothDeviceInfo &info) {
+    QJsonObject json{
+        { QLatin1String("address"), info.address().toString() },
+        { QLatin1String("name"), info.name() },
+        { QLatin1String("isCached"), info.isCached() },
+        { QLatin1String("majorDeviceClass"), info.majorDeviceClass() },
+        { QLatin1String("majorDeviceClass"), toJson(info.majorDeviceClass()) },
+        { QLatin1String("minorDeviceClass"), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },
+        { QLatin1String("signalStrength"), info.rssi() },
+        { QLatin1String("serviceUuids"), toJson(info.serviceUuids()) },
+
+    };
+    if (!info.deviceUuid().isNull()) {
+        json.insert(QLatin1String("deviceUuid"), info.deviceUuid().toString());
+    }
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Added in Qt 5.12.
+    if (!info.manufacturerData().isEmpty()) {
+        json.insert(QLatin1String("manufacturerData"), toJson(info.manufacturerData()));
+    }
+    #endif
+    if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {
+        json.insert(QLatin1String("serviceClasses"), toJson(info.serviceClasses()));
+    }
+    return json;
+}
+
+QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
+{
+    const QString string = toString(majorClass);
+    return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));
+}
+
+QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
+{
+    const QString string = toString(majorClass, minorClass);
+    return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));
+}
+
 QJsonArray toJson(const QBluetoothDeviceInfo::ServiceClasses &classes)
 {
     QJsonArray array;
@@ -93,12 +131,6 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
     #undef QTPOKIT_IF_EQUAL_THEN_RETURN
     qCDebug(pokitUtils) << "unknown major class" << majorClass;
     return QString(); // Null QString indicates unknown minor class.
-}
-
-QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
-{
-    const QString string = toString(majorClass);
-    return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));
 }
 
 QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
@@ -212,38 +244,6 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const
     #undef QTPOKIT_IF_EQUAL_THEN_RETURN
     qCDebug(pokitUtils) << "unknown minor class" << minorClass << "for major class" << majorClass;
     return QString(); // Null QString indicates unknown minor class.
-}
-
-QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
-{
-    const QString string = toString(majorClass, minorClass);
-    return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));
-}
-
-QJsonObject toJson(const QBluetoothDeviceInfo &info) {
-    QJsonObject json{
-        { QLatin1String("address"), info.address().toString() },
-        { QLatin1String("name"), info.name() },
-        { QLatin1String("isCached"), info.isCached() },
-        { QLatin1String("majorDeviceClass"), info.majorDeviceClass() },
-        { QLatin1String("majorDeviceClass"), toJson(info.majorDeviceClass()) },
-        { QLatin1String("minorDeviceClass"), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },
-        { QLatin1String("signalStrength"), info.rssi() },
-        { QLatin1String("serviceUuids"), toJson(info.serviceUuids()) },
-
-    };
-    if (!info.deviceUuid().isNull()) {
-        json.insert(QLatin1String("deviceUuid"), info.deviceUuid().toString());
-    }
-    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Added in Qt 5.12.
-    if (!info.manufacturerData().isEmpty()) {
-        json.insert(QLatin1String("manufacturerData"), toJson(info.manufacturerData()));
-    }
-    #endif
-    if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {
-        json.insert(QLatin1String("serviceClasses"), toJson(info.serviceClasses()));
-    }
-    return json;
 }
 
 QTPOKIT_END_NAMESPACE
