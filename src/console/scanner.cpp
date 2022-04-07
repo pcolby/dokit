@@ -29,6 +29,9 @@
 
 Q_LOGGING_CATEGORY(pokitScanner, "pokit.ui.scanner", QtInfoMsg);
 
+/*!
+ * Construct a new scanner object with \a parent.
+ */
 Scanner::Scanner(QObject * const parent) : QObject(parent)
 {
     discoveryAgent = new PokitDeviceDiscoveryAgent(this);
@@ -42,6 +45,9 @@ Scanner::Scanner(QObject * const parent) : QObject(parent)
     });
 }
 
+/*!
+ * Begins scanning for Pokit devices, with \a timeout, in milliseconds.
+ */
 void Scanner::start(const int timeout)
 {
     Q_ASSERT(discoveryAgent);
@@ -52,6 +58,11 @@ void Scanner::start(const int timeout)
     discoveryAgent->start();
 }
 
+/*!
+ * Handles discovered Pokit devices, writing \a info to stdout.
+ *
+ * \todo Support alternative output formats: text, json, other?
+ */
 void Scanner::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     fputs(QJsonDocument(toJson(info)).toJson(), stdout);

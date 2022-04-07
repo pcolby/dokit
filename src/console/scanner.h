@@ -22,6 +22,11 @@
 
 class PokitDeviceDiscoveryAgent;
 
+/*!
+ * Scans for nearby Pokit devices.
+ *
+ * When devices are found, they are logged to stdout in the chosen format.
+ */
 class Scanner : public QObject
 {
 public:
@@ -31,7 +36,7 @@ public slots:
     void start(const int timeout = 0);
 
 private:
-    PokitDeviceDiscoveryAgent * discoveryAgent;
+    PokitDeviceDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
 
 private slots:
     void deviceDiscovered(const QBluetoothDeviceInfo &info);

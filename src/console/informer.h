@@ -21,6 +21,11 @@
 
 class QLowEnergyController;
 
+/*!
+ * Simple class for experimenting with the Pokit device info service.
+ *
+ * This class will be signifantly refactored, or maybe replaced entirely soonish.
+ */
 class Informer : public QObject
 {
 public:
@@ -29,7 +34,7 @@ public:
 public slots:
 
 private:
-    QLowEnergyController * controller;
+    QLowEnergyController * controller; ///< BLE controller for accessing the Device Info service.
 
 private slots:
 };
