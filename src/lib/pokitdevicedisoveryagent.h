@@ -17,12 +17,23 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*!
+ * \file
+ * Declares the PokitDeviceDiscoveryAgent class.
+ */
+
 #include <QBluetoothDeviceDiscoveryAgent>
 
 #include "qtpokit_global.h"
 
 QTPOKIT_BEGIN_NAMESPACE
 
+/*!
+ * The PokitDeviceDiscoveryAgent class discovers nearby Pokit devices.
+ *
+ * After constructing a PokitDeviceDiscoveryAgent object, and subscribing to the relevant signals,
+ * invoke start() to begin discovery.
+ */
 class QTPOKIT_EXPORT PokitDeviceDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
 {
     Q_OBJECT
@@ -37,16 +48,16 @@ public slots:
     void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods);
     void start();
 
-private slots:
-    void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
-    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    void onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
-    #endif
-
 signals:
     void pokitDeviceDiscovered(const QBluetoothDeviceInfo &info);
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     void pokitDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
+    #endif
+
+private slots:
+    void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
+    void onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
     #endif
 };
 
