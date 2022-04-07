@@ -1,4 +1,28 @@
 var uuids_8h =
 [
-    [ "POKIT_SERVICE_DEVICE_INFO", "uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8", null ]
+    [ "POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV", "uuids_8h.html#a2aa90fe7a5f5c92ae860275067de1e15", null ],
+    [ "POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV", "uuids_8h.html#a6f43aa2ceefac68c6e823f684d733f6b", null ],
+    [ "POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER", "uuids_8h.html#a769ed420cda1bb2aa68dbde5aa7c55b4", null ],
+    [ "POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER", "uuids_8h.html#a087ff45b5fe77bbb4ad21812217f1051", null ],
+    [ "POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV", "uuids_8h.html#a6ded05541628d50a6c9324b303b8149d", null ],
+    [ "POKIT_CHARACTERISTIC_DL_METADATA", "uuids_8h.html#a88b2fdf40f76c3c9c96612b69d8fcc82", null ],
+    [ "POKIT_CHARACTERISTIC_DL_READING", "uuids_8h.html#a26ec50fbf4f76f68924d6e2dba7dbc63", null ],
+    [ "POKIT_CHARACTERISTIC_DL_SETTINGS", "uuids_8h.html#a49a6be11c96ce74b5da8dbabcdc7627d", null ],
+    [ "POKIT_CHARACTERISTIC_DSO_METADATA", "uuids_8h.html#aff00cecc622c88760be000e1f8e00312", null ],
+    [ "POKIT_CHARACTERISTIC_DSO_READING", "uuids_8h.html#a2ec3eb0978c4d0044cea8935cb529472", null ],
+    [ "POKIT_CHARACTERISTIC_DSO_SETTINGS", "uuids_8h.html#abb5dd8d2d806a6496f8bd9439d5ec7ad", null ],
+    [ "POKIT_CHARACTERISTIC_GA_APPEARANCE", "uuids_8h.html#af0071e15706437bccff2935cb37ac093", null ],
+    [ "POKIT_CHARACTERISTIC_GA_DEVICE_NAME", "uuids_8h.html#a67e8f905b8d49f737310147392122089", null ],
+    [ "POKIT_CHARACTERISTIC_MM_READING", "uuids_8h.html#a347dd6fb93aebc3fe80037cd2d0eb30f", null ],
+    [ "POKIT_CHARACTERISTIC_MM_SETTINGS", "uuids_8h.html#a7681f1d207175a4767d6faa19a4b46ef", null ],
+    [ "POKIT_CHARACTERISTIC_STATUS_DEVICE", "uuids_8h.html#a45b5887e24586c287b3baf4518701a40", null ],
+    [ "POKIT_CHARACTERISTIC_STATUS_DEVICE_NAME", "uuids_8h.html#a2e7614b9827c4ed8b15f9d726cc9d119", null ],
+    [ "POKIT_CHARACTERISTIC_STATUS_FLASH_LED", "uuids_8h.html#afc3dab2a76e6a6f2824a50cd75d1ca1e", null ],
+    [ "POKIT_CHARACTERISTIC_STATUS_STATUS", "uuids_8h.html#ada9cb16b2b1048e52fbd0f792b974776", null ],
+    [ "POKIT_SERVICE_DATA_LOGGER", "uuids_8h.html#a9ba7983bbdeba2434689d3af1b68b1ea", null ],
+    [ "POKIT_SERVICE_DEVICE_INFO", "uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8", null ],
+    [ "POKIT_SERVICE_DSO", "uuids_8h.html#a64de606c840f2b01eb6f8615f9dbd5a4", null ],
+    [ "POKIT_SERVICE_GENERIC_ACCCESS", "uuids_8h.html#a5f9bd1420388013ff12320f11836e4c1", null ],
+    [ "POKIT_SERVICE_MULTIMETER", "uuids_8h.html#a276a2d31735183d0a4df8adb24fe605c", null ],
+    [ "POKIT_SERVICE_STATUS", "uuids_8h.html#ad63589b92554beb84b3acee597c096d3", null ]
 ];

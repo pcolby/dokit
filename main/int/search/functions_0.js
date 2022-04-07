@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['informer_0',['Informer',['../classInformer.html#afa4e32defef10cc646080e2a5f4891ec',1,'Informer']]]
+  ['devicediscovered_0',['deviceDiscovered',['../classScanner.html#aba8eeb667b3a8084ddd76ee54bfcd111',1,'Scanner']]]
 ];

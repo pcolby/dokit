@@ -110,20 +110,26 @@ $(document).ready(function(){initNavTree('informer_8h_source.html',''); initResi
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;QObject&gt;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">class </span>QLowEnergyController;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classInformer.html">   24</a></span><span class="keyword">class </span><a class="code hl_class" href="classInformer.html">Informer</a> : <span class="keyword">public</span> QObject</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classInformer.html#afa4e32defef10cc646080e2a5f4891ec">Informer</a>(QObject * <span class="keyword">const</span> parent);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">public</span> slots:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    QLowEnergyController * controller;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"></span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/*!</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * Simple class for experimenting with the Pokit device info service.</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * This class will be signifantly refactored, or maybe replaced entirely soonish.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classInformer.html">   29</a></span><span class="keyword">class </span><a class="code hl_class" href="classInformer.html">Informer</a> : <span class="keyword">public</span> QObject</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classInformer.html#afa4e32defef10cc646080e2a5f4891ec">Informer</a>(QObject * <span class="keyword">const</span> parent);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">private</span> slots:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
-<div class="ttc" id="aclassInformer_html"><div class="ttname"><a href="classInformer.html">Informer</a></div><div class="ttdef"><b>Definition:</b> <a href="informer_8h_source.html#l00024">informer.h:25</a></div></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">public</span> slots:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">   37</a></span>    QLowEnergyController * <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>; <span class="comment">///&lt; BLE controller for accessing the Device Info service.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">private</span> slots:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
+<div class="ttc" id="aclassInformer_html"><div class="ttname"><a href="classInformer.html">Informer</a></div><div class="ttdoc">Simple class for experimenting with the Pokit device info service.</div><div class="ttdef"><b>Definition:</b> <a href="informer_8h_source.html#l00029">informer.h:30</a></div></div>
+<div class="ttc" id="aclassInformer_html_af1f196a0f2c5706b9e9105f72c307a51"><div class="ttname"><a href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">Informer::controller</a></div><div class="ttdeci">QLowEnergyController * controller</div><div class="ttdoc">BLE controller for accessing the Device Info service.</div><div class="ttdef"><b>Definition:</b> <a href="informer_8h_source.html#l00037">informer.h:37</a></div></div>
 <div class="ttc" id="aclassInformer_html_afa4e32defef10cc646080e2a5f4891ec"><div class="ttname"><a href="classInformer.html#afa4e32defef10cc646080e2a5f4891ec">Informer::Informer</a></div><div class="ttdeci">Informer(QObject *const parent)</div><div class="ttdef"><b>Definition:</b> <a href="informer_8cpp_source.html#l00038">informer.cpp:38</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

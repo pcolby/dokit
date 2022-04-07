@@ -1,6 +1,6 @@
 var annotated_dup =
 [
     [ "Informer", "classInformer.html", "classInformer" ],
-    [ "PokitDeviceDiscoveryAgent", "classPokitDeviceDiscoveryAgent.html", null ],
-    [ "Scanner", "classScanner.html", null ]
+    [ "PokitDeviceDiscoveryAgent", "classPokitDeviceDiscoveryAgent.html", "classPokitDeviceDiscoveryAgent" ],
+    [ "Scanner", "classScanner.html", "classScanner" ]
 ];

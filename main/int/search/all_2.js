@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pokit_5fservice_5fdevice_5finfo_0',['POKIT_SERVICE_DEVICE_INFO',['../uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8',1,'uuids.h']]],
-  ['pokitdevicediscoveryagent_1',['PokitDeviceDiscoveryAgent',['../classPokitDeviceDiscoveryAgent.html',1,'']]]
+  ['informer_0',['Informer',['../classInformer.html',1,'Informer'],['../classInformer.html#afa4e32defef10cc646080e2a5f4891ec',1,'Informer::Informer()']]],
+  ['ispokitdevice_1',['isPokitDevice',['../classPokitDeviceDiscoveryAgent.html#a70f6c3cfc1bfe5cab658571642bbba2f',1,'PokitDeviceDiscoveryAgent']]]
 ];
