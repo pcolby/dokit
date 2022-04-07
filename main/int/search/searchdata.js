@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "ilpqstu",
   1: "ips",
   2: "lqu",
-  3: "i",
+  3: "it",
   4: "pq",
   5: "qt"
 };

@@ -149,7 +149,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   38</span>                                         : QObject(parent), controller(<span class="keyword">nullptr</span>)</div>
 <div class="line"><span class="lineno">   39</span>{</div>
 <div class="line"><span class="lineno">   40</span>    QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String(<span class="stringliteral">&quot;5C:02:72:09:AA:25&quot;</span>)), QString(), 0);</div>
-<div class="line"><span class="lineno">   41</span>    qDebug() &lt;&lt; toJsonObject(info);</div>
+<div class="line"><span class="lineno">   41</span>    qDebug() &lt;&lt; <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(info);</div>
 <div class="line"><span class="lineno">   42</span>    controller = QLowEnergyController::createCentral(info);</div>
 <div class="line"><span class="lineno">   43</span> </div>
 <div class="line"><span class="lineno">   44</span>    connect(controller, &amp;QLowEnergyController::serviceDiscovered, <span class="keyword">this</span>, [<span class="keyword">this</span>](<span class="keyword">const</span> QBluetoothUuid &amp;service) {</div>
@@ -279,8 +279,17 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  168</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;connecting&quot;</span>;</div>
 <div class="line"><span class="lineno">  169</span>    controller-&gt;connectToDevice();</div>
 <div class="line"><span class="lineno">  170</span>}</div>
+<div class="ttc" id="autils_8cpp_html_ace62f719f975653fa35416a24c18494d"><div class="ttname"><a href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00037">utils.cpp:37</a></div></div>
 <div class="ttc" id="auuids_8h_html_a6bb5b113178ff3ec61aa38437ed46cd8"><div class="ttname"><a href="uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8">POKIT_SERVICE_DEVICE_INFO</a></div><div class="ttdeci">#define POKIT_SERVICE_DEVICE_INFO</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00065">uuids.h:65</a></div></div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="utils_8cpp_source.html#l00037">toJson()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classInformer_afa4e32defef10cc646080e2a5f4891ec_cgraph.svg" width="264" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>

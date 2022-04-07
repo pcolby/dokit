@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('utils_8h.html',''); initResizable(); }
 </div><!--header-->
 <div class="contents">
 
-<p>Simple, general purpose, utility functions.  
+<p>Declares some simple general purpose, utility functions used by QtPokit.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="qtpokit__global_8h_source.html">qtpokit_global.h</a>&quot;</code><br />
 <code>#include &lt;QBluetoothDeviceInfo&gt;</code><br />
@@ -116,34 +116,163 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a25a4d97681cc53a10d8eedd6d4e85ee3"><td class="memItemLeft" align="right" valign="top"><a id="a25a4d97681cc53a10d8eedd6d4e85ee3" name="a25a4d97681cc53a10d8eedd6d4e85ee3"></a>
-QTPOKIT_BEGIN_NAMESPACE QTPOKIT_EXPORT QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJsonArray</b> (const QBluetoothDeviceInfo::ServiceClasses &amp;classes)</td></tr>
-<tr class="separator:a25a4d97681cc53a10d8eedd6d4e85ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49f7f0470e67221e4fb7b7005550dd1f"><td class="memItemLeft" align="right" valign="top"><a id="a49f7f0470e67221e4fb7b7005550dd1f" name="a49f7f0470e67221e4fb7b7005550dd1f"></a>
-QTPOKIT_EXPORT QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJsonArray</b> (const QList&lt; QBluetoothUuid &gt; &amp;uuids)</td></tr>
-<tr class="separator:a49f7f0470e67221e4fb7b7005550dd1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c0b2d1c8685508fcf870654c607a9cc"><td class="memItemLeft" align="right" valign="top"><a id="a6c0b2d1c8685508fcf870654c607a9cc" name="a6c0b2d1c8685508fcf870654c607a9cc"></a>
-QTPOKIT_EXPORT QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJsonArray</b> (const QMultiHash&lt; quint16, QByteArray &gt; &amp;data)</td></tr>
-<tr class="separator:a6c0b2d1c8685508fcf870654c607a9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8136cbc7977bcdf5870866b23c324302"><td class="memItemLeft" align="right" valign="top"><a id="a8136cbc7977bcdf5870866b23c324302" name="a8136cbc7977bcdf5870866b23c324302"></a>
-QTPOKIT_EXPORT QString&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</td></tr>
+<tr class="memitem:a9ffa9547932ff46690df34e1f0ede5d0"><td class="memItemLeft" align="right" valign="top"><a id="a9ffa9547932ff46690df34e1f0ede5d0" name="a9ffa9547932ff46690df34e1f0ede5d0"></a>
+QTPOKIT_BEGIN_NAMESPACE QTPOKIT_EXPORT QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QBluetoothDeviceInfo &amp;info)</td></tr>
+<tr class="memdesc:a9ffa9547932ff46690df34e1f0ede5d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>info</em> as a JSON object. <br /></td></tr>
+<tr class="separator:a9ffa9547932ff46690df34e1f0ede5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9502cd295de414cfebf5403a58689e8"><td class="memItemLeft" align="right" valign="top">QTPOKIT_EXPORT QJsonValue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ac9502cd295de414cfebf5403a58689e8">toJson</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</td></tr>
+<tr class="memdesc:ac9502cd295de414cfebf5403a58689e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>majorClass</em> as a JSON value.  <a href="utils_8h.html#ac9502cd295de414cfebf5403a58689e8">More...</a><br /></td></tr>
+<tr class="separator:ac9502cd295de414cfebf5403a58689e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae061b3b73fb818a199c5d8465e947da2"><td class="memItemLeft" align="right" valign="top">QTPOKIT_EXPORT QJsonValue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ae061b3b73fb818a199c5d8465e947da2">toJson</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</td></tr>
+<tr class="memdesc:ae061b3b73fb818a199c5d8465e947da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>minorClass</em> as a JSON value.  <a href="utils_8h.html#ae061b3b73fb818a199c5d8465e947da2">More...</a><br /></td></tr>
+<tr class="separator:ae061b3b73fb818a199c5d8465e947da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85109085ef8fab28fed5cd5fc0d0bf6d"><td class="memItemLeft" align="right" valign="top"><a id="a85109085ef8fab28fed5cd5fc0d0bf6d" name="a85109085ef8fab28fed5cd5fc0d0bf6d"></a>
+QTPOKIT_EXPORT QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QBluetoothDeviceInfo::ServiceClasses &amp;classes)</td></tr>
+<tr class="memdesc:a85109085ef8fab28fed5cd5fc0d0bf6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>classes</em> as a JSON array. <br /></td></tr>
+<tr class="separator:a85109085ef8fab28fed5cd5fc0d0bf6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a423831f175b96fd74eb44a964a48d721"><td class="memItemLeft" align="right" valign="top"><a id="a423831f175b96fd74eb44a964a48d721" name="a423831f175b96fd74eb44a964a48d721"></a>
+QTPOKIT_EXPORT QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QList&lt; QBluetoothUuid &gt; &amp;uuids)</td></tr>
+<tr class="memdesc:a423831f175b96fd74eb44a964a48d721"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>uuids</em> as a JSON array. <br /></td></tr>
+<tr class="separator:a423831f175b96fd74eb44a964a48d721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0441090891e8440edc37c33437b5ae48"><td class="memItemLeft" align="right" valign="top"><a id="a0441090891e8440edc37c33437b5ae48" name="a0441090891e8440edc37c33437b5ae48"></a>
+QTPOKIT_EXPORT QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QMultiHash&lt; quint16, QByteArray &gt; &amp;data)</td></tr>
+<tr class="memdesc:a0441090891e8440edc37c33437b5ae48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Bluetooth manufacturer <em>data</em> as a JSON array. <br /></td></tr>
+<tr class="separator:a0441090891e8440edc37c33437b5ae48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8136cbc7977bcdf5870866b23c324302"><td class="memItemLeft" align="right" valign="top">QTPOKIT_EXPORT QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</td></tr>
+<tr class="memdesc:a8136cbc7977bcdf5870866b23c324302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>majorClass</em> as a human-readable string, or a null QString if <em>majorClass</em> is not recognised.  <a href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">More...</a><br /></td></tr>
 <tr class="separator:a8136cbc7977bcdf5870866b23c324302"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae75dde6ae1da11be5ad556e97837586f"><td class="memItemLeft" align="right" valign="top"><a id="ae75dde6ae1da11be5ad556e97837586f" name="ae75dde6ae1da11be5ad556e97837586f"></a>
-QTPOKIT_EXPORT QJsonValue&#160;</td><td class="memItemRight" valign="bottom"><b>toJsonValue</b> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</td></tr>
-<tr class="separator:ae75dde6ae1da11be5ad556e97837586f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25ca69598fbf437034c9c3ed81b21772"><td class="memItemLeft" align="right" valign="top"><a id="a25ca69598fbf437034c9c3ed81b21772" name="a25ca69598fbf437034c9c3ed81b21772"></a>
-QTPOKIT_EXPORT QString&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</td></tr>
+<tr class="memitem:a25ca69598fbf437034c9c3ed81b21772"><td class="memItemLeft" align="right" valign="top">QTPOKIT_EXPORT QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a25ca69598fbf437034c9c3ed81b21772">toString</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</td></tr>
+<tr class="memdesc:a25ca69598fbf437034c9c3ed81b21772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>minorClass</em> as a human-readable string, or a null QString if <em>minorClass</em> is not recognised as a sub-class of <em>majorClass</em>.  <a href="utils_8h.html#a25ca69598fbf437034c9c3ed81b21772">More...</a><br /></td></tr>
 <tr class="separator:a25ca69598fbf437034c9c3ed81b21772"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a465ba6db7367ce32d06a8813bb9ed160"><td class="memItemLeft" align="right" valign="top"><a id="a465ba6db7367ce32d06a8813bb9ed160" name="a465ba6db7367ce32d06a8813bb9ed160"></a>
-QTPOKIT_EXPORT QJsonValue&#160;</td><td class="memItemRight" valign="bottom"><b>toJsonValue</b> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</td></tr>
-<tr class="separator:a465ba6db7367ce32d06a8813bb9ed160"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8d8d9dda92c47b7d40d50643ecd24dd"><td class="memItemLeft" align="right" valign="top"><a id="aa8d8d9dda92c47b7d40d50643ecd24dd" name="aa8d8d9dda92c47b7d40d50643ecd24dd"></a>
-QTPOKIT_EXPORT QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><b>toJsonObject</b> (const QBluetoothDeviceInfo &amp;info)</td></tr>
-<tr class="separator:aa8d8d9dda92c47b7d40d50643ecd24dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Simple, general purpose, utility functions. </p>
-</div></div><!-- contents -->
+<div class="textblock"><p >Declares some simple general purpose, utility functions used by QtPokit. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ac9502cd295de414cfebf5403a58689e8" name="ac9502cd295de414cfebf5403a58689e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9502cd295de414cfebf5403a58689e8">&#9670;&nbsp;</a></span>toJson() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTPOKIT_EXPORT QJsonValue toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::MajorDeviceClass &amp;&#160;</td>
+          <td class="paramname"><em>majorClass</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns <em>majorClass</em> as a JSON value. </p>
+<p >This is equivalent to toString, except that if toString does not recognise <em>majorClass</em>, then <em>majorClass</em> is returned as a JSON number (not a string).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f" title="Returns majorClass as a human-readable string, or a null QString if majorClass is not recognised.">toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h_ac9502cd295de414cfebf5403a58689e8_cgraph.svg" width="195" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ae061b3b73fb818a199c5d8465e947da2" name="ae061b3b73fb818a199c5d8465e947da2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae061b3b73fb818a199c5d8465e947da2">&#9670;&nbsp;</a></span>toJson() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTPOKIT_EXPORT QJsonValue toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::MajorDeviceClass &amp;&#160;</td>
+          <td class="paramname"><em>majorClass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const quint8&#160;</td>
+          <td class="paramname"><em>minorClass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns <em>minorClass</em> as a JSON value. </p>
+<p >This is equivalent to toString, except that if toString does not recognise <em>minorClass</em> as a sub-class of <em>majorClass</em>, then <em>minorClass</em> is returned as a JSON number (not a string).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="utils_8cpp.html#a6d30c31456e6795997e101c007622857" title="Returns minorClass as a human-readable string, or a null QString if minorClass is not recognised as a...">toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h_ae061b3b73fb818a199c5d8465e947da2_cgraph.svg" width="195" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a8136cbc7977bcdf5870866b23c324302" name="a8136cbc7977bcdf5870866b23c324302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8136cbc7977bcdf5870866b23c324302">&#9670;&nbsp;</a></span>toString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTPOKIT_EXPORT QString toString </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::MajorDeviceClass &amp;&#160;</td>
+          <td class="paramname"><em>majorClass</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns <em>majorClass</em> as a human-readable string, or a null QString if <em>majorClass</em> is not recognised. </p>
+<p >For example, if <em>majorClass</em> is <code>QBluetoothDeviceInfo::ToyDevice</code>, then the string <code>ToyDevice</code> is returned. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h_a8136cbc7977bcdf5870866b23c324302_icgraph.svg" width="195" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a25ca69598fbf437034c9c3ed81b21772" name="a25ca69598fbf437034c9c3ed81b21772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25ca69598fbf437034c9c3ed81b21772">&#9670;&nbsp;</a></span>toString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTPOKIT_EXPORT QString toString </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::MajorDeviceClass &amp;&#160;</td>
+          <td class="paramname"><em>majorClass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const quint8&#160;</td>
+          <td class="paramname"><em>minorClass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns <em>minorClass</em> as a human-readable string, or a null QString if <em>minorClass</em> is not recognised as a sub-class of <em>majorClass</em>. </p>
+<p >For example, if <em>majorClass</em> is <code>QBluetoothDeviceInfo::ToyDevice</code>, and <em>minorClass</em> is <code>QBluetoothDeviceInfo::ToyRobot</code>, then the string <code>ToyRobot</code> is returned. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

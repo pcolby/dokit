@@ -144,10 +144,11 @@ $(document).ready(function(){initNavTree('scanner_8cpp_source.html',''); initRes
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> Scanner::deviceDiscovered(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info)</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    fputs(QJsonDocument(toJsonObject(info)).toJson(), stdout);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    fputs(QJsonDocument(<a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(info)).<a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(), stdout);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
 <div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html">PokitDeviceDiscoveryAgent</a></div><div class="ttdef"><b>Definition:</b> <a href="pokitdevicedisoveryagent_8h_source.html#l00026">pokitdevicedisoveryagent.h:27</a></div></div>
-<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">Simple, general purpose, utility functions.</div></div>
+<div class="ttc" id="autils_8cpp_html_ace62f719f975653fa35416a24c18494d"><div class="ttname"><a href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00037">utils.cpp:37</a></div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">Declares some simple general purpose, utility functions used by QtPokit.</div></div>
 <div class="ttc" id="auuids_8h_html"><div class="ttname"><a href="uuids_8h.html">uuids.h</a></div><div class="ttdoc">Official UUIDs from Pokit's Bluetooth API Definition document.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('informer_8cpp_source.html',''); initRe
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classInformer.html#afa4e32defef10cc646080e2a5f4891ec">   38</a></span><a class="code hl_function" href="classInformer.html#afa4e32defef10cc646080e2a5f4891ec">Informer::Informer</a>(QObject * <span class="keyword">const</span> parent) : QObject(parent), controller(nullptr)</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String(<span class="stringliteral">&quot;5C:02:72:09:AA:25&quot;</span>)), QString(), 0);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    qDebug() &lt;&lt; toJsonObject(info);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    qDebug() &lt;&lt; <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(info);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    controller = QLowEnergyController::createCentral(info);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    connect(controller, &amp;QLowEnergyController::serviceDiscovered, <span class="keyword">this</span>, [<span class="keyword">this</span>](<span class="keyword">const</span> QBluetoothUuid &amp;service) {</div>
@@ -271,7 +271,8 @@ $(document).ready(function(){initNavTree('informer_8cpp_source.html',''); initRe
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">//}</span></div>
 <div class="ttc" id="aclassInformer_html_afa4e32defef10cc646080e2a5f4891ec"><div class="ttname"><a href="classInformer.html#afa4e32defef10cc646080e2a5f4891ec">Informer::Informer</a></div><div class="ttdeci">Informer(QObject *const parent)</div><div class="ttdef"><b>Definition:</b> <a href="informer_8cpp_source.html#l00038">informer.cpp:38</a></div></div>
-<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">Simple, general purpose, utility functions.</div></div>
+<div class="ttc" id="autils_8cpp_html_ace62f719f975653fa35416a24c18494d"><div class="ttname"><a href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00037">utils.cpp:37</a></div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">Declares some simple general purpose, utility functions used by QtPokit.</div></div>
 <div class="ttc" id="auuids_8h_html"><div class="ttname"><a href="uuids_8h.html">uuids.h</a></div><div class="ttdoc">Official UUIDs from Pokit's Bluetooth API Definition document.</div></div>
 <div class="ttc" id="auuids_8h_html_a6bb5b113178ff3ec61aa38437ed46cd8"><div class="ttname"><a href="uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8">POKIT_SERVICE_DEVICE_INFO</a></div><div class="ttdeci">#define POKIT_SERVICE_DEVICE_INFO</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00065">uuids.h:65</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
