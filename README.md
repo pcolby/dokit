@@ -4,6 +4,8 @@
   https://github.com/pcolby/pokit/actions/workflows/build.yaml?query=branch%3Amain)
 [![Static Analysis](https://github.com/pcolby/pokit/actions/workflows/static.yaml/badge.svg?branch=main)](
   https://github.com/pcolby/pokit/actions/workflows/static.yaml?query=branch%3Amain)
+[![Static Analysis](https://github.com/pcolby/pokit/actions/workflows/docs.yaml/badge.svg?branch=main)](
+  https://github.com/pcolby/pokit/actions/workflows/docs.yaml?query=branch%3Amain)
 
 QtPokit (pronounced "cute pocket") is a set of cross-platform utilities for [Pokit] measuring devices,
 consisting of the following sub-projects:
