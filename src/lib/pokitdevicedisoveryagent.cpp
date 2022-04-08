@@ -157,11 +157,11 @@ PokitDeviceDiscoveryAgentPrivate::PokitDeviceDiscoveryAgentPrivate(PokitDeviceDi
     : q_ptr(q)
 {
     connect(q, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
-            this, &PokitDeviceDiscoveryAgentPrivate::onDeviceDiscovered);
+            this, &PokitDeviceDiscoveryAgentPrivate::deviceDiscovered);
 
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Signal added in Qt 5.12.
     connect(q, &QBluetoothDeviceDiscoveryAgent::deviceUpdated,
-            this, &PokitDeviceDiscoveryAgentPrivate::onDeviceUpdated);
+            this, &PokitDeviceDiscoveryAgentPrivate::deviceUpdated);
     #endif
 }
 
@@ -170,7 +170,7 @@ PokitDeviceDiscoveryAgentPrivate::PokitDeviceDiscoveryAgentPrivate(PokitDeviceDi
  *
  * Here we simply check if \a info describes a Pokit device, and if so, emit pokitDeviceDiscovered().
  */
-void PokitDeviceDiscoveryAgentPrivate::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
+void PokitDeviceDiscoveryAgentPrivate::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     Q_Q(PokitDeviceDiscoveryAgent);
     if (!q->isPokitDevice(info)) return;
@@ -186,8 +186,8 @@ void PokitDeviceDiscoveryAgentPrivate::onDeviceDiscovered(const QBluetoothDevice
  *
  * \since Qt 5.12.0
  */
-void PokitDeviceDiscoveryAgentPrivate::onDeviceUpdated(const QBluetoothDeviceInfo &info,
-                                                QBluetoothDeviceInfo::Fields updatedFields)
+void PokitDeviceDiscoveryAgentPrivate::deviceUpdated(
+    const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields)
 {
     Q_Q(PokitDeviceDiscoveryAgent);
     if (!q->isPokitDevice(info)) return;

@@ -41,9 +41,9 @@ public:
     explicit PokitDeviceDiscoveryAgentPrivate(PokitDeviceDiscoveryAgent * const q);
 
 public slots:
-    void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
+    void deviceDiscovered(const QBluetoothDeviceInfo &info);
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    void onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
+    void deviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
     #endif
 
 protected:
