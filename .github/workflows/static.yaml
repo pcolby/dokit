@@ -30,7 +30,7 @@ jobs:
       run: |
         cppcheck \
            -DQTPOKIT_NAMESPACE=qtpockit --enable=all --error-exitcode=1 -Isrc \
-           --suppress=missingInclude \
+           --suppress={missingInclude,unknownMacro} \
            --xml --xml-version=2 src test 2> "$RUNNER_TEMP/cppcheck.xml"
     - name: Generate Report
       if: ${{ failure() }}
