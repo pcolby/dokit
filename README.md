@@ -7,17 +7,11 @@
 [![Static Analysis](https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml/badge.svg?branch=main)](
   https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml?query=branch%3Amain)
 
-QtPokit (pronounced "cute pocket") is a set of cross-platform utilities for [Pokit] measuring devices,
-consisting of the following sub-projects:
-
-1. `QtPocket` - native [Qt] library for accessing [Pokit] devices via the [Pokit Bluetooth API].
-2. `pokit` - CLI application for accessing [Pokit] devices via the `QtPocket` libaray.
-3. `pokit-gui` - GUI application for accessing [Pokit] devices via the `QtPocket` libaray.
+QtPokit is a cross-platform [Qt] library, and console application for accessing [Pokit] measuring devices.
 
 This project is in very early stages of development, but aims to support both [Pokit Meter] and
-[Pokit Pro], on Linux, Mac and Windows.
-
-*To do: some notes on device x feature x platform x app support matrix.*
+[Pokit Pro], on Linux, Mac and Windows. A separate project (to launch later) will aim to provide a
+cross-platform desktop GUI application using the QtPokit library.
 
 ## Requirements
 
@@ -55,8 +49,7 @@ These are regularly published to Github Pages via Github Actions:
 
 ## License
 
-The standalone, shared `QtPocket` library is freely available under the [LGPL]. And the rest of this
-project, including the dependant console and GUI apps, are freely available under the [GPL].
+QtPocket is freely available under the [LGPL]
 
 [^minQt5]: The Qt BLE API was first [added in v5.4](https://doc.qt.io/qt-5/qtbluetooth-le-overview.html)
 [^minQt6]: The Qt Bluetooth module was [ported to Qt6 in v6.2](https://www.qt.io/blog/qt-6.2-lts-released)
