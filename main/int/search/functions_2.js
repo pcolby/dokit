@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['ondevicediscovered_0',['onDeviceDiscovered',['../classPokitDeviceDiscoveryAgent.html#ad1cb8aee385e030b1c79510a628ba260',1,'PokitDeviceDiscoveryAgent']]],
-  ['ondeviceupdated_1',['onDeviceUpdated',['../classPokitDeviceDiscoveryAgent.html#ae8f5ca794e82f96a91b37c19ecd30549',1,'PokitDeviceDiscoveryAgent']]]
+  ['pokitdevicediscovered_0',['pokitDeviceDiscovered',['../classPokitDeviceDiscoveryAgent.html#a91accfadf0d717060e5c2002c0443afd',1,'PokitDeviceDiscoveryAgent']]],
+  ['pokitdevicediscoveryagent_1',['PokitDeviceDiscoveryAgent',['../classPokitDeviceDiscoveryAgent.html#a13cc657e3d754dfc7140fe66aa55902b',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(const QBluetoothAddress &amp;deviceAdapter, QObject *parent=nullptr)'],['../classPokitDeviceDiscoveryAgent.html#a03b42b2404ff9f1e0a6c9a491fe1efac',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(QObject *parent=nullptr)'],['../classPokitDeviceDiscoveryAgent.html#a1595923a2ecfdc7b41201d51882e7d05',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(PokitDeviceDiscoveryAgentPrivate *const d, const QBluetoothAddress &amp;deviceAdapter, QObject *const parent)'],['../classPokitDeviceDiscoveryAgent.html#a2cb0e86ef0a517ad819568b06362886c',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(PokitDeviceDiscoveryAgentPrivate *const d, QObject *const parent)']]],
+  ['pokitdevicediscoveryagentprivate_2',['PokitDeviceDiscoveryAgentPrivate',['../classPokitDeviceDiscoveryAgentPrivate.html#a11fa8baaf2896da43c559738c5984c70',1,'PokitDeviceDiscoveryAgentPrivate']]],
+  ['pokitdeviceupdated_3',['pokitDeviceUpdated',['../classPokitDeviceDiscoveryAgent.html#a3de575cde89767ba7bfff9c9bd144862',1,'PokitDeviceDiscoveryAgent']]]
 ];

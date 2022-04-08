@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['q_5fdeclare_5flogging_5fcategory_0',['Q_DECLARE_LOGGING_CATEGORY',['../logging__p_8h.html#a7b84f67b72ca683fbd69499848d8fdee',1,'Q_DECLARE_LOGGING_CATEGORY(pokitDiscovery):&#160;logging_p.h'],['../logging__p_8h.html#a73a1cedb4ff68d2d513198e62a50a7fd',1,'Q_DECLARE_LOGGING_CATEGORY(pokitUtils):&#160;logging_p.h']]]
+  ['scanner_0',['Scanner',['../classScanner.html#a782d85522be86b5a5e17bf368a719482',1,'Scanner']]],
+  ['start_1',['start',['../classScanner.html#a7007836434d247aa9e626edd9491aa2f',1,'Scanner::start()'],['../classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965',1,'PokitDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)'],['../classPokitDeviceDiscoveryAgent.html#ae91ec520792eee6c044d0d22c9ce014e',1,'PokitDeviceDiscoveryAgent::start()']]]
 ];

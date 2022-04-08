@@ -5,6 +5,7 @@ var hierarchy =
     ] ],
     [ "QObject", null, [
       [ "Informer", "classInformer.html", null ],
+      [ "PokitDeviceDiscoveryAgentPrivate", "classPokitDeviceDiscoveryAgentPrivate.html", null ],
       [ "Scanner", "classScanner.html", null ]
     ] ]
 ];
