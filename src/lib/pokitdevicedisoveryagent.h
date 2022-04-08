@@ -22,18 +22,17 @@
  * Declares the PokitDeviceDiscoveryAgent class.
  */
 
+#ifndef QTPOKIT_POKITDEVICEDISCOVERYAGENT_H
+#define QTPOKIT_POKITDEVICEDISCOVERYAGENT_H
+
 #include <QBluetoothDeviceDiscoveryAgent>
 
 #include "qtpokit_global.h"
 
 QTPOKIT_BEGIN_NAMESPACE
 
-/*!
- * The PokitDeviceDiscoveryAgent class discovers nearby Pokit devices.
- *
- * After constructing a PokitDeviceDiscoveryAgent object, and subscribing to the relevant signals,
- * invoke start() to begin discovery.
- */
+class PokitDeviceDiscoveryAgentPrivate;
+
 class QTPOKIT_EXPORT PokitDeviceDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
 {
     Q_OBJECT
@@ -41,6 +40,7 @@ class QTPOKIT_EXPORT PokitDeviceDiscoveryAgent : public QBluetoothDeviceDiscover
 public:
     explicit PokitDeviceDiscoveryAgent(const QBluetoothAddress &deviceAdapter, QObject *parent=nullptr);
     PokitDeviceDiscoveryAgent(QObject * parent=nullptr);
+    virtual ~PokitDeviceDiscoveryAgent();
 
     static bool isPokitDevice(const QBluetoothDeviceInfo &info);
 
@@ -54,11 +54,20 @@ signals:
     void pokitDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
     #endif
 
-private slots:
-    void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
-    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    void onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
-    #endif
+protected:
+    /// \cond internal
+    PokitDeviceDiscoveryAgentPrivate * d_ptr; ///< Internal d-pointer.
+    PokitDeviceDiscoveryAgent(PokitDeviceDiscoveryAgentPrivate * const d,
+                              const QBluetoothAddress &deviceAdapter, QObject * const parent);
+    PokitDeviceDiscoveryAgent(PokitDeviceDiscoveryAgentPrivate * const d, QObject * const parent);
+    /// \endcond
+
+private:
+    Q_DECLARE_PRIVATE(PokitDeviceDiscoveryAgent)
+    Q_DISABLE_COPY(PokitDeviceDiscoveryAgent)
+    friend class TestPokitDeviceDiscoveryAgent;
 };
 
 QTPOKIT_END_NAMESPACE
+
+#endif // QTPOKIT_POKITDEVICEDISCOVERYAGENT_H
