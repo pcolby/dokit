@@ -1,4 +1,4 @@
 var files_dup =
 [
-    [ "pokit", "dir_d613b5c5fad9c480fd24c0e8902d8f01.html", "dir_d613b5c5fad9c480fd24c0e8902d8f01" ]
+    [ "qtpokit", "dir_8d9614c8875cb2a66bb99a41cd4cbdc4.html", "dir_8d9614c8875cb2a66bb99a41cd4cbdc4" ]
 ];
