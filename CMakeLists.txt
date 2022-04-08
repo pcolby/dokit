@@ -10,7 +10,7 @@ project(
   QtPokit
   VERSION 0.1
   DESCRIPTION "Desktop applications for Pokit measuring devices"
- #HOMEPAGE_URL "https://github.com/pcolby/pokit"
+ #HOMEPAGE_URL "https://github.com/pcolby/qtpokit"
   LANGUAGES CXX)
 
 add_definitions(
