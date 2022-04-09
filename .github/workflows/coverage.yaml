@@ -28,12 +28,6 @@ jobs:
       with:
         name: Test Coverage HTML Report
         path: "${{ runner.temp }}/coverage"
-    - name: Submit to Codecov
-      uses: codecov/codecov-action@v2
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        files: "${{ runner.temp }}/coverage.info"
-        fail_ci_if_error: true
     - name: Submit to Coveralls
       uses: coverallsapp/github-action@master
       with:
