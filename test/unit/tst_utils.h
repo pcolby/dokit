@@ -28,4 +28,7 @@ private slots:
 
     void toString_majorClass_data();
     void toString_majorClass();
+
+    void toString_minorClass_data();
+    void toString_minorClass();
 };
