@@ -33,3 +33,24 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: "${{ runner.temp }}/coverage.info"
+    - name: Checkout doc Branch
+      uses: actions/checkout@v3
+      with:
+        ref: doc
+        path: doc
+    - name: Install Coverage Report
+      run: |
+        rm -rf "$GITHUB_WORKSPACE/doc/main/cov"
+        cp -a "$RUNNER_TEMP/coverage" "$GITHUB_WORKSPACE/doc/main/cov"
+        git -C "$GITHUB_WORKSPACE/doc" status
+        git -C "$GITHUB_WORKSPACE/doc" diff
+    - name: Push Updated doc Branch
+      run: |
+        [[ -z $(git status --porcelain) ]] || {
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update coverage report for ${GITHUB_SHA}"
+          git push
+        }
+      working-directory: ${{ github.workspace }}/doc
