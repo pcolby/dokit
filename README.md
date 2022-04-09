@@ -6,6 +6,8 @@
   https://github.com/pcolby/qtpokit/actions/workflows/static.yaml?query=branch%3Amain)
 [![Static Analysis](https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml/badge.svg?branch=main)](
   https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml?query=branch%3Amain)
+[![Coverage Status](https://img.shields.io/coveralls/github/pcolby/qtpokit/main?label=Coverage&logo=coveralls)](
+  https://coveralls.io/github/pcolby/qtpokit?branch=main)
 
 QtPokit is a cross-platform [Qt] library, and console application for accessing [Pokit] measuring devices.
 
