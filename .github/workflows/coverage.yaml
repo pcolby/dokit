@@ -34,17 +34,20 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: "${{ runner.temp }}/coverage.info"
     - name: Checkout doc Branch
+      if: ${{ github.ref == 'refs/heads/main' }}
       uses: actions/checkout@v3
       with:
         ref: doc
         path: doc
     - name: Install Coverage Report
+      if: ${{ github.ref == 'refs/heads/main' }}
       run: |
         rm -rf "$GITHUB_WORKSPACE/doc/main/cov"
         cp -a "$RUNNER_TEMP/coverage" "$GITHUB_WORKSPACE/doc/main/cov"
         git -C "$GITHUB_WORKSPACE/doc" status
         git -C "$GITHUB_WORKSPACE/doc" diff
     - name: Push Updated doc Branch
+      if: ${{ github.ref == 'refs/heads/main' }}
       run: |
         [[ -z $(git status --porcelain) ]] || {
           git config user.name github-actions
