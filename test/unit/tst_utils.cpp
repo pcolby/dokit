@@ -65,6 +65,12 @@ void TestUtils::toString_minorClass_data()
     QTest::addColumn<quint8>("minorClass");
     QTest::addColumn<QString>("expected");
 
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
+    #define MAJOR_CLASS_NETWORK_DEVICE LANAccessDevice // Deprecated since Qt 5.13.
+    #else
+    #define MAJOR_CLASS_NETWORK_DEVICE NetworkDevice // Added in Qt 5.13.
+    #endif
+
     // Test all happy paths.
     #define ADD_ROW(majorClass, minorClass) QTest::addRow(#majorClass ":" #minorClass) \
         << (int)QBluetoothDeviceInfo::majorClass << (quint8)QBluetoothDeviceInfo::minorClass \
@@ -87,11 +93,6 @@ void TestUtils::toString_minorClass_data()
     ADD_ROW(PhoneDevice, WiredModemOrVoiceGatewayPhone);
     ADD_ROW(PhoneDevice, CommonIsdnAccessPhone);
 
-    #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
-    #define MAJOR_CLASS_NETWORK_DEVICE LANAccessDevice // Deprecated since Qt 5.13.
-    #else
-    #define MAJOR_CLASS_NETWORK_DEVICE NetworkDevice // Added in Qt 5.13.
-    #endif
     ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkFullService);
     ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorOne);
     ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorTwo);
@@ -100,7 +101,6 @@ void TestUtils::toString_minorClass_data()
     ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFive);
     ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorSix);
     ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkNoService);
-    #undef MAJOR_CLASS_NETWORK_DEVICE
 
     ADD_ROW(AudioVideoDevice, UncategorizedAudioVideoDevice);
     ADD_ROW(AudioVideoDevice, WearableHeadsetDevice);
@@ -160,6 +160,23 @@ void TestUtils::toString_minorClass_data()
     ADD_ROW(HealthDevice, HealthDataDisplay);
     ADD_ROW(HealthDevice, HealthStepCounter);
     #undef ADD_ROW
+
+    // Test that all major classs fall through on out-of-range minor classes.
+    #define ADD_ROW(majorClass) QTest::addRow(#majorClass ".invalid") \
+        << (int)QBluetoothDeviceInfo::majorClass << (quint8)999 << QString()
+    ADD_ROW(MiscellaneousDevice);
+    ADD_ROW(ComputerDevice);
+    ADD_ROW(PhoneDevice);
+    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE);
+    ADD_ROW(AudioVideoDevice);
+    ADD_ROW(PeripheralDevice);
+    ADD_ROW(ImagingDevice);
+    ADD_ROW(WearableDevice);
+    ADD_ROW(ToyDevice);
+    ADD_ROW(HealthDevice);
+    ADD_ROW(UncategorizedDevice);
+    #undef ADD_ROW
+    #undef MAJOR_CLASS_NETWORK_DEVICE
 
     // There are no minor classed for UncategorizedDevice.
     QTest::addRow("UncategorizedDevice:0")
