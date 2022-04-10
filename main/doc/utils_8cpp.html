@@ -110,6 +110,10 @@ Functions</h2></td></tr>
 QTPOKIT_BEGIN_NAMESPACE QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QBluetoothDeviceInfo &amp;info)</td></tr>
 <tr class="memdesc:ace62f719f975653fa35416a24c18494d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>info</em> as a JSON object. <br /></td></tr>
 <tr class="separator:ace62f719f975653fa35416a24c18494d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3afc10b18747e9283824e4b95bf7ffd0"><td class="memItemLeft" align="right" valign="top"><a id="a3afc10b18747e9283824e4b95bf7ffd0" name="a3afc10b18747e9283824e4b95bf7ffd0"></a>
+QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QBluetoothDeviceInfo::CoreConfigurations &amp;configurations)</td></tr>
+<tr class="memdesc:a3afc10b18747e9283824e4b95bf7ffd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>configuration</em> as a JSON array of strings. <br /></td></tr>
+<tr class="separator:a3afc10b18747e9283824e4b95bf7ffd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdc91e4708200c1921deee2c38959172"><td class="memItemLeft" align="right" valign="top">QJsonValue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#acdc91e4708200c1921deee2c38959172">toJson</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</td></tr>
 <tr class="memdesc:acdc91e4708200c1921deee2c38959172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>majorClass</em> as a JSON value.  <a href="utils_8cpp.html#acdc91e4708200c1921deee2c38959172">More...</a><br /></td></tr>
 <tr class="separator:acdc91e4708200c1921deee2c38959172"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,16 +122,16 @@ QTPOKIT_BEGIN_NAMESPACE QJsonObject&#160;</td><td class="memItemRight" valign="b
 <tr class="separator:a33a61d31bdeec24a7af79cd3629806bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c1192689b7b1d338fab1556ef6c94c0"><td class="memItemLeft" align="right" valign="top"><a id="a7c1192689b7b1d338fab1556ef6c94c0" name="a7c1192689b7b1d338fab1556ef6c94c0"></a>
 QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QBluetoothDeviceInfo::ServiceClasses &amp;classes)</td></tr>
-<tr class="memdesc:a7c1192689b7b1d338fab1556ef6c94c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>classes</em> as a JSON array. <br /></td></tr>
+<tr class="memdesc:a7c1192689b7b1d338fab1556ef6c94c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>classes</em> as a JSON array of strings. <br /></td></tr>
 <tr class="separator:a7c1192689b7b1d338fab1556ef6c94c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c5b364f59d0d3a890b58ce632f52751"><td class="memItemLeft" align="right" valign="top"><a id="a3c5b364f59d0d3a890b58ce632f52751" name="a3c5b364f59d0d3a890b58ce632f52751"></a>
 QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QList&lt; QBluetoothUuid &gt; &amp;uuids)</td></tr>
 <tr class="memdesc:a3c5b364f59d0d3a890b58ce632f52751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>uuids</em> as a JSON array. <br /></td></tr>
 <tr class="separator:a3c5b364f59d0d3a890b58ce632f52751"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3c3e07ec0aa7e7fc0c777207fff1b2d"><td class="memItemLeft" align="right" valign="top"><a id="aa3c3e07ec0aa7e7fc0c777207fff1b2d" name="aa3c3e07ec0aa7e7fc0c777207fff1b2d"></a>
-QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QMultiHash&lt; quint16, QByteArray &gt; &amp;data)</td></tr>
-<tr class="memdesc:aa3c3e07ec0aa7e7fc0c777207fff1b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Bluetooth manufacturer <em>data</em> as a JSON array. <br /></td></tr>
-<tr class="separator:aa3c3e07ec0aa7e7fc0c777207fff1b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af536ea688bcc9cb9e8ba32c035565a10"><td class="memItemLeft" align="right" valign="top"><a id="af536ea688bcc9cb9e8ba32c035565a10" name="af536ea688bcc9cb9e8ba32c035565a10"></a>
+QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><b>toJson</b> (const QMultiHash&lt; quint16, QByteArray &gt; &amp;data)</td></tr>
+<tr class="memdesc:af536ea688bcc9cb9e8ba32c035565a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Bluetooth manufacturer <em>data</em> as a JSON object that maps the manufacturer IDs (unsigned integers as strings) to arrays of one or more values. <br /></td></tr>
+<tr class="separator:af536ea688bcc9cb9e8ba32c035565a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace2abae10f33e843a41ec245f72d509f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">toString</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</td></tr>
 <tr class="memdesc:ace2abae10f33e843a41ec245f72d509f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>majorClass</em> as a human-readable string, or a null QString if <em>majorClass</em> is not recognised.  <a href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">More...</a><br /></td></tr>
 <tr class="separator:ace2abae10f33e843a41ec245f72d509f"><td class="memSeparator" colspan="2">&#160;</td></tr>
