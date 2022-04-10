@@ -49,8 +49,9 @@ void TestUtils::toJson_info_data()
     QTest::newRow("invalid") << QBluetoothDeviceInfo() << QJsonObject();
 
     const QUuid randomUuid = QUuid::createUuid();
+    QBluetoothDeviceInfo info(QBluetoothUuid(randomUuid), QLatin1String("foo"), 0);
     QTest::newRow("uuid")
-        << QBluetoothDeviceInfo(QBluetoothUuid(randomUuid), QLatin1String("foo"), 0)
+        << info
         << QJsonObject{
             { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
@@ -59,6 +60,84 @@ void TestUtils::toJson_info_data()
             { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
             { QString::fromLatin1("name"), QLatin1String("foo") },
             { QString::fromLatin1("signalStrength"), 0 },
+        };
+
+    info.setCached(true);
+    QTest::newRow("cached")
+        << info
+        << QJsonObject{
+            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
+            { QString::fromLatin1("isCached"), true },
+            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
+            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
+            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("signalStrength"), 0 },
+        };
+
+    //info.setCoreConfigurations(); /// \todo
+
+    info.setManufacturerData(0, QByteArray("zero"));
+    info.setManufacturerData(0, QByteArray("multi-zero"));
+    info.setManufacturerData(1, QByteArray("one"));
+    QTest::newRow("manufacturerData")
+        << info
+        << QJsonObject{
+            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
+            { QString::fromLatin1("isCached"), true },
+            { QString::fromLatin1("manufacturerData"), QJsonObject{
+                { QString::fromLatin1("0"), QJsonArray{
+                    QString::fromLatin1("emVybw=="), QString::fromLatin1("bXVsdGktemVybw=="),
+                } },
+                { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
+            } },
+            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
+            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
+            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("signalStrength"), 0 },
+        };
+
+    info.setRssi(-123);
+    QTest::newRow("rssi")
+        << info
+        << QJsonObject{
+            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
+            { QString::fromLatin1("isCached"), true },
+            { QString::fromLatin1("manufacturerData"), QJsonObject{
+                { QString::fromLatin1("0"), QJsonArray{
+                    QString::fromLatin1("emVybw=="), QString::fromLatin1("bXVsdGktemVybw=="),
+                } },
+                { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
+            } },
+            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
+            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
+            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("signalStrength"), -123 },
+        };
+
+    info.setServiceUuids({QUuid(POKIT_SERVICE_MULTIMETER), QUuid(POKIT_SERVICE_DSO)});
+    QTest::newRow("rssi")
+        << info
+        << QJsonObject{
+            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
+            { QString::fromLatin1("isCached"), true },
+            { QString::fromLatin1("manufacturerData"), QJsonObject{
+                { QString::fromLatin1("0"), QJsonArray{
+                    QString::fromLatin1("emVybw=="), QString::fromLatin1("bXVsdGktemVybw=="),
+                } },
+                { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
+            } },
+            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
+            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
+            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("serviceUuids"), QJsonArray{
+                QString::fromLatin1("{e7481d2f-5781-442e-bb9a-fd4e3441dadc}"),
+                QString::fromLatin1("{1569801e-1425-4a7a-b617-a4f4ed719de6}")
+            } },
+            { QString::fromLatin1("signalStrength"), -123 },
         };
 
     const QBluetoothAddress address(QLatin1String("12:34:56:78:9A:BC"));
@@ -77,6 +156,7 @@ void TestUtils::toJson_info_data()
             } },
             { QString::fromLatin1("signalStrength"), 0 },
         };
+
 }
 
 void TestUtils::toJson_info()
