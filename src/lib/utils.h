@@ -36,6 +36,7 @@
 QTPOKIT_BEGIN_NAMESPACE
 
 QTPOKIT_EXPORT QJsonObject toJson(const QBluetoothDeviceInfo &info);
+QTPOKIT_EXPORT QJsonArray  toJson(const QBluetoothDeviceInfo::CoreConfigurations &configurations);
 QTPOKIT_EXPORT QJsonValue  toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass);
 QTPOKIT_EXPORT QJsonValue  toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass);
 QTPOKIT_EXPORT QJsonArray  toJson(const QBluetoothDeviceInfo::ServiceClasses &classes);

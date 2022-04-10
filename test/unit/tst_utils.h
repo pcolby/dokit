@@ -27,6 +27,9 @@ private slots:
     void toJson_info_data();
     void toJson_info();
 
+    void toJson_coreConfig_data();
+    void toJson_coreConfig();
+
     void toJson_majorClass_data();
     void toJson_majorClass();
 

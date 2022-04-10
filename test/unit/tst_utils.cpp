@@ -27,6 +27,7 @@
 
 typedef QMultiHash<quint16, QByteArray> ManufacturerData;
 Q_DECLARE_METATYPE(ManufacturerData)
+Q_DECLARE_METATYPE(QBluetoothDeviceInfo::CoreConfiguration)
 Q_DECLARE_METATYPE(QBluetoothDeviceInfo::ServiceClasses)
 
 // Serialiser for QCOMPARE to output QJsonArray objects on test failures.
@@ -75,7 +76,21 @@ void TestUtils::toJson_info_data()
             { QString::fromLatin1("signalStrength"), 0 },
         };
 
-    //info.setCoreConfigurations(); /// \todo
+    info.setCoreConfigurations(QBluetoothDeviceInfo::LowEnergyCoreConfiguration);
+    QTest::newRow("coreConfig")
+        << info
+        << QJsonObject{
+            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("coreConfiguration"), QJsonArray{
+                QString::fromLatin1("LowEnergyCoreConfiguration"),
+            } },
+            { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
+            { QString::fromLatin1("isCached"), true },
+            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
+            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
+            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("signalStrength"), 0 },
+        };
 
     info.setManufacturerData(0, QByteArray("zero"));
     info.setManufacturerData(0, QByteArray("multi-zero"));
@@ -84,6 +99,9 @@ void TestUtils::toJson_info_data()
         << info
         << QJsonObject{
             { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("coreConfiguration"), QJsonArray{
+                QString::fromLatin1("LowEnergyCoreConfiguration"),
+            } },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
             { QString::fromLatin1("isCached"), true },
             { QString::fromLatin1("manufacturerData"), QJsonObject{
@@ -103,6 +121,9 @@ void TestUtils::toJson_info_data()
         << info
         << QJsonObject{
             { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("coreConfiguration"), QJsonArray{
+                QString::fromLatin1("LowEnergyCoreConfiguration"),
+            } },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
             { QString::fromLatin1("isCached"), true },
             { QString::fromLatin1("manufacturerData"), QJsonObject{
@@ -122,6 +143,9 @@ void TestUtils::toJson_info_data()
         << info
         << QJsonObject{
             { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("coreConfiguration"), QJsonArray{
+                QString::fromLatin1("LowEnergyCoreConfiguration"),
+            } },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
             { QString::fromLatin1("isCached"), true },
             { QString::fromLatin1("manufacturerData"), QJsonObject{
@@ -164,6 +188,36 @@ void TestUtils::toJson_info()
     QFETCH(QBluetoothDeviceInfo, info);
     QFETCH(QJsonObject, expected);
     QCOMPARE(toJson(info), expected);
+}
+
+void TestUtils::toJson_coreConfig_data()
+{
+    QTest::addColumn<QBluetoothDeviceInfo::CoreConfiguration>("config");
+    QTest::addColumn<QJsonArray>("expected");
+
+    #define ADD_ROW(config) QTest::newRow(#config) \
+        << QBluetoothDeviceInfo::CoreConfiguration(QBluetoothDeviceInfo::config) \
+        << QJsonArray{ QLatin1String(#config) };
+    ADD_ROW(UnknownCoreConfiguration);
+    ADD_ROW(LowEnergyCoreConfiguration);
+    ADD_ROW(BaseRateCoreConfiguration);
+    #undef ADD_ROW
+
+    // BaseRateAndLowEnergy is a combination of LowEnergy and BaseRate core configurations.
+    QTest::newRow("BaseRateAndLowEnergyCoreConfiguration") \
+        << QBluetoothDeviceInfo::CoreConfiguration(
+            QBluetoothDeviceInfo::BaseRateAndLowEnergyCoreConfiguration) \
+        << QJsonArray{
+            QLatin1String("LowEnergyCoreConfiguration"),
+            QLatin1String("BaseRateCoreConfiguration"),
+        };
+}
+
+void TestUtils::toJson_coreConfig()
+{
+    QFETCH(QBluetoothDeviceInfo::CoreConfiguration, config);
+    QFETCH(QJsonArray, expected);
+    QCOMPARE(toJson(config), expected);
 }
 
 void TestUtils::toJson_majorClass_data()

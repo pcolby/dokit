@@ -47,6 +47,9 @@ QJsonObject toJson(const QBluetoothDeviceInfo &info) {
         { QLatin1String("minorDeviceClass"), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },
         { QLatin1String("signalStrength"), info.rssi() },
     };
+    if (info.coreConfigurations() != QBluetoothDeviceInfo::UnknownCoreConfiguration) {
+        json.insert(QLatin1String("coreConfiguration"), toJson(info.coreConfigurations()));
+    }
     if (!info.deviceUuid().isNull()) {
         json.insert(QLatin1String("deviceUuid"), info.deviceUuid().toString());
     }
@@ -62,6 +65,23 @@ QJsonObject toJson(const QBluetoothDeviceInfo &info) {
         json.insert(QLatin1String("serviceUuids"), toJson(info.serviceUuids()));
     }
     return json;
+}
+
+/*!
+ * Returns \a configuration as a JSON array of strings.
+ */
+QJsonArray  toJson(const QBluetoothDeviceInfo::CoreConfigurations &configurations)
+{
+    QJsonArray array;
+    #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \
+        if (configurations.testFlag(QBluetoothDeviceInfo::flag)) \
+            array.append(QLatin1String(#flag))
+    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(UnknownCoreConfiguration);
+    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(LowEnergyCoreConfiguration);
+    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateCoreConfiguration);
+  //QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateAndLowEnergyCoreConfiguration); // Combination flag.
+    #undef QTPOKIT_INTERNAL_IF_SET_THEN_APPEND
+    return array;
 }
 
 /*!
@@ -90,7 +110,7 @@ QJsonValue toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, cons
 }
 
 /*!
- * Returns \a classes as a JSON array.
+ * Returns \a classes as a JSON array of strings.
  */
 QJsonArray toJson(const QBluetoothDeviceInfo::ServiceClasses &classes)
 {
