@@ -45,7 +45,7 @@ private slots:
     void toJson_uuids_vector_data();
     void toJson_uuids_vector();
 
-    // QBluetoothDeviceInfo::manufacturerData Added in Qt 5.12.
+    // QBluetoothDeviceInfo::manufacturerData added in Qt 5.12.
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
     void toJson_manufacturerData_data();
     void toJson_manufacturerData();

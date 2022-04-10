@@ -92,6 +92,8 @@ void TestUtils::toJson_info_data()
             { QString::fromLatin1("signalStrength"), 0 },
         };
 
+    // QBluetoothDeviceInfo::setManufacturerData added in Qt 5.12.
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
     info.setManufacturerData(0, QByteArray("zero"));
     info.setManufacturerData(0, QByteArray("multi-zero"));
     info.setManufacturerData(1, QByteArray("one"));
@@ -118,6 +120,7 @@ void TestUtils::toJson_info_data()
             { QString::fromLatin1("name"), QLatin1String("foo") },
             { QString::fromLatin1("signalStrength"), 0 },
         };
+    #endif
 
     info.setRssi(-123);
     QTest::newRow("rssi")
@@ -129,6 +132,7 @@ void TestUtils::toJson_info_data()
             } },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
             { QString::fromLatin1("isCached"), true },
+            #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // ManufacturerData added in Qt 5.12.
             { QString::fromLatin1("manufacturerData"), QJsonObject{
                 { QString::fromLatin1("0"), QJsonArray{
                     #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
@@ -138,6 +142,7 @@ void TestUtils::toJson_info_data()
                 } },
                 { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
             } },
+            #endif
             { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
             { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
             { QString::fromLatin1("name"), QLatin1String("foo") },
@@ -158,6 +163,7 @@ void TestUtils::toJson_info_data()
             } },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
             { QString::fromLatin1("isCached"), true },
+            #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // ManufacturerData added in Qt 5.12.
             { QString::fromLatin1("manufacturerData"), QJsonObject{
                 { QString::fromLatin1("0"), QJsonArray{
                     #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
@@ -167,6 +173,7 @@ void TestUtils::toJson_info_data()
                 } },
                 { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
             } },
+            #endif
             { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
             { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
             { QString::fromLatin1("name"), QLatin1String("foo") },
