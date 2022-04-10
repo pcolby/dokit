@@ -395,9 +395,7 @@ void TestUtils::toJson_manufacturerData_data()
 
     data.insert(0, QByteArray("multi-zero"));
     object.insert(QString::number(0), QJsonArray{
-        #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)) // Multi support added in Qt 5.14.
         QString::fromLatin1(QByteArray("zero").toBase64()),
-        #endif
         QString::fromLatin1(QByteArray("multi-zero").toBase64()),
     });
     QTest::newRow("multi-zero") << data << object;
