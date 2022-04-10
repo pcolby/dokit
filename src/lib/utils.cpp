@@ -35,6 +35,9 @@ QTPOKIT_BEGIN_NAMESPACE
  * Returns \a info as a JSON object.
  */
 QJsonObject toJson(const QBluetoothDeviceInfo &info) {
+    if (!info.isValid()) {
+        return QJsonObject();
+    }
     QJsonObject json{
         { QLatin1String("address"), info.address().toString() },
         { QLatin1String("name"), info.name() },
@@ -43,8 +46,6 @@ QJsonObject toJson(const QBluetoothDeviceInfo &info) {
         { QLatin1String("majorDeviceClass"), toJson(info.majorDeviceClass()) },
         { QLatin1String("minorDeviceClass"), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },
         { QLatin1String("signalStrength"), info.rssi() },
-        { QLatin1String("serviceUuids"), toJson(info.serviceUuids()) },
-
     };
     if (!info.deviceUuid().isNull()) {
         json.insert(QLatin1String("deviceUuid"), info.deviceUuid().toString());
@@ -56,6 +57,9 @@ QJsonObject toJson(const QBluetoothDeviceInfo &info) {
     #endif
     if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {
         json.insert(QLatin1String("serviceClasses"), toJson(info.serviceClasses()));
+    }
+    if (!info.serviceUuids().isEmpty()) {
+        json.insert(QLatin1String("serviceUuids"), toJson(info.serviceUuids()));
     }
     return json;
 }

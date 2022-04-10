@@ -22,6 +22,7 @@
 #include "utils.h"
 #include "uuids.h"
 
+#include <QBluetoothAddress>
 #include <QJsonDocument>
 
 typedef QMultiHash<quint16, QByteArray> ManufacturerData;
@@ -42,12 +43,47 @@ char *toString(const QJsonObject &object)
 
 void TestUtils::toJson_info_data()
 {
+    QTest::addColumn<QBluetoothDeviceInfo>("info");
+    QTest::addColumn<QJsonObject>("expected");
 
+    QTest::newRow("invalid") << QBluetoothDeviceInfo() << QJsonObject();
+
+    const QUuid randomUuid = QUuid::createUuid();
+    QTest::newRow("uuid")
+        << QBluetoothDeviceInfo(QBluetoothUuid(randomUuid), QLatin1String("foo"), 0)
+        << QJsonObject{
+            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
+            { QString::fromLatin1("isCached"), false },
+            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
+            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
+            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("signalStrength"), 0 },
+        };
+
+    const QBluetoothAddress address(QLatin1String("12:34:56:78:9A:BC"));
+    QTest::newRow("address")
+        << QBluetoothDeviceInfo(address, QLatin1String("bar"), 0xffff)
+        << QJsonObject{
+            { QString::fromLatin1("address"), address.toString() },
+            { QString::fromLatin1("isCached"), false },
+            { QString::fromLatin1("majorDeviceClass"), QLatin1String("UncategorizedDevice") },
+            { QString::fromLatin1("minorDeviceClass"), 63 },
+            { QString::fromLatin1("name"), QLatin1String("bar") },
+            { QString::fromLatin1("serviceClasses"), QJsonArray{
+                QString::fromLatin1("PositioningService"),
+                QString::fromLatin1("NetworkingService"),
+                QString::fromLatin1("RenderingService"),
+            } },
+            { QString::fromLatin1("signalStrength"), 0 },
+        };
 }
 
 void TestUtils::toJson_info()
 {
-
+    QFETCH(QBluetoothDeviceInfo, info);
+    QFETCH(QJsonObject, expected);
+    QCOMPARE(toJson(info), expected);
 }
 
 void TestUtils::toJson_majorClass_data()
