@@ -140,7 +140,7 @@ void TestUtils::toJson_info_data()
 
     info.setServiceUuids({QUuid(POKIT_SERVICE_MULTIMETER), QUuid(POKIT_SERVICE_DSO)}
         #if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)
-        , QBluetoothDeviceInfo::DataUnavailable); // Required prior to 5.13, but deprecated in 5.13.
+        , QBluetoothDeviceInfo::DataUnavailable // Required prior to 5.13, but deprecated in 5.13.
         #endif
     );
     QTest::newRow("rssi")
