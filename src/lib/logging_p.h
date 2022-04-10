@@ -25,7 +25,7 @@
 #ifndef QTPOKIT_LOGGING_P_H
 #define QTPOKIT_LOGGING_P_H
 
-#include "qtpokit_global.h"
+#include <qtpokit/qtpokit_global.h>
 
 #include <QLoggingCategory>
 

@@ -22,7 +22,7 @@
  * Defines some simple general purpose, utility functions used by QtPokit.
  */
 
-#include "utils.h"
+#include <qtpokit/utils.h>
 
 #include "logging_p.h"
 

@@ -18,14 +18,14 @@
 */
 
 #include "scanner.h"
-#include "utils.h"
-#include "uuids.h"
+
+#include <qtpokit/pokitdevicedisoveryagent.h>
+#include <qtpokit/utils.h>
+#include <qtpokit/uuids.h>
 
 #include <QCoreApplication>
 #include <QJsonDocument>
 #include <QLoggingCategory>
-
-#include "pokitdevicedisoveryagent.h"
 
 Q_LOGGING_CATEGORY(pokitScanner, "pokit.ui.scanner", QtInfoMsg);
 

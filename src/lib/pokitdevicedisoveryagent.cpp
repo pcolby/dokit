@@ -24,11 +24,12 @@
  * \todo Add a PokitDeviceDiscoveryAgentPrivate class?
  */
 
-#include "pokitdevicedisoveryagent.h"
+#include <qtpokit/pokitdevicedisoveryagent.h>
 #include "pokitdevicedisoveryagent_p.h"
 
+#include <qtpokit/uuids.h>
+
 #include "logging_p.h"
-#include "uuids.h"
 
 #include <QBluetoothUuid>
 #include <QDebug>

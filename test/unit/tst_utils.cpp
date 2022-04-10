@@ -19,8 +19,8 @@
 
 #include "tst_utils.h"
 
-#include "utils.h"
-#include "uuids.h"
+#include <qtpokit/utils.h>
+#include <qtpokit/uuids.h>
 
 #include <QBluetoothAddress>
 #include <QJsonDocument>

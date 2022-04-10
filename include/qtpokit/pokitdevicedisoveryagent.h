@@ -25,9 +25,9 @@
 #ifndef QTPOKIT_POKITDEVICEDISCOVERYAGENT_H
 #define QTPOKIT_POKITDEVICEDISCOVERYAGENT_H
 
-#include <QBluetoothDeviceDiscoveryAgent>
-
 #include "qtpokit_global.h"
+
+#include <QBluetoothDeviceDiscoveryAgent>
 
 QTPOKIT_BEGIN_NAMESPACE
 

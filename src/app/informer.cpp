@@ -18,16 +18,16 @@
 */
 
 #include "informer.h"
-#include "utils.h"
-#include "uuids.h"
+
+#include <qtpokit/pokitdevicedisoveryagent.h>
+#include <qtpokit/utils.h>
+#include <qtpokit/uuids.h>
 
 #include <QCoreApplication>
 #include <QDataStream>
 #include <QLoggingCategory>
 #include <QLowEnergyController>
 #include <QtEndian>
-
-#include "pokitdevicedisoveryagent.h"
 
 Q_LOGGING_CATEGORY(pokitInformer, "pokit.ui.informer", QtInfoMsg);
 
