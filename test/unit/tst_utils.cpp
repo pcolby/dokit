@@ -329,8 +329,13 @@ void TestUtils::toJson_uuids_list_data()
     array.append(QBluetoothUuid().toString());
     QTest::addRow("null") << list << array;
 
+    #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     list.append(QBluetoothUuid(QBluetoothUuid::DeviceName));
     array.append(QBluetoothUuid(QBluetoothUuid::DeviceName).toString());
+    #else
+    list.append(QBluetoothUuid(QBluetoothUuid::CharacteristicType::DeviceName));
+    array.append(QBluetoothUuid(QBluetoothUuid::CharacteristicType::DeviceName).toString());
+    #endif
     QTest::addRow("deviceName") << list << array;
 
     list.append(QBluetoothUuid(QUuid(POKIT_SERVICE_MULTIMETER)));
