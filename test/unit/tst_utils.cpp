@@ -24,6 +24,10 @@
 
 #include <QJsonDocument>
 
+typedef QMultiHash<quint16, QByteArray> ManufacturerData;
+Q_DECLARE_METATYPE(ManufacturerData)
+Q_DECLARE_METATYPE(QBluetoothDeviceInfo::ServiceClasses)
+
 // Serialiser for QCOMPARE to output QJsonArray objects on test failures.
 char *toString(const QJsonArray &array)
 {
@@ -75,10 +79,61 @@ void TestUtils::toJson_minorClass()
 
 void TestUtils::toJson_serviceClasses_data()
 {
+    QTest::addColumn<QBluetoothDeviceInfo::ServiceClasses>("classes");
+    QTest::addColumn<QJsonArray>("expected");
+
+    QTest::newRow("empty") << QBluetoothDeviceInfo::ServiceClasses() << QJsonArray();
+
+    #define ADD_ROW(serviceClass) QTest::newRow(#serviceClass) \
+        << QBluetoothDeviceInfo::ServiceClasses(QBluetoothDeviceInfo::serviceClass) \
+        << QJsonArray{ QLatin1String(#serviceClass) };
+    ADD_ROW(PositioningService);
+    ADD_ROW(NetworkingService);
+    ADD_ROW(RenderingService);
+    ADD_ROW(CapturingService);
+    ADD_ROW(ObjectTransferService);
+    ADD_ROW(AudioService);
+    ADD_ROW(TelephonyService);
+    ADD_ROW(InformationService);
+    #undef ADD_ROW
+
+    QTest::newRow("all")
+        << QBluetoothDeviceInfo::ServiceClasses(
+            QBluetoothDeviceInfo::PositioningService|
+            QBluetoothDeviceInfo::NetworkingService|
+            QBluetoothDeviceInfo::RenderingService|
+            QBluetoothDeviceInfo::CapturingService|
+            QBluetoothDeviceInfo::ObjectTransferService|
+            QBluetoothDeviceInfo::AudioService|
+            QBluetoothDeviceInfo::TelephonyService|
+            QBluetoothDeviceInfo::InformationService)
+        << QJsonArray{
+            QString::fromLatin1("PositioningService"),
+            QString::fromLatin1("NetworkingService"),
+            QString::fromLatin1("RenderingService"),
+            QString::fromLatin1("CapturingService"),
+            QString::fromLatin1("ObjectTransferService"),
+            QString::fromLatin1("AudioService"),
+            QString::fromLatin1("TelephonyService"),
+            QString::fromLatin1("InformationService"),
+        };
 }
 
 void TestUtils::toJson_serviceClasses()
 {
+    QFETCH(QBluetoothDeviceInfo::ServiceClasses, classes);
+    QFETCH(QJsonArray, expected);
+    QCOMPARE(toJson(classes), expected);
+
+//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);
+//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);
+//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);
+//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);
+//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);
+//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);
+//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);
+//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);
+
 }
 
 void TestUtils::toJson_uuids_data()
@@ -114,9 +169,6 @@ void TestUtils::toJson_uuids()
     QFETCH(QJsonArray, expected);
     QCOMPARE(toJson(list), expected);
 }
-
-typedef QMultiHash<quint16, QByteArray> ManufacturerData;
-Q_DECLARE_METATYPE(ManufacturerData)
 
 void TestUtils::toJson_manufacturerData_data()
 {
