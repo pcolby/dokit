@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * Defines some simple general purpose, utility functions used by QtPokit.</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;<a class="code" href="utils_8h.html">qtpokit/utils.h</a>&gt;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="logging__p_8h.html">logging_p.h</a>&quot;</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
@@ -124,7 +124,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/*!</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * Returns \a info as a JSON object.</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">   37</a></span>QJsonObject <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">   37</a></span>QJsonObject <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo &amp;info) {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (!info.isValid()) {</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span> QJsonObject();</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">/*!</span></div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"> * Returns \a configuration as a JSON array of strings.</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="utils_8cpp.html#a3afc10b18747e9283824e4b95bf7ffd0">   73</a></span>QJsonArray  <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::CoreConfigurations &amp;configurations)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="utils_8h.html#ac16377250f61a8017544be53ee1d31a6">   73</a></span>QJsonArray  <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::CoreConfigurations &amp;configurations)</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    QJsonArray array;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">    #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \</span></div>
@@ -180,7 +180,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"> * \see toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="utils_8cpp.html#acdc91e4708200c1921deee2c38959172">   93</a></span>QJsonValue <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="utils_8h.html#ac9502cd295de414cfebf5403a58689e8">   93</a></span>QJsonValue <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">const</span> QString <span class="keywordtype">string</span> = <a class="code hl_function" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">toString</a>(majorClass);</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">return</span> (<span class="keywordtype">string</span>.isNull() ? QJsonValue(majorClass) : QJsonValue(<span class="keywordtype">string</span>));</div>
@@ -193,7 +193,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment"> * \see toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</span></div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="utils_8cpp.html#a33a61d31bdeec24a7af79cd3629806bd">  106</a></span>QJsonValue <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, <span class="keyword">const</span> quint8 minorClass)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="utils_8h.html#ae061b3b73fb818a199c5d8465e947da2">  106</a></span>QJsonValue <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, <span class="keyword">const</span> quint8 minorClass)</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>{</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keyword">const</span> QString <span class="keywordtype">string</span> = <a class="code hl_function" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">toString</a>(majorClass, minorClass);</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">return</span> (<span class="keywordtype">string</span>.isNull() ? QJsonValue(minorClass) : QJsonValue(<span class="keywordtype">string</span>));</div>
@@ -202,7 +202,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">/*!</span></div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment"> * Returns \a classes as a JSON array of strings.</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="utils_8cpp.html#a7c1192689b7b1d338fab1556ef6c94c0">  115</a></span>QJsonArray <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::ServiceClasses &amp;classes)</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="utils_8h.html#a85109085ef8fab28fed5cd5fc0d0bf6d">  115</a></span>QJsonArray <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::ServiceClasses &amp;classes)</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>{</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    QJsonArray array;</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">    #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \</span></div>
@@ -223,7 +223,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">/*!</span></div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment"> * Returns \a uuids as a JSON array.</span></div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="utils_8cpp.html#a3c5b364f59d0d3a890b58ce632f52751">  136</a></span>QJsonArray <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QList&lt;QBluetoothUuid&gt; &amp;uuids)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="utils_8h.html#a423831f175b96fd74eb44a964a48d721">  136</a></span>QJsonArray <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QList&lt;QBluetoothUuid&gt; &amp;uuids)</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>{</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    QJsonArray array;</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QBluetoothUuid &amp;uuid: uuids) {</div>
@@ -250,7 +250,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment"> * Returns Bluetooth manufacturer \a data as a JSON object that maps the manufacturer IDs (unsigned</span></div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment"> * integers as strings) to arrays of one or more values.</span></div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="utils_8cpp.html#af536ea688bcc9cb9e8ba32c035565a10">  163</a></span>QJsonObject <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QMultiHash&lt;quint16, QByteArray&gt; &amp;data)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="utils_8h.html#a75da973c58261ce92a9b4bd02742f5c1">  163</a></span>QJsonObject <a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(<span class="keyword">const</span> QMultiHash&lt;quint16, QByteArray&gt; &amp;data)</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>{</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    QJsonObject object;</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    QList&lt;quint16&gt; keys = data.uniqueKeys();</div>
@@ -277,7 +277,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment"> * For example, if \a majorClass is \c QBluetoothDeviceInfo::ToyDevice, then the string `ToyDevice`</span></div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment"> * is returned.</span></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">  190</a></span>QString <a class="code hl_function" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">toString</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">  190</a></span>QString <a class="code hl_function" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">toString</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>{</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="preprocessor">    #define QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \</span></div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="preprocessor">        if (majorClass == QBluetoothDeviceInfo::value) \</span></div>
@@ -309,7 +309,7 @@ $(document).ready(function(){initNavTree('utils_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment"> * For example, if \a majorClass is \c QBluetoothDeviceInfo::ToyDevice, and \a minorClass is</span></div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment"> * \c QBluetoothDeviceInfo::ToyRobot, then the string `ToyRobot` is returned.</span></div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno"><a class="line" href="utils_8cpp.html#a6d30c31456e6795997e101c007622857">  222</a></span>QString <a class="code hl_function" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">toString</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, <span class="keyword">const</span> quint8 minorClass)</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno"><a class="line" href="utils_8h.html#a25ca69598fbf437034c9c3ed81b21772">  222</a></span>QString <a class="code hl_function" href="utils_8cpp.html#ace2abae10f33e843a41ec245f72d509f">toString</a>(<span class="keyword">const</span> QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, <span class="keyword">const</span> quint8 minorClass)</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>{</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="preprocessor">    #define QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \</span></div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="preprocessor">        if (minorClass == QBluetoothDeviceInfo::value) \</span></div>

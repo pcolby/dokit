@@ -222,13 +222,13 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Handles discovered Pokit devices, writing <em>info</em> to stdout. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Support alternative output formats: text, json, other? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Support alternative output formats: text, json, other? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="scanner_8cpp_source.html#l00066">66</a> of file <a class="el" href="scanner_8cpp_source.html">scanner.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
-<div class="line"><span class="lineno">   68</span>    fputs(QJsonDocument(<a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(info)).<a class="code hl_function" href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a>(), stdout);</div>
+<div class="line"><span class="lineno">   68</span>    fputs(QJsonDocument(<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(info)).<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(), stdout);</div>
 <div class="line"><span class="lineno">   69</span>}</div>
-<div class="ttc" id="autils_8cpp_html_ace62f719f975653fa35416a24c18494d"><div class="ttname"><a href="utils_8cpp.html#ace62f719f975653fa35416a24c18494d">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00037">utils.cpp:37</a></div></div>
+<div class="ttc" id="autils_8h_html_a9ffa9547932ff46690df34e1f0ede5d0"><div class="ttname"><a href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QTPOKIT_EXPORT QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00037">utils.cpp:37</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utils_8cpp_source.html#l00037">toJson()</a>.</p>
 
@@ -283,9 +283,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="classScanner.html#ab53a4c8d5a17ae7701f0b903d8bd86a2">discoveryAgent</a>-&gt;setLowEnergyDiscoveryTimeout(timeout);</div>
 <div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="classScanner.html#ab53a4c8d5a17ae7701f0b903d8bd86a2">discoveryAgent</a>-&gt;<a class="code hl_slot" href="classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965">start</a>();</div>
 <div class="line"><span class="lineno">   59</span>}</div>
-<div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html_a941c88d60e7e8b3aed345c19fb9c5965"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965">PokitDeviceDiscoveryAgent::start</a></div><div class="ttdeci">void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)</div><div class="ttdoc">Starts Pokit device discovery.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevicedisoveryagent_8cpp_source.html#l00116">pokitdevicedisoveryagent.cpp:116</a></div></div>
+<div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html_a941c88d60e7e8b3aed345c19fb9c5965"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965">PokitDeviceDiscoveryAgent::start</a></div><div class="ttdeci">void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)</div><div class="ttdoc">Starts Pokit device discovery.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevicedisoveryagent_8cpp_source.html#l00115">pokitdevicedisoveryagent.cpp:115</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="scanner_8h_source.html#l00039">discoveryAgent</a>, and <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00116">PokitDeviceDiscoveryAgent::start()</a>.</p>
+<p class="reference">References <a class="el" href="scanner_8h_source.html#l00039">discoveryAgent</a>, and <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00115">PokitDeviceDiscoveryAgent::start()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
