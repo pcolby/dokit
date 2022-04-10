@@ -19,9 +19,7 @@
 
 /*!
  * \file
- * Defines the PokitDeviceDiscoveryAgent class.
- *
- * \todo Add a PokitDeviceDiscoveryAgentPrivate class?
+ * Defines the PokitDeviceDiscoveryAgent and PokitDeviceDiscoveryAgentPrivate classes.
  */
 
 #include <qtpokit/pokitdevicedisoveryagent.h>
