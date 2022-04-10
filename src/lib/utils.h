@@ -41,7 +41,9 @@ QTPOKIT_EXPORT QJsonValue  toJson(const QBluetoothDeviceInfo::MajorDeviceClass &
 QTPOKIT_EXPORT QJsonValue  toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass);
 QTPOKIT_EXPORT QJsonArray  toJson(const QBluetoothDeviceInfo::ServiceClasses &classes);
 QTPOKIT_EXPORT QJsonArray  toJson(const QList<QBluetoothUuid> &uuids);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) // As of Qt6, QVector is an alias for QList.
 QTPOKIT_EXPORT QJsonArray  toJson(const QVector<QBluetoothUuid> &uuids);
+#endif
 QTPOKIT_EXPORT QJsonObject toJson(const QMultiHash<quint16, QByteArray> &data);
 
 QTPOKIT_EXPORT QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass);

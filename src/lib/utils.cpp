@@ -142,6 +142,7 @@ QJsonArray toJson(const QList<QBluetoothUuid> &uuids)
     return array;
 }
 
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) // As of Qt6, QVector is an alias for QList.
 /*!
  * Returns \a uuids as a JSON array.
  */
@@ -153,6 +154,7 @@ QJsonArray toJson(const QVector<QBluetoothUuid> &uuids)
     }
     return array;
 }
+#endif
 
 /*!
  * Returns Bluetooth manufacturer \a data as a JSON object that maps the manufacturer IDs (unsigned
