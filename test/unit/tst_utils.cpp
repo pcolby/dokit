@@ -124,16 +124,6 @@ void TestUtils::toJson_serviceClasses()
     QFETCH(QBluetoothDeviceInfo::ServiceClasses, classes);
     QFETCH(QJsonArray, expected);
     QCOMPARE(toJson(classes), expected);
-
-//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);
-//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);
-//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);
-//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);
-//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);
-//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);
-//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);
-//    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);
-
 }
 
 void TestUtils::toJson_uuids_data()
