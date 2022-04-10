@@ -42,22 +42,29 @@ void TestUtils::toJson_info()
 
 void TestUtils::toJson_majorClass_data()
 {
-
+    toString_majorClass_data();
 }
 
 void TestUtils::toJson_majorClass()
 {
-
+    QFETCH(int, majorClass);
+    QFETCH(QString, expected);
+    QCOMPARE(toJson(static_cast<QBluetoothDeviceInfo::MajorDeviceClass>(majorClass)),
+        (expected.isNull()) ? QJsonValue(majorClass) : QJsonValue(expected));
 }
 
 void TestUtils::toJson_minorClass_data()
 {
-
+    toString_minorClass_data();
 }
 
 void TestUtils::toJson_minorClass()
 {
-
+    QFETCH(int, majorClass);
+    QFETCH(quint8, minorClass);
+    QFETCH(QString, expected);
+    QCOMPARE(toJson(static_cast<QBluetoothDeviceInfo::MajorDeviceClass>(majorClass), minorClass),
+             (expected.isNull()) ? QJsonValue(minorClass) : QJsonValue(expected));
 }
 
 void TestUtils::toJson_serviceClasses_data()
