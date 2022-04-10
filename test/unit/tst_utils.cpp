@@ -106,7 +106,10 @@ void TestUtils::toJson_info_data()
             { QString::fromLatin1("isCached"), true },
             { QString::fromLatin1("manufacturerData"), QJsonObject{
                 { QString::fromLatin1("0"), QJsonArray{
-                    QString::fromLatin1("emVybw=="), QString::fromLatin1("bXVsdGktemVybw=="),
+                    #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+                    QString::fromLatin1("emVybw=="),  // Multi support added in Qt 5.14.
+                    #endif
+                    QString::fromLatin1("bXVsdGktemVybw=="),
                 } },
                 { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
             } },
@@ -128,7 +131,10 @@ void TestUtils::toJson_info_data()
             { QString::fromLatin1("isCached"), true },
             { QString::fromLatin1("manufacturerData"), QJsonObject{
                 { QString::fromLatin1("0"), QJsonArray{
-                    QString::fromLatin1("emVybw=="), QString::fromLatin1("bXVsdGktemVybw=="),
+                    #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+                    QString::fromLatin1("emVybw=="),  // Multi support added in Qt 5.14.
+                    #endif
+                    QString::fromLatin1("bXVsdGktemVybw=="),
                 } },
                 { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
             } },
@@ -154,7 +160,10 @@ void TestUtils::toJson_info_data()
             { QString::fromLatin1("isCached"), true },
             { QString::fromLatin1("manufacturerData"), QJsonObject{
                 { QString::fromLatin1("0"), QJsonArray{
-                    QString::fromLatin1("emVybw=="), QString::fromLatin1("bXVsdGktemVybw=="),
+                    #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+                    QString::fromLatin1("emVybw=="),  // Multi support added in Qt 5.14.
+                    #endif
+                    QString::fromLatin1("bXVsdGktemVybw=="),
                 } },
                 { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
             } },
@@ -368,6 +377,7 @@ void TestUtils::toJson_uuids_vector()
     QCOMPARE(toJson(vector), expected);
 }
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
 void TestUtils::toJson_manufacturerData_data()
 {
     QTest::addColumn<ManufacturerData>("data");
@@ -385,7 +395,9 @@ void TestUtils::toJson_manufacturerData_data()
 
     data.insert(0, QByteArray("multi-zero"));
     object.insert(QString::number(0), QJsonArray{
+        #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)) // Multi support added in Qt 5.14.
         QString::fromLatin1(QByteArray("zero").toBase64()),
+        #endif
         QString::fromLatin1(QByteArray("multi-zero").toBase64()),
     });
     QTest::newRow("multi-zero") << data << object;
@@ -403,6 +415,7 @@ void TestUtils::toJson_manufacturerData()
     QFETCH(QJsonObject, expected);
     QCOMPARE(toJson(data), expected);
 }
+#endif
 
 void TestUtils::toString_majorClass_data()
 {
