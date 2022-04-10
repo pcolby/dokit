@@ -39,8 +39,11 @@ private slots:
     void toJson_serviceClasses_data();
     void toJson_serviceClasses();
 
-    void toJson_uuids_data();
-    void toJson_uuids();
+    void toJson_uuids_list_data();
+    void toJson_uuids_list();
+
+    void toJson_uuids_vector_data();
+    void toJson_uuids_vector();
 
     void toJson_manufacturerData_data();
     void toJson_manufacturerData();

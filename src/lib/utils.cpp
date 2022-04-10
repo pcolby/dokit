@@ -143,6 +143,18 @@ QJsonArray toJson(const QList<QBluetoothUuid> &uuids)
 }
 
 /*!
+ * Returns \a uuids as a JSON array.
+ */
+QJsonArray toJson(const QVector<QBluetoothUuid> &uuids)
+{
+    QJsonArray array;
+    for (const QBluetoothUuid &uuid: uuids) {
+        array.append(uuid.toString());
+    }
+    return array;
+}
+
+/*!
  * Returns Bluetooth manufacturer \a data as a JSON object that maps the manufacturer IDs (unsigned
  * integers as strings) to arrays of one or more values.
  */
