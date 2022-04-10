@@ -119,18 +119,27 @@ QJsonArray toJson(const QList<QBluetoothUuid> &uuids)
 }
 
 /*!
- * Returns Bluetooth manufacturer \a data as a JSON array.
+ * Returns Bluetooth manufacturer \a data as a JSON object that maps the manufacturer IDs (unsigned
+ * integers as strings) to arrays of one or more values.
  */
-QJsonArray toJson(const QMultiHash<quint16, QByteArray> &data)
+QJsonObject toJson(const QMultiHash<quint16, QByteArray> &data)
 {
-    QJsonArray array;
-    for (auto iter = data.cbegin(); iter != data.cend(); ++iter) {
-        array.append(QJsonObject{
-            { QLatin1String("manufacturerId"), iter.key() },
-            { QLatin1String("data"), QString::fromLatin1(iter.value().toBase64()) },
-        });
+    QJsonObject object;
+    QList<quint16> keys = data.uniqueKeys();
+    std::sort(keys.begin(), keys.end());
+    for (const quint16 key: keys) {
+        // Convert the key's values to a JSON array, reversing the order, because QMultiHash
+        // guarantees that the values are orderer "from the most recently inserted to the least
+        // recently inserted", which is the oppoosit of what we want.
+        QList<QByteArray> values = data.values(key);
+        std::reverse(values.begin(), values.end());
+        QJsonArray array;
+        for (const QByteArray &value: values) {
+            array.append(QLatin1String(value.toBase64()));
+        }
+        object.insert(QString::number(key), array);
     }
-    return array;
+    return object;
 }
 
 /*!

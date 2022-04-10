@@ -30,6 +30,12 @@ char *toString(const QJsonArray &array)
     return qstrdup(("QJsonArray(" + QJsonDocument(array).toJson(QJsonDocument::Compact) + ")").constData());
 }
 
+// Serialiser for QCOMPARE to output QJsonObject objects on test failures.
+char *toString(const QJsonObject &object)
+{
+    return qstrdup(("QJsonObject(" + QJsonDocument(object).toJson(QJsonDocument::Compact) + ")").constData());
+}
+
 void TestUtils::toJson_info_data()
 {
 
@@ -69,12 +75,10 @@ void TestUtils::toJson_minorClass()
 
 void TestUtils::toJson_serviceClasses_data()
 {
-
 }
 
 void TestUtils::toJson_serviceClasses()
 {
-
 }
 
 void TestUtils::toJson_uuids_data()
@@ -111,14 +115,43 @@ void TestUtils::toJson_uuids()
     QCOMPARE(toJson(list), expected);
 }
 
+typedef QMultiHash<quint16, QByteArray> ManufacturerData;
+Q_DECLARE_METATYPE(ManufacturerData)
+
 void TestUtils::toJson_manufacturerData_data()
 {
+    QTest::addColumn<ManufacturerData>("data");
+    QTest::addColumn<QJsonObject>("expected");
 
+    ManufacturerData data;
+    QJsonObject object;
+    QTest::newRow("empty") << data << object;
+
+    data.insert(0, QByteArray("zero"));
+    object.insert(QString::number(0), QJsonArray{
+        QString::fromLatin1(QByteArray("zero").toBase64()),
+    });
+    QTest::newRow("zero") << data << object;
+
+    data.insert(0, QByteArray("multi-zero"));
+    object.insert(QString::number(0), QJsonArray{
+        QString::fromLatin1(QByteArray("zero").toBase64()),
+        QString::fromLatin1(QByteArray("multi-zero").toBase64()),
+    });
+    QTest::newRow("multi-zero") << data << object;
+
+    data.insert(999, QByteArray(9, 3));
+    object.insert(QString::number(999), QJsonArray{
+        QString::fromLatin1(QByteArray(9, 3).toBase64()),
+    });
+    QTest::newRow("binary") << data << object;
 }
 
 void TestUtils::toJson_manufacturerData()
 {
-
+    QFETCH(ManufacturerData, data);
+    QFETCH(QJsonObject, expected);
+    QCOMPARE(toJson(data), expected);
 }
 
 void TestUtils::toString_majorClass_data()
