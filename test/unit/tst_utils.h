@@ -24,7 +24,23 @@ class TestUtils : public QObject
     Q_OBJECT
 
 private slots:
-    /// \todo Many other test functions.
+    void toJson_info_data();
+    void toJson_info();
+
+    void toJson_majorClass_data();
+    void toJson_majorClass();
+
+    void toJson_minorClass_data();
+    void toJson_minorClass();
+
+    void toJson_serviceClasses_data();
+    void toJson_serviceClasses();
+
+    void toJson_uuids_data();
+    void toJson_uuids();
+
+    void toJson_manufacturerData_data();
+    void toJson_manufacturerData();
 
     void toString_majorClass_data();
     void toString_majorClass();

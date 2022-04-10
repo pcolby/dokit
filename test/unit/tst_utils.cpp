@@ -20,6 +20,99 @@
 #include "tst_utils.h"
 
 #include "utils.h"
+#include "uuids.h"
+
+#include <QJsonDocument>
+
+// Serialiser for QCOMPARE to output QJsonArray objects on test failures.
+char *toString(const QJsonArray &array)
+{
+    return qstrdup(("QJsonArray(" + QJsonDocument(array).toJson(QJsonDocument::Compact) + ")").constData());
+}
+
+void TestUtils::toJson_info_data()
+{
+
+}
+
+void TestUtils::toJson_info()
+{
+
+}
+
+void TestUtils::toJson_majorClass_data()
+{
+
+}
+
+void TestUtils::toJson_majorClass()
+{
+
+}
+
+void TestUtils::toJson_minorClass_data()
+{
+
+}
+
+void TestUtils::toJson_minorClass()
+{
+
+}
+
+void TestUtils::toJson_serviceClasses_data()
+{
+
+}
+
+void TestUtils::toJson_serviceClasses()
+{
+
+}
+
+void TestUtils::toJson_uuids_data()
+{
+    QTest::addColumn<QList<QBluetoothUuid>>("list");
+    QTest::addColumn<QJsonArray>("expected");
+
+    QList<QBluetoothUuid> list;
+    QJsonArray array;
+    QTest::addRow("empty") << list << array;
+
+    list.append(QBluetoothUuid());
+    array.append(QBluetoothUuid().toString());
+    QTest::addRow("null") << list << array;
+
+    list.append(QBluetoothUuid(QBluetoothUuid::DeviceName));
+    array.append(QBluetoothUuid(QBluetoothUuid::DeviceName).toString());
+    QTest::addRow("deviceName") << list << array;
+
+    list.append(QBluetoothUuid(QUuid(POKIT_SERVICE_MULTIMETER)));
+    array.append(QUuid(POKIT_SERVICE_MULTIMETER).toString());
+    QTest::addRow("multimeter") << list << array;
+
+    const QUuid randomUuid = QUuid::createUuid();
+    list.append(QBluetoothUuid(randomUuid));
+    array.append(randomUuid.toString());
+    QTest::addRow("random") << list << array;
+}
+
+void TestUtils::toJson_uuids()
+{
+    QFETCH(QList<QBluetoothUuid>, list);
+    QFETCH(QJsonArray, expected);
+    QCOMPARE(toJson(list), expected);
+}
+
+void TestUtils::toJson_manufacturerData_data()
+{
+
+}
+
+void TestUtils::toJson_manufacturerData()
+{
+
+}
 
 void TestUtils::toString_majorClass_data()
 {
