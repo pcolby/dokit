@@ -50,29 +50,29 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: "${{ runner.temp }}/coverage.info"
+        path-to-lcov: coverage.info
 
   update-doc-branch:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Download HTML Report
-      uses: actions/download-artifact@v3
-      with:
-        name: html-report
-    - name: Display structure of downloaded files
-      run: ls -R
     - name: Checkout doc Branch
       #if: ${{ github.ref == 'refs/heads/main' }}
       uses: actions/checkout@v3
       with:
         ref: doc
         path: doc
-    - name: Install Coverage Report
+    - name: Clear Previous Coverage Report
       #if: ${{ github.ref == 'refs/heads/main' }}
+      run: rm -rf "$GITHUB_WORKSPACE/doc/main/cov"
+    - name: Download HTML Report
+      uses: actions/download-artifact@v3
+      with:
+        name: html-report
+        path: "$GITHUB_WORKSPACE/doc/main/cov"
+    - name: Inspect Changes # for diagnostics only.
       run: |
-        rm -rf "$GITHUB_WORKSPACE/doc/main/cov"
-        cp -a "$RUNNER_TEMP/coverage" "$GITHUB_WORKSPACE/doc/main/cov"
+        ls -R "$GITHUB_WORKSPACE/doc/main/cov"
         git -C "$GITHUB_WORKSPACE/doc" status
         git -C "$GITHUB_WORKSPACE/doc" diff
     - name: Push Updated doc Branch
