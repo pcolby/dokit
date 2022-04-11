@@ -55,6 +55,7 @@ jobs:
   update-doc-branch:
     runs-on: ubuntu-latest
     needs: build
+    steps:
     - name: Download HTML Report
       uses: actions/download-artifact@v3
       with:
