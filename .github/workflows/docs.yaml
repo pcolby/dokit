@@ -36,6 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     if: success() && (github.ref == 'refs/heads/artifacts')
     needs: generate
+    steps:
     - uses: actions/checkout@v3
       with: { ref: doc }
     - name: Clear previous docs
