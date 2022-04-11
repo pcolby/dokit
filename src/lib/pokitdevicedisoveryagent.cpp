@@ -149,8 +149,7 @@ void PokitDeviceDiscoveryAgent::start()
 
 /*!
  * \internal
- * \brief PokitDeviceDiscoveryAgentPrivate::PokitDeviceDiscoveryAgentPrivate
- * \param q
+ * Constructs a new PokitDeviceDiscoveryAgentPrivate object with public implementation \a q.
  */
 PokitDeviceDiscoveryAgentPrivate::PokitDeviceDiscoveryAgentPrivate(PokitDeviceDiscoveryAgent * const q)
     : q_ptr(q)

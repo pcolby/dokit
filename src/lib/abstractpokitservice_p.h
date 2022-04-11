@@ -19,11 +19,11 @@
 
 /*!
  * \file
- * Declares the PokitDeviceDiscoveryAgentPrivate class.
+ * Declares the AbstractPokitServicePrivate class.
  */
 
-#ifndef QTPOKIT_POKITDEVICEDISCOVERYAGENT_P_H
-#define QTPOKIT_POKITDEVICEDISCOVERYAGENT_P_H
+#ifndef QTPOKIT_ABSTRACTPOKITSERVICE_P_H
+#define QTPOKIT_ABSTRACTPOKITSERVICE_P_H
 
 #include <qtpokit/qtpokit_global.h>
 
@@ -31,30 +31,26 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
-class PokitDeviceDiscoveryAgent;
+class AbstractPokitService;
 
-class QTPOKIT_EXPORT PokitDeviceDiscoveryAgentPrivate : public QObject
+class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit PokitDeviceDiscoveryAgentPrivate(PokitDeviceDiscoveryAgent * const q);
+    explicit AbstractPokitServicePrivate(AbstractPokitService * const q);
 
 public slots:
-    void deviceDiscovered(const QBluetoothDeviceInfo &info);
-    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    void deviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
-    #endif
 
 protected:
-    PokitDeviceDiscoveryAgent * q_ptr; ///< Internal q-pointer.
+    AbstractPokitService * q_ptr; ///< Internal q-pointer.
 
 private:
-    Q_DECLARE_PUBLIC(PokitDeviceDiscoveryAgent)
-    Q_DISABLE_COPY(PokitDeviceDiscoveryAgentPrivate)
-    friend class TestPokitDeviceDiscoveryAgent;
+    Q_DECLARE_PUBLIC(AbstractPokitService)
+    Q_DISABLE_COPY(AbstractPokitServicePrivate)
+    friend class TestAbstractPokitService;
 };
 
 QTPOKIT_END_NAMESPACE
 
-#endif // QTPOKIT_POKITDEVICEDISCOVERYAGENT_P_H
+#endif // QTPOKIT_ABSTRACTPOKITSERVICE_P_H

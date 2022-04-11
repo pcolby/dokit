@@ -35,6 +35,8 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
+/// \todo Probably should move all of these toJson functions out of the shared library?
+
 QTPOKIT_EXPORT QJsonObject toJson(const QBluetoothDeviceInfo &info);
 QTPOKIT_EXPORT QJsonArray  toJson(const QBluetoothDeviceInfo::CoreConfigurations &configurations);
 QTPOKIT_EXPORT QJsonValue  toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass);
