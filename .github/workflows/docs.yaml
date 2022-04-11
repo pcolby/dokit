@@ -34,7 +34,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    if: success() && (github.ref == 'refs/heads/artifacts')
+    if: success() && (github.ref == 'refs/heads/main')
     needs: generate
     steps:
     - uses: actions/checkout@v3
