@@ -1,55 +1,67 @@
 name: Documentation
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout main Branch
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
       with:
-        ref: main
-        path: main
-        submodules: true
-    - name: Checkout doc Branch
-      uses: actions/checkout@v3
-      with:
-        ref: doc
-        path: doc
         submodules: true
     - name: Install Doxygen
       run: |
-        sudo apt update
-        sudo apt upgrade
-        sudo apt install graphviz libclang1-9 libclang-cpp9 qtbase5-dev qtconnectivity5-dev
+        sudo apt update && sudo apt upgrade && sudo apt install graphviz libclang1-9 libclang-cpp9 qtbase5-dev qtconnectivity5-dev
         wget --quiet https://doxygen.nl/files/doxygen-1.9.3.linux.bin.tar.gz --output-document "$RUNNER_TEMP/doxygen-1.9.3.linux.bin.tar.gz"
         tar --extract --file "$RUNNER_TEMP/doxygen-1.9.3.linux.bin.tar.gz" --directory "$RUNNER_TEMP"
         "$RUNNER_TEMP/doxygen-1.9.3/bin/doxygen" --version
-    - name: Build Docs
+    - name: Build docs
       run: |
         cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-1.9.3/bin/doxygen" -S "$GITHUB_WORKSPACE/main" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" --target doc doc-internal
-    - name: Install Docs
+    - name: Upload public docs
+      uses: actions/upload-artifact@v3
+      with:
+        name: public-docs
+        path: "${{ runner.temp }}/doc/public"
+        if-no-files-found: error
+    - name: Upload internal docs
+      uses: actions/upload-artifact@v3
+      with:
+        name: internal-docs
+        path: "${{ runner.temp }}/doc/internal"
+        if-no-files-found: error
+
+  publish:
+    runs-on: ubuntu-latest
+    if: success() && (github.ref == 'refs/heads/artifacts')
+    needs: generate
+    - uses: actions/checkout@v3
+      with: { ref: doc }
+    - name: Clear previous docs
+      run: rm -rf main/{doc,int}
+    - name: Download public docs
+      uses: actions/download-artifact@v3
+      with:
+        name: public-docs
+        path: main/doc
+    - name: Download internal docs
+      uses: actions/download-artifact@v3
+      with:
+        name: internal-docs
+        path: main/int
+    - name: Inspect changes # for diagnostics only.
       run: |
-        rm -rf "$GITHUB_WORKSPACE/doc/main/"{doc,int}
-        cp -a "$RUNNER_TEMP/doc/public" "$GITHUB_WORKSPACE/doc/main/doc"
-        cp -a "$RUNNER_TEMP/doc/internal" "$GITHUB_WORKSPACE/doc/main/int"
-    - name: Inspect Changes
-      run: |
-        git -C "$GITHUB_WORKSPACE/doc" status
-        git -C "$GITHUB_WORKSPACE/doc" diff
-    - name: Push Updated Docs
+        ls -R main/{doc,int}
+        git status
+        git diff
+    - name: Push updates
       run: |
         [[ -z $(git status --porcelain) ]] || {
           git config user.name github-actions
           git config user.email github-actions@github.com
           git pull
           git add .
-          git commit -m "Update generated docs for ${GITHUB_SHA}"
+          git commit -m "Update coverage report for ${GITHUB_SHA}"
           git push
         }
-      working-directory: ${{ github.workspace }}/doc
