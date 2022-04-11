@@ -40,11 +40,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: run-tests
     steps:
-    - name: Download Coverage Tracefile
+    - name: Download coverage tracefile
       uses: actions/download-artifact@v3
       with:
         name: tracefile
-    - name: Submit to Coveralls
+    - name: Report results to Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -55,24 +55,21 @@ jobs:
     if: success() && (github.ref == 'refs/heads/main')
     needs: run-tests
     steps:
-    - name: Checkout doc Branch
-      uses: actions/checkout@v3
-      with:
-        ref: doc
-        path: doc
-    - name: Clear Previous Coverage Report
-      run: rm -rf "$GITHUB_WORKSPACE/doc/main/cov"
-    - name: Download HTML Report
+    - uses: actions/checkout@v3
+      with: { ref: doc }
+    - name: Clear previous coverage report
+      run: rm -rf main/cov
+    - name: Download HTML report
       uses: actions/download-artifact@v3
       with:
         name: html-report
-        path: doc/main/cov
-    - name: Inspect Changes # for diagnostics only.
+        path: main/cov
+    - name: Inspect changes # for diagnostics only.
       run: |
-        ls -R "$GITHUB_WORKSPACE/doc/main/cov"
-        git -C "$GITHUB_WORKSPACE/doc" status
-        git -C "$GITHUB_WORKSPACE/doc" diff
-    - name: Push Updated doc Branch
+        ls -R main/cov
+        git status
+        git diff
+    - name: Push updates
       run: |
         [[ -z $(git status --porcelain) ]] || {
           git config user.name github-actions
@@ -82,4 +79,3 @@ jobs:
           git commit -m "Update coverage report for ${GITHUB_SHA}"
           git push
         }
-      working-directory: ${{ github.workspace }}/doc
