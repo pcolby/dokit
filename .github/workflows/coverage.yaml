@@ -35,6 +35,8 @@ jobs:
         name: html-report
         path: "${{ runner.temp }}/coverage"
         if-no-files-found: warn
+    - name: Abort # For testing dependant's use of success()
+      run: false
 
   update-coveralls:
     runs-on: ubuntu-latest
@@ -44,8 +46,6 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: tracefile
-    - name: Display structure of downloaded files
-      run: ls -R
     - name: Submit to Coveralls
       uses: coverallsapp/github-action@master
       with:
@@ -54,16 +54,15 @@ jobs:
 
   update-doc-branch:
     runs-on: ubuntu-latest
+    if: success() && (github.ref == 'refs/heads/artifacts')
     needs: run-tests
     steps:
     - name: Checkout doc Branch
-      #if: ${{ github.ref == 'refs/heads/main' }}
       uses: actions/checkout@v3
       with:
         ref: doc
         path: doc
     - name: Clear Previous Coverage Report
-      #if: ${{ github.ref == 'refs/heads/main' }}
       run: rm -rf "$GITHUB_WORKSPACE/doc/main/cov"
     - name: Download HTML Report
       uses: actions/download-artifact@v3
@@ -76,7 +75,6 @@ jobs:
         git -C "$GITHUB_WORKSPACE/doc" status
         git -C "$GITHUB_WORKSPACE/doc" diff
     - name: Push Updated doc Branch
-      #if: ${{ github.ref == 'refs/heads/main' }}
       run: |
         [[ -z $(git status --porcelain) ]] || {
           git config user.name github-actions
@@ -84,6 +82,6 @@ jobs:
           git pull
           git add .
           git commit -m "Update coverage report for ${GITHUB_SHA}"
-          #git push
+          git push
         }
       working-directory: ${{ github.workspace }}/doc
