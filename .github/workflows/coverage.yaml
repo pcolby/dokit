@@ -35,8 +35,6 @@ jobs:
         name: html-report
         path: "${{ runner.temp }}/coverage"
         if-no-files-found: warn
-    - name: Abort # For testing dependant's use of success()
-      run: false
 
   update-coveralls:
     runs-on: ubuntu-latest
