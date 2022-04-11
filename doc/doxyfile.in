@@ -876,7 +876,8 @@ WARN_LOGFILE           =
 
 INPUT                  = \
   "${CMAKE_SOURCE_DIR}/include" \
-  "${CMAKE_SOURCE_DIR}/README.md" \
+  "${CMAKE_SOURCE_DIR}/doc/src/common" \
+  "${CMAKE_SOURCE_DIR}/${DOX_INPUT_DOC}" \
   "${CMAKE_SOURCE_DIR}/${DOX_INPUT_SRC}"
 
 # This tag can be used to specify the character encoding of the source files
@@ -906,7 +907,7 @@ INPUT_ENCODING         = UTF-8
 # comment), *.py, *.pyw, *.f90, *.f95, *.f03, *.f08, *.f18, *.f, *.for, *.vhd,
 # *.vhdl, *.ucf, *.qsf and *.ice.
 
-FILE_PATTERNS          = *.cpp *.h
+FILE_PATTERNS          = *.cpp *.h *.md
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -1030,7 +1031,7 @@ FILTER_SOURCE_PATTERNS =
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE = ${CMAKE_SOURCE_DIR}/README.md
+USE_MDFILE_AS_MAINPAGE = "${CMAKE_SOURCE_DIR}/${DOX_INPUT_DOC}/mainpage.md"
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
