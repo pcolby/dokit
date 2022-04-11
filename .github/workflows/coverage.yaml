@@ -52,7 +52,7 @@ jobs:
 
   update-doc-branch:
     runs-on: ubuntu-latest
-    if: success() && (github.ref == 'refs/heads/artifacts')
+    if: success() && (github.ref == 'refs/heads/main')
     needs: run-tests
     steps:
     - name: Checkout doc Branch
