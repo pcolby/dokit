@@ -88,40 +88,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">QtPokit </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md__home_runner_work_qtpokit_qtpokit_README"></a> <a href="https://github.com/pcolby/qtpokit/actions/workflows/build.yaml?query=branch%3Amain"><img src="https://github.com/pcolby/qtpokit/actions/workflows/build.yaml/badge.svg?branch=main" alt="Build Status" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/pcolby/qtpokit/actions/workflows/static.yaml?query=branch%3Amain"><img src="https://github.com/pcolby/qtpokit/actions/workflows/static.yaml/badge.svg?branch=main" alt="Static Analysis" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml?query=branch%3Amain"><img src="https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml/badge.svg?branch=main" alt="Static Analysis" style="pointer-events: none;" class="inline"/></a> <a href="https://coveralls.io/github/pcolby/qtpokit?branch=main"><img src="https://img.shields.io/coveralls/github/pcolby/qtpokit/main?label=Coverage&amp;logo=coveralls" alt="Coverage Status" class="inline"/></a></p>
-<p >QtPokit is a cross-platform <a href="https://www.qt.io/">Qt</a> library, and console application for accessing <a href="https://www.pokitinnovations.com/" title="Pokit Innovations">Pokit</a> measuring devices.</p>
+<div class="textblock"><p ><a class="anchor" id="md__home_runner_work_qtpokit_qtpokit_doc_src_public_mainpage"></a> QtPokit is a cross-platform <a href="https://www.qt.io/">Qt</a> library, and console application for accessing <a href="https://www.pokitinnovations.com/" title="Pokit Innovations">Pokit</a> measuring devices.</p>
 <p >This project is in very early stages of development, but aims to support both <a href="https://www.pokitinnovations.com/pokit-meter/">Pokit Meter</a> and <a href="https://www.pokitinnovations.com/pokit-pro/">Pokit Pro</a>, on Linux, Mac and Windows. A separate project (to launch later) will aim to provide a cross-platform desktop GUI application using the QtPokit library.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Requirements</h1>
-<ul>
-<li>Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]</li>
-<li>a Qt-supported platform, such as Linux, MacOS or Windows</li>
-<li>a <a href="https://www.pokitinnovations.com/" title="Pokit Innovations">Pokit</a> device, such as a <a href="https://www.pokitinnovations.com/pokit-meter/">Pokit Meter</a> or <a href="https://www.pokitinnovations.com/pokit-pro/">Pokit Pro</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Building from Source</h1>
-<p >Prototypical <a href="https://cmake.org/">CMake</a>-based out-of-source build and test process:</p>
-<div class="fragment"><div class="line">cmake -E make_directory &lt;tmp-build-dir&gt;</div>
-<div class="line">cmake -D CMAKE_BUILD_TYPE=Release -S &lt;path-to-cloned-repo&gt; -B &lt;tmp-build-dir&gt;</div>
-<div class="line">cmake --build &lt;tmp-build-dir&gt;</div>
-<div class="line">ctest --test-dir &lt;tmp-build-dir&gt; --verbose</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
-Documentation</h2>
-<p >Configure the same as above, but build the <code>doc</code> and (optionally) <code>doc-internal</code> targets.</p>
-<div class="fragment"><div class="line">cmake -E make_directory &lt;tmp-build-dir&gt;</div>
-<div class="line">cmake -S &lt;path-to-cloned-repo&gt; -B &lt;tmp-build-dir&gt;</div>
-<div class="line">cmake --build &lt;tmp-build-dir&gt; --target doc doc-internal</div>
-<div class="line"># ls &lt;tmp-build-dir&gt;/doc/public    # Library end-user documentation</div>
-<div class="line"># ls &lt;tmp-build-dir&gt;/doc/internal  # Internal developer documentation</div>
-</div><!-- fragment --><p >These are regularly published to Github Pages via Github Actions:</p>
-<ul>
-<li><a href="https://pcolby.github.io/qtpokit/main/doc/index.html">public end-user docs</a></li>
-<li><a href="https://pcolby.github.io/qtpokit/main/int/index.html">internal dev docs</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md4"></a>
-License</h1>
-<p >QtPocket is freely available under the <a href="https://www.gnu.org/licenses/lgpl-3.0.html" title="GNU Lesser General Public License">LGPL</a></p>
-<p >[^minQt5]: The Qt BLE API was first <a href="https://doc.qt.io/qt-5/qtbluetooth-le-overview.html">added in v5.4</a> [^minQt6]: The Qt Bluetooth module was <a href="https://www.qt.io/blog/qt-6.2-lts-released">ported to Qt6 in v6.2</a> </p>
+<p >In the meantime, see the project homepage: <a href="https://github.com/pcolby/qtpokit">https://github.com/pcolby/qtpokit</a> </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

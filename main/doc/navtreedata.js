@@ -25,11 +25,7 @@
 var NAVTREE =
 [
   [ "QtPokit", "index.html", [
-    [ "Requirements", "index.html#autotoc_md1", null ],
-    [ "Building from Source", "index.html#autotoc_md2", [
-      [ "Documentation", "index.html#autotoc_md3", null ]
-    ] ],
-    [ "License", "index.html#autotoc_md4", null ],
+    [ "Placeholder Page", "md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

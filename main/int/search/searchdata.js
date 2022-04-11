@@ -6,7 +6,7 @@ var indexSectionsWithContent =
   3: "dipqst~",
   4: "cdq",
   5: "pq",
-  6: "qt"
+  6: "pqt"
 };
 
 var indexSectionNames =
