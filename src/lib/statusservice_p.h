@@ -19,45 +19,35 @@
 
 /*!
  * \file
- * Declares the AbstractPokitServicePrivate class.
+ * Declares the StatusServicePrivate class.
  */
 
-#ifndef QTPOKIT_ABSTRACTPOKITSERVICE_P_H
-#define QTPOKIT_ABSTRACTPOKITSERVICE_P_H
+#ifndef QTPOKIT_STATUSSERVICE_P_H
+#define QTPOKIT_STATUSSERVICE_P_H
 
-#include <qtpokit/qtpokit_global.h>
+#include <qtpokit/statusservice.h>
 
-#include <QObject>
-
-class QLowEnergyController;
-class QLowEnergyService;
+#include "abstractpokitservice_p.h"
 
 QTPOKIT_BEGIN_NAMESPACE
 
-class AbstractPokitService;
-
-class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject
+class QTPOKIT_EXPORT StatusServicePrivate : public AbstractPokitServicePrivate
 {
     Q_OBJECT
 
 public:
     QLowEnergyController * controller;
-    QLowEnergyService * service;
 
-    explicit AbstractPokitServicePrivate(QLowEnergyController * controller,
-                                         AbstractPokitService * const q);
+    explicit StatusServicePrivate(QLowEnergyController * controller, StatusService * const q);
 
 public slots:
 
-protected:
-    AbstractPokitService * q_ptr; ///< Internal q-pointer.
-
 private:
-    Q_DECLARE_PUBLIC(AbstractPokitService)
-    Q_DISABLE_COPY(AbstractPokitServicePrivate)
-    friend class TestAbstractPokitService;
+    Q_DECLARE_PUBLIC(StatusService)
+    Q_DISABLE_COPY(StatusServicePrivate)
+    friend class TestStatusService;
 };
 
 QTPOKIT_END_NAMESPACE
 
-#endif // QTPOKIT_ABSTRACTPOKITSERVICE_P_H
+#endif // QTPOKIT_STATUSSERVICE_P_H

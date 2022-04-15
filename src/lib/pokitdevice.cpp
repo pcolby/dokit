@@ -23,10 +23,10 @@
  */
 
 #include <qtpokit/pokitdevice.h>
+
+#include <qtpokit/statusservice.h>
+
 #include "pokitdevice_p.h"
-
-#include <qtpokit/uuids.h>
-
 #include "logging_p.h"
 
 #include <QDebug>

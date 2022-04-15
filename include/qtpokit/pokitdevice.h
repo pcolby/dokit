@@ -30,6 +30,8 @@
 #include <QObject>
 #include <QBluetoothDeviceInfo>
 
+class QLowEnergyController;
+
 QTPOKIT_BEGIN_NAMESPACE
 
 class DataLoggerService;
@@ -40,8 +42,6 @@ class MultimeterService;
 class StatusService;
 
 class PokitDevicePrivate;
-
-class QLowEnergyController;
 
 class QTPOKIT_EXPORT PokitDevice : public QObject
 {

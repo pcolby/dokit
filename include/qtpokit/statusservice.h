@@ -19,32 +19,31 @@
 
 /*!
  * \file
- * Declares the AbstractPokitService class.
+ * Declares the StatusService class.
  */
 
-#ifndef QTPOKIT_ABSTRACTPOKITSERVICE_H
-#define QTPOKIT_ABSTRACTPOKITSERVICE_H
+#ifndef QTPOKIT_STATUSSERVICE_H
+#define QTPOKIT_STATUSSERVICE_H
 
-#include "qtpokit_global.h"
+#include "abstractpokitservice.h"
 
-#include <QObject>
-
-class QLowEnergyController;
-class QLowEnergyService;
+#include <QBluetoothUuid>
 
 QTPOKIT_BEGIN_NAMESPACE
 
-class AbstractPokitServicePrivate;
+class StatusServicePrivate;
 
 QLowEnergyController * createPokitDeviceController(const QString &addressOrUuid);
 
-class QTPOKIT_EXPORT AbstractPokitService : public QObject
+class QTPOKIT_EXPORT StatusService : public AbstractPokitService
 {
     Q_OBJECT
 
 public:
-    AbstractPokitService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    virtual ~AbstractPokitService();
+    static const QBluetoothUuid serviceId;
+
+    StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
+    virtual ~StatusService();
 
 public slots:
 
@@ -52,16 +51,15 @@ signals:
 
 protected:
     /// \cond internal
-    AbstractPokitServicePrivate * d_ptr; ///< Internal d-pointer.
-    AbstractPokitService(AbstractPokitServicePrivate * const d, QObject * const parent);
+    StatusService(StatusServicePrivate * const d, QObject * const parent);
     /// \endcond
 
 private:
-    Q_DECLARE_PRIVATE(AbstractPokitService)
-    Q_DISABLE_COPY(AbstractPokitService)
-    friend class TestAbstractPokitService;
+    Q_DECLARE_PRIVATE(StatusService)
+    Q_DISABLE_COPY(StatusService)
+    friend class TestStatusService;
 };
 
 QTPOKIT_END_NAMESPACE
 
-#endif // QTPOKIT_ABSTRACTPOKITSERVICE_H
+#endif // QTPOKIT_StatusSERVICE_H
