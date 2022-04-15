@@ -36,18 +36,17 @@
  */
 
 /*!
- * Constructs a new Pokit device discovery agent with \a parent.
+ * Constructs a new Pokit service with \a parent.
  */
-AbstractPokitService::AbstractPokitService(QObject * parent)
-    : QObject(parent),
-      d_ptr(new AbstractPokitServicePrivate(this))
+AbstractPokitService::AbstractPokitService(QLowEnergyController * const controller, QObject * parent)
+    : QObject(parent), d_ptr(new AbstractPokitServicePrivate(controller, this))
 {
 
 }
 
 /*!
  * \cond internal
- * Constructs a new Pokit device discovery agent with \a parent, and private implementation \a d.
+ * Constructs a new Pokit service with \a parent, and private implementation \a d.
  */
 AbstractPokitService::AbstractPokitService(
     AbstractPokitServicePrivate * const d, QObject * const parent)
@@ -76,8 +75,9 @@ AbstractPokitService::~AbstractPokitService()
  * \internal
  * Constructs a new AbstractPokitServicePrivate object with public implementation \a q.
  */
-AbstractPokitServicePrivate::AbstractPokitServicePrivate(AbstractPokitService * const q)
-    : q_ptr(q)
+AbstractPokitServicePrivate::AbstractPokitServicePrivate(
+    QLowEnergyController * controller, AbstractPokitService * const q)
+    : controller(controller), q_ptr(q)
 {
 
 }

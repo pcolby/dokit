@@ -5,6 +5,7 @@ add_library(QtPokit SHARED)
 target_sources(
   QtPokit
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/abstractpokitservice.h
+  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevicedisoveryagent.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/qtpokit_global.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/utils.h
@@ -13,6 +14,8 @@ target_sources(
   PRIVATE abstractpokitservice_p.h
   PRIVATE logging.cpp
   PRIVATE logging_p.h
+  PRIVATE pokitdevice.cpp
+  PRIVATE pokitdevice_p.h
   PRIVATE pokitdevicedisoveryagent.cpp
   PRIVATE pokitdevicedisoveryagent_p.h
   PRIVATE utils.cpp

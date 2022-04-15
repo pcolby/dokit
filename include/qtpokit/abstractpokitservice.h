@@ -32,15 +32,21 @@
 QTPOKIT_BEGIN_NAMESPACE
 
 class AbstractPokitServicePrivate;
+class QLowEnergyController;
 class QLowEnergyService;
+
+QLowEnergyController * createPokitDeviceController(const QString &addressOrUuid);
 
 class QTPOKIT_EXPORT AbstractPokitService : public QObject
 {
     Q_OBJECT
 
 public:
-    AbstractPokitService(QObject * parent = nullptr);
+    AbstractPokitService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
     virtual ~AbstractPokitService();
+
+    void setController(QLowEnergyController * device);
+    void setController(const QString &addressOrUuid); ///< See MacOS notes at https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#QBluetoothDeviceInfo-2
 
 public slots:
 

@@ -31,9 +31,10 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
-Q_DECLARE_LOGGING_CATEGORY(pokitDiscovery); ///< Logging category for Pokit device discovery.
-Q_DECLARE_LOGGING_CATEGORY(pokitService);   ///< Logging category for Pokit services.
-Q_DECLARE_LOGGING_CATEGORY(pokitUtils);     ///< Logging category for Pokit utility functions.
+Q_DECLARE_LOGGING_CATEGORY(pokitController); ///< Logging category for Pokit device controllers.
+Q_DECLARE_LOGGING_CATEGORY(pokitDiscovery);  ///< Logging category for Pokit device discovery.
+Q_DECLARE_LOGGING_CATEGORY(pokitService);    ///< Logging category for Pokit services.
+Q_DECLARE_LOGGING_CATEGORY(pokitUtils);      ///< Logging category for Pokit utility functions.
 
 QTPOKIT_END_NAMESPACE
 

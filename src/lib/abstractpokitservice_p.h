@@ -27,18 +27,22 @@
 
 #include <qtpokit/qtpokit_global.h>
 
-#include <QBluetoothDeviceDiscoveryAgent>
+#include <QObject>
 
 QTPOKIT_BEGIN_NAMESPACE
 
 class AbstractPokitService;
+class QLowEnergyController;
 
 class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit AbstractPokitServicePrivate(AbstractPokitService * const q);
+    QLowEnergyController * controller;
+
+    explicit AbstractPokitServicePrivate(QLowEnergyController * controller,
+                                         AbstractPokitService * const q);
 
 public slots:
 
