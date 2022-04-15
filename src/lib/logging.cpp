@@ -19,7 +19,11 @@
 
 #include "logging_p.h"
 
+QTPOKIT_BEGIN_NAMESPACE
+
 Q_LOGGING_CATEGORY(pokitController, "pokit.ble.controller", QtInfoMsg)
 Q_LOGGING_CATEGORY(pokitDiscovery,  "pokit.ble.discovery",  QtInfoMsg)
 Q_LOGGING_CATEGORY(pokitService,    "pokit.ble.service",    QtInfoMsg)
 Q_LOGGING_CATEGORY(pokitUtils,      "pokit.utils",          QtInfoMsg)
+
+QTPOKIT_END_NAMESPACE
