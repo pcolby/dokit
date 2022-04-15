@@ -28,6 +28,7 @@
 #include "logging_p.h"
 
 #include <QDebug>
+#include <QLowEnergyController>
 
 /*!
  * \class AbstractPokitService

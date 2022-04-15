@@ -234,6 +234,7 @@ int main(int argc, char *argv[])
             qDebug() << device;
             Informer i(&app);
             Q_UNUSED(i) // Just to make cppcheck happy for now.
+            qDebug() << "running";
             return app.exec();
         }
         return EXIT_FAILURE;

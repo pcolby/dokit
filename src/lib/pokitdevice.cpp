@@ -54,7 +54,6 @@ PokitDevice::PokitDevice(const QString &addressOrUuid, QObject *parent)
     const QBluetoothDeviceInfo info = (addressOrUuid.contains(QLatin1Char('-'))
         ? QBluetoothDeviceInfo(QBluetoothUuid(addressOrUuid), QString(), 0)
         : QBluetoothDeviceInfo(QBluetoothAddress(addressOrUuid), QString(), 0));
-    qCDebug(pokitController) << "Pokit device" << info.deviceUuid() << info.address();
     d->setController(new QLowEnergyController(info, this));
 }
 
@@ -156,13 +155,20 @@ StatusService * PokitDevice::status()
  * Constructs a new PokitDevicePrivate object with public implementation \a q.
  */
 PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)
-    : q_ptr(q)
+    : controller(nullptr), dataLogger(nullptr), deviceInformation(nullptr), dso(nullptr),
+      genericAccess(nullptr), multimeter(nullptr), status(nullptr), q_ptr(q)
 {
 
 }
 
 void PokitDevicePrivate::setController(QLowEnergyController * newController)
 {
+    qCDebug(pokitController) << "Replacing" << this->controller << "with" << newController;
+    if (newController) {
+        qCDebug(pokitController) << "New controller" << newController->remoteName()
+        << newController->remoteAddress() << newController->remoteDeviceUuid();
+    }
+
     if (newController == this->controller) {
         qCDebug(pokitController) << "Controller is already" << newController;
         return;
@@ -202,7 +208,8 @@ void PokitDevicePrivate::setController(QLowEnergyController * newController)
  */
 void PokitDevicePrivate::connected()
 {
-    qCDebug(pokitController) << "Connected";
+    qCDebug(pokitController) << "Connected" << controller->remoteName()
+        << controller->remoteAddress() << controller->remoteDeviceUuid();
 }
 
 /*!
