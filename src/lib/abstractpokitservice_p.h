@@ -27,6 +27,7 @@
 
 #include <qtpokit/qtpokit_global.h>
 
+#include <QBluetoothUuid>
 #include <QObject>
 
 class QLowEnergyController;
@@ -47,7 +48,7 @@ public:
     explicit AbstractPokitServicePrivate(QLowEnergyController * controller,
                                          AbstractPokitService * const q);
 
-public slots:
+    bool readCharacteristic(const QBluetoothUuid &uuid);
 
 protected:
     AbstractPokitService * q_ptr; ///< Internal q-pointer.

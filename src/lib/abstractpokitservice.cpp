@@ -65,6 +65,18 @@ AbstractPokitService::~AbstractPokitService()
     delete d_ptr;
 }
 
+QLowEnergyService * AbstractPokitService::service()
+{
+    Q_D(AbstractPokitService);
+    return d->service;
+}
+
+const QLowEnergyService * AbstractPokitService::service() const
+{
+    Q_D(const AbstractPokitService);
+    return d->service;
+}
+
 /*!
  * \cond internal
  * \class AbstractPokitServicePrivate
@@ -81,6 +93,21 @@ AbstractPokitServicePrivate::AbstractPokitServicePrivate(
     : controller(controller), q_ptr(q)
 {
 
+}
+
+bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
+{
+    if (!service) {
+        return false;
+    }
+
+    const QLowEnergyCharacteristic characteristic = service->characteristic(uuid);
+    if (!characteristic.isValid()) {
+        return false;
+    }
+
+    service->readCharacteristic(characteristic);
+    return true;
 }
 
 /// \endcond

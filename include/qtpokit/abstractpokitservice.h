@@ -46,7 +46,10 @@ public:
     AbstractPokitService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
     virtual ~AbstractPokitService();
 
-public slots:
+    virtual bool readCharacteristics() = 0;
+
+    QLowEnergyService * service();
+    const QLowEnergyService * service() const;
 
 signals:
 

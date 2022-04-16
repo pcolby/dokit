@@ -28,6 +28,8 @@
 #include "abstractpokitservice.h"
 
 #include <QBluetoothUuid>
+#include <QLowEnergyCharacteristic>
+#include <QVersionNumber>
 
 QTPOKIT_BEGIN_NAMESPACE
 
@@ -40,14 +42,70 @@ class QTPOKIT_EXPORT StatusService : public AbstractPokitService
     Q_OBJECT
 
 public:
-    static const QBluetoothUuid serviceId;
+    static const QBluetoothUuid serviceUuid;
+
+    struct CharacteristicUuids {
+        static const QBluetoothUuid deviceCharacteristics;
+        static const QBluetoothUuid status;
+        static const QBluetoothUuid name;
+        static const QBluetoothUuid flashLed;
+    };
+
+    struct DeviceCharacteristics {
+        QVersionNumber firmwareVersion;
+        quint16 maximumVoltage;
+        quint16 maximumCurrent;
+        quint16 maximumResistance;
+        quint16 maximumSamplingRate;
+        quint16 samplingBufferSize;
+        quint16 capabilityMask; ///< Reserved.
+        quint8 macAddress[6];
+    };
+
+    enum class DeviceStatus {
+        Idle = 0,
+        MultimeterDcVoltage = 1,
+        MultimeterAcVoltage = 2,
+        MultimeterDcCurrent = 3,
+        MultimeterAcCurrent = 4,
+        MultimeterResistance = 5,
+        MultimeterDiode = 6,
+    };
 
     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    virtual ~StatusService();
+    ~StatusService() override;
 
-public slots:
+    bool readCharacteristics() override;
+    bool readDeviceCharacteristics();
+    bool readStatusCharacteristic();
+    bool readNameCharacteristic();
+
+    // Device Characteristics characteristic (BLE read only).
+    int capabiltyMask() const;
+    QVersionNumber firmwareVersion() const;
+    int maximumCurrent() const;
+    int maximumResistance() const;
+    int maximumSamplingRate() const;
+    int maximumVoltage() const;
+    int samplingBufferSize() const;
+
+    // Status characteristic (Read only).
+    DeviceStatus deviceStatus() const;
+    float batteryVoltage() const;
+
+    // Device Name characteristic (BLE read/write).
+    QString deviceName() const;
+    void setDeviceName(const QString &name);
+
+    // Flash LED characteristic (BLE write only).
+    void flashLed();
 
 signals:
+    void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &characteristics);
+    void deviceNameRead(const QString &deviceName);
+    void deivceNameWritten();
+    void deviceStatusRead(const StatusService::DeviceStatus status, const float batteryVoltage);
+    void deviceLedFlashed();
 
 protected:
     /// \cond internal
