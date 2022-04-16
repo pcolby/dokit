@@ -44,8 +44,7 @@ class QTPOKIT_EXPORT AbstractPokitService : public QObject
     Q_OBJECT
 
 public:
-    AbstractPokitService(const QBluetoothUuid &serviceUuid, QLowEnergyController * const controller,
-                         QObject * parent = nullptr);
+    AbstractPokitService() = delete;
     virtual ~AbstractPokitService();
 
     virtual bool readCharacteristics() = 0;
@@ -57,6 +56,7 @@ public:
     const QLowEnergyService * service() const;
 
 signals:
+    void serviceDetailsDiscovered();
 
 protected:
     /// \cond internal

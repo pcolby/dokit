@@ -39,12 +39,12 @@
 /*!
  * Constructs a new Pokit service with \a parent.
  */
-AbstractPokitService::AbstractPokitService(const QBluetoothUuid &serviceUuid,
-    QLowEnergyController * const controller, QObject * parent)
-    : QObject(parent), d_ptr(new AbstractPokitServicePrivate(serviceUuid, controller, this))
-{
+//AbstractPokitService::AbstractPokitService(const QBluetoothUuid &serviceUuid,
+//    QLowEnergyController * const controller, QObject * parent)
+//    : QObject(parent), d_ptr(new AbstractPokitServicePrivate(serviceUuid, controller, this))
+//{
 
-}
+//}
 
 /*!
  * \cond internal
@@ -105,7 +105,8 @@ const QLowEnergyService * AbstractPokitService::service() const
  */
 AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
     QLowEnergyController * controller, AbstractPokitService * const q)
-    : autoDiscover(true), controller(controller), serviceUuid(serviceUuid), q_ptr(q)
+    : autoDiscover(true), controller(controller), service(nullptr), serviceUuid(serviceUuid),
+      q_ptr(q)
 {
     if (controller) {
         connect(controller, &QLowEnergyController::connected,
@@ -122,17 +123,31 @@ AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &s
 
 }
 
+/// \todo This could support a "replaceExisting" argument, but its unclear if that's wanted, and if
+/// so, what data consistency issues might arise.
 bool AbstractPokitServicePrivate::createServiceObject()
 {
     if (!controller) {
         return false;
     }
 
+    if (service) {
+        qCDebug(pokitService) << "Already have service object" << service;
+        return true;
+    }
+
     service = controller->createServiceObject(serviceUuid, this);
     if (!service) {
         return false;
     }
-    qCDebug(pokitService) << "Service created" << service;
+    qCDebug(pokitService) << "Service object created" << service;
+
+    connect(service, &QLowEnergyService::stateChanged,
+            this, &AbstractPokitServicePrivate::stateChanged);
+    connect(service, &QLowEnergyService::characteristicRead,
+            this, &AbstractPokitServicePrivate::characteristicRead);
+    connect(service, &QLowEnergyService::characteristicWritten,
+            this, &AbstractPokitServicePrivate::characteristicWritten);
 
     if (autoDiscover) {
         service->discoverDetails();
@@ -143,14 +158,18 @@ bool AbstractPokitServicePrivate::createServiceObject()
 bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
 {
     if (!service) {
+        qCDebug(pokitService) << "Cannot read characteristic without a service object" << uuid;
         return false;
     }
 
     const QLowEnergyCharacteristic characteristic = service->characteristic(uuid);
     if (!characteristic.isValid()) {
+        qCDebug(pokitService) << "Cannot read characteristic that is not yet valid" << uuid;
         return false;
     }
 
+    qCDebug(pokitService) << "Reading characteristic" << uuid << characteristic.properties()
+                          << characteristic.name() << characteristic.value();
     service->readCharacteristic(characteristic);
     return true;
 }
@@ -178,6 +197,11 @@ void AbstractPokitServicePrivate::discoveryFinished()
 
     qCDebug(pokitService) << "Discovery finished" << controller->remoteName()
         << controller->remoteAddress() << controller->remoteDeviceUuid();
+
+    if (!createServiceObject()) {
+        qCWarning(pokitService) << "Discovery finished, but service not found";
+        /// \todo Might need to emit an error signal here?
+    }
 }
 
 void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
@@ -187,5 +211,28 @@ void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &newSer
         createServiceObject();
     }
 }
+
+void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState newState)
+{
+    qCDebug(pokitService) << "State changed" << newState;
+
+    if (newState == QLowEnergyService::
+            #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+            ServiceDiscovered
+            #else
+            RemoteServiceDiscovered
+            #endif
+        ) {
+        Q_Q(AbstractPokitService);
+        qCDebug(pokitService) << "Service details discovered";
+        emit q->serviceDetailsDiscovered();
+    }
+}
+
+/// \todo Document these two too.
+//virtual void characteristicRead(const QLowEnergyCharacteristic &characteristic,
+//                                const QByteArray &value) = 0;
+//virtual void characteristicWritten(const QLowEnergyCharacteristic &characteristic,
+//                                   const QByteArray &newValue) = 0;
 
 /// \endcond

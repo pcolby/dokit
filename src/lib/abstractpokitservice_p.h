@@ -28,6 +28,8 @@
 #include <qtpokit/qtpokit_global.h>
 
 #include <QBluetoothUuid>
+#include <QLowEnergyService>
+#include <QLowEnergyCharacteristic>
 #include <QObject>
 
 class QLowEnergyController;
@@ -60,6 +62,12 @@ protected slots:
     void connected();
     void discoveryFinished();
     void serviceDiscovered(const QBluetoothUuid &newService);
+    void stateChanged(QLowEnergyService::ServiceState newState);
+
+    virtual void characteristicRead(const QLowEnergyCharacteristic &characteristic,
+                                    const QByteArray &value) = 0;
+    virtual void characteristicWritten(const QLowEnergyCharacteristic &characteristic,
+                                       const QByteArray &newValue) = 0;
 
 private:
     Q_DECLARE_PUBLIC(AbstractPokitService)

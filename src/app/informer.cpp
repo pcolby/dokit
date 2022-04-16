@@ -32,10 +32,6 @@
 
 Q_LOGGING_CATEGORY(pokitInformer, "pokit.ui.informer", QtInfoMsg);
 
-/// \todo Probably implement a sahred (library) PokitDevice class that wraps a QLowEnergyController
-/// to implement all of the Pokit services?  Kinda depends on how Qt's BLE services classes work, so
-/// we'll continue with this bespoke class to learn more for now...
-
 Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr)
 {
     PokitDevice * device = new PokitDevice(QLatin1String("5C:02:72:09:AA:25"), this);
@@ -47,6 +43,11 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
             [](QLowEnergyController::Error error) {
         qDebug() << error;
         ::exit(EXIT_FAILURE); ///< \todo Exit gracefully.
+    });
+
+    connect(service, &StatusService::serviceDetailsDiscovered,[service]() {
+        qDebug() << "All ready to go! :)";
+        service->readCharacteristics(); // Just to get some stuff flowing for now.
     });
 
     device->controller()->connectToDevice();

@@ -109,7 +109,7 @@ bool StatusService::readStatusCharacteristic()
 bool StatusService::readNameCharacteristic()
 {
     Q_D(StatusService);
-    return d->readCharacteristic(CharacteristicUuids::flashLed);
+    return d->readCharacteristic(CharacteristicUuids::name);
 }
 
 /*!
@@ -128,6 +128,78 @@ StatusServicePrivate::StatusServicePrivate(
     : AbstractPokitServicePrivate(StatusService::serviceUuid, controller, q)
 {
 
+}
+
+void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
+                                              const QByteArray &value)
+{
+    qCDebug(pokitService) << "Characteristic read" << characteristic.name()
+        << characteristic.uuid() << value;
+
+    Q_Q(StatusService);
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
+        StatusService::DeviceCharacteristics characteristics;
+        /// \todo Populate characteristics.
+        emit q->deviceCharacteristicsRead(characteristics);
+        return;
+    }
+
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
+        StatusService::DeviceStatus status = StatusService::DeviceStatus::Idle;
+        float batteryVoltage = 0.0;
+        /// \todo Set status and batteryVoltage.
+        emit q->deviceStatusRead(status, batteryVoltage);
+        return;
+    }
+
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {
+        const QString deviceName = QString::fromUtf8(value);
+        qCDebug(pokitService) << "Device name" << deviceName;
+        emit q->deviceNameRead(deviceName);
+        return;
+    }
+
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {
+        qCWarning(pokitService) << "Flash LED characteristic is write-only, but somehow read"
+            << serviceUuid << characteristic.name() << characteristic.uuid();
+        return;
+    }
+
+    qCWarning(pokitService) << "Unknown characteristic read for Status Service"
+        << serviceUuid << characteristic.name() << characteristic.uuid();
+}
+
+void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
+                                                 const QByteArray &newValue)
+{
+    qCDebug(pokitService) << "Characteristic written" << characteristic.name()
+        << characteristic.uuid() << newValue;
+
+    Q_Q(StatusService);
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
+        qCWarning(pokitService) << "Device Characteristics is read-only, but somehow written"
+            << serviceUuid << characteristic.name() << characteristic.uuid();
+        return;
+    }
+
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
+        qCWarning(pokitService) << "Status characteristic is read-only, but somehow written"
+            << serviceUuid << characteristic.name() << characteristic.uuid();
+        return;
+    }
+
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {
+        emit q->deivceNameWritten();
+        return;
+    }
+
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {
+        emit q->deviceLedFlashed();
+        return;
+    }
+
+    qCWarning(pokitService) << "Unknown characteristic written for Status Service"
+        << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
 /// \endcond

@@ -40,7 +40,11 @@ public:
 
     explicit StatusServicePrivate(QLowEnergyController * controller, StatusService * const q);
 
-public slots:
+protected:
+    void characteristicRead(const QLowEnergyCharacteristic &characteristic,
+                            const QByteArray &value) override;
+    void characteristicWritten(const QLowEnergyCharacteristic &characteristic,
+                               const QByteArray &newValue) override;
 
 private:
     Q_DECLARE_PUBLIC(StatusService)
