@@ -27,6 +27,7 @@
 
 #include "abstractpokitservice.h"
 
+#include <QBluetoothAddress>
 #include <QBluetoothUuid>
 #include <QLowEnergyCharacteristic>
 #include <QVersionNumber>
@@ -59,7 +60,7 @@ public:
         quint16 maximumSamplingRate;
         quint16 samplingBufferSize;
         quint16 capabilityMask; ///< Reserved.
-        quint8 macAddress[6];
+        QBluetoothAddress macAddress;
     };
 
     enum class DeviceStatus {

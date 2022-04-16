@@ -30,6 +30,7 @@
 
 #include <QDebug>
 #include <QLowEnergyService>
+#include <QtEndian>
 
 /// UUID of the "Pokit Status" service.
 const QBluetoothUuid StatusService::
@@ -134,20 +135,52 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
                                               const QByteArray &value)
 {
     qCDebug(pokitService) << "Characteristic read" << characteristic.name()
-        << characteristic.uuid() << value;
+        << characteristic.uuid() << value.size() << value;
 
     Q_Q(StatusService);
     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
+        if (value.size() < 20) {
+            qCWarning(pokitService) << "Invalid characteristics size" << value.size() << value;
+            return;
+        }
+        if (value.size() > 20) {
+            qCWarning(pokitService) << "Characterisitcs has" << (value.size()-20) << "extra bytes" << value;
+        }
         StatusService::DeviceCharacteristics characteristics;
-        /// \todo Populate characteristics.
+        characteristics.firmwareVersion = QVersionNumber(
+                                              qFromLittleEndian<quint8 >(value.mid(0,1)),
+                                              qFromLittleEndian<quint8 >(value.mid(1,1)));
+        characteristics.maximumVoltage      = qFromLittleEndian<quint16>(value.mid(2,2));
+        characteristics.maximumCurrent      = qFromLittleEndian<quint16>(value.mid(4,2));
+        characteristics.maximumResistance   = qFromLittleEndian<quint16>(value.mid(6,2));
+        characteristics.maximumSamplingRate = qFromLittleEndian<quint16>(value.mid(8,2));
+        characteristics.samplingBufferSize  = qFromLittleEndian<quint16>(value.mid(10,2));
+        characteristics.capabilityMask      = qFromLittleEndian<quint16>(value.mid(12,2));
+        characteristics.macAddress = QBluetoothAddress(qFromBigEndian<quint64>
+                                                       (QByteArray(2, '\0') + value.mid(14,6)));
+        qCDebug(pokitService) << "Firmware version:     " << characteristics.firmwareVersion;
+        qCDebug(pokitService) << "Maximum voltage:      " << characteristics.maximumVoltage;
+        qCDebug(pokitService) << "Maximum current:      " << characteristics.maximumCurrent;
+        qCDebug(pokitService) << "Maximum resistance:   " << characteristics.maximumResistance;
+        qCDebug(pokitService) << "Maximum sampling rate:" << characteristics.maximumSamplingRate;
+        qCDebug(pokitService) << "Sampling buffer size: " << characteristics.samplingBufferSize;
+        qCDebug(pokitService) << "Capability mask:      " << characteristics.capabilityMask;
+        qCDebug(pokitService) << "MAC address:          " << characteristics.macAddress;
         emit q->deviceCharacteristicsRead(characteristics);
         return;
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
-        StatusService::DeviceStatus status = StatusService::DeviceStatus::Idle;
-        float batteryVoltage = 0.0;
-        /// \todo Set status and batteryVoltage.
+        if (value.size() < 5) {
+            qCWarning(pokitService) << "Invalid status size" << value.size() << value;
+            return;
+        }
+        if (value.size() > 5) {
+            qCWarning(pokitService) << "Status has" << (value.size()-5) << "extra bytes" << value;
+        }
+        const StatusService::DeviceStatus status = static_cast<StatusService::DeviceStatus>(value.at(0));
+        const float batteryVoltage = qFromLittleEndian<float>(value.mid(1,4));
+        qCDebug(pokitService) << "Status:" << (quint8)status << "Battery:" << batteryVoltage << "volts";
         emit q->deviceStatusRead(status, batteryVoltage);
         return;
     }
