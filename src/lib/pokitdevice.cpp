@@ -235,7 +235,7 @@ void PokitDevicePrivate::disconnected()
  */
 void PokitDevicePrivate::discoveryFinished()
 {
-    qCDebug(pokitDiscovery) << "Discovery finished";
+    qCDebug(pokitController) << "Discovery finished";
 }
 
 /*!
