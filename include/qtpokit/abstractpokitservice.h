@@ -27,6 +27,7 @@
 
 #include "qtpokit_global.h"
 
+#include <QBluetoothUuid>
 #include <QObject>
 
 class QLowEnergyController;
@@ -43,10 +44,14 @@ class QTPOKIT_EXPORT AbstractPokitService : public QObject
     Q_OBJECT
 
 public:
-    AbstractPokitService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
+    AbstractPokitService(const QBluetoothUuid &serviceUuid, QLowEnergyController * const controller,
+                         QObject * parent = nullptr);
     virtual ~AbstractPokitService();
 
     virtual bool readCharacteristics() = 0;
+
+    bool autoDiscover() const;
+    void setAutoDiscover(const bool discover = true);
 
     QLowEnergyService * service();
     const QLowEnergyService * service() const;

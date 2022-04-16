@@ -42,16 +42,24 @@ class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject
     Q_OBJECT
 
 public:
+    bool autoDiscover;
     QLowEnergyController * controller;
     QLowEnergyService * service;
+    const QBluetoothUuid serviceUuid;
 
-    explicit AbstractPokitServicePrivate(QLowEnergyController * controller,
-                                         AbstractPokitService * const q);
+    AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
+        QLowEnergyController * controller, AbstractPokitService * const q);
 
+    bool createServiceObject();
     bool readCharacteristic(const QBluetoothUuid &uuid);
 
 protected:
     AbstractPokitService * q_ptr; ///< Internal q-pointer.
+
+protected slots:
+    void connected();
+    void discoveryFinished();
+    void serviceDiscovered(const QBluetoothUuid &newService);
 
 private:
     Q_DECLARE_PUBLIC(AbstractPokitService)

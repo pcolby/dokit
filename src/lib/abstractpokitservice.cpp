@@ -39,8 +39,9 @@
 /*!
  * Constructs a new Pokit service with \a parent.
  */
-AbstractPokitService::AbstractPokitService(QLowEnergyController * const controller, QObject * parent)
-    : QObject(parent), d_ptr(new AbstractPokitServicePrivate(controller, this))
+AbstractPokitService::AbstractPokitService(const QBluetoothUuid &serviceUuid,
+    QLowEnergyController * const controller, QObject * parent)
+    : QObject(parent), d_ptr(new AbstractPokitServicePrivate(serviceUuid, controller, this))
 {
 
 }
@@ -63,6 +64,20 @@ AbstractPokitService::AbstractPokitService(
 AbstractPokitService::~AbstractPokitService()
 {
     delete d_ptr;
+}
+
+/// \todo document virtual bool readCharacteristics() = 0;
+
+bool AbstractPokitService::autoDiscover() const
+{
+    Q_D(const AbstractPokitService);
+    return d->autoDiscover;
+}
+
+void AbstractPokitService::setAutoDiscover(const bool discover)
+{
+    Q_D(AbstractPokitService);
+    d->autoDiscover = discover;
 }
 
 QLowEnergyService * AbstractPokitService::service()
@@ -88,11 +103,41 @@ const QLowEnergyService * AbstractPokitService::service() const
  * \internal
  * Constructs a new AbstractPokitServicePrivate object with public implementation \a q.
  */
-AbstractPokitServicePrivate::AbstractPokitServicePrivate(
+AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
     QLowEnergyController * controller, AbstractPokitService * const q)
-    : controller(controller), q_ptr(q)
+    : autoDiscover(true), controller(controller), serviceUuid(serviceUuid), q_ptr(q)
 {
+    if (controller) {
+        connect(controller, &QLowEnergyController::connected,
+                this, &AbstractPokitServicePrivate::connected);
 
+        connect(controller, &QLowEnergyController::discoveryFinished,
+                this, &AbstractPokitServicePrivate::discoveryFinished);
+
+        connect(controller, &QLowEnergyController::serviceDiscovered,
+                this, &AbstractPokitServicePrivate::serviceDiscovered);
+
+        createServiceObject();
+    }
+
+}
+
+bool AbstractPokitServicePrivate::createServiceObject()
+{
+    if (!controller) {
+        return false;
+    }
+
+    service = controller->createServiceObject(serviceUuid, this);
+    if (!service) {
+        return false;
+    }
+    qCDebug(pokitService) << "Service created" << service;
+
+    if (autoDiscover) {
+        service->discoverDetails();
+    }
+    return true;
 }
 
 bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
@@ -108,6 +153,39 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
 
     service->readCharacteristic(characteristic);
     return true;
+}
+
+void AbstractPokitServicePrivate::connected()
+{
+    if (!controller) {
+        qCWarning(pokitService) << "Connected with no controller set" << sender();
+        return;
+    }
+
+    qCDebug(pokitService) << "Connected" << controller->remoteName()
+        << controller->remoteAddress() << controller->remoteDeviceUuid();
+    if (autoDiscover) {
+        controller->discoverServices();
+    }
+}
+
+void AbstractPokitServicePrivate::discoveryFinished()
+{
+    if (!controller) {
+        qCWarning(pokitService) << "Discovery finished with no controller set" << sender();
+        return;
+    }
+
+    qCDebug(pokitService) << "Discovery finished" << controller->remoteName()
+        << controller->remoteAddress() << controller->remoteDeviceUuid();
+}
+
+void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
+{
+    if ((!service) && (newService == serviceUuid)) {
+        qCDebug(pokitService) << "Service discovered " << newService;
+        createServiceObject();
+    }
 }
 
 /// \endcond

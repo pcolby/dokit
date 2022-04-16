@@ -125,7 +125,7 @@ bool StatusService::readNameCharacteristic()
  */
 StatusServicePrivate::StatusServicePrivate(
     QLowEnergyController * controller, StatusService * const q)
-    : AbstractPokitServicePrivate(controller, q)
+    : AbstractPokitServicePrivate(StatusService::serviceUuid, controller, q)
 {
 
 }
