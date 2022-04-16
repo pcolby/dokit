@@ -28,7 +28,6 @@
 #include "qtpokit_global.h"
 
 #include <QObject>
-#include <QBluetoothDeviceInfo>
 
 class QLowEnergyController;
 

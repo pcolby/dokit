@@ -27,8 +27,6 @@
 
 #include <qtpokit/qtpokit_global.h>
 
-#include <QBluetoothDeviceDiscoveryAgent>
-
 QTPOKIT_BEGIN_NAMESPACE
 
 class PokitDeviceDiscoveryAgent;

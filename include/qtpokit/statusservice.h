@@ -29,7 +29,6 @@
 
 #include <QBluetoothAddress>
 #include <QBluetoothUuid>
-#include <QLowEnergyCharacteristic>
 #include <QVersionNumber>
 
 QTPOKIT_BEGIN_NAMESPACE

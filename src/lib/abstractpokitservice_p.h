@@ -27,13 +27,10 @@
 
 #include <qtpokit/qtpokit_global.h>
 
-#include <QBluetoothUuid>
 #include <QLowEnergyService>
-#include <QLowEnergyCharacteristic>
 #include <QObject>
 
 class QLowEnergyController;
-class QLowEnergyService;
 
 QTPOKIT_BEGIN_NAMESPACE
 

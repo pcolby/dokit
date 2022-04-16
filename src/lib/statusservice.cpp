@@ -23,13 +23,10 @@
  */
 
 #include <qtpokit/statusservice.h>
-#include <qtpokit/uuids.h>
-
 #include "statusservice_p.h"
 #include "logging_p.h"
 
 #include <QDebug>
-#include <QLowEnergyService>
 #include <QtEndian>
 
 /// UUID of the "Pokit Status" service.
