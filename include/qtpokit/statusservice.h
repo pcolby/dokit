@@ -90,10 +90,10 @@ public:
 
     // Device Name characteristic (BLE read/write).
     QString deviceName() const;
-    void setDeviceName(const QString &name);
+    bool setDeviceName(const QString &name);
 
     // Flash LED characteristic (BLE write only).
-    void flashLed();
+    bool flashLed();
 
 signals:
     void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &characteristics);

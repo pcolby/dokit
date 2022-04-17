@@ -48,6 +48,8 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
     connect(service, &StatusService::serviceDetailsDiscovered,[service]() {
         qDebug() << "All ready to go! :)";
         service->deviceCharacteristics(); // Should be immediately (cached) available.
+        service->flashLed(); // Should be fun :)
+        //service->setDeviceName(QLatin1String("PokitPro")); // Yes, this works :D
         service->readCharacteristics(); // Can also fetch new values (results via signal).
     });
 

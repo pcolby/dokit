@@ -182,15 +182,54 @@ QString StatusService::deviceName() const
     return QString::fromUtf8(characteristic.value());
 }
 
-void StatusService::setDeviceName(const QString &name)
+bool StatusService::setDeviceName(const QString &name)
 {
-    Q_UNUSED(name);
+    Q_D(const StatusService);
+    if (!d->service) {
+        qCDebug(pokitService) << "Cannot set device name without a service object";
+        return false;
+    }
 
+    const QLowEnergyCharacteristic characteristic =
+        d->service->characteristic(CharacteristicUuids::name);
+    if (!characteristic.isValid()) {
+        qCDebug(pokitService) << "Name characteristic not valid yet";
+        return false;
+    }
+
+    const QByteArray value = name.toUtf8();
+    if (value.size() > 11) {
+        qCWarning(pokitService) << "New device name cannot exceed 11 bytes" << name << value;
+        return false;
+    }
+
+    d->service->writeCharacteristic(characteristic, value);
+    return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
 
-void StatusService::flashLed()
+/// \todo Currently doesn't work (ATT error 0x80). Follow up with Pokit Innovations?
+bool StatusService::flashLed()
 {
+    Q_D(const StatusService);
+    if (!d->service) {
+        qCDebug(pokitService) << "Cannot flash LED without a service object";
+        return false;
+    }
 
+    const QLowEnergyCharacteristic characteristic =
+        d->service->characteristic(CharacteristicUuids::flashLed);
+    if (!characteristic.isValid()) {
+        qCDebug(pokitService) << "Flash LED characteristic not valid yet";
+        return false;
+    }
+
+    // The Flash LED characeristic is write-only, and takes a single uint8 "LED" parameter, which
+    // must always be 1. Presumably this is an index for which LED to flash, but the Pokit API docs
+    // say that "any value other than 1 will be ignored", which makes sense given that all current
+    // Pokit devices have only one LED.
+    const QByteArray value(1, '\x01');
+    d->service->writeCharacteristic(characteristic, value);
+    return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
 
 /*!
