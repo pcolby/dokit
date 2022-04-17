@@ -49,7 +49,6 @@ class QTPOKIT_EXPORT PokitDevice : public QObject
 public:
     explicit PokitDevice(const QString &addressOrUuid, QObject *parent=nullptr);
     explicit PokitDevice(QLowEnergyController *controller, QObject *parent=nullptr);
-    PokitDevice(QObject *parent=nullptr);
     virtual ~PokitDevice();
 
     QLowEnergyController * controller();

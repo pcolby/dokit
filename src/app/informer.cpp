@@ -39,8 +39,13 @@ Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr
     StatusService * service = device->status();
     qDebug() << service;
 
-    connect(device->controller(), QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
-            [](QLowEnergyController::Error error) {
+    connect(device->controller(),
+        #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+        QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
+        #else
+        &QLowEnergyController::errorOccurred,
+        #endif
+    [](QLowEnergyController::Error error) {
         qDebug() << error;
         ::exit(EXIT_FAILURE); ///< \todo Exit gracefully.
     });

@@ -54,7 +54,7 @@ PokitDevice::PokitDevice(const QString &addressOrUuid, QObject *parent)
     const QBluetoothDeviceInfo info = (addressOrUuid.contains(QLatin1Char('-'))
         ? QBluetoothDeviceInfo(QBluetoothUuid(addressOrUuid), QString(), 0)
         : QBluetoothDeviceInfo(QBluetoothAddress(addressOrUuid), QString(), 0));
-    d->setController(new QLowEnergyController(info, this));
+    d->setController(QLowEnergyController::createCentral(info, this));
 }
 
 /*!
@@ -193,8 +193,15 @@ void PokitDevicePrivate::setController(QLowEnergyController * newController)
     connect(controller, &QLowEnergyController::discoveryFinished,
             this, &PokitDevicePrivate::discoveryFinished);
 
-    connect(controller, QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
-            this, &PokitDevicePrivate::error);
+
+    connect(controller,
+    #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+        QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
+    #else
+        &QLowEnergyController::errorOccurred,
+    #endif
+        this, &PokitDevicePrivate::errorOccurred);
+
 
     connect(controller, &QLowEnergyController::serviceDiscovered,
             this, &PokitDevicePrivate::serviceDiscovered);
@@ -241,7 +248,7 @@ void PokitDevicePrivate::discoveryFinished()
 /*!
  * Handle error signals.
  */
-void PokitDevicePrivate::error(QLowEnergyController::Error newError)
+void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError)
 {
     qCDebug(pokitController) << "Controller error" << newError;
 }

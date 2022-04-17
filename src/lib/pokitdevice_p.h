@@ -69,7 +69,7 @@ public slots:
     void connectionUpdated(const QLowEnergyConnectionParameters &newParameters);
     void disconnected();
     void discoveryFinished();
-    void error(QLowEnergyController::Error newError);
+    void errorOccurred(QLowEnergyController::Error newError);
     void serviceDiscovered(const QBluetoothUuid &newService);
     void stateChanged(QLowEnergyController::ControllerState state);
 
