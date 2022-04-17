@@ -62,7 +62,8 @@ public:
         QBluetoothAddress macAddress;
     };
 
-    enum class DeviceStatus {
+    /// \note These values come from the Pokit Bluetooth API docs, except the last one.
+    enum class DeviceStatus : quint8 {
         Idle = 0,
         MultimeterDcVoltage = 1,
         MultimeterAcVoltage = 2,
@@ -81,13 +82,7 @@ public:
     bool readNameCharacteristic();
 
     // Device Characteristics characteristic (BLE read only).
-    int capabiltyMask() const;
-    QVersionNumber firmwareVersion() const;
-    int maximumCurrent() const;
-    int maximumResistance() const;
-    int maximumSamplingRate() const;
-    int maximumVoltage() const;
-    int samplingBufferSize() const;
+    DeviceCharacteristics deviceCharacteristics() const;
 
     // Status characteristic (Read only).
     DeviceStatus deviceStatus() const;
