@@ -62,15 +62,14 @@ public:
         QBluetoothAddress macAddress;
     };
 
-    /// \note These values come from the Pokit Bluetooth API docs, except the last one.
     enum class DeviceStatus : quint8 {
-        Idle = 0,
-        MultimeterDcVoltage = 1,
-        MultimeterAcVoltage = 2,
-        MultimeterDcCurrent = 3,
-        MultimeterAcCurrent = 4,
-        MultimeterResistance = 5,
-        MultimeterDiode = 6,
+        Idle = 0,                 ///< Device is idle.
+        MultimeterDcVoltage = 1,  ///< Multimeter is measuring DC voltage.
+        MultimeterAcVoltage = 2,  ///< Multimeter is measuring AC voltage.
+        MultimeterDcCurrent = 3,  ///< Multimeter is measuring DC current.
+        MultimeterAcCurrent = 4,  ///< Multimeter is measuring AC current.
+        MultimeterResistance = 5, ///< Multimeter is measuring resistance.
+        MultimeterDiode = 6,      ///< Multimeter is measuring diode.
     };
 
     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

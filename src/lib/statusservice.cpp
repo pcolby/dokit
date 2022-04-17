@@ -33,21 +33,30 @@
 const QBluetoothUuid StatusService::
     serviceUuid(QLatin1String("57d3a771-267c-4394-8872-78223e92aec5"));
 
-/// UUID of the "Pokit Status" service's "Device Characteristics" charactersic.
+/// \struct StatusService::CharacteristicUuids
+/// UUIDs for all characteristics available via the `Pokit Status` service.
+
+/// UUID of the `Pokit Status` service's `Device Characteristics` characterstic.
 const QBluetoothUuid StatusService::CharacteristicUuids::
     deviceCharacteristics(QLatin1String("6974f5e5-0e54-45c3-97dd-29e4b5fb0849"));
 
-/// UUID of the "Pokit Status" service's "Status" charactersic.
+/// UUID of the `Pokit Status` service's `Status` characterstic.
 const QBluetoothUuid StatusService::CharacteristicUuids::
     status(QLatin1String("3dba36e1-6120-4706-8dfd-ed9c16e569b6"));
 
-/// UUID of the "Pokit Status" service's "Device Name" charactersic.
+/// UUID of the `Pokit Status` service's `Device Name` characterstic.
 const QBluetoothUuid StatusService::CharacteristicUuids::
     name(QLatin1String("7f0375de-077e-4555-8f78-800494509cc3"));
 
-/// UUID of the "Pokit Status" service's "Flash LED" charactersic.
+/// UUID of the `Pokit Status` service's `Flash LED` characterstic.
 const QBluetoothUuid StatusService::CharacteristicUuids::
     flashLed(QLatin1String("ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e"));
+
+/// \struct StatusService::DeviceCharacteristics
+/// Attributes included in the `Device Characteristics` characterstic.
+
+/// \enum StatusService::DeviceStatus
+/// Allowed values for the `Status` attribute of the `Status` characteristic.
 
 /*!
  * \class StatusService

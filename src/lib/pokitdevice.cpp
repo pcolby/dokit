@@ -42,10 +42,18 @@
  * Constructs a new Pokit device controller wrapper for \a addressOrUuid, with \a parent.
  *
  * \a addressOrUuid must be either a UUID (as accepted by the QBluetoothUuid constructor), or a
- * device address (as accepted by the QBluetoothAddress contructur).  Specifically:
+ * device address (as accepted by the QBluetoothAddress contructur).  Specifically, any of the
+ * following formats (where `x` is hex digit):
  *
  * ```
+ * "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
+ * "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ * "xx:xx:xx:xx:xx:xx"
+ * "xxxxxxxxxxxx"
+ * ```
  *
+ * \see QBluetoothAddress::QBluetoothAddress(const QString &address)
+ * \see QBluetoothUuid::QBluetoothUuid(const QString &uuid)
  */
 PokitDevice::PokitDevice(const QString &addressOrUuid, QObject *parent)
     : QObject(parent), d_ptr(new PokitDevicePrivate(this))

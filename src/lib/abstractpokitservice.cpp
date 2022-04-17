@@ -36,16 +36,6 @@
  */
 
 /*!
- * Constructs a new Pokit service with \a parent.
- */
-//AbstractPokitService::AbstractPokitService(const QBluetoothUuid &serviceUuid,
-//    QLowEnergyController * const controller, QObject * parent)
-//    : QObject(parent), d_ptr(new AbstractPokitServicePrivate(serviceUuid, controller, this))
-//{
-
-//}
-
-/*!
  * \cond internal
  * Constructs a new Pokit service with \a parent, and private implementation \a d.
  */
@@ -73,18 +63,31 @@ bool AbstractPokitService::autoDiscover() const
     return d->autoDiscover;
 }
 
+/*!
+ * If \a discover is \c true, autodiscovery will be attempted.
+ *
+ * Specifically, this may resulting in automatic invocation of:
+ * * QLowEnergyController::discoverServices if/when the internal controller is connected; and
+ * * QLowEnergyService::discoverDetails if/when an internal service object is created.
+ */
 void AbstractPokitService::setAutoDiscover(const bool discover)
 {
     Q_D(AbstractPokitService);
     d->autoDiscover = discover;
 }
 
+/*!
+ * Returns a non-const pointer to the internal service object, if any.
+ */
 QLowEnergyService * AbstractPokitService::service()
 {
     Q_D(AbstractPokitService);
     return d->service;
 }
 
+/*!
+ * Returns a const pointer to the internal service object, if any.
+ */
 const QLowEnergyService * AbstractPokitService::service() const
 {
     Q_D(const AbstractPokitService);
@@ -122,8 +125,13 @@ AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &s
 
 }
 
-/// \todo This could support a "replaceExisting" argument, but its unclear if that's wanted, and if
-/// so, what data consistency issues might arise.
+/*!
+ * Creates an internal service object from the internal controller.
+ *
+ * Any existing service object will *not* be replaced.
+ *
+ * Returns \c true if a service was created successfully, either now, or sometime previously.
+ */
 bool AbstractPokitServicePrivate::createServiceObject()
 {
     if (!controller) {
@@ -154,6 +162,18 @@ bool AbstractPokitServicePrivate::createServiceObject()
     return true;
 }
 
+
+/*!
+ * Read the \a uuid characteristic.
+ *
+ * If succesful, the `QLowEnergyService::characteristicRead` signal will be emitted by the internal
+ * service object.  For convenience, derived classes should implement the characteristicRead()
+ * virtual function to handle the read value.
+ *
+ * Returns \c true if the characteristic read request was successfully queued, \c false otherwise.
+ *
+ * \see AbstractPokitServicePrivate::characteristicRead()
+ */
 bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
 {
     if (!service) {
@@ -173,6 +193,13 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
     return true;
 }
 
+/*!
+ * Handles `QLowEnergyController::connected` events.
+ *
+ * If `autoDiscover` is enabled, this will begin service discovery on the newly connected contoller.
+ *
+ * \see AbstractPokitService::autoDiscover()
+ */
 void AbstractPokitServicePrivate::connected()
 {
     if (!controller) {
@@ -187,6 +214,12 @@ void AbstractPokitServicePrivate::connected()
     }
 }
 
+/*!
+ * Handles `QLowEnergyController::discoveryFinished` events.
+ *
+ * As this event indicates that the conroller has finished discovering services, this function will
+ * invoke createServiceObject() to create the internal service object (if not already created).
+ */
 void AbstractPokitServicePrivate::discoveryFinished()
 {
     if (!controller) {
@@ -203,6 +236,13 @@ void AbstractPokitServicePrivate::discoveryFinished()
     }
 }
 
+/*!
+ * Handles `QLowEnergyController::serviceDiscovered` events.
+ *
+ * If the discovered service is the one this (or rather the derived) class wraps, then
+ * createServiceObject() will be invoked immediately (otherwise it will be invoked after full
+ * service discovery has completed, ie in discoveryFinished()).
+ */
 void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
 {
     if ((!service) && (newService == serviceUuid)) {
@@ -211,6 +251,14 @@ void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &newSer
     }
 }
 
+/*!
+ * Handles `QLowEnergyController::stateChanged` events.
+ *
+ * If `autoDiscover` is enabled, and \a newState indicates that service details have now been
+ * discovered, then AbstractPokitService::serviceDetailsDiscovered will be emitted.
+ *
+ * \see AbstractPokitService::autoDiscover()
+ */
 void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState newState)
 {
     qCDebug(pokitService) << "State changed" << newState;
