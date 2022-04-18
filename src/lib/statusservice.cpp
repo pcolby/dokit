@@ -437,7 +437,8 @@ QPair<StatusService::DeviceStatus, float> StatusServicePrivate::parseStatus(cons
 {
     if (value.size() < 5) {
         qCWarning(pokitService) << "Invalid status size" << value.size() << value;
-        return QPair(StatusService::DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN());
+        return QPair<StatusService::DeviceStatus, float>(
+            StatusService::DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN());
     }
     if (value.size() > 5) {
         qCWarning(pokitService) << "Status has" << (value.size()-5) << "extra bytes" << value;
@@ -445,7 +446,7 @@ QPair<StatusService::DeviceStatus, float> StatusServicePrivate::parseStatus(cons
     const StatusService::DeviceStatus status = static_cast<StatusService::DeviceStatus>(value.at(0));
     const float batteryVoltage = qFromLittleEndian<float>(value.mid(1,4));
     qCDebug(pokitService) << "Status:" << (quint8)status << "Battery:" << batteryVoltage << "volts";
-    return QPair(status, batteryVoltage);
+    return QPair<StatusService::DeviceStatus, float>(status, batteryVoltage);
 }
 
 /*!
