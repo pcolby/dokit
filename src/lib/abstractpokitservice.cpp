@@ -32,7 +32,7 @@
 /*!
  * \class AbstractPokitService
  *
- * Virtual base class for Pokit services.
+ * The AbstractPokitService class provides a common base for Pokit services classes.
  */
 
 /*!
@@ -125,7 +125,7 @@ const QLowEnergyService * AbstractPokitService::service() const
  * \cond internal
  * \class AbstractPokitServicePrivate
  *
- * The AbstractPokitServicePrivate provides the private implementation for AbstractPokitService.
+ * The AbstractPokitServicePrivate class provides private implementation for AbstractPokitService.
  */
 
 /*!

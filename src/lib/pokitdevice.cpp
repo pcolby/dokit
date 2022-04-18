@@ -35,7 +35,16 @@
 /*!
  * \class PokitDevice
  *
- * The PokitDevice class discovers nearby Pokit devices.
+ * The PokitDevice class simplifies Pokit device access.
+ *
+ * It does this by wrapping QLowEnergyController to provide:
+ * * automatic detection of device UUID vs MAC address strings for device IDs; and
+ * * convenient Pokit service factory methods (dataLogger(), deviceInformation(), dso(),
+ *   genericAccess(), multimeter() and status()); and
+ * * consistent debug logging of QLowEnergyController events.
+ *
+ * But this class is entirely optional, in that all features of all all QtPokit classes can be used
+ * wihtout this class.  It's just a (meaningful) convenience.
  */
 
 /*!
@@ -223,7 +232,7 @@ StatusService * PokitDevice::status()
  * \cond internal
  * \class PokitDevicePrivate
  *
- * The PokitDevicePrivate provides the private implementation for PokitDevice.
+ * The PokitDevicePrivate class provides private implementation for PokitDevice.
  */
 
 /*!

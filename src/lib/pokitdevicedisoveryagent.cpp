@@ -143,7 +143,7 @@ void PokitDeviceDiscoveryAgent::start()
  * \cond internal
  * \class PokitDeviceDiscoveryAgentPrivate
  *
- * The PokitDeviceDiscoveryAgentPrivate provides the private implementation for
+ * The PokitDeviceDiscoveryAgentPrivate class provides private implementation for
  * PokitDeviceDiscoveryAgent.
  */
 

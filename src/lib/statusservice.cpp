@@ -34,7 +34,7 @@ const QBluetoothUuid StatusService::
     serviceUuid(QLatin1String("57d3a771-267c-4394-8872-78223e92aec5"));
 
 /// \struct StatusService::CharacteristicUuids
-/// UUIDs for all characteristics available via the `Pokit Status` service.
+/// \brief Characteristics available via the `Pokit Status` service.
 
 /// UUID of the `Pokit Status` service's `Device Characteristics` characterstic.
 const QBluetoothUuid StatusService::CharacteristicUuids::
@@ -53,15 +53,15 @@ const QBluetoothUuid StatusService::CharacteristicUuids::
     flashLed(QLatin1String("ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e"));
 
 /// \struct StatusService::DeviceCharacteristics
-/// Attributes included in the `Device Characteristics` characterstic.
+/// \brief Attributes included in the `Device Characteristics` characterstic.
 
 /// \enum StatusService::DeviceStatus
-/// Allowed values for the `Status` attribute of the `Status` characteristic.
+/// \brief Values support by the `Status` attribute of the `Status` characteristic.
 
 /*!
  * \class StatusService
  *
- * Virtual base class for Pokit services.
+ * The StatusService class accesses the `Pokit Status` service of Pokit devices.
  */
 
 /*!
@@ -374,7 +374,7 @@ bool StatusService::flashLed()
  * \cond internal
  * \class StatusServicePrivate
  *
- * The StatusServicePrivate provides the private implementation for StatusService.
+ * The StatusServicePrivate class provides private implementation for StatusService.
  */
 
 /*!
