@@ -41,10 +41,10 @@ class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject
     Q_OBJECT
 
 public:
-    bool autoDiscover;
-    QLowEnergyController * controller;
-    QLowEnergyService * service;
-    const QBluetoothUuid serviceUuid;
+    bool autoDiscover;                 ///< Whether autodiscovery is enabled or not.
+    QLowEnergyController * controller; ///< BLE controller to fetch the service from.
+    QLowEnergyService * service;       ///< BLE service to read/write characteristics.
+    const QBluetoothUuid serviceUuid;  ///< UUID for #service.
 
     AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
         QLowEnergyController * controller, AbstractPokitService * const q);

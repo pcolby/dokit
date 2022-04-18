@@ -55,8 +55,23 @@ AbstractPokitService::~AbstractPokitService()
     delete d_ptr;
 }
 
-/// \todo document virtual bool readCharacteristics() = 0;
+/*!
+ * \fn virtual bool AbstractPokitService::readCharacteristics() = 0
+ *
+ * Read the all characteristics.
+ *
+ * This convenience function will queue refresh requests of all characteristics supported by the
+ * current service.
+ *
+ * Relevant `*Service::*Read` signals will be emitted by derived class objects as each
+ * characteristic is successfully read.
+ */
 
+/*!
+ * Returns `true` if autodiscovery of services and service details is enabled, `false` otherwise.
+ *
+ * \see setAutoDiscover for more information on what autodiscovery provides.
+ */
 bool AbstractPokitService::autoDiscover() const
 {
     Q_D(const AbstractPokitService);
@@ -69,6 +84,8 @@ bool AbstractPokitService::autoDiscover() const
  * Specifically, this may resulting in automatic invocation of:
  * * QLowEnergyController::discoverServices if/when the internal controller is connected; and
  * * QLowEnergyService::discoverDetails if/when an internal service object is created.
+ *
+ * \see autoDiscover
  */
 void AbstractPokitService::setAutoDiscover(const bool discover)
 {
@@ -93,6 +110,16 @@ const QLowEnergyService * AbstractPokitService::service() const
     Q_D(const AbstractPokitService);
     return d->service;
 }
+
+/*!
+ * \fn void AbstractPokitService::serviceDetailsDiscovered()
+ *
+ * This signal is emitted when the Pokit service details have been discovered.
+ *
+ * Once this signal has been emitted, cached characteristics values should be immediately available
+ * via derived classes' accessor functions, and refreshes can be queued via readCharacteristics()
+ * and any related read functions provided by derived classes.
+ */
 
 /*!
  * \cond internal
@@ -172,6 +199,7 @@ bool AbstractPokitServicePrivate::createServiceObject()
  *
  * Returns \c true if the characteristic read request was successfully queued, \c false otherwise.
  *
+ * \see AbstractPokitService::readCharacteristic()
  * \see AbstractPokitServicePrivate::characteristicRead()
  */
 bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
@@ -254,8 +282,8 @@ void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &newSer
 /*!
  * Handles `QLowEnergyController::stateChanged` events.
  *
- * If `autoDiscover` is enabled, and \a newState indicates that service details have now been
- * discovered, then AbstractPokitService::serviceDetailsDiscovered will be emitted.
+ * If \a newState indicates that service details have now been discovered, then
+ * AbstractPokitService::serviceDetailsDiscovered will be emitted.
  *
  * \see AbstractPokitService::autoDiscover()
  */
@@ -276,10 +304,22 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
     }
 }
 
-/// \todo Document these two too.
-//virtual void characteristicRead(const QLowEnergyCharacteristic &characteristic,
-//                                const QByteArray &value) = 0;
-//virtual void characteristicWritten(const QLowEnergyCharacteristic &characteristic,
-//                                   const QByteArray &newValue) = 0;
+/*!
+ * \fn AbstractPokitServicePrivate::characteristicRead
+ *
+ * Handles `QLowEnergyService::characteristicRead` events.
+ *
+ * Derived classes must implement this function to handle the successful reads of \a characteristic,
+ * typically by parsing \a value, then emitting a speciailised signal.
+ */
+
+/*!
+ * \fn AbstractPokitServicePrivate::characteristicWritten
+ *
+ * Handles `QLowEnergyService::characteristicWritten` events.
+ *
+ * Derived classes must implement this function to handle the successful writes of
+ * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.
+ */
 
 /// \endcond
