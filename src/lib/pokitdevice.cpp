@@ -118,7 +118,7 @@ const QLowEnergyController * PokitDevice::controller() const
 /// \cond
 #define POKIT_INTERNAL_GET_SERVICE(typeName, varName) \
     Q_D(PokitDevice);                                 \
-    QMutexLocker(&d->varName##Mutex);                 \
+    const QMutexLocker scopedLock(&d->varName##Mutex);\
     if (d->varName == nullptr) {                      \
         d->varName = new typeName(d->controller);     \
     }                                                 \
