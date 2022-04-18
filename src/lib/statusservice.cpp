@@ -449,8 +449,8 @@ QPair<StatusService::DeviceStatus, float> StatusServicePrivate::parseStatus(cons
 }
 
 /*!
- * Implements AbstractPokitServicePrivate::characteristicRead parse \value, then emit a specialised
- * signal, for each supported \a characteristic.
+ * Implements AbstractPokitServicePrivate::characteristicRead parse \a value, then emit a
+ * specialised signal, for each supported \a characteristic.
  */
 void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)

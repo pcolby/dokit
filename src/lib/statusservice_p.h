@@ -36,8 +36,6 @@ class QTPOKIT_EXPORT StatusServicePrivate : public AbstractPokitServicePrivate
     Q_OBJECT
 
 public:
-    QLowEnergyController * controller;
-
     explicit StatusServicePrivate(QLowEnergyController * controller, StatusService * const q);
 
     static StatusService::DeviceCharacteristics parseDeviceCharacteristics(const QByteArray &value);

@@ -52,6 +52,7 @@ public:
     virtual ~PokitDevice();
 
     QLowEnergyController * controller();
+    const QLowEnergyController * controller() const;
 
     DataLoggerService * dataLogger();
     DeviceInformationService * deviceInformation();

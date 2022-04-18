@@ -97,12 +97,25 @@ PokitDevice::~PokitDevice()
     delete d_ptr;
 }
 
+/*!
+ * Returns a non-const pointer to the controller used to access the Pokit device.
+ */
 QLowEnergyController * PokitDevice::controller()
 {
     Q_D(PokitDevice);
     return d->controller;
 }
 
+/*!
+ * Returns a const pointer to the controller used to access the Pokit device.
+ */
+const QLowEnergyController * PokitDevice::controller() const
+{
+    Q_D(const PokitDevice);
+    return d->controller;
+}
+
+/// \cond
 #define POKIT_INTERNAL_GET_SERVICE(typeName, varName) \
     Q_D(PokitDevice);                                 \
     QMutexLocker(&d->varName##Mutex);                 \
@@ -110,7 +123,17 @@ QLowEnergyController * PokitDevice::controller()
         d->varName = new typeName(d->controller);     \
     }                                                 \
     return d->varName                                 \
+/// \endcond
 
+/*!
+ * Returns a pointer to a DataLoggerService instance that uses this device's controller for access.
+ *
+ * This is a convenience function, that always returns the same pointer (for this PokitDevice
+ * instance), but the service itself is lazily created (in a threadsafe manner) on the first
+ * invocation of this function.
+ *
+ * \todo Implement this function when the DataLoggerService is implemented.
+ */
 DataLoggerService * PokitDevice::dataLogger()
 {
     qCDebug(pokitController) << "Not imlemented" << __func__;
@@ -118,6 +141,16 @@ DataLoggerService * PokitDevice::dataLogger()
     return nullptr;
 }
 
+/*!
+ * Returns a pointer to DeviceInformationService instance that uses this device's controller for
+ * access.
+ *
+ * This is a convenience function, that always returns the same pointer (for this PokitDevice
+ * instance), but the service itself is lazily created (in a threadsafe manner) on the first
+ * invocation of this function.
+ *
+ * \todo Implement this function when the DeviceInformationService is implemented.
+ */
 DeviceInformationService * PokitDevice::deviceInformation()
 {
     qCDebug(pokitController) << "Not imlemented" << __func__;
@@ -125,6 +158,15 @@ DeviceInformationService * PokitDevice::deviceInformation()
     return nullptr;
 }
 
+/*!
+ * Returns a pointer to DsoService instance that uses this device's controller for access.
+ *
+ * This is a convenience function, that always returns the same pointer (for this PokitDevice
+ * instance), but the service itself is lazily created (in a threadsafe manner) on the first
+ * invocation of this function.
+ *
+ * \todo Implement this function when the DsoService is implemented.
+ */
 DsoService * PokitDevice::dso()
 {
     qCDebug(pokitController) << "Not imlemented" << __func__;
@@ -132,6 +174,15 @@ DsoService * PokitDevice::dso()
     return nullptr;
 }
 
+/*!
+ * Returns a pointer to GenericAccessService instance that uses this device's controller for access.
+ *
+ * This is a convenience function, that always returns the same pointer (for this PokitDevice
+ * instance), but the service itself is lazily created (in a threadsafe manner) on the first
+ * invocation of this function.
+ *
+ * \todo Implement this function when the GenericAccessService is implemented.
+ */
 GenericAccessService * PokitDevice::genericAccess()
 {
     qCDebug(pokitController) << "Not imlemented" << __func__;
@@ -139,6 +190,15 @@ GenericAccessService * PokitDevice::genericAccess()
     return nullptr;
 }
 
+/*!
+ * Returns a pointer to MultimeterService instance that uses this device's controller for access.
+ *
+ * This is a convenience function, that always returns the same pointer (for this PokitDevice
+ * instance), but the service itself is lazily created (in a threadsafe manner) on the first
+ * invocation of this function.
+ *
+ * \todo Implement this function when the MultimeterService is implemented.
+ */
 MultimeterService * PokitDevice::multimeter()
 {
     qCDebug(pokitController) << "Not imlemented" << __func__;
@@ -146,6 +206,13 @@ MultimeterService * PokitDevice::multimeter()
     return nullptr;
 }
 
+/*!
+ * Returns a pointer to StatusService instance that uses this device's controller for access.
+ *
+ * This is a convenience function, that always returns the same pointer (for this PokitDevice
+ * instance), but the service itself is lazily created (in a threadsafe manner) on the first
+ * invocation of this function.
+ */
 StatusService * PokitDevice::status()
 {
     POKIT_INTERNAL_GET_SERVICE(StatusService, status);
@@ -169,6 +236,19 @@ PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)
 
 }
 
+/*!
+ * Sets \a newController to be used for accessing Pokit devices.
+ *
+ * If a controller has already been set (and is not the same pointer), then the previous controller
+ * will be disconnected, and replaced with \a newController.
+ *
+ * This function will not take ownership of the new controller. The caller is responsible for
+ * ensuring that \a newContorller remains valid for the lifetime of this instance, or until this
+ * function is used again to replace \a newController with another one (which may be a nullptr).
+ *
+ * \see controller
+ * \see PokitDevice::controller()
+ */
 void PokitDevicePrivate::setController(QLowEnergyController * newController)
 {
     qCDebug(pokitController) << "Replacing" << this->controller << "with" << newController;
@@ -188,6 +268,9 @@ void PokitDevicePrivate::setController(QLowEnergyController * newController)
     }
 
     this->controller = newController;
+    if (!newController) {
+        return; // Don't bother continuing to connect if new controller is null.
+    }
 
     connect(controller, &QLowEnergyController::connected,
             this, &PokitDevicePrivate::connected);

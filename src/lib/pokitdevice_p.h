@@ -48,17 +48,21 @@ class QTPOKIT_EXPORT PokitDevicePrivate : public QObject
     Q_OBJECT
 
 public:
-    QLowEnergyController * controller;
+    QLowEnergyController * controller; ///< BLE controller for accessing the Pokit device.
 
-    DataLoggerService * dataLogger;
-    DeviceInformationService * deviceInformation;
-    DsoService * dso;
-    GenericAccessService * genericAccess;
-    MultimeterService * multimeter;
-    StatusService * status;
+    DataLoggerService * dataLogger;               ///< Data Logger service for this Pokit device.
+    DeviceInformationService * deviceInformation; ///< Device info service for this Pokit device.
+    DsoService * dso;                             ///< DSO service for this Pokit device.
+    GenericAccessService * genericAccess;         ///< Generic Access service for this Pokit device.
+    MultimeterService * multimeter;               ///< Multimeter service for this Pokit device.
+    StatusService * status;                       ///< Status service for this Pokit device.
 
-    QMutex dataLoggerMutex, deviceInformationMutex, dsoMutex, genericAccessMutex, multimeterMutex,
-        statusMutex;
+    QMutex dataLoggerMutex;        ///< Mutex for protecting access to #dataLogger.
+    QMutex deviceInformationMutex; ///< Mutex for protecting access to #deviceInformation.
+    QMutex dsoMutex;               ///< Mutex for protecting access to #dso.
+    QMutex genericAccessMutex;     ///< Mutex for protecting access to #genericAccess.
+    QMutex multimeterMutex;        ///< Mutex for protecting access to #multimeter.
+    QMutex statusMutex;            ///< Mutex for protecting access to #status.
 
     explicit PokitDevicePrivate(PokitDevice * const q);
 
