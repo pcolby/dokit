@@ -101,24 +101,66 @@ bool StatusService::readCharacteristics()
     return (r1 && r2 && r3);
 }
 
+/*!
+ * Read the `Status` service's `Device Characteristics` characteristic.
+ *
+ * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * underlying controller it not yet connected to the Pokit device, or the device's services have
+ * not yet been discovered).
+ *
+ * Emits deviceCharacteristicsRead if/when the characteristic has been read successfully.
+ */
 bool StatusService::readDeviceCharacteristics()
 {
     Q_D(StatusService);
     return d->readCharacteristic(CharacteristicUuids::deviceCharacteristics);
 }
 
+/*!
+ * Read the `Status` service's `Status` characteristic.
+ *
+ * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * underlying controller it not yet connected to the Pokit device, or the device's services have
+ * not yet been discovered).
+ *
+ * Emits devicStatusRead if/when the characteristic has been read successfully.
+ */
 bool StatusService::readStatusCharacteristic()
 {
     Q_D(StatusService);
     return d->readCharacteristic(CharacteristicUuids::status);
 }
 
+/*!
+ * Read the `Status` service's `Name` characteristic.
+ *
+ * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * underlying controller it not yet connected to the Pokit device, or the device's services have
+ * not yet been discovered).
+ *
+ * Emits deviceNameRead if/when the characteristic has been read successfully.
+ */
 bool StatusService::readNameCharacteristic()
 {
     Q_D(StatusService);
     return d->readCharacteristic(CharacteristicUuids::name);
 }
 
+/*!
+ * Returns the most recent value of the `Status` service's `Device Characteristics` characteristic.
+ *
+ * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
+ * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a
+ * null result is returned, which can be checked via the returned
+ * DeviceCharacteristics::firmwareVersion, like:
+ *
+ * ```
+ * const DeviceCharacteristics characteristics = service->deviceCharacteristics();
+ * if (!characteristics.firmwareVersion.isNull()) {
+ *     ...
+ * }
+ * ```
+ */
 StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() const
 {
     Q_D(const StatusService);
@@ -137,6 +179,17 @@ StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() cons
     return StatusServicePrivate::parseDeviceCharacteristics(characteristic.value());
 }
 
+/*!
+ * Returns the most recent value of the `Status` characteristic's `Status` attribute.
+ *
+ * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
+ * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then
+ * `0xFF` is returned.
+ *
+ * \note The `Status` service's `Status' characteristic contains two attributes: `Status` and
+ * `Battery Voltage`. Thus this function, and batteryVoltage(), both read the same underlying
+ * characteristic.
+ */
 StatusService::DeviceStatus StatusService::deviceStatus() const
 {
     Q_D(const StatusService);
@@ -155,6 +208,17 @@ StatusService::DeviceStatus StatusService::deviceStatus() const
     return StatusServicePrivate::parseStatus(characteristic.value()).first;
 }
 
+/*!
+ * Returns the most recent value of the `Status` characteristic's `Battery Voltage` attribute.
+ *
+ * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
+ * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then
+ * a quiet NaN is returned, which can be checked via `qIsNaN`.
+ *
+ * \note The `Status` service's `Status' characteristic contains two attributes: `Status` and
+ * `Battery Voltage`. Thus this function, and deviceStatus(), both read the same underlying
+ * characteristic.
+ */
 float StatusService::batteryVoltage() const
 {
     Q_D(const StatusService);
@@ -173,6 +237,13 @@ float StatusService::batteryVoltage() const
     return StatusServicePrivate::parseStatus(characteristic.value()).second;
 }
 
+/*!
+ * Returns the most recent value of the `Status` services's `Device Name` characteristic.
+ *
+ * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
+ * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a
+ * null QString is returned.
+ */
 QString StatusService::deviceName() const
 {
     Q_D(const StatusService);
@@ -191,6 +262,13 @@ QString StatusService::deviceName() const
     return QString::fromUtf8(characteristic.value());
 }
 
+/*!
+ * Set's the Pokit device's name to \a name.
+ *
+ * Returns `true` if the write request was successfully queued, `false` otherwise.
+ *
+ * Emits deivceNameWritten if/when the \a name has been set.
+ */
 bool StatusService::setDeviceName(const QString &name)
 {
     Q_D(const StatusService);
@@ -216,7 +294,18 @@ bool StatusService::setDeviceName(const QString &name)
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
 
-/// \todo Currently doesn't work (ATT error 0x80). Follow up with Pokit Innovations?
+/*!
+ * Flash the Pokit device's LED.
+ *
+ * Returns `true` if the flash request was successfully queued, `false` otherwise.
+ *
+ * Emits deviceLedFlashed if/when the LED has flashed successfully.
+ *
+ * \note This does not appear to work currently, for the one (Pokit Pro) device available for
+ * testing. Instead, the underlying Bluetooth stack returns ATT error `0x80`.
+ *
+ * \todo Diagnose and/or follow up with Pokit Innovations.
+ */
 bool StatusService::flashLed()
 {
     Q_D(const StatusService);
@@ -259,6 +348,9 @@ StatusServicePrivate::StatusServicePrivate(
 
 }
 
+/*!
+ * Parses the `Device Characteristics` \a value into a DeviceCharacteristics struct.
+ */
 StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteristics(
     const QByteArray &value)
 {
@@ -298,6 +390,9 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
     return characteristics;
 }
 
+/*!
+ * Parses the `Status` \a value into a DeviceStatus and battery voltage.
+ */
 QPair<StatusService::DeviceStatus, float> StatusServicePrivate::parseStatus(const QByteArray &value)
 {
     if (value.size() < 5) {
@@ -313,6 +408,10 @@ QPair<StatusService::DeviceStatus, float> StatusServicePrivate::parseStatus(cons
     return QPair(status, batteryVoltage);
 }
 
+/*!
+ * Implements AbstractPokitServicePrivate::characteristicRead parse \value, then emit a specialised
+ * signal, for each supported \a characteristic.
+ */
 void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
@@ -357,6 +456,10 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
+/*!
+ * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a
+ * specialised signal, for each supported \a characteristic.
+ */
 void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                  const QByteArray &newValue)
 {

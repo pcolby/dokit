@@ -58,10 +58,10 @@ AbstractPokitService::~AbstractPokitService()
 /*!
  * \fn virtual bool AbstractPokitService::readCharacteristics() = 0
  *
- * Read the all characteristics.
+ * Read all characteristics.
  *
- * This convenience function will queue refresh requests of all characteristics supported by the
- * current service.
+ * This convenience function will queue refresh requests of all characteristics supported by this
+ * service.
  *
  * Relevant `*Service::*Read` signals will be emitted by derived class objects as each
  * characteristic is successfully read.

@@ -52,14 +52,14 @@ public:
     };
 
     struct DeviceCharacteristics {
-        QVersionNumber firmwareVersion;
-        quint16 maximumVoltage;
-        quint16 maximumCurrent;
-        quint16 maximumResistance;
-        quint16 maximumSamplingRate;
-        quint16 samplingBufferSize;
-        quint16 capabilityMask; ///< Reserved.
-        QBluetoothAddress macAddress;
+        QVersionNumber firmwareVersion; ///< Device's major and minor firmware version.
+        quint16 maximumVoltage;         ///< Device's maximum input voltage.
+        quint16 maximumCurrent;         ///< Device's maximum input current.
+        quint16 maximumResistance;      ///< Device's maximum input resistance.
+        quint16 maximumSamplingRate;    ///< Device's maximum sampling rate.
+        quint16 samplingBufferSize;     ///< Device's sampling buffer size.
+        quint16 capabilityMask;         ///< Reserved.
+        QBluetoothAddress macAddress;   ///< Device's MAC address.
     };
 
     enum class DeviceStatus : quint8 {
