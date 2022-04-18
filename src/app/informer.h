@@ -33,8 +33,5 @@ public:
 
 public slots:
 
-private:
-    QLowEnergyController * controller; ///< BLE controller for accessing the Device Info service.
-
 private slots:
 };

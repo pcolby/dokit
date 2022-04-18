@@ -32,7 +32,7 @@
 
 Q_LOGGING_CATEGORY(pokitInformer, "pokit.ui.informer", QtInfoMsg);
 
-Informer::Informer(QObject * const parent) : QObject(parent), controller(nullptr)
+Informer::Informer(QObject * const parent) : QObject(parent)
 {
     PokitDevice * device = new PokitDevice(QLatin1String("5C:02:72:09:AA:25"), this);
     qDebug() << device;
