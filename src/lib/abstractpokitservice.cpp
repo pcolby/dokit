@@ -199,7 +199,7 @@ bool AbstractPokitServicePrivate::createServiceObject()
  *
  * Returns \c true if the characteristic read request was successfully queued, \c false otherwise.
  *
- * \see AbstractPokitService::readCharacteristic()
+ * \see AbstractPokitService::readCharacteristics()
  * \see AbstractPokitServicePrivate::characteristicRead()
  */
 bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)

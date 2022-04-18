@@ -35,8 +35,6 @@ QTPOKIT_BEGIN_NAMESPACE
 
 class StatusServicePrivate;
 
-QLowEnergyController * createPokitDeviceController(const QString &addressOrUuid);
-
 class QTPOKIT_EXPORT StatusService : public AbstractPokitService
 {
     Q_OBJECT

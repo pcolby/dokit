@@ -108,7 +108,7 @@ bool StatusService::readCharacteristics()
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
- * Emits deviceCharacteristicsRead if/when the characteristic has been read successfully.
+ * Emits deviceCharacteristicsRead() if/when the characteristic has been read successfully.
  */
 bool StatusService::readDeviceCharacteristics()
 {
@@ -123,7 +123,7 @@ bool StatusService::readDeviceCharacteristics()
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
- * Emits devicStatusRead if/when the characteristic has been read successfully.
+ * Emits deviceStatusRead() if/when the characteristic has been read successfully.
  */
 bool StatusService::readStatusCharacteristic()
 {
@@ -138,7 +138,7 @@ bool StatusService::readStatusCharacteristic()
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
- * Emits deviceNameRead if/when the characteristic has been read successfully.
+ * Emits deviceNameRead() if/when the characteristic has been read successfully.
  */
 bool StatusService::readNameCharacteristic()
 {
@@ -267,7 +267,7 @@ QString StatusService::deviceName() const
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
- * Emits deivceNameWritten if/when the \a name has been set.
+ * Emits deivceNameWritten() if/when the \a name has been set.
  */
 bool StatusService::setDeviceName(const QString &name)
 {
@@ -299,7 +299,7 @@ bool StatusService::setDeviceName(const QString &name)
  *
  * Returns `true` if the flash request was successfully queued, `false` otherwise.
  *
- * Emits deviceLedFlashed if/when the LED has flashed successfully.
+ * Emits deviceLedFlashed() if/when the LED has flashed successfully.
  *
  * \note This does not appear to work currently, for the one (Pokit Pro) device available for
  * testing. Instead, the underlying Bluetooth stack returns ATT error `0x80`.
@@ -329,6 +329,46 @@ bool StatusService::flashLed()
     d->service->writeCharacteristic(characteristic, value);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
+
+/*!
+ * \fn StatusService::deviceCharacteristicsRead
+ *
+ * This signal is emitted when the `Device Characteristics` characteristic has been read
+ * successfully.
+ *
+ * \see readDeviceCharacteristics
+ */
+
+/*!
+ * \fn StatusService::deviceNameRead
+ *
+ * This signal is emitted when the `Device Name` characteristic has been read successfully.
+ *
+ * \see readDeviceName
+ */
+
+/*!
+ * \fn StatusService::deivceNameWritten
+ *
+ * This signal is emitted when the `Device Name` characteristic has been written successfully.
+ *
+ * \see setDeviceName
+ */
+
+/*!
+ * \fn StatusService::deviceStatusRead
+ *
+ * This signal is emitted when the `Status` characteristic has been read successfully.
+ *
+ * \see readDeviceStatus
+ */
+
+/*!
+ * \fn StatusService::deviceLedFlashed
+ *
+ * This signal is emitted when device's LED has flashed in response to a write of the `Flash LED`
+ * characteristic.
+ */
 
 /*!
  * \cond internal
