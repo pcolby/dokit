@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['start_0',['start',['../classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965',1,'PokitDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)'],['../classPokitDeviceDiscoveryAgent.html#ae91ec520792eee6c044d0d22c9ce014e',1,'PokitDeviceDiscoveryAgent::start()']]]
+  ['controller_0',['controller',['../classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423',1,'PokitDevice::controller()'],['../classPokitDevice.html#abc7596a3dd5443f8a7d33939e6bf4765',1,'PokitDevice::controller() const']]]
 ];

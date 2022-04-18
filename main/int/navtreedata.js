@@ -32,6 +32,16 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Placeholder Page", "md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html", null ],
+    [ "Notes", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html", [
+      [ "Pokit Bluetooth API", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md6", [
+        [ "Things to Query", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md7", [
+          [ "Status Service UUID", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md8", null ],
+          [ "Status Characteristic Value Length", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md9", null ]
+        ] ],
+        [ "Flash LED Service", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md10", null ]
+      ] ],
+      [ "Qt Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md11", null ]
+    ] ],
     [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -40,7 +50,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -56,7 +67,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"abstractpokitservice_8cpp.html",
+"uuids_8h.html#a9ba7983bbdeba2434689d3af1b68b1ea"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

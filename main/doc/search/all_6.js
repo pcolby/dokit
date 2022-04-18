@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7epokitdevicediscoveryagent_0',['~PokitDeviceDiscoveryAgent',['../classPokitDeviceDiscoveryAgent.html#a52a0bf60c348e19e2d28d22df63f452d',1,'PokitDeviceDiscoveryAgent']]]
+  ['idle_0',['Idle',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c',1,'StatusService']]],
+  ['ispokitdevice_1',['isPokitDevice',['../classPokitDeviceDiscoveryAgent.html#a70f6c3cfc1bfe5cab658571642bbba2f',1,'PokitDeviceDiscoveryAgent']]]
 ];

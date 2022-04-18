@@ -1,4 +1,25 @@
 var searchData=
 [
-  ['logging_5fp_2eh_0',['logging_p.h',['../logging__p_8h.html',1,'']]]
+  ['d_5fptr_0',['d_ptr',['../classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8',1,'AbstractPokitService::d_ptr()'],['../classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9',1,'PokitDevice::d_ptr()'],['../classPokitDeviceDiscoveryAgent.html#af1a41b6d586682898eb865f8e7593636',1,'PokitDeviceDiscoveryAgent::d_ptr()']]],
+  ['datalogger_1',['dataLogger',['../classPokitDevicePrivate.html#af037d2de91afce5efdeab05ba94e55a7',1,'PokitDevicePrivate::dataLogger()'],['../classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961',1,'PokitDevice::dataLogger()']]],
+  ['dataloggermutex_2',['dataLoggerMutex',['../classPokitDevicePrivate.html#a5ec3a1468e50ad47385c6494be2529ae',1,'PokitDevicePrivate']]],
+  ['deivcenamewritten_3',['deivceNameWritten',['../classStatusService.html#a092e655b40139d94fe046b86f0dd51e5',1,'StatusService']]],
+  ['devicecharacteristics_4',['deviceCharacteristics',['../structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0',1,'StatusService::CharacteristicUuids::deviceCharacteristics()'],['../classStatusService.html#a008d41a33eedd90e68ccf7a94ed5b65f',1,'StatusService::deviceCharacteristics() const']]],
+  ['devicecharacteristics_5',['DeviceCharacteristics',['../structStatusService_1_1DeviceCharacteristics.html',1,'StatusService']]],
+  ['devicecharacteristicsread_6',['deviceCharacteristicsRead',['../classStatusService.html#aeac02849bd35edeadda7ab7b4a4939c9',1,'StatusService']]],
+  ['devicediscovered_7',['deviceDiscovered',['../classScanner.html#aba8eeb667b3a8084ddd76ee54bfcd111',1,'Scanner::deviceDiscovered()'],['../classPokitDeviceDiscoveryAgentPrivate.html#a1e55afd43970fd493409c2f60a95246e',1,'PokitDeviceDiscoveryAgentPrivate::deviceDiscovered()']]],
+  ['deviceinformation_8',['deviceInformation',['../classPokitDevicePrivate.html#a68ca442630b88b4f9ad1c176d066e9f3',1,'PokitDevicePrivate::deviceInformation()'],['../classPokitDevice.html#a95e2754eb5e31e5e9800a3ec9eb3b711',1,'PokitDevice::deviceInformation()']]],
+  ['deviceinformationmutex_9',['deviceInformationMutex',['../classPokitDevicePrivate.html#a90f3322b00e068e628dec04ae2c65e81',1,'PokitDevicePrivate']]],
+  ['deviceledflashed_10',['deviceLedFlashed',['../classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee',1,'StatusService']]],
+  ['devicename_11',['deviceName',['../classStatusService.html#a113a7051f70e642d2c1f67124c1f12c7',1,'StatusService']]],
+  ['devicenameread_12',['deviceNameRead',['../classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1',1,'StatusService']]],
+  ['devicestatus_13',['deviceStatus',['../classStatusService.html#a37b3976eeb85bf5aaf1cb23605b15f01',1,'StatusService']]],
+  ['devicestatus_14',['DeviceStatus',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35',1,'StatusService']]],
+  ['devicestatusread_15',['deviceStatusRead',['../classStatusService.html#aa2bb077ed3109aefe2879b930470c177',1,'StatusService']]],
+  ['deviceupdated_16',['deviceUpdated',['../classPokitDeviceDiscoveryAgentPrivate.html#a11f5235e5b29311c1db4a065f363df35',1,'PokitDeviceDiscoveryAgentPrivate']]],
+  ['disconnected_17',['disconnected',['../classPokitDevicePrivate.html#a8ad58f8a531f9cfa7642c0c242737040',1,'PokitDevicePrivate']]],
+  ['discoveryagent_18',['discoveryAgent',['../classScanner.html#ab53a4c8d5a17ae7701f0b903d8bd86a2',1,'Scanner']]],
+  ['discoveryfinished_19',['discoveryFinished',['../classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab',1,'AbstractPokitServicePrivate::discoveryFinished()'],['../classPokitDevicePrivate.html#a2b525c4da45d7fae7cb31631d075acb5',1,'PokitDevicePrivate::discoveryFinished()']]],
+  ['dso_20',['dso',['../classPokitDevicePrivate.html#a3d56069c9b50e457a799a9c07637ecde',1,'PokitDevicePrivate::dso()'],['../classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117',1,'PokitDevice::dso()']]],
+  ['dsomutex_21',['dsoMutex',['../classPokitDevicePrivate.html#a49f5b08bf31644b4e1521f33e5c8578c',1,'PokitDevicePrivate']]]
 ];

@@ -87,7 +87,6 @@ $(document).ready(function(){initNavTree('classInformer.html',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classInformer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Informer Class Reference</div></div>
 </div><!--header-->
@@ -114,12 +113,6 @@ Collaboration diagram for Informer:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afa4e32defef10cc646080e2a5f4891ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInformer.html#afa4e32defef10cc646080e2a5f4891ec">Informer</a> (QObject *const parent)</td></tr>
 <tr class="separator:afa4e32defef10cc646080e2a5f4891ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:af1f196a0f2c5706b9e9105f72c307a51"><td class="memItemLeft" align="right" valign="top">QLowEnergyController *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a></td></tr>
-<tr class="memdesc:af1f196a0f2c5706b9e9105f72c307a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE controller for accessing the Device Info service.  <a href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">More...</a><br /></td></tr>
-<tr class="separator:af1f196a0f2c5706b9e9105f72c307a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Simple class for experimenting with the Pokit device info service. </p>
@@ -150,190 +143,53 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Probably implement a sahred (library) PokitDevice class that wraps a QLowEnergyController to implement all of the Pokit services? Kinda depends on how Qt's BLE services classes work, so we'll continue with this bespoke class to learn more for now... </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Proper error handling. </dd></dl>
+<p >&lt; </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Exit gracefully. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="informer_8cpp_source.html#l00038">38</a> of file <a class="el" href="informer_8cpp_source.html">informer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>                                         : QObject(parent), <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>(<span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   39</span>{</div>
-<div class="line"><span class="lineno">   40</span>    QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String(<span class="stringliteral">&quot;5C:02:72:09:AA:25&quot;</span>)), QString(), 0);</div>
-<div class="line"><span class="lineno">   41</span>    qDebug() &lt;&lt; <a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(info);</div>
-<div class="line"><span class="lineno">   42</span>    <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a> = QLowEnergyController::createCentral(info);</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    connect(<a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>, &amp;QLowEnergyController::serviceDiscovered, <span class="keyword">this</span>, [<span class="keyword">this</span>](<span class="keyword">const</span> QBluetoothUuid &amp;service) {</div>
-<div class="line"><span class="lineno">   45</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;service discovered&quot;</span> &lt;&lt; service;</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">if</span> (service == QBluetoothUuid(QStringLiteral(<a class="code hl_define" href="uuids_8h.html#ad63589b92554beb84b3acee597c096d3">POKIT_SERVICE_STATUS</a>))) {</div>
-<div class="line"><span class="lineno">   47</span>            qDebug() &lt;&lt; <span class="stringliteral">&quot;status&quot;</span>;</div>
-<div class="line"><span class="lineno">   48</span>            QLowEnergyService * s = <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;createServiceObject(service);</div>
-<div class="line"><span class="lineno">   49</span>            qDebug() &lt;&lt; s;</div>
-<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (s != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   51</span>                s-&gt;discoverDetails();</div>
-<div class="line"><span class="lineno">   52</span>            }</div>
-<div class="line"><span class="lineno">   53</span>        }</div>
-<div class="line"><span class="lineno">   54</span>    });</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    QLowEnergyService * s = <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;createServiceObject(QBluetoothUuid(QLatin1String(<a class="code hl_define" href="uuids_8h.html#ad63589b92554beb84b3acee597c096d3">POKIT_SERVICE_STATUS</a>)), <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   57</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;first service&quot;</span> &lt;&lt; s;</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>    connect(<a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>, &amp;QLowEnergyController::connected, <span class="keyword">this</span>, [<span class="keyword">this</span>]() {</div>
-<div class="line"><span class="lineno">   60</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;connected&quot;</span> &lt;&lt; <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;services().size();</div>
-<div class="line"><span class="lineno">   61</span>        <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;discoverServices();</div>
-<div class="line"><span class="lineno">   62</span>    });</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>    connect(<a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>, &amp;QLowEnergyController::disconnected, <span class="keyword">this</span>, [<span class="keyword">this</span>]() {</div>
-<div class="line"><span class="lineno">   65</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;disconnected&quot;</span> &lt;&lt; <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;services().size();</div>
-<div class="line"><span class="lineno">   66</span>    });</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    connect(<a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>, &amp;QLowEnergyController::discoveryFinished, <span class="keyword">this</span>, [<span class="keyword">this</span>]() {</div>
-<div class="line"><span class="lineno">   69</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;service discovery finished&quot;</span> &lt;&lt; <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;services().size();</div>
-<div class="line"><span class="lineno">   70</span>        QLowEnergyService * s = <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;createServiceObject(QBluetoothUuid(QLatin1String(<a class="code hl_define" href="uuids_8h.html#ad63589b92554beb84b3acee597c096d3">POKIT_SERVICE_STATUS</a>)), <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   71</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;second service&quot;</span> &lt;&lt; s;</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">if</span> (s) {</div>
-<div class="line"><span class="lineno">   73</span>            qDebug() &lt;&lt; <span class="stringliteral">&quot;second service&quot;</span> &lt;&lt; s-&gt;serviceName() &lt;&lt; s-&gt;serviceUuid();</div>
-<div class="line"><span class="lineno">   74</span><span class="preprocessor">            #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</span></div>
-<div class="line"><span class="lineno">   75</span>            connect(s, QOverload&lt;QLowEnergyService::ServiceError&gt;::of(&amp;QLowEnergyService::error),</div>
-<div class="line"><span class="lineno">   76</span>            #<span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   77</span>            connect(s, &amp;QLowEnergyService::errorOccurred,</div>
-<div class="line"><span class="lineno">   78</span>            #endif</div>
-<div class="line"><span class="lineno">   79</span>                    <span class="keyword">this</span>, [](<span class="keyword">const</span> QLowEnergyService::ServiceError error) {</div>
-<div class="line"><span class="lineno">   80</span>                qCritical() &lt;&lt; <span class="stringliteral">&quot;ServcieError:&quot;</span> &lt;&lt; error;</div>
-<div class="line"><span class="lineno">   81</span>                QCoreApplication::quit();</div>
-<div class="line"><span class="lineno">   82</span>            });</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>            connect(s, &amp;QLowEnergyService::stateChanged, <span class="keyword">this</span>, [s](<span class="keyword">const</span> QLowEnergyService::ServiceState state) {</div>
-<div class="line"><span class="lineno">   85</span>                qDebug() &lt;&lt; <span class="stringliteral">&quot;s1 state chnaged&quot;</span> &lt;&lt; state;</div>
-<div class="line"><span class="lineno">   86</span><span class="preprocessor">                #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</span></div>
-<div class="line"><span class="lineno">   87</span>                <span class="keywordflow">if</span> (state == QLowEnergyService::ServiceDiscovered) {</div>
-<div class="line"><span class="lineno">   88</span><span class="preprocessor">                #else</span></div>
-<div class="line"><span class="lineno">   89</span>                <span class="keywordflow">if</span> (state == QLowEnergyService::RemoteServiceDiscovered) {</div>
-<div class="line"><span class="lineno">   90</span><span class="preprocessor">                #endif</span></div>
-<div class="line"><span class="lineno">   91</span>                    QLowEnergyCharacteristic c = s-&gt;characteristic(QUuid(<a class="code hl_define" href="uuids_8h.html#a45b5887e24586c287b3baf4518701a40">POKIT_CHARACTERISTIC_STATUS_DEVICE</a>));</div>
-<div class="line"><span class="lineno">   92</span>                    qDebug() &lt;&lt; c.name() &lt;&lt; c.value().length() &lt;&lt; c.value() &lt;&lt; c.isValid();</div>
-<div class="line"><span class="lineno">   93</span>                    <span class="keywordflow">if</span> (c.isValid()) {</div>
-<div class="line"><span class="lineno">   94</span>                        Q_ASSERT(c.value().length() == 20); <span class="comment">/// \todo Proper error handling.</span></div>
-<div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>                        <span class="comment">// Both of the following methods produce the same, correct results. Will</span></div>
-<div class="line"><span class="lineno">   97</span>                        <span class="comment">// settle on one when refactoring into library classes.</span></div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>                        <span class="comment">// The bytearray-indexing method.</span></div>
-<div class="line"><span class="lineno">  100</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;version major&quot;</span> &lt;&lt; qFromLittleEndian&lt;quint8&gt;(c.value().mid(0,1));</div>
-<div class="line"><span class="lineno">  101</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;version minor&quot;</span> &lt;&lt; qFromLittleEndian&lt;quint8&gt;(c.value().mid(1,1));</div>
-<div class="line"><span class="lineno">  102</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max voltage&quot;</span> &lt;&lt; qFromLittleEndian&lt;quint16&gt;(c.value().mid(2,2));</div>
-<div class="line"><span class="lineno">  103</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max current&quot;</span> &lt;&lt; qFromLittleEndian&lt;quint16&gt;(c.value().mid(4,2));</div>
-<div class="line"><span class="lineno">  104</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max resistance&quot;</span> &lt;&lt; qFromLittleEndian&lt;quint16&gt;(c.value().mid(6,2));</div>
-<div class="line"><span class="lineno">  105</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max sample rate&quot;</span> &lt;&lt; qFromLittleEndian&lt;quint16&gt;(c.value().mid(8,2));</div>
-<div class="line"><span class="lineno">  106</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max buff size&quot;</span> &lt;&lt; qFromLittleEndian&lt;quint16&gt;(c.value().mid(10,2));</div>
-<div class="line"><span class="lineno">  107</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max cap mask&quot;</span> &lt;&lt; qFromLittleEndian&lt;quint16&gt;(c.value().mid(12,2));</div>
-<div class="line"><span class="lineno">  108</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;mac addr&quot;</span> &lt;&lt; c.value().mid(14);</div>
-<div class="line"><span class="lineno">  109</span> </div>
-<div class="line"><span class="lineno">  110</span>                        <span class="comment">// The datastream method.</span></div>
-<div class="line"><span class="lineno">  111</span>                        QDataStream str(c.value());</div>
-<div class="line"><span class="lineno">  112</span>                        str.setByteOrder(QDataStream::LittleEndian);</div>
-<div class="line"><span class="lineno">  113</span>                        quint8 v1,v2;</div>
-<div class="line"><span class="lineno">  114</span>                        quint16 maxV, maxC, maxR, maxS, buff, mask;</div>
-<div class="line"><span class="lineno">  115</span>                        str &gt;&gt; v1 &gt;&gt; v2 &gt;&gt; maxV &gt;&gt; maxC &gt;&gt; maxR &gt;&gt; maxS &gt;&gt; buff &gt;&gt; mask;</div>
-<div class="line"><span class="lineno">  116</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;version major&quot;</span> &lt;&lt; v1;</div>
-<div class="line"><span class="lineno">  117</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;version minor&quot;</span> &lt;&lt; v2;</div>
-<div class="line"><span class="lineno">  118</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max voltage&quot;</span> &lt;&lt; maxV;</div>
-<div class="line"><span class="lineno">  119</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max current&quot;</span> &lt;&lt; maxC;</div>
-<div class="line"><span class="lineno">  120</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max resistance&quot;</span> &lt;&lt; maxR;</div>
-<div class="line"><span class="lineno">  121</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max sample rate&quot;</span> &lt;&lt; maxS;</div>
-<div class="line"><span class="lineno">  122</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max buff size&quot;</span> &lt;&lt; buff;</div>
-<div class="line"><span class="lineno">  123</span>                        qDebug() &lt;&lt; <span class="stringliteral">&quot;max cap mask&quot;</span> &lt;&lt; mask;</div>
-<div class="line"><span class="lineno">  124</span>                        <span class="comment">//qDebug() &lt;&lt; &quot;mac addr&quot; &lt;&lt; str;</span></div>
-<div class="line"><span class="lineno">  125</span>                    }</div>
-<div class="line"><span class="lineno">  126</span>                }</div>
-<div class="line"><span class="lineno">  127</span>            });</div>
-<div class="line"><span class="lineno">  128</span>            s-&gt;discoverDetails();</div>
-<div class="line"><span class="lineno">  129</span>        }</div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>        QLowEnergyService * s2 = <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;createServiceObject(<a class="code hl_define" href="uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8">POKIT_SERVICE_DEVICE_INFO</a>, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  132</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;second service s2&quot;</span> &lt;&lt; s2;</div>
-<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">if</span> (s2) {</div>
-<div class="line"><span class="lineno">  134</span>            qDebug() &lt;&lt; <span class="stringliteral">&quot;second service s2&quot;</span> &lt;&lt; s2-&gt;serviceName() &lt;&lt; s2-&gt;serviceUuid();</div>
-<div class="line"><span class="lineno">  135</span>            connect(s2, &amp;QLowEnergyService::stateChanged, <span class="keyword">this</span>, [s2](<span class="keyword">const</span> QLowEnergyService::ServiceState state) {</div>
-<div class="line"><span class="lineno">  136</span>                qDebug() &lt;&lt; <span class="stringliteral">&quot;s2 state chnaged&quot;</span> &lt;&lt; state;</div>
-<div class="line"><span class="lineno">  137</span><span class="preprocessor">                #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</span></div>
-<div class="line"><span class="lineno">  138</span>                <span class="keywordflow">if</span> (state == QLowEnergyService::ServiceDiscovered) {</div>
-<div class="line"><span class="lineno">  139</span><span class="preprocessor">                #else</span></div>
-<div class="line"><span class="lineno">  140</span>                <span class="keywordflow">if</span> (state == QLowEnergyService::RemoteServiceDiscovered) {</div>
-<div class="line"><span class="lineno">  141</span><span class="preprocessor">                #endif</span></div>
-<div class="line"><span class="lineno">  142</span>                    QLowEnergyCharacteristic c = s2-&gt;characteristic(<a class="code hl_define" href="uuids_8h.html#a769ed420cda1bb2aa68dbde5aa7c55b4">POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER</a>);</div>
-<div class="line"><span class="lineno">  143</span>                    qDebug() &lt;&lt; c.name() &lt;&lt; c.value() &lt;&lt; c.isValid();</div>
-<div class="line"><span class="lineno">  144</span>                    c = s2-&gt;characteristic(<a class="code hl_define" href="uuids_8h.html#a087ff45b5fe77bbb4ad21812217f1051">POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER</a>);</div>
-<div class="line"><span class="lineno">  145</span>                    qDebug() &lt;&lt; c.name() &lt;&lt; c.value() &lt;&lt; c.isValid();</div>
-<div class="line"><span class="lineno">  146</span>                    c = s2-&gt;characteristic(<a class="code hl_define" href="uuids_8h.html#a2aa90fe7a5f5c92ae860275067de1e15">POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV</a>);</div>
-<div class="line"><span class="lineno">  147</span>                    qDebug() &lt;&lt; c.name() &lt;&lt; c.value() &lt;&lt; c.isValid();</div>
-<div class="line"><span class="lineno">  148</span>                    c = s2-&gt;characteristic(<a class="code hl_define" href="uuids_8h.html#a6ded05541628d50a6c9324b303b8149d">POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV</a>);</div>
-<div class="line"><span class="lineno">  149</span>                    qDebug() &lt;&lt; c.name() &lt;&lt; c.value() &lt;&lt; c.isValid();</div>
-<div class="line"><span class="lineno">  150</span>                    c = s2-&gt;characteristic(<a class="code hl_define" href="uuids_8h.html#a6f43aa2ceefac68c6e823f684d733f6b">POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV</a>);</div>
-<div class="line"><span class="lineno">  151</span>                    qDebug() &lt;&lt; c.name() &lt;&lt; c.value() &lt;&lt; c.isValid();</div>
-<div class="line"><span class="lineno">  152</span>                }</div>
-<div class="line"><span class="lineno">  153</span>            });</div>
-<div class="line"><span class="lineno">  154</span>            s2-&gt;discoverDetails();</div>
-<div class="line"><span class="lineno">  155</span>        }</div>
-<div class="line"><span class="lineno">  156</span>    });</div>
-<div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span><span class="preprocessor">    #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</span></div>
-<div class="line"><span class="lineno">  159</span>    connect(<a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>, QOverload&lt;QLowEnergyController::Error&gt;::of(&amp;QLowEnergyController::error),</div>
-<div class="line"><span class="lineno">  160</span>    #<span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  161</span>    connect(<a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>, &amp;QLowEnergyController::errorOccurred,</div>
-<div class="line"><span class="lineno">  162</span>    #endif</div>
-<div class="line"><span class="lineno">  163</span>            <span class="keyword">this</span>, [](<span class="keyword">const</span> QLowEnergyController::Error error) {</div>
-<div class="line"><span class="lineno">  164</span>        qCritical() &lt;&lt; <span class="stringliteral">&quot;Error:&quot;</span> &lt;&lt; error;</div>
-<div class="line"><span class="lineno">  165</span>        QCoreApplication::quit();</div>
-<div class="line"><span class="lineno">  166</span>    });</div>
-<div class="line"><span class="lineno">  167</span> </div>
-<div class="line"><span class="lineno">  168</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;connecting&quot;</span>;</div>
-<div class="line"><span class="lineno">  169</span>    <a class="code hl_variable" href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">controller</a>-&gt;connectToDevice();</div>
-<div class="line"><span class="lineno">  170</span>}</div>
-<div class="ttc" id="aclassInformer_html_af1f196a0f2c5706b9e9105f72c307a51"><div class="ttname"><a href="classInformer.html#af1f196a0f2c5706b9e9105f72c307a51">Informer::controller</a></div><div class="ttdeci">QLowEnergyController * controller</div><div class="ttdoc">BLE controller for accessing the Device Info service.</div><div class="ttdef"><b>Definition:</b> <a href="informer_8h_source.html#l00037">informer.h:37</a></div></div>
-<div class="ttc" id="autils_8h_html_a9ffa9547932ff46690df34e1f0ede5d0"><div class="ttname"><a href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QTPOKIT_EXPORT QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00037">utils.cpp:37</a></div></div>
-<div class="ttc" id="auuids_8h_html_a087ff45b5fe77bbb4ad21812217f1051"><div class="ttname"><a href="uuids_8h.html#a087ff45b5fe77bbb4ad21812217f1051">POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER</a></div><div class="ttdeci">#define POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER</div><div class="ttdoc">Device Model Number Model characteristic (0x2A24).</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00067">uuids.h:67</a></div></div>
-<div class="ttc" id="auuids_8h_html_a2aa90fe7a5f5c92ae860275067de1e15"><div class="ttname"><a href="uuids_8h.html#a2aa90fe7a5f5c92ae860275067de1e15">POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV</a></div><div class="ttdeci">#define POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV</div><div class="ttdoc">Device Firmware Revision characteristic (0x2A26).</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00068">uuids.h:68</a></div></div>
-<div class="ttc" id="auuids_8h_html_a45b5887e24586c287b3baf4518701a40"><div class="ttname"><a href="uuids_8h.html#a45b5887e24586c287b3baf4518701a40">POKIT_CHARACTERISTIC_STATUS_DEVICE</a></div><div class="ttdeci">#define POKIT_CHARACTERISTIC_STATUS_DEVICE</div><div class="ttdoc">Pokit Status Device characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00047">uuids.h:47</a></div></div>
-<div class="ttc" id="auuids_8h_html_a6bb5b113178ff3ec61aa38437ed46cd8"><div class="ttname"><a href="uuids_8h.html#a6bb5b113178ff3ec61aa38437ed46cd8">POKIT_SERVICE_DEVICE_INFO</a></div><div class="ttdeci">#define POKIT_SERVICE_DEVICE_INFO</div><div class="ttdoc">Device Information service (0x180A).</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00065">uuids.h:65</a></div></div>
-<div class="ttc" id="auuids_8h_html_a6ded05541628d50a6c9324b303b8149d"><div class="ttname"><a href="uuids_8h.html#a6ded05541628d50a6c9324b303b8149d">POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV</a></div><div class="ttdeci">#define POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV</div><div class="ttdoc">Device Software Revision characteristic (0x2A28).</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00069">uuids.h:69</a></div></div>
-<div class="ttc" id="auuids_8h_html_a6f43aa2ceefac68c6e823f684d733f6b"><div class="ttname"><a href="uuids_8h.html#a6f43aa2ceefac68c6e823f684d733f6b">POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV</a></div><div class="ttdeci">#define POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV</div><div class="ttdoc">Device Hardware Revision characteristic (0x2A27).</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00070">uuids.h:70</a></div></div>
-<div class="ttc" id="auuids_8h_html_a769ed420cda1bb2aa68dbde5aa7c55b4"><div class="ttname"><a href="uuids_8h.html#a769ed420cda1bb2aa68dbde5aa7c55b4">POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER</a></div><div class="ttdeci">#define POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER</div><div class="ttdoc">Device Manufacturer Name characteristic (0x2A29).</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00066">uuids.h:66</a></div></div>
-<div class="ttc" id="auuids_8h_html_ad63589b92554beb84b3acee597c096d3"><div class="ttname"><a href="uuids_8h.html#ad63589b92554beb84b3acee597c096d3">POKIT_SERVICE_STATUS</a></div><div class="ttdeci">#define POKIT_SERVICE_STATUS</div><div class="ttdoc">Pokit Status service.</div><div class="ttdef"><b>Definition:</b> <a href="uuids_8h_source.html#l00046">uuids.h:46</a></div></div>
+<p class="definition">Definition at line <a class="el" href="informer_8cpp_source.html#l00035">35</a> of file <a class="el" href="informer_8cpp_source.html">informer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>                                         : QObject(parent)</div>
+<div class="line"><span class="lineno">   36</span>{</div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_class" href="classPokitDevice.html">PokitDevice</a> * device = <span class="keyword">new</span> <a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>(QLatin1String(<span class="stringliteral">&quot;5C:02:72:09:AA:25&quot;</span>), <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   38</span>    qDebug() &lt;&lt; device;</div>
+<div class="line"><span class="lineno">   39</span>    <a class="code hl_class" href="classStatusService.html">StatusService</a> * service = device-&gt;<a class="code hl_function" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a>();</div>
+<div class="line"><span class="lineno">   40</span>    qDebug() &lt;&lt; service;</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>    connect(device-&gt;<a class="code hl_function" href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">controller</a>(),</div>
+<div class="line"><span class="lineno">   43</span>        #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</div>
+<div class="line"><span class="lineno">   44</span>        QOverload&lt;QLowEnergyController::Error&gt;::of(&amp;QLowEnergyController::error),</div>
+<div class="line"><span class="lineno">   45</span>        #<span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   46</span>        &amp;QLowEnergyController::errorOccurred,</div>
+<div class="line"><span class="lineno">   47</span>        #endif</div>
+<div class="line"><span class="lineno">   48</span>    [](QLowEnergyController::Error error) {</div>
+<div class="line"><span class="lineno">   49</span>        qDebug() &lt;&lt; error;</div>
+<div class="line"><span class="lineno">   50</span>        ::exit(EXIT_FAILURE); <span class="comment">///&lt; \todo Exit gracefully.</span></div>
+<div class="line"><span class="lineno">   51</span>    });</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>    connect(service, &amp;<a class="code hl_signal" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">StatusService::serviceDetailsDiscovered</a>,[service]() {</div>
+<div class="line"><span class="lineno">   54</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;All ready to go! :)&quot;</span>;</div>
+<div class="line"><span class="lineno">   55</span>        service-&gt;<a class="code hl_function" href="classStatusService.html#a008d41a33eedd90e68ccf7a94ed5b65f">deviceCharacteristics</a>(); <span class="comment">// Should be immediately (cached) available.</span></div>
+<div class="line"><span class="lineno">   56</span>        service-&gt;<a class="code hl_function" href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">flashLed</a>(); <span class="comment">// Should be fun :)</span></div>
+<div class="line"><span class="lineno">   57</span>        <span class="comment">//service-&gt;setDeviceName(QLatin1String(&quot;PokitPro&quot;)); // Yes, this works :D</span></div>
+<div class="line"><span class="lineno">   58</span>        service-&gt;<a class="code hl_function" href="classStatusService.html#ad73514f6f324ca56dffb844b14eb3bc0">readCharacteristics</a>(); <span class="comment">// Can also fetch new values (results via signal).</span></div>
+<div class="line"><span class="lineno">   59</span>    });</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>    device-&gt;<a class="code hl_function" href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">controller</a>()-&gt;connectToDevice();</div>
+<div class="line"><span class="lineno">   62</span>}</div>
+<div class="ttc" id="aclassAbstractPokitService_html_af67cbea4294ba0a77dcd9540b29528ff"><div class="ttname"><a href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">AbstractPokitService::serviceDetailsDiscovered</a></div><div class="ttdeci">void serviceDetailsDiscovered()</div><div class="ttdoc">This signal is emitted when the Pokit service details have been discovered.</div></div>
+<div class="ttc" id="aclassPokitDevice_html"><div class="ttname"><a href="classPokitDevice.html">PokitDevice</a></div><div class="ttdoc">The PokitDevice class discovers nearby Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8h_source.html#l00045">pokitdevice.h:46</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00103">pokitdevice.cpp:103</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00216">pokitdevice.cpp:216</a></div></div>
+<div class="ttc" id="aclassStatusService_html"><div class="ttname"><a href="classStatusService.html">StatusService</a></div><div class="ttdoc">Virtual base class for Pokit services.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00038">statusservice.h:39</a></div></div>
+<div class="ttc" id="aclassStatusService_html_a008d41a33eedd90e68ccf7a94ed5b65f"><div class="ttname"><a href="classStatusService.html#a008d41a33eedd90e68ccf7a94ed5b65f">StatusService::deviceCharacteristics</a></div><div class="ttdeci">DeviceCharacteristics deviceCharacteristics() const</div><div class="ttdoc">Returns the most recent value of the Status service's Device Characteristics characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00164">statusservice.cpp:164</a></div></div>
+<div class="ttc" id="aclassStatusService_html_a425bf65d42b24c4a621b312fcd152708"><div class="ttname"><a href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">StatusService::flashLed</a></div><div class="ttdeci">bool flashLed()</div><div class="ttdoc">Flash the Pokit device's LED.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00309">statusservice.cpp:309</a></div></div>
+<div class="ttc" id="aclassStatusService_html_ad73514f6f324ca56dffb844b14eb3bc0"><div class="ttname"><a href="classStatusService.html#ad73514f6f324ca56dffb844b14eb3bc0">StatusService::readCharacteristics</a></div><div class="ttdeci">bool readCharacteristics() override</div><div class="ttdoc">Read all characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00096">statusservice.cpp:96</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="informer_8h_source.html#l00037">controller</a>, <a class="el" href="uuids_8h_source.html#l00068">POKIT_CHARACTERISTIC_DEVICE_FIRMWARE_REV</a>, <a class="el" href="uuids_8h_source.html#l00070">POKIT_CHARACTERISTIC_DEVICE_HARDWARE_REV</a>, <a class="el" href="uuids_8h_source.html#l00066">POKIT_CHARACTERISTIC_DEVICE_MANUFACTURER</a>, <a class="el" href="uuids_8h_source.html#l00067">POKIT_CHARACTERISTIC_DEVICE_MODEL_NUMBER</a>, <a class="el" href="uuids_8h_source.html#l00069">POKIT_CHARACTERISTIC_DEVICE_SOFTWARE_REV</a>, <a class="el" href="uuids_8h_source.html#l00047">POKIT_CHARACTERISTIC_STATUS_DEVICE</a>, <a class="el" href="uuids_8h_source.html#l00065">POKIT_SERVICE_DEVICE_INFO</a>, <a class="el" href="uuids_8h_source.html#l00046">POKIT_SERVICE_STATUS</a>, and <a class="el" href="utils_8cpp_source.html#l00037">toJson()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00103">PokitDevice::controller()</a>, <a class="el" href="statusservice_8cpp_source.html#l00164">StatusService::deviceCharacteristics()</a>, <a class="el" href="statusservice_8cpp_source.html#l00309">StatusService::flashLed()</a>, <a class="el" href="statusservice_8cpp_source.html#l00096">StatusService::readCharacteristics()</a>, <a class="el" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">AbstractPokitService::serviceDetailsDiscovered()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00216">PokitDevice::status()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classInformer_afa4e32defef10cc646080e2a5f4891ec_cgraph.svg" width="264" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classInformer_afa4e32defef10cc646080e2a5f4891ec_cgraph.svg" width="786" height="267"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="af1f196a0f2c5706b9e9105f72c307a51" name="af1f196a0f2c5706b9e9105f72c307a51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1f196a0f2c5706b9e9105f72c307a51">&#9670;&nbsp;</a></span>controller</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QLowEnergyController* Informer::controller</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>BLE controller for accessing the Device Info service. </p>
-
-<p class="definition">Definition at line <a class="el" href="informer_8h_source.html#l00037">37</a> of file <a class="el" href="informer_8h_source.html">informer.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="informer_8cpp_source.html#l00038">Informer()</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qtpokit_20_2d_20internal_0',['QtPokit - Internal',['../index.html',1,'']]]
+  ['placeholder_20page_0',['Placeholder Page',['../md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html',1,'']]]
 ];

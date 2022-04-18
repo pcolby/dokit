@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['informer_0',['Informer',['../classInformer.html',1,'']]]
+  ['abstractpokitservice_0',['AbstractPokitService',['../classAbstractPokitService.html',1,'']]],
+  ['abstractpokitserviceprivate_1',['AbstractPokitServicePrivate',['../classAbstractPokitServicePrivate.html',1,'']]]
 ];

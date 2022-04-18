@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7epokitdevicediscoveryagent_0',['~PokitDeviceDiscoveryAgent',['../classPokitDeviceDiscoveryAgent.html#a52a0bf60c348e19e2d28d22df63f452d',1,'PokitDeviceDiscoveryAgent']]]
+  ['genericaccess_0',['genericAccess',['../classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df',1,'PokitDevice']]]
 ];

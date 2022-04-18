@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pokitdevicediscoveryagent_0',['PokitDeviceDiscoveryAgent',['../classPokitDeviceDiscoveryAgent.html',1,'']]]
+  ['abstractpokitservice_0',['AbstractPokitService',['../classAbstractPokitService.html',1,'']]]
 ];

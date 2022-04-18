@@ -324,25 +324,26 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            qDebug() &lt;&lt; device;</div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            <a class="code hl_class" href="classInformer.html">Informer</a> i(&amp;app);</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            Q_UNUSED(i) <span class="comment">// Just to make cppcheck happy for now.</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            <span class="keywordflow">return</span> app.exec();</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        }</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keywordflow">case</span> Command::Logger:   <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keywordflow">case</span> Command::Meter:    <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keywordflow">case</span> Command::None:</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        fputs(<span class="stringliteral">&quot;Missing argument: &lt;command&gt;\nSee --help for usage information.\n&quot;</span>, stderr);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">case</span> Command::Scan: {</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <a class="code hl_class" href="classScanner.html">Scanner</a> scanner(&amp;app);</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        scanner.start(parser.value(QStringLiteral(<span class="stringliteral">&quot;timeout&quot;</span>)).toInt());</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keywordflow">return</span> app.exec();</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    }</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordflow">case</span> Command::Status:   <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordflow">case</span> Command::SetName:  <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    }</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <span class="keywordflow">return</span> app.exec();</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>}</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            qDebug() &lt;&lt; <span class="stringliteral">&quot;running&quot;</span>;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            <span class="keywordflow">return</span> app.exec();</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        }</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keywordflow">case</span> Command::Logger:   <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keywordflow">case</span> Command::Meter:    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keywordflow">case</span> Command::None:</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        fputs(<span class="stringliteral">&quot;Missing argument: &lt;command&gt;\nSee --help for usage information.\n&quot;</span>, stderr);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">case</span> Command::Scan: {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <a class="code hl_class" href="classScanner.html">Scanner</a> scanner(&amp;app);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        scanner.start(parser.value(QStringLiteral(<span class="stringliteral">&quot;timeout&quot;</span>)).toInt());</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">return</span> app.exec();</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    }</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordflow">case</span> Command::Status:   <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordflow">case</span> Command::SetName:  <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordflow">return</span> app.exec();</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>}</div>
 <div class="ttc" id="aclassInformer_html"><div class="ttname"><a href="classInformer.html">Informer</a></div><div class="ttdoc">Simple class for experimenting with the Pokit device info service.</div><div class="ttdef"><b>Definition:</b> <a href="informer_8h_source.html#l00029">informer.h:30</a></div></div>
 <div class="ttc" id="aclassScanner_html"><div class="ttname"><a href="classScanner.html">Scanner</a></div><div class="ttdoc">Scans for nearby Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="scanner_8h_source.html#l00030">scanner.h:31</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
