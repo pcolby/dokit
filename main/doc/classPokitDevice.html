@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('classPokitDevice.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> class discovers nearby Pokit devices.  
+<p>The <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> class simplifies Pokit device access.  
  <a href="classPokitDevice.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for PokitDevice:</div>
@@ -119,7 +119,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8ef0156de9faef55985d01b4df1fce87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3417bb85ff34cf03c1529e69f85e6a21"><td class="memItemLeft" align="right" valign="top"><a id="a3417bb85ff34cf03c1529e69f85e6a21" name="a3417bb85ff34cf03c1529e69f85e6a21"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~PokitDevice</b> ()</td></tr>
-<tr class="memdesc:a3417bb85ff34cf03c1529e69f85e6a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys this <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> object. <br /></td></tr>
+<tr class="memdesc:a3417bb85ff34cf03c1529e69f85e6a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> object. <br /></td></tr>
 <tr class="separator:a3417bb85ff34cf03c1529e69f85e6a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><td class="memItemLeft" align="right" valign="top"><a id="a2e2fb6b30e6f5f0d7bc6cd8f806d6423" name="a2e2fb6b30e6f5f0d7bc6cd8f806d6423"></a>
 QLowEnergyController *&#160;</td><td class="memItemRight" valign="bottom"><b>controller</b> ()</td></tr>
@@ -145,7 +145,7 @@ const QLowEnergyController *&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memdesc:a7b4467f667ace65992a8fd152e9799ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to MultimeterService instance that uses this device's controller for access.  <a href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">More...</a><br /></td></tr>
 <tr class="separator:a7b4467f667ace65992a8fd152e9799ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaaaedcb434b3dda9608ad58192e9142"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classStatusService.html">StatusService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a> ()</td></tr>
-<tr class="memdesc:adaaaedcb434b3dda9608ad58192e9142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classStatusService.html" title="Virtual base class for Pokit services.">StatusService</a> instance that uses this device's controller for access.  <a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">More...</a><br /></td></tr>
+<tr class="memdesc:adaaaedcb434b3dda9608ad58192e9142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classStatusService.html" title="The StatusService class accesses the Pokit Status service of Pokit devices.">StatusService</a> instance that uses this device's controller for access.  <a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">More...</a><br /></td></tr>
 <tr class="separator:adaaaedcb434b3dda9608ad58192e9142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -155,7 +155,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TestPokitDevice</b><
 <tr class="separator:a29383c66610f91195a7af27e9e74e27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >The <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> class discovers nearby Pokit devices. </p>
+<div class="textblock"><p >The <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> class simplifies Pokit device access. </p>
+<p >It does this by wrapping QLowEnergyController to provide:</p><ul>
+<li>automatic detection of device UUID vs MAC address strings for device IDs; and</li>
+<li>convenient Pokit service factory methods (<a class="el" href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961" title="*‍/">dataLogger()</a>, <a class="el" href="classPokitDevice.html#a95e2754eb5e31e5e9800a3ec9eb3b711" title="Returns a pointer to DeviceInformationService instance that uses this device&#39;s controller for access.">deviceInformation()</a>, <a class="el" href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117" title="Returns a pointer to DsoService instance that uses this device&#39;s controller for access.">dso()</a>, <a class="el" href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df" title="Returns a pointer to GenericAccessService instance that uses this device&#39;s controller for access.">genericAccess()</a>, <a class="el" href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce" title="Returns a pointer to MultimeterService instance that uses this device&#39;s controller for access.">multimeter()</a> and <a class="el" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142" title="Returns a pointer to StatusService instance that uses this device&#39;s controller for access.">status()</a>); and</li>
+<li>consistent debug logging of QLowEnergyController events.</li>
+</ul>
+<p >But this class is entirely optional, in that all features of all all QtPokit classes can be used wihtout this class. It's just a (meaningful) convenience. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af2e70d41938c635e2c80911f177f0b78" name="af2e70d41938c635e2c80911f177f0b78"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af2e70d41938c635e2c80911f177f0b78">&#9670;&nbsp;</a></span>PokitDevice()</h2>
@@ -221,7 +227,7 @@ QBluetoothUuid::QBluetoothUuid(const QString &amp;uuid) </dd></dl>
 
 <p>*&zwj;/ </p>
 <p >Returns a pointer to a DataLoggerService instance that uses this device's controller for access.</p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Implement this function when the DataLoggerService is implemented. </dd></dl>
 
 </div>
@@ -242,7 +248,7 @@ QBluetoothUuid::QBluetoothUuid(const QString &amp;uuid) </dd></dl>
 </div><div class="memdoc">
 
 <p>Returns a pointer to DeviceInformationService instance that uses this device's controller for access. </p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Implement this function when the DeviceInformationService is implemented. </dd></dl>
 
 </div>
@@ -263,7 +269,7 @@ QBluetoothUuid::QBluetoothUuid(const QString &amp;uuid) </dd></dl>
 </div><div class="memdoc">
 
 <p>Returns a pointer to DsoService instance that uses this device's controller for access. </p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Implement this function when the DsoService is implemented. </dd></dl>
 
 </div>
@@ -284,7 +290,7 @@ QBluetoothUuid::QBluetoothUuid(const QString &amp;uuid) </dd></dl>
 </div><div class="memdoc">
 
 <p>Returns a pointer to GenericAccessService instance that uses this device's controller for access. </p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Implement this function when the GenericAccessService is implemented. </dd></dl>
 
 </div>
@@ -305,7 +311,7 @@ QBluetoothUuid::QBluetoothUuid(const QString &amp;uuid) </dd></dl>
 </div><div class="memdoc">
 
 <p>Returns a pointer to MultimeterService instance that uses this device's controller for access. </p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Implement this function when the MultimeterService is implemented. </dd></dl>
 
 </div>
@@ -325,8 +331,8 @@ QBluetoothUuid::QBluetoothUuid(const QString &amp;uuid) </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Returns a pointer to <a class="el" href="classStatusService.html" title="Virtual base class for Pokit services.">StatusService</a> instance that uses this device's controller for access. </p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class discovers nearby Pokit devices.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
+<p>Returns a pointer to <a class="el" href="classStatusService.html" title="The StatusService class accesses the Pokit Status service of Pokit devices.">StatusService</a> instance that uses this device's controller for access. </p>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
