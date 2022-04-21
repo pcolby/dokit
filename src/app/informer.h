@@ -17,7 +17,7 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QObject>
+#include "abstractworker.h"
 
 class QLowEnergyController;
 
@@ -26,12 +26,16 @@ class QLowEnergyController;
  *
  * This class will be signifantly refactored, or maybe replaced entirely soonish.
  */
-class Informer : public QObject
+class Informer : public AbstractWorker
 {
 public:
     explicit Informer(QObject * const parent);
 
+    QStringList requiredOptions() const override;
+    QStringList supportedOptions() const override;
+
 public slots:
+
 
 private slots:
 };

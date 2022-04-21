@@ -1,5 +1,7 @@
 add_executable(
   pokit
+  abstractworker.cpp
+  abstractworker.h
   informer.cpp
   informer.h
   main.cpp

@@ -32,7 +32,7 @@
 
 Q_LOGGING_CATEGORY(pokitInformer, "pokit.ui.informer", QtInfoMsg);
 
-Informer::Informer(QObject * const parent) : QObject(parent)
+Informer::Informer(QObject * const parent) : AbstractWorker(parent)
 {
     PokitDevice * device = new PokitDevice(QLatin1String("5C:02:72:09:AA:25"), this);
     qDebug() << device;
@@ -59,4 +59,16 @@ Informer::Informer(QObject * const parent) : QObject(parent)
     });
 
     device->controller()->connectToDevice();
+}
+
+QStringList Informer::requiredOptions() const
+{
+    return QStringList{
+        QLatin1String("device"),
+    };
+}
+
+QStringList Informer::supportedOptions() const
+{
+    return AbstractWorker::supportedOptions();
 }

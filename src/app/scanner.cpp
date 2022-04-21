@@ -32,7 +32,7 @@ Q_LOGGING_CATEGORY(pokitScanner, "pokit.ui.scanner", QtInfoMsg);
 /*!
  * Construct a new scanner object with \a parent.
  */
-Scanner::Scanner(QObject * const parent) : QObject(parent)
+Scanner::Scanner(QObject * const parent) : AbstractWorker(parent)
 {
     discoveryAgent = new PokitDeviceDiscoveryAgent(this);
 

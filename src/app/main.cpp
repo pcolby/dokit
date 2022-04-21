@@ -76,12 +76,11 @@ enum class Command {
     None, Info, Status, Meter, DSO, Logger, Scan, SetName, FlashLed
 };
 
-void showCliError(const QString &errorText, const int exitCode = EXIT_FAILURE) {
+void showCliError(const QString &errorText) {
     // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
     const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
         + errorText + QLatin1Char('\n');
     fputs(qPrintable(message), stderr);
-    ::exit(exitCode);
 }
 
 Command getCliCommand(const QStringList &posArguments) {
@@ -90,6 +89,7 @@ Command getCliCommand(const QStringList &posArguments) {
     }
     if (posArguments.size() > 1) {
         showCliError(QObject::tr("More than one command: %1").arg(posArguments.join(QStringLiteral(", "))));
+        ::exit(EXIT_FAILURE);
     }
 
     const QMap<QString, Command> supportedCommands {
@@ -105,6 +105,7 @@ Command getCliCommand(const QStringList &posArguments) {
     const Command command = supportedCommands.value(posArguments.first().toLower(), Command::None);
     if (command == Command::None) {
         showCliError(QObject::tr("Unknown command: %1").arg(posArguments.first()));
+        ::exit(EXIT_FAILURE);
     }
     return command;
 }
@@ -210,6 +211,35 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     return command;
 }
 
+/// \todo Move to AbstractWorker::processOptions?
+int requireOptions(const QCommandLineParser &parser, const AbstractWorker &worker)
+{
+    QStringList requiredOptions = worker.requiredOptions();
+    std::remove_if(requiredOptions.begin(), requiredOptions.end(), [&parser](const QString &name){
+        return parser.isSet(name);
+    });
+    for (const QString &name: requiredOptions) {
+        showCliError(QCoreApplication::translate("main", "Missing required option: %1").arg(name));
+    }
+    return requiredOptions.length();
+}
+
+/// \todo Move to AbstractWorker::processOptions?
+int warnOnIgnoredOptions(const QCommandLineParser &parser, const AbstractWorker &worker)
+{
+    const QStringList supportedOptions = worker.supportedOptions();
+    QStringList ignoredOptions = parser.optionNames();
+    ignoredOptions.removeDuplicates();
+    ignoredOptions.sort();
+    std::remove_if(ignoredOptions.begin(), ignoredOptions.end(), [&ignoredOptions](const QString &name){
+        return ignoredOptions.contains(name);
+    });
+    for (const QString &name: qAsConst(ignoredOptions)) {
+        qDebug() << QCoreApplication::translate("main", "Ignoring option: %1").arg(name);
+    }
+    return ignoredOptions.length();
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
@@ -222,35 +252,36 @@ int main(int argc, char *argv[])
     const Command command = parseCommandLine(appArguments, parser);
     configureLogging(parser);
 
-    /// \todo Handle required and ignored options in a generalised fashion.
-
     // Handle the given command.
+    AbstractWorker * worker = nullptr;
     switch (command) {
     case Command::DSO:      break;
     case Command::FlashLed: break;
-    case Command::Info: {
-        const QStringList devices = parser.values(QLatin1String("device"));
-        for (const QString &device: devices) {
-            qDebug() << device;
-            Informer i(&app);
-            Q_UNUSED(i) // Just to make cppcheck happy for now.
-            qDebug() << "running";
-            return app.exec();
-        }
-        return EXIT_FAILURE;
-    } break;
+    case Command::Info:
+        worker = new Informer(&app);
+        break;
     case Command::Logger:   break;
     case Command::Meter:    break;
     case Command::None:
-        fputs("Missing argument: <command>\nSee --help for usage information.\n", stderr);
+        showCliError(QCoreApplication::translate("main",
+            "Missing argument: <command>\nSee --help for usage information."));
         return EXIT_FAILURE;
-    case Command::Scan: {
-        Scanner scanner(&app);
-        scanner.start(parser.value(QStringLiteral("timeout")).toInt());
-        return app.exec();
-    }
+    case Command::Scan:
+        worker = new Scanner(&app);
+        //scanner.start(parser.value(QStringLiteral("timeout")).toInt()); /// \todo Move.
+        break;
     case Command::Status:   break;
     case Command::SetName:  break;
     }
+    if (worker == nullptr) {
+        showCliError(QCoreApplication::translate("main", "Unknown command (%1)").arg((int)command));
+        return EXIT_FAILURE;
+    }
+
+    if (requireOptions(parser, *worker) > 0) {
+        return EXIT_FAILURE;
+    }
+    warnOnIgnoredOptions(parser, *worker);
+    worker->processOptions(parser);
     return app.exec();
 }
