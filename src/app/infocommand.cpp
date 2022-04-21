@@ -26,11 +26,8 @@
 
 #include <QCoreApplication>
 #include <QDataStream>
-#include <QLoggingCategory>
 #include <QLowEnergyController>
 #include <QtEndian>
-
-Q_LOGGING_CATEGORY(pokitInfoCommand, "pokit.ui.informer", QtInfoMsg);
 
 /*!
  * Construct a new InfoCommand object with \a parent.

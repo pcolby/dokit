@@ -21,6 +21,7 @@
 #define QTPOKIT_ABSTRACTWORKER_H
 
 #include <QCommandLineParser>
+#include <QLoggingCategory>
 #include <QObject>
 
 class AbstractCommand : public QObject
@@ -33,6 +34,9 @@ public:
 
 public slots:
     virtual bool processOptions(const QCommandLineParser &parser);
+
+protected:
+    Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg);
 
 private slots:
 };

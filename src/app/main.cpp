@@ -22,7 +22,6 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
-#include <QLoggingCategory>
 
 #include "infocommand.h"
 #include "scancommand.h"
@@ -235,7 +234,7 @@ int warnOnIgnoredOptions(const QCommandLineParser &parser, const AbstractCommand
         return ignoredOptions.contains(name);
     });
     for (const QString &name: qAsConst(ignoredOptions)) {
-        qDebug() << QCoreApplication::translate("main", "Ignoring option: %1").arg(name);
+        qWarning() << QCoreApplication::translate("main", "Ignoring option: %1").arg(name);
     }
     return ignoredOptions.length();
 }

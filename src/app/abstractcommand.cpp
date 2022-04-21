@@ -19,8 +19,6 @@
 
 #include "abstractcommand.h"
 
-//Q_LOGGING_CATEGORY(pokitInfoCommand, "pokit.ui.informer", QtInfoMsg);
-
 /*!
  * \class AbstractCommand
  * The AbstractCommand class provides a consistent base for the classes that implement CLI commands.

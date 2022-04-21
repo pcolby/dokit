@@ -27,8 +27,6 @@
 #include <QJsonDocument>
 #include <QLoggingCategory>
 
-Q_LOGGING_CATEGORY(pokitScanCommand, "pokit.ui.scanner", QtInfoMsg);
-
 /*!
  * Construct a new ScanCommand object with \a parent.
  */
@@ -39,8 +37,8 @@ ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,
             this, &ScanCommand::deviceDiscovered);
 
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
-        qCDebug(pokitScanCommand) << "Finished scanning for Pokit devices.";
+    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, [this]() {
+        qCDebug(lc) << "Finished scanning for Pokit devices.";
         QCoreApplication::quit();
     });
 }
@@ -51,7 +49,7 @@ ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
 void ScanCommand::start(const int timeout)
 {
     Q_ASSERT(discoveryAgent);
-    qCDebug(pokitScanCommand).noquote().nospace() << "Scanning for Pokit devices (with "
+    qCDebug(lc).noquote().nospace() << "Scanning for Pokit devices (with "
         << (timeout ? QLocale().toString(timeout)+QLatin1String("ms") : QLatin1String("no"))
         << " timeout).";
     discoveryAgent->setLowEnergyDiscoveryTimeout(timeout);
