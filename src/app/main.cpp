@@ -187,6 +187,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
 
     // Do the initial parse, the see if we have a command specified yet.
     parser.parse(appArguments);
+    configureLogging(parser);
     const Command command = getCliCommand(parser.positionalArguments());
 
     // If we have a (single, valid) command, then remove the commands list from the help text.
@@ -210,8 +211,29 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     return command;
 }
 
+AbstractCommand * getCommandObject(const Command command, QObject * const parent)
+{
+    switch (command) {
+    case Command::None:
+        showCliError(QCoreApplication::translate("main",
+            "Missing argument: <command>\nSee --help for usage information."));
+        return nullptr;
+    case Command::DSO:      break;
+    case Command::FlashLed: break;
+    case Command::Info:     return new InfoCommand(parent);
+    case Command::Logger:   break;
+    case Command::Meter:    break;
+    case Command::Scan:     return new ScanCommand(parent);
+    case Command::Status:   break;
+    case Command::SetName:  break;
+    }
+    showCliError(QCoreApplication::translate("main", "Unknown command (%1)").arg((int)command));
+    return nullptr;
+}
+
 int main(int argc, char *argv[])
 {
+    // Setup the core application.
     QCoreApplication app(argc, argv);
     app.setApplicationName(QStringLiteral(CMAKE_PROJECT_NAME));
     app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));
@@ -219,41 +241,19 @@ int main(int argc, char *argv[])
     // Parse the command line.
     const QStringList appArguments = app.arguments();
     QCommandLineParser parser;
-    const Command command = parseCommandLine(appArguments, parser);
-    configureLogging(parser);
+    const Command commandType = parseCommandLine(appArguments, parser);
 
     // Handle the given command.
-    AbstractCommand * worker = nullptr;
-    switch (command) {
-    case Command::DSO:      break;
-    case Command::FlashLed: break;
-    case Command::Info:
-        worker = new InfoCommand(&app);
-        break;
-    case Command::Logger:   break;
-    case Command::Meter:    break;
-    case Command::None:
-        showCliError(QCoreApplication::translate("main",
-            "Missing argument: <command>\nSee --help for usage information."));
-        return EXIT_FAILURE;
-    case Command::Scan:
-        worker = new ScanCommand(&app);
-        break;
-    case Command::Status:   break;
-    case Command::SetName:  break;
+    AbstractCommand * const command = getCommandObject(commandType, &app);
+    if (command == nullptr) {
+        return EXIT_FAILURE; // getCommandObject will have logged the reason already.
     }
-    if (worker == nullptr) {
-        showCliError(QCoreApplication::translate("main", "Unknown command (%1)").arg((int)command));
-        return EXIT_FAILURE;
-    }
-
-    const QStringList cliErrors = worker->processOptions(parser);
+    const QStringList cliErrors = command->processOptions(parser);
     for (const QString &error: cliErrors) {
         showCliError(error);
     }
     if (!cliErrors.isEmpty()) {
         return EXIT_FAILURE;
     }
-
-    return (worker->start()) ? app.exec() : EXIT_FAILURE;
+    return (command->start()) ? app.exec() : EXIT_FAILURE;
 }
