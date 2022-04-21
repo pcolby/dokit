@@ -27,7 +27,8 @@
 /*!
  * Constructs a new worker with \a parent.
  */
-AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent)
+AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
+    format(OutputFormat::Text)
 {
 
 }
@@ -65,7 +66,10 @@ QStringList AbstractCommand::requiredOptions() const
 
 QStringList AbstractCommand::supportedOptions() const
 {
-    return requiredOptions();
+    return requiredOptions() + QStringList{
+        QLatin1String("debug"),
+        QLatin1String("output"),
+    };
 }
 
 /*!
@@ -94,6 +98,7 @@ QStringList AbstractCommand::supportedOptions() const
  */
 QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 {
+    // Report any supplied options that are not supported by this command.
     const QStringList suppliedOptions = parser.optionNames();
     const QStringList supportedOptions = this->supportedOptions();
     for (const QString &option: suppliedOptions) {
@@ -101,8 +106,25 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
             qCInfo(lc).noquote() << tr("Ignoring option: %1").arg(option);
         }
     }
-
     QStringList errors;
+
+    // Parse the output format options (if supported, and supplied).
+    if ((supportedOptions.contains(QLatin1String("output"))) && // Derived classes may have removed.
+        (parser.isSet(QLatin1String("output"))))
+    {
+        const QString output = parser.value(QLatin1String("output")).toLower();
+        if (output == QLatin1String("csv")) {
+            format = OutputFormat::Csv;
+        } else if (output == QLatin1String("json")) {
+            format = OutputFormat::Json;
+        } else if (output == QLatin1String("text")) {
+            format = OutputFormat::Text;
+        } else {
+            errors.append(tr("Unknown output format: %1").arg(output));
+        }
+    }
+
+    // Return errors for any required options that are absent.
     const QStringList requiredOptions = this->requiredOptions();
     for (const QString &option: requiredOptions) {
         if (!parser.isSet(option)) {

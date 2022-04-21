@@ -27,6 +27,12 @@
 class AbstractCommand : public QObject
 {
 public:
+    enum class OutputFormat {
+        Csv,
+        Json,
+        Text,
+    };
+
     explicit AbstractCommand(QObject * const parent);
 
     virtual QStringList requiredOptions() const;
@@ -37,9 +43,9 @@ public slots:
     virtual bool start() = 0;
 
 protected:
+    OutputFormat format;
     Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg);
 
-private slots:
 };
 
 #endif // QTPOKIT_ABSTRACTWORKER_H

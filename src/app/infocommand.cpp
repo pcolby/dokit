@@ -46,9 +46,7 @@ QStringList InfoCommand::requiredOptions() const
 
 QStringList InfoCommand::supportedOptions() const
 {
-    return AbstractCommand::supportedOptions() + QStringList{
-        QLatin1String("timeout"),
-    };
+    return AbstractCommand::supportedOptions();
 }
 
 QStringList InfoCommand::processOptions(const QCommandLineParser &parser)

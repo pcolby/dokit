@@ -50,7 +50,9 @@ QStringList ScanCommand::requiredOptions() const
 
 QStringList ScanCommand::supportedOptions() const
 {
-    return AbstractCommand::supportedOptions();
+    return AbstractCommand::supportedOptions() + QStringList{
+        QLatin1String("timeout"),
+    };
 }
 
 QStringList ScanCommand::processOptions(const QCommandLineParser &parser)
@@ -85,10 +87,22 @@ bool ScanCommand::start()
 
 /*!
  * Handles discovered Pokit devices, writing \a info to stdout.
- *
- * \todo Support alternative output formats: text, json, other?
  */
 void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
-    fputs(QJsonDocument(toJson(info)).toJson(), stdout);
+    switch (format) {
+    case OutputFormat::Csv:
+        fputs(qPrintable(tr("uuid,address,name,...\n")), stdout);
+        /// \todo CSV quote escaping.
+        fputs(qPrintable(tr("%1,%2,\"%3\",...\n").arg(info.deviceUuid().toString(),
+            info.address().toString(), info.name())), stdout);
+        break;
+    case OutputFormat::Json:
+        fputs(QJsonDocument(toJson(info)).toJson(), stdout);
+        break;
+    case OutputFormat::Text:
+        fputs(qPrintable(tr("%1 %2 %3\n").arg(info.deviceUuid().toString(),
+            info.address().toString(), info.name())), stdout);
+        break;
+    }
 }

@@ -135,7 +135,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           QStringLiteral("name")},
         {{QStringLiteral("output")},
           QCoreApplication::translate("parseCommandLine","Format for output (default text)."),
-          QStringLiteral("text|json"), QStringLiteral("text")},
+          QStringLiteral("csv|json|text"), QStringLiteral("text")},
         {{QStringLiteral("range")},
           QCoreApplication::translate("parseCommandLine","Desired measurement range (default auto)."),
           QStringLiteral("auto|n[m|K|M][V|A|O[hms]"), QStringLiteral("auto")},
