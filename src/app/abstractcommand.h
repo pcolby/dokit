@@ -24,6 +24,8 @@
 #include <QLoggingCategory>
 #include <QObject>
 
+class PokitDevice;
+
 class AbstractCommand : public QObject
 {
 public:
@@ -43,6 +45,7 @@ public slots:
     virtual bool start() = 0;
 
 protected:
+    PokitDevice * device;
     OutputFormat format;
     Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg);
 

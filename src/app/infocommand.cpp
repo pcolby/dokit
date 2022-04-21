@@ -56,8 +56,6 @@ QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    /// \todo
-
     return errors;
 }
 
@@ -66,7 +64,7 @@ QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
  */
 bool InfoCommand::start()
 {
-    PokitDevice * device = new PokitDevice(QLatin1String("5C:02:72:09:AA:25"), this);
+    Q_ASSERT(device != nullptr);
     StatusService * service = device->status();
 
     connect(device->controller(),
