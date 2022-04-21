@@ -34,6 +34,7 @@ public:
 
 public slots:
     virtual QStringList processOptions(const QCommandLineParser &parser);
+    virtual bool start() = 0;
 
 protected:
     Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg);

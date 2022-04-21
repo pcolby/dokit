@@ -36,7 +36,7 @@ public:
 
 public slots:
     QStringList processOptions(const QCommandLineParser &parser) override;
-
+    bool start() override;
 
 private slots:
 };

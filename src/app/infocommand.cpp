@@ -34,31 +34,7 @@
  */
 InfoCommand::InfoCommand(QObject * const parent) : AbstractCommand(parent)
 {
-    PokitDevice * device = new PokitDevice(QLatin1String("5C:02:72:09:AA:25"), this);
-    qDebug() << device;
-    StatusService * service = device->status();
-    qDebug() << service;
 
-    connect(device->controller(),
-        #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
-        QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
-        #else
-        &QLowEnergyController::errorOccurred,
-        #endif
-    [](QLowEnergyController::Error error) {
-        qDebug() << error;
-        ::exit(EXIT_FAILURE); ///< \todo Exit gracefully.
-    });
-
-    connect(service, &StatusService::serviceDetailsDiscovered,[service]() {
-        qDebug() << "All ready to go! :)";
-        service->deviceCharacteristics(); // Should be immediately (cached) available.
-        service->flashLed(); // Should be fun :)
-        //service->setDeviceName(QLatin1String("PokitPro")); // Yes, this works :D
-        service->readCharacteristics(); // Can also fetch new values (results via signal).
-    });
-
-    device->controller()->connectToDevice();
 }
 
 QStringList InfoCommand::requiredOptions() const
@@ -85,4 +61,35 @@ QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
     /// \todo
 
     return errors;
+}
+
+/*!
+ * Begins scanning for Pokit devices.
+ */
+bool InfoCommand::start()
+{
+    PokitDevice * device = new PokitDevice(QLatin1String("5C:02:72:09:AA:25"), this);
+    StatusService * service = device->status();
+
+    connect(device->controller(),
+        #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+        QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
+        #else
+        &QLowEnergyController::errorOccurred,
+        #endif
+    [](QLowEnergyController::Error error) {
+        qDebug() << error;
+        ::exit(EXIT_FAILURE); ///< \todo Exit gracefully.
+    });
+
+    /// \todo Cleanup, and make separate explicit slot function.
+    connect(service, &StatusService::serviceDetailsDiscovered,[service]() {
+        service->deviceCharacteristics(); // Should be immediately (cached) available.
+        service->flashLed(); // Should be fun :)
+        //service->setDeviceName(QLatin1String("PokitPro")); // Yes, this works :D
+        service->readCharacteristics(); // Can also fetch new values (results via signal).
+    });
+
+    device->controller()->connectToDevice();
+    return true;
 }

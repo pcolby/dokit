@@ -73,13 +73,14 @@ QStringList ScanCommand::processOptions(const QCommandLineParser &parser)
 }
 
 /*!
- * Begins scanning for Pokit devices, with \a timeout, in milliseconds.
+ * Begins scanning for Pokit devices.
  */
-void ScanCommand::start()
+bool ScanCommand::start()
 {
     Q_ASSERT(discoveryAgent);
     qCDebug(lc).noquote().nospace() << tr("Scanning for Pokit devices...");
     discoveryAgent->start();
+    return true;
 }
 
 /*!

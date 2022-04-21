@@ -38,7 +38,7 @@ public:
 
 public slots:
     QStringList processOptions(const QCommandLineParser &parser) override;
-    void start();
+    bool start() override;
 
 private:
     PokitDeviceDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.

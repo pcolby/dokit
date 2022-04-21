@@ -238,7 +238,6 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     case Command::Scan:
         worker = new ScanCommand(&app);
-        //scanner.start(parser.value(QStringLiteral("timeout")).toInt()); /// \todo Move.
         break;
     case Command::Status:   break;
     case Command::SetName:  break;
@@ -252,5 +251,9 @@ int main(int argc, char *argv[])
     for (const QString &error: cliErrors) {
         showCliError(error);
     }
-    return (cliErrors.isEmpty()) ? app.exec() : EXIT_FAILURE;
+    if (!cliErrors.isEmpty()) {
+        return EXIT_FAILURE;
+    }
+
+    return (worker->start()) ? app.exec() : EXIT_FAILURE;
 }

@@ -111,3 +111,10 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
     return errors;
 }
+
+/*!
+ * \fn virtual bool AbstractCommand::start()
+ *
+ * Begins the functionality of this command, and returns `true` if begun successfully, `false`
+ * otherwise.
+ */
