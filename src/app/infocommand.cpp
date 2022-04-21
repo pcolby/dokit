@@ -17,7 +17,7 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "informer.h"
+#include "infocommand.h"
 
 #include <qtpokit/pokitdevice.h>
 #include "qtpokit/statusservice.h"
@@ -30,9 +30,12 @@
 #include <QLowEnergyController>
 #include <QtEndian>
 
-Q_LOGGING_CATEGORY(pokitInformer, "pokit.ui.informer", QtInfoMsg);
+Q_LOGGING_CATEGORY(pokitInfoCommand, "pokit.ui.informer", QtInfoMsg);
 
-Informer::Informer(QObject * const parent) : AbstractWorker(parent)
+/*!
+ * Construct a new InfoCommand object with \a parent.
+ */
+InfoCommand::InfoCommand(QObject * const parent) : AbstractCommand(parent)
 {
     PokitDevice * device = new PokitDevice(QLatin1String("5C:02:72:09:AA:25"), this);
     qDebug() << device;
@@ -61,14 +64,14 @@ Informer::Informer(QObject * const parent) : AbstractWorker(parent)
     device->controller()->connectToDevice();
 }
 
-QStringList Informer::requiredOptions() const
+QStringList InfoCommand::requiredOptions() const
 {
     return QStringList{
         QLatin1String("device"),
     };
 }
 
-QStringList Informer::supportedOptions() const
+QStringList InfoCommand::supportedOptions() const
 {
-    return AbstractWorker::supportedOptions();
+    return AbstractCommand::supportedOptions();
 }

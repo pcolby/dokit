@@ -17,7 +17,7 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "scanner.h"
+#include "scancommand.h"
 
 #include <qtpokit/pokitdevicedisoveryagent.h>
 #include <qtpokit/utils.h>
@@ -27,20 +27,20 @@
 #include <QJsonDocument>
 #include <QLoggingCategory>
 
-Q_LOGGING_CATEGORY(pokitScanner, "pokit.ui.scanner", QtInfoMsg);
+Q_LOGGING_CATEGORY(pokitScanCommand, "pokit.ui.scanner", QtInfoMsg);
 
 /*!
- * Construct a new scanner object with \a parent.
+ * Construct a new ScanCommand object with \a parent.
  */
-Scanner::Scanner(QObject * const parent) : AbstractWorker(parent)
+ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
 {
     discoveryAgent = new PokitDeviceDiscoveryAgent(this);
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,
-            this, &Scanner::deviceDiscovered);
+            this, &ScanCommand::deviceDiscovered);
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
-        qCDebug(pokitScanner) << "Finished scanning for Pokit devices.";
+        qCDebug(pokitScanCommand) << "Finished scanning for Pokit devices.";
         QCoreApplication::quit();
     });
 }
@@ -48,10 +48,10 @@ Scanner::Scanner(QObject * const parent) : AbstractWorker(parent)
 /*!
  * Begins scanning for Pokit devices, with \a timeout, in milliseconds.
  */
-void Scanner::start(const int timeout)
+void ScanCommand::start(const int timeout)
 {
     Q_ASSERT(discoveryAgent);
-    qCDebug(pokitScanner).noquote().nospace() << "Scanning for Pokit devices (with "
+    qCDebug(pokitScanCommand).noquote().nospace() << "Scanning for Pokit devices (with "
         << (timeout ? QLocale().toString(timeout)+QLatin1String("ms") : QLatin1String("no"))
         << " timeout).";
     discoveryAgent->setLowEnergyDiscoveryTimeout(timeout);
@@ -63,7 +63,7 @@ void Scanner::start(const int timeout)
  *
  * \todo Support alternative output formats: text, json, other?
  */
-void Scanner::deviceDiscovered(const QBluetoothDeviceInfo &info)
+void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     fputs(QJsonDocument(toJson(info)).toJson(), stdout);
 }

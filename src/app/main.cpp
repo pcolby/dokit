@@ -24,8 +24,8 @@
 #include <QFileInfo>
 #include <QLoggingCategory>
 
-#include "informer.h"
-#include "scanner.h"
+#include "infocommand.h"
+#include "scancommand.h"
 
 #if defined(Q_OS_UNIX)
 #include <unistd.h>
@@ -211,8 +211,8 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     return command;
 }
 
-/// \todo Move to AbstractWorker::processOptions?
-int requireOptions(const QCommandLineParser &parser, const AbstractWorker &worker)
+/// \todo Move to AbstractCommand::processOptions?
+int requireOptions(const QCommandLineParser &parser, const AbstractCommand &worker)
 {
     QStringList requiredOptions = worker.requiredOptions();
     std::remove_if(requiredOptions.begin(), requiredOptions.end(), [&parser](const QString &name){
@@ -224,8 +224,8 @@ int requireOptions(const QCommandLineParser &parser, const AbstractWorker &worke
     return requiredOptions.length();
 }
 
-/// \todo Move to AbstractWorker::processOptions?
-int warnOnIgnoredOptions(const QCommandLineParser &parser, const AbstractWorker &worker)
+/// \todo Move to AbstractCommand::processOptions?
+int warnOnIgnoredOptions(const QCommandLineParser &parser, const AbstractCommand &worker)
 {
     const QStringList supportedOptions = worker.supportedOptions();
     QStringList ignoredOptions = parser.optionNames();
@@ -253,12 +253,12 @@ int main(int argc, char *argv[])
     configureLogging(parser);
 
     // Handle the given command.
-    AbstractWorker * worker = nullptr;
+    AbstractCommand * worker = nullptr;
     switch (command) {
     case Command::DSO:      break;
     case Command::FlashLed: break;
     case Command::Info:
-        worker = new Informer(&app);
+        worker = new InfoCommand(&app);
         break;
     case Command::Logger:   break;
     case Command::Meter:    break;
@@ -267,7 +267,7 @@ int main(int argc, char *argv[])
             "Missing argument: <command>\nSee --help for usage information."));
         return EXIT_FAILURE;
     case Command::Scan:
-        worker = new Scanner(&app);
+        worker = new ScanCommand(&app);
         //scanner.start(parser.value(QStringLiteral("timeout")).toInt()); /// \todo Move.
         break;
     case Command::Status:   break;

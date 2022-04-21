@@ -1,12 +1,12 @@
 add_executable(
   pokit
-  abstractworker.cpp
-  abstractworker.h
-  informer.cpp
-  informer.h
+  abstractcommand.cpp
+  abstractcommand.h
+  infocommand.cpp
+  infocommand.h
   main.cpp
-  scanner.cpp
-  scanner.h
+  scancommand.cpp
+  scancommand.h
 )
 
 target_link_libraries(

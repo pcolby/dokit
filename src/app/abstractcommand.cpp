@@ -17,19 +17,19 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "abstractworker.h"
+#include "abstractcommand.h"
 
-//Q_LOGGING_CATEGORY(pokitInformer, "pokit.ui.informer", QtInfoMsg);
+//Q_LOGGING_CATEGORY(pokitInfoCommand, "pokit.ui.informer", QtInfoMsg);
 
 /*!
- * \class AbstractWorker
- * The AbstractWorker class provides a consistent base for the classes that implement CLI commands.
+ * \class AbstractCommand
+ * The AbstractCommand class provides a consistent base for the classes that implement CLI commands.
  */
 
 /*!
  * Constructs a new worker with \a parent.
  */
-AbstractWorker::AbstractWorker(QObject * const parent) : QObject(parent)
+AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent)
 {
 
 }
@@ -42,7 +42,7 @@ AbstractWorker::AbstractWorker(QObject * const parent) : QObject(parent)
  * This base implementation simply returns an empty list. Derived classes should override this
  * function to include any required options.
  */
-QStringList AbstractWorker::requiredOptions() const
+QStringList AbstractCommand::requiredOptions() const
 {
     return QStringList();
 }
@@ -57,7 +57,7 @@ QStringList AbstractWorker::requiredOptions() const
  * ```
  * QStringList Derived::supportedOptions() const
  * {
- *     const QStringList list = AbstractWorker::supportedOptions() + QStringList{ ... };
+ *     const QStringList list = AbstractCommand::supportedOptions() + QStringList{ ... };
  *     list.sort();
  *     list.removeDuplicates(); // Optional, recommended.
  *     return list;
@@ -65,7 +65,7 @@ QStringList AbstractWorker::requiredOptions() const
  * ```
  */
 
-QStringList AbstractWorker::supportedOptions() const
+QStringList AbstractCommand::supportedOptions() const
 {
     return requiredOptions();
 }
@@ -80,7 +80,7 @@ QStringList AbstractWorker::supportedOptions() const
  * are required. Derived classes which oveeride requiredOptions() to return any options, must also
  * override this function to process them.
  */
-bool AbstractWorker::processOptions(const QCommandLineParser &parser)
+bool AbstractCommand::processOptions(const QCommandLineParser &parser)
 {
     Q_UNUSED(parser)
     return (requiredOptions().isEmpty());

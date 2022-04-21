@@ -17,24 +17,28 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef QTPOKIT_ABSTRACTWORKER_H
-#define QTPOKIT_ABSTRACTWORKER_H
+#include "abstractcommand.h"
 
-#include <QCommandLineParser>
-#include <QObject>
+#include <QBluetoothDeviceInfo>
 
-class AbstractWorker : public QObject
+class PokitDeviceDiscoveryAgent;
+
+/*!
+ * Scans for nearby Pokit devices.
+ *
+ * When devices are found, they are logged to stdout in the chosen format.
+ */
+class ScanCommand : public AbstractCommand
 {
 public:
-    explicit AbstractWorker(QObject * const parent);
-
-    virtual QStringList requiredOptions() const;
-    virtual QStringList supportedOptions() const;
+    explicit ScanCommand(QObject * const parent);
 
 public slots:
-    virtual bool processOptions(const QCommandLineParser &parser);
+    void start(const int timeout = 0);
+
+private:
+    PokitDeviceDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
 
 private slots:
+    void deviceDiscovered(const QBluetoothDeviceInfo &info);
 };
-
-#endif // QTPOKIT_ABSTRACTWORKER_H
