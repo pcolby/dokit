@@ -66,19 +66,11 @@ bool InfoCommand::start()
 {
     Q_ASSERT(device != nullptr);
     StatusService * service = device->status();
+    Q_ASSERT(service != nullptr);
+    connect(service, &StatusService::serviceDetailsDiscovered,
+            this, &InfoCommand::serviceDetailsDiscovered);
 
-    connect(device->controller(),
-        #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
-        QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
-        #else
-        &QLowEnergyController::errorOccurred,
-        #endif
-    [](QLowEnergyController::Error error) {
-        qDebug() << "foo" << error;
-        ::exit(EXIT_FAILURE); ///< \todo Exit gracefully.
-    });
-
-    /// \todo Cleanup, and make separate explicit slot function.
+    /// \todo Cleanup, and move to InfoCommand::serviceDetailsDiscovered.
     connect(service, &StatusService::serviceDetailsDiscovered,[service]() {
         service->deviceCharacteristics(); // Should be immediately (cached) available.
         service->flashLed(); // Should be fun :)

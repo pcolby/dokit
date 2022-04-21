@@ -59,9 +59,27 @@ QStringList DeviceCommand::processOptions(const QCommandLineParser &parser)
         errors.append(tr("Unrecogised device name or address: %1")
             .arg(deviceString));
     } else {
-        /// \todo Not sure if we shoudl consruct here, or just record the address for later?
+        /// \todo Not sure if we should consruct here, or just record the address for later?
         device = new PokitDevice(deviceString, this);
+        connect(device->controller(),
+            #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+            QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
+            #else
+            &QLowEnergyController::errorOccurred,
+            #endif
+            this, &DeviceCommand::controllerError);
     }
 
     return errors;
+}
+
+void DeviceCommand::controllerError(QLowEnergyController::Error error)
+{
+    qCWarning(lc).noquote() << tr("Bluetooth controller error:") << error;
+    QCoreApplication::exit(EXIT_FAILURE);
+}
+
+void DeviceCommand::serviceDetailsDiscovered()
+{
+    qCDebug(lc).noquote() << tr("Service details discovered.");
 }

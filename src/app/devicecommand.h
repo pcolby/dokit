@@ -22,6 +22,8 @@
 
 #include "abstractcommand.h"
 
+#include <QLowEnergyController>
+
 class PokitDevice;
 
 class DeviceCommand : public AbstractCommand
@@ -36,6 +38,11 @@ public slots:
 
 protected:
     PokitDevice * device;
+
+protected slots:
+    virtual void controllerError(QLowEnergyController::Error error);
+    virtual void serviceDetailsDiscovered();
+
 };
 
 #endif // QTPOKIT_DEVICECOMMAND_H
