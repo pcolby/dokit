@@ -20,7 +20,6 @@
 #include "abstractcommand.h"
 
 #include <qtpokit/pokitdevice.h>
-#include <QRegularExpression>
 
 /*!
  * \class AbstractCommand
@@ -28,10 +27,10 @@
  */
 
 /*!
- * Constructs a new worker with \a parent.
+ * Constructs a new command with \a parent.
  */
 AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
-    device(nullptr), format(OutputFormat::Text)
+    format(OutputFormat::Text)
 {
 
 }
@@ -110,28 +109,6 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
         }
     }
     QStringList errors;
-
-    // Parse the device option (if supported, and supplied).
-    if ((supportedOptions.contains(QLatin1String("device"))) &&
-        (parser.isSet(QLatin1String("device"))))
-    {
-        // Device string must be either a MAC address or UUID.
-        /// \todo Probably should warn if using MAC on OSX (since its not supported by the OS?).
-        const QString deviceString = parser.value(QLatin1String("device"));
-        static QRegularExpression pattern(QLatin1String("^("
-            "[0-9a-fA-F]{12}|"
-            "([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}|"
-            "[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}|"
-            "\\{[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}\\}"
-        ")$"));
-        if (!pattern.match(deviceString).hasMatch()) {
-            errors.append(tr("Unrecogised device name or address: %1")
-                .arg(deviceString));
-        } else {
-            /// \todo Not sure if we shoudl consruct here, or just record the address for later?
-            device = new PokitDevice(deviceString, this);
-        }
-    }
 
     // Parse the output format options (if supported, and supplied).
     if ((supportedOptions.contains(QLatin1String("output"))) && // Derived classes may have removed.

@@ -2,6 +2,8 @@ add_executable(
   pokit
   abstractcommand.cpp
   abstractcommand.h
+  devicecommand.cpp
+  devicecommand.h
   infocommand.cpp
   infocommand.h
   main.cpp

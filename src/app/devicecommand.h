@@ -17,26 +17,25 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "devicecommand.h"
+#ifndef QTPOKIT_DEVICECOMMAND_H
+#define QTPOKIT_DEVICECOMMAND_H
 
-class QLowEnergyController;
+#include "abstractcommand.h"
 
-/*!
- * Simple class for experimenting with the Pokit device info service.
- *
- * This class will be signifantly refactored, or maybe replaced entirely soonish.
- */
-class InfoCommand : public DeviceCommand
+class PokitDevice;
+
+class DeviceCommand : public AbstractCommand
 {
 public:
-    explicit InfoCommand(QObject * const parent);
+    explicit DeviceCommand(QObject * const parent);
 
     QStringList requiredOptions() const override;
-    QStringList supportedOptions() const override;
 
 public slots:
     QStringList processOptions(const QCommandLineParser &parser) override;
-    bool start() override;
 
-private slots:
+protected:
+    PokitDevice * device;
 };
+
+#endif // QTPOKIT_DEVICECOMMAND_H

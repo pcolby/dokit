@@ -32,26 +32,26 @@
 /*!
  * Construct a new InfoCommand object with \a parent.
  */
-InfoCommand::InfoCommand(QObject * const parent) : AbstractCommand(parent)
+InfoCommand::InfoCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }
 
 QStringList InfoCommand::requiredOptions() const
 {
-    return AbstractCommand::requiredOptions() + QStringList{
+    return DeviceCommand::requiredOptions() + QStringList{
         QLatin1String("device"),
     };
 }
 
 QStringList InfoCommand::supportedOptions() const
 {
-    return AbstractCommand::supportedOptions();
+    return DeviceCommand::supportedOptions();
 }
 
 QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
 {
-    QStringList errors = AbstractCommand::processOptions(parser);
+    QStringList errors = DeviceCommand::processOptions(parser);
     if (!errors.isEmpty()) {
         return errors;
     }
@@ -74,7 +74,7 @@ bool InfoCommand::start()
         &QLowEnergyController::errorOccurred,
         #endif
     [](QLowEnergyController::Error error) {
-        qDebug() << error;
+        qDebug() << "foo" << error;
         ::exit(EXIT_FAILURE); ///< \todo Exit gracefully.
     });
 
@@ -86,6 +86,7 @@ bool InfoCommand::start()
         service->readCharacteristics(); // Can also fetch new values (results via signal).
     });
 
+    qCDebug(lc).noquote() << tr("Connecting to device...");
     device->controller()->connectToDevice();
     return true;
 }

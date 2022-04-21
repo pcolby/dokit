@@ -17,14 +17,12 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef QTPOKIT_ABSTRACTWORKER_H
-#define QTPOKIT_ABSTRACTWORKER_H
+#ifndef QTPOKIT_ABSTRACTCOMMAND_H
+#define QTPOKIT_ABSTRACTCOMMAND_H
 
 #include <QCommandLineParser>
 #include <QLoggingCategory>
 #include <QObject>
-
-class PokitDevice;
 
 class AbstractCommand : public QObject
 {
@@ -45,10 +43,9 @@ public slots:
     virtual bool start() = 0;
 
 protected:
-    PokitDevice * device;
     OutputFormat format;
     Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg);
 
 };
 
-#endif // QTPOKIT_ABSTRACTWORKER_H
+#endif // QTPOKIT_ABSTRACTCOMMAND_H
