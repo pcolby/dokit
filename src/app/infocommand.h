@@ -35,6 +35,7 @@ public:
     QStringList supportedOptions() const override;
 
 public slots:
+    QStringList processOptions(const QCommandLineParser &parser) override;
 
 
 private slots:

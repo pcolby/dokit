@@ -71,15 +71,43 @@ QStringList AbstractCommand::supportedOptions() const
 /*!
  * Processes the relevant options from the command line \a parser.
  *
- * Returns `true` if all required and supported options were processes succesfully, `false`
- * otherwise.
+ * On success, returns an empty QStringList, otherwise returns a list of CLI errors that the caller
+ * should report appropriately before exiting.
  *
- * Note, this base implementation does no processing, so will fail (return `false`) if any options
- * are required. Derived classes which oveeride requiredOptions() to return any options, must also
- * override this function to process them.
+ * This base implementations performs some common checks, such as ensuring that required options are
+ * present. Derived classes should override this function to perform further processing, typically
+ * inovking this base implementation as a first step, such as:
+ *
+ * ```
+ * QStringList CustomCommand::processOptions(const QCommandLineParser &parser)
+ * {
+ *     QStringList errors = AbstractCommand::processOptions(parser);
+ *     if (!errors.isEmpty()) {
+ *         return errors;
+ *     }
+ *
+ *     // Do further procession of options.
+ *
+ *     return errors;
+ * }
+ * ```
  */
-bool AbstractCommand::processOptions(const QCommandLineParser &parser)
+QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 {
-    Q_UNUSED(parser)
-    return (requiredOptions().isEmpty());
+    const QStringList suppliedOptions = parser.optionNames();
+    const QStringList supportedOptions = this->supportedOptions();
+    for (const QString &option: suppliedOptions) {
+        if (!supportedOptions.contains(option)) {
+            qCInfo(lc).noquote() << tr("Ignoring option: %1").arg(option);
+        }
+    }
+
+    QStringList errors;
+    const QStringList requiredOptions = this->requiredOptions();
+    for (const QString &option: requiredOptions) {
+        if (!parser.isSet(option)) {
+            errors.append(tr("Missing required option: %1").arg(option));
+        }
+    }
+    return errors;
 }

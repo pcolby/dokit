@@ -63,12 +63,26 @@ InfoCommand::InfoCommand(QObject * const parent) : AbstractCommand(parent)
 
 QStringList InfoCommand::requiredOptions() const
 {
-    return QStringList{
+    return AbstractCommand::requiredOptions() + QStringList{
         QLatin1String("device"),
     };
 }
 
 QStringList InfoCommand::supportedOptions() const
 {
-    return AbstractCommand::supportedOptions();
+    return AbstractCommand::supportedOptions() + QStringList{
+        QLatin1String("timeout"),
+    };
+}
+
+QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
+{
+    QStringList errors = AbstractCommand::processOptions(parser);
+    if (!errors.isEmpty()) {
+        return errors;
+    }
+
+    /// \todo
+
+    return errors;
 }

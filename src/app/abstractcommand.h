@@ -33,7 +33,7 @@ public:
     virtual QStringList supportedOptions() const;
 
 public slots:
-    virtual bool processOptions(const QCommandLineParser &parser);
+    virtual QStringList processOptions(const QCommandLineParser &parser);
 
 protected:
     Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg);

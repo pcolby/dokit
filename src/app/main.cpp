@@ -210,35 +210,6 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     return command;
 }
 
-/// \todo Move to AbstractCommand::processOptions?
-int requireOptions(const QCommandLineParser &parser, const AbstractCommand &worker)
-{
-    QStringList requiredOptions = worker.requiredOptions();
-    std::remove_if(requiredOptions.begin(), requiredOptions.end(), [&parser](const QString &name){
-        return parser.isSet(name);
-    });
-    for (const QString &name: requiredOptions) {
-        showCliError(QCoreApplication::translate("main", "Missing required option: %1").arg(name));
-    }
-    return requiredOptions.length();
-}
-
-/// \todo Move to AbstractCommand::processOptions?
-int warnOnIgnoredOptions(const QCommandLineParser &parser, const AbstractCommand &worker)
-{
-    const QStringList supportedOptions = worker.supportedOptions();
-    QStringList ignoredOptions = parser.optionNames();
-    ignoredOptions.removeDuplicates();
-    ignoredOptions.sort();
-    std::remove_if(ignoredOptions.begin(), ignoredOptions.end(), [&ignoredOptions](const QString &name){
-        return ignoredOptions.contains(name);
-    });
-    for (const QString &name: qAsConst(ignoredOptions)) {
-        qWarning() << QCoreApplication::translate("main", "Ignoring option: %1").arg(name);
-    }
-    return ignoredOptions.length();
-}
-
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
@@ -277,10 +248,9 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    if (requireOptions(parser, *worker) > 0) {
-        return EXIT_FAILURE;
+    const QStringList cliErrors = worker->processOptions(parser);
+    for (const QString &error: cliErrors) {
+        showCliError(error);
     }
-    warnOnIgnoredOptions(parser, *worker);
-    worker->processOptions(parser);
-    return app.exec();
+    return (cliErrors.isEmpty()) ? app.exec() : EXIT_FAILURE;
 }

@@ -43,16 +43,42 @@ ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
     });
 }
 
+QStringList ScanCommand::requiredOptions() const
+{
+    return AbstractCommand::requiredOptions();
+}
+
+QStringList ScanCommand::supportedOptions() const
+{
+    return AbstractCommand::supportedOptions();
+}
+
+QStringList ScanCommand::processOptions(const QCommandLineParser &parser)
+{
+    Q_ASSERT(discoveryAgent);
+
+    QStringList errors = AbstractCommand::processOptions(parser);
+    if (!errors.isEmpty()) {
+        return errors;
+    }
+
+    if (parser.isSet(QLatin1String("timeout"))) {
+        /// \todo Validate the value format.
+        discoveryAgent->setLowEnergyDiscoveryTimeout(
+            parser.value(QStringLiteral("timeout")).toInt()*1000);
+        qCDebug(lc) << tr("Set scan timeout to %1").arg(discoveryAgent->lowEnergyDiscoveryTimeout());
+    }
+
+    return errors;
+}
+
 /*!
  * Begins scanning for Pokit devices, with \a timeout, in milliseconds.
  */
-void ScanCommand::start(const int timeout)
+void ScanCommand::start()
 {
     Q_ASSERT(discoveryAgent);
-    qCDebug(lc).noquote().nospace() << "Scanning for Pokit devices (with "
-        << (timeout ? QLocale().toString(timeout)+QLatin1String("ms") : QLatin1String("no"))
-        << " timeout).";
-    discoveryAgent->setLowEnergyDiscoveryTimeout(timeout);
+    qCDebug(lc).noquote().nospace() << tr("Scanning for Pokit devices...");
     discoveryAgent->start();
 }
 

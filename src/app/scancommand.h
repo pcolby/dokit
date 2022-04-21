@@ -33,8 +33,12 @@ class ScanCommand : public AbstractCommand
 public:
     explicit ScanCommand(QObject * const parent);
 
+    QStringList requiredOptions() const override;
+    QStringList supportedOptions() const override;
+
 public slots:
-    void start(const int timeout = 0);
+    QStringList processOptions(const QCommandLineParser &parser) override;
+    void start();
 
 private:
     PokitDeviceDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
