@@ -8,7 +8,10 @@ var hierarchy =
     [ "QObject", null, [
       [ "AbstractCommand", "classAbstractCommand.html", [
         [ "DeviceCommand", "classDeviceCommand.html", [
-          [ "InfoCommand", "classInfoCommand.html", null ]
+          [ "FlashLedCommand", "classFlashLedCommand.html", null ],
+          [ "InfoCommand", "classInfoCommand.html", null ],
+          [ "SetNameCommand", "classSetNameCommand.html", null ],
+          [ "StatusCommand", "classStatusCommand.html", null ]
         ] ],
         [ "ScanCommand", "classScanCommand.html", null ]
       ] ],

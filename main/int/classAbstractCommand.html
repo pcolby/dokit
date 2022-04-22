@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('classAbstractCommand.html',''); initRe
 <div class="dynheader">
 Inheritance diagram for AbstractCommand:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand__inherit__graph.svg" width="291" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand__inherit__graph.svg" width="624" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -286,7 +286,7 @@ Protected Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  100</span>    } <span class="keywordflow">else</span> <span class="keywordflow">return</span> field;</div>
 <div class="line"><span class="lineno">  101</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00091">ScanCommand::deviceDiscovered()</a>, and <a class="el" href="infocommand_8cpp_source.html#l00093">InfoCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00095">ScanCommand::deviceDiscovered()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00092">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -380,7 +380,7 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">Csv</a>, <a class="el" href="abstractcommand_8h_source.html#l00048">format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">Json</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00050">requiredOptions()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00073">supportedOptions()</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">Text</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00052">DeviceCommand::processOptions()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00058">ScanCommand::processOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00052">DeviceCommand::processOptions()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00062">ScanCommand::processOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -390,7 +390,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_ad827a18a24776efeb955739459d48f7d_icgraph.svg" width="774" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_ad827a18a24776efeb955739459d48f7d_icgraph.svg" width="808" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -423,18 +423,18 @@ Here is the caller graph for this function:</div>
 <p >The main console appication may use this list to output an eror (and exit) if any of the returned names are not found in the parsed CLI options.</p>
 <p >This base implementation simply returns an empty list. Derived classes should override this function to include any required options. </p>
 
-<p>Reimplemented in <a class="el" href="classDeviceCommand.html#a51880909f53005b1c178611aaac394e7">DeviceCommand</a>, <a class="el" href="classInfoCommand.html#aeba667f52f3bb12a890e70854c47eece">InfoCommand</a>, and <a class="el" href="classScanCommand.html#a5322e3ce00daeae21becb853312d4bdf">ScanCommand</a>.</p>
+<p>Reimplemented in <a class="el" href="classDeviceCommand.html#a51880909f53005b1c178611aaac394e7">DeviceCommand</a>, <a class="el" href="classFlashLedCommand.html#afdd092d0f82398d537a249cd6b8b9b9a">FlashLedCommand</a>, <a class="el" href="classInfoCommand.html#aeba667f52f3bb12a890e70854c47eece">InfoCommand</a>, <a class="el" href="classScanCommand.html#a5322e3ce00daeae21becb853312d4bdf">ScanCommand</a>, <a class="el" href="classSetNameCommand.html#aca427dcc4590c0eb0033885efc28fcf2">SetNameCommand</a>, and <a class="el" href="classStatusCommand.html#aa2345f5f5e6453ca4364c78ca476c427">StatusCommand</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00050">50</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
 <div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> QStringList();</div>
 <div class="line"><span class="lineno">   53</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00039">DeviceCommand::requiredOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00046">ScanCommand::requiredOptions()</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00073">supportedOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00039">DeviceCommand::requiredOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00050">ScanCommand::requiredOptions()</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00073">supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_aec006493cf0a4ba88c092c597bf247b8_icgraph.svg" width="1363" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_aec006493cf0a4ba88c092c597bf247b8_icgraph.svg" width="1398" height="636"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -474,7 +474,7 @@ Here is the caller graph for this function:</div>
 <div class="line">    <span class="keywordflow">return</span> list;</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
-<p>Reimplemented in <a class="el" href="classInfoCommand.html#aaeb045dac5796d18b1041c0917267ec6">InfoCommand</a>, and <a class="el" href="classScanCommand.html#af9af0702a9869ec1c762aecce7600271">ScanCommand</a>.</p>
+<p>Reimplemented in <a class="el" href="classFlashLedCommand.html#ae533aaeeda78e56b6feabf9ef6fe5ab5">FlashLedCommand</a>, <a class="el" href="classInfoCommand.html#aaeb045dac5796d18b1041c0917267ec6">InfoCommand</a>, <a class="el" href="classScanCommand.html#af9af0702a9869ec1c762aecce7600271">ScanCommand</a>, <a class="el" href="classSetNameCommand.html#a296bb2bf52fdd511a90ac412fc27dc52">SetNameCommand</a>, and <a class="el" href="classStatusCommand.html#a6e6f923a2753025b8f11412048cd0866">StatusCommand</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00073">73</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   74</span>{</div>
@@ -486,7 +486,7 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00050">requiredOptions()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00048">InfoCommand::supportedOptions()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00051">ScanCommand::supportedOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00046">FlashLedCommand::supportedOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00046">InfoCommand::supportedOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00055">ScanCommand::supportedOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00046">SetNameCommand::supportedOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00049">StatusCommand::supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -496,7 +496,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_a002fc48054b9df13bbb2e0bdc488c6d3_icgraph.svg" width="1079" height="172"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_a002fc48054b9df13bbb2e0bdc488c6d3_icgraph.svg" width="1114" height="460"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -527,7 +527,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00048">48</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00091">ScanCommand::deviceDiscovered()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, and <a class="el" href="infocommand_8cpp_source.html#l00093">InfoCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00095">ScanCommand::deviceDiscovered()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00092">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 
 </div>
 </div>
