@@ -69,7 +69,6 @@ QStringList AbstractCommand::requiredOptions() const
  * }
  * ```
  */
-
 QStringList AbstractCommand::supportedOptions() const
 {
     return requiredOptions() + QStringList{

@@ -39,4 +39,7 @@ protected slots:
 private:
     StatusService * service; ///< Bluetooth service this command interracts with.
 
+private slots:
+    void deviceLedFlashed();
+
 };

@@ -75,6 +75,8 @@ bool FlashLedCommand::start()
         Q_ASSERT(service);
         connect(service, &StatusService::serviceDetailsDiscovered,
                 this, &FlashLedCommand::serviceDetailsDiscovered);
+        connect(service, &StatusService::deviceLedFlashed,
+                this, &FlashLedCommand::deviceLedFlashed);
     }
     qCDebug(lc).noquote() << tr("Connecting to device...");
     device->controller()->connectToDevice();
@@ -88,7 +90,25 @@ bool FlashLedCommand::start()
  */
 void FlashLedCommand::serviceDetailsDiscovered()
 {
-    /// \todo service->flashLed(); then wait for the result signal.
-    qCWarning(lc) << "Not implemented yet";
+    qCDebug(lc) << tr("Flashing LED...");
+    service->flashLed();
+}
+
+/*!
+ * Handles StatusService::deviceLedFlashed events, by outputting the result and exiting.
+ */
+void FlashLedCommand::deviceLedFlashed()
+{
+    switch (format) {
+    case OutputFormat::Csv:
+        fputs(qPrintable(tr("flash_led_result\nsuccess\n")), stdout);
+        break;
+    case OutputFormat::Json:
+        fputs(qPrintable(QLatin1String("true\n")), stdout);
+        break;
+    case OutputFormat::Text:
+        fputs(qPrintable(tr("Done.\n")), stdout);
+        break;
+    }
     QCoreApplication::exit(EXIT_FAILURE);
 }
