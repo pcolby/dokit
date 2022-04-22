@@ -91,14 +91,15 @@ void InfoCommand::serviceDetailsDiscovered()
 
     switch (format) {
     case OutputFormat::Csv:
-        fputs(qPrintable(tr("deviceName,deviceStatus,firmwareVersion,maximumVoltage,maximumCurrent,"
-                            "maximumResistance,maximumSamplingRate,samplingBufferSize,"
-                            "capabilityMask,macAddress,batteryVoltage\n")), stdout);
+        fputs(qPrintable(tr("device_name,device_status,firmware_version,maximum_voltage,"
+                            "maximum_current,maximum_resistance,maximum_sampling_rate,"
+                            "sampling_buffer_size,capability_mask,mac_address,battery_voltage\n")),
+                            stdout);
         fputs(qPrintable(tr("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11\n")
-            .arg(escapeCsvField(deviceName),statusLabel,chrs.firmwareVersion.toString()).arg(chrs.maximumVoltage)
-            .arg(chrs.maximumCurrent).arg(chrs.maximumResistance).arg(chrs.maximumSamplingRate)
-            .arg(chrs.samplingBufferSize).arg(chrs.capabilityMask).arg(chrs.macAddress.toString())
-            .arg(batteryVoltage)), stdout);
+            .arg(escapeCsvField(deviceName),statusLabel.toLower(),chrs.firmwareVersion.toString())
+            .arg(chrs.maximumVoltage).arg(chrs.maximumCurrent).arg(chrs.maximumResistance)
+            .arg(chrs.maximumSamplingRate).arg(chrs.samplingBufferSize).arg(chrs.capabilityMask)
+            .arg(chrs.macAddress.toString()).arg(batteryVoltage)), stdout);
         break;
     case OutputFormat::Json:
         fputs(QJsonDocument(QJsonObject{
