@@ -95,7 +95,7 @@ QString AbstractCommand::escapeCsvField(const QString &field)
     if (field.contains(QLatin1Char(','))||field.contains(QLatin1Char('\r'))||
         field.contains(QLatin1Char('"'))||field.contains(QLatin1Char('\n')))
     {
-        return QLatin1String("\"%1\"").arg(
+        return QString::fromLatin1("\"%1\"").arg(
             QString(field).replace(QLatin1Char('"'), QLatin1String("\"\"")));
     } else return field;
 }
