@@ -39,7 +39,6 @@ FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent)
 QStringList FlashLedCommand::requiredOptions() const
 {
     return DeviceCommand::requiredOptions() + QStringList{
-        QLatin1String("device"),
     };
 }
 

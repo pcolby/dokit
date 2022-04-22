@@ -39,7 +39,6 @@ InfoCommand::InfoCommand(QObject * const parent) : DeviceCommand(parent), servic
 QStringList InfoCommand::requiredOptions() const
 {
     return DeviceCommand::requiredOptions() + QStringList{
-        QLatin1String("device"),
     };
 }
 

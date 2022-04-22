@@ -42,7 +42,6 @@ StatusCommand::StatusCommand(QObject * const parent) : DeviceCommand(parent), se
 QStringList StatusCommand::requiredOptions() const
 {
     return DeviceCommand::requiredOptions() + QStringList{
-        QLatin1String("device"),
     };
 }
 
