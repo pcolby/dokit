@@ -46,7 +46,7 @@ public slots:
 
 protected:
     OutputFormat format; ///< Selected output format.
-    Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg); ///< Logging category for UI commands.
+    static Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg); ///< Logging category for UI commands.
 };
 
 #endif // QTPOKIT_ABSTRACTCOMMAND_H

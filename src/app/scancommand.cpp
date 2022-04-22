@@ -37,7 +37,7 @@ ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,
             this, &ScanCommand::deviceDiscovered);
 
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, [this]() {
+    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
         qCDebug(lc) << "Finished scanning for Pokit devices.";
         QCoreApplication::quit();
     });
