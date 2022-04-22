@@ -19,7 +19,7 @@
 
 #include "devicecommand.h"
 
-class QLowEnergyController;
+class StatusService;
 
 /*!
  * Simple class for experimenting with the Pokit device info service.
@@ -38,5 +38,10 @@ public slots:
     QStringList processOptions(const QCommandLineParser &parser) override;
     bool start() override;
 
-private slots:
+protected slots:
+    void serviceDetailsDiscovered() override;
+
+private:
+    StatusService * service;
+
 };

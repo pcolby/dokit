@@ -208,6 +208,20 @@ StatusService::DeviceStatus StatusService::deviceStatus() const
     return StatusServicePrivate::parseStatus(characteristic.value()).first;
 }
 
+QString StatusService::deviceStatusLabel(const StatusService::DeviceStatus &status)
+{
+    switch (status) {
+    case DeviceStatus::Idle:                 return  QLatin1String("Idle");
+    case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String("MultimeterDcVoltage");
+    case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String("MultimeterAcVoltage");
+    case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String("MultimeterDcCurrent");
+    case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String("MultimeterAcCurrent");
+    case DeviceStatus::MultimeterResistance: return  QLatin1String("MultimeterResistance");
+    case DeviceStatus::MultimeterDiode:      return  QLatin1String("MultimeterDiode");
+    }
+    return QLatin1String("Invalid");
+}
+
 /*!
  * Returns the most recent value of the `Status` characteristic's `Battery Voltage` attribute.
  *
@@ -253,7 +267,7 @@ QString StatusService::deviceName() const
     }
 
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::status);
+        d->service->characteristic(CharacteristicUuids::name);
     if (!characteristic.isValid()) {
         qCDebug(pokitService) << "Name characteristic not valid yet";
         return QString();

@@ -83,6 +83,7 @@ public:
 
     // Status characteristic (Read only).
     DeviceStatus deviceStatus() const;
+    static QString deviceStatusLabel(const StatusService::DeviceStatus &status);
     float batteryVoltage() const;
 
     // Device Name characteristic (BLE read/write).
