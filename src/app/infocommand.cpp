@@ -94,9 +94,8 @@ void InfoCommand::serviceDetailsDiscovered()
         fputs(qPrintable(tr("deviceName,deviceStatus,firmwareVersion,maximumVoltage,maximumCurrent,"
                             "maximumResistance,maximumSamplingRate,samplingBufferSize,"
                             "capabilityMask,macAddress,batteryVoltage\n")), stdout);
-        /// \todo CSV quote escaping.
-        fputs(qPrintable(tr("\"%1\",%2,%3,%4,%5,%6,%7,%8,%9,%10,%11\n")
-            .arg(deviceName,statusLabel,chrs.firmwareVersion.toString()).arg(chrs.maximumVoltage)
+        fputs(qPrintable(tr("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11\n")
+            .arg(escapeCsvField(deviceName),statusLabel,chrs.firmwareVersion.toString()).arg(chrs.maximumVoltage)
             .arg(chrs.maximumCurrent).arg(chrs.maximumResistance).arg(chrs.maximumSamplingRate)
             .arg(chrs.samplingBufferSize).arg(chrs.capabilityMask).arg(chrs.macAddress.toString())
             .arg(batteryVoltage)), stdout);

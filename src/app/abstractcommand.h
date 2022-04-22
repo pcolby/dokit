@@ -38,6 +38,8 @@ public:
     virtual QStringList requiredOptions() const;
     virtual QStringList supportedOptions() const;
 
+    static QString escapeCsvField(const QString &field);
+
 public slots:
     virtual QStringList processOptions(const QCommandLineParser &parser);
     virtual bool start() = 0;

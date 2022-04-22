@@ -93,9 +93,8 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
     switch (format) {
     case OutputFormat::Csv:
         fputs(qPrintable(tr("uuid,address,name,...\n")), stdout);
-        /// \todo CSV quote escaping.
         fputs(qPrintable(tr("%1,%2,\"%3\",...\n").arg(info.deviceUuid().toString(),
-            info.address().toString(), info.name())), stdout);
+            info.address().toString(), escapeCsvField(info.name()))), stdout);
         break;
     case OutputFormat::Json:
         fputs(QJsonDocument(toJson(info)).toJson(), stdout);
