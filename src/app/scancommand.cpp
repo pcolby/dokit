@@ -84,7 +84,7 @@ QStringList ScanCommand::processOptions(const QCommandLineParser &parser)
 bool ScanCommand::start()
 {
     Q_ASSERT(discoveryAgent);
-    qCDebug(lc).noquote().nospace() << tr("Scanning for Pokit devices...");
+    qCInfo(lc).noquote() << tr("Scanning for Pokit devices...");
     discoveryAgent->start();
     return true;
 }

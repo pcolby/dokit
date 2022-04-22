@@ -75,7 +75,7 @@ bool InfoCommand::start()
         connect(service, &StatusService::serviceDetailsDiscovered,
                 this, &InfoCommand::serviceDetailsDiscovered);
     }
-    qCDebug(lc).noquote() << tr("Connecting to device...");
+    qCInfo(lc).noquote() << tr("Connecting to device...");
     device->controller()->connectToDevice();
     return true;
 }

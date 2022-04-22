@@ -77,7 +77,7 @@ bool FlashLedCommand::start()
         connect(service, &StatusService::deviceLedFlashed,
                 this, &FlashLedCommand::deviceLedFlashed);
     }
-    qCDebug(lc).noquote() << tr("Connecting to device...");
+    qCInfo(lc).noquote() << tr("Connecting to device...");
     device->controller()->connectToDevice();
     return true;
 }
@@ -89,8 +89,10 @@ bool FlashLedCommand::start()
  */
 void FlashLedCommand::serviceDetailsDiscovered()
 {
-    qCDebug(lc) << tr("Flashing LED...");
-    service->flashLed();
+    qCInfo(lc).noquote() << tr("Flashing LED...");
+    if (!service->flashLed()) {
+        QCoreApplication::exit(EXIT_FAILURE);
+    }
 }
 
 /*!
@@ -109,5 +111,5 @@ void FlashLedCommand::deviceLedFlashed()
         fputs(qPrintable(tr("Done.\n")), stdout);
         break;
     }
-    QCoreApplication::exit(EXIT_FAILURE);
+    QCoreApplication::quit();
 }

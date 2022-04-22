@@ -39,6 +39,7 @@ SetNameCommand::SetNameCommand(QObject * const parent) : DeviceCommand(parent), 
 QStringList SetNameCommand::requiredOptions() const
 {
     return DeviceCommand::requiredOptions() + QStringList{
+        QLatin1String("new-name"),
     };
 }
 
@@ -60,6 +61,12 @@ QStringList SetNameCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
+    newName = parser.value(QLatin1String("new-name"));
+    if (newName.isEmpty()) {
+        errors.append(tr("New name cannot be empty."));
+    } else if (newName.length() > 11) {
+        errors.append(tr("New name cannot exceed 11 characters."));
+    }
     return errors;
 }
 
@@ -74,8 +81,10 @@ bool SetNameCommand::start()
         Q_ASSERT(service);
         connect(service, &StatusService::serviceDetailsDiscovered,
                 this, &SetNameCommand::serviceDetailsDiscovered);
+        connect(service, &StatusService::deivceNameWritten,
+                this, &SetNameCommand::deivceNameWritten);
     }
-    qCDebug(lc).noquote() << tr("Connecting to device...");
+    qCInfo(lc).noquote() << tr("Connecting to device...");
     device->controller()->connectToDevice();
     return true;
 }
@@ -87,7 +96,27 @@ bool SetNameCommand::start()
  */
 void SetNameCommand::serviceDetailsDiscovered()
 {
-    /// \todo service->setDeviceName(...); then wait for the result signal.
-    qCWarning(lc) << "Not implemented yet";
-    QCoreApplication::exit(EXIT_FAILURE);
+    qInfo().noquote() << tr("Setting device name to: %1").arg(newName);
+    if (!service->setDeviceName(newName)) {
+        QCoreApplication::exit(EXIT_FAILURE);
+    }
+}
+
+/*!
+ * Handles StatusService::deivceNameWritten events, by outputting the result and exiting.
+ */
+void SetNameCommand::deivceNameWritten()
+{
+    switch (format) {
+    case OutputFormat::Csv:
+        fputs(qPrintable(tr("set_name_result\nsuccess\n")), stdout);
+        break;
+    case OutputFormat::Json:
+        fputs(qPrintable(QLatin1String("true\n")), stdout);
+        break;
+    case OutputFormat::Text:
+        fputs(qPrintable(tr("Done.\n")), stdout);
+        break;
+    }
+    QCoreApplication::quit();
 }

@@ -37,6 +37,9 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
+    QString newName; ///< New name to set on the Pokit device.
     StatusService * service; ///< Bluetooth service this command interracts with.
 
+private slots:
+    void deivceNameWritten();
 };
