@@ -17,33 +17,33 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "infocommand.h"
+#include "flashledcommand.h"
 
 #include <qtpokit/pokitdevice.h>
-#include <qtpokit/statusservice.h> ///< \todo Switch to InfoService.
+#include <qtpokit/statusservice.h>
 
 /*!
- * \class InfoCommand
+ * \class FlashLedCommand
  *
- * The InfoCommand class implements the `info` CLI command.
+ * The FlashLedCommand class implements the `flash-led` CLI command.
  */
 
 /*!
- * Construct a new InfoCommand object with \a parent.
+ * Construct a new FlashLedCommand object with \a parent.
  */
-InfoCommand::InfoCommand(QObject * const parent) : DeviceCommand(parent), service(nullptr)
+FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent), service(nullptr)
 {
 
 }
 
-QStringList InfoCommand::requiredOptions() const
+QStringList FlashLedCommand::requiredOptions() const
 {
     return DeviceCommand::requiredOptions() + QStringList{
         QLatin1String("device"),
     };
 }
 
-QStringList InfoCommand::supportedOptions() const
+QStringList FlashLedCommand::supportedOptions() const
 {
     return DeviceCommand::supportedOptions();
 }
@@ -54,7 +54,7 @@ QStringList InfoCommand::supportedOptions() const
  * This implementation extends DeviceCommand::processOptions to process additional CLI options
  * supported (or required) by this command.
  */
-QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
+QStringList FlashLedCommand::processOptions(const QCommandLineParser &parser)
 {
     QStringList errors = DeviceCommand::processOptions(parser);
     if (!errors.isEmpty()) {
@@ -67,14 +67,14 @@ QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
 /*!
  * Begins scanning for Pokit devices.
  */
-bool InfoCommand::start()
+bool FlashLedCommand::start()
 {
     Q_ASSERT(device);
     if (!service) {
         service = device->status();
         Q_ASSERT(service);
         connect(service, &StatusService::serviceDetailsDiscovered,
-                this, &InfoCommand::serviceDetailsDiscovered);
+                this, &FlashLedCommand::serviceDetailsDiscovered);
     }
     qCDebug(lc).noquote() << tr("Connecting to device...");
     device->controller()->connectToDevice();
@@ -84,10 +84,11 @@ bool InfoCommand::start()
 /*!
  * \copybrief DeviceCommand::serviceDetailsDiscovered
  *
- * \todo Document this.
+ * This override flashes the device's LED, via the Pokit Status service.
  */
-void InfoCommand::serviceDetailsDiscovered()
+void FlashLedCommand::serviceDetailsDiscovered()
 {
+    /// \todo service->flashLed(); then wait for the result signal.
     qCWarning(lc) << "Not implemented yet";
     QCoreApplication::exit(EXIT_FAILURE);
 }

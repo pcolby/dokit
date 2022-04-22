@@ -19,12 +19,12 @@
 
 #include "devicecommand.h"
 
-class StatusService; /// \todo Switch to InfoService.
+class StatusService;
 
-class InfoCommand : public DeviceCommand
+class SetNameCommand : public DeviceCommand
 {
 public:
-    explicit InfoCommand(QObject * const parent);
+    explicit SetNameCommand(QObject * const parent);
 
     QStringList requiredOptions() const override;
     QStringList supportedOptions() const override;
@@ -37,7 +37,6 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    /// \todo This is the *wrong* service; update to InfoService once implemented.
     StatusService * service; ///< Bluetooth service this command interracts with.
 
 };

@@ -4,11 +4,17 @@ add_executable(
   abstractcommand.h
   devicecommand.cpp
   devicecommand.h
+  flashledcommand.cpp
+  flashledcommand.h
   infocommand.cpp
   infocommand.h
   main.cpp
   scancommand.cpp
   scancommand.h
+  setnamecommand.cpp
+  setnamecommand.h
+  statuscommand.cpp
+  statuscommand.h
 )
 
 target_link_libraries(

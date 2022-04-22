@@ -17,14 +17,16 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "flashledcommand.h"
+#include "infocommand.h"
+#include "scancommand.h"
+#include "setnamecommand.h"
+#include "statuscommand.h"
+
 #include <QCommandLineParser>
 #include <QCoreApplication>
 #include <QDebug>
-#include <QDir>
-#include <QFileInfo>
-
-#include "infocommand.h"
-#include "scancommand.h"
+#include <QLoggingCategory>
 
 #if defined(Q_OS_UNIX)
 #include <unistd.h>
@@ -218,14 +220,14 @@ AbstractCommand * getCommandObject(const Command command, QObject * const parent
         showCliError(QCoreApplication::translate("main",
             "Missing argument: <command>\nSee --help for usage information."));
         return nullptr;
-    case Command::DSO:      break;
-    case Command::FlashLed: break;
+    case Command::DSO:      break; ///< \todo Implement.
+    case Command::FlashLed: return new FlashLedCommand(parent);
     case Command::Info:     return new InfoCommand(parent);
-    case Command::Logger:   break;
-    case Command::Meter:    break;
+    case Command::Logger:   break; ///< \todo Implement.
+    case Command::Meter:    break; ///< \todo Implement.
     case Command::Scan:     return new ScanCommand(parent);
-    case Command::Status:   break;
-    case Command::SetName:  break;
+    case Command::Status:   return new StatusCommand(parent);
+    case Command::SetName:  return new SetNameCommand(parent);
     }
     showCliError(QCoreApplication::translate("main", "Unknown command (%1)").arg((int)command));
     return nullptr;

@@ -21,11 +21,15 @@
 
 #include <qtpokit/pokitdevicedisoveryagent.h>
 #include <qtpokit/utils.h>
-#include <qtpokit/uuids.h>
 
-#include <QCoreApplication>
 #include <QJsonDocument>
-#include <QLoggingCategory>
+
+/*!
+ * \class ScanCommand
+ *
+ * The ScanCommand class implements the `scan` CLI command, by scanning for nearby Pokit Bluetooth
+ * devices. When devices are found, they are logged to stdout in the chosen format.
+ */
 
 /*!
  * Construct a new ScanCommand object with \a parent.

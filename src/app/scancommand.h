@@ -23,11 +23,6 @@
 
 class PokitDeviceDiscoveryAgent;
 
-/*!
- * Scans for nearby Pokit devices.
- *
- * When devices are found, they are logged to stdout in the chosen format.
- */
 class ScanCommand : public AbstractCommand
 {
 public:
