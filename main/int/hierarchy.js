@@ -6,16 +6,20 @@ var hierarchy =
       [ "PokitDeviceDiscoveryAgent", "classPokitDeviceDiscoveryAgent.html", null ]
     ] ],
     [ "QObject", null, [
+      [ "AbstractCommand", "classAbstractCommand.html", [
+        [ "DeviceCommand", "classDeviceCommand.html", [
+          [ "InfoCommand", "classInfoCommand.html", null ]
+        ] ],
+        [ "ScanCommand", "classScanCommand.html", null ]
+      ] ],
       [ "AbstractPokitService", "classAbstractPokitService.html", [
         [ "StatusService", "classStatusService.html", null ]
       ] ],
       [ "AbstractPokitServicePrivate", "classAbstractPokitServicePrivate.html", [
         [ "StatusServicePrivate", "classStatusServicePrivate.html", null ]
       ] ],
-      [ "Informer", "classInformer.html", null ],
       [ "PokitDevice", "classPokitDevice.html", null ],
       [ "PokitDeviceDiscoveryAgentPrivate", "classPokitDeviceDiscoveryAgentPrivate.html", null ],
-      [ "PokitDevicePrivate", "classPokitDevicePrivate.html", null ],
-      [ "Scanner", "classScanner.html", null ]
+      [ "PokitDevicePrivate", "classPokitDevicePrivate.html", null ]
     ] ]
 ];

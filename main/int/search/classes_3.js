@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['informer_0',['Informer',['../classInformer.html',1,'']]]
+  ['infocommand_0',['InfoCommand',['../classInfoCommand.html',1,'']]]
 ];

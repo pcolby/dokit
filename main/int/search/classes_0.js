@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['abstractpokitservice_0',['AbstractPokitService',['../classAbstractPokitService.html',1,'']]],
-  ['abstractpokitserviceprivate_1',['AbstractPokitServicePrivate',['../classAbstractPokitServicePrivate.html',1,'']]]
+  ['abstractcommand_0',['AbstractCommand',['../classAbstractCommand.html',1,'']]],
+  ['abstractpokitservice_1',['AbstractPokitService',['../classAbstractPokitService.html',1,'']]],
+  ['abstractpokitserviceprivate_2',['AbstractPokitServicePrivate',['../classAbstractPokitServicePrivate.html',1,'']]]
 ];

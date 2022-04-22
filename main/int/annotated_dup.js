@@ -1,13 +1,15 @@
 var annotated_dup =
 [
+    [ "AbstractCommand", "classAbstractCommand.html", "classAbstractCommand" ],
     [ "AbstractPokitService", "classAbstractPokitService.html", "classAbstractPokitService" ],
     [ "AbstractPokitServicePrivate", "classAbstractPokitServicePrivate.html", "classAbstractPokitServicePrivate" ],
-    [ "Informer", "classInformer.html", "classInformer" ],
+    [ "DeviceCommand", "classDeviceCommand.html", "classDeviceCommand" ],
+    [ "InfoCommand", "classInfoCommand.html", "classInfoCommand" ],
     [ "PokitDevice", "classPokitDevice.html", "classPokitDevice" ],
     [ "PokitDeviceDiscoveryAgent", "classPokitDeviceDiscoveryAgent.html", "classPokitDeviceDiscoveryAgent" ],
     [ "PokitDeviceDiscoveryAgentPrivate", "classPokitDeviceDiscoveryAgentPrivate.html", "classPokitDeviceDiscoveryAgentPrivate" ],
     [ "PokitDevicePrivate", "classPokitDevicePrivate.html", "classPokitDevicePrivate" ],
-    [ "Scanner", "classScanner.html", "classScanner" ],
+    [ "ScanCommand", "classScanCommand.html", "classScanCommand" ],
     [ "StatusService", "classStatusService.html", "classStatusService" ],
     [ "StatusServicePrivate", "classStatusServicePrivate.html", "classStatusServicePrivate" ]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['informer_0',['Informer',['../classInformer.html#afa4e32defef10cc646080e2a5f4891ec',1,'Informer']]],
+  ['infocommand_0',['InfoCommand',['../classInfoCommand.html#a447fd9340d916a559b74d53195353660',1,'InfoCommand']]],
   ['ispokitdevice_1',['isPokitDevice',['../classPokitDeviceDiscoveryAgent.html#a70f6c3cfc1bfe5cab658571642bbba2f',1,'PokitDeviceDiscoveryAgent']]]
 ];
