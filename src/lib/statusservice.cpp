@@ -29,6 +29,12 @@
 #include <QDebug>
 #include <QtEndian>
 
+/*!
+ * \class StatusService
+ *
+ * The StatusService class accesses the `Pokit Status` service of Pokit devices.
+ */
+
 /// UUID of the "Pokit Status" service.
 const QBluetoothUuid StatusService::
     serviceUuid(QLatin1String("57d3a771-267c-4394-8872-78223e92aec5"));
@@ -57,12 +63,6 @@ const QBluetoothUuid StatusService::CharacteristicUuids::
 
 /// \enum StatusService::DeviceStatus
 /// \brief Values support by the `Status` attribute of the `Status` characteristic.
-
-/*!
- * \class StatusService
- *
- * The StatusService class accesses the `Pokit Status` service of Pokit devices.
- */
 
 /*!
  * Constructs a new Pokit service with \a parent.
@@ -208,6 +208,9 @@ StatusService::DeviceStatus StatusService::deviceStatus() const
     return StatusServicePrivate::parseStatus(characteristic.value()).first;
 }
 
+/*!
+ * Returns a string version of the \a status enum label.
+ */
 QString StatusService::deviceStatusLabel(const StatusService::DeviceStatus &status)
 {
     switch (status) {

@@ -23,6 +23,12 @@
 #include <QRegularExpression>
 
 /*!
+ * \class DeviceCommand
+ *
+ * The AbstractCommand class extends AbstractCommand to add a PokitDevice instance.
+ */
+
+/*!
  * Construct a new DeviceCommand object with \a parent.
  */
 DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), device(nullptr)
@@ -37,6 +43,12 @@ QStringList DeviceCommand::requiredOptions() const
     };
 }
 
+/*!
+ * \copybrief AbstractCommand::processOptions
+ *
+ * This implementation extends AbstractCommand::processOptions to process device related CLI
+ * opitons (epsecially `--device`).
+ */
 QStringList DeviceCommand::processOptions(const QCommandLineParser &parser)
 {
     QStringList errors = AbstractCommand::processOptions(parser);
@@ -73,12 +85,22 @@ QStringList DeviceCommand::processOptions(const QCommandLineParser &parser)
     return errors;
 }
 
+/*!
+ * Handles controller error events. This base implementation simply logs \a error and then exits
+ * with `EXIT_FAILURE`. Derived classes may override this slot to implement their own error
+ * handing if desired.
+ */
 void DeviceCommand::controllerError(QLowEnergyController::Error error)
 {
     qCWarning(lc).noquote() << tr("Bluetooth controller error:") << error;
     QCoreApplication::exit(EXIT_FAILURE);
 }
 
+/*!
+ * Handles service detail discovery events. This base implementation simply logs the event, and
+ * nothing more. Derived classes may (usually do) override this slot to provide their own processing
+ * when a services details have been discovered.
+ */
 void DeviceCommand::serviceDetailsDiscovered()
 {
     qCDebug(lc).noquote() << tr("Service details discovered.");

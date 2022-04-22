@@ -42,6 +42,6 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    StatusService * service;
+    StatusService * service; ///< Bluetooth service this command interracts with.
 
 };

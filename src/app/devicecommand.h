@@ -37,7 +37,7 @@ public slots:
     QStringList processOptions(const QCommandLineParser &parser) override;
 
 protected:
-    PokitDevice * device;
+    PokitDevice * device; ///< Pokit Bluetooth device (if any) this command inerracts with.
 
 protected slots:
     virtual void controllerError(QLowEnergyController::Error error);

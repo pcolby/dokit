@@ -50,6 +50,12 @@ QStringList InfoCommand::supportedOptions() const
     return DeviceCommand::supportedOptions();
 }
 
+/*!
+ * \copybrief DeviceCommand::processOptions
+ *
+ * This implementation extends DeviceCommand::processOptions to process additional CLI options
+ * supported (or required) by this command.
+ */
 QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
 {
     QStringList errors = DeviceCommand::processOptions(parser);
@@ -77,8 +83,16 @@ bool InfoCommand::start()
     return true;
 }
 
+/*!
+ * \copybrief DeviceCommand::serviceDetailsDiscovered
+ *
+ * This override fetches the current device's status, and outputs it in the selected format.
+ *
+ * \todo This is actually the wrong service... Status != Info :|
+ */
 void InfoCommand::serviceDetailsDiscovered()
 {
+    DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     const QString deviceName = service->deviceName();
     const StatusService::DeviceStatus deviceStatus = service->deviceStatus();
     const QString statusLabel = StatusService::deviceStatusLabel(deviceStatus);

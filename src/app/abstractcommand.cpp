@@ -23,8 +23,12 @@
 
 /*!
  * \class AbstractCommand
+ *
  * The AbstractCommand class provides a consistent base for the classes that implement CLI commands.
  */
+
+/// \enum AbstractCommand::OutputFormat
+/// \brief Supported output formats.
 
 /*!
  * Constructs a new command with \a parent.
@@ -74,6 +78,18 @@ QStringList AbstractCommand::supportedOptions() const
     };
 }
 
+/*!
+ * Returns an RFC 4180 compliant version of \a field. That is, if \a field contains any of the
+ * the below four characters, than any double quotes are escaped (by addition double-quotes), and
+ * the string itself surrounded in double-quotes. Otherwise, \a field is returned verbatim.
+ *
+ * Some examples:
+ * ```
+ * QCOMPARE(escapeCsvField("abc"), "abc");       // Returned unchanged.
+ * QCOMPARE(escapeCsvField("a,c"), "\"a,c\"");   // Wrapped in double-quotes.
+ * QCOMPARE(escapeCsvField("a\"c"), "\"a""c\""); // Existing double-quotes doubles, then wrapped.
+ * ```
+ */
 QString AbstractCommand::escapeCsvField(const QString &field)
 {
     if (field.contains(QLatin1Char(','))||field.contains(QLatin1Char('\r'))||
@@ -146,6 +162,13 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
     return errors;
 }
+
+/*!
+ * \fn virtual bool AbstractCommand::start()
+ *
+ * Begins the functionality of this command, and returns `true` if begun successfully, `false`
+ * otherwise.
+ */
 
 /*!
  * \fn virtual bool AbstractCommand::start()
