@@ -12,7 +12,6 @@ target_sources(
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/qtpokit_global.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/statusservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/utils.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/uuids.h
   PRIVATE abstractpokitservice.cpp
   PRIVATE abstractpokitservice_p.h
   PRIVATE genericaccessservice.cpp

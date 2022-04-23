@@ -20,10 +20,12 @@
 #include "tst_utils.h"
 
 #include <qtpokit/utils.h>
-#include <qtpokit/uuids.h>
 
 #include <QBluetoothAddress>
 #include <QJsonDocument>
+
+#define POKIT_SERVICE_MULTIMETER "e7481d2f-5781-442e-bb9a-fd4e3441dadc"
+#define POKIT_SERVICE_DSO        "1569801e-1425-4a7a-b617-a4f4ed719de6"
 
 typedef QMultiHash<quint16, QByteArray> ManufacturerData;
 Q_DECLARE_METATYPE(ManufacturerData)
