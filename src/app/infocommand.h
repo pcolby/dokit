@@ -19,7 +19,7 @@
 
 #include "devicecommand.h"
 
-class StatusService; /// \todo Switch to InfoService.
+class DeviceInfoService;
 
 class InfoCommand : public DeviceCommand
 {
@@ -37,7 +37,6 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    /// \todo This is the *wrong* service; update to InfoService once implemented.
-    StatusService * service; ///< Bluetooth service this command interracts with.
+    DeviceInfoService * service; ///< Bluetooth service this command interracts with.
 
 };

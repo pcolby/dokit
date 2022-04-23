@@ -109,7 +109,7 @@ void StatusCommand::serviceDetailsDiscovered()
                             "maximum_current,maximum_resistance,maximum_sampling_rate,"
                             "sampling_buffer_size,capability_mask,mac_address,battery_voltage\n")),
                             stdout);
-        fputs(qPrintable(tr("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11\n")
+        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11\n")
             .arg(escapeCsvField(deviceName),statusLabel.toLower(),chrs.firmwareVersion.toString())
             .arg(chrs.maximumVoltage).arg(chrs.maximumCurrent).arg(chrs.maximumResistance)
             .arg(chrs.maximumSamplingRate).arg(chrs.samplingBufferSize).arg(chrs.capabilityMask)

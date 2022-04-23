@@ -19,8 +19,11 @@
 
 #include "infocommand.h"
 
+#include <qtpokit/deviceinfoservice.h>
 #include <qtpokit/pokitdevice.h>
-#include <qtpokit/statusservice.h> ///< \todo Switch to InfoService.
+
+#include <QJsonDocument>
+#include <QJsonObject>
 
 /*!
  * \class InfoCommand
@@ -70,11 +73,11 @@ bool InfoCommand::start()
 {
     Q_ASSERT(device);
     if (!service) {
-        service = device->status();
+        service = device->deviceInformation();
         Q_ASSERT(service);
-        connect(service, &StatusService::serviceDetailsDiscovered,
+        connect(service, &DeviceInfoService::serviceDetailsDiscovered,
                 this, &InfoCommand::serviceDetailsDiscovered);
-        connect(service, &StatusService::serviceErrorOccurred,
+        connect(service, &DeviceInfoService::serviceErrorOccurred,
                 this, &InfoCommand::serviceError);
     }
     qCInfo(lc).noquote() << tr("Connecting to device...");
@@ -85,10 +88,36 @@ bool InfoCommand::start()
 /*!
  * \copybrief DeviceCommand::serviceDetailsDiscovered
  *
- * \todo Document this.
+ * This override fetches the current device's information, and outputs it in the selected format.
  */
 void InfoCommand::serviceDetailsDiscovered()
 {
-    qCWarning(lc) << "Not implemented yet";
-    QCoreApplication::exit(EXIT_FAILURE);
+    DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
+    switch (format) {
+    case OutputFormat::Csv:
+        fputs(qPrintable(tr("manufacturer_name,model_number,hardware_revision,firmware_revision,"
+                            "software_revision\n")), stdout);
+        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5\n").arg(
+            escapeCsvField(service->manufacturer()), escapeCsvField(service->modelNumber()),
+            escapeCsvField(service->hardwareRevision()), escapeCsvField(service->firmwareRevision()),
+            escapeCsvField(service->softwareRevision()))), stdout);
+        break;
+    case OutputFormat::Json:
+        fputs(QJsonDocument(QJsonObject{
+            { QLatin1String("manufacturerName"), service->manufacturer() },
+            { QLatin1String("modelNumber"),      service->modelNumber() },
+            { QLatin1String("hardwareRevision"), service->hardwareRevision() },
+            { QLatin1String("firmwareRevision"), service->firmwareRevision() },
+            { QLatin1String("softwareRevision"), service->softwareRevision() },
+            }).toJson(), stdout);
+        break;
+    case OutputFormat::Text:
+        fputs(qPrintable(tr("Manufacturer name: %1\n").arg(service->manufacturer())), stdout);
+        fputs(qPrintable(tr("Model number:      %1\n").arg(service->modelNumber())), stdout);
+        fputs(qPrintable(tr("Hardware revision: %1\n").arg(service->hardwareRevision())), stdout);
+        fputs(qPrintable(tr("Firmware revision: %1\n").arg(service->firmwareRevision())), stdout);
+        fputs(qPrintable(tr("Software revision: %1\n").arg(service->softwareRevision())), stdout);
+        break;
+    }
+    QCoreApplication::quit(); // We're all done :)
 }

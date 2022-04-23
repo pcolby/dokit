@@ -98,7 +98,7 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
     switch (format) {
     case OutputFormat::Csv:
         fputs(qPrintable(tr("uuid,address,name,major_class,minor_class,signal_strength\n")), stdout);
-        fputs(qPrintable(tr("%1,%2,%3,%4,%5,%6\n").arg(info.deviceUuid().toString(),
+        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n").arg(info.deviceUuid().toString(),
             info.address().toString(), escapeCsvField(info.name()), toString(info.majorDeviceClass()),
             toString(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);
         break;
