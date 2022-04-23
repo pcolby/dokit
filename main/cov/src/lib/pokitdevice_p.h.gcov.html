@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-04-23 10:16:35</td>
+            <td class="headerValue">2022-04-23 11:32:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -97,7 +97,7 @@
 <a name="35"><span class="lineNum">      35 </span>            : QTPOKIT_BEGIN_NAMESPACE</a>
 <a name="36"><span class="lineNum">      36 </span>            : </a>
 <a name="37"><span class="lineNum">      37 </span>            : class DataLoggerService;</a>
-<a name="38"><span class="lineNum">      38 </span>            : class DeviceInformationService;</a>
+<a name="38"><span class="lineNum">      38 </span>            : class DeviceInfoService;</a>
 <a name="39"><span class="lineNum">      39 </span>            : class DsoService;</a>
 <a name="40"><span class="lineNum">      40 </span>            : class GenericAccessService;</a>
 <a name="41"><span class="lineNum">      41 </span>            : class MultimeterService;</a>
@@ -112,19 +112,19 @@
 <a name="50"><span class="lineNum">      50 </span>            : public:</a>
 <a name="51"><span class="lineNum">      51 </span>            :     QLowEnergyController * controller; ///&lt; BLE controller for accessing the Pokit device.</a>
 <a name="52"><span class="lineNum">      52 </span>            : </a>
-<a name="53"><span class="lineNum">      53 </span>            :     DataLoggerService * dataLogger;               ///&lt; Data Logger service for this Pokit device.</a>
-<a name="54"><span class="lineNum">      54 </span>            :     DeviceInformationService * deviceInformation; ///&lt; Device info service for this Pokit device.</a>
-<a name="55"><span class="lineNum">      55 </span>            :     DsoService * dso;                             ///&lt; DSO service for this Pokit device.</a>
-<a name="56"><span class="lineNum">      56 </span>            :     GenericAccessService * genericAccess;         ///&lt; Generic Access service for this Pokit device.</a>
-<a name="57"><span class="lineNum">      57 </span>            :     MultimeterService * multimeter;               ///&lt; Multimeter service for this Pokit device.</a>
-<a name="58"><span class="lineNum">      58 </span>            :     StatusService * status;                       ///&lt; Status service for this Pokit device.</a>
+<a name="53"><span class="lineNum">      53 </span>            :     DataLoggerService * dataLogger;       ///&lt; Data Logger service for this Pokit device.</a>
+<a name="54"><span class="lineNum">      54 </span>            :     DeviceInfoService * deviceInfo;       ///&lt; Device Info service for this Pokit device.</a>
+<a name="55"><span class="lineNum">      55 </span>            :     DsoService * dso;                     ///&lt; DSO service for this Pokit device.</a>
+<a name="56"><span class="lineNum">      56 </span>            :     GenericAccessService * genericAccess; ///&lt; Generic Access service for this Pokit device.</a>
+<a name="57"><span class="lineNum">      57 </span>            :     MultimeterService * multimeter;       ///&lt; Multimeter service for this Pokit device.</a>
+<a name="58"><span class="lineNum">      58 </span>            :     StatusService * status;               ///&lt; Status service for this Pokit device.</a>
 <a name="59"><span class="lineNum">      59 </span>            : </a>
-<a name="60"><span class="lineNum">      60 </span>            :     QMutex dataLoggerMutex;        ///&lt; Mutex for protecting access to #dataLogger.</a>
-<a name="61"><span class="lineNum">      61 </span>            :     QMutex deviceInformationMutex; ///&lt; Mutex for protecting access to #deviceInformation.</a>
-<a name="62"><span class="lineNum">      62 </span>            :     QMutex dsoMutex;               ///&lt; Mutex for protecting access to #dso.</a>
-<a name="63"><span class="lineNum">      63 </span>            :     QMutex genericAccessMutex;     ///&lt; Mutex for protecting access to #genericAccess.</a>
-<a name="64"><span class="lineNum">      64 </span>            :     QMutex multimeterMutex;        ///&lt; Mutex for protecting access to #multimeter.</a>
-<a name="65"><span class="lineNum">      65 </span>            :     QMutex statusMutex;            ///&lt; Mutex for protecting access to #status.</a>
+<a name="60"><span class="lineNum">      60 </span>            :     QMutex dataLoggerMutex;    ///&lt; Mutex for protecting access to #dataLogger.</a>
+<a name="61"><span class="lineNum">      61 </span>            :     QMutex deviceInfoMutex;    ///&lt; Mutex for protecting access to #deviceInfo.</a>
+<a name="62"><span class="lineNum">      62 </span>            :     QMutex dsoMutex;           ///&lt; Mutex for protecting access to #dso.</a>
+<a name="63"><span class="lineNum">      63 </span>            :     QMutex genericAccessMutex; ///&lt; Mutex for protecting access to #genericAccess.</a>
+<a name="64"><span class="lineNum">      64 </span>            :     QMutex multimeterMutex;    ///&lt; Mutex for protecting access to #multimeter.</a>
+<a name="65"><span class="lineNum">      65 </span>            :     QMutex statusMutex;        ///&lt; Mutex for protecting access to #status.</a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span>            :     explicit PokitDevicePrivate(PokitDevice * const q);</a>
 <a name="68"><span class="lineNum">      68 </span>            : </a>
