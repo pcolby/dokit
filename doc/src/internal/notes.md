@@ -26,12 +26,11 @@ available, but no idea what its attributes are.
 
 ### Undocumented Services
 
-Pokit Pro includes the following services with no documentation to match:
+Pokit Pro includes the following services with no official documentation to match:
 
 * `00001801-0000-1000-8000-00805f9b34fb` - aka Generic Attribute, or `0x1801`.
-* `1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0` - appears to be an Silicon Labs (formerly BlueGiga) OTA Service
+* `1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0` - appears to be a Silicon Labs (formerly BlueGiga) OTA Service
   for updating firmware, which would make sense.
-* `6f53be2f-780b-49b8-a7c3-e8a052b3ae2c` - no idea.
 
 ## Qt Versions
 

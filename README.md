@@ -19,8 +19,7 @@ cross-platform desktop GUI application using the QtPokit library.
 
 ### Pokit Device Services
 
-Pokit devices currently support six Bluetooth GATT Services (actually the [Pokit Pro] appears to support
-another two, but they're undocumented at present[^undocumentedServices]).
+Pokit devices currently support seven official (and one unofficial) Bluetooth GATT Services:
 
 |       Function         | Library Status| Console App Status|                  Notes                 |
 |------------------------|:-------------:|:-----------------:|----------------------------------------|
@@ -29,8 +28,10 @@ another two, but they're undocumented at present[^undocumentedServices]).
 | DSO Service            | Later         | Later             |                                        |
 | Data Logger Service    | Later         | Later             |                                        |
 | Pokit Status Service   | Implemented   | Implemented       |                                        |
+| Calibration Service    | Later         | Later             |                                        |
 | Device Info Service    | Implemented   | Implemented       |                                        |
 | Generic Access Service | Implemented   | No plans          | Superseded by the Pokit Status service.|
+| OTA Service            | No plans      | No plans          | Undocumented service, presumably for firmware updates. |
 
 ### Supported Platforms
 
