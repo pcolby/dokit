@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['manufacturer_0',['manufacturer',['../classInfoService.html#a0dec3e81af089b046f8a24427c39654d',1,'InfoService']]],
-  ['manufacturerread_1',['manufacturerRead',['../classInfoService.html#a7b2991bda5867fc00dfcb097e9ca1d6d',1,'InfoService']]],
-  ['modelnumber_2',['modelNumber',['../classInfoService.html#a7bcd8c53e588903e91696193e38fd561',1,'InfoService']]],
-  ['modelnumberread_3',['modelNumberRead',['../classInfoService.html#ab6b8d5a2a484e84a23570db05a2d5202',1,'InfoService']]],
+  ['manufacturer_0',['manufacturer',['../classDeviceInfoService.html#ab5614d4e47856aa4400d08ae2b71d72b',1,'DeviceInfoService']]],
+  ['manufacturerread_1',['manufacturerRead',['../classDeviceInfoService.html#ab534e1447efa318e640ab710a0dff03c',1,'DeviceInfoService']]],
+  ['modelnumber_2',['modelNumber',['../classDeviceInfoService.html#a7402f9a0c2fe3ee052a29e8f872e26ef',1,'DeviceInfoService']]],
+  ['modelnumberread_3',['modelNumberRead',['../classDeviceInfoService.html#a9efa1cb0a5dd57517631ab2132e43490',1,'DeviceInfoService']]],
   ['multimeter_4',['multimeter',['../classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce',1,'PokitDevice']]]
 ];

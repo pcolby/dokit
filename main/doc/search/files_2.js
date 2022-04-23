@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['infoservice_2ecpp_0',['infoservice.cpp',['../infoservice_8cpp.html',1,'']]],
-  ['infoservice_2eh_1',['infoservice.h',['../infoservice_8h.html',1,'']]]
+  ['genericaccessservice_2ecpp_0',['genericaccessservice.cpp',['../genericaccessservice_8cpp.html',1,'']]],
+  ['genericaccessservice_2eh_1',['genericaccessservice.h',['../genericaccessservice_8h.html',1,'']]]
 ];

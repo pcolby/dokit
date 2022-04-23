@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hardwarerevision_0',['hardwareRevision',['../structInfoService_1_1CharacteristicUuids.html#ab398ce17ef4aed733cdbe3aba945c872',1,'InfoService::CharacteristicUuids']]]
+  ['hardwarerevision_0',['hardwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b',1,'DeviceInfoService::CharacteristicUuids']]]
 ];

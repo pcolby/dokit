@@ -3,13 +3,13 @@ var dir_ddc6122f88ae27c68298ac38e50d2d9d =
     [ "abstractpokitservice.h", "abstractpokitservice_8h.html", [
       [ "AbstractPokitService", "classAbstractPokitService.html", "classAbstractPokitService" ]
     ] ],
+    [ "deviceinfoservice.h", "deviceinfoservice_8h.html", [
+      [ "DeviceInfoService", "classDeviceInfoService.html", "classDeviceInfoService" ],
+      [ "DeviceInfoService::CharacteristicUuids", "structDeviceInfoService_1_1CharacteristicUuids.html", null ]
+    ] ],
     [ "genericaccessservice.h", "genericaccessservice_8h.html", [
       [ "GenericAccessService", "classGenericAccessService.html", "classGenericAccessService" ],
       [ "GenericAccessService::CharacteristicUuids", "structGenericAccessService_1_1CharacteristicUuids.html", null ]
-    ] ],
-    [ "infoservice.h", "infoservice_8h.html", [
-      [ "InfoService", "classInfoService.html", "classInfoService" ],
-      [ "InfoService::CharacteristicUuids", "structInfoService_1_1CharacteristicUuids.html", null ]
     ] ],
     [ "pokitdevice.h", "pokitdevice_8h.html", [
       [ "PokitDevice", "classPokitDevice.html", "classPokitDevice" ]

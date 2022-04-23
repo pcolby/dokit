@@ -4,13 +4,13 @@ var dir_db9736cc4d66dfa51ee2d2b49d100b59 =
     [ "abstractpokitservice_p.h", "abstractpokitservice__p_8h.html", [
       [ "AbstractPokitServicePrivate", "classAbstractPokitServicePrivate.html", "classAbstractPokitServicePrivate" ]
     ] ],
+    [ "deviceinfoservice.cpp", "deviceinfoservice_8cpp.html", null ],
+    [ "deviceinfoservice_p.h", "deviceinfoservice__p_8h.html", [
+      [ "DeviceInfoServicePrivate", "classDeviceInfoServicePrivate.html", "classDeviceInfoServicePrivate" ]
+    ] ],
     [ "genericaccessservice.cpp", "genericaccessservice_8cpp.html", null ],
     [ "genericaccessservice_p.h", "genericaccessservice__p_8h.html", [
       [ "GenericAccessServicePrivate", "classGenericAccessServicePrivate.html", "classGenericAccessServicePrivate" ]
-    ] ],
-    [ "infoservice.cpp", "infoservice_8cpp.html", null ],
-    [ "infoservice_p.h", "infoservice__p_8h.html", [
-      [ "InfoServicePrivate", "classInfoServicePrivate.html", "classInfoServicePrivate" ]
     ] ],
     [ "logging.cpp", "logging_8cpp_source.html", null ],
     [ "logging_p.h", "logging__p_8h.html", "logging__p_8h" ],

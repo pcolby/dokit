@@ -276,7 +276,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">   98</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
 <div class="line"><span class="lineno">   99</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
 <div class="line"><span class="lineno">  100</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">  101</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;%1,%2,%3,%4,%5,%6\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
+<div class="line"><span class="lineno">  101</span>        fputs(qPrintable(QString::fromLatin1(<span class="stringliteral">&quot;%1,%2,%3,%4,%5,%6\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
 <div class="line"><span class="lineno">  102</span>            info.address().toString(), <a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(info.name()), <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass()),</div>
 <div class="line"><span class="lineno">  103</span>            <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);</div>
 <div class="line"><span class="lineno">  104</span>        <span class="keywordflow">break</span>;</div>
@@ -338,7 +338,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Validate the value format. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Validate the value format. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00062">62</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>

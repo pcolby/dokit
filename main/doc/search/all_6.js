@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hardwarerevision_0',['hardwareRevision',['../structInfoService_1_1CharacteristicUuids.html#ab398ce17ef4aed733cdbe3aba945c872',1,'InfoService::CharacteristicUuids::hardwareRevision()'],['../classInfoService.html#aaf41893c82564de761747d639bf472b7',1,'InfoService::hardwareRevision() const']]],
-  ['hardwarerevisionread_1',['hardwareRevisionRead',['../classInfoService.html#ac29eb2b58496519e1ea7d84b79f13f9b',1,'InfoService']]]
+  ['hardwarerevision_0',['hardwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b',1,'DeviceInfoService::CharacteristicUuids::hardwareRevision()'],['../classDeviceInfoService.html#a4d79805ce884ec8d5ac7879ccd499932',1,'DeviceInfoService::hardwareRevision() const']]],
+  ['hardwarerevisionread_1',['hardwareRevisionRead',['../classDeviceInfoService.html#a1cd9484b0f1fe5207c80140d379f88f3',1,'DeviceInfoService']]]
 ];

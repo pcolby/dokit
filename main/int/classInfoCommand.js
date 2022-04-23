@@ -6,5 +6,5 @@ var classInfoCommand =
     [ "serviceDetailsDiscovered", "classInfoCommand.html#a06d095d57662fd10b201d6273085c34e", null ],
     [ "start", "classInfoCommand.html#a8f12a62e56958971c0f3655e1338decb", null ],
     [ "supportedOptions", "classInfoCommand.html#aaeb045dac5796d18b1041c0917267ec6", null ],
-    [ "service", "classInfoCommand.html#a268a1dfc640fcd1f62fc61c51d063a20", null ]
+    [ "service", "classInfoCommand.html#a35869224900c04ffb3daaa2cedd4f761", null ]
 ];
