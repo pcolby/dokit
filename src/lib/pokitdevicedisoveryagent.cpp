@@ -171,7 +171,8 @@ void PokitDeviceDiscoveryAgentPrivate::deviceDiscovered(const QBluetoothDeviceIn
 {
     Q_Q(PokitDeviceDiscoveryAgent);
     if (!q->isPokitDevice(info)) return;
-    qCDebug(pokitDiscovery) << "Discovered Pokit device" << info.name() << info.address();
+    qCDebug(pokitDiscovery).noquote() << tr("Discovered Pokit device \"%1\" at %2.")
+        .arg(info.name(), info.address().toString());
     emit q->pokitDeviceDiscovered(info);
 }
 
@@ -188,7 +189,8 @@ void PokitDeviceDiscoveryAgentPrivate::deviceUpdated(
 {
     Q_Q(PokitDeviceDiscoveryAgent);
     if (!q->isPokitDevice(info)) return;
-    qCDebug(pokitDiscovery) << "Updated Pokit device" << info.name() << info.address() << info.rssi();
+    qCDebug(pokitDiscovery).noquote() << tr("Pokit device \"%1\" at %2 updated with RSSI %3.")
+        .arg(info.name(), info.address().toString()).arg(info.rssi());
     emit q->pokitDeviceUpdated(info, updatedFields);
 }
 

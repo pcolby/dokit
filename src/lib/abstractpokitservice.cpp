@@ -171,7 +171,7 @@ bool AbstractPokitServicePrivate::createServiceObject()
     }
 
     if (service) {
-        qCDebug(pokitService) << "Already have service object" << service;
+        qCDebug(pokitService).noquote() << tr("Already have service object:") << service;
         return true;
     }
 
@@ -179,7 +179,7 @@ bool AbstractPokitServicePrivate::createServiceObject()
     if (!service) {
         return false;
     }
-    qCDebug(pokitService) << "Service object created" << service;
+    qCDebug(pokitService).noquote() << tr("Service object created") << service;
 
     connect(service, &QLowEnergyService::stateChanged,
             this, &AbstractPokitServicePrivate::stateChanged);
@@ -218,18 +218,19 @@ bool AbstractPokitServicePrivate::createServiceObject()
 bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
 {
     if (!service) {
-        qCDebug(pokitService) << "Cannot read characteristic without a service object" << uuid;
+        qCDebug(pokitService).noquote() << tr("Cannot read characteristic without a service object") << uuid;
         return false;
     }
 
     const QLowEnergyCharacteristic characteristic = service->characteristic(uuid);
     if (!characteristic.isValid()) {
-        qCDebug(pokitService) << "Cannot read characteristic that is not yet valid" << uuid;
+        qCDebug(pokitService).noquote() << tr("Cannot read characteristic that is not yet valid") << uuid;
         return false;
     }
 
-    qCDebug(pokitService) << "Reading characteristic" << uuid << characteristic.properties()
-                          << characteristic.name() << characteristic.value();
+    qCDebug(pokitService).noquote() << tr("Reading characteristic \"%1\" (%2)")
+        .arg(characteristic.name(), uuid.toString()) << characteristic.properties()
+        << characteristic.value();
     service->readCharacteristic(characteristic);
     return true;
 }
@@ -244,12 +245,13 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
 void AbstractPokitServicePrivate::connected()
 {
     if (!controller) {
-        qCWarning(pokitService) << "Connected with no controller set" << sender();
+        qCWarning(pokitService).noquote() << tr("Connected with no controller set") << sender();
         return;
     }
 
-    qCDebug(pokitService) << "Connected" << controller->remoteName()
-        << controller->remoteAddress() << controller->remoteDeviceUuid();
+    qCDebug(pokitService).noquote() << tr("Connected to \"%1\" (%2) at %3.").arg(
+        controller->remoteName(), controller->remoteDeviceUuid().toString(),
+        controller->remoteAddress().toString());
     if (autoDiscover) {
         controller->discoverServices();
     }
@@ -264,15 +266,16 @@ void AbstractPokitServicePrivate::connected()
 void AbstractPokitServicePrivate::discoveryFinished()
 {
     if (!controller) {
-        qCWarning(pokitService) << "Discovery finished with no controller set" << sender();
+        qCWarning(pokitService).noquote() << tr("Discovery finished with no controller set") << sender();
         return;
     }
 
-    qCDebug(pokitService) << "Discovery finished" << controller->remoteName()
-        << controller->remoteAddress() << controller->remoteDeviceUuid();
+    qCDebug(pokitService).noquote() << tr("Discovery finished for \"%1\" (%2) at %3.").arg(
+        controller->remoteName(), controller->remoteDeviceUuid().toString(),
+        controller->remoteAddress().toString());
 
     if (!createServiceObject()) {
-        qCWarning(pokitService) << "Discovery finished, but service not found";
+        qCWarning(pokitService).noquote() << tr("Discovery finished, but service not found.");
         /// \todo Might need to emit an error signal here?
     }
 }
@@ -285,7 +288,7 @@ void AbstractPokitServicePrivate::discoveryFinished()
 void AbstractPokitServicePrivate::errorOccurred(const QLowEnergyService::ServiceError newError)
 {
     Q_Q(AbstractPokitService);
-    qCDebug(pokitService) << "Service error" << newError;
+    qCDebug(pokitService).noquote() << tr("Service error") << newError;
     emit q->serviceErrorOccurred(newError);
 }
 
@@ -299,7 +302,7 @@ void AbstractPokitServicePrivate::errorOccurred(const QLowEnergyService::Service
 void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
 {
     if ((!service) && (newService == serviceUuid)) {
-        qCDebug(pokitService) << "Service discovered " << newService;
+        qCDebug(pokitService).noquote() << tr("Service discovered") << newService;
         createServiceObject();
     }
 }
@@ -314,7 +317,7 @@ void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &newSer
  */
 void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState newState)
 {
-    qCDebug(pokitService) << "State changed" << newState;
+    qCDebug(pokitService).noquote() << tr("State changed to") << newState;
 
     if (newState == QLowEnergyService::
             #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
@@ -324,7 +327,7 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
             #endif
         ) {
         Q_Q(AbstractPokitService);
-        qCDebug(pokitService) << "Service details discovered";
+        qCDebug(pokitService).noquote() << tr("Service details discovered.");
         emit q->serviceDetailsDiscovered();
     }
 }

@@ -42,7 +42,7 @@ ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
             this, &ScanCommand::deviceDiscovered);
 
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
-        qCDebug(lc) << "Finished scanning for Pokit devices.";
+        qCDebug(lc).noquote() << tr("Finished scanning for Pokit devices.");
         QCoreApplication::quit();
     });
 }
@@ -72,7 +72,8 @@ QStringList ScanCommand::processOptions(const QCommandLineParser &parser)
         /// \todo Validate the value format.
         discoveryAgent->setLowEnergyDiscoveryTimeout(
             parser.value(QStringLiteral("timeout")).toInt()*1000);
-        qCDebug(lc) << tr("Set scan timeout to %1").arg(discoveryAgent->lowEnergyDiscoveryTimeout());
+        qCDebug(lc).noquote() << tr("Set scan timeout to %1").arg(
+            discoveryAgent->lowEnergyDiscoveryTimeout());
     }
 
     return errors;

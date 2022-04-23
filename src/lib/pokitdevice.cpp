@@ -259,26 +259,26 @@ PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)
  */
 void PokitDevicePrivate::setController(QLowEnergyController * newController)
 {
-    qCDebug(pokitController) << "Replacing" << this->controller << "with" << newController;
-    if (newController) {
-        qCDebug(pokitController) << "New controller" << newController->remoteName()
-        << newController->remoteAddress() << newController->remoteDeviceUuid();
-    }
-
     if (newController == this->controller) {
-        qCDebug(pokitController) << "Controller is already" << newController;
+        qCDebug(pokitController).noquote() << tr("Controller already set to:") << newController;
         return;
     }
 
     if (this->controller) {
-        qCDebug(pokitController) << "Disconnecting signals from previous controller" << controller;
+        qCDebug(pokitController).noquote() << tr("Disconnecting signals from previous controller:")
+            << controller;
         disconnect(this->controller, nullptr, this, nullptr);
     }
 
+    qCDebug(pokitController).noquote() << tr("Setting new controller:") << newController;
     this->controller = newController;
     if (!newController) {
         return; // Don't bother continuing to connect if new controller is null.
     }
+
+    qCDebug(pokitController).noquote() << tr("Set new controller \"%1\" (%2) at (%3).").arg(
+        controller->remoteName(), controller->remoteDeviceUuid().toString(),
+        controller->remoteAddress().toString());
 
     connect(controller, &QLowEnergyController::connected,
             this, &PokitDevicePrivate::connected);
@@ -314,8 +314,9 @@ void PokitDevicePrivate::setController(QLowEnergyController * newController)
  */
 void PokitDevicePrivate::connected()
 {
-    qCDebug(pokitController) << "Connected" << controller->remoteName()
-        << controller->remoteAddress() << controller->remoteDeviceUuid();
+    qCDebug(pokitController).noquote() << tr("Connected to \"%1\" (%2) at (%3).").arg(
+        controller->remoteName(), controller->remoteDeviceUuid().toString(),
+        controller->remoteAddress().toString());
 }
 
 /*!
@@ -323,7 +324,7 @@ void PokitDevicePrivate::connected()
  */
 void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters &newParameters)
 {
-    qCDebug(pokitController) << "Connection updated" << newParameters.latency()
+    qCDebug(pokitController).noquote() << tr("Connection updated:") << newParameters.latency()
         << newParameters.minimumInterval() << newParameters.maximumInterval()
         << newParameters.supervisionTimeout();
 }
@@ -333,7 +334,7 @@ void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters 
  */
 void PokitDevicePrivate::disconnected()
 {
-    qCDebug(pokitController) << "Disconnected";
+    qCDebug(pokitController).noquote() << tr("Device disconnected.");
 }
 
 /*!
@@ -341,7 +342,7 @@ void PokitDevicePrivate::disconnected()
  */
 void PokitDevicePrivate::discoveryFinished()
 {
-    qCDebug(pokitController) << "Discovery finished";
+    qCDebug(pokitController).noquote() << tr("Service discovery finished.");
 }
 
 /*!
@@ -349,7 +350,7 @@ void PokitDevicePrivate::discoveryFinished()
  */
 void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError)
 {
-    qCDebug(pokitController) << "Controller error" << newError;
+    qCDebug(pokitController).noquote() << tr("Controller error:") << newError;
 }
 
 /*!
@@ -357,7 +358,7 @@ void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError)
  */
 void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
 {
-    qCDebug(pokitController) << "Service discovered" << newService;
+    qCDebug(pokitController).noquote() << tr("Service discovered:") << newService;
 }
 
 /*!
@@ -365,7 +366,7 @@ void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
  */
 void PokitDevicePrivate::stateChanged(QLowEnergyController::ControllerState state)
 {
-    qCDebug(pokitController) << "State changed" << state;
+    qCDebug(pokitController).noquote() << tr("State changed to:") << state;
 }
 
 /// \endcond

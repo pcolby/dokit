@@ -207,7 +207,7 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);
     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);
     #undef QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN
-    qCDebug(pokitUtils) << "unknown major class" << majorClass;
+    qCDebug(pokitUtils).noquote() << QObject::tr("Unknown major class %1.").arg(majorClass);
     return QString(); // Null QString indicates unknown minor class.
 }
 
@@ -327,7 +327,8 @@ QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const
         break;
     }
     #undef QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN
-    qCDebug(pokitUtils) << "unknown minor class" << minorClass << "for major class" << majorClass;
+    qCDebug(pokitUtils).noquote() << QObject::tr("Unknown minor class %1 for major class %2.")
+        .arg(minorClass).arg(majorClass);
     return QString(); // Null QString indicates unknown minor class.
 }
 
