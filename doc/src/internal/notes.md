@@ -7,7 +7,7 @@
 #### Status Service UUID
 
 * `57d3a771-267c-4394-8872-78223e92aec4` - claimed by API docs;
-* `57d3a771-267c-4394-8872-78223e92aec5` - in reality?
+* `57d3a771-267c-4394-8872-78223e92aec5` - in reality (at least on Pokit Pro)?
 
 #### Status Characteristic Value Length
 
@@ -18,6 +18,19 @@ Docs claim 5 bytes, but PokitPro is returning 8. Probably docs just not updated 
 
 I cannot get this service to work; whenever I try writing the required `\x01` value, I get ATT error `0x80`
 from the Bluez stack.  Maybe its not supported by PokitPro devices, or needs additional data for those?
+
+### Generic Access Service
+
+Does not appear to be available on Pokit Pro.  However a Generic Attribute service does appear to be
+available, but no idea what its attributes are.
+
+### Undocumented Services
+
+Pokit Pro includes the following services with no documentation to match:
+
+* `00001801-0000-1000-8000-00805f9b34fb` - aka Generic Attribute, or `0x1801`.
+* `1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0` - no idea.
+* `6f53be2f-780b-49b8-a7c3-e8a052b3ae2c` - no idea.
 
 ## Qt Versions
 
