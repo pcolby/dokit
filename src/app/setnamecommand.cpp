@@ -98,7 +98,7 @@ bool SetNameCommand::start()
  */
 void SetNameCommand::serviceDetailsDiscovered()
 {
-    qInfo().noquote() << tr("Setting device name to: %1").arg(newName);
+    qCInfo(lc).noquote() << tr("Setting device name to: %1").arg(newName);
     if (!service->setDeviceName(newName)) {
         QCoreApplication::exit(EXIT_FAILURE);
     }
