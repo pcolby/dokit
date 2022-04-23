@@ -35,7 +35,7 @@
 QTPOKIT_BEGIN_NAMESPACE
 
 class DataLoggerService;
-class DeviceInformationService;
+class InfoService;
 class DsoService;
 class GenericAccessService;
 class MultimeterService;
@@ -50,19 +50,19 @@ class QTPOKIT_EXPORT PokitDevicePrivate : public QObject
 public:
     QLowEnergyController * controller; ///< BLE controller for accessing the Pokit device.
 
-    DataLoggerService * dataLogger;               ///< Data Logger service for this Pokit device.
-    DeviceInformationService * deviceInformation; ///< Device info service for this Pokit device.
-    DsoService * dso;                             ///< DSO service for this Pokit device.
-    GenericAccessService * genericAccess;         ///< Generic Access service for this Pokit device.
-    MultimeterService * multimeter;               ///< Multimeter service for this Pokit device.
-    StatusService * status;                       ///< Status service for this Pokit device.
+    DataLoggerService * dataLogger;       ///< Data Logger service for this Pokit device.
+    InfoService * deviceInfo;             ///< Device Info service for this Pokit device.
+    DsoService * dso;                     ///< DSO service for this Pokit device.
+    GenericAccessService * genericAccess; ///< Generic Access service for this Pokit device.
+    MultimeterService * multimeter;       ///< Multimeter service for this Pokit device.
+    StatusService * status;               ///< Status service for this Pokit device.
 
-    QMutex dataLoggerMutex;        ///< Mutex for protecting access to #dataLogger.
-    QMutex deviceInformationMutex; ///< Mutex for protecting access to #deviceInformation.
-    QMutex dsoMutex;               ///< Mutex for protecting access to #dso.
-    QMutex genericAccessMutex;     ///< Mutex for protecting access to #genericAccess.
-    QMutex multimeterMutex;        ///< Mutex for protecting access to #multimeter.
-    QMutex statusMutex;            ///< Mutex for protecting access to #status.
+    QMutex dataLoggerMutex;    ///< Mutex for protecting access to #dataLogger.
+    QMutex deviceInfoMutex;    ///< Mutex for protecting access to #deviceInformation.
+    QMutex dsoMutex;           ///< Mutex for protecting access to #dso.
+    QMutex genericAccessMutex; ///< Mutex for protecting access to #genericAccess.
+    QMutex multimeterMutex;    ///< Mutex for protecting access to #multimeter.
+    QMutex statusMutex;        ///< Mutex for protecting access to #status.
 
     explicit PokitDevicePrivate(PokitDevice * const q);
 

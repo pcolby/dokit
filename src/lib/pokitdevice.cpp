@@ -24,6 +24,8 @@
 
 #include <qtpokit/pokitdevice.h>
 
+#include <qtpokit/genericaccessservice.h>
+#include <qtpokit/infoservice.h>
 #include <qtpokit/statusservice.h>
 
 #include "pokitdevice_p.h"
@@ -156,14 +158,10 @@ DataLoggerService * PokitDevice::dataLogger()
  * This is a convenience function, that always returns the same pointer (for this PokitDevice
  * instance), but the service itself is lazily created (in a threadsafe manner) on the first
  * invocation of this function.
- *
- * \todo Implement this function when the DeviceInformationService is implemented.
  */
-DeviceInformationService * PokitDevice::deviceInformation()
+InfoService * PokitDevice::deviceInformation()
 {
-    qCDebug(pokitController) << "Not implemented" << __func__;
-//    POKIT_INTERNAL_GET_SERVICE(DeviceInformationService, deviceInformation);
-    return nullptr;
+    POKIT_INTERNAL_GET_SERVICE(InfoService, deviceInfo);
 }
 
 /*!
@@ -188,14 +186,10 @@ DsoService * PokitDevice::dso()
  * This is a convenience function, that always returns the same pointer (for this PokitDevice
  * instance), but the service itself is lazily created (in a threadsafe manner) on the first
  * invocation of this function.
- *
- * \todo Implement this function when the GenericAccessService is implemented.
  */
 GenericAccessService * PokitDevice::genericAccess()
 {
-    qCDebug(pokitController) << "Not implemented" << __func__;
-//    POKIT_INTERNAL_GET_SERVICE(GenericAccessService, genericAccess);
-    return nullptr;
+    POKIT_INTERNAL_GET_SERVICE(GenericAccessService, genericAccess);
 }
 
 /*!
@@ -238,7 +232,7 @@ StatusService * PokitDevice::status()
  * Constructs a new PokitDevicePrivate object with public implementation \a q.
  */
 PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)
-    : controller(nullptr), dataLogger(nullptr), deviceInformation(nullptr), dso(nullptr),
+    : controller(nullptr), dataLogger(nullptr), deviceInfo(nullptr), dso(nullptr),
       genericAccess(nullptr), multimeter(nullptr), status(nullptr), q_ptr(q)
 {
 

@@ -34,7 +34,7 @@ class QLowEnergyController;
 QTPOKIT_BEGIN_NAMESPACE
 
 class DataLoggerService;
-class DeviceInformationService;
+class InfoService;
 class DsoService;
 class GenericAccessService;
 class MultimeterService;
@@ -55,7 +55,7 @@ public:
     const QLowEnergyController * controller() const;
 
     DataLoggerService * dataLogger();
-    DeviceInformationService * deviceInformation();
+    InfoService * deviceInformation();
     DsoService * dso();
     GenericAccessService * genericAccess();
     MultimeterService * multimeter();
