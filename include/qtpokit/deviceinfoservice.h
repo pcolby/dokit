@@ -63,15 +63,15 @@ public:
     // All Device Info characteristics are read-only, single values.
     QString manufacturer() const;
     QString modelNumber() const;
-    QString firmwareRevision() const;
     QString hardwareRevision() const;
+    QString firmwareRevision() const;
     QString softwareRevision() const;
 
 signals:
     void manufacturerRead(const QString &name);
     void modelNumberRead(const QString &model);
-    void firmwareRevisionRead(const QString &revision);
     void hardwareRevisionRead(const QString &revision);
+    void firmwareRevisionRead(const QString &revision);
     void softwareRevisionRead(const QString &revision);
 
 protected:

@@ -300,13 +300,6 @@ QString DeviceInfoService::softwareRevision() const
     return QString::fromUtf8(characteristic.value());
 }
 
-//signals:
-//void firmwareRevsionRead(const QString &revision);
-//void hardwareRevisionRead(const QString &revision);
-//void softwareRevisionRead(const QString &revision);
-//void (const QString &name);
-//void modelNumberRead(const QString &model);
-
 /*!
  * \fn DeviceInfoService::manufacturerRead
  *
