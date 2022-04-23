@@ -27,10 +27,10 @@
 
 #include "qtpokit_global.h"
 
+#include <QLowEnergyService>
 #include <QObject>
 
 class QLowEnergyController;
-class QLowEnergyService;
 
 QTPOKIT_BEGIN_NAMESPACE
 
@@ -54,6 +54,7 @@ public:
 
 signals:
     void serviceDetailsDiscovered();
+    void serviceErrorOccurred(QLowEnergyService::ServiceError newError);
 
 protected:
     /// \cond internal

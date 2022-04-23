@@ -74,6 +74,8 @@ bool FlashLedCommand::start()
         Q_ASSERT(service);
         connect(service, &StatusService::serviceDetailsDiscovered,
                 this, &FlashLedCommand::serviceDetailsDiscovered);
+        connect(service, &StatusService::serviceErrorOccurred,
+                this, &FlashLedCommand::serviceError);
         connect(service, &StatusService::deviceLedFlashed,
                 this, &FlashLedCommand::deviceLedFlashed);
     }
@@ -89,7 +91,7 @@ bool FlashLedCommand::start()
  */
 void FlashLedCommand::serviceDetailsDiscovered()
 {
-    qCInfo(lc).noquote() << tr("Flashing LED...");
+    qCInfo(lc).noquote() << tr("Flashing Pokit device LED...");
     if (!service->flashLed()) {
         QCoreApplication::exit(EXIT_FAILURE);
     }

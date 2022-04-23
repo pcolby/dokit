@@ -97,6 +97,20 @@ void DeviceCommand::controllerError(QLowEnergyController::Error error)
 }
 
 /*!
+ * Handles service error events. This base implementation simply logs \a error and then exits
+ * with `EXIT_FAILURE`. Derived classes may override this slot to implement their own error
+ * handing if desired.
+ *
+ * \note As this base class does not construct services (derived classed do), its up to the derived
+ * classed to connect this slot to the relevant service's error signal if desired.
+ */
+void DeviceCommand::serviceError(const QLowEnergyService::ServiceError error)
+{
+    qCWarning(lc).noquote() << tr("Bluetooth service error:") << error;
+    QCoreApplication::exit(EXIT_FAILURE);
+}
+
+/*!
  * Handles service detail discovery events. This base implementation simply logs the event, and
  * nothing more. Derived classes may (usually do) override this slot to provide their own processing
  * when a services details have been discovered.

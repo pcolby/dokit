@@ -122,6 +122,12 @@ const QLowEnergyService * AbstractPokitService::service() const
  */
 
 /*!
+ * \fn void AbstractPokitService::serviceErrorOccurred(QLowEnergyService::ServiceError newError)
+ *
+ *  This signal is emitted whenever an error occurs on the underlying QLowEnergyService.
+ */
+
+/*!
  * \cond internal
  * \class AbstractPokitServicePrivate
  *
@@ -182,6 +188,14 @@ bool AbstractPokitServicePrivate::createServiceObject()
             this, &AbstractPokitServicePrivate::characteristicRead);
     connect(service, &QLowEnergyService::characteristicWritten,
             this, &AbstractPokitServicePrivate::characteristicWritten);
+
+    connect(service,
+    #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+        QOverload<QLowEnergyService::ServiceError>::of(&QLowEnergyService::error),
+    #else
+        &QLowEnergyService::errorOccurred,
+    #endif
+        this, &AbstractPokitServicePrivate::errorOccurred);
 
     if (autoDiscover) {
         service->discoverDetails();
@@ -262,6 +276,18 @@ void AbstractPokitServicePrivate::discoveryFinished()
         qCWarning(pokitService) << "Discovery finished, but service not found";
         /// \todo Might need to emit an error signal here?
     }
+}
+
+/*!
+ * Handles `QLowEnergyController::errorOccurred` events.
+ *
+ * This function simply re-emits \a newError as AbstractPokitService::serviceErrorOccurred.
+ */
+void AbstractPokitServicePrivate::errorOccurred(const QLowEnergyService::ServiceError newError)
+{
+    Q_Q(AbstractPokitService);
+    qCDebug(pokitService) << "Service error" << newError;
+    emit q->serviceErrorOccurred(newError);
 }
 
 /*!

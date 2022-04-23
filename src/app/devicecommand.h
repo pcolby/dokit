@@ -40,7 +40,8 @@ protected:
     PokitDevice * device; ///< Pokit Bluetooth device (if any) this command inerracts with.
 
 protected slots:
-    virtual void controllerError(QLowEnergyController::Error error);
+    virtual void controllerError(const QLowEnergyController::Error error);
+    virtual void serviceError(const QLowEnergyService::ServiceError error);
     virtual void serviceDetailsDiscovered();
 
 };

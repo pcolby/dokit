@@ -74,6 +74,8 @@ bool InfoCommand::start()
         Q_ASSERT(service);
         connect(service, &StatusService::serviceDetailsDiscovered,
                 this, &InfoCommand::serviceDetailsDiscovered);
+        connect(service, &StatusService::serviceErrorOccurred,
+                this, &InfoCommand::serviceError);
     }
     qCInfo(lc).noquote() << tr("Connecting to device...");
     device->controller()->connectToDevice();

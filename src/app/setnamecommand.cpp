@@ -81,6 +81,8 @@ bool SetNameCommand::start()
         Q_ASSERT(service);
         connect(service, &StatusService::serviceDetailsDiscovered,
                 this, &SetNameCommand::serviceDetailsDiscovered);
+        connect(service, &StatusService::serviceErrorOccurred,
+                this, &SetNameCommand::serviceError);
         connect(service, &StatusService::deivceNameWritten,
                 this, &SetNameCommand::deivceNameWritten);
     }

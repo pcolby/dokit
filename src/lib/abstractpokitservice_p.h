@@ -58,6 +58,7 @@ protected:
 protected slots:
     void connected();
     void discoveryFinished();
+    void errorOccurred(const QLowEnergyService::ServiceError newError);
     void serviceDiscovered(const QBluetoothUuid &newService);
     void stateChanged(QLowEnergyService::ServiceState newState);
 
