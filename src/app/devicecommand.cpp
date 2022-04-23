@@ -79,7 +79,7 @@ QStringList DeviceCommand::processOptions(const QCommandLineParser &parser)
             #else
             &QLowEnergyController::errorOccurred,
             #endif
-            this, &DeviceCommand::controllerError);
+            this, &DeviceCommand::controllerError, Qt::QueuedConnection);
     }
 
     return errors;
