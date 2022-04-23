@@ -134,6 +134,11 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a2531beafde4cd45ccd7c3cbaa3777681">MultimeterAcCurrent</a> = 4
 , <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4">MultimeterResistance</a> = 5
 , <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582">MultimeterDiode</a> = 6
+, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a08e57a78bddbe890c39f6ea84d9ff697">MultimeterContinuity</a> = 7
+, <br />
+&#160;&#160;<a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5">MultimeterTemperature</a> = 8
+, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38">DsoModeSampling</a> = 9
+, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca">LoggerModeSampling</a> = 10
 <br />
  }</td></tr>
 <tr class="memdesc:a50ae778be2cb8e49b85ef159be19af35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values support by the <code>Status</code> attribute of the <code>Status</code> characteristic.  <a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35">More...</a><br /></td></tr>
@@ -299,6 +304,14 @@ Additional Inherited Members</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582" name="a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582"></a>MultimeterDiode&#160;</td><td class="fielddoc"><p >Multimeter is measuring diode. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="a50ae778be2cb8e49b85ef159be19af35a08e57a78bddbe890c39f6ea84d9ff697" name="a50ae778be2cb8e49b85ef159be19af35a08e57a78bddbe890c39f6ea84d9ff697"></a>MultimeterContinuity&#160;</td><td class="fielddoc"><p >Multimeter is measuring continuity. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5" name="a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5"></a>MultimeterTemperature&#160;</td><td class="fielddoc"><p >Multimeter is measuring temperature. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38" name="a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38"></a>DsoModeSampling&#160;</td><td class="fielddoc"><p >DSO is sampling. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca" name="a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca"></a>LoggerModeSampling&#160;</td><td class="fielddoc"><p >Data Logger is sampling. </p>
+</td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00063">63</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
@@ -310,7 +323,11 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   68</span>        MultimeterAcCurrent = 4,  <span class="comment">///&lt; Multimeter is measuring AC current.</span></div>
 <div class="line"><span class="lineno">   69</span>        MultimeterResistance = 5, <span class="comment">///&lt; Multimeter is measuring resistance.</span></div>
 <div class="line"><span class="lineno">   70</span>        MultimeterDiode = 6,      <span class="comment">///&lt; Multimeter is measuring diode.</span></div>
-<div class="line"><span class="lineno">   71</span>    };</div>
+<div class="line"><span class="lineno">   71</span>        MultimeterContinuity = 7, <span class="comment">///&lt; Multimeter is measuring continuity.</span></div>
+<div class="line"><span class="lineno">   72</span>        MultimeterTemperature = 8,<span class="comment">///&lt; Multimeter is measuring temperature.</span></div>
+<div class="line"><span class="lineno">   73</span>        DsoModeSampling = 9,      <span class="comment">///&lt; DSO is sampling.</span></div>
+<div class="line"><span class="lineno">   74</span>        LoggerModeSampling = 10,  <span class="comment">///&lt; Data Logger is sampling.</span></div>
+<div class="line"><span class="lineno">   75</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -452,28 +469,28 @@ Additional Inherited Members</h2></td></tr>
 <p >The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a quiet NaN is returned, which can be checked via <code>qIsNaN</code>.</p>
 <dl class="section note"><dt>Note</dt><dd>The <code>Status</code> service's &lsquo;Status&rsquo; characteristic contains two attributes: <code>Status</code> and <code>Battery Voltage</code>. Thus this function, and <a class="el" href="classStatusService.html#a37b3976eeb85bf5aaf1cb23605b15f01" title="Returns the most recent value of the Status characteristic&#39;s Status attribute.">deviceStatus()</a>, both read the same underlying characteristic. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00238">238</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  239</span>{</div>
-<div class="line"><span class="lineno">  240</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
-<div class="line"><span class="lineno">  241</span>    <span class="keywordflow">if</span> (!d-&gt;service) {</div>
-<div class="line"><span class="lineno">  242</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;No device status without a service object.&quot;</span>);</div>
-<div class="line"><span class="lineno">  243</span>        <span class="keywordflow">return</span> std::numeric_limits&lt;float&gt;::quiet_NaN();</div>
-<div class="line"><span class="lineno">  244</span>    }</div>
-<div class="line"><span class="lineno">  245</span> </div>
-<div class="line"><span class="lineno">  246</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
-<div class="line"><span class="lineno">  247</span>        d-&gt;service-&gt;characteristic(<a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">CharacteristicUuids::status</a>);</div>
-<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
-<div class="line"><span class="lineno">  249</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Status characteristic not valid yet.&quot;</span>);</div>
-<div class="line"><span class="lineno">  250</span>        <span class="keywordflow">return</span> std::numeric_limits&lt;float&gt;::quiet_NaN();</div>
-<div class="line"><span class="lineno">  251</span>    }</div>
-<div class="line"><span class="lineno">  252</span> </div>
-<div class="line"><span class="lineno">  253</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classStatusServicePrivate.html#a92e73bf7feecad2436d0ccad91a82bf5">StatusServicePrivate::parseStatus</a>(characteristic.value()).second;</div>
-<div class="line"><span class="lineno">  254</span>}</div>
-<div class="ttc" id="aclassStatusServicePrivate_html_a92e73bf7feecad2436d0ccad91a82bf5"><div class="ttname"><a href="classStatusServicePrivate.html#a92e73bf7feecad2436d0ccad91a82bf5">StatusServicePrivate::parseStatus</a></div><div class="ttdeci">static QPair&lt; StatusService::DeviceStatus, float &gt; parseStatus(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Status value into a DeviceStatus and battery voltage.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00455">statusservice.cpp:455</a></div></div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00242">242</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  243</span>{</div>
+<div class="line"><span class="lineno">  244</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
+<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">if</span> (!d-&gt;service) {</div>
+<div class="line"><span class="lineno">  246</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;No device status without a service object.&quot;</span>);</div>
+<div class="line"><span class="lineno">  247</span>        <span class="keywordflow">return</span> std::numeric_limits&lt;float&gt;::quiet_NaN();</div>
+<div class="line"><span class="lineno">  248</span>    }</div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
+<div class="line"><span class="lineno">  251</span>        d-&gt;service-&gt;characteristic(<a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">CharacteristicUuids::status</a>);</div>
+<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
+<div class="line"><span class="lineno">  253</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Status characteristic not valid yet.&quot;</span>);</div>
+<div class="line"><span class="lineno">  254</span>        <span class="keywordflow">return</span> std::numeric_limits&lt;float&gt;::quiet_NaN();</div>
+<div class="line"><span class="lineno">  255</span>    }</div>
+<div class="line"><span class="lineno">  256</span> </div>
+<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classStatusServicePrivate.html#a92e73bf7feecad2436d0ccad91a82bf5">StatusServicePrivate::parseStatus</a>(characteristic.value()).second;</div>
+<div class="line"><span class="lineno">  258</span>}</div>
+<div class="ttc" id="aclassStatusServicePrivate_html_a92e73bf7feecad2436d0ccad91a82bf5"><div class="ttname"><a href="classStatusServicePrivate.html#a92e73bf7feecad2436d0ccad91a82bf5">StatusServicePrivate::parseStatus</a></div><div class="ttdeci">static QPair&lt; StatusService::DeviceStatus, float &gt; parseStatus(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Status value into a DeviceStatus and battery voltage.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00459">statusservice.cpp:459</a></div></div>
 <div class="ttc" id="aclassStatusService_html"><div class="ttname"><a href="classStatusService.html">StatusService</a></div><div class="ttdoc">The StatusService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00038">statusservice.h:39</a></div></div>
 <div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_af27d015f60e86b0de464eab455c56f7c"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">StatusService::CharacteristicUuids::status</a></div><div class="ttdeci">static const QBluetoothUuid status</div><div class="ttdoc">UUID of the Pokit Status service's Status characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00047">statusservice.h:47</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="statusservice_8cpp_source.html#l00455">StatusServicePrivate::parseStatus()</a>, and <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::status</a>.</p>
+<p class="reference">References <a class="el" href="statusservice_8cpp_source.html#l00459">StatusServicePrivate::parseStatus()</a>, and <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::status</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="statuscommand_8cpp_source.html#l00093">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
@@ -567,11 +584,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  177</span> </div>
 <div class="line"><span class="lineno">  178</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced">StatusServicePrivate::parseDeviceCharacteristics</a>(characteristic.value());</div>
 <div class="line"><span class="lineno">  179</span>}</div>
-<div class="ttc" id="aclassStatusServicePrivate_html_a7bdbc14dbfe0a29bb0333c01890a6ced"><div class="ttname"><a href="classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced">StatusServicePrivate::parseDeviceCharacteristics</a></div><div class="ttdeci">static StatusService::DeviceCharacteristics parseDeviceCharacteristics(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Device Characteristics value into a DeviceCharacteristics struct.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00411">statusservice.cpp:411</a></div></div>
+<div class="ttc" id="aclassStatusServicePrivate_html_a7bdbc14dbfe0a29bb0333c01890a6ced"><div class="ttname"><a href="classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced">StatusServicePrivate::parseDeviceCharacteristics</a></div><div class="ttdeci">static StatusService::DeviceCharacteristics parseDeviceCharacteristics(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Device Characteristics value into a DeviceCharacteristics struct.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00415">statusservice.cpp:415</a></div></div>
 <div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_ab883f16924c3c325a3400a5146d48ac0"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0">StatusService::CharacteristicUuids::deviceCharacteristics</a></div><div class="ttdeci">static const QBluetoothUuid deviceCharacteristics</div><div class="ttdoc">UUID of the Pokit Status service's Device Characteristics characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00046">statusservice.h:46</a></div></div>
 <div class="ttc" id="astructStatusService_1_1DeviceCharacteristics_html"><div class="ttname"><a href="structStatusService_1_1DeviceCharacteristics.html">StatusService::DeviceCharacteristics</a></div><div class="ttdoc">Attributes included in the Device Characteristics characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00052">statusservice.h:52</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="statusservice_8h_source.html#l00046">StatusService::CharacteristicUuids::deviceCharacteristics</a>, and <a class="el" href="statusservice_8cpp_source.html#l00411">StatusServicePrivate::parseDeviceCharacteristics()</a>.</p>
+<p class="reference">References <a class="el" href="statusservice_8h_source.html#l00046">StatusService::CharacteristicUuids::deviceCharacteristics</a>, and <a class="el" href="statusservice_8cpp_source.html#l00415">StatusServicePrivate::parseDeviceCharacteristics()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="statuscommand_8cpp_source.html#l00093">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
@@ -636,23 +653,23 @@ Here is the caller graph for this function:</div>
 <p>Returns the most recent value of the <code>Status</code> services's <code>Device Name</code> characteristic. </p>
 <p >The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null QString is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00263">263</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  264</span>{</div>
-<div class="line"><span class="lineno">  265</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
-<div class="line"><span class="lineno">  266</span>    <span class="keywordflow">if</span> (!d-&gt;service) {</div>
-<div class="line"><span class="lineno">  267</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;No device name without a service object.&quot;</span>);</div>
-<div class="line"><span class="lineno">  268</span>        <span class="keywordflow">return</span> QString();</div>
-<div class="line"><span class="lineno">  269</span>    }</div>
-<div class="line"><span class="lineno">  270</span> </div>
-<div class="line"><span class="lineno">  271</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
-<div class="line"><span class="lineno">  272</span>        d-&gt;service-&gt;characteristic(<a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">CharacteristicUuids::name</a>);</div>
-<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
-<div class="line"><span class="lineno">  274</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Name characteristic not valid yet.&quot;</span>);</div>
-<div class="line"><span class="lineno">  275</span>        <span class="keywordflow">return</span> QString();</div>
-<div class="line"><span class="lineno">  276</span>    }</div>
-<div class="line"><span class="lineno">  277</span> </div>
-<div class="line"><span class="lineno">  278</span>    <span class="keywordflow">return</span> QString::fromUtf8(characteristic.value());</div>
-<div class="line"><span class="lineno">  279</span>}</div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00267">267</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  268</span>{</div>
+<div class="line"><span class="lineno">  269</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
+<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">if</span> (!d-&gt;service) {</div>
+<div class="line"><span class="lineno">  271</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;No device name without a service object.&quot;</span>);</div>
+<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">return</span> QString();</div>
+<div class="line"><span class="lineno">  273</span>    }</div>
+<div class="line"><span class="lineno">  274</span> </div>
+<div class="line"><span class="lineno">  275</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
+<div class="line"><span class="lineno">  276</span>        d-&gt;service-&gt;characteristic(<a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">CharacteristicUuids::name</a>);</div>
+<div class="line"><span class="lineno">  277</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
+<div class="line"><span class="lineno">  278</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Name characteristic not valid yet.&quot;</span>);</div>
+<div class="line"><span class="lineno">  279</span>        <span class="keywordflow">return</span> QString();</div>
+<div class="line"><span class="lineno">  280</span>    }</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>    <span class="keywordflow">return</span> QString::fromUtf8(characteristic.value());</div>
+<div class="line"><span class="lineno">  283</span>}</div>
 <div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_a3ca6f44f245a642f2a5e9147255a7bd8"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a></div><div class="ttdeci">static const QBluetoothUuid name</div><div class="ttdoc">UUID of the Pokit Status service's Device Name characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00048">statusservice.h:48</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="statusservice_8h_source.html#l00048">StatusService::CharacteristicUuids::name</a>.</p>
@@ -734,7 +751,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  208</span>}</div>
 <div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35">StatusService::DeviceStatus</a></div><div class="ttdeci">DeviceStatus</div><div class="ttdoc">Values support by the Status attribute of the Status characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00063">statusservice.h:63</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="statusservice_8cpp_source.html#l00455">StatusServicePrivate::parseStatus()</a>, and <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::status</a>.</p>
+<p class="reference">References <a class="el" href="statusservice_8cpp_source.html#l00459">StatusServicePrivate::parseStatus()</a>, and <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::status</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="statuscommand_8cpp_source.html#l00093">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
@@ -788,20 +805,28 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  220</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a2531beafde4cd45ccd7c3cbaa3777681">DeviceStatus::MultimeterAcCurrent</a>:  <span class="keywordflow">return</span>  QLatin1String(<span class="stringliteral">&quot;MultimeterAcCurrent&quot;</span>);</div>
 <div class="line"><span class="lineno">  221</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4">DeviceStatus::MultimeterResistance</a>: <span class="keywordflow">return</span>  QLatin1String(<span class="stringliteral">&quot;MultimeterResistance&quot;</span>);</div>
 <div class="line"><span class="lineno">  222</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582">DeviceStatus::MultimeterDiode</a>:      <span class="keywordflow">return</span>  QLatin1String(<span class="stringliteral">&quot;MultimeterDiode&quot;</span>);</div>
-<div class="line"><span class="lineno">  223</span>    }</div>
-<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">return</span> QLatin1String(<span class="stringliteral">&quot;Invalid&quot;</span>);</div>
-<div class="line"><span class="lineno">  225</span>}</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a08e57a78bddbe890c39f6ea84d9ff697">DeviceStatus::MultimeterContinuity</a>: <span class="keywordflow">return</span>  QLatin1String(<span class="stringliteral">&quot;MultimeterContinuity&quot;</span>);</div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5">DeviceStatus::MultimeterTemperature</a>:<span class="keywordflow">return</span>  QLatin1String(<span class="stringliteral">&quot;MultimeterTemperature&quot;</span>);</div>
+<div class="line"><span class="lineno">  225</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38">DeviceStatus::DsoModeSampling</a>:      <span class="keywordflow">return</span>  QLatin1String(<span class="stringliteral">&quot;DsoModeSampling&quot;</span>);</div>
+<div class="line"><span class="lineno">  226</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca">DeviceStatus::LoggerModeSampling</a>:   <span class="keywordflow">return</span>  QLatin1String(<span class="stringliteral">&quot;LoggerModeSampling&quot;</span>);</div>
+<div class="line"><span class="lineno">  227</span>    }</div>
+<div class="line"><span class="lineno">  228</span>    <span class="keywordflow">return</span> QLatin1String(<span class="stringliteral">&quot;Invalid&quot;</span>);</div>
+<div class="line"><span class="lineno">  229</span>}</div>
+<div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35a08e57a78bddbe890c39f6ea84d9ff697"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a08e57a78bddbe890c39f6ea84d9ff697">StatusService::DeviceStatus::MultimeterContinuity</a></div><div class="ttdeci">@ MultimeterContinuity</div><div class="ttdoc">Multimeter is measuring continuity.</div></div>
 <div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35a2531beafde4cd45ccd7c3cbaa3777681"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a2531beafde4cd45ccd7c3cbaa3777681">StatusService::DeviceStatus::MultimeterAcCurrent</a></div><div class="ttdeci">@ MultimeterAcCurrent</div><div class="ttdoc">Multimeter is measuring AC current.</div></div>
+<div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca">StatusService::DeviceStatus::LoggerModeSampling</a></div><div class="ttdeci">@ LoggerModeSampling</div><div class="ttdoc">Data Logger is sampling.</div></div>
 <div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35a460d1e2dcc6882dc5e0557f9ac227442"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a460d1e2dcc6882dc5e0557f9ac227442">StatusService::DeviceStatus::MultimeterDcVoltage</a></div><div class="ttdeci">@ MultimeterDcVoltage</div><div class="ttdoc">Multimeter is measuring DC voltage.</div></div>
+<div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38">StatusService::DeviceStatus::DsoModeSampling</a></div><div class="ttdeci">@ DsoModeSampling</div><div class="ttdoc">DSO is sampling.</div></div>
 <div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35a822a755216a42f263e6b20e8edbd536b"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a822a755216a42f263e6b20e8edbd536b">StatusService::DeviceStatus::MultimeterDcCurrent</a></div><div class="ttdeci">@ MultimeterDcCurrent</div><div class="ttdoc">Multimeter is measuring DC current.</div></div>
+<div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5">StatusService::DeviceStatus::MultimeterTemperature</a></div><div class="ttdeci">@ MultimeterTemperature</div><div class="ttdoc">Multimeter is measuring temperature.</div></div>
 <div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4">StatusService::DeviceStatus::MultimeterResistance</a></div><div class="ttdeci">@ MultimeterResistance</div><div class="ttdoc">Multimeter is measuring resistance.</div></div>
 <div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582">StatusService::DeviceStatus::MultimeterDiode</a></div><div class="ttdeci">@ MultimeterDiode</div><div class="ttdoc">Multimeter is measuring diode.</div></div>
 <div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35ac5436b6539f4a0672077f7bc82afe76e"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ac5436b6539f4a0672077f7bc82afe76e">StatusService::DeviceStatus::MultimeterAcVoltage</a></div><div class="ttdeci">@ MultimeterAcVoltage</div><div class="ttdoc">Multimeter is measuring AC voltage.</div></div>
 <div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c">StatusService::DeviceStatus::Idle</a></div><div class="ttdeci">@ Idle</div><div class="ttdoc">Device is idle.</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a2531beafde4cd45ccd7c3cbaa3777681">MultimeterAcCurrent</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ac5436b6539f4a0672077f7bc82afe76e">MultimeterAcVoltage</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a822a755216a42f263e6b20e8edbd536b">MultimeterDcCurrent</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a460d1e2dcc6882dc5e0557f9ac227442">MultimeterDcVoltage</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582">MultimeterDiode</a>, and <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4">MultimeterResistance</a>.</p>
+<p class="reference">References <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38">DsoModeSampling</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca">LoggerModeSampling</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a2531beafde4cd45ccd7c3cbaa3777681">MultimeterAcCurrent</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ac5436b6539f4a0672077f7bc82afe76e">MultimeterAcVoltage</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a08e57a78bddbe890c39f6ea84d9ff697">MultimeterContinuity</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a822a755216a42f263e6b20e8edbd536b">MultimeterDcCurrent</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a460d1e2dcc6882dc5e0557f9ac227442">MultimeterDcVoltage</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582">MultimeterDiode</a>, <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4">MultimeterResistance</a>, and <a class="el" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5">MultimeterTemperature</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="statusservice_8cpp_source.html#l00455">StatusServicePrivate::parseStatus()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00093">StatusCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="statusservice_8cpp_source.html#l00459">StatusServicePrivate::parseStatus()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00093">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -871,29 +896,29 @@ Here is the caller graph for this function:</div>
 <dl class="section note"><dt>Note</dt><dd>This does not appear to work currently, for the one (Pokit Pro) device available for testing. Instead, the underlying Bluetooth stack returns ATT error <code>0x80</code>.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Diagnose and/or follow up with Pokit Innovations. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00326">326</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  327</span>{</div>
-<div class="line"><span class="lineno">  328</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
-<div class="line"><span class="lineno">  329</span>    <span class="keywordflow">if</span> (!d-&gt;service) {</div>
-<div class="line"><span class="lineno">  330</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Cannot flash LED without a service object.&quot;</span>);</div>
-<div class="line"><span class="lineno">  331</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  332</span>    }</div>
-<div class="line"><span class="lineno">  333</span> </div>
-<div class="line"><span class="lineno">  334</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
-<div class="line"><span class="lineno">  335</span>        d-&gt;service-&gt;characteristic(<a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">CharacteristicUuids::flashLed</a>);</div>
-<div class="line"><span class="lineno">  336</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
-<div class="line"><span class="lineno">  337</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Flash LED characteristic not valid yet.&quot;</span>);</div>
-<div class="line"><span class="lineno">  338</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  339</span>    }</div>
-<div class="line"><span class="lineno">  340</span> </div>
-<div class="line"><span class="lineno">  341</span>    <span class="comment">// The Flash LED characeristic is write-only, and takes a single uint8 &quot;LED&quot; parameter, which</span></div>
-<div class="line"><span class="lineno">  342</span>    <span class="comment">// must always be 1. Presumably this is an index for which LED to flash, but the Pokit API docs</span></div>
-<div class="line"><span class="lineno">  343</span>    <span class="comment">// say that &quot;any value other than 1 will be ignored&quot;, which makes sense given that all current</span></div>
-<div class="line"><span class="lineno">  344</span>    <span class="comment">// Pokit devices have only one LED.</span></div>
-<div class="line"><span class="lineno">  345</span>    <span class="keyword">const</span> QByteArray value(1, <span class="stringliteral">&#39;\x01&#39;</span>);</div>
-<div class="line"><span class="lineno">  346</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
-<div class="line"><span class="lineno">  347</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">  348</span>}</div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00330">330</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  331</span>{</div>
+<div class="line"><span class="lineno">  332</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
+<div class="line"><span class="lineno">  333</span>    <span class="keywordflow">if</span> (!d-&gt;service) {</div>
+<div class="line"><span class="lineno">  334</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Cannot flash LED without a service object.&quot;</span>);</div>
+<div class="line"><span class="lineno">  335</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  336</span>    }</div>
+<div class="line"><span class="lineno">  337</span> </div>
+<div class="line"><span class="lineno">  338</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
+<div class="line"><span class="lineno">  339</span>        d-&gt;service-&gt;characteristic(<a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">CharacteristicUuids::flashLed</a>);</div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
+<div class="line"><span class="lineno">  341</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Flash LED characteristic not valid yet.&quot;</span>);</div>
+<div class="line"><span class="lineno">  342</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  343</span>    }</div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>    <span class="comment">// The Flash LED characeristic is write-only, and takes a single uint8 &quot;LED&quot; parameter, which</span></div>
+<div class="line"><span class="lineno">  346</span>    <span class="comment">// must always be 1. Presumably this is an index for which LED to flash, but the Pokit API docs</span></div>
+<div class="line"><span class="lineno">  347</span>    <span class="comment">// say that &quot;any value other than 1 will be ignored&quot;, which makes sense given that all current</span></div>
+<div class="line"><span class="lineno">  348</span>    <span class="comment">// Pokit devices have only one LED.</span></div>
+<div class="line"><span class="lineno">  349</span>    <span class="keyword">const</span> QByteArray value(1, <span class="stringliteral">&#39;\x01&#39;</span>);</div>
+<div class="line"><span class="lineno">  350</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
+<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">  352</span>}</div>
 <div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_aeb51331d2510873d95a5993e62aa2cf0"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a></div><div class="ttdeci">static const QBluetoothUuid flashLed</div><div class="ttdoc">UUID of the Pokit Status service's Flash LED characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00049">statusservice.h:49</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="statusservice_8h_source.html#l00049">StatusService::CharacteristicUuids::flashLed</a>.</p>
@@ -1089,31 +1114,31 @@ Here is the caller graph for this function:</div>
 <p >Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p >Emits <a class="el" href="classStatusService.html#a092e655b40139d94fe046b86f0dd51e5" title="This signal is emitted when the Device Name characteristic has been written successfully.">deivceNameWritten()</a> if/when the <em>name</em> has been set. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00288">288</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  289</span>{</div>
-<div class="line"><span class="lineno">  290</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
-<div class="line"><span class="lineno">  291</span>    <span class="keywordflow">if</span> (!d-&gt;service) {</div>
-<div class="line"><span class="lineno">  292</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Cannot set device name without a service object.&quot;</span>);</div>
-<div class="line"><span class="lineno">  293</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  294</span>    }</div>
-<div class="line"><span class="lineno">  295</span> </div>
-<div class="line"><span class="lineno">  296</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
-<div class="line"><span class="lineno">  297</span>        d-&gt;service-&gt;characteristic(<a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">CharacteristicUuids::name</a>);</div>
-<div class="line"><span class="lineno">  298</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
-<div class="line"><span class="lineno">  299</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Name characteristic not valid yet.&quot;</span>);</div>
-<div class="line"><span class="lineno">  300</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  301</span>    }</div>
-<div class="line"><span class="lineno">  302</span> </div>
-<div class="line"><span class="lineno">  303</span>    <span class="keyword">const</span> QByteArray value = name.toUtf8();</div>
-<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">if</span> (value.length() &gt; 11) {</div>
-<div class="line"><span class="lineno">  305</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes):&quot;</span>)</div>
-<div class="line"><span class="lineno">  306</span>            .arg(name).arg(value.length()) &lt;&lt; value;</div>
-<div class="line"><span class="lineno">  307</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  308</span>    }</div>
-<div class="line"><span class="lineno">  309</span> </div>
-<div class="line"><span class="lineno">  310</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
-<div class="line"><span class="lineno">  311</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">  312</span>}</div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00292">292</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  293</span>{</div>
+<div class="line"><span class="lineno">  294</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
+<div class="line"><span class="lineno">  295</span>    <span class="keywordflow">if</span> (!d-&gt;service) {</div>
+<div class="line"><span class="lineno">  296</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Cannot set device name without a service object.&quot;</span>);</div>
+<div class="line"><span class="lineno">  297</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  298</span>    }</div>
+<div class="line"><span class="lineno">  299</span> </div>
+<div class="line"><span class="lineno">  300</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
+<div class="line"><span class="lineno">  301</span>        d-&gt;service-&gt;characteristic(<a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">CharacteristicUuids::name</a>);</div>
+<div class="line"><span class="lineno">  302</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
+<div class="line"><span class="lineno">  303</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Name characteristic not valid yet.&quot;</span>);</div>
+<div class="line"><span class="lineno">  304</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  305</span>    }</div>
+<div class="line"><span class="lineno">  306</span> </div>
+<div class="line"><span class="lineno">  307</span>    <span class="keyword">const</span> QByteArray value = name.toUtf8();</div>
+<div class="line"><span class="lineno">  308</span>    <span class="keywordflow">if</span> (value.length() &gt; 11) {</div>
+<div class="line"><span class="lineno">  309</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes):&quot;</span>)</div>
+<div class="line"><span class="lineno">  310</span>            .arg(name).arg(value.length()) &lt;&lt; value;</div>
+<div class="line"><span class="lineno">  311</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  312</span>    }</div>
+<div class="line"><span class="lineno">  313</span> </div>
+<div class="line"><span class="lineno">  314</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
+<div class="line"><span class="lineno">  315</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">  316</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="statusservice_8h_source.html#l00048">StatusService::CharacteristicUuids::name</a>.</p>
 
@@ -1148,7 +1173,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00111">111</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00115">115</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
 
 </div>
 </div>

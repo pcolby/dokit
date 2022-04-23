@@ -19,10 +19,10 @@ var searchData=
   ['deviceinfoservice_5fp_2eh_16',['deviceinfoservice_p.h',['../deviceinfoservice__p_8h.html',1,'']]],
   ['deviceinfoserviceprivate_17',['DeviceInfoServicePrivate',['../classDeviceInfoServicePrivate.html',1,'DeviceInfoServicePrivate'],['../classDeviceInfoServicePrivate.html#adf611f70ba673572f7bdbb305e8adfca',1,'DeviceInfoServicePrivate::DeviceInfoServicePrivate()']]],
   ['deviceledflashed_18',['deviceLedFlashed',['../classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee',1,'StatusService::deviceLedFlashed()'],['../classFlashLedCommand.html#af7a5897fc7657f70466c82f5ed538ccb',1,'FlashLedCommand::deviceLedFlashed()']]],
-  ['devicename_19',['deviceName',['../classGenericAccessService.html#ac2208d4c9960c2e10099d083a326fff4',1,'GenericAccessService::deviceName()'],['../classStatusService.html#a113a7051f70e642d2c1f67124c1f12c7',1,'StatusService::deviceName()']]],
-  ['devicenameread_20',['deviceNameRead',['../classGenericAccessService.html#ab6a9e04d98f18cc5cb4f1514ad40c1dc',1,'GenericAccessService::deviceNameRead()'],['../classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1',1,'StatusService::deviceNameRead()']]],
-  ['devicestatus_21',['deviceStatus',['../classStatusService.html#a37b3976eeb85bf5aaf1cb23605b15f01',1,'StatusService']]],
-  ['devicestatus_22',['DeviceStatus',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35',1,'StatusService']]],
+  ['devicename_19',['deviceName',['../classGenericAccessService.html#ac2208d4c9960c2e10099d083a326fff4',1,'GenericAccessService::deviceName()'],['../classStatusService.html#a113a7051f70e642d2c1f67124c1f12c7',1,'StatusService::deviceName() const']]],
+  ['devicenameread_20',['deviceNameRead',['../classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1',1,'StatusService::deviceNameRead()'],['../classGenericAccessService.html#ab6a9e04d98f18cc5cb4f1514ad40c1dc',1,'GenericAccessService::deviceNameRead()']]],
+  ['devicestatus_21',['DeviceStatus',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35',1,'StatusService']]],
+  ['devicestatus_22',['deviceStatus',['../classStatusService.html#a37b3976eeb85bf5aaf1cb23605b15f01',1,'StatusService']]],
   ['devicestatuslabel_23',['deviceStatusLabel',['../classStatusService.html#adddc5b563c16a8ad199f6a07966d372c',1,'StatusService']]],
   ['devicestatusread_24',['deviceStatusRead',['../classStatusService.html#aa2bb077ed3109aefe2879b930470c177',1,'StatusService']]],
   ['deviceupdated_25',['deviceUpdated',['../classPokitDeviceDiscoveryAgentPrivate.html#a11f5235e5b29311c1db4a065f363df35',1,'PokitDeviceDiscoveryAgentPrivate']]],
@@ -30,5 +30,6 @@ var searchData=
   ['discoveryagent_27',['discoveryAgent',['../classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674',1,'ScanCommand']]],
   ['discoveryfinished_28',['discoveryFinished',['../classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab',1,'AbstractPokitServicePrivate::discoveryFinished()'],['../classPokitDevicePrivate.html#a2b525c4da45d7fae7cb31631d075acb5',1,'PokitDevicePrivate::discoveryFinished()']]],
   ['dso_29',['dso',['../classPokitDevicePrivate.html#a3d56069c9b50e457a799a9c07637ecde',1,'PokitDevicePrivate::dso()'],['../classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117',1,'PokitDevice::dso()']]],
-  ['dsomutex_30',['dsoMutex',['../classPokitDevicePrivate.html#a49f5b08bf31644b4e1521f33e5c8578c',1,'PokitDevicePrivate']]]
+  ['dsomodesampling_30',['DsoModeSampling',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38',1,'StatusService']]],
+  ['dsomutex_31',['dsoMutex',['../classPokitDevicePrivate.html#a49f5b08bf31644b4e1521f33e5c8578c',1,'PokitDevicePrivate']]]
 ];

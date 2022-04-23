@@ -9,7 +9,11 @@ var classStatusService =
       [ "MultimeterDcCurrent", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a822a755216a42f263e6b20e8edbd536b", null ],
       [ "MultimeterAcCurrent", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a2531beafde4cd45ccd7c3cbaa3777681", null ],
       [ "MultimeterResistance", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4", null ],
-      [ "MultimeterDiode", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582", null ]
+      [ "MultimeterDiode", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582", null ],
+      [ "MultimeterContinuity", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a08e57a78bddbe890c39f6ea84d9ff697", null ],
+      [ "MultimeterTemperature", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5", null ],
+      [ "DsoModeSampling", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38", null ],
+      [ "LoggerModeSampling", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca", null ]
     ] ],
     [ "StatusService", "classStatusService.html#a095254046689e5115ba053c029a2e1b8", null ],
     [ "~StatusService", "classStatusService.html#a6140c2723538587220452d6d4a51f001", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['text_0',['Text',['../classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675',1,'AbstractCommand']]]
+  ['loggermodesampling_0',['LoggerModeSampling',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca',1,'StatusService']]]
 ];
