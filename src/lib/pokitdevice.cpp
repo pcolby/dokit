@@ -145,7 +145,7 @@ const QLowEnergyController * PokitDevice::controller() const
  */
 DataLoggerService * PokitDevice::dataLogger()
 {
-    qCDebug(pokitController) << "Not imlemented" << __func__;
+    qCDebug(pokitController) << "Not implemented" << __func__;
 //    POKIT_INTERNAL_GET_SERVICE(DataLoggerService, dataLogger);
     return nullptr;
 }
@@ -162,7 +162,7 @@ DataLoggerService * PokitDevice::dataLogger()
  */
 DeviceInformationService * PokitDevice::deviceInformation()
 {
-    qCDebug(pokitController) << "Not imlemented" << __func__;
+    qCDebug(pokitController) << "Not implemented" << __func__;
 //    POKIT_INTERNAL_GET_SERVICE(DeviceInformationService, deviceInformation);
     return nullptr;
 }
@@ -178,7 +178,7 @@ DeviceInformationService * PokitDevice::deviceInformation()
  */
 DsoService * PokitDevice::dso()
 {
-    qCDebug(pokitController) << "Not imlemented" << __func__;
+    qCDebug(pokitController) << "Not implemented" << __func__;
 //    POKIT_INTERNAL_GET_SERVICE(DsoService, dso);
     return nullptr;
 }
@@ -194,7 +194,7 @@ DsoService * PokitDevice::dso()
  */
 GenericAccessService * PokitDevice::genericAccess()
 {
-    qCDebug(pokitController) << "Not imlemented" << __func__;
+    qCDebug(pokitController) << "Not implemented" << __func__;
 //    POKIT_INTERNAL_GET_SERVICE(GenericAccessService, genericAccess);
     return nullptr;
 }
@@ -210,7 +210,7 @@ GenericAccessService * PokitDevice::genericAccess()
  */
 MultimeterService * PokitDevice::multimeter()
 {
-    qCDebug(pokitController) << "Not imlemented" << __func__;
+    qCDebug(pokitController) << "Not implemented" << __func__;
 //    POKIT_INTERNAL_GET_SERVICE(MultimeterService, multimeter);
     return nullptr;
 }
