@@ -68,6 +68,10 @@ public:
         MultimeterAcCurrent = 4,  ///< Multimeter is measuring AC current.
         MultimeterResistance = 5, ///< Multimeter is measuring resistance.
         MultimeterDiode = 6,      ///< Multimeter is measuring diode.
+        MultimeterContinuity = 7, ///< Multimeter is measuring continuity.
+        MultimeterTemperature = 8,///< Multimeter is measuring temperature.
+        DsoModeSampling = 9,      ///< DSO is sampling.
+        LoggerModeSampling = 10,  ///< Data Logger is sampling.
     };
 
     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

@@ -220,6 +220,10 @@ QString StatusService::deviceStatusLabel(const StatusService::DeviceStatus &stat
     case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String("MultimeterAcCurrent");
     case DeviceStatus::MultimeterResistance: return  QLatin1String("MultimeterResistance");
     case DeviceStatus::MultimeterDiode:      return  QLatin1String("MultimeterDiode");
+    case DeviceStatus::MultimeterContinuity: return  QLatin1String("MultimeterContinuity");
+    case DeviceStatus::MultimeterTemperature:return  QLatin1String("MultimeterTemperature");
+    case DeviceStatus::DsoModeSampling:      return  QLatin1String("DsoModeSampling");
+    case DeviceStatus::LoggerModeSampling:   return  QLatin1String("LoggerModeSampling");
     }
     return QLatin1String("Invalid");
 }
