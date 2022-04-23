@@ -276,7 +276,8 @@ void AbstractPokitServicePrivate::discoveryFinished()
 
     if (!createServiceObject()) {
         qCWarning(pokitService).noquote() << tr("Discovery finished, but service not found.");
-        /// \todo Might need to emit an error signal here?
+        Q_Q(AbstractPokitService);
+        emit q->serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);
     }
 }
 
