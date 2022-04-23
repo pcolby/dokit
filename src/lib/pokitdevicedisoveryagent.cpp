@@ -25,7 +25,7 @@
 #include <qtpokit/pokitdevicedisoveryagent.h>
 #include "pokitdevicedisoveryagent_p.h"
 
-#include <qtpokit/uuids.h>
+#include <qtpokit/statusservice.h>
 
 #include "logging_p.h"
 
@@ -102,7 +102,7 @@ PokitDeviceDiscoveryAgent::~PokitDeviceDiscoveryAgent()
  */
 bool PokitDeviceDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
 {
-    return info.serviceUuids().contains(QBluetoothUuid(QStringLiteral(POKIT_SERVICE_STATUS)));
+    return info.serviceUuids().contains(StatusService::serviceUuid);
 }
 
 /*!
