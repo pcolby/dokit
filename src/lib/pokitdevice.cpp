@@ -24,8 +24,8 @@
 
 #include <qtpokit/pokitdevice.h>
 
+#include <qtpokit/deviceinfoservice.h>
 #include <qtpokit/genericaccessservice.h>
-#include <qtpokit/infoservice.h>
 #include <qtpokit/statusservice.h>
 
 #include "pokitdevice_p.h"
@@ -159,9 +159,9 @@ DataLoggerService * PokitDevice::dataLogger()
  * instance), but the service itself is lazily created (in a threadsafe manner) on the first
  * invocation of this function.
  */
-InfoService * PokitDevice::deviceInformation()
+DeviceInfoService * PokitDevice::deviceInformation()
 {
-    POKIT_INTERNAL_GET_SERVICE(InfoService, deviceInfo);
+    POKIT_INTERNAL_GET_SERVICE(DeviceInfoService, deviceInfo);
 }
 
 /*!

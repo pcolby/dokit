@@ -19,7 +19,7 @@
 
 /*!
  * \file
- * Declares the InfoService class.
+ * Declares the DeviceInfoService class.
  */
 
 #ifndef QTPOKIT_INFOSERVICE_H
@@ -33,9 +33,9 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
-class InfoServicePrivate;
+class DeviceInfoServicePrivate;
 
-class QTPOKIT_EXPORT InfoService : public AbstractPokitService
+class QTPOKIT_EXPORT DeviceInfoService : public AbstractPokitService
 {
     Q_OBJECT
 
@@ -50,8 +50,8 @@ public:
         static const QBluetoothUuid softwareRevision;
     };
 
-    InfoService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    ~InfoService() override;
+    DeviceInfoService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
+    ~DeviceInfoService() override;
 
     bool readCharacteristics() override;
     bool readFirmwareRevisionCharacteristic();
@@ -76,13 +76,13 @@ signals:
 
 protected:
     /// \cond internal
-    InfoService(InfoServicePrivate * const d, QObject * const parent);
+    DeviceInfoService(DeviceInfoServicePrivate * const d, QObject * const parent);
     /// \endcond
 
 private:
-    Q_DECLARE_PRIVATE(InfoService)
-    Q_DISABLE_COPY(InfoService)
-    friend class TestInfoService;
+    Q_DECLARE_PRIVATE(DeviceInfoService)
+    Q_DISABLE_COPY(DeviceInfoService)
+    friend class TestDeviceInfoService;
 };
 
 QTPOKIT_END_NAMESPACE

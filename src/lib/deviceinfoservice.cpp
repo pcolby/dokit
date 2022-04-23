@@ -19,53 +19,53 @@
 
 /*!
  * \file
- * Defines the InfoService and InfoServicePrivate classes.
+ * Defines the DeviceInfoService and DeviceInfoServicePrivate classes.
  */
 
-#include <qtpokit/infoservice.h>
-#include "infoservice_p.h"
+#include <qtpokit/deviceinfoservice.h>
+#include "deviceinfoservice_p.h"
 #include "logging_p.h"
 
 #include <QtEndian>
 
 /*!
- * \class InfoService
+ * \class DeviceInfoService
  *
- * The InfoService class accesses the `Device Info` service of Pokit devices.
+ * The DeviceInfoService class accesses the `Device Info` service of Pokit devices.
  */
 
 /// UUID of the "Device Info" service.
-const QBluetoothUuid InfoService::
+const QBluetoothUuid DeviceInfoService::
     serviceUuid(QBluetoothUuid::ServiceClassUuid::DeviceInformation);
 
-/// \struct InfoService::CharacteristicUuids
+/// \struct DeviceInfoService::CharacteristicUuids
 /// \brief Characteristics available via the `Device Info` service.
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid InfoService::CharacteristicUuids::
+const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
     manufacturerName(QBluetoothUuid::CharacteristicType::ManufacturerNameString);
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid InfoService::CharacteristicUuids::
+const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
     modelNumber(QBluetoothUuid::CharacteristicType::ModelNumberString);
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid InfoService::CharacteristicUuids::
+const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
     hardwareRevision(QBluetoothUuid::CharacteristicType::HardwareRevisionString);
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid InfoService::CharacteristicUuids::
+const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
     firmwareRevision(QBluetoothUuid::CharacteristicType::FirmwareRevisionString);
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid InfoService::CharacteristicUuids::
+const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
     softwareRevision(QBluetoothUuid::CharacteristicType::SoftwareRevisionString);
 
 /*!
  * Constructs a new Pokit service with \a parent.
  */
-InfoService::InfoService(QLowEnergyController * const controller, QObject * parent)
-    : AbstractPokitService(new InfoServicePrivate(controller, this), parent)
+DeviceInfoService::DeviceInfoService(QLowEnergyController * const controller, QObject * parent)
+    : AbstractPokitService(new DeviceInfoServicePrivate(controller, this), parent)
 {
 
 }
@@ -74,8 +74,8 @@ InfoService::InfoService(QLowEnergyController * const controller, QObject * pare
  * \cond internal
  * Constructs a new Pokit service with \a parent, and private implementation \a d.
  */
-InfoService::InfoService(
-    InfoServicePrivate * const d, QObject * const parent)
+DeviceInfoService::DeviceInfoService(
+    DeviceInfoServicePrivate * const d, QObject * const parent)
     : AbstractPokitService(d, parent)
 {
 
@@ -83,14 +83,14 @@ InfoService::InfoService(
 /// \endcond
 
 /*!
- * Destroys this InfoService object.
+ * Destroys this DeviceInfoService object.
  */
-InfoService::~InfoService()
+DeviceInfoService::~DeviceInfoService()
 {
     delete d_ptr;
 }
 
-bool InfoService::readCharacteristics()
+bool DeviceInfoService::readCharacteristics()
 {
     const bool r1 = readFirmwareRevisionCharacteristic();
     const bool r2 = readHardwareRevisionCharacteristic();
@@ -109,9 +109,9 @@ bool InfoService::readCharacteristics()
  *
  * Emits firmwareRevisionRead() if/when the characteristic has been read successfully.
  */
-bool InfoService::readFirmwareRevisionCharacteristic()
+bool DeviceInfoService::readFirmwareRevisionCharacteristic()
 {
-    Q_D(InfoService);
+    Q_D(DeviceInfoService);
     return d->readCharacteristic(CharacteristicUuids::firmwareRevision);
 }
 
@@ -124,9 +124,9 @@ bool InfoService::readFirmwareRevisionCharacteristic()
  *
  * Emits hardwareRevisionRead() if/when the characteristic has been read successfully.
  */
-bool InfoService::readHardwareRevisionCharacteristic()
+bool DeviceInfoService::readHardwareRevisionCharacteristic()
 {
-    Q_D(InfoService);
+    Q_D(DeviceInfoService);
     return d->readCharacteristic(CharacteristicUuids::hardwareRevision);
 }
 
@@ -139,9 +139,9 @@ bool InfoService::readHardwareRevisionCharacteristic()
  *
  * Emits manufacturerNameRead() if/when the characteristic has been read successfully.
  */
-bool InfoService::readManufacturerCharacteristics()
+bool DeviceInfoService::readManufacturerCharacteristics()
 {
-    Q_D(InfoService);
+    Q_D(DeviceInfoService);
     return d->readCharacteristic(CharacteristicUuids::manufacturerName);
 }
 
@@ -154,9 +154,9 @@ bool InfoService::readManufacturerCharacteristics()
  *
  * Emits modelNumberRead() if/when the characteristic has been read successfully.
  */
-bool InfoService::readModelNumberCharacteristic()
+bool DeviceInfoService::readModelNumberCharacteristic()
 {
-    Q_D(InfoService);
+    Q_D(DeviceInfoService);
     return d->readCharacteristic(CharacteristicUuids::modelNumber);
 }
 
@@ -169,9 +169,9 @@ bool InfoService::readModelNumberCharacteristic()
  *
  * Emits softwareRevisionRead() if/when the characteristic has been read successfully.
  */
-bool InfoService::readSoftwareRevisionCharacteristic()
+bool DeviceInfoService::readSoftwareRevisionCharacteristic()
 {
-    Q_D(InfoService);
+    Q_D(DeviceInfoService);
     return d->readCharacteristic(CharacteristicUuids::softwareRevision);
 }
 
@@ -182,9 +182,9 @@ bool InfoService::readSoftwareRevisionCharacteristic()
  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a
  * null QString is returned.
  */
-QString InfoService::manufacturer() const
+QString DeviceInfoService::manufacturer() const
 {
-    Q_D(const InfoService);
+    Q_D(const DeviceInfoService);
     if (!d->service) {
         qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
         return QString();
@@ -207,9 +207,9 @@ QString InfoService::manufacturer() const
  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a
  * null QString is returned.
  */
-QString InfoService::modelNumber() const
+QString DeviceInfoService::modelNumber() const
 {
-    Q_D(const InfoService);
+    Q_D(const DeviceInfoService);
     if (!d->service) {
         qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
         return QString();
@@ -232,9 +232,9 @@ QString InfoService::modelNumber() const
  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a
  * null QString is returned.
  */
-QString InfoService::hardwareRevision() const
+QString DeviceInfoService::hardwareRevision() const
 {
-    Q_D(const InfoService);
+    Q_D(const DeviceInfoService);
     if (!d->service) {
         qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
         return QString();
@@ -257,9 +257,9 @@ QString InfoService::hardwareRevision() const
  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a
  * null QString is returned.
  */
-QString InfoService::firmwareRevision() const
+QString DeviceInfoService::firmwareRevision() const
 {
-    Q_D(const InfoService);
+    Q_D(const DeviceInfoService);
     if (!d->service) {
         qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
         return QString();
@@ -282,9 +282,9 @@ QString InfoService::firmwareRevision() const
  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a
  * null QString is returned.
  */
-QString InfoService::softwareRevision() const
+QString DeviceInfoService::softwareRevision() const
 {
-    Q_D(const InfoService);
+    Q_D(const DeviceInfoService);
     if (!d->service) {
         qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
         return QString();
@@ -308,7 +308,7 @@ QString InfoService::softwareRevision() const
 //void modelNumberRead(const QString &model);
 
 /*!
- * \fn InfoService::manufacturerRead
+ * \fn DeviceInfoService::manufacturerRead
  *
  * This signal is emitted when the `Manufacturer Name` characteristic has been read successfully.
  *
@@ -317,7 +317,7 @@ QString InfoService::softwareRevision() const
  */
 
 /*!
- * \fn InfoService::modelNumberRead
+ * \fn DeviceInfoService::modelNumberRead
  *
  * This signal is emitted when the `Model Number` characteristic has been read successfully.
  *
@@ -326,7 +326,7 @@ QString InfoService::softwareRevision() const
  */
 
 /*!
- * \fn InfoService::hardwareRevisionRead
+ * \fn DeviceInfoService::hardwareRevisionRead
  *
  * This signal is emitted when the `Hardware Revision` characteristic has been read successfully.
  *
@@ -335,7 +335,7 @@ QString InfoService::softwareRevision() const
  */
 
 /*!
- * \fn InfoService::firmwareRevisionRead
+ * \fn DeviceInfoService::firmwareRevisionRead
  *
  * This signal is emitted when the `Firmware Revision` characteristic has been read successfully.
  *
@@ -344,7 +344,7 @@ QString InfoService::softwareRevision() const
  */
 
 /*!
- * \fn InfoService::softwareRevisionRead
+ * \fn DeviceInfoService::softwareRevisionRead
  *
  * This signal is emitted when the `Software Revision` characteristic has been read successfully.
  *
@@ -354,18 +354,18 @@ QString InfoService::softwareRevision() const
 
 /*!
  * \cond internal
- * \class InfoServicePrivate
+ * \class DeviceInfoServicePrivate
  *
- * The InfoServicePrivate class provides private implementation for InfoService.
+ * The DeviceInfoServicePrivate class provides private implementation for DeviceInfoService.
  */
 
 /*!
  * \internal
- * Constructs a new InfoServicePrivate object with public implementation \a q.
+ * Constructs a new DeviceInfoServicePrivate object with public implementation \a q.
  */
-InfoServicePrivate::InfoServicePrivate(
-    QLowEnergyController * controller, InfoService * const q)
-    : AbstractPokitServicePrivate(InfoService::serviceUuid, controller, q)
+DeviceInfoServicePrivate::DeviceInfoServicePrivate(
+    QLowEnergyController * controller, DeviceInfoService * const q)
+    : AbstractPokitServicePrivate(DeviceInfoService::serviceUuid, controller, q)
 {
 
 }
@@ -374,42 +374,42 @@ InfoServicePrivate::InfoServicePrivate(
  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a
  * specialised signal, for each supported \a characteristic.
  */
-void InfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
+void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
     qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3:")
         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size()) << value;
-    Q_Q(InfoService);
+    Q_Q(DeviceInfoService);
 
-    if (characteristic.uuid() == InfoService::CharacteristicUuids::manufacturerName) {
+    if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {
         const QString name = QString::fromUtf8(value);
         qCDebug(pokitService).noquote() << tr("Manufacturer name: \"%1\"").arg(name);
         emit q->manufacturerRead(name);
         return;
     }
 
-    if (characteristic.uuid() == InfoService::CharacteristicUuids::modelNumber) {
+    if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {
         const QString model = QString::fromUtf8(value);
         qCDebug(pokitService).noquote() << tr("Model number: \"%1\"").arg(model);
         emit q->modelNumberRead(model);
         return;
     }
 
-    if (characteristic.uuid() == InfoService::CharacteristicUuids::hardwareRevision) {
+    if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {
         const QString revision = QString::fromUtf8(value);
         qCDebug(pokitService).noquote() << tr("Hardware revision: \"%1\"").arg(revision);
         emit q->hardwareRevisionRead(revision);
         return;
     }
 
-    if (characteristic.uuid() == InfoService::CharacteristicUuids::firmwareRevision) {
+    if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {
         const QString revision = QString::fromUtf8(value);
         qCDebug(pokitService).noquote() << tr("Firmware revision: \"%1\"").arg(revision);
         emit q->firmwareRevisionRead(revision);
         return;
     }
 
-    if (characteristic.uuid() == InfoService::CharacteristicUuids::softwareRevision) {
+    if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {
         const QString revision = QString::fromUtf8(value);
         qCDebug(pokitService).noquote() << tr("Software revision: \"%1\"").arg(revision);
         emit q->softwareRevisionRead(revision);
@@ -424,7 +424,7 @@ void InfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &char
  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a
  * specialised signal, for each supported \a characteristic.
  */
-void InfoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
+void DeviceInfoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                  const QByteArray &newValue)
 {
     Q_UNUSED(newValue);
