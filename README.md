@@ -11,9 +11,34 @@
 
 QtPokit is a cross-platform [Qt] library, and console application for accessing [Pokit] measuring devices.
 
+## Project Development Status
+
 This project is in very early stages of development, but aims to support both [Pokit Meter] and
 [Pokit Pro], on Linux, Mac and Windows. A separate project (to launch later) will aim to provide a
 cross-platform desktop GUI application using the QtPokit library.
+
+### Pokit Device Services
+
+Pokit devices currently support six Bluetooth GATT Services (actually the [Pokit Pro] appears to support
+another two, but they're undocumented at present[^undocumentedServices]).
+
+|       Function         | Library Status| Console App Status|                  Notes                 |
+|------------------------|:-------------:|:-----------------:|----------------------------------------|
+| Device Discovery       | Implemented   | Implemented       |                                        |
+| Multimeter Service     | Soon          | Soon              |                                        |
+| DSO Service            | Later         | Later             |                                        |
+| Data Logger Service    | Later         | Later             |                                        |
+| Pokit Status Service   | Implemented   | Implemented       |                                        |
+| Device Info Service    | Implemented   | Implemented       |                                        |
+| Generic Access Service | Implemented   | No plans          | Superseded by the Pokit Status service.|
+
+### Supported Platforms
+
+| Platform |  Status |                                  Notes                                        |
+|:--------:|:-------:|-------------------------------------------------------------------------------|
+| Linux    | Works   |                                                                               |
+| MacOS    | Untested| Builds on CI/CD, including automated tests. But not yet tested with a device. |
+| Windows  | Untested| Builds on CI/CD, including automated tests. But not yet tested with a device. |
 
 ## Requirements
 
@@ -53,6 +78,8 @@ These are regularly published to Github Pages via Github Actions:
 
 QtPocket is freely available under the [LGPL]
 
+[^undocumentedServices]: See the "Undocumented Services" seciont of the [internal dev notes](
+https://pcolby.github.io/qtpokit/main/int/md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html)
 [^minQt5]: The Qt BLE API was first [added in v5.4](https://doc.qt.io/qt-5/qtbluetooth-le-overview.html)
 [^minQt6]: The Qt Bluetooth module was [ported to Qt6 in v6.2](https://www.qt.io/blog/qt-6.2-lts-released)
 
