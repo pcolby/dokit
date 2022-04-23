@@ -35,30 +35,31 @@
  */
 
 /// UUID of the "Device Info" service.
-const QBluetoothUuid InfoService::serviceUuid(QBluetoothUuid::DeviceInformation);
+const QBluetoothUuid InfoService::
+    serviceUuid(QBluetoothUuid::ServiceClassUuid::DeviceInformation);
 
 /// \struct InfoService::CharacteristicUuids
 /// \brief Characteristics available via the `Device Info` service.
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
 const QBluetoothUuid InfoService::CharacteristicUuids::
-    manufacturerName(QBluetoothUuid::ManufacturerNameString);
+    manufacturerName(QBluetoothUuid::CharacteristicType::ManufacturerNameString);
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
 const QBluetoothUuid InfoService::CharacteristicUuids::
-    modelNumber(QBluetoothUuid::ModelNumberString);
+    modelNumber(QBluetoothUuid::CharacteristicType::ModelNumberString);
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
 const QBluetoothUuid InfoService::CharacteristicUuids::
-    hardwareRevision(QBluetoothUuid::HardwareRevisionString);
+    hardwareRevision(QBluetoothUuid::CharacteristicType::HardwareRevisionString);
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
 const QBluetoothUuid InfoService::CharacteristicUuids::
-    firmwareRevision(QBluetoothUuid::FirmwareRevisionString);
+    firmwareRevision(QBluetoothUuid::CharacteristicType::FirmwareRevisionString);
 
 /// UUID of the `Device Info` service's `xxx` characterstic.
 const QBluetoothUuid InfoService::CharacteristicUuids::
-    softwareRevision(QBluetoothUuid::SoftwareRevisionString);
+    softwareRevision(QBluetoothUuid::CharacteristicType::SoftwareRevisionString);
 
 /*!
  * Constructs a new Pokit service with \a parent.
