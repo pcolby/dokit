@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['infocommand_0',['InfoCommand',['../classInfoCommand.html#a447fd9340d916a559b74d53195353660',1,'InfoCommand']]],
-  ['ispokitdevice_1',['isPokitDevice',['../classPokitDeviceDiscoveryAgent.html#a70f6c3cfc1bfe5cab658571642bbba2f',1,'PokitDeviceDiscoveryAgent']]]
+  ['hardwarerevision_0',['hardwareRevision',['../classInfoService.html#aaf41893c82564de761747d639bf472b7',1,'InfoService']]],
+  ['hardwarerevisionread_1',['hardwareRevisionRead',['../classInfoService.html#ac29eb2b58496519e1ea7d84b79f13f9b',1,'InfoService']]]
 ];

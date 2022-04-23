@@ -1,21 +1,4 @@
 var searchData=
 [
-  ['parsedevicecharacteristics_0',['parseDeviceCharacteristics',['../classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced',1,'StatusServicePrivate']]],
-  ['parsestatus_1',['parseStatus',['../classStatusServicePrivate.html#a92e73bf7feecad2436d0ccad91a82bf5',1,'StatusServicePrivate']]],
-  ['placeholder_20page_2',['Placeholder Page',['../md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html',1,'']]],
-  ['pokit_5fservice_5fdso_3',['POKIT_SERVICE_DSO',['../uuids_8h.html#a64de606c840f2b01eb6f8615f9dbd5a4',1,'uuids.h']]],
-  ['pokit_5fservice_5fmultimeter_4',['POKIT_SERVICE_MULTIMETER',['../uuids_8h.html#a276a2d31735183d0a4df8adb24fe605c',1,'uuids.h']]],
-  ['pokitdevice_5',['PokitDevice',['../classPokitDevice.html',1,'PokitDevice'],['../classPokitDevice.html#af4340372287a435bddd7d7f98b4cb1b6',1,'PokitDevice::PokitDevice(PokitDevicePrivate *const d, QObject *const parent)'],['../classPokitDevice.html#a8ef0156de9faef55985d01b4df1fce87',1,'PokitDevice::PokitDevice(QLowEnergyController *controller, QObject *parent=nullptr)'],['../classPokitDevice.html#af2e70d41938c635e2c80911f177f0b78',1,'PokitDevice::PokitDevice(const QString &amp;addressOrUuid, QObject *parent=nullptr)']]],
-  ['pokitdevice_2ecpp_6',['pokitdevice.cpp',['../pokitdevice_8cpp.html',1,'']]],
-  ['pokitdevice_2eh_7',['pokitdevice.h',['../pokitdevice_8h.html',1,'']]],
-  ['pokitdevice_5fp_2eh_8',['pokitdevice_p.h',['../pokitdevice__p_8h.html',1,'']]],
-  ['pokitdevicediscovered_9',['pokitDeviceDiscovered',['../classPokitDeviceDiscoveryAgent.html#a91accfadf0d717060e5c2002c0443afd',1,'PokitDeviceDiscoveryAgent']]],
-  ['pokitdevicediscoveryagent_10',['PokitDeviceDiscoveryAgent',['../classPokitDeviceDiscoveryAgent.html#a03b42b2404ff9f1e0a6c9a491fe1efac',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(QObject *parent=nullptr)'],['../classPokitDeviceDiscoveryAgent.html#a1595923a2ecfdc7b41201d51882e7d05',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(PokitDeviceDiscoveryAgentPrivate *const d, const QBluetoothAddress &amp;deviceAdapter, QObject *const parent)'],['../classPokitDeviceDiscoveryAgent.html#a2cb0e86ef0a517ad819568b06362886c',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(PokitDeviceDiscoveryAgentPrivate *const d, QObject *const parent)'],['../classPokitDeviceDiscoveryAgent.html#a13cc657e3d754dfc7140fe66aa55902b',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(const QBluetoothAddress &amp;deviceAdapter, QObject *parent=nullptr)'],['../classPokitDeviceDiscoveryAgent.html',1,'PokitDeviceDiscoveryAgent']]],
-  ['pokitdevicediscoveryagentprivate_11',['PokitDeviceDiscoveryAgentPrivate',['../classPokitDeviceDiscoveryAgentPrivate.html#a11fa8baaf2896da43c559738c5984c70',1,'PokitDeviceDiscoveryAgentPrivate::PokitDeviceDiscoveryAgentPrivate()'],['../classPokitDeviceDiscoveryAgentPrivate.html',1,'PokitDeviceDiscoveryAgentPrivate']]],
-  ['pokitdevicedisoveryagent_2ecpp_12',['pokitdevicedisoveryagent.cpp',['../pokitdevicedisoveryagent_8cpp.html',1,'']]],
-  ['pokitdevicedisoveryagent_2eh_13',['pokitdevicedisoveryagent.h',['../pokitdevicedisoveryagent_8h.html',1,'']]],
-  ['pokitdevicedisoveryagent_5fp_2eh_14',['pokitdevicedisoveryagent_p.h',['../pokitdevicedisoveryagent__p_8h.html',1,'']]],
-  ['pokitdeviceprivate_15',['PokitDevicePrivate',['../classPokitDevicePrivate.html#a0e9a4c08e9fd6385617cf93936d354c0',1,'PokitDevicePrivate::PokitDevicePrivate()'],['../classPokitDevicePrivate.html',1,'PokitDevicePrivate']]],
-  ['pokitdeviceupdated_16',['pokitDeviceUpdated',['../classPokitDeviceDiscoveryAgent.html#a3de575cde89767ba7bfff9c9bd144862',1,'PokitDeviceDiscoveryAgent']]],
-  ['processoptions_17',['processOptions',['../classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d',1,'AbstractCommand::processOptions()'],['../classDeviceCommand.html#a429915728a274595d134b3214e605c1b',1,'DeviceCommand::processOptions()'],['../classFlashLedCommand.html#ab2062e5ec29315ca83589a7302f7ae6f',1,'FlashLedCommand::processOptions()'],['../classInfoCommand.html#a7d815cb4b0133025e4354649e2cd7a6a',1,'InfoCommand::processOptions()'],['../classScanCommand.html#a9998ef360fde53be932dc3059e86578e',1,'ScanCommand::processOptions()'],['../classSetNameCommand.html#aac72587ddb035857cd224d843fc3d00c',1,'SetNameCommand::processOptions()'],['../classStatusCommand.html#a951404b4913fd4b341899d654a2abe72',1,'StatusCommand::processOptions()']]]
+  ['outputformat_0',['OutputFormat',['../classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dc',1,'AbstractCommand']]]
 ];

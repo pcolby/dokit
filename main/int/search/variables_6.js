@@ -1,5 +1,12 @@
 var searchData=
 [
-  ['name_0',['name',['../structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8',1,'StatusService::CharacteristicUuids']]],
-  ['newname_1',['newName',['../classSetNameCommand.html#a67f074dc527a678ee67e52491629c69b',1,'SetNameCommand']]]
+  ['macaddress_0',['macAddress',['../structStatusService_1_1DeviceCharacteristics.html#ac3e0c7d70d55307a49907db75e742348',1,'StatusService::DeviceCharacteristics']]],
+  ['manufacturername_1',['manufacturerName',['../structInfoService_1_1CharacteristicUuids.html#a7bf85919a96d6836d97fc30d236db200',1,'InfoService::CharacteristicUuids']]],
+  ['maximumcurrent_2',['maximumCurrent',['../structStatusService_1_1DeviceCharacteristics.html#a0b7a8478916ea9229ca98c9d78c96ee3',1,'StatusService::DeviceCharacteristics']]],
+  ['maximumresistance_3',['maximumResistance',['../structStatusService_1_1DeviceCharacteristics.html#ae9154c26eb128b26c0fccb9f653f1420',1,'StatusService::DeviceCharacteristics']]],
+  ['maximumsamplingrate_4',['maximumSamplingRate',['../structStatusService_1_1DeviceCharacteristics.html#a20ea5dac3e01c2c333a1c9a77ef02d3c',1,'StatusService::DeviceCharacteristics']]],
+  ['maximumvoltage_5',['maximumVoltage',['../structStatusService_1_1DeviceCharacteristics.html#aa254a7737f072c29aeb21b29140c738f',1,'StatusService::DeviceCharacteristics']]],
+  ['modelnumber_6',['modelNumber',['../structInfoService_1_1CharacteristicUuids.html#a413b8220d98934108b356e25ad3f90e6',1,'InfoService::CharacteristicUuids']]],
+  ['multimeter_7',['multimeter',['../classPokitDevicePrivate.html#acd6c852a06623d75a0767333e984f6fa',1,'PokitDevicePrivate']]],
+  ['multimetermutex_8',['multimeterMutex',['../classPokitDevicePrivate.html#a3b4665ec68635e082e12768eaab33a1b',1,'PokitDevicePrivate']]]
 ];

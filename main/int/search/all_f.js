@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['readcharacteristic_0',['readCharacteristic',['../classAbstractPokitServicePrivate.html#ad58619e237f300294049c82b85d76875',1,'AbstractPokitServicePrivate']]],
-  ['readcharacteristics_1',['readCharacteristics',['../classAbstractPokitService.html#a0d29ffd4ef4f81c6049700f76faa723e',1,'AbstractPokitService::readCharacteristics()'],['../classStatusService.html#ad73514f6f324ca56dffb844b14eb3bc0',1,'StatusService::readCharacteristics() override']]],
-  ['readdevicecharacteristics_2',['readDeviceCharacteristics',['../classStatusService.html#adca5ca235e99c7878f8fde507bf487cc',1,'StatusService']]],
-  ['readnamecharacteristic_3',['readNameCharacteristic',['../classStatusService.html#a1540af10953c1b4b7d08620ade8c27ea',1,'StatusService']]],
-  ['readstatuscharacteristic_4',['readStatusCharacteristic',['../classStatusService.html#a0410049da4a7ac6a64027c733797c578',1,'StatusService']]],
-  ['requiredoptions_5',['requiredOptions',['../classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8',1,'AbstractCommand::requiredOptions()'],['../classDeviceCommand.html#a51880909f53005b1c178611aaac394e7',1,'DeviceCommand::requiredOptions()'],['../classFlashLedCommand.html#afdd092d0f82398d537a249cd6b8b9b9a',1,'FlashLedCommand::requiredOptions()'],['../classInfoCommand.html#aeba667f52f3bb12a890e70854c47eece',1,'InfoCommand::requiredOptions()'],['../classScanCommand.html#a5322e3ce00daeae21becb853312d4bdf',1,'ScanCommand::requiredOptions()'],['../classSetNameCommand.html#aca427dcc4590c0eb0033885efc28fcf2',1,'SetNameCommand::requiredOptions()'],['../classStatusCommand.html#aa2345f5f5e6453ca4364c78ca476c427',1,'StatusCommand::requiredOptions()']]]
+  ['q_5fdeclare_5flogging_5fcategory_0',['Q_DECLARE_LOGGING_CATEGORY',['../logging__p_8h.html#afc3290f0db62105bcec2f5c20e5d2c26',1,'Q_DECLARE_LOGGING_CATEGORY(pokitController):&#160;logging_p.h'],['../logging__p_8h.html#a47ffade19a5d4b611e3b546f0e2fb025',1,'Q_DECLARE_LOGGING_CATEGORY(pokitDiscovery):&#160;logging_p.h'],['../logging__p_8h.html#a9ea9c9c431e206effdb8b5d0203e1713',1,'Q_DECLARE_LOGGING_CATEGORY(pokitService):&#160;logging_p.h'],['../logging__p_8h.html#a73a1cedb4ff68d2d513198e62a50a7fd',1,'Q_DECLARE_LOGGING_CATEGORY(pokitUtils):&#160;logging_p.h']]],
+  ['q_5flogging_5fcategory_1',['Q_LOGGING_CATEGORY',['../classAbstractCommand.html#a91d544b7f14475f55e9043832f3d1eb2',1,'AbstractCommand']]],
+  ['q_5fptr_2',['q_ptr',['../classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845',1,'AbstractPokitServicePrivate::q_ptr()'],['../classPokitDevicePrivate.html#abea5b943805d4fbb5cb778abd22d3f8c',1,'PokitDevicePrivate::q_ptr()'],['../classPokitDeviceDiscoveryAgentPrivate.html#a819e6082b753d0dc5d6b8eb1d75d76af',1,'PokitDeviceDiscoveryAgentPrivate::q_ptr()']]],
+  ['qtpokit_20_2d_20internal_3',['QtPokit - Internal',['../index.html',1,'']]],
+  ['qtpokit_5fbegin_5fnamespace_4',['QTPOKIT_BEGIN_NAMESPACE',['../qtpokit__global_8h.html#ac5aca53b48a017f8db467922deee7983',1,'qtpokit_global.h']]],
+  ['qtpokit_5fend_5fnamespace_5',['QTPOKIT_END_NAMESPACE',['../qtpokit__global_8h.html#af2a5fcdf5ad6da4ea4f238aad0d29d65',1,'qtpokit_global.h']]],
+  ['qtpokit_5fexport_6',['QTPOKIT_EXPORT',['../qtpokit__global_8h.html#aeba02234b4a21ddf98bb8127b8d41759',1,'qtpokit_global.h']]],
+  ['qtpokit_5fglobal_2eh_7',['qtpokit_global.h',['../qtpokit__global_8h.html',1,'']]]
 ];

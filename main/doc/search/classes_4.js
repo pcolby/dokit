@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['statusservice_0',['StatusService',['../classStatusService.html',1,'']]]
+  ['infoservice_0',['InfoService',['../classInfoService.html',1,'']]]
 ];

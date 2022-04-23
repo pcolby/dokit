@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['service_0',['service',['../classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b',1,'AbstractPokitService::service()'],['../classAbstractPokitService.html#ab7161dedf8ae431f723a5e225c2ec9ca',1,'AbstractPokitService::service() const']]],
-  ['servicedetailsdiscovered_1',['serviceDetailsDiscovered',['../classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff',1,'AbstractPokitService']]],
-  ['serviceerroroccurred_2',['serviceErrorOccurred',['../classAbstractPokitService.html#a9e680ebf280361ef82f4b072448d7e9b',1,'AbstractPokitService']]],
-  ['setautodiscover_3',['setAutoDiscover',['../classAbstractPokitService.html#a9d6d50cf31bc5859747a134d6cb4c418',1,'AbstractPokitService']]],
-  ['setdevicename_4',['setDeviceName',['../classStatusService.html#ada280bc54493f85e6855a2534bf2a02d',1,'StatusService']]],
-  ['start_5',['start',['../classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965',1,'PokitDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)'],['../classPokitDeviceDiscoveryAgent.html#ae91ec520792eee6c044d0d22c9ce014e',1,'PokitDeviceDiscoveryAgent::start()']]],
-  ['status_6',['status',['../classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142',1,'PokitDevice']]],
-  ['statusservice_7',['StatusService',['../classStatusService.html#a095254046689e5115ba053c029a2e1b8',1,'StatusService']]]
+  ['readappearancecharacteristic_0',['readAppearanceCharacteristic',['../classGenericAccessService.html#a74542246a9a578267700eb810ff116c1',1,'GenericAccessService']]],
+  ['readcharacteristics_1',['readCharacteristics',['../classAbstractPokitService.html#a0d29ffd4ef4f81c6049700f76faa723e',1,'AbstractPokitService::readCharacteristics()'],['../classGenericAccessService.html#ac8c19de24829fd54ee1907020899785f',1,'GenericAccessService::readCharacteristics()'],['../classInfoService.html#a031cacbf88f469bcc0e81e5725ff2849',1,'InfoService::readCharacteristics()'],['../classStatusService.html#ad73514f6f324ca56dffb844b14eb3bc0',1,'StatusService::readCharacteristics() override']]],
+  ['readdevicecharacteristics_2',['readDeviceCharacteristics',['../classStatusService.html#adca5ca235e99c7878f8fde507bf487cc',1,'StatusService']]],
+  ['readfirmwarerevisioncharacteristic_3',['readFirmwareRevisionCharacteristic',['../classInfoService.html#a16c5f015bb497b51889ae52211708f94',1,'InfoService']]],
+  ['readhardwarerevisioncharacteristic_4',['readHardwareRevisionCharacteristic',['../classInfoService.html#a75690ee8aaaa705bd99b2f7702523c25',1,'InfoService']]],
+  ['readmanufacturercharacteristics_5',['readManufacturerCharacteristics',['../classInfoService.html#a00f1e9fd024e150d1f8bf6ab190614c2',1,'InfoService']]],
+  ['readmodelnumbercharacteristic_6',['readModelNumberCharacteristic',['../classInfoService.html#a754b18e3eb7c27b7ca171426cbccd782',1,'InfoService']]],
+  ['readnamecharacteristic_7',['readNameCharacteristic',['../classGenericAccessService.html#ae0818b6c21462d1527ced3447e937032',1,'GenericAccessService::readNameCharacteristic()'],['../classStatusService.html#a1540af10953c1b4b7d08620ade8c27ea',1,'StatusService::readNameCharacteristic()']]],
+  ['readsoftwarerevisioncharacteristic_8',['readSoftwareRevisionCharacteristic',['../classInfoService.html#a85ce5a76da5f8b43c479a570001f8be1',1,'InfoService']]],
+  ['readstatuscharacteristic_9',['readStatusCharacteristic',['../classStatusService.html#a0410049da4a7ac6a64027c733797c578',1,'StatusService']]]
 ];

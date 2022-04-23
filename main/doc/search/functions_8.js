@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['pokitdevice_0',['PokitDevice',['../classPokitDevice.html#af2e70d41938c635e2c80911f177f0b78',1,'PokitDevice::PokitDevice(const QString &amp;addressOrUuid, QObject *parent=nullptr)'],['../classPokitDevice.html#a8ef0156de9faef55985d01b4df1fce87',1,'PokitDevice::PokitDevice(QLowEnergyController *controller, QObject *parent=nullptr)']]],
-  ['pokitdevicediscovered_1',['pokitDeviceDiscovered',['../classPokitDeviceDiscoveryAgent.html#a91accfadf0d717060e5c2002c0443afd',1,'PokitDeviceDiscoveryAgent']]],
-  ['pokitdevicediscoveryagent_2',['PokitDeviceDiscoveryAgent',['../classPokitDeviceDiscoveryAgent.html#a13cc657e3d754dfc7140fe66aa55902b',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(const QBluetoothAddress &amp;deviceAdapter, QObject *parent=nullptr)'],['../classPokitDeviceDiscoveryAgent.html#a03b42b2404ff9f1e0a6c9a491fe1efac',1,'PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(QObject *parent=nullptr)']]],
-  ['pokitdeviceupdated_3',['pokitDeviceUpdated',['../classPokitDeviceDiscoveryAgent.html#a3de575cde89767ba7bfff9c9bd144862',1,'PokitDeviceDiscoveryAgent']]]
+  ['manufacturer_0',['manufacturer',['../classInfoService.html#a0dec3e81af089b046f8a24427c39654d',1,'InfoService']]],
+  ['manufacturerread_1',['manufacturerRead',['../classInfoService.html#a7b2991bda5867fc00dfcb097e9ca1d6d',1,'InfoService']]],
+  ['modelnumber_2',['modelNumber',['../classInfoService.html#a7bcd8c53e588903e91696193e38fd561',1,'InfoService']]],
+  ['modelnumberread_3',['modelNumberRead',['../classInfoService.html#ab6b8d5a2a484e84a23570db05a2d5202',1,'InfoService']]],
+  ['multimeter_4',['multimeter',['../classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce',1,'PokitDevice']]]
 ];

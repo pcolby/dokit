@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['scancommand_0',['ScanCommand',['../classScanCommand.html',1,'']]],
-  ['setnamecommand_1',['SetNameCommand',['../classSetNameCommand.html',1,'']]],
-  ['statuscommand_2',['StatusCommand',['../classStatusCommand.html',1,'']]],
-  ['statusservice_3',['StatusService',['../classStatusService.html',1,'']]],
-  ['statusserviceprivate_4',['StatusServicePrivate',['../classStatusServicePrivate.html',1,'']]]
+  ['pokitdevice_0',['PokitDevice',['../classPokitDevice.html',1,'']]],
+  ['pokitdevicediscoveryagent_1',['PokitDeviceDiscoveryAgent',['../classPokitDeviceDiscoveryAgent.html',1,'']]],
+  ['pokitdevicediscoveryagentprivate_2',['PokitDeviceDiscoveryAgentPrivate',['../classPokitDeviceDiscoveryAgentPrivate.html',1,'']]],
+  ['pokitdeviceprivate_3',['PokitDevicePrivate',['../classPokitDevicePrivate.html',1,'']]]
 ];

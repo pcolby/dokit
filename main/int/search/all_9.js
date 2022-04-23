@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logging_5fp_2eh_0',['logging_p.h',['../logging__p_8h.html',1,'']]]
+  ['json_0',['Json',['../classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333',1,'AbstractCommand']]]
 ];

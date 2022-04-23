@@ -3,6 +3,14 @@ var dir_ddc6122f88ae27c68298ac38e50d2d9d =
     [ "abstractpokitservice.h", "abstractpokitservice_8h.html", [
       [ "AbstractPokitService", "classAbstractPokitService.html", "classAbstractPokitService" ]
     ] ],
+    [ "genericaccessservice.h", "genericaccessservice_8h.html", [
+      [ "GenericAccessService", "classGenericAccessService.html", "classGenericAccessService" ],
+      [ "GenericAccessService::CharacteristicUuids", "structGenericAccessService_1_1CharacteristicUuids.html", "structGenericAccessService_1_1CharacteristicUuids" ]
+    ] ],
+    [ "infoservice.h", "infoservice_8h.html", [
+      [ "InfoService", "classInfoService.html", "classInfoService" ],
+      [ "InfoService::CharacteristicUuids", "structInfoService_1_1CharacteristicUuids.html", "structInfoService_1_1CharacteristicUuids" ]
+    ] ],
     [ "pokitdevice.h", "pokitdevice_8h.html", [
       [ "PokitDevice", "classPokitDevice.html", "classPokitDevice" ]
     ] ],
@@ -15,6 +23,5 @@ var dir_ddc6122f88ae27c68298ac38e50d2d9d =
       [ "StatusService::CharacteristicUuids", "structStatusService_1_1CharacteristicUuids.html", "structStatusService_1_1CharacteristicUuids" ],
       [ "StatusService::DeviceCharacteristics", "structStatusService_1_1DeviceCharacteristics.html", "structStatusService_1_1DeviceCharacteristics" ]
     ] ],
-    [ "utils.h", "utils_8h.html", "utils_8h" ],
-    [ "uuids.h", "uuids_8h.html", "uuids_8h" ]
+    [ "utils.h", "utils_8h.html", "utils_8h" ]
 ];
