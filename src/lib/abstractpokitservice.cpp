@@ -26,7 +26,6 @@
 #include "abstractpokitservice_p.h"
 #include "logging_p.h"
 
-#include <QDebug>
 #include <QLowEnergyController>
 
 /*!

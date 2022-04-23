@@ -30,7 +30,6 @@
 #include "logging_p.h"
 
 #include <QBluetoothUuid>
-#include <QDebug>
 
 /*!
  * \class PokitDeviceDiscoveryAgent

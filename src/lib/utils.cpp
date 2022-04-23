@@ -27,7 +27,6 @@
 #include "logging_p.h"
 
 #include <QBluetoothAddress>
-#include <QDebug>
 
 QTPOKIT_BEGIN_NAMESPACE
 

@@ -25,7 +25,6 @@
 
 #include <QCommandLineParser>
 #include <QCoreApplication>
-#include <QDebug>
 #include <QLoggingCategory>
 
 #if defined(Q_OS_UNIX)
