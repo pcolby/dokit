@@ -274,19 +274,19 @@ Protected Attributes</h2></td></tr>
 <p >Some examples: </p><div class="fragment"><div class="line">QCOMPARE(<a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(<span class="stringliteral">&quot;abc&quot;</span>), <span class="stringliteral">&quot;abc&quot;</span>);       <span class="comment">// Returned unchanged.</span></div>
 <div class="line">QCOMPARE(<a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(<span class="stringliteral">&quot;a,c&quot;</span>), <span class="stringliteral">&quot;\&quot;a,c\&quot;&quot;</span>);   <span class="comment">// Wrapped in double-quotes.</span></div>
 <div class="line">QCOMPARE(<a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(<span class="stringliteral">&quot;a\&quot;c&quot;</span>), <span class="stringliteral">&quot;\&quot;a&quot;</span><span class="stringliteral">&quot;c\&quot;&quot;</span>); <span class="comment">// Existing double-quotes doubles, then wrapped.</span></div>
-<div class="ttc" id="aclassAbstractCommand_html_af85c842568f8a3a893e336e449ef7813"><div class="ttname"><a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">AbstractCommand::escapeCsvField</a></div><div class="ttdeci">static QString escapeCsvField(const QString &amp;field)</div><div class="ttdoc">Returns an RFC 4180 compliant version of field.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00093">abstractcommand.cpp:93</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_af85c842568f8a3a893e336e449ef7813"><div class="ttname"><a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">AbstractCommand::escapeCsvField</a></div><div class="ttdeci">static QString escapeCsvField(const QString &amp;field)</div><div class="ttdoc">Returns an RFC 4180 compliant version of field.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00092">abstractcommand.cpp:92</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00093">93</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">if</span> (field.contains(QLatin1Char(<span class="charliteral">&#39;,&#39;</span>))||field.contains(QLatin1Char(<span class="charliteral">&#39;\r&#39;</span>))||</div>
-<div class="line"><span class="lineno">   96</span>        field.contains(QLatin1Char(<span class="charliteral">&#39;&quot;&#39;</span>))||field.contains(QLatin1Char(<span class="charliteral">&#39;\n&#39;</span>)))</div>
-<div class="line"><span class="lineno">   97</span>    {</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span> QString::fromLatin1(<span class="stringliteral">&quot;\&quot;%1\&quot;&quot;</span>).arg(</div>
-<div class="line"><span class="lineno">   99</span>            QString(field).replace(QLatin1Char(<span class="charliteral">&#39;&quot;&#39;</span>), QLatin1String(<span class="stringliteral">&quot;\&quot;\&quot;&quot;</span>)));</div>
-<div class="line"><span class="lineno">  100</span>    } <span class="keywordflow">else</span> <span class="keywordflow">return</span> field;</div>
-<div class="line"><span class="lineno">  101</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00092">92</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (field.contains(QLatin1Char(<span class="charliteral">&#39;,&#39;</span>))||field.contains(QLatin1Char(<span class="charliteral">&#39;\r&#39;</span>))||</div>
+<div class="line"><span class="lineno">   95</span>        field.contains(QLatin1Char(<span class="charliteral">&#39;&quot;&#39;</span>))||field.contains(QLatin1Char(<span class="charliteral">&#39;\n&#39;</span>)))</div>
+<div class="line"><span class="lineno">   96</span>    {</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">return</span> QString::fromLatin1(<span class="stringliteral">&quot;\&quot;%1\&quot;&quot;</span>).arg(</div>
+<div class="line"><span class="lineno">   98</span>            QString(field).replace(QLatin1Char(<span class="charliteral">&#39;&quot;&#39;</span>), QLatin1String(<span class="stringliteral">&quot;\&quot;\&quot;&quot;</span>)));</div>
+<div class="line"><span class="lineno">   99</span>    } <span class="keywordflow">else</span> <span class="keywordflow">return</span> field;</div>
+<div class="line"><span class="lineno">  100</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00095">ScanCommand::deviceDiscovered()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00092">StatusCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00096">ScanCommand::deviceDiscovered()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00093">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -334,51 +334,51 @@ Here is the caller graph for this function:</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> errors;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00128">abstractcommand.cpp:128</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00127">abstractcommand.cpp:127</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00128">128</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  129</span>{</div>
-<div class="line"><span class="lineno">  130</span>    <span class="comment">// Report any supplied options that are not supported by this command.</span></div>
-<div class="line"><span class="lineno">  131</span>    <span class="keyword">const</span> QStringList suppliedOptions = parser.optionNames();</div>
-<div class="line"><span class="lineno">  132</span>    <span class="keyword">const</span> QStringList <a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a> = this-&gt;<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>();</div>
-<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QString &amp;option: suppliedOptions) {</div>
-<div class="line"><span class="lineno">  134</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>.contains(option)) {</div>
-<div class="line"><span class="lineno">  135</span>            qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Ignoring option: %1&quot;</span>).arg(option);</div>
-<div class="line"><span class="lineno">  136</span>        }</div>
-<div class="line"><span class="lineno">  137</span>    }</div>
-<div class="line"><span class="lineno">  138</span>    QStringList errors;</div>
-<div class="line"><span class="lineno">  139</span> </div>
-<div class="line"><span class="lineno">  140</span>    <span class="comment">// Parse the output format options (if supported, and supplied).</span></div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">if</span> ((<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>.contains(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>))) &amp;&amp; <span class="comment">// Derived classes may have removed.</span></div>
-<div class="line"><span class="lineno">  142</span>        (parser.isSet(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>))))</div>
-<div class="line"><span class="lineno">  143</span>    {</div>
-<div class="line"><span class="lineno">  144</span>        <span class="keyword">const</span> QString output = parser.value(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>)).toLower();</div>
-<div class="line"><span class="lineno">  145</span>        <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;csv&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  146</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>;</div>
-<div class="line"><span class="lineno">  147</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;json&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  148</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>;</div>
-<div class="line"><span class="lineno">  149</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;text&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  150</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>;</div>
-<div class="line"><span class="lineno">  151</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  152</span>            errors.append(tr(<span class="stringliteral">&quot;Unknown output format: %1&quot;</span>).arg(output));</div>
-<div class="line"><span class="lineno">  153</span>        }</div>
-<div class="line"><span class="lineno">  154</span>    }</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>    <span class="comment">// Return errors for any required options that are absent.</span></div>
-<div class="line"><span class="lineno">  157</span>    <span class="keyword">const</span> QStringList <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a> = this-&gt;<a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>();</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QString &amp;option: <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>) {</div>
-<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">if</span> (!parser.isSet(option)) {</div>
-<div class="line"><span class="lineno">  160</span>            errors.append(tr(<span class="stringliteral">&quot;Missing required option: %1&quot;</span>).arg(option));</div>
-<div class="line"><span class="lineno">  161</span>        }</div>
-<div class="line"><span class="lineno">  162</span>    }</div>
-<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">return</span> errors;</div>
-<div class="line"><span class="lineno">  164</span>}</div>
-<div class="ttc" id="aclassAbstractCommand_html_a002fc48054b9df13bbb2e0bdc488c6d3"><div class="ttname"><a href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a></div><div class="ttdeci">virtual QStringList supportedOptions() const</div><div class="ttdoc">Returns a list of CLI option names supported by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00073">abstractcommand.cpp:73</a></div></div>
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00127">127</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>{</div>
+<div class="line"><span class="lineno">  129</span>    <span class="comment">// Report any supplied options that are not supported by this command.</span></div>
+<div class="line"><span class="lineno">  130</span>    <span class="keyword">const</span> QStringList suppliedOptions = parser.optionNames();</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keyword">const</span> QStringList <a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a> = this-&gt;<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>();</div>
+<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QString &amp;option: suppliedOptions) {</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>.contains(option)) {</div>
+<div class="line"><span class="lineno">  134</span>            qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Ignoring option: %1&quot;</span>).arg(option);</div>
+<div class="line"><span class="lineno">  135</span>        }</div>
+<div class="line"><span class="lineno">  136</span>    }</div>
+<div class="line"><span class="lineno">  137</span>    QStringList errors;</div>
+<div class="line"><span class="lineno">  138</span> </div>
+<div class="line"><span class="lineno">  139</span>    <span class="comment">// Parse the output format options (if supported, and supplied).</span></div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">if</span> ((<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>.contains(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>))) &amp;&amp; <span class="comment">// Derived classes may have removed.</span></div>
+<div class="line"><span class="lineno">  141</span>        (parser.isSet(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>))))</div>
+<div class="line"><span class="lineno">  142</span>    {</div>
+<div class="line"><span class="lineno">  143</span>        <span class="keyword">const</span> QString output = parser.value(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>)).toLower();</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;csv&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  145</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>;</div>
+<div class="line"><span class="lineno">  146</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;json&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  147</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>;</div>
+<div class="line"><span class="lineno">  148</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;text&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  149</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>;</div>
+<div class="line"><span class="lineno">  150</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  151</span>            errors.append(tr(<span class="stringliteral">&quot;Unknown output format: %1&quot;</span>).arg(output));</div>
+<div class="line"><span class="lineno">  152</span>        }</div>
+<div class="line"><span class="lineno">  153</span>    }</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>    <span class="comment">// Return errors for any required options that are absent.</span></div>
+<div class="line"><span class="lineno">  156</span>    <span class="keyword">const</span> QStringList <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a> = this-&gt;<a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>();</div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QString &amp;option: <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>) {</div>
+<div class="line"><span class="lineno">  158</span>        <span class="keywordflow">if</span> (!parser.isSet(option)) {</div>
+<div class="line"><span class="lineno">  159</span>            errors.append(tr(<span class="stringliteral">&quot;Missing required option: %1&quot;</span>).arg(option));</div>
+<div class="line"><span class="lineno">  160</span>        }</div>
+<div class="line"><span class="lineno">  161</span>    }</div>
+<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">return</span> errors;</div>
+<div class="line"><span class="lineno">  163</span>}</div>
+<div class="ttc" id="aclassAbstractCommand_html_a002fc48054b9df13bbb2e0bdc488c6d3"><div class="ttname"><a href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a></div><div class="ttdeci">virtual QStringList supportedOptions() const</div><div class="ttdoc">Returns a list of CLI option names supported by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00072">abstractcommand.cpp:72</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::OutputFormat::Csv</a></div><div class="ttdeci">@ Csv</div><div class="ttdoc">RFC 4180 compliant CSV text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::OutputFormat::Json</a></div><div class="ttdeci">@ Json</div><div class="ttdoc">RFC 8259 compliant JSON text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aec006493cf0a4ba88c092c597bf247b8"><div class="ttname"><a href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand::requiredOptions</a></div><div class="ttdeci">virtual QStringList requiredOptions() const</div><div class="ttdoc">Returns a list of CLI option names required by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00050">abstractcommand.cpp:50</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">Csv</a>, <a class="el" href="abstractcommand_8h_source.html#l00048">format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">Json</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00050">requiredOptions()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00073">supportedOptions()</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">Text</a>.</p>
+<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">Csv</a>, <a class="el" href="abstractcommand_8h_source.html#l00048">format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">Json</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00050">requiredOptions()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00072">supportedOptions()</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">Text</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00052">DeviceCommand::processOptions()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00062">ScanCommand::processOptions()</a>.</p>
 <div class="dynheader">
@@ -430,7 +430,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> QStringList();</div>
 <div class="line"><span class="lineno">   53</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00039">DeviceCommand::requiredOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00050">ScanCommand::requiredOptions()</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00073">supportedOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00127">processOptions()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00039">DeviceCommand::requiredOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00050">ScanCommand::requiredOptions()</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00072">supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -476,17 +476,17 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment --> 
 <p>Reimplemented in <a class="el" href="classFlashLedCommand.html#ae533aaeeda78e56b6feabf9ef6fe5ab5">FlashLedCommand</a>, <a class="el" href="classInfoCommand.html#aaeb045dac5796d18b1041c0917267ec6">InfoCommand</a>, <a class="el" href="classScanCommand.html#af9af0702a9869ec1c762aecce7600271">ScanCommand</a>, <a class="el" href="classSetNameCommand.html#a296bb2bf52fdd511a90ac412fc27dc52">SetNameCommand</a>, and <a class="el" href="classStatusCommand.html#a6e6f923a2753025b8f11412048cd0866">StatusCommand</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00073">73</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>{</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>() + QStringList{</div>
-<div class="line"><span class="lineno">   76</span>        QLatin1String(<span class="stringliteral">&quot;debug&quot;</span>),</div>
-<div class="line"><span class="lineno">   77</span>        QLatin1String(<span class="stringliteral">&quot;output&quot;</span>),</div>
-<div class="line"><span class="lineno">   78</span>    };</div>
-<div class="line"><span class="lineno">   79</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00072">72</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>() + QStringList{</div>
+<div class="line"><span class="lineno">   75</span>        QLatin1String(<span class="stringliteral">&quot;debug&quot;</span>),</div>
+<div class="line"><span class="lineno">   76</span>        QLatin1String(<span class="stringliteral">&quot;output&quot;</span>),</div>
+<div class="line"><span class="lineno">   77</span>    };</div>
+<div class="line"><span class="lineno">   78</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00050">requiredOptions()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00046">FlashLedCommand::supportedOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00046">InfoCommand::supportedOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00055">ScanCommand::supportedOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00046">SetNameCommand::supportedOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00049">StatusCommand::supportedOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00127">processOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00045">FlashLedCommand::supportedOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00045">InfoCommand::supportedOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00055">ScanCommand::supportedOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00046">SetNameCommand::supportedOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00048">StatusCommand::supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -527,7 +527,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00048">48</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00095">ScanCommand::deviceDiscovered()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00128">processOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00092">StatusCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="setnamecommand_8cpp_source.html#l00110">SetNameCommand::deivceNameWritten()</a>, <a class="el" href="scancommand_8cpp_source.html#l00096">ScanCommand::deviceDiscovered()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00103">FlashLedCommand::deviceLedFlashed()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00127">processOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00093">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 
 </div>
 </div>

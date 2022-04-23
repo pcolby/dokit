@@ -160,6 +160,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>deviceLedFlashed</b> 
 <tr class="memitem:af67cbea4294ba0a77dcd9540b29528ff inherit signals_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">serviceDetailsDiscovered</a> ()</td></tr>
 <tr class="memdesc:af67cbea4294ba0a77dcd9540b29528ff inherit signals_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is emitted when the Pokit service details have been discovered.  <a href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">More...</a><br /></td></tr>
 <tr class="separator:af67cbea4294ba0a77dcd9540b29528ff inherit signals_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e680ebf280361ef82f4b072448d7e9b inherit signals_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top"><a id="a9e680ebf280361ef82f4b072448d7e9b" name="a9e680ebf280361ef82f4b072448d7e9b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>serviceErrorOccurred</b> (QLowEnergyService::ServiceError newError)</td></tr>
+<tr class="memdesc:a9e680ebf280361ef82f4b072448d7e9b inherit signals_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is emitted whenever an error occurs on the underlying QLowEnergyService. <br /></td></tr>
+<tr class="separator:a9e680ebf280361ef82f4b072448d7e9b inherit signals_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -358,7 +362,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TestStatusService</b
 <div class="line"><span class="keywordflow">if</span> (!characteristics.firmwareVersion.isNull()) {</div>
 <div class="line">    ...</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassAbstractPokitService_html_a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><div class="ttname"><a href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">AbstractPokitService::service</a></div><div class="ttdeci">QLowEnergyService * service()</div><div class="ttdoc">Returns a non-const pointer to the internal service object, if any.</div><div class="ttdef"><b>Definition:</b> abstractpokitservice.cpp:99</div></div>
+<div class="ttc" id="aclassAbstractPokitService_html_a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><div class="ttname"><a href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">AbstractPokitService::service</a></div><div class="ttdeci">QLowEnergyService * service()</div><div class="ttdoc">Returns a non-const pointer to the internal service object, if any.</div><div class="ttdef"><b>Definition:</b> abstractpokitservice.cpp:98</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -519,7 +523,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TestStatusService</b
 <p >Returns <code>true</code> if the flash request was successfully queued, <code>false</code> otherwise.</p>
 <p >Emits <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee" title="This signal is emitted when device&#39;s LED has flashed in response to a write of the Flash LED characte...">deviceLedFlashed()</a> if/when the LED has flashed successfully.</p>
 <dl class="section note"><dt>Note</dt><dd>This does not appear to work currently, for the one (Pokit Pro) device available for testing. Instead, the underlying Bluetooth stack returns ATT error <code>0x80</code>.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>Diagnose and/or follow up with Pokit Innovations. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Diagnose and/or follow up with Pokit Innovations. </dd></dl>
 
 </div>
 </div>

@@ -1,13 +1,13 @@
 var searchData=
 [
   ['datalogger_0',['dataLogger',['../classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961',1,'PokitDevice']]],
-  ['deivcenamewritten_1',['deivceNameWritten',['../classStatusService.html#a092e655b40139d94fe046b86f0dd51e5',1,'StatusService']]],
+  ['deivcenamewritten_1',['deivceNameWritten',['../classStatusService.html#a092e655b40139d94fe046b86f0dd51e5',1,'StatusService::deivceNameWritten()'],['../classSetNameCommand.html#a25871d2f3a6aded92a89559fd36370f4',1,'SetNameCommand::deivceNameWritten()']]],
   ['devicecharacteristics_2',['deviceCharacteristics',['../classStatusService.html#a008d41a33eedd90e68ccf7a94ed5b65f',1,'StatusService']]],
   ['devicecharacteristicsread_3',['deviceCharacteristicsRead',['../classStatusService.html#aeac02849bd35edeadda7ab7b4a4939c9',1,'StatusService']]],
   ['devicecommand_4',['DeviceCommand',['../classDeviceCommand.html#a4a3454a7095975848884d93f61c6cd89',1,'DeviceCommand']]],
   ['devicediscovered_5',['deviceDiscovered',['../classScanCommand.html#abd933fedb834ca58d1ba4b60398a8cc1',1,'ScanCommand::deviceDiscovered()'],['../classPokitDeviceDiscoveryAgentPrivate.html#a1e55afd43970fd493409c2f60a95246e',1,'PokitDeviceDiscoveryAgentPrivate::deviceDiscovered()']]],
   ['deviceinformation_6',['deviceInformation',['../classPokitDevice.html#a95e2754eb5e31e5e9800a3ec9eb3b711',1,'PokitDevice']]],
-  ['deviceledflashed_7',['deviceLedFlashed',['../classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee',1,'StatusService']]],
+  ['deviceledflashed_7',['deviceLedFlashed',['../classFlashLedCommand.html#af7a5897fc7657f70466c82f5ed538ccb',1,'FlashLedCommand::deviceLedFlashed()'],['../classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee',1,'StatusService::deviceLedFlashed()']]],
   ['devicename_8',['deviceName',['../classStatusService.html#a113a7051f70e642d2c1f67124c1f12c7',1,'StatusService']]],
   ['devicenameread_9',['deviceNameRead',['../classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1',1,'StatusService']]],
   ['devicestatus_10',['deviceStatus',['../classStatusService.html#a37b3976eeb85bf5aaf1cb23605b15f01',1,'StatusService']]],

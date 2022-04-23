@@ -224,7 +224,7 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 <div class="line"><span class="lineno">   42</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classScanCommand.html#abd933fedb834ca58d1ba4b60398a8cc1">ScanCommand::deviceDiscovered</a>);</div>
 <div class="line"><span class="lineno">   43</span> </div>
 <div class="line"><span class="lineno">   44</span>    connect(<a class="code hl_variable" href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">discoveryAgent</a>, &amp;PokitDeviceDiscoveryAgent::finished, <span class="keyword">this</span>, []() {</div>
-<div class="line"><span class="lineno">   45</span>        qCDebug(lc) &lt;&lt; <span class="stringliteral">&quot;Finished scanning for Pokit devices.&quot;</span>;</div>
+<div class="line"><span class="lineno">   45</span>        qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Finished scanning for Pokit devices.&quot;</span>);</div>
 <div class="line"><span class="lineno">   46</span>        QCoreApplication::quit();</div>
 <div class="line"><span class="lineno">   47</span>    });</div>
 <div class="line"><span class="lineno">   48</span>}</div>
@@ -232,9 +232,9 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 <div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html">PokitDeviceDiscoveryAgent</a></div><div class="ttdoc">The PokitDeviceDiscoveryAgent class discovers nearby Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevicedisoveryagent_8h_source.html#l00036">pokitdevicedisoveryagent.h:37</a></div></div>
 <div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html_a91accfadf0d717060e5c2002c0443afd"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html#a91accfadf0d717060e5c2002c0443afd">PokitDeviceDiscoveryAgent::pokitDeviceDiscovered</a></div><div class="ttdeci">void pokitDeviceDiscovered(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">This signal is emitted when the Pokit device described by info is discovered.</div></div>
 <div class="ttc" id="aclassScanCommand_html_a1c332b213f3f87f47eb0fa9e6ba27674"><div class="ttname"><a href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">ScanCommand::discoveryAgent</a></div><div class="ttdeci">PokitDeviceDiscoveryAgent * discoveryAgent</div><div class="ttdoc">Agent for Pokit device descovery.</div><div class="ttdef"><b>Definition:</b> <a href="scancommand_8h_source.html#l00039">scancommand.h:39</a></div></div>
-<div class="ttc" id="aclassScanCommand_html_abd933fedb834ca58d1ba4b60398a8cc1"><div class="ttname"><a href="classScanCommand.html#abd933fedb834ca58d1ba4b60398a8cc1">ScanCommand::deviceDiscovered</a></div><div class="ttdeci">void deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Handles discovered Pokit devices, writing info to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="scancommand_8cpp_source.html#l00095">scancommand.cpp:95</a></div></div>
+<div class="ttc" id="aclassScanCommand_html_abd933fedb834ca58d1ba4b60398a8cc1"><div class="ttname"><a href="classScanCommand.html#abd933fedb834ca58d1ba4b60398a8cc1">ScanCommand::deviceDiscovered</a></div><div class="ttdeci">void deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Handles discovered Pokit devices, writing info to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="scancommand_8cpp_source.html#l00096">scancommand.cpp:96</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="scancommand_8cpp_source.html#l00095">deviceDiscovered()</a>, <a class="el" href="scancommand_8h_source.html#l00039">discoveryAgent</a>, and <a class="el" href="classPokitDeviceDiscoveryAgent.html#a91accfadf0d717060e5c2002c0443afd">PokitDeviceDiscoveryAgent::pokitDeviceDiscovered()</a>.</p>
+<p class="reference">References <a class="el" href="scancommand_8cpp_source.html#l00096">deviceDiscovered()</a>, <a class="el" href="scancommand_8h_source.html#l00039">discoveryAgent</a>, and <a class="el" href="classPokitDeviceDiscoveryAgent.html#a91accfadf0d717060e5c2002c0443afd">PokitDeviceDiscoveryAgent::pokitDeviceDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -271,33 +271,33 @@ Here is the call graph for this function:</div>
 
 <p>Handles discovered Pokit devices, writing <em>info</em> to stdout. </p>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00095">95</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   96</span>{</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
-<div class="line"><span class="lineno">   99</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">  100</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;%1,%2,%3,%4,%5,%6\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
-<div class="line"><span class="lineno">  101</span>            info.address().toString(), <a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(info.name()), <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass()),</div>
-<div class="line"><span class="lineno">  102</span>            <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);</div>
-<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
-<div class="line"><span class="lineno">  105</span>        fputs(QJsonDocument(<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(info)).<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(), stdout);</div>
-<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
-<div class="line"><span class="lineno">  108</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;%1 %2 %3\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
-<div class="line"><span class="lineno">  109</span>            info.address().toString(), info.name())), stdout);</div>
-<div class="line"><span class="lineno">  110</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  111</span>    }</div>
-<div class="line"><span class="lineno">  112</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00096">96</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>{</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
+<div class="line"><span class="lineno">  100</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;</span>)), stdout);</div>
+<div class="line"><span class="lineno">  101</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;%1,%2,%3,%4,%5,%6\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
+<div class="line"><span class="lineno">  102</span>            info.address().toString(), <a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(info.name()), <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass()),</div>
+<div class="line"><span class="lineno">  103</span>            <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);</div>
+<div class="line"><span class="lineno">  104</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
+<div class="line"><span class="lineno">  106</span>        fputs(QJsonDocument(<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(info)).<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(), stdout);</div>
+<div class="line"><span class="lineno">  107</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
+<div class="line"><span class="lineno">  109</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;%1 %2 %3\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
+<div class="line"><span class="lineno">  110</span>            info.address().toString(), info.name())), stdout);</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  112</span>    }</div>
+<div class="line"><span class="lineno">  113</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html_a881d85cd96b6fcc0652b916c366dda7b"><div class="ttname"><a href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">AbstractCommand::format</a></div><div class="ttdeci">OutputFormat format</div><div class="ttdoc">Selected output format.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00048">abstractcommand.h:48</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::OutputFormat::Text</a></div><div class="ttdeci">@ Text</div><div class="ttdoc">Plain unstructured text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::OutputFormat::Csv</a></div><div class="ttdeci">@ Csv</div><div class="ttdoc">RFC 4180 compliant CSV text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::OutputFormat::Json</a></div><div class="ttdeci">@ Json</div><div class="ttdoc">RFC 8259 compliant JSON text.</div></div>
-<div class="ttc" id="aclassAbstractCommand_html_af85c842568f8a3a893e336e449ef7813"><div class="ttname"><a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">AbstractCommand::escapeCsvField</a></div><div class="ttdeci">static QString escapeCsvField(const QString &amp;field)</div><div class="ttdoc">Returns an RFC 4180 compliant version of field.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00093">abstractcommand.cpp:93</a></div></div>
-<div class="ttc" id="autils_8h_html_a8136cbc7977bcdf5870866b23c324302"><div class="ttname"><a href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a></div><div class="ttdeci">QTPOKIT_EXPORT QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</div><div class="ttdoc">Returns majorClass as a human-readable string, or a null QString if majorClass is not recognised.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00190">utils.cpp:190</a></div></div>
-<div class="ttc" id="autils_8h_html_a9ffa9547932ff46690df34e1f0ede5d0"><div class="ttname"><a href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QTPOKIT_EXPORT QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00037">utils.cpp:37</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_af85c842568f8a3a893e336e449ef7813"><div class="ttname"><a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">AbstractCommand::escapeCsvField</a></div><div class="ttdeci">static QString escapeCsvField(const QString &amp;field)</div><div class="ttdoc">Returns an RFC 4180 compliant version of field.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00092">abstractcommand.cpp:92</a></div></div>
+<div class="ttc" id="autils_8h_html_a8136cbc7977bcdf5870866b23c324302"><div class="ttname"><a href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a></div><div class="ttdeci">QTPOKIT_EXPORT QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</div><div class="ttdoc">Returns majorClass as a human-readable string, or a null QString if majorClass is not recognised.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00189">utils.cpp:189</a></div></div>
+<div class="ttc" id="autils_8h_html_a9ffa9547932ff46690df34e1f0ede5d0"><div class="ttname"><a href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QTPOKIT_EXPORT QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00036">utils.cpp:36</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00093">AbstractCommand::escapeCsvField()</a>, <a class="el" href="abstractcommand_8h_source.html#l00048">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>, <a class="el" href="utils_8cpp_source.html#l00037">toJson()</a>, and <a class="el" href="utils_8cpp_source.html#l00190">toString()</a>.</p>
+<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00092">AbstractCommand::escapeCsvField()</a>, <a class="el" href="abstractcommand_8h_source.html#l00048">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>, <a class="el" href="utils_8cpp_source.html#l00036">toJson()</a>, and <a class="el" href="utils_8cpp_source.html#l00189">toString()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00037">ScanCommand()</a>.</p>
 <div class="dynheader">
@@ -338,7 +338,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd>Validate the value format. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Validate the value format. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00062">62</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
@@ -353,14 +353,15 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   72</span><span class="comment">        /// \todo Validate the value format.</span></div>
 <div class="line"><span class="lineno">   73</span><span class="comment"></span>        <a class="code hl_variable" href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">discoveryAgent</a>-&gt;setLowEnergyDiscoveryTimeout(</div>
 <div class="line"><span class="lineno">   74</span>            parser.value(QStringLiteral(<span class="stringliteral">&quot;timeout&quot;</span>)).toInt()*1000);</div>
-<div class="line"><span class="lineno">   75</span>        qCDebug(lc) &lt;&lt; tr(<span class="stringliteral">&quot;Set scan timeout to %1&quot;</span>).arg(<a class="code hl_variable" href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">discoveryAgent</a>-&gt;lowEnergyDiscoveryTimeout());</div>
-<div class="line"><span class="lineno">   76</span>    }</div>
-<div class="line"><span class="lineno">   77</span> </div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">return</span> errors;</div>
-<div class="line"><span class="lineno">   79</span>}</div>
-<div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00128">abstractcommand.cpp:128</a></div></div>
+<div class="line"><span class="lineno">   75</span>        qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Set scan timeout to %1&quot;</span>).arg(</div>
+<div class="line"><span class="lineno">   76</span>            <a class="code hl_variable" href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">discoveryAgent</a>-&gt;lowEnergyDiscoveryTimeout());</div>
+<div class="line"><span class="lineno">   77</span>    }</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> errors;</div>
+<div class="line"><span class="lineno">   80</span>}</div>
+<div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00127">abstractcommand.cpp:127</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="scancommand_8h_source.html#l00039">discoveryAgent</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00128">AbstractCommand::processOptions()</a>.</p>
+<p class="reference">References <a class="el" href="scancommand_8h_source.html#l00039">discoveryAgent</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00127">AbstractCommand::processOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -440,16 +441,16 @@ Here is the call graph for this function:</div>
 
 <p>Begins scanning for Pokit devices. </p>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00084">84</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   85</span>{</div>
-<div class="line"><span class="lineno">   86</span>    Q_ASSERT(<a class="code hl_variable" href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">discoveryAgent</a>);</div>
-<div class="line"><span class="lineno">   87</span>    qCDebug(lc).noquote().nospace() &lt;&lt; tr(<span class="stringliteral">&quot;Scanning for Pokit devices...&quot;</span>);</div>
-<div class="line"><span class="lineno">   88</span>    <a class="code hl_variable" href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">discoveryAgent</a>-&gt;<a class="code hl_slot" href="classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965">start</a>();</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-<div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html_a941c88d60e7e8b3aed345c19fb9c5965"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965">PokitDeviceDiscoveryAgent::start</a></div><div class="ttdeci">void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)</div><div class="ttdoc">Starts Pokit device discovery.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevicedisoveryagent_8cpp_source.html#l00115">pokitdevicedisoveryagent.cpp:115</a></div></div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00085">85</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>    Q_ASSERT(<a class="code hl_variable" href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">discoveryAgent</a>);</div>
+<div class="line"><span class="lineno">   88</span>    qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Scanning for Pokit devices...&quot;</span>);</div>
+<div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="classScanCommand.html#a1c332b213f3f87f47eb0fa9e6ba27674">discoveryAgent</a>-&gt;<a class="code hl_slot" href="classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965">start</a>();</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   91</span>}</div>
+<div class="ttc" id="aclassPokitDeviceDiscoveryAgent_html_a941c88d60e7e8b3aed345c19fb9c5965"><div class="ttname"><a href="classPokitDeviceDiscoveryAgent.html#a941c88d60e7e8b3aed345c19fb9c5965">PokitDeviceDiscoveryAgent::start</a></div><div class="ttdeci">void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)</div><div class="ttdoc">Starts Pokit device discovery.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevicedisoveryagent_8cpp_source.html#l00114">pokitdevicedisoveryagent.cpp:114</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="scancommand_8h_source.html#l00039">discoveryAgent</a>, and <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00115">PokitDeviceDiscoveryAgent::start()</a>.</p>
+<p class="reference">References <a class="el" href="scancommand_8h_source.html#l00039">discoveryAgent</a>, and <a class="el" href="pokitdevicedisoveryagent_8cpp_source.html#l00114">PokitDeviceDiscoveryAgent::start()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -492,7 +493,7 @@ Here is the call graph for this function:</div>
 <div class="line">    list.removeDuplicates(); <span class="comment">// Optional, recommended.</span></div>
 <div class="line">    <span class="keywordflow">return</span> list;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassAbstractCommand_html_a002fc48054b9df13bbb2e0bdc488c6d3"><div class="ttname"><a href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a></div><div class="ttdeci">virtual QStringList supportedOptions() const</div><div class="ttdoc">Returns a list of CLI option names supported by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00073">abstractcommand.cpp:73</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_a002fc48054b9df13bbb2e0bdc488c6d3"><div class="ttname"><a href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a></div><div class="ttdeci">virtual QStringList supportedOptions() const</div><div class="ttdoc">Returns a list of CLI option names supported by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00072">abstractcommand.cpp:72</a></div></div>
 </div><!-- fragment --> 
 <p>Reimplemented from <a class="el" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand</a>.</p>
 
@@ -503,7 +504,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">   59</span>    };</div>
 <div class="line"><span class="lineno">   60</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00073">AbstractCommand::supportedOptions()</a>.</p>
+<p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00072">AbstractCommand::supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -538,7 +539,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="scancommand_8h_source.html#l00039">39</a> of file <a class="el" href="scancommand_8h_source.html">scancommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00062">processOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00037">ScanCommand()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00084">start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00062">processOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00037">ScanCommand()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00085">start()</a>.</p>
 
 </div>
 </div>

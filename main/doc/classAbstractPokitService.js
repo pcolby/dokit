@@ -6,5 +6,6 @@ var classAbstractPokitService =
     [ "service", "classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b", null ],
     [ "service", "classAbstractPokitService.html#ab7161dedf8ae431f723a5e225c2ec9ca", null ],
     [ "serviceDetailsDiscovered", "classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff", null ],
+    [ "serviceErrorOccurred", "classAbstractPokitService.html#a9e680ebf280361ef82f4b072448d7e9b", null ],
     [ "setAutoDiscover", "classAbstractPokitService.html#a9d6d50cf31bc5859747a134d6cb4c418", null ]
 ];

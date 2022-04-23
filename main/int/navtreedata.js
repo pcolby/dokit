@@ -68,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"statuscommand_8cpp_source.html"
+"qtpokit__global_8h.html#af2a5fcdf5ad6da4ea4f238aad0d29d65"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
