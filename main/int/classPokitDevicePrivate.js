@@ -9,6 +9,8 @@ var classPokitDevicePrivate =
     [ "serviceDiscovered", "classPokitDevicePrivate.html#a629dfb12d59951af18258b5920bb5488", null ],
     [ "setController", "classPokitDevicePrivate.html#a5bd287d0eeaa45754c7175ca1038b183", null ],
     [ "stateChanged", "classPokitDevicePrivate.html#a1ae263de0b2e120c2d4db85fb188cb91", null ],
+    [ "calibration", "classPokitDevicePrivate.html#a8d09e175eb40c14368cb6630e6ed5ff1", null ],
+    [ "calibrationMutex", "classPokitDevicePrivate.html#a5512d8a206e13cf5d8b7aa7e8aa9b486", null ],
     [ "controller", "classPokitDevicePrivate.html#a9a6acf432d18d31566271ddca3ae5a80", null ],
     [ "dataLogger", "classPokitDevicePrivate.html#af037d2de91afce5efdeab05ba94e55a7", null ],
     [ "dataLoggerMutex", "classPokitDevicePrivate.html#a5ec3a1468e50ad47385c6494be2529ae", null ],

@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "CalibrationService::CharacteristicUuids", "structCalibrationService_1_1CharacteristicUuids.html", null ],
     [ "DeviceInfoService::CharacteristicUuids", "structDeviceInfoService_1_1CharacteristicUuids.html", null ],
     [ "GenericAccessService::CharacteristicUuids", "structGenericAccessService_1_1CharacteristicUuids.html", null ],
     [ "StatusService::CharacteristicUuids", "structStatusService_1_1CharacteristicUuids.html", null ],
@@ -9,6 +10,7 @@ var hierarchy =
     ] ],
     [ "QObject", null, [
       [ "AbstractPokitService", "classAbstractPokitService.html", [
+        [ "CalibrationService", "classCalibrationService.html", null ],
         [ "DeviceInfoService", "classDeviceInfoService.html", null ],
         [ "GenericAccessService", "classGenericAccessService.html", null ],
         [ "StatusService", "classStatusService.html", null ]

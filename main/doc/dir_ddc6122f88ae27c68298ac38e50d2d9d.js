@@ -3,6 +3,10 @@ var dir_ddc6122f88ae27c68298ac38e50d2d9d =
     [ "abstractpokitservice.h", "abstractpokitservice_8h.html", [
       [ "AbstractPokitService", "classAbstractPokitService.html", "classAbstractPokitService" ]
     ] ],
+    [ "calibrationservice.h", "calibrationservice_8h.html", [
+      [ "CalibrationService", "classCalibrationService.html", "classCalibrationService" ],
+      [ "CalibrationService::CharacteristicUuids", "structCalibrationService_1_1CharacteristicUuids.html", null ]
+    ] ],
     [ "deviceinfoservice.h", "deviceinfoservice_8h.html", [
       [ "DeviceInfoService", "classDeviceInfoService.html", "classDeviceInfoService" ],
       [ "DeviceInfoService::CharacteristicUuids", "structDeviceInfoService_1_1CharacteristicUuids.html", null ]

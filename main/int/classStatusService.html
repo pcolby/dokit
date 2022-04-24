@@ -877,7 +877,7 @@ Here is the caller graph for this function:</div>
 <p >Returns <code>true</code> if the flash request was successfully queued, <code>false</code> otherwise.</p>
 <p >Emits <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee" title="This signal is emitted when device&#39;s LED has flashed in response to a write of the Flash LED characte...">deviceLedFlashed()</a> if/when the LED has flashed successfully.</p>
 <dl class="section note"><dt>Note</dt><dd>This does not appear to work currently, for the one (Pokit Pro) device available for testing. Instead, the underlying Bluetooth stack returns ATT error <code>0x80</code>.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Diagnose and/or follow up with Pokit Innovations. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Diagnose and/or follow up with Pokit Innovations. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00327">327</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  328</span>{</div>
@@ -1115,8 +1115,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  303</span> </div>
 <div class="line"><span class="lineno">  304</span>    <span class="keyword">const</span> QByteArray value = name.toUtf8();</div>
 <div class="line"><span class="lineno">  305</span>    <span class="keywordflow">if</span> (value.length() &gt; 11) {</div>
-<div class="line"><span class="lineno">  306</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes):&quot;</span>)</div>
-<div class="line"><span class="lineno">  307</span>            .arg(name).arg(value.length()) &lt;&lt; value;</div>
+<div class="line"><span class="lineno">  306</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes): 0x3&quot;</span>)</div>
+<div class="line"><span class="lineno">  307</span>            .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));</div>
 <div class="line"><span class="lineno">  308</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  309</span>    }</div>
 <div class="line"><span class="lineno">  310</span> </div>

@@ -667,8 +667,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  193</span> </div>
 <div class="line"><span class="lineno">  194</span>    <span class="keyword">const</span> QByteArray value = name.toUtf8();</div>
 <div class="line"><span class="lineno">  195</span>    <span class="keywordflow">if</span> (value.length() &gt; 11) {</div>
-<div class="line"><span class="lineno">  196</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes):&quot;</span>)</div>
-<div class="line"><span class="lineno">  197</span>            .arg(name).arg(value.length()) &lt;&lt; value;</div>
+<div class="line"><span class="lineno">  196</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes): 0x%3&quot;</span>)</div>
+<div class="line"><span class="lineno">  197</span>            .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));</div>
 <div class="line"><span class="lineno">  198</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  199</span>    }</div>
 <div class="line"><span class="lineno">  200</span> </div>

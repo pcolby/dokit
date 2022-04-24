@@ -271,48 +271,49 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00370">370</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  372</span>{</div>
-<div class="line"><span class="lineno">  373</span>    qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Read  characteristic \&quot;%1\&quot; (%2) of size %3:&quot;</span>)</div>
-<div class="line"><span class="lineno">  374</span>        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size()) &lt;&lt; value;</div>
-<div class="line"><span class="lineno">  375</span>    Q_Q(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  376</span> </div>
-<div class="line"><span class="lineno">  377</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">DeviceInfoService::CharacteristicUuids::manufacturerName</a>) {</div>
-<div class="line"><span class="lineno">  378</span>        <span class="keyword">const</span> QString name = QString::fromUtf8(value);</div>
-<div class="line"><span class="lineno">  379</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Manufacturer name: \&quot;%1\&quot;&quot;</span>).arg(name);</div>
-<div class="line"><span class="lineno">  380</span>        emit q-&gt;manufacturerRead(name);</div>
-<div class="line"><span class="lineno">  381</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  382</span>    }</div>
-<div class="line"><span class="lineno">  383</span> </div>
-<div class="line"><span class="lineno">  384</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">DeviceInfoService::CharacteristicUuids::modelNumber</a>) {</div>
-<div class="line"><span class="lineno">  385</span>        <span class="keyword">const</span> QString model = QString::fromUtf8(value);</div>
-<div class="line"><span class="lineno">  386</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Model number: \&quot;%1\&quot;&quot;</span>).arg(model);</div>
-<div class="line"><span class="lineno">  387</span>        emit q-&gt;modelNumberRead(model);</div>
-<div class="line"><span class="lineno">  388</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  389</span>    }</div>
-<div class="line"><span class="lineno">  390</span> </div>
-<div class="line"><span class="lineno">  391</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">DeviceInfoService::CharacteristicUuids::hardwareRevision</a>) {</div>
-<div class="line"><span class="lineno">  392</span>        <span class="keyword">const</span> QString revision = QString::fromUtf8(value);</div>
-<div class="line"><span class="lineno">  393</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Hardware revision: \&quot;%1\&quot;&quot;</span>).arg(revision);</div>
-<div class="line"><span class="lineno">  394</span>        emit q-&gt;hardwareRevisionRead(revision);</div>
-<div class="line"><span class="lineno">  395</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  396</span>    }</div>
-<div class="line"><span class="lineno">  397</span> </div>
-<div class="line"><span class="lineno">  398</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a">DeviceInfoService::CharacteristicUuids::firmwareRevision</a>) {</div>
-<div class="line"><span class="lineno">  399</span>        <span class="keyword">const</span> QString revision = QString::fromUtf8(value);</div>
-<div class="line"><span class="lineno">  400</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Firmware revision: \&quot;%1\&quot;&quot;</span>).arg(revision);</div>
-<div class="line"><span class="lineno">  401</span>        emit q-&gt;firmwareRevisionRead(revision);</div>
-<div class="line"><span class="lineno">  402</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  403</span>    }</div>
-<div class="line"><span class="lineno">  404</span> </div>
-<div class="line"><span class="lineno">  405</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">DeviceInfoService::CharacteristicUuids::softwareRevision</a>) {</div>
-<div class="line"><span class="lineno">  406</span>        <span class="keyword">const</span> QString revision = QString::fromUtf8(value);</div>
-<div class="line"><span class="lineno">  407</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Software revision: \&quot;%1\&quot;&quot;</span>).arg(revision);</div>
-<div class="line"><span class="lineno">  408</span>        emit q-&gt;softwareRevisionRead(revision);</div>
-<div class="line"><span class="lineno">  409</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  410</span>    }</div>
-<div class="line"><span class="lineno">  411</span> </div>
-<div class="line"><span class="lineno">  412</span>    qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Unknown characteristic read for Device Info service&quot;</span>)</div>
-<div class="line"><span class="lineno">  413</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a> &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</div>
-<div class="line"><span class="lineno">  414</span>}</div>
+<div class="line"><span class="lineno">  373</span>    qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Read  characteristic \&quot;%1\&quot; (%2) of size %3: 0x%4&quot;</span>)</div>
+<div class="line"><span class="lineno">  374</span>        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())</div>
+<div class="line"><span class="lineno">  375</span>        .arg(QLatin1String(value.toHex()));</div>
+<div class="line"><span class="lineno">  376</span>    Q_Q(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  377</span> </div>
+<div class="line"><span class="lineno">  378</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">DeviceInfoService::CharacteristicUuids::manufacturerName</a>) {</div>
+<div class="line"><span class="lineno">  379</span>        <span class="keyword">const</span> QString name = QString::fromUtf8(value);</div>
+<div class="line"><span class="lineno">  380</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Manufacturer name: \&quot;%1\&quot;&quot;</span>).arg(name);</div>
+<div class="line"><span class="lineno">  381</span>        emit q-&gt;manufacturerRead(name);</div>
+<div class="line"><span class="lineno">  382</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  383</span>    }</div>
+<div class="line"><span class="lineno">  384</span> </div>
+<div class="line"><span class="lineno">  385</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">DeviceInfoService::CharacteristicUuids::modelNumber</a>) {</div>
+<div class="line"><span class="lineno">  386</span>        <span class="keyword">const</span> QString model = QString::fromUtf8(value);</div>
+<div class="line"><span class="lineno">  387</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Model number: \&quot;%1\&quot;&quot;</span>).arg(model);</div>
+<div class="line"><span class="lineno">  388</span>        emit q-&gt;modelNumberRead(model);</div>
+<div class="line"><span class="lineno">  389</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  390</span>    }</div>
+<div class="line"><span class="lineno">  391</span> </div>
+<div class="line"><span class="lineno">  392</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">DeviceInfoService::CharacteristicUuids::hardwareRevision</a>) {</div>
+<div class="line"><span class="lineno">  393</span>        <span class="keyword">const</span> QString revision = QString::fromUtf8(value);</div>
+<div class="line"><span class="lineno">  394</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Hardware revision: \&quot;%1\&quot;&quot;</span>).arg(revision);</div>
+<div class="line"><span class="lineno">  395</span>        emit q-&gt;hardwareRevisionRead(revision);</div>
+<div class="line"><span class="lineno">  396</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  397</span>    }</div>
+<div class="line"><span class="lineno">  398</span> </div>
+<div class="line"><span class="lineno">  399</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a">DeviceInfoService::CharacteristicUuids::firmwareRevision</a>) {</div>
+<div class="line"><span class="lineno">  400</span>        <span class="keyword">const</span> QString revision = QString::fromUtf8(value);</div>
+<div class="line"><span class="lineno">  401</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Firmware revision: \&quot;%1\&quot;&quot;</span>).arg(revision);</div>
+<div class="line"><span class="lineno">  402</span>        emit q-&gt;firmwareRevisionRead(revision);</div>
+<div class="line"><span class="lineno">  403</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  404</span>    }</div>
+<div class="line"><span class="lineno">  405</span> </div>
+<div class="line"><span class="lineno">  406</span>    <span class="keywordflow">if</span> (characteristic.uuid() == <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">DeviceInfoService::CharacteristicUuids::softwareRevision</a>) {</div>
+<div class="line"><span class="lineno">  407</span>        <span class="keyword">const</span> QString revision = QString::fromUtf8(value);</div>
+<div class="line"><span class="lineno">  408</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Software revision: \&quot;%1\&quot;&quot;</span>).arg(revision);</div>
+<div class="line"><span class="lineno">  409</span>        emit q-&gt;softwareRevisionRead(revision);</div>
+<div class="line"><span class="lineno">  410</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  411</span>    }</div>
+<div class="line"><span class="lineno">  412</span> </div>
+<div class="line"><span class="lineno">  413</span>    qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Unknown characteristic read for Device Info service&quot;</span>)</div>
+<div class="line"><span class="lineno">  414</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a> &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</div>
+<div class="line"><span class="lineno">  415</span>}</div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_ac869da6d14ebe8eb381351d84b36e275"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">AbstractPokitServicePrivate::serviceUuid</a></div><div class="ttdeci">const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID for service.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00047">abstractpokitservice_p.h:47</a></div></div>
 <div class="ttc" id="aclassDeviceInfoService_html"><div class="ttname"><a href="classDeviceInfoService.html">DeviceInfoService</a></div><div class="ttdoc">The DeviceInfoService class accesses the Device Info service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00038">deviceinfoservice.h:39</a></div></div>
 <div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a0455d683833dae7fa93ddf08b754136d"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">DeviceInfoService::CharacteristicUuids::manufacturerName</a></div><div class="ttdeci">static const QBluetoothUuid manufacturerName</div><div class="ttdoc">UUID of the Device Info service's xxx characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00046">deviceinfoservice.h:46</a></div></div>
@@ -363,12 +364,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">AbstractPokitServicePrivate</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00420">420</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  422</span>{</div>
-<div class="line"><span class="lineno">  423</span>    Q_UNUSED(newValue);</div>
-<div class="line"><span class="lineno">  424</span>    qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Characteristic written event on read-only service&quot;</span>)</div>
-<div class="line"><span class="lineno">  425</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a> &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</div>
-<div class="line"><span class="lineno">  426</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00421">421</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  423</span>{</div>
+<div class="line"><span class="lineno">  424</span>    Q_UNUSED(newValue);</div>
+<div class="line"><span class="lineno">  425</span>    qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Characteristic written event on read-only service&quot;</span>)</div>
+<div class="line"><span class="lineno">  426</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a> &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</div>
+<div class="line"><span class="lineno">  427</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00047">AbstractPokitServicePrivate::serviceUuid</a>.</p>
 

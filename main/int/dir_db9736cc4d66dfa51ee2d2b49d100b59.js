@@ -4,6 +4,10 @@ var dir_db9736cc4d66dfa51ee2d2b49d100b59 =
     [ "abstractpokitservice_p.h", "abstractpokitservice__p_8h.html", [
       [ "AbstractPokitServicePrivate", "classAbstractPokitServicePrivate.html", "classAbstractPokitServicePrivate" ]
     ] ],
+    [ "calibrationservice.cpp", "calibrationservice_8cpp.html", null ],
+    [ "calibrationservice_p.h", "calibrationservice__p_8h.html", [
+      [ "CalibrationServicePrivate", "classCalibrationServicePrivate.html", "classCalibrationServicePrivate" ]
+    ] ],
     [ "deviceinfoservice.cpp", "deviceinfoservice_8cpp.html", null ],
     [ "deviceinfoservice_p.h", "deviceinfoservice__p_8h.html", [
       [ "DeviceInfoServicePrivate", "classDeviceInfoServicePrivate.html", "classDeviceInfoServicePrivate" ]

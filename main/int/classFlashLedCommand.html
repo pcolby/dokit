@@ -107,7 +107,7 @@ Inheritance diagram for FlashLedCommand:</div>
 <div class="dynheader">
 Collaboration diagram for FlashLedCommand:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand__coll__graph.svg" width="1066" height="292"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand__coll__graph.svg" width="1234" height="292"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -283,21 +283,21 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 
 <p>Handles <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee" title="This signal is emitted when device&#39;s LED has flashed in response to a write of the Flash LED characte...">StatusService::deviceLedFlashed</a> events, by outputting the result and exiting. </p>
 
-<p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00103">103</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>{</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
-<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
-<div class="line"><span class="lineno">  107</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;flash_led_result\nsuccess\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">  108</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
-<div class="line"><span class="lineno">  110</span>        fputs(qPrintable(QLatin1String(<span class="stringliteral">&quot;true\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
-<div class="line"><span class="lineno">  113</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;Done.\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span>    QCoreApplication::quit();</div>
-<div class="line"><span class="lineno">  117</span>}</div>
+<p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00104">104</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  105</span>{</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
+<div class="line"><span class="lineno">  108</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;flash_led_result\nsuccess\n&quot;</span>)), stdout);</div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
+<div class="line"><span class="lineno">  111</span>        fputs(qPrintable(QLatin1String(<span class="stringliteral">&quot;true\n&quot;</span>)), stdout);</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
+<div class="line"><span class="lineno">  114</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;Done.\n&quot;</span>)), stdout);</div>
+<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  116</span>    }</div>
+<div class="line"><span class="lineno">  117</span>    QCoreApplication::quit();</div>
+<div class="line"><span class="lineno">  118</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html_a881d85cd96b6fcc0652b916c366dda7b"><div class="ttname"><a href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">AbstractCommand::format</a></div><div class="ttdeci">OutputFormat format</div><div class="ttdoc">Selected output format.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00048">abstractcommand.h:48</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::OutputFormat::Text</a></div><div class="ttdeci">@ Text</div><div class="ttdoc">Plain unstructured text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::OutputFormat::Csv</a></div><div class="ttdeci">@ Csv</div><div class="ttdoc">RFC 4180 compliant CSV text.</div></div>
@@ -437,20 +437,22 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00092">92</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
-<div class="line"><span class="lineno">   94</span>    qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Flashing Pokit device LED...&quot;</span>);</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>-&gt;<a class="code hl_function" href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">flashLed</a>()) {</div>
-<div class="line"><span class="lineno">   96</span>        QCoreApplication::exit(EXIT_FAILURE);</div>
-<div class="line"><span class="lineno">   97</span>    }</div>
-<div class="line"><span class="lineno">   98</span>}</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_slot" href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a>(); <span class="comment">// Just logs consistently.</span></div>
+<div class="line"><span class="lineno">   95</span>    qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Flashing Pokit device LED...&quot;</span>);</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>-&gt;<a class="code hl_function" href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">flashLed</a>()) {</div>
+<div class="line"><span class="lineno">   97</span>        QCoreApplication::exit(EXIT_FAILURE);</div>
+<div class="line"><span class="lineno">   98</span>    }</div>
+<div class="line"><span class="lineno">   99</span>}</div>
+<div class="ttc" id="aclassDeviceCommand_html_a906fd97d832be0e8d2ba1c917fba41db"><div class="ttname"><a href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a></div><div class="ttdeci">virtual void serviceDetailsDiscovered()</div><div class="ttdoc">Handles service detail discovery events.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00118">devicecommand.cpp:118</a></div></div>
 <div class="ttc" id="aclassStatusService_html_a425bf65d42b24c4a621b312fcd152708"><div class="ttname"><a href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">StatusService::flashLed</a></div><div class="ttdeci">bool flashLed()</div><div class="ttdoc">Flash the Pokit device's LED.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00327">statusservice.cpp:327</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="statusservice_8cpp_source.html#l00327">StatusService::flashLed()</a>, and <a class="el" href="flashledcommand_8h_source.html#l00040">service</a>.</p>
+<p class="reference">References <a class="el" href="statusservice_8cpp_source.html#l00327">StatusService::flashLed()</a>, <a class="el" href="flashledcommand_8h_source.html#l00040">service</a>, and <a class="el" href="devicecommand_8cpp_source.html#l00118">DeviceCommand::serviceDetailsDiscovered()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00069">start()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_af1d7d155b35b4a3d6301b2653c0d7eb7_cgraph.svg" width="435" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_af1d7d155b35b4a3d6301b2653c0d7eb7_cgraph.svg" width="496" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
@@ -509,16 +511,16 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassDeviceCommand_html_a2bbf2dc9bb0ba85a2bf29263746c7b57"><div class="ttname"><a href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">DeviceCommand::device</a></div><div class="ttdeci">PokitDevice * device</div><div class="ttdoc">Pokit Bluetooth device (if any) this command inerracts with.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8h_source.html#l00040">devicecommand.h:40</a></div></div>
 <div class="ttc" id="aclassDeviceCommand_html_a96208c78728c0068e7a78f961b913751"><div class="ttname"><a href="classDeviceCommand.html#a96208c78728c0068e7a78f961b913751">DeviceCommand::serviceError</a></div><div class="ttdeci">virtual void serviceError(const QLowEnergyService::ServiceError error)</div><div class="ttdoc">Handles service error events.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00107">devicecommand.cpp:107</a></div></div>
 <div class="ttc" id="aclassFlashLedCommand_html_af1d7d155b35b4a3d6301b2653c0d7eb7"><div class="ttname"><a href="classFlashLedCommand.html#af1d7d155b35b4a3d6301b2653c0d7eb7">FlashLedCommand::serviceDetailsDiscovered</a></div><div class="ttdeci">void serviceDetailsDiscovered() override</div><div class="ttdoc">Handles service detail discovery events.</div><div class="ttdef"><b>Definition:</b> <a href="flashledcommand_8cpp_source.html#l00092">flashledcommand.cpp:92</a></div></div>
-<div class="ttc" id="aclassFlashLedCommand_html_af7a5897fc7657f70466c82f5ed538ccb"><div class="ttname"><a href="classFlashLedCommand.html#af7a5897fc7657f70466c82f5ed538ccb">FlashLedCommand::deviceLedFlashed</a></div><div class="ttdeci">void deviceLedFlashed()</div><div class="ttdoc">Handles StatusService::deviceLedFlashed events, by outputting the result and exiting.</div><div class="ttdef"><b>Definition:</b> <a href="flashledcommand_8cpp_source.html#l00103">flashledcommand.cpp:103</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00113">pokitdevice.cpp:113</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00218">pokitdevice.cpp:218</a></div></div>
+<div class="ttc" id="aclassFlashLedCommand_html_af7a5897fc7657f70466c82f5ed538ccb"><div class="ttname"><a href="classFlashLedCommand.html#af7a5897fc7657f70466c82f5ed538ccb">FlashLedCommand::deviceLedFlashed</a></div><div class="ttdeci">void deviceLedFlashed()</div><div class="ttdoc">Handles StatusService::deviceLedFlashed events, by outputting the result and exiting.</div><div class="ttdef"><b>Definition:</b> <a href="flashledcommand_8cpp_source.html#l00104">flashledcommand.cpp:104</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00114">pokitdevice.cpp:114</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00233">pokitdevice.cpp:233</a></div></div>
 <div class="ttc" id="aclassStatusService_html_a95fac879cf2f0ea82507352fe8c1bbee"><div class="ttname"><a href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed</a></div><div class="ttdeci">void deviceLedFlashed()</div><div class="ttdoc">This signal is emitted when device's LED has flashed in response to a write of the Flash LED characte...</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00113">PokitDevice::controller()</a>, <a class="el" href="devicecommand_8h_source.html#l00040">DeviceCommand::device</a>, <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00103">deviceLedFlashed()</a>, <a class="el" href="flashledcommand_8h_source.html#l00040">service</a>, <a class="el" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">AbstractPokitService::serviceDetailsDiscovered()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00092">serviceDetailsDiscovered()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00107">DeviceCommand::serviceError()</a>, <a class="el" href="classAbstractPokitService.html#a9e680ebf280361ef82f4b072448d7e9b">AbstractPokitService::serviceErrorOccurred()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00218">PokitDevice::status()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00114">PokitDevice::controller()</a>, <a class="el" href="devicecommand_8h_source.html#l00040">DeviceCommand::device</a>, <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00104">deviceLedFlashed()</a>, <a class="el" href="flashledcommand_8h_source.html#l00040">service</a>, <a class="el" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">AbstractPokitService::serviceDetailsDiscovered()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00092">serviceDetailsDiscovered()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00107">DeviceCommand::serviceError()</a>, <a class="el" href="classAbstractPokitService.html#a9e680ebf280361ef82f4b072448d7e9b">AbstractPokitService::serviceErrorOccurred()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00233">PokitDevice::status()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_a9404a910d1324e1e2f88e29855d5d95c_cgraph.svg" width="687" height="295"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_a9404a910d1324e1e2f88e29855d5d95c_cgraph.svg" width="748" height="295"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
