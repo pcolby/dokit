@@ -82,7 +82,7 @@ CalibrationService::~CalibrationService()
  */
 bool CalibrationService::readCharacteristics()
 {
-    qCDebug(pokitService) << tr("Ignoring read request; the Calibration service is write-only.");
+    qCDebug(pokitService).noquote() << tr("Ignoring read request; the Calibration service is write-only.");
     return true;
 }
 
@@ -112,8 +112,8 @@ bool CalibrationService::calibrateTemperature(const float ambientTemperature)
 
     QByteArray newValue(sizeof(float), '\0');
     qToLittleEndian<float>(ambientTemperature, newValue.data());
-    qCDebug(pokitService) << tr("Writing new temperature %1 (0x%2).").arg(ambientTemperature)
-        .arg(QLatin1String(newValue.toHex()));
+    qCDebug(pokitService).noquote() << tr("Writing new temperature %1 (0x%2).")
+        .arg(ambientTemperature).arg(QLatin1String(newValue.toHex()));
     d->service->writeCharacteristic(characteristic, newValue);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }

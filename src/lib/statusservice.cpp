@@ -303,8 +303,8 @@ bool StatusService::setDeviceName(const QString &name)
 
     const QByteArray value = name.toUtf8();
     if (value.length() > 11) {
-        qCWarning(pokitService).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes):")
-            .arg(name).arg(value.length()) << value;
+        qCWarning(pokitService).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes): 0x3")
+            .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));
         return false;
     }
 
@@ -416,13 +416,13 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.
 
     if (value.size() < 20) {
-        qCWarning(pokitService).noquote() << tr("Invalid characteristics size %1 for value:")
-            .arg(value.size()) << value;
+        qCWarning(pokitService).noquote() << tr("Invalid characteristics size %1 for value: 0x%2")
+            .arg(value.size()).arg(QLatin1String(value.toHex()));
         return characteristics;
     }
     if (value.size() > 20) {
-        qCWarning(pokitService).noquote() << tr("Characterisitcs has %1 extra bytes:")
-            .arg(value.size()-20) << value.mid(20);
+        qCWarning(pokitService).noquote() << tr("Characterisitcs has %1 extra bytes: 0x%2")
+            .arg(value.size()-20).arg(QLatin1String(value.mid(20).toHex()));
     }
 
     characteristics.firmwareVersion = QVersionNumber(
@@ -464,13 +464,13 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     };
 
     if (value.size() < 5) {
-        qCWarning(pokitService).noquote() << tr("Invalid status size %1 for value:")
-            .arg(value.size()) << value;
+        qCWarning(pokitService).noquote() << tr("Invalid status size %1 for value: 0x%2")
+            .arg(value.size()).arg(QLatin1String(value.toHex()));
         return status;
     }
     if (value.size() > 6) {
-        qCWarning(pokitService).noquote() << tr("Status has %1 extra bytes:")
-            .arg(value.size()-6) << value.mid(6);
+        qCWarning(pokitService).noquote() << tr("Status has %1 extra bytes: 0x%2")
+            .arg(value.size()-6).arg(QLatin1String(value.mid(6).toHex()));
     }
 
     status.deviceStatus = static_cast<StatusService::DeviceStatus>(value.at(0));
@@ -493,15 +493,16 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
 void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3:")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size()) << value;
+    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
+        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
+        .arg(QLatin1String(value.toHex()));
 
     Q_Q(StatusService);
     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
         const StatusService::DeviceCharacteristics characteristics = parseDeviceCharacteristics(value);
         if (characteristics.firmwareVersion.isNull()) {
-            qCWarning(pokitService).noquote() << tr("Failed to parse device characteristics:")
-                << value.size() << value;
+            qCWarning(pokitService).noquote() << tr("Failed to parse device characteristics: 0x%1")
+                .arg(QLatin1String(value.toHex()));
             return;
         }
         emit q->deviceCharacteristicsRead(characteristics);
@@ -511,8 +512,8 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
         const StatusService::Status status = parseStatus(value);
         if (qIsNaN(status.batteryVoltage)) {
-            qCWarning(pokitService).noquote() << tr("Failed to parse status:")
-                << value.size() << value;
+            qCWarning(pokitService).noquote() << tr("Failed to parse status: 0x%1")
+                .arg(QLatin1String(value.toHex()));
             return;
         }
         emit q->deviceStatusRead(status);

@@ -193,8 +193,8 @@ bool GenericAccessService::setDeviceName(const QString &name)
 
     const QByteArray value = name.toUtf8();
     if (value.length() > 11) {
-        qCWarning(pokitService).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes):")
-            .arg(name).arg(value.length()) << value;
+        qCWarning(pokitService).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes): 0x%3")
+            .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));
         return false;
     }
 
@@ -252,13 +252,13 @@ GenericAccessServicePrivate::GenericAccessServicePrivate(
 quint16 GenericAccessServicePrivate::parseAppearance(const QByteArray &value)
 {
     if (value.size() < 2) {
-        qCWarning(pokitService).noquote() << tr("Invalid appearance size %1 for value:")
-            .arg(value.size()) << value;
+        qCWarning(pokitService).noquote() << tr("Invalid appearance size %1 for value: 0x%2")
+            .arg(value.size()).arg(QLatin1String(value.toHex()));
         return std::numeric_limits<quint16>::max();
     }
     if (value.size() > 2) {
-        qCWarning(pokitService).noquote() << tr("Appearance has %1 extra bytes:")
-            .arg(value.size()-2) << value.mid(2);
+        qCWarning(pokitService).noquote() << tr("Appearance has %1 extra bytes: 0x%2")
+            .arg(value.size()-2).arg(QLatin1String(value.mid(2).toHex()));
     }
     const quint16 appearance = qFromLittleEndian<quint16>(value);
     qCDebug(pokitService).noquote() << tr("Appearance: %1.").arg(appearance);
@@ -272,8 +272,9 @@ quint16 GenericAccessServicePrivate::parseAppearance(const QByteArray &value)
 void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3:")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size()) << value;
+    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
+        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
+        .arg(QLatin1String(value.toHex()));
 
     Q_Q(GenericAccessService);
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::appearance) {

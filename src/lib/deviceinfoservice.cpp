@@ -370,8 +370,9 @@ DeviceInfoServicePrivate::DeviceInfoServicePrivate(
 void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3:")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size()) << value;
+    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
+        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
+        .arg(QLatin1String(value.toHex()));
     Q_Q(DeviceInfoService);
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {
