@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">183</td>
+            <td class="headerCovTableEntry">184</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-04-24 03:51:22</td>
+            <td class="headerValue">2022-04-24 11:03:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -365,8 +365,8 @@
 <a name="303"><span class="lineNum">     303 </span>            : </a>
 <a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :     const QByteArray value = name.toUtf8();</span></a>
 <a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :     if (value.length() &gt; 11) {</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes):&quot;)</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :             .arg(name).arg(value.length()) &lt;&lt; value;</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes): 0x3&quot;)</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :             .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));</span></a>
 <a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :         return false;</span></a>
 <a name="309"><span class="lineNum">     309 </span>            :     }</a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
@@ -478,13 +478,13 @@
 <a name="416"><span class="lineNum">     416 </span>            :     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.</a>
 <a name="417"><span class="lineNum">     417 </span>            : </a>
 <a name="418"><span class="lineNum">     418 </span><span class="lineNoCov">          0 :     if (value.size() &lt; 20) {</span></a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Invalid characteristics size %1 for value:&quot;)</span></a>
-<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :             .arg(value.size()) &lt;&lt; value;</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Invalid characteristics size %1 for value: 0x%2&quot;)</span></a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :             .arg(value.size()).arg(QLatin1String(value.toHex()));</span></a>
 <a name="421"><span class="lineNum">     421 </span>            :         return characteristics;</a>
 <a name="422"><span class="lineNum">     422 </span>            :     }</a>
 <a name="423"><span class="lineNum">     423 </span><span class="lineNoCov">          0 :     if (value.size() &gt; 20) {</span></a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Characterisitcs has %1 extra bytes:&quot;)</span></a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineNoCov">          0 :             .arg(value.size()-20) &lt;&lt; value.mid(20);</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Characterisitcs has %1 extra bytes: 0x%2&quot;)</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineNoCov">          0 :             .arg(value.size()-20).arg(QLatin1String(value.mid(20).toHex()));</span></a>
 <a name="426"><span class="lineNum">     426 </span>            :     }</a>
 <a name="427"><span class="lineNum">     427 </span>            : </a>
 <a name="428"><span class="lineNum">     428 </span><span class="lineNoCov">          0 :     characteristics.firmwareVersion = QVersionNumber(</span></a>
@@ -526,13 +526,13 @@
 <a name="464"><span class="lineNum">     464 </span>            :     };</a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
 <a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :     if (value.size() &lt; 5) {</span></a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Invalid status size %1 for value:&quot;)</span></a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineNoCov">          0 :             .arg(value.size()) &lt;&lt; value;</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Invalid status size %1 for value: 0x%2&quot;)</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineNoCov">          0 :             .arg(value.size()).arg(QLatin1String(value.toHex()));</span></a>
 <a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :         return status;</span></a>
 <a name="470"><span class="lineNum">     470 </span>            :     }</a>
 <a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :     if (value.size() &gt; 6) {</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Status has %1 extra bytes:&quot;)</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineNoCov">          0 :             .arg(value.size()-6) &lt;&lt; value.mid(6);</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Status has %1 extra bytes: 0x%2&quot;)</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineNoCov">          0 :             .arg(value.size()-6).arg(QLatin1String(value.mid(6).toHex()));</span></a>
 <a name="474"><span class="lineNum">     474 </span>            :     }</a>
 <a name="475"><span class="lineNum">     475 </span>            : </a>
 <a name="476"><span class="lineNum">     476 </span><span class="lineNoCov">          0 :     status.deviceStatus = static_cast&lt;StatusService::DeviceStatus&gt;(value.at(0));</span></a>
@@ -555,87 +555,88 @@
 <a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 : void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
 <a name="494"><span class="lineNum">     494 </span>            :                                               const QByteArray &amp;value)</a>
 <a name="495"><span class="lineNum">     495 </span>            : {</a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :     qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Read  characteristic \&quot;%1\&quot; (%2) of size %3:&quot;)</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size()) &lt;&lt; value;</span></a>
-<a name="498"><span class="lineNum">     498 </span>            : </a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineNoCov">          0 :     Q_Q(StatusService);</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 :         const StatusService::DeviceCharacteristics characteristics = parseDeviceCharacteristics(value);</span></a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :         if (characteristics.firmwareVersion.isNull()) {</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineNoCov">          0 :             qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Failed to parse device characteristics:&quot;)</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :                 &lt;&lt; value.size() &lt;&lt; value;</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :             return;</span></a>
-<a name="506"><span class="lineNum">     506 </span>            :         }</a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceCharacteristicsRead(characteristics);</span></a>
-<a name="508"><span class="lineNum">     508 </span>            :         return;</a>
-<a name="509"><span class="lineNum">     509 </span>            :     }</a>
-<a name="510"><span class="lineNum">     510 </span>            : </a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :         const StatusService::Status status = parseStatus(value);</span></a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :         if (qIsNaN(status.batteryVoltage)) {</span></a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :             qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Failed to parse status:&quot;)</span></a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :                 &lt;&lt; value.size() &lt;&lt; value;</span></a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineNoCov">          0 :             return;</span></a>
-<a name="517"><span class="lineNum">     517 </span>            :         }</a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceStatusRead(status);</span></a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="520"><span class="lineNum">     520 </span>            :     }</a>
-<a name="521"><span class="lineNum">     521 </span>            : </a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :         const QString deviceName = QString::fromUtf8(value);</span></a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Device name: \&quot;%1\&quot;&quot;).arg(deviceName);</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameRead(deviceName);</span></a>
-<a name="526"><span class="lineNum">     526 </span>            :         return;</a>
-<a name="527"><span class="lineNum">     527 </span>            :     }</a>
-<a name="528"><span class="lineNum">     528 </span>            : </a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Flash LED characteristic is write-only, but somehow read&quot;)</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="533"><span class="lineNum">     533 </span>            :     }</a>
-<a name="534"><span class="lineNum">     534 </span>            : </a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineNoCov">          0 :     qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status Service&quot;)</span></a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="537"><span class="lineNum">     537 </span>            : }</a>
-<a name="538"><span class="lineNum">     538 </span>            : </a>
-<a name="539"><span class="lineNum">     539 </span>            : /*!</a>
-<a name="540"><span class="lineNum">     540 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
-<a name="541"><span class="lineNum">     541 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="542"><span class="lineNum">     542 </span>            :  */</a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineNoCov">          0 : void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="544"><span class="lineNum">     544 </span>            :                                                  const QByteArray &amp;newValue)</a>
-<a name="545"><span class="lineNum">     545 </span>            : {</a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineNoCov">          0 :     qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Characteristic \&quot;%1\&quot; (%2) written, with new value:&quot;)</span></a>
-<a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :         .arg(characteristic.name(), characteristic.uuid().toString()) &lt;&lt; newValue;</span></a>
-<a name="548"><span class="lineNum">     548 </span>            : </a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineNoCov">          0 :     Q_Q(StatusService);</span></a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Device Characteristics is read-only, but somehow written&quot;)</span></a>
-<a name="552"><span class="lineNum">     552 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="553"><span class="lineNum">     553 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="554"><span class="lineNum">     554 </span>            :     }</a>
-<a name="555"><span class="lineNum">     555 </span>            : </a>
-<a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Status characteristic is read-only, but somehow written&quot;)</span></a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="560"><span class="lineNum">     560 </span>            :     }</a>
-<a name="561"><span class="lineNum">     561 </span>            : </a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineNoCov">          0 :         emit q-&gt;deivceNameWritten();</span></a>
-<a name="564"><span class="lineNum">     564 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="565"><span class="lineNum">     565 </span>            :     }</a>
-<a name="566"><span class="lineNum">     566 </span>            : </a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceLedFlashed();</span></a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="570"><span class="lineNum">     570 </span>            :     }</a>
-<a name="571"><span class="lineNum">     571 </span>            : </a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineNoCov">          0 :     qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status Service&quot;)</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="574"><span class="lineNum">     574 </span>            : }</a>
-<a name="575"><span class="lineNum">     575 </span>            : </a>
-<a name="576"><span class="lineNum">     576 </span>            : /// \endcond</a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :     qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Read  characteristic \&quot;%1\&quot; (%2) of size %3: 0x%4&quot;)</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :         .arg(QLatin1String(value.toHex()));</span></a>
+<a name="499"><span class="lineNum">     499 </span>            : </a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :     Q_Q(StatusService);</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :         const StatusService::DeviceCharacteristics characteristics = parseDeviceCharacteristics(value);</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineNoCov">          0 :         if (characteristics.firmwareVersion.isNull()) {</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :             qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Failed to parse device characteristics: 0x%1&quot;)</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :                 .arg(QLatin1String(value.toHex()));</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :             return;</span></a>
+<a name="507"><span class="lineNum">     507 </span>            :         }</a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceCharacteristicsRead(characteristics);</span></a>
+<a name="509"><span class="lineNum">     509 </span>            :         return;</a>
+<a name="510"><span class="lineNum">     510 </span>            :     }</a>
+<a name="511"><span class="lineNum">     511 </span>            : </a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :         const StatusService::Status status = parseStatus(value);</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :         if (qIsNaN(status.batteryVoltage)) {</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :             qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Failed to parse status: 0x%1&quot;)</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineNoCov">          0 :                 .arg(QLatin1String(value.toHex()));</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineNoCov">          0 :             return;</span></a>
+<a name="518"><span class="lineNum">     518 </span>            :         }</a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceStatusRead(status);</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="521"><span class="lineNum">     521 </span>            :     }</a>
+<a name="522"><span class="lineNum">     522 </span>            : </a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineNoCov">          0 :         const QString deviceName = QString::fromUtf8(value);</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Device name: \&quot;%1\&quot;&quot;).arg(deviceName);</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameRead(deviceName);</span></a>
+<a name="527"><span class="lineNum">     527 </span>            :         return;</a>
+<a name="528"><span class="lineNum">     528 </span>            :     }</a>
+<a name="529"><span class="lineNum">     529 </span>            : </a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Flash LED characteristic is write-only, but somehow read&quot;)</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="534"><span class="lineNum">     534 </span>            :     }</a>
+<a name="535"><span class="lineNum">     535 </span>            : </a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineNoCov">          0 :     qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status Service&quot;)</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="538"><span class="lineNum">     538 </span>            : }</a>
+<a name="539"><span class="lineNum">     539 </span>            : </a>
+<a name="540"><span class="lineNum">     540 </span>            : /*!</a>
+<a name="541"><span class="lineNum">     541 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
+<a name="542"><span class="lineNum">     542 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="543"><span class="lineNum">     543 </span>            :  */</a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineNoCov">          0 : void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="545"><span class="lineNum">     545 </span>            :                                                  const QByteArray &amp;newValue)</a>
+<a name="546"><span class="lineNum">     546 </span>            : {</a>
+<a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :     qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Characteristic \&quot;%1\&quot; (%2) written, with new value:&quot;)</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineNoCov">          0 :         .arg(characteristic.name(), characteristic.uuid().toString()) &lt;&lt; newValue;</span></a>
+<a name="549"><span class="lineNum">     549 </span>            : </a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineNoCov">          0 :     Q_Q(StatusService);</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Device Characteristics is read-only, but somehow written&quot;)</span></a>
+<a name="553"><span class="lineNum">     553 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="554"><span class="lineNum">     554 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="555"><span class="lineNum">     555 </span>            :     }</a>
+<a name="556"><span class="lineNum">     556 </span>            : </a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineNoCov">          0 :         qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Status characteristic is read-only, but somehow written&quot;)</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="561"><span class="lineNum">     561 </span>            :     }</a>
+<a name="562"><span class="lineNum">     562 </span>            : </a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineNoCov">          0 :         emit q-&gt;deivceNameWritten();</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="566"><span class="lineNum">     566 </span>            :     }</a>
+<a name="567"><span class="lineNum">     567 </span>            : </a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceLedFlashed();</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="571"><span class="lineNum">     571 </span>            :     }</a>
+<a name="572"><span class="lineNum">     572 </span>            : </a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineNoCov">          0 :     qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status Service&quot;)</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="575"><span class="lineNum">     575 </span>            : }</a>
+<a name="576"><span class="lineNum">     576 </span>            : </a>
+<a name="577"><span class="lineNum">     577 </span>            : /// \endcond</a>
 </pre>
       </td>
     </tr>

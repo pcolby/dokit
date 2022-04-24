@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">106</td>
+            <td class="headerCovTableEntry">107</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-04-24 03:51:22</td>
+            <td class="headerValue">2022-04-24 11:03:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -432,62 +432,63 @@
 <a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 : void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
 <a name="371"><span class="lineNum">     371 </span>            :                                               const QByteArray &amp;value)</a>
 <a name="372"><span class="lineNum">     372 </span>            : {</a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :     qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Read  characteristic \&quot;%1\&quot; (%2) of size %3:&quot;)</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size()) &lt;&lt; value;</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :     Q_Q(DeviceInfoService);</span></a>
-<a name="376"><span class="lineNum">     376 </span>            : </a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineNoCov">          0 :         const QString name = QString::fromUtf8(value);</span></a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Manufacturer name: \&quot;%1\&quot;&quot;).arg(name);</span></a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :         emit q-&gt;manufacturerRead(name);</span></a>
-<a name="381"><span class="lineNum">     381 </span>            :         return;</a>
-<a name="382"><span class="lineNum">     382 </span>            :     }</a>
-<a name="383"><span class="lineNum">     383 </span>            : </a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {</span></a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :         const QString model = QString::fromUtf8(value);</span></a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Model number: \&quot;%1\&quot;&quot;).arg(model);</span></a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineNoCov">          0 :         emit q-&gt;modelNumberRead(model);</span></a>
-<a name="388"><span class="lineNum">     388 </span>            :         return;</a>
-<a name="389"><span class="lineNum">     389 </span>            :     }</a>
-<a name="390"><span class="lineNum">     390 </span>            : </a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Hardware revision: \&quot;%1\&quot;&quot;).arg(revision);</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :         emit q-&gt;hardwareRevisionRead(revision);</span></a>
-<a name="395"><span class="lineNum">     395 </span>            :         return;</a>
-<a name="396"><span class="lineNum">     396 </span>            :     }</a>
-<a name="397"><span class="lineNum">     397 </span>            : </a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Firmware revision: \&quot;%1\&quot;&quot;).arg(revision);</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :         emit q-&gt;firmwareRevisionRead(revision);</span></a>
-<a name="402"><span class="lineNum">     402 </span>            :         return;</a>
-<a name="403"><span class="lineNum">     403 </span>            :     }</a>
-<a name="404"><span class="lineNum">     404 </span>            : </a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {</span></a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Software revision: \&quot;%1\&quot;&quot;).arg(revision);</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :         emit q-&gt;softwareRevisionRead(revision);</span></a>
-<a name="409"><span class="lineNum">     409 </span>            :         return;</a>
-<a name="410"><span class="lineNum">     410 </span>            :     }</a>
-<a name="411"><span class="lineNum">     411 </span>            : </a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineNoCov">          0 :     qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Device Info service&quot;)</span></a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="414"><span class="lineNum">     414 </span>            : }</a>
-<a name="415"><span class="lineNum">     415 </span>            : </a>
-<a name="416"><span class="lineNum">     416 </span>            : /*!</a>
-<a name="417"><span class="lineNum">     417 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
-<a name="418"><span class="lineNum">     418 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="419"><span class="lineNum">     419 </span>            :  */</a>
-<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 : void DeviceInfoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="421"><span class="lineNum">     421 </span>            :                                                  const QByteArray &amp;newValue)</a>
-<a name="422"><span class="lineNum">     422 </span>            : {</a>
-<a name="423"><span class="lineNum">     423 </span>            :     Q_UNUSED(newValue);</a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :     qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Characteristic written event on read-only service&quot;)</span></a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="427"><span class="lineNum">     427 </span>            : </a>
-<a name="428"><span class="lineNum">     428 </span>            : /// \endcond</a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :     qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Read  characteristic \&quot;%1\&quot; (%2) of size %3: 0x%4&quot;)</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :         .arg(QLatin1String(value.toHex()));</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :     Q_Q(DeviceInfoService);</span></a>
+<a name="377"><span class="lineNum">     377 </span>            : </a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineNoCov">          0 :         const QString name = QString::fromUtf8(value);</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Manufacturer name: \&quot;%1\&quot;&quot;).arg(name);</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineNoCov">          0 :         emit q-&gt;manufacturerRead(name);</span></a>
+<a name="382"><span class="lineNum">     382 </span>            :         return;</a>
+<a name="383"><span class="lineNum">     383 </span>            :     }</a>
+<a name="384"><span class="lineNum">     384 </span>            : </a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 :         const QString model = QString::fromUtf8(value);</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Model number: \&quot;%1\&quot;&quot;).arg(model);</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineNoCov">          0 :         emit q-&gt;modelNumberRead(model);</span></a>
+<a name="389"><span class="lineNum">     389 </span>            :         return;</a>
+<a name="390"><span class="lineNum">     390 </span>            :     }</a>
+<a name="391"><span class="lineNum">     391 </span>            : </a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Hardware revision: \&quot;%1\&quot;&quot;).arg(revision);</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineNoCov">          0 :         emit q-&gt;hardwareRevisionRead(revision);</span></a>
+<a name="396"><span class="lineNum">     396 </span>            :         return;</a>
+<a name="397"><span class="lineNum">     397 </span>            :     }</a>
+<a name="398"><span class="lineNum">     398 </span>            : </a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Firmware revision: \&quot;%1\&quot;&quot;).arg(revision);</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineNoCov">          0 :         emit q-&gt;firmwareRevisionRead(revision);</span></a>
+<a name="403"><span class="lineNum">     403 </span>            :         return;</a>
+<a name="404"><span class="lineNum">     404 </span>            :     }</a>
+<a name="405"><span class="lineNum">     405 </span>            : </a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :         qCDebug(pokitService).noquote() &lt;&lt; tr(&quot;Software revision: \&quot;%1\&quot;&quot;).arg(revision);</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :         emit q-&gt;softwareRevisionRead(revision);</span></a>
+<a name="410"><span class="lineNum">     410 </span>            :         return;</a>
+<a name="411"><span class="lineNum">     411 </span>            :     }</a>
+<a name="412"><span class="lineNum">     412 </span>            : </a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :     qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Device Info service&quot;)</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="415"><span class="lineNum">     415 </span>            : }</a>
+<a name="416"><span class="lineNum">     416 </span>            : </a>
+<a name="417"><span class="lineNum">     417 </span>            : /*!</a>
+<a name="418"><span class="lineNum">     418 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
+<a name="419"><span class="lineNum">     419 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="420"><span class="lineNum">     420 </span>            :  */</a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 : void DeviceInfoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="422"><span class="lineNum">     422 </span>            :                                                  const QByteArray &amp;newValue)</a>
+<a name="423"><span class="lineNum">     423 </span>            : {</a>
+<a name="424"><span class="lineNum">     424 </span>            :     Q_UNUSED(newValue);</a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineNoCov">          0 :     qCWarning(pokitService).noquote() &lt;&lt; tr(&quot;Characteristic written event on read-only service&quot;)</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="428"><span class="lineNum">     428 </span>            : </a>
+<a name="429"><span class="lineNum">     429 </span>            : /// \endcond</a>
 </pre>
       </td>
     </tr>
