@@ -74,6 +74,18 @@ public:
         LoggerModeSampling = 10,  ///< Data Logger is sampling.
     };
 
+    enum class BatteryStatus : quint8 {
+        Low = 0,  ///< Low (replace battery).
+        Good = 1, ///< Good.
+    };
+
+    struct Status {
+        DeviceStatus deviceStatus;   ///< Current Pokit device status.
+        float batteryVoltage;        ///< Current battery voltage level.
+        BatteryStatus batteryStatus; ///< Logical interpretation the battery voltage level.
+
+    };
+
     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
     ~StatusService() override;
 
@@ -86,9 +98,9 @@ public:
     DeviceCharacteristics deviceCharacteristics() const;
 
     // Status characteristic (Read only).
-    DeviceStatus deviceStatus() const;
+    Status status() const;
     static QString deviceStatusLabel(const StatusService::DeviceStatus &status);
-    float batteryVoltage() const;
+    static QString batteryStatusLabel(const StatusService::BatteryStatus &label);
 
     // Device Name characteristic (BLE read/write).
     QString deviceName() const;
@@ -101,7 +113,7 @@ signals:
     void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &characteristics);
     void deviceNameRead(const QString &deviceName);
     void deivceNameWritten();
-    void deviceStatusRead(const StatusService::DeviceStatus status, const float batteryVoltage);
+    void deviceStatusRead(const StatusService::Status &status);
     void deviceLedFlashed();
 
 protected:

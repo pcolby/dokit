@@ -39,7 +39,7 @@ public:
     explicit StatusServicePrivate(QLowEnergyController * controller, StatusService * const q);
 
     static StatusService::DeviceCharacteristics parseDeviceCharacteristics(const QByteArray &value);
-    static QPair<StatusService::DeviceStatus, float> parseStatus(const QByteArray &value);
+    static StatusService::Status parseStatus(const QByteArray &value);
 
 protected:
     void characteristicRead(const QLowEnergyCharacteristic &characteristic,

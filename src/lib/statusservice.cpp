@@ -63,6 +63,12 @@ const QBluetoothUuid StatusService::CharacteristicUuids::
 /// \enum StatusService::DeviceStatus
 /// \brief Values support by the `Status` attribute of the `Status` characteristic.
 
+/// \enum StatusService::BatteryStatus
+/// \brief Values support by the `Battery Status` attribute of the `Status` characteristic.
+
+/// \struct StatusService::Status
+/// \brief Attributes included in the `Status` characterstic.
+
 /*!
  * Constructs a new Pokit service with \a parent.
  */
@@ -179,32 +185,40 @@ StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() cons
 }
 
 /*!
- * Returns the most recent value of the `Status` characteristic's `Status` attribute.
+ * Returns the most recent value of the `Status` service's `Status` characteristic.
  *
  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
- * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then
- * `0xFF` is returned.
+ * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the
+ * returned StatusService::Status::batteryLevel member will be a quiet NaN, which can be checked
+ * like:
  *
- * \note The `Status` service's `Status' characteristic contains two attributes: `Status` and
- * `Battery Voltage`. Thus this function, and batteryVoltage(), both read the same underlying
- * characteristic.
+ * ```
+ * const StatusService::Status status = statusService->status();
+ * if (qIsNaN(status.batteryLevel)) {
+ *     // Handle failure.
+ * }
+ * ```
  */
-StatusService::DeviceStatus StatusService::deviceStatus() const
+StatusService::Status StatusService::status() const
 {
     Q_D(const StatusService);
     if (!d->service) {
         qCDebug(pokitService).noquote() << tr("No device status without a service object.");
-        return static_cast<StatusService::DeviceStatus>(0xFF);
+        return StatusService::Status
+            { DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(), BatteryStatus::Low };
+        return StatusService::Status
+            { DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(), BatteryStatus::Low };
     }
 
     const QLowEnergyCharacteristic characteristic =
         d->service->characteristic(CharacteristicUuids::status);
     if (!characteristic.isValid()) {
         qCDebug(pokitService).noquote() << tr("Status characteristic not valid yet.");
-        return static_cast<StatusService::DeviceStatus>(0xFF);
+        return StatusService::Status
+            { DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(), BatteryStatus::Low };
     }
 
-    return StatusServicePrivate::parseStatus(characteristic.value()).first;
+    return StatusServicePrivate::parseStatus(characteristic.value());
 }
 
 /*!
@@ -229,32 +243,15 @@ QString StatusService::deviceStatusLabel(const StatusService::DeviceStatus &stat
 }
 
 /*!
- * Returns the most recent value of the `Status` characteristic's `Battery Voltage` attribute.
- *
- * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
- * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then
- * a quiet NaN is returned, which can be checked via `qIsNaN`.
- *
- * \note The `Status` service's `Status' characteristic contains two attributes: `Status` and
- * `Battery Voltage`. Thus this function, and deviceStatus(), both read the same underlying
- * characteristic.
+ * Returns a string version of the \a status enum label.
  */
-float StatusService::batteryVoltage() const
+QString StatusService::batteryStatusLabel(const StatusService::BatteryStatus &status)
 {
-    Q_D(const StatusService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device status without a service object.");
-        return std::numeric_limits<float>::quiet_NaN();
+    switch (status) {
+    case BatteryStatus::Low:  return QLatin1String("Low");
+    case BatteryStatus::Good: return QLatin1String("Good");
     }
-
-    const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::status);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Status characteristic not valid yet.");
-        return std::numeric_limits<float>::quiet_NaN();
-    }
-
-    return StatusServicePrivate::parseStatus(characteristic.value()).second;
+    return QLatin1String("Invalid");
 }
 
 /*!
@@ -456,23 +453,37 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
 /*!
  * Parses the `Status` \a value into a DeviceStatus and battery voltage.
  */
-QPair<StatusService::DeviceStatus, float> StatusServicePrivate::parseStatus(const QByteArray &value)
+StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
 {
+    StatusService::Status status{
+        static_cast<StatusService::DeviceStatus>
+            (std::numeric_limits<StatusService::DeviceStatus>::max()),
+        std::numeric_limits<float>::quiet_NaN(),
+        static_cast<StatusService::BatteryStatus>
+            (std::numeric_limits<StatusService::BatteryStatus>::max()),
+    };
+
     if (value.size() < 5) {
         qCWarning(pokitService).noquote() << tr("Invalid status size %1 for value:")
             .arg(value.size()) << value;
-        return QPair<StatusService::DeviceStatus, float>(
-            StatusService::DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN());
+        return status;
     }
-    if (value.size() > 5) {
+    if (value.size() > 6) {
         qCWarning(pokitService).noquote() << tr("Status has %1 extra bytes:")
-            .arg(value.size()-5) << value.mid(5);
+            .arg(value.size()-6) << value.mid(6);
     }
-    const StatusService::DeviceStatus status = static_cast<StatusService::DeviceStatus>(value.at(0));
-    const float batteryVoltage = qFromLittleEndian<float>(value.mid(1,4));
-    qCDebug(pokitService).noquote() << tr("Status: %1 (%2), Battery: %3 volts.")
-        .arg((quint8)status).arg(StatusService::deviceStatusLabel(status)).arg(batteryVoltage);
-    return QPair<StatusService::DeviceStatus, float>(status, batteryVoltage);
+
+    status.deviceStatus = static_cast<StatusService::DeviceStatus>(value.at(0));
+    status.batteryVoltage = qFromLittleEndian<float>(value.mid(1,4));
+    if (value.size() >= 6) { // Battery Status added to Pokit API docs v1.00.
+        status.batteryStatus = static_cast<StatusService::BatteryStatus>(value.at(5));
+    }
+    qCDebug(pokitService).noquote() << tr("Device status:   %1 (%2)")
+        .arg((quint8)status.deviceStatus).arg(StatusService::deviceStatusLabel(status.deviceStatus));
+    qCDebug(pokitService).noquote() << tr("Battery voltage: %1 volts").arg(status.batteryVoltage);
+    qCDebug(pokitService).noquote() << tr("Battery status:  %1 (%2)")
+        .arg((quint8)status.batteryStatus);
+    return status;
 }
 
 /*!
@@ -498,13 +509,13 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
-        const auto pair = parseStatus(value);
-        if (qIsNaN(pair.second)) {
-            qCWarning(pokitService).noquote() << tr("Failed to parse status characteristic")
+        const StatusService::Status status = parseStatus(value);
+        if (qIsNaN(status.batteryVoltage)) {
+            qCWarning(pokitService).noquote() << tr("Failed to parse status:")
                 << value.size() << value;
             return;
         }
-        emit q->deviceStatusRead(pair.first, pair.second);
+        emit q->deviceStatusRead(status);
         return;
     }
 
