@@ -95,7 +95,7 @@ bool CalibrationService::readCharacteristics()
  */
 bool CalibrationService::calibrateTemperature(const float ambientTemperature)
 {
-    static_assert(sizeof(float) == 4); // Pokit devices expect 4-byte floats.
+    static_assert(sizeof(float) == 4, "Pokit devices expect 32-bit floats");
 
     Q_D(const CalibrationService);
     if (!d->service) {
