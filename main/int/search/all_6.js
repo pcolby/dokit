@@ -6,5 +6,6 @@ var searchData=
   ['genericaccessservice_2ecpp_3',['genericaccessservice.cpp',['../genericaccessservice_8cpp.html',1,'']]],
   ['genericaccessservice_2eh_4',['genericaccessservice.h',['../genericaccessservice_8h.html',1,'']]],
   ['genericaccessservice_5fp_2eh_5',['genericaccessservice_p.h',['../genericaccessservice__p_8h.html',1,'']]],
-  ['genericaccessserviceprivate_6',['GenericAccessServicePrivate',['../classGenericAccessServicePrivate.html',1,'GenericAccessServicePrivate'],['../classGenericAccessServicePrivate.html#a654cf6dc58a82b2fa75cf735b2310181',1,'GenericAccessServicePrivate::GenericAccessServicePrivate()']]]
+  ['genericaccessserviceprivate_6',['GenericAccessServicePrivate',['../classGenericAccessServicePrivate.html',1,'GenericAccessServicePrivate'],['../classGenericAccessServicePrivate.html#a654cf6dc58a82b2fa75cf735b2310181',1,'GenericAccessServicePrivate::GenericAccessServicePrivate()']]],
+  ['good_7',['Good',['../classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68a0c6ad70beb3a7e76c3fc7adab7c46acc',1,'StatusService']]]
 ];

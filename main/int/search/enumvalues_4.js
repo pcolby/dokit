@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loggermodesampling_0',['LoggerModeSampling',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca',1,'StatusService']]]
+  ['json_0',['Json',['../classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333',1,'AbstractCommand']]]
 ];

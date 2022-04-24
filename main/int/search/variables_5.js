@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hardwarerevision_0',['hardwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b',1,'DeviceInfoService::CharacteristicUuids']]]
+  ['genericaccess_0',['genericAccess',['../classPokitDevicePrivate.html#a9ee2bfe1547ebd2ab6b5929fed66e2e8',1,'PokitDevicePrivate']]],
+  ['genericaccessmutex_1',['genericAccessMutex',['../classPokitDevicePrivate.html#abc74b961e879309c59bc715e4dde7b75',1,'PokitDevicePrivate']]]
 ];

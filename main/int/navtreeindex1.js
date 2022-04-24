@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"dir_0f0ef9b2ce2fb9672c310b6bf7573d35.html":[5,0,0,0,1,0],
+"dir_17e69c269f7749027d28c3e5a3ec9399.html":[5,0,0,0,1],
+"dir_483047b42e0856958a5abffbac41e54e.html":[5,0,0,0],
 "dir_8d9614c8875cb2a66bb99a41cd4cbdc4.html":[5,0,0],
 "dir_a6762960df65ad0e61304c141d9ba3af.html":[5,0,0,0,0],
 "dir_db9736cc4d66dfa51ee2d2b49d100b59.html":[5,0,0,0,1,1],
@@ -116,6 +119,10 @@ var NAVTREEINDEX1 =
 "structStatusService_1_1DeviceCharacteristics.html#ac3e0c7d70d55307a49907db75e742348":[4,0,17,1,2],
 "structStatusService_1_1DeviceCharacteristics.html#ae9154c26eb128b26c0fccb9f653f1420":[4,0,17,1,4],
 "structStatusService_1_1DeviceCharacteristics.html#afdc814d092204ef6f0628253298ae319":[4,0,17,1,1],
+"structStatusService_1_1Status.html":[4,0,17,2],
+"structStatusService_1_1Status.html#a34d5f71da1e356a5f8da381f4b715b46":[4,0,17,2,1],
+"structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11":[4,0,17,2,2],
+"structStatusService_1_1Status.html#af2a1fab33ca1e643988bc9976a44940d":[4,0,17,2,0],
 "todo.html":[3],
 "utils_8cpp.html":[5,0,0,0,1,1,14],
 "utils_8cpp.html#a33a61d31bdeec24a7af79cd3629806bd":[5,0,0,0,1,1,14,3],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['devicecharacteristics_0',['deviceCharacteristics',['../structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0',1,'StatusService::CharacteristicUuids']]]
+  ['capabilitymask_0',['capabilityMask',['../structStatusService_1_1DeviceCharacteristics.html#ac32620649e1f8a2cf4cc6e25a7859656',1,'StatusService::DeviceCharacteristics']]]
 ];

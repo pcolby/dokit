@@ -14,5 +14,6 @@ var hierarchy =
         [ "StatusService", "classStatusService.html", null ]
       ] ],
       [ "PokitDevice", "classPokitDevice.html", null ]
-    ] ]
+    ] ],
+    [ "StatusService::Status", "structStatusService_1_1Status.html", null ]
 ];

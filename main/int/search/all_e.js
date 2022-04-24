@@ -2,7 +2,7 @@ var searchData=
 [
   ['parseappearance_0',['parseAppearance',['../classGenericAccessServicePrivate.html#a9f3b84e40f816ad12cf4c8804c0c7505',1,'GenericAccessServicePrivate']]],
   ['parsedevicecharacteristics_1',['parseDeviceCharacteristics',['../classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced',1,'StatusServicePrivate']]],
-  ['parsestatus_2',['parseStatus',['../classStatusServicePrivate.html#a92e73bf7feecad2436d0ccad91a82bf5',1,'StatusServicePrivate']]],
+  ['parsestatus_2',['parseStatus',['../classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0',1,'StatusServicePrivate']]],
   ['placeholder_20page_3',['Placeholder Page',['../md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html',1,'']]],
   ['pokitdevice_4',['PokitDevice',['../classPokitDevice.html',1,'PokitDevice'],['../classPokitDevice.html#af4340372287a435bddd7d7f98b4cb1b6',1,'PokitDevice::PokitDevice(PokitDevicePrivate *const d, QObject *const parent)'],['../classPokitDevice.html#a8ef0156de9faef55985d01b4df1fce87',1,'PokitDevice::PokitDevice(QLowEnergyController *controller, QObject *parent=nullptr)'],['../classPokitDevice.html#af2e70d41938c635e2c80911f177f0b78',1,'PokitDevice::PokitDevice(const QString &amp;addressOrUuid, QObject *parent=nullptr)']]],
   ['pokitdevice_2ecpp_5',['pokitdevice.cpp',['../pokitdevice_8cpp.html',1,'']]],

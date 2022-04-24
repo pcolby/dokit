@@ -30,5 +30,6 @@ var hierarchy =
       [ "PokitDevice", "classPokitDevice.html", null ],
       [ "PokitDeviceDiscoveryAgentPrivate", "classPokitDeviceDiscoveryAgentPrivate.html", null ],
       [ "PokitDevicePrivate", "classPokitDevicePrivate.html", null ]
-    ] ]
+    ] ],
+    [ "StatusService::Status", "structStatusService_1_1Status.html", null ]
 ];

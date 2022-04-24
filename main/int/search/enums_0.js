@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['devicestatus_0',['DeviceStatus',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35',1,'StatusService']]]
+  ['batterystatus_0',['BatteryStatus',['../classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68',1,'StatusService']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['batteryvoltage_0',['batteryVoltage',['../classStatusService.html#aca5c357a3fef14251081bdfaf60f4971',1,'StatusService']]]
+  ['batterystatuslabel_0',['batteryStatusLabel',['../classStatusService.html#a45993e6794c48ce999b5effcd95b9a74',1,'StatusService']]]
 ];

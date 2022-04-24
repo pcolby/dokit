@@ -4,9 +4,9 @@ var indexSectionsWithContent =
   1: "acdgps",
   2: "adgpqsu",
   3: "abcdfghimprst~",
-  4: "acdfhmns",
-  5: "d",
-  6: "dilm",
+  4: "abcdfhmns",
+  5: "bd",
+  6: "dgilm",
   7: "pqt"
 };
 

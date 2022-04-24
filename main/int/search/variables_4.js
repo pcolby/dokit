@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['genericaccess_0',['genericAccess',['../classPokitDevicePrivate.html#a9ee2bfe1547ebd2ab6b5929fed66e2e8',1,'PokitDevicePrivate']]],
-  ['genericaccessmutex_1',['genericAccessMutex',['../classPokitDevicePrivate.html#abc74b961e879309c59bc715e4dde7b75',1,'PokitDevicePrivate']]]
+  ['firmwarerevision_0',['firmwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a',1,'DeviceInfoService::CharacteristicUuids']]],
+  ['firmwareversion_1',['firmwareVersion',['../structStatusService_1_1DeviceCharacteristics.html#afdc814d092204ef6f0628253298ae319',1,'StatusService::DeviceCharacteristics']]],
+  ['flashled_2',['flashLed',['../structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0',1,'StatusService::CharacteristicUuids']]],
+  ['format_3',['format',['../classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b',1,'AbstractCommand']]]
 ];

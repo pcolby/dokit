@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['firmwarerevision_0',['firmwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a',1,'DeviceInfoService::CharacteristicUuids']]],
-  ['firmwareversion_1',['firmwareVersion',['../structStatusService_1_1DeviceCharacteristics.html#afdc814d092204ef6f0628253298ae319',1,'StatusService::DeviceCharacteristics']]],
-  ['flashled_2',['flashLed',['../structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0',1,'StatusService::CharacteristicUuids']]]
+  ['devicecharacteristics_0',['deviceCharacteristics',['../structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0',1,'StatusService::CharacteristicUuids']]],
+  ['devicestatus_1',['deviceStatus',['../structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11',1,'StatusService::Status']]]
 ];

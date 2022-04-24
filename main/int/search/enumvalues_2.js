@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['idle_0',['Idle',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c',1,'StatusService']]]
+  ['good_0',['Good',['../classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68a0c6ad70beb3a7e76c3fc7adab7c46acc',1,'StatusService']]]
 ];

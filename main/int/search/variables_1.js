@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['capabilitymask_0',['capabilityMask',['../structStatusService_1_1DeviceCharacteristics.html#ac32620649e1f8a2cf4cc6e25a7859656',1,'StatusService::DeviceCharacteristics']]],
-  ['controller_1',['controller',['../classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1',1,'AbstractPokitServicePrivate::controller()'],['../classPokitDevicePrivate.html#a9a6acf432d18d31566271ddca3ae5a80',1,'PokitDevicePrivate::controller()']]]
+  ['batterystatus_0',['batteryStatus',['../structStatusService_1_1Status.html#af2a1fab33ca1e643988bc9976a44940d',1,'StatusService::Status']]],
+  ['batteryvoltage_1',['batteryVoltage',['../structStatusService_1_1Status.html#a34d5f71da1e356a5f8da381f4b715b46',1,'StatusService::Status']]]
 ];
