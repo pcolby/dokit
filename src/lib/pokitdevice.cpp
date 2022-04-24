@@ -24,6 +24,7 @@
 
 #include <qtpokit/pokitdevice.h>
 
+#include <qtpokit/calibrationservice.h>
 #include <qtpokit/deviceinfoservice.h>
 #include <qtpokit/genericaccessservice.h>
 #include <qtpokit/statusservice.h>
@@ -136,6 +137,20 @@ const QLowEnergyController * PokitDevice::controller() const
 /// \endcond
 
 /*!
+ * Returns a pointer to a CalibrationService instance that uses this device's controller for access.
+ *
+ * This is a convenience function, that always returns the same pointer (for this PokitDevice
+ * instance), but the service itself is lazily created (in a threadsafe manner) on the first
+ * invocation of this function.
+ *
+ * \todo Implement this function when the DataLoggerService is implemented.
+ */
+CalibrationService * PokitDevice::calibration()
+{
+    POKIT_INTERNAL_GET_SERVICE(CalibrationService, calibration);
+}
+
+/*!
  * Returns a pointer to a DataLoggerService instance that uses this device's controller for access.
  *
  * This is a convenience function, that always returns the same pointer (for this PokitDevice
@@ -232,8 +247,8 @@ StatusService * PokitDevice::status()
  * Constructs a new PokitDevicePrivate object with public implementation \a q.
  */
 PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)
-    : controller(nullptr), dataLogger(nullptr), deviceInfo(nullptr), dso(nullptr),
-      genericAccess(nullptr), multimeter(nullptr), status(nullptr), q_ptr(q)
+    : controller(nullptr), calibration(nullptr), dataLogger(nullptr), deviceInfo(nullptr),
+      dso(nullptr), genericAccess(nullptr), multimeter(nullptr), status(nullptr), q_ptr(q)
 {
 
 }

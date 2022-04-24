@@ -2,6 +2,8 @@ add_executable(
   pokit
   abstractcommand.cpp
   abstractcommand.h
+  calibratecommand.cpp
+  calibratecommand.h
   devicecommand.cpp
   devicecommand.h
   flashledcommand.cpp

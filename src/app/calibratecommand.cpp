@@ -17,32 +17,37 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "flashledcommand.h"
+#include "calibratecommand.h"
 
+#include <qtpokit/calibrationservice.h>
 #include <qtpokit/pokitdevice.h>
-#include <qtpokit/statusservice.h>
+
+#include <QJsonDocument>
+#include <QJsonObject>
 
 /*!
- * \class FlashLedCommand
+ * \class CalibrationCommand
  *
- * The FlashLedCommand class implements the `flash-led` CLI command.
+ * The CalibrationCommand class implements the `calibrate` CLI command.
  */
 
 /*!
- * Construct a new FlashLedCommand object with \a parent.
+ * Construct a new CalibrationCommand object with \a parent.
  */
-FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent), service(nullptr)
+CalibrationCommand::CalibrationCommand(QObject * const parent) : DeviceCommand(parent),
+    service(nullptr), temperature(std::numeric_limits<float>::quiet_NaN())
 {
 
 }
 
-QStringList FlashLedCommand::requiredOptions() const
+QStringList CalibrationCommand::requiredOptions() const
 {
     return DeviceCommand::requiredOptions() + QStringList{
+        QLatin1String("temperature"),
     };
 }
 
-QStringList FlashLedCommand::supportedOptions() const
+QStringList CalibrationCommand::supportedOptions() const
 {
     return DeviceCommand::supportedOptions();
 }
@@ -53,31 +58,39 @@ QStringList FlashLedCommand::supportedOptions() const
  * This implementation extends DeviceCommand::processOptions to process additional CLI options
  * supported (or required) by this command.
  */
-QStringList FlashLedCommand::processOptions(const QCommandLineParser &parser)
+QStringList CalibrationCommand::processOptions(const QCommandLineParser &parser)
 {
     QStringList errors = DeviceCommand::processOptions(parser);
     if (!errors.isEmpty()) {
         return errors;
     }
 
+    const QString temperatureString = parser.value(QLatin1String("temperature"));
+    bool ok;
+    const float temperatureFloat = temperatureString.toFloat(&ok);
+    if (ok) {
+        temperature = temperatureFloat;
+    } else {
+        errors.append(tr("Unrecognised temperature format: %1").arg(temperatureString));
+    }
     return errors;
 }
 
 /*!
  * Begins scanning for Pokit devices.
  */
-bool FlashLedCommand::start()
+bool CalibrationCommand::start()
 {
     Q_ASSERT(device);
     if (!service) {
-        service = device->status();
+        service = device->calibration();
         Q_ASSERT(service);
-        connect(service, &StatusService::serviceDetailsDiscovered,
-                this, &FlashLedCommand::serviceDetailsDiscovered);
-        connect(service, &StatusService::serviceErrorOccurred,
-                this, &FlashLedCommand::serviceError);
-        connect(service, &StatusService::deviceLedFlashed,
-                this, &FlashLedCommand::deviceLedFlashed);
+        connect(service, &CalibrationService::serviceDetailsDiscovered,
+                this, &CalibrationCommand::serviceDetailsDiscovered);
+        connect(service, &CalibrationService::serviceErrorOccurred,
+                this, &CalibrationCommand::serviceError);
+        connect(service, &CalibrationService::temperatureCalibrated,
+                this, &CalibrationCommand::temperatureCalibrated);
     }
     qCInfo(lc).noquote() << tr("Connecting to device...");
     device->controller()->connectToDevice();
@@ -87,25 +100,25 @@ bool FlashLedCommand::start()
 /*!
  * \copybrief DeviceCommand::serviceDetailsDiscovered
  *
- * This override flashes the device's LED, via the Pokit Status service.
+ * This override sets the ambient temperature, via the Calibration service.
  */
-void FlashLedCommand::serviceDetailsDiscovered()
+void CalibrationCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    qCInfo(lc).noquote() << tr("Flashing Pokit device LED...");
-    if (!service->flashLed()) {
+    qCInfo(lc).noquote() << tr("Calibrating temperature at %1 degrees celcius...").arg(temperature);
+    if (!service->calibrateTemperature(0)) {
         QCoreApplication::exit(EXIT_FAILURE);
     }
 }
 
 /*!
- * Handles StatusService::deviceLedFlashed events, by outputting the result and exiting.
+ * Handles CalibrationService::temperatureCalibrated events, by outputting the result and exiting.
  */
-void FlashLedCommand::deviceLedFlashed()
+void CalibrationCommand::temperatureCalibrated()
 {
     switch (format) {
     case OutputFormat::Csv:
-        fputs(qPrintable(tr("flash_led_result\nsuccess\n")), stdout);
+        fputs(qPrintable(tr("calibration_result\nsuccess\n")), stdout);
         break;
     case OutputFormat::Json:
         fputs(qPrintable(QLatin1String("true\n")), stdout);

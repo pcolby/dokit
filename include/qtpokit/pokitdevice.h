@@ -33,6 +33,7 @@ class QLowEnergyController;
 
 QTPOKIT_BEGIN_NAMESPACE
 
+class CalibrationService;
 class DataLoggerService;
 class DeviceInfoService;
 class DsoService;
@@ -54,6 +55,7 @@ public:
     QLowEnergyController * controller();
     const QLowEnergyController * controller() const;
 
+    CalibrationService * calibration();
     DataLoggerService * dataLogger();
     DeviceInfoService * deviceInformation();
     DsoService * dso();

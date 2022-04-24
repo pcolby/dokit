@@ -34,6 +34,7 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
+class CalibrationService;
 class DataLoggerService;
 class DeviceInfoService;
 class DsoService;
@@ -50,6 +51,7 @@ class QTPOKIT_EXPORT PokitDevicePrivate : public QObject
 public:
     QLowEnergyController * controller; ///< BLE controller for accessing the Pokit device.
 
+    CalibrationService * calibration;     ///< Calibration service for this Pokit device.
     DataLoggerService * dataLogger;       ///< Data Logger service for this Pokit device.
     DeviceInfoService * deviceInfo;       ///< Device Info service for this Pokit device.
     DsoService * dso;                     ///< DSO service for this Pokit device.
@@ -57,6 +59,7 @@ public:
     MultimeterService * multimeter;       ///< Multimeter service for this Pokit device.
     StatusService * status;               ///< Status service for this Pokit device.
 
+    QMutex calibrationMutex;   ///< Mutex for protecting access to #calibration.
     QMutex dataLoggerMutex;    ///< Mutex for protecting access to #dataLogger.
     QMutex deviceInfoMutex;    ///< Mutex for protecting access to #deviceInfo.
     QMutex dsoMutex;           ///< Mutex for protecting access to #dso.

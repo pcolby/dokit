@@ -17,6 +17,7 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "calibratecommand.h"
 #include "flashledcommand.h"
 #include "infocommand.h"
 #include "scancommand.h"
@@ -73,7 +74,7 @@ void configureLogging(const QCommandLineParser &parser)
 }
 
 enum class Command {
-    None, Info, Status, Meter, DSO, Logger, Scan, SetName, FlashLed
+    None, Info, Status, Meter, DSO, Logger, Scan, SetName, FlashLed, Calibrate
 };
 
 void showCliError(const QString &errorText) {
@@ -101,6 +102,7 @@ Command getCliCommand(const QStringList &posArguments) {
         { QStringLiteral("scan"),      Command::Scan },
         { QStringLiteral("set-name"),  Command::SetName },
         { QStringLiteral("flash-led"), Command::FlashLed },
+        { QStringLiteral("calibrate"), Command::Calibrate },
     };
     const Command command = supportedCommands.value(posArguments.first().toLower(), Command::None);
     if (command == Command::None) {
@@ -143,6 +145,9 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         {{QStringLiteral("samples")},
           QCoreApplication::translate("parseCommandLine","Number of samples to acquire"),
           QStringLiteral("samples")},
+        {{QStringLiteral("temperature")},
+          QCoreApplication::translate("parseCommandLine","Ambient temperature for calibration"),
+          QStringLiteral("degrees-celcius")},
         {{QStringLiteral("timeout")},
           QCoreApplication::translate("parseCommandLine","@todo"),
           QStringLiteral("seconds")},
@@ -185,6 +190,9 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     parser.addPositionalArgument(QStringLiteral("flash-led"),
         QCoreApplication::translate("parseCommandLine", "Flash Pokit device's LED"),
         QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("calibrate"),
+        QCoreApplication::translate("parseCommandLine", "Calibrate Pokit device temperature"),
+        QStringLiteral(" "));
 
     // Do the initial parse, the see if we have a command specified yet.
     parser.parse(appArguments);
@@ -219,6 +227,7 @@ AbstractCommand * getCommandObject(const Command command, QObject * const parent
         showCliError(QCoreApplication::translate("main",
             "Missing argument: <command>\nSee --help for usage information."));
         return nullptr;
+    case Command::Calibrate:return new CalibrationCommand(parent);
     case Command::DSO:      break; ///< \todo Implement.
     case Command::FlashLed: return new FlashLedCommand(parent);
     case Command::Info:     return new InfoCommand(parent);
