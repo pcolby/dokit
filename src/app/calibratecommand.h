@@ -38,7 +38,7 @@ protected slots:
 
 private:
     CalibrationService * service; ///< Bluetooth service this command interracts with.
-    float temperature;
+    float temperature; ///< Ambient temperature from the CLI options.
 
 private slots:
     void temperatureCalibrated();
