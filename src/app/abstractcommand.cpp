@@ -20,6 +20,7 @@
 #include "abstractcommand.h"
 
 #include <qtpokit/pokitdevice.h>
+#include <qtpokit/pokitdevicedisoveryagent.h>
 
 /*!
  * \class AbstractCommand
@@ -34,9 +35,22 @@
  * Constructs a new command with \a parent.
  */
 AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
-    format(OutputFormat::Text)
+    discoveryAgent(new PokitDeviceDiscoveryAgent(this)), format(OutputFormat::Text)
 {
-
+    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,
+            this, &AbstractCommand::deviceDiscovered);
+    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished,
+            this, &AbstractCommand::deviceDiscoveryFinished);
+    connect(discoveryAgent,
+        #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+        QOverload<PokitDeviceDiscoveryAgent::Error>::of(&PokitDeviceDiscoveryAgent::error),
+        #else
+        &PokitDeviceDiscoveryAgent::errorOccurred,
+        #endif
+    [](const PokitDeviceDiscoveryAgent::Error &error) {
+        qCWarning(lc).noquote() << tr("Bluetooth controller error:") << error;
+        QCoreApplication::exit(EXIT_FAILURE);
+    });
 }
 
 /*!
@@ -73,7 +87,9 @@ QStringList AbstractCommand::supportedOptions() const
 {
     return requiredOptions() + QStringList{
         QLatin1String("debug"),
+        QLatin1String("device"),
         QLatin1String("output"),
+        QLatin1String("timeout"),
     };
 }
 
@@ -136,6 +152,11 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
     QStringList errors;
 
+    // Parse the device (name/addr) option.
+    if (parser.isSet(QLatin1String("device"))) {
+        deviceToScanFor = parser.value(QLatin1String("device"));
+    }
+
     // Parse the output format options (if supported, and supplied).
     if ((supportedOptions.contains(QLatin1String("output"))) && // Derived classes may have removed.
         (parser.isSet(QLatin1String("output"))))
@@ -150,6 +171,15 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
         } else {
             errors.append(tr("Unknown output format: %1").arg(output));
         }
+    }
+
+    // Parse the device scan timeout option.
+    if (parser.isSet(QLatin1String("timeout"))) {
+        /// \todo Validate the value format.
+        discoveryAgent->setLowEnergyDiscoveryTimeout(
+            parser.value(QStringLiteral("timeout")).toInt()*1000);
+        qCDebug(lc).noquote() << tr("Set scan timeout to %1").arg(
+            discoveryAgent->lowEnergyDiscoveryTimeout());
     }
 
     // Return errors for any required options that are absent.
@@ -170,8 +200,19 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
  */
 
 /*!
- * \fn virtual bool AbstractCommand::start()
+ * \fn virtual void AbstractCommand::deviceDiscovered(const QBluetoothDeviceInfo &info) = 0
  *
- * Begins the functionality of this command, and returns `true` if begun successfully, `false`
- * otherwise.
+ * Handles PokitDeviceDiscoveryAgent::pokitDeviceDiscovered signal. Derived classes must
+ * implement this slot to begin whatever actions are relevant when a Pokit device has been
+ * discovered. For example, the 'scan' command would simply output the \a info details, whereas
+ * most other commands would begin connecting if \a info is the device they're after.
+ */
+
+/*!
+ * \fn virtual void AbstractCommand::deviceDiscoveryFinished() = 0
+ *
+ * Handles PokitDeviceDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must
+ * implement this slot to perform whatever actions are appropraite when discovery is finished.
+ * For example, the 'scan' command would simply exit, whereas most other commands would verify that
+ * an appropriate device was found.
  */

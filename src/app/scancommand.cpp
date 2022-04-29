@@ -36,15 +36,7 @@
  */
 ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
 {
-    discoveryAgent = new PokitDeviceDiscoveryAgent(this);
-
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,
-            this, &ScanCommand::deviceDiscovered);
-
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished, this, []() {
-        qCDebug(lc).noquote() << tr("Finished scanning for Pokit devices.");
-        QCoreApplication::quit();
-    });
+    /// \todo Support logging device update events too.
 }
 
 QStringList ScanCommand::requiredOptions() const
@@ -55,25 +47,15 @@ QStringList ScanCommand::requiredOptions() const
 QStringList ScanCommand::supportedOptions() const
 {
     return AbstractCommand::supportedOptions() + QStringList{
-        QLatin1String("timeout"),
     };
 }
 
+/// \copydoc AbstractCommand::processOptions
 QStringList ScanCommand::processOptions(const QCommandLineParser &parser)
 {
-    Q_ASSERT(discoveryAgent);
-
     QStringList errors = AbstractCommand::processOptions(parser);
     if (!errors.isEmpty()) {
         return errors;
-    }
-
-    if (parser.isSet(QLatin1String("timeout"))) {
-        /// \todo Validate the value format.
-        discoveryAgent->setLowEnergyDiscoveryTimeout(
-            parser.value(QStringLiteral("timeout")).toInt()*1000);
-        qCDebug(lc).noquote() << tr("Set scan timeout to %1").arg(
-            discoveryAgent->lowEnergyDiscoveryTimeout());
     }
 
     return errors;
@@ -110,4 +92,14 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
             info.address().toString(), info.name())), stdout);
         break;
     }
+}
+
+/*!
+ * Handles the completion of device discovery. In this override we simply exit, as the scan command
+ * is nothing more than logging of discovered devices.
+ */
+void ScanCommand::deviceDiscoveryFinished()
+{
+    qCDebug(lc).noquote() << tr("Finished scanning for Pokit devices.");
+    QCoreApplication::quit();
 }

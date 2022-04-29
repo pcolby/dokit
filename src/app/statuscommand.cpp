@@ -67,22 +67,18 @@ QStringList StatusCommand::processOptions(const QCommandLineParser &parser)
 }
 
 /*!
- * Begins scanning for Pokit devices.
+ * \copybrief DeviceCommand::getService
+ *
+ * This override returns a pointer to a StatusService object.
  */
-bool StatusCommand::start()
+AbstractPokitService * StatusCommand::getService()
 {
     Q_ASSERT(device);
     if (!service) {
         service = device->status();
         Q_ASSERT(service);
-        connect(service, &StatusService::serviceDetailsDiscovered,
-                this, &StatusCommand::serviceDetailsDiscovered);
-        connect(service, &StatusService::serviceErrorOccurred,
-                this, &StatusCommand::serviceError);
     }
-    qCInfo(lc).noquote() << tr("Connecting to device...");
-    device->controller()->connectToDevice();
-    return true;
+    return service;
 }
 
 /*!

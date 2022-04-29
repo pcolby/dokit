@@ -64,24 +64,20 @@ QStringList FlashLedCommand::processOptions(const QCommandLineParser &parser)
 }
 
 /*!
- * Begins scanning for Pokit devices.
+ * \copybrief DeviceCommand::getService
+ *
+ * This override returns a pointer to a StatusService object.
  */
-bool FlashLedCommand::start()
+AbstractPokitService * FlashLedCommand::getService()
 {
     Q_ASSERT(device);
     if (!service) {
         service = device->status();
         Q_ASSERT(service);
-        connect(service, &StatusService::serviceDetailsDiscovered,
-                this, &FlashLedCommand::serviceDetailsDiscovered);
-        connect(service, &StatusService::serviceErrorOccurred,
-                this, &FlashLedCommand::serviceError);
         connect(service, &StatusService::deviceLedFlashed,
                 this, &FlashLedCommand::deviceLedFlashed);
     }
-    qCInfo(lc).noquote() << tr("Connecting to device...");
-    device->controller()->connectToDevice();
-    return true;
+    return service;
 }
 
 /*!

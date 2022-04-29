@@ -40,40 +40,26 @@
  * The PokitDevice class simplifies Pokit device access.
  *
  * It does this by wrapping QLowEnergyController to provide:
- * * automatic detection of device UUID vs MAC address strings for device IDs; and
  * * convenient Pokit service factory methods (dataLogger(), deviceInformation(), dso(),
  *   genericAccess(), multimeter() and status()); and
  * * consistent debug logging of QLowEnergyController events.
  *
- * But this class is entirely optional, in that all features of all all QtPokit classes can be used
- * wihtout this class.  It's just a (meaningful) convenience.
+ * But this class is entirely optional, in that all features of all other QtPokit classes can be
+ * used wihtout this class.  It's just a (meaningful) convenience.
  */
 
 /*!
- * Constructs a new Pokit device controller wrapper for \a addressOrUuid, with \a parent.
+ * Constructs a new Pokit device controller wrapper for \a deviceInfo, with \a parent.
  *
- * \a addressOrUuid must be either a UUID (as accepted by the QBluetoothUuid constructor), or a
- * device address (as accepted by the QBluetoothAddress contructur).  Specifically, any of the
- * following formats (where `x` is hex digit):
- *
- * ```
- * "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
- * "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
- * "xx:xx:xx:xx:xx:xx"
- * "xxxxxxxxxxxx"
- * ```
- *
- * \see QBluetoothAddress::QBluetoothAddress(const QString &address)
- * \see QBluetoothUuid::QBluetoothUuid(const QString &uuid)
+ * Though not strictly necessary, \a deviceInfo should normally come from a
+ * PokitDeviceDiscoveryAgent instance (or a QBluetoothDeviceDiscoveryAgent), otherwise connection
+ * is likely to fail with QLowEnergyController::UnknownRemoteDeviceError.
  */
-PokitDevice::PokitDevice(const QString &addressOrUuid, QObject *parent)
+PokitDevice::PokitDevice(const QBluetoothDeviceInfo &deviceInfo, QObject *parent)
     : QObject(parent), d_ptr(new PokitDevicePrivate(this))
 {
     Q_D(PokitDevice);
-    const QBluetoothDeviceInfo info = (addressOrUuid.contains(QLatin1Char('-'))
-        ? QBluetoothDeviceInfo(QBluetoothUuid(addressOrUuid), QString(), 0)
-        : QBluetoothDeviceInfo(QBluetoothAddress(addressOrUuid), QString(), 0));
-    d->setController(QLowEnergyController::createCentral(info, this));
+    d->setController(QLowEnergyController::createCentral(deviceInfo, this));
 }
 
 /*!

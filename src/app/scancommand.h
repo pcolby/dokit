@@ -19,10 +19,6 @@
 
 #include "abstractcommand.h"
 
-#include <QBluetoothDeviceInfo>
-
-class PokitDeviceDiscoveryAgent;
-
 class ScanCommand : public AbstractCommand
 {
 public:
@@ -35,9 +31,8 @@ public slots:
     QStringList processOptions(const QCommandLineParser &parser) override;
     bool start() override;
 
-private:
-    PokitDeviceDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
+protected slots:
+    void deviceDiscovered(const QBluetoothDeviceInfo &info) override;
+    void deviceDiscoveryFinished() override;
 
-private slots:
-    void deviceDiscovered(const QBluetoothDeviceInfo &info);
 };

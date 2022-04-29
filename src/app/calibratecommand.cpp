@@ -77,24 +77,20 @@ QStringList CalibrationCommand::processOptions(const QCommandLineParser &parser)
 }
 
 /*!
- * Begins scanning for Pokit devices.
+ * \copybrief DeviceCommand::getService
+ *
+ * This override returns a pointer to a CalibrationService object.
  */
-bool CalibrationCommand::start()
+AbstractPokitService * CalibrationCommand::getService()
 {
     Q_ASSERT(device);
     if (!service) {
         service = device->calibration();
         Q_ASSERT(service);
-        connect(service, &CalibrationService::serviceDetailsDiscovered,
-                this, &CalibrationCommand::serviceDetailsDiscovered);
-        connect(service, &CalibrationService::serviceErrorOccurred,
-                this, &CalibrationCommand::serviceError);
         connect(service, &CalibrationService::temperatureCalibrated,
                 this, &CalibrationCommand::temperatureCalibrated);
     }
-    qCInfo(lc).noquote() << tr("Connecting to device...");
-    device->controller()->connectToDevice();
-    return true;
+    return service;
 }
 
 /*!

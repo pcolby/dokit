@@ -19,7 +19,9 @@
 
 #include "devicecommand.h"
 
+#include <qtpokit/abstractpokitservice.h>
 #include <qtpokit/pokitdevice.h>
+#include <qtpokit/pokitdevicedisoveryagent.h>
 #include <QRegularExpression>
 
 /*!
@@ -36,13 +38,6 @@ DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), 
 
 }
 
-QStringList DeviceCommand::requiredOptions() const
-{
-    return AbstractCommand::requiredOptions() + QStringList{
-        QLatin1String("device"),
-    };
-}
-
 /*!
  * \copybrief AbstractCommand::processOptions
  *
@@ -55,35 +50,29 @@ QStringList DeviceCommand::processOptions(const QCommandLineParser &parser)
     if (!errors.isEmpty()) {
         return errors;
     }
-
-    // Parse the device option (if supported, and supplied); must be either a MAC address or UUID.
-    Q_ASSERT(requiredOptions().contains(QLatin1String("device")));
-    Q_ASSERT(parser.isSet(QLatin1String("device")));
-    /// \todo Probably should warn if using MAC on OSX (since its not supported by the OS?).
-    const QString deviceString = parser.value(QLatin1String("device"));
-    static QRegularExpression pattern(QLatin1String("^("
-        "[0-9a-fA-F]{12}|"
-        "([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}|"
-        "[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}|"
-        "\\{[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}\\}"
-    ")$"));
-    if (!pattern.match(deviceString).hasMatch()) {
-        errors.append(tr("Unrecogised device name or address: %1")
-            .arg(deviceString));
-    } else {
-        /// \todo Not sure if we should consruct here, or just record the address for later?
-        device = new PokitDevice(deviceString, this);
-        connect(device->controller(),
-            #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
-            QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
-            #else
-            &QLowEnergyController::errorOccurred,
-            #endif
-            this, &DeviceCommand::controllerError, Qt::QueuedConnection);
-    }
-
     return errors;
 }
+
+/*!
+ * Begins scanning for the Pokit device.
+ */
+bool DeviceCommand::start()
+{
+    qCInfo(lc).noquote() << ((deviceToScanFor.isNull())
+        ? tr("Looking first available Pokit device...")
+        : tr("Looking for device \"%1\"...").arg(deviceToScanFor));
+    discoveryAgent->start();
+    return true;
+}
+
+/*!
+ * \fn virtual AbstractPokitService * DeviceCommand::getService() = 0
+ *
+ * Returns a Pokit service object for the derived command class. This will be called by
+ * deviceDiscovered() when the requested Pokit device has been found, after which
+ * deviceDiscovered() will connect the returned service's common signals, and kick off the
+ * device's connection process.
+ */
 
 /*!
  * Handles controller error events. This base implementation simply logs \a error and then exits
@@ -118,4 +107,64 @@ void DeviceCommand::serviceError(const QLowEnergyService::ServiceError error)
 void DeviceCommand::serviceDetailsDiscovered()
 {
     qCDebug(lc).noquote() << tr("Service details discovered.");
+}
+
+/*!
+ * Checks if \a info is the device (if any) we're looking for, and if so, create a contoller and
+ * service, and begins connecting to the device.
+ */
+void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
+{
+    if (device) {
+        qCDebug(lc).noquote() << tr("Ignoring additional Pokit device \"%1\" (%2) at (%3).")
+            .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
+        return;
+    }
+
+    if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||
+        ((!info.address().isNull()) && (info.address() == QBluetoothAddress(deviceToScanFor))) ||
+        ((!info.deviceUuid().isNull()) && (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))
+    {
+        qCDebug(lc).noquote() << tr("Found Pokit device \"%1\" (%2) at (%3).")
+            .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
+        discoveryAgent->stop();
+
+        device = new PokitDevice(info, this);
+        connect(device->controller(),
+            #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+            QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
+            #else
+            &QLowEnergyController::errorOccurred,
+            #endif
+            this, &DeviceCommand::controllerError, Qt::QueuedConnection);
+
+        AbstractPokitService * const service = getService();
+
+        Q_ASSERT(service);
+        connect(service, &AbstractPokitService::serviceDetailsDiscovered,
+                this, &DeviceCommand::serviceDetailsDiscovered);
+        connect(service, &AbstractPokitService::serviceErrorOccurred,
+                this, &DeviceCommand::serviceError);
+
+        qCDebug(lc).noquote() << tr("Connecting to Pokit device \"%1\" (%2) at (%3).")
+            .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
+        device->controller()->connectToDevice();
+    }
+
+    qCDebug(lc).noquote() << tr("Ignoring non-matching Pokit device \"%1\" (%2) at (%3).")
+        .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
+    return;
+}
+
+/*!
+ * Checks that the requested device was discovered, and if not, reports and error and exits.
+ */
+void DeviceCommand::deviceDiscoveryFinished()
+{
+    if (!device) {
+        qCWarning(lc).noquote() << ((deviceToScanFor.isNull())
+            ? tr("Failed to find any Pokit device.")
+            : tr("Failed to find device \"%1\".").arg(deviceToScanFor));
+        QCoreApplication::exit(EXIT_FAILURE);
+    }
 }

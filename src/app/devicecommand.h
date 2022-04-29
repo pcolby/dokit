@@ -24,6 +24,7 @@
 
 #include <QLowEnergyController>
 
+class AbstractPokitService;
 class PokitDevice;
 
 class DeviceCommand : public AbstractCommand
@@ -31,19 +32,23 @@ class DeviceCommand : public AbstractCommand
 public:
     explicit DeviceCommand(QObject * const parent);
 
-    QStringList requiredOptions() const override;
-
 public slots:
     QStringList processOptions(const QCommandLineParser &parser) override;
+    bool start() override;
 
 protected:
     PokitDevice * device; ///< Pokit Bluetooth device (if any) this command inerracts with.
+    virtual AbstractPokitService * getService() = 0;
 
 protected slots:
     virtual void controllerError(const QLowEnergyController::Error error);
     virtual void serviceError(const QLowEnergyService::ServiceError error);
     virtual void serviceDetailsDiscovered();
 
+private slots:
+    // These are protected in the base class, but hidden (private) for our descendents.
+    void deviceDiscovered(const QBluetoothDeviceInfo &info) override;
+    void deviceDiscoveryFinished() override;
 };
 
 #endif // QTPOKIT_DEVICECOMMAND_H

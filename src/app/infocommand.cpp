@@ -67,22 +67,18 @@ QStringList InfoCommand::processOptions(const QCommandLineParser &parser)
 }
 
 /*!
- * Begins scanning for Pokit devices.
+ * \copybrief DeviceCommand::getService
+ *
+ * This override returns a pointer to a DeviceInfoService object.
  */
-bool InfoCommand::start()
+AbstractPokitService * InfoCommand::getService()
 {
     Q_ASSERT(device);
     if (!service) {
         service = device->deviceInformation();
         Q_ASSERT(service);
-        connect(service, &DeviceInfoService::serviceDetailsDiscovered,
-                this, &InfoCommand::serviceDetailsDiscovered);
-        connect(service, &DeviceInfoService::serviceErrorOccurred,
-                this, &InfoCommand::serviceError);
     }
-    qCInfo(lc).noquote() << tr("Connecting to device...");
-    device->controller()->connectToDevice();
-    return true;
+    return service;
 }
 
 /*!

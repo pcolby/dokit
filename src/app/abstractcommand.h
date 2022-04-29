@@ -20,9 +20,12 @@
 #ifndef QTPOKIT_ABSTRACTCOMMAND_H
 #define QTPOKIT_ABSTRACTCOMMAND_H
 
+#include <QBluetoothDeviceInfo>
 #include <QCommandLineParser>
 #include <QLoggingCategory>
 #include <QObject>
+
+class PokitDeviceDiscoveryAgent;
 
 class AbstractCommand : public QObject
 {
@@ -45,8 +48,15 @@ public slots:
     virtual bool start() = 0;
 
 protected:
+    PokitDeviceDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
     OutputFormat format; ///< Selected output format.
     static Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg); ///< Logging category for UI commands.
+
+protected slots:
+    QString deviceToScanFor; ///< Device (if any) that were passed to processOptions().
+    virtual void deviceDiscovered(const QBluetoothDeviceInfo &info) = 0;
+    virtual void deviceDiscoveryFinished() = 0;
+
 };
 
 #endif // QTPOKIT_ABSTRACTCOMMAND_H
