@@ -37,6 +37,8 @@
 ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
 {
     /// \todo Support logging device update events too.
+    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceUpdated,
+            this, &ScanCommand::deviceUpdated);
 }
 
 QStringList ScanCommand::requiredOptions() const
@@ -79,6 +81,7 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     switch (format) {
     case OutputFormat::Csv:
+        /// \todo Only show the header row once.
         fputs(qPrintable(tr("uuid,address,name,major_class,minor_class,signal_strength\n")), stdout);
         fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n").arg(info.deviceUuid().toString(),
             info.address().toString(), escapeCsvField(info.name()), toString(info.majorDeviceClass()),
@@ -88,8 +91,28 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
         fputs(QJsonDocument(toJson(info)).toJson(), stdout);
         break;
     case OutputFormat::Text:
-        fputs(qPrintable(tr("%1 %2 %3\n").arg(info.deviceUuid().toString(),
-            info.address().toString(), info.name())), stdout);
+        fputs(qPrintable(tr("%1 %2 %3 %4\n").arg(info.deviceUuid().toString(),
+            info.address().toString(), info.name()).arg(info.rssi())), stdout);
+        break;
+    }
+}
+
+void ScanCommand::deviceUpdated(const QBluetoothDeviceInfo &info,
+                                const QBluetoothDeviceInfo::Fields updatedFields)
+{
+    Q_UNUSED(updatedFields)
+    switch (format) {
+    case OutputFormat::Csv:
+        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n").arg(info.deviceUuid().toString(),
+            info.address().toString(), escapeCsvField(info.name()), toString(info.majorDeviceClass()),
+            toString(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);
+        break;
+    case OutputFormat::Json:
+        fputs(QJsonDocument(toJson(info)).toJson(), stdout);
+        break;
+    case OutputFormat::Text:
+        fputs(qPrintable(tr("%1 %2 %3 %4\n").arg(info.deviceUuid().toString(),
+            info.address().toString(), info.name()).arg(info.rssi())), stdout);
         break;
     }
 }

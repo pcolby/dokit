@@ -33,6 +33,8 @@ public slots:
 
 protected slots:
     void deviceDiscovered(const QBluetoothDeviceInfo &info) override;
+    void deviceUpdated(const QBluetoothDeviceInfo &info,
+                       const QBluetoothDeviceInfo::Fields updatedFields);
     void deviceDiscoveryFinished() override;
 
 };
