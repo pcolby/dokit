@@ -89,25 +89,50 @@ AbstractPokitService * InfoCommand::getService()
 void InfoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
+    const QString deviceName = device->controller()->remoteName();
+    const QBluetoothAddress deviceAddress = device->controller()->remoteAddress();
+    const QBluetoothUuid deviceUuid = device->controller()->remoteDeviceUuid();
     switch (format) {
     case OutputFormat::Csv:
-        fputs(qPrintable(tr("manufacturer_name,model_number,hardware_revision,firmware_revision,"
-                            "software_revision\n")), stdout);
-        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5\n").arg(
+        fputs(qPrintable(tr("device_name,device_address,device_uuid,manufacturer_name,model_number,"
+                            "hardware_revision,firmware_revision,software_revision\n")), stdout);
+        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8\n").arg(
+            escapeCsvField(deviceName),
+            (deviceAddress.isNull()) ? QString() : deviceAddress.toString(),
+            (deviceUuid.isNull()) ? QString() : deviceUuid.toString(),
             escapeCsvField(service->manufacturer()), escapeCsvField(service->modelNumber()),
             escapeCsvField(service->hardwareRevision()), escapeCsvField(service->firmwareRevision()),
             escapeCsvField(service->softwareRevision()))), stdout);
         break;
-    case OutputFormat::Json:
-        fputs(QJsonDocument(QJsonObject{
+    case OutputFormat::Json: {
+        QJsonObject jsonObject{
             { QLatin1String("manufacturerName"), service->manufacturer() },
             { QLatin1String("modelNumber"),      service->modelNumber() },
             { QLatin1String("hardwareRevision"), service->hardwareRevision() },
             { QLatin1String("firmwareRevision"), service->firmwareRevision() },
             { QLatin1String("softwareRevision"), service->softwareRevision() },
-            }).toJson(), stdout);
-        break;
+        };
+        if (!deviceName.isEmpty()) {
+            jsonObject.insert(QLatin1String("deviceName"), deviceName);
+        }
+        if (!deviceAddress.isNull()) {
+            jsonObject.insert(QLatin1String("deviceAddress"), deviceAddress.toString());
+        }
+        if (!deviceUuid.isNull()) {
+            jsonObject.insert(QLatin1String("deviceUuid"), deviceUuid.toString());
+        }
+        fputs(QJsonDocument(jsonObject).toJson(), stdout);
+    }   break;
     case OutputFormat::Text:
+        if (!deviceName.isEmpty()) {
+            fputs(qPrintable(tr("Device name:       %1\n").arg(deviceName)), stdout);
+        }
+        if (!deviceAddress.isNull()) {
+            fputs(qPrintable(tr("Device addres:     %1\n").arg(deviceAddress.toString())), stdout);
+        }
+        if (!deviceUuid.isNull()) {
+            fputs(qPrintable(tr("Device UUID:       %1\n").arg(deviceUuid.toString())), stdout);
+        }
         fputs(qPrintable(tr("Manufacturer name: %1\n").arg(service->manufacturer())), stdout);
         fputs(qPrintable(tr("Model number:      %1\n").arg(service->modelNumber())), stdout);
         fputs(qPrintable(tr("Hardware revision: %1\n").arg(service->hardwareRevision())), stdout);
