@@ -97,6 +97,9 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
     }
 }
 
+/*!
+ * Handles updated Pokit devices, writing \a info to stdout. Currently \a updatedFields us unused.
+ */
 void ScanCommand::deviceUpdated(const QBluetoothDeviceInfo &info,
                                 const QBluetoothDeviceInfo::Fields updatedFields)
 {
