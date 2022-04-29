@@ -149,6 +149,7 @@ void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
         qCDebug(lc).noquote() << tr("Connecting to Pokit device \"%1\" (%2) at (%3).")
             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
         device->controller()->connectToDevice();
+        return;
     }
 
     qCDebug(lc).noquote() << tr("Ignoring non-matching Pokit device \"%1\" (%2) at (%3).")
