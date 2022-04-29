@@ -20,7 +20,7 @@
 #include "abstractcommand.h"
 
 #include <qtpokit/pokitdevice.h>
-#include <qtpokit/pokitdevicedisoveryagent.h>
+#include <qtpokit/pokitdiscoveryagent.h>
 
 /*!
  * \class AbstractCommand
@@ -35,19 +35,19 @@
  * Constructs a new command with \a parent.
  */
 AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
-    discoveryAgent(new PokitDeviceDiscoveryAgent(this)), format(OutputFormat::Text)
+    discoveryAgent(new PokitDiscoveryAgent(this)), format(OutputFormat::Text)
 {
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceDiscovered,
+    connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceDiscovered,
             this, &AbstractCommand::deviceDiscovered);
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::finished,
+    connect(discoveryAgent, &PokitDiscoveryAgent::finished,
             this, &AbstractCommand::deviceDiscoveryFinished);
     connect(discoveryAgent,
         #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
-        QOverload<PokitDeviceDiscoveryAgent::Error>::of(&PokitDeviceDiscoveryAgent::error),
+        QOverload<PokitDiscoveryAgent::Error>::of(&PokitDiscoveryAgent::error),
         #else
-        &PokitDeviceDiscoveryAgent::errorOccurred,
+        &PokitDiscoveryAgent::errorOccurred,
         #endif
-    [](const PokitDeviceDiscoveryAgent::Error &error) {
+    [](const PokitDiscoveryAgent::Error &error) {
         qCWarning(lc).noquote() << tr("Bluetooth controller error:") << error;
         QCoreApplication::exit(EXIT_FAILURE);
     });
@@ -202,7 +202,7 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 /*!
  * \fn virtual void AbstractCommand::deviceDiscovered(const QBluetoothDeviceInfo &info) = 0
  *
- * Handles PokitDeviceDiscoveryAgent::pokitDeviceDiscovered signal. Derived classes must
+ * Handles PokitDiscoveryAgent::pokitDeviceDiscovered signal. Derived classes must
  * implement this slot to begin whatever actions are relevant when a Pokit device has been
  * discovered. For example, the 'scan' command would simply output the \a info details, whereas
  * most other commands would begin connecting if \a info is the device they're after.
@@ -211,7 +211,7 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 /*!
  * \fn virtual void AbstractCommand::deviceDiscoveryFinished() = 0
  *
- * Handles PokitDeviceDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must
+ * Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must
  * implement this slot to perform whatever actions are appropraite when discovery is finished.
  * For example, the 'scan' command would simply exit, whereas most other commands would verify that
  * an appropriate device was found.

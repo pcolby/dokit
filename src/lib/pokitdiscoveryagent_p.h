@@ -19,24 +19,24 @@
 
 /*!
  * \file
- * Declares the PokitDeviceDiscoveryAgentPrivate class.
+ * Declares the PokitDiscoveryAgentPrivate class.
  */
 
-#ifndef QTPOKIT_POKITDEVICEDISCOVERYAGENT_P_H
-#define QTPOKIT_POKITDEVICEDISCOVERYAGENT_P_H
+#ifndef QTPOKIT_POKITDISCOVERYAGENT_P_H
+#define QTPOKIT_POKITDISCOVERYAGENT_P_H
 
 #include <qtpokit/qtpokit_global.h>
 
 QTPOKIT_BEGIN_NAMESPACE
 
-class PokitDeviceDiscoveryAgent;
+class PokitDiscoveryAgent;
 
-class QTPOKIT_EXPORT PokitDeviceDiscoveryAgentPrivate : public QObject
+class QTPOKIT_EXPORT PokitDiscoveryAgentPrivate : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit PokitDeviceDiscoveryAgentPrivate(PokitDeviceDiscoveryAgent * const q);
+    explicit PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * const q);
 
 public slots:
     void deviceDiscovered(const QBluetoothDeviceInfo &info);
@@ -45,14 +45,14 @@ public slots:
     #endif
 
 protected:
-    PokitDeviceDiscoveryAgent * q_ptr; ///< Internal q-pointer.
+    PokitDiscoveryAgent * q_ptr; ///< Internal q-pointer.
 
 private:
-    Q_DECLARE_PUBLIC(PokitDeviceDiscoveryAgent)
-    Q_DISABLE_COPY(PokitDeviceDiscoveryAgentPrivate)
-    friend class TestPokitDeviceDiscoveryAgent;
+    Q_DECLARE_PUBLIC(PokitDiscoveryAgent)
+    Q_DISABLE_COPY(PokitDiscoveryAgentPrivate)
+    friend class TestPokitDiscoveryAgent;
 };
 
 QTPOKIT_END_NAMESPACE
 
-#endif // QTPOKIT_POKITDEVICEDISCOVERYAGENT_P_H
+#endif // QTPOKIT_POKITDISCOVERYAGENT_P_H

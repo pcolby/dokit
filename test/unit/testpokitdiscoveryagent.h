@@ -17,16 +17,13 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "testpokitdevicedisoveryagent.h"
+#include <QTest>
 
-void TestPokitDeviceDiscoveryAgent::isPokitDevice_data()
+class TestPokitDiscoveryAgent : public QObject
 {
-    /// \d todo
-}
+    Q_OBJECT
 
-void TestPokitDeviceDiscoveryAgent::isPokitDevice()
-{
-    /// \d todo
-}
-
-QTEST_MAIN(TestPokitDeviceDiscoveryAgent)
+private slots:
+    void isPokitDevice_data();
+    void isPokitDevice();
+};

@@ -52,7 +52,7 @@
  * Constructs a new Pokit device controller wrapper for \a deviceInfo, with \a parent.
  *
  * Though not strictly necessary, \a deviceInfo should normally come from a
- * PokitDeviceDiscoveryAgent instance (or a QBluetoothDeviceDiscoveryAgent), otherwise connection
+ * PokitDiscoveryAgent instance (or a QBluetoothDeviceDiscoveryAgent), otherwise connection
  * is likely to fail with QLowEnergyController::UnknownRemoteDeviceError.
  */
 PokitDevice::PokitDevice(const QBluetoothDeviceInfo &deviceInfo, QObject *parent)

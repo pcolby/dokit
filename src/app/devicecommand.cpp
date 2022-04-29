@@ -21,7 +21,7 @@
 
 #include <qtpokit/abstractpokitservice.h>
 #include <qtpokit/pokitdevice.h>
-#include <qtpokit/pokitdevicedisoveryagent.h>
+#include <qtpokit/pokitdiscoveryagent.h>
 #include <QRegularExpression>
 
 /*!

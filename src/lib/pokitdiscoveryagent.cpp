@@ -19,11 +19,11 @@
 
 /*!
  * \file
- * Defines the PokitDeviceDiscoveryAgent and PokitDeviceDiscoveryAgentPrivate classes.
+ * Defines the PokitDiscoveryAgent and PokitDiscoveryAgentPrivate classes.
  */
 
-#include <qtpokit/pokitdevicedisoveryagent.h>
-#include "pokitdevicedisoveryagent_p.h"
+#include <qtpokit/pokitdiscoveryagent.h>
+#include "pokitdiscoveryagent_p.h"
 
 #include <qtpokit/statusservice.h>
 
@@ -32,11 +32,11 @@
 #include <QBluetoothUuid>
 
 /*!
- * \class PokitDeviceDiscoveryAgent
+ * \class PokitDiscoveryAgent
  *
- * The PokitDeviceDiscoveryAgent class discovers nearby Pokit devices.
+ * The PokitDiscoveryAgent class discovers nearby Pokit devices.
  *
- * After constructing a PokitDeviceDiscoveryAgent object, and subscribing to the relevant signals,
+ * After constructing a PokitDiscoveryAgent object, and subscribing to the relevant signals,
  * invoke start() to begin discovery.
  */
 
@@ -44,10 +44,10 @@
  * Constructs a new Pokit device discovery agent with \a parent, using \a deviceAdapter for the
  * search device.
  */
-PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
+PokitDiscoveryAgent::PokitDiscoveryAgent(
     const QBluetoothAddress &deviceAdapter, QObject *parent)
     : QBluetoothDeviceDiscoveryAgent(deviceAdapter, parent),
-      d_ptr(new PokitDeviceDiscoveryAgentPrivate(this))
+      d_ptr(new PokitDiscoveryAgentPrivate(this))
 {
 
 }
@@ -55,9 +55,9 @@ PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
 /*!
  * Constructs a new Pokit device discovery agent with \a parent.
  */
-PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(QObject * parent)
+PokitDiscoveryAgent::PokitDiscoveryAgent(QObject * parent)
     : QBluetoothDeviceDiscoveryAgent(parent),
-      d_ptr(new PokitDeviceDiscoveryAgentPrivate(this))
+      d_ptr(new PokitDiscoveryAgentPrivate(this))
 {
 
 }
@@ -67,8 +67,8 @@ PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(QObject * parent)
  * Constructs a new Pokit device discovery agent with \a parent, using \a deviceAdapter for the
  * search device, and private implementation \a d.
  */
-PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
-    PokitDeviceDiscoveryAgentPrivate * const d, const QBluetoothAddress &deviceAdapter,
+PokitDiscoveryAgent::PokitDiscoveryAgent(
+    PokitDiscoveryAgentPrivate * const d, const QBluetoothAddress &deviceAdapter,
     QObject * const parent)
     : QBluetoothDeviceDiscoveryAgent(deviceAdapter, parent), d_ptr(d)
 {
@@ -78,8 +78,8 @@ PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
 /*!
  * Constructs a new Pokit device discovery agent with \a parent, and private implementation \a d.
  */
-PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
-    PokitDeviceDiscoveryAgentPrivate * const d, QObject * const parent)
+PokitDiscoveryAgent::PokitDiscoveryAgent(
+    PokitDiscoveryAgentPrivate * const d, QObject * const parent)
     : QBluetoothDeviceDiscoveryAgent(parent), d_ptr(d)
 {
 
@@ -87,9 +87,9 @@ PokitDeviceDiscoveryAgent::PokitDeviceDiscoveryAgent(
 /// \endcond
 
 /*!
- * Destroys this PokitDeviceDiscoveryAgent object.
+ * Destroys this PokitDiscoveryAgent object.
  */
-PokitDeviceDiscoveryAgent::~PokitDeviceDiscoveryAgent()
+PokitDiscoveryAgent::~PokitDiscoveryAgent()
 {
     delete d_ptr;
 }
@@ -100,7 +100,7 @@ PokitDeviceDiscoveryAgent::~PokitDeviceDiscoveryAgent()
  * Currently, this is based on whether or not \a info's service UUIDs includes a known Pokit
  * service, but this test criteria might be swapped for something more explicity sometime.
  */
-bool PokitDeviceDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
+bool PokitDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
 {
     return info.serviceUuids().contains(StatusService::serviceUuid);
 }
@@ -111,7 +111,7 @@ bool PokitDeviceDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
  * This override simply enforces that \a method must be \c LowEnergyMethod, as all Pokit devices
  * used Bluetooth Low Energy (BLE).
  */
-void PokitDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)
+void PokitDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)
 {
     Q_ASSERT(methods == QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
     QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
@@ -120,19 +120,19 @@ void PokitDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryM
 /*!
  * Starts Pokit device discovery.
  */
-void PokitDeviceDiscoveryAgent::start()
+void PokitDiscoveryAgent::start()
 {
     QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
 }
 
 /*!
- * \fn void PokitDeviceDiscoveryAgent::pokitDeviceDiscovered(const QBluetoothDeviceInfo &info)
+ * \fn void PokitDiscoveryAgent::pokitDeviceDiscovered(const QBluetoothDeviceInfo &info)
  *
  * This signal is emitted when the Pokit device described by \a info is discovered.
  */
 
 /*!
- * \fn void PokitDeviceDiscoveryAgent::pokitDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields)
+ * \fn void PokitDiscoveryAgent::pokitDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields)
  *
  * This signal is emitted when the Pokit device described by \a info is updated. The
  * \a updatedFields flags tell which information has been updated.
@@ -140,25 +140,25 @@ void PokitDeviceDiscoveryAgent::start()
 
 /*!
  * \cond internal
- * \class PokitDeviceDiscoveryAgentPrivate
+ * \class PokitDiscoveryAgentPrivate
  *
- * The PokitDeviceDiscoveryAgentPrivate class provides private implementation for
- * PokitDeviceDiscoveryAgent.
+ * The PokitDiscoveryAgentPrivate class provides private implementation for
+ * PokitDiscoveryAgent.
  */
 
 /*!
  * \internal
- * Constructs a new PokitDeviceDiscoveryAgentPrivate object with public implementation \a q.
+ * Constructs a new PokitDiscoveryAgentPrivate object with public implementation \a q.
  */
-PokitDeviceDiscoveryAgentPrivate::PokitDeviceDiscoveryAgentPrivate(PokitDeviceDiscoveryAgent * const q)
+PokitDiscoveryAgentPrivate::PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * const q)
     : q_ptr(q)
 {
     connect(q, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
-            this, &PokitDeviceDiscoveryAgentPrivate::deviceDiscovered);
+            this, &PokitDiscoveryAgentPrivate::deviceDiscovered);
 
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Signal added in Qt 5.12.
     connect(q, &QBluetoothDeviceDiscoveryAgent::deviceUpdated,
-            this, &PokitDeviceDiscoveryAgentPrivate::deviceUpdated);
+            this, &PokitDiscoveryAgentPrivate::deviceUpdated);
     #endif
 }
 
@@ -167,9 +167,9 @@ PokitDeviceDiscoveryAgentPrivate::PokitDeviceDiscoveryAgentPrivate(PokitDeviceDi
  *
  * Here we simply check if \a info describes a Pokit device, and if so, emit pokitDeviceDiscovered().
  */
-void PokitDeviceDiscoveryAgentPrivate::deviceDiscovered(const QBluetoothDeviceInfo &info)
+void PokitDiscoveryAgentPrivate::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
-    Q_Q(PokitDeviceDiscoveryAgent);
+    Q_Q(PokitDiscoveryAgent);
     if (!q->isPokitDevice(info)) return;
     qCDebug(pokitDiscovery).noquote() << tr("Discovered Pokit device \"%1\" at %2.")
         .arg(info.name(), info.address().toString());
@@ -184,10 +184,10 @@ void PokitDeviceDiscoveryAgentPrivate::deviceDiscovered(const QBluetoothDeviceIn
  *
  * \since Qt 5.12.0
  */
-void PokitDeviceDiscoveryAgentPrivate::deviceUpdated(
+void PokitDiscoveryAgentPrivate::deviceUpdated(
     const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields)
 {
-    Q_Q(PokitDeviceDiscoveryAgent);
+    Q_Q(PokitDiscoveryAgent);
     if (!q->isPokitDevice(info)) return;
     qCDebug(pokitDiscovery).noquote() << tr("Pokit device \"%1\" at %2 updated with RSSI %3.")
         .arg(info.name(), info.address().toString()).arg(info.rssi());

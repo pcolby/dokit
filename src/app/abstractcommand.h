@@ -25,7 +25,7 @@
 #include <QLoggingCategory>
 #include <QObject>
 
-class PokitDeviceDiscoveryAgent;
+class PokitDiscoveryAgent;
 
 class AbstractCommand : public QObject
 {
@@ -48,7 +48,7 @@ public slots:
     virtual bool start() = 0;
 
 protected:
-    PokitDeviceDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
+    PokitDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
     OutputFormat format; ///< Selected output format.
     static Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg); ///< Logging category for UI commands.
 

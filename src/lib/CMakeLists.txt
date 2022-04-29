@@ -9,7 +9,7 @@ target_sources(
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/deviceinfoservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/genericaccessservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevicedisoveryagent.h
+  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdiscoveryagent.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/qtpokit_global.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/statusservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/utils.h
@@ -25,8 +25,8 @@ target_sources(
   PRIVATE logging_p.h
   PRIVATE pokitdevice.cpp
   PRIVATE pokitdevice_p.h
-  PRIVATE pokitdevicedisoveryagent.cpp
-  PRIVATE pokitdevicedisoveryagent_p.h
+  PRIVATE pokitdiscoveryagent.cpp
+  PRIVATE pokitdiscoveryagent_p.h
   PRIVATE statusservice.cpp
   PRIVATE statusservice_p.h
   PRIVATE utils.cpp

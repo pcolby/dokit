@@ -19,11 +19,11 @@
 
 /*!
  * \file
- * Declares the PokitDeviceDiscoveryAgent class.
+ * Declares the PokitDiscoveryAgent class.
  */
 
-#ifndef QTPOKIT_POKITDEVICEDISCOVERYAGENT_H
-#define QTPOKIT_POKITDEVICEDISCOVERYAGENT_H
+#ifndef QTPOKIT_POKITDISCOVERYAGENT_H
+#define QTPOKIT_POKITDISCOVERYAGENT_H
 
 #include "qtpokit_global.h"
 
@@ -31,16 +31,16 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
-class PokitDeviceDiscoveryAgentPrivate;
+class PokitDiscoveryAgentPrivate;
 
-class QTPOKIT_EXPORT PokitDeviceDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
+class QTPOKIT_EXPORT PokitDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
 {
     Q_OBJECT
 
 public:
-    explicit PokitDeviceDiscoveryAgent(const QBluetoothAddress &deviceAdapter, QObject *parent=nullptr);
-    PokitDeviceDiscoveryAgent(QObject * parent=nullptr);
-    virtual ~PokitDeviceDiscoveryAgent();
+    explicit PokitDiscoveryAgent(const QBluetoothAddress &deviceAdapter, QObject *parent=nullptr);
+    PokitDiscoveryAgent(QObject * parent=nullptr);
+    virtual ~PokitDiscoveryAgent();
 
     static bool isPokitDevice(const QBluetoothDeviceInfo &info);
 
@@ -56,18 +56,18 @@ signals:
 
 protected:
     /// \cond internal
-    PokitDeviceDiscoveryAgentPrivate * d_ptr; ///< Internal d-pointer.
-    PokitDeviceDiscoveryAgent(PokitDeviceDiscoveryAgentPrivate * const d,
+    PokitDiscoveryAgentPrivate * d_ptr; ///< Internal d-pointer.
+    PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d,
                               const QBluetoothAddress &deviceAdapter, QObject * const parent);
-    PokitDeviceDiscoveryAgent(PokitDeviceDiscoveryAgentPrivate * const d, QObject * const parent);
+    PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d, QObject * const parent);
     /// \endcond
 
 private:
-    Q_DECLARE_PRIVATE(PokitDeviceDiscoveryAgent)
-    Q_DISABLE_COPY(PokitDeviceDiscoveryAgent)
-    friend class TestPokitDeviceDiscoveryAgent;
+    Q_DECLARE_PRIVATE(PokitDiscoveryAgent)
+    Q_DISABLE_COPY(PokitDiscoveryAgent)
+    friend class TestPokitDiscoveryAgent;
 };
 
 QTPOKIT_END_NAMESPACE
 
-#endif // QTPOKIT_POKITDEVICEDISCOVERYAGENT_H
+#endif // QTPOKIT_POKITDISCOVERYAGENT_H

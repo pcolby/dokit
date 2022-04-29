@@ -19,7 +19,7 @@
 
 #include "scancommand.h"
 
-#include <qtpokit/pokitdevicedisoveryagent.h>
+#include <qtpokit/pokitdiscoveryagent.h>
 #include <qtpokit/utils.h>
 
 #include <QJsonDocument>
@@ -37,7 +37,7 @@
 ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
 {
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceUpdated,
+    connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceUpdated,
             this, &ScanCommand::deviceUpdated);
     #endif
 }
