@@ -36,9 +36,10 @@
  */
 ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
 {
-    /// \todo Support logging device update events too.
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     connect(discoveryAgent, &PokitDeviceDiscoveryAgent::pokitDeviceUpdated,
             this, &ScanCommand::deviceUpdated);
+    #endif
 }
 
 QStringList ScanCommand::requiredOptions() const
@@ -100,6 +101,7 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
 /*!
  * Handles updated Pokit devices, writing \a info to stdout. Currently \a updatedFields us unused.
  */
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
 void ScanCommand::deviceUpdated(const QBluetoothDeviceInfo &info,
                                 const QBluetoothDeviceInfo::Fields updatedFields)
 {
@@ -119,6 +121,7 @@ void ScanCommand::deviceUpdated(const QBluetoothDeviceInfo &info,
         break;
     }
 }
+#endif
 
 /*!
  * Handles the completion of device discovery. In this override we simply exit, as the scan command

@@ -33,8 +33,10 @@ public slots:
 
 protected slots:
     void deviceDiscovered(const QBluetoothDeviceInfo &info) override;
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     void deviceUpdated(const QBluetoothDeviceInfo &info,
-                       const QBluetoothDeviceInfo::Fields updatedFields);
+        const QBluetoothDeviceInfo::Fields updatedFields);
+    #endif
     void deviceDiscoveryFinished() override;
 
 };
