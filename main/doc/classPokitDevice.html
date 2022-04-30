@@ -110,9 +110,9 @@ Collaboration diagram for PokitDevice:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af2e70d41938c635e2c80911f177f0b78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#af2e70d41938c635e2c80911f177f0b78">PokitDevice</a> (const QString &amp;addressOrUuid, QObject *parent=nullptr)</td></tr>
-<tr class="memdesc:af2e70d41938c635e2c80911f177f0b78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new Pokit device controller wrapper for <em>addressOrUuid</em>, with <em>parent</em>.  <a href="classPokitDevice.html#af2e70d41938c635e2c80911f177f0b78">More...</a><br /></td></tr>
-<tr class="separator:af2e70d41938c635e2c80911f177f0b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f88c7ddb9ab6182a4b52dcb31fa0ac2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a3f88c7ddb9ab6182a4b52dcb31fa0ac2">PokitDevice</a> (const QBluetoothDeviceInfo &amp;deviceInfo, QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:a3f88c7ddb9ab6182a4b52dcb31fa0ac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new Pokit device controller wrapper for <em>deviceInfo</em>, with <em>parent</em>.  <a href="classPokitDevice.html#a3f88c7ddb9ab6182a4b52dcb31fa0ac2">More...</a><br /></td></tr>
+<tr class="separator:a3f88c7ddb9ab6182a4b52dcb31fa0ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ef0156de9faef55985d01b4df1fce87"><td class="memItemLeft" align="right" valign="top"><a id="a8ef0156de9faef55985d01b4df1fce87" name="a8ef0156de9faef55985d01b4df1fce87"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PokitDevice</b> (QLowEnergyController *<a class="el" href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">controller</a>, QObject *parent=nullptr)</td></tr>
 <tr class="memdesc:a8ef0156de9faef55985d01b4df1fce87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new Pokit device controller wrapper for <em>controller</em>, with <em>parent</em>. <br /></td></tr>
@@ -160,14 +160,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TestPokitDevice</b><
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> class simplifies Pokit device access. </p>
 <p >It does this by wrapping QLowEnergyController to provide:</p><ul>
-<li>automatic detection of device UUID vs MAC address strings for device IDs; and</li>
 <li>convenient Pokit service factory methods (<a class="el" href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961" title="Returns a pointer to a DataLoggerService instance that uses this device&#39;s controller for access.">dataLogger()</a>, <a class="el" href="classPokitDevice.html#a1e04571a74d06fcc4608e70437b5fa5d" title="Returns a pointer to DeviceInformationService instance that uses this device&#39;s controller for access.">deviceInformation()</a>, <a class="el" href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117" title="Returns a pointer to DsoService instance that uses this device&#39;s controller for access.">dso()</a>, <a class="el" href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df" title="Returns a pointer to GenericAccessService instance that uses this device&#39;s controller for access.">genericAccess()</a>, <a class="el" href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce" title="Returns a pointer to MultimeterService instance that uses this device&#39;s controller for access.">multimeter()</a> and <a class="el" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142" title="Returns a pointer to StatusService instance that uses this device&#39;s controller for access.">status()</a>); and</li>
 <li>consistent debug logging of QLowEnergyController events.</li>
 </ul>
-<p >But this class is entirely optional, in that all features of all all QtPokit classes can be used wihtout this class. It's just a (meaningful) convenience. </p>
+<p >But this class is entirely optional, in that all features of all other QtPokit classes can be used wihtout this class. It's just a (meaningful) convenience. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af2e70d41938c635e2c80911f177f0b78" name="af2e70d41938c635e2c80911f177f0b78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2e70d41938c635e2c80911f177f0b78">&#9670;&nbsp;</a></span>PokitDevice()</h2>
+<a id="a3f88c7ddb9ab6182a4b52dcb31fa0ac2" name="a3f88c7ddb9ab6182a4b52dcb31fa0ac2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f88c7ddb9ab6182a4b52dcb31fa0ac2">&#9670;&nbsp;</a></span>PokitDevice()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -178,8 +177,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TestPokitDevice</b><
         <tr>
           <td class="memname">PokitDevice::PokitDevice </td>
           <td>(</td>
-          <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>addressOrUuid</em>, </td>
+          <td class="paramtype">const QBluetoothDeviceInfo &amp;&#160;</td>
+          <td class="paramname"><em>deviceInfo</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -200,15 +199,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TestPokitDevice</b><
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a new Pokit device controller wrapper for <em>addressOrUuid</em>, with <em>parent</em>. </p>
-<p ><em>addressOrUuid</em> must be either a UUID (as accepted by the QBluetoothUuid constructor), or a device address (as accepted by the QBluetoothAddress contructur). Specifically, any of the following formats (where <code>x</code> is hex digit):</p>
-<div class="fragment"><div class="line"><span class="stringliteral">&quot;{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}&quot;</span></div>
-<div class="line"><span class="stringliteral">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span></div>
-<div class="line"><span class="stringliteral">&quot;xx:xx:xx:xx:xx:xx&quot;</span></div>
-<div class="line"><span class="stringliteral">&quot;xxxxxxxxxxxx&quot;</span></div>
-</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd>QBluetoothAddress::QBluetoothAddress(const QString &amp;address) </dd>
-<dd>
-QBluetoothUuid::QBluetoothUuid(const QString &amp;uuid) </dd></dl>
+<p>Constructs a new Pokit device controller wrapper for <em>deviceInfo</em>, with <em>parent</em>. </p>
+<p >Though not strictly necessary, <em>deviceInfo</em> should normally come from a <a class="el" href="classPokitDiscoveryAgent.html" title="The PokitDiscoveryAgent class discovers nearby Pokit devices.">PokitDiscoveryAgent</a> instance (or a QBluetoothDeviceDiscoveryAgent), otherwise connection is likely to fail with QLowEnergyController::UnknownRemoteDeviceError. </p>
 
 </div>
 </div>

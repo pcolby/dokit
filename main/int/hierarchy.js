@@ -6,7 +6,7 @@ var hierarchy =
     [ "StatusService::CharacteristicUuids", "structStatusService_1_1CharacteristicUuids.html", null ],
     [ "StatusService::DeviceCharacteristics", "structStatusService_1_1DeviceCharacteristics.html", null ],
     [ "QBluetoothDeviceDiscoveryAgent", null, [
-      [ "PokitDeviceDiscoveryAgent", "classPokitDeviceDiscoveryAgent.html", null ]
+      [ "PokitDiscoveryAgent", "classPokitDiscoveryAgent.html", null ]
     ] ],
     [ "QObject", null, [
       [ "AbstractCommand", "classAbstractCommand.html", [
@@ -32,8 +32,8 @@ var hierarchy =
         [ "StatusServicePrivate", "classStatusServicePrivate.html", null ]
       ] ],
       [ "PokitDevice", "classPokitDevice.html", null ],
-      [ "PokitDeviceDiscoveryAgentPrivate", "classPokitDeviceDiscoveryAgentPrivate.html", null ],
-      [ "PokitDevicePrivate", "classPokitDevicePrivate.html", null ]
+      [ "PokitDevicePrivate", "classPokitDevicePrivate.html", null ],
+      [ "PokitDiscoveryAgentPrivate", "classPokitDiscoveryAgentPrivate.html", null ]
     ] ],
     [ "StatusService::Status", "structStatusService_1_1Status.html", null ]
 ];

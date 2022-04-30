@@ -18,8 +18,8 @@ var dir_ddc6122f88ae27c68298ac38e50d2d9d =
     [ "pokitdevice.h", "pokitdevice_8h.html", [
       [ "PokitDevice", "classPokitDevice.html", "classPokitDevice" ]
     ] ],
-    [ "pokitdevicedisoveryagent.h", "pokitdevicedisoveryagent_8h.html", [
-      [ "PokitDeviceDiscoveryAgent", "classPokitDeviceDiscoveryAgent.html", "classPokitDeviceDiscoveryAgent" ]
+    [ "pokitdiscoveryagent.h", "pokitdiscoveryagent_8h.html", [
+      [ "PokitDiscoveryAgent", "classPokitDiscoveryAgent.html", "classPokitDiscoveryAgent" ]
     ] ],
     [ "qtpokit_global.h", "qtpokit__global_8h.html", "qtpokit__global_8h" ],
     [ "statusservice.h", "statusservice_8h.html", [

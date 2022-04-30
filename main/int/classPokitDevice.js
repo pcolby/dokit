@@ -1,6 +1,6 @@
 var classPokitDevice =
 [
-    [ "PokitDevice", "classPokitDevice.html#af2e70d41938c635e2c80911f177f0b78", null ],
+    [ "PokitDevice", "classPokitDevice.html#a3f88c7ddb9ab6182a4b52dcb31fa0ac2", null ],
     [ "PokitDevice", "classPokitDevice.html#a8ef0156de9faef55985d01b4df1fce87", null ],
     [ "~PokitDevice", "classPokitDevice.html#a3417bb85ff34cf03c1529e69f85e6a21", null ],
     [ "PokitDevice", "classPokitDevice.html#af4340372287a435bddd7d7f98b4cb1b6", null ],

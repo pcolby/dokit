@@ -22,9 +22,9 @@ var dir_db9736cc4d66dfa51ee2d2b49d100b59 =
     [ "pokitdevice_p.h", "pokitdevice__p_8h.html", [
       [ "PokitDevicePrivate", "classPokitDevicePrivate.html", "classPokitDevicePrivate" ]
     ] ],
-    [ "pokitdevicedisoveryagent.cpp", "pokitdevicedisoveryagent_8cpp.html", null ],
-    [ "pokitdevicedisoveryagent_p.h", "pokitdevicedisoveryagent__p_8h.html", [
-      [ "PokitDeviceDiscoveryAgentPrivate", "classPokitDeviceDiscoveryAgentPrivate.html", "classPokitDeviceDiscoveryAgentPrivate" ]
+    [ "pokitdiscoveryagent.cpp", "pokitdiscoveryagent_8cpp.html", null ],
+    [ "pokitdiscoveryagent_p.h", "pokitdiscoveryagent__p_8h.html", [
+      [ "PokitDiscoveryAgentPrivate", "classPokitDiscoveryAgentPrivate.html", "classPokitDiscoveryAgentPrivate" ]
     ] ],
     [ "statusservice.cpp", "statusservice_8cpp.html", null ],
     [ "statusservice_p.h", "statusservice__p_8h.html", [

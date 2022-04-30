@@ -89,6 +89,7 @@ $(document).ready(function(){initNavTree('classFlashLedCommand.html',''); initRe
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-slots">Protected Slots</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-slots">Private Slots</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classFlashLedCommand-members.html">List of all members</a>  </div>
@@ -107,7 +108,7 @@ Inheritance diagram for FlashLedCommand:</div>
 <div class="dynheader">
 Collaboration diagram for FlashLedCommand:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand__coll__graph.svg" width="1234" height="292"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand__coll__graph.svg" width="1359" height="558"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -116,13 +117,13 @@ Public Slots</h2></td></tr>
 <tr class="memitem:ab2062e5ec29315ca83589a7302f7ae6f"><td class="memItemLeft" align="right" valign="top">QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLedCommand.html#ab2062e5ec29315ca83589a7302f7ae6f">processOptions</a> (const QCommandLineParser &amp;parser) override</td></tr>
 <tr class="memdesc:ab2062e5ec29315ca83589a7302f7ae6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the relevant options from the command line <em>parser</em>.  <a href="classFlashLedCommand.html#ab2062e5ec29315ca83589a7302f7ae6f">More...</a><br /></td></tr>
 <tr class="separator:ab2062e5ec29315ca83589a7302f7ae6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9404a910d1324e1e2f88e29855d5d95c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLedCommand.html#a9404a910d1324e1e2f88e29855d5d95c">start</a> () override</td></tr>
-<tr class="memdesc:a9404a910d1324e1e2f88e29855d5d95c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins scanning for Pokit devices.  <a href="classFlashLedCommand.html#a9404a910d1324e1e2f88e29855d5d95c">More...</a><br /></td></tr>
-<tr class="separator:a9404a910d1324e1e2f88e29855d5d95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_slots_classDeviceCommand"><td colspan="2" onclick="javascript:toggleInherit('pub_slots_classDeviceCommand')"><img src="closed.png" alt="-"/>&#160;Public Slots inherited from <a class="el" href="classDeviceCommand.html">DeviceCommand</a></td></tr>
 <tr class="memitem:a429915728a274595d134b3214e605c1b inherit pub_slots_classDeviceCommand"><td class="memItemLeft" align="right" valign="top">QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeviceCommand.html#a429915728a274595d134b3214e605c1b">processOptions</a> (const QCommandLineParser &amp;parser) override</td></tr>
 <tr class="memdesc:a429915728a274595d134b3214e605c1b inherit pub_slots_classDeviceCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the relevant options from the command line <em>parser</em>.  <a href="classDeviceCommand.html#a429915728a274595d134b3214e605c1b">More...</a><br /></td></tr>
 <tr class="separator:a429915728a274595d134b3214e605c1b inherit pub_slots_classDeviceCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf548752b7ae1084a712b9003b92d0c inherit pub_slots_classDeviceCommand"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeviceCommand.html#a6cf548752b7ae1084a712b9003b92d0c">start</a> () override</td></tr>
+<tr class="memdesc:a6cf548752b7ae1084a712b9003b92d0c inherit pub_slots_classDeviceCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins scanning for the Pokit device.  <a href="classDeviceCommand.html#a6cf548752b7ae1084a712b9003b92d0c">More...</a><br /></td></tr>
+<tr class="separator:a6cf548752b7ae1084a712b9003b92d0c inherit pub_slots_classDeviceCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_slots_classAbstractCommand"><td colspan="2" onclick="javascript:toggleInherit('pub_slots_classAbstractCommand')"><img src="closed.png" alt="-"/>&#160;Public Slots inherited from <a class="el" href="classAbstractCommand.html">AbstractCommand</a></td></tr>
 <tr class="memitem:ad827a18a24776efeb955739459d48f7d inherit pub_slots_classAbstractCommand"><td class="memItemLeft" align="right" valign="top">virtual QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">processOptions</a> (const QCommandLineParser &amp;parser)</td></tr>
 <tr class="memdesc:ad827a18a24776efeb955739459d48f7d inherit pub_slots_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the relevant options from the command line <em>parser</em>.  <a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">More...</a><br /></td></tr>
@@ -147,9 +148,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4a3454a7095975848884d93f61c6cd89 inherit pub_methods_classDeviceCommand"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeviceCommand.html#a4a3454a7095975848884d93f61c6cd89">DeviceCommand</a> (QObject *const parent)</td></tr>
 <tr class="memdesc:a4a3454a7095975848884d93f61c6cd89 inherit pub_methods_classDeviceCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classDeviceCommand.html" title="The AbstractCommand class extends AbstractCommand to add a PokitDevice instance.">DeviceCommand</a> object with <em>parent</em>.  <a href="classDeviceCommand.html#a4a3454a7095975848884d93f61c6cd89">More...</a><br /></td></tr>
 <tr class="separator:a4a3454a7095975848884d93f61c6cd89 inherit pub_methods_classDeviceCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51880909f53005b1c178611aaac394e7 inherit pub_methods_classDeviceCommand"><td class="memItemLeft" align="right" valign="top">QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeviceCommand.html#a51880909f53005b1c178611aaac394e7">requiredOptions</a> () const override</td></tr>
-<tr class="memdesc:a51880909f53005b1c178611aaac394e7 inherit pub_methods_classDeviceCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of CLI option names required by this command.  <a href="classDeviceCommand.html#a51880909f53005b1c178611aaac394e7">More...</a><br /></td></tr>
-<tr class="separator:a51880909f53005b1c178611aaac394e7 inherit pub_methods_classDeviceCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAbstractCommand"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classAbstractCommand')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAbstractCommand.html">AbstractCommand</a></td></tr>
 <tr class="memitem:a8e7d74468a511b389db490c14043987b inherit pub_methods_classAbstractCommand"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#a8e7d74468a511b389db490c14043987b">AbstractCommand</a> (QObject *const parent)</td></tr>
 <tr class="memdesc:a8e7d74468a511b389db490c14043987b inherit pub_methods_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new command with <em>parent</em>.  <a href="classAbstractCommand.html#a8e7d74468a511b389db490c14043987b">More...</a><br /></td></tr>
@@ -176,6 +174,22 @@ Protected Slots</h2></td></tr>
 <tr class="memitem:a906fd97d832be0e8d2ba1c917fba41db inherit pro_slots_classDeviceCommand"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">serviceDetailsDiscovered</a> ()</td></tr>
 <tr class="memdesc:a906fd97d832be0e8d2ba1c917fba41db inherit pro_slots_classDeviceCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles service detail discovery events.  <a href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">More...</a><br /></td></tr>
 <tr class="separator:a906fd97d832be0e8d2ba1c917fba41db inherit pro_slots_classDeviceCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ae36389ece2050dd8546c5b379df942a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAbstractPokitService.html">AbstractPokitService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLedCommand.html#ae36389ece2050dd8546c5b379df942a9">getService</a> () override</td></tr>
+<tr class="memdesc:ae36389ece2050dd8546c5b379df942a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a Pokit service object for the derived command class.  <a href="classFlashLedCommand.html#ae36389ece2050dd8546c5b379df942a9">More...</a><br /></td></tr>
+<tr class="separator:ae36389ece2050dd8546c5b379df942a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f890b3a7389d158ad8fd06aa54035b3"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classAbstractPokitService.html">AbstractPokitService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeviceCommand.html#a8f890b3a7389d158ad8fd06aa54035b3">getService</a> ()=0</td></tr>
+<tr class="memdesc:a8f890b3a7389d158ad8fd06aa54035b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a Pokit service object for the derived command class.  <a href="classDeviceCommand.html#a8f890b3a7389d158ad8fd06aa54035b3">More...</a><br /></td></tr>
+<tr class="separator:a8f890b3a7389d158ad8fd06aa54035b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classAbstractCommand"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classAbstractCommand')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classAbstractCommand.html">AbstractCommand</a></td></tr>
+<tr class="memitem:aa8dd50eb6a381ed767c34d8fdfd2a795 inherit pro_methods_classAbstractCommand"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#aa8dd50eb6a381ed767c34d8fdfd2a795">deviceDiscovered</a> (const QBluetoothDeviceInfo &amp;info)=0</td></tr>
+<tr class="memdesc:aa8dd50eb6a381ed767c34d8fdfd2a795 inherit pro_methods_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles <a class="el" href="classPokitDiscoveryAgent.html#af38e511ae250a745cc900c0c4f356972" title="This signal is emitted when the Pokit device described by info is discovered.">PokitDiscoveryAgent::pokitDeviceDiscovered</a> signal.  <a href="classAbstractCommand.html#aa8dd50eb6a381ed767c34d8fdfd2a795">More...</a><br /></td></tr>
+<tr class="separator:aa8dd50eb6a381ed767c34d8fdfd2a795 inherit pro_methods_classAbstractCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac71606b99b43c3f74dbc64433ee22512 inherit pro_methods_classAbstractCommand"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#ac71606b99b43c3f74dbc64433ee22512">deviceDiscoveryFinished</a> ()=0</td></tr>
+<tr class="memdesc:ac71606b99b43c3f74dbc64433ee22512 inherit pro_methods_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal.  <a href="classAbstractCommand.html#ac71606b99b43c3f74dbc64433ee22512">More...</a><br /></td></tr>
+<tr class="separator:ac71606b99b43c3f74dbc64433ee22512 inherit pro_methods_classAbstractCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-slots" name="pri-slots"></a>
 Private Slots</h2></td></tr>
@@ -212,9 +226,15 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 <tr class="memdesc:a2bbf2dc9bb0ba85a2bf29263746c7b57 inherit pro_attribs_classDeviceCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pokit Bluetooth device (if any) this command inerracts with.  <a href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">More...</a><br /></td></tr>
 <tr class="separator:a2bbf2dc9bb0ba85a2bf29263746c7b57 inherit pro_attribs_classDeviceCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classAbstractCommand"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classAbstractCommand')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classAbstractCommand.html">AbstractCommand</a></td></tr>
+<tr class="memitem:a86878df43cd818f4a7f333a97dabac3c inherit pro_attribs_classAbstractCommand"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPokitDiscoveryAgent.html">PokitDiscoveryAgent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a></td></tr>
+<tr class="memdesc:a86878df43cd818f4a7f333a97dabac3c inherit pro_attribs_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agent for Pokit device descovery.  <a href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">More...</a><br /></td></tr>
+<tr class="separator:a86878df43cd818f4a7f333a97dabac3c inherit pro_attribs_classAbstractCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a881d85cd96b6fcc0652b916c366dda7b inherit pro_attribs_classAbstractCommand"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dc">OutputFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a></td></tr>
 <tr class="memdesc:a881d85cd96b6fcc0652b916c366dda7b inherit pro_attribs_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selected output format.  <a href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">More...</a><br /></td></tr>
 <tr class="separator:a881d85cd96b6fcc0652b916c366dda7b inherit pro_attribs_classAbstractCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d979bc039d61f5c720cb1521b31208 inherit pro_attribs_classAbstractCommand"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208">deviceToScanFor</a></td></tr>
+<tr class="memdesc:a07d979bc039d61f5c720cb1521b31208 inherit pro_attribs_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device (if any) that were passed to <a class="el" href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d" title="Processes the relevant options from the command line parser.">processOptions()</a>.  <a href="classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208">More...</a><br /></td></tr>
+<tr class="separator:a07d979bc039d61f5c720cb1521b31208 inherit pro_attribs_classAbstractCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="classFlashLedCommand.html" title="The FlashLedCommand class implements the flash-led CLI command.">FlashLedCommand</a> class implements the <code>flash-led</code> CLI command. </p>
@@ -252,8 +272,8 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 <div class="line"><span class="lineno">   35</span>{</div>
 <div class="line"><span class="lineno">   36</span> </div>
 <div class="line"><span class="lineno">   37</span>}</div>
-<div class="ttc" id="aclassDeviceCommand_html_a4a3454a7095975848884d93f61c6cd89"><div class="ttname"><a href="classDeviceCommand.html#a4a3454a7095975848884d93f61c6cd89">DeviceCommand::DeviceCommand</a></div><div class="ttdeci">DeviceCommand(QObject *const parent)</div><div class="ttdoc">Construct a new DeviceCommand object with parent.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00034">devicecommand.cpp:34</a></div></div>
-<div class="ttc" id="aclassFlashLedCommand_html_a3c47fd2a258751534fdcdaa94dc381cf"><div class="ttname"><a href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">FlashLedCommand::service</a></div><div class="ttdeci">StatusService * service</div><div class="ttdoc">Bluetooth service this command interracts with.</div><div class="ttdef"><b>Definition:</b> <a href="flashledcommand_8h_source.html#l00040">flashledcommand.h:40</a></div></div>
+<div class="ttc" id="aclassDeviceCommand_html_a4a3454a7095975848884d93f61c6cd89"><div class="ttname"><a href="classDeviceCommand.html#a4a3454a7095975848884d93f61c6cd89">DeviceCommand::DeviceCommand</a></div><div class="ttdeci">DeviceCommand(QObject *const parent)</div><div class="ttdoc">Construct a new DeviceCommand object with parent.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00036">devicecommand.cpp:36</a></div></div>
+<div class="ttc" id="aclassFlashLedCommand_html_a3c47fd2a258751534fdcdaa94dc381cf"><div class="ttname"><a href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">FlashLedCommand::service</a></div><div class="ttdeci">StatusService * service</div><div class="ttdoc">Bluetooth service this command interracts with.</div><div class="ttdef"><b>Definition:</b> <a href="flashledcommand_8h_source.html#l00042">flashledcommand.h:42</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -283,33 +303,87 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 
 <p>Handles <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee" title="This signal is emitted when device&#39;s LED has flashed in response to a write of the Flash LED characte...">StatusService::deviceLedFlashed</a> events, by outputting the result and exiting. </p>
 
-<p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00104">104</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>{</div>
-<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
-<div class="line"><span class="lineno">  108</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;flash_led_result\nsuccess\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
-<div class="line"><span class="lineno">  111</span>        fputs(qPrintable(QLatin1String(<span class="stringliteral">&quot;true\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
-<div class="line"><span class="lineno">  114</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;Done.\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  116</span>    }</div>
-<div class="line"><span class="lineno">  117</span>    QCoreApplication::quit();</div>
-<div class="line"><span class="lineno">  118</span>}</div>
-<div class="ttc" id="aclassAbstractCommand_html_a881d85cd96b6fcc0652b916c366dda7b"><div class="ttname"><a href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">AbstractCommand::format</a></div><div class="ttdeci">OutputFormat format</div><div class="ttdoc">Selected output format.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00048">abstractcommand.h:48</a></div></div>
+<p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00100">100</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
+<div class="line"><span class="lineno">  104</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;flash_led_result\nsuccess\n&quot;</span>)), stdout);</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
+<div class="line"><span class="lineno">  107</span>        fputs(qPrintable(QLatin1String(<span class="stringliteral">&quot;true\n&quot;</span>)), stdout);</div>
+<div class="line"><span class="lineno">  108</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
+<div class="line"><span class="lineno">  110</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;Done.\n&quot;</span>)), stdout);</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  112</span>    }</div>
+<div class="line"><span class="lineno">  113</span>    QCoreApplication::quit();</div>
+<div class="line"><span class="lineno">  114</span>}</div>
+<div class="ttc" id="aclassAbstractCommand_html_a881d85cd96b6fcc0652b916c366dda7b"><div class="ttname"><a href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">AbstractCommand::format</a></div><div class="ttdeci">OutputFormat format</div><div class="ttdoc">Selected output format.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00052">abstractcommand.h:52</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::OutputFormat::Text</a></div><div class="ttdeci">@ Text</div><div class="ttdoc">Plain unstructured text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::OutputFormat::Csv</a></div><div class="ttdeci">@ Csv</div><div class="ttdoc">RFC 4180 compliant CSV text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::OutputFormat::Json</a></div><div class="ttdeci">@ Json</div><div class="ttdoc">RFC 8259 compliant JSON text.</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="abstractcommand_8h_source.html#l00048">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>.</p>
+<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00069">start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00071">getService()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_af7a5897fc7657f70466c82f5ed538ccb_icgraph.svg" width="466" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_af7a5897fc7657f70466c82f5ed538ccb_icgraph.svg" width="504" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ae36389ece2050dd8546c5b379df942a9" name="ae36389ece2050dd8546c5b379df942a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae36389ece2050dd8546c5b379df942a9">&#9670;&nbsp;</a></span>getService()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAbstractPokitService.html">AbstractPokitService</a> * FlashLedCommand::getService </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a Pokit service object for the derived command class. </p>
+<p >This override returns a pointer to a <a class="el" href="classStatusService.html" title="The StatusService class accesses the Pokit Status service of Pokit devices.">StatusService</a> object. </p>
+
+<p>Implements <a class="el" href="classDeviceCommand.html#a8f890b3a7389d158ad8fd06aa54035b3">DeviceCommand</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00071">71</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    Q_ASSERT(<a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>);</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>) {</div>
+<div class="line"><span class="lineno">   75</span>        <a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a> = <a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>-&gt;<a class="code hl_function" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a>();</div>
+<div class="line"><span class="lineno">   76</span>        Q_ASSERT(<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>);</div>
+<div class="line"><span class="lineno">   77</span>        connect(<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>, &amp;<a class="code hl_signal" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed</a>,</div>
+<div class="line"><span class="lineno">   78</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classFlashLedCommand.html#af7a5897fc7657f70466c82f5ed538ccb">FlashLedCommand::deviceLedFlashed</a>);</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>;</div>
+<div class="line"><span class="lineno">   81</span>}</div>
+<div class="ttc" id="aclassDeviceCommand_html_a2bbf2dc9bb0ba85a2bf29263746c7b57"><div class="ttname"><a href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">DeviceCommand::device</a></div><div class="ttdeci">PokitDevice * device</div><div class="ttdoc">Pokit Bluetooth device (if any) this command inerracts with.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8h_source.html#l00040">devicecommand.h:40</a></div></div>
+<div class="ttc" id="aclassFlashLedCommand_html_af7a5897fc7657f70466c82f5ed538ccb"><div class="ttname"><a href="classFlashLedCommand.html#af7a5897fc7657f70466c82f5ed538ccb">FlashLedCommand::deviceLedFlashed</a></div><div class="ttdeci">void deviceLedFlashed()</div><div class="ttdoc">Handles StatusService::deviceLedFlashed events, by outputting the result and exiting.</div><div class="ttdef"><b>Definition:</b> <a href="flashledcommand_8cpp_source.html#l00100">flashledcommand.cpp:100</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00219">pokitdevice.cpp:219</a></div></div>
+<div class="ttc" id="aclassStatusService_html_a95fac879cf2f0ea82507352fe8c1bbee"><div class="ttname"><a href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed</a></div><div class="ttdeci">void deviceLedFlashed()</div><div class="ttdoc">This signal is emitted when device's LED has flashed in response to a write of the Flash LED characte...</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="devicecommand_8h_source.html#l00040">DeviceCommand::device</a>, <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00100">deviceLedFlashed()</a>, <a class="el" href="flashledcommand_8h_source.html#l00042">service</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00219">PokitDevice::status()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_ae36389ece2050dd8546c5b379df942a9_cgraph.svg" width="504" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -351,13 +425,13 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   62</span> </div>
 <div class="line"><span class="lineno">   63</span>    <span class="keywordflow">return</span> errors;</div>
 <div class="line"><span class="lineno">   64</span>}</div>
-<div class="ttc" id="aclassDeviceCommand_html_a429915728a274595d134b3214e605c1b"><div class="ttname"><a href="classDeviceCommand.html#a429915728a274595d134b3214e605c1b">DeviceCommand::processOptions</a></div><div class="ttdeci">QStringList processOptions(const QCommandLineParser &amp;parser) override</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00052">devicecommand.cpp:52</a></div></div>
+<div class="ttc" id="aclassDeviceCommand_html_a429915728a274595d134b3214e605c1b"><div class="ttname"><a href="classDeviceCommand.html#a429915728a274595d134b3214e605c1b">DeviceCommand::processOptions</a></div><div class="ttdeci">QStringList processOptions(const QCommandLineParser &amp;parser) override</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00047">devicecommand.cpp:47</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="devicecommand_8cpp_source.html#l00052">DeviceCommand::processOptions()</a>.</p>
+<p class="reference">References <a class="el" href="devicecommand_8cpp_source.html#l00047">DeviceCommand::processOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_ab2062e5ec29315ca83589a7302f7ae6f_cgraph.svg" width="1307" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_ab2062e5ec29315ca83589a7302f7ae6f_cgraph.svg" width="1274" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -390,20 +464,20 @@ Here is the call graph for this function:</div>
 <p >The main console appication may use this list to output an eror (and exit) if any of the returned names are not found in the parsed CLI options.</p>
 <p >This base implementation simply returns an empty list. Derived classes should override this function to include any required options. </p>
 
-<p>Reimplemented from <a class="el" href="classDeviceCommand.html#a51880909f53005b1c178611aaac394e7">DeviceCommand</a>.</p>
+<p>Reimplemented from <a class="el" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00039">39</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDeviceCommand.html#a51880909f53005b1c178611aaac394e7">DeviceCommand::requiredOptions</a>() + QStringList{</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">DeviceCommand::requiredOptions</a>() + QStringList{</div>
 <div class="line"><span class="lineno">   42</span>    };</div>
 <div class="line"><span class="lineno">   43</span>}</div>
-<div class="ttc" id="aclassDeviceCommand_html_a51880909f53005b1c178611aaac394e7"><div class="ttname"><a href="classDeviceCommand.html#a51880909f53005b1c178611aaac394e7">DeviceCommand::requiredOptions</a></div><div class="ttdeci">QStringList requiredOptions() const override</div><div class="ttdoc">Returns a list of CLI option names required by this command.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00039">devicecommand.cpp:39</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_aec006493cf0a4ba88c092c597bf247b8"><div class="ttname"><a href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand::requiredOptions</a></div><div class="ttdeci">virtual QStringList requiredOptions() const</div><div class="ttdoc">Returns a list of CLI option names required by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00064">abstractcommand.cpp:64</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="devicecommand_8cpp_source.html#l00039">DeviceCommand::requiredOptions()</a>.</p>
+<p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00064">AbstractCommand::requiredOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_afdd092d0f82398d537a249cd6b8b9b9a_cgraph.svg" width="768" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_afdd092d0f82398d537a249cd6b8b9b9a_cgraph.svg" width="474" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -435,92 +509,22 @@ Here is the call graph for this function:</div>
 <p>Handles service detail discovery events. </p>
 <p >This override flashes the device's LED, via the Pokit Status service. </p>
 
-<p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00092">92</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
-<div class="line"><span class="lineno">   94</span>    <a class="code hl_slot" href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a>(); <span class="comment">// Just logs consistently.</span></div>
-<div class="line"><span class="lineno">   95</span>    qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Flashing Pokit device LED...&quot;</span>);</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>-&gt;<a class="code hl_function" href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">flashLed</a>()) {</div>
-<div class="line"><span class="lineno">   97</span>        QCoreApplication::exit(EXIT_FAILURE);</div>
-<div class="line"><span class="lineno">   98</span>    }</div>
-<div class="line"><span class="lineno">   99</span>}</div>
-<div class="ttc" id="aclassDeviceCommand_html_a906fd97d832be0e8d2ba1c917fba41db"><div class="ttname"><a href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a></div><div class="ttdeci">virtual void serviceDetailsDiscovered()</div><div class="ttdoc">Handles service detail discovery events.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00118">devicecommand.cpp:118</a></div></div>
+<p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00088">88</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   89</span>{</div>
+<div class="line"><span class="lineno">   90</span>    <a class="code hl_slot" href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a>(); <span class="comment">// Just logs consistently.</span></div>
+<div class="line"><span class="lineno">   91</span>    qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Flashing Pokit device LED...&quot;</span>);</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>-&gt;<a class="code hl_function" href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">flashLed</a>()) {</div>
+<div class="line"><span class="lineno">   93</span>        QCoreApplication::exit(EXIT_FAILURE);</div>
+<div class="line"><span class="lineno">   94</span>    }</div>
+<div class="line"><span class="lineno">   95</span>}</div>
+<div class="ttc" id="aclassDeviceCommand_html_a906fd97d832be0e8d2ba1c917fba41db"><div class="ttname"><a href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a></div><div class="ttdeci">virtual void serviceDetailsDiscovered()</div><div class="ttdoc">Handles service detail discovery events.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00107">devicecommand.cpp:107</a></div></div>
 <div class="ttc" id="aclassStatusService_html_a425bf65d42b24c4a621b312fcd152708"><div class="ttname"><a href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">StatusService::flashLed</a></div><div class="ttdeci">bool flashLed()</div><div class="ttdoc">Flash the Pokit device's LED.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8cpp_source.html#l00327">statusservice.cpp:327</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="statusservice_8cpp_source.html#l00327">StatusService::flashLed()</a>, <a class="el" href="flashledcommand_8h_source.html#l00040">service</a>, and <a class="el" href="devicecommand_8cpp_source.html#l00118">DeviceCommand::serviceDetailsDiscovered()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00069">start()</a>.</p>
+<p class="reference">References <a class="el" href="statusservice_8cpp_source.html#l00327">StatusService::flashLed()</a>, <a class="el" href="flashledcommand_8h_source.html#l00042">service</a>, and <a class="el" href="devicecommand_8cpp_source.html#l00107">DeviceCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_af1d7d155b35b4a3d6301b2653c0d7eb7_cgraph.svg" width="496" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_af1d7d155b35b4a3d6301b2653c0d7eb7_icgraph.svg" width="447" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="a9404a910d1324e1e2f88e29855d5d95c" name="a9404a910d1324e1e2f88e29855d5d95c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9404a910d1324e1e2f88e29855d5d95c">&#9670;&nbsp;</a></span>start</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool FlashLedCommand::start </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Begins scanning for Pokit devices. </p>
-
-<p class="definition">Definition at line <a class="el" href="flashledcommand_8cpp_source.html#l00069">69</a> of file <a class="el" href="flashledcommand_8cpp_source.html">flashledcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
-<div class="line"><span class="lineno">   71</span>    Q_ASSERT(<a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>);</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>) {</div>
-<div class="line"><span class="lineno">   73</span>        <a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a> = <a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>-&gt;<a class="code hl_function" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a>();</div>
-<div class="line"><span class="lineno">   74</span>        Q_ASSERT(<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>);</div>
-<div class="line"><span class="lineno">   75</span>        connect(<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>, &amp;<a class="code hl_signal" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">StatusService::serviceDetailsDiscovered</a>,</div>
-<div class="line"><span class="lineno">   76</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classFlashLedCommand.html#af1d7d155b35b4a3d6301b2653c0d7eb7">FlashLedCommand::serviceDetailsDiscovered</a>);</div>
-<div class="line"><span class="lineno">   77</span>        connect(<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>, &amp;<a class="code hl_signal" href="classAbstractPokitService.html#a9e680ebf280361ef82f4b072448d7e9b">StatusService::serviceErrorOccurred</a>,</div>
-<div class="line"><span class="lineno">   78</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classDeviceCommand.html#a96208c78728c0068e7a78f961b913751">FlashLedCommand::serviceError</a>);</div>
-<div class="line"><span class="lineno">   79</span>        connect(<a class="code hl_variable" href="classFlashLedCommand.html#a3c47fd2a258751534fdcdaa94dc381cf">service</a>, &amp;<a class="code hl_signal" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed</a>,</div>
-<div class="line"><span class="lineno">   80</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classFlashLedCommand.html#af7a5897fc7657f70466c82f5ed538ccb">FlashLedCommand::deviceLedFlashed</a>);</div>
-<div class="line"><span class="lineno">   81</span>    }</div>
-<div class="line"><span class="lineno">   82</span>    qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Connecting to device...&quot;</span>);</div>
-<div class="line"><span class="lineno">   83</span>    <a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>-&gt;<a class="code hl_function" href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">controller</a>()-&gt;connectToDevice();</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   85</span>}</div>
-<div class="ttc" id="aclassAbstractPokitService_html_a9e680ebf280361ef82f4b072448d7e9b"><div class="ttname"><a href="classAbstractPokitService.html#a9e680ebf280361ef82f4b072448d7e9b">AbstractPokitService::serviceErrorOccurred</a></div><div class="ttdeci">void serviceErrorOccurred(QLowEnergyService::ServiceError newError)</div><div class="ttdoc">This signal is emitted whenever an error occurs on the underlying QLowEnergyService.</div></div>
-<div class="ttc" id="aclassAbstractPokitService_html_af67cbea4294ba0a77dcd9540b29528ff"><div class="ttname"><a href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">AbstractPokitService::serviceDetailsDiscovered</a></div><div class="ttdeci">void serviceDetailsDiscovered()</div><div class="ttdoc">This signal is emitted when the Pokit service details have been discovered.</div></div>
-<div class="ttc" id="aclassDeviceCommand_html_a2bbf2dc9bb0ba85a2bf29263746c7b57"><div class="ttname"><a href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">DeviceCommand::device</a></div><div class="ttdeci">PokitDevice * device</div><div class="ttdoc">Pokit Bluetooth device (if any) this command inerracts with.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8h_source.html#l00040">devicecommand.h:40</a></div></div>
-<div class="ttc" id="aclassDeviceCommand_html_a96208c78728c0068e7a78f961b913751"><div class="ttname"><a href="classDeviceCommand.html#a96208c78728c0068e7a78f961b913751">DeviceCommand::serviceError</a></div><div class="ttdeci">virtual void serviceError(const QLowEnergyService::ServiceError error)</div><div class="ttdoc">Handles service error events.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00107">devicecommand.cpp:107</a></div></div>
-<div class="ttc" id="aclassFlashLedCommand_html_af1d7d155b35b4a3d6301b2653c0d7eb7"><div class="ttname"><a href="classFlashLedCommand.html#af1d7d155b35b4a3d6301b2653c0d7eb7">FlashLedCommand::serviceDetailsDiscovered</a></div><div class="ttdeci">void serviceDetailsDiscovered() override</div><div class="ttdoc">Handles service detail discovery events.</div><div class="ttdef"><b>Definition:</b> <a href="flashledcommand_8cpp_source.html#l00092">flashledcommand.cpp:92</a></div></div>
-<div class="ttc" id="aclassFlashLedCommand_html_af7a5897fc7657f70466c82f5ed538ccb"><div class="ttname"><a href="classFlashLedCommand.html#af7a5897fc7657f70466c82f5ed538ccb">FlashLedCommand::deviceLedFlashed</a></div><div class="ttdeci">void deviceLedFlashed()</div><div class="ttdoc">Handles StatusService::deviceLedFlashed events, by outputting the result and exiting.</div><div class="ttdef"><b>Definition:</b> <a href="flashledcommand_8cpp_source.html#l00104">flashledcommand.cpp:104</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00114">pokitdevice.cpp:114</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00233">pokitdevice.cpp:233</a></div></div>
-<div class="ttc" id="aclassStatusService_html_a95fac879cf2f0ea82507352fe8c1bbee"><div class="ttname"><a href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed</a></div><div class="ttdeci">void deviceLedFlashed()</div><div class="ttdoc">This signal is emitted when device's LED has flashed in response to a write of the Flash LED characte...</div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00114">PokitDevice::controller()</a>, <a class="el" href="devicecommand_8h_source.html#l00040">DeviceCommand::device</a>, <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee">StatusService::deviceLedFlashed()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00104">deviceLedFlashed()</a>, <a class="el" href="flashledcommand_8h_source.html#l00040">service</a>, <a class="el" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">AbstractPokitService::serviceDetailsDiscovered()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00092">serviceDetailsDiscovered()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00107">DeviceCommand::serviceError()</a>, <a class="el" href="classAbstractPokitService.html#a9e680ebf280361ef82f4b072448d7e9b">AbstractPokitService::serviceErrorOccurred()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00233">PokitDevice::status()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classFlashLedCommand_a9404a910d1324e1e2f88e29855d5d95c_cgraph.svg" width="748" height="295"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -559,7 +563,7 @@ Here is the call graph for this function:</div>
 <div class="line">    list.removeDuplicates(); <span class="comment">// Optional, recommended.</span></div>
 <div class="line">    <span class="keywordflow">return</span> list;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassAbstractCommand_html_a002fc48054b9df13bbb2e0bdc488c6d3"><div class="ttname"><a href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a></div><div class="ttdeci">virtual QStringList supportedOptions() const</div><div class="ttdoc">Returns a list of CLI option names supported by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00072">abstractcommand.cpp:72</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_a002fc48054b9df13bbb2e0bdc488c6d3"><div class="ttname"><a href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a></div><div class="ttdeci">virtual QStringList supportedOptions() const</div><div class="ttdoc">Returns a list of CLI option names supported by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00086">abstractcommand.cpp:86</a></div></div>
 </div><!-- fragment --> 
 <p>Reimplemented from <a class="el" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand</a>.</p>
 
@@ -568,7 +572,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">   47</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">DeviceCommand::supportedOptions</a>();</div>
 <div class="line"><span class="lineno">   48</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00072">AbstractCommand::supportedOptions()</a>.</p>
+<p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00086">AbstractCommand::supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -601,9 +605,9 @@ Here is the call graph for this function:</div>
 
 <p>Bluetooth service this command interracts with. </p>
 
-<p class="definition">Definition at line <a class="el" href="flashledcommand_8h_source.html#l00040">40</a> of file <a class="el" href="flashledcommand_8h_source.html">flashledcommand.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flashledcommand_8h_source.html#l00042">42</a> of file <a class="el" href="flashledcommand_8h_source.html">flashledcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00092">serviceDetailsDiscovered()</a>, and <a class="el" href="flashledcommand_8cpp_source.html#l00069">start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00071">getService()</a>, and <a class="el" href="flashledcommand_8cpp_source.html#l00088">serviceDetailsDiscovered()</a>.</p>
 
 </div>
 </div>
