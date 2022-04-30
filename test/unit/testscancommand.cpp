@@ -355,40 +355,6 @@ void TestScanCommand::toJson_uuids_list()
     QCOMPARE(ScanCommand::toJson(list), expected);
 }
 
-void TestScanCommand::toJson_uuids_vector_data()
-{
-    QTest::addColumn<QVector<QBluetoothUuid>>("vector");
-    QTest::addColumn<QJsonArray>("expected");
-
-    QVector<QBluetoothUuid> vector;
-    QJsonArray array;
-    QTest::addRow("empty") << vector << array;
-
-    vector.append(QBluetoothUuid());
-    array.append(QBluetoothUuid().toString());
-    QTest::addRow("null") << vector << array;
-
-    vector.append(QBluetoothUuid(QBluetoothUuid::CharacteristicType::DeviceName));
-    array.append(QBluetoothUuid(QBluetoothUuid::CharacteristicType::DeviceName).toString());
-    QTest::addRow("deviceName") << vector << array;
-
-    vector.append(QBluetoothUuid(QUuid(POKIT_SERVICE_MULTIMETER)));
-    array.append(QUuid(POKIT_SERVICE_MULTIMETER).toString());
-    QTest::addRow("multimeter") << vector << array;
-
-    const QUuid randomUuid = QUuid::createUuid();
-    vector.append(QBluetoothUuid(randomUuid));
-    array.append(randomUuid.toString());
-    QTest::addRow("random") << vector << array;
-}
-
-void TestScanCommand::toJson_uuids_vector()
-{
-    QFETCH(QVector<QBluetoothUuid>, vector);
-    QFETCH(QJsonArray, expected);
-    QCOMPARE(ScanCommand::toJson(vector), expected);
-}
-
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
 void TestScanCommand::toJson_manufacturerData_data()
 {
