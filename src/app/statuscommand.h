@@ -41,4 +41,5 @@ protected slots:
 private:
     StatusService * service; ///< Bluetooth service this command interracts with.
 
+    friend class TestStatusCommand;
 };

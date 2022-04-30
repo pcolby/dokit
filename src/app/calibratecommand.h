@@ -45,4 +45,5 @@ private:
 private slots:
     void temperatureCalibrated();
 
+    friend class TestCalibrateCommand;
 };

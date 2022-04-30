@@ -41,4 +41,5 @@ protected slots:
 private:
     DeviceInfoService * service; ///< Bluetooth service this command interracts with.
 
+    friend class TestInfoCommand;
 };

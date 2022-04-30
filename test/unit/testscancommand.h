@@ -19,41 +19,41 @@
 
 #include <QTest>
 
-class TestUtils : public QObject
+class TestScanCommand : public QObject
 {
     Q_OBJECT
 
 private slots:
-//    void toJson_info_data();
-//    void toJson_info();
+    void toJson_info_data();
+    void toJson_info();
 
-//    void toJson_coreConfig_data();
-//    void toJson_coreConfig();
+    void toJson_coreConfig_data();
+    void toJson_coreConfig();
 
-//    void toJson_majorClass_data();
-//    void toJson_majorClass();
+    void toJson_majorClass_data();
+    void toJson_majorClass();
 
-//    void toJson_minorClass_data();
-//    void toJson_minorClass();
+    void toJson_minorClass_data();
+    void toJson_minorClass();
 
-//    void toJson_serviceClasses_data();
-//    void toJson_serviceClasses();
+    void toJson_serviceClasses_data();
+    void toJson_serviceClasses();
 
-//    void toJson_uuids_list_data();
-//    void toJson_uuids_list();
+    void toJson_uuids_list_data();
+    void toJson_uuids_list();
 
-//    void toJson_uuids_vector_data();
-//    void toJson_uuids_vector();
+    void toJson_uuids_vector_data();
+    void toJson_uuids_vector();
 
     // QBluetoothDeviceInfo::manufacturerData added in Qt 5.12.
-//    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
-//    void toJson_manufacturerData_data();
-//    void toJson_manufacturerData();
-//    #endif
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
+    void toJson_manufacturerData_data();
+    void toJson_manufacturerData();
+    #endif
 
-//    void toString_majorClass_data();
-//    void toString_majorClass();
+    void toString_majorClass_data();
+    void toString_majorClass();
 
-//    void toString_minorClass_data();
-//    void toString_minorClass();
+    void toString_minorClass_data();
+    void toString_minorClass();
 };

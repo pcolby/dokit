@@ -44,4 +44,6 @@ private:
 
 private slots:
     void deivceNameWritten();
+
+    friend class TestSetNameCommand;
 };

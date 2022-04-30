@@ -44,4 +44,5 @@ private:
 private slots:
     void deviceLedFlashed();
 
+    friend class TestFlashLedCommand;
 };

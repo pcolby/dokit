@@ -57,6 +57,7 @@ protected slots:
     virtual void deviceDiscovered(const QBluetoothDeviceInfo &info) = 0;
     virtual void deviceDiscoveryFinished() = 0;
 
+    friend class TestAbstractCommand;
 };
 
 #endif // QTPOKIT_ABSTRACTCOMMAND_H

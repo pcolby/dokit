@@ -49,6 +49,8 @@ private slots:
     // These are protected in the base class, but hidden (private) for our descendents.
     void deviceDiscovered(const QBluetoothDeviceInfo &info) override;
     void deviceDiscoveryFinished() override;
+
+    friend class TestDeviceCommand;
 };
 
 #endif // QTPOKIT_DEVICECOMMAND_H
