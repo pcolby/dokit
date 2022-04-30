@@ -18,6 +18,6 @@ add_pokit_unit_test(
   tst_utils.h)
 
 add_pokit_unit_test(
-  testPokitDiscoveryAgent
+  PokitDiscoveryAgent
   testpokitdiscoveryagent.cpp
   testpokitdiscoveryagent.h)
