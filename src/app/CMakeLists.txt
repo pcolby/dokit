@@ -1,5 +1,6 @@
-add_executable(
-  pokit
+# We put all but main.cpp into a shared 'object' library so
+# our app unit tests can link against the same binary objects.
+add_library(PokitApp OBJECT
   abstractcommand.cpp
   abstractcommand.h
   calibratecommand.cpp
@@ -10,7 +11,6 @@ add_executable(
   flashledcommand.h
   infocommand.cpp
   infocommand.h
-  main.cpp
   scancommand.cpp
   scancommand.h
   setnamecommand.cpp
@@ -20,7 +20,16 @@ add_executable(
 )
 
 target_link_libraries(
+  PokitApp
+  PRIVATE QtPokit
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core
+  PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
+
+add_executable(pokit main.cpp)
+
+target_link_libraries(
   pokit
+  PRIVATE PokitApp
   PRIVATE QtPokit
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
