@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.12)
+
 # We put all but main.cpp into a shared 'object' library so
 # our app unit tests can link against the same binary objects.
 add_library(PokitApp OBJECT

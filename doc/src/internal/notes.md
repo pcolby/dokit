@@ -60,5 +60,19 @@ QtPokit requires Qt's support Bluetooth Low Energy, in Central mode.
 | 6.3 | Yes      |                                          |
 
 
+## CMake Versions
+
+Building QtPokit requires [CMake] 3.12+.
+
+| Version| Dependency                                                                           |
+|:------:|--------------------------------------------------------------------------------------|
+|  3.1   | Required by Qt5.                                                                     |
+|  3.12  | [Object Libraries] for sharing binary objects between the console app and unit tests.|
+|  3.16  | Required by Qt6+                                                                     |
+|  3.18  | Not actually a requirement, but this is the minimum version that's regularly tested. |
+
+
+[cmake]: https://cmake.org/
 [not added until v5.4]: https://doc.qt.io/qt-5/qtbluetooth-le-overview.html
+[Object Libraries]: https://cmake.org/cmake/help/latest/command/add_library.html#object-libraries
 [ported to Qt6 in v6.2]: https://www.qt.io/blog/qt-6.2-lts-released
