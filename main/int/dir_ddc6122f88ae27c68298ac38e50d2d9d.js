@@ -27,6 +27,5 @@ var dir_ddc6122f88ae27c68298ac38e50d2d9d =
       [ "StatusService::CharacteristicUuids", "structStatusService_1_1CharacteristicUuids.html", "structStatusService_1_1CharacteristicUuids" ],
       [ "StatusService::DeviceCharacteristics", "structStatusService_1_1DeviceCharacteristics.html", "structStatusService_1_1DeviceCharacteristics" ],
       [ "StatusService::Status", "structStatusService_1_1Status.html", "structStatusService_1_1Status" ]
-    ] ],
-    [ "utils.h", "utils_8h.html", "utils_8h" ]
+    ] ]
 ];

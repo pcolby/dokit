@@ -7,6 +7,7 @@ var classAbstractPokitServicePrivate =
     [ "createServiceObject", "classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9", null ],
     [ "discoveryFinished", "classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab", null ],
     [ "errorOccurred", "classAbstractPokitServicePrivate.html#ab086f2e2e5058bc7978a67e86d579325", null ],
+    [ "getCharacteristic", "classAbstractPokitServicePrivate.html#aaac3ef8e3590334acdddb2b029865eb0", null ],
     [ "readCharacteristic", "classAbstractPokitServicePrivate.html#ad58619e237f300294049c82b85d76875", null ],
     [ "serviceDiscovered", "classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b", null ],
     [ "stateChanged", "classAbstractPokitServicePrivate.html#ad4cd6a5700b0b764b3a81f67603dc68f", null ],

@@ -6,6 +6,5 @@ var dir_db9736cc4d66dfa51ee2d2b49d100b59 =
     [ "genericaccessservice.cpp", "genericaccessservice_8cpp.html", null ],
     [ "pokitdevice.cpp", "pokitdevice_8cpp.html", null ],
     [ "pokitdiscoveryagent.cpp", "pokitdiscoveryagent_8cpp.html", null ],
-    [ "statusservice.cpp", "statusservice_8cpp.html", null ],
-    [ "utils.cpp", "utils_8cpp.html", "utils_8cpp" ]
+    [ "statusservice.cpp", "statusservice_8cpp.html", null ]
 ];

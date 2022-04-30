@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('classScanCommand.html',''); initResiza
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-slots">Protected Slots</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classScanCommand-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ScanCommand Class Reference</div></div>
 </div><!--header-->
@@ -160,6 +162,41 @@ Protected Slots</h2></td></tr>
 <tr class="memdesc:a509decde7ad462eac744e661b5544c62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the completion of device discovery.  <a href="classScanCommand.html#a509decde7ad462eac744e661b5544c62">More...</a><br /></td></tr>
 <tr class="separator:a509decde7ad462eac744e661b5544c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a0004f4c780fb9cbd73bc7eba48613c7c"><td class="memItemLeft" align="right" valign="top">static QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a> (const QBluetoothDeviceInfo &amp;info)</td></tr>
+<tr class="memdesc:a0004f4c780fb9cbd73bc7eba48613c7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>info</em> as a JSON object.  <a href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">More...</a><br /></td></tr>
+<tr class="separator:a0004f4c780fb9cbd73bc7eba48613c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af75eb6fd7d6d9143c18e1ef2b3e3f5ec"><td class="memItemLeft" align="right" valign="top">static QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#af75eb6fd7d6d9143c18e1ef2b3e3f5ec">toJson</a> (const QBluetoothDeviceInfo::CoreConfigurations &amp;configurations)</td></tr>
+<tr class="memdesc:af75eb6fd7d6d9143c18e1ef2b3e3f5ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>configuration</em> as a JSON array of strings.  <a href="classScanCommand.html#af75eb6fd7d6d9143c18e1ef2b3e3f5ec">More...</a><br /></td></tr>
+<tr class="separator:af75eb6fd7d6d9143c18e1ef2b3e3f5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f96c110d5f90517ef9a3afc9f2b5501"><td class="memItemLeft" align="right" valign="top">static QJsonValue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#a3f96c110d5f90517ef9a3afc9f2b5501">toJson</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</td></tr>
+<tr class="memdesc:a3f96c110d5f90517ef9a3afc9f2b5501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>majorClass</em> as a JSON value.  <a href="classScanCommand.html#a3f96c110d5f90517ef9a3afc9f2b5501">More...</a><br /></td></tr>
+<tr class="separator:a3f96c110d5f90517ef9a3afc9f2b5501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1e453f0e6b1f951b0115e1c96037c48"><td class="memItemLeft" align="right" valign="top">static QJsonValue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#ae1e453f0e6b1f951b0115e1c96037c48">toJson</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</td></tr>
+<tr class="memdesc:ae1e453f0e6b1f951b0115e1c96037c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>minorClass</em> as a JSON value.  <a href="classScanCommand.html#ae1e453f0e6b1f951b0115e1c96037c48">More...</a><br /></td></tr>
+<tr class="separator:ae1e453f0e6b1f951b0115e1c96037c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28566c7a8789c6f1cacdadabd2b1e697"><td class="memItemLeft" align="right" valign="top">static QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#a28566c7a8789c6f1cacdadabd2b1e697">toJson</a> (const QBluetoothDeviceInfo::ServiceClasses &amp;classes)</td></tr>
+<tr class="memdesc:a28566c7a8789c6f1cacdadabd2b1e697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>classes</em> as a JSON array of strings.  <a href="classScanCommand.html#a28566c7a8789c6f1cacdadabd2b1e697">More...</a><br /></td></tr>
+<tr class="separator:a28566c7a8789c6f1cacdadabd2b1e697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a692b7c3f071f31211ab36d754d779330"><td class="memItemLeft" align="right" valign="top">static QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#a692b7c3f071f31211ab36d754d779330">toJson</a> (const QList&lt; QBluetoothUuid &gt; &amp;uuids)</td></tr>
+<tr class="memdesc:a692b7c3f071f31211ab36d754d779330"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>uuids</em> as a JSON array.  <a href="classScanCommand.html#a692b7c3f071f31211ab36d754d779330">More...</a><br /></td></tr>
+<tr class="separator:a692b7c3f071f31211ab36d754d779330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d8423caad084f3131066a870f697bc"><td class="memItemLeft" align="right" valign="top">static QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#a33d8423caad084f3131066a870f697bc">toJson</a> (const QMultiHash&lt; quint16, QByteArray &gt; &amp;data)</td></tr>
+<tr class="memdesc:a33d8423caad084f3131066a870f697bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Bluetooth manufacturer <em>data</em> as a JSON object that maps the manufacturer IDs (unsigned integers as strings) to arrays of one or more values.  <a href="classScanCommand.html#a33d8423caad084f3131066a870f697bc">More...</a><br /></td></tr>
+<tr class="separator:a33d8423caad084f3131066a870f697bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4422f8c5972370796065882a622940e1"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#a4422f8c5972370796065882a622940e1">toString</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</td></tr>
+<tr class="memdesc:a4422f8c5972370796065882a622940e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>majorClass</em> as a human-readable string, or a null QString if <em>majorClass</em> is not recognised.  <a href="classScanCommand.html#a4422f8c5972370796065882a622940e1">More...</a><br /></td></tr>
+<tr class="separator:a4422f8c5972370796065882a622940e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13d0237febd6f73fd1c8a1c6bf639a23"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23">toString</a> (const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</td></tr>
+<tr class="memdesc:a13d0237febd6f73fd1c8a1c6bf639a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>minorClass</em> as a human-readable string, or a null QString if <em>minorClass</em> is not recognised as a sub-class of <em>majorClass</em>.  <a href="classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23">More...</a><br /></td></tr>
+<tr class="separator:a13d0237febd6f73fd1c8a1c6bf639a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a1e81096601fa56c740df641cf445b287"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScanCommand.html#a1e81096601fa56c740df641cf445b287">TestScanCommand</a></td></tr>
+<tr class="separator:a1e81096601fa56c740df641cf445b287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_types_classAbstractCommand"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classAbstractCommand')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classAbstractCommand.html">AbstractCommand</a></td></tr>
@@ -228,24 +265,24 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 
 <p>Construct a new <a class="el" href="classScanCommand.html" title="The ScanCommand class implements the scan CLI command, by scanning for nearby Pokit Bluetooth devices...">ScanCommand</a> object with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00037">37</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>                                               : <a class="code hl_function" href="classAbstractCommand.html#a8e7d74468a511b389db490c14043987b">AbstractCommand</a>(parent)</div>
-<div class="line"><span class="lineno">   38</span>{</div>
-<div class="line"><span class="lineno">   39</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Required signal, and Fields, added in Qt 5.12.</span></div>
-<div class="line"><span class="lineno">   40</span>    connect(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>, &amp;<a class="code hl_signal" href="classPokitDiscoveryAgent.html#a96787015304d52f3e220d5a5d4e7e06c">PokitDiscoveryAgent::pokitDeviceUpdated</a>,</div>
-<div class="line"><span class="lineno">   41</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classScanCommand.html#a2cb218644893d84036ec16cd46f1d488">ScanCommand::deviceUpdated</a>);</div>
-<div class="line"><span class="lineno">   42</span><span class="preprocessor">    #endif</span></div>
-<div class="line"><span class="lineno">   43</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00039">39</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                                               : <a class="code hl_function" href="classAbstractCommand.html#a8e7d74468a511b389db490c14043987b">AbstractCommand</a>(parent)</div>
+<div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Required signal, and Fields, added in Qt 5.12.</span></div>
+<div class="line"><span class="lineno">   42</span>    connect(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>, &amp;<a class="code hl_signal" href="classPokitDiscoveryAgent.html#a96787015304d52f3e220d5a5d4e7e06c">PokitDiscoveryAgent::pokitDeviceUpdated</a>,</div>
+<div class="line"><span class="lineno">   43</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classScanCommand.html#a2cb218644893d84036ec16cd46f1d488">ScanCommand::deviceUpdated</a>);</div>
+<div class="line"><span class="lineno">   44</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><span class="lineno">   45</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html_a86878df43cd818f4a7f333a97dabac3c"><div class="ttname"><a href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">AbstractCommand::discoveryAgent</a></div><div class="ttdeci">PokitDiscoveryAgent * discoveryAgent</div><div class="ttdoc">Agent for Pokit device descovery.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00051">abstractcommand.h:51</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_a8e7d74468a511b389db490c14043987b"><div class="ttname"><a href="classAbstractCommand.html#a8e7d74468a511b389db490c14043987b">AbstractCommand::AbstractCommand</a></div><div class="ttdeci">AbstractCommand(QObject *const parent)</div><div class="ttdoc">Constructs a new command with parent.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00037">abstractcommand.cpp:37</a></div></div>
 <div class="ttc" id="aclassPokitDiscoveryAgent_html_a96787015304d52f3e220d5a5d4e7e06c"><div class="ttname"><a href="classPokitDiscoveryAgent.html#a96787015304d52f3e220d5a5d4e7e06c">PokitDiscoveryAgent::pokitDeviceUpdated</a></div><div class="ttdeci">void pokitDeviceUpdated(const QBluetoothDeviceInfo &amp;info, QBluetoothDeviceInfo::Fields updatedFields)</div><div class="ttdoc">This signal is emitted when the Pokit device described by info is updated.</div></div>
-<div class="ttc" id="aclassScanCommand_html_a2cb218644893d84036ec16cd46f1d488"><div class="ttname"><a href="classScanCommand.html#a2cb218644893d84036ec16cd46f1d488">ScanCommand::deviceUpdated</a></div><div class="ttdeci">void deviceUpdated(const QBluetoothDeviceInfo &amp;info, const QBluetoothDeviceInfo::Fields updatedFields)</div><div class="ttdoc">Handles updated Pokit devices, writing info to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="scancommand_8cpp_source.html#l00105">scancommand.cpp:105</a></div></div>
+<div class="ttc" id="aclassScanCommand_html_a2cb218644893d84036ec16cd46f1d488"><div class="ttname"><a href="classScanCommand.html#a2cb218644893d84036ec16cd46f1d488">ScanCommand::deviceUpdated</a></div><div class="ttdeci">void deviceUpdated(const QBluetoothDeviceInfo &amp;info, const QBluetoothDeviceInfo::Fields updatedFields)</div><div class="ttdoc">Handles updated Pokit devices, writing info to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="scancommand_8cpp_source.html#l00108">scancommand.cpp:108</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="scancommand_8cpp_source.html#l00105">deviceUpdated()</a>, <a class="el" href="abstractcommand_8h_source.html#l00051">AbstractCommand::discoveryAgent</a>, and <a class="el" href="classPokitDiscoveryAgent.html#a96787015304d52f3e220d5a5d4e7e06c">PokitDiscoveryAgent::pokitDeviceUpdated()</a>.</p>
+<p class="reference">References <a class="el" href="scancommand_8cpp_source.html#l00108">deviceUpdated()</a>, <a class="el" href="abstractcommand_8h_source.html#l00051">AbstractCommand::discoveryAgent</a>, and <a class="el" href="classPokitDiscoveryAgent.html#a96787015304d52f3e220d5a5d4e7e06c">PokitDiscoveryAgent::pokitDeviceUpdated()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_abf73c3339c34841c58f8165839b45b6d_cgraph.svg" width="782" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_abf73c3339c34841c58f8165839b45b6d_cgraph.svg" width="1074" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -277,40 +314,48 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Handles discovered Pokit devices, writing <em>info</em> to stdout. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Only show the header row once. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00081">81</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>{</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:<span class="comment"></span></div>
-<div class="line"><span class="lineno">   85</span><span class="comment">        /// \todo Only show the header row once.</span></div>
-<div class="line"><span class="lineno">   86</span><span class="comment"></span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">   87</span>        fputs(qPrintable(QString::fromLatin1(<span class="stringliteral">&quot;%1,%2,%3,%4,%5,%6\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
-<div class="line"><span class="lineno">   88</span>            info.address().toString(), <a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(info.name()), <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass()),</div>
-<div class="line"><span class="lineno">   89</span>            <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);</div>
-<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
-<div class="line"><span class="lineno">   92</span>        fputs(QJsonDocument(<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(info)).<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(), stdout);</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00083">83</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">for</span> (<span class="keyword">static</span> <span class="keywordtype">bool</span> firstTime = <span class="keyword">true</span>; firstTime; firstTime = <span class="keyword">false</span>) {</div>
+<div class="line"><span class="lineno">   88</span>            fputs(qPrintable(tr(<span class="stringliteral">&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;</span>)), stdout);</div>
+<div class="line"><span class="lineno">   89</span>        }</div>
+<div class="line"><span class="lineno">   90</span>        fputs(qPrintable(QString::fromLatin1(<span class="stringliteral">&quot;%1,%2,%3,%4,%5,%6\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
+<div class="line"><span class="lineno">   91</span>            info.address().toString(), <a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(info.name()), <a class="code hl_function" href="classScanCommand.html#a4422f8c5972370796065882a622940e1">toString</a>(info.majorDeviceClass()),</div>
+<div class="line"><span class="lineno">   92</span>            <a class="code hl_function" href="classScanCommand.html#a4422f8c5972370796065882a622940e1">toString</a>(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);</div>
 <div class="line"><span class="lineno">   93</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
-<div class="line"><span class="lineno">   95</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;%1 %2 %3 %4\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
-<div class="line"><span class="lineno">   96</span>            info.address().toString(), info.name()).arg(info.rssi())), stdout);</div>
-<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   98</span>    }</div>
-<div class="line"><span class="lineno">   99</span>}</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
+<div class="line"><span class="lineno">   95</span>        fputs(QJsonDocument(<a class="code hl_function" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a>(info)).<a class="code hl_function" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a>(), stdout);</div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
+<div class="line"><span class="lineno">   98</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;%1 %2 %3 %4\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
+<div class="line"><span class="lineno">   99</span>            info.address().toString(), info.name()).arg(info.rssi())), stdout);</div>
+<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  101</span>    }</div>
+<div class="line"><span class="lineno">  102</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html_a881d85cd96b6fcc0652b916c366dda7b"><div class="ttname"><a href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">AbstractCommand::format</a></div><div class="ttdeci">OutputFormat format</div><div class="ttdoc">Selected output format.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00052">abstractcommand.h:52</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::OutputFormat::Text</a></div><div class="ttdeci">@ Text</div><div class="ttdoc">Plain unstructured text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::OutputFormat::Csv</a></div><div class="ttdeci">@ Csv</div><div class="ttdoc">RFC 4180 compliant CSV text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::OutputFormat::Json</a></div><div class="ttdeci">@ Json</div><div class="ttdoc">RFC 8259 compliant JSON text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_af85c842568f8a3a893e336e449ef7813"><div class="ttname"><a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">AbstractCommand::escapeCsvField</a></div><div class="ttdeci">static QString escapeCsvField(const QString &amp;field)</div><div class="ttdoc">Returns an RFC 4180 compliant version of field.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00108">abstractcommand.cpp:108</a></div></div>
-<div class="ttc" id="autils_8h_html_a8136cbc7977bcdf5870866b23c324302"><div class="ttname"><a href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a></div><div class="ttdeci">QTPOKIT_EXPORT QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</div><div class="ttdoc">Returns majorClass as a human-readable string, or a null QString if majorClass is not recognised.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00189">utils.cpp:189</a></div></div>
-<div class="ttc" id="autils_8h_html_a9ffa9547932ff46690df34e1f0ede5d0"><div class="ttname"><a href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QTPOKIT_EXPORT QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00036">utils.cpp:36</a></div></div>
+<div class="ttc" id="aclassScanCommand_html_a0004f4c780fb9cbd73bc7eba48613c7c"><div class="ttname"><a href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">ScanCommand::toJson</a></div><div class="ttdeci">static QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="scancommand_8cpp_source.html#l00129">scancommand.cpp:129</a></div></div>
+<div class="ttc" id="aclassScanCommand_html_a4422f8c5972370796065882a622940e1"><div class="ttname"><a href="classScanCommand.html#a4422f8c5972370796065882a622940e1">ScanCommand::toString</a></div><div class="ttdeci">static QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</div><div class="ttdoc">Returns majorClass as a human-readable string, or a null QString if majorClass is not recognised.</div><div class="ttdef"><b>Definition:</b> <a href="scancommand_8cpp_source.html#l00268">scancommand.cpp:268</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00108">AbstractCommand::escapeCsvField()</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>, <a class="el" href="utils_8cpp_source.html#l00036">toJson()</a>, and <a class="el" href="utils_8cpp_source.html#l00189">toString()</a>.</p>
+<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00108">AbstractCommand::escapeCsvField()</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>, <a class="el" href="scancommand_8cpp_source.html#l00129">toJson()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00268">toString()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00108">deviceUpdated()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_ac9f53dee63d2dfaa3acf82e71db01d64_cgraph.svg" width="524" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_ac9f53dee63d2dfaa3acf82e71db01d64_icgraph.svg" width="804" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -342,11 +387,11 @@ Here is the call graph for this function:</div>
 <p>Handles the completion of device discovery. </p>
 <p >In this override we simply exit, as the scan command is nothing more than logging of discovered devices. </p>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00130">130</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  131</span>{</div>
-<div class="line"><span class="lineno">  132</span>    qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Finished scanning for Pokit devices.&quot;</span>);</div>
-<div class="line"><span class="lineno">  133</span>    QCoreApplication::quit();</div>
-<div class="line"><span class="lineno">  134</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00120">120</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  121</span>{</div>
+<div class="line"><span class="lineno">  122</span>    qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Finished scanning for Pokit devices.&quot;</span>);</div>
+<div class="line"><span class="lineno">  123</span>    QCoreApplication::quit();</div>
+<div class="line"><span class="lineno">  124</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -387,32 +432,20 @@ Here is the call graph for this function:</div>
 <p>Handles updated Pokit devices, writing <em>info</em> to stdout. </p>
 <p >Currently <em>updatedFields</em> us unused. </p>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00105">105</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  107</span>{</div>
-<div class="line"><span class="lineno">  108</span>    Q_UNUSED(updatedFields)</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
-<div class="line"><span class="lineno">  111</span>        fputs(qPrintable(QString::fromLatin1(<span class="stringliteral">&quot;%1,%2,%3,%4,%5,%6\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
-<div class="line"><span class="lineno">  112</span>            info.address().toString(), <a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(info.name()), <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass()),</div>
-<div class="line"><span class="lineno">  113</span>            <a class="code hl_function" href="utils_8h.html#a8136cbc7977bcdf5870866b23c324302">toString</a>(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
-<div class="line"><span class="lineno">  116</span>        fputs(QJsonDocument(<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(info)).<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(), stdout);</div>
-<div class="line"><span class="lineno">  117</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
-<div class="line"><span class="lineno">  119</span>        fputs(qPrintable(tr(<span class="stringliteral">&quot;%1 %2 %3 %4\n&quot;</span>).arg(info.deviceUuid().toString(),</div>
-<div class="line"><span class="lineno">  120</span>            info.address().toString(), info.name()).arg(info.rssi())), stdout);</div>
-<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  122</span>    }</div>
-<div class="line"><span class="lineno">  123</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00108">108</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    Q_UNUSED(updatedFields)</div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_slot" href="classScanCommand.html#ac9f53dee63d2dfaa3acf82e71db01d64">deviceDiscovered</a>(info);</div>
+<div class="line"><span class="lineno">  113</span>}</div>
+<div class="ttc" id="aclassScanCommand_html_ac9f53dee63d2dfaa3acf82e71db01d64"><div class="ttname"><a href="classScanCommand.html#ac9f53dee63d2dfaa3acf82e71db01d64">ScanCommand::deviceDiscovered</a></div><div class="ttdeci">void deviceDiscovered(const QBluetoothDeviceInfo &amp;info) override</div><div class="ttdoc">Handles discovered Pokit devices, writing info to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="scancommand_8cpp_source.html#l00083">scancommand.cpp:83</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00108">AbstractCommand::escapeCsvField()</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>, <a class="el" href="utils_8cpp_source.html#l00036">toJson()</a>, and <a class="el" href="utils_8cpp_source.html#l00189">toString()</a>.</p>
+<p class="reference">References <a class="el" href="scancommand_8cpp_source.html#l00083">deviceDiscovered()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00037">ScanCommand()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00039">ScanCommand()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_a2cb218644893d84036ec16cd46f1d488_cgraph.svg" width="507" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_a2cb218644893d84036ec16cd46f1d488_cgraph.svg" width="799" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
@@ -464,15 +497,15 @@ Here is the caller graph for this function:</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00143">abstractcommand.cpp:143</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00057">57</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
-<div class="line"><span class="lineno">   59</span>    QStringList errors = <a class="code hl_slot" href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a>(parser);</div>
-<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">if</span> (!errors.isEmpty()) {</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> errors;</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> errors;</div>
-<div class="line"><span class="lineno">   65</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00059">59</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{</div>
+<div class="line"><span class="lineno">   61</span>    QStringList errors = <a class="code hl_slot" href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a>(parser);</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">if</span> (!errors.isEmpty()) {</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> errors;</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">return</span> errors;</div>
+<div class="line"><span class="lineno">   67</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00143">AbstractCommand::processOptions()</a>.</p>
 <div class="dynheader">
@@ -513,10 +546,10 @@ Here is the call graph for this function:</div>
 
 <p>Reimplemented from <a class="el" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00045">45</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand::requiredOptions</a>();</div>
-<div class="line"><span class="lineno">   48</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00047">47</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>{</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand::requiredOptions</a>();</div>
+<div class="line"><span class="lineno">   50</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html_aec006493cf0a4ba88c092c597bf247b8"><div class="ttname"><a href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand::requiredOptions</a></div><div class="ttdeci">virtual QStringList requiredOptions() const</div><div class="ttdoc">Returns a list of CLI option names required by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00064">abstractcommand.cpp:64</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00064">AbstractCommand::requiredOptions()</a>.</p>
@@ -554,13 +587,13 @@ Here is the call graph for this function:</div>
 
 <p>Begins scanning for Pokit devices. </p>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00070">70</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>    Q_ASSERT(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>);</div>
-<div class="line"><span class="lineno">   73</span>    qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Scanning for Pokit devices...&quot;</span>);</div>
-<div class="line"><span class="lineno">   74</span>    <a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>-&gt;<a class="code hl_slot" href="classPokitDiscoveryAgent.html#a7a91a09dbbe46327407d69bc04b19fc5">start</a>();</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   76</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00072">72</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
+<div class="line"><span class="lineno">   74</span>    Q_ASSERT(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>);</div>
+<div class="line"><span class="lineno">   75</span>    qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Scanning for Pokit devices...&quot;</span>);</div>
+<div class="line"><span class="lineno">   76</span>    <a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>-&gt;<a class="code hl_slot" href="classPokitDiscoveryAgent.html#a7a91a09dbbe46327407d69bc04b19fc5">start</a>();</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   78</span>}</div>
 <div class="ttc" id="aclassPokitDiscoveryAgent_html_a7a91a09dbbe46327407d69bc04b19fc5"><div class="ttname"><a href="classPokitDiscoveryAgent.html#a7a91a09dbbe46327407d69bc04b19fc5">PokitDiscoveryAgent::start</a></div><div class="ttdeci">void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)</div><div class="ttdoc">Starts Pokit device discovery.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdiscoveryagent_8cpp_source.html#l00114">pokitdiscoveryagent.cpp:114</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractcommand_8h_source.html#l00051">AbstractCommand::discoveryAgent</a>, and <a class="el" href="pokitdiscoveryagent_8cpp_source.html#l00114">PokitDiscoveryAgent::start()</a>.</p>
@@ -610,11 +643,11 @@ Here is the call graph for this function:</div>
 </div><!-- fragment --> 
 <p>Reimplemented from <a class="el" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00050">50</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a>() + QStringList{</div>
-<div class="line"><span class="lineno">   53</span>    };</div>
-<div class="line"><span class="lineno">   54</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00052">52</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a>() + QStringList{</div>
+<div class="line"><span class="lineno">   55</span>    };</div>
+<div class="line"><span class="lineno">   56</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00086">AbstractCommand::supportedOptions()</a>.</p>
 <div class="dynheader">
@@ -623,6 +656,595 @@ Here is the call graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_af9af0702a9869ec1c762aecce7600271_cgraph.svg" width="771" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+
+</div>
+</div>
+<a id="a0004f4c780fb9cbd73bc7eba48613c7c" name="a0004f4c780fb9cbd73bc7eba48613c7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0004f4c780fb9cbd73bc7eba48613c7c">&#9670;&nbsp;</a></span>toJson() <span class="overload">[1/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QJsonObject ScanCommand::toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo &amp;&#160;</td>
+          <td class="paramname"><em>info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>info</em> as a JSON object. </p>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00129">129</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  129</span>                                                                {</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">if</span> (!info.isValid()) {</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">return</span> QJsonObject();</div>
+<div class="line"><span class="lineno">  132</span>    }</div>
+<div class="line"><span class="lineno">  133</span>    QJsonObject json{</div>
+<div class="line"><span class="lineno">  134</span>        { QLatin1String(<span class="stringliteral">&quot;address&quot;</span>), info.address().toString() },</div>
+<div class="line"><span class="lineno">  135</span>        { QLatin1String(<span class="stringliteral">&quot;name&quot;</span>), info.name() },</div>
+<div class="line"><span class="lineno">  136</span>        { QLatin1String(<span class="stringliteral">&quot;isCached&quot;</span>), info.isCached() },</div>
+<div class="line"><span class="lineno">  137</span>        { QLatin1String(<span class="stringliteral">&quot;majorDeviceClass&quot;</span>), info.majorDeviceClass() },</div>
+<div class="line"><span class="lineno">  138</span>        { QLatin1String(<span class="stringliteral">&quot;majorDeviceClass&quot;</span>), <a class="code hl_function" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a>(info.majorDeviceClass()) },</div>
+<div class="line"><span class="lineno">  139</span>        { QLatin1String(<span class="stringliteral">&quot;minorDeviceClass&quot;</span>), <a class="code hl_function" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a>(info.majorDeviceClass(), info.minorDeviceClass()) },</div>
+<div class="line"><span class="lineno">  140</span>        { QLatin1String(<span class="stringliteral">&quot;signalStrength&quot;</span>), info.rssi() },</div>
+<div class="line"><span class="lineno">  141</span>    };</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">if</span> (info.coreConfigurations() != QBluetoothDeviceInfo::UnknownCoreConfiguration) {</div>
+<div class="line"><span class="lineno">  143</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;coreConfiguration&quot;</span>), <a class="code hl_function" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a>(info.coreConfigurations()));</div>
+<div class="line"><span class="lineno">  144</span>    }</div>
+<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">if</span> (!info.deviceUuid().isNull()) {</div>
+<div class="line"><span class="lineno">  146</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;deviceUuid&quot;</span>), info.deviceUuid().toString());</div>
+<div class="line"><span class="lineno">  147</span>    }</div>
+<div class="line"><span class="lineno">  148</span><span class="preprocessor">    #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) </span><span class="comment">// Added in Qt 5.12.</span></div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">if</span> (!info.manufacturerData().isEmpty()) {</div>
+<div class="line"><span class="lineno">  150</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;manufacturerData&quot;</span>), <a class="code hl_function" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a>(info.manufacturerData()));</div>
+<div class="line"><span class="lineno">  151</span>    }</div>
+<div class="line"><span class="lineno">  152</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">if</span> (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</div>
+<div class="line"><span class="lineno">  154</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;serviceClasses&quot;</span>), <a class="code hl_function" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a>(info.serviceClasses()));</div>
+<div class="line"><span class="lineno">  155</span>    }</div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">if</span> (!info.serviceUuids().isEmpty()) {</div>
+<div class="line"><span class="lineno">  157</span>        json.insert(QLatin1String(<span class="stringliteral">&quot;serviceUuids&quot;</span>), <a class="code hl_function" href="classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c">toJson</a>(info.serviceUuids()));</div>
+<div class="line"><span class="lineno">  158</span>    }</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> json;</div>
+<div class="line"><span class="lineno">  160</span>}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="scancommand_8cpp_source.html#l00129">toJson()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00083">deviceDiscovered()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00129">toJson()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_a0004f4c780fb9cbd73bc7eba48613c7c_cgraph.svg" width="179" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_a0004f4c780fb9cbd73bc7eba48613c7c_icgraph.svg" width="1020" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="af75eb6fd7d6d9143c18e1ef2b3e3f5ec" name="af75eb6fd7d6d9143c18e1ef2b3e3f5ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af75eb6fd7d6d9143c18e1ef2b3e3f5ec">&#9670;&nbsp;</a></span>toJson() <span class="overload">[2/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QJsonArray ScanCommand::toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::CoreConfigurations &amp;&#160;</td>
+          <td class="paramname"><em>configurations</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>configuration</em> as a JSON array of strings. </p>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00165">165</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  166</span>{</div>
+<div class="line"><span class="lineno">  167</span>    QJsonArray array;</div>
+<div class="line"><span class="lineno">  168</span><span class="preprocessor">    #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \</span></div>
+<div class="line"><span class="lineno">  169</span><span class="preprocessor">        if (configurations.testFlag(QBluetoothDeviceInfo::flag)) \</span></div>
+<div class="line"><span class="lineno">  170</span><span class="preprocessor">            array.append(QLatin1String(#flag))</span></div>
+<div class="line"><span class="lineno">  171</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(UnknownCoreConfiguration);</div>
+<div class="line"><span class="lineno">  172</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(LowEnergyCoreConfiguration);</div>
+<div class="line"><span class="lineno">  173</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateCoreConfiguration);</div>
+<div class="line"><span class="lineno">  174</span>  <span class="comment">//QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateAndLowEnergyCoreConfiguration); // Combination flag.</span></div>
+<div class="line"><span class="lineno">  175</span><span class="preprocessor">    #undef QTPOKIT_INTERNAL_IF_SET_THEN_APPEND</span></div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">return</span> array;</div>
+<div class="line"><span class="lineno">  177</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3f96c110d5f90517ef9a3afc9f2b5501" name="a3f96c110d5f90517ef9a3afc9f2b5501"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f96c110d5f90517ef9a3afc9f2b5501">&#9670;&nbsp;</a></span>toJson() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QJsonValue ScanCommand::toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::MajorDeviceClass &amp;&#160;</td>
+          <td class="paramname"><em>majorClass</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>majorClass</em> as a JSON value. </p>
+<p >This is equivalent to toString, except that if toString does not recognise <em>majorClass</em>, then <em>majorClass</em> is returned as a JSON number (not a string).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classScanCommand.html#a4422f8c5972370796065882a622940e1" title="Returns majorClass as a human-readable string, or a null QString if majorClass is not recognised.">toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00185">185</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  186</span>{</div>
+<div class="line"><span class="lineno">  187</span>    <span class="keyword">const</span> QString <span class="keywordtype">string</span> = <a class="code hl_function" href="classScanCommand.html#a4422f8c5972370796065882a622940e1">toString</a>(majorClass);</div>
+<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">return</span> (<span class="keywordtype">string</span>.isNull() ? QJsonValue(majorClass) : QJsonValue(<span class="keywordtype">string</span>));</div>
+<div class="line"><span class="lineno">  189</span>}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="scancommand_8cpp_source.html#l00268">toString()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_a3f96c110d5f90517ef9a3afc9f2b5501_cgraph.svg" width="406" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ae1e453f0e6b1f951b0115e1c96037c48" name="ae1e453f0e6b1f951b0115e1c96037c48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e453f0e6b1f951b0115e1c96037c48">&#9670;&nbsp;</a></span>toJson() <span class="overload">[4/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QJsonValue ScanCommand::toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::MajorDeviceClass &amp;&#160;</td>
+          <td class="paramname"><em>majorClass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const quint8&#160;</td>
+          <td class="paramname"><em>minorClass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>minorClass</em> as a JSON value. </p>
+<p >This is equivalent to toString, except that if toString does not recognise <em>minorClass</em> as a sub-class of <em>majorClass</em>, then <em>minorClass</em> is returned as a JSON number (not a string).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23" title="Returns minorClass as a human-readable string, or a null QString if minorClass is not recognised as a...">toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00198">198</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  199</span>{</div>
+<div class="line"><span class="lineno">  200</span>    <span class="keyword">const</span> QString <span class="keywordtype">string</span> = <a class="code hl_function" href="classScanCommand.html#a4422f8c5972370796065882a622940e1">toString</a>(majorClass, minorClass);</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">return</span> (<span class="keywordtype">string</span>.isNull() ? QJsonValue(minorClass) : QJsonValue(<span class="keywordtype">string</span>));</div>
+<div class="line"><span class="lineno">  202</span>}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="scancommand_8cpp_source.html#l00268">toString()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_ae1e453f0e6b1f951b0115e1c96037c48_cgraph.svg" width="406" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a28566c7a8789c6f1cacdadabd2b1e697" name="a28566c7a8789c6f1cacdadabd2b1e697"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28566c7a8789c6f1cacdadabd2b1e697">&#9670;&nbsp;</a></span>toJson() <span class="overload">[5/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QJsonArray ScanCommand::toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::ServiceClasses &amp;&#160;</td>
+          <td class="paramname"><em>classes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>classes</em> as a JSON array of strings. </p>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00207">207</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>{</div>
+<div class="line"><span class="lineno">  209</span>    QJsonArray array;</div>
+<div class="line"><span class="lineno">  210</span><span class="preprocessor">    #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \</span></div>
+<div class="line"><span class="lineno">  211</span><span class="preprocessor">        if (classes.testFlag(QBluetoothDeviceInfo::flag)) \</span></div>
+<div class="line"><span class="lineno">  212</span><span class="preprocessor">            array.append(QLatin1String(#flag))</span></div>
+<div class="line"><span class="lineno">  213</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);</div>
+<div class="line"><span class="lineno">  214</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);</div>
+<div class="line"><span class="lineno">  215</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);</div>
+<div class="line"><span class="lineno">  216</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);</div>
+<div class="line"><span class="lineno">  217</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);</div>
+<div class="line"><span class="lineno">  218</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);</div>
+<div class="line"><span class="lineno">  219</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);</div>
+<div class="line"><span class="lineno">  220</span>    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);</div>
+<div class="line"><span class="lineno">  221</span><span class="preprocessor">    #undef QTPOKIT_INTERNAL_IF_SET_THEN_APPEND</span></div>
+<div class="line"><span class="lineno">  222</span>    <span class="keywordflow">return</span> array;</div>
+<div class="line"><span class="lineno">  223</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a692b7c3f071f31211ab36d754d779330" name="a692b7c3f071f31211ab36d754d779330"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a692b7c3f071f31211ab36d754d779330">&#9670;&nbsp;</a></span>toJson() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QJsonArray ScanCommand::toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QList&lt; QBluetoothUuid &gt; &amp;&#160;</td>
+          <td class="paramname"><em>uuids</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>uuids</em> as a JSON array. </p>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00228">228</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  229</span>{</div>
+<div class="line"><span class="lineno">  230</span>    QJsonArray array;</div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QBluetoothUuid &amp;uuid: uuids) {</div>
+<div class="line"><span class="lineno">  232</span>        array.append(uuid.toString());</div>
+<div class="line"><span class="lineno">  233</span>    }</div>
+<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">return</span> array;</div>
+<div class="line"><span class="lineno">  235</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a33d8423caad084f3131066a870f697bc" name="a33d8423caad084f3131066a870f697bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d8423caad084f3131066a870f697bc">&#9670;&nbsp;</a></span>toJson() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QJsonObject ScanCommand::toJson </td>
+          <td>(</td>
+          <td class="paramtype">const QMultiHash&lt; quint16, QByteArray &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns Bluetooth manufacturer <em>data</em> as a JSON object that maps the manufacturer IDs (unsigned integers as strings) to arrays of one or more values. </p>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00241">241</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  242</span>{</div>
+<div class="line"><span class="lineno">  243</span>    QJsonObject object;</div>
+<div class="line"><span class="lineno">  244</span>    QList&lt;quint16&gt; keys = data.uniqueKeys();</div>
+<div class="line"><span class="lineno">  245</span>    std::sort(keys.begin(), keys.end());</div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> quint16 key: keys) {</div>
+<div class="line"><span class="lineno">  247</span>        <span class="comment">// Convert the key&#39;s values to a JSON array, reversing the order, because QMultiHash</span></div>
+<div class="line"><span class="lineno">  248</span>        <span class="comment">// guarantees that the values are orderer &quot;from the most recently inserted to the least</span></div>
+<div class="line"><span class="lineno">  249</span>        <span class="comment">// recently inserted&quot;, which is the oppoosit of what we want.</span></div>
+<div class="line"><span class="lineno">  250</span>        QList&lt;QByteArray&gt; values = data.values(key);</div>
+<div class="line"><span class="lineno">  251</span>        std::reverse(values.begin(), values.end());</div>
+<div class="line"><span class="lineno">  252</span>        QJsonArray array;</div>
+<div class="line"><span class="lineno">  253</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> QByteArray &amp;value: values) {</div>
+<div class="line"><span class="lineno">  254</span>            array.append(QLatin1String(value.toBase64()));</div>
+<div class="line"><span class="lineno">  255</span>        }</div>
+<div class="line"><span class="lineno">  256</span>        <span class="keywordtype">object</span>.insert(QString::number(key), array);</div>
+<div class="line"><span class="lineno">  257</span>    }</div>
+<div class="line"><span class="lineno">  258</span>    <span class="keywordflow">return</span> object;</div>
+<div class="line"><span class="lineno">  259</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4422f8c5972370796065882a622940e1" name="a4422f8c5972370796065882a622940e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4422f8c5972370796065882a622940e1">&#9670;&nbsp;</a></span>toString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString ScanCommand::toString </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::MajorDeviceClass &amp;&#160;</td>
+          <td class="paramname"><em>majorClass</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>majorClass</em> as a human-readable string, or a null QString if <em>majorClass</em> is not recognised. </p>
+<p >For example, if <em>majorClass</em> is <code>QBluetoothDeviceInfo::ToyDevice</code>, then the string <code>ToyDevice</code> is returned. </p>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00268">268</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  269</span>{</div>
+<div class="line"><span class="lineno">  270</span><span class="preprocessor">    #define QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \</span></div>
+<div class="line"><span class="lineno">  271</span><span class="preprocessor">        if (majorClass == QBluetoothDeviceInfo::value) \</span></div>
+<div class="line"><span class="lineno">  272</span><span class="preprocessor">            return QLatin1String(#value)</span></div>
+<div class="line"><span class="lineno">  273</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(MiscellaneousDevice);</div>
+<div class="line"><span class="lineno">  274</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ComputerDevice);</div>
+<div class="line"><span class="lineno">  275</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PhoneDevice);</div>
+<div class="line"><span class="lineno">  276</span><span class="preprocessor">    #if (QT_VERSION &lt; QT_VERSION_CHECK(5, 13, 0))</span></div>
+<div class="line"><span class="lineno">  277</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LANAccessDevice); <span class="comment">// Deprecated since Qt 5.13.</span></div>
+<div class="line"><span class="lineno">  278</span><span class="preprocessor">    #else</span></div>
+<div class="line"><span class="lineno">  279</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkDevice); <span class="comment">// Added in Qt 5.13.</span></div>
+<div class="line"><span class="lineno">  280</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><span class="lineno">  281</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(AudioVideoDevice);</div>
+<div class="line"><span class="lineno">  282</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PeripheralDevice);</div>
+<div class="line"><span class="lineno">  283</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagingDevice);</div>
+<div class="line"><span class="lineno">  284</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableDevice);</div>
+<div class="line"><span class="lineno">  285</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDevice);</div>
+<div class="line"><span class="lineno">  286</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);</div>
+<div class="line"><span class="lineno">  287</span>    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);</div>
+<div class="line"><span class="lineno">  288</span><span class="preprocessor">    #undef QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN</span></div>
+<div class="line"><span class="lineno">  289</span>    qCDebug(lc).noquote() &lt;&lt; QObject::tr(<span class="stringliteral">&quot;Unknown major class %1.&quot;</span>).arg(majorClass);</div>
+<div class="line"><span class="lineno">  290</span>    <span class="keywordflow">return</span> QString(); <span class="comment">// Null QString indicates unknown minor class.</span></div>
+<div class="line"><span class="lineno">  291</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00083">deviceDiscovered()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00185">toJson()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classScanCommand_a4422f8c5972370796065882a622940e1_icgraph.svg" width="1031" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a13d0237febd6f73fd1c8a1c6bf639a23" name="a13d0237febd6f73fd1c8a1c6bf639a23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13d0237febd6f73fd1c8a1c6bf639a23">&#9670;&nbsp;</a></span>toString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString ScanCommand::toString </td>
+          <td>(</td>
+          <td class="paramtype">const QBluetoothDeviceInfo::MajorDeviceClass &amp;&#160;</td>
+          <td class="paramname"><em>majorClass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const quint8&#160;</td>
+          <td class="paramname"><em>minorClass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>minorClass</em> as a human-readable string, or a null QString if <em>minorClass</em> is not recognised as a sub-class of <em>majorClass</em>. </p>
+<p >For example, if <em>majorClass</em> is <code>QBluetoothDeviceInfo::ToyDevice</code>, and <em>minorClass</em> is <code>QBluetoothDeviceInfo::ToyRobot</code>, then the string <code>ToyRobot</code> is returned. </p>
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8cpp_source.html#l00300">300</a> of file <a class="el" href="scancommand_8cpp_source.html">scancommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  301</span>{</div>
+<div class="line"><span class="lineno">  302</span><span class="preprocessor">    #define QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \</span></div>
+<div class="line"><span class="lineno">  303</span><span class="preprocessor">        if (minorClass == QBluetoothDeviceInfo::value) \</span></div>
+<div class="line"><span class="lineno">  304</span><span class="preprocessor">            return QLatin1String(#value)</span></div>
+<div class="line"><span class="lineno">  305</span>    <span class="keywordflow">switch</span> (majorClass) {</div>
+<div class="line"><span class="lineno">  306</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::MiscellaneousDevice:</div>
+<div class="line"><span class="lineno">  307</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedMiscellaneous);</div>
+<div class="line"><span class="lineno">  308</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  309</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::ComputerDevice:</div>
+<div class="line"><span class="lineno">  310</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedComputer);</div>
+<div class="line"><span class="lineno">  311</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DesktopComputer);</div>
+<div class="line"><span class="lineno">  312</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ServerComputer);</div>
+<div class="line"><span class="lineno">  313</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LaptopComputer);</div>
+<div class="line"><span class="lineno">  314</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldClamShellComputer);</div>
+<div class="line"><span class="lineno">  315</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldComputer);</div>
+<div class="line"><span class="lineno">  316</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableComputer);</div>
+<div class="line"><span class="lineno">  317</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::PhoneDevice:</div>
+<div class="line"><span class="lineno">  319</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPhone);</div>
+<div class="line"><span class="lineno">  320</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CellularPhone);</div>
+<div class="line"><span class="lineno">  321</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CordlessPhone);</div>
+<div class="line"><span class="lineno">  322</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SmartPhone);</div>
+<div class="line"><span class="lineno">  323</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WiredModemOrVoiceGatewayPhone);</div>
+<div class="line"><span class="lineno">  324</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CommonIsdnAccessPhone);</div>
+<div class="line"><span class="lineno">  325</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  326</span><span class="preprocessor">    #if (QT_VERSION &lt; QT_VERSION_CHECK(5, 13, 0))</span></div>
+<div class="line"><span class="lineno">  327</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::LANAccessDevice: <span class="comment">// Deprecated since Qt 5.13.</span></div>
+<div class="line"><span class="lineno">  328</span><span class="preprocessor">    #else</span></div>
+<div class="line"><span class="lineno">  329</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::NetworkDevice: <span class="comment">// Added in Qt 5.13.</span></div>
+<div class="line"><span class="lineno">  330</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><span class="lineno">  331</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkFullService);</div>
+<div class="line"><span class="lineno">  332</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorOne);</div>
+<div class="line"><span class="lineno">  333</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorTwo);</div>
+<div class="line"><span class="lineno">  334</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorThree);</div>
+<div class="line"><span class="lineno">  335</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFour);</div>
+<div class="line"><span class="lineno">  336</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFive);</div>
+<div class="line"><span class="lineno">  337</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorSix);</div>
+<div class="line"><span class="lineno">  338</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkNoService);</div>
+<div class="line"><span class="lineno">  339</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::AudioVideoDevice:</div>
+<div class="line"><span class="lineno">  341</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedAudioVideoDevice);</div>
+<div class="line"><span class="lineno">  342</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHeadsetDevice);</div>
+<div class="line"><span class="lineno">  343</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandsFreeDevice);</div>
+<div class="line"><span class="lineno">  344</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Microphone);</div>
+<div class="line"><span class="lineno">  345</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Loudspeaker);</div>
+<div class="line"><span class="lineno">  346</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Headphones);</div>
+<div class="line"><span class="lineno">  347</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PortableAudioDevice);</div>
+<div class="line"><span class="lineno">  348</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CarAudio);</div>
+<div class="line"><span class="lineno">  349</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SetTopBox);</div>
+<div class="line"><span class="lineno">  350</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HiFiAudioDevice);</div>
+<div class="line"><span class="lineno">  351</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Vcr);</div>
+<div class="line"><span class="lineno">  352</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoCamera);</div>
+<div class="line"><span class="lineno">  353</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Camcorder);</div>
+<div class="line"><span class="lineno">  354</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoMonitor);</div>
+<div class="line"><span class="lineno">  355</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoDisplayAndLoudspeaker);</div>
+<div class="line"><span class="lineno">  356</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoConferencing);</div>
+<div class="line"><span class="lineno">  357</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamingDevice);</div>
+<div class="line"><span class="lineno">  358</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  359</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::PeripheralDevice:</div>
+<div class="line"><span class="lineno">  360</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPeripheral);</div>
+<div class="line"><span class="lineno">  361</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardPeripheral);</div>
+<div class="line"><span class="lineno">  362</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PointingDevicePeripheral);</div>
+<div class="line"><span class="lineno">  363</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardWithPointingDevicePeripheral);</div>
+<div class="line"><span class="lineno">  364</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(JoystickPeripheral);</div>
+<div class="line"><span class="lineno">  365</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamepadPeripheral);</div>
+<div class="line"><span class="lineno">  366</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(RemoteControlPeripheral);</div>
+<div class="line"><span class="lineno">  367</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SensingDevicePeripheral);</div>
+<div class="line"><span class="lineno">  368</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DigitizerTabletPeripheral);</div>
+<div class="line"><span class="lineno">  369</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CardReaderPeripheral);</div>
+<div class="line"><span class="lineno">  370</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  371</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::ImagingDevice:</div>
+<div class="line"><span class="lineno">  372</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedImagingDevice);</div>
+<div class="line"><span class="lineno">  373</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageDisplay);</div>
+<div class="line"><span class="lineno">  374</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageCamera);</div>
+<div class="line"><span class="lineno">  375</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageScanner);</div>
+<div class="line"><span class="lineno">  376</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagePrinter);</div>
+<div class="line"><span class="lineno">  377</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  378</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::WearableDevice:</div>
+<div class="line"><span class="lineno">  379</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedWearableDevice);</div>
+<div class="line"><span class="lineno">  380</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableWristWatch);</div>
+<div class="line"><span class="lineno">  381</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearablePager);</div>
+<div class="line"><span class="lineno">  382</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableJacket);</div>
+<div class="line"><span class="lineno">  383</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHelmet);</div>
+<div class="line"><span class="lineno">  384</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableGlasses);</div>
+<div class="line"><span class="lineno">  385</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  386</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::ToyDevice:</div>
+<div class="line"><span class="lineno">  387</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedToy);</div>
+<div class="line"><span class="lineno">  388</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyRobot);</div>
+<div class="line"><span class="lineno">  389</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyVehicle);</div>
+<div class="line"><span class="lineno">  390</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDoll);</div>
+<div class="line"><span class="lineno">  391</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyController);</div>
+<div class="line"><span class="lineno">  392</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyGame);</div>
+<div class="line"><span class="lineno">  393</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  394</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::HealthDevice:</div>
+<div class="line"><span class="lineno">  395</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedHealthDevice);</div>
+<div class="line"><span class="lineno">  396</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthBloodPressureMonitor);</div>
+<div class="line"><span class="lineno">  397</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthThermometer);</div>
+<div class="line"><span class="lineno">  398</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthWeightScale);</div>
+<div class="line"><span class="lineno">  399</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthGlucoseMeter);</div>
+<div class="line"><span class="lineno">  400</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthPulseOximeter);</div>
+<div class="line"><span class="lineno">  401</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDataDisplay);</div>
+<div class="line"><span class="lineno">  402</span>        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthStepCounter);</div>
+<div class="line"><span class="lineno">  403</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  404</span>    <span class="keywordflow">case</span> QBluetoothDeviceInfo::UncategorizedDevice:</div>
+<div class="line"><span class="lineno">  405</span>        <span class="comment">// There are no minor classes defined (in Qt) for uncategorized devices.</span></div>
+<div class="line"><span class="lineno">  406</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  407</span>    }</div>
+<div class="line"><span class="lineno">  408</span><span class="preprocessor">    #undef QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN</span></div>
+<div class="line"><span class="lineno">  409</span>    qCDebug(lc).noquote() &lt;&lt; QObject::tr(<span class="stringliteral">&quot;Unknown minor class %1 for major class %2.&quot;</span>)</div>
+<div class="line"><span class="lineno">  410</span>        .arg(minorClass).arg(majorClass);</div>
+<div class="line"><span class="lineno">  411</span>    <span class="keywordflow">return</span> QString(); <span class="comment">// Null QString indicates unknown minor class.</span></div>
+<div class="line"><span class="lineno">  412</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a1e81096601fa56c740df641cf445b287" name="a1e81096601fa56c740df641cf445b287"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e81096601fa56c740df641cf445b287">&#9670;&nbsp;</a></span>TestScanCommand</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class TestScanCommand</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="scancommand_8h_source.html#l00054">54</a> of file <a class="el" href="scancommand_8h_source.html">scancommand.h</a>.</p>
 
 </div>
 </div>

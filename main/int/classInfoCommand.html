@@ -91,6 +91,7 @@ $(document).ready(function(){initNavTree('classInfoCommand.html',''); initResiza
 <a href="#pro-slots">Protected Slots</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classInfoCommand-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">InfoCommand Class Reference</div></div>
 </div><!--header-->
@@ -195,6 +196,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a35869224900c04ffb3daaa2cedd4f761"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classDeviceInfoService.html">DeviceInfoService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInfoCommand.html#a35869224900c04ffb3daaa2cedd4f761">service</a></td></tr>
 <tr class="memdesc:a35869224900c04ffb3daaa2cedd4f761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth service this command interracts with.  <a href="classInfoCommand.html#a35869224900c04ffb3daaa2cedd4f761">More...</a><br /></td></tr>
 <tr class="separator:a35869224900c04ffb3daaa2cedd4f761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:acdd4215131060f09248d9354da3aa37c"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInfoCommand.html#acdd4215131060f09248d9354da3aa37c">TestInfoCommand</a></td></tr>
+<tr class="separator:acdd4215131060f09248d9354da3aa37c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -476,7 +482,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  121</span>        <span class="keywordflow">if</span> (!deviceUuid.isNull()) {</div>
 <div class="line"><span class="lineno">  122</span>            jsonObject.insert(QLatin1String(<span class="stringliteral">&quot;deviceUuid&quot;</span>), deviceUuid.toString());</div>
 <div class="line"><span class="lineno">  123</span>        }</div>
-<div class="line"><span class="lineno">  124</span>        fputs(QJsonDocument(jsonObject).<a class="code hl_function" href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a>(), stdout);</div>
+<div class="line"><span class="lineno">  124</span>        fputs(QJsonDocument(jsonObject).toJson(), stdout);</div>
 <div class="line"><span class="lineno">  125</span>    }   <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  126</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
 <div class="line"><span class="lineno">  127</span>        <span class="keywordflow">if</span> (!deviceName.isEmpty()) {</div>
@@ -503,19 +509,18 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::OutputFormat::Json</a></div><div class="ttdeci">@ Json</div><div class="ttdoc">RFC 8259 compliant JSON text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_af85c842568f8a3a893e336e449ef7813"><div class="ttname"><a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">AbstractCommand::escapeCsvField</a></div><div class="ttdeci">static QString escapeCsvField(const QString &amp;field)</div><div class="ttdoc">Returns an RFC 4180 compliant version of field.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00108">abstractcommand.cpp:108</a></div></div>
 <div class="ttc" id="aclassDeviceCommand_html_a906fd97d832be0e8d2ba1c917fba41db"><div class="ttname"><a href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a></div><div class="ttdeci">virtual void serviceDetailsDiscovered()</div><div class="ttdoc">Handles service detail discovery events.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00107">devicecommand.cpp:107</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a3619ac5734e074de11927352b0fd5054"><div class="ttname"><a href="classDeviceInfoService.html#a3619ac5734e074de11927352b0fd5054">DeviceInfoService::softwareRevision</a></div><div class="ttdeci">QString softwareRevision() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Software Revision characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00285">deviceinfoservice.cpp:285</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a4d79805ce884ec8d5ac7879ccd499932"><div class="ttname"><a href="classDeviceInfoService.html#a4d79805ce884ec8d5ac7879ccd499932">DeviceInfoService::hardwareRevision</a></div><div class="ttdeci">QString hardwareRevision() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Hardware Revision characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00235">deviceinfoservice.cpp:235</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a7402f9a0c2fe3ee052a29e8f872e26ef"><div class="ttname"><a href="classDeviceInfoService.html#a7402f9a0c2fe3ee052a29e8f872e26ef">DeviceInfoService::modelNumber</a></div><div class="ttdeci">QString modelNumber() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Model Number characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00210">deviceinfoservice.cpp:210</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a3619ac5734e074de11927352b0fd5054"><div class="ttname"><a href="classDeviceInfoService.html#a3619ac5734e074de11927352b0fd5054">DeviceInfoService::softwareRevision</a></div><div class="ttdeci">QString softwareRevision() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Software Revision characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00245">deviceinfoservice.cpp:245</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a4d79805ce884ec8d5ac7879ccd499932"><div class="ttname"><a href="classDeviceInfoService.html#a4d79805ce884ec8d5ac7879ccd499932">DeviceInfoService::hardwareRevision</a></div><div class="ttdeci">QString hardwareRevision() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Hardware Revision characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00215">deviceinfoservice.cpp:215</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a7402f9a0c2fe3ee052a29e8f872e26ef"><div class="ttname"><a href="classDeviceInfoService.html#a7402f9a0c2fe3ee052a29e8f872e26ef">DeviceInfoService::modelNumber</a></div><div class="ttdeci">QString modelNumber() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Model Number characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00200">deviceinfoservice.cpp:200</a></div></div>
 <div class="ttc" id="aclassDeviceInfoService_html_ab5614d4e47856aa4400d08ae2b71d72b"><div class="ttname"><a href="classDeviceInfoService.html#ab5614d4e47856aa4400d08ae2b71d72b">DeviceInfoService::manufacturer</a></div><div class="ttdeci">QString manufacturer() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Manufacturer Name characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00185">deviceinfoservice.cpp:185</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_ac896b483c3b54e46658fd04ab4bb864b"><div class="ttname"><a href="classDeviceInfoService.html#ac896b483c3b54e46658fd04ab4bb864b">DeviceInfoService::firmwareRevision</a></div><div class="ttdeci">QString firmwareRevision() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Firmware Revision characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00260">deviceinfoservice.cpp:260</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_ac896b483c3b54e46658fd04ab4bb864b"><div class="ttname"><a href="classDeviceInfoService.html#ac896b483c3b54e46658fd04ab4bb864b">DeviceInfoService::firmwareRevision</a></div><div class="ttdeci">QString firmwareRevision() const</div><div class="ttdoc">Returns the most recent value of the Device Info service's Firmware Revision characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8cpp_source.html#l00230">deviceinfoservice.cpp:230</a></div></div>
 <div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00100">pokitdevice.cpp:100</a></div></div>
-<div class="ttc" id="autils_8h_html_a9ffa9547932ff46690df34e1f0ede5d0"><div class="ttname"><a href="utils_8h.html#a9ffa9547932ff46690df34e1f0ede5d0">toJson</a></div><div class="ttdeci">QTPOKIT_BEGIN_NAMESPACE QTPOKIT_EXPORT QJsonObject toJson(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns info as a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00036">utils.cpp:36</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00100">PokitDevice::controller()</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="devicecommand_8h_source.html#l00040">DeviceCommand::device</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00108">AbstractCommand::escapeCsvField()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00260">DeviceInfoService::firmwareRevision()</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">AbstractCommand::format</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00235">DeviceInfoService::hardwareRevision()</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00185">DeviceInfoService::manufacturer()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00210">DeviceInfoService::modelNumber()</a>, <a class="el" href="infocommand_8h_source.html#l00042">service</a>, <a class="el" href="devicecommand_8cpp_source.html#l00107">DeviceCommand::serviceDetailsDiscovered()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00285">DeviceInfoService::softwareRevision()</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>, and <a class="el" href="utils_8cpp_source.html#l00036">toJson()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00100">PokitDevice::controller()</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="devicecommand_8h_source.html#l00040">DeviceCommand::device</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00108">AbstractCommand::escapeCsvField()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00230">DeviceInfoService::firmwareRevision()</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">AbstractCommand::format</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00215">DeviceInfoService::hardwareRevision()</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00185">DeviceInfoService::manufacturer()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00200">DeviceInfoService::modelNumber()</a>, <a class="el" href="infocommand_8h_source.html#l00042">service</a>, <a class="el" href="devicecommand_8cpp_source.html#l00107">DeviceCommand::serviceDetailsDiscovered()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00245">DeviceInfoService::softwareRevision()</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classInfoCommand_a06d095d57662fd10b201d6273085c34e_cgraph.svg" width="508" height="571"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classInfoCommand_a06d095d57662fd10b201d6273085c34e_cgraph.svg" width="508" height="496"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -570,6 +575,31 @@ Here is the call graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="classInfoCommand_aaeb045dac5796d18b1041c0917267ec6_cgraph.svg" width="766" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="acdd4215131060f09248d9354da3aa37c" name="acdd4215131060f09248d9354da3aa37c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdd4215131060f09248d9354da3aa37c">&#9670;&nbsp;</a></span>TestInfoCommand</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class TestInfoCommand</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="infocommand_8h_source.html#l00044">44</a> of file <a class="el" href="infocommand_8h_source.html">infocommand.h</a>.</p>
 
 </div>
 </div>

@@ -29,6 +29,5 @@ var dir_db9736cc4d66dfa51ee2d2b49d100b59 =
     [ "statusservice.cpp", "statusservice_8cpp.html", null ],
     [ "statusservice_p.h", "statusservice__p_8h.html", [
       [ "StatusServicePrivate", "classStatusServicePrivate.html", "classStatusServicePrivate" ]
-    ] ],
-    [ "utils.cpp", "utils_8cpp.html", "utils_8cpp" ]
+    ] ]
 ];

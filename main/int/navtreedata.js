@@ -42,7 +42,8 @@ var NAVTREE =
         [ "Generic Access Service", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md11", null ],
         [ "Undocumented Services", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md12", null ]
       ] ],
-      [ "Qt Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md13", null ]
+      [ "Qt Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md13", null ],
+      [ "CMake Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md14", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
@@ -70,7 +71,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"classStatusService.html#a2f29742224a879c4f1fb81a2fdd39ea5"
+"classStatusService.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

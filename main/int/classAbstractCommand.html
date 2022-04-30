@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classAbstractCommand.html',''); initRe
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classAbstractCommand-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">AbstractCommand Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -177,6 +178,11 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a07d979bc039d61f5c720cb1521b31208"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208">deviceToScanFor</a></td></tr>
 <tr class="memdesc:a07d979bc039d61f5c720cb1521b31208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device (if any) that were passed to <a class="el" href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d" title="Processes the relevant options from the command line parser.">processOptions()</a>.  <a href="classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208">More...</a><br /></td></tr>
 <tr class="separator:a07d979bc039d61f5c720cb1521b31208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:aac51102b6b2db37c5c7c6a0373d55023"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#aac51102b6b2db37c5c7c6a0373d55023">TestAbstractCommand</a></td></tr>
+<tr class="separator:aac51102b6b2db37c5c7c6a0373d55023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="classAbstractCommand.html" title="The AbstractCommand class provides a consistent base for the classes that implement CLI commands.">AbstractCommand</a> class provides a consistent base for the classes that implement CLI commands. </p>
@@ -401,11 +407,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  115</span>    } <span class="keywordflow">else</span> <span class="keywordflow">return</span> field;</div>
 <div class="line"><span class="lineno">  116</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00081">ScanCommand::deviceDiscovered()</a>, <a class="el" href="scancommand_8cpp_source.html#l00105">ScanCommand::deviceUpdated()</a>, <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00083">ScanCommand::deviceDiscovered()</a>, <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_af85c842568f8a3a893e336e449ef7813_icgraph.svg" width="799" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_af85c842568f8a3a893e336e449ef7813_icgraph.svg" width="1074" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -450,7 +456,7 @@ Here is the caller graph for this function:</div>
 <div class="line">    <span class="keywordflow">return</span> errors;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00143">abstractcommand.cpp:143</a></div></div>
-</div><!-- fragment --> <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Validate the value format. </dd></dl>
+</div><!-- fragment --> <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Validate the value format. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00143">143</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  144</span>{</div>
@@ -511,7 +517,7 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">Csv</a>, <a class="el" href="abstractcommand_8h_source.html#l00056">deviceToScanFor</a>, <a class="el" href="abstractcommand_8h_source.html#l00051">discoveryAgent</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">Json</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00064">requiredOptions()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00086">supportedOptions()</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">Text</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00047">DeviceCommand::processOptions()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00057">ScanCommand::processOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00047">DeviceCommand::processOptions()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00059">ScanCommand::processOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -561,7 +567,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   66</span>    <span class="keywordflow">return</span> QStringList();</div>
 <div class="line"><span class="lineno">   67</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="calibratecommand_8cpp_source.html#l00043">CalibrationCommand::requiredOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00039">FlashLedCommand::requiredOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00042">InfoCommand::requiredOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00045">ScanCommand::requiredOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00039">SetNameCommand::requiredOptions()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00042">StatusCommand::requiredOptions()</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00086">supportedOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="calibratecommand_8cpp_source.html#l00043">CalibrationCommand::requiredOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00039">FlashLedCommand::requiredOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00042">InfoCommand::requiredOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00047">ScanCommand::requiredOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00039">SetNameCommand::requiredOptions()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00042">StatusCommand::requiredOptions()</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00086">supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -619,7 +625,7 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00064">requiredOptions()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="calibratecommand_8cpp_source.html#l00050">CalibrationCommand::supportedOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00045">FlashLedCommand::supportedOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00048">InfoCommand::supportedOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00050">ScanCommand::supportedOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00046">SetNameCommand::supportedOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00048">StatusCommand::supportedOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="calibratecommand_8cpp_source.html#l00050">CalibrationCommand::supportedOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00045">FlashLedCommand::supportedOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00048">InfoCommand::supportedOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00052">ScanCommand::supportedOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00046">SetNameCommand::supportedOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00048">StatusCommand::supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -632,6 +638,31 @@ Here is the caller graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_a002fc48054b9df13bbb2e0bdc488c6d3_icgraph.svg" width="1114" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="aac51102b6b2db37c5c7c6a0373d55023" name="aac51102b6b2db37c5c7c6a0373d55023"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac51102b6b2db37c5c7c6a0373d55023">&#9670;&nbsp;</a></span>TestAbstractCommand</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class TestAbstractCommand</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00060">60</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
 </div>
 </div>
@@ -688,7 +719,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00051">51</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00037">AbstractCommand()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00116">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00037">ScanCommand::ScanCommand()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00059">DeviceCommand::start()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00070">ScanCommand::start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00037">AbstractCommand()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00116">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00039">ScanCommand::ScanCommand()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00059">DeviceCommand::start()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00072">ScanCommand::start()</a>.</p>
 
 </div>
 </div>
@@ -716,7 +747,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00052">52</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="setnamecommand_8cpp_source.html#l00106">SetNameCommand::deivceNameWritten()</a>, <a class="el" href="scancommand_8cpp_source.html#l00081">ScanCommand::deviceDiscovered()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00100">FlashLedCommand::deviceLedFlashed()</a>, <a class="el" href="scancommand_8cpp_source.html#l00105">ScanCommand::deviceUpdated()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="calibratecommand_8cpp_source.html#l00113">CalibrationCommand::temperatureCalibrated()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="setnamecommand_8cpp_source.html#l00106">SetNameCommand::deivceNameWritten()</a>, <a class="el" href="scancommand_8cpp_source.html#l00083">ScanCommand::deviceDiscovered()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00100">FlashLedCommand::deviceLedFlashed()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="calibratecommand_8cpp_source.html#l00113">CalibrationCommand::temperatureCalibrated()</a>.</p>
 
 </div>
 </div>

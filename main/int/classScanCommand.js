@@ -7,5 +7,14 @@ var classScanCommand =
     [ "processOptions", "classScanCommand.html#a9998ef360fde53be932dc3059e86578e", null ],
     [ "requiredOptions", "classScanCommand.html#a5322e3ce00daeae21becb853312d4bdf", null ],
     [ "start", "classScanCommand.html#a5fe99205591ced024ad2676f377cc845", null ],
-    [ "supportedOptions", "classScanCommand.html#af9af0702a9869ec1c762aecce7600271", null ]
+    [ "supportedOptions", "classScanCommand.html#af9af0702a9869ec1c762aecce7600271", null ],
+    [ "toJson", "classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c", null ],
+    [ "toJson", "classScanCommand.html#af75eb6fd7d6d9143c18e1ef2b3e3f5ec", null ],
+    [ "toJson", "classScanCommand.html#a3f96c110d5f90517ef9a3afc9f2b5501", null ],
+    [ "toJson", "classScanCommand.html#ae1e453f0e6b1f951b0115e1c96037c48", null ],
+    [ "toJson", "classScanCommand.html#a28566c7a8789c6f1cacdadabd2b1e697", null ],
+    [ "toJson", "classScanCommand.html#a692b7c3f071f31211ab36d754d779330", null ],
+    [ "toJson", "classScanCommand.html#a33d8423caad084f3131066a870f697bc", null ],
+    [ "toString", "classScanCommand.html#a4422f8c5972370796065882a622940e1", null ],
+    [ "toString", "classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23", null ]
 ];
