@@ -39,4 +39,19 @@ protected slots:
     #endif
     void deviceDiscoveryFinished() override;
 
+private:
+    static QJsonObject toJson(const QBluetoothDeviceInfo &info);
+    static QJsonArray  toJson(const QBluetoothDeviceInfo::CoreConfigurations &configurations);
+    static QJsonValue  toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass);
+    static QJsonValue  toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass);
+    static QJsonArray  toJson(const QBluetoothDeviceInfo::ServiceClasses &classes);
+    static QJsonArray  toJson(const QList<QBluetoothUuid> &uuids);
+    #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) // As of Qt6, QVector is an alias for QList.
+    static QJsonArray  toJson(const QVector<QBluetoothUuid> &uuids);
+    #endif
+    static QJsonObject toJson(const QMultiHash<quint16, QByteArray> &data);
+
+    static QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass);
+    static QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass);
+
 };

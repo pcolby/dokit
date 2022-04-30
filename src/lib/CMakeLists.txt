@@ -12,7 +12,6 @@ target_sources(
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdiscoveryagent.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/qtpokit_global.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/statusservice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/utils.h
   PRIVATE abstractpokitservice.cpp
   PRIVATE abstractpokitservice_p.h
   PRIVATE calibrationservice.cpp
@@ -29,7 +28,6 @@ target_sources(
   PRIVATE pokitdiscoveryagent_p.h
   PRIVATE statusservice.cpp
   PRIVATE statusservice_p.h
-  PRIVATE utils.cpp
 )
 
 target_include_directories(QtPokit PUBLIC ${CMAKE_SOURCE_DIR}/include)
