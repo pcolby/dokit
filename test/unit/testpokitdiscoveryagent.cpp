@@ -21,12 +21,12 @@
 
 void TestPokitDiscoveryAgent::isPokitDevice_data()
 {
-    /// \d todo
+    /// \todo
 }
 
 void TestPokitDiscoveryAgent::isPokitDevice()
 {
-    /// \d todo
+    /// \todo
 }
 
 QTEST_MAIN(TestPokitDiscoveryAgent)

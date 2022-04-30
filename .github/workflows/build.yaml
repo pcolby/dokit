@@ -4,6 +4,7 @@ on: [push, pull_request]
 
 jobs:
   linux:
+    if: false
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -28,6 +29,7 @@ jobs:
       working-directory: ${{ runner.temp }}
 
   linux-qts:
+    if: false
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -65,6 +67,7 @@ jobs:
       working-directory: ${{ runner.temp }}
 
   mac:
+    if: false
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -175,4 +178,9 @@ jobs:
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
-    # \todo Run tests on Windows.
+    # \todo Most likely need to copy the QtPokit dll.
+    - name: Test
+      run: |
+        dir /s /b
+        ctest --verbose
+      working-directory: ${{ runner.temp }}
