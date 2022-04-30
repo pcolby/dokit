@@ -185,19 +185,9 @@ bool DeviceInfoService::readSoftwareRevisionCharacteristic()
 QString DeviceInfoService::manufacturer() const
 {
     Q_D(const DeviceInfoService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
-        return QString();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::manufacturerName);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Manufacturer Name characteristic not valid yet.");
-        return QString();
-    }
-
-    return QString::fromUtf8(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::manufacturerName);
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();
 }
 
 /*!
@@ -210,19 +200,9 @@ QString DeviceInfoService::manufacturer() const
 QString DeviceInfoService::modelNumber() const
 {
     Q_D(const DeviceInfoService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
-        return QString();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::modelNumber);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Model Number characteristic not valid yet.");
-        return QString();
-    }
-
-    return QString::fromUtf8(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::modelNumber);
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();
 }
 
 /*!
@@ -235,19 +215,9 @@ QString DeviceInfoService::modelNumber() const
 QString DeviceInfoService::hardwareRevision() const
 {
     Q_D(const DeviceInfoService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
-        return QString();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::hardwareRevision);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Hardware Revision characteristic not valid yet.");
-        return QString();
-    }
-
-    return QString::fromUtf8(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::hardwareRevision);
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();
 }
 
 /*!
@@ -260,19 +230,9 @@ QString DeviceInfoService::hardwareRevision() const
 QString DeviceInfoService::firmwareRevision() const
 {
     Q_D(const DeviceInfoService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
-        return QString();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::firmwareRevision);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Firmware Revision characteristic not valid yet.");
-        return QString();
-    }
-
-    return QString::fromUtf8(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::firmwareRevision);
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();
 }
 
 /*!
@@ -285,19 +245,9 @@ QString DeviceInfoService::firmwareRevision() const
 QString DeviceInfoService::softwareRevision() const
 {
     Q_D(const DeviceInfoService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
-        return QString();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::softwareRevision);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Software Revision characteristic not valid yet.");
-        return QString();
-    }
-
-    return QString::fromUtf8(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::softwareRevision);
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();
 }
 
 /*!

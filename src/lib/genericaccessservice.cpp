@@ -129,19 +129,10 @@ bool GenericAccessService::readNameCharacteristic()
 quint16 GenericAccessService::appearance() const
 {
     Q_D(const GenericAccessService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device name without a service object.");
-        return std::numeric_limits<quint16>::max();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::appearance);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Appearance characteristic not valid yet.");
-        return std::numeric_limits<quint16>::max();
-    }
-
-    return d->parseAppearance(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::appearance);
+    return (characteristic.isValid()) ? d->parseAppearance(characteristic.value())
+        : std::numeric_limits<quint16>::max();
 }
 
 /*!
@@ -154,19 +145,9 @@ quint16 GenericAccessService::appearance() const
 QString GenericAccessService::deviceName() const
 {
     Q_D(const GenericAccessService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device name without a service object.");
-        return QString();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::name);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Name characteristic not valid yet.");
-        return QString();
-    }
-
-    return QString::fromUtf8(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::name);
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();
 }
 
 /*!
@@ -179,15 +160,9 @@ QString GenericAccessService::deviceName() const
 bool GenericAccessService::setDeviceName(const QString &name)
 {
     Q_D(const GenericAccessService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("Cannot set device name without a service object.");
-        return false;
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::name);
+        d->getCharacteristic(CharacteristicUuids::name);
     if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Name characteristic not valid yet.");
         return false;
     }
 

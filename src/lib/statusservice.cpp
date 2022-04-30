@@ -169,19 +169,11 @@ bool StatusService::readNameCharacteristic()
 StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() const
 {
     Q_D(const StatusService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device characteristics without a service object.");
-        return StatusService::DeviceCharacteristics();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::deviceCharacteristics);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Device characteristics not valid yet.");
-        return StatusService::DeviceCharacteristics();
-    }
-
-    return StatusServicePrivate::parseDeviceCharacteristics(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::deviceCharacteristics);
+    return (characteristic.isValid())
+        ? StatusServicePrivate::parseDeviceCharacteristics(characteristic.value())
+        : StatusService::DeviceCharacteristics();
 }
 
 /*!
@@ -202,23 +194,11 @@ StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() cons
 StatusService::Status StatusService::status() const
 {
     Q_D(const StatusService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device status without a service object.");
-        return StatusService::Status
-            { DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(), BatteryStatus::Low };
-        return StatusService::Status
-            { DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(), BatteryStatus::Low };
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::status);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Status characteristic not valid yet.");
-        return StatusService::Status
-            { DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(), BatteryStatus::Low };
-    }
-
-    return StatusServicePrivate::parseStatus(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::status);
+    return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())
+        : StatusService::Status{ DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(),
+                                 BatteryStatus::Low };
 }
 
 /*!
@@ -264,19 +244,9 @@ QString StatusService::batteryStatusLabel(const StatusService::BatteryStatus &st
 QString StatusService::deviceName() const
 {
     Q_D(const StatusService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("No device name without a service object.");
-        return QString();
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::name);
-    if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Name characteristic not valid yet.");
-        return QString();
-    }
-
-    return QString::fromUtf8(characteristic.value());
+        d->getCharacteristic(CharacteristicUuids::name);
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();
 }
 
 /*!
@@ -289,15 +259,9 @@ QString StatusService::deviceName() const
 bool StatusService::setDeviceName(const QString &name)
 {
     Q_D(const StatusService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("Cannot set device name without a service object.");
-        return false;
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::name);
+        d->getCharacteristic(CharacteristicUuids::name);
     if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Name characteristic not valid yet.");
         return false;
     }
 
@@ -327,15 +291,9 @@ bool StatusService::setDeviceName(const QString &name)
 bool StatusService::flashLed()
 {
     Q_D(const StatusService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("Cannot flash LED without a service object.");
-        return false;
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::flashLed);
+        d->getCharacteristic(CharacteristicUuids::flashLed);
     if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Flash LED characteristic not valid yet.");
         return false;
     }
 

@@ -202,6 +202,50 @@ bool AbstractPokitServicePrivate::createServiceObject()
     return true;
 }
 
+/*!
+ * Get \a uuid characteristc from the underlying service. This helper function is equivalent to
+ *
+ * ```
+ * return service->characteristic(uuid);
+ * ```
+ *
+ * except that it performs some sanity checks, such as checking the service object pointer has been
+ * assigned first, and also logs failures in a consistent manner.
+ *
+ * \param uuid
+ * \return
+ */
+QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &uuid) const
+{
+    if (!service) {
+        qCDebug(pokitService).noquote()
+            << tr("Characterisitc %1 requested before service assigned.").arg(uuid.toString());
+        return QLowEnergyCharacteristic();
+    }
+
+    const QLowEnergyCharacteristic characteristic = service->characteristic(uuid);
+    if (!characteristic.isValid()) {
+        return characteristic;
+    }
+
+
+    if (service->state() == QLowEnergyService::
+        #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+        ServiceDiscovered
+        #else
+        RemoteServiceDiscovered
+        #endif
+    ) {
+        qCDebug(pokitService).noquote()
+            << tr("Characterisitc %1 requested before service %2 discovered.")
+               .arg(uuid.toString(), service->serviceUuid().toString());
+        return QLowEnergyCharacteristic();
+    }
+
+    qCWarning(pokitService).noquote() << tr("Characterisitc %1 not found in service %2.")
+        .arg(uuid.toString(), service->serviceUuid().toString());
+    return QLowEnergyCharacteristic();
+}
 
 /*!
  * Read the \a uuid characteristic.
@@ -217,14 +261,8 @@ bool AbstractPokitServicePrivate::createServiceObject()
  */
 bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
 {
-    if (!service) {
-        qCDebug(pokitService).noquote() << tr("Cannot read characteristic without a service object") << uuid;
-        return false;
-    }
-
-    const QLowEnergyCharacteristic characteristic = service->characteristic(uuid);
+    const QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);
     if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Cannot read characteristic that is not yet valid") << uuid;
         return false;
     }
 

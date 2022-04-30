@@ -50,6 +50,7 @@ public:
         QLowEnergyController * controller, AbstractPokitService * const q);
 
     bool createServiceObject();
+    QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &uuid) const;
     bool readCharacteristic(const QBluetoothUuid &uuid);
 
 protected:

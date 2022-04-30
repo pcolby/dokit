@@ -96,17 +96,10 @@ bool CalibrationService::readCharacteristics()
 bool CalibrationService::calibrateTemperature(const float ambientTemperature)
 {
     static_assert(sizeof(float) == 4, "Pokit devices expect 32-bit floats");
-
     Q_D(const CalibrationService);
-    if (!d->service) {
-        qCDebug(pokitService).noquote() << tr("Cannot calibrate temperature without a service object.");
-        return false;
-    }
-
     const QLowEnergyCharacteristic characteristic =
-        d->service->characteristic(CharacteristicUuids::temperature);
+        d->getCharacteristic(CharacteristicUuids::temperature);
     if (!characteristic.isValid()) {
-        qCDebug(pokitService).noquote() << tr("Calibration characteristic not valid yet.");
         return false;
     }
 
