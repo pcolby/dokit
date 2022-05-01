@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   linux:
-    if: false
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -29,7 +28,6 @@ jobs:
       working-directory: ${{ runner.temp }}
 
   linux-qts:
-    if: false
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -67,7 +65,6 @@ jobs:
       working-directory: ${{ runner.temp }}
 
   mac:
-    if: false
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -180,9 +177,7 @@ jobs:
         cmake --build "%RUNNER_TEMP%"
     - name: Install DLL for tests
       if: ${{ contains(matrix.generator, 'mingw') }}
-      run: |
-        dir /s /b
-        copy /v /b src\lib\libQtPokit.dll /b test\unit
+      run: copy /v /b src\lib\libQtPokit.dll /b test\unit
       working-directory: ${{ runner.temp }}
     - name: Test
       run: ctest --verbose
