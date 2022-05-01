@@ -178,9 +178,12 @@ jobs:
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
-    # \todo Most likely need to copy the QtPokit dll.
-    - name: Test
+    - name: Install DLL for tests
+      if: ${{ contains(matrix.generator, 'mingw') }}
       run: |
         dir /s /b
-        ctest --verbose
+        copy /v /b src\libQtPokit.dll /b test\unit
+      working-directory: ${{ runner.temp }}
+    - name: Test
+      run: ctest --verbose
       working-directory: ${{ runner.temp }}
