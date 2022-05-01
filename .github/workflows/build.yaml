@@ -182,7 +182,7 @@ jobs:
       if: ${{ contains(matrix.generator, 'mingw') }}
       run: |
         dir /s /b
-        copy /v /b src\libQtPokit.dll /b test\unit
+        copy /v /b src\lib\libQtPokit.dll /b test\unit
       working-directory: ${{ runner.temp }}
     - name: Test
       run: ctest --verbose
