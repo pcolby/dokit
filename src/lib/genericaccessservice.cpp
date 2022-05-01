@@ -24,7 +24,6 @@
 
 #include <qtpokit/genericaccessservice.h>
 #include "genericaccessservice_p.h"
-#include "logging_p.h"
 
 #include <QtEndian>
 
@@ -168,7 +167,7 @@ bool GenericAccessService::setDeviceName(const QString &name)
 
     const QByteArray value = name.toUtf8();
     if (value.length() > 11) {
-        qCWarning(pokitService).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes): 0x%3")
+        qCWarning(d->lc).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes): 0x%3")
             .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));
         return false;
     }
@@ -227,16 +226,16 @@ GenericAccessServicePrivate::GenericAccessServicePrivate(
 quint16 GenericAccessServicePrivate::parseAppearance(const QByteArray &value)
 {
     if (value.size() < 2) {
-        qCWarning(pokitService).noquote() << tr("Invalid appearance size %1 for value: 0x%2")
+        qCWarning(lc).noquote() << tr("Invalid appearance size %1 for value: 0x%2")
             .arg(value.size()).arg(QLatin1String(value.toHex()));
         return std::numeric_limits<quint16>::max();
     }
     if (value.size() > 2) {
-        qCWarning(pokitService).noquote() << tr("Appearance has %1 extra bytes: 0x%2")
+        qCWarning(lc).noquote() << tr("Appearance has %1 extra bytes: 0x%2")
             .arg(value.size()-2).arg(QLatin1String(value.mid(2).toHex()));
     }
     const quint16 appearance = qFromLittleEndian<quint16>(value);
-    qCDebug(pokitService).noquote() << tr("Appearance: %1.").arg(appearance);
+    qCDebug(lc).noquote() << tr("Appearance: %1.").arg(appearance);
     return appearance;
 }
 
@@ -247,7 +246,7 @@ quint16 GenericAccessServicePrivate::parseAppearance(const QByteArray &value)
 void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
+    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
         .arg(QLatin1String(value.toHex()));
 
@@ -259,12 +258,12 @@ void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteris
 
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::name) {
         const QString deviceName = QString::fromUtf8(value);
-        qCDebug(pokitService).noquote() << tr("Device name: \"%1\"").arg(deviceName);
+        qCDebug(lc).noquote() << tr("Device name: \"%1\"").arg(deviceName);
         emit q->deviceNameRead(deviceName);
         return;
     }
 
-    qCWarning(pokitService).noquote() << tr("Unknown characteristic read for Generic Access Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for Generic Access Service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
@@ -275,12 +274,12 @@ void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteris
 void GenericAccessServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                  const QByteArray &newValue)
 {
-    qCDebug(pokitService).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
+    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
         .arg(characteristic.name(), characteristic.uuid().toString()) << newValue;
 
     Q_Q(GenericAccessService);
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::appearance) {
-        qCWarning(pokitService).noquote() << tr("Appearance haracteristic is read-only, but somehow written")
+        qCWarning(lc).noquote() << tr("Appearance haracteristic is read-only, but somehow written")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
@@ -290,7 +289,7 @@ void GenericAccessServicePrivate::characteristicWritten(const QLowEnergyCharacte
         return;
     }
 
-    qCWarning(pokitService).noquote() << tr("Unknown characteristic written for Generic Access service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic written for Generic Access service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

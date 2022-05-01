@@ -27,8 +27,6 @@
 
 #include <qtpokit/statusservice.h>
 
-#include "logging_p.h"
-
 #include <QBluetoothUuid>
 
 /*!
@@ -171,7 +169,7 @@ void PokitDiscoveryAgentPrivate::deviceDiscovered(const QBluetoothDeviceInfo &in
 {
     Q_Q(PokitDiscoveryAgent);
     if (!q->isPokitDevice(info)) return;
-    qCDebug(pokitDiscovery).noquote() << tr("Discovered Pokit device \"%1\" at %2.")
+    qCDebug(lc).noquote() << tr("Discovered Pokit device \"%1\" at %2.")
         .arg(info.name(), info.address().toString());
     emit q->pokitDeviceDiscovered(info);
 }
@@ -189,7 +187,7 @@ void PokitDiscoveryAgentPrivate::deviceUpdated(
 {
     Q_Q(PokitDiscoveryAgent);
     if (!q->isPokitDevice(info)) return;
-    qCDebug(pokitDiscovery).noquote() << tr("Pokit device \"%1\" at %2 updated with RSSI %3.")
+    qCDebug(lc).noquote() << tr("Pokit device \"%1\" at %2 updated with RSSI %3.")
         .arg(info.name(), info.address().toString()).arg(info.rssi());
     emit q->pokitDeviceUpdated(info, updatedFields);
 }

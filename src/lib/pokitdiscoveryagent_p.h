@@ -27,6 +27,9 @@
 
 #include <qtpokit/qtpokit_global.h>
 
+#include <QBluetoothDeviceInfo>
+#include <QLoggingCategory>
+
 QTPOKIT_BEGIN_NAMESPACE
 
 class PokitDiscoveryAgent;
@@ -36,6 +39,8 @@ class QTPOKIT_EXPORT PokitDiscoveryAgentPrivate : public QObject
     Q_OBJECT
 
 public:
+    static Q_LOGGING_CATEGORY(lc, "pokit.ble.discovery", QtInfoMsg); ///< Logging category.
+
     explicit PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * const q);
 
 public slots:

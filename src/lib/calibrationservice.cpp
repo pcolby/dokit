@@ -24,7 +24,6 @@
 
 #include <qtpokit/calibrationservice.h>
 #include "calibrationservice_p.h"
-#include "logging_p.h"
 
 #include <QtEndian>
 
@@ -82,7 +81,8 @@ CalibrationService::~CalibrationService()
  */
 bool CalibrationService::readCharacteristics()
 {
-    qCDebug(pokitService).noquote() << tr("Ignoring read request; the Calibration service is write-only.");
+    Q_D(CalibrationService);
+    qCDebug(d->lc).noquote() << tr("Ignoring read request; the Calibration service is write-only.");
     return true;
 }
 
@@ -105,7 +105,7 @@ bool CalibrationService::calibrateTemperature(const float ambientTemperature)
 
     QByteArray newValue(sizeof(float), '\0');
     qToLittleEndian<float>(ambientTemperature, newValue.data());
-    qCDebug(pokitService).noquote() << tr("Writing new temperature %1 (0x%2).")
+    qCDebug(d->lc).noquote() << tr("Writing new temperature %1 (0x%2).")
         .arg(ambientTemperature).arg(QLatin1String(newValue.toHex()));
     d->service->writeCharacteristic(characteristic, newValue);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
@@ -145,7 +145,7 @@ void CalibrationServicePrivate::characteristicRead(const QLowEnergyCharacteristi
                                               const QByteArray &value)
 {
     Q_UNUSED(value);
-    qCWarning(pokitService).noquote() << tr("Characteristic read event on write-only service")
+    qCWarning(lc).noquote() << tr("Characteristic read event on write-only service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
@@ -156,7 +156,7 @@ void CalibrationServicePrivate::characteristicRead(const QLowEnergyCharacteristi
 void CalibrationServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                  const QByteArray &newValue)
 {
-    qCDebug(pokitService).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
+    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
         .arg(characteristic.name(), characteristic.uuid().toString()) << newValue;
 
     Q_Q(CalibrationService);
@@ -165,7 +165,7 @@ void CalibrationServicePrivate::characteristicWritten(const QLowEnergyCharacteri
         return;
     }
 
-    qCWarning(pokitService).noquote() << tr("Unknown characteristic written for Calibration service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic written for Calibration service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

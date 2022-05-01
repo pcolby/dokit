@@ -27,6 +27,7 @@
 
 #include <qtpokit/qtpokit_global.h>
 
+#include <QLoggingCategory>
 #include <QLowEnergyController>
 #include <QLowEnergyConnectionParameters>
 #include <QMutex>
@@ -49,6 +50,8 @@ class QTPOKIT_EXPORT PokitDevicePrivate : public QObject
     Q_OBJECT
 
 public:
+    static Q_LOGGING_CATEGORY(lc, "pokit.ble.controller", QtInfoMsg); ///< Logging category.
+
     QLowEnergyController * controller; ///< BLE controller for accessing the Pokit device.
 
     CalibrationService * calibration;     ///< Calibration service for this Pokit device.

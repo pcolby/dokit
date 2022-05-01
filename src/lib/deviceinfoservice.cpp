@@ -24,7 +24,6 @@
 
 #include <qtpokit/deviceinfoservice.h>
 #include "deviceinfoservice_p.h"
-#include "logging_p.h"
 
 #include <QtEndian>
 
@@ -320,47 +319,47 @@ DeviceInfoServicePrivate::DeviceInfoServicePrivate(
 void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
+    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
         .arg(QLatin1String(value.toHex()));
     Q_Q(DeviceInfoService);
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {
         const QString name = QString::fromUtf8(value);
-        qCDebug(pokitService).noquote() << tr("Manufacturer name: \"%1\"").arg(name);
+        qCDebug(lc).noquote() << tr("Manufacturer name: \"%1\"").arg(name);
         emit q->manufacturerRead(name);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {
         const QString model = QString::fromUtf8(value);
-        qCDebug(pokitService).noquote() << tr("Model number: \"%1\"").arg(model);
+        qCDebug(lc).noquote() << tr("Model number: \"%1\"").arg(model);
         emit q->modelNumberRead(model);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {
         const QString revision = QString::fromUtf8(value);
-        qCDebug(pokitService).noquote() << tr("Hardware revision: \"%1\"").arg(revision);
+        qCDebug(lc).noquote() << tr("Hardware revision: \"%1\"").arg(revision);
         emit q->hardwareRevisionRead(revision);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {
         const QString revision = QString::fromUtf8(value);
-        qCDebug(pokitService).noquote() << tr("Firmware revision: \"%1\"").arg(revision);
+        qCDebug(lc).noquote() << tr("Firmware revision: \"%1\"").arg(revision);
         emit q->firmwareRevisionRead(revision);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {
         const QString revision = QString::fromUtf8(value);
-        qCDebug(pokitService).noquote() << tr("Software revision: \"%1\"").arg(revision);
+        qCDebug(lc).noquote() << tr("Software revision: \"%1\"").arg(revision);
         emit q->softwareRevisionRead(revision);
         return;
     }
 
-    qCWarning(pokitService).noquote() << tr("Unknown characteristic read for Device Info service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for Device Info service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
@@ -372,7 +371,7 @@ void DeviceInfoServicePrivate::characteristicWritten(const QLowEnergyCharacteris
                                                  const QByteArray &newValue)
 {
     Q_UNUSED(newValue);
-    qCWarning(pokitService).noquote() << tr("Characteristic written event on read-only service")
+    qCWarning(lc).noquote() << tr("Characteristic written event on read-only service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

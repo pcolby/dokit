@@ -27,6 +27,7 @@
 
 #include <qtpokit/qtpokit_global.h>
 
+#include <QLoggingCategory>
 #include <QLowEnergyService>
 #include <QObject>
 
@@ -41,6 +42,8 @@ class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject
     Q_OBJECT
 
 public:
+    static Q_LOGGING_CATEGORY(lc, "pokit.ble.service", QtInfoMsg); ///< Logging category.
+
     bool autoDiscover;                 ///< Whether autodiscovery is enabled or not.
     QLowEnergyController * controller; ///< BLE controller to fetch the service from.
     QLowEnergyService * service;       ///< BLE service to read/write characteristics.

@@ -30,7 +30,6 @@
 #include <qtpokit/statusservice.h>
 
 #include "pokitdevice_p.h"
-#include "logging_p.h"
 
 #include <QMutexLocker>
 
@@ -147,7 +146,8 @@ CalibrationService * PokitDevice::calibration()
  */
 DataLoggerService * PokitDevice::dataLogger()
 {
-    qCDebug(pokitController) << "Not implemented" << __func__;
+    Q_D(PokitDevice);
+    qCDebug(d->lc) << "Not implemented" << __func__;
 //    POKIT_INTERNAL_GET_SERVICE(DataLoggerService, dataLogger);
     return nullptr;
 }
@@ -176,7 +176,8 @@ DeviceInfoService * PokitDevice::deviceInformation()
  */
 DsoService * PokitDevice::dso()
 {
-    qCDebug(pokitController) << "Not implemented" << __func__;
+    Q_D(PokitDevice);
+    qCDebug(d->lc) << "Not implemented" << __func__;
 //    POKIT_INTERNAL_GET_SERVICE(DsoService, dso);
     return nullptr;
 }
@@ -204,7 +205,8 @@ GenericAccessService * PokitDevice::genericAccess()
  */
 MultimeterService * PokitDevice::multimeter()
 {
-    qCDebug(pokitController) << "Not implemented" << __func__;
+    Q_D(PokitDevice);
+    qCDebug(d->lc) << "Not implemented" << __func__;
 //    POKIT_INTERNAL_GET_SERVICE(MultimeterService, multimeter);
     return nullptr;
 }
@@ -255,23 +257,23 @@ PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)
 void PokitDevicePrivate::setController(QLowEnergyController * newController)
 {
     if (newController == this->controller) {
-        qCDebug(pokitController).noquote() << tr("Controller already set to:") << newController;
+        qCDebug(lc).noquote() << tr("Controller already set to:") << newController;
         return;
     }
 
     if (this->controller) {
-        qCDebug(pokitController).noquote() << tr("Disconnecting signals from previous controller:")
+        qCDebug(lc).noquote() << tr("Disconnecting signals from previous controller:")
             << controller;
         disconnect(this->controller, nullptr, this, nullptr);
     }
 
-    qCDebug(pokitController).noquote() << tr("Setting new controller:") << newController;
+    qCDebug(lc).noquote() << tr("Setting new controller:") << newController;
     this->controller = newController;
     if (!newController) {
         return; // Don't bother continuing to connect if new controller is null.
     }
 
-    qCDebug(pokitController).noquote() << tr("Set new controller \"%1\" (%2) at (%3).").arg(
+    qCDebug(lc).noquote() << tr("Set new controller \"%1\" (%2) at (%3).").arg(
         controller->remoteName(), controller->remoteDeviceUuid().toString(),
         controller->remoteAddress().toString());
 
@@ -309,7 +311,7 @@ void PokitDevicePrivate::setController(QLowEnergyController * newController)
  */
 void PokitDevicePrivate::connected()
 {
-    qCDebug(pokitController).noquote() << tr("Connected to \"%1\" (%2) at (%3).").arg(
+    qCDebug(lc).noquote() << tr("Connected to \"%1\" (%2) at (%3).").arg(
         controller->remoteName(), controller->remoteDeviceUuid().toString(),
         controller->remoteAddress().toString());
 }
@@ -319,7 +321,7 @@ void PokitDevicePrivate::connected()
  */
 void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters &newParameters)
 {
-    qCDebug(pokitController).noquote() << tr("Connection updated:") << newParameters.latency()
+    qCDebug(lc).noquote() << tr("Connection updated:") << newParameters.latency()
         << newParameters.minimumInterval() << newParameters.maximumInterval()
         << newParameters.supervisionTimeout();
 }
@@ -329,7 +331,7 @@ void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters 
  */
 void PokitDevicePrivate::disconnected()
 {
-    qCDebug(pokitController).noquote() << tr("Device disconnected.");
+    qCDebug(lc).noquote() << tr("Device disconnected.");
 }
 
 /*!
@@ -337,7 +339,7 @@ void PokitDevicePrivate::disconnected()
  */
 void PokitDevicePrivate::discoveryFinished()
 {
-    qCDebug(pokitController).noquote() << tr("Service discovery finished.");
+    qCDebug(lc).noquote() << tr("Service discovery finished.");
 }
 
 /*!
@@ -345,7 +347,7 @@ void PokitDevicePrivate::discoveryFinished()
  */
 void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError)
 {
-    qCDebug(pokitController).noquote() << tr("Controller error:") << newError;
+    qCDebug(lc).noquote() << tr("Controller error:") << newError;
 }
 
 /*!
@@ -353,7 +355,7 @@ void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError)
  */
 void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
 {
-    qCDebug(pokitController).noquote() << tr("Service discovered:") << newService;
+    qCDebug(lc).noquote() << tr("Service discovered:") << newService;
 }
 
 /*!
@@ -361,7 +363,7 @@ void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
  */
 void PokitDevicePrivate::stateChanged(QLowEnergyController::ControllerState state)
 {
-    qCDebug(pokitController).noquote() << tr("State changed to:") << state;
+    qCDebug(lc).noquote() << tr("State changed to:") << state;
 }
 
 /// \endcond

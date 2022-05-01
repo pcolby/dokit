@@ -24,7 +24,6 @@
 
 #include <qtpokit/statusservice.h>
 #include "statusservice_p.h"
-#include "logging_p.h"
 
 #include <QtEndian>
 
@@ -267,7 +266,7 @@ bool StatusService::setDeviceName(const QString &name)
 
     const QByteArray value = name.toUtf8();
     if (value.length() > 11) {
-        qCWarning(pokitService).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes): 0x3")
+        qCWarning(d->lc).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes): 0x3")
             .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));
         return false;
     }
@@ -374,12 +373,12 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.
 
     if (value.size() < 20) {
-        qCWarning(pokitService).noquote() << tr("Invalid characteristics size %1 for value: 0x%2")
+        qCWarning(lc).noquote() << tr("Invalid characteristics size %1 for value: 0x%2")
             .arg(value.size()).arg(QLatin1String(value.toHex()));
         return characteristics;
     }
     if (value.size() > 20) {
-        qCWarning(pokitService).noquote() << tr("Characterisitcs has %1 extra bytes: 0x%2")
+        qCWarning(lc).noquote() << tr("Characterisitcs has %1 extra bytes: 0x%2")
             .arg(value.size()-20).arg(QLatin1String(value.mid(20).toHex()));
     }
 
@@ -395,14 +394,14 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
     characteristics.macAddress = QBluetoothAddress(qFromBigEndian<quint64>
                                                    (QByteArray(2, '\0') + value.mid(14,6)));
 
-    qCDebug(pokitService).noquote() << tr("Firmware version:     ") << characteristics.firmwareVersion;
-    qCDebug(pokitService).noquote() << tr("Maximum voltage:      ") << characteristics.maximumVoltage;
-    qCDebug(pokitService).noquote() << tr("Maximum current:      ") << characteristics.maximumCurrent;
-    qCDebug(pokitService).noquote() << tr("Maximum resistance:   ") << characteristics.maximumResistance;
-    qCDebug(pokitService).noquote() << tr("Maximum sampling rate:") << characteristics.maximumSamplingRate;
-    qCDebug(pokitService).noquote() << tr("Sampling buffer size: ") << characteristics.samplingBufferSize;
-    qCDebug(pokitService).noquote() << tr("Capability mask:      ") << characteristics.capabilityMask;
-    qCDebug(pokitService).noquote() << tr("MAC address:          ") << characteristics.macAddress;
+    qCDebug(lc).noquote() << tr("Firmware version:     ") << characteristics.firmwareVersion;
+    qCDebug(lc).noquote() << tr("Maximum voltage:      ") << characteristics.maximumVoltage;
+    qCDebug(lc).noquote() << tr("Maximum current:      ") << characteristics.maximumCurrent;
+    qCDebug(lc).noquote() << tr("Maximum resistance:   ") << characteristics.maximumResistance;
+    qCDebug(lc).noquote() << tr("Maximum sampling rate:") << characteristics.maximumSamplingRate;
+    qCDebug(lc).noquote() << tr("Sampling buffer size: ") << characteristics.samplingBufferSize;
+    qCDebug(lc).noquote() << tr("Capability mask:      ") << characteristics.capabilityMask;
+    qCDebug(lc).noquote() << tr("MAC address:          ") << characteristics.macAddress;
 
     Q_ASSERT(!characteristics.firmwareVersion.isNull()); // How we indicate success.
     return characteristics;
@@ -422,12 +421,12 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     };
 
     if (value.size() < 5) {
-        qCWarning(pokitService).noquote() << tr("Invalid status size %1 for value: 0x%2")
+        qCWarning(lc).noquote() << tr("Invalid status size %1 for value: 0x%2")
             .arg(value.size()).arg(QLatin1String(value.toHex()));
         return status;
     }
     if (value.size() > 6) {
-        qCWarning(pokitService).noquote() << tr("Status has %1 extra bytes: 0x%2")
+        qCWarning(lc).noquote() << tr("Status has %1 extra bytes: 0x%2")
             .arg(value.size()-6).arg(QLatin1String(value.mid(6).toHex()));
     }
 
@@ -436,10 +435,10 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     if (value.size() >= 6) { // Battery Status added to Pokit API docs v1.00.
         status.batteryStatus = static_cast<StatusService::BatteryStatus>(value.at(5));
     }
-    qCDebug(pokitService).noquote() << tr("Device status:   %1 (%2)")
+    qCDebug(lc).noquote() << tr("Device status:   %1 (%2)")
         .arg((quint8)status.deviceStatus).arg(StatusService::deviceStatusLabel(status.deviceStatus));
-    qCDebug(pokitService).noquote() << tr("Battery voltage: %1 volts").arg(status.batteryVoltage);
-    qCDebug(pokitService).noquote() << tr("Battery status:  %1 (%2)")
+    qCDebug(lc).noquote() << tr("Battery voltage: %1 volts").arg(status.batteryVoltage);
+    qCDebug(lc).noquote() << tr("Battery status:  %1 (%2)")
         .arg((quint8)status.batteryStatus);
     return status;
 }
@@ -451,7 +450,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
 void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(pokitService).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
+    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
         .arg(QLatin1String(value.toHex()));
 
@@ -459,7 +458,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
         const StatusService::DeviceCharacteristics characteristics = parseDeviceCharacteristics(value);
         if (characteristics.firmwareVersion.isNull()) {
-            qCWarning(pokitService).noquote() << tr("Failed to parse device characteristics: 0x%1")
+            qCWarning(lc).noquote() << tr("Failed to parse device characteristics: 0x%1")
                 .arg(QLatin1String(value.toHex()));
             return;
         }
@@ -470,7 +469,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
         const StatusService::Status status = parseStatus(value);
         if (qIsNaN(status.batteryVoltage)) {
-            qCWarning(pokitService).noquote() << tr("Failed to parse status: 0x%1")
+            qCWarning(lc).noquote() << tr("Failed to parse status: 0x%1")
                 .arg(QLatin1String(value.toHex()));
             return;
         }
@@ -480,18 +479,18 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {
         const QString deviceName = QString::fromUtf8(value);
-        qCDebug(pokitService).noquote() << tr("Device name: \"%1\"").arg(deviceName);
+        qCDebug(lc).noquote() << tr("Device name: \"%1\"").arg(deviceName);
         emit q->deviceNameRead(deviceName);
         return;
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {
-        qCWarning(pokitService).noquote() << tr("Flash LED characteristic is write-only, but somehow read")
+        qCWarning(lc).noquote() << tr("Flash LED characteristic is write-only, but somehow read")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
 
-    qCWarning(pokitService).noquote() << tr("Unknown characteristic read for Status Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for Status Service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
@@ -502,18 +501,18 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
 void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                  const QByteArray &newValue)
 {
-    qCDebug(pokitService).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
+    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
         .arg(characteristic.name(), characteristic.uuid().toString()) << newValue;
 
     Q_Q(StatusService);
     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
-        qCWarning(pokitService).noquote() << tr("Device Characteristics is read-only, but somehow written")
+        qCWarning(lc).noquote() << tr("Device Characteristics is read-only, but somehow written")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
-        qCWarning(pokitService).noquote() << tr("Status characteristic is read-only, but somehow written")
+        qCWarning(lc).noquote() << tr("Status characteristic is read-only, but somehow written")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
@@ -528,7 +527,7 @@ void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic 
         return;
     }
 
-    qCWarning(pokitService).noquote() << tr("Unknown characteristic written for Status Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic written for Status Service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

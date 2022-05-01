@@ -20,8 +20,6 @@ target_sources(
   PRIVATE deviceinfoservice_p.h
   PRIVATE genericaccessservice.cpp
   PRIVATE genericaccessservice_p.h
-  PRIVATE logging.cpp
-  PRIVATE logging_p.h
   PRIVATE pokitdevice.cpp
   PRIVATE pokitdevice_p.h
   PRIVATE pokitdiscoveryagent.cpp
