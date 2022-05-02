@@ -111,7 +111,9 @@ bool PokitDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
  */
 void PokitDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods)
 {
+    Q_D(PokitDiscoveryAgent);
     Q_ASSERT(methods == QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+    qCDebug(d->lc).noquote() << tr("Scanning for Bluetooth Low Energy devices.");
     QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
 }
 
@@ -120,6 +122,8 @@ void PokitDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods
  */
 void PokitDiscoveryAgent::start()
 {
+    Q_D(PokitDiscoveryAgent);
+    qCDebug(d->lc).noquote() << tr("Scanning for Bluetooth Low Energy devices.");
     QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
 }
 
@@ -161,6 +165,14 @@ PokitDiscoveryAgentPrivate::PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * con
 }
 
 /*!
+ * Handle scan canceled signals, by simply logging the event for diagnostic purposes.
+ */
+void PokitDiscoveryAgentPrivate::canceled()
+{
+    qCDebug(lc).noquote() << tr("Pokit device scan cancelled.");
+}
+
+/*!
  * Handle deviceDiscovered signals.
  *
  * Here we simply check if \a info describes a Pokit device, and if so, emit pokitDeviceDiscovered().
@@ -191,6 +203,23 @@ void PokitDiscoveryAgentPrivate::deviceUpdated(
         .arg(info.name(), info.address().toString()).arg(info.rssi());
     emit q->pokitDeviceUpdated(info, updatedFields);
 }
+
+/*!
+ * Handle scan errors, by simply logging \a error for diagnostic purposes.
+ */
+void PokitDiscoveryAgentPrivate::error(const QBluetoothDeviceDiscoveryAgent::Error error)
+{
+    qCWarning(lc).noquote() << tr("Pokit device scan error:") << error;
+}
+
+/*!
+ * Handle scan finished signals, by simply logging the event for diagnostic purposes.
+ */
+void PokitDiscoveryAgentPrivate::finished()
+{
+    qCDebug(lc).noquote() << tr("Pokit device scan finished.");
+}
+
 
 /// \endcond
 
