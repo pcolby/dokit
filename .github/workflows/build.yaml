@@ -177,7 +177,7 @@ jobs:
         cmake --build "%RUNNER_TEMP%"
     - name: Install DLL for tests
       env: # MinGW includes a 'lib' prefix, as per the *nix convention.
-        QTPOKIT_DLL: ${{ contains(matrix.generator, 'mingw') && 'lib' }}QtPokit.dll
+        QTPOKIT_DLL: ${{ contains(matrix.generator, 'mingw') && 'lib' || '' }}QtPokit.dll
       run: copy /v /b src\lib\%QTPOKIT_DLL% /b test\unit
       working-directory: ${{ runner.temp }}
     - name: Test
