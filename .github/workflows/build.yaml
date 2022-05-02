@@ -176,8 +176,9 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
     - name: Install DLL for tests
-      if: ${{ contains(matrix.generator, 'mingw') }}
-      run: copy /v /b src\lib\libQtPokit.dll /b test\unit
+      env: # MinGW includes a 'lib' prefix, as per the *nix convention.
+        QTPOKIT_DLL: ${{ contains(matrix.generator, 'mingw') && 'lib' }}QtPokit.dll
+      run: copy /v /b src\lib\%QTPOKIT_DLL% /b test\unit
       working-directory: ${{ runner.temp }}
     - name: Test
       run: ctest --verbose
