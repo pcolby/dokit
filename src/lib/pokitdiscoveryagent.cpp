@@ -203,6 +203,7 @@ void PokitDiscoveryAgentPrivate::deviceUpdated(
         .arg(info.name(), info.address().toString()).arg(info.rssi());
     emit q->pokitDeviceUpdated(info, updatedFields);
 }
+#endif
 
 /*!
  * Handle scan errors, by simply logging \a error for diagnostic purposes.
@@ -220,7 +221,4 @@ void PokitDiscoveryAgentPrivate::finished()
     qCDebug(lc).noquote() << tr("Pokit device scan finished.");
 }
 
-
 /// \endcond
-
-#endif
