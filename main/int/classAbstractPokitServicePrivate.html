@@ -87,6 +87,7 @@ $(document).ready(function(){initNavTree('classAbstractPokitServicePrivate.html'
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-slots">Protected Slots</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
@@ -124,6 +125,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad58619e237f300294049c82b85d76875"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#ad58619e237f300294049c82b85d76875">readCharacteristic</a> (const QBluetoothUuid &amp;uuid)</td></tr>
 <tr class="memdesc:ad58619e237f300294049c82b85d76875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the <em>uuid</em> characteristic.  <a href="classAbstractPokitServicePrivate.html#ad58619e237f300294049c82b85d76875">More...</a><br /></td></tr>
 <tr class="separator:ad58619e237f300294049c82b85d76875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a32f402260c965002c68f7b9191d38af6"><td class="memItemLeft" align="right" valign="top"><a id="a32f402260c965002c68f7b9191d38af6" name="a32f402260c965002c68f7b9191d38af6"></a>
+static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY</b> (lc, &quot;pokit.ble.service&quot;, QtInfoMsg)</td></tr>
+<tr class="memdesc:a32f402260c965002c68f7b9191d38af6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging category. <br /></td></tr>
+<tr class="separator:a32f402260c965002c68f7b9191d38af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -178,7 +186,7 @@ Friends</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="classAbstractPokitServicePrivate.html" title="The AbstractPokitServicePrivate class provides private implementation for AbstractPokitService.">AbstractPokitServicePrivate</a> class provides private implementation for <a class="el" href="classAbstractPokitService.html" title="The AbstractPokitService class provides a common base for Pokit services classes.">AbstractPokitService</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00039">39</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00040">40</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a73d4b6cd1a53f997f78d1c266a1c1871" name="a73d4b6cd1a53f997f78d1c266a1c1871"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a73d4b6cd1a53f997f78d1c266a1c1871">&#9670;&nbsp;</a></span>AbstractPokitServicePrivate()</h2>
@@ -213,35 +221,35 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p >Constructs a new <a class="el" href="classAbstractPokitServicePrivate.html" title="The AbstractPokitServicePrivate class provides private implementation for AbstractPokitService.">AbstractPokitServicePrivate</a> object with public implementation <em>q</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00140">140</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  142</span>    : <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7">autoDiscover</a>(<span class="keyword">true</span>), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>(<span class="keyword">nullptr</span>), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a>(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a>),</div>
-<div class="line"><span class="lineno">  143</span>      <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845">q_ptr</a>(q)</div>
-<div class="line"><span class="lineno">  144</span>{</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>) {</div>
-<div class="line"><span class="lineno">  146</span>        connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, &amp;QLowEnergyController::connected,</div>
-<div class="line"><span class="lineno">  147</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a9eec6d6dfe45c70c2907564940966200">AbstractPokitServicePrivate::connected</a>);</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>        connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, &amp;QLowEnergyController::discoveryFinished,</div>
-<div class="line"><span class="lineno">  150</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab">AbstractPokitServicePrivate::discoveryFinished</a>);</div>
-<div class="line"><span class="lineno">  151</span> </div>
-<div class="line"><span class="lineno">  152</span>        connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, &amp;QLowEnergyController::serviceDiscovered,</div>
-<div class="line"><span class="lineno">  153</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b">AbstractPokitServicePrivate::serviceDiscovered</a>);</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>        <a class="code hl_function" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">createServiceObject</a>();</div>
-<div class="line"><span class="lineno">  156</span>    }</div>
-<div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>}</div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a21d38af5e7fc69f2c47c219a7ab545c7"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7">AbstractPokitServicePrivate::autoDiscover</a></div><div class="ttdeci">bool autoDiscover</div><div class="ttdoc">Whether autodiscovery is enabled or not.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00044">abstractpokitservice_p.h:44</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a2b105802085225fe68254dfdb6754ad9"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">AbstractPokitServicePrivate::createServiceObject</a></div><div class="ttdeci">bool createServiceObject()</div><div class="ttdoc">Creates an internal service object from the internal controller.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00167">abstractpokitservice.cpp:167</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a2cc16a897908f50e0f3cfc6b876b50ab"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab">AbstractPokitServicePrivate::discoveryFinished</a></div><div class="ttdeci">void discoveryFinished()</div><div class="ttdoc">Handles QLowEnergyController::discoveryFinished events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00304">abstractpokitservice.cpp:304</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a654255854b4aca7718ef30e10260d89b"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b">AbstractPokitServicePrivate::serviceDiscovered</a></div><div class="ttdeci">void serviceDiscovered(const QBluetoothUuid &amp;newService)</div><div class="ttdoc">Handles QLowEnergyController::serviceDiscovered events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00341">abstractpokitservice.cpp:341</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a68f7ec9c0b34677eb1cf797221eb4845"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845">AbstractPokitServicePrivate::q_ptr</a></div><div class="ttdeci">AbstractPokitService * q_ptr</div><div class="ttdoc">Internal q-pointer.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00057">abstractpokitservice_p.h:57</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a9eec6d6dfe45c70c2907564940966200"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a9eec6d6dfe45c70c2907564940966200">AbstractPokitServicePrivate::connected</a></div><div class="ttdeci">void connected()</div><div class="ttdoc">Handles QLowEnergyController::connected events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00283">abstractpokitservice.cpp:283</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_ac869da6d14ebe8eb381351d84b36e275"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">AbstractPokitServicePrivate::serviceUuid</a></div><div class="ttdeci">const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID for service.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00047">abstractpokitservice_p.h:47</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_adc41ee1de2a4783623aa78d0a8beb85d"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">AbstractPokitServicePrivate::service</a></div><div class="ttdeci">QLowEnergyService * service</div><div class="ttdoc">BLE service to read/write characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00046">abstractpokitservice_p.h:46</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aefc2f27e42be44bf63d9e4f944737da1"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">AbstractPokitServicePrivate::controller</a></div><div class="ttdeci">QLowEnergyController * controller</div><div class="ttdoc">BLE controller to fetch the service from.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00045">abstractpokitservice_p.h:45</a></div></div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00139">139</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  141</span>    : <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7">autoDiscover</a>(<span class="keyword">true</span>), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>(<span class="keyword">nullptr</span>), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a>(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a>),</div>
+<div class="line"><span class="lineno">  142</span>      <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845">q_ptr</a>(q)</div>
+<div class="line"><span class="lineno">  143</span>{</div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>) {</div>
+<div class="line"><span class="lineno">  145</span>        connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, &amp;QLowEnergyController::connected,</div>
+<div class="line"><span class="lineno">  146</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a9eec6d6dfe45c70c2907564940966200">AbstractPokitServicePrivate::connected</a>);</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span>        connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, &amp;QLowEnergyController::discoveryFinished,</div>
+<div class="line"><span class="lineno">  149</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab">AbstractPokitServicePrivate::discoveryFinished</a>);</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>        connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, &amp;QLowEnergyController::serviceDiscovered,</div>
+<div class="line"><span class="lineno">  152</span>                <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b">AbstractPokitServicePrivate::serviceDiscovered</a>);</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>        <a class="code hl_function" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">createServiceObject</a>();</div>
+<div class="line"><span class="lineno">  155</span>    }</div>
+<div class="line"><span class="lineno">  156</span> </div>
+<div class="line"><span class="lineno">  157</span>}</div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a21d38af5e7fc69f2c47c219a7ab545c7"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7">AbstractPokitServicePrivate::autoDiscover</a></div><div class="ttdeci">bool autoDiscover</div><div class="ttdoc">Whether autodiscovery is enabled or not.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00047">abstractpokitservice_p.h:47</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a2b105802085225fe68254dfdb6754ad9"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">AbstractPokitServicePrivate::createServiceObject</a></div><div class="ttdeci">bool createServiceObject()</div><div class="ttdoc">Creates an internal service object from the internal controller.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00166">abstractpokitservice.cpp:166</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a2cc16a897908f50e0f3cfc6b876b50ab"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab">AbstractPokitServicePrivate::discoveryFinished</a></div><div class="ttdeci">void discoveryFinished()</div><div class="ttdoc">Handles QLowEnergyController::discoveryFinished events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00302">abstractpokitservice.cpp:302</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a654255854b4aca7718ef30e10260d89b"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b">AbstractPokitServicePrivate::serviceDiscovered</a></div><div class="ttdeci">void serviceDiscovered(const QBluetoothUuid &amp;newService)</div><div class="ttdoc">Handles QLowEnergyController::serviceDiscovered events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00339">abstractpokitservice.cpp:339</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a68f7ec9c0b34677eb1cf797221eb4845"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845">AbstractPokitServicePrivate::q_ptr</a></div><div class="ttdeci">AbstractPokitService * q_ptr</div><div class="ttdoc">Internal q-pointer.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00060">abstractpokitservice_p.h:60</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a9eec6d6dfe45c70c2907564940966200"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a9eec6d6dfe45c70c2907564940966200">AbstractPokitServicePrivate::connected</a></div><div class="ttdeci">void connected()</div><div class="ttdoc">Handles QLowEnergyController::connected events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00281">abstractpokitservice.cpp:281</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_ac869da6d14ebe8eb381351d84b36e275"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">AbstractPokitServicePrivate::serviceUuid</a></div><div class="ttdeci">const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID for service.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00050">abstractpokitservice_p.h:50</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_adc41ee1de2a4783623aa78d0a8beb85d"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">AbstractPokitServicePrivate::service</a></div><div class="ttdeci">QLowEnergyService * service</div><div class="ttdoc">BLE service to read/write characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00049">abstractpokitservice_p.h:49</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aefc2f27e42be44bf63d9e4f944737da1"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">AbstractPokitServicePrivate::controller</a></div><div class="ttdeci">QLowEnergyController * controller</div><div class="ttdoc">BLE controller to fetch the service from.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00048">abstractpokitservice_p.h:48</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00283">connected()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00045">controller</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00304">discoveryFinished()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00341">serviceDiscovered()</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00281">connected()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00048">controller</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00302">discoveryFinished()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00339">serviceDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -291,7 +299,7 @@ Here is the call graph for this function:</div>
 
 <p>Implemented in <a class="el" href="classCalibrationServicePrivate.html#a4da4acfcabf989288c2063458f1ad3cb">CalibrationServicePrivate</a>, <a class="el" href="classDeviceInfoServicePrivate.html#a5ca3ccfe6cc8231247fed820e41551a1">DeviceInfoServicePrivate</a>, <a class="el" href="classGenericAccessServicePrivate.html#a9b485f8e1eda4151b08b5543ab61fcc8">GenericAccessServicePrivate</a>, and <a class="el" href="classStatusServicePrivate.html#a08d8faee04fb47ac19d3962609606d52">StatusServicePrivate</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -340,7 +348,7 @@ Here is the caller graph for this function:</div>
 
 <p>Implemented in <a class="el" href="classCalibrationServicePrivate.html#a1319763f3101ba47ad5e3dedacb630ac">CalibrationServicePrivate</a>, <a class="el" href="classDeviceInfoServicePrivate.html#a61aaafc87022e596d709f2a18cb353ed">DeviceInfoServicePrivate</a>, <a class="el" href="classGenericAccessServicePrivate.html#a8d2cc40cb72071fe04984f8ef2cc2d02">GenericAccessServicePrivate</a>, and <a class="el" href="classStatusServicePrivate.html#a8de57b8b27437360d75bd44f74595db1">StatusServicePrivate</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -377,24 +385,24 @@ Here is the caller graph for this function:</div>
 <p >If <code>autoDiscover</code> is enabled, this will begin service discovery on the newly connected contoller.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#a65c2c9c6163744a7cf52de2c6a83f610" title="Returns true if autodiscovery of services and service details is enabled, false otherwise.">AbstractPokitService::autoDiscover()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00283">283</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  284</span>{</div>
-<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>) {</div>
-<div class="line"><span class="lineno">  286</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Connected with no controller set&quot;</span>) &lt;&lt; sender();</div>
-<div class="line"><span class="lineno">  287</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  288</span>    }</div>
-<div class="line"><span class="lineno">  289</span> </div>
-<div class="line"><span class="lineno">  290</span>    qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Connected to \&quot;%1\&quot; (%2) at %3.&quot;</span>).arg(</div>
-<div class="line"><span class="lineno">  291</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteName(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteDeviceUuid().toString(),</div>
-<div class="line"><span class="lineno">  292</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteAddress().toString());</div>
-<div class="line"><span class="lineno">  293</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7">autoDiscover</a>) {</div>
-<div class="line"><span class="lineno">  294</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;discoverServices();</div>
-<div class="line"><span class="lineno">  295</span>    }</div>
-<div class="line"><span class="lineno">  296</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00281">281</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  282</span>{</div>
+<div class="line"><span class="lineno">  283</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>) {</div>
+<div class="line"><span class="lineno">  284</span>        qCWarning(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Connected with no controller set&quot;</span>) &lt;&lt; sender();</div>
+<div class="line"><span class="lineno">  285</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  286</span>    }</div>
+<div class="line"><span class="lineno">  287</span> </div>
+<div class="line"><span class="lineno">  288</span>    qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Connected to \&quot;%1\&quot; (%2) at %3.&quot;</span>).arg(</div>
+<div class="line"><span class="lineno">  289</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteName(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteDeviceUuid().toString(),</div>
+<div class="line"><span class="lineno">  290</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteAddress().toString());</div>
+<div class="line"><span class="lineno">  291</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7">autoDiscover</a>) {</div>
+<div class="line"><span class="lineno">  292</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;discoverServices();</div>
+<div class="line"><span class="lineno">  293</span>    }</div>
+<div class="line"><span class="lineno">  294</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00044">autoDiscover</a>, and <a class="el" href="abstractpokitservice__p_8h_source.html#l00045">controller</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00047">autoDiscover</a>, and <a class="el" href="abstractpokitservice__p_8h_source.html#l00048">controller</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00140">AbstractPokitServicePrivate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00139">AbstractPokitServicePrivate()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -423,51 +431,51 @@ Here is the caller graph for this function:</div>
 <p >Any existing service object will <em>not</em> be replaced.</p>
 <p >Returns <code>true</code> if a service was created successfully, either now, or sometime previously. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">167</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  168</span>{</div>
-<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>) {</div>
-<div class="line"><span class="lineno">  170</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  171</span>    }</div>
-<div class="line"><span class="lineno">  172</span> </div>
-<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>) {</div>
-<div class="line"><span class="lineno">  174</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Already have service object:&quot;</span>) &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>;</div>
-<div class="line"><span class="lineno">  175</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  176</span>    }</div>
-<div class="line"><span class="lineno">  177</span> </div>
-<div class="line"><span class="lineno">  178</span>    <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a> = <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;createServiceObject(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a>, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  179</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>) {</div>
-<div class="line"><span class="lineno">  180</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  181</span>    }</div>
-<div class="line"><span class="lineno">  182</span>    qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Service object created&quot;</span>) &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>;</div>
-<div class="line"><span class="lineno">  183</span> </div>
-<div class="line"><span class="lineno">  184</span>    connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>, &amp;QLowEnergyService::stateChanged,</div>
-<div class="line"><span class="lineno">  185</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#ad4cd6a5700b0b764b3a81f67603dc68f">AbstractPokitServicePrivate::stateChanged</a>);</div>
-<div class="line"><span class="lineno">  186</span>    connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>, &amp;QLowEnergyService::characteristicRead,</div>
-<div class="line"><span class="lineno">  187</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26">AbstractPokitServicePrivate::characteristicRead</a>);</div>
-<div class="line"><span class="lineno">  188</span>    connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>, &amp;QLowEnergyService::characteristicWritten,</div>
-<div class="line"><span class="lineno">  189</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">AbstractPokitServicePrivate::characteristicWritten</a>);</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span>    connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>,</div>
-<div class="line"><span class="lineno">  192</span>    #<span class="keywordflow">if</span> (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</div>
-<div class="line"><span class="lineno">  193</span>        QOverload&lt;QLowEnergyService::ServiceError&gt;::of(&amp;QLowEnergyService::error),</div>
-<div class="line"><span class="lineno">  194</span>    #<span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  195</span>        &amp;QLowEnergyService::errorOccurred,</div>
-<div class="line"><span class="lineno">  196</span>    #endif</div>
-<div class="line"><span class="lineno">  197</span>        <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#ab086f2e2e5058bc7978a67e86d579325">AbstractPokitServicePrivate::errorOccurred</a>);</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7">autoDiscover</a>) {</div>
-<div class="line"><span class="lineno">  200</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;discoverDetails();</div>
-<div class="line"><span class="lineno">  201</span>    }</div>
-<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  203</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">166</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>{</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>) {</div>
+<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  170</span>    }</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>) {</div>
+<div class="line"><span class="lineno">  173</span>        qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Already have service object:&quot;</span>) &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>;</div>
+<div class="line"><span class="lineno">  174</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  175</span>    }</div>
+<div class="line"><span class="lineno">  176</span> </div>
+<div class="line"><span class="lineno">  177</span>    <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a> = <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;createServiceObject(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a>, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>) {</div>
+<div class="line"><span class="lineno">  179</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  180</span>    }</div>
+<div class="line"><span class="lineno">  181</span>    qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Service object created&quot;</span>) &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>;</div>
+<div class="line"><span class="lineno">  182</span> </div>
+<div class="line"><span class="lineno">  183</span>    connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>, &amp;QLowEnergyService::stateChanged,</div>
+<div class="line"><span class="lineno">  184</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#ad4cd6a5700b0b764b3a81f67603dc68f">AbstractPokitServicePrivate::stateChanged</a>);</div>
+<div class="line"><span class="lineno">  185</span>    connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>, &amp;QLowEnergyService::characteristicRead,</div>
+<div class="line"><span class="lineno">  186</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26">AbstractPokitServicePrivate::characteristicRead</a>);</div>
+<div class="line"><span class="lineno">  187</span>    connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>, &amp;QLowEnergyService::characteristicWritten,</div>
+<div class="line"><span class="lineno">  188</span>            <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">AbstractPokitServicePrivate::characteristicWritten</a>);</div>
+<div class="line"><span class="lineno">  189</span> </div>
+<div class="line"><span class="lineno">  190</span>    connect(<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>,</div>
+<div class="line"><span class="lineno">  191</span>    #<span class="keywordflow">if</span> (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</div>
+<div class="line"><span class="lineno">  192</span>        QOverload&lt;QLowEnergyService::ServiceError&gt;::of(&amp;QLowEnergyService::error),</div>
+<div class="line"><span class="lineno">  193</span>    #<span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  194</span>        &amp;QLowEnergyService::errorOccurred,</div>
+<div class="line"><span class="lineno">  195</span>    #endif</div>
+<div class="line"><span class="lineno">  196</span>        <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classAbstractPokitServicePrivate.html#ab086f2e2e5058bc7978a67e86d579325">AbstractPokitServicePrivate::errorOccurred</a>);</div>
+<div class="line"><span class="lineno">  197</span> </div>
+<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7">autoDiscover</a>) {</div>
+<div class="line"><span class="lineno">  199</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;discoverDetails();</div>
+<div class="line"><span class="lineno">  200</span>    }</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  202</span>}</div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_a20a20e4261112601e0c82b9389b1c7d8"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">AbstractPokitServicePrivate::characteristicWritten</a></div><div class="ttdeci">virtual void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)=0</div><div class="ttdoc">Handles QLowEnergyService::characteristicWritten events.</div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_ab086f2e2e5058bc7978a67e86d579325"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ab086f2e2e5058bc7978a67e86d579325">AbstractPokitServicePrivate::errorOccurred</a></div><div class="ttdeci">void errorOccurred(const QLowEnergyService::ServiceError newError)</div><div class="ttdoc">Handles QLowEnergyController::errorOccurred events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00327">abstractpokitservice.cpp:327</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_ad4cd6a5700b0b764b3a81f67603dc68f"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ad4cd6a5700b0b764b3a81f67603dc68f">AbstractPokitServicePrivate::stateChanged</a></div><div class="ttdeci">void stateChanged(QLowEnergyService::ServiceState newState)</div><div class="ttdoc">Handles QLowEnergyController::stateChanged events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00357">abstractpokitservice.cpp:357</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_ab086f2e2e5058bc7978a67e86d579325"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ab086f2e2e5058bc7978a67e86d579325">AbstractPokitServicePrivate::errorOccurred</a></div><div class="ttdeci">void errorOccurred(const QLowEnergyService::ServiceError newError)</div><div class="ttdoc">Handles QLowEnergyController::errorOccurred events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00325">abstractpokitservice.cpp:325</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_ad4cd6a5700b0b764b3a81f67603dc68f"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ad4cd6a5700b0b764b3a81f67603dc68f">AbstractPokitServicePrivate::stateChanged</a></div><div class="ttdeci">void stateChanged(QLowEnergyService::ServiceState newState)</div><div class="ttdoc">Handles QLowEnergyController::stateChanged events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00355">abstractpokitservice.cpp:355</a></div></div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_af4d66a5350233f431e869cd09bf4aa26"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26">AbstractPokitServicePrivate::characteristicRead</a></div><div class="ttdeci">virtual void characteristicRead(const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;value)=0</div><div class="ttdoc">Handles QLowEnergyService::characteristicRead events.</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00044">autoDiscover</a>, <a class="el" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26">characteristicRead()</a>, <a class="el" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">characteristicWritten()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00045">controller</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00327">errorOccurred()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00046">service</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00047">serviceUuid</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00357">stateChanged()</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00047">autoDiscover</a>, <a class="el" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26">characteristicRead()</a>, <a class="el" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">characteristicWritten()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00048">controller</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00325">errorOccurred()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00049">service</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00050">serviceUuid</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00355">stateChanged()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00140">AbstractPokitServicePrivate()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00304">discoveryFinished()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00341">serviceDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00139">AbstractPokitServicePrivate()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00302">discoveryFinished()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00339">serviceDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -509,28 +517,28 @@ Here is the caller graph for this function:</div>
 <p>Handles <code>QLowEnergyController::discoveryFinished</code> events. </p>
 <p >As this event indicates that the conroller has finished discovering services, this function will invoke <a class="el" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9" title="Creates an internal service object from the internal controller.">createServiceObject()</a> to create the internal service object (if not already created). </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00304">304</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  305</span>{</div>
-<div class="line"><span class="lineno">  306</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>) {</div>
-<div class="line"><span class="lineno">  307</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Discovery finished with no controller set&quot;</span>) &lt;&lt; sender();</div>
-<div class="line"><span class="lineno">  308</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  309</span>    }</div>
-<div class="line"><span class="lineno">  310</span> </div>
-<div class="line"><span class="lineno">  311</span>    qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Discovery finished for \&quot;%1\&quot; (%2) at %3.&quot;</span>).arg(</div>
-<div class="line"><span class="lineno">  312</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteName(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteDeviceUuid().toString(),</div>
-<div class="line"><span class="lineno">  313</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteAddress().toString());</div>
-<div class="line"><span class="lineno">  314</span> </div>
-<div class="line"><span class="lineno">  315</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">createServiceObject</a>()) {</div>
-<div class="line"><span class="lineno">  316</span>        qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Discovery finished, but service not found.&quot;</span>);</div>
-<div class="line"><span class="lineno">  317</span>        Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
-<div class="line"><span class="lineno">  318</span>        emit q-&gt;serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);</div>
-<div class="line"><span class="lineno">  319</span>    }</div>
-<div class="line"><span class="lineno">  320</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00302">302</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  303</span>{</div>
+<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>) {</div>
+<div class="line"><span class="lineno">  305</span>        qCWarning(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Discovery finished with no controller set&quot;</span>) &lt;&lt; sender();</div>
+<div class="line"><span class="lineno">  306</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  307</span>    }</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span>    qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Discovery finished for \&quot;%1\&quot; (%2) at %3.&quot;</span>).arg(</div>
+<div class="line"><span class="lineno">  310</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteName(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteDeviceUuid().toString(),</div>
+<div class="line"><span class="lineno">  311</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>-&gt;remoteAddress().toString());</div>
+<div class="line"><span class="lineno">  312</span> </div>
+<div class="line"><span class="lineno">  313</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">createServiceObject</a>()) {</div>
+<div class="line"><span class="lineno">  314</span>        qCWarning(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Discovery finished, but service not found.&quot;</span>);</div>
+<div class="line"><span class="lineno">  315</span>        Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">  316</span>        emit q-&gt;serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);</div>
+<div class="line"><span class="lineno">  317</span>    }</div>
+<div class="line"><span class="lineno">  318</span>}</div>
 <div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00039">abstractpokitservice.h:40</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00045">controller</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00048">controller</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00140">AbstractPokitServicePrivate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00139">AbstractPokitServicePrivate()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -573,14 +581,14 @@ Here is the caller graph for this function:</div>
 <p>Handles <code>QLowEnergyController::errorOccurred</code> events. </p>
 <p >This function simply re-emits <em>newError</em> as <a class="el" href="classAbstractPokitService.html#a9e680ebf280361ef82f4b072448d7e9b" title="This signal is emitted whenever an error occurs on the underlying QLowEnergyService.">AbstractPokitService::serviceErrorOccurred</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00327">327</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  328</span>{</div>
-<div class="line"><span class="lineno">  329</span>    Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
-<div class="line"><span class="lineno">  330</span>    qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Service error&quot;</span>) &lt;&lt; newError;</div>
-<div class="line"><span class="lineno">  331</span>    emit q-&gt;serviceErrorOccurred(newError);</div>
-<div class="line"><span class="lineno">  332</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00325">325</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  326</span>{</div>
+<div class="line"><span class="lineno">  327</span>    Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">  328</span>    qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Service error&quot;</span>) &lt;&lt; newError;</div>
+<div class="line"><span class="lineno">  329</span>    emit q-&gt;serviceErrorOccurred(newError);</div>
+<div class="line"><span class="lineno">  330</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -618,41 +626,40 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00218">218</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  219</span>{</div>
-<div class="line"><span class="lineno">  220</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>) {</div>
-<div class="line"><span class="lineno">  221</span>        qCDebug(pokitService).noquote()</div>
-<div class="line"><span class="lineno">  222</span>            &lt;&lt; tr(<span class="stringliteral">&quot;Characterisitc %1 requested before service assigned.&quot;</span>).arg(uuid.toString());</div>
-<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">return</span> QLowEnergyCharacteristic();</div>
-<div class="line"><span class="lineno">  224</span>    }</div>
-<div class="line"><span class="lineno">  225</span> </div>
-<div class="line"><span class="lineno">  226</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic = <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;characteristic(uuid);</div>
-<div class="line"><span class="lineno">  227</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
-<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">return</span> characteristic;</div>
-<div class="line"><span class="lineno">  229</span>    }</div>
-<div class="line"><span class="lineno">  230</span> </div>
-<div class="line"><span class="lineno">  231</span> </div>
-<div class="line"><span class="lineno">  232</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;state() == QLowEnergyService::</div>
-<div class="line"><span class="lineno">  233</span>        #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</div>
-<div class="line"><span class="lineno">  234</span>        ServiceDiscovered</div>
-<div class="line"><span class="lineno">  235</span>        #<span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  236</span>        RemoteServiceDiscovered</div>
-<div class="line"><span class="lineno">  237</span>        #endif</div>
-<div class="line"><span class="lineno">  238</span>    ) {</div>
-<div class="line"><span class="lineno">  239</span>        qCDebug(pokitService).noquote()</div>
-<div class="line"><span class="lineno">  240</span>            &lt;&lt; tr(<span class="stringliteral">&quot;Characterisitc %1 requested before service %2 discovered.&quot;</span>)</div>
-<div class="line"><span class="lineno">  241</span>               .arg(uuid.toString(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;serviceUuid().toString());</div>
-<div class="line"><span class="lineno">  242</span>        <span class="keywordflow">return</span> QLowEnergyCharacteristic();</div>
-<div class="line"><span class="lineno">  243</span>    }</div>
-<div class="line"><span class="lineno">  244</span> </div>
-<div class="line"><span class="lineno">  245</span>    qCWarning(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Characterisitc %1 not found in service %2.&quot;</span>)</div>
-<div class="line"><span class="lineno">  246</span>        .arg(uuid.toString(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;serviceUuid().toString());</div>
-<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">return</span> QLowEnergyCharacteristic();</div>
-<div class="line"><span class="lineno">  248</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00217">217</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>{</div>
+<div class="line"><span class="lineno">  219</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>) {</div>
+<div class="line"><span class="lineno">  220</span>        qCDebug(lc).noquote()</div>
+<div class="line"><span class="lineno">  221</span>            &lt;&lt; tr(<span class="stringliteral">&quot;Characterisitc %1 requested before service assigned.&quot;</span>).arg(uuid.toString());</div>
+<div class="line"><span class="lineno">  222</span>        <span class="keywordflow">return</span> QLowEnergyCharacteristic();</div>
+<div class="line"><span class="lineno">  223</span>    }</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic = <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;characteristic(uuid);</div>
+<div class="line"><span class="lineno">  226</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
+<div class="line"><span class="lineno">  227</span>        <span class="keywordflow">return</span> characteristic;</div>
+<div class="line"><span class="lineno">  228</span>    }</div>
+<div class="line"><span class="lineno">  229</span> </div>
+<div class="line"><span class="lineno">  230</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;state() == QLowEnergyService::</div>
+<div class="line"><span class="lineno">  231</span>        #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</div>
+<div class="line"><span class="lineno">  232</span>        ServiceDiscovered</div>
+<div class="line"><span class="lineno">  233</span>        #<span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  234</span>        RemoteServiceDiscovered</div>
+<div class="line"><span class="lineno">  235</span>        #endif</div>
+<div class="line"><span class="lineno">  236</span>    ) {</div>
+<div class="line"><span class="lineno">  237</span>        qCDebug(lc).noquote()</div>
+<div class="line"><span class="lineno">  238</span>            &lt;&lt; tr(<span class="stringliteral">&quot;Characterisitc %1 requested before service %2 discovered.&quot;</span>)</div>
+<div class="line"><span class="lineno">  239</span>               .arg(uuid.toString(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;serviceUuid().toString());</div>
+<div class="line"><span class="lineno">  240</span>        <span class="keywordflow">return</span> QLowEnergyCharacteristic();</div>
+<div class="line"><span class="lineno">  241</span>    }</div>
+<div class="line"><span class="lineno">  242</span> </div>
+<div class="line"><span class="lineno">  243</span>    qCWarning(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Characterisitc %1 not found in service %2.&quot;</span>)</div>
+<div class="line"><span class="lineno">  244</span>        .arg(uuid.toString(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;serviceUuid().toString());</div>
+<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">return</span> QLowEnergyCharacteristic();</div>
+<div class="line"><span class="lineno">  246</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00046">service</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice__p_8h_source.html#l00049">service</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00262">readCharacteristic()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00260">readCharacteristic()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -685,22 +692,22 @@ Here is the caller graph for this function:</div>
 <dd>
 <a class="el" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26" title="Handles QLowEnergyService::characteristicRead events.">AbstractPokitServicePrivate::characteristicRead()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00262">262</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  263</span>{</div>
-<div class="line"><span class="lineno">  264</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic = <a class="code hl_function" href="classAbstractPokitServicePrivate.html#aaac3ef8e3590334acdddb2b029865eb0">getCharacteristic</a>(uuid);</div>
-<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
-<div class="line"><span class="lineno">  266</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  267</span>    }</div>
-<div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>    qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Reading characteristic \&quot;%1\&quot; (%2)&quot;</span>)</div>
-<div class="line"><span class="lineno">  270</span>        .arg(characteristic.name(), uuid.toString()) &lt;&lt; characteristic.properties()</div>
-<div class="line"><span class="lineno">  271</span>        &lt;&lt; characteristic.value();</div>
-<div class="line"><span class="lineno">  272</span>    <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;readCharacteristic(characteristic);</div>
-<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  274</span>}</div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aaac3ef8e3590334acdddb2b029865eb0"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aaac3ef8e3590334acdddb2b029865eb0">AbstractPokitServicePrivate::getCharacteristic</a></div><div class="ttdeci">QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &amp;uuid) const</div><div class="ttdoc">Get uuid characteristc from the underlying service.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00218">abstractpokitservice.cpp:218</a></div></div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00260">260</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  261</span>{</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic = <a class="code hl_function" href="classAbstractPokitServicePrivate.html#aaac3ef8e3590334acdddb2b029865eb0">getCharacteristic</a>(uuid);</div>
+<div class="line"><span class="lineno">  263</span>    <span class="keywordflow">if</span> (!characteristic.isValid()) {</div>
+<div class="line"><span class="lineno">  264</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  265</span>    }</div>
+<div class="line"><span class="lineno">  266</span> </div>
+<div class="line"><span class="lineno">  267</span>    qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Reading characteristic \&quot;%1\&quot; (%2)&quot;</span>)</div>
+<div class="line"><span class="lineno">  268</span>        .arg(characteristic.name(), uuid.toString()) &lt;&lt; characteristic.properties()</div>
+<div class="line"><span class="lineno">  269</span>        &lt;&lt; characteristic.value();</div>
+<div class="line"><span class="lineno">  270</span>    <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;readCharacteristic(characteristic);</div>
+<div class="line"><span class="lineno">  271</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  272</span>}</div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aaac3ef8e3590334acdddb2b029865eb0"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aaac3ef8e3590334acdddb2b029865eb0">AbstractPokitServicePrivate::getCharacteristic</a></div><div class="ttdeci">QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &amp;uuid) const</div><div class="ttdoc">Get uuid characteristc from the underlying service.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00217">abstractpokitservice.cpp:217</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00218">getCharacteristic()</a>, and <a class="el" href="abstractpokitservice__p_8h_source.html#l00046">service</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00217">getCharacteristic()</a>, and <a class="el" href="abstractpokitservice__p_8h_source.html#l00049">service</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -737,17 +744,17 @@ Here is the call graph for this function:</div>
 <p>Handles <code>QLowEnergyController::serviceDiscovered</code> events. </p>
 <p >If the discovered service is the one this (or rather the derived) class wraps, then <a class="el" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9" title="Creates an internal service object from the internal controller.">createServiceObject()</a> will be invoked immediately (otherwise it will be invoked after full service discovery has completed, ie in <a class="el" href="classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab" title="Handles QLowEnergyController::discoveryFinished events.">discoveryFinished()</a>). </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00341">341</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  342</span>{</div>
-<div class="line"><span class="lineno">  343</span>    <span class="keywordflow">if</span> ((!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>) &amp;&amp; (newService == <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a>)) {</div>
-<div class="line"><span class="lineno">  344</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Service discovered&quot;</span>) &lt;&lt; newService;</div>
-<div class="line"><span class="lineno">  345</span>        <a class="code hl_function" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">createServiceObject</a>();</div>
-<div class="line"><span class="lineno">  346</span>    }</div>
-<div class="line"><span class="lineno">  347</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00339">339</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  340</span>{</div>
+<div class="line"><span class="lineno">  341</span>    <span class="keywordflow">if</span> ((!<a class="code hl_variable" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d">service</a>) &amp;&amp; (newService == <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a>)) {</div>
+<div class="line"><span class="lineno">  342</span>        qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Service discovered&quot;</span>) &lt;&lt; newService;</div>
+<div class="line"><span class="lineno">  343</span>        <a class="code hl_function" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">createServiceObject</a>();</div>
+<div class="line"><span class="lineno">  344</span>    }</div>
+<div class="line"><span class="lineno">  345</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00046">service</a>, and <a class="el" href="abstractpokitservice__p_8h_source.html#l00047">serviceUuid</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00049">service</a>, and <a class="el" href="abstractpokitservice__p_8h_source.html#l00050">serviceUuid</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00140">AbstractPokitServicePrivate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00139">AbstractPokitServicePrivate()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -791,24 +798,24 @@ Here is the caller graph for this function:</div>
 <p >If <em>newState</em> indicates that service details have now been discovered, then <a class="el" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff" title="This signal is emitted when the Pokit service details have been discovered.">AbstractPokitService::serviceDetailsDiscovered</a> will be emitted.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#a65c2c9c6163744a7cf52de2c6a83f610" title="Returns true if autodiscovery of services and service details is enabled, false otherwise.">AbstractPokitService::autoDiscover()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00357">357</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  358</span>{</div>
-<div class="line"><span class="lineno">  359</span>    qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;State changed to&quot;</span>) &lt;&lt; newState;</div>
-<div class="line"><span class="lineno">  360</span> </div>
-<div class="line"><span class="lineno">  361</span>    <span class="keywordflow">if</span> (newState == QLowEnergyService::</div>
-<div class="line"><span class="lineno">  362</span>            #<span class="keywordflow">if</span> (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</div>
-<div class="line"><span class="lineno">  363</span>            ServiceDiscovered</div>
-<div class="line"><span class="lineno">  364</span>            #<span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  365</span>            RemoteServiceDiscovered</div>
-<div class="line"><span class="lineno">  366</span>            #endif</div>
-<div class="line"><span class="lineno">  367</span>        ) {</div>
-<div class="line"><span class="lineno">  368</span>        Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
-<div class="line"><span class="lineno">  369</span>        qCDebug(pokitService).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Service details discovered.&quot;</span>);</div>
-<div class="line"><span class="lineno">  370</span>        emit q-&gt;serviceDetailsDiscovered();</div>
-<div class="line"><span class="lineno">  371</span>    }</div>
-<div class="line"><span class="lineno">  372</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00355">355</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  356</span>{</div>
+<div class="line"><span class="lineno">  357</span>    qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;State changed to&quot;</span>) &lt;&lt; newState;</div>
+<div class="line"><span class="lineno">  358</span> </div>
+<div class="line"><span class="lineno">  359</span>    <span class="keywordflow">if</span> (newState == QLowEnergyService::</div>
+<div class="line"><span class="lineno">  360</span>            #<span class="keywordflow">if</span> (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</div>
+<div class="line"><span class="lineno">  361</span>            ServiceDiscovered</div>
+<div class="line"><span class="lineno">  362</span>            #<span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  363</span>            RemoteServiceDiscovered</div>
+<div class="line"><span class="lineno">  364</span>            #endif</div>
+<div class="line"><span class="lineno">  365</span>        ) {</div>
+<div class="line"><span class="lineno">  366</span>        Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">  367</span>        qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Service details discovered.&quot;</span>);</div>
+<div class="line"><span class="lineno">  368</span>        emit q-&gt;serviceDetailsDiscovered();</div>
+<div class="line"><span class="lineno">  369</span>    }</div>
+<div class="line"><span class="lineno">  370</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -839,7 +846,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00074">74</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00077">77</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
 
 </div>
 </div>
@@ -858,9 +865,9 @@ Here is the caller graph for this function:</div>
 
 <p>Whether autodiscovery is enabled or not. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00044">44</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00047">47</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00283">connected()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00281">connected()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>.</p>
 
 </div>
 </div>
@@ -878,9 +885,9 @@ Here is the caller graph for this function:</div>
 
 <p>BLE controller to fetch the service from. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00045">45</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00048">48</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00140">AbstractPokitServicePrivate()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00283">connected()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00304">discoveryFinished()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00139">AbstractPokitServicePrivate()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00281">connected()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00302">discoveryFinished()</a>.</p>
 
 </div>
 </div>
@@ -906,7 +913,7 @@ Here is the caller graph for this function:</div>
 
 <p>Internal q-pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00057">57</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00060">60</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
 
 </div>
 </div>
@@ -924,9 +931,9 @@ Here is the caller graph for this function:</div>
 
 <p>BLE service to read/write characteristics. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00046">46</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00049">49</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00218">getCharacteristic()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00262">readCharacteristic()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00341">serviceDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00217">getCharacteristic()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00260">readCharacteristic()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00339">serviceDiscovered()</a>.</p>
 
 </div>
 </div>
@@ -944,9 +951,9 @@ Here is the caller graph for this function:</div>
 
 <p>UUID for <a class="el" href="classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d" title="BLE service to read/write characteristics.">service</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00047">47</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice__p_8h_source.html#l00050">50</a> of file <a class="el" href="abstractpokitservice__p_8h_source.html">abstractpokitservice_p.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="calibrationservice_8cpp_source.html#l00144">CalibrationServicePrivate::characteristicRead()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00320">DeviceInfoServicePrivate::characteristicRead()</a>, <a class="el" href="genericaccessservice_8cpp_source.html#l00247">GenericAccessServicePrivate::characteristicRead()</a>, <a class="el" href="statusservice_8cpp_source.html#l00451">StatusServicePrivate::characteristicRead()</a>, <a class="el" href="calibrationservice_8cpp_source.html#l00156">CalibrationServicePrivate::characteristicWritten()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00371">DeviceInfoServicePrivate::characteristicWritten()</a>, <a class="el" href="genericaccessservice_8cpp_source.html#l00275">GenericAccessServicePrivate::characteristicWritten()</a>, <a class="el" href="statusservice_8cpp_source.html#l00502">StatusServicePrivate::characteristicWritten()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00167">createServiceObject()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00341">serviceDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="calibrationservice_8cpp_source.html#l00144">CalibrationServicePrivate::characteristicRead()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00319">DeviceInfoServicePrivate::characteristicRead()</a>, <a class="el" href="genericaccessservice_8cpp_source.html#l00246">GenericAccessServicePrivate::characteristicRead()</a>, <a class="el" href="statusservice_8cpp_source.html#l00450">StatusServicePrivate::characteristicRead()</a>, <a class="el" href="calibrationservice_8cpp_source.html#l00156">CalibrationServicePrivate::characteristicWritten()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00370">DeviceInfoServicePrivate::characteristicWritten()</a>, <a class="el" href="genericaccessservice_8cpp_source.html#l00274">GenericAccessServicePrivate::characteristicWritten()</a>, <a class="el" href="statusservice_8cpp_source.html#l00501">StatusServicePrivate::characteristicWritten()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00166">createServiceObject()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00339">serviceDiscovered()</a>.</p>
 
 </div>
 </div>

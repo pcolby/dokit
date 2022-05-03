@@ -6,6 +6,7 @@ var classPokitDevicePrivate =
     [ "disconnected", "classPokitDevicePrivate.html#a8ad58f8a531f9cfa7642c0c242737040", null ],
     [ "discoveryFinished", "classPokitDevicePrivate.html#a2b525c4da45d7fae7cb31631d075acb5", null ],
     [ "errorOccurred", "classPokitDevicePrivate.html#abf8fb18024ecbe135fca8e2c5d623948", null ],
+    [ "Q_LOGGING_CATEGORY", "classPokitDevicePrivate.html#adaefd611ae8f9c565938b24fdbe787f1", null ],
     [ "serviceDiscovered", "classPokitDevicePrivate.html#a629dfb12d59951af18258b5920bb5488", null ],
     [ "setController", "classPokitDevicePrivate.html#a5bd287d0eeaa45754c7175ca1038b183", null ],
     [ "stateChanged", "classPokitDevicePrivate.html#a1ae263de0b2e120c2d4db85fb188cb91", null ],
