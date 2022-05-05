@@ -223,19 +223,20 @@ QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QB
     }
 
     const QLowEnergyCharacteristic characteristic = service->characteristic(uuid);
-    if (!characteristic.isValid()) {
+    if (characteristic.isValid()) {
         return characteristic;
     }
 
-    if (service->state() == QLowEnergyService::
+    if (service->state() != QLowEnergyService::
         #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
         ServiceDiscovered
         #else
         RemoteServiceDiscovered
         #endif
     ) {
-        qCDebug(lc).noquote() << tr("Characterisitc %1 requested before service %2 discovered.")
+        qCWarning(lc).noquote() << tr("Characterisitc %1 requested before service %2 discovered.")
             .arg(uuid.toString(), service->serviceUuid().toString());
+        qCInfo(lc).noquote() << tr("Current service state:") << service->state();
         return QLowEnergyCharacteristic();
     }
 

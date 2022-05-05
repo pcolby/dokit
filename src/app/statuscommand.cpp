@@ -97,6 +97,7 @@ void StatusCommand::serviceDetailsDiscovered()
     if (chrs.firmwareVersion.isNull()) {
         qCWarning(lc).noquote() << tr("Failed to parse device information");
         QCoreApplication::exit(EXIT_FAILURE);
+        return;
     }
 
     switch (format) {
