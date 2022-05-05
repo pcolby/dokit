@@ -48,14 +48,14 @@ public:
     };
 
     enum class MultimeterMode : quint8 {
-        Idle = 0,        ///< Make device idle.
-        DcVoltage = 1,   ///< Measure DC voltage.
-        AcVoltage = 2,   ///< Measure AC voltage.
-        DcCurrent = 3,   ///< Measure DC current.
-        AcCurrent = 4,   ///< Measure AC current.
-        Resistance = 5,  ///< Measure resistance.
-        Diode = 6,       ///< Measure diode.
-        Continuity = 7,  ///< Measure continuity.
+        Idle        = 0, ///< Make device idle.
+        DcVoltage   = 1, ///< Measure DC voltage.
+        AcVoltage   = 2, ///< Measure AC voltage.
+        DcCurrent   = 3, ///< Measure DC current.
+        AcCurrent   = 4, ///< Measure AC current.
+        Resistance  = 5, ///< Measure resistance.
+        Diode       = 6, ///< Measure diode.
+        Continuity  = 7, ///< Measure continuity.
         Temperature = 8, ///< Measure temperature.
     };
 
@@ -103,9 +103,9 @@ public:
     };
 
     enum class ReadingStatusFlag : quint8 {
-        AutoRange  = 0x01,
-        Continuity = 0x01,
-        Error      = 0xFF,
+        AutoRange  = 0x01, ///< Auto-range is active (for voltage, current and resistance modes).
+        Continuity = 0x01, ///< Indicates continuity, when in continuity mode.
+        Error      = 0xFF, ///< Indicates error in temperature and diode modes.
     };
     Q_DECLARE_FLAGS(ReadingStatusFlags, ReadingStatusFlag)
 
