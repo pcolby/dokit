@@ -95,7 +95,7 @@ void MultimeterCommand::serviceDetailsDiscovered()
 
     /// \todo
     MultimeterService::Settings settings{
-        MultimeterService::MultimeterMode::MultimeterDcVoltage,
+        MultimeterService::MultimeterMode::AcVoltage,
         { MultimeterService::VoltageRange::AutoRange },
         1000
     };

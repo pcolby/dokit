@@ -48,15 +48,15 @@ public:
     };
 
     enum class MultimeterMode : quint8 {
-        Idle = 0,                  ///< Make device idle.
-        MultimeterDcVoltage = 1,   ///< Measure DC voltage.
-        MultimeterAcVoltage = 2,   ///< Measure AC voltage.
-        MultimeterDcCurrent = 3,   ///< Measure DC current.
-        MultimeterAcCurrent = 4,   ///< Measure AC current.
-        MultimeterResistance = 5,  ///< Measure resistance.
-        MultimeterDiode = 6,       ///< Measure diode.
-        MultimeterContinuity = 7,  ///< Measure continuity.
-        MultimeterTemperature = 8, ///< Measure temperature.
+        Idle = 0,        ///< Make device idle.
+        DcVoltage = 1,   ///< Measure DC voltage.
+        AcVoltage = 2,   ///< Measure AC voltage.
+        DcCurrent = 3,   ///< Measure DC current.
+        AcCurrent = 4,   ///< Measure AC current.
+        Resistance = 5,  ///< Measure resistance.
+        Diode = 6,       ///< Measure diode.
+        Continuity = 7,  ///< Measure continuity.
+        Temperature = 8, ///< Measure temperature.
     };
 
     enum class VoltageRange : quint8 {
