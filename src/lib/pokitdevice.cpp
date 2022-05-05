@@ -27,6 +27,7 @@
 #include <qtpokit/calibrationservice.h>
 #include <qtpokit/deviceinfoservice.h>
 #include <qtpokit/genericaccessservice.h>
+#include <qtpokit/multimeterservice.h>
 #include <qtpokit/statusservice.h>
 
 #include "pokitdevice_p.h"
@@ -205,9 +206,7 @@ GenericAccessService * PokitDevice::genericAccess()
  */
 MultimeterService * PokitDevice::multimeter()
 {
-    Q_D(PokitDevice);
-    qCDebug(d->lc) << "Not implemented" << __func__;
-//    POKIT_INTERNAL_GET_SERVICE(MultimeterService, multimeter);
+    POKIT_INTERNAL_GET_SERVICE(MultimeterService, multimeter);
     return nullptr;
 }
 

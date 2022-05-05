@@ -217,8 +217,8 @@ bool AbstractPokitServicePrivate::createServiceObject()
 QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &uuid) const
 {
     if (!service) {
-        qCDebug(lc).noquote()
-            << tr("Characterisitc %1 requested before service assigned.").arg(uuid.toString());
+        qCDebug(lc).noquote() << tr("Characterisitc %1 requested before service assigned.")
+            .arg(uuid.toString());
         return QLowEnergyCharacteristic();
     }
 
@@ -234,9 +234,8 @@ QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QB
         RemoteServiceDiscovered
         #endif
     ) {
-        qCDebug(lc).noquote()
-            << tr("Characterisitc %1 requested before service %2 discovered.")
-               .arg(uuid.toString(), service->serviceUuid().toString());
+        qCDebug(lc).noquote() << tr("Characterisitc %1 requested before service %2 discovered.")
+            .arg(uuid.toString(), service->serviceUuid().toString());
         return QLowEnergyCharacteristic();
     }
 

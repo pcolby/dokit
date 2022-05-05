@@ -456,24 +456,12 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
 
     Q_Q(StatusService);
     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
-        const StatusService::DeviceCharacteristics characteristics = parseDeviceCharacteristics(value);
-        if (characteristics.firmwareVersion.isNull()) {
-            qCWarning(lc).noquote() << tr("Failed to parse device characteristics: 0x%1")
-                .arg(QLatin1String(value.toHex()));
-            return;
-        }
-        emit q->deviceCharacteristicsRead(characteristics);
+        emit q->deviceCharacteristicsRead(parseDeviceCharacteristics(value));
         return;
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
-        const StatusService::Status status = parseStatus(value);
-        if (qIsNaN(status.batteryVoltage)) {
-            qCWarning(lc).noquote() << tr("Failed to parse status: 0x%1")
-                .arg(QLatin1String(value.toHex()));
-            return;
-        }
-        emit q->deviceStatusRead(status);
+        emit q->deviceStatusRead(parseStatus(value));
         return;
     }
 
