@@ -58,6 +58,7 @@ public:
         Continuity  = 7, ///< Measure continuity.
         Temperature = 8, ///< Measure temperature.
     };
+    static QString toString(const MultimeterMode &mode);
 
     enum class VoltageRange : quint8 {
         _0_to_300mV  = 0,  ///< 0 to 300mV.
@@ -68,6 +69,9 @@ public:
         _30V_to_60V  = 5,  ///< 30V to 60V.
         AutoRange    = 255 ///< Auto-range.
     };
+    static QString toString(const VoltageRange &range);
+    static QVariant minValue(const VoltageRange &range);
+    static QVariant maxValue(const VoltageRange &range);
 
     enum class CurrentRange : quint8 {
         _0_to_10mA      = 0,  ///< 0 to 10mA.
@@ -77,6 +81,9 @@ public:
         _300mA_to_3A    = 4,  ///< 300mA to 3A.
         AutoRange       = 255 ///< Auto-range.
     };
+    static QString toString(const CurrentRange &range);
+    static QVariant minValue(const CurrentRange &range);
+    static QVariant maxValue(const CurrentRange &range);
 
     enum class ResistanceRange : quint8 {
         _0_to_160     = 0,  ///< 0 to 160 ohms.
@@ -89,6 +96,9 @@ public:
         _470K_to_1M   = 7,  ///< 470K to 1M ohms.
         AutoRange     = 255 ///< Auto-range.
     };
+    static QString toString(const ResistanceRange &range);
+    static QVariant minValue(const ResistanceRange &range);
+    static QVariant maxValue(const ResistanceRange &range);
 
     union MultimeterRange {
         VoltageRange voltageRange;      ///< Range when in AC/DC voltage mode.
