@@ -187,6 +187,34 @@ MultimeterService::Reading MultimeterService::reading() const
 }
 
 /*!
+ * Requests the Pokit device to begin reporting multimeter reads.
+ *
+ * This is an alternative to manually requesting individual reads via readReadingCharacteristic().
+ *
+ * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ *
+ * Successfully read values (if any) will be emitted via the readingRead() signal.
+ */
+bool MultimeterService::beginClientReadings()
+{
+    Q_D(MultimeterService);
+    return d->enableCharacteristicNotificatons(CharacteristicUuids::reading);
+}
+
+/*!
+ * Requests the Pokit device to stop reporting multimeter reads.
+ *
+ * Instantaneous reads can still be fetched by readReadingCharacteristic().
+ *
+ * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ */
+bool MultimeterService::stopClientReadings()
+{
+    Q_D(MultimeterService);
+    return d->disableCharacteristicNotificatons(CharacteristicUuids::reading);
+}
+
+/*!
  * \fn MultimeterService::readingRead
  *
  * This signal is emitted when the `Reading` characteristic has been read successfully.
@@ -282,10 +310,10 @@ void MultimeterServicePrivate::characteristicRead(const QLowEnergyCharacteristic
  * specialised signal, for each supported \a characteristic.
  */
 void MultimeterServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
-                                                 const QByteArray &newValue)
+                                                     const QByteArray &newValue)
 {
     qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue;
+        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
 
     Q_Q(MultimeterService);
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {
@@ -296,6 +324,32 @@ void MultimeterServicePrivate::characteristicWritten(const QLowEnergyCharacteris
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {
         qCWarning(lc).noquote() << tr("Reading characteristic is read-only, but somehow written")
             << serviceUuid << characteristic.name() << characteristic.uuid();
+        return;
+    }
+
+    qCWarning(lc).noquote() << tr("Unknown characteristic written for Status Service")
+        << serviceUuid << characteristic.name() << characteristic.uuid();
+}
+
+/*!
+ * Implements AbstractPokitServicePrivate::characteristicChanged to parse \a newValue, then emit a
+ * specialised signal, for each supported \a characteristic.
+ */
+void MultimeterServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &characteristic,
+                                                     const QByteArray &newValue)
+{
+    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) changed, with new value:")
+        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
+
+    Q_Q(MultimeterService);
+    if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {
+        qCWarning(lc).noquote() << tr("Settings characteristic is write-only, but somehow updated")
+            << serviceUuid << characteristic.name() << characteristic.uuid();
+        return;
+    }
+
+    if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {
+        emit q->readingRead(parseReading(newValue));
         return;
     }
 

@@ -19,7 +19,6 @@
 
 #include "multimetercommand.h"
 
-#include <qtpokit/multimeterservice.h>
 #include <qtpokit/pokitdevice.h>
 
 #include <QJsonDocument>
@@ -77,6 +76,10 @@ AbstractPokitService * MultimeterCommand::getService()
     if (!service) {
         service = device->multimeter();
         Q_ASSERT(service);
+        connect(service, &MultimeterService::settingsWritten,
+                this, &MultimeterCommand::settingsWritten);
+        connect(service, &MultimeterService::readingRead,
+                this, &MultimeterCommand::outputReading);
     }
     return service;
 }
@@ -91,8 +94,30 @@ void MultimeterCommand::serviceDetailsDiscovered()
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
 
     /// \todo
-    auto reading = service->reading();
-    qCInfo(lc) << reading.status << reading.value << (int)reading.mode << (int)reading.range.voltageRange;
+    MultimeterService::Settings settings{
+        MultimeterService::MultimeterMode::MultimeterDcVoltage,
+        { MultimeterService::VoltageRange::AutoRange },
+        1000
+    };
 
-    QCoreApplication::quit(); // We're all done :)
+    qCInfo(lc).noquote() << tr("Configuring multimeter settings...");
+    service->setSettings(settings);
+}
+
+/*!
+ * Invoked when the multimeter settings have been written, to begin reading the meter values.
+ */
+void MultimeterCommand::settingsWritten()
+{
+    qCDebug(lc).noquote() << tr("Settings written; starting meter readings...");
+    service->beginClientReadings();
+}
+
+/*!
+ * Outputs meter \a reading in the selected ouput format.
+ */
+void MultimeterCommand::outputReading(const MultimeterService::Reading &reading)
+{
+    /// \todo
+    qCInfo(lc) << reading.status << reading.value << (int)reading.mode << (int)reading.range.voltageRange;
 }

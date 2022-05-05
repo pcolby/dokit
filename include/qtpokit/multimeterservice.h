@@ -127,6 +127,8 @@ public:
 
     // Reading characteristic (BLE read/notify).
     Reading reading() const;
+    bool beginClientReadings();
+    bool stopClientReadings();
 
     /// \todo How to handle BLE 'notify'.
 

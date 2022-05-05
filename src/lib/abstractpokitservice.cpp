@@ -186,6 +186,22 @@ bool AbstractPokitServicePrivate::createServiceObject()
             this, &AbstractPokitServicePrivate::characteristicRead);
     connect(service, &QLowEnergyService::characteristicWritten,
             this, &AbstractPokitServicePrivate::characteristicWritten);
+    connect(service, &QLowEnergyService::characteristicChanged,
+            this, &AbstractPokitServicePrivate::characteristicChanged);
+
+    connect(service, &QLowEnergyService::descriptorRead,
+        [](const QLowEnergyDescriptor &descriptor, const QByteArray &value){
+            qCDebug(lc).noquote() << tr("Descriptor \"%1\" (%2) read.")
+                .arg(descriptor.name(), descriptor.uuid().toString());
+            Q_UNUSED(value);
+        });
+
+    connect(service, &QLowEnergyService::descriptorWritten,
+        [](const QLowEnergyDescriptor &descriptor, const QByteArray &newValue){
+            qCDebug(lc).noquote() << tr("Descriptor \"%1\" (%2) written.")
+                .arg(descriptor.name(), descriptor.uuid().toString());
+            Q_UNUSED(newValue);
+        });
 
     connect(service,
     #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
@@ -268,6 +284,72 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
         .arg(characteristic.name(), uuid.toString()) << characteristic.properties()
         << characteristic.value();
     service->readCharacteristic(characteristic);
+    return true;
+}
+
+/*!
+ * Enables client (Pokit device) side notification for characteristic \a uuid.
+ *
+ * Returns \c true if the notication enable request was successfully queued, \c false otherwise.
+ *
+ * \see AbstractPokitServicePrivate::characteristicChanged
+ * \see AbstractPokitServicePrivate::disableCharacteristicNotificatons
+ */
+bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBluetoothUuid &uuid)
+{
+    QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);
+    if (!characteristic.isValid()) {
+        return false;
+    }
+
+    QLowEnergyDescriptor descriptor = characteristic.descriptor(
+        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);
+    if (!descriptor.isValid()) {
+        qCWarning(lc).noquote() << tr("Characterisitc %1 has no client configuration descriptor.")
+            .arg(uuid.toString());
+        return false;
+    }
+
+    service->writeDescriptor(descriptor,
+        #if (QT_VERSION >= QT_VERSION_CHECK(6, 2, 0))
+        QLowEnergyCharacteristic::CCCDEnableNotification
+        #else
+        QByteArray::fromHex("0100") // See Qt6's QLowEnergyCharacteristic::CCCDEnableNotification.
+        #endif
+    );
+    return true;
+}
+
+/*!
+ * Disables client (Pokit device) side notification for characteristic \a uuid.
+ *
+ * Returns \c true if the notication disable request was successfully queued, \c false otherwise.
+ *
+ * \see AbstractPokitServicePrivate::characteristicChanged
+ * \see AbstractPokitServicePrivate::enableCharacteristicNotificatons
+ */
+bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluetoothUuid &uuid)
+{
+    QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);
+    if (!characteristic.isValid()) {
+        return false;
+    }
+
+    QLowEnergyDescriptor descriptor = characteristic.descriptor(
+        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);
+    if (!descriptor.isValid()) {
+        qCWarning(lc).noquote() << tr("Characterisitc %1 has no client configuration descriptor.")
+            .arg(uuid.toString());
+        return false;
+    }
+
+    service->writeDescriptor(descriptor,
+        #if (QT_VERSION >= QT_VERSION_CHECK(6, 2, 0))
+        QLowEnergyCharacteristic::CCCDDisable
+        #else
+        QByteArray::fromHex("0000") // See Qt6's QLowEnergyCharacteristic::CCCDDisable.
+        #endif
+    );
     return true;
 }
 
@@ -386,5 +468,20 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
  * Derived classes must implement this function to handle the successful writes of
  * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.
  */
+
+/*!
+ * Handles `QLowEnergyService::characteristicChanged` events.
+ *
+ * If derived classes support characteristics with client-side notification (ie Notify, as opposed
+ * to Read or Write operations), they must implement this function to handle the successful reads of
+ * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.
+ */
+void AbstractPokitServicePrivate::characteristicChanged(
+    const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
+{
+    qCWarning(lc).noquote() << tr("Characteristic %1 changed but handler not overridden.")
+        .arg(characteristic.uuid().toString());
+    Q_UNUSED(newValue);
+}
 
 /// \endcond

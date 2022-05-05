@@ -56,6 +56,9 @@ public:
     QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &uuid) const;
     bool readCharacteristic(const QBluetoothUuid &uuid);
 
+    bool enableCharacteristicNotificatons(const QBluetoothUuid &uuid);
+    bool disableCharacteristicNotificatons(const QBluetoothUuid &uuid);
+
 protected:
     AbstractPokitService * q_ptr; ///< Internal q-pointer.
 
@@ -70,6 +73,8 @@ protected slots:
                                     const QByteArray &value) = 0;
     virtual void characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                        const QByteArray &newValue) = 0;
+    virtual void characteristicChanged(const QLowEnergyCharacteristic &characteristic,
+                                       const QByteArray &newValue);
 
 private:
     Q_DECLARE_PUBLIC(AbstractPokitService)

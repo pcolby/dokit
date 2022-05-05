@@ -19,7 +19,7 @@
 
 #include "devicecommand.h"
 
-class MultimeterService;
+#include <qtpokit/multimeterservice.h>
 
 class MultimeterCommand : public DeviceCommand
 {
@@ -40,6 +40,10 @@ protected slots:
 
 private:
     MultimeterService * service; ///< Bluetooth service this command interracts with.
+
+private slots:
+    void settingsWritten();
+    void outputReading(const MultimeterService::Reading &reading);
 
     friend class TestMultimeterCommand;
 };
