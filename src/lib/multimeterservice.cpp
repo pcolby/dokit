@@ -53,14 +53,36 @@ const QBluetoothUuid MultimeterService::CharacteristicUuids::
 /// \struct MultimeterService::DeviceCharacteristics
 /// \brief Attributes included in the `Device Characteristics` characterstic.
 
-/// \enum MultimeterService::DeviceStatus
-/// \brief Values support by the `Status` attribute of the `Status` characteristic.
+/// \enum MultimeterService::MultimeterMode
+/// \brief Values support by the `Mode` attribute of the `Settings` characteristic.
 
-/// \enum MultimeterService::BatteryStatus
-/// \brief Values support by the `Battery Status` attribute of the `Status` characteristic.
+/// \enum MultimeterService::VoltageRange
+/// \brief Values support by the `Range` attribute of the `Settings` characteristic, when `Mode` is
+/// AC or DC voltage.
 
-/// \struct MultimeterService::Status
-/// \brief Attributes included in the `Status` characterstic.
+/// \enum MultimeterService::VoltageRange
+/// \brief Values support by the `Range` attribute of the `Settings` characteristic, when `Mode` is
+/// AC or DC voltage.
+
+/// \enum MultimeterService::CurrentRange
+/// \brief Values support by the `Range` attribute of the `Settings` characteristic, when `Mode` is
+/// AC or DC current.
+
+/// \enum MultimeterService::ResistanceRange
+/// \brief Values support by the `Range` attribute of the `Settings` characteristic, when `Mode` is
+/// resitance.
+
+/// \union MultimeterService::MultimeterRange
+/// \brief Values support by the `Range` attribute of the `Settings` characteristic.
+
+/// \struct MultimeterService::Settings
+/// \brief Attributes included in the `Settings` characterstic.
+
+/// \enum MultimeterService::ReadingStatusFlag
+/// \brief Values support by the `Status` attribute of the `Settings` characteristic.
+
+/// \struct MultimeterService::Reading
+/// \brief Attributes included in the `Reading` characterstic.
 
 /*!
  * Constructs a new Pokit service with \a parent.
