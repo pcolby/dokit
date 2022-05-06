@@ -146,14 +146,16 @@ quint32 AbstractCommand::parseMilliseconds(const QString &value, const quint32 s
     }
 
     QLocale locale; bool ok;
-    if (const quint32 integer = locale.toUInt(number, &ok); ok) {
+    const quint32 integer = locale.toUInt(number, &ok);
+    if (ok) {
         if ((scale == 0) && (integer != 0)) {
             for (scale = 1; (integer * scale) < sensibleMinimum; scale *= 1000);
         }
         return integer * scale;
     }
 
-    if (const double dbl = locale.toDouble(number, &ok); ok) {
+    const double dbl = locale.toDouble(number, &ok);
+    if (ok) {
         if ((scale == 0) && (dbl > 0.0)) {
             for (scale = 1; (dbl * scale) < sensibleMinimum; scale *= 1000);
         }
