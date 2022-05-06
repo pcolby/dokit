@@ -140,8 +140,6 @@ public:
     bool beginClientReadings();
     bool stopClientReadings();
 
-    /// \todo How to handle BLE 'notify'.
-
 signals:
     void settingsWritten();
     void readingRead(const MultimeterService::Reading &reading);
