@@ -330,7 +330,7 @@ bool MultimeterService::setSettings(const Settings &settings)
     QByteArray value;
     QDataStream stream(&value, QIODevice::WriteOnly);
     stream.setByteOrder(QDataStream::LittleEndian);
-    stream << settings.mode << settings.range.voltageRange << settings.updateInterval;
+    stream << (quint8)settings.mode << (quint8)settings.range.voltageRange << settings.updateInterval;
     Q_ASSERT(value.size() == 6);
     d->service->writeCharacteristic(characteristic, value);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
