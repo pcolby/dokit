@@ -34,14 +34,13 @@
  * Construct a new MultimeterCommand object with \a parent.
  */
 MultimeterCommand::MultimeterCommand(QObject * const parent) : DeviceCommand(parent),
-    service(nullptr), numberOfSamplesToRead(-1)
-{
-    // Begin with some sane default settings (processOptions will overwrite these).
-    settings =  MultimeterService::Settings{
+    service(nullptr), settings{
         MultimeterService::MultimeterMode::DcVoltage,
         { MultimeterService::VoltageRange::AutoRange },
         1000
-    };
+    }, numberOfSamplesToRead(-1)
+{
+
 }
 
 QStringList MultimeterCommand::requiredOptions() const
