@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">161</td>
+            <td class="headerCovTableEntry">152</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-03 04:03:12</td>
+            <td class="headerValue">2022-05-06 14:23:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -518,82 +518,70 @@
 <a name="456"><span class="lineNum">     456 </span>            : </a>
 <a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :     Q_Q(StatusService);</span></a>
 <a name="458"><span class="lineNum">     458 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineNoCov">          0 :         const StatusService::DeviceCharacteristics characteristics = parseDeviceCharacteristics(value);</span></a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineNoCov">          0 :         if (characteristics.firmwareVersion.isNull()) {</span></a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Failed to parse device characteristics: 0x%1&quot;)</span></a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineNoCov">          0 :                 .arg(QLatin1String(value.toHex()));</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineNoCov">          0 :             return;</span></a>
-<a name="464"><span class="lineNum">     464 </span>            :         }</a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceCharacteristicsRead(characteristics);</span></a>
-<a name="466"><span class="lineNum">     466 </span>            :         return;</a>
-<a name="467"><span class="lineNum">     467 </span>            :     }</a>
-<a name="468"><span class="lineNum">     468 </span>            : </a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
-<a name="470"><span class="lineNum">     470 </span><span class="lineNoCov">          0 :         const StatusService::Status status = parseStatus(value);</span></a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :         if (qIsNaN(status.batteryVoltage)) {</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Failed to parse status: 0x%1&quot;)</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineNoCov">          0 :                 .arg(QLatin1String(value.toHex()));</span></a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineNoCov">          0 :             return;</span></a>
-<a name="475"><span class="lineNum">     475 </span>            :         }</a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceStatusRead(status);</span></a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="478"><span class="lineNum">     478 </span>            :     }</a>
-<a name="479"><span class="lineNum">     479 </span>            : </a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 :         const QString deviceName = QString::fromUtf8(value);</span></a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device name: \&quot;%1\&quot;&quot;).arg(deviceName);</span></a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameRead(deviceName);</span></a>
-<a name="484"><span class="lineNum">     484 </span>            :         return;</a>
-<a name="485"><span class="lineNum">     485 </span>            :     }</a>
-<a name="486"><span class="lineNum">     486 </span>            : </a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Flash LED characteristic is write-only, but somehow read&quot;)</span></a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="491"><span class="lineNum">     491 </span>            :     }</a>
-<a name="492"><span class="lineNum">     492 </span>            : </a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status Service&quot;)</span></a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="495"><span class="lineNum">     495 </span>            : }</a>
-<a name="496"><span class="lineNum">     496 </span>            : </a>
-<a name="497"><span class="lineNum">     497 </span>            : /*!</a>
-<a name="498"><span class="lineNum">     498 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
-<a name="499"><span class="lineNum">     499 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="500"><span class="lineNum">     500 </span>            :  */</a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 : void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="502"><span class="lineNum">     502 </span>            :                                                  const QByteArray &amp;newValue)</a>
-<a name="503"><span class="lineNum">     503 </span>            : {</a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic \&quot;%1\&quot; (%2) written, with new value:&quot;)</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :         .arg(characteristic.name(), characteristic.uuid().toString()) &lt;&lt; newValue;</span></a>
-<a name="506"><span class="lineNum">     506 </span>            : </a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 :     Q_Q(StatusService);</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Device Characteristics is read-only, but somehow written&quot;)</span></a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="512"><span class="lineNum">     512 </span>            :     }</a>
-<a name="513"><span class="lineNum">     513 </span>            : </a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Status characteristic is read-only, but somehow written&quot;)</span></a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="517"><span class="lineNum">     517 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="518"><span class="lineNum">     518 </span>            :     }</a>
-<a name="519"><span class="lineNum">     519 </span>            : </a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 :         emit q-&gt;deivceNameWritten();</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="523"><span class="lineNum">     523 </span>            :     }</a>
-<a name="524"><span class="lineNum">     524 </span>            : </a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceLedFlashed();</span></a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="528"><span class="lineNum">     528 </span>            :     }</a>
-<a name="529"><span class="lineNum">     529 </span>            : </a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineNoCov">          0 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status Service&quot;)</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="532"><span class="lineNum">     532 </span>            : }</a>
-<a name="533"><span class="lineNum">     533 </span>            : </a>
-<a name="534"><span class="lineNum">     534 </span>            : /// \endcond</a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceCharacteristicsRead(parseDeviceCharacteristics(value));</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="461"><span class="lineNum">     461 </span>            :     }</a>
+<a name="462"><span class="lineNum">     462 </span>            : </a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceStatusRead(parseStatus(value));</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="466"><span class="lineNum">     466 </span>            :     }</a>
+<a name="467"><span class="lineNum">     467 </span>            : </a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :         const QString deviceName = QString::fromUtf8(value);</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device name: \&quot;%1\&quot;&quot;).arg(deviceName);</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameRead(deviceName);</span></a>
+<a name="472"><span class="lineNum">     472 </span>            :         return;</a>
+<a name="473"><span class="lineNum">     473 </span>            :     }</a>
+<a name="474"><span class="lineNum">     474 </span>            : </a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Flash LED characteristic is write-only, but somehow read&quot;)</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="479"><span class="lineNum">     479 </span>            :     }</a>
+<a name="480"><span class="lineNum">     480 </span>            : </a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status Service&quot;)</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="483"><span class="lineNum">     483 </span>            : }</a>
+<a name="484"><span class="lineNum">     484 </span>            : </a>
+<a name="485"><span class="lineNum">     485 </span>            : /*!</a>
+<a name="486"><span class="lineNum">     486 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
+<a name="487"><span class="lineNum">     487 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="488"><span class="lineNum">     488 </span>            :  */</a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineNoCov">          0 : void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="490"><span class="lineNum">     490 </span>            :                                                  const QByteArray &amp;newValue)</a>
+<a name="491"><span class="lineNum">     491 </span>            : {</a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic \&quot;%1\&quot; (%2) written, with new value:&quot;)</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 :         .arg(characteristic.name(), characteristic.uuid().toString()) &lt;&lt; newValue;</span></a>
+<a name="494"><span class="lineNum">     494 </span>            : </a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineNoCov">          0 :     Q_Q(StatusService);</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Device Characteristics is read-only, but somehow written&quot;)</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="500"><span class="lineNum">     500 </span>            :     }</a>
+<a name="501"><span class="lineNum">     501 </span>            : </a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Status characteristic is read-only, but somehow written&quot;)</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="506"><span class="lineNum">     506 </span>            :     }</a>
+<a name="507"><span class="lineNum">     507 </span>            : </a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 :         emit q-&gt;deivceNameWritten();</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="511"><span class="lineNum">     511 </span>            :     }</a>
+<a name="512"><span class="lineNum">     512 </span>            : </a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceLedFlashed();</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="516"><span class="lineNum">     516 </span>            :     }</a>
+<a name="517"><span class="lineNum">     517 </span>            : </a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineNoCov">          0 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status Service&quot;)</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineNoCov">          0 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="520"><span class="lineNum">     520 </span>            : }</a>
+<a name="521"><span class="lineNum">     521 </span>            : </a>
+<a name="522"><span class="lineNum">     522 </span>            : /// \endcond</a>
 </pre>
       </td>
     </tr>

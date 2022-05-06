@@ -32,16 +32,16 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntry">67</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-03 04:03:12</td>
+            <td class="headerValue">2022-05-06 14:23:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">7</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -84,200 +84,252 @@
 <a name="22"><span class="lineNum">      22 </span>            : #include &lt;qtpokit/pokitdevice.h&gt;</a>
 <a name="23"><span class="lineNum">      23 </span>            : #include &lt;qtpokit/pokitdiscoveryagent.h&gt;</a>
 <a name="24"><span class="lineNum">      24 </span>            : </a>
-<a name="25"><span class="lineNum">      25 </span>            : /*!</a>
-<a name="26"><span class="lineNum">      26 </span>            :  * \class AbstractCommand</a>
-<a name="27"><span class="lineNum">      27 </span>            :  *</a>
-<a name="28"><span class="lineNum">      28 </span>            :  * The AbstractCommand class provides a consistent base for the classes that implement CLI commands.</a>
-<a name="29"><span class="lineNum">      29 </span>            :  */</a>
-<a name="30"><span class="lineNum">      30 </span>            : </a>
-<a name="31"><span class="lineNum">      31 </span>            : /// \enum AbstractCommand::OutputFormat</a>
-<a name="32"><span class="lineNum">      32 </span>            : /// \brief Supported output formats.</a>
-<a name="33"><span class="lineNum">      33 </span>            : </a>
-<a name="34"><span class="lineNum">      34 </span>            : /*!</a>
-<a name="35"><span class="lineNum">      35 </span>            :  * Constructs a new command with \a parent.</a>
-<a name="36"><span class="lineNum">      36 </span>            :  */</a>
-<a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 : AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),</span></a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 :     discoveryAgent(new PokitDiscoveryAgent(this)), format(OutputFormat::Text)</span></a>
-<a name="39"><span class="lineNum">      39 </span>            : {</a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::pokitDeviceDiscovered,</span></a>
-<a name="41"><span class="lineNum">      41 </span>            :             this, &amp;AbstractCommand::deviceDiscovered);</a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::finished,</span></a>
-<a name="43"><span class="lineNum">      43 </span>            :             this, &amp;AbstractCommand::deviceDiscoveryFinished);</a>
-<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 :     connect(discoveryAgent,</span></a>
-<a name="45"><span class="lineNum">      45 </span>            :         #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</a>
-<a name="46"><span class="lineNum">      46 </span>            :         QOverload&lt;PokitDiscoveryAgent::Error&gt;::of(&amp;PokitDiscoveryAgent::error),</a>
-<a name="47"><span class="lineNum">      47 </span>            :         #else</a>
-<a name="48"><span class="lineNum">      48 </span>            :         &amp;PokitDiscoveryAgent::errorOccurred,</a>
-<a name="49"><span class="lineNum">      49 </span>            :         #endif</a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :     [](const PokitDiscoveryAgent::Error &amp;error) {</span></a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth controller error:&quot;) &lt;&lt; error;</span></a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :         QCoreApplication::exit(EXIT_FAILURE);</span></a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :     });</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="55"><span class="lineNum">      55 </span>            : </a>
-<a name="56"><span class="lineNum">      56 </span>            : /*!</a>
-<a name="57"><span class="lineNum">      57 </span>            :  * Returns a list of CLI option names required by this command. The main console appication may</a>
-<a name="58"><span class="lineNum">      58 </span>            :  * use this list to output an eror (and exit) if any of the returned names are not found in the</a>
-<a name="59"><span class="lineNum">      59 </span>            :  * parsed CLI options.</a>
-<a name="60"><span class="lineNum">      60 </span>            :  *</a>
-<a name="61"><span class="lineNum">      61 </span>            :  * This base implementation simply returns an empty list. Derived classes should override this</a>
-<a name="62"><span class="lineNum">      62 </span>            :  * function to include any required options.</a>
-<a name="63"><span class="lineNum">      63 </span>            :  */</a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 : QStringList AbstractCommand::requiredOptions() const</span></a>
-<a name="65"><span class="lineNum">      65 </span>            : {</a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :     return QStringList();</span></a>
-<a name="67"><span class="lineNum">      67 </span>            : }</a>
-<a name="68"><span class="lineNum">      68 </span>            : </a>
-<a name="69"><span class="lineNum">      69 </span>            : /*!</a>
-<a name="70"><span class="lineNum">      70 </span>            :  * Returns a list of CLI option names supported by this command. The main console appication may</a>
-<a name="71"><span class="lineNum">      71 </span>            :  * use this list to output a warning for any parsed CLI options not included in the returned list.</a>
-<a name="72"><span class="lineNum">      72 </span>            :  *</a>
-<a name="73"><span class="lineNum">      73 </span>            :  * This base implementation simply returns requiredOptions(). Derived classes should override this</a>
-<a name="74"><span class="lineNum">      74 </span>            :  * function to include optional options, such as:</a>
-<a name="75"><span class="lineNum">      75 </span>            :  *</a>
-<a name="76"><span class="lineNum">      76 </span>            :  * ```</a>
-<a name="77"><span class="lineNum">      77 </span>            :  * QStringList Derived::supportedOptions() const</a>
-<a name="78"><span class="lineNum">      78 </span>            :  * {</a>
-<a name="79"><span class="lineNum">      79 </span>            :  *     const QStringList list = AbstractCommand::supportedOptions() + QStringList{ ... };</a>
-<a name="80"><span class="lineNum">      80 </span>            :  *     list.sort();</a>
-<a name="81"><span class="lineNum">      81 </span>            :  *     list.removeDuplicates(); // Optional, recommended.</a>
-<a name="82"><span class="lineNum">      82 </span>            :  *     return list;</a>
-<a name="83"><span class="lineNum">      83 </span>            :  * }</a>
-<a name="84"><span class="lineNum">      84 </span>            :  * ```</a>
-<a name="85"><span class="lineNum">      85 </span>            :  */</a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 : QStringList AbstractCommand::supportedOptions() const</span></a>
-<a name="87"><span class="lineNum">      87 </span>            : {</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 :     return requiredOptions() + QStringList{</span></a>
-<a name="89"><span class="lineNum">      89 </span>            :         QLatin1String(&quot;debug&quot;),</a>
-<a name="90"><span class="lineNum">      90 </span>            :         QLatin1String(&quot;device&quot;),</a>
-<a name="91"><span class="lineNum">      91 </span>            :         QLatin1String(&quot;output&quot;),</a>
-<a name="92"><span class="lineNum">      92 </span>            :         QLatin1String(&quot;timeout&quot;),</a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :     };</span></a>
-<a name="94"><span class="lineNum">      94 </span>            : }</a>
-<a name="95"><span class="lineNum">      95 </span>            : </a>
-<a name="96"><span class="lineNum">      96 </span>            : /*!</a>
-<a name="97"><span class="lineNum">      97 </span>            :  * Returns an RFC 4180 compliant version of \a field. That is, if \a field contains any of the</a>
-<a name="98"><span class="lineNum">      98 </span>            :  * the below four characters, than any double quotes are escaped (by addition double-quotes), and</a>
-<a name="99"><span class="lineNum">      99 </span>            :  * the string itself surrounded in double-quotes. Otherwise, \a field is returned verbatim.</a>
-<a name="100"><span class="lineNum">     100 </span>            :  *</a>
-<a name="101"><span class="lineNum">     101 </span>            :  * Some examples:</a>
-<a name="102"><span class="lineNum">     102 </span>            :  * ```</a>
-<a name="103"><span class="lineNum">     103 </span>            :  * QCOMPARE(escapeCsvField(&quot;abc&quot;), &quot;abc&quot;);       // Returned unchanged.</a>
-<a name="104"><span class="lineNum">     104 </span>            :  * QCOMPARE(escapeCsvField(&quot;a,c&quot;), &quot;\&quot;a,c\&quot;&quot;);   // Wrapped in double-quotes.</a>
-<a name="105"><span class="lineNum">     105 </span>            :  * QCOMPARE(escapeCsvField(&quot;a\&quot;c&quot;), &quot;\&quot;a&quot;&quot;c\&quot;&quot;); // Existing double-quotes doubles, then wrapped.</a>
-<a name="106"><span class="lineNum">     106 </span>            :  * ```</a>
-<a name="107"><span class="lineNum">     107 </span>            :  */</a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 : QString AbstractCommand::escapeCsvField(const QString &amp;field)</span></a>
-<a name="109"><span class="lineNum">     109 </span>            : {</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :     if (field.contains(QLatin1Char(','))||field.contains(QLatin1Char('\r'))||</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :         field.contains(QLatin1Char('&quot;'))||field.contains(QLatin1Char('\n')))</span></a>
-<a name="112"><span class="lineNum">     112 </span>            :     {</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :         return QString::fromLatin1(&quot;\&quot;%1\&quot;&quot;).arg(</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :             QString(field).replace(QLatin1Char('&quot;'), QLatin1String(&quot;\&quot;\&quot;&quot;)));</span></a>
-<a name="115"><span class="lineNum">     115 </span>            :     } else return field;</a>
-<a name="116"><span class="lineNum">     116 </span>            : }</a>
-<a name="117"><span class="lineNum">     117 </span>            : </a>
-<a name="118"><span class="lineNum">     118 </span>            : </a>
-<a name="119"><span class="lineNum">     119 </span>            : /*!</a>
-<a name="120"><span class="lineNum">     120 </span>            :  * Processes the relevant options from the command line \a parser.</a>
-<a name="121"><span class="lineNum">     121 </span>            :  *</a>
-<a name="122"><span class="lineNum">     122 </span>            :  * On success, returns an empty QStringList, otherwise returns a list of CLI errors that the caller</a>
-<a name="123"><span class="lineNum">     123 </span>            :  * should report appropriately before exiting.</a>
-<a name="124"><span class="lineNum">     124 </span>            :  *</a>
-<a name="125"><span class="lineNum">     125 </span>            :  * This base implementations performs some common checks, such as ensuring that required options are</a>
-<a name="126"><span class="lineNum">     126 </span>            :  * present. Derived classes should override this function to perform further processing, typically</a>
-<a name="127"><span class="lineNum">     127 </span>            :  * inovking this base implementation as a first step, such as:</a>
-<a name="128"><span class="lineNum">     128 </span>            :  *</a>
-<a name="129"><span class="lineNum">     129 </span>            :  * ```</a>
-<a name="130"><span class="lineNum">     130 </span>            :  * QStringList CustomCommand::processOptions(const QCommandLineParser &amp;parser)</a>
-<a name="131"><span class="lineNum">     131 </span>            :  * {</a>
-<a name="132"><span class="lineNum">     132 </span>            :  *     QStringList errors = AbstractCommand::processOptions(parser);</a>
-<a name="133"><span class="lineNum">     133 </span>            :  *     if (!errors.isEmpty()) {</a>
-<a name="134"><span class="lineNum">     134 </span>            :  *         return errors;</a>
-<a name="135"><span class="lineNum">     135 </span>            :  *     }</a>
-<a name="136"><span class="lineNum">     136 </span>            :  *</a>
-<a name="137"><span class="lineNum">     137 </span>            :  *     // Do further procession of options.</a>
-<a name="138"><span class="lineNum">     138 </span>            :  *</a>
-<a name="139"><span class="lineNum">     139 </span>            :  *     return errors;</a>
-<a name="140"><span class="lineNum">     140 </span>            :  * }</a>
-<a name="141"><span class="lineNum">     141 </span>            :  * ```</a>
-<a name="142"><span class="lineNum">     142 </span>            :  */</a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 : QStringList AbstractCommand::processOptions(const QCommandLineParser &amp;parser)</span></a>
-<a name="144"><span class="lineNum">     144 </span>            : {</a>
-<a name="145"><span class="lineNum">     145 </span>            :     // Report any supplied options that are not supported by this command.</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :     const QStringList suppliedOptions = parser.optionNames();</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :     const QStringList supportedOptions = this-&gt;supportedOptions();</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :     for (const QString &amp;option: suppliedOptions) {</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :         if (!supportedOptions.contains(option)) {</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></a>
-<a name="151"><span class="lineNum">     151 </span>            :         }</a>
-<a name="152"><span class="lineNum">     152 </span>            :     }</a>
-<a name="153"><span class="lineNum">     153 </span>            :     QStringList errors;</a>
-<a name="154"><span class="lineNum">     154 </span>            : </a>
-<a name="155"><span class="lineNum">     155 </span>            :     // Parse the device (name/addr) option.</a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;device&quot;))) {</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :         deviceToScanFor = parser.value(QLatin1String(&quot;device&quot;));</span></a>
-<a name="158"><span class="lineNum">     158 </span>            :     }</a>
-<a name="159"><span class="lineNum">     159 </span>            : </a>
-<a name="160"><span class="lineNum">     160 </span>            :     // Parse the output format options (if supported, and supplied).</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :     if ((supportedOptions.contains(QLatin1String(&quot;output&quot;))) &amp;&amp; // Derived classes may have removed.</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :         (parser.isSet(QLatin1String(&quot;output&quot;))))</span></a>
-<a name="163"><span class="lineNum">     163 </span>            :     {</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :         const QString output = parser.value(QLatin1String(&quot;output&quot;)).toLower();</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :         if (output == QLatin1String(&quot;csv&quot;)) {</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :             format = OutputFormat::Csv;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :         } else if (output == QLatin1String(&quot;json&quot;)) {</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :             format = OutputFormat::Json;</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :         } else if (output == QLatin1String(&quot;text&quot;)) {</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :             format = OutputFormat::Text;</span></a>
-<a name="171"><span class="lineNum">     171 </span>            :         } else {</a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Unknown output format: %1&quot;).arg(output));</span></a>
-<a name="173"><span class="lineNum">     173 </span>            :         }</a>
-<a name="174"><span class="lineNum">     174 </span>            :     }</a>
-<a name="175"><span class="lineNum">     175 </span>            : </a>
-<a name="176"><span class="lineNum">     176 </span>            :     // Parse the device scan timeout option.</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;timeout&quot;))) {</span></a>
-<a name="178"><span class="lineNum">     178 </span>            :         /// \todo Validate the value format.</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :         discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :             parser.value(QStringLiteral(&quot;timeout&quot;)).toInt()*1000);</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :             discoveryAgent-&gt;lowEnergyDiscoveryTimeout());</span></a>
-<a name="183"><span class="lineNum">     183 </span>            :     }</a>
-<a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span>            :     // Return errors for any required options that are absent.</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 :     const QStringList requiredOptions = this-&gt;requiredOptions();</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 :     for (const QString &amp;option: requiredOptions) {</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :         if (!parser.isSet(option)) {</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Missing required option: %1&quot;).arg(option));</span></a>
-<a name="190"><span class="lineNum">     190 </span>            :         }</a>
-<a name="191"><span class="lineNum">     191 </span>            :     }</a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :     return errors;</span></a>
-<a name="193"><span class="lineNum">     193 </span>            : }</a>
-<a name="194"><span class="lineNum">     194 </span>            : </a>
-<a name="195"><span class="lineNum">     195 </span>            : /*!</a>
-<a name="196"><span class="lineNum">     196 </span>            :  * \fn virtual bool AbstractCommand::start()</a>
-<a name="197"><span class="lineNum">     197 </span>            :  *</a>
-<a name="198"><span class="lineNum">     198 </span>            :  * Begins the functionality of this command, and returns `true` if begun successfully, `false`</a>
-<a name="199"><span class="lineNum">     199 </span>            :  * otherwise.</a>
-<a name="200"><span class="lineNum">     200 </span>            :  */</a>
-<a name="201"><span class="lineNum">     201 </span>            : </a>
-<a name="202"><span class="lineNum">     202 </span>            : /*!</a>
-<a name="203"><span class="lineNum">     203 </span>            :  * \fn virtual void AbstractCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info) = 0</a>
-<a name="204"><span class="lineNum">     204 </span>            :  *</a>
-<a name="205"><span class="lineNum">     205 </span>            :  * Handles PokitDiscoveryAgent::pokitDeviceDiscovered signal. Derived classes must</a>
-<a name="206"><span class="lineNum">     206 </span>            :  * implement this slot to begin whatever actions are relevant when a Pokit device has been</a>
-<a name="207"><span class="lineNum">     207 </span>            :  * discovered. For example, the 'scan' command would simply output the \a info details, whereas</a>
-<a name="208"><span class="lineNum">     208 </span>            :  * most other commands would begin connecting if \a info is the device they're after.</a>
-<a name="209"><span class="lineNum">     209 </span>            :  */</a>
-<a name="210"><span class="lineNum">     210 </span>            : </a>
-<a name="211"><span class="lineNum">     211 </span>            : /*!</a>
-<a name="212"><span class="lineNum">     212 </span>            :  * \fn virtual void AbstractCommand::deviceDiscoveryFinished() = 0</a>
-<a name="213"><span class="lineNum">     213 </span>            :  *</a>
-<a name="214"><span class="lineNum">     214 </span>            :  * Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must</a>
-<a name="215"><span class="lineNum">     215 </span>            :  * implement this slot to perform whatever actions are appropraite when discovery is finished.</a>
-<a name="216"><span class="lineNum">     216 </span>            :  * For example, the 'scan' command would simply exit, whereas most other commands would verify that</a>
-<a name="217"><span class="lineNum">     217 </span>            :  * an appropriate device was found.</a>
-<a name="218"><span class="lineNum">     218 </span>            :  */</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &lt;QLocale&gt;</a>
+<a name="26"><span class="lineNum">      26 </span>            : </a>
+<a name="27"><span class="lineNum">      27 </span>            : /*!</a>
+<a name="28"><span class="lineNum">      28 </span>            :  * \class AbstractCommand</a>
+<a name="29"><span class="lineNum">      29 </span>            :  *</a>
+<a name="30"><span class="lineNum">      30 </span>            :  * The AbstractCommand class provides a consistent base for the classes that implement CLI commands.</a>
+<a name="31"><span class="lineNum">      31 </span>            :  */</a>
+<a name="32"><span class="lineNum">      32 </span>            : </a>
+<a name="33"><span class="lineNum">      33 </span>            : /// \enum AbstractCommand::OutputFormat</a>
+<a name="34"><span class="lineNum">      34 </span>            : /// \brief Supported output formats.</a>
+<a name="35"><span class="lineNum">      35 </span>            : </a>
+<a name="36"><span class="lineNum">      36 </span>            : /*!</a>
+<a name="37"><span class="lineNum">      37 </span>            :  * Constructs a new command with \a parent.</a>
+<a name="38"><span class="lineNum">      38 </span>            :  */</a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 : AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :     discoveryAgent(new PokitDiscoveryAgent(this)), format(OutputFormat::Text)</span></a>
+<a name="41"><span class="lineNum">      41 </span>            : {</a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::pokitDeviceDiscovered,</span></a>
+<a name="43"><span class="lineNum">      43 </span>            :             this, &amp;AbstractCommand::deviceDiscovered);</a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::finished,</span></a>
+<a name="45"><span class="lineNum">      45 </span>            :             this, &amp;AbstractCommand::deviceDiscoveryFinished);</a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :     connect(discoveryAgent,</span></a>
+<a name="47"><span class="lineNum">      47 </span>            :         #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</a>
+<a name="48"><span class="lineNum">      48 </span>            :         QOverload&lt;PokitDiscoveryAgent::Error&gt;::of(&amp;PokitDiscoveryAgent::error),</a>
+<a name="49"><span class="lineNum">      49 </span>            :         #else</a>
+<a name="50"><span class="lineNum">      50 </span>            :         &amp;PokitDiscoveryAgent::errorOccurred,</a>
+<a name="51"><span class="lineNum">      51 </span>            :         #endif</a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :     [](const PokitDiscoveryAgent::Error &amp;error) {</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth controller error:&quot;) &lt;&lt; error;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 :         QCoreApplication::exit(EXIT_FAILURE);</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :     });</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="57"><span class="lineNum">      57 </span>            : </a>
+<a name="58"><span class="lineNum">      58 </span>            : /*!</a>
+<a name="59"><span class="lineNum">      59 </span>            :  * Returns a list of CLI option names required by this command. The main console appication may</a>
+<a name="60"><span class="lineNum">      60 </span>            :  * use this list to output an eror (and exit) if any of the returned names are not found in the</a>
+<a name="61"><span class="lineNum">      61 </span>            :  * parsed CLI options.</a>
+<a name="62"><span class="lineNum">      62 </span>            :  *</a>
+<a name="63"><span class="lineNum">      63 </span>            :  * This base implementation simply returns an empty list. Derived classes should override this</a>
+<a name="64"><span class="lineNum">      64 </span>            :  * function to include any required options.</a>
+<a name="65"><span class="lineNum">      65 </span>            :  */</a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 : QStringList AbstractCommand::requiredOptions() const</span></a>
+<a name="67"><span class="lineNum">      67 </span>            : {</a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :     return QStringList();</span></a>
+<a name="69"><span class="lineNum">      69 </span>            : }</a>
+<a name="70"><span class="lineNum">      70 </span>            : </a>
+<a name="71"><span class="lineNum">      71 </span>            : /*!</a>
+<a name="72"><span class="lineNum">      72 </span>            :  * Returns a list of CLI option names supported by this command. The main console appication may</a>
+<a name="73"><span class="lineNum">      73 </span>            :  * use this list to output a warning for any parsed CLI options not included in the returned list.</a>
+<a name="74"><span class="lineNum">      74 </span>            :  *</a>
+<a name="75"><span class="lineNum">      75 </span>            :  * This base implementation simply returns requiredOptions(). Derived classes should override this</a>
+<a name="76"><span class="lineNum">      76 </span>            :  * function to include optional options, such as:</a>
+<a name="77"><span class="lineNum">      77 </span>            :  *</a>
+<a name="78"><span class="lineNum">      78 </span>            :  * ```</a>
+<a name="79"><span class="lineNum">      79 </span>            :  * QStringList Derived::supportedOptions() const</a>
+<a name="80"><span class="lineNum">      80 </span>            :  * {</a>
+<a name="81"><span class="lineNum">      81 </span>            :  *     const QStringList list = AbstractCommand::supportedOptions() + QStringList{ ... };</a>
+<a name="82"><span class="lineNum">      82 </span>            :  *     list.sort();</a>
+<a name="83"><span class="lineNum">      83 </span>            :  *     list.removeDuplicates(); // Optional, recommended.</a>
+<a name="84"><span class="lineNum">      84 </span>            :  *     return list;</a>
+<a name="85"><span class="lineNum">      85 </span>            :  * }</a>
+<a name="86"><span class="lineNum">      86 </span>            :  * ```</a>
+<a name="87"><span class="lineNum">      87 </span>            :  */</a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 : QStringList AbstractCommand::supportedOptions() const</span></a>
+<a name="89"><span class="lineNum">      89 </span>            : {</a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 :     return requiredOptions() + QStringList{</span></a>
+<a name="91"><span class="lineNum">      91 </span>            :         QLatin1String(&quot;debug&quot;),</a>
+<a name="92"><span class="lineNum">      92 </span>            :         QLatin1String(&quot;device&quot;),</a>
+<a name="93"><span class="lineNum">      93 </span>            :         QLatin1String(&quot;output&quot;),</a>
+<a name="94"><span class="lineNum">      94 </span>            :         QLatin1String(&quot;timeout&quot;),</a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :     };</span></a>
+<a name="96"><span class="lineNum">      96 </span>            : }</a>
+<a name="97"><span class="lineNum">      97 </span>            : </a>
+<a name="98"><span class="lineNum">      98 </span>            : /*!</a>
+<a name="99"><span class="lineNum">      99 </span>            :  * Returns an RFC 4180 compliant version of \a field. That is, if \a field contains any of the</a>
+<a name="100"><span class="lineNum">     100 </span>            :  * the below four characters, than any double quotes are escaped (by addition double-quotes), and</a>
+<a name="101"><span class="lineNum">     101 </span>            :  * the string itself surrounded in double-quotes. Otherwise, \a field is returned verbatim.</a>
+<a name="102"><span class="lineNum">     102 </span>            :  *</a>
+<a name="103"><span class="lineNum">     103 </span>            :  * Some examples:</a>
+<a name="104"><span class="lineNum">     104 </span>            :  * ```</a>
+<a name="105"><span class="lineNum">     105 </span>            :  * QCOMPARE(escapeCsvField(&quot;abc&quot;), &quot;abc&quot;);       // Returned unchanged.</a>
+<a name="106"><span class="lineNum">     106 </span>            :  * QCOMPARE(escapeCsvField(&quot;a,c&quot;), &quot;\&quot;a,c\&quot;&quot;);   // Wrapped in double-quotes.</a>
+<a name="107"><span class="lineNum">     107 </span>            :  * QCOMPARE(escapeCsvField(&quot;a\&quot;c&quot;), &quot;\&quot;a&quot;&quot;c\&quot;&quot;); // Existing double-quotes doubles, then wrapped.</a>
+<a name="108"><span class="lineNum">     108 </span>            :  * ```</a>
+<a name="109"><span class="lineNum">     109 </span>            :  */</a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 : QString AbstractCommand::escapeCsvField(const QString &amp;field)</span></a>
+<a name="111"><span class="lineNum">     111 </span>            : {</a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :     if (field.contains(QLatin1Char(','))||field.contains(QLatin1Char('\r'))||</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :         field.contains(QLatin1Char('&quot;'))||field.contains(QLatin1Char('\n')))</span></a>
+<a name="114"><span class="lineNum">     114 </span>            :     {</a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :         return QString::fromLatin1(&quot;\&quot;%1\&quot;&quot;).arg(</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :             QString(field).replace(QLatin1Char('&quot;'), QLatin1String(&quot;\&quot;\&quot;&quot;)));</span></a>
+<a name="117"><span class="lineNum">     117 </span>            :     } else return field;</a>
+<a name="118"><span class="lineNum">     118 </span>            : }</a>
+<a name="119"><span class="lineNum">     119 </span>            : </a>
+<a name="120"><span class="lineNum">     120 </span>            : /*!</a>
+<a name="121"><span class="lineNum">     121 </span>            :  * Returns \a value as a number of milliseonds. The string \a value may contain optional suffixes</a>
+<a name="122"><span class="lineNum">     122 </span>            :  * such as &quot;ms&quot; for milliseconds, or &quot;s&quot; for seconds. If \a value contains no suffix, then the</a>
+<a name="123"><span class="lineNum">     123 </span>            :  * result will be multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This</a>
+<a name="124"><span class="lineNum">     124 </span>            :  * allows for convenient use like:</a>
+<a name="125"><span class="lineNum">     125 </span>            :  *</a>
+<a name="126"><span class="lineNum">     126 </span>            :  * ```</a>
+<a name="127"><span class="lineNum">     127 </span>            :  * const quin32t timeout = parseMilliseconds(parser.value(&quot;timeout&quot;), 600);</a>
+<a name="128"><span class="lineNum">     128 </span>            :  * ```</a>
+<a name="129"><span class="lineNum">     129 </span>            :  *</a>
+<a name="130"><span class="lineNum">     130 </span>            :  * So that an ambiguous period like &quot;300&quot; will be assumed to be 300 seconds, and not 300</a>
+<a name="131"><span class="lineNum">     131 </span>            :  * milliseconds, while a period like &quot;1000&quot; will be assume to be 1 second.</a>
+<a name="132"><span class="lineNum">     132 </span>            :  *</a>
+<a name="133"><span class="lineNum">     133 </span>            :  * If conversion fails for any reason, 0 is returned.</a>
+<a name="134"><span class="lineNum">     134 </span>            :  */</a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 : quint32 AbstractCommand::parseMilliseconds(const QString &amp;value, const quint32 sensibleMinimum)</span></a>
+<a name="136"><span class="lineNum">     136 </span>            : {</a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :     QString number = value.trimmed();</span></a>
+<a name="138"><span class="lineNum">     138 </span>            : </a>
+<a name="139"><span class="lineNum">     139 </span>            :     quint32 scale = 0;</a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :     if (number.endsWith(QLatin1String(&quot;ms&quot;))) {</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :         number.chop(2);</span></a>
+<a name="142"><span class="lineNum">     142 </span>            :         scale = 1;</a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :     } else if (number.endsWith(QLatin1String(&quot;s&quot;))) {</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :         number.chop(1);</span></a>
+<a name="145"><span class="lineNum">     145 </span>            :         scale = 1000;</a>
+<a name="146"><span class="lineNum">     146 </span>            :     }</a>
+<a name="147"><span class="lineNum">     147 </span>            : </a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :     QLocale locale; bool ok;</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :     const quint32 integer = locale.toUInt(number, &amp;ok);</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :     if (ok) {</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :         if ((scale == 0) &amp;&amp; (integer != 0)) {</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :             for (scale = 1; (integer * scale) &lt; sensibleMinimum; scale *= 1000);</span></a>
+<a name="153"><span class="lineNum">     153 </span>            :         }</a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :         return integer * scale;</span></a>
+<a name="155"><span class="lineNum">     155 </span>            :     }</a>
+<a name="156"><span class="lineNum">     156 </span>            : </a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :     const double dbl = locale.toDouble(number, &amp;ok);</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :     if (ok) {</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :         if ((scale == 0) &amp;&amp; (dbl &gt; 0.0)) {</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :             for (scale = 1; (dbl * scale) &lt; sensibleMinimum; scale *= 1000);</span></a>
+<a name="161"><span class="lineNum">     161 </span>            :         }</a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :         return dbl * scale;</span></a>
+<a name="163"><span class="lineNum">     163 </span>            :     }</a>
+<a name="164"><span class="lineNum">     164 </span>            : </a>
+<a name="165"><span class="lineNum">     165 </span>            :     return 0;</a>
+<a name="166"><span class="lineNum">     166 </span>            : }</a>
+<a name="167"><span class="lineNum">     167 </span>            : </a>
+<a name="168"><span class="lineNum">     168 </span>            : /*!</a>
+<a name="169"><span class="lineNum">     169 </span>            :  * Processes the relevant options from the command line \a parser.</a>
+<a name="170"><span class="lineNum">     170 </span>            :  *</a>
+<a name="171"><span class="lineNum">     171 </span>            :  * On success, returns an empty QStringList, otherwise returns a list of CLI errors that the caller</a>
+<a name="172"><span class="lineNum">     172 </span>            :  * should report appropriately before exiting.</a>
+<a name="173"><span class="lineNum">     173 </span>            :  *</a>
+<a name="174"><span class="lineNum">     174 </span>            :  * This base implementations performs some common checks, such as ensuring that required options are</a>
+<a name="175"><span class="lineNum">     175 </span>            :  * present. Derived classes should override this function to perform further processing, typically</a>
+<a name="176"><span class="lineNum">     176 </span>            :  * inovking this base implementation as a first step, such as:</a>
+<a name="177"><span class="lineNum">     177 </span>            :  *</a>
+<a name="178"><span class="lineNum">     178 </span>            :  * ```</a>
+<a name="179"><span class="lineNum">     179 </span>            :  * QStringList CustomCommand::processOptions(const QCommandLineParser &amp;parser)</a>
+<a name="180"><span class="lineNum">     180 </span>            :  * {</a>
+<a name="181"><span class="lineNum">     181 </span>            :  *     QStringList errors = AbstractCommand::processOptions(parser);</a>
+<a name="182"><span class="lineNum">     182 </span>            :  *     if (!errors.isEmpty()) {</a>
+<a name="183"><span class="lineNum">     183 </span>            :  *         return errors;</a>
+<a name="184"><span class="lineNum">     184 </span>            :  *     }</a>
+<a name="185"><span class="lineNum">     185 </span>            :  *</a>
+<a name="186"><span class="lineNum">     186 </span>            :  *     // Do further procession of options.</a>
+<a name="187"><span class="lineNum">     187 </span>            :  *</a>
+<a name="188"><span class="lineNum">     188 </span>            :  *     return errors;</a>
+<a name="189"><span class="lineNum">     189 </span>            :  * }</a>
+<a name="190"><span class="lineNum">     190 </span>            :  * ```</a>
+<a name="191"><span class="lineNum">     191 </span>            :  */</a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 : QStringList AbstractCommand::processOptions(const QCommandLineParser &amp;parser)</span></a>
+<a name="193"><span class="lineNum">     193 </span>            : {</a>
+<a name="194"><span class="lineNum">     194 </span>            :     // Report any supplied options that are not supported by this command.</a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :     const QStringList suppliedOptions = parser.optionNames();</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :     const QStringList supportedOptions = this-&gt;supportedOptions();</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :     for (const QString &amp;option: suppliedOptions) {</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :         if (!supportedOptions.contains(option)) {</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></a>
+<a name="200"><span class="lineNum">     200 </span>            :         }</a>
+<a name="201"><span class="lineNum">     201 </span>            :     }</a>
+<a name="202"><span class="lineNum">     202 </span>            :     QStringList errors;</a>
+<a name="203"><span class="lineNum">     203 </span>            : </a>
+<a name="204"><span class="lineNum">     204 </span>            :     // Parse the device (name/addr/uuid) option.</a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;device&quot;))) {</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :         deviceToScanFor = parser.value(QLatin1String(&quot;device&quot;));</span></a>
+<a name="207"><span class="lineNum">     207 </span>            :     }</a>
+<a name="208"><span class="lineNum">     208 </span>            : </a>
+<a name="209"><span class="lineNum">     209 </span>            :     // Parse the output format options (if supported, and supplied).</a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :     if ((supportedOptions.contains(QLatin1String(&quot;output&quot;))) &amp;&amp; // Derived classes may have removed.</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :         (parser.isSet(QLatin1String(&quot;output&quot;))))</span></a>
+<a name="212"><span class="lineNum">     212 </span>            :     {</a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :         const QString output = parser.value(QLatin1String(&quot;output&quot;)).toLower();</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :         if (output == QLatin1String(&quot;csv&quot;)) {</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :             format = OutputFormat::Csv;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :         } else if (output == QLatin1String(&quot;json&quot;)) {</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :             format = OutputFormat::Json;</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :         } else if (output == QLatin1String(&quot;text&quot;)) {</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :             format = OutputFormat::Text;</span></a>
+<a name="220"><span class="lineNum">     220 </span>            :         } else {</a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Unknown output format: %1&quot;).arg(output));</span></a>
+<a name="222"><span class="lineNum">     222 </span>            :         }</a>
+<a name="223"><span class="lineNum">     223 </span>            :     }</a>
+<a name="224"><span class="lineNum">     224 </span>            : </a>
+<a name="225"><span class="lineNum">     225 </span>            :     // Parse the device scan timeout option.</a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;timeout&quot;))) {</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :         const quint32 timeout = parseMilliseconds(parser.value(QLatin1String(&quot;timeout&quot;)), 500);</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :         if (timeout == 0) {</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(QLatin1String(&quot;timeout&quot;))));</span></a>
+<a name="230"><span class="lineNum">     230 </span>            :         } else {</a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :             discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :                 discoveryAgent-&gt;lowEnergyDiscoveryTimeout());</span></a>
+<a name="234"><span class="lineNum">     234 </span>            :         }</a>
+<a name="235"><span class="lineNum">     235 </span>            :     }</a>
+<a name="236"><span class="lineNum">     236 </span>            : </a>
+<a name="237"><span class="lineNum">     237 </span>            :     // Return errors for any required options that are absent.</a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :     const QStringList requiredOptions = this-&gt;requiredOptions();</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :     for (const QString &amp;option: requiredOptions) {</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :         if (!parser.isSet(option)) {</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Missing required option: %1&quot;).arg(option));</span></a>
+<a name="242"><span class="lineNum">     242 </span>            :         }</a>
+<a name="243"><span class="lineNum">     243 </span>            :     }</a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :     return errors;</span></a>
+<a name="245"><span class="lineNum">     245 </span>            : }</a>
+<a name="246"><span class="lineNum">     246 </span>            : </a>
+<a name="247"><span class="lineNum">     247 </span>            : /*!</a>
+<a name="248"><span class="lineNum">     248 </span>            :  * \fn virtual bool AbstractCommand::start()</a>
+<a name="249"><span class="lineNum">     249 </span>            :  *</a>
+<a name="250"><span class="lineNum">     250 </span>            :  * Begins the functionality of this command, and returns `true` if begun successfully, `false`</a>
+<a name="251"><span class="lineNum">     251 </span>            :  * otherwise.</a>
+<a name="252"><span class="lineNum">     252 </span>            :  */</a>
+<a name="253"><span class="lineNum">     253 </span>            : </a>
+<a name="254"><span class="lineNum">     254 </span>            : /*!</a>
+<a name="255"><span class="lineNum">     255 </span>            :  * \fn virtual void AbstractCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info) = 0</a>
+<a name="256"><span class="lineNum">     256 </span>            :  *</a>
+<a name="257"><span class="lineNum">     257 </span>            :  * Handles PokitDiscoveryAgent::pokitDeviceDiscovered signal. Derived classes must</a>
+<a name="258"><span class="lineNum">     258 </span>            :  * implement this slot to begin whatever actions are relevant when a Pokit device has been</a>
+<a name="259"><span class="lineNum">     259 </span>            :  * discovered. For example, the 'scan' command would simply output the \a info details, whereas</a>
+<a name="260"><span class="lineNum">     260 </span>            :  * most other commands would begin connecting if \a info is the device they're after.</a>
+<a name="261"><span class="lineNum">     261 </span>            :  */</a>
+<a name="262"><span class="lineNum">     262 </span>            : </a>
+<a name="263"><span class="lineNum">     263 </span>            : /*!</a>
+<a name="264"><span class="lineNum">     264 </span>            :  * \fn virtual void AbstractCommand::deviceDiscoveryFinished() = 0</a>
+<a name="265"><span class="lineNum">     265 </span>            :  *</a>
+<a name="266"><span class="lineNum">     266 </span>            :  * Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must</a>
+<a name="267"><span class="lineNum">     267 </span>            :  * implement this slot to perform whatever actions are appropraite when discovery is finished.</a>
+<a name="268"><span class="lineNum">     268 </span>            :  * For example, the 'scan' command would simply exit, whereas most other commands would verify that</a>
+<a name="269"><span class="lineNum">     269 </span>            :  * an appropriate device was found.</a>
+<a name="270"><span class="lineNum">     270 </span>            :  */</a>
 </pre>
       </td>
     </tr>

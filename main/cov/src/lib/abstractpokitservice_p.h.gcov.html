@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-03 04:03:12</td>
+            <td class="headerValue">2022-05-06 14:23:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -118,30 +118,35 @@
 <a name="56"><span class="lineNum">      56 </span>            :     QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &amp;uuid) const;</a>
 <a name="57"><span class="lineNum">      57 </span>            :     bool readCharacteristic(const QBluetoothUuid &amp;uuid);</a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
-<a name="59"><span class="lineNum">      59 </span>            : protected:</a>
-<a name="60"><span class="lineNum">      60 </span>            :     AbstractPokitService * q_ptr; ///&lt; Internal q-pointer.</a>
+<a name="59"><span class="lineNum">      59 </span>            :     bool enableCharacteristicNotificatons(const QBluetoothUuid &amp;uuid);</a>
+<a name="60"><span class="lineNum">      60 </span>            :     bool disableCharacteristicNotificatons(const QBluetoothUuid &amp;uuid);</a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
-<a name="62"><span class="lineNum">      62 </span>            : protected slots:</a>
-<a name="63"><span class="lineNum">      63 </span>            :     void connected();</a>
-<a name="64"><span class="lineNum">      64 </span>            :     void discoveryFinished();</a>
-<a name="65"><span class="lineNum">      65 </span>            :     void errorOccurred(const QLowEnergyService::ServiceError newError);</a>
-<a name="66"><span class="lineNum">      66 </span>            :     void serviceDiscovered(const QBluetoothUuid &amp;newService);</a>
-<a name="67"><span class="lineNum">      67 </span>            :     void stateChanged(QLowEnergyService::ServiceState newState);</a>
-<a name="68"><span class="lineNum">      68 </span>            : </a>
-<a name="69"><span class="lineNum">      69 </span>            :     virtual void characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</a>
-<a name="70"><span class="lineNum">      70 </span>            :                                     const QByteArray &amp;value) = 0;</a>
-<a name="71"><span class="lineNum">      71 </span>            :     virtual void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</a>
-<a name="72"><span class="lineNum">      72 </span>            :                                        const QByteArray &amp;newValue) = 0;</a>
-<a name="73"><span class="lineNum">      73 </span>            : </a>
-<a name="74"><span class="lineNum">      74 </span>            : private:</a>
-<a name="75"><span class="lineNum">      75 </span>            :     Q_DECLARE_PUBLIC(AbstractPokitService)</a>
-<a name="76"><span class="lineNum">      76 </span>            :     Q_DISABLE_COPY(AbstractPokitServicePrivate)</a>
-<a name="77"><span class="lineNum">      77 </span>            :     friend class TestAbstractPokitService;</a>
-<a name="78"><span class="lineNum">      78 </span>            : };</a>
-<a name="79"><span class="lineNum">      79 </span>            : </a>
-<a name="80"><span class="lineNum">      80 </span>            : QTPOKIT_END_NAMESPACE</a>
-<a name="81"><span class="lineNum">      81 </span>            : </a>
-<a name="82"><span class="lineNum">      82 </span>            : #endif // QTPOKIT_ABSTRACTPOKITSERVICE_P_H</a>
+<a name="62"><span class="lineNum">      62 </span>            : protected:</a>
+<a name="63"><span class="lineNum">      63 </span>            :     AbstractPokitService * q_ptr; ///&lt; Internal q-pointer.</a>
+<a name="64"><span class="lineNum">      64 </span>            : </a>
+<a name="65"><span class="lineNum">      65 </span>            : protected slots:</a>
+<a name="66"><span class="lineNum">      66 </span>            :     void connected();</a>
+<a name="67"><span class="lineNum">      67 </span>            :     void discoveryFinished();</a>
+<a name="68"><span class="lineNum">      68 </span>            :     void errorOccurred(const QLowEnergyService::ServiceError newError);</a>
+<a name="69"><span class="lineNum">      69 </span>            :     void serviceDiscovered(const QBluetoothUuid &amp;newService);</a>
+<a name="70"><span class="lineNum">      70 </span>            :     void stateChanged(QLowEnergyService::ServiceState newState);</a>
+<a name="71"><span class="lineNum">      71 </span>            : </a>
+<a name="72"><span class="lineNum">      72 </span>            :     virtual void characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</a>
+<a name="73"><span class="lineNum">      73 </span>            :                                     const QByteArray &amp;value) = 0;</a>
+<a name="74"><span class="lineNum">      74 </span>            :     virtual void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</a>
+<a name="75"><span class="lineNum">      75 </span>            :                                        const QByteArray &amp;newValue) = 0;</a>
+<a name="76"><span class="lineNum">      76 </span>            :     virtual void characteristicChanged(const QLowEnergyCharacteristic &amp;characteristic,</a>
+<a name="77"><span class="lineNum">      77 </span>            :                                        const QByteArray &amp;newValue);</a>
+<a name="78"><span class="lineNum">      78 </span>            : </a>
+<a name="79"><span class="lineNum">      79 </span>            : private:</a>
+<a name="80"><span class="lineNum">      80 </span>            :     Q_DECLARE_PUBLIC(AbstractPokitService)</a>
+<a name="81"><span class="lineNum">      81 </span>            :     Q_DISABLE_COPY(AbstractPokitServicePrivate)</a>
+<a name="82"><span class="lineNum">      82 </span>            :     friend class TestAbstractPokitService;</a>
+<a name="83"><span class="lineNum">      83 </span>            : };</a>
+<a name="84"><span class="lineNum">      84 </span>            : </a>
+<a name="85"><span class="lineNum">      85 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span>            : #endif // QTPOKIT_ABSTRACTPOKITSERVICE_P_H</a>
 </pre>
       </td>
     </tr>
