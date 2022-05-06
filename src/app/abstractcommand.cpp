@@ -22,6 +22,8 @@
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/pokitdiscoveryagent.h>
 
+#include <QLocale>
+
 /*!
  * \class AbstractCommand
  *
@@ -115,6 +117,51 @@ QString AbstractCommand::escapeCsvField(const QString &field)
     } else return field;
 }
 
+/*!
+ * Returns \a value as a number of milliseonds. The string \a value may contain optional suffixes
+ * such as "ms" for milliseconds, or "s" for seconds. If \a value contains no suffix, then the
+ * result will be multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This
+ * allows for convenient use like:
+ *
+ * ```
+ * const quin32t timeout = parseMilliseconds(parser.value("timeout"), 600);
+ * ```
+ *
+ * So that an ambiguous period like "300" will be assumed to be 300 seconds, and not 300
+ * milliseconds, while a period like "1000" will be assume to be 1 second.
+ *
+ * If conversion fails for any reason, 0 is returned.
+ */
+quint32 AbstractCommand::parseMilliseconds(const QString &value, const quint32 sensibleMinimum)
+{
+    QString number = value.trimmed();
+
+    quint32 scale = 0;
+    if (number.endsWith(QLatin1String("ms"))) {
+        number.chop(2);
+        scale = 1;
+    } else if (number.endsWith(QLatin1String("s"))) {
+        number.chop(1);
+        scale = 1000;
+    }
+
+    QLocale locale; bool ok;
+    if (const quint32 integer = locale.toUInt(number, &ok); ok) {
+        if ((scale == 0) && (integer != 0)) {
+            for (scale = 1; (integer * scale) < sensibleMinimum; scale *= 1000);
+        }
+        return integer * scale;
+    }
+
+    if (const double dbl = locale.toDouble(number, &ok); ok) {
+        if ((scale == 0) && (dbl > 0.0)) {
+            for (scale = 1; (dbl * scale) < sensibleMinimum; scale *= 1000);
+        }
+        return dbl * scale;
+    }
+
+    return 0;
+}
 
 /*!
  * Processes the relevant options from the command line \a parser.
@@ -152,7 +199,7 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
     QStringList errors;
 
-    // Parse the device (name/addr) option.
+    // Parse the device (name/addr/uuid) option.
     if (parser.isSet(QLatin1String("device"))) {
         deviceToScanFor = parser.value(QLatin1String("device"));
     }
@@ -175,11 +222,14 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 
     // Parse the device scan timeout option.
     if (parser.isSet(QLatin1String("timeout"))) {
-        /// \todo Validate the value format.
-        discoveryAgent->setLowEnergyDiscoveryTimeout(
-            parser.value(QStringLiteral("timeout")).toInt()*1000);
-        qCDebug(lc).noquote() << tr("Set scan timeout to %1").arg(
-            discoveryAgent->lowEnergyDiscoveryTimeout());
+        const quint32 timeout = parseMilliseconds(parser.value(QLatin1String("timeout")), 500);
+        if (timeout == 0) {
+            errors.append(tr("Invalid timeout: %1").arg(parser.value(QLatin1String("timeout"))));
+        } else {
+            discoveryAgent->setLowEnergyDiscoveryTimeout(timeout);
+            qCDebug(lc).noquote() << tr("Set scan timeout to %1").arg(
+                discoveryAgent->lowEnergyDiscoveryTimeout());
+        }
     }
 
     // Return errors for any required options that are absent.

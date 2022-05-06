@@ -22,7 +22,6 @@
 #include <qtpokit/abstractpokitservice.h>
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/pokitdiscoveryagent.h>
-#include <QRegularExpression>
 
 /*!
  * \class DeviceCommand
@@ -36,21 +35,6 @@
 DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), device(nullptr)
 {
 
-}
-
-/*!
- * \copybrief AbstractCommand::processOptions
- *
- * This implementation extends AbstractCommand::processOptions to process device related CLI
- * opitons (epsecially `--device`).
- */
-QStringList DeviceCommand::processOptions(const QCommandLineParser &parser)
-{
-    QStringList errors = AbstractCommand::processOptions(parser);
-    if (!errors.isEmpty()) {
-        return errors;
-    }
-    return errors;
 }
 
 /*!

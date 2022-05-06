@@ -40,6 +40,8 @@ protected slots:
 
 private:
     MultimeterService * service; ///< Bluetooth service this command interracts with.
+    MultimeterService::Settings settings; ///< Setting for the Pokit device's multimeter mode.
+    int numberOfSamplesToRead; ///< Number of samples to read, if specified on the CLI.
 
 private slots:
     void settingsWritten();

@@ -42,6 +42,7 @@ public:
     virtual QStringList supportedOptions() const;
 
     static QString escapeCsvField(const QString &field);
+    static quint32 parseMilliseconds(const QString &value, const quint32 sensibleMiniumum=0);
 
 public slots:
     virtual QStringList processOptions(const QCommandLineParser &parser);
