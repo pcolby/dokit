@@ -1,11 +1,14 @@
 var classAbstractPokitServicePrivate =
 [
     [ "AbstractPokitServicePrivate", "classAbstractPokitServicePrivate.html#a73d4b6cd1a53f997f78d1c266a1c1871", null ],
+    [ "characteristicChanged", "classAbstractPokitServicePrivate.html#a642431b7bfb76baa5d976ae24e90d9ef", null ],
     [ "characteristicRead", "classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26", null ],
     [ "characteristicWritten", "classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8", null ],
     [ "connected", "classAbstractPokitServicePrivate.html#a9eec6d6dfe45c70c2907564940966200", null ],
     [ "createServiceObject", "classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9", null ],
+    [ "disableCharacteristicNotificatons", "classAbstractPokitServicePrivate.html#a2922b59e5fc76b0e90ebef2a88adac9d", null ],
     [ "discoveryFinished", "classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab", null ],
+    [ "enableCharacteristicNotificatons", "classAbstractPokitServicePrivate.html#a7a024ab2e783e62b78568f4834eb6159", null ],
     [ "errorOccurred", "classAbstractPokitServicePrivate.html#ab086f2e2e5058bc7978a67e86d579325", null ],
     [ "getCharacteristic", "classAbstractPokitServicePrivate.html#aaac3ef8e3590334acdddb2b029865eb0", null ],
     [ "Q_LOGGING_CATEGORY", "classAbstractPokitServicePrivate.html#a32f402260c965002c68f7b9191d38af6", null ],

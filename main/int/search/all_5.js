@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['firmwarerevision_0',['firmwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a',1,'DeviceInfoService::CharacteristicUuids::firmwareRevision()'],['../classDeviceInfoService.html#ac896b483c3b54e46658fd04ab4bb864b',1,'DeviceInfoService::firmwareRevision() const']]],
-  ['firmwarerevisionread_1',['firmwareRevisionRead',['../classDeviceInfoService.html#a63009618a0d14a24ef38e256097b00b6',1,'DeviceInfoService']]],
-  ['firmwareversion_2',['firmwareVersion',['../structStatusService_1_1DeviceCharacteristics.html#afdc814d092204ef6f0628253298ae319',1,'StatusService::DeviceCharacteristics']]],
-  ['flashled_3',['flashLed',['../structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0',1,'StatusService::CharacteristicUuids::flashLed()'],['../classStatusService.html#a425bf65d42b24c4a621b312fcd152708',1,'StatusService::flashLed()']]],
-  ['flashledcommand_4',['FlashLedCommand',['../classFlashLedCommand.html',1,'FlashLedCommand'],['../classFlashLedCommand.html#a55478295af8af24ded21df59d16f80c0',1,'FlashLedCommand::FlashLedCommand()']]],
-  ['format_5',['format',['../classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b',1,'AbstractCommand']]]
+  ['enablecharacteristicnotificatons_0',['enableCharacteristicNotificatons',['../classAbstractPokitServicePrivate.html#a7a024ab2e783e62b78568f4834eb6159',1,'AbstractPokitServicePrivate']]],
+  ['error_1',['Error',['../classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcfa902b0d55fddef6f8d651fe1035b7d4bd',1,'MultimeterService']]],
+  ['error_2',['error',['../classPokitDiscoveryAgentPrivate.html#a3d74edc56b783596b6b7b8302292072a',1,'PokitDiscoveryAgentPrivate']]],
+  ['erroroccurred_3',['errorOccurred',['../classAbstractPokitServicePrivate.html#ab086f2e2e5058bc7978a67e86d579325',1,'AbstractPokitServicePrivate::errorOccurred()'],['../classPokitDevicePrivate.html#abf8fb18024ecbe135fca8e2c5d623948',1,'PokitDevicePrivate::errorOccurred()']]],
+  ['escapecsvfield_4',['escapeCsvField',['../classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813',1,'AbstractCommand']]]
 ];

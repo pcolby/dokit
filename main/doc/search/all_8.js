@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['loggermodesampling_0',['LoggerModeSampling',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca',1,'StatusService']]],
-  ['low_1',['Low',['../classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68a28d0edd045e05cf5af64e35ae0c4c6ef',1,'StatusService']]]
+  ['hardwarerevision_0',['hardwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b',1,'DeviceInfoService::CharacteristicUuids::hardwareRevision()'],['../classDeviceInfoService.html#a4d79805ce884ec8d5ac7879ccd499932',1,'DeviceInfoService::hardwareRevision() const']]],
+  ['hardwarerevisionread_1',['hardwareRevisionRead',['../classDeviceInfoService.html#a1cd9484b0f1fe5207c80140d379f88f3',1,'DeviceInfoService']]]
 ];

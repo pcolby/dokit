@@ -16,7 +16,8 @@ var searchData=
   ['devicestatuslabel_13',['deviceStatusLabel',['../classStatusService.html#adddc5b563c16a8ad199f6a07966d372c',1,'StatusService']]],
   ['devicestatusread_14',['deviceStatusRead',['../classStatusService.html#a46ba2b897e99d428e1474988f6f99555',1,'StatusService']]],
   ['deviceupdated_15',['deviceUpdated',['../classScanCommand.html#a2cb218644893d84036ec16cd46f1d488',1,'ScanCommand::deviceUpdated()'],['../classPokitDiscoveryAgentPrivate.html#afc40fda129c4f54986bf8c31fd803fb6',1,'PokitDiscoveryAgentPrivate::deviceUpdated()']]],
-  ['disconnected_16',['disconnected',['../classPokitDevicePrivate.html#a8ad58f8a531f9cfa7642c0c242737040',1,'PokitDevicePrivate']]],
-  ['discoveryfinished_17',['discoveryFinished',['../classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab',1,'AbstractPokitServicePrivate::discoveryFinished()'],['../classPokitDevicePrivate.html#a2b525c4da45d7fae7cb31631d075acb5',1,'PokitDevicePrivate::discoveryFinished()']]],
-  ['dso_18',['dso',['../classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117',1,'PokitDevice']]]
+  ['disablecharacteristicnotificatons_16',['disableCharacteristicNotificatons',['../classAbstractPokitServicePrivate.html#a2922b59e5fc76b0e90ebef2a88adac9d',1,'AbstractPokitServicePrivate']]],
+  ['disconnected_17',['disconnected',['../classPokitDevicePrivate.html#a8ad58f8a531f9cfa7642c0c242737040',1,'PokitDevicePrivate']]],
+  ['discoveryfinished_18',['discoveryFinished',['../classAbstractPokitServicePrivate.html#a2cc16a897908f50e0f3cfc6b876b50ab',1,'AbstractPokitServicePrivate::discoveryFinished()'],['../classPokitDevicePrivate.html#a2b525c4da45d7fae7cb31631d075acb5',1,'PokitDevicePrivate::discoveryFinished()']]],
+  ['dso_19',['dso',['../classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117',1,'PokitDevice']]]
 ];

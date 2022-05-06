@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('classAbstractCommand.html',''); initRe
 <div class="dynheader">
 Inheritance diagram for AbstractCommand:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand__inherit__graph.svg" width="808" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand__inherit__graph.svg" width="668" height="291"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -150,6 +150,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af85c842568f8a3a893e336e449ef7813"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a> (const QString &amp;field)</td></tr>
 <tr class="memdesc:af85c842568f8a3a893e336e449ef7813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an RFC 4180 compliant version of <em>field</em>.  <a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">More...</a><br /></td></tr>
 <tr class="separator:af85c842568f8a3a893e336e449ef7813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1065f4e3e5e3e5f19ff0cd51386e75ad"><td class="memItemLeft" align="right" valign="top">static quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCommand.html#a1065f4e3e5e3e5f19ff0cd51386e75ad">parseMilliseconds</a> (const QString &amp;value, const quint32 sensibleMiniumum=0)</td></tr>
+<tr class="memdesc:a1065f4e3e5e3e5f19ff0cd51386e75ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>value</em> as a number of milliseonds.  <a href="classAbstractCommand.html#a1065f4e3e5e3e5f19ff0cd51386e75ad">More...</a><br /></td></tr>
+<tr class="separator:a1065f4e3e5e3e5f19ff0cd51386e75ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -216,17 +219,15 @@ Friends</h2></td></tr>
 <tr><td class="fieldname"><a id="aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333" name="aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333"></a>Json&#160;</td><td class="fielddoc"><p >RFC 8259 compliant JSON text. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675" name="aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675"></a>Text&#160;</td><td class="fielddoc"><p >Plain unstructured text. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Add JsonCompact? </dd></dl>
 </td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00033">33</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   33</span>                            {</div>
 <div class="line"><span class="lineno">   34</span>        Csv,  <span class="comment">///&lt; RFC 4180 compliant CSV text.</span></div>
-<div class="line"><span class="lineno">   35</span>        Json, <span class="comment">///&lt; RFC 8259 compliant JSON text.</span><span class="comment"></span></div>
-<div class="line"><span class="lineno">   36</span><span class="comment">        /// \todo Add JsonCompact?</span></div>
-<div class="line"><span class="lineno">   37</span><span class="comment"></span>        Text, <span class="comment">///&lt; Plain unstructured text.</span></div>
-<div class="line"><span class="lineno">   38</span>    };</div>
+<div class="line"><span class="lineno">   35</span>        Json, <span class="comment">///&lt; RFC 8259 compliant JSON text.</span></div>
+<div class="line"><span class="lineno">   36</span>        Text, <span class="comment">///&lt; Plain unstructured text.</span></div>
+<div class="line"><span class="lineno">   37</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -257,25 +258,25 @@ Friends</h2></td></tr>
 
 <p>Constructs a new command with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00037">37</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>                                                       : QObject(parent),</div>
-<div class="line"><span class="lineno">   38</span>    <a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDiscoveryAgent.html">PokitDiscoveryAgent</a>(<span class="keyword">this</span>)), <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>(<a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>)</div>
-<div class="line"><span class="lineno">   39</span>{</div>
-<div class="line"><span class="lineno">   40</span>    connect(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>, &amp;<a class="code hl_signal" href="classPokitDiscoveryAgent.html#af38e511ae250a745cc900c0c4f356972">PokitDiscoveryAgent::pokitDeviceDiscovered</a>,</div>
-<div class="line"><span class="lineno">   41</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAbstractCommand.html#aa8dd50eb6a381ed767c34d8fdfd2a795">AbstractCommand::deviceDiscovered</a>);</div>
-<div class="line"><span class="lineno">   42</span>    connect(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>, &amp;PokitDiscoveryAgent::finished,</div>
-<div class="line"><span class="lineno">   43</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAbstractCommand.html#ac71606b99b43c3f74dbc64433ee22512">AbstractCommand::deviceDiscoveryFinished</a>);</div>
-<div class="line"><span class="lineno">   44</span>    connect(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>,</div>
-<div class="line"><span class="lineno">   45</span>        #<span class="keywordflow">if</span> (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</div>
-<div class="line"><span class="lineno">   46</span>        QOverload&lt;PokitDiscoveryAgent::Error&gt;::of(&amp;PokitDiscoveryAgent::error),</div>
-<div class="line"><span class="lineno">   47</span>        #<span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   48</span>        &amp;PokitDiscoveryAgent::errorOccurred,</div>
-<div class="line"><span class="lineno">   49</span>        #endif</div>
-<div class="line"><span class="lineno">   50</span>    [](<span class="keyword">const</span> PokitDiscoveryAgent::Error &amp;error) {</div>
-<div class="line"><span class="lineno">   51</span>        qCWarning(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Bluetooth controller error:&quot;</span>) &lt;&lt; error;</div>
-<div class="line"><span class="lineno">   52</span>        QCoreApplication::exit(EXIT_FAILURE);</div>
-<div class="line"><span class="lineno">   53</span>    });</div>
-<div class="line"><span class="lineno">   54</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00039">39</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                                                       : QObject(parent),</div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDiscoveryAgent.html">PokitDiscoveryAgent</a>(<span class="keyword">this</span>)), <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>(<a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>)</div>
+<div class="line"><span class="lineno">   41</span>{</div>
+<div class="line"><span class="lineno">   42</span>    connect(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>, &amp;<a class="code hl_signal" href="classPokitDiscoveryAgent.html#af38e511ae250a745cc900c0c4f356972">PokitDiscoveryAgent::pokitDeviceDiscovered</a>,</div>
+<div class="line"><span class="lineno">   43</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAbstractCommand.html#aa8dd50eb6a381ed767c34d8fdfd2a795">AbstractCommand::deviceDiscovered</a>);</div>
+<div class="line"><span class="lineno">   44</span>    connect(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>, &amp;PokitDiscoveryAgent::finished,</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAbstractCommand.html#ac71606b99b43c3f74dbc64433ee22512">AbstractCommand::deviceDiscoveryFinished</a>);</div>
+<div class="line"><span class="lineno">   46</span>    connect(<a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>,</div>
+<div class="line"><span class="lineno">   47</span>        #<span class="keywordflow">if</span> (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</div>
+<div class="line"><span class="lineno">   48</span>        QOverload&lt;PokitDiscoveryAgent::Error&gt;::of(&amp;PokitDiscoveryAgent::error),</div>
+<div class="line"><span class="lineno">   49</span>        #<span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   50</span>        &amp;PokitDiscoveryAgent::errorOccurred,</div>
+<div class="line"><span class="lineno">   51</span>        #endif</div>
+<div class="line"><span class="lineno">   52</span>    [](<span class="keyword">const</span> PokitDiscoveryAgent::Error &amp;error) {</div>
+<div class="line"><span class="lineno">   53</span>        qCWarning(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Bluetooth controller error:&quot;</span>) &lt;&lt; error;</div>
+<div class="line"><span class="lineno">   54</span>        QCoreApplication::exit(EXIT_FAILURE);</div>
+<div class="line"><span class="lineno">   55</span>    });</div>
+<div class="line"><span class="lineno">   56</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html_a86878df43cd818f4a7f333a97dabac3c"><div class="ttname"><a href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">AbstractCommand::discoveryAgent</a></div><div class="ttdeci">PokitDiscoveryAgent * discoveryAgent</div><div class="ttdoc">Agent for Pokit device descovery.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00052">abstractcommand.h:52</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_a881d85cd96b6fcc0652b916c366dda7b"><div class="ttname"><a href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">AbstractCommand::format</a></div><div class="ttdeci">OutputFormat format</div><div class="ttdoc">Selected output format.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00053">abstractcommand.h:53</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::OutputFormat::Text</a></div><div class="ttdeci">@ Text</div><div class="ttdoc">Plain unstructured text.</div></div>
@@ -322,7 +323,7 @@ Here is the call graph for this function:</div>
 <p>Handles <a class="el" href="classPokitDiscoveryAgent.html#af38e511ae250a745cc900c0c4f356972" title="This signal is emitted when the Pokit device described by info is discovered.">PokitDiscoveryAgent::pokitDeviceDiscovered</a> signal. </p>
 <p >Derived classes must implement this slot to begin whatever actions are relevant when a Pokit device has been discovered. For example, the 'scan' command would simply output the <em>info</em> details, whereas most other commands would begin connecting if <em>info</em> is the device they're after. </p>
 
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00037">AbstractCommand()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00039">AbstractCommand()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -358,7 +359,7 @@ Here is the caller graph for this function:</div>
 <p>Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. </p>
 <p >Derived classes must implement this slot to perform whatever actions are appropraite when discovery is finished. For example, the 'scan' command would simply exit, whereas most other commands would verify that an appropriate device was found. </p>
 
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00037">AbstractCommand()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00039">AbstractCommand()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -397,23 +398,107 @@ Here is the caller graph for this function:</div>
 <p >Some examples: </p><div class="fragment"><div class="line">QCOMPARE(<a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(<span class="stringliteral">&quot;abc&quot;</span>), <span class="stringliteral">&quot;abc&quot;</span>);       <span class="comment">// Returned unchanged.</span></div>
 <div class="line">QCOMPARE(<a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(<span class="stringliteral">&quot;a,c&quot;</span>), <span class="stringliteral">&quot;\&quot;a,c\&quot;&quot;</span>);   <span class="comment">// Wrapped in double-quotes.</span></div>
 <div class="line">QCOMPARE(<a class="code hl_function" href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">escapeCsvField</a>(<span class="stringliteral">&quot;a\&quot;c&quot;</span>), <span class="stringliteral">&quot;\&quot;a&quot;</span><span class="stringliteral">&quot;c\&quot;&quot;</span>); <span class="comment">// Existing double-quotes doubles, then wrapped.</span></div>
-<div class="ttc" id="aclassAbstractCommand_html_af85c842568f8a3a893e336e449ef7813"><div class="ttname"><a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">AbstractCommand::escapeCsvField</a></div><div class="ttdeci">static QString escapeCsvField(const QString &amp;field)</div><div class="ttdoc">Returns an RFC 4180 compliant version of field.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00108">abstractcommand.cpp:108</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_af85c842568f8a3a893e336e449ef7813"><div class="ttname"><a href="classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813">AbstractCommand::escapeCsvField</a></div><div class="ttdeci">static QString escapeCsvField(const QString &amp;field)</div><div class="ttdoc">Returns an RFC 4180 compliant version of field.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00110">abstractcommand.cpp:110</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00108">108</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">if</span> (field.contains(QLatin1Char(<span class="charliteral">&#39;,&#39;</span>))||field.contains(QLatin1Char(<span class="charliteral">&#39;\r&#39;</span>))||</div>
-<div class="line"><span class="lineno">  111</span>        field.contains(QLatin1Char(<span class="charliteral">&#39;&quot;&#39;</span>))||field.contains(QLatin1Char(<span class="charliteral">&#39;\n&#39;</span>)))</div>
-<div class="line"><span class="lineno">  112</span>    {</div>
-<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">return</span> QString::fromLatin1(<span class="stringliteral">&quot;\&quot;%1\&quot;&quot;</span>).arg(</div>
-<div class="line"><span class="lineno">  114</span>            QString(field).replace(QLatin1Char(<span class="charliteral">&#39;&quot;&#39;</span>), QLatin1String(<span class="stringliteral">&quot;\&quot;\&quot;&quot;</span>)));</div>
-<div class="line"><span class="lineno">  115</span>    } <span class="keywordflow">else</span> <span class="keywordflow">return</span> field;</div>
-<div class="line"><span class="lineno">  116</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00110">110</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (field.contains(QLatin1Char(<span class="charliteral">&#39;,&#39;</span>))||field.contains(QLatin1Char(<span class="charliteral">&#39;\r&#39;</span>))||</div>
+<div class="line"><span class="lineno">  113</span>        field.contains(QLatin1Char(<span class="charliteral">&#39;&quot;&#39;</span>))||field.contains(QLatin1Char(<span class="charliteral">&#39;\n&#39;</span>)))</div>
+<div class="line"><span class="lineno">  114</span>    {</div>
+<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">return</span> QString::fromLatin1(<span class="stringliteral">&quot;\&quot;%1\&quot;&quot;</span>).arg(</div>
+<div class="line"><span class="lineno">  116</span>            QString(field).replace(QLatin1Char(<span class="charliteral">&#39;&quot;&#39;</span>), QLatin1String(<span class="stringliteral">&quot;\&quot;\&quot;&quot;</span>)));</div>
+<div class="line"><span class="lineno">  117</span>    } <span class="keywordflow">else</span> <span class="keywordflow">return</span> field;</div>
+<div class="line"><span class="lineno">  118</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00083">ScanCommand::deviceDiscovered()</a>, <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scancommand_8cpp_source.html#l00083">ScanCommand::deviceDiscovered()</a>, <a class="el" href="multimetercommand_8cpp_source.html#l00189">MultimeterCommand::outputReading()</a>, <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_af85c842568f8a3a893e336e449ef7813_icgraph.svg" width="1074" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_af85c842568f8a3a893e336e449ef7813_icgraph.svg" width="1074" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a1065f4e3e5e3e5f19ff0cd51386e75ad" name="a1065f4e3e5e3e5f19ff0cd51386e75ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1065f4e3e5e3e5f19ff0cd51386e75ad">&#9670;&nbsp;</a></span>parseMilliseconds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">quint32 AbstractCommand::parseMilliseconds </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const quint32&#160;</td>
+          <td class="paramname"><em>sensibleMinimum</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <em>value</em> as a number of milliseonds. </p>
+<p >The string <em>value</em> may contain optional suffixes such as "ms" for milliseconds, or "s" for seconds. If <em>value</em> contains no suffix, then the result will be multiplied by 1,000 enough times to be greater than <em>sensibleMinimum</em>. This allows for convenient use like:</p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> quin32t timeout = <a class="code hl_function" href="classAbstractCommand.html#a1065f4e3e5e3e5f19ff0cd51386e75ad">parseMilliseconds</a>(parser.value(<span class="stringliteral">&quot;timeout&quot;</span>), 600);</div>
+<div class="ttc" id="aclassAbstractCommand_html_a1065f4e3e5e3e5f19ff0cd51386e75ad"><div class="ttname"><a href="classAbstractCommand.html#a1065f4e3e5e3e5f19ff0cd51386e75ad">AbstractCommand::parseMilliseconds</a></div><div class="ttdeci">static quint32 parseMilliseconds(const QString &amp;value, const quint32 sensibleMiniumum=0)</div><div class="ttdoc">Returns value as a number of milliseonds.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00135">abstractcommand.cpp:135</a></div></div>
+</div><!-- fragment --><p >So that an ambiguous period like "300" will be assumed to be 300 seconds, and not 300 milliseconds, while a period like "1000" will be assume to be 1 second.</p>
+<p >If conversion fails for any reason, 0 is returned. </p>
+
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00135">135</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
+<div class="line"><span class="lineno">  137</span>    QString number = value.trimmed();</div>
+<div class="line"><span class="lineno">  138</span> </div>
+<div class="line"><span class="lineno">  139</span>    quint32 scale = 0;</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">if</span> (number.endsWith(QLatin1String(<span class="stringliteral">&quot;ms&quot;</span>))) {</div>
+<div class="line"><span class="lineno">  141</span>        number.chop(2);</div>
+<div class="line"><span class="lineno">  142</span>        scale = 1;</div>
+<div class="line"><span class="lineno">  143</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (number.endsWith(QLatin1String(<span class="stringliteral">&quot;s&quot;</span>))) {</div>
+<div class="line"><span class="lineno">  144</span>        number.chop(1);</div>
+<div class="line"><span class="lineno">  145</span>        scale = 1000;</div>
+<div class="line"><span class="lineno">  146</span>    }</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span>    QLocale locale; <span class="keywordtype">bool</span> ok;</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keyword">const</span> quint32 integer = locale.toUInt(number, &amp;ok);</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">if</span> (ok) {</div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">if</span> ((scale == 0) &amp;&amp; (integer != 0)) {</div>
+<div class="line"><span class="lineno">  152</span>            <span class="keywordflow">for</span> (scale = 1; (integer * scale) &lt; sensibleMinimum; scale *= 1000);</div>
+<div class="line"><span class="lineno">  153</span>        }</div>
+<div class="line"><span class="lineno">  154</span>        <span class="keywordflow">return</span> integer * scale;</div>
+<div class="line"><span class="lineno">  155</span>    }</div>
+<div class="line"><span class="lineno">  156</span> </div>
+<div class="line"><span class="lineno">  157</span>    <span class="keyword">const</span> <span class="keywordtype">double</span> dbl = locale.toDouble(number, &amp;ok);</div>
+<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">if</span> (ok) {</div>
+<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">if</span> ((scale == 0) &amp;&amp; (dbl &gt; 0.0)) {</div>
+<div class="line"><span class="lineno">  160</span>            <span class="keywordflow">for</span> (scale = 1; (dbl * scale) &lt; sensibleMinimum; scale *= 1000);</div>
+<div class="line"><span class="lineno">  161</span>        }</div>
+<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">return</span> dbl * scale;</div>
+<div class="line"><span class="lineno">  163</span>    }</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  166</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00192">processOptions()</a>, and <a class="el" href="multimetercommand_8cpp_source.html#l00068">MultimeterCommand::processOptions()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_a1065f4e3e5e3e5f19ff0cd51386e75ad_icgraph.svg" width="834" height="387"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -457,79 +542,81 @@ Here is the caller graph for this function:</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> errors;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00143">abstractcommand.cpp:143</a></div></div>
-</div><!-- fragment --> <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Validate the value format. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00143">143</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>{</div>
-<div class="line"><span class="lineno">  145</span>    <span class="comment">// Report any supplied options that are not supported by this command.</span></div>
-<div class="line"><span class="lineno">  146</span>    <span class="keyword">const</span> QStringList suppliedOptions = parser.optionNames();</div>
-<div class="line"><span class="lineno">  147</span>    <span class="keyword">const</span> QStringList <a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a> = this-&gt;<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>();</div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QString &amp;option: suppliedOptions) {</div>
-<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>.contains(option)) {</div>
-<div class="line"><span class="lineno">  150</span>            qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Ignoring option: %1&quot;</span>).arg(option);</div>
-<div class="line"><span class="lineno">  151</span>        }</div>
-<div class="line"><span class="lineno">  152</span>    }</div>
-<div class="line"><span class="lineno">  153</span>    QStringList errors;</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>    <span class="comment">// Parse the device (name/addr) option.</span></div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">if</span> (parser.isSet(QLatin1String(<span class="stringliteral">&quot;device&quot;</span>))) {</div>
-<div class="line"><span class="lineno">  157</span>        <a class="code hl_variable" href="classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208">deviceToScanFor</a> = parser.value(QLatin1String(<span class="stringliteral">&quot;device&quot;</span>));</div>
-<div class="line"><span class="lineno">  158</span>    }</div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>    <span class="comment">// Parse the output format options (if supported, and supplied).</span></div>
-<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">if</span> ((<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>.contains(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>))) &amp;&amp; <span class="comment">// Derived classes may have removed.</span></div>
-<div class="line"><span class="lineno">  162</span>        (parser.isSet(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>))))</div>
-<div class="line"><span class="lineno">  163</span>    {</div>
-<div class="line"><span class="lineno">  164</span>        <span class="keyword">const</span> QString output = parser.value(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>)).toLower();</div>
-<div class="line"><span class="lineno">  165</span>        <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;csv&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  166</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>;</div>
-<div class="line"><span class="lineno">  167</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;json&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  168</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>;</div>
-<div class="line"><span class="lineno">  169</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;text&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  170</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>;</div>
-<div class="line"><span class="lineno">  171</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  172</span>            errors.append(tr(<span class="stringliteral">&quot;Unknown output format: %1&quot;</span>).arg(output));</div>
-<div class="line"><span class="lineno">  173</span>        }</div>
-<div class="line"><span class="lineno">  174</span>    }</div>
-<div class="line"><span class="lineno">  175</span> </div>
-<div class="line"><span class="lineno">  176</span>    <span class="comment">// Parse the device scan timeout option.</span></div>
-<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">if</span> (parser.isSet(QLatin1String(<span class="stringliteral">&quot;timeout&quot;</span>))) {<span class="comment"></span></div>
-<div class="line"><span class="lineno">  178</span><span class="comment">        /// \todo Validate the value format.</span></div>
-<div class="line"><span class="lineno">  179</span><span class="comment"></span>        <a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>-&gt;setLowEnergyDiscoveryTimeout(</div>
-<div class="line"><span class="lineno">  180</span>            parser.value(QStringLiteral(<span class="stringliteral">&quot;timeout&quot;</span>)).toInt()*1000);</div>
-<div class="line"><span class="lineno">  181</span>        qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Set scan timeout to %1&quot;</span>).arg(</div>
-<div class="line"><span class="lineno">  182</span>            <a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>-&gt;lowEnergyDiscoveryTimeout());</div>
-<div class="line"><span class="lineno">  183</span>    }</div>
-<div class="line"><span class="lineno">  184</span> </div>
-<div class="line"><span class="lineno">  185</span>    <span class="comment">// Return errors for any required options that are absent.</span></div>
-<div class="line"><span class="lineno">  186</span>    <span class="keyword">const</span> QStringList <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a> = this-&gt;<a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>();</div>
-<div class="line"><span class="lineno">  187</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QString &amp;option: <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>) {</div>
-<div class="line"><span class="lineno">  188</span>        <span class="keywordflow">if</span> (!parser.isSet(option)) {</div>
-<div class="line"><span class="lineno">  189</span>            errors.append(tr(<span class="stringliteral">&quot;Missing required option: %1&quot;</span>).arg(option));</div>
-<div class="line"><span class="lineno">  190</span>        }</div>
-<div class="line"><span class="lineno">  191</span>    }</div>
-<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">return</span> errors;</div>
-<div class="line"><span class="lineno">  193</span>}</div>
-<div class="ttc" id="aclassAbstractCommand_html_a002fc48054b9df13bbb2e0bdc488c6d3"><div class="ttname"><a href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a></div><div class="ttdeci">virtual QStringList supportedOptions() const</div><div class="ttdoc">Returns a list of CLI option names supported by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00086">abstractcommand.cpp:86</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00192">abstractcommand.cpp:192</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00192">192</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  193</span>{</div>
+<div class="line"><span class="lineno">  194</span>    <span class="comment">// Report any supplied options that are not supported by this command.</span></div>
+<div class="line"><span class="lineno">  195</span>    <span class="keyword">const</span> QStringList suppliedOptions = parser.optionNames();</div>
+<div class="line"><span class="lineno">  196</span>    <span class="keyword">const</span> QStringList <a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a> = this-&gt;<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>();</div>
+<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QString &amp;option: suppliedOptions) {</div>
+<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>.contains(option)) {</div>
+<div class="line"><span class="lineno">  199</span>            qCInfo(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Ignoring option: %1&quot;</span>).arg(option);</div>
+<div class="line"><span class="lineno">  200</span>        }</div>
+<div class="line"><span class="lineno">  201</span>    }</div>
+<div class="line"><span class="lineno">  202</span>    QStringList errors;</div>
+<div class="line"><span class="lineno">  203</span> </div>
+<div class="line"><span class="lineno">  204</span>    <span class="comment">// Parse the device (name/addr/uuid) option.</span></div>
+<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">if</span> (parser.isSet(QLatin1String(<span class="stringliteral">&quot;device&quot;</span>))) {</div>
+<div class="line"><span class="lineno">  206</span>        <a class="code hl_variable" href="classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208">deviceToScanFor</a> = parser.value(QLatin1String(<span class="stringliteral">&quot;device&quot;</span>));</div>
+<div class="line"><span class="lineno">  207</span>    }</div>
+<div class="line"><span class="lineno">  208</span> </div>
+<div class="line"><span class="lineno">  209</span>    <span class="comment">// Parse the output format options (if supported, and supplied).</span></div>
+<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">if</span> ((<a class="code hl_function" href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">supportedOptions</a>.contains(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>))) &amp;&amp; <span class="comment">// Derived classes may have removed.</span></div>
+<div class="line"><span class="lineno">  211</span>        (parser.isSet(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>))))</div>
+<div class="line"><span class="lineno">  212</span>    {</div>
+<div class="line"><span class="lineno">  213</span>        <span class="keyword">const</span> QString output = parser.value(QLatin1String(<span class="stringliteral">&quot;output&quot;</span>)).toLower();</div>
+<div class="line"><span class="lineno">  214</span>        <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;csv&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  215</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>;</div>
+<div class="line"><span class="lineno">  216</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;json&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  217</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>;</div>
+<div class="line"><span class="lineno">  218</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (output == QLatin1String(<span class="stringliteral">&quot;text&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  219</span>            <a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a> = <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>;</div>
+<div class="line"><span class="lineno">  220</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  221</span>            errors.append(tr(<span class="stringliteral">&quot;Unknown output format: %1&quot;</span>).arg(output));</div>
+<div class="line"><span class="lineno">  222</span>        }</div>
+<div class="line"><span class="lineno">  223</span>    }</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    <span class="comment">// Parse the device scan timeout option.</span></div>
+<div class="line"><span class="lineno">  226</span>    <span class="keywordflow">if</span> (parser.isSet(QLatin1String(<span class="stringliteral">&quot;timeout&quot;</span>))) {</div>
+<div class="line"><span class="lineno">  227</span>        <span class="keyword">const</span> quint32 timeout = <a class="code hl_function" href="classAbstractCommand.html#a1065f4e3e5e3e5f19ff0cd51386e75ad">parseMilliseconds</a>(parser.value(QLatin1String(<span class="stringliteral">&quot;timeout&quot;</span>)), 500);</div>
+<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">if</span> (timeout == 0) {</div>
+<div class="line"><span class="lineno">  229</span>            errors.append(tr(<span class="stringliteral">&quot;Invalid timeout: %1&quot;</span>).arg(parser.value(QLatin1String(<span class="stringliteral">&quot;timeout&quot;</span>))));</div>
+<div class="line"><span class="lineno">  230</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  231</span>            <a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>-&gt;setLowEnergyDiscoveryTimeout(timeout);</div>
+<div class="line"><span class="lineno">  232</span>            qCDebug(lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Set scan timeout to %1&quot;</span>).arg(</div>
+<div class="line"><span class="lineno">  233</span>                <a class="code hl_variable" href="classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a>-&gt;lowEnergyDiscoveryTimeout());</div>
+<div class="line"><span class="lineno">  234</span>        }</div>
+<div class="line"><span class="lineno">  235</span>    }</div>
+<div class="line"><span class="lineno">  236</span> </div>
+<div class="line"><span class="lineno">  237</span>    <span class="comment">// Return errors for any required options that are absent.</span></div>
+<div class="line"><span class="lineno">  238</span>    <span class="keyword">const</span> QStringList <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a> = this-&gt;<a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>();</div>
+<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> QString &amp;option: <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>) {</div>
+<div class="line"><span class="lineno">  240</span>        <span class="keywordflow">if</span> (!parser.isSet(option)) {</div>
+<div class="line"><span class="lineno">  241</span>            errors.append(tr(<span class="stringliteral">&quot;Missing required option: %1&quot;</span>).arg(option));</div>
+<div class="line"><span class="lineno">  242</span>        }</div>
+<div class="line"><span class="lineno">  243</span>    }</div>
+<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">return</span> errors;</div>
+<div class="line"><span class="lineno">  245</span>}</div>
+<div class="ttc" id="aclassAbstractCommand_html_a002fc48054b9df13bbb2e0bdc488c6d3"><div class="ttname"><a href="classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3">AbstractCommand::supportedOptions</a></div><div class="ttdeci">virtual QStringList supportedOptions() const</div><div class="ttdoc">Returns a list of CLI option names supported by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00088">abstractcommand.cpp:88</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_a07d979bc039d61f5c720cb1521b31208"><div class="ttname"><a href="classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208">AbstractCommand::deviceToScanFor</a></div><div class="ttdeci">QString deviceToScanFor</div><div class="ttdoc">Device (if any) that were passed to processOptions().</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00057">abstractcommand.h:57</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::OutputFormat::Csv</a></div><div class="ttdeci">@ Csv</div><div class="ttdoc">RFC 4180 compliant CSV text.</div></div>
-<div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::OutputFormat::Json</a></div><div class="ttdeci">@ Json</div></div>
-<div class="ttc" id="aclassAbstractCommand_html_aec006493cf0a4ba88c092c597bf247b8"><div class="ttname"><a href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand::requiredOptions</a></div><div class="ttdeci">virtual QStringList requiredOptions() const</div><div class="ttdoc">Returns a list of CLI option names required by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00064">abstractcommand.cpp:64</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::OutputFormat::Json</a></div><div class="ttdeci">@ Json</div><div class="ttdoc">RFC 8259 compliant JSON text.</div></div>
+<div class="ttc" id="aclassAbstractCommand_html_aec006493cf0a4ba88c092c597bf247b8"><div class="ttname"><a href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">AbstractCommand::requiredOptions</a></div><div class="ttdeci">virtual QStringList requiredOptions() const</div><div class="ttdoc">Returns a list of CLI option names required by this command.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00066">abstractcommand.cpp:66</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">Csv</a>, <a class="el" href="abstractcommand_8h_source.html#l00057">deviceToScanFor</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">discoveryAgent</a>, <a class="el" href="abstractcommand_8h_source.html#l00053">format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">Json</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00064">requiredOptions()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00086">supportedOptions()</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">Text</a>.</p>
+<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">Csv</a>, <a class="el" href="abstractcommand_8h_source.html#l00057">deviceToScanFor</a>, <a class="el" href="abstractcommand_8h_source.html#l00052">discoveryAgent</a>, <a class="el" href="abstractcommand_8h_source.html#l00053">format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">Json</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00135">parseMilliseconds()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00066">requiredOptions()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00088">supportedOptions()</a>, and <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">Text</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00047">DeviceCommand::processOptions()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00059">ScanCommand::processOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="calibratecommand_8cpp_source.html#l00061">CalibrationCommand::processOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00056">FlashLedCommand::processOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00059">InfoCommand::processOptions()</a>, <a class="el" href="multimetercommand_8cpp_source.html#l00068">MultimeterCommand::processOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00059">ScanCommand::processOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00057">SetNameCommand::processOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00059">StatusCommand::processOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_ad827a18a24776efeb955739459d48f7d_cgraph.svg" width="730" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_ad827a18a24776efeb955739459d48f7d_cgraph.svg" width="782" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_ad827a18a24776efeb955739459d48f7d_icgraph.svg" width="808" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_ad827a18a24776efeb955739459d48f7d_icgraph.svg" width="518" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -562,18 +649,18 @@ Here is the caller graph for this function:</div>
 <p >The main console appication may use this list to output an eror (and exit) if any of the returned names are not found in the parsed CLI options.</p>
 <p >This base implementation simply returns an empty list. Derived classes should override this function to include any required options. </p>
 
-<p>Reimplemented in <a class="el" href="classCalibrationCommand.html#aba224ed7cf4429cccd6970adcc60543b">CalibrationCommand</a>, <a class="el" href="classFlashLedCommand.html#afdd092d0f82398d537a249cd6b8b9b9a">FlashLedCommand</a>, <a class="el" href="classInfoCommand.html#aeba667f52f3bb12a890e70854c47eece">InfoCommand</a>, <a class="el" href="classScanCommand.html#a5322e3ce00daeae21becb853312d4bdf">ScanCommand</a>, <a class="el" href="classSetNameCommand.html#aca427dcc4590c0eb0033885efc28fcf2">SetNameCommand</a>, and <a class="el" href="classStatusCommand.html#aa2345f5f5e6453ca4364c78ca476c427">StatusCommand</a>.</p>
+<p>Reimplemented in <a class="el" href="classCalibrationCommand.html#aba224ed7cf4429cccd6970adcc60543b">CalibrationCommand</a>, <a class="el" href="classFlashLedCommand.html#afdd092d0f82398d537a249cd6b8b9b9a">FlashLedCommand</a>, <a class="el" href="classInfoCommand.html#aeba667f52f3bb12a890e70854c47eece">InfoCommand</a>, <a class="el" href="classMultimeterCommand.html#a77a39d1376d408542a0e3fdeb378ea87">MultimeterCommand</a>, <a class="el" href="classScanCommand.html#a5322e3ce00daeae21becb853312d4bdf">ScanCommand</a>, <a class="el" href="classSetNameCommand.html#aca427dcc4590c0eb0033885efc28fcf2">SetNameCommand</a>, and <a class="el" href="classStatusCommand.html#aa2345f5f5e6453ca4364c78ca476c427">StatusCommand</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00064">64</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">return</span> QStringList();</div>
-<div class="line"><span class="lineno">   67</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00066">66</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> QStringList();</div>
+<div class="line"><span class="lineno">   69</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="calibratecommand_8cpp_source.html#l00043">CalibrationCommand::requiredOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00039">FlashLedCommand::requiredOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00042">InfoCommand::requiredOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00047">ScanCommand::requiredOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00039">SetNameCommand::requiredOptions()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00042">StatusCommand::requiredOptions()</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00086">supportedOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00192">processOptions()</a>, <a class="el" href="calibratecommand_8cpp_source.html#l00043">CalibrationCommand::requiredOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00039">FlashLedCommand::requiredOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00042">InfoCommand::requiredOptions()</a>, <a class="el" href="multimetercommand_8cpp_source.html#l00046">MultimeterCommand::requiredOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00047">ScanCommand::requiredOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00039">SetNameCommand::requiredOptions()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00042">StatusCommand::requiredOptions()</a>, and <a class="el" href="abstractcommand_8cpp_source.html#l00088">supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_aec006493cf0a4ba88c092c597bf247b8_icgraph.svg" width="1394" height="663"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_aec006493cf0a4ba88c092c597bf247b8_icgraph.svg" width="1103" height="779"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -613,21 +700,21 @@ Here is the caller graph for this function:</div>
 <div class="line">    <span class="keywordflow">return</span> list;</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
-<p>Reimplemented in <a class="el" href="classCalibrationCommand.html#a00786e471cffba938fa6007d9e083468">CalibrationCommand</a>, <a class="el" href="classFlashLedCommand.html#ae533aaeeda78e56b6feabf9ef6fe5ab5">FlashLedCommand</a>, <a class="el" href="classInfoCommand.html#aaeb045dac5796d18b1041c0917267ec6">InfoCommand</a>, <a class="el" href="classScanCommand.html#af9af0702a9869ec1c762aecce7600271">ScanCommand</a>, <a class="el" href="classSetNameCommand.html#a296bb2bf52fdd511a90ac412fc27dc52">SetNameCommand</a>, and <a class="el" href="classStatusCommand.html#a6e6f923a2753025b8f11412048cd0866">StatusCommand</a>.</p>
+<p>Reimplemented in <a class="el" href="classCalibrationCommand.html#a00786e471cffba938fa6007d9e083468">CalibrationCommand</a>, <a class="el" href="classFlashLedCommand.html#ae533aaeeda78e56b6feabf9ef6fe5ab5">FlashLedCommand</a>, <a class="el" href="classInfoCommand.html#aaeb045dac5796d18b1041c0917267ec6">InfoCommand</a>, <a class="el" href="classMultimeterCommand.html#a343e748590bfd006c34b5744e9b2c4c9">MultimeterCommand</a>, <a class="el" href="classScanCommand.html#af9af0702a9869ec1c762aecce7600271">ScanCommand</a>, <a class="el" href="classSetNameCommand.html#a296bb2bf52fdd511a90ac412fc27dc52">SetNameCommand</a>, and <a class="el" href="classStatusCommand.html#a6e6f923a2753025b8f11412048cd0866">StatusCommand</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00086">86</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>() + QStringList{</div>
-<div class="line"><span class="lineno">   89</span>        QLatin1String(<span class="stringliteral">&quot;debug&quot;</span>),</div>
-<div class="line"><span class="lineno">   90</span>        QLatin1String(<span class="stringliteral">&quot;device&quot;</span>),</div>
-<div class="line"><span class="lineno">   91</span>        QLatin1String(<span class="stringliteral">&quot;output&quot;</span>),</div>
-<div class="line"><span class="lineno">   92</span>        QLatin1String(<span class="stringliteral">&quot;timeout&quot;</span>),</div>
-<div class="line"><span class="lineno">   93</span>    };</div>
-<div class="line"><span class="lineno">   94</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00088">88</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   89</span>{</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8">requiredOptions</a>() + QStringList{</div>
+<div class="line"><span class="lineno">   91</span>        QLatin1String(<span class="stringliteral">&quot;debug&quot;</span>),</div>
+<div class="line"><span class="lineno">   92</span>        QLatin1String(<span class="stringliteral">&quot;device&quot;</span>),</div>
+<div class="line"><span class="lineno">   93</span>        QLatin1String(<span class="stringliteral">&quot;output&quot;</span>),</div>
+<div class="line"><span class="lineno">   94</span>        QLatin1String(<span class="stringliteral">&quot;timeout&quot;</span>),</div>
+<div class="line"><span class="lineno">   95</span>    };</div>
+<div class="line"><span class="lineno">   96</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00064">requiredOptions()</a>.</p>
+<p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00066">requiredOptions()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="calibratecommand_8cpp_source.html#l00050">CalibrationCommand::supportedOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00045">FlashLedCommand::supportedOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00048">InfoCommand::supportedOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00052">ScanCommand::supportedOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00046">SetNameCommand::supportedOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00048">StatusCommand::supportedOptions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00192">processOptions()</a>, <a class="el" href="calibratecommand_8cpp_source.html#l00050">CalibrationCommand::supportedOptions()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00045">FlashLedCommand::supportedOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00048">InfoCommand::supportedOptions()</a>, <a class="el" href="multimetercommand_8cpp_source.html#l00053">MultimeterCommand::supportedOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00052">ScanCommand::supportedOptions()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00046">SetNameCommand::supportedOptions()</a>, and <a class="el" href="statuscommand_8cpp_source.html#l00048">StatusCommand::supportedOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -637,7 +724,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_a002fc48054b9df13bbb2e0bdc488c6d3_icgraph.svg" width="1114" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_a002fc48054b9df13bbb2e0bdc488c6d3_icgraph.svg" width="823" height="666"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -693,7 +780,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00057">57</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00116">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00163">DeviceCommand::deviceDiscoveryFinished()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, and <a class="el" href="devicecommand_8cpp_source.html#l00059">DeviceCommand::start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00100">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00147">DeviceCommand::deviceDiscoveryFinished()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00192">processOptions()</a>, and <a class="el" href="devicecommand_8cpp_source.html#l00043">DeviceCommand::start()</a>.</p>
 
 </div>
 </div>
@@ -721,7 +808,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00052">52</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00037">AbstractCommand()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00116">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00039">ScanCommand::ScanCommand()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00059">DeviceCommand::start()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00072">ScanCommand::start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00039">AbstractCommand()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00100">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00192">processOptions()</a>, <a class="el" href="scancommand_8cpp_source.html#l00039">ScanCommand::ScanCommand()</a>, <a class="el" href="devicecommand_8cpp_source.html#l00043">DeviceCommand::start()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00072">ScanCommand::start()</a>.</p>
 
 </div>
 </div>
@@ -749,7 +836,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00053">53</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="setnamecommand_8cpp_source.html#l00106">SetNameCommand::deivceNameWritten()</a>, <a class="el" href="scancommand_8cpp_source.html#l00083">ScanCommand::deviceDiscovered()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00100">FlashLedCommand::deviceLedFlashed()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00143">processOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="calibratecommand_8cpp_source.html#l00113">CalibrationCommand::temperatureCalibrated()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="setnamecommand_8cpp_source.html#l00106">SetNameCommand::deivceNameWritten()</a>, <a class="el" href="scancommand_8cpp_source.html#l00083">ScanCommand::deviceDiscovered()</a>, <a class="el" href="flashledcommand_8cpp_source.html#l00100">FlashLedCommand::deviceLedFlashed()</a>, <a class="el" href="multimetercommand_8cpp_source.html#l00189">MultimeterCommand::outputReading()</a>, <a class="el" href="abstractcommand_8cpp_source.html#l00192">processOptions()</a>, <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="calibratecommand_8cpp_source.html#l00113">CalibrationCommand::temperatureCalibrated()</a>.</p>
 
 </div>
 </div>

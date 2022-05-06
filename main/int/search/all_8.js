@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['idle_0',['Idle',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c',1,'StatusService']]],
-  ['infocommand_1',['InfoCommand',['../classInfoCommand.html',1,'InfoCommand'],['../classInfoCommand.html#a447fd9340d916a559b74d53195353660',1,'InfoCommand::InfoCommand()']]],
-  ['ispokitdevice_2',['isPokitDevice',['../classPokitDiscoveryAgent.html#a2f9c121b812ebb79fec56b47fb0dcdb5',1,'PokitDiscoveryAgent']]]
+  ['hardwarerevision_0',['hardwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b',1,'DeviceInfoService::CharacteristicUuids::hardwareRevision()'],['../classDeviceInfoService.html#a4d79805ce884ec8d5ac7879ccd499932',1,'DeviceInfoService::hardwareRevision() const']]],
+  ['hardwarerevisionread_1',['hardwareRevisionRead',['../classDeviceInfoService.html#a1cd9484b0f1fe5207c80140d379f88f3',1,'DeviceInfoService']]]
 ];

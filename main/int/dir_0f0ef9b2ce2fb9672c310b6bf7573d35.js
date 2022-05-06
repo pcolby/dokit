@@ -11,6 +11,8 @@ var dir_0f0ef9b2ce2fb9672c310b6bf7573d35 =
     [ "infocommand.cpp", "infocommand_8cpp_source.html", null ],
     [ "infocommand.h", "infocommand_8h_source.html", null ],
     [ "main.cpp", "main_8cpp_source.html", null ],
+    [ "multimetercommand.cpp", "multimetercommand_8cpp_source.html", null ],
+    [ "multimetercommand.h", "multimetercommand_8h_source.html", null ],
     [ "scancommand.cpp", "scancommand_8cpp_source.html", null ],
     [ "scancommand.h", "scancommand_8h_source.html", null ],
     [ "setnamecommand.cpp", "setnamecommand_8cpp_source.html", null ],

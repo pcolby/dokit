@@ -15,6 +15,13 @@ var dir_ddc6122f88ae27c68298ac38e50d2d9d =
       [ "GenericAccessService", "classGenericAccessService.html", "classGenericAccessService" ],
       [ "GenericAccessService::CharacteristicUuids", "structGenericAccessService_1_1CharacteristicUuids.html", null ]
     ] ],
+    [ "multimeterservice.h", "multimeterservice_8h.html", [
+      [ "MultimeterService", "classMultimeterService.html", "classMultimeterService" ],
+      [ "MultimeterService::CharacteristicUuids", "structMultimeterService_1_1CharacteristicUuids.html", null ],
+      [ "MultimeterService::MultimeterRange", "unionMultimeterService_1_1MultimeterRange.html", "unionMultimeterService_1_1MultimeterRange" ],
+      [ "MultimeterService::Settings", "structMultimeterService_1_1Settings.html", "structMultimeterService_1_1Settings" ],
+      [ "MultimeterService::Reading", "structMultimeterService_1_1Reading.html", "structMultimeterService_1_1Reading" ]
+    ] ],
     [ "pokitdevice.h", "pokitdevice_8h.html", [
       [ "PokitDevice", "classPokitDevice.html", "classPokitDevice" ]
     ] ],

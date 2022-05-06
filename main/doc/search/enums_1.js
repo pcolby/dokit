@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['devicestatus_0',['DeviceStatus',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35',1,'StatusService']]]
+  ['currentrange_0',['CurrentRange',['../classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2',1,'MultimeterService']]]
 ];

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['samplingbuffersize_0',['samplingBufferSize',['../structStatusService_1_1DeviceCharacteristics.html#a4ddb1ebddb04e6a7b445cff73379e932',1,'StatusService::DeviceCharacteristics']]],
-  ['serviceuuid_1',['serviceUuid',['../classCalibrationService.html#a787406e3fbda9e5ad966a3851d2c9fbc',1,'CalibrationService::serviceUuid()'],['../classDeviceInfoService.html#a3e790c39794cb40473573555ee485191',1,'DeviceInfoService::serviceUuid()'],['../classGenericAccessService.html#aa0752f0fdf6bca0a4acb163f3151534e',1,'GenericAccessService::serviceUuid()'],['../classStatusService.html#a2f29742224a879c4f1fb81a2fdd39ea5',1,'StatusService::serviceUuid()']]],
-  ['softwarerevision_2',['softwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69',1,'DeviceInfoService::CharacteristicUuids']]],
-  ['status_3',['status',['../structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c',1,'StatusService::CharacteristicUuids']]]
+  ['range_0',['range',['../structMultimeterService_1_1Settings.html#abce9907e79f98f65c04be5a1a533e50f',1,'MultimeterService::Settings::range()'],['../structMultimeterService_1_1Reading.html#a78d243d47824e203ce69c4f7fe0c8bd1',1,'MultimeterService::Reading::range()']]],
+  ['reading_1',['reading',['../structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643',1,'MultimeterService::CharacteristicUuids']]],
+  ['resitancerange_2',['resitanceRange',['../unionMultimeterService_1_1MultimeterRange.html#aa45c58c9ec2fb5ab1493f2f7339ffbb8',1,'MultimeterService::MultimeterRange']]]
 ];

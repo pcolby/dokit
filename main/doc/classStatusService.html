@@ -389,11 +389,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>TestStatusService</b
 
 <p>Returns the most recent value of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> service's <code>Device Characteristics</code> characteristic. </p>
 <p >The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null result is returned, which can be checked via the returned <a class="el" href="structStatusService_1_1DeviceCharacteristics.html#afdc814d092204ef6f0628253298ae319" title="Device&#39;s major and minor firmware version.">DeviceCharacteristics::firmwareVersion</a>, like:</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> DeviceCharacteristics characteristics = <a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>-&gt;deviceCharacteristics();</div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structMultimeterService_1_1DeviceCharacteristics.html">DeviceCharacteristics</a> characteristics = <a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>-&gt;deviceCharacteristics();</div>
 <div class="line"><span class="keywordflow">if</span> (!characteristics.firmwareVersion.isNull()) {</div>
 <div class="line">    ...</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassAbstractPokitService_html_a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><div class="ttname"><a href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">AbstractPokitService::service</a></div><div class="ttdeci">QLowEnergyService * service()</div><div class="ttdoc">Returns a non-const pointer to the internal service object, if any.</div><div class="ttdef"><b>Definition:</b> abstractpokitservice.cpp:97</div></div>
+<div class="ttc" id="astructMultimeterService_1_1DeviceCharacteristics_html"><div class="ttname"><a href="structMultimeterService_1_1DeviceCharacteristics.html">DeviceCharacteristics</a></div><div class="ttdoc">Attributes included in the Device Characteristics characterstic.</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

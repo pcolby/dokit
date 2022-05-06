@@ -106,7 +106,7 @@ Inheritance diagram for PokitDevice:</div>
 <div class="dynheader">
 Collaboration diagram for PokitDevice:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice__coll__graph.svg" width="1046" height="292"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice__coll__graph.svg" width="872" height="466"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -142,8 +142,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a226ebf9d65326afc3b2b8413c48412df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGenericAccessService.html">GenericAccessService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">genericAccess</a> ()</td></tr>
 <tr class="memdesc:a226ebf9d65326afc3b2b8413c48412df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classGenericAccessService.html" title="The GenericAccessService class accesses the Generic Access service of Pokit devices.">GenericAccessService</a> instance that uses this device's controller for access.  <a href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">More...</a><br /></td></tr>
 <tr class="separator:a226ebf9d65326afc3b2b8413c48412df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b4467f667ace65992a8fd152e9799ce"><td class="memItemLeft" align="right" valign="top">MultimeterService *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">multimeter</a> ()</td></tr>
-<tr class="memdesc:a7b4467f667ace65992a8fd152e9799ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to MultimeterService instance that uses this device's controller for access.  <a href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">More...</a><br /></td></tr>
+<tr class="memitem:a7b4467f667ace65992a8fd152e9799ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMultimeterService.html">MultimeterService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">multimeter</a> ()</td></tr>
+<tr class="memdesc:a7b4467f667ace65992a8fd152e9799ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Pokit Status service of Pokit devices.">MultimeterService</a> instance that uses this device's controller for access.  <a href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">More...</a><br /></td></tr>
 <tr class="separator:a7b4467f667ace65992a8fd152e9799ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaaaedcb434b3dda9608ad58192e9142"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classStatusService.html">StatusService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a> ()</td></tr>
 <tr class="memdesc:adaaaedcb434b3dda9608ad58192e9142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classStatusService.html" title="The StatusService class accesses the Pokit Status service of Pokit devices.">StatusService</a> instance that uses this device's controller for access.  <a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">More...</a><br /></td></tr>
@@ -213,12 +213,12 @@ Friends</h2></td></tr>
 <p>Constructs a new Pokit device controller wrapper for <em>deviceInfo</em>, with <em>parent</em>. </p>
 <p >Though not strictly necessary, <em>deviceInfo</em> should normally come from a <a class="el" href="classPokitDiscoveryAgent.html" title="The PokitDiscoveryAgent class discovers nearby Pokit devices.">PokitDiscoveryAgent</a> instance (or a QBluetoothDeviceDiscoveryAgent), otherwise connection is likely to fail with QLowEnergyController::UnknownRemoteDeviceError. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00057">57</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>    : QObject(parent), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDevicePrivate.html">PokitDevicePrivate</a>(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">   59</span>{</div>
-<div class="line"><span class="lineno">   60</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">   61</span>    d-&gt;setController(QLowEnergyController::createCentral(deviceInfo, <span class="keyword">this</span>));</div>
-<div class="line"><span class="lineno">   62</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00058">58</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>    : QObject(parent), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDevicePrivate.html">PokitDevicePrivate</a>(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">   60</span>{</div>
+<div class="line"><span class="lineno">   61</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">   62</span>    d-&gt;setController(QLowEnergyController::createCentral(deviceInfo, <span class="keyword">this</span>));</div>
+<div class="line"><span class="lineno">   63</span>}</div>
 <div class="ttc" id="aclassPokitDevicePrivate_html"><div class="ttname"><a href="classPokitDevicePrivate.html">PokitDevicePrivate</a></div><div class="ttdoc">The PokitDevicePrivate class provides private implementation for PokitDevice.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice__p_8h_source.html#l00048">pokitdevice_p.h:49</a></div></div>
 <div class="ttc" id="aclassPokitDevice_html"><div class="ttname"><a href="classPokitDevice.html">PokitDevice</a></div><div class="ttdoc">The PokitDevice class simplifies Pokit device access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8h_source.html#l00047">pokitdevice.h:48</a></div></div>
 <div class="ttc" id="aclassPokitDevice_html_a6f4adfb2c117dd4e93f85b941d38f7e9"><div class="ttname"><a href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">PokitDevice::d_ptr</a></div><div class="ttdeci">PokitDevicePrivate * d_ptr</div><div class="ttdoc">Internal d-pointer.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8h_source.html#l00073">pokitdevice.h:73</a></div></div>
@@ -261,15 +261,15 @@ Friends</h2></td></tr>
 
 <p>Constructs a new Pokit device controller wrapper for <em>controller</em>, with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00067">67</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>    : QObject(parent), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDevicePrivate.html">PokitDevicePrivate</a>(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">   71</span>    d-&gt;setController(<a class="code hl_function" href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">controller</a>);</div>
-<div class="line"><span class="lineno">   72</span>}</div>
-<div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00099">pokitdevice.cpp:99</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00068">68</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>    : QObject(parent), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDevicePrivate.html">PokitDevicePrivate</a>(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">   70</span>{</div>
+<div class="line"><span class="lineno">   71</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">   72</span>    d-&gt;setController(<a class="code hl_function" href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">controller</a>);</div>
+<div class="line"><span class="lineno">   73</span>}</div>
+<div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00100">pokitdevice.cpp:100</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00099">controller()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00100">controller()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -304,10 +304,10 @@ Here is the call graph for this function:</div>
 
 <p>Destroys this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00091">91</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>{</div>
-<div class="line"><span class="lineno">   93</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>;</div>
-<div class="line"><span class="lineno">   94</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00092">92</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>;</div>
+<div class="line"><span class="lineno">   95</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pokitdevice_8h_source.html#l00073">d_ptr</a>.</p>
 
@@ -350,11 +350,11 @@ Here is the call graph for this function:</div>
 <p>Constructs a new Pokit device discovery agent with <em>parent</em>, and private implementation <em>d</em>. </p>
 <p >Derived classes using this constructor should use <a class="el" href="classPokitDevicePrivate.html#a5bd287d0eeaa45754c7175ca1038b183" title="Sets newController to be used for accessing Pokit devices.">PokitDevicePrivate::setController</a> to assign the BLE controller as some point. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00081">81</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>    : QObject(parent), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(d)</div>
-<div class="line"><span class="lineno">   83</span>{</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00082">82</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>    : QObject(parent), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(d)</div>
+<div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -376,18 +376,18 @@ Here is the call graph for this function:</div>
 
 <p>Returns a pointer to a <a class="el" href="classCalibrationService.html" title="The CalibrationService class accesses the Calibrartion service of Pokit devices.">CalibrationService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Implement this function when the DataLoggerService is implemented. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Implement this function when the DataLoggerService is implemented. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00133">133</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
-<div class="line"><span class="lineno">  135</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classCalibrationService.html">CalibrationService</a>, <a class="code hl_function" href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">calibration</a>);</div>
-<div class="line"><span class="lineno">  136</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00134">134</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>{</div>
+<div class="line"><span class="lineno">  136</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classCalibrationService.html">CalibrationService</a>, <a class="code hl_function" href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">calibration</a>);</div>
+<div class="line"><span class="lineno">  137</span>}</div>
 <div class="ttc" id="aclassCalibrationService_html"><div class="ttname"><a href="classCalibrationService.html">CalibrationService</a></div><div class="ttdoc">The CalibrationService class accesses the Calibrartion service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00038">calibrationservice.h:39</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_abb2eafe232090e82ea1a69e38ebab49e"><div class="ttname"><a href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">PokitDevice::calibration</a></div><div class="ttdeci">CalibrationService * calibration()</div><div class="ttdoc">Returns a pointer to a CalibrationService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00133">pokitdevice.cpp:133</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_abb2eafe232090e82ea1a69e38ebab49e"><div class="ttname"><a href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">PokitDevice::calibration</a></div><div class="ttdeci">CalibrationService * calibration()</div><div class="ttdoc">Returns a pointer to a CalibrationService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00134">pokitdevice.cpp:134</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00133">calibration()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00134">calibration()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00133">calibration()</a>, and <a class="el" href="calibratecommand_8cpp_source.html#l00084">CalibrationCommand::getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00134">calibration()</a>, and <a class="el" href="calibratecommand_8cpp_source.html#l00084">CalibrationCommand::getService()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -420,13 +420,13 @@ Here is the caller graph for this function:</div>
 
 <p>Returns a non-const pointer to the controller used to access the Pokit device. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00099">99</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>{</div>
-<div class="line"><span class="lineno">  101</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">return</span> d-&gt;controller;</div>
-<div class="line"><span class="lineno">  103</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00100">100</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
+<div class="line"><span class="lineno">  102</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> d-&gt;controller;</div>
+<div class="line"><span class="lineno">  104</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00116">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00067">PokitDevice()</a>, and <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00100">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00068">PokitDevice()</a>, and <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -453,11 +453,11 @@ Here is the caller graph for this function:</div>
 
 <p>Returns a const pointer to the controller used to access the Pokit device. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00108">108</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
-<div class="line"><span class="lineno">  110</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">return</span> d-&gt;controller;</div>
-<div class="line"><span class="lineno">  112</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00109">109</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> d-&gt;controller;</div>
+<div class="line"><span class="lineno">  113</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -478,15 +478,15 @@ Here is the caller graph for this function:</div>
 
 <p>Returns a pointer to a DataLoggerService instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Implement this function when the DataLoggerService is implemented. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Implement this function when the DataLoggerService is implemented. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00147">147</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  148</span>{</div>
-<div class="line"><span class="lineno">  149</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">  150</span>    qCDebug(d-&gt;lc) &lt;&lt; <span class="stringliteral">&quot;Not implemented&quot;</span> &lt;&lt; __func__;</div>
-<div class="line"><span class="lineno">  151</span><span class="comment">//    POKIT_INTERNAL_GET_SERVICE(DataLoggerService, dataLogger);</span></div>
-<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  153</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00148">148</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  149</span>{</div>
+<div class="line"><span class="lineno">  150</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">  151</span>    qCDebug(d-&gt;lc) &lt;&lt; <span class="stringliteral">&quot;Not implemented&quot;</span> &lt;&lt; __func__;</div>
+<div class="line"><span class="lineno">  152</span><span class="comment">//    POKIT_INTERNAL_GET_SERVICE(DataLoggerService, dataLogger);</span></div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  154</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -508,10 +508,10 @@ Here is the caller graph for this function:</div>
 <p>Returns a pointer to DeviceInformationService instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00163">163</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  164</span>{</div>
-<div class="line"><span class="lineno">  165</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>, deviceInfo);</div>
-<div class="line"><span class="lineno">  166</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00164">164</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
+<div class="line"><span class="lineno">  166</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>, deviceInfo);</div>
+<div class="line"><span class="lineno">  167</span>}</div>
 <div class="ttc" id="aclassDeviceInfoService_html"><div class="ttname"><a href="classDeviceInfoService.html">DeviceInfoService</a></div><div class="ttdoc">The DeviceInfoService class accesses the Device Info service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00038">deviceinfoservice.h:39</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="infocommand_8cpp_source.html#l00074">InfoCommand::getService()</a>.</p>
@@ -541,15 +541,15 @@ Here is the caller graph for this function:</div>
 
 <p>Returns a pointer to DsoService instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Implement this function when the DsoService is implemented. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Implement this function when the DsoService is implemented. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00177">177</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  178</span>{</div>
-<div class="line"><span class="lineno">  179</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">  180</span>    qCDebug(d-&gt;lc) &lt;&lt; <span class="stringliteral">&quot;Not implemented&quot;</span> &lt;&lt; __func__;</div>
-<div class="line"><span class="lineno">  181</span><span class="comment">//    POKIT_INTERNAL_GET_SERVICE(DsoService, dso);</span></div>
-<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  183</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00178">178</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  179</span>{</div>
+<div class="line"><span class="lineno">  180</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">  181</span>    qCDebug(d-&gt;lc) &lt;&lt; <span class="stringliteral">&quot;Not implemented&quot;</span> &lt;&lt; __func__;</div>
+<div class="line"><span class="lineno">  182</span><span class="comment">//    POKIT_INTERNAL_GET_SERVICE(DsoService, dso);</span></div>
+<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  184</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -571,16 +571,16 @@ Here is the caller graph for this function:</div>
 <p>Returns a pointer to <a class="el" href="classGenericAccessService.html" title="The GenericAccessService class accesses the Generic Access service of Pokit devices.">GenericAccessService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00192">192</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  193</span>{</div>
-<div class="line"><span class="lineno">  194</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>, <a class="code hl_function" href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">genericAccess</a>);</div>
-<div class="line"><span class="lineno">  195</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00193">193</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>{</div>
+<div class="line"><span class="lineno">  195</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>, <a class="code hl_function" href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">genericAccess</a>);</div>
+<div class="line"><span class="lineno">  196</span>}</div>
 <div class="ttc" id="aclassGenericAccessService_html"><div class="ttname"><a href="classGenericAccessService.html">GenericAccessService</a></div><div class="ttdoc">The GenericAccessService class accesses the Generic Access service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="genericaccessservice_8h_source.html#l00038">genericaccessservice.h:39</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_a226ebf9d65326afc3b2b8413c48412df"><div class="ttname"><a href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">PokitDevice::genericAccess</a></div><div class="ttdeci">GenericAccessService * genericAccess()</div><div class="ttdoc">Returns a pointer to GenericAccessService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00192">pokitdevice.cpp:192</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a226ebf9d65326afc3b2b8413c48412df"><div class="ttname"><a href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">PokitDevice::genericAccess</a></div><div class="ttdeci">GenericAccessService * genericAccess()</div><div class="ttdoc">Returns a pointer to GenericAccessService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00193">pokitdevice.cpp:193</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00192">genericAccess()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00193">genericAccess()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00192">genericAccess()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00193">genericAccess()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -603,7 +603,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MultimeterService * PokitDevice::multimeter </td>
+          <td class="memname"><a class="el" href="classMultimeterService.html">MultimeterService</a> * PokitDevice::multimeter </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -611,18 +611,34 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Returns a pointer to MultimeterService instance that uses this device's controller for access. </p>
+<p>Returns a pointer to <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Pokit Status service of Pokit devices.">MultimeterService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Implement this function when the MultimeterService is implemented. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Implement this function when the <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Pokit Status service of Pokit devices.">MultimeterService</a> is implemented. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00206">206</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  207</span>{</div>
-<div class="line"><span class="lineno">  208</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">  209</span>    qCDebug(d-&gt;lc) &lt;&lt; <span class="stringliteral">&quot;Not implemented&quot;</span> &lt;&lt; __func__;</div>
-<div class="line"><span class="lineno">  210</span><span class="comment">//    POKIT_INTERNAL_GET_SERVICE(MultimeterService, multimeter);</span></div>
-<div class="line"><span class="lineno">  211</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  212</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00207">207</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>{</div>
+<div class="line"><span class="lineno">  209</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>, <a class="code hl_function" href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">multimeter</a>);</div>
+<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  211</span>}</div>
+<div class="ttc" id="aclassMultimeterService_html"><div class="ttname"><a href="classMultimeterService.html">MultimeterService</a></div><div class="ttdoc">The MultimeterService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00038">multimeterservice.h:39</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a7b4467f667ace65992a8fd152e9799ce"><div class="ttname"><a href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">PokitDevice::multimeter</a></div><div class="ttdeci">MultimeterService * multimeter()</div><div class="ttdoc">Returns a pointer to MultimeterService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00207">pokitdevice.cpp:207</a></div></div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00207">multimeter()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="multimetercommand_8cpp_source.html#l00131">MultimeterCommand::getService()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00207">multimeter()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a7b4467f667ace65992a8fd152e9799ce_cgraph.svg" width="192" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a7b4467f667ace65992a8fd152e9799ce_icgraph.svg" width="410" height="70"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="adaaaedcb434b3dda9608ad58192e9142" name="adaaaedcb434b3dda9608ad58192e9142"></a>
@@ -643,16 +659,16 @@ Here is the caller graph for this function:</div>
 <p>Returns a pointer to <a class="el" href="classStatusService.html" title="The StatusService class accesses the Pokit Status service of Pokit devices.">StatusService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00221">221</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  222</span>{</div>
-<div class="line"><span class="lineno">  223</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classStatusService.html">StatusService</a>, <a class="code hl_function" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a>);</div>
-<div class="line"><span class="lineno">  224</span>}</div>
-<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00221">pokitdevice.cpp:221</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00220">220</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  221</span>{</div>
+<div class="line"><span class="lineno">  222</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classStatusService.html">StatusService</a>, <a class="code hl_function" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a>);</div>
+<div class="line"><span class="lineno">  223</span>}</div>
+<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00220">pokitdevice.cpp:220</a></div></div>
 <div class="ttc" id="aclassStatusService_html"><div class="ttname"><a href="classStatusService.html">StatusService</a></div><div class="ttdoc">The StatusService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00038">statusservice.h:39</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00221">status()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00220">status()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00071">FlashLedCommand::getService()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00078">SetNameCommand::getService()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00074">StatusCommand::getService()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00221">status()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00071">FlashLedCommand::getService()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00078">SetNameCommand::getService()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00074">StatusCommand::getService()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00220">status()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -718,7 +734,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="pokitdevice_8h_source.html#l00073">73</a> of file <a class="el" href="pokitdevice_8h_source.html">pokitdevice.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00091">~PokitDevice()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00092">~PokitDevice()</a>.</p>
 
 </div>
 </div>

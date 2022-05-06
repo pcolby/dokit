@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['status_0',['Status',['../structStatusService_1_1Status.html',1,'StatusService']]],
-  ['statusservice_1',['StatusService',['../classStatusService.html',1,'']]]
+  ['pokitdevice_0',['PokitDevice',['../classPokitDevice.html',1,'']]],
+  ['pokitdiscoveryagent_1',['PokitDiscoveryAgent',['../classPokitDiscoveryAgent.html',1,'']]]
 ];

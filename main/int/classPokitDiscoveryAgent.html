@@ -218,7 +218,7 @@ Friends</h2></td></tr>
 <div class="line"><span class="lineno">   49</span>{</div>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>}</div>
-<div class="ttc" id="aclassPokitDiscoveryAgentPrivate_html"><div class="ttname"><a href="classPokitDiscoveryAgentPrivate.html">PokitDiscoveryAgentPrivate</a></div><div class="ttdoc">The PokitDiscoveryAgentPrivate class provides private implementation for PokitDiscoveryAgent.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdiscoveryagent__p_8h_source.html#l00037">pokitdiscoveryagent_p.h:38</a></div></div>
+<div class="ttc" id="aclassPokitDiscoveryAgentPrivate_html"><div class="ttname"><a href="classPokitDiscoveryAgentPrivate.html">PokitDiscoveryAgentPrivate</a></div><div class="ttdoc">The PokitDiscoveryAgentPrivate class provides private implementation for PokitDiscoveryAgent.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdiscoveryagent__p_8h_source.html#l00038">pokitdiscoveryagent_p.h:39</a></div></div>
 <div class="ttc" id="aclassPokitDiscoveryAgent_html_ad42dea538f47317d0465e3320f2d4365"><div class="ttname"><a href="classPokitDiscoveryAgent.html#ad42dea538f47317d0465e3320f2d4365">PokitDiscoveryAgent::d_ptr</a></div><div class="ttdeci">PokitDiscoveryAgentPrivate * d_ptr</div><div class="ttdoc">Internal d-pointer.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdiscoveryagent_8h_source.html#l00059">pokitdiscoveryagent.h:59</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -488,10 +488,13 @@ Here is the caller graph for this function:</div>
 
 <p>Starts Pokit device discovery. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdiscoveryagent_8cpp_source.html#l00121">121</a> of file <a class="el" href="pokitdiscoveryagent_8cpp_source.html">pokitdiscoveryagent.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  122</span>{</div>
-<div class="line"><span class="lineno">  123</span>    QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
-<div class="line"><span class="lineno">  124</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdiscoveryagent_8cpp_source.html#l00123">123</a> of file <a class="el" href="pokitdiscoveryagent_8cpp_source.html">pokitdiscoveryagent.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  124</span>{</div>
+<div class="line"><span class="lineno">  125</span>    Q_D(<a class="code hl_class" href="classPokitDiscoveryAgent.html">PokitDiscoveryAgent</a>);</div>
+<div class="line"><span class="lineno">  126</span>    qCDebug(d-&gt;lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Scanning for Bluetooth Low Energy devices.&quot;</span>);</div>
+<div class="line"><span class="lineno">  127</span>    QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
+<div class="line"><span class="lineno">  128</span>}</div>
+<div class="ttc" id="aclassPokitDiscoveryAgent_html"><div class="ttname"><a href="classPokitDiscoveryAgent.html">PokitDiscoveryAgent</a></div><div class="ttdoc">The PokitDiscoveryAgent class discovers nearby Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdiscoveryagent_8h_source.html#l00036">pokitdiscoveryagent.h:37</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -524,11 +527,13 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="pokitdiscoveryagent_8cpp_source.html#l00112">112</a> of file <a class="el" href="pokitdiscoveryagent_8cpp_source.html">pokitdiscoveryagent.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  113</span>{</div>
-<div class="line"><span class="lineno">  114</span>    Q_ASSERT(methods == QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
-<div class="line"><span class="lineno">  115</span>    QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
-<div class="line"><span class="lineno">  116</span>}</div>
+<div class="line"><span class="lineno">  114</span>    Q_D(<a class="code hl_class" href="classPokitDiscoveryAgent.html">PokitDiscoveryAgent</a>);</div>
+<div class="line"><span class="lineno">  115</span>    Q_ASSERT(methods == QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
+<div class="line"><span class="lineno">  116</span>    qCDebug(d-&gt;lc).noquote() &lt;&lt; tr(<span class="stringliteral">&quot;Scanning for Bluetooth Low Energy devices.&quot;</span>);</div>
+<div class="line"><span class="lineno">  117</span>    QBluetoothDeviceDiscoveryAgent::start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);</div>
+<div class="line"><span class="lineno">  118</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00059">DeviceCommand::start()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00072">ScanCommand::start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00043">DeviceCommand::start()</a>, and <a class="el" href="scancommand_8cpp_source.html#l00072">ScanCommand::start()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

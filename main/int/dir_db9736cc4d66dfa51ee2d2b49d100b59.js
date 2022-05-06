@@ -16,6 +16,10 @@ var dir_db9736cc4d66dfa51ee2d2b49d100b59 =
     [ "genericaccessservice_p.h", "genericaccessservice__p_8h.html", [
       [ "GenericAccessServicePrivate", "classGenericAccessServicePrivate.html", "classGenericAccessServicePrivate" ]
     ] ],
+    [ "multimeterservice.cpp", "multimeterservice_8cpp.html", null ],
+    [ "multimeterservice_p.h", "multimeterservice__p_8h.html", [
+      [ "MultimeterServicePrivate", "classMultimeterServicePrivate.html", "classMultimeterServicePrivate" ]
+    ] ],
     [ "pokitdevice.cpp", "pokitdevice_8cpp.html", null ],
     [ "pokitdevice_p.h", "pokitdevice__p_8h.html", [
       [ "PokitDevicePrivate", "classPokitDevicePrivate.html", "classPokitDevicePrivate" ]
