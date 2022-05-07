@@ -54,22 +54,22 @@ const QBluetoothUuid DataLoggerService::CharacteristicUuids::
 const QBluetoothUuid DataLoggerService::CharacteristicUuids::
     reading(QLatin1String("3c669dab-fc86-411c-9498-4f9415049cc0"));
 
-/// \enum DataLoggerService::DataLoggerCommand
+/// \enum DataLoggerService::Command
 /// \brief Values support by the `Command` attribute of the `Settings` characteristic.
 
-/// \enum DataLoggerService::DataLoggerMode
+/// \enum DataLoggerService::Mode
 /// \brief Values support by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
 
 /// Returns \a mode as a user-friendly string.
-QString DataLoggerService::toString(const DataLoggerMode &mode)
+QString DataLoggerService::toString(const Mode &mode)
 {
     switch (mode) {
-    case DataLoggerMode::Idle:        return tr("Idle");
-    case DataLoggerMode::DcVoltage:   return tr("DC voltage");
-    case DataLoggerMode::AcVoltage:   return tr("AC voltage");
-    case DataLoggerMode::DcCurrent:   return tr("DC current");
-    case DataLoggerMode::AcCurrent:   return tr("AC current");
-    default:                          return QString();
+    case Mode::Idle:        return tr("Idle");
+    case Mode::DcVoltage:   return tr("DC voltage");
+    case Mode::AcVoltage:   return tr("AC voltage");
+    case Mode::DcCurrent:   return tr("DC current");
+    case Mode::AcCurrent:   return tr("AC current");
+    default:                return QString();
     }
 }
 
@@ -184,7 +184,7 @@ QVariant DataLoggerService::maxValue(const CurrentRange &range)
     }
 }
 
-/// \union DataLoggerService::DataLoggerRange
+/// \union DataLoggerService::Range
 /// \brief Values support by the `Range` attribute of the `Settings` and `Metadata` characteristics.
 
 /// \struct DataLoggerService::Settings
@@ -311,7 +311,7 @@ DataLoggerService::Metadata DataLoggerService::metadata() const
         d->getCharacteristic(CharacteristicUuids::metadata);
     return (characteristic.isValid()) ? DataLoggerServicePrivate::parseMetadata(characteristic.value())
         : Metadata{ LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-                    DataLoggerMode::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };
+                    Mode::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };
 }
 
 /*!
@@ -417,7 +417,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
 {
     DataLoggerService::Metadata metadata{
         DataLoggerService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-        DataLoggerService::DataLoggerMode::Idle, { DataLoggerService::VoltageRange::_0_to_300mV },
+        DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_0_to_300mV },
         0, 0, 0
     };
 
@@ -434,7 +434,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
 
     metadata.status             = static_cast<DataLoggerService::LoggerStatus>(value.at(0));
     metadata.scale              = qFromLittleEndian<float>(value.mid(1,4));
-    metadata.mode               = static_cast<DataLoggerService::DataLoggerMode>(value.at(5));
+    metadata.mode               = static_cast<DataLoggerService::Mode>(value.at(5));
     metadata.range.voltageRange = static_cast<DataLoggerService::VoltageRange>(value.at(6));
     metadata.updateInterval     = qFromLittleEndian<quint16>(value.mid(7,2));
     metadata.numberOfSamples    = qFromLittleEndian<quint16>(value.mid(9,2));

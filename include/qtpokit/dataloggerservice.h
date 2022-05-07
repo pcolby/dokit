@@ -48,20 +48,20 @@ public:
         static const QBluetoothUuid reading;
     };
 
-    enum class DataLoggerCommand : quint8 {
+    enum class Command : quint8 {
         Start   = 0,
         Stop    = 1,
         Refresh = 2,
     };
 
-    enum class DataLoggerMode : quint8 {
+    enum class Mode : quint8 {
         Idle        = 0, ///< Make device idle.
         DcVoltage   = 1, ///< Measure DC voltage.
         AcVoltage   = 2, ///< Measure AC voltage.
         DcCurrent   = 3, ///< Measure DC current.
         AcCurrent   = 4, ///< Measure AC current.
     };
-    static QString toString(const DataLoggerMode &mode);
+    static QString toString(const Mode &mode);
 
     enum class VoltageRange : quint8 {
         _0_to_300mV  = 0,  ///< 0 to 300mV.
@@ -86,18 +86,18 @@ public:
     static QVariant minValue(const CurrentRange &range);
     static QVariant maxValue(const CurrentRange &range);
 
-    union DataLoggerRange {
+    union Range {
         VoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange; ///< Range when in AC/DC current mode.
     };
 
     struct Settings {
-        DataLoggerCommand command; ///< Custom operation request.
-        quint16 arguments;         ///< Reserved to used along with #command in future.
-        DataLoggerMode mode;       ///< Desired operation mode.
-        DataLoggerRange range;     ///< Desired range.
-        quint16 updateInterval;    ///< Desired update interval in seconds.
-        quint32 timestamp;         ///< Custom timestamp for start time in retrieved metadata.
+        Command command;        ///< Custom operation request.
+        quint16 arguments;      ///< Reserved to used along with #command in future.
+        Mode mode;              ///< Desired operation mode.
+        Range range;            ///< Desired range.
+        quint16 updateInterval; ///< Desired update interval in seconds.
+        quint32 timestamp;      ///< Custom timestamp for start time in retrieved metadata.
     };
 
     enum class LoggerStatus : quint8 {
@@ -110,8 +110,8 @@ public:
     struct Metadata {
         LoggerStatus status;     ///< Current data logger status.
         float scale;             ///< Scale to apply to read samples.
-        DataLoggerMode mode;     ///< Current operation mode.
-        DataLoggerRange range;   ///< Current range.
+        Mode mode;               ///< Current operation mode.
+        Range range;             ///< Current range.
         quint16 updateInterval;  ///< Current logging interval.
         quint16 numberOfSamples; ///< Number of samples acquired (1 to 6192).
         quint32 timestamp;       ///< Timestamp stored at the beginning of the logging session.

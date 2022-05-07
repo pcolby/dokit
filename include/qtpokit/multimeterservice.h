@@ -47,7 +47,7 @@ public:
         static const QBluetoothUuid reading;
     };
 
-    enum class MultimeterMode : quint8 {
+    enum class Mode : quint8 {
         Idle        = 0, ///< Make device idle.
         DcVoltage   = 1, ///< Measure DC voltage.
         AcVoltage   = 2, ///< Measure AC voltage.
@@ -58,7 +58,7 @@ public:
         Continuity  = 7, ///< Measure continuity.
         Temperature = 8, ///< Measure temperature.
     };
-    static QString toString(const MultimeterMode &mode);
+    static QString toString(const Mode &mode);
 
     enum class VoltageRange : quint8 {
         _0_to_300mV  = 0,  ///< 0 to 300mV.
@@ -100,15 +100,15 @@ public:
     static QVariant minValue(const ResistanceRange &range);
     static QVariant maxValue(const ResistanceRange &range);
 
-    union MultimeterRange {
+    union Range {
         VoltageRange voltageRange;      ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange;      ///< Range when in AC/DC current mode.
         ResistanceRange resitanceRange; ///< Range when in resistance mode.
     };
 
     struct Settings {
-        MultimeterMode mode;    ///< Desired operation mode.
-        MultimeterRange range;  ///< Desired range.
+        Mode mode;              ///< Desired operation mode.
+        Range range;            ///< Desired range.
         quint32 updateInterval; ///< Desired update interval in milliseconds.
     };
 
@@ -122,8 +122,8 @@ public:
     struct Reading {
         ReadingStatusFlags status; ///< Current multimeter status.
         float value;               ///< Last acquired value.
-        MultimeterMode mode;       ///< Current operation mode.
-        MultimeterRange range;     ///< Current range.
+        Mode mode;                 ///< Current operation mode.
+        Range range;               ///< Current range.
     };
 
     MultimeterService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

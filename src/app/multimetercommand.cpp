@@ -35,7 +35,7 @@
  */
 MultimeterCommand::MultimeterCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
-        MultimeterService::MultimeterMode::DcVoltage,
+        MultimeterService::Mode::DcVoltage,
         { MultimeterService::VoltageRange::AutoRange },
         1000
     }, numberOfSamplesToRead(-1)
@@ -75,21 +75,21 @@ QStringList MultimeterCommand::processOptions(const QCommandLineParser &parser)
     // Parse the (required) mode option.
     const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
     if (mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
-        settings.mode = MultimeterService::MultimeterMode::AcVoltage;
+        settings.mode = MultimeterService::Mode::AcVoltage;
     } else if (mode.startsWith(QLatin1String("dc v")) || mode.startsWith(QLatin1String("vdc"))) {
-        settings.mode = MultimeterService::MultimeterMode::DcVoltage;
+        settings.mode = MultimeterService::Mode::DcVoltage;
     } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
-        settings.mode = MultimeterService::MultimeterMode::AcCurrent;
+        settings.mode = MultimeterService::Mode::AcCurrent;
     } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("aac"))) {
-        settings.mode = MultimeterService::MultimeterMode::DcCurrent;
+        settings.mode = MultimeterService::Mode::DcCurrent;
     } else if (mode.startsWith(QLatin1String("res"))) {
-        settings.mode = MultimeterService::MultimeterMode::Resistance;
+        settings.mode = MultimeterService::Mode::Resistance;
     } else if (mode.startsWith(QLatin1String("dio"))) {
-        settings.mode = MultimeterService::MultimeterMode::Diode;
+        settings.mode = MultimeterService::Mode::Diode;
     } else if (mode.startsWith(QLatin1String("cont"))) {
-       settings.mode = MultimeterService::MultimeterMode::Continuity;
+       settings.mode = MultimeterService::Mode::Continuity;
     } else if (mode.startsWith(QLatin1String("temp"))) {
-       settings.mode = MultimeterService::MultimeterMode::Temperature;
+       settings.mode = MultimeterService::Mode::Temperature;
     } else {
         errors.append(tr("Unknown meter mode: %1").arg(parser.value(QLatin1String("mode"))));
         return errors;
@@ -112,23 +112,23 @@ QStringList MultimeterCommand::processOptions(const QCommandLineParser &parser)
         const bool isAuto = (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) == 0);
         QString unit; quint32 sensibleMinimum = 0;
         switch (settings.mode) {
-        case MultimeterService::MultimeterMode::DcVoltage:
-        case MultimeterService::MultimeterMode::AcVoltage:
+        case MultimeterService::Mode::DcVoltage:
+        case MultimeterService::Mode::AcVoltage:
             if (isAuto) {
                 settings.range.voltageRange = MultimeterService::VoltageRange::AutoRange;
             }
             unit = QLatin1String("V");
             sensibleMinimum = 50; // mV.
             break;
-        case MultimeterService::MultimeterMode::DcCurrent:
-        case MultimeterService::MultimeterMode::AcCurrent:
+        case MultimeterService::Mode::DcCurrent:
+        case MultimeterService::Mode::AcCurrent:
             if (isAuto) {
                 settings.range.currentRange = MultimeterService::CurrentRange::AutoRange;
             }
             unit = QLatin1String("A");
             sensibleMinimum = 5; // mA.
             break;
-        case MultimeterService::MultimeterMode::Resistance:
+        case MultimeterService::Mode::Resistance:
             if (isAuto) {
                 settings.range.resitanceRange = MultimeterService::ResistanceRange::AutoRange;
             }
@@ -190,21 +190,21 @@ void MultimeterCommand::serviceDetailsDiscovered()
 {
     QString range = tr("N/A");
     switch (settings.mode) {
-    case MultimeterService::MultimeterMode::Idle:        break;
-    case MultimeterService::MultimeterMode::DcVoltage:
-    case MultimeterService::MultimeterMode::AcVoltage:
+    case MultimeterService::Mode::Idle:        break;
+    case MultimeterService::Mode::DcVoltage:
+    case MultimeterService::Mode::AcVoltage:
         range = MultimeterService::toString(settings.range.voltageRange);
         break;
-    case MultimeterService::MultimeterMode::DcCurrent:
-    case MultimeterService::MultimeterMode::AcCurrent:
+    case MultimeterService::Mode::DcCurrent:
+    case MultimeterService::Mode::AcCurrent:
         range = MultimeterService::toString(settings.range.currentRange);
         break;
-    case MultimeterService::MultimeterMode::Resistance:
+    case MultimeterService::Mode::Resistance:
         range = MultimeterService::toString(settings.range.resitanceRange);
         break;
-    case MultimeterService::MultimeterMode::Diode:       break;
-    case MultimeterService::MultimeterMode::Continuity:  break;
-    case MultimeterService::MultimeterMode::Temperature: break;
+    case MultimeterService::Mode::Diode:       break;
+    case MultimeterService::Mode::Continuity:  break;
+    case MultimeterService::Mode::Temperature: break;
     }
 
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
@@ -217,20 +217,20 @@ void MultimeterCommand::serviceDetailsDiscovered()
  * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange
  * if no such range is available.
  */
-MultimeterService::MultimeterRange MultimeterCommand::lowestRange(
-    const MultimeterService::MultimeterMode mode, const quint32 desiredMax)
+MultimeterService::Range MultimeterCommand::lowestRange(
+    const MultimeterService::Mode mode, const quint32 desiredMax)
 {
-    MultimeterService::MultimeterRange range;
+    MultimeterService::Range range;
     switch (mode) {
-    case MultimeterService::MultimeterMode::DcVoltage:
-    case MultimeterService::MultimeterMode::AcVoltage:
+    case MultimeterService::Mode::DcVoltage:
+    case MultimeterService::Mode::AcVoltage:
         range.voltageRange = lowestVoltageRange(desiredMax);
         break;
-    case MultimeterService::MultimeterMode::DcCurrent:
-    case MultimeterService::MultimeterMode::AcCurrent:
+    case MultimeterService::Mode::DcCurrent:
+    case MultimeterService::Mode::AcCurrent:
         range.currentRange = lowestCurrentRange(desiredMax);
         break;
-    case MultimeterService::MultimeterMode::Resistance:
+    case MultimeterService::Mode::Resistance:
         range.resitanceRange = lowestResistanceRange(desiredMax);
         break;
     default:
@@ -313,63 +313,63 @@ void MultimeterCommand::outputReading(const MultimeterService::Reading &reading)
     if (reading.status.testFlag(MultimeterService::ReadingStatusFlag::Error)) {
         status = QLatin1String("Error");
     } else switch (reading.mode) {
-    case MultimeterService::MultimeterMode::Idle:
+    case MultimeterService::Mode::Idle:
         break;
-    case MultimeterService::MultimeterMode::DcVoltage:
-    case MultimeterService::MultimeterMode::AcVoltage:
-    case MultimeterService::MultimeterMode::DcCurrent:
-    case MultimeterService::MultimeterMode::AcCurrent:
-    case MultimeterService::MultimeterMode::Resistance:
+    case MultimeterService::Mode::DcVoltage:
+    case MultimeterService::Mode::AcVoltage:
+    case MultimeterService::Mode::DcCurrent:
+    case MultimeterService::Mode::AcCurrent:
+    case MultimeterService::Mode::Resistance:
         status = (reading.status.testFlag(MultimeterService::ReadingStatusFlag::AutoRange)
             ? tr("Auto Range On") : tr("Auto Range Off"));
         break;
-    case MultimeterService::MultimeterMode::Continuity:
+    case MultimeterService::Mode::Continuity:
         status = (reading.status.testFlag(MultimeterService::ReadingStatusFlag::AutoRange)
             ? tr("Continuity") : tr("No continuity"));
         break;
-    case MultimeterService::MultimeterMode::Temperature:
-    case MultimeterService::MultimeterMode::Diode:
+    case MultimeterService::Mode::Temperature:
+    case MultimeterService::Mode::Diode:
         status = tr("Ok");
         break;
     }
 
     QString units;
     switch (reading.mode) {
-    case MultimeterService::MultimeterMode::Idle:        break;
-    case MultimeterService::MultimeterMode::DcVoltage:   units = QLatin1String("Vdc"); break;
-    case MultimeterService::MultimeterMode::AcVoltage:   units = QLatin1String("Vac"); break;
-    case MultimeterService::MultimeterMode::DcCurrent:   units = QLatin1String("Adc"); break;
-    case MultimeterService::MultimeterMode::AcCurrent:   units = QLatin1String("Aac"); break;
-    case MultimeterService::MultimeterMode::Resistance:  units = QString::fromUtf8("Ω"); break;
-    case MultimeterService::MultimeterMode::Diode:       break;
-    case MultimeterService::MultimeterMode::Continuity:  break;
-    case MultimeterService::MultimeterMode::Temperature: units = QString::fromUtf8("°C"); break;
+    case MultimeterService::Mode::Idle:        break;
+    case MultimeterService::Mode::DcVoltage:   units = QLatin1String("Vdc"); break;
+    case MultimeterService::Mode::AcVoltage:   units = QLatin1String("Vac"); break;
+    case MultimeterService::Mode::DcCurrent:   units = QLatin1String("Adc"); break;
+    case MultimeterService::Mode::AcCurrent:   units = QLatin1String("Aac"); break;
+    case MultimeterService::Mode::Resistance:  units = QString::fromUtf8("Ω"); break;
+    case MultimeterService::Mode::Diode:       break;
+    case MultimeterService::Mode::Continuity:  break;
+    case MultimeterService::Mode::Temperature: units = QString::fromUtf8("°C"); break;
     }
 
     QString range;
     QVariant rangeMin, rangeMax;
     switch (reading.mode) {
-    case MultimeterService::MultimeterMode::Idle:        break;
-    case MultimeterService::MultimeterMode::DcVoltage:
-    case MultimeterService::MultimeterMode::AcVoltage:
+    case MultimeterService::Mode::Idle:        break;
+    case MultimeterService::Mode::DcVoltage:
+    case MultimeterService::Mode::AcVoltage:
         range = MultimeterService::toString(reading.range.voltageRange);
         rangeMin = MultimeterService::minValue(reading.range.voltageRange);
         rangeMax = MultimeterService::maxValue(reading.range.voltageRange);
         break;
-    case MultimeterService::MultimeterMode::DcCurrent:
-    case MultimeterService::MultimeterMode::AcCurrent:
+    case MultimeterService::Mode::DcCurrent:
+    case MultimeterService::Mode::AcCurrent:
         range = MultimeterService::toString(reading.range.currentRange);
         rangeMin = MultimeterService::minValue(reading.range.currentRange);
         rangeMax = MultimeterService::maxValue(reading.range.currentRange);
         break;
-    case MultimeterService::MultimeterMode::Resistance:
+    case MultimeterService::Mode::Resistance:
         range = MultimeterService::toString(reading.range.resitanceRange);
         rangeMin = MultimeterService::minValue(reading.range.resitanceRange);
         rangeMax = MultimeterService::maxValue(reading.range.resitanceRange);
         break;
-    case MultimeterService::MultimeterMode::Diode:       break;
-    case MultimeterService::MultimeterMode::Continuity:  break;
-    case MultimeterService::MultimeterMode::Temperature: break;
+    case MultimeterService::Mode::Diode:       break;
+    case MultimeterService::Mode::Continuity:  break;
+    case MultimeterService::Mode::Temperature: break;
     }
 
     switch (format) {

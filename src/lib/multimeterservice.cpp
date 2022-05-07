@@ -50,23 +50,23 @@ const QBluetoothUuid MultimeterService::CharacteristicUuids::
 const QBluetoothUuid MultimeterService::CharacteristicUuids::
     reading(QLatin1String("047d3559-8bee-423a-b229-4417fa603b90"));
 
-/// \enum MultimeterService::MultimeterMode
+/// \enum MultimeterService::Mode
 /// \brief Values support by the `Mode` attribute of the `Settings` and `Reading` characteristics.
 
 /// Returns \a mode as a user-friendly string.
-QString MultimeterService::toString(const MultimeterMode &mode)
+QString MultimeterService::toString(const Mode &mode)
 {
     switch (mode) {
-    case MultimeterMode::Idle:        return tr("Idle");
-    case MultimeterMode::DcVoltage:   return tr("DC voltage");
-    case MultimeterMode::AcVoltage:   return tr("AC voltage");
-    case MultimeterMode::DcCurrent:   return tr("DC current");
-    case MultimeterMode::AcCurrent:   return tr("AC current");
-    case MultimeterMode::Resistance:  return tr("Resistance");
-    case MultimeterMode::Diode:       return tr("Diode");
-    case MultimeterMode::Continuity:  return tr("Continuity");
-    case MultimeterMode::Temperature: return tr("Temperature");
-    default:                          return QString();
+    case Mode::Idle:        return tr("Idle");
+    case Mode::DcVoltage:   return tr("DC voltage");
+    case Mode::AcVoltage:   return tr("AC voltage");
+    case Mode::DcCurrent:   return tr("DC current");
+    case Mode::AcCurrent:   return tr("AC current");
+    case Mode::Resistance:  return tr("Resistance");
+    case Mode::Diode:       return tr("Diode");
+    case Mode::Continuity:  return tr("Continuity");
+    case Mode::Temperature: return tr("Temperature");
+    default:                return QString();
     }
 }
 
@@ -248,7 +248,7 @@ QVariant MultimeterService::maxValue(const ResistanceRange &range)
     }
 }
 
-/// \union MultimeterService::MultimeterRange
+/// \union MultimeterService::Range
 /// \brief Values support by the `Range` attribute of the `Settings` characteristic.
 
 /// \struct MultimeterService::Settings
@@ -359,7 +359,7 @@ MultimeterService::Reading MultimeterService::reading() const
         d->getCharacteristic(CharacteristicUuids::reading);
     return (characteristic.isValid()) ? MultimeterServicePrivate::parseReading(characteristic.value())
         : Reading{ ReadingStatusFlags(), std::numeric_limits<float>::quiet_NaN(),
-                   MultimeterMode::Idle, { VoltageRange::AutoRange } };
+                   Mode::Idle, { VoltageRange::AutoRange } };
 }
 
 /*!
@@ -432,7 +432,7 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
     MultimeterService::Reading reading{
         MultimeterService::ReadingStatusFlags(),
         std::numeric_limits<float>::quiet_NaN(),
-        MultimeterService::MultimeterMode::Idle,
+        MultimeterService::Mode::Idle,
         { MultimeterService::VoltageRange::AutoRange }
     };
 
@@ -449,7 +449,7 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
 
     reading.status = MultimeterService::ReadingStatusFlags(value.at(0));
     reading.value = qFromLittleEndian<float>(value.mid(1,4));
-    reading.mode = static_cast<MultimeterService::MultimeterMode>(value.at(5));
+    reading.mode = static_cast<MultimeterService::Mode>(value.at(5));
     reading.range.voltageRange = static_cast<MultimeterService::VoltageRange>(value.at(6));
     return reading;
 }
