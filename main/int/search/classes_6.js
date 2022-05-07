@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['multimetercommand_0',['MultimeterCommand',['../classMultimeterCommand.html',1,'']]],
-  ['multimeterrange_1',['MultimeterRange',['../unionMultimeterService_1_1MultimeterRange.html',1,'MultimeterService']]],
-  ['multimeterservice_2',['MultimeterService',['../classMultimeterService.html',1,'']]],
-  ['multimeterserviceprivate_3',['MultimeterServicePrivate',['../classMultimeterServicePrivate.html',1,'']]]
+  ['infocommand_0',['InfoCommand',['../classInfoCommand.html',1,'']]],
+  ['iterator_1',['Iterator',['https://doc.qt.io/qt-5/qcborarray-iterator.html',1,'QCborArray::Iterator'],['https://doc.qt.io/qt-5/qcbormap-iterator.html',1,'QCborMap::Iterator']]],
+  ['iterator_2',['iterator',['https://doc.qt.io/qt-5/qhash-iterator.html',1,'QHash::iterator'],['https://doc.qt.io/qt-5/qjsonarray-iterator.html',1,'QJsonArray::iterator'],['https://doc.qt.io/qt-5/qjsonobject-iterator.html',1,'QJsonObject::iterator'],['https://doc.qt.io/qt-5/qlinkedlist-iterator.html',1,'QLinkedList::iterator'],['https://doc.qt.io/qt-5/qlist-iterator.html',1,'QList::iterator'],['https://doc.qt.io/qt-5/qmap-iterator.html',1,'QMap::iterator'],['https://doc.qt.io/qt-5/qset-iterator.html',1,'QSet::iterator']]]
 ];

@@ -1,15 +1,22 @@
 var searchData=
 [
-  ['d_5fptr_0',['d_ptr',['../classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8',1,'AbstractPokitService::d_ptr()'],['../classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9',1,'PokitDevice::d_ptr()'],['../classPokitDiscoveryAgent.html#ad42dea538f47317d0465e3320f2d4365',1,'PokitDiscoveryAgent::d_ptr()']]],
+  ['d_5fptr_0',['d_ptr',['../classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9',1,'PokitDevice::d_ptr()'],['../classPokitDiscoveryAgent.html#ad42dea538f47317d0465e3320f2d4365',1,'PokitDiscoveryAgent::d_ptr()'],['../classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8',1,'AbstractPokitService::d_ptr()']]],
   ['datalogger_1',['dataLogger',['../classPokitDevicePrivate.html#af037d2de91afce5efdeab05ba94e55a7',1,'PokitDevicePrivate']]],
   ['dataloggermutex_2',['dataLoggerMutex',['../classPokitDevicePrivate.html#a5ec3a1468e50ad47385c6494be2529ae',1,'PokitDevicePrivate']]],
-  ['device_3',['device',['../classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57',1,'DeviceCommand']]],
-  ['devicecharacteristics_4',['deviceCharacteristics',['../structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0',1,'StatusService::CharacteristicUuids']]],
-  ['deviceinfo_5',['deviceInfo',['../classPokitDevicePrivate.html#a14ac6bc20c31570549862397c5502806',1,'PokitDevicePrivate']]],
-  ['deviceinfomutex_6',['deviceInfoMutex',['../classPokitDevicePrivate.html#a1f928a00b63593a752f505288717ecf6',1,'PokitDevicePrivate']]],
-  ['devicestatus_7',['deviceStatus',['../structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11',1,'StatusService::Status']]],
-  ['devicetoscanfor_8',['deviceToScanFor',['../classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208',1,'AbstractCommand']]],
-  ['discoveryagent_9',['discoveryAgent',['../classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c',1,'AbstractCommand']]],
-  ['dso_10',['dso',['../classPokitDevicePrivate.html#a3d56069c9b50e457a799a9c07637ecde',1,'PokitDevicePrivate']]],
-  ['dsomutex_11',['dsoMutex',['../classPokitDevicePrivate.html#a49f5b08bf31644b4e1521f33e5c8578c',1,'PokitDevicePrivate']]]
+  ['datasizeformats_3',['DataSizeFormats',['https://doc.qt.io/qt-5/qlocale.html#DataSizeFormat-enum',1,'QLocale']]],
+  ['decoderfn_4',['DecoderFn',['https://doc.qt.io/qt-5/qfile.html#DecoderFn-typedef',1,'QFile']]],
+  ['device_5',['device',['../classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57',1,'DeviceCommand']]],
+  ['devicecharacteristics_6',['deviceCharacteristics',['../structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0',1,'StatusService::CharacteristicUuids']]],
+  ['deviceinfo_7',['deviceInfo',['../classPokitDevicePrivate.html#a14ac6bc20c31570549862397c5502806',1,'PokitDevicePrivate']]],
+  ['deviceinfomutex_8',['deviceInfoMutex',['../classPokitDevicePrivate.html#a1f928a00b63593a752f505288717ecf6',1,'PokitDevicePrivate']]],
+  ['devicestatus_9',['deviceStatus',['../structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11',1,'StatusService::Status']]],
+  ['devicetoscanfor_10',['deviceToScanFor',['../classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208',1,'AbstractCommand']]],
+  ['diagnosticnotationoptions_11',['DiagnosticNotationOptions',['https://doc.qt.io/qt-5/qcborvalue.html#DiagnosticNotationOption-enum',1,'QCborValue']]],
+  ['difference_5ftype_12',['difference_type',['https://doc.qt.io/qt-5/qlinkedlist.html#difference_type-typedef',1,'QLinkedList::difference_type()'],['https://doc.qt.io/qt-5/qjsonarray.html#difference_type-typedef',1,'QJsonArray::difference_type()'],['https://doc.qt.io/qt-5/qfuture-const-iterator.html#difference_type-typedef',1,'QFuture::const_iterator::difference_type()'],['https://doc.qt.io/qt-5/qlist.html#difference_type-typedef',1,'QList::difference_type()'],['https://doc.qt.io/qt-5/qcborarray.html#difference_type-typedef',1,'QCborArray::difference_type()'],['https://doc.qt.io/qt-5/qset-const-iterator.html#difference_type-typedef',1,'QSet::const_iterator::difference_type()'],['https://doc.qt.io/qt-5/qset-iterator.html#difference_type-typedef',1,'QSet::iterator::difference_type()'],['https://doc.qt.io/qt-5/qset.html#difference_type-typedef',1,'QSet::difference_type()'],['https://doc.qt.io/qt-5/qvector.html#difference_type-typedef',1,'QVector::difference_type()'],['https://doc.qt.io/qt-5/qhash.html#difference_type-typedef',1,'QHash::difference_type()'],['https://doc.qt.io/qt-5/qmap.html#difference_type-typedef',1,'QMap::difference_type()'],['https://doc.qt.io/qt-5/qvarlengtharray.html#difference_type-typedef',1,'QVarLengthArray::difference_type()'],['https://doc.qt.io/qt-5/qstring.html#difference_type-typedef',1,'QString::difference_type()'],['https://doc.qt.io/qt-5/qlatin1string.html#difference_type-typedef',1,'QLatin1String::difference_type()'],['https://doc.qt.io/qt-5/qstringview.html#difference_type-typedef',1,'QStringView::difference_type()']]],
+  ['discoveryagent_13',['discoveryAgent',['../classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c',1,'AbstractCommand']]],
+  ['discoverymethods_14',['DiscoveryMethods',['https://doc.qt.io/qt-5/qbluetoothdevicediscoveryagent.html#DiscoveryMethod-enum',1,'QBluetoothDeviceDiscoveryAgent']]],
+  ['dockwidgetareas_15',['DockWidgetAreas',['https://doc.qt.io/qt-5/qt.html#DockWidgetArea-enum',1,'Qt']]],
+  ['dropactions_16',['DropActions',['https://doc.qt.io/qt-5/qt.html#DropAction-enum',1,'Qt']]],
+  ['dso_17',['dso',['../classPokitDevicePrivate.html#a3d56069c9b50e457a799a9c07637ecde',1,'PokitDevicePrivate']]],
+  ['dsomutex_18',['dsoMutex',['../classPokitDevicePrivate.html#a49f5b08bf31644b4e1521f33e5c8578c',1,'PokitDevicePrivate']]]
 ];

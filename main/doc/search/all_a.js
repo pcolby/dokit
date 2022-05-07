@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['loggermodesampling_0',['LoggerModeSampling',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca',1,'StatusService']]],
-  ['low_1',['Low',['../classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68a28d0edd045e05cf5af64e35ae0c4c6ef',1,'StatusService']]]
+  ['join_0',['join',['https://doc.qt.io/qt-5/qbytearraylist.html#join',1,'QByteArrayList::join() const const'],['https://doc.qt.io/qt-5/qbytearraylist.html#join-1',1,'QByteArrayList::join(const QByteArray &amp;separator) const const'],['https://doc.qt.io/qt-5/qbytearraylist.html#join-2',1,'QByteArrayList::join(char separator) const const'],['https://doc.qt.io/qt-5/qstringlist.html#join',1,'QStringList::join(const QString &amp;separator) const const'],['https://doc.qt.io/qt-5/qstringlist.html#join-1',1,'QStringList::join(QLatin1String separator) const const'],['https://doc.qt.io/qt-5/qstringlist.html#join-2',1,'QStringList::join(QChar separator) const const']]],
+  ['joining_1',['joining',['https://doc.qt.io/qt-5/qchar-obsolete.html#joining',1,'QChar::joining() const const'],['https://doc.qt.io/qt-5/qchar-obsolete.html#joining-1',1,'QChar::joining(uint ucs4)']]],
+  ['joiningtype_2',['joiningType',['https://doc.qt.io/qt-5/qchar.html#joiningType',1,'QChar::joiningType() const const'],['https://doc.qt.io/qt-5/qchar.html#joiningType-1',1,'QChar::joiningType(uint ucs4)']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['name_0',['name',['../structGenericAccessService_1_1CharacteristicUuids.html#a20951e0b80b69710edccf870d098db74',1,'GenericAccessService::CharacteristicUuids::name()'],['../structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8',1,'StatusService::CharacteristicUuids::name()']]]
+  ['handle_0',['HANDLE',['https://doc.qt.io/qt-5/qt.html#HANDLE-typedef',1,'Qt']]],
+  ['hardwarerevision_1',['hardwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b',1,'DeviceInfoService::CharacteristicUuids']]]
 ];

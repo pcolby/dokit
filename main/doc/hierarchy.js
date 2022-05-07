@@ -8,10 +8,7 @@ var hierarchy =
     [ "DeviceCharacteristics", "structMultimeterService_1_1DeviceCharacteristics.html", null ],
     [ "StatusService::DeviceCharacteristics", "structStatusService_1_1DeviceCharacteristics.html", null ],
     [ "MultimeterService::MultimeterRange", "unionMultimeterService_1_1MultimeterRange.html", null ],
-    [ "QBluetoothDeviceDiscoveryAgent", null, [
-      [ "PokitDiscoveryAgent", "classPokitDiscoveryAgent.html", null ]
-    ] ],
-    [ "QObject", null, [
+    [ "QObject", "https://doc.qt.io/qt-5/qobject.html", [
       [ "AbstractPokitService", "classAbstractPokitService.html", [
         [ "CalibrationService", "classCalibrationService.html", null ],
         [ "DeviceInfoService", "classDeviceInfoService.html", null ],
@@ -19,7 +16,10 @@ var hierarchy =
         [ "MultimeterService", "classMultimeterService.html", null ],
         [ "StatusService", "classStatusService.html", null ]
       ] ],
-      [ "PokitDevice", "classPokitDevice.html", null ]
+      [ "PokitDevice", "classPokitDevice.html", null ],
+      [ "QBluetoothDeviceDiscoveryAgent", "https://doc.qt.io/qt-5/qbluetoothdevicediscoveryagent.html", [
+        [ "PokitDiscoveryAgent", "classPokitDiscoveryAgent.html", null ]
+      ] ]
     ] ],
     [ "MultimeterService::Reading", "structMultimeterService_1_1Reading.html", null ],
     [ "MultimeterService::Settings", "structMultimeterService_1_1Settings.html", null ],

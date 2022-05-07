@@ -1,5 +1,12 @@
 var NAVTREEINDEX2 =
 {
+"qtpokit__global_8h.html#af2a5fcdf5ad6da4ea4f238aad0d29d65":[5,0,0,0,0,0,7,1],
+"qtpokit__global_8h_source.html":[5,0,0,0,0,0,7],
+"scancommand_8cpp_source.html":[5,0,0,0,1,0,13],
+"scancommand_8h_source.html":[5,0,0,0,1,0,14],
+"setnamecommand_8cpp_source.html":[5,0,0,0,1,0,15],
+"setnamecommand_8h_source.html":[5,0,0,0,1,0,16],
+"statuscommand_8cpp_source.html":[5,0,0,0,1,0,17],
 "statuscommand_8h_source.html":[5,0,0,0,1,0,18],
 "statusservice_8cpp.html":[5,0,0,0,1,1,14],
 "statusservice_8cpp_source.html":[5,0,0,0,1,1,14],

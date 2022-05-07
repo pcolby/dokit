@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['samplingbuffersize_0',['samplingBufferSize',['../structStatusService_1_1DeviceCharacteristics.html#a4ddb1ebddb04e6a7b445cff73379e932',1,'StatusService::DeviceCharacteristics']]],
-  ['serviceuuid_1',['serviceUuid',['../classCalibrationService.html#a787406e3fbda9e5ad966a3851d2c9fbc',1,'CalibrationService::serviceUuid()'],['../classDeviceInfoService.html#a3e790c39794cb40473573555ee485191',1,'DeviceInfoService::serviceUuid()'],['../classGenericAccessService.html#aa0752f0fdf6bca0a4acb163f3151534e',1,'GenericAccessService::serviceUuid()'],['../classMultimeterService.html#a552c46066db898a3ba428fdad175327b',1,'MultimeterService::serviceUuid()'],['../classStatusService.html#a2f29742224a879c4f1fb81a2fdd39ea5',1,'StatusService::serviceUuid()']]],
-  ['settings_2',['settings',['../structMultimeterService_1_1CharacteristicUuids.html#a502132c1d5922e86256dd70e6935b6d2',1,'MultimeterService::CharacteristicUuids']]],
-  ['softwarerevision_3',['softwareRevision',['../structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69',1,'DeviceInfoService::CharacteristicUuids']]],
-  ['status_4',['status',['../structMultimeterService_1_1Reading.html#adf294faf21970b7bb15e6ddc5f3739e1',1,'MultimeterService::Reading::status()'],['../structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c',1,'StatusService::CharacteristicUuids::status()']]]
+  ['key_5ftype_0',['key_type',['https://doc.qt.io/qt-5/qmap.html#key_type-typedef',1,'QMap::key_type()'],['https://doc.qt.io/qt-5/qhash.html#key_type-typedef',1,'QHash::key_type()'],['https://doc.qt.io/qt-5/qset.html#key_type-typedef',1,'QSet::key_type()'],['https://doc.qt.io/qt-5/qcbormap.html#key_type-typedef',1,'QCborMap::key_type()'],['https://doc.qt.io/qt-5/qjsonobject.html#key_type-typedef',1,'QJsonObject::key_type()']]],
+  ['key_5fvalue_5fiterator_1',['key_value_iterator',['https://doc.qt.io/qt-5/qmap.html#key_value_iterator-typedef',1,'QMap::key_value_iterator()'],['https://doc.qt.io/qt-5/qhash.html#key_value_iterator-typedef',1,'QHash::key_value_iterator()']]],
+  ['keyboardmodifiers_2',['KeyboardModifiers',['https://doc.qt.io/qt-5/qt.html#KeyboardModifier-enum',1,'Qt']]],
+  ['keyvalue_3',['KeyValue',['https://doc.qt.io/qt-5/qvariantanimation.html#KeyValue-typedef',1,'QVariantAnimation']]],
+  ['keyvalues_4',['KeyValues',['https://doc.qt.io/qt-5/qvariantanimation.html#KeyValues-typedef',1,'QVariantAnimation']]]
 ];
