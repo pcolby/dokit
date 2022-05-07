@@ -54,6 +54,7 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
@@ -70,8 +71,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117",
-"qtpokit__global_8h.html#af2a5fcdf5ad6da4ea4f238aad0d29d65"
+"classMeterCommand.html#af61db7610955feb9ed8c93de5a4d9d57",
+"functions_func_c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

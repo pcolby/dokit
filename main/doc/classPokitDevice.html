@@ -136,8 +136,8 @@ const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html">Q
 <tr class="memitem:abb2eafe232090e82ea1a69e38ebab49e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCalibrationService.html">CalibrationService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">calibration</a> ()</td></tr>
 <tr class="memdesc:abb2eafe232090e82ea1a69e38ebab49e"><td class="mdescLeft">&#160;</td><td class="mdescRight">*&zwj;/  <a href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">More...</a><br /></td></tr>
 <tr class="separator:abb2eafe232090e82ea1a69e38ebab49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77d94b8b0cf19bdbbd8f994e3c66c961"><td class="memItemLeft" align="right" valign="top">DataLoggerService *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">dataLogger</a> ()</td></tr>
-<tr class="memdesc:a77d94b8b0cf19bdbbd8f994e3c66c961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to a DataLoggerService instance that uses this device's controller for access.  <a href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">More...</a><br /></td></tr>
+<tr class="memitem:a77d94b8b0cf19bdbbd8f994e3c66c961"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classDataLoggerService.html">DataLoggerService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">dataLogger</a> ()</td></tr>
+<tr class="memdesc:a77d94b8b0cf19bdbbd8f994e3c66c961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to a <a class="el" href="classDataLoggerService.html" title="The DataLoggerService class accesses the Pokit Status service of Pokit devices.">DataLoggerService</a> instance that uses this device's controller for access.  <a href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">More...</a><br /></td></tr>
 <tr class="separator:a77d94b8b0cf19bdbbd8f994e3c66c961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e04571a74d06fcc4608e70437b5fa5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classDeviceInfoService.html">DeviceInfoService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a1e04571a74d06fcc4608e70437b5fa5d">deviceInformation</a> ()</td></tr>
 <tr class="memdesc:a1e04571a74d06fcc4608e70437b5fa5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to DeviceInformationService instance that uses this device's controller for access.  <a href="classPokitDevice.html#a1e04571a74d06fcc4608e70437b5fa5d">More...</a><br /></td></tr>
@@ -416,8 +416,7 @@ Here is the call graph for this function:</div>
 
 <p>*&zwj;/ </p>
 <p >Returns a pointer to a <a class="el" href="classCalibrationService.html" title="The CalibrationService class accesses the Calibrartion service of Pokit devices.">CalibrationService</a> instance that uses this device's controller for access.</p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Implement this function when the DataLoggerService is implemented. </dd></dl>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -440,7 +439,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DataLoggerService * PokitDevice::dataLogger </td>
+          <td class="memname"><a class="el" href="classDataLoggerService.html">DataLoggerService</a> * PokitDevice::dataLogger </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -448,9 +447,20 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Returns a pointer to a DataLoggerService instance that uses this device's controller for access. </p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Implement this function when the DataLoggerService is implemented. </dd></dl>
+<p>Returns a pointer to a <a class="el" href="classDataLoggerService.html" title="The DataLoggerService class accesses the Pokit Status service of Pokit devices.">DataLoggerService</a> instance that uses this device's controller for access. </p>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a77d94b8b0cf19bdbbd8f994e3c66c961_cgraph.svg" width="192" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a77d94b8b0cf19bdbbd8f994e3c66c961_icgraph.svg" width="192" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -491,7 +501,7 @@ Here is the caller graph for this function:</div>
 
 <p>Returns a pointer to DsoService instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Implement this function when the DsoService is implemented. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Implement this function when the DsoService is implemented. </dd></dl>
 
 </div>
 </div>
@@ -543,8 +553,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Returns a pointer to <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Pokit Status service of Pokit devices.">MultimeterService</a> instance that uses this device's controller for access. </p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Implement this function when the <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Pokit Status service of Pokit devices.">MultimeterService</a> is implemented. </dd></dl>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

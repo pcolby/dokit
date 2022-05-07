@@ -122,8 +122,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMultimeterService_1_1CharacteristicUuids.html">CharacteristicUuids</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Characteristics available via the <code>Multimeter</code> service.  <a href="structMultimeterService_1_1CharacteristicUuids.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionMultimeterService_1_1MultimeterRange.html">MultimeterRange</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values support by the <code>Range</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic.  <a href="unionMultimeterService_1_1MultimeterRange.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionMultimeterService_1_1Range.html">Range</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic.  <a href="unionMultimeterService_1_1Range.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMultimeterService_1_1Reading.html">Reading</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attributes included in the <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characterstic.  <a href="structMultimeterService_1_1Reading.html#details">More...</a><br /></td></tr>
@@ -134,22 +134,22 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a5bdcce1ec41327dc14a453fc0f7150d6"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6">MultimeterMode</a> : quint8 { <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6ae599161956d626eda4cb0a5ffb85271c">Idle</a> = 0
-, <a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a> = 1
-, <a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a> = 2
-, <a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a> = 3
+<tr class="memitem:a51f66d0b81dace3115c5c68bc931eaea"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a> : quint8 { <br />
+&#160;&#160;<a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaae599161956d626eda4cb0a5ffb85271c">Idle</a> = 0
+, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5">DcVoltage</a> = 1
+, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a> = 2
+, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e">DcCurrent</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a> = 4
-, <a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a9db444f7a3b8ba8f817647de53b7a6fe">Resistance</a> = 5
-, <a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a0f31a45b6daa6a5478050c36732a2549">Diode</a> = 6
-, <a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6af73d2c55dc3628b7071e45104874c485">Continuity</a> = 7
+&#160;&#160;<a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a> = 4
+, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9db444f7a3b8ba8f817647de53b7a6fe">Resistance</a> = 5
+, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa0f31a45b6daa6a5478050c36732a2549">Diode</a> = 6
+, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf73d2c55dc3628b7071e45104874c485">Continuity</a> = 7
 , <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a> = 8
+&#160;&#160;<a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a> = 8
 <br />
  }</td></tr>
-<tr class="memdesc:a5bdcce1ec41327dc14a453fc0f7150d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values support by the <code>Mode</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic.  <a href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6">More...</a><br /></td></tr>
-<tr class="separator:a5bdcce1ec41327dc14a453fc0f7150d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a51f66d0b81dace3115c5c68bc931eaea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code>Mode</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics.  <a href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">More...</a><br /></td></tr>
+<tr class="separator:a51f66d0b81dace3115c5c68bc931eaea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0116d83a5bb23121c27f2ea12406942"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a> : quint8 { <br />
 &#160;&#160;<a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a> = 0
 , <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942ab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a> = 1
@@ -161,7 +161,7 @@ Public Types</h2></td></tr>
 , <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a> = 255
 <br />
  }</td></tr>
-<tr class="memdesc:ae0116d83a5bb23121c27f2ea12406942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values support by the <code>Range</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic, when <code>Mode</code> is AC or DC voltage.  <a href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">More...</a><br /></td></tr>
+<tr class="memdesc:ae0116d83a5bb23121c27f2ea12406942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is AC or DC voltage.  <a href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">More...</a><br /></td></tr>
 <tr class="separator:ae0116d83a5bb23121c27f2ea12406942"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19296ef25a85513d3a619871fbcc12c2"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">CurrentRange</a> : quint8 { <br />
 &#160;&#160;<a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2adf1aa51f69cee99bf34896eedef7ec66">_0_to_10mA</a> = 0
@@ -173,7 +173,7 @@ Public Types</h2></td></tr>
 , <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a> = 255
 <br />
  }</td></tr>
-<tr class="memdesc:a19296ef25a85513d3a619871fbcc12c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values support by the <code>Range</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic, when <code>Mode</code> is AC or DC current.  <a href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">More...</a><br /></td></tr>
+<tr class="memdesc:a19296ef25a85513d3a619871fbcc12c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is AC or DC current.  <a href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">More...</a><br /></td></tr>
 <tr class="separator:a19296ef25a85513d3a619871fbcc12c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a603464d36815b48d54ea91d06bdbc462"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">ResistanceRange</a> : quint8 { <br />
 &#160;&#160;<a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a">_0_to_160</a> = 0
@@ -189,14 +189,20 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a> = 255
 <br />
  }</td></tr>
-<tr class="memdesc:a603464d36815b48d54ea91d06bdbc462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values support by the <code>Range</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic, when <code>Mode</code> is resitance.  <a href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">More...</a><br /></td></tr>
+<tr class="memdesc:a603464d36815b48d54ea91d06bdbc462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is resitance.  <a href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">More...</a><br /></td></tr>
 <tr class="separator:a603464d36815b48d54ea91d06bdbc462"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34f6ec088a3a914c5a3c4656418eabcf"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcf">ReadingStatusFlag</a> : quint8 { <a class="el" href="classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcfa5c8523b038abf04d86fcc5358cd893cf">AutoRange</a> = 0x01
-, <a class="el" href="classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcfaf73d2c55dc3628b7071e45104874c485">Continuity</a> = 0x01
-, <a class="el" href="classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcfa902b0d55fddef6f8d651fe1035b7d4bd">Error</a> = 0xFF
+<tr class="memitem:a43c735e6c80c4ada9bc8640d06fbe286"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MeterStatus</a> : quint8 { <br />
+&#160;&#160;<a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849">AutoRangeOff</a> = 0
+, <a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541">AutoRangeOn</a> = 1
+, <a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286aa47e2c0fd15eb75f65390f27f1107a86">NoContinuity</a> = 0
+, <a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286af73d2c55dc3628b7071e45104874c485">Continuity</a> = 1
+, <br />
+&#160;&#160;<a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286aa60852f204ed8028c1c58808b746d115">Ok</a> = 0
+, <a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a902b0d55fddef6f8d651fe1035b7d4bd">Error</a> = 255
+<br />
  }</td></tr>
-<tr class="memdesc:a34f6ec088a3a914c5a3c4656418eabcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values support by the <code>Status</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic.  <a href="classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcf">More...</a><br /></td></tr>
-<tr class="separator:a34f6ec088a3a914c5a3c4656418eabcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a43c735e6c80c4ada9bc8640d06fbe286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code>Status</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic.  <a href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">More...</a><br /></td></tr>
+<tr class="separator:a43c735e6c80c4ada9bc8640d06fbe286"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
@@ -232,7 +238,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a818612a809f2addc659b44bc537c4428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the <code>Multimeter</code> service's <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristic.  <a href="classMultimeterService.html#a818612a809f2addc659b44bc537c4428">More...</a><br /></td></tr>
 <tr class="separator:a818612a809f2addc659b44bc537c4428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab459a9db42aed973bbc18a2bc9fcd957"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#ab459a9db42aed973bbc18a2bc9fcd957">setSettings</a> (const <a class="el" href="structMultimeterService_1_1Settings.html">Settings</a> &amp;settings)</td></tr>
-<tr class="memdesc:ab459a9db42aed973bbc18a2bc9fcd957"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set's the Pokit device's name to <em>name</em>.  <a href="classMultimeterService.html#ab459a9db42aed973bbc18a2bc9fcd957">More...</a><br /></td></tr>
+<tr class="memdesc:ab459a9db42aed973bbc18a2bc9fcd957"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the Pokit device's multimeter mode.  <a href="classMultimeterService.html#ab459a9db42aed973bbc18a2bc9fcd957">More...</a><br /></td></tr>
 <tr class="separator:ab459a9db42aed973bbc18a2bc9fcd957"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7623c59f41fc099bebd3447637a904e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMultimeterService_1_1Reading.html">Reading</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">reading</a> () const</td></tr>
 <tr class="memdesc:ad7623c59f41fc099bebd3447637a904e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the most recent value of the <code>Multimeter</code> service's <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristic.  <a href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">More...</a><br /></td></tr>
@@ -384,10 +390,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a7554bfb64b385258c2a103f17753459a"><td class="memItemLeft" align="right" valign="top"><a id="a7554bfb64b385258c2a103f17753459a" name="a7554bfb64b385258c2a103f17753459a"></a>
-static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6">MultimeterMode</a> &amp;mode)</td></tr>
-<tr class="memdesc:a7554bfb64b385258c2a103f17753459a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>mode</em> as a user-friendly string. <br /></td></tr>
-<tr class="separator:a7554bfb64b385258c2a103f17753459a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58a03dbc0ae216dc60f27d975af92cf8"><td class="memItemLeft" align="right" valign="top"><a id="a58a03dbc0ae216dc60f27d975af92cf8" name="a58a03dbc0ae216dc60f27d975af92cf8"></a>
+static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a> &amp;mode)</td></tr>
+<tr class="memdesc:a58a03dbc0ae216dc60f27d975af92cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>mode</em> as a user-friendly string. <br /></td></tr>
+<tr class="separator:a58a03dbc0ae216dc60f27d975af92cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53738a18035bab9e990deee13344ddbe"><td class="memItemLeft" align="right" valign="top"><a id="a53738a18035bab9e990deee13344ddbe" name="a53738a18035bab9e990deee13344ddbe"></a>
 static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a> &amp;range)</td></tr>
 <tr class="memdesc:a53738a18035bab9e990deee13344ddbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string. <br /></td></tr>
@@ -523,7 +529,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </table>
 </div><div class="memdoc">
 
-<p>Values support by the <code>Range</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic, when <code>Mode</code> is AC or DC current. </p>
+<p>Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is AC or DC current. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a19296ef25a85513d3a619871fbcc12c2adf1aa51f69cee99bf34896eedef7ec66" name="a19296ef25a85513d3a619871fbcc12c2adf1aa51f69cee99bf34896eedef7ec66"></a>_0_to_10mA&#160;</td><td class="fielddoc"><p >0 to 10mA. </p>
 </td></tr>
@@ -541,8 +547,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 
 </div>
 </div>
-<a id="a5bdcce1ec41327dc14a453fc0f7150d6" name="a5bdcce1ec41327dc14a453fc0f7150d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bdcce1ec41327dc14a453fc0f7150d6">&#9670;&nbsp;</a></span>MultimeterMode</h2>
+<a id="a43c735e6c80c4ada9bc8640d06fbe286" name="a43c735e6c80c4ada9bc8640d06fbe286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43c735e6c80c4ada9bc8640d06fbe286">&#9670;&nbsp;</a></span>MeterStatus</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -551,7 +557,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6">MultimeterService::MultimeterMode</a> : quint8</td>
+          <td class="memname">enum class <a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MultimeterService::MeterStatus</a> : quint8</td>
         </tr>
       </table>
   </td>
@@ -561,32 +567,26 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </table>
 </div><div class="memdoc">
 
-<p>Values support by the <code>Mode</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic. </p>
+<p>Values supported by the <code>Status</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6ae599161956d626eda4cb0a5ffb85271c" name="a5bdcce1ec41327dc14a453fc0f7150d6ae599161956d626eda4cb0a5ffb85271c"></a>Idle&#160;</td><td class="fielddoc"><p >Make device idle. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849" name="a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849"></a>AutoRangeOff&#160;</td><td class="fielddoc"><p >Auto-range is disabled (voltage, current and resitance modes only). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6a1a18453c20867d5a990479b3716cbbc5" name="a5bdcce1ec41327dc14a453fc0f7150d6a1a18453c20867d5a990479b3716cbbc5"></a>DcVoltage&#160;</td><td class="fielddoc"><p >Measure DC voltage. </p>
+<tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541" name="a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541"></a>AutoRangeOn&#160;</td><td class="fielddoc"><p >Auto-range is enabled (voltage, current and resitance modes only). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6a9f01dfb531bd23d5cb9c2bb2e49d685e" name="a5bdcce1ec41327dc14a453fc0f7150d6a9f01dfb531bd23d5cb9c2bb2e49d685e"></a>AcVoltage&#160;</td><td class="fielddoc"><p >Measure AC voltage. </p>
+<tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286aa47e2c0fd15eb75f65390f27f1107a86" name="a43c735e6c80c4ada9bc8640d06fbe286aa47e2c0fd15eb75f65390f27f1107a86"></a>NoContinuity&#160;</td><td class="fielddoc"><p >No continuity (continuity mode only). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6af2a03b2c98a6620d4bf33af69572898e" name="a5bdcce1ec41327dc14a453fc0f7150d6af2a03b2c98a6620d4bf33af69572898e"></a>DcCurrent&#160;</td><td class="fielddoc"><p >Measure DC current. </p>
+<tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286af73d2c55dc3628b7071e45104874c485" name="a43c735e6c80c4ada9bc8640d06fbe286af73d2c55dc3628b7071e45104874c485"></a>Continuity&#160;</td><td class="fielddoc"><p >Continuity (continuity mode only). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6a7b39f260051ef745ddba9fc57ac23ff9" name="a5bdcce1ec41327dc14a453fc0f7150d6a7b39f260051ef745ddba9fc57ac23ff9"></a>AcCurrent&#160;</td><td class="fielddoc"><p >Measure AC current. </p>
+<tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286aa60852f204ed8028c1c58808b746d115" name="a43c735e6c80c4ada9bc8640d06fbe286aa60852f204ed8028c1c58808b746d115"></a>Ok&#160;</td><td class="fielddoc"><p >Ok (temperature and diode modes only). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6a9db444f7a3b8ba8f817647de53b7a6fe" name="a5bdcce1ec41327dc14a453fc0f7150d6a9db444f7a3b8ba8f817647de53b7a6fe"></a>Resistance&#160;</td><td class="fielddoc"><p >Measure resistance. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6a0f31a45b6daa6a5478050c36732a2549" name="a5bdcce1ec41327dc14a453fc0f7150d6a0f31a45b6daa6a5478050c36732a2549"></a>Diode&#160;</td><td class="fielddoc"><p >Measure diode. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6af73d2c55dc3628b7071e45104874c485" name="a5bdcce1ec41327dc14a453fc0f7150d6af73d2c55dc3628b7071e45104874c485"></a>Continuity&#160;</td><td class="fielddoc"><p >Measure continuity. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5bdcce1ec41327dc14a453fc0f7150d6aee7a8e262285ed49ea1b4e4ae11525bd" name="a5bdcce1ec41327dc14a453fc0f7150d6aee7a8e262285ed49ea1b4e4ae11525bd"></a>Temperature&#160;</td><td class="fielddoc"><p >Measure temperature. </p>
+<tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286a902b0d55fddef6f8d651fe1035b7d4bd" name="a43c735e6c80c4ada9bc8640d06fbe286a902b0d55fddef6f8d651fe1035b7d4bd"></a>Error&#160;</td><td class="fielddoc"><p >Error (all modes). </p>
 </td></tr>
 </table>
 
 </div>
 </div>
-<a id="a34f6ec088a3a914c5a3c4656418eabcf" name="a34f6ec088a3a914c5a3c4656418eabcf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34f6ec088a3a914c5a3c4656418eabcf">&#9670;&nbsp;</a></span>ReadingStatusFlag</h2>
+<a id="a51f66d0b81dace3115c5c68bc931eaea" name="a51f66d0b81dace3115c5c68bc931eaea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51f66d0b81dace3115c5c68bc931eaea">&#9670;&nbsp;</a></span>Mode</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -595,7 +595,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcf">MultimeterService::ReadingStatusFlag</a> : quint8</td>
+          <td class="memname">enum class <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">MultimeterService::Mode</a> : quint8</td>
         </tr>
       </table>
   </td>
@@ -605,13 +605,25 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </table>
 </div><div class="memdoc">
 
-<p>Values support by the <code>Status</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic. </p>
+<p>Values supported by the <code>Mode</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a34f6ec088a3a914c5a3c4656418eabcfa5c8523b038abf04d86fcc5358cd893cf" name="a34f6ec088a3a914c5a3c4656418eabcfa5c8523b038abf04d86fcc5358cd893cf"></a>AutoRange&#160;</td><td class="fielddoc"><p >Auto-range is active (for voltage, current and resistance modes). </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaae599161956d626eda4cb0a5ffb85271c" name="a51f66d0b81dace3115c5c68bc931eaeaae599161956d626eda4cb0a5ffb85271c"></a>Idle&#160;</td><td class="fielddoc"><p >Make device idle. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a34f6ec088a3a914c5a3c4656418eabcfaf73d2c55dc3628b7071e45104874c485" name="a34f6ec088a3a914c5a3c4656418eabcfaf73d2c55dc3628b7071e45104874c485"></a>Continuity&#160;</td><td class="fielddoc"><p >Indicates continuity, when in continuity mode. </p>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5" name="a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5"></a>DcVoltage&#160;</td><td class="fielddoc"><p >Measure DC voltage. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a34f6ec088a3a914c5a3c4656418eabcfa902b0d55fddef6f8d651fe1035b7d4bd" name="a34f6ec088a3a914c5a3c4656418eabcfa902b0d55fddef6f8d651fe1035b7d4bd"></a>Error&#160;</td><td class="fielddoc"><p >Indicates error in temperature and diode modes. </p>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e" name="a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e"></a>AcVoltage&#160;</td><td class="fielddoc"><p >Measure AC voltage. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e" name="a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e"></a>DcCurrent&#160;</td><td class="fielddoc"><p >Measure DC current. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9" name="a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9"></a>AcCurrent&#160;</td><td class="fielddoc"><p >Measure AC current. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaa9db444f7a3b8ba8f817647de53b7a6fe" name="a51f66d0b81dace3115c5c68bc931eaeaa9db444f7a3b8ba8f817647de53b7a6fe"></a>Resistance&#160;</td><td class="fielddoc"><p >Measure resistance. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaa0f31a45b6daa6a5478050c36732a2549" name="a51f66d0b81dace3115c5c68bc931eaeaa0f31a45b6daa6a5478050c36732a2549"></a>Diode&#160;</td><td class="fielddoc"><p >Measure diode. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaaf73d2c55dc3628b7071e45104874c485" name="a51f66d0b81dace3115c5c68bc931eaeaaf73d2c55dc3628b7071e45104874c485"></a>Continuity&#160;</td><td class="fielddoc"><p >Measure continuity. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd" name="a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd"></a>Temperature&#160;</td><td class="fielddoc"><p >Measure temperature. </p>
 </td></tr>
 </table>
 
@@ -637,7 +649,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </table>
 </div><div class="memdoc">
 
-<p>Values support by the <code>Range</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic, when <code>Mode</code> is resitance. </p>
+<p>Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is resitance. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a" name="a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a"></a>_0_to_160&#160;</td><td class="fielddoc"><p >0 to 160 ohms. </p>
 </td></tr>
@@ -681,7 +693,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </table>
 </div><div class="memdoc">
 
-<p>Values support by the <code>Range</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic, when <code>Mode</code> is AC or DC voltage. </p>
+<p>Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is AC or DC voltage. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae0116d83a5bb23121c27f2ea12406942a198067396ed0459ea6894b2397468ef6" name="ae0116d83a5bb23121c27f2ea12406942a198067396ed0459ea6894b2397468ef6"></a>_0_to_300mV&#160;</td><td class="fielddoc"><p >0 to 300mV. </p>
 </td></tr>
@@ -854,7 +866,8 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Returns the minimum value for <em>range</em> in (integer) milliamps, or the string "Auto". </p>
-<p >If <em>range</em> is not known valid value, then an null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned. </p>
+<p >If <em>range</em> is not known valid value, then an null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned.</p>
+<p >Note, this is an <em>absolute</em> minimum. That is, the true range for DC measurements is from <code>-maxValue(range)</code> to <code>+maxValue(range)</code>. In this sense, <code>minValue(range)</code> indicates the magnitude (ignore signs) that can be measured accurately for the given <em>range</em>. As AC current can never be negative, this is relevant for DC current only. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -993,9 +1006,9 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">reading</a>.<a class="code hl_variable" href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">value</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassMultimeterService_html_ad7623c59f41fc099bebd3447637a904e"><div class="ttname"><a href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">MultimeterService::reading</a></div><div class="ttdeci">Reading reading() const</div><div class="ttdoc">Returns the most recent value of the Multimeter service's Reading characteristic.</div><div class="ttdef"><b>Definition:</b> multimeterservice.cpp:353</div></div>
-<div class="ttc" id="astructMultimeterService_1_1Reading_html"><div class="ttname"><a href="structMultimeterService_1_1Reading.html">MultimeterService::Reading</a></div><div class="ttdoc">Attributes included in the Reading characterstic.</div><div class="ttdef"><b>Definition:</b> multimeterservice.h:122</div></div>
-<div class="ttc" id="astructMultimeterService_1_1Reading_html_a5b6599355c8ae7e67d57da122256521a"><div class="ttname"><a href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">MultimeterService::Reading::value</a></div><div class="ttdeci">float value</div><div class="ttdoc">Last acquired value.</div><div class="ttdef"><b>Definition:</b> multimeterservice.h:124</div></div>
+<div class="ttc" id="aclassMultimeterService_html_ad7623c59f41fc099bebd3447637a904e"><div class="ttname"><a href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">MultimeterService::reading</a></div><div class="ttdeci">Reading reading() const</div><div class="ttdoc">Returns the most recent value of the Multimeter service's Reading characteristic.</div><div class="ttdef"><b>Definition:</b> multimeterservice.cpp:355</div></div>
+<div class="ttc" id="astructMultimeterService_1_1Reading_html"><div class="ttname"><a href="structMultimeterService_1_1Reading.html">MultimeterService::Reading</a></div><div class="ttdoc">Attributes included in the Reading characterstic.</div><div class="ttdef"><b>Definition:</b> multimeterservice.h:124</div></div>
+<div class="ttc" id="astructMultimeterService_1_1Reading_html_a5b6599355c8ae7e67d57da122256521a"><div class="ttname"><a href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">MultimeterService::Reading::value</a></div><div class="ttdeci">float value</div><div class="ttdoc">Last acquired value.</div><div class="ttdef"><b>Definition:</b> multimeterservice.h:126</div></div>
 </div><!-- fragment --> <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1077,9 +1090,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Set's the Pokit device's name to <em>name</em>. </p>
+<p>Configures the Pokit device's multimeter mode. </p>
 <p >Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
-<p >Emits deivceNameWritten() if/when the <em>name</em> has been set. </p>
+<p >Emits <a class="el" href="classMultimeterService.html#ab77871f1969da5a13dc1addb658814c6" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em>settings</em> have been writtem successfully. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1113,7 +1126,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>This signal is emitted when the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic has been written successfully. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMultimeterService.html#ab459a9db42aed973bbc18a2bc9fcd957" title="Set&#39;s the Pokit device&#39;s name to name.">setSettings</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMultimeterService.html#ab459a9db42aed973bbc18a2bc9fcd957" title="Configures the Pokit device&#39;s multimeter mode.">setSettings</a> </dd></dl>
 
 </div>
 </div>

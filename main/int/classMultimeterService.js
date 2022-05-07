@@ -1,7 +1,7 @@
 var classMultimeterService =
 [
     [ "CharacteristicUuids", "structMultimeterService_1_1CharacteristicUuids.html", "structMultimeterService_1_1CharacteristicUuids" ],
-    [ "MultimeterRange", "unionMultimeterService_1_1MultimeterRange.html", "unionMultimeterService_1_1MultimeterRange" ],
+    [ "Range", "unionMultimeterService_1_1Range.html", "unionMultimeterService_1_1Range" ],
     [ "Reading", "structMultimeterService_1_1Reading.html", "structMultimeterService_1_1Reading" ],
     [ "Settings", "structMultimeterService_1_1Settings.html", "structMultimeterService_1_1Settings" ],
     [ "CurrentRange", "classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2", [
@@ -12,21 +12,24 @@ var classMultimeterService =
       [ "_300mA_to_3A", "classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2a36fd02dd400c54ef118025070ad4feb1", null ],
       [ "AutoRange", "classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2a5c8523b038abf04d86fcc5358cd893cf", null ]
     ] ],
-    [ "MultimeterMode", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6", [
-      [ "Idle", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6ae599161956d626eda4cb0a5ffb85271c", null ],
-      [ "DcVoltage", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a1a18453c20867d5a990479b3716cbbc5", null ],
-      [ "AcVoltage", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a9f01dfb531bd23d5cb9c2bb2e49d685e", null ],
-      [ "DcCurrent", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6af2a03b2c98a6620d4bf33af69572898e", null ],
-      [ "AcCurrent", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a7b39f260051ef745ddba9fc57ac23ff9", null ],
-      [ "Resistance", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a9db444f7a3b8ba8f817647de53b7a6fe", null ],
-      [ "Diode", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6a0f31a45b6daa6a5478050c36732a2549", null ],
-      [ "Continuity", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6af73d2c55dc3628b7071e45104874c485", null ],
-      [ "Temperature", "classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6aee7a8e262285ed49ea1b4e4ae11525bd", null ]
+    [ "MeterStatus", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286", [
+      [ "AutoRangeOff", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849", null ],
+      [ "AutoRangeOn", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541", null ],
+      [ "NoContinuity", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286aa47e2c0fd15eb75f65390f27f1107a86", null ],
+      [ "Continuity", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286af73d2c55dc3628b7071e45104874c485", null ],
+      [ "Ok", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286aa60852f204ed8028c1c58808b746d115", null ],
+      [ "Error", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a902b0d55fddef6f8d651fe1035b7d4bd", null ]
     ] ],
-    [ "ReadingStatusFlag", "classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcf", [
-      [ "AutoRange", "classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcfa5c8523b038abf04d86fcc5358cd893cf", null ],
-      [ "Continuity", "classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcfaf73d2c55dc3628b7071e45104874c485", null ],
-      [ "Error", "classMultimeterService.html#a34f6ec088a3a914c5a3c4656418eabcfa902b0d55fddef6f8d651fe1035b7d4bd", null ]
+    [ "Mode", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea", [
+      [ "Idle", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaae599161956d626eda4cb0a5ffb85271c", null ],
+      [ "DcVoltage", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5", null ],
+      [ "AcVoltage", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e", null ],
+      [ "DcCurrent", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e", null ],
+      [ "AcCurrent", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9", null ],
+      [ "Resistance", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9db444f7a3b8ba8f817647de53b7a6fe", null ],
+      [ "Diode", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa0f31a45b6daa6a5478050c36732a2549", null ],
+      [ "Continuity", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf73d2c55dc3628b7071e45104874c485", null ],
+      [ "Temperature", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd", null ]
     ] ],
     [ "ResistanceRange", "classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462", [
       [ "_0_to_160", "classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a", null ],
@@ -66,7 +69,7 @@ var classMultimeterService =
     [ "settingsWritten", "classMultimeterService.html#ab77871f1969da5a13dc1addb658814c6", null ],
     [ "stopClientReadings", "classMultimeterService.html#aee4f24051a196c67e74ba6f090964693", null ],
     [ "toString", "classMultimeterService.html#ae20f5f6bd1e43d0ddcc2096c86f1d50e", null ],
-    [ "toString", "classMultimeterService.html#a7554bfb64b385258c2a103f17753459a", null ],
+    [ "toString", "classMultimeterService.html#a58a03dbc0ae216dc60f27d975af92cf8", null ],
     [ "toString", "classMultimeterService.html#addd56e334f91aca2bc2d48db4730f57e", null ],
     [ "toString", "classMultimeterService.html#a53738a18035bab9e990deee13344ddbe", null ],
     [ "serviceUuid", "classMultimeterService.html#a552c46066db898a3ba428fdad175327b", null ]

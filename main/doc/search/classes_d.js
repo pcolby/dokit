@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sequence_0',['Sequence',['https://doc.qt.io/qt-5/qbluetoothserviceinfo-sequence.html',1,'QBluetoothServiceInfo']]],
-  ['settings_1',['Settings',['../structMultimeterService_1_1Settings.html',1,'MultimeterService']]],
+  ['settings_1',['Settings',['../structDataLoggerService_1_1Settings.html',1,'DataLoggerService::Settings'],['../structMultimeterService_1_1Settings.html',1,'MultimeterService::Settings']]],
   ['signalevent_2',['SignalEvent',['https://doc.qt.io/qt-5/qstatemachine-signalevent.html',1,'QStateMachine']]],
   ['status_3',['Status',['../structStatusService_1_1Status.html',1,'StatusService']]],
   ['statusservice_4',['StatusService',['../classStatusService.html',1,'']]],

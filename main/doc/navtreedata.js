@@ -35,6 +35,7 @@ var NAVTREE =
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
@@ -46,7 +47,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"abstractpokitservice_8cpp.html"
+"abstractpokitservice_8cpp.html",
+"structDataLoggerService_1_1Metadata.html#a996d2701f1571bbbe51da18d2be3e2b8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

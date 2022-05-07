@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['temperature_0',['Temperature',['../classMultimeterService.html#a5bdcce1ec41327dc14a453fc0f7150d6aee7a8e262285ed49ea1b4e4ae11525bd',1,'MultimeterService']]]
+  ['ok_0',['Ok',['../classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286aa60852f204ed8028c1c58808b746d115',1,'MultimeterService']]]
 ];

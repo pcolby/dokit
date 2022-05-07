@@ -9,8 +9,9 @@ var searchData=
   ['maximumresistance_6',['maximumResistance',['../structStatusService_1_1DeviceCharacteristics.html#ae9154c26eb128b26c0fccb9f653f1420',1,'StatusService::DeviceCharacteristics']]],
   ['maximumsamplingrate_7',['maximumSamplingRate',['../structStatusService_1_1DeviceCharacteristics.html#a20ea5dac3e01c2c333a1c9a77ef02d3c',1,'StatusService::DeviceCharacteristics']]],
   ['maximumvoltage_8',['maximumVoltage',['../structStatusService_1_1DeviceCharacteristics.html#aa254a7737f072c29aeb21b29140c738f',1,'StatusService::DeviceCharacteristics']]],
-  ['mode_9',['mode',['../structMultimeterService_1_1Settings.html#a383317a864e8541c3d1a002d85043e7e',1,'MultimeterService::Settings::mode()'],['../structMultimeterService_1_1Reading.html#abb91cd5d498589b6e8f21083d18cf146',1,'MultimeterService::Reading::mode()']]],
-  ['modelnumber_10',['modelNumber',['../structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34',1,'DeviceInfoService::CharacteristicUuids']]],
-  ['mousebuttons_11',['MouseButtons',['https://doc.qt.io/qt-5/qt.html#MouseButton-enum',1,'Qt']]],
-  ['mouseeventflags_12',['MouseEventFlags',['https://doc.qt.io/qt-5/qt.html#MouseEventFlag-enum',1,'Qt']]]
+  ['metadata_9',['metadata',['../structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9',1,'DataLoggerService::CharacteristicUuids']]],
+  ['mode_10',['mode',['../structDataLoggerService_1_1Settings.html#ac72c18db4e38d95664c456c527e352f4',1,'DataLoggerService::Settings::mode()'],['../structDataLoggerService_1_1Metadata.html#ac976c83a69d67fbd287d9ae406582d81',1,'DataLoggerService::Metadata::mode()'],['../structMultimeterService_1_1Settings.html#afed6bcae66af6d69cb3887e2c6d5c443',1,'MultimeterService::Settings::mode()'],['../structMultimeterService_1_1Reading.html#a431d32df3541b91edf0c713af9c2cf00',1,'MultimeterService::Reading::mode()']]],
+  ['modelnumber_11',['modelNumber',['../structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34',1,'DeviceInfoService::CharacteristicUuids']]],
+  ['mousebuttons_12',['MouseButtons',['https://doc.qt.io/qt-5/qt.html#MouseButton-enum',1,'Qt']]],
+  ['mouseeventflags_13',['MouseEventFlags',['https://doc.qt.io/qt-5/qt.html#MouseEventFlag-enum',1,'Qt']]]
 ];
