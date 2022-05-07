@@ -51,7 +51,7 @@ const QBluetoothUuid MultimeterService::CharacteristicUuids::
     reading(QLatin1String("047d3559-8bee-423a-b229-4417fa603b90"));
 
 /// \enum MultimeterService::MultimeterMode
-/// \brief Values support by the `Mode` attribute of the `Settings` characteristic.
+/// \brief Values support by the `Mode` attribute of the `Settings` and `Reading` characteristics.
 
 /// Returns \a mode as a user-friendly string.
 QString MultimeterService::toString(const MultimeterMode &mode)
@@ -71,8 +71,8 @@ QString MultimeterService::toString(const MultimeterMode &mode)
 }
 
 /// \enum MultimeterService::VoltageRange
-/// \brief Values support by the `Range` attribute of the `Settings` characteristic, when `Mode` is
-/// AC or DC voltage.
+/// \brief Values support by the `Range` attribute of the `Settings` and `Reading` characteristics,
+/// when `Mode` is AC or DC voltage.
 
 /// Returns \a range as a user-friendly string.
 QString MultimeterService::toString(const VoltageRange &range)
@@ -131,8 +131,8 @@ QVariant MultimeterService::maxValue(const VoltageRange &range)
 }
 
 /// \enum MultimeterService::CurrentRange
-/// \brief Values support by the `Range` attribute of the `Settings` characteristic, when `Mode` is
-/// AC or DC current.
+/// \brief Values support by the `Range` attribute of the `Settings` and `Reading` characteristics,
+/// when `Mode` is AC or DC current.
 
 /// Returns \a range as a user-friendly string.
 QString MultimeterService::toString(const CurrentRange &range)
@@ -151,6 +151,11 @@ QString MultimeterService::toString(const CurrentRange &range)
 /*!
  *  Returns the minimum value for \a range in (integer) milliamps, or the string "Auto".
  *  If \a range is not known valid value, then an null QVariant is returned.
+ *
+ *  Note, this is an *absolute* minimum. That is, the true range for DC measurements is from
+ *  `-maxValue(range)` to `+maxValue(range)`. In this sense, `minValue(range)` indicates the
+ *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC current
+ *  can never be negative, this is relevant for DC current only.
  */
 QVariant MultimeterService::minValue(const CurrentRange &range)
 {
@@ -183,8 +188,8 @@ QVariant MultimeterService::maxValue(const CurrentRange &range)
 }
 
 /// \enum MultimeterService::ResistanceRange
-/// \brief Values support by the `Range` attribute of the `Settings` characteristic, when `Mode` is
-/// resitance.
+/// \brief Values support by the `Range` attribute of the `Settings` and `Reading` characteristics,
+/// when `Mode` is resitance.
 
 /// Returns \a range as a user-friendly string.
 QString MultimeterService::toString(const ResistanceRange &range)
