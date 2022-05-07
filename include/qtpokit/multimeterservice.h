@@ -112,18 +112,18 @@ public:
         quint32 updateInterval; ///< Desired update interval in milliseconds.
     };
 
-    enum class ReadingStatusFlag : quint8 {
+    enum class MeterState : quint8 {
         AutoRange  = 0x01, ///< Auto-range is active (for voltage, current and resistance modes).
         Continuity = 0x01, ///< Indicates continuity, when in continuity mode.
         Error      = 0xFF, ///< Indicates error in temperature and diode modes.
     };
-    Q_DECLARE_FLAGS(ReadingStatusFlags, ReadingStatusFlag)
+    Q_DECLARE_FLAGS(MeterStates, MeterState)
 
     struct Reading {
-        ReadingStatusFlags status; ///< Current multimeter status.
-        float value;               ///< Last acquired value.
-        Mode mode;                 ///< Current operation mode.
-        Range range;               ///< Current range.
+        MeterStates status; ///< Current multimeter status.
+        float value;        ///< Last acquired value.
+        Mode mode;          ///< Current operation mode.
+        Range range;        ///< Current range.
     };
 
     MultimeterService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

@@ -310,7 +310,7 @@ void MultimeterCommand::settingsWritten()
 void MultimeterCommand::outputReading(const MultimeterService::Reading &reading)
 {
     QString status;
-    if (reading.status.testFlag(MultimeterService::ReadingStatusFlag::Error)) {
+    if (reading.status.testFlag(MultimeterService::MeterState::Error)) {
         status = QLatin1String("Error");
     } else switch (reading.mode) {
     case MultimeterService::Mode::Idle:
@@ -320,11 +320,11 @@ void MultimeterCommand::outputReading(const MultimeterService::Reading &reading)
     case MultimeterService::Mode::DcCurrent:
     case MultimeterService::Mode::AcCurrent:
     case MultimeterService::Mode::Resistance:
-        status = (reading.status.testFlag(MultimeterService::ReadingStatusFlag::AutoRange)
+        status = (reading.status.testFlag(MultimeterService::MeterState::AutoRange)
             ? tr("Auto Range On") : tr("Auto Range Off"));
         break;
     case MultimeterService::Mode::Continuity:
-        status = (reading.status.testFlag(MultimeterService::ReadingStatusFlag::AutoRange)
+        status = (reading.status.testFlag(MultimeterService::MeterState::AutoRange)
             ? tr("Continuity") : tr("No continuity"));
         break;
     case MultimeterService::Mode::Temperature:

@@ -254,7 +254,7 @@ QVariant MultimeterService::maxValue(const ResistanceRange &range)
 /// \struct MultimeterService::Settings
 /// \brief Attributes included in the `Settings` characterstic.
 
-/// \enum MultimeterService::ReadingStatusFlag
+/// \enum MultimeterService::MeterState
 /// \brief Values support by the `Status` attribute of the `Settings` characteristic.
 
 /// \struct MultimeterService::Reading
@@ -358,7 +358,7 @@ MultimeterService::Reading MultimeterService::reading() const
     const QLowEnergyCharacteristic characteristic =
         d->getCharacteristic(CharacteristicUuids::reading);
     return (characteristic.isValid()) ? MultimeterServicePrivate::parseReading(characteristic.value())
-        : Reading{ ReadingStatusFlags(), std::numeric_limits<float>::quiet_NaN(),
+        : Reading{ MeterStates(), std::numeric_limits<float>::quiet_NaN(),
                    Mode::Idle, { VoltageRange::AutoRange } };
 }
 
@@ -430,7 +430,7 @@ MultimeterServicePrivate::MultimeterServicePrivate(
 MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArray &value)
 {
     MultimeterService::Reading reading{
-        MultimeterService::ReadingStatusFlags(),
+        MultimeterService::MeterStates(),
         std::numeric_limits<float>::quiet_NaN(),
         MultimeterService::Mode::Idle,
         { MultimeterService::VoltageRange::AutoRange }
@@ -447,7 +447,7 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
             .arg(value.size()-7).arg(QLatin1String(value.mid(7).toHex()));
     }
 
-    reading.status = MultimeterService::ReadingStatusFlags(value.at(0));
+    reading.status = MultimeterService::MeterStates(value.at(0));
     reading.value = qFromLittleEndian<float>(value.mid(1,4));
     reading.mode = static_cast<MultimeterService::Mode>(value.at(5));
     reading.range.voltageRange = static_cast<MultimeterService::VoltageRange>(value.at(6));
