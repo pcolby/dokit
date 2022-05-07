@@ -11,13 +11,13 @@ jobs:
         submodules: true
     - name: Install Doxygen
       run: |
-        sudo apt update && sudo apt upgrade && sudo apt install graphviz libclang1-9 libclang-cpp9 qtbase5-dev qtconnectivity5-dev
+        sudo apt update && sudo apt upgrade && sudo apt install graphviz libclang1-9 libclang-cpp9 qtbase5-dev qtbase5-doc-dev qtconnectivity5-dev qtconnectivity5-doc-html
         wget --quiet https://doxygen.nl/files/doxygen-1.9.4.linux.bin.tar.gz --output-document "$RUNNER_TEMP/doxygen-1.9.4.linux.bin.tar.gz"
         tar --extract --file "$RUNNER_TEMP/doxygen-1.9.4.linux.bin.tar.gz" --directory "$RUNNER_TEMP"
         "$RUNNER_TEMP/doxygen-1.9.4/bin/doxygen" --version
     - name: Build docs
       run: |
-        cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-1.9.4/bin/doxygen" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-1.9.4/bin/doxygen" -D "QT_TAGFILES_PATH=/usr/share/qt5/doc" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" --target doc doc-internal
     - name: Upload public docs
       uses: actions/upload-artifact@v3

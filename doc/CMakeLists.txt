@@ -1,5 +1,15 @@
+# Include Qt doc tagfiles, if provided.
+if (QT_TAGFILES_PATH)
+  set(QT_DOCS_BASEURL "https://doc.qt.io/qt-${QT_VERSION_MAJOR}/")
+  message("-- Using Qt doc tagfiles ${QT_TAGFILES_PATH} (${QT_DOCS_BASEURL})")
+  set(DOX_TAGFILES "\\
+  \"${QT_TAGFILES_PATH}/qtcore/qtcore.tags=${QT_DOCS_BASEURL}\" \\
+  \"${QT_TAGFILES_PATH}/qtbluetooth/qtbluetooth.tags=${QT_DOCS_BASEURL}\" \\")
+endif()
+
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
+  # Public docs.
   unset(DOX_ENABLED_SECTIONS)
   set(DOX_HTML_OUTPUT_DIR public)
   set(DOX_INPUT_DOC "doc/src/public")
@@ -11,6 +21,7 @@ if (DOXYGEN_FOUND)
   configure_file(doxyfile.in public.doxy)
   add_custom_target(doc COMMAND ${DOXYGEN_EXECUTABLE} public.doxy)
 
+  # Internal docs.
   set(DOX_ENABLED_SECTIONS internal)
   set(DOX_HTML_OUTPUT_DIR internal)
   set(DOX_INPUT_DOC "doc/src/internal")
