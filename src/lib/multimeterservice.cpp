@@ -50,9 +50,6 @@ const QBluetoothUuid MultimeterService::CharacteristicUuids::
 const QBluetoothUuid MultimeterService::CharacteristicUuids::
     reading(QLatin1String("047d3559-8bee-423a-b229-4417fa603b90"));
 
-/// \struct MultimeterService::DeviceCharacteristics
-/// \brief Attributes included in the `Device Characteristics` characterstic.
-
 /// \enum MultimeterService::MultimeterMode
 /// \brief Values support by the `Mode` attribute of the `Settings` characteristic.
 
@@ -308,11 +305,11 @@ bool MultimeterService::readReadingCharacteristic()
 }
 
 /*!
- * Set's the Pokit device's name to \a name.
+ * Configures the Pokit device's multimeter mode.
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
- * Emits deivceNameWritten() if/when the \a name has been set.
+ * Emits settingsWritten() if/when the \a settings have been writtem successfully.
  */
 bool MultimeterService::setSettings(const Settings &settings)
 {
@@ -323,8 +320,8 @@ bool MultimeterService::setSettings(const Settings &settings)
         return false;
     }
 
-    static_assert(sizeof(settings.mode) == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.range) == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.mode)           == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.range)          == 1, "Expected to be 1 byte.");
     static_assert(sizeof(settings.updateInterval) == 4, "Expected to be 4 bytes.");
 
     QByteArray value;
@@ -496,12 +493,12 @@ void MultimeterServicePrivate::characteristicWritten(const QLowEnergyCharacteris
     }
 
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {
-        qCWarning(lc).noquote() << tr("Reading characteristic is read-only, but somehow written")
+        qCWarning(lc).noquote() << tr("Reading characteristic is read/notify, but somehow written")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic written for Status Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic written for Multimeter service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
@@ -527,7 +524,7 @@ void MultimeterServicePrivate::characteristicChanged(const QLowEnergyCharacteris
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic written for Status Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic notified for Multimeter service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
