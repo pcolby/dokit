@@ -39,15 +39,15 @@ InfoCommand::InfoCommand(QObject * const parent) : DeviceCommand(parent), servic
 
 }
 
-QStringList InfoCommand::requiredOptions() const
+QStringList InfoCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::requiredOptions() + QStringList{
+    return DeviceCommand::requiredOptions(parser) + QStringList{
     };
 }
 
-QStringList InfoCommand::supportedOptions() const
+QStringList InfoCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::supportedOptions();
+    return DeviceCommand::supportedOptions(parser);
 }
 
 /*!

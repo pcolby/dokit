@@ -36,16 +36,16 @@ SetNameCommand::SetNameCommand(QObject * const parent) : DeviceCommand(parent), 
 
 }
 
-QStringList SetNameCommand::requiredOptions() const
+QStringList SetNameCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::requiredOptions() + QStringList{
+    return DeviceCommand::requiredOptions(parser) + QStringList{
         QLatin1String("new-name"),
     };
 }
 
-QStringList SetNameCommand::supportedOptions() const
+QStringList SetNameCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::supportedOptions();
+    return DeviceCommand::supportedOptions(parser);
 }
 
 /*!

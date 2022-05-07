@@ -41,17 +41,18 @@ LoggerCommand::LoggerCommand(QObject * const parent) : DeviceCommand(parent),
 
 }
 
-QStringList LoggerCommand::requiredOptions() const
+QStringList LoggerCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::requiredOptions() + QStringList{
+    return DeviceCommand::requiredOptions(parser) + QStringList{
+        QLatin1String("command"),
         QLatin1String("mode"),
         QLatin1String("range"),
     };
 }
 
-QStringList LoggerCommand::supportedOptions() const
+QStringList LoggerCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::supportedOptions() + QStringList{
+    return DeviceCommand::supportedOptions(parser) + QStringList{
         QLatin1String("interval"),
         QLatin1String("samples"),
         QLatin1String("timestamp"),
@@ -195,6 +196,7 @@ void LoggerCommand::serviceDetailsDiscovered()
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3s.")
         .arg(DataLoggerService::toString(settings.mode), range).arg(settings.updateInterval);
+    settings.command = DataLoggerService::Command::Start;
     service->setSettings(settings);
 }
 
@@ -284,6 +286,7 @@ void LoggerCommand::metadataRead(const DataLoggerService::Metadata &metadata)
 {
     /// \todo
     Q_UNUSED(metadata);
+    qCDebug(lc) << "metadataRead";
 }
 
 /*!
@@ -294,4 +297,5 @@ void LoggerCommand::outputSamples(const DataLoggerService::Samples &samples)
 
     /// \todo
     Q_UNUSED(samples);
+    qCDebug(lc) << "samplesRead";
 }

@@ -40,16 +40,16 @@ CalibrationCommand::CalibrationCommand(QObject * const parent) : DeviceCommand(p
 
 }
 
-QStringList CalibrationCommand::requiredOptions() const
+QStringList CalibrationCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::requiredOptions() + QStringList{
+    return DeviceCommand::requiredOptions(parser) + QStringList{
         QLatin1String("temperature"),
     };
 }
 
-QStringList CalibrationCommand::supportedOptions() const
+QStringList CalibrationCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::supportedOptions();
+    return DeviceCommand::supportedOptions(parser);
 }
 
 /*!

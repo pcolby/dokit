@@ -60,11 +60,16 @@ AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
  * use this list to output an eror (and exit) if any of the returned names are not found in the
  * parsed CLI options.
  *
+ * The (already parsed) \a parser may be used adjust the returned required options depending on the
+ * value of other options. For example, the `logger` command only requires the `--mode` option if
+ * the `--command` option is `start`.
+ *
  * This base implementation simply returns an empty list. Derived classes should override this
  * function to include any required options.
  */
-QStringList AbstractCommand::requiredOptions() const
+QStringList AbstractCommand::requiredOptions(const QCommandLineParser &parser) const
 {
+    Q_UNUSED(parser);
     return QStringList();
 }
 
@@ -72,22 +77,26 @@ QStringList AbstractCommand::requiredOptions() const
  * Returns a list of CLI option names supported by this command. The main console appication may
  * use this list to output a warning for any parsed CLI options not included in the returned list.
  *
+ * The (already parsed) \a parser may be used adjust the returned supported options depending on the
+ * value of other options. For example, the `logger` command only supported the `--timestamp` option
+ * if the `--command` option is `start`.
+ *
  * This base implementation simply returns requiredOptions(). Derived classes should override this
  * function to include optional options, such as:
  *
  * ```
- * QStringList Derived::supportedOptions() const
+ * QStringList Derived::supportedOptions(const QCommandLineParser &parser) const
  * {
- *     const QStringList list = AbstractCommand::supportedOptions() + QStringList{ ... };
+ *     const QStringList list = AbstractCommand::supportedOptions(parser) + QStringList{ ... };
  *     list.sort();
  *     list.removeDuplicates(); // Optional, recommended.
  *     return list;
  * }
  * ```
  */
-QStringList AbstractCommand::supportedOptions() const
+QStringList AbstractCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return requiredOptions() + QStringList{
+    return requiredOptions(parser) + QStringList{
         QLatin1String("debug"),
         QLatin1String("device"),
         QLatin1String("output"),
@@ -244,7 +253,7 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 {
     // Report any supplied options that are not supported by this command.
     const QStringList suppliedOptions = parser.optionNames();
-    const QStringList supportedOptions = this->supportedOptions();
+    const QStringList supportedOptions = this->supportedOptions(parser);
     for (const QString &option: suppliedOptions) {
         if (!supportedOptions.contains(option)) {
             qCInfo(lc).noquote() << tr("Ignoring option: %1").arg(option);
@@ -287,7 +296,7 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Return errors for any required options that are absent.
-    const QStringList requiredOptions = this->requiredOptions();
+    const QStringList requiredOptions = this->requiredOptions(parser);
     for (const QString &option: requiredOptions) {
         if (!parser.isSet(option)) {
             errors.append(tr("Missing required option: %1").arg(option));

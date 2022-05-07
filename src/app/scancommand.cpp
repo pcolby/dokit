@@ -44,14 +44,14 @@ ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
     #endif
 }
 
-QStringList ScanCommand::requiredOptions() const
+QStringList ScanCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return AbstractCommand::requiredOptions();
+    return AbstractCommand::requiredOptions(parser);
 }
 
-QStringList ScanCommand::supportedOptions() const
+QStringList ScanCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return AbstractCommand::supportedOptions() + QStringList{
+    return AbstractCommand::supportedOptions(parser) + QStringList{
     };
 }
 

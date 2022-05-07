@@ -39,15 +39,15 @@ StatusCommand::StatusCommand(QObject * const parent) : DeviceCommand(parent), se
 
 }
 
-QStringList StatusCommand::requiredOptions() const
+QStringList StatusCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::requiredOptions() + QStringList{
+    return DeviceCommand::requiredOptions(parser) + QStringList{
     };
 }
 
-QStringList StatusCommand::supportedOptions() const
+QStringList StatusCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::supportedOptions();
+    return DeviceCommand::supportedOptions(parser);
 }
 
 /*!

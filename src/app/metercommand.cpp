@@ -43,16 +43,16 @@ MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent),
 
 }
 
-QStringList MeterCommand::requiredOptions() const
+QStringList MeterCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::requiredOptions() + QStringList{
+    return DeviceCommand::requiredOptions(parser) + QStringList{
         QLatin1String("mode"),
     };
 }
 
-QStringList MeterCommand::supportedOptions() const
+QStringList MeterCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::supportedOptions() + QStringList{
+    return DeviceCommand::supportedOptions(parser) + QStringList{
         QLatin1String("interval"),
         QLatin1String("range"),
         QLatin1String("samples"),

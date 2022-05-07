@@ -36,15 +36,15 @@ FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent)
 
 }
 
-QStringList FlashLedCommand::requiredOptions() const
+QStringList FlashLedCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::requiredOptions() + QStringList{
+    return DeviceCommand::requiredOptions(parser) + QStringList{
     };
 }
 
-QStringList FlashLedCommand::supportedOptions() const
+QStringList FlashLedCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::supportedOptions();
+    return DeviceCommand::supportedOptions(parser);
 }
 
 /*!

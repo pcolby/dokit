@@ -38,8 +38,8 @@ public:
 
     explicit AbstractCommand(QObject * const parent);
 
-    virtual QStringList requiredOptions() const;
-    virtual QStringList supportedOptions() const;
+    virtual QStringList requiredOptions(const QCommandLineParser &parser) const;
+    virtual QStringList supportedOptions(const QCommandLineParser &parser) const;
 
     static QString escapeCsvField(const QString &field);
     static quint32 parseMilliValue(const QString &value, const QString &unit,

@@ -26,8 +26,8 @@ class LoggerCommand : public DeviceCommand
 public:
     explicit LoggerCommand(QObject * const parent);
 
-    QStringList requiredOptions() const override;
-    QStringList supportedOptions() const override;
+    QStringList requiredOptions(const QCommandLineParser &parser) const override;
+    QStringList supportedOptions(const QCommandLineParser &parser) const override;
 
 public slots:
     QStringList processOptions(const QCommandLineParser &parser) override;
