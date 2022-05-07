@@ -118,6 +118,14 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
 {
     // Setupt the command line options.
     parser.addOptions({
+        { QStringLiteral("color"),
+          QCoreApplication::translate("parseCommandLine", "Colors the console output. Valid options "
+          "are: yes, no and auto. The default is auto."),
+          QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
+        {{QStringLiteral("command")},
+          QCoreApplication::translate("parseCommandLine", "Command for logger mode. Supported "
+          "logger commnds: start, stop and fetch (or refresh)."),
+          QCoreApplication::translate("parseCommandLine", "command")},
         {{QStringLiteral("debug")},
           QCoreApplication::translate("parseCommandLine", "Enable debug output.")},
         {{QStringLiteral("d"), QStringLiteral("device")},
@@ -125,10 +133,6 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           "Set the name, hardware address or MacOS UUID of Pokit device to use. If not specified, "
           "the first discovered Pokit device will be used."),
           QCoreApplication::translate("parseCommandLine", "device")},
-        { QStringLiteral("color"),
-          QCoreApplication::translate("parseCommandLine", "Colors the console output. Valid options "
-          "are: yes, no and auto. The default is auto."),
-          QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
     });
     parser.addHelpOption();
     parser.addOptions({

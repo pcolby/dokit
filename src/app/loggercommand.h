@@ -43,7 +43,8 @@ private:
     DataLoggerService::Settings settings; ///< Settings for the Pokit device's data logger mode.
     int numberOfSamplesToRead; ///< Number of samples to read, if specified on the CLI.
 
-    DataLoggerService::Range lowestRange(const DataLoggerService::Mode mode, const quint32 desiredMax);
+    static DataLoggerService::Range lowestRange(const DataLoggerService::Mode mode,
+                                                const quint32 desiredMax);
     static DataLoggerService::CurrentRange lowestCurrentRange(const quint32 desiredMax);
     static DataLoggerService::VoltageRange lowestVoltageRange(const quint32 desiredMax);
 

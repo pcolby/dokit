@@ -43,20 +43,30 @@ LoggerCommand::LoggerCommand(QObject * const parent) : DeviceCommand(parent),
 
 QStringList LoggerCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::requiredOptions(parser) + QStringList{
+    QStringList options = DeviceCommand::requiredOptions(parser) + QStringList{
         QLatin1String("command"),
-        QLatin1String("mode"),
-        QLatin1String("range"),
     };
+    if ((parser.isSet(QLatin1String("command"))) &&
+        (parser.value(QLatin1String("command")).trimmed().toLower() == QLatin1String("start"))) {
+        options.append({
+            QLatin1String("mode"),
+            QLatin1String("range"),
+        });
+    }
+    return options;
 }
 
 QStringList LoggerCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    return DeviceCommand::supportedOptions(parser) + QStringList{
-        QLatin1String("interval"),
-        QLatin1String("samples"),
-        QLatin1String("timestamp"),
-    };
+    QStringList options = DeviceCommand::supportedOptions(parser);
+    if ((parser.isSet(QLatin1String("command"))) &&
+        (parser.value(QLatin1String("command")).trimmed().toLower() == QLatin1String("start"))) {
+        options.append({
+            QLatin1String("interval"),
+            QLatin1String("timestamp"),
+        });
+    }
+    return options;
 }
 
 /*!
@@ -72,7 +82,22 @@ QStringList LoggerCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    // Parse the (required) mode option.
+    // Parse the (required) command option.
+    const QString command = parser.value(QLatin1String("command")).trimmed().toLower();
+    if (command == QLatin1String("start")) {
+        settings.command = DataLoggerService::Command::Start;
+    } else if (command == QLatin1String("stop")) {
+        settings.command = DataLoggerService::Command::Stop;
+        return errors; // No futher option processing required for `stop`.
+    } else if ((command == QLatin1String("fetch")) || (command == QLatin1String("refresh"))) {
+        settings.command = DataLoggerService::Command::Refresh;
+        return errors; // No futher option processing required for `refresh`.
+    } else {
+        errors.append(tr("Unknown logger command: %1").arg(parser.value(QLatin1String("command"))));
+        return errors;
+    }
+
+    // Parse the (required for `start`) mode option.
     const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
     if (mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
         settings.mode = DataLoggerService::Mode::AcVoltage;
@@ -87,7 +112,7 @@ QStringList LoggerCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    // Parse the (required) range option.
+    // Parse the (required for `start`) range option.
     {
         const QString value = parser.value(QLatin1String("range"));
         QString unit; quint32 sensibleMinimum = 0;
@@ -123,18 +148,6 @@ QStringList LoggerCommand::processOptions(const QCommandLineParser &parser)
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
             settings.updateInterval = interval;
-        }
-    }
-
-    // Parse the samples option.
-    if (parser.isSet(QLatin1String("samples"))) {
-        const QString value = parser.value(QLatin1String("samples"));
-        QLocale locale; bool ok;
-        const int samples = locale.toInt(value, &ok);
-        if (!ok) {
-            errors.append(tr("Invalid number of samples: %1").arg(value));
-        } else {
-            numberOfSamplesToRead = samples;
         }
     }
 
