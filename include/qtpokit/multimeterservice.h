@@ -112,15 +112,17 @@ public:
         quint32 updateInterval; ///< Desired update interval in milliseconds.
     };
 
-    enum class MeterState : quint8 {
-        AutoRange  = 0x01, ///< Auto-range is active (for voltage, current and resistance modes).
-        Continuity = 0x01, ///< Indicates continuity, when in continuity mode.
-        Error      = 0xFF, ///< Indicates error in temperature and diode modes.
+    enum class MeterStatus : quint8 {
+        AutoRangeOff = 0,  ///< Auto-range is disabled (voltage, current and resitance modes only).
+        AutoRangeOn  = 1,  ///< Auto-range is enabled (voltage, current and resitance modes only).
+        NoContinuity = 0,  ///< No continuity (continuity mode only).
+        Continuity   = 1,  ///< Continuity (continuity mode only).
+        Ok           = 0,  ///< Ok (temperature and diode modes only).
+        Error        = 255 ///< Error (all modes).
     };
-    Q_DECLARE_FLAGS(MeterStates, MeterState)
 
     struct Reading {
-        MeterStates status; ///< Current multimeter status.
+        MeterStatus status; ///< Current multimeter status.
         float value;        ///< Last acquired value.
         Mode mode;          ///< Current operation mode.
         Range range;        ///< Current range.

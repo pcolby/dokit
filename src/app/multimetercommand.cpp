@@ -310,7 +310,7 @@ void MultimeterCommand::settingsWritten()
 void MultimeterCommand::outputReading(const MultimeterService::Reading &reading)
 {
     QString status;
-    if (reading.status.testFlag(MultimeterService::MeterState::Error)) {
+    if (reading.status == MultimeterService::MeterStatus::Error) {
         status = QLatin1String("Error");
     } else switch (reading.mode) {
     case MultimeterService::Mode::Idle:
@@ -320,12 +320,12 @@ void MultimeterCommand::outputReading(const MultimeterService::Reading &reading)
     case MultimeterService::Mode::DcCurrent:
     case MultimeterService::Mode::AcCurrent:
     case MultimeterService::Mode::Resistance:
-        status = (reading.status.testFlag(MultimeterService::MeterState::AutoRange)
-            ? tr("Auto Range On") : tr("Auto Range Off"));
+        status = (reading.status == MultimeterService::MeterStatus::AutoRangeOn)
+            ? tr("Auto Range On") : tr("Auto Range Off");
         break;
     case MultimeterService::Mode::Continuity:
-        status = (reading.status.testFlag(MultimeterService::MeterState::AutoRange)
-            ? tr("Continuity") : tr("No continuity"));
+        status = (reading.status == MultimeterService::MeterStatus::Continuity)
+            ? tr("Continuity") : tr("No continuity");
         break;
     case MultimeterService::Mode::Temperature:
     case MultimeterService::Mode::Diode:
@@ -414,7 +414,7 @@ void MultimeterCommand::outputReading(const MultimeterService::Reading &reading)
             .arg((quint8)reading.mode,2,16,QLatin1Char('0'))), stdout);
         fputs(qPrintable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(units)), stdout);
         fputs(qPrintable(tr("Status: %1 (0x%2)\n").arg(status)
-            .arg(reading.status,2,16,QLatin1Char('0'))), stdout);
+            .arg((quint8)reading.status,2,16,QLatin1Char('0'))), stdout);
         fputs(qPrintable(tr("Range:  %1 (0x%2)\n").arg(range)
             .arg((quint8)reading.range.voltageRange,2,16,QLatin1Char('0'))), stdout);
         break;
