@@ -60,10 +60,10 @@ const QBluetoothUuid StatusService::CharacteristicUuids::
 /// \brief Attributes included in the `Device Characteristics` characterstic.
 
 /// \enum StatusService::DeviceStatus
-/// \brief Values support by the `Status` attribute of the `Status` characteristic.
+/// \brief Values supported by the `Status` attribute of the `Status` characteristic.
 
 /// \enum StatusService::BatteryStatus
-/// \brief Values support by the `Battery Status` attribute of the `Status` characteristic.
+/// \brief Values supported by the `Battery Status` attribute of the `Status` characteristic.
 
 /// \struct StatusService::Status
 /// \brief Attributes included in the `Status` characterstic.

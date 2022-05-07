@@ -55,10 +55,10 @@ const QBluetoothUuid DataLoggerService::CharacteristicUuids::
     reading(QLatin1String("3c669dab-fc86-411c-9498-4f9415049cc0"));
 
 /// \enum DataLoggerService::Command
-/// \brief Values support by the `Command` attribute of the `Settings` characteristic.
+/// \brief Values supported by the `Command` attribute of the `Settings` characteristic.
 
 /// \enum DataLoggerService::Mode
-/// \brief Values support by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
+/// \brief Values supported by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
 
 /// Returns \a mode as a user-friendly string.
 QString DataLoggerService::toString(const Mode &mode)
@@ -74,7 +74,7 @@ QString DataLoggerService::toString(const Mode &mode)
 }
 
 /// \enum DataLoggerService::VoltageRange
-/// \brief Values support by the `Range` attribute of the `Settings` and `Metadata` characteristics,
+/// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics,
 /// when `Mode` is AC or DC voltage.
 
 /// Returns \a range as a user-friendly string.
@@ -131,7 +131,7 @@ QVariant DataLoggerService::maxValue(const VoltageRange &range)
 }
 
 /// \enum DataLoggerService::CurrentRange
-/// \brief Values support by the `Range` attribute of the `Settings` and `Metadata` characteristics,
+/// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics,
 /// when `Mode` is AC or DC current.
 
 /// Returns \a range as a user-friendly string.
@@ -185,13 +185,13 @@ QVariant DataLoggerService::maxValue(const CurrentRange &range)
 }
 
 /// \union DataLoggerService::Range
-/// \brief Values support by the `Range` attribute of the `Settings` and `Metadata` characteristics.
+/// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics.
 
 /// \struct DataLoggerService::Settings
 /// \brief Attributes included in the `Settings` characterstic.
 
 /// \enum DataLoggerService::LoggerStatus
-/// \brief Values support by the `Status` attribute of the `Metadata` characteristic.
+/// \brief Values supported by the `Status` attribute of the `Metadata` characteristic.
 
 /// \struct DataLoggerService::Metadata
 /// \brief Attributes included in the `Metadata` characterstic.

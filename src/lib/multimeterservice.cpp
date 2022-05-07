@@ -51,7 +51,7 @@ const QBluetoothUuid MultimeterService::CharacteristicUuids::
     reading(QLatin1String("047d3559-8bee-423a-b229-4417fa603b90"));
 
 /// \enum MultimeterService::Mode
-/// \brief Values support by the `Mode` attribute of the `Settings` and `Reading` characteristics.
+/// \brief Values supported by the `Mode` attribute of the `Settings` and `Reading` characteristics.
 
 /// Returns \a mode as a user-friendly string.
 QString MultimeterService::toString(const Mode &mode)
@@ -71,7 +71,7 @@ QString MultimeterService::toString(const Mode &mode)
 }
 
 /// \enum MultimeterService::VoltageRange
-/// \brief Values support by the `Range` attribute of the `Settings` and `Reading` characteristics,
+/// \brief Values supported by the `Range` attribute of the `Settings` and `Reading` characteristics,
 /// when `Mode` is AC or DC voltage.
 
 /// Returns \a range as a user-friendly string.
@@ -131,7 +131,7 @@ QVariant MultimeterService::maxValue(const VoltageRange &range)
 }
 
 /// \enum MultimeterService::CurrentRange
-/// \brief Values support by the `Range` attribute of the `Settings` and `Reading` characteristics,
+/// \brief Values supported by the `Range` attribute of the `Settings` and `Reading` characteristics,
 /// when `Mode` is AC or DC current.
 
 /// Returns \a range as a user-friendly string.
@@ -188,7 +188,7 @@ QVariant MultimeterService::maxValue(const CurrentRange &range)
 }
 
 /// \enum MultimeterService::ResistanceRange
-/// \brief Values support by the `Range` attribute of the `Settings` and `Reading` characteristics,
+/// \brief Values supported by the `Range` attribute of the `Settings` and `Reading` characteristics,
 /// when `Mode` is resitance.
 
 /// Returns \a range as a user-friendly string.
@@ -249,13 +249,13 @@ QVariant MultimeterService::maxValue(const ResistanceRange &range)
 }
 
 /// \union MultimeterService::Range
-/// \brief Values support by the `Range` attribute of the `Settings` characteristic.
+/// \brief Values supported by the `Range` attribute of the `Settings` characteristic.
 
 /// \struct MultimeterService::Settings
 /// \brief Attributes included in the `Settings` characterstic.
 
 /// \enum MultimeterService::MeterStatus
-/// \brief Values support by the `Status` attribute of the `Settings` characteristic.
+/// \brief Values supported by the `Status` attribute of the `Settings` characteristic.
 
 /// \struct MultimeterService::Reading
 /// \brief Attributes included in the `Reading` characterstic.
