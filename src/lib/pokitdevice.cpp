@@ -25,6 +25,7 @@
 #include <qtpokit/pokitdevice.h>
 
 #include <qtpokit/calibrationservice.h>
+#include <qtpokit/dataloggerservice.h>
 #include <qtpokit/deviceinfoservice.h>
 #include <qtpokit/genericaccessservice.h>
 #include <qtpokit/multimeterservice.h>
@@ -128,8 +129,6 @@ const QLowEnergyController * PokitDevice::controller() const
  * This is a convenience function, that always returns the same pointer (for this PokitDevice
  * instance), but the service itself is lazily created (in a threadsafe manner) on the first
  * invocation of this function.
- *
- * \todo Implement this function when the DataLoggerService is implemented.
  */
 CalibrationService * PokitDevice::calibration()
 {
@@ -142,15 +141,10 @@ CalibrationService * PokitDevice::calibration()
  * This is a convenience function, that always returns the same pointer (for this PokitDevice
  * instance), but the service itself is lazily created (in a threadsafe manner) on the first
  * invocation of this function.
- *
- * \todo Implement this function when the DataLoggerService is implemented.
  */
 DataLoggerService * PokitDevice::dataLogger()
 {
-    Q_D(PokitDevice);
-    qCDebug(d->lc) << "Not implemented" << __func__;
-//    POKIT_INTERNAL_GET_SERVICE(DataLoggerService, dataLogger);
-    return nullptr;
+    POKIT_INTERNAL_GET_SERVICE(DataLoggerService, dataLogger);
 }
 
 /*!
@@ -201,13 +195,10 @@ GenericAccessService * PokitDevice::genericAccess()
  * This is a convenience function, that always returns the same pointer (for this PokitDevice
  * instance), but the service itself is lazily created (in a threadsafe manner) on the first
  * invocation of this function.
- *
- * \todo Implement this function when the MultimeterService is implemented.
  */
 MultimeterService * PokitDevice::multimeter()
 {
     POKIT_INTERNAL_GET_SERVICE(MultimeterService, multimeter);
-    return nullptr;
 }
 
 /*!

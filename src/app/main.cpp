@@ -20,6 +20,7 @@
 #include "calibratecommand.h"
 #include "flashledcommand.h"
 #include "infocommand.h"
+#include "loggercommand.h"
 #include "metercommand.h"
 #include "scancommand.h"
 #include "setnamecommand.h"
@@ -252,7 +253,7 @@ AbstractCommand * getCommandObject(const Command command, QObject * const parent
     case Command::DSO:      break; ///< \todo Implement.
     case Command::FlashLed: return new FlashLedCommand(parent);
     case Command::Info:     return new InfoCommand(parent);
-    case Command::Logger:   break; ///< \todo Implement.
+    case Command::Logger:   return new LoggerCommand(parent);
     case Command::Meter:    return new MeterCommand(parent);
     case Command::Scan:     return new ScanCommand(parent);
     case Command::Status:   return new StatusCommand(parent);
