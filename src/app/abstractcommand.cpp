@@ -118,33 +118,39 @@ QString AbstractCommand::escapeCsvField(const QString &field)
 }
 
 /*!
- * Returns \a value as a number of milliseonds. The string \a value may contain optional suffixes
- * such as "ms" for milliseconds, or "s" for seconds. If \a value contains no suffix, then the
- * result will be multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This
- * allows for convenient use like:
+ * Returns \a value as a number of millis, such as milliseconds, or millivolts. The string \a value
+ * may end with the optional \a unit, such as `V` or `s`, which may also be preceded with a SI unit
+ * prefix such as `m` for `milli`. If \a value contains no SI unit prefix, then the result will be
+ * multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This allows for
+ * convenient use like:
  *
  * ```
- * const quin32t timeout = parseMilliseconds(parser.value("timeout"), 600);
+ * const quin32t timeout = parseMilliValue(parser.value("timeout"), 's', 600);
  * ```
  *
- * So that an ambiguous period like "300" will be assumed to be 300 seconds, and not 300
+ * So that an unqalified period like "300" will be assumed to be 300 seconds, and not 300
  * milliseconds, while a period like "1000" will be assume to be 1 second.
  *
  * If conversion fails for any reason, 0 is returned.
  */
-quint32 AbstractCommand::parseMilliseconds(const QString &value, const quint32 sensibleMinimum)
+quint32 AbstractCommand::parseMilliValue(const QString &value, const QString &unit,
+                                         const quint32 sensibleMinimum)
 {
-    QString number = value.trimmed();
-
+    // Remove the optional (whole) unit suffix.
     quint32 scale = 0;
-    if (number.endsWith(QLatin1String("ms"))) {
-        number.chop(2);
-        scale = 1;
-    } else if (number.endsWith(QLatin1String("s"))) {
-        number.chop(1);
+    QString number = value.trimmed();
+    if (number.endsWith(unit, Qt::CaseInsensitive)) {
+        number.chop(unit.length());
         scale = 1000;
     }
 
+    // Parse, and remove, the optional SI unit prefix.
+    if (number.endsWith(QLatin1String("m"))) {
+        number.chop(1);
+        scale = 1;
+    }
+
+    // Parse the number as an (unsigned) integer.
     QLocale locale; bool ok;
     const quint32 integer = locale.toUInt(number, &ok);
     if (ok) {
@@ -154,6 +160,7 @@ quint32 AbstractCommand::parseMilliseconds(const QString &value, const quint32 s
         return integer * scale;
     }
 
+    // Parse the number as a (double) floating point number.
     const double dbl = locale.toDouble(number, &ok);
     if (ok) {
         if ((scale == 0) && (dbl > 0.0)) {
@@ -162,7 +169,51 @@ quint32 AbstractCommand::parseMilliseconds(const QString &value, const quint32 s
         return dbl * scale;
     }
 
-    return 0;
+    return 0; // Failed to parse as either integer, or float.
+}
+
+/*!
+ * Returns \a value as a number, with optional SI unit prefix, and optional \a unit suffix. For
+ * example:
+ *
+ * ```
+ * QCOMPARE(parseWholeValue("1.2Mohm", "ohm"), 1200000);
+ * ```
+ *
+ * If conversion fails for any reason, 0 is returned.
+ */
+quint32 AbstractCommand::parseWholeValue(const QString &value, const QString &unit)
+{
+    // Remove the optional unit suffix.
+    QString number = value.trimmed();
+    if (number.endsWith(unit, Qt::CaseInsensitive)) {
+        number.chop(unit.length());
+    }
+
+    // Parse, and remove, the optional SI unit prefix.
+    quint32 scale = 1;
+    if (number.endsWith(QLatin1String("k"))) {
+        number.chop(1);
+        scale = 1000;
+    } else if (number.endsWith(QLatin1String("M"))) {
+        number.chop(1);
+        scale = 1000 * 1000;
+    }
+
+    // Parse the number as an (unsigned) integer.
+    QLocale locale; bool ok;
+    const quint16 integer = locale.toUInt(number, &ok);
+    if (ok) {
+        return integer * scale;
+    }
+
+    // Parse the number as a (double) floating point number.
+    const double dbl = locale.toDouble(number, &ok);
+    if (ok) {
+        return dbl * scale;
+    }
+
+    return 0; // Failed to parse as either integer, or float.
 }
 
 /*!
@@ -224,7 +275,8 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 
     // Parse the device scan timeout option.
     if (parser.isSet(QLatin1String("timeout"))) {
-        const quint32 timeout = parseMilliseconds(parser.value(QLatin1String("timeout")), 500);
+        const quint32 timeout = parseMilliValue(parser.value(QLatin1String("timeout")),
+                                                QLatin1String("s"), 500);
         if (timeout == 0) {
             errors.append(tr("Invalid timeout: %1").arg(parser.value(QLatin1String("timeout"))));
         } else {

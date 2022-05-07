@@ -95,20 +95,61 @@ QStringList MultimeterCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    // Parse the interval (if any).
+    // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
         const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseMilliseconds(value, 500);
+        const quint32 interval = parseMilliValue(value, QLatin1String("s"), 500);
         if (interval == 0) {
-            errors.append(tr("Invalid interval: %1").arg(value));
+            errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
             settings.updateInterval = interval;
         }
     }
 
-    /// \todo Parse the range.
+    // Parse the range option.
+    if (parser.isSet(QLatin1String("range"))) {
+        const QString value = parser.value(QLatin1String("range"));
+        const bool isAuto = (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) == 0);
+        QString unit; quint32 sensibleMinimum = 0;
+        switch (settings.mode) {
+        case MultimeterService::MultimeterMode::DcVoltage:
+        case MultimeterService::MultimeterMode::AcVoltage:
+            if (isAuto) {
+                settings.range.voltageRange = MultimeterService::VoltageRange::AutoRange;
+            }
+            unit = QLatin1String("V");
+            sensibleMinimum = 50; // mV.
+            break;
+        case MultimeterService::MultimeterMode::DcCurrent:
+        case MultimeterService::MultimeterMode::AcCurrent:
+            if (isAuto) {
+                settings.range.currentRange = MultimeterService::CurrentRange::AutoRange;
+            }
+            unit = QLatin1String("A");
+            sensibleMinimum = 5; // mA.
+            break;
+        case MultimeterService::MultimeterMode::Resistance:
+            if (isAuto) {
+                settings.range.resitanceRange = MultimeterService::ResistanceRange::AutoRange;
+            }
+            unit = QLatin1String("ohms");
+            sensibleMinimum = 0; // Unused.
+            break;
+        default:
+            qCInfo(lc).noquote() << tr("Ignoring option: %1").arg(value);
+        }
+        if ((!unit.isEmpty()) && (!isAuto)) { // isEmpty indicates a mode that has no range option.
+            const quint32 rangeMax = (sensibleMinimum == 0)
+                ? parseWholeValue(value, unit) : parseMilliValue(value, unit, sensibleMinimum);
+            if (rangeMax == 0) {
+                errors.append(tr("Invalid range value: %1").arg(value));
+            } else {
+                settings.range = lowestRange(settings.mode, rangeMax);
+            }
+        }
+    }
 
-    // Parse the samples.
+    // Parse the samples option.
     if (parser.isSet(QLatin1String("samples"))) {
         const QString value = parser.value(QLatin1String("samples"));
         QLocale locale; bool ok;
@@ -171,6 +212,86 @@ void MultimeterCommand::serviceDetailsDiscovered()
         .arg(MultimeterService::toString(settings.mode), range).arg(settings.updateInterval);
     service->setSettings(settings);
 }
+
+/*!
+ * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange
+ * if no such range is available.
+ */
+MultimeterService::MultimeterRange MultimeterCommand::lowestRange(
+    const MultimeterService::MultimeterMode mode, const quint32 desiredMax)
+{
+    MultimeterService::MultimeterRange range;
+    switch (mode) {
+    case MultimeterService::MultimeterMode::DcVoltage:
+    case MultimeterService::MultimeterMode::AcVoltage:
+        range.voltageRange = lowestVoltageRange(desiredMax);
+        break;
+    case MultimeterService::MultimeterMode::DcCurrent:
+    case MultimeterService::MultimeterMode::AcCurrent:
+        range.currentRange = lowestCurrentRange(desiredMax);
+        break;
+    case MultimeterService::MultimeterMode::Resistance:
+        range.resitanceRange = lowestResistanceRange(desiredMax);
+        break;
+    default:
+        qCWarning(lc).noquote() << tr("Mode does not support range.");
+        range.voltageRange = MultimeterService::VoltageRange::AutoRange;
+    }
+    return range;
+}
+
+#define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \
+if (value <=  MultimeterService::maxValue(MultimeterService::label).toUInt()) { \
+    return MultimeterService::label; \
+}
+
+/*!
+ * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange
+ * if no such range is available.
+ */
+MultimeterService::CurrentRange MultimeterCommand::lowestCurrentRange(const quint32 desiredMax)
+{
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)
+    return MultimeterService::CurrentRange::AutoRange;
+}
+
+/*!
+ * Returns the lowest resistance range that can measure at least up to \a desired max, or AutoRange
+ * if no such range is available.
+ */
+MultimeterService::ResistanceRange MultimeterCommand::lowestResistanceRange(const quint32 desiredMax)
+{
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_330_to_890)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_890_to_1K5)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_1K5_to_10K)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_10K_to_100K)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_100K_to_470K)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_470K_to_1M)
+    return MultimeterService::ResistanceRange::AutoRange;
+}
+
+/*!
+ * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange
+ * if no such range is available.
+ */
+MultimeterService::VoltageRange MultimeterCommand::lowestVoltageRange(const quint32 desiredMax)
+{
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)
+    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)
+    return MultimeterService::VoltageRange::AutoRange;
+}
+
+#undef POKIT_APP_IF_LESS_THAN_RETURN
 
 /*!
  * Invoked when the multimeter settings have been written, to begin reading the meter values.

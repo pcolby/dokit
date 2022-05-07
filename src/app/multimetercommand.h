@@ -43,6 +43,12 @@ private:
     MultimeterService::Settings settings; ///< Setting for the Pokit device's multimeter mode.
     int numberOfSamplesToRead; ///< Number of samples to read, if specified on the CLI.
 
+    MultimeterService::MultimeterRange lowestRange(const MultimeterService::MultimeterMode mode,
+                                                   const quint32 desiredMax);
+    static MultimeterService::CurrentRange lowestCurrentRange(const quint32 desiredMax);
+    static MultimeterService::ResistanceRange lowestResistanceRange(const quint32 desiredMax);
+    static MultimeterService::VoltageRange lowestVoltageRange(const quint32 desiredMax);
+
 private slots:
     void settingsWritten();
     void outputReading(const MultimeterService::Reading &reading);

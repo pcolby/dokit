@@ -82,11 +82,11 @@ QString MultimeterService::toString(const VoltageRange &range)
 {
     switch (range) {
     case VoltageRange::_0_to_300mV:  return tr("0 to 300mV");
-    case VoltageRange::_300mV_to_2V: return tr("300mV: to 2V");
-    case VoltageRange::_2V_to_6V:    return tr("2V: to 6V");
-    case VoltageRange::_6V_to_12V:   return tr("6V: to 12V");
-    case VoltageRange::_12V_to_30V:  return tr("12V: to 30V");
-    case VoltageRange::_30V_to_60V:  return tr("30V: to 60V");
+    case VoltageRange::_300mV_to_2V: return tr("300mV to 2V");
+    case VoltageRange::_2V_to_6V:    return tr("2V to 6V");
+    case VoltageRange::_6V_to_12V:   return tr("6V to 12V");
+    case VoltageRange::_12V_to_30V:  return tr("12V to 30V");
+    case VoltageRange::_30V_to_60V:  return tr("30V to 60V");
     case VoltageRange::AutoRange:    return tr("Auto-range");
     default:                         return QString();
     }
@@ -142,10 +142,10 @@ QString MultimeterService::toString(const CurrentRange &range)
 {
     switch (range) {
     case CurrentRange::_0_to_10mA:      return tr("0 to 10mA");
-    case CurrentRange::_10mA_to_30mA:   return tr("10mA: to 30mA");
-    case CurrentRange::_30mA_to_150mA:  return tr("30mA: to 150mA");
-    case CurrentRange::_150mA_to_300mA: return tr("150mA: to 300mA");
-    case CurrentRange::_300mA_to_3A:    return tr("300mA: to 3A");
+    case CurrentRange::_10mA_to_30mA:   return tr("10mA to 30mA");
+    case CurrentRange::_30mA_to_150mA:  return tr("30mA to 150mA");
+    case CurrentRange::_150mA_to_300mA: return tr("150mA to 300mA");
+    case CurrentRange::_300mA_to_3A:    return tr("300mA to 3A");
     case CurrentRange::AutoRange:       return tr("Auto-range");
     default:                            return QString();
     }
