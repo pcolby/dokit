@@ -21,10 +21,10 @@
 
 #include <qtpokit/multimeterservice.h>
 
-class MultimeterCommand : public DeviceCommand
+class MeterCommand : public DeviceCommand
 {
 public:
-    explicit MultimeterCommand(QObject * const parent);
+    explicit MeterCommand(QObject * const parent);
 
     QStringList requiredOptions() const override;
     QStringList supportedOptions() const override;
@@ -52,5 +52,5 @@ private slots:
     void settingsWritten();
     void outputReading(const MultimeterService::Reading &reading);
 
-    friend class TestMultimeterCommand;
+    friend class TestMeterCommand;
 };

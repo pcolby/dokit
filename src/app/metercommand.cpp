@@ -17,7 +17,7 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "multimetercommand.h"
+#include "metercommand.h"
 
 #include <qtpokit/pokitdevice.h>
 
@@ -25,15 +25,15 @@
 #include <QJsonObject>
 
 /*!
- * \class MultimeterCommand
+ * \class MeterCommand
  *
- * The MultimeterCommand class implements the `meter` CLI command.
+ * The MeterCommand class implements the `meter` CLI command.
  */
 
 /*!
- * Construct a new MultimeterCommand object with \a parent.
+ * Construct a new MeterCommand object with \a parent.
  */
-MultimeterCommand::MultimeterCommand(QObject * const parent) : DeviceCommand(parent),
+MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
         MultimeterService::Mode::DcVoltage,
         { MultimeterService::VoltageRange::AutoRange },
@@ -43,14 +43,14 @@ MultimeterCommand::MultimeterCommand(QObject * const parent) : DeviceCommand(par
 
 }
 
-QStringList MultimeterCommand::requiredOptions() const
+QStringList MeterCommand::requiredOptions() const
 {
     return DeviceCommand::requiredOptions() + QStringList{
         QLatin1String("mode"),
     };
 }
 
-QStringList MultimeterCommand::supportedOptions() const
+QStringList MeterCommand::supportedOptions() const
 {
     return DeviceCommand::supportedOptions() + QStringList{
         QLatin1String("interval"),
@@ -65,7 +65,7 @@ QStringList MultimeterCommand::supportedOptions() const
  * This implementation extends DeviceCommand::processOptions to process additional CLI options
  * supported (or required) by this command.
  */
-QStringList MultimeterCommand::processOptions(const QCommandLineParser &parser)
+QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
 {
     QStringList errors = DeviceCommand::processOptions(parser);
     if (!errors.isEmpty()) {
@@ -169,14 +169,14 @@ QStringList MultimeterCommand::processOptions(const QCommandLineParser &parser)
  *
  * This override returns a pointer to a MultimeterService object.
  */
-AbstractPokitService * MultimeterCommand::getService()
+AbstractPokitService * MeterCommand::getService()
 {
     Q_ASSERT(device);
     if (!service) {
         service = device->multimeter();
         Q_ASSERT(service);
         connect(service, &MultimeterService::settingsWritten,
-                this, &MultimeterCommand::settingsWritten);
+                this, &MeterCommand::settingsWritten);
     }
     return service;
 }
@@ -186,7 +186,7 @@ AbstractPokitService * MultimeterCommand::getService()
  *
  * This override fetches the current device's status, and outputs it in the selected format.
  */
-void MultimeterCommand::serviceDetailsDiscovered()
+void MeterCommand::serviceDetailsDiscovered()
 {
     QString range = tr("N/A");
     switch (settings.mode) {
@@ -217,7 +217,7 @@ void MultimeterCommand::serviceDetailsDiscovered()
  * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange
  * if no such range is available.
  */
-MultimeterService::Range MultimeterCommand::lowestRange(
+MultimeterService::Range MeterCommand::lowestRange(
     const MultimeterService::Mode mode, const quint32 desiredMax)
 {
     MultimeterService::Range range;
@@ -249,7 +249,7 @@ if (value <=  MultimeterService::maxValue(MultimeterService::label).toUInt()) { 
  * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange
  * if no such range is available.
  */
-MultimeterService::CurrentRange MultimeterCommand::lowestCurrentRange(const quint32 desiredMax)
+MultimeterService::CurrentRange MeterCommand::lowestCurrentRange(const quint32 desiredMax)
 {
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)
@@ -263,7 +263,7 @@ MultimeterService::CurrentRange MultimeterCommand::lowestCurrentRange(const quin
  * Returns the lowest resistance range that can measure at least up to \a desired max, or AutoRange
  * if no such range is available.
  */
-MultimeterService::ResistanceRange MultimeterCommand::lowestResistanceRange(const quint32 desiredMax)
+MultimeterService::ResistanceRange MeterCommand::lowestResistanceRange(const quint32 desiredMax)
 {
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)
@@ -280,7 +280,7 @@ MultimeterService::ResistanceRange MultimeterCommand::lowestResistanceRange(cons
  * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange
  * if no such range is available.
  */
-MultimeterService::VoltageRange MultimeterCommand::lowestVoltageRange(const quint32 desiredMax)
+MultimeterService::VoltageRange MeterCommand::lowestVoltageRange(const quint32 desiredMax)
 {
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)
@@ -296,18 +296,18 @@ MultimeterService::VoltageRange MultimeterCommand::lowestVoltageRange(const quin
 /*!
  * Invoked when the multimeter settings have been written, to begin reading the meter values.
  */
-void MultimeterCommand::settingsWritten()
+void MeterCommand::settingsWritten()
 {
     qCDebug(lc).noquote() << tr("Settings written; starting meter readings...");
     connect(service, &MultimeterService::readingRead,
-            this, &MultimeterCommand::outputReading);
+            this, &MeterCommand::outputReading);
     service->beginClientReadings();
 }
 
 /*!
  * Outputs meter \a reading in the selected ouput format.
  */
-void MultimeterCommand::outputReading(const MultimeterService::Reading &reading)
+void MeterCommand::outputReading(const MultimeterService::Reading &reading)
 {
     QString status;
     if (reading.status == MultimeterService::MeterStatus::Error) {
