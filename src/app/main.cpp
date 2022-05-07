@@ -172,6 +172,10 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           "If no suffix is present, the units will be inferred from the magnitide of the given "
           "interval. The default behaviour is no timeout."),
           QCoreApplication::translate("parseCommandLine","period")},
+        {{QStringLiteral("timestamp")},
+          QCoreApplication::translate("parseCommandLine","Set the optional starting timestamp for "
+          "data logging. Default to 'now'."),
+        QCoreApplication::translate("parseCommandLine","period")},
         {{QStringLiteral("trigger-level")},
           QCoreApplication::translate("parseCommandLine","Set the DSO trigger level."),
           QCoreApplication::translate("parseCommandLine", "level")},

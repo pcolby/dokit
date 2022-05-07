@@ -53,8 +53,8 @@ QStringList LoggerCommand::supportedOptions() const
 {
     return DeviceCommand::supportedOptions() + QStringList{
         QLatin1String("interval"),
-        QLatin1String("samples"),   ///< \todo Do we want/need this option?
-        QLatin1String("timestamp"), ///< \todo Do we want/need this option?
+        QLatin1String("samples"),
+        QLatin1String("timestamp"),
     };
 }
 
@@ -137,8 +137,19 @@ QStringList LoggerCommand::processOptions(const QCommandLineParser &parser)
         }
     }
 
-    /// \todo Parse the timestamp option.
-
+    // Parse the timestamp option.
+    settings.timestamp = QDateTime::currentSecsSinceEpoch(); // Note, subject to Y2038 epochalypse.
+    if (parser.isSet(QLatin1String("timestamp"))) {
+        const QString value = parser.value(QLatin1String("timestamp"));
+        QLocale locale; bool ok;
+        static_assert(sizeof(uint) == sizeof(settings.timestamp));
+        const int timestamp = locale.toUInt(value, &ok);
+        if (!ok) {
+            errors.append(tr("Invalid timestamp value: %1").arg(value));
+        } else {
+            settings.timestamp = timestamp;
+        }
+    }
     return errors;
 }
 
@@ -169,7 +180,8 @@ void LoggerCommand::serviceDetailsDiscovered()
     /// \todo Move this next block to a  new DataLoggerService::toString(range, mode) function.
     QString range;
     switch (settings.mode) {
-    case DataLoggerService::Mode::Idle:        break;
+    case DataLoggerService::Mode::Idle:
+        break;
     case DataLoggerService::Mode::DcVoltage:
     case DataLoggerService::Mode::AcVoltage:
         range = DataLoggerService::toString(settings.range.voltageRange);
@@ -181,7 +193,7 @@ void LoggerCommand::serviceDetailsDiscovered()
     }
 
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3ms.")
+    qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3s.")
         .arg(DataLoggerService::toString(settings.mode), range).arg(settings.updateInterval);
     service->setSettings(settings);
 }
@@ -279,6 +291,7 @@ void LoggerCommand::metadataRead(const DataLoggerService::Metadata &metadata)
  */
 void LoggerCommand::outputSamples(const DataLoggerService::Samples &samples)
 {
+
     /// \todo
     Q_UNUSED(samples);
 }

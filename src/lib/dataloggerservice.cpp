@@ -429,7 +429,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
     }
     if (value.size() > 15) {
         qCWarning(lc).noquote() << tr("Metadata has %1 extra bytes: 0x%2")
-            .arg(value.size()-15).arg(QLatin1String(value.mid(7).toHex()));
+            .arg(value.size()-15).arg(QLatin1String(value.mid(15).toHex()));
     }
 
     metadata.status             = static_cast<DataLoggerService::LoggerStatus>(value.at(0));
