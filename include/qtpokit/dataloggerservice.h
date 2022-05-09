@@ -70,6 +70,7 @@ public:
         _6V_to_12V   = 3,  ///< 6V to 12V.
         _12V_to_30V  = 4,  ///< 12V to 30V.
         _30V_to_60V  = 5,  ///< 30V to 60V.
+        /// \todo Pokit Pro supports up to 600V.
     };
     static QString toString(const VoltageRange &range);
     static QVariant minValue(const VoltageRange &range);
@@ -81,6 +82,7 @@ public:
         _30mA_to_150mA  = 2,  ///< 30mA to 150mA.
         _150mA_to_300mA = 3,  ///< 150mA to 300mA.
         _300mA_to_3A    = 4,  ///< 300mA to 3A.
+        /// \todo Pokit Pro supports up to 10A.
     };
     static QString toString(const CurrentRange &range);
     static QVariant minValue(const CurrentRange &range);
@@ -89,6 +91,7 @@ public:
     union Range {
         VoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange; ///< Range when in AC/DC current mode.
+        /// \todo Pokit Pro supports temperature in logger mode too.
     };
 
     struct Settings {

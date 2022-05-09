@@ -57,6 +57,7 @@ public:
         Diode       = 6, ///< Measure diode.
         Continuity  = 7, ///< Measure continuity.
         Temperature = 8, ///< Measure temperature.
+        /// \todo Pokit Pro supports capacitance too.
     };
     static QString toString(const Mode &mode);
 
@@ -67,6 +68,7 @@ public:
         _6V_to_12V   = 3,  ///< 6V to 12V.
         _12V_to_30V  = 4,  ///< 12V to 30V.
         _30V_to_60V  = 5,  ///< 30V to 60V.
+        /// \todo Pokit Pro supports up to 600V.
         AutoRange    = 255 ///< Auto-range.
     };
     static QString toString(const VoltageRange &range);
@@ -79,6 +81,7 @@ public:
         _30mA_to_150mA  = 2,  ///< 30mA to 150mA.
         _150mA_to_300mA = 3,  ///< 150mA to 300mA.
         _300mA_to_3A    = 4,  ///< 300mA to 3A.
+        /// \todo Pokit Pro supports up to 10A.
         AutoRange       = 255 ///< Auto-range.
     };
     static QString toString(const CurrentRange &range);
@@ -94,6 +97,7 @@ public:
         _10K_to_100K  = 5,  ///< 10K to 100K ohms.
         _100K_to_470K = 6,  ///< 100K to 470K ohms.
         _470K_to_1M   = 7,  ///< 470K to 1M ohms.
+        /// \todo Pokit Pro supports up to 3M ohms.
         AutoRange     = 255 ///< Auto-range.
     };
     static QString toString(const ResistanceRange &range);
