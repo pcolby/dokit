@@ -18,6 +18,7 @@
 */
 
 #include "calibratecommand.h"
+#include "dsocommand.h"
 #include "flashledcommand.h"
 #include "infocommand.h"
 #include "loggerfetchcommand.h"
@@ -279,7 +280,7 @@ AbstractCommand * getCommandObject(const Command command, QObject * const parent
             "Missing argument: <command>\nSee --help for usage information."));
         return nullptr;
     case Command::Calibrate:   return new CalibrationCommand(parent);
-    case Command::DSO:         break; ///< \todo Implement.
+    case Command::DSO:         return new DsoCommand(parent);
     case Command::FlashLed:    return new FlashLedCommand(parent);
     case Command::Info:        return new InfoCommand(parent);
     case Command::LoggerStart: return new LoggerStartCommand(parent);

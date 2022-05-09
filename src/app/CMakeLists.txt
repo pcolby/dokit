@@ -9,6 +9,8 @@ add_library(PokitApp OBJECT
   calibratecommand.h
   devicecommand.cpp
   devicecommand.h
+  dsocommand.cpp
+  dsocommand.h
   flashledcommand.cpp
   flashledcommand.h
   infocommand.cpp

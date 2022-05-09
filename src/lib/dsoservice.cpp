@@ -19,49 +19,49 @@
 
 /*!
  * \file
- * Defines the DataLoggerService and DataLoggerServicePrivate classes.
+ * Defines the DsoService and DsoServicePrivate classes.
  */
 
-#include <qtpokit/dataloggerservice.h>
-#include "dataloggerservice_p.h"
+#include <qtpokit/dsoservice.h>
+#include "dsoservice_p.h"
 
 #include <QDataStream>
 #include <QIODevice>
 #include <QtEndian>
 
 /*!
- * \class DataLoggerService
+ * \class DsoService
  *
- * The DataLoggerService class accesses the `Pokit Status` service of Pokit devices.
+ * The DsoService class accesses the `Pokit Status` service of Pokit devices.
  */
 
-/// UUID of the "DataLogger" service.
-const QBluetoothUuid DataLoggerService::
-    serviceUuid(QLatin1String("a5ff3566-1fd8-4e10-8362-590a578a4121"));
+/// UUID of the "DSO" service.
+const QBluetoothUuid DsoService::
+    serviceUuid(QLatin1String("1569801e-1425-4a7a-b617-a4f4ed719de6"));
 
-/// \struct DataLoggerService::CharacteristicUuids
-/// \brief Characteristics available via the `DataLogger` service.
+/// \struct DsoService::CharacteristicUuids
+/// \brief Characteristics available via the `DSO` service.
 
-/// UUID of the `DataLogger` service's `Settings` characterstic.
-const QBluetoothUuid DataLoggerService::CharacteristicUuids::
-    settings(QLatin1String("5f97c62b-a83b-46c6-b9cd-cac59e130a78"));
+/// UUID of the `DSO` service's `Settings` characterstic.
+const QBluetoothUuid DsoService::CharacteristicUuids::
+    settings(QLatin1String("a81af1b6-b8b3-4244-8859-3da368d2be39"));
 
-/// UUID of the `DataLogger` service's `Metadata` characterstic.
-const QBluetoothUuid DataLoggerService::CharacteristicUuids::
-    metadata(QLatin1String("9acada2e-3936-430b-a8f7-da407d97ca6e"));
+/// UUID of the `DSO` service's `Metadata` characterstic.
+const QBluetoothUuid DsoService::CharacteristicUuids::
+    metadata(QLatin1String("970f00ba-f46f-4825-96a8-153a5cd0cda9"));
 
-/// UUID of the `DataLogger` service's `Reading` characterstic.
-const QBluetoothUuid DataLoggerService::CharacteristicUuids::
-    reading(QLatin1String("3c669dab-fc86-411c-9498-4f9415049cc0"));
+/// UUID of the `DSO` service's `Reading` characterstic.
+const QBluetoothUuid DsoService::CharacteristicUuids::
+    reading(QLatin1String("98e14f8e-536e-4f24-b4f4-1debfed0a99e"));
 
-/// \enum DataLoggerService::Command
+/// \enum DsoService::Command
 /// \brief Values supported by the `Command` attribute of the `Settings` characteristic.
 
-/// \enum DataLoggerService::Mode
+/// \enum DsoService::Mode
 /// \brief Values supported by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
 
 /// Returns \a mode as a user-friendly string.
-QString DataLoggerService::toString(const Mode &mode)
+QString DsoService::toString(const Mode &mode)
 {
     switch (mode) {
     case Mode::Idle:        return tr("Idle");
@@ -73,12 +73,12 @@ QString DataLoggerService::toString(const Mode &mode)
     }
 }
 
-/// \enum DataLoggerService::VoltageRange
+/// \enum DsoService::VoltageRange
 /// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics,
 /// when `Mode` is AC or DC voltage.
 
 /// Returns \a range as a user-friendly string.
-QString DataLoggerService::toString(const VoltageRange &range)
+QString DsoService::toString(const VoltageRange &range)
 {
     switch (range) {
     case VoltageRange::_0_to_300mV:  return tr("0 to 300mV");
@@ -100,7 +100,7 @@ QString DataLoggerService::toString(const VoltageRange &range)
  *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC voltage
  *  can never be negative, this is relevant for DC voltage only.
  */
-QVariant DataLoggerService::minValue(const VoltageRange &range)
+QVariant DsoService::minValue(const VoltageRange &range)
 {
     switch (range) {
     case VoltageRange::_0_to_300mV:  return     0;
@@ -117,7 +117,7 @@ QVariant DataLoggerService::minValue(const VoltageRange &range)
  *  Returns the maximum value for \a range in (integer) millivolts, or null QVariant if \a range is
  *  not valid.
  */
-QVariant DataLoggerService::maxValue(const VoltageRange &range)
+QVariant DsoService::maxValue(const VoltageRange &range)
 {
     switch (range) {
     case VoltageRange::_0_to_300mV:  return   300;
@@ -130,12 +130,12 @@ QVariant DataLoggerService::maxValue(const VoltageRange &range)
     }
 }
 
-/// \enum DataLoggerService::CurrentRange
+/// \enum DsoService::CurrentRange
 /// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics,
 /// when `Mode` is AC or DC current.
 
 /// Returns \a range as a user-friendly string.
-QString DataLoggerService::toString(const CurrentRange &range)
+QString DsoService::toString(const CurrentRange &range)
 {
     switch (range) {
     case CurrentRange::_0_to_10mA:      return tr("0 to 10mA");
@@ -156,7 +156,7 @@ QString DataLoggerService::toString(const CurrentRange &range)
  *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC current
  *  can never be negative, this is relevant for DC current only.
  */
-QVariant DataLoggerService::minValue(const CurrentRange &range)
+QVariant DsoService::minValue(const CurrentRange &range)
 {
     switch (range) {
     case CurrentRange::_0_to_10mA:      return   0;
@@ -172,7 +172,7 @@ QVariant DataLoggerService::minValue(const CurrentRange &range)
  *  Returns the maximum value for \a range in (integer) milliamps, or null QVariant if \a range is
  *  not valid.
  */
-QVariant DataLoggerService::maxValue(const CurrentRange &range)
+QVariant DsoService::maxValue(const CurrentRange &range)
 {
     switch (range) {
     case CurrentRange::_0_to_10mA:      return   10;
@@ -184,20 +184,20 @@ QVariant DataLoggerService::maxValue(const CurrentRange &range)
     }
 }
 
-/// \union DataLoggerService::Range
+/// \union DsoService::Range
 /// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics.
 
-/// \struct DataLoggerService::Settings
+/// \struct DsoService::Settings
 /// \brief Attributes included in the `Settings` characterstic.
 
-/// \enum DataLoggerService::LoggerStatus
+/// \enum DsoService::DsoStatus
 /// \brief Values supported by the `Status` attribute of the `Metadata` characteristic.
 
-/// \struct DataLoggerService::Metadata
+/// \struct DsoService::Metadata
 /// \brief Attributes included in the `Metadata` characterstic.
 
 /*!
- * \typedef DataLoggerService::Samples
+ * \typedef DsoService::Samples
  *
  * Raw samples from the `Reading` characteristic. These raw samples are (supposedly) wihtin the
  * range -2048 to +2047, and need to be multiplied by the Metadata::scale value from the `Metadata`
@@ -211,8 +211,8 @@ QVariant DataLoggerService::maxValue(const CurrentRange &range)
 /*!
  * Constructs a new Pokit service with \a parent.
  */
-DataLoggerService::DataLoggerService(QLowEnergyController * const controller, QObject * parent)
-    : AbstractPokitService(new DataLoggerServicePrivate(controller, this), parent)
+DsoService::DsoService(QLowEnergyController * const controller, QObject * parent)
+    : AbstractPokitService(new DsoServicePrivate(controller, this), parent)
 {
 
 }
@@ -221,8 +221,8 @@ DataLoggerService::DataLoggerService(QLowEnergyController * const controller, QO
  * \cond internal
  * Constructs a new Pokit service with \a parent, and private implementation \a d.
  */
-DataLoggerService::DataLoggerService(
-    DataLoggerServicePrivate * const d, QObject * const parent)
+DsoService::DsoService(
+    DsoServicePrivate * const d, QObject * const parent)
     : AbstractPokitService(d, parent)
 {
 
@@ -230,20 +230,20 @@ DataLoggerService::DataLoggerService(
 /// \endcond
 
 /*!
- * Destroys this DataLoggerService object.
+ * Destroys this DsoService object.
  */
-DataLoggerService::~DataLoggerService()
+DsoService::~DsoService()
 {
     delete d_ptr;
 }
 
-bool DataLoggerService::readCharacteristics()
+bool DsoService::readCharacteristics()
 {
     return readMetadataCharacteristic();
 }
 
 /*!
- * Read the `DataLogger` service's `Metadat` characteristic.
+ * Read the `DSO` service's `Metadat` characteristic.
  *
  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
@@ -251,123 +251,126 @@ bool DataLoggerService::readCharacteristics()
  *
  * Emits metadataRead() if/when the characteristic has been read successfully.
  */
-bool DataLoggerService::readMetadataCharacteristic()
+bool DsoService::readMetadataCharacteristic()
 {
-    Q_D(DataLoggerService);
+    Q_D(DsoService);
     return d->readCharacteristic(CharacteristicUuids::metadata);
 }
 
 /*!
- * Configures the Pokit device's data logger mode.
+ * Configures the Pokit device's DSO mode.
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
  * Emits settingsWritten() if/when the \a settings have been writtem successfully.
  */
-bool DataLoggerService::setSettings(const Settings &settings)
+bool DsoService::setSettings(const Settings &settings)
 {
-    Q_D(const DataLoggerService);
+    Q_D(const DsoService);
     const QLowEnergyCharacteristic characteristic =
         d->getCharacteristic(CharacteristicUuids::settings);
     if (!characteristic.isValid()) {
         return false;
     }
 
-    static_assert(sizeof(settings.command)        == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.arguments)      == 2, "Expected to be 2 bytes.");
-    static_assert(sizeof(settings.mode)           == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.range)          == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.updateInterval) == 2, "Expected to be 2 bytes.");
-    static_assert(sizeof(settings.timestamp)      == 4, "Expected to be 4 bytes.");
+    static_assert(sizeof(settings.command)         == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.triggerLevel)    == 4, "Expected to be 2 bytes.");
+    static_assert(sizeof(settings.mode)            == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.range)           == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.samplingWindow)  == 4, "Expected to be 4 bytes.");
+    static_assert(sizeof(settings.numberOfSamples) == 2, "Expected to be 2 bytes.");
 
     QByteArray value;
     QDataStream stream(&value, QIODevice::WriteOnly);
     stream.setByteOrder(QDataStream::LittleEndian);
-    stream << (quint8)settings.command << settings.arguments << (quint8)settings.mode
-           << (quint8)settings.range.voltageRange << settings.updateInterval << settings.timestamp;
-    Q_ASSERT(value.size() == 11);
+    stream << (quint8)settings.command << settings.triggerLevel << (quint8)settings.mode
+           << (quint8)settings.range.voltageRange << settings.samplingWindow
+           << settings.numberOfSamples;
+    Q_ASSERT(value.size() == 13);
     d->service->writeCharacteristic(characteristic, value);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
 
 /*!
- * Start the data logger with \a settings.
+ * Start the DSO with \a settings.
  *
  * This is just a synonym for setSettings() except makes the caller's intention more explicit, and
- * sanity-checks that the settings's command is DataLoggerService::Command::Start.
+ * sanity-checks that the settings's command is not DsoService::Command::ResendData.
  */
-bool DataLoggerService::startLogger(const Settings &settings)
+bool DsoService::startDso(const Settings &settings)
 {
-    Q_D(const DataLoggerService);
-    Q_ASSERT(settings.command == DataLoggerService::Command::Start);
-    if (settings.command != DataLoggerService::Command::Start) {
-        qCWarning(d->lc) << tr("Settings command must be 'Start'.");
+    Q_D(const DsoService);
+    Q_ASSERT(settings.command != DsoService::Command::ResendData);
+    if (settings.command != DsoService::Command::ResendData) {
+        qCWarning(d->lc) << tr("Settings command must not be 'ResendData'.");
         return false;
     }
     return setSettings(settings);
 }
 
 /*!
- * Start the data logger.
+ * Start the DSO.
  *
  * This is just a convenience function equivalent to calling setSettings() with the command set to
- * DataLoggerService::Command::Stop.
+ * DsoService::Command::Stop.
  */
-bool DataLoggerService::stopLogger()
+bool DsoService::stopDso()
 {
     // Note, only the Settings::command member need be set, since the others are all ignored by the
     // Pokit device when the command is Stop. However, we still explicitly initialise all other
     // members just to ensure we're never exposing uninitialised RAM to an external device.
-    return setSettings({
-        DataLoggerService::Command::Stop,
-        0, DataLoggerService::Mode::Idle,
-        { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
-    });
+    /// \todo How do we stop / do we need this function at all?
+    return false;
+//    return setSettings({
+//        DsoService::Command::Stop,
+//        0, DsoService::Mode::Idle,
+//        { DsoService::VoltageRange::_0_to_300mV }, 0, 0
+//    });
 }
 
 /*!
- * Start the data logger.
+ * Start the DSO.
  *
  * This is just a convenience function equivalent to calling setSettings() with the command set to
- * DataLoggerService::Command::Refresh.
+ * DsoService::Command::Refresh.
  *
  * Once the Pokit device has processed this request succesffully, the device will begin notifying
  * the `Metadata` and `Reading` characteristic, resulting in emits of metadataRead and samplesRead
  * respectively.
  */
-bool DataLoggerService::fetchSamples()
+bool DsoService::fetchSamples()
 {
     // Note, only the Settings::command member need be set, since the others are all ignored by the
     // Pokit device when the command is Refresh. However, we still explicitly initialise all other
     // members just to ensure we're never exposing uninitialised RAM to an external device.
     return setSettings({
-        DataLoggerService::Command::Refresh,
-        0, DataLoggerService::Mode::Idle,
-        { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+        DsoService::Command::ResendData,
+        0, DsoService::Mode::Idle,
+        { DsoService::VoltageRange::_0_to_300mV }, 0, 0
     });
 }
 
 /*!
- * Returns the most recent value of the `DataLogger` service's `Metadata` characteristic.
+ * Returns the most recent value of the `DSO` service's `Metadata` characteristic.
  *
  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the
- * returned DataLoggerService::Metadata::scale member will be a quiet NaN, which can be checked like:
+ * returned DsoService::Metadata::scale member will be a quiet NaN, which can be checked like:
  *
  * ```
- * const DataLoggerService::Metadata metadata = multimeterService->metadata();
+ * const DsoService::Metadata metadata = multimeterService->metadata();
  * if (qIsNaN(metadata.scale)) {
  *     // Handle failure.
  * }
  * ```
  */
-DataLoggerService::Metadata DataLoggerService::metadata() const
+DsoService::Metadata DsoService::metadata() const
 {
-    Q_D(const DataLoggerService);
+    Q_D(const DsoService);
     const QLowEnergyCharacteristic characteristic =
         d->getCharacteristic(CharacteristicUuids::metadata);
-    return (characteristic.isValid()) ? DataLoggerServicePrivate::parseMetadata(characteristic.value())
-        : Metadata{ LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
+    return (characteristic.isValid()) ? DsoServicePrivate::parseMetadata(characteristic.value())
+        : Metadata{ DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
                     Mode::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };
 }
 
@@ -380,9 +383,9 @@ DataLoggerService::Metadata DataLoggerService::metadata() const
  *
  * Successfully read values (if any) will be emitted via the metadataRead() signal.
  */
-bool DataLoggerService::beginMetadata()
+bool DsoService::beginMetadata()
 {
-    Q_D(DataLoggerService);
+    Q_D(DsoService);
     return d->enableCharacteristicNotificatons(CharacteristicUuids::metadata);
 }
 
@@ -393,9 +396,9 @@ bool DataLoggerService::beginMetadata()
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */
-bool DataLoggerService::stopMetadata()
+bool DsoService::stopMetadata()
 {
-    Q_D(DataLoggerService);
+    Q_D(DsoService);
     return d->disableCharacteristicNotificatons(CharacteristicUuids::metadata);
 }
 
@@ -406,9 +409,9 @@ bool DataLoggerService::stopMetadata()
  *
  * Successfully read samples (if any) will be emitted via the samplesRead() signal.
  */
-bool DataLoggerService::beginSampling()
+bool DsoService::beginSampling()
 {
-    Q_D(DataLoggerService);
+    Q_D(DsoService);
     return d->enableCharacteristicNotificatons(CharacteristicUuids::reading);
 }
 
@@ -417,14 +420,14 @@ bool DataLoggerService::beginSampling()
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */
-bool DataLoggerService::stopSampling()
+bool DsoService::stopSampling()
 {
-    Q_D(DataLoggerService);
+    Q_D(DsoService);
     return d->disableCharacteristicNotificatons(CharacteristicUuids::reading);
 }
 
 /*!
- * \fn DataLoggerService::settingsWritten
+ * \fn DsoService::settingsWritten
  *
  * This signal is emitted when the `Settings` characteristic has been written successfully.
  *
@@ -432,7 +435,7 @@ bool DataLoggerService::stopSampling()
  */
 
 /*!
- * \fn DataLoggerService::metadataRead
+ * \fn DsoService::metadataRead
  *
  * This signal is emitted when the `Metadata` characteristic has been read successfully.
  *
@@ -440,7 +443,7 @@ bool DataLoggerService::stopSampling()
  */
 
 /*!
- * \fn DataLoggerService::samplesRead
+ * \fn DsoService::samplesRead
  *
  * This signal is emitted when the `Reading` characteristic has been notified.
  *
@@ -451,60 +454,60 @@ bool DataLoggerService::stopSampling()
 
 /*!
  * \cond internal
- * \class DataLoggerServicePrivate
+ * \class DsoServicePrivate
  *
- * The DataLoggerServicePrivate class provides private implementation for DataLoggerService.
+ * The DsoServicePrivate class provides private implementation for DsoService.
  */
 
 /*!
  * \internal
- * Constructs a new DataLoggerServicePrivate object with public implementation \a q.
+ * Constructs a new DsoServicePrivate object with public implementation \a q.
  */
-DataLoggerServicePrivate::DataLoggerServicePrivate(
-    QLowEnergyController * controller, DataLoggerService * const q)
-    : AbstractPokitServicePrivate(DataLoggerService::serviceUuid, controller, q)
+DsoServicePrivate::DsoServicePrivate(
+    QLowEnergyController * controller, DsoService * const q)
+    : AbstractPokitServicePrivate(DsoService::serviceUuid, controller, q)
 {
 
 }
 
 /*!
- * Parses the `Metadata` \a value into a DataLoggerService::Metatdata struct.
+ * Parses the `Metadata` \a value into a DsoService::Metatdata struct.
  */
-DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteArray &value)
+DsoService::Metadata DsoServicePrivate::parseMetadata(const QByteArray &value)
 {
-    DataLoggerService::Metadata metadata{
-        DataLoggerService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-        DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_0_to_300mV },
+    DsoService::Metadata metadata{
+        DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
+        DsoService::Mode::Idle, { DsoService::VoltageRange::_0_to_300mV },
         0, 0, 0
     };
 
     /// \todo Abstract out this style of min/max size checking.
-    if (value.size() < 15) {
+    if (value.size() < 17) {
         qCWarning(lc).noquote() << tr("Invalid metadata size %1 for value: 0x%2")
             .arg(value.size()).arg(QLatin1String(value.toHex()));
         return metadata;
     }
-    if (value.size() > 15) {
+    if (value.size() > 17) {
         qCWarning(lc).noquote() << tr("Metadata has %1 extra bytes: 0x%2")
-            .arg(value.size()-15).arg(QLatin1String(value.mid(15).toHex()));
+            .arg(value.size()-17).arg(QLatin1String(value.mid(17).toHex()));
     }
 
-    metadata.status             = static_cast<DataLoggerService::LoggerStatus>(value.at(0));
+    metadata.status             = static_cast<DsoService::DsoStatus>(value.at(0));
     metadata.scale              = qFromLittleEndian<float>(value.mid(1,4));
-    metadata.mode               = static_cast<DataLoggerService::Mode>(value.at(5));
-    metadata.range.voltageRange = static_cast<DataLoggerService::VoltageRange>(value.at(6));
-    metadata.updateInterval     = qFromLittleEndian<quint16>(value.mid(7,2));
-    metadata.numberOfSamples    = qFromLittleEndian<quint16>(value.mid(9,2));
-    metadata.timestamp          = qFromLittleEndian<quint32>(value.mid(11,4));
+    metadata.mode               = static_cast<DsoService::Mode>(value.at(5));
+    metadata.range.voltageRange = static_cast<DsoService::VoltageRange>(value.at(6));
+    metadata.samplingWindow     = qFromLittleEndian<quint32>(value.mid(7,4));
+    metadata.numberOfSamples    = qFromLittleEndian<quint16>(value.mid(11,2));
+    metadata.samplingRate       = qFromLittleEndian<quint32>(value.mid(13,4));
     return metadata;
 }
 
 /*!
- * Parses the `Reading` \a value into a DataLoggerService::Samples vector.
+ * Parses the `Reading` \a value into a DsoService::Samples vector.
  */
-DataLoggerService::Samples DataLoggerServicePrivate::parseSamples(const QByteArray &value)
+DsoService::Samples DsoServicePrivate::parseSamples(const QByteArray &value)
 {
-    DataLoggerService::Samples samples;
+    DsoService::Samples samples;
     if ((value.size()%2) != 0) {
         qCWarning(lc).noquote() << tr("Samples value has odd size (should be even): 0x%2")
             .arg(value.size()).arg(QLatin1String(value.toHex()));
@@ -522,32 +525,32 @@ DataLoggerService::Samples DataLoggerServicePrivate::parseSamples(const QByteArr
  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a
  * specialised signal, for each supported \a characteristic.
  */
-void DataLoggerServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
+void DsoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
     qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
         .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
         .arg(QLatin1String(value.toHex()));
 
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::settings) {
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {
         qCWarning(lc).noquote() << tr("Settings characteristic is write-only, but somehow read")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
 
-    Q_Q(DataLoggerService);
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::metadata) {
+    Q_Q(DsoService);
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {
         emit q->metadataRead(parseMetadata(value));
         return;
     }
 
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::reading) {
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {
         qCWarning(lc).noquote() << tr("Reading characteristic is notify-only")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic read for Data Logger Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for DSO Service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
@@ -555,31 +558,31 @@ void DataLoggerServicePrivate::characteristicRead(const QLowEnergyCharacteristic
  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a
  * specialised signal, for each supported \a characteristic.
  */
-void DataLoggerServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
+void DsoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                      const QByteArray &newValue)
 {
     qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
         .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
 
-    Q_Q(DataLoggerService);
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::settings) {
+    Q_Q(DsoService);
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {
         emit q->settingsWritten();
         return;
     }
 
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::metadata) {
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {
         qCWarning(lc).noquote() << tr("Metadata characteristic is read/notify, but somehow written")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
 
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::reading) {
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {
         qCWarning(lc).noquote() << tr("Reading characteristic is notify-only, but somehow written")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic written for Data Logger service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic written for DSO service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
@@ -587,30 +590,30 @@ void DataLoggerServicePrivate::characteristicWritten(const QLowEnergyCharacteris
  * Implements AbstractPokitServicePrivate::characteristicChanged to parse \a newValue, then emit a
  * specialised signal, for each supported \a characteristic.
  */
-void DataLoggerServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &characteristic,
+void DsoServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &characteristic,
                                                      const QByteArray &newValue)
 {
     qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) changed, with new value:")
         .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
 
-    Q_Q(DataLoggerService);
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::settings) {
+    Q_Q(DsoService);
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {
         qCWarning(lc).noquote() << tr("Settings characteristic is write-only, but somehow updated")
             << serviceUuid << characteristic.name() << characteristic.uuid();
         return;
     }
 
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::metadata) {
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {
         emit q->metadataRead(parseMetadata(newValue));
         return;
     }
 
-    if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::reading) {
+    if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {
         emit q->samplesRead(parseSamples(newValue));
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic notified for Data Logger service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic notified for DSO service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

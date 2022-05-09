@@ -25,8 +25,8 @@ Pokit devices currently support seven official (and one unofficial) Bluetooth GA
 |------------------------|:-------------:|:-----------------:|----------------------------------------|
 | Device Discovery       | Implemented   | Implemented       |                                        |
 | Multimeter Service     | Implemented   | Implemented       |                                        |
-| DSO Service            | Later         | Later             |                                        |
-| Data Logger Service    | Implemented   | In progress       |                                        |
+| DSO Service            | In progress   | In progress       |                                        |
+| Data Logger Service    | Implemented   | Not working yet   | Possibly errors in Pokit API docs?     |
 | Pokit Status Service   | Implemented   | Implemented       |                                        |
 | Calibration Service    | Implemented   | Implemented       | Fails on Linux due to BlueZ issue.     |
 | Device Info Service    | Implemented   | Implemented       |                                        |

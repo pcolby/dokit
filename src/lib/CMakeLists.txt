@@ -8,6 +8,7 @@ target_sources(
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/calibrationservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/dataloggerservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/deviceinfoservice.h
+  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/dsoservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/genericaccessservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/multimeterservice.h
   PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevice.h
@@ -22,6 +23,8 @@ target_sources(
   PRIVATE dataloggerservice_p.h
   PRIVATE deviceinfoservice.cpp
   PRIVATE deviceinfoservice_p.h
+  PRIVATE dsoservice.cpp
+  PRIVATE dsoservice_p.h
   PRIVATE genericaccessservice.cpp
   PRIVATE genericaccessservice_p.h
   PRIVATE multimeterservice.cpp

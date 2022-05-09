@@ -27,6 +27,7 @@
 #include <qtpokit/calibrationservice.h>
 #include <qtpokit/dataloggerservice.h>
 #include <qtpokit/deviceinfoservice.h>
+#include <qtpokit/dsoservice.h>
 #include <qtpokit/genericaccessservice.h>
 #include <qtpokit/multimeterservice.h>
 #include <qtpokit/statusservice.h>
@@ -171,10 +172,7 @@ DeviceInfoService * PokitDevice::deviceInformation()
  */
 DsoService * PokitDevice::dso()
 {
-    Q_D(PokitDevice);
-    qCDebug(d->lc) << "Not implemented" << __func__;
-//    POKIT_INTERNAL_GET_SERVICE(DsoService, dso);
-    return nullptr;
+    POKIT_INTERNAL_GET_SERVICE(DsoService, dso);
 }
 
 /*!
