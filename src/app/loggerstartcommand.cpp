@@ -17,7 +17,7 @@
     along with QtPokit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "loggercommand.h"
+#include "loggerstartcommand.h"
 
 #include <qtpokit/pokitdevice.h>
 
@@ -25,48 +25,36 @@
 #include <QJsonObject>
 
 /*!
- * \class LoggerCommand
+ * \class LoggerStartCommand
  *
- * The LoggerCommand class implements the `logger` CLI command.
+ * The LoggerStartCommand class implements the `logger` CLI command.
  */
 
 /*!
- * Construct a new LoggerCommand object with \a parent.
+ * Construct a new LoggerStartCommand object with \a parent.
  */
-LoggerCommand::LoggerCommand(QObject * const parent) : DeviceCommand(parent),
+LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
-        DataLoggerService::Command::Stop, 0, DataLoggerService::Mode::DcVoltage,
-        { DataLoggerService::VoltageRange::_30V_to_60V }, 60, 0}, numberOfSamplesToRead(-1)
+        DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+        { DataLoggerService::VoltageRange::_30V_to_60V }, 60, 0}
 {
 
 }
 
-QStringList LoggerCommand::requiredOptions(const QCommandLineParser &parser) const
+QStringList LoggerStartCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    QStringList options = DeviceCommand::requiredOptions(parser) + QStringList{
-        QLatin1String("command"),
+    return DeviceCommand::requiredOptions(parser) + QStringList{
+        QLatin1String("mode"),
+        QLatin1String("range"),
     };
-    if ((parser.isSet(QLatin1String("command"))) &&
-        (parser.value(QLatin1String("command")).trimmed().toLower() == QLatin1String("start"))) {
-        options.append({
-            QLatin1String("mode"),
-            QLatin1String("range"),
-        });
-    }
-    return options;
 }
 
-QStringList LoggerCommand::supportedOptions(const QCommandLineParser &parser) const
+QStringList LoggerStartCommand::supportedOptions(const QCommandLineParser &parser) const
 {
-    QStringList options = DeviceCommand::supportedOptions(parser);
-    if ((parser.isSet(QLatin1String("command"))) &&
-        (parser.value(QLatin1String("command")).trimmed().toLower() == QLatin1String("start"))) {
-        options.append({
-            QLatin1String("interval"),
-            QLatin1String("timestamp"),
-        });
-    }
-    return options;
+    return DeviceCommand::supportedOptions(parser) + QStringList{
+        QLatin1String("interval"),
+        QLatin1String("timestamp"),
+    };
 }
 
 /*!
@@ -75,29 +63,14 @@ QStringList LoggerCommand::supportedOptions(const QCommandLineParser &parser) co
  * This implementation extends DeviceCommand::processOptions to process additional CLI options
  * supported (or required) by this command.
  */
-QStringList LoggerCommand::processOptions(const QCommandLineParser &parser)
+QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
 {
     QStringList errors = DeviceCommand::processOptions(parser);
     if (!errors.isEmpty()) {
         return errors;
     }
 
-    // Parse the (required) command option.
-    const QString command = parser.value(QLatin1String("command")).trimmed().toLower();
-    if (command == QLatin1String("start")) {
-        settings.command = DataLoggerService::Command::Start;
-    } else if (command == QLatin1String("stop")) {
-        settings.command = DataLoggerService::Command::Stop;
-        return errors; // No futher option processing required for `stop`.
-    } else if ((command == QLatin1String("fetch")) || (command == QLatin1String("refresh"))) {
-        settings.command = DataLoggerService::Command::Refresh;
-        return errors; // No futher option processing required for `refresh`.
-    } else {
-        errors.append(tr("Unknown logger command: %1").arg(parser.value(QLatin1String("command"))));
-        return errors;
-    }
-
-    // Parse the (required for `start`) mode option.
+    // Parse the (required) mode option.
     const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
     if (mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
         settings.mode = DataLoggerService::Mode::AcVoltage;
@@ -112,7 +85,7 @@ QStringList LoggerCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    // Parse the (required for `start`) range option.
+    // Parse the (required) range option.
     {
         const QString value = parser.value(QLatin1String("range"));
         QString unit; quint32 sensibleMinimum = 0;
@@ -172,14 +145,14 @@ QStringList LoggerCommand::processOptions(const QCommandLineParser &parser)
  *
  * This override returns a pointer to a DataLoggerService object.
  */
-AbstractPokitService * LoggerCommand::getService()
+AbstractPokitService * LoggerStartCommand::getService()
 {
     Q_ASSERT(device);
     if (!service) {
         service = device->dataLogger();
         Q_ASSERT(service);
         connect(service, &DataLoggerService::settingsWritten,
-                this, &LoggerCommand::settingsWritten);
+                this, &LoggerStartCommand::settingsWritten);
     }
     return service;
 }
@@ -189,7 +162,7 @@ AbstractPokitService * LoggerCommand::getService()
  *
  * This override fetches the current device's status, and outputs it in the selected format.
  */
-void LoggerCommand::serviceDetailsDiscovered()
+void LoggerStartCommand::serviceDetailsDiscovered()
 {
     /// \todo Move this next block to a  new DataLoggerService::toString(range, mode) function.
     QString range;
@@ -209,7 +182,6 @@ void LoggerCommand::serviceDetailsDiscovered()
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3s.")
         .arg(DataLoggerService::toString(settings.mode), range).arg(settings.updateInterval);
-    settings.command = DataLoggerService::Command::Start;
     service->setSettings(settings);
 }
 
@@ -217,7 +189,7 @@ void LoggerCommand::serviceDetailsDiscovered()
  * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange
  * if no such range is available.
  */
-DataLoggerService::Range LoggerCommand::lowestRange(
+DataLoggerService::Range LoggerStartCommand::lowestRange(
     const DataLoggerService::Mode mode, const quint32 desiredMax)
 {
     DataLoggerService::Range range{ DataLoggerService::VoltageRange::_6V_to_12V };
@@ -250,7 +222,7 @@ if (value <=  DataLoggerService::maxValue(DataLoggerService::label).toUInt()) { 
  * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange
  * if no such range is available.
  */
-DataLoggerService::CurrentRange LoggerCommand::lowestCurrentRange(const quint32 desiredMax)
+DataLoggerService::CurrentRange LoggerStartCommand::lowestCurrentRange(const quint32 desiredMax)
 {
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)
@@ -264,7 +236,7 @@ DataLoggerService::CurrentRange LoggerCommand::lowestCurrentRange(const quint32 
  * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange
  * if no such range is available.
  */
-DataLoggerService::VoltageRange LoggerCommand::lowestVoltageRange(const quint32 desiredMax)
+DataLoggerService::VoltageRange LoggerStartCommand::lowestVoltageRange(const quint32 desiredMax)
 {
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)
     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)
@@ -278,37 +250,11 @@ DataLoggerService::VoltageRange LoggerCommand::lowestVoltageRange(const quint32 
 #undef POKIT_APP_IF_LESS_THAN_RETURN
 
 /*!
- * Invoked when the data logger settings have been written, to begin reading the logger values.
+ * Invoked when the data logger settings have been written.
  */
-void LoggerCommand::settingsWritten()
+void LoggerStartCommand::settingsWritten()
 {
-    qCDebug(lc).noquote() << tr("Settings written; starting data logger...");
-    connect(service, &DataLoggerService::metadataRead, this, &LoggerCommand::metadataRead);
-    connect(service, &DataLoggerService::samplesRead, this, &LoggerCommand::outputSamples);
-    service->beginMetadata();
-    service->beginSampling();
-}
-
-/*!
- * Invoked when \a metadata has been received from the data logger.
- *
- * \todo Presumably we need to at least record the metadata.scale here. Probably also need the
- * metadata.numberOfSamples. Of course, log and check for errors etc. too.
- */
-void LoggerCommand::metadataRead(const DataLoggerService::Metadata &metadata)
-{
-    /// \todo
-    Q_UNUSED(metadata);
-    qCDebug(lc) << "metadataRead";
-}
-
-/*!
- * Outputs logger \a samples in the selected ouput format.
- */
-void LoggerCommand::outputSamples(const DataLoggerService::Samples &samples)
-{
-
-    /// \todo
-    Q_UNUSED(samples);
-    qCDebug(lc) << "samplesRead";
+    qCDebug(lc).noquote() << tr("Settings written; data logger has started.");
+    /// \todo Output the settings used as CSV, JSON and Text.
+    QCoreApplication::exit(EXIT_SUCCESS);
 }

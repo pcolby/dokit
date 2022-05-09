@@ -291,6 +291,63 @@ bool DataLoggerService::setSettings(const Settings &settings)
 }
 
 /*!
+ * Start the data logger with \a settings.
+ *
+ * This is just a synonym for setSettings() except makes the caller's intention more explicit, and
+ * sanity-checks that the settings's command is DataLoggerService::Command::Start.
+ */
+bool DataLoggerService::startLogger(const Settings &settings)
+{
+    Q_D(const DataLoggerService);
+    Q_ASSERT(settings.command == DataLoggerService::Command::Start);
+    if (settings.command != DataLoggerService::Command::Start) {
+        qCWarning(d->lc) << tr("Settings command must be 'Start'.");
+        return false;
+    }
+    return setSettings(settings);
+}
+
+/*!
+ * Start the data logger.
+ *
+ * This is just a convenience function equivalent to calling setSettings() with the command set to
+ * DataLoggerService::Command::Stop.
+ */
+bool DataLoggerService::stopLogger()
+{
+    // Note, only the Settings::command member need be set, since the others are all ignored by the
+    // Pokit device when the command is Stop. However, we still explicitly initialise all other
+    // members just to ensure we're never exposing uninitialised RAM to an external device.
+    return setSettings({
+        DataLoggerService::Command::Stop,
+        0, DataLoggerService::Mode::Idle,
+        { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+    });
+}
+
+/*!
+ * Start the data logger.
+ *
+ * This is just a convenience function equivalent to calling setSettings() with the command set to
+ * DataLoggerService::Command::Refresh.
+ *
+ * Once the Pokit device has processed this request succesffully, the device will begin notifying
+ * the `Metadata` and `Reading` characteristic, resulting in emits of metadataRead and samplesRead
+ * respectively.
+ */
+bool DataLoggerService::fetchSamples()
+{
+    // Note, only the Settings::command member need be set, since the others are all ignored by the
+    // Pokit device when the command is Refresh. However, we still explicitly initialise all other
+    // members just to ensure we're never exposing uninitialised RAM to an external device.
+    return setSettings({
+        DataLoggerService::Command::Refresh,
+        0, DataLoggerService::Mode::Idle,
+        { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+    });
+}
+
+/*!
  * Returns the most recent value of the `DataLogger` service's `Metadata` characteristic.
  *
  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
@@ -456,7 +513,7 @@ DataLoggerService::Samples DataLoggerServicePrivate::parseSamples(const QByteArr
     for (; (samples.size()*2) < value.size();) {
         samples.append(qFromLittleEndian<qint16>(value.mid(samples.size()*2,2)));
     }
-    qCDebug(lc).noquote() << tr("Reading %1 samples from %2-bytes.")
+    qCDebug(lc).noquote() << tr("Read %1 samples from %2-bytes.")
         .arg(samples.size()).arg(value.size());
     return samples;
 }

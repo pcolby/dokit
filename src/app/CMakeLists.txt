@@ -13,8 +13,12 @@ add_library(PokitApp OBJECT
   flashledcommand.h
   infocommand.cpp
   infocommand.h
-  loggercommand.cpp
-  loggercommand.h
+  loggerfetchcommand.cpp
+  loggerfetchcommand.h
+  loggerstartcommand.cpp
+  loggerstartcommand.h
+  loggerstopcommand.cpp
+  loggerstopcommand.h
   metercommand.cpp
   metercommand.h
   scancommand.cpp

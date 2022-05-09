@@ -127,6 +127,9 @@ public:
 
     // Settings characteristic (BLE write only).
     bool setSettings(const Settings &settings);
+    bool startLogger(const Settings &settings);
+    bool stopLogger();
+    bool fetchSamples();
 
     // Metadata characteristic (BLE read/notify).
     Metadata metadata() const;

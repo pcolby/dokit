@@ -21,16 +21,10 @@
 
 #include <qtpokit/dataloggerservice.h>
 
-class LoggerCommand : public DeviceCommand
+class LoggerStopCommand : public DeviceCommand
 {
 public:
-    explicit LoggerCommand(QObject * const parent);
-
-    QStringList requiredOptions(const QCommandLineParser &parser) const override;
-    QStringList supportedOptions(const QCommandLineParser &parser) const override;
-
-public slots:
-    QStringList processOptions(const QCommandLineParser &parser) override;
+    explicit LoggerStopCommand(QObject * const parent);
 
 protected:
     AbstractPokitService * getService() override;
@@ -40,18 +34,9 @@ protected slots:
 
 private:
     DataLoggerService * service; ///< Bluetooth service this command interracts with.
-    DataLoggerService::Settings settings; ///< Settings for the Pokit device's data logger mode.
-    int numberOfSamplesToRead; ///< Number of samples to read, if specified on the CLI.
-
-    static DataLoggerService::Range lowestRange(const DataLoggerService::Mode mode,
-                                                const quint32 desiredMax);
-    static DataLoggerService::CurrentRange lowestCurrentRange(const quint32 desiredMax);
-    static DataLoggerService::VoltageRange lowestVoltageRange(const quint32 desiredMax);
 
 private slots:
     void settingsWritten();
-    void metadataRead(const DataLoggerService::Metadata &metadata);
-    void outputSamples(const DataLoggerService::Samples &samples);
 
-    friend class TestLoggerCommand;
+    friend class TestLoggerStopCommand;
 };

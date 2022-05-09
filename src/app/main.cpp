@@ -20,7 +20,9 @@
 #include "calibratecommand.h"
 #include "flashledcommand.h"
 #include "infocommand.h"
-#include "loggercommand.h"
+#include "loggerfetchcommand.h"
+#include "loggerstartcommand.h"
+#include "loggerstopcommand.h"
 #include "metercommand.h"
 #include "scancommand.h"
 #include "setnamecommand.h"
@@ -76,7 +78,18 @@ void configureLogging(const QCommandLineParser &parser)
 }
 
 enum class Command {
-    None, Info, Status, Meter, DSO, Logger, Scan, SetName, FlashLed, Calibrate
+    None,
+    Info,
+    Status,
+    Meter,
+    DSO,
+    LoggerStart,
+    LoggerStop,
+    LoggerFetch,
+    Scan,
+    SetName,
+    FlashLed,
+    Calibrate
 };
 
 void showCliError(const QString &errorText) {
@@ -96,15 +109,17 @@ Command getCliCommand(const QStringList &posArguments) {
     }
 
     const QMap<QString, Command> supportedCommands {
-        { QStringLiteral("info"),      Command::Info },
-        { QStringLiteral("status"),    Command::Status },
-        { QStringLiteral("meter"),     Command::Meter },
-        { QStringLiteral("dso"),       Command::DSO },
-        { QStringLiteral("logger"),    Command::Logger },
-        { QStringLiteral("scan"),      Command::Scan },
-        { QStringLiteral("set-name"),  Command::SetName },
-        { QStringLiteral("flash-led"), Command::FlashLed },
-        { QStringLiteral("calibrate"), Command::Calibrate },
+        { QStringLiteral("info"),         Command::Info },
+        { QStringLiteral("status"),       Command::Status },
+        { QStringLiteral("meter"),        Command::Meter },
+        { QStringLiteral("dso"),          Command::DSO },
+        { QStringLiteral("logger-start"), Command::LoggerStart },
+        { QStringLiteral("logger-stop"),  Command::LoggerStop },
+        { QStringLiteral("logger-fetch"), Command::LoggerFetch },
+        { QStringLiteral("scan"),         Command::Scan },
+        { QStringLiteral("set-name"),     Command::SetName },
+        { QStringLiteral("flash-led"),    Command::FlashLed },
+        { QStringLiteral("calibrate"),    Command::Calibrate },
     };
     const Command command = supportedCommands.value(posArguments.first().toLower(), Command::None);
     if (command == Command::None) {
@@ -208,8 +223,14 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     parser.addPositionalArgument(QStringLiteral("dso"),
         QCoreApplication::translate("parseCommandLine", "Access Pokit device's DSO mode"),
         QStringLiteral(" "));
-    parser.addPositionalArgument(QStringLiteral("logger"),
-        QCoreApplication::translate("parseCommandLine", "Access Pokit device's data logger mode"),
+    parser.addPositionalArgument(QStringLiteral("logger-start"),
+        QCoreApplication::translate("parseCommandLine", "Start Pokit device's data logger mode"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("logger-stop"),
+        QCoreApplication::translate("parseCommandLine", "Stop Pokit device's data logger mode"),
+        QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("logger-fetch"),
+        QCoreApplication::translate("parseCommandLine", "Fetch Pokit device's data logger samples"),
         QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("scan"),
         QCoreApplication::translate("parseCommandLine", "Scan Bluetooth for Pokit devices"),
@@ -257,15 +278,17 @@ AbstractCommand * getCommandObject(const Command command, QObject * const parent
         showCliError(QCoreApplication::translate("main",
             "Missing argument: <command>\nSee --help for usage information."));
         return nullptr;
-    case Command::Calibrate:return new CalibrationCommand(parent);
-    case Command::DSO:      break; ///< \todo Implement.
-    case Command::FlashLed: return new FlashLedCommand(parent);
-    case Command::Info:     return new InfoCommand(parent);
-    case Command::Logger:   return new LoggerCommand(parent);
-    case Command::Meter:    return new MeterCommand(parent);
-    case Command::Scan:     return new ScanCommand(parent);
-    case Command::Status:   return new StatusCommand(parent);
-    case Command::SetName:  return new SetNameCommand(parent);
+    case Command::Calibrate:   return new CalibrationCommand(parent);
+    case Command::DSO:         break; ///< \todo Implement.
+    case Command::FlashLed:    return new FlashLedCommand(parent);
+    case Command::Info:        return new InfoCommand(parent);
+    case Command::LoggerStart: return new LoggerStartCommand(parent);
+    case Command::LoggerStop:  return new LoggerStopCommand(parent);
+    case Command::LoggerFetch: return new LoggerFetchCommand(parent);
+    case Command::Meter:       return new MeterCommand(parent);
+    case Command::Scan:        return new ScanCommand(parent);
+    case Command::Status:      return new StatusCommand(parent);
+    case Command::SetName:     return new SetNameCommand(parent);
     }
     showCliError(QCoreApplication::translate("main", "Unknown command (%1)").arg((int)command));
     return nullptr;
