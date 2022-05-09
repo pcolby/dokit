@@ -21,6 +21,7 @@
 
 #include <qtpokit/pokitdevice.h>
 
+#include <QDateTime>
 #include <QJsonDocument>
 #include <QJsonObject>
 
