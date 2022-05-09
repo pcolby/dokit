@@ -129,7 +129,7 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
     if (parser.isSet(QLatin1String("timestamp"))) {
         const QString value = parser.value(QLatin1String("timestamp"));
         QLocale locale; bool ok;
-        static_assert(sizeof(uint) == sizeof(settings.timestamp));
+        static_assert(sizeof(uint) == sizeof(settings.timestamp), "QLocale has no toUint32().");
         const int timestamp = locale.toUInt(value, &ok);
         if (!ok) {
             errors.append(tr("Invalid timestamp value: %1").arg(value));
