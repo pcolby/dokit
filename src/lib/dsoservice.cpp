@@ -283,6 +283,7 @@ bool DsoService::setSettings(const Settings &settings)
     QByteArray value;
     QDataStream stream(&value, QIODevice::WriteOnly);
     stream.setByteOrder(QDataStream::LittleEndian);
+    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
     stream << (quint8)settings.command << settings.triggerLevel << (quint8)settings.mode
            << (quint8)settings.range.voltageRange << settings.samplingWindow
            << settings.numberOfSamples;
