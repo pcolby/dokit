@@ -42,7 +42,7 @@ const QBluetoothUuid GenericAccessService::
 
 /// UUID of the `Generic Access` service's `Device Name` characterstic.
 const QBluetoothUuid GenericAccessService::CharacteristicUuids::
-    name(QBluetoothUuid::CharacteristicType::DeviceName);
+    deviceName(QBluetoothUuid::CharacteristicType::DeviceName);
 
 /// UUID of the `Generic Access` service's `Appearance` characterstic.
 const QBluetoothUuid GenericAccessService::CharacteristicUuids::
@@ -79,7 +79,7 @@ GenericAccessService::~GenericAccessService()
 
 bool GenericAccessService::readCharacteristics()
 {
-    const bool r1 = readNameCharacteristic();
+    const bool r1 = readDeviceNameCharacteristic();
     const bool r2 = readAppearanceCharacteristic();
     return (r1 && r2);
 }
@@ -108,10 +108,10 @@ bool GenericAccessService::readAppearanceCharacteristic()
  *
  * Emits deviceNameRead() if/when the characteristic has been read successfully.
  */
-bool GenericAccessService::readNameCharacteristic()
+bool GenericAccessService::readDeviceNameCharacteristic()
 {
     Q_D(GenericAccessService);
-    return d->readCharacteristic(CharacteristicUuids::name);
+    return d->readCharacteristic(CharacteristicUuids::deviceName);
 }
 
 /*!
@@ -145,7 +145,7 @@ QString GenericAccessService::deviceName() const
 {
     Q_D(const GenericAccessService);
     const QLowEnergyCharacteristic characteristic =
-        d->getCharacteristic(CharacteristicUuids::name);
+        d->getCharacteristic(CharacteristicUuids::deviceName);
     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();
 }
 
@@ -160,7 +160,7 @@ bool GenericAccessService::setDeviceName(const QString &name)
 {
     Q_D(const GenericAccessService);
     const QLowEnergyCharacteristic characteristic =
-        d->getCharacteristic(CharacteristicUuids::name);
+        d->getCharacteristic(CharacteristicUuids::deviceName);
     if (!characteristic.isValid()) {
         return false;
     }
@@ -256,7 +256,7 @@ void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteris
         return;
     }
 
-    if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::name) {
+    if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::deviceName) {
         const QString deviceName = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr("Device name: \"%1\"").arg(deviceName);
         emit q->deviceNameRead(deviceName);
@@ -284,7 +284,7 @@ void GenericAccessServicePrivate::characteristicWritten(const QLowEnergyCharacte
         return;
     }
 
-    if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::name) {
+    if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::deviceName) {
         emit q->deivceNameWritten();
         return;
     }

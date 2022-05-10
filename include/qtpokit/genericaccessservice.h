@@ -43,7 +43,7 @@ public:
     static const QBluetoothUuid serviceUuid;
 
     struct CharacteristicUuids {
-        static const QBluetoothUuid name;
+        static const QBluetoothUuid deviceName;
         static const QBluetoothUuid appearance;
     };
 
@@ -52,7 +52,7 @@ public:
 
     bool readCharacteristics() override;
     bool readAppearanceCharacteristic();
-    bool readNameCharacteristic();
+    bool readDeviceNameCharacteristic();
 
     // Appearance characteristic (BLE read only).
     quint16 appearance() const;
