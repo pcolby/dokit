@@ -213,6 +213,74 @@ StatusService * PokitDevice::status()
 #undef POKIT_INTERNAL_GET_SERVICE
 
 /*!
+ * Returns a human-readable name for the \a uuid service, or a null QString if unknonw.
+ *
+ * This is equivalent to QBluetoothUuid::serviceClassToString() but for services provided by Pokit
+ * devices.
+ */
+QString PokitDevice::serviceToString(const QBluetoothUuid &uuid)
+{
+    static QHash<QBluetoothUuid, QString> hash{
+        { CalibrationService::serviceUuid, tr("Calibration") },
+        { DataLoggerService::serviceUuid,  tr("Data Logger") },
+        { DsoService::serviceUuid,         tr("DSO") },
+        { MultimeterService::serviceUuid,  tr("Multimeter") },
+        { StatusService::serviceUuid,      tr("Status") },
+        { DeviceInfoService::serviceUuid,
+            QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::DeviceInformation) },
+        { GenericAccessService::serviceUuid,
+            QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess) },
+    };
+    return hash.value(uuid);
+}
+
+/*!
+ * Returns a human-readable name for the \a uuid characteristic, or a null QString if unknown.
+ *
+ * This is equivalent to QBluetoothUuid::characteristicToString() but for characteristics provided
+ * by Pokit devices.
+ */
+QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
+{
+    static QHash<QBluetoothUuid, QString> hash{
+        { CalibrationService::CharacteristicUuids::temperature, tr("Temperature") },
+
+        { DataLoggerService::CharacteristicUuids::metadata, tr("Metadata") },
+        { DataLoggerService::CharacteristicUuids::reading,  tr("Reading") },
+        { DataLoggerService::CharacteristicUuids::settings, tr("Settings") },
+
+        { DsoService::CharacteristicUuids::metadata, tr("Metadata") },
+        { DsoService::CharacteristicUuids::reading,  tr("Reading") },
+        { DsoService::CharacteristicUuids::settings, tr("Settings") },
+
+        { MultimeterService::CharacteristicUuids::reading,  tr("Reading") },
+        { MultimeterService::CharacteristicUuids::settings, tr("Settings") },
+
+        { StatusService::CharacteristicUuids::deviceCharacteristics, tr("Device Characteristics") },
+        { StatusService::CharacteristicUuids::flashLed,              tr("Flash LED") },
+        { StatusService::CharacteristicUuids::name,                  tr("Name") },
+        { StatusService::CharacteristicUuids::status,                tr("Status") },
+
+        { DeviceInfoService::CharacteristicUuids::firmwareRevision,
+            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::FirmwareRevisionString) },
+        { DeviceInfoService::CharacteristicUuids::hardwareRevision,
+            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::HardwareRevisionString) },
+        { DeviceInfoService::CharacteristicUuids::manufacturerName,
+            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::ManufacturerNameString) },
+        { DeviceInfoService::CharacteristicUuids::modelNumber,
+            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::ModelNumberString) },
+        { DeviceInfoService::CharacteristicUuids::softwareRevision,
+            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::SoftwareRevisionString) },
+
+        { GenericAccessService::CharacteristicUuids::appearance,
+            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::Appearance) },
+        { GenericAccessService::CharacteristicUuids::deviceName,
+            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::DeviceName) },
+    };
+    return hash.value(uuid);
+}
+
+/*!
  * \cond internal
  * \class PokitDevicePrivate
  *
@@ -343,7 +411,8 @@ void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError)
  */
 void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
 {
-    qCDebug(lc).noquote() << tr("Service discovered:") << newService;
+    qCDebug(lc).noquote() << tr("Service discovered: %1 \"%2\"")
+        .arg(newService.toString(), PokitDevice::serviceToString(newService));
 }
 
 /*!

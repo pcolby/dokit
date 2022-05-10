@@ -25,6 +25,8 @@
 #include <qtpokit/abstractpokitservice.h>
 #include "abstractpokitservice_p.h"
 
+#include <qtpokit/pokitdevice.h>
+
 #include <QLowEnergyController>
 
 /*!
@@ -305,8 +307,8 @@ bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBlueto
     QLowEnergyDescriptor descriptor = characteristic.descriptor(
         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);
     if (!descriptor.isValid()) {
-        qCWarning(lc).noquote() << tr("Characterisitc %1 has no client configuration descriptor.")
-            .arg(uuid.toString());
+        qCWarning(lc).noquote() << tr("Characterisitc %1 \"%2\" has no client configuration descriptor.")
+            .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
         return false;
     }
 
@@ -479,8 +481,8 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
 void AbstractPokitServicePrivate::characteristicChanged(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
 {
-    qCWarning(lc).noquote() << tr("Characteristic %1 changed but handler not overridden.")
-        .arg(characteristic.uuid().toString());
+    qCWarning(lc).noquote() << tr("Characteristic %1 \"%2\" changed but handler not overridden.")
+        .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()));
     Q_UNUSED(newValue);
 }
 
