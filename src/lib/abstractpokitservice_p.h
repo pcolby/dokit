@@ -70,9 +70,9 @@ protected slots:
     void stateChanged(QLowEnergyService::ServiceState newState);
 
     virtual void characteristicRead(const QLowEnergyCharacteristic &characteristic,
-                                    const QByteArray &value) = 0;
+                                    const QByteArray &value);
     virtual void characteristicWritten(const QLowEnergyCharacteristic &characteristic,
-                                       const QByteArray &newValue) = 0;
+                                       const QByteArray &newValue);
     virtual void characteristicChanged(const QLowEnergyCharacteristic &characteristic,
                                        const QByteArray &newValue);
 

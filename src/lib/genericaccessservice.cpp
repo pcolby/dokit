@@ -246,9 +246,7 @@ quint16 GenericAccessServicePrivate::parseAppearance(const QByteArray &value)
 void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
-        .arg(QLatin1String(value.toHex()));
+    AbstractPokitServicePrivate::characteristicRead(characteristic, value);
 
     Q_Q(GenericAccessService);
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::appearance) {
@@ -274,8 +272,7 @@ void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteris
 void GenericAccessServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                  const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue;
+    AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);
 
     Q_Q(GenericAccessService);
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::appearance) {

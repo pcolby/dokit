@@ -457,37 +457,55 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
     }
 }
 
-/*!
- * \fn AbstractPokitServicePrivate::characteristicRead
- *
- * Handles `QLowEnergyService::characteristicRead` events.
- *
- * Derived classes must implement this function to handle the successful reads of \a characteristic,
- * typically by parsing \a value, then emitting a speciailised signal.
- */
+#define POKIT_DEBUG_MAX_VALUE_SIZE 20 // Max size we debug-log by default.
 
 /*!
- * \fn AbstractPokitServicePrivate::characteristicWritten
+ * Handles `QLowEnergyService::characteristicRead` events. This base implementation simply debug
+ * logs the event.
  *
- * Handles `QLowEnergyService::characteristicWritten` events.
+ * Derived classes should implement this function to handle the successful reads of
+ * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.
+ */
+void AbstractPokitServicePrivate::characteristicRead(
+    const QLowEnergyCharacteristic &characteristic, const QByteArray &value)
+{
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" read %3 bytes 0x%4%5").arg(
+        characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
+        .arg(value.size()).arg(QLatin1String(value.mid(0, POKIT_DEBUG_MAX_VALUE_SIZE).toHex(',')),
+        (value.size() > POKIT_DEBUG_MAX_VALUE_SIZE) ? QString::fromLatin1("...") : QString());
+}
+
+/*!
+ * Handles `QLowEnergyService::characteristicWritten` events. This base implementation simply debug
+ * logs the event.
  *
- * Derived classes must implement this function to handle the successful writes of
+ * Derived classes should implement this function to handle the successful writes of
  * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.
  */
+void AbstractPokitServicePrivate::characteristicWritten(
+    const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
+{
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" written with %L3 bytes: 0x%4%5").arg(
+        characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
+        .arg(newValue.size()).arg(QLatin1String(newValue.mid(0, POKIT_DEBUG_MAX_VALUE_SIZE).toHex(',')),
+        (newValue.size() > POKIT_DEBUG_MAX_VALUE_SIZE) ? QString::fromLatin1("...") : QString());
+}
 
 /*!
- * Handles `QLowEnergyService::characteristicChanged` events.
+ * Handles `QLowEnergyService::characteristicChanged` events. This base implementation simply debug
+ * logs the event.
  *
  * If derived classes support characteristics with client-side notification (ie Notify, as opposed
- * to Read or Write operations), they must implement this function to handle the successful reads of
+ * to Read or Write operations), they should implement this function to handle the successful reads of
  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.
  */
 void AbstractPokitServicePrivate::characteristicChanged(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
 {
-    qCWarning(lc).noquote() << tr("Characteristic %1 \"%2\" changed but handler not overridden.")
-        .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()));
-    Q_UNUSED(newValue);
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" changed to %L3 bytes: 0x%4%5").arg(
+        characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
+        .arg(newValue.size()).arg(QLatin1String(newValue.mid(0, POKIT_DEBUG_MAX_VALUE_SIZE).toHex(',')),
+        (newValue.size() > POKIT_DEBUG_MAX_VALUE_SIZE) ? QString::fromLatin1("...") : QString());
 }
 
 /// \endcond

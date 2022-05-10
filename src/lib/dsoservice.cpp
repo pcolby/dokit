@@ -529,9 +529,7 @@ DsoService::Samples DsoServicePrivate::parseSamples(const QByteArray &value)
 void DsoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
-        .arg(QLatin1String(value.toHex()));
+    AbstractPokitServicePrivate::characteristicRead(characteristic, value);
 
     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {
         qCWarning(lc).noquote() << tr("Settings characteristic is write-only, but somehow read")
@@ -562,8 +560,7 @@ void DsoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &chara
 void DsoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                      const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
+    AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);
 
     Q_Q(DsoService);
     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {
@@ -594,8 +591,7 @@ void DsoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &ch
 void DsoServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &characteristic,
                                                      const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) changed, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
+    AbstractPokitServicePrivate::characteristicChanged(characteristic, newValue);
 
     Q_Q(DsoService);
     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {

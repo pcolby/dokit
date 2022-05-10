@@ -450,9 +450,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
 void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
-        .arg(QLatin1String(value.toHex()));
+    AbstractPokitServicePrivate::characteristicRead(characteristic, value);
 
     Q_Q(StatusService);
     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
@@ -489,8 +487,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
 void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                  const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue;
+    AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);
 
     Q_Q(StatusService);
     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {

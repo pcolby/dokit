@@ -319,11 +319,9 @@ DeviceInfoServicePrivate::DeviceInfoServicePrivate(
 void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
-        .arg(QLatin1String(value.toHex()));
-    Q_Q(DeviceInfoService);
+    AbstractPokitServicePrivate::characteristicRead(characteristic, value);
 
+    Q_Q(DeviceInfoService);
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {
         const QString name = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr("Manufacturer name: \"%1\"").arg(name);
@@ -360,18 +358,6 @@ void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic
     }
 
     qCWarning(lc).noquote() << tr("Unknown characteristic read for Device Info service")
-        << serviceUuid << characteristic.name() << characteristic.uuid();
-}
-
-/*!
- * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a
- * specialised signal, for each supported \a characteristic.
- */
-void DeviceInfoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
-                                                 const QByteArray &newValue)
-{
-    Q_UNUSED(newValue);
-    qCWarning(lc).noquote() << tr("Characteristic written event on read-only service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

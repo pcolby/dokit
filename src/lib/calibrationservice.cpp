@@ -138,26 +138,13 @@ CalibrationServicePrivate::CalibrationServicePrivate(
 }
 
 /*!
- * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a
- * specialised signal, for each supported \a characteristic.
- */
-void CalibrationServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
-                                              const QByteArray &value)
-{
-    Q_UNUSED(value);
-    qCWarning(lc).noquote() << tr("Characteristic read event on write-only service")
-        << serviceUuid << characteristic.name() << characteristic.uuid();
-}
-
-/*!
  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a
  * specialised signal, for each supported \a characteristic.
  */
 void CalibrationServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                  const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue;
+    AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);
 
     Q_Q(CalibrationService);
     if (characteristic.uuid() == CalibrationService::CharacteristicUuids::temperature) {

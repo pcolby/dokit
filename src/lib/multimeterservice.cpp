@@ -462,9 +462,7 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
 void MultimeterServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
-        .arg(QLatin1String(value.toHex()));
+    AbstractPokitServicePrivate::characteristicRead(characteristic, value);
 
     Q_Q(MultimeterService);
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {
@@ -489,8 +487,7 @@ void MultimeterServicePrivate::characteristicRead(const QLowEnergyCharacteristic
 void MultimeterServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                      const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
+    AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);
 
     Q_Q(MultimeterService);
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {
@@ -515,8 +512,7 @@ void MultimeterServicePrivate::characteristicWritten(const QLowEnergyCharacteris
 void MultimeterServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &characteristic,
                                                      const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) changed, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
+    AbstractPokitServicePrivate::characteristicChanged(characteristic, newValue);
 
     Q_Q(MultimeterService);
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {

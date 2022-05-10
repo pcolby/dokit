@@ -39,8 +39,6 @@ public:
     explicit CalibrationServicePrivate(QLowEnergyController * controller, CalibrationService * const q);
 
 protected:
-    void characteristicRead(const QLowEnergyCharacteristic &characteristic,
-                            const QByteArray &value) override;
     void characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                const QByteArray &newValue) override;
 

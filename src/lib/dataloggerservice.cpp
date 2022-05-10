@@ -526,9 +526,7 @@ DataLoggerService::Samples DataLoggerServicePrivate::parseSamples(const QByteArr
 void DataLoggerServicePrivate::characteristicRead(const QLowEnergyCharacteristic &characteristic,
                                               const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Read  characteristic \"%1\" (%2) of size %3: 0x%4")
-        .arg(characteristic.name(), characteristic.uuid().toString()).arg(value.size())
-        .arg(QLatin1String(value.toHex()));
+    AbstractPokitServicePrivate::characteristicRead(characteristic, value);
 
     if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::settings) {
         qCWarning(lc).noquote() << tr("Settings characteristic is write-only, but somehow read")
@@ -559,8 +557,7 @@ void DataLoggerServicePrivate::characteristicRead(const QLowEnergyCharacteristic
 void DataLoggerServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                                      const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) written, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
+    AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);
 
     Q_Q(DataLoggerService);
     if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::settings) {
@@ -591,8 +588,7 @@ void DataLoggerServicePrivate::characteristicWritten(const QLowEnergyCharacteris
 void DataLoggerServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &characteristic,
                                                      const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic \"%1\" (%2) changed, with new value:")
-        .arg(characteristic.name(), characteristic.uuid().toString()) << newValue.toHex();
+    AbstractPokitServicePrivate::characteristicChanged(characteristic, newValue);
 
     Q_Q(DataLoggerService);
     if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::settings) {
