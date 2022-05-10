@@ -235,8 +235,8 @@ bool AbstractPokitServicePrivate::createServiceObject()
 QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &uuid) const
 {
     if (!service) {
-        qCDebug(lc).noquote() << tr("Characterisitc %1 requested before service assigned.")
-            .arg(uuid.toString());
+        qCDebug(lc).noquote() << tr("Characterisitc %1 \"%2\" requested before service assigned.")
+            .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
         return QLowEnergyCharacteristic();
     }
 
@@ -252,14 +252,16 @@ QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QB
         RemoteServiceDiscovered
         #endif
     ) {
-        qCWarning(lc).noquote() << tr("Characterisitc %1 requested before service %2 discovered.")
-            .arg(uuid.toString(), service->serviceUuid().toString());
+        qCWarning(lc).noquote() << tr("Characterisitc %1 \"%2\" requested before service %3 \"%4\" discovered.")
+            .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),
+            service->serviceUuid().toString(), PokitDevice::serviceToString(service->serviceUuid()));
         qCInfo(lc).noquote() << tr("Current service state:") << service->state();
         return QLowEnergyCharacteristic();
     }
 
-    qCWarning(lc).noquote() << tr("Characterisitc %1 not found in service %2.")
-        .arg(uuid.toString(), service->serviceUuid().toString());
+    qCWarning(lc).noquote() << tr("Characterisitc %1 \"%2\" not found in service %3 \"%4\".")
+        .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),
+        service->serviceUuid().toString(), PokitDevice::serviceToString(service->serviceUuid()));
     return QLowEnergyCharacteristic();
 }
 
@@ -281,10 +283,8 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
     if (!characteristic.isValid()) {
         return false;
     }
-
-    qCDebug(lc).noquote() << tr("Reading characteristic \"%1\" (%2)")
-        .arg(characteristic.name(), uuid.toString()) << characteristic.properties()
-        << characteristic.value();
+    qCDebug(lc).noquote() << tr("Reading characteristic %1 \"%2\".")
+        .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
     service->readCharacteristic(characteristic);
     return true;
 }
@@ -299,6 +299,8 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
  */
 bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBluetoothUuid &uuid)
 {
+    qCDebug(lc).noquote() << tr("Enabling CCCD for characteristic %1 \"%2\".")
+        .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);
     if (!characteristic.isValid()) {
         return false;
@@ -332,6 +334,8 @@ bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBlueto
  */
 bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluetoothUuid &uuid)
 {
+    qCDebug(lc).noquote() << tr("Disabling CCCD for characteristic %1 \"%2\".")
+        .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);
     if (!characteristic.isValid()) {
         return false;
@@ -340,8 +344,8 @@ bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluet
     QLowEnergyDescriptor descriptor = characteristic.descriptor(
         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);
     if (!descriptor.isValid()) {
-        qCWarning(lc).noquote() << tr("Characterisitc %1 has no client configuration descriptor.")
-            .arg(uuid.toString());
+        qCWarning(lc).noquote() << tr("Characterisitc %1 \"%2\" has no client configuration descriptor.")
+            .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
         return false;
     }
 
