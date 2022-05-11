@@ -188,28 +188,11 @@ AbstractPokitService * MeterCommand::getService()
  */
 void MeterCommand::serviceDetailsDiscovered()
 {
-    QString range = tr("N/A");
-    switch (settings.mode) {
-    case MultimeterService::Mode::Idle:        break;
-    case MultimeterService::Mode::DcVoltage:
-    case MultimeterService::Mode::AcVoltage:
-        range = MultimeterService::toString(settings.range.voltageRange);
-        break;
-    case MultimeterService::Mode::DcCurrent:
-    case MultimeterService::Mode::AcCurrent:
-        range = MultimeterService::toString(settings.range.currentRange);
-        break;
-    case MultimeterService::Mode::Resistance:
-        range = MultimeterService::toString(settings.range.resitanceRange);
-        break;
-    case MultimeterService::Mode::Diode:       break;
-    case MultimeterService::Mode::Continuity:  break;
-    case MultimeterService::Mode::Temperature: break;
-    }
-
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    qCInfo(lc).noquote() << tr("Measuring %1, with range %2, every %L3ms.")
-        .arg(MultimeterService::toString(settings.mode), range).arg(settings.updateInterval);
+    const QString range = MultimeterService::toString(settings.range, settings.mode);
+    qCInfo(lc).noquote() << tr("Measuring %1, with range %2, every %L3ms.").arg(
+        MultimeterService::toString(settings.mode),
+        (range.isNull()) ? QString::fromLatin1("N/A") : range).arg(settings.updateInterval);
     service->setSettings(settings);
 }
 

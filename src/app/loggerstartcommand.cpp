@@ -165,24 +165,11 @@ AbstractPokitService * LoggerStartCommand::getService()
  */
 void LoggerStartCommand::serviceDetailsDiscovered()
 {
-    /// \todo Move this next block to a  new DataLoggerService::toString(range, mode) function.
-    QString range;
-    switch (settings.mode) {
-    case DataLoggerService::Mode::Idle:
-        break;
-    case DataLoggerService::Mode::DcVoltage:
-    case DataLoggerService::Mode::AcVoltage:
-        range = DataLoggerService::toString(settings.range.voltageRange);
-        break;
-    case DataLoggerService::Mode::DcCurrent:
-    case DataLoggerService::Mode::AcCurrent:
-        range = DataLoggerService::toString(settings.range.currentRange);
-        break;
-    }
-
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3s.")
-        .arg(DataLoggerService::toString(settings.mode), range).arg(settings.updateInterval);
+    const QString range = DataLoggerService::toString(settings.range, settings.mode);
+    qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3s.").arg(
+        DataLoggerService::toString(settings.mode),
+        (range.isNull()) ? QString::fromLatin1("N/A") : range).arg(settings.updateInterval);
     service->setSettings(settings);
 }
 

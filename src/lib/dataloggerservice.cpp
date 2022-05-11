@@ -187,6 +187,21 @@ QVariant DataLoggerService::maxValue(const CurrentRange &range)
 /// \union DataLoggerService::Range
 /// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics.
 
+/// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
+QString DataLoggerService::toString(const Range &range, const Mode &mode)
+{
+    switch (mode) {
+    case Mode::DcVoltage:
+    case Mode::AcVoltage:
+        return toString(range.voltageRange);
+    case Mode::DcCurrent:
+    case Mode::AcCurrent:
+        return toString(range.currentRange);
+    default:
+        return QString();
+    }
+}
+
 /// \struct DataLoggerService::Settings
 /// \brief Attributes included in the `Settings` characterstic.
 

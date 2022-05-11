@@ -251,6 +251,21 @@ QVariant MultimeterService::maxValue(const ResistanceRange &range)
 /// \union MultimeterService::Range
 /// \brief Values supported by the `Range` attribute of the `Settings` characteristic.
 
+/// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
+QString MultimeterService::toString(const Range &range, const Mode &mode)
+{
+    switch (mode) {
+    case Mode::DcVoltage:
+    case Mode::AcVoltage:
+        return toString(range.voltageRange);
+    case Mode::DcCurrent:
+    case Mode::AcCurrent:
+        return toString(range.currentRange);
+    default:
+        return QString();
+    }
+}
+
 /// \struct MultimeterService::Settings
 /// \brief Attributes included in the `Settings` characterstic.
 

@@ -60,6 +60,7 @@ public:
         AcVoltage   = 2, ///< Measure AC voltage.
         DcCurrent   = 3, ///< Measure DC current.
         AcCurrent   = 4, ///< Measure AC current.
+        /// \todo Pokit Pro supports temperature in logger mode too.
     };
     static QString toString(const Mode &mode);
 
@@ -91,8 +92,8 @@ public:
     union Range {
         VoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange; ///< Range when in AC/DC current mode.
-        /// \todo Pokit Pro supports temperature in logger mode too.
     };
+    static QString toString(const Range &range, const Mode &mode);
 
     struct Settings {
         Command command;        ///< Custom operation request.

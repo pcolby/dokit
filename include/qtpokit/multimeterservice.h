@@ -109,6 +109,7 @@ public:
         CurrentRange currentRange;      ///< Range when in AC/DC current mode.
         ResistanceRange resitanceRange; ///< Range when in resistance mode.
     };
+    static QString toString(const Range &range, const Mode &mode);
 
     struct Settings {
         Mode mode;              ///< Desired operation mode.

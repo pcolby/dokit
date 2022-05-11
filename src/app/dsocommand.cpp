@@ -177,24 +177,10 @@ AbstractPokitService * DsoCommand::getService()
  */
 void DsoCommand::serviceDetailsDiscovered()
 {
-    /// \todo Move this next block to a  new DsoService::toString(range, mode) function.
-    QString range;
-    switch (settings.mode) {
-    case DsoService::Mode::Idle:
-        break;
-    case DsoService::Mode::DcVoltage:
-    case DsoService::Mode::AcVoltage:
-        range = DsoService::toString(settings.range.voltageRange);
-        break;
-    case DsoService::Mode::DcCurrent:
-    case DsoService::Mode::AcCurrent:
-        range = DsoService::toString(settings.range.currentRange);
-        break;
-    }
-
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, ...")
-        .arg(DsoService::toString(settings.mode), range);
+    const QString range = DsoService::toString(settings.range, settings.mode);
+    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, ...").arg(
+        DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range);
     service->setSettings(settings);
 }
 

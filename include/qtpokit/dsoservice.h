@@ -93,6 +93,7 @@ public:
         VoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange; ///< Range when in AC/DC current mode.
     };
+    static QString toString(const Range &range, const Mode &mode);
 
     struct Settings {
         Command command;         ///< Custom operation request.
