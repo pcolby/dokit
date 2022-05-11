@@ -452,15 +452,8 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
         { MultimeterService::VoltageRange::AutoRange }
     };
 
-    /// \todo Abstract out this style of min/max size checking.
-    if (value.size() < 7) {
-        qCWarning(lc).noquote() << tr("Invalid reading size %1 for value: 0x%2")
-            .arg(value.size()).arg(QLatin1String(value.toHex()));
+    if (!checkSize(QLatin1String("Reading"), value, 7, 7)) {
         return reading;
-    }
-    if (value.size() > 7) {
-        qCWarning(lc).noquote() << tr("Reading has %1 extra bytes: 0x%2")
-            .arg(value.size()-7).arg(QLatin1String(value.mid(7).toHex()));
     }
 
     reading.status = MultimeterService::MeterStatus(value.at(0));

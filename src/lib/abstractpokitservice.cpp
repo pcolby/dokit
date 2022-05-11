@@ -360,6 +360,48 @@ bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluet
 }
 
 /*!
+ * Returns `false` if \a data is smaller than \a minSize, otherwise returns \a failOnMax if \a data
+ * is bigger than \a maxSize, otherwise returns `true`.
+ *
+ * A warning is logged if either \a minSize or \a maxSize is violated, regardless of the returned
+ * value; ie this funcion can be used to simply warn if \a data is too big, or it can be used to
+ * failed (return `false`) in that case.
+ */
+bool AbstractPokitServicePrivate::checkSize(const QString &label, const QByteArray &data,
+                                            const int minSize, const int maxSize,
+                                            const bool failOnMax)
+{
+    if (data.size() < minSize) {
+        qCWarning(lc).noquote() << tr("%1 requires %2 bytes, but only %3 present: %4")
+            .arg(label).arg(minSize).arg(data.size()).arg(toHexString(data));
+        return false;
+    }
+    if ((maxSize >= 0) && (data.size() > maxSize)) {
+        qCWarning(lc).noquote() << tr("%1 has %2 extraneous bytes: %2")
+            .arg(label).arg(data.size()-maxSize).arg(toHexString(data.mid(maxSize)));
+        return failOnMax;
+    }
+    return true;
+}
+
+/*!
+ * Returns up to \a maxSize bytes of \a data as a human readable hexadecimal string. If \a data
+ * exceeds \a maxSize, then \a data is elided in the middle. For example:
+ *
+ * ```
+ * toHex(QBytArray("\x1\x2\x3\x4\x5\x6", 4); // "0x01,02,...,05,06"
+ * ```
+ */
+QString AbstractPokitServicePrivate::toHexString(const QByteArray &data, const int maxSize)
+{
+    return (data.size() <= maxSize)
+        ? QLatin1String("0x%1").arg(QLatin1String(data.toHex(',')))
+        : QLatin1String("0x%1,...,%2").arg(
+            QLatin1String(data.left(maxSize/2-1).toHex(',')),
+            QLatin1String(data.right(maxSize/2-1).toHex(',')));
+}
+
+/*!
  * Handles `QLowEnergyController::connected` events.
  *
  * If `autoDiscover` is enabled, this will begin service discovery on the newly connected contoller.
@@ -457,8 +499,6 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
     }
 }
 
-#define POKIT_DEBUG_MAX_VALUE_SIZE 20 // Max size we debug-log by default.
-
 /*!
  * Handles `QLowEnergyService::characteristicRead` events. This base implementation simply debug
  * logs the event.
@@ -469,10 +509,9 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
 void AbstractPokitServicePrivate::characteristicRead(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" read %3 bytes 0x%4%5").arg(
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" read %3 bytes: %4").arg(
         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
-        .arg(value.size()).arg(QLatin1String(value.mid(0, POKIT_DEBUG_MAX_VALUE_SIZE).toHex(',')),
-        (value.size() > POKIT_DEBUG_MAX_VALUE_SIZE) ? QString::fromLatin1("...") : QString());
+        .arg(value.size()).arg(toHexString(value));
 }
 
 /*!
@@ -487,8 +526,7 @@ void AbstractPokitServicePrivate::characteristicWritten(
 {
     qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" written with %L3 bytes: 0x%4%5").arg(
         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
-        .arg(newValue.size()).arg(QLatin1String(newValue.mid(0, POKIT_DEBUG_MAX_VALUE_SIZE).toHex(',')),
-        (newValue.size() > POKIT_DEBUG_MAX_VALUE_SIZE) ? QString::fromLatin1("...") : QString());
+        .arg(newValue.size()).arg(toHexString(newValue));
 }
 
 /*!
@@ -504,8 +542,7 @@ void AbstractPokitServicePrivate::characteristicChanged(
 {
     qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" changed to %L3 bytes: 0x%4%5").arg(
         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
-        .arg(newValue.size()).arg(QLatin1String(newValue.mid(0, POKIT_DEBUG_MAX_VALUE_SIZE).toHex(',')),
-        (newValue.size() > POKIT_DEBUG_MAX_VALUE_SIZE) ? QString::fromLatin1("...") : QString());
+        .arg(newValue.size()).arg(toHexString(newValue));
 }
 
 /// \endcond

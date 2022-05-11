@@ -59,6 +59,10 @@ public:
     bool enableCharacteristicNotificatons(const QBluetoothUuid &uuid);
     bool disableCharacteristicNotificatons(const QBluetoothUuid &uuid);
 
+    static bool checkSize(const QString &label, const QByteArray &data, const int minSize,
+                          const int maxSize=-1, const bool failOnMax=false);
+    static QString toHexString(const QByteArray &data, const int maxSize=20);
+
 protected:
     AbstractPokitService * q_ptr; ///< Internal q-pointer.
 

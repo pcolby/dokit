@@ -225,14 +225,8 @@ GenericAccessServicePrivate::GenericAccessServicePrivate(
  */
 quint16 GenericAccessServicePrivate::parseAppearance(const QByteArray &value)
 {
-    if (value.size() < 2) {
-        qCWarning(lc).noquote() << tr("Invalid appearance size %1 for value: 0x%2")
-            .arg(value.size()).arg(QLatin1String(value.toHex()));
+    if (!checkSize(QLatin1String("Appearance"), value, 2, 2)) {
         return std::numeric_limits<quint16>::max();
-    }
-    if (value.size() > 2) {
-        qCWarning(lc).noquote() << tr("Appearance has %1 extra bytes: 0x%2")
-            .arg(value.size()-2).arg(QLatin1String(value.mid(2).toHex()));
     }
     const quint16 appearance = qFromLittleEndian<quint16>(value);
     qCDebug(lc).noquote() << tr("Appearance: %1.").arg(appearance);

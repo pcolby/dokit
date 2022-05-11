@@ -497,15 +497,8 @@ DsoService::Metadata DsoServicePrivate::parseMetadata(const QByteArray &value)
         0, 0, 0
     };
 
-    /// \todo Abstract out this style of min/max size checking.
-    if (value.size() < 17) {
-        qCWarning(lc).noquote() << tr("Invalid metadata size %1 for value: 0x%2")
-            .arg(value.size()).arg(QLatin1String(value.toHex()));
+    if (!checkSize(QLatin1String("Metadata"), value, 17, 17)) {
         return metadata;
-    }
-    if (value.size() > 17) {
-        qCWarning(lc).noquote() << tr("Metadata has %1 extra bytes: 0x%2")
-            .arg(value.size()-17).arg(QLatin1String(value.mid(17).toHex()));
     }
 
     metadata.status             = static_cast<DsoService::DsoStatus>(value.at(0));

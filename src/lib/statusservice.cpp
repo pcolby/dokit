@@ -372,14 +372,8 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
     StatusService::DeviceCharacteristics characteristics;
     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.
 
-    if (value.size() < 20) {
-        qCWarning(lc).noquote() << tr("Invalid characteristics size %1 for value: 0x%2")
-            .arg(value.size()).arg(QLatin1String(value.toHex()));
+    if (!checkSize(QLatin1String("Device Characterisitcs"), value, 20, 20)) {
         return characteristics;
-    }
-    if (value.size() > 20) {
-        qCWarning(lc).noquote() << tr("Characterisitcs has %1 extra bytes: 0x%2")
-            .arg(value.size()-20).arg(QLatin1String(value.mid(20).toHex()));
     }
 
     characteristics.firmwareVersion = QVersionNumber(
@@ -420,14 +414,8 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
             (std::numeric_limits<StatusService::BatteryStatus>::max()),
     };
 
-    if (value.size() < 5) {
-        qCWarning(lc).noquote() << tr("Invalid status size %1 for value: 0x%2")
-            .arg(value.size()).arg(QLatin1String(value.toHex()));
+    if (!checkSize(QLatin1String("Status"), value, 5, 6)) {
         return status;
-    }
-    if (value.size() > 6) {
-        qCWarning(lc).noquote() << tr("Status has %1 extra bytes: 0x%2")
-            .arg(value.size()-6).arg(QLatin1String(value.mid(6).toHex()));
     }
 
     status.deviceStatus = static_cast<StatusService::DeviceStatus>(value.at(0));
