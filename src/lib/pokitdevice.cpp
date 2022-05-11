@@ -167,8 +167,6 @@ DeviceInfoService * PokitDevice::deviceInformation()
  * This is a convenience function, that always returns the same pointer (for this PokitDevice
  * instance), but the service itself is lazily created (in a threadsafe manner) on the first
  * invocation of this function.
- *
- * \todo Implement this function when the DsoService is implemented.
  */
 DsoService * PokitDevice::dso()
 {
