@@ -395,8 +395,8 @@ bool AbstractPokitServicePrivate::checkSize(const QString &label, const QByteArr
 QString AbstractPokitServicePrivate::toHexString(const QByteArray &data, const int maxSize)
 {
     return (data.size() <= maxSize)
-        ? QLatin1String("0x%1").arg(QLatin1String(data.toHex(',')))
-        : QLatin1String("0x%1,...,%2").arg(
+        ? QString::fromLatin1("0x%1").arg(QLatin1String(data.toHex(',')))
+        : QString::fromLatin1("0x%1,...,%2").arg(
             QLatin1String(data.left(maxSize/2-1).toHex(',')),
             QLatin1String(data.right(maxSize/2-1).toHex(',')));
 }
