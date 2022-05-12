@@ -287,10 +287,12 @@ bool StatusService::setDeviceName(const QString &name)
  *
  * Emits deviceLedFlashed() if/when the LED has flashed successfully.
  *
- * \note This does not appear to work currently, for the one (Pokit Pro) device available for
- * testing. Instead, the underlying Bluetooth stack returns ATT error `0x80`.
- *
- * \todo Diagnose and/or follow up with Pokit Innovations.
+ * \cond internal
+ * \pokitApi This does not appear to work currently, for the one (Pokit Pro) device available for
+ * testing. Instead, the underlying Bluetooth stack returns ATT error `0x80`. Also, despite the
+ * Pokit API docs claim "this will cause the LED to flash twice", the Android app can turn the
+ * LED on/off, which is presumably an undocumented Pokit Pro extension.
+ * \endcond
  */
 bool StatusService::flashLed()
 {

@@ -4,16 +4,6 @@
 
 See also: <a href="pokit.html">Pokit API Errata</a>
 
-### Flash LED Service
-
-I cannot get this service to work; whenever I try writing the required `\x01` value, I get ATT error `0x80`
-from the Bluez stack.  Maybe its not supported by PokitPro devices, or needs additional data for those?
-
-### Generic Access Service
-
-Does not appear to be available on Pokit Pro.  However a Generic Attribute service does appear to be
-available, but no idea what its attributes are.
-
 ### Undocumented Services
 
 Pokit Pro includes the following services with no official documentation to match:

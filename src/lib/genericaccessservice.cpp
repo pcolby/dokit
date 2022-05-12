@@ -31,6 +31,12 @@
  * \class GenericAccessService
  *
  * The GenericAccessService class accesses the `Generic Access` service of Pokit devices.
+ *
+ * \cond internal
+ * \pokitApi Pokit API 1.00 (and 0.02) claims support for the `Generic Access` (`0x1800`) service,
+ * however the Pokit Pro does not report any support for this service, but does report support for
+ * an undocumented `Generic Attribute` (`0x1801`) service instead.
+ * \endcond
  */
 
 /// UUID of the "Generic Access" service.
