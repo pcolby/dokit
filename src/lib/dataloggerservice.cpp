@@ -494,17 +494,34 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
         0, 0, 0
     };
 
-    if (!checkSize(QLatin1String("Metadata"), value, 15, 15)) {
+    if (!checkSize(QLatin1String("Metadata"), value, 15, 23)) {
         return metadata;
     }
 
+    qCDebug(lc) << value.mid(7,12).toHex(',');
     metadata.status             = static_cast<DataLoggerService::LoggerStatus>(value.at(0));
     metadata.scale              = qFromLittleEndian<float>(value.mid(1,4));
     metadata.mode               = static_cast<DataLoggerService::Mode>(value.at(5));
     metadata.range.voltageRange = static_cast<DataLoggerService::VoltageRange>(value.at(6));
-    metadata.updateInterval     = qFromLittleEndian<quint16>(value.mid(7,2));
-    metadata.numberOfSamples    = qFromLittleEndian<quint16>(value.mid(9,2));
-    metadata.timestamp          = qFromLittleEndian<quint32>(value.mid(11,4));
+    /// \todo All good to here. After this, (Pokit Pro) reality differs to the API docs.
+
+    /*!
+     * \pokitApi Pokit API 1.00 (and 0.02) claim that `updateInterval` is `uint16`, but Pokit Pro
+     * returns the value as `uint32`. Indeed, the maxium value (24 hours) does not fit in 16-bits.
+     * Also note, the doc claims 'microseconds' (ie 10^-6), but clearly the value is 'milliseconds'
+     * (ie 10^-3).
+     */
+
+    /// \todo No idea (yet) what 8 bytes get inserted *before* the timestamp attribute.
+    if (value.size() < 23) {
+        metadata.updateInterval  = qFromLittleEndian<quint16>(value.mid(7,2));
+        metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(9,2));
+        metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(11,4));
+    } else {
+        metadata.updateInterval  = qFromLittleEndian<quint16>(value.mid(7,4));
+        metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(11,4));
+        metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(19,4));
+    }
     return metadata;
 }
 

@@ -21,6 +21,7 @@
 
 #include <qtpokit/pokitdevice.h>
 
+#include <QDateTime>
 #include <QJsonDocument>
 #include <QJsonObject>
 
@@ -103,11 +104,13 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadat
     Q_UNUSED(metadata);
     qCDebug(lc) << "status:" << (int)(metadata.status);
     qCDebug(lc) << "scale:" << metadata.scale;
-    qCDebug(lc) << "mode:" << DataLoggerService::toString(metadata.mode);
-    qCDebug(lc) << "range:" << DataLoggerService::toString(metadata.range.voltageRange);
+    qCDebug(lc) << "mode:" << DataLoggerService::toString(metadata.mode) << (quint8)metadata.mode;
+    qCDebug(lc) << "range:" << DataLoggerService::toString(metadata.range.voltageRange)
+                            << (quint8)metadata.range.voltageRange;
     qCDebug(lc) << "updateInterval:" << (int)metadata.updateInterval;
     qCDebug(lc) << "numberOfSamples:" << metadata.numberOfSamples;
-    qCDebug(lc) << "timestamp:" << metadata.timestamp;
+    qCDebug(lc) << "timestamp:" << metadata.timestamp
+                                << QDateTime::fromSecsSinceEpoch(metadata.timestamp);
 }
 
 /*!

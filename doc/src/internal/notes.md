@@ -2,17 +2,7 @@
 
 ## Pokit Bluetooth API
 
-### Things to Query
-
-#### Status Service UUID
-
-* `57d3a771-267c-4394-8872-78223e92aec4` - claimed by API docs;
-* `57d3a771-267c-4394-8872-78223e92aec5` - in reality (at least on Pokit Pro)?
-
-#### Status Characteristic Value Length
-
-Docs claim 5 bytes, but PokitPro is returning 8. Probably docs just not updated to show what those extra
-3 bytes represent.
+See also: <a href="pokit.html">Pokit API Errata</a>
 
 ### Flash LED Service
 

@@ -71,7 +71,7 @@ public:
         _6V_to_12V   = 3,  ///< 6V to 12V.
         _12V_to_30V  = 4,  ///< 12V to 30V.
         _30V_to_60V  = 5,  ///< 30V to 60V.
-        /// \todo Pokit Pro supports up to 600V.
+        /// \todo Pokit Pro supports up to 600V, which are enum 6 and 7 via Android app.
     };
     static QString toString(const VoltageRange &range);
     static QVariant minValue(const VoltageRange &range);

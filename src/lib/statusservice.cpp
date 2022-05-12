@@ -34,6 +34,11 @@
  */
 
 /// UUID of the "Pokit Status" service.
+/// \cond internal
+/// \pokitApi Pokit API 1.00 (and 0.02) states this UUID as `57d3a771-267c-4394-8872-78223e92aec4`
+/// but the Pokit Pro device reports/supports it as `57d3a771-267c-4394-8872-78223e92aec5`, that is
+/// the last digit is a `5` not `4`.
+/// \endcond
 const QBluetoothUuid StatusService::
     serviceUuid(QLatin1String("57d3a771-267c-4394-8872-78223e92aec5"));
 
@@ -413,6 +418,12 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
         static_cast<StatusService::BatteryStatus>
             (std::numeric_limits<StatusService::BatteryStatus>::max()),
     };
+
+    /*!
+     * \pokitApi Pokit API 0.02 says the `Status` characteristic is 5 bytes. API 1.00 then added an
+     * additional byte for `Battery Status`, for 6 bytes in total. However, Pokit Pro devices return
+     * 8 bytes here. The purpose of those last 2 bytes are not currently known.
+     */
 
     if (!checkSize(QLatin1String("Status"), value, 5, 6)) {
         return status;
