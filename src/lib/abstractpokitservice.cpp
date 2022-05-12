@@ -377,7 +377,7 @@ bool AbstractPokitServicePrivate::checkSize(const QString &label, const QByteArr
         return false;
     }
     if ((maxSize >= 0) && (data.size() > maxSize)) {
-        qCWarning(lc).noquote() << tr("%1 has %2 extraneous bytes: %2")
+        qCWarning(lc).noquote() << tr("%1 has %2 extraneous bytes: %3")
             .arg(label).arg(data.size()-maxSize).arg(toHexString(data.mid(maxSize)));
         return failOnMax;
     }
