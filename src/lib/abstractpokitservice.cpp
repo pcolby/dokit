@@ -524,7 +524,7 @@ void AbstractPokitServicePrivate::characteristicRead(
 void AbstractPokitServicePrivate::characteristicWritten(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" written with %L3 bytes: 0x%4%5").arg(
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" written with %L3 bytes: %4").arg(
         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
         .arg(newValue.size()).arg(toHexString(newValue));
 }
@@ -540,7 +540,7 @@ void AbstractPokitServicePrivate::characteristicWritten(
 void AbstractPokitServicePrivate::characteristicChanged(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" changed to %L3 bytes: 0x%4%5").arg(
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" changed to %L3 bytes: %4").arg(
         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
         .arg(newValue.size()).arg(toHexString(newValue));
 }
