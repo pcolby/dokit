@@ -73,9 +73,6 @@ void LoggerFetchCommand::serviceDetailsDiscovered()
 
 /*!
  * Invoked when \a metadata has been received from the data logger.
- *
- * \todo Presumably we need to at least record the metadata.scale here. Probably also need the
- * metadata.numberOfSamples. Of course, log and check for errors etc. too.
  */
 void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadata)
 {
@@ -90,6 +87,7 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadat
                                 << QDateTime::fromSecsSinceEpoch(metadata.timestamp);
     this->metadata = metadata;
     this->timestamp = (qint64)metadata.timestamp * (qint64)1000;
+    /// \todo we might also need to increment timestamp by numberOfSamples*updateInterval?
 }
 
 /*!
@@ -97,11 +95,43 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadat
  */
 void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples)
 {
-    /// \todo Output the samples.
-    Q_UNUSED(samples);
-    qCDebug(lc) << "samplesRead" << metadata.scale << samples;
+    QString unit;
+    switch (metadata.mode) {
+    case DataLoggerService::Mode::DcVoltage: unit = QLatin1String("Vdc"); break;
+    case DataLoggerService::Mode::AcVoltage: unit = QLatin1String("Vac"); break;
+    case DataLoggerService::Mode::DcCurrent: unit = QLatin1String("Adc"); break;
+    case DataLoggerService::Mode::AcCurrent: unit = QLatin1String("Aac"); break;
+    default:
+        qCDebug(lc) << tr("No known unit for mode %1 \"%2\".").arg((int)metadata.mode)
+            .arg(DataLoggerService::toString(metadata.mode));
+    }
+    const QString range = DataLoggerService::toString(metadata.range, metadata.mode);
+
     for (const qint16 &sample: samples) {
-        qCDebug(lc) << timestamp << QDateTime::fromMSecsSinceEpoch(timestamp) << (sample*metadata.scale) << "V";
+        const QString timeString = (metadata.timestamp == 0) ? QString::number(timestamp)
+            : QDateTime::fromMSecsSinceEpoch(timestamp).toString(Qt::ISODateWithMs);
+        const float value = sample * metadata.scale;
+        switch (format) {
+        case OutputFormat::Csv:
+            for (static bool firstTime = true; firstTime; firstTime = false) {
+                fputs(qPrintable(tr("timestamp,value,unit,range\n")), stdout);
+            }
+            fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4\n").arg(timeString).arg(value)
+                .arg(unit, range)), stdout);
+            break;
+        case OutputFormat::Json:
+            fputs(QJsonDocument(QJsonObject{
+                    { QLatin1String("timestamp"), timeString },
+                    { QLatin1String("value"),     value },
+                    { QLatin1String("unit"),      unit },
+                    { QLatin1String("range"),     range },
+                    { QLatin1String("mode"),      DataLoggerService::toString(metadata.mode) },
+                }).toJson(), stdout);
+            break;
+        case OutputFormat::Text:
+            fputs(qPrintable(tr("%1 %2 %3\n").arg(timeString).arg(value).arg(unit)), stdout);
+            break;
+        }
         timestamp += metadata.updateInterval;
     }
 }
