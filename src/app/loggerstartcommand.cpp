@@ -243,6 +243,16 @@ DataLoggerService::VoltageRange LoggerStartCommand::lowestVoltageRange(const qui
 void LoggerStartCommand::settingsWritten()
 {
     qCDebug(lc).noquote() << tr("Settings written; data logger has started.");
-    /// \todo Output the settings used as CSV, JSON and Text.
+    switch (format) {
+    case OutputFormat::Csv:
+        fputs(qPrintable(tr("logger_start_result\nsuccess\n")), stdout);
+        break;
+    case OutputFormat::Json:
+        fputs(qPrintable(QLatin1String("true\n")), stdout);
+        break;
+    case OutputFormat::Text:
+        fputs(qPrintable(tr("Done.\n")), stdout);
+        break;
+    }
     QCoreApplication::exit(EXIT_SUCCESS);
 }

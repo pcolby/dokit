@@ -74,6 +74,16 @@ void LoggerStopCommand::serviceDetailsDiscovered()
 void LoggerStopCommand::settingsWritten()
 {
     qCDebug(lc).noquote() << tr("Settings written; data logger has stopped.");
-    /// \todo Output the result as CSV, JSON and Text.
+    switch (format) {
+    case OutputFormat::Csv:
+        fputs(qPrintable(tr("logger_start_result\nsuccess\n")), stdout);
+        break;
+    case OutputFormat::Json:
+        fputs(qPrintable(QLatin1String("true\n")), stdout);
+        break;
+    case OutputFormat::Text:
+        fputs(qPrintable(tr("Done.\n")), stdout);
+        break;
+    }
     QCoreApplication::exit(EXIT_SUCCESS);
 }
