@@ -8,10 +8,10 @@ var classMeterCommand =
     [ "lowestVoltageRange", "classMeterCommand.html#a84a9af540f43dfd03c4cd2a68dc87476", null ],
     [ "outputReading", "classMeterCommand.html#a551a1c3d1c6f10384b5ccf264a640eff", null ],
     [ "processOptions", "classMeterCommand.html#a7252ac9a772bc45e374da30bbc23ed85", null ],
-    [ "requiredOptions", "classMeterCommand.html#a5227bac7a7669e7687007fbe2117b12b", null ],
+    [ "requiredOptions", "classMeterCommand.html#a088f95f4012a564ccf690d42f480aeb7", null ],
     [ "serviceDetailsDiscovered", "classMeterCommand.html#aca51a018963bc384a24154cdb112a49b", null ],
     [ "settingsWritten", "classMeterCommand.html#a994e13d73c26eac303fa34b14082c9a4", null ],
-    [ "supportedOptions", "classMeterCommand.html#a14ea22f356d952b504349c2002938555", null ],
+    [ "supportedOptions", "classMeterCommand.html#aa32c65d3e27b6193af5a3bf802d7cccf", null ],
     [ "numberOfSamplesToRead", "classMeterCommand.html#aa9ffe9c54075836912bf72f2774878bc", null ],
     [ "service", "classMeterCommand.html#afbd91fbc89c6d6d8891dcbeb1fcc3280", null ],
     [ "settings", "classMeterCommand.html#a0db4ce8811d8fb3a297aa5cc5b83beb6", null ]

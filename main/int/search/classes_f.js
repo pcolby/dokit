@@ -3,7 +3,7 @@ var searchData=
   ['scancommand_0',['ScanCommand',['../classScanCommand.html',1,'']]],
   ['sequence_1',['Sequence',['https://doc.qt.io/qt-5/qbluetoothserviceinfo-sequence.html',1,'QBluetoothServiceInfo']]],
   ['setnamecommand_2',['SetNameCommand',['../classSetNameCommand.html',1,'']]],
-  ['settings_3',['Settings',['../structDataLoggerService_1_1Settings.html',1,'DataLoggerService::Settings'],['../structMultimeterService_1_1Settings.html',1,'MultimeterService::Settings']]],
+  ['settings_3',['Settings',['../structDataLoggerService_1_1Settings.html',1,'DataLoggerService::Settings'],['../structDsoService_1_1Settings.html',1,'DsoService::Settings'],['../structMultimeterService_1_1Settings.html',1,'MultimeterService::Settings']]],
   ['signalevent_4',['SignalEvent',['https://doc.qt.io/qt-5/qstatemachine-signalevent.html',1,'QStateMachine']]],
   ['status_5',['Status',['../structStatusService_1_1Status.html',1,'StatusService']]],
   ['statuscommand_6',['StatusCommand',['../classStatusCommand.html',1,'']]],

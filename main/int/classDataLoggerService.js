@@ -43,6 +43,7 @@ var classDataLoggerService =
     [ "DataLoggerService", "classDataLoggerService.html#ad3ecbfc9b9f40ff3b1f0c8941d4c0a96", null ],
     [ "beginMetadata", "classDataLoggerService.html#ae4d9db71ddbebbe59b2af8c6107b0286", null ],
     [ "beginSampling", "classDataLoggerService.html#ad94db6be36da2b6d5c0091c0bf29840c", null ],
+    [ "fetchSamples", "classDataLoggerService.html#a4c9e68b94b0fba82a979bb7e0b0adab4", null ],
     [ "maxValue", "classDataLoggerService.html#ae38696de75ae319aa4cce35a733c74ee", null ],
     [ "maxValue", "classDataLoggerService.html#a20483877bb6b0517d3ee2aa3dc65082e", null ],
     [ "metadata", "classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92", null ],
@@ -54,10 +55,13 @@ var classDataLoggerService =
     [ "samplesRead", "classDataLoggerService.html#a7e89c3193b62df98d9bc2e9ee96c3c08", null ],
     [ "setSettings", "classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c", null ],
     [ "settingsWritten", "classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c", null ],
+    [ "startLogger", "classDataLoggerService.html#a4aac49f9a655408e4b58f05735c5f9ab", null ],
+    [ "stopLogger", "classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e", null ],
     [ "stopMetadata", "classDataLoggerService.html#a1385ecb64ed56cc6cd9080ee01f67959", null ],
     [ "stopSampling", "classDataLoggerService.html#abce82963092a16f00da0bf49a8d40d11", null ],
     [ "toString", "classDataLoggerService.html#aa92c306a3970ca2b9cd03a1958e1d639", null ],
     [ "toString", "classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d", null ],
+    [ "toString", "classDataLoggerService.html#a2a323c2be81c88f9c38cf1b74c7b5041", null ],
     [ "toString", "classDataLoggerService.html#ac9051585a27dff574076f0b2c247e0c8", null ],
     [ "serviceUuid", "classDataLoggerService.html#a17be902e87a778365fd439fbcc5548d4", null ]
 ];

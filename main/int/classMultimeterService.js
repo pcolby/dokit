@@ -70,6 +70,7 @@ var classMultimeterService =
     [ "stopClientReadings", "classMultimeterService.html#aee4f24051a196c67e74ba6f090964693", null ],
     [ "toString", "classMultimeterService.html#ae20f5f6bd1e43d0ddcc2096c86f1d50e", null ],
     [ "toString", "classMultimeterService.html#a58a03dbc0ae216dc60f27d975af92cf8", null ],
+    [ "toString", "classMultimeterService.html#a5a29cca4d60b8bd3e905a65c39743bf3", null ],
     [ "toString", "classMultimeterService.html#addd56e334f91aca2bc2d48db4730f57e", null ],
     [ "toString", "classMultimeterService.html#a53738a18035bab9e990deee13344ddbe", null ],
     [ "serviceUuid", "classMultimeterService.html#a552c46066db898a3ba428fdad175327b", null ]

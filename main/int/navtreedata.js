@@ -71,8 +71,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"classMeterCommand.html#af61db7610955feb9ed8c93de5a4d9d57",
-"functions_func_c.html"
+"classDsoService.html#af2baee0dc3fa5e308be06c691dece236adbf4d21ae7c8f69c3a9375d0d16613d6",
+"classSetNameCommand.html#a25871d2f3a6aded92a89559fd36370f4",
+"structDsoService_1_1Settings.html#a661cb2920a504d5f3fc7437529c37f15"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

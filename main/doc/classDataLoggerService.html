@@ -224,6 +224,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3b933a1a161a390eb08e5019685f449c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">setSettings</a> (const <a class="el" href="structDataLoggerService_1_1Settings.html">Settings</a> &amp;settings)</td></tr>
 <tr class="memdesc:a3b933a1a161a390eb08e5019685f449c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the Pokit device's data logger mode.  <a href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">More...</a><br /></td></tr>
 <tr class="separator:a3b933a1a161a390eb08e5019685f449c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aac49f9a655408e4b58f05735c5f9ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerService.html#a4aac49f9a655408e4b58f05735c5f9ab">startLogger</a> (const <a class="el" href="structDataLoggerService_1_1Settings.html">Settings</a> &amp;settings)</td></tr>
+<tr class="memdesc:a4aac49f9a655408e4b58f05735c5f9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the data logger with <em>settings</em>.  <a href="classDataLoggerService.html#a4aac49f9a655408e4b58f05735c5f9ab">More...</a><br /></td></tr>
+<tr class="separator:a4aac49f9a655408e4b58f05735c5f9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f8a721025e04bf27df18194247b532e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e">stopLogger</a> ()</td></tr>
+<tr class="memdesc:a9f8a721025e04bf27df18194247b532e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the data logger.  <a href="classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e">More...</a><br /></td></tr>
+<tr class="separator:a9f8a721025e04bf27df18194247b532e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c9e68b94b0fba82a979bb7e0b0adab4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerService.html#a4c9e68b94b0fba82a979bb7e0b0adab4">fetchSamples</a> ()</td></tr>
+<tr class="memdesc:a4c9e68b94b0fba82a979bb7e0b0adab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the data logger.  <a href="classDataLoggerService.html#a4c9e68b94b0fba82a979bb7e0b0adab4">More...</a><br /></td></tr>
+<tr class="separator:a4c9e68b94b0fba82a979bb7e0b0adab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa94364928c317c1769e66eaf8635db92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDataLoggerService_1_1Metadata.html">Metadata</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">metadata</a> () const</td></tr>
 <tr class="memdesc:aa94364928c317c1769e66eaf8635db92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the most recent value of the <code>DataLogger</code> service's <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristic.  <a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">More...</a><br /></td></tr>
 <tr class="separator:aa94364928c317c1769e66eaf8635db92"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -406,6 +415,10 @@ static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#
 static <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><b>maxValue</b> (const <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2">CurrentRange</a> &amp;range)</td></tr>
 <tr class="memdesc:ae38696de75ae319aa4cce35a733c74ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in (integer) milliamps, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. <br /></td></tr>
 <tr class="separator:ae38696de75ae319aa4cce35a733c74ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a323c2be81c88f9c38cf1b74c7b5041"><td class="memItemLeft" align="right" valign="top"><a id="a2a323c2be81c88f9c38cf1b74c7b5041" name="a2a323c2be81c88f9c38cf1b74c7b5041"></a>
+static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="unionDataLoggerService_1_1Range.html">Range</a> &amp;range, const <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771">Mode</a> &amp;mode)</td></tr>
+<tr class="memdesc:a2a323c2be81c88f9c38cf1b74c7b5041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if <em>mode</em> has no ranges. <br /></td></tr>
+<tr class="separator:a2a323c2be81c88f9c38cf1b74c7b5041"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_qobject"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_qobject')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el"  href="https://doc.qt.io/qt-5/qobject.html">QObject</a></td></tr>
 <tr class="memitem:tr inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="tr" name="tr"></a>
 <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a> (const char *sourceText, const char *disambiguation, int n)</td></tr>
@@ -664,6 +677,33 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 
 </div>
 </div>
+<a id="a4c9e68b94b0fba82a979bb7e0b0adab4" name="a4c9e68b94b0fba82a979bb7e0b0adab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c9e68b94b0fba82a979bb7e0b0adab4">&#9670;&nbsp;</a></span>fetchSamples()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DataLoggerService::fetchSamples </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start the data logger. </p>
+<p >This is just a convenience function equivalent to calling <a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> with the command set to DataLoggerService::Command::Refresh.</p>
+<p >Once the Pokit device has processed this request succesffully, the device will begin notifying the <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> and <code>Reading</code> characteristic, resulting in emits of metadataRead and samplesRead respectively. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a4c9e68b94b0fba82a979bb7e0b0adab4_cgraph.svg" width="618" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="aa94364928c317c1769e66eaf8635db92" name="aa94364928c317c1769e66eaf8635db92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa94364928c317c1769e66eaf8635db92">&#9670;&nbsp;</a></span>metadata()</h2>
 
@@ -685,9 +725,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">metadata</a>.<a class="code hl_variable" href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">scale</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.cpp:307</div></div>
-<div class="ttc" id="astructDataLoggerService_1_1Metadata_html"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html">DataLoggerService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:110</div></div>
-<div class="ttc" id="astructDataLoggerService_1_1Metadata_html_a824ce9f37293e435d41af31788145571"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">DataLoggerService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:112</div></div>
+<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.cpp:380</div></div>
+<div class="ttc" id="astructDataLoggerService_1_1Metadata_html"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html">DataLoggerService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:114</div></div>
+<div class="ttc" id="astructDataLoggerService_1_1Metadata_html_a824ce9f37293e435d41af31788145571"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">DataLoggerService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:116</div></div>
 </div><!-- fragment --> <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -901,7 +941,13 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a3b933a1a161a390eb08e5019685f449c_cgraph.svg" width="416" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a3b933a1a161a390eb08e5019685f449c_cgraph.svg" width="416" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a3b933a1a161a390eb08e5019685f449c_icgraph.svg" width="366" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -932,6 +978,59 @@ Here is the call graph for this function:</div>
 
 <p>This signal is emitted when the <code><a class="el" href="structDataLoggerService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic has been written successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4aac49f9a655408e4b58f05735c5f9ab" name="a4aac49f9a655408e4b58f05735c5f9ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aac49f9a655408e4b58f05735c5f9ab">&#9670;&nbsp;</a></span>startLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DataLoggerService::startLogger </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structDataLoggerService_1_1Settings.html">Settings</a> &amp;&#160;</td>
+          <td class="paramname"><em>settings</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start the data logger with <em>settings</em>. </p>
+<p >This is just a synonym for <a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> except makes the caller's intention more explicit, and sanity-checks that the settings's command is DataLoggerService::Command::Start. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a4aac49f9a655408e4b58f05735c5f9ab_cgraph.svg" width="618" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a9f8a721025e04bf27df18194247b532e" name="a9f8a721025e04bf27df18194247b532e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f8a721025e04bf27df18194247b532e">&#9670;&nbsp;</a></span>stopLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DataLoggerService::stopLogger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start the data logger. </p>
+<p >This is just a convenience function equivalent to calling <a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> with the command set to DataLoggerService::Command::Stop. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a9f8a721025e04bf27df18194247b532e_cgraph.svg" width="618" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>

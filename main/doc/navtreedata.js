@@ -32,7 +32,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
@@ -48,7 +48,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
-"structDataLoggerService_1_1Metadata.html#a996d2701f1571bbbe51da18d2be3e2b8"
+"classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -91,6 +91,7 @@ $(document).ready(function(){initNavTree('classPokitDevice.html',''); initResiza
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
@@ -110,7 +111,7 @@ Inheritance diagram for PokitDevice:</div>
 <div class="dynheader">
 Collaboration diagram for PokitDevice:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice__coll__graph.svg" width="1464" height="726"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice__coll__graph.svg" width="1464" height="774"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -140,8 +141,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e04571a74d06fcc4608e70437b5fa5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classDeviceInfoService.html">DeviceInfoService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a1e04571a74d06fcc4608e70437b5fa5d">deviceInformation</a> ()</td></tr>
 <tr class="memdesc:a1e04571a74d06fcc4608e70437b5fa5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to DeviceInformationService instance that uses this device's controller for access.  <a href="classPokitDevice.html#a1e04571a74d06fcc4608e70437b5fa5d">More...</a><br /></td></tr>
 <tr class="separator:a1e04571a74d06fcc4608e70437b5fa5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ded76591f3ec2b0620a2fbc617ed117"><td class="memItemLeft" align="right" valign="top">DsoService *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117">dso</a> ()</td></tr>
-<tr class="memdesc:a3ded76591f3ec2b0620a2fbc617ed117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to DsoService instance that uses this device's controller for access.  <a href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117">More...</a><br /></td></tr>
+<tr class="memitem:a3ded76591f3ec2b0620a2fbc617ed117"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classDsoService.html">DsoService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117">dso</a> ()</td></tr>
+<tr class="memdesc:a3ded76591f3ec2b0620a2fbc617ed117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classDsoService.html" title="The DsoService class accesses the Pokit Status service of Pokit devices.">DsoService</a> instance that uses this device's controller for access.  <a href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117">More...</a><br /></td></tr>
 <tr class="separator:a3ded76591f3ec2b0620a2fbc617ed117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a226ebf9d65326afc3b2b8413c48412df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGenericAccessService.html">GenericAccessService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">genericAccess</a> ()</td></tr>
 <tr class="memdesc:a226ebf9d65326afc3b2b8413c48412df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classGenericAccessService.html" title="The GenericAccessService class accesses the Generic Access service of Pokit devices.">GenericAccessService</a> instance that uses this device's controller for access.  <a href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">More...</a><br /></td></tr>
@@ -269,6 +270,49 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#deleteLater">deleteLater</a> ()</td></tr>
 <tr class="separator:deleteLater inherit pub_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aca9393595de5676f20e3d0fd795358b5"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#aca9393595de5676f20e3d0fd795358b5">serviceToString</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> &amp;uuid)</td></tr>
+<tr class="memdesc:aca9393595de5676f20e3d0fd795358b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a human-readable name for the <em>uuid</em> service, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if unknonw.  <a href="classPokitDevice.html#aca9393595de5676f20e3d0fd795358b5">More...</a><br /></td></tr>
+<tr class="separator:aca9393595de5676f20e3d0fd795358b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a3e6078ce0a7c2d93171ef0f4183d61"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#a0a3e6078ce0a7c2d93171ef0f4183d61">charcteristicToString</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> &amp;uuid)</td></tr>
+<tr class="memdesc:a0a3e6078ce0a7c2d93171ef0f4183d61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a human-readable name for the <em>uuid</em> characteristic, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if unknown.  <a href="classPokitDevice.html#a0a3e6078ce0a7c2d93171ef0f4183d61">More...</a><br /></td></tr>
+<tr class="separator:a0a3e6078ce0a7c2d93171ef0f4183d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_methods_qobject"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_qobject')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el"  href="https://doc.qt.io/qt-5/qobject.html">QObject</a></td></tr>
+<tr class="memitem:tr inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="tr" name="tr"></a>
+<a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a> (const char *sourceText, const char *disambiguation, int n)</td></tr>
+<tr class="separator:tr inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:trUtf8 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="trUtf8" name="trUtf8"></a>
+<a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject-obsolete.html#trUtf8">trUtf8</a> (const char *sourceText, const char *disambiguation, int n)</td></tr>
+<tr class="separator:trUtf8 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:connect inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect" name="connect"></a>
+<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, const char *signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, const char *method, Qt::ConnectionType type)</td></tr>
+<tr class="separator:connect inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:connect-1 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect-1" name="connect-1"></a>
+<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect-1">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, const <a class="elRef" href="https://doc.qt.io/qt-5/qmetamethod.html">QMetaMethod</a> &amp;signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, const <a class="elRef" href="https://doc.qt.io/qt-5/qmetamethod.html">QMetaMethod</a> &amp;method, Qt::ConnectionType type)</td></tr>
+<tr class="separator:connect-1 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:connect-3 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect-3" name="connect-3"></a>
+<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect-3">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, PointerToMemberFunction signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, PointerToMemberFunction method, Qt::ConnectionType type)</td></tr>
+<tr class="separator:connect-3 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:connect-4 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect-4" name="connect-4"></a>
+<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect-4">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, PointerToMemberFunction signal, Functor functor)</td></tr>
+<tr class="separator:connect-4 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:connect-5 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect-5" name="connect-5"></a>
+<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect-5">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, PointerToMemberFunction signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *context, Functor functor, Qt::ConnectionType type)</td></tr>
+<tr class="separator:connect-5 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:disconnect inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="disconnect" name="disconnect"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#disconnect">disconnect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, const char *signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, const char *method)</td></tr>
+<tr class="separator:disconnect inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:disconnect-1 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="disconnect-1" name="disconnect-1"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#disconnect-1">disconnect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, const <a class="elRef" href="https://doc.qt.io/qt-5/qmetamethod.html">QMetaMethod</a> &amp;signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, const <a class="elRef" href="https://doc.qt.io/qt-5/qmetamethod.html">QMetaMethod</a> &amp;method)</td></tr>
+<tr class="separator:disconnect-1 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:disconnect-4 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="disconnect-4" name="disconnect-4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#disconnect-4">disconnect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a> &amp;connection)</td></tr>
+<tr class="separator:disconnect-4 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:disconnect-5 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="disconnect-5" name="disconnect-5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#disconnect-5">disconnect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, PointerToMemberFunction signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, PointerToMemberFunction method)</td></tr>
+<tr class="separator:disconnect-5 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:af4340372287a435bddd7d7f98b4cb1b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokitDevice.html#af4340372287a435bddd7d7f98b4cb1b6">PokitDevice</a> (<a class="el" href="classPokitDevicePrivate.html">PokitDevicePrivate</a> *const d, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</td></tr>
@@ -315,40 +359,6 @@ Friends</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_static_methods_qobject"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_qobject')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el"  href="https://doc.qt.io/qt-5/qobject.html">QObject</a></td></tr>
-<tr class="memitem:tr inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="tr" name="tr"></a>
-<a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a> (const char *sourceText, const char *disambiguation, int n)</td></tr>
-<tr class="separator:tr inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:trUtf8 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="trUtf8" name="trUtf8"></a>
-<a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject-obsolete.html#trUtf8">trUtf8</a> (const char *sourceText, const char *disambiguation, int n)</td></tr>
-<tr class="separator:trUtf8 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:connect inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect" name="connect"></a>
-<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, const char *signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, const char *method, Qt::ConnectionType type)</td></tr>
-<tr class="separator:connect inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:connect-1 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect-1" name="connect-1"></a>
-<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect-1">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, const <a class="elRef" href="https://doc.qt.io/qt-5/qmetamethod.html">QMetaMethod</a> &amp;signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, const <a class="elRef" href="https://doc.qt.io/qt-5/qmetamethod.html">QMetaMethod</a> &amp;method, Qt::ConnectionType type)</td></tr>
-<tr class="separator:connect-1 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:connect-3 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect-3" name="connect-3"></a>
-<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect-3">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, PointerToMemberFunction signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, PointerToMemberFunction method, Qt::ConnectionType type)</td></tr>
-<tr class="separator:connect-3 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:connect-4 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect-4" name="connect-4"></a>
-<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect-4">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, PointerToMemberFunction signal, Functor functor)</td></tr>
-<tr class="separator:connect-4 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:connect-5 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="connect-5" name="connect-5"></a>
-<a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect-5">connect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, PointerToMemberFunction signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *context, Functor functor, Qt::ConnectionType type)</td></tr>
-<tr class="separator:connect-5 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:disconnect inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="disconnect" name="disconnect"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#disconnect">disconnect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, const char *signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, const char *method)</td></tr>
-<tr class="separator:disconnect inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:disconnect-1 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="disconnect-1" name="disconnect-1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#disconnect-1">disconnect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, const <a class="elRef" href="https://doc.qt.io/qt-5/qmetamethod.html">QMetaMethod</a> &amp;signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, const <a class="elRef" href="https://doc.qt.io/qt-5/qmetamethod.html">QMetaMethod</a> &amp;method)</td></tr>
-<tr class="separator:disconnect-1 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:disconnect-4 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="disconnect-4" name="disconnect-4"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#disconnect-4">disconnect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qmetaobject-connection.html">QMetaObject::Connection</a> &amp;connection)</td></tr>
-<tr class="separator:disconnect-4 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:disconnect-5 inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="disconnect-5" name="disconnect-5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#disconnect-5">disconnect</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">sender</a>, PointerToMemberFunction signal, const <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *receiver, PointerToMemberFunction method)</td></tr>
-<tr class="separator:disconnect-5 inherit pub_static_methods_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_qobject"><td colspan="2" onclick="javascript:toggleInherit('properties_qobject')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el"  href="https://doc.qt.io/qt-5/qobject.html">QObject</a></td></tr>
 <tr class="memitem:objectName-prop inherit properties_qobject"><td class="memItemLeft" align="right" valign="top"><a id="objectName-prop" name="objectName-prop"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#objectName-prop">objectName</a></td></tr>
@@ -401,15 +411,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 <p>Constructs a new Pokit device controller wrapper for <em>deviceInfo</em>, with <em>parent</em>. </p>
 <p >Though not strictly necessary, <em>deviceInfo</em> should normally come from a <a class="el" href="classPokitDiscoveryAgent.html" title="The PokitDiscoveryAgent class discovers nearby Pokit devices.">PokitDiscoveryAgent</a> instance (or a <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothdevicediscoveryagent.html">QBluetoothDeviceDiscoveryAgent</a>), otherwise connection is likely to fail with QLowEnergyController::UnknownRemoteDeviceError. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00059">59</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>    : <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDevicePrivate.html">PokitDevicePrivate</a>(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">   63</span>    d-&gt;setController(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#createCentral">QLowEnergyController::createCentral</a>(deviceInfo, <span class="keyword">this</span>));</div>
-<div class="line"><span class="lineno">   64</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00060">60</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>    : <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDevicePrivate.html">PokitDevicePrivate</a>(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">   62</span>{</div>
+<div class="line"><span class="lineno">   63</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">   64</span>    d-&gt;setController(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#createCentral">QLowEnergyController::createCentral</a>(deviceInfo, <span class="keyword">this</span>));</div>
+<div class="line"><span class="lineno">   65</span>}</div>
 <div class="ttc" id="aclassPokitDevicePrivate_html"><div class="ttname"><a href="classPokitDevicePrivate.html">PokitDevicePrivate</a></div><div class="ttdoc">The PokitDevicePrivate class provides private implementation for PokitDevice.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice__p_8h_source.html#l00048">pokitdevice_p.h:49</a></div></div>
 <div class="ttc" id="aclassPokitDevice_html"><div class="ttname"><a href="classPokitDevice.html">PokitDevice</a></div><div class="ttdoc">The PokitDevice class simplifies Pokit device access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8h_source.html#l00047">pokitdevice.h:48</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_a6f4adfb2c117dd4e93f85b941d38f7e9"><div class="ttname"><a href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">PokitDevice::d_ptr</a></div><div class="ttdeci">PokitDevicePrivate * d_ptr</div><div class="ttdoc">Internal d-pointer.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8h_source.html#l00073">pokitdevice.h:73</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a6f4adfb2c117dd4e93f85b941d38f7e9"><div class="ttname"><a href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">PokitDevice::d_ptr</a></div><div class="ttdeci">PokitDevicePrivate * d_ptr</div><div class="ttdoc">Internal d-pointer.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8h_source.html#l00076">pokitdevice.h:76</a></div></div>
 <div class="ttc" id="aqlowenergycontroller_html_createCentral"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycontroller.html#createCentral">QLowEnergyController::createCentral</a></div><div class="ttdeci">QLowEnergyController * createCentral(const QBluetoothDeviceInfo &amp;remoteDevice, QObject *parent)</div></div>
 <div class="ttc" id="aqobject_html_QObject"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject::QObject</a></div><div class="ttdeci">QObject(QObject *parent)</div></div>
 <div class="ttc" id="aqobject_html_parent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent</a></div><div class="ttdeci">QObject * parent() const const</div></div>
@@ -460,15 +470,15 @@ Here is the call graph for this function:</div>
 
 <p>Constructs a new Pokit device controller wrapper for <em>controller</em>, with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00069">69</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>    : <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDevicePrivate.html">PokitDevicePrivate</a>(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">   73</span>    d-&gt;setController(<a class="code hl_function" href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">controller</a>);</div>
-<div class="line"><span class="lineno">   74</span>}</div>
-<div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00101">pokitdevice.cpp:101</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00070">70</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>    : <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classPokitDevicePrivate.html">PokitDevicePrivate</a>(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">   74</span>    d-&gt;setController(<a class="code hl_function" href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">controller</a>);</div>
+<div class="line"><span class="lineno">   75</span>}</div>
+<div class="ttc" id="aclassPokitDevice_html_a2e2fb6b30e6f5f0d7bc6cd8f806d6423"><div class="ttname"><a href="classPokitDevice.html#a2e2fb6b30e6f5f0d7bc6cd8f806d6423">PokitDevice::controller</a></div><div class="ttdeci">QLowEnergyController * controller()</div><div class="ttdoc">Returns a non-const pointer to the controller used to access the Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00102">pokitdevice.cpp:102</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00101">controller()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00102">controller()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -503,12 +513,12 @@ Here is the call graph for this function:</div>
 
 <p>Destroys this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00093">93</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>;</div>
-<div class="line"><span class="lineno">   96</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00094">94</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>;</div>
+<div class="line"><span class="lineno">   97</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8h_source.html#l00073">d_ptr</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8h_source.html#l00076">d_ptr</a>.</p>
 
 </div>
 </div>
@@ -549,11 +559,11 @@ Here is the call graph for this function:</div>
 <p>Constructs a new Pokit device discovery agent with <em>parent</em>, and private implementation <em>d</em>. </p>
 <p >Derived classes using this constructor should use <a class="el" href="classPokitDevicePrivate.html#a5bd287d0eeaa45754c7175ca1038b183" title="Sets newController to be used for accessing Pokit devices.">PokitDevicePrivate::setController</a> to assign the BLE controller as some point. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00083">83</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>    : <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(d)</div>
-<div class="line"><span class="lineno">   85</span>{</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00084">84</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>    : <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classPokitDevice.html#a6f4adfb2c117dd4e93f85b941d38f7e9">d_ptr</a>(d)</div>
+<div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span> </div>
+<div class="line"><span class="lineno">   88</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -576,16 +586,16 @@ Here is the call graph for this function:</div>
 <p>Returns a pointer to a <a class="el" href="classCalibrationService.html" title="The CalibrationService class accesses the Calibrartion service of Pokit devices.">CalibrationService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00133">133</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
-<div class="line"><span class="lineno">  135</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classCalibrationService.html">CalibrationService</a>, <a class="code hl_function" href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">calibration</a>);</div>
-<div class="line"><span class="lineno">  136</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00134">134</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>{</div>
+<div class="line"><span class="lineno">  136</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classCalibrationService.html">CalibrationService</a>, <a class="code hl_function" href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">calibration</a>);</div>
+<div class="line"><span class="lineno">  137</span>}</div>
 <div class="ttc" id="aclassCalibrationService_html"><div class="ttname"><a href="classCalibrationService.html">CalibrationService</a></div><div class="ttdoc">The CalibrationService class accesses the Calibrartion service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00038">calibrationservice.h:39</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_abb2eafe232090e82ea1a69e38ebab49e"><div class="ttname"><a href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">PokitDevice::calibration</a></div><div class="ttdeci">CalibrationService * calibration()</div><div class="ttdoc">Returns a pointer to a CalibrationService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00133">pokitdevice.cpp:133</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_abb2eafe232090e82ea1a69e38ebab49e"><div class="ttname"><a href="classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e">PokitDevice::calibration</a></div><div class="ttdeci">CalibrationService * calibration()</div><div class="ttdoc">Returns a pointer to a CalibrationService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00134">pokitdevice.cpp:134</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00133">calibration()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00134">calibration()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00133">calibration()</a>, and <a class="el" href="calibratecommand_8cpp_source.html#l00084">CalibrationCommand::getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00134">calibration()</a>, and <a class="el" href="calibratecommand_8cpp_source.html#l00084">CalibrationCommand::getService()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -596,6 +606,114 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_abb2eafe232090e82ea1a69e38ebab49e_icgraph.svg" width="396" height="70"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a0a3e6078ce0a7c2d93171ef0f4183d61" name="a0a3e6078ce0a7c2d93171ef0f4183d61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a3e6078ce0a7c2d93171ef0f4183d61">&#9670;&nbsp;</a></span>charcteristicToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> PokitDevice::charcteristicToString </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> &amp;&#160;</td>
+          <td class="paramname"><em>uuid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a human-readable name for the <em>uuid</em> characteristic, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if unknown. </p>
+<p >This is equivalent to <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString()</a> but for characteristics provided by Pokit devices. </p>
+
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00241">241</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  242</span>{</div>
+<div class="line"><span class="lineno">  243</span>    <span class="keyword">static</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qhash.html">QHash&lt;QBluetoothUuid, QString&gt;</a> hash{</div>
+<div class="line"><span class="lineno">  244</span>        { <a class="code hl_variable" href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CalibrationService::CharacteristicUuids::temperature</a>, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Temperature&quot;</span>) },</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>        { <a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">DataLoggerService::CharacteristicUuids::metadata</a>, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Metadata&quot;</span>) },</div>
+<div class="line"><span class="lineno">  247</span>        { <a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">DataLoggerService::CharacteristicUuids::reading</a>,  <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Reading&quot;</span>) },</div>
+<div class="line"><span class="lineno">  248</span>        { <a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ab5fa52ba8b4cacf839abe6d3f8e8a929">DataLoggerService::CharacteristicUuids::settings</a>, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings&quot;</span>) },</div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>        { <a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">DsoService::CharacteristicUuids::metadata</a>, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Metadata&quot;</span>) },</div>
+<div class="line"><span class="lineno">  251</span>        { <a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7">DsoService::CharacteristicUuids::reading</a>,  <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Reading&quot;</span>) },</div>
+<div class="line"><span class="lineno">  252</span>        { <a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#aad3144a47fc1cc7edc705b3e823688a6">DsoService::CharacteristicUuids::settings</a>, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings&quot;</span>) },</div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>        { <a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">MultimeterService::CharacteristicUuids::reading</a>,  <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Reading&quot;</span>) },</div>
+<div class="line"><span class="lineno">  255</span>        { <a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a502132c1d5922e86256dd70e6935b6d2">MultimeterService::CharacteristicUuids::settings</a>, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings&quot;</span>) },</div>
+<div class="line"><span class="lineno">  256</span> </div>
+<div class="line"><span class="lineno">  257</span>        { <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0">StatusService::CharacteristicUuids::deviceCharacteristics</a>, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Device Characteristics&quot;</span>) },</div>
+<div class="line"><span class="lineno">  258</span>        { <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a>,              <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Flash LED&quot;</span>) },</div>
+<div class="line"><span class="lineno">  259</span>        { <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a>,                  <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Name&quot;</span>) },</div>
+<div class="line"><span class="lineno">  260</span>        { <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">StatusService::CharacteristicUuids::status</a>,                <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Status&quot;</span>) },</div>
+<div class="line"><span class="lineno">  261</span> </div>
+<div class="line"><span class="lineno">  262</span>        { <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a">DeviceInfoService::CharacteristicUuids::firmwareRevision</a>,</div>
+<div class="line"><span class="lineno">  263</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString</a>(QBluetoothUuid::CharacteristicType::FirmwareRevisionString) },</div>
+<div class="line"><span class="lineno">  264</span>        { <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">DeviceInfoService::CharacteristicUuids::hardwareRevision</a>,</div>
+<div class="line"><span class="lineno">  265</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString</a>(QBluetoothUuid::CharacteristicType::HardwareRevisionString) },</div>
+<div class="line"><span class="lineno">  266</span>        { <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">DeviceInfoService::CharacteristicUuids::manufacturerName</a>,</div>
+<div class="line"><span class="lineno">  267</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString</a>(QBluetoothUuid::CharacteristicType::ManufacturerNameString) },</div>
+<div class="line"><span class="lineno">  268</span>        { <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">DeviceInfoService::CharacteristicUuids::modelNumber</a>,</div>
+<div class="line"><span class="lineno">  269</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString</a>(QBluetoothUuid::CharacteristicType::ModelNumberString) },</div>
+<div class="line"><span class="lineno">  270</span>        { <a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">DeviceInfoService::CharacteristicUuids::softwareRevision</a>,</div>
+<div class="line"><span class="lineno">  271</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString</a>(QBluetoothUuid::CharacteristicType::SoftwareRevisionString) },</div>
+<div class="line"><span class="lineno">  272</span> </div>
+<div class="line"><span class="lineno">  273</span>        { <a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945">GenericAccessService::CharacteristicUuids::appearance</a>,</div>
+<div class="line"><span class="lineno">  274</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString</a>(QBluetoothUuid::CharacteristicType::Appearance) },</div>
+<div class="line"><span class="lineno">  275</span>        { <a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">GenericAccessService::CharacteristicUuids::deviceName</a>,</div>
+<div class="line"><span class="lineno">  276</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString</a>(QBluetoothUuid::CharacteristicType::DeviceName) },</div>
+<div class="line"><span class="lineno">  277</span>    };</div>
+<div class="line"><span class="lineno">  278</span>    <span class="keywordflow">return</span> hash.value(uuid);</div>
+<div class="line"><span class="lineno">  279</span>}</div>
+<div class="ttc" id="aqbluetoothuuid_html_characteristicToString"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString</a></div><div class="ttdeci">QString characteristicToString(QBluetoothUuid::CharacteristicType uuid)</div></div>
+<div class="ttc" id="aqhash_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qhash.html">QHash</a></div></div>
+<div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
+<div class="ttc" id="astructCalibrationService_1_1CharacteristicUuids_html_aee6c3fbd10b0d2f1c59914f30fe23327"><div class="ttname"><a href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CalibrationService::CharacteristicUuids::temperature</a></div><div class="ttdeci">static const QBluetoothUuid temperature</div><div class="ttdoc">UUID of the Calibration service's Temperature characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00046">calibrationservice.h:46</a></div></div>
+<div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_a360ad74780e776a1233d73e5416db0e9"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">DataLoggerService::CharacteristicUuids::metadata</a></div><div class="ttdeci">static const QBluetoothUuid metadata</div><div class="ttdoc">UUID of the DataLogger service's Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00047">dataloggerservice.h:47</a></div></div>
+<div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_ab5fa52ba8b4cacf839abe6d3f8e8a929"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#ab5fa52ba8b4cacf839abe6d3f8e8a929">DataLoggerService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the DataLogger service's Settings characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00046">dataloggerservice.h:46</a></div></div>
+<div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_ae49f85e600ca4eb2753818bb2ef32d65"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">DataLoggerService::CharacteristicUuids::reading</a></div><div class="ttdeci">static const QBluetoothUuid reading</div><div class="ttdoc">UUID of the DataLogger service's Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00048">dataloggerservice.h:48</a></div></div>
+<div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a0455d683833dae7fa93ddf08b754136d"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">DeviceInfoService::CharacteristicUuids::manufacturerName</a></div><div class="ttdeci">static const QBluetoothUuid manufacturerName</div><div class="ttdoc">UUID of the Device Info service's xxx characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00046">deviceinfoservice.h:46</a></div></div>
+<div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a2e9f6731a3d49d4e08facc0e4811c91b"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">DeviceInfoService::CharacteristicUuids::hardwareRevision</a></div><div class="ttdeci">static const QBluetoothUuid hardwareRevision</div><div class="ttdoc">UUID of the Device Info service's xxx characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00048">deviceinfoservice.h:48</a></div></div>
+<div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a3dcd8fc5858990ac38640acf15ccff69"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">DeviceInfoService::CharacteristicUuids::softwareRevision</a></div><div class="ttdeci">static const QBluetoothUuid softwareRevision</div><div class="ttdoc">UUID of the Device Info service's xxx characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00050">deviceinfoservice.h:50</a></div></div>
+<div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a7959177f8c990b2240476746061a236a"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a">DeviceInfoService::CharacteristicUuids::firmwareRevision</a></div><div class="ttdeci">static const QBluetoothUuid firmwareRevision</div><div class="ttdoc">UUID of the Device Info service's xxx characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00049">deviceinfoservice.h:49</a></div></div>
+<div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_af5c3bd888ca0d9133ff6d844992a7e34"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">DeviceInfoService::CharacteristicUuids::modelNumber</a></div><div class="ttdeci">static const QBluetoothUuid modelNumber</div><div class="ttdoc">UUID of the Device Info service's xxx characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00047">deviceinfoservice.h:47</a></div></div>
+<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_a0640c015d85dba780fcad93990e37afa"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">DsoService::CharacteristicUuids::metadata</a></div><div class="ttdeci">static const QBluetoothUuid metadata</div><div class="ttdoc">UUID of the DSO service's Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00047">dsoservice.h:47</a></div></div>
+<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_a495b006c71a1b15952e54e1ff0791aa7"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7">DsoService::CharacteristicUuids::reading</a></div><div class="ttdeci">static const QBluetoothUuid reading</div><div class="ttdoc">UUID of the DSO service's Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00048">dsoservice.h:48</a></div></div>
+<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_aad3144a47fc1cc7edc705b3e823688a6"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#aad3144a47fc1cc7edc705b3e823688a6">DsoService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the DSO service's Settings characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00046">dsoservice.h:46</a></div></div>
+<div class="ttc" id="astructGenericAccessService_1_1CharacteristicUuids_html_a2425633e4759608cb6a061055c9f5e2b"><div class="ttname"><a href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">GenericAccessService::CharacteristicUuids::deviceName</a></div><div class="ttdeci">static const QBluetoothUuid deviceName</div><div class="ttdoc">UUID of the Generic Access service's Device Name characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="genericaccessservice_8h_source.html#l00046">genericaccessservice.h:46</a></div></div>
+<div class="ttc" id="astructGenericAccessService_1_1CharacteristicUuids_html_a6b67f6a3d20c0dcaa6a30ed618f39945"><div class="ttname"><a href="structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945">GenericAccessService::CharacteristicUuids::appearance</a></div><div class="ttdeci">static const QBluetoothUuid appearance</div><div class="ttdoc">UUID of the Generic Access service's Appearance characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="genericaccessservice_8h_source.html#l00047">genericaccessservice.h:47</a></div></div>
+<div class="ttc" id="astructMultimeterService_1_1CharacteristicUuids_html_a38e61d8cc1060c1166f11b9d8a5c0643"><div class="ttname"><a href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">MultimeterService::CharacteristicUuids::reading</a></div><div class="ttdeci">static const QBluetoothUuid reading</div><div class="ttdoc">UUID of the Multimeter service's Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00047">multimeterservice.h:47</a></div></div>
+<div class="ttc" id="astructMultimeterService_1_1CharacteristicUuids_html_a502132c1d5922e86256dd70e6935b6d2"><div class="ttname"><a href="structMultimeterService_1_1CharacteristicUuids.html#a502132c1d5922e86256dd70e6935b6d2">MultimeterService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the Multimeter service's Settings characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00046">multimeterservice.h:46</a></div></div>
+<div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_a3ca6f44f245a642f2a5e9147255a7bd8"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a></div><div class="ttdeci">static const QBluetoothUuid name</div><div class="ttdoc">UUID of the Pokit Status service's Device Name characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00048">statusservice.h:48</a></div></div>
+<div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_ab883f16924c3c325a3400a5146d48ac0"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0">StatusService::CharacteristicUuids::deviceCharacteristics</a></div><div class="ttdeci">static const QBluetoothUuid deviceCharacteristics</div><div class="ttdoc">UUID of the Pokit Status service's Device Characteristics characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00046">statusservice.h:46</a></div></div>
+<div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_aeb51331d2510873d95a5993e62aa2cf0"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a></div><div class="ttdeci">static const QBluetoothUuid flashLed</div><div class="ttdoc">UUID of the Pokit Status service's Flash LED characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00049">statusservice.h:49</a></div></div>
+<div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_af27d015f60e86b0de464eab455c56f7c"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">StatusService::CharacteristicUuids::status</a></div><div class="ttdeci">static const QBluetoothUuid status</div><div class="ttdoc">UUID of the Pokit Status service's Status characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00047">statusservice.h:47</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00047">GenericAccessService::CharacteristicUuids::appearance</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#characteristicToString">QBluetoothUuid::characteristicToString()</a>, <a class="el" href="statusservice_8h_source.html#l00046">StatusService::CharacteristicUuids::deviceCharacteristics</a>, <a class="el" href="genericaccessservice_8h_source.html#l00046">GenericAccessService::CharacteristicUuids::deviceName</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00049">DeviceInfoService::CharacteristicUuids::firmwareRevision</a>, <a class="el" href="statusservice_8h_source.html#l00049">StatusService::CharacteristicUuids::flashLed</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00048">DeviceInfoService::CharacteristicUuids::hardwareRevision</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00046">DeviceInfoService::CharacteristicUuids::manufacturerName</a>, <a class="el" href="dataloggerservice_8h_source.html#l00047">DataLoggerService::CharacteristicUuids::metadata</a>, <a class="el" href="dsoservice_8h_source.html#l00047">DsoService::CharacteristicUuids::metadata</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00047">DeviceInfoService::CharacteristicUuids::modelNumber</a>, <a class="el" href="statusservice_8h_source.html#l00048">StatusService::CharacteristicUuids::name</a>, <a class="el" href="dataloggerservice_8h_source.html#l00048">DataLoggerService::CharacteristicUuids::reading</a>, <a class="el" href="dsoservice_8h_source.html#l00048">DsoService::CharacteristicUuids::reading</a>, <a class="el" href="multimeterservice_8h_source.html#l00047">MultimeterService::CharacteristicUuids::reading</a>, <a class="el" href="dataloggerservice_8h_source.html#l00046">DataLoggerService::CharacteristicUuids::settings</a>, <a class="el" href="dsoservice_8h_source.html#l00046">DsoService::CharacteristicUuids::settings</a>, <a class="el" href="multimeterservice_8h_source.html#l00046">MultimeterService::CharacteristicUuids::settings</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00050">DeviceInfoService::CharacteristicUuids::softwareRevision</a>, <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::status</a>, <a class="el" href="calibrationservice_8h_source.html#l00046">CalibrationService::CharacteristicUuids::temperature</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00540">AbstractPokitServicePrivate::characteristicChanged()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00509">AbstractPokitServicePrivate::characteristicRead()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00524">AbstractPokitServicePrivate::characteristicWritten()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00335">AbstractPokitServicePrivate::disableCharacteristicNotificatons()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00300">AbstractPokitServicePrivate::enableCharacteristicNotificatons()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00235">AbstractPokitServicePrivate::getCharacteristic()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00280">AbstractPokitServicePrivate::readCharacteristic()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a0a3e6078ce0a7c2d93171ef0f4183d61_cgraph.svg" width="468" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a0a3e6078ce0a7c2d93171ef0f4183d61_icgraph.svg" width="1252" height="1228"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -618,13 +736,13 @@ Here is the caller graph for this function:</div>
 
 <p>Returns a non-const pointer to the controller used to access the Pokit device. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00101">101</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
-<div class="line"><span class="lineno">  103</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">return</span> d-&gt;controller;</div>
-<div class="line"><span class="lineno">  105</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00102">102</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">return</span> d-&gt;controller;</div>
+<div class="line"><span class="lineno">  106</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00100">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00069">PokitDevice()</a>, and <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00100">DeviceCommand::deviceDiscovered()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00070">PokitDevice()</a>, and <a class="el" href="infocommand_8cpp_source.html#l00089">InfoCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -651,11 +769,11 @@ Here is the caller graph for this function:</div>
 
 <p>Returns a const pointer to the controller used to access the Pokit device. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00110">110</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
-<div class="line"><span class="lineno">  112</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">return</span> d-&gt;controller;</div>
-<div class="line"><span class="lineno">  114</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00111">111</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>{</div>
+<div class="line"><span class="lineno">  113</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> d-&gt;controller;</div>
+<div class="line"><span class="lineno">  115</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -677,16 +795,16 @@ Here is the caller graph for this function:</div>
 <p>Returns a pointer to a <a class="el" href="classDataLoggerService.html" title="The DataLoggerService class accesses the Pokit Status service of Pokit devices.">DataLoggerService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00145">145</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
-<div class="line"><span class="lineno">  147</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>, <a class="code hl_function" href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">dataLogger</a>);</div>
-<div class="line"><span class="lineno">  148</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00146">146</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  147</span>{</div>
+<div class="line"><span class="lineno">  148</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>, <a class="code hl_function" href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">dataLogger</a>);</div>
+<div class="line"><span class="lineno">  149</span>}</div>
 <div class="ttc" id="aclassDataLoggerService_html"><div class="ttname"><a href="classDataLoggerService.html">DataLoggerService</a></div><div class="ttdoc">The DataLoggerService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00038">dataloggerservice.h:39</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_a77d94b8b0cf19bdbbd8f994e3c66c961"><div class="ttname"><a href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">PokitDevice::dataLogger</a></div><div class="ttdeci">DataLoggerService * dataLogger()</div><div class="ttdoc">Returns a pointer to a DataLoggerService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00145">pokitdevice.cpp:145</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a77d94b8b0cf19bdbbd8f994e3c66c961"><div class="ttname"><a href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">PokitDevice::dataLogger</a></div><div class="ttdeci">DataLoggerService * dataLogger()</div><div class="ttdoc">Returns a pointer to a DataLoggerService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00146">pokitdevice.cpp:146</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00145">dataLogger()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00146">dataLogger()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00145">dataLogger()</a>, and <a class="el" href="loggercommand_8cpp_source.html#l00150">LoggerCommand::getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00146">dataLogger()</a>, <a class="el" href="loggerfetchcommand_8cpp_source.html#l00047">LoggerFetchCommand::getService()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00149">LoggerStartCommand::getService()</a>, and <a class="el" href="loggerstopcommand_8cpp_source.html#l00047">LoggerStopCommand::getService()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -696,7 +814,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a77d94b8b0cf19bdbbd8f994e3c66c961_icgraph.svg" width="451" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a77d94b8b0cf19bdbbd8f994e3c66c961_icgraph.svg" width="411" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -720,10 +838,10 @@ Here is the caller graph for this function:</div>
 <p>Returns a pointer to DeviceInformationService instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00158">158</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  159</span>{</div>
-<div class="line"><span class="lineno">  160</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>, deviceInfo);</div>
-<div class="line"><span class="lineno">  161</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00159">159</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>{</div>
+<div class="line"><span class="lineno">  161</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>, deviceInfo);</div>
+<div class="line"><span class="lineno">  162</span>}</div>
 <div class="ttc" id="aclassDeviceInfoService_html"><div class="ttname"><a href="classDeviceInfoService.html">DeviceInfoService</a></div><div class="ttdoc">The DeviceInfoService class accesses the Device Info service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00038">deviceinfoservice.h:39</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="infocommand_8cpp_source.html#l00074">InfoCommand::getService()</a>.</p>
@@ -743,7 +861,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">DsoService * PokitDevice::dso </td>
+          <td class="memname"><a class="el" href="classDsoService.html">DsoService</a> * PokitDevice::dso </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -751,18 +869,32 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Returns a pointer to DsoService instance that uses this device's controller for access. </p>
-<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Implement this function when the DsoService is implemented. </dd></dl>
+<p>Returns a pointer to <a class="el" href="classDsoService.html" title="The DsoService class accesses the Pokit Status service of Pokit devices.">DsoService</a> instance that uses this device's controller for access. </p>
+<p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00172">172</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  173</span>{</div>
-<div class="line"><span class="lineno">  174</span>    Q_D(<a class="code hl_class" href="classPokitDevice.html">PokitDevice</a>);</div>
-<div class="line"><span class="lineno">  175</span>    qCDebug(d-&gt;lc) &lt;&lt; <span class="stringliteral">&quot;Not implemented&quot;</span> &lt;&lt; __func__;</div>
-<div class="line"><span class="lineno">  176</span><span class="comment">//    POKIT_INTERNAL_GET_SERVICE(DsoService, dso);</span></div>
-<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  178</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00171">171</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  172</span>{</div>
+<div class="line"><span class="lineno">  173</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classDsoService.html">DsoService</a>, <a class="code hl_function" href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117">dso</a>);</div>
+<div class="line"><span class="lineno">  174</span>}</div>
+<div class="ttc" id="aclassDsoService_html"><div class="ttname"><a href="classDsoService.html">DsoService</a></div><div class="ttdoc">The DsoService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00038">dsoservice.h:39</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a3ded76591f3ec2b0620a2fbc617ed117"><div class="ttname"><a href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117">PokitDevice::dso</a></div><div class="ttdeci">DsoService * dso()</div><div class="ttdoc">Returns a pointer to DsoService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00171">pokitdevice.cpp:171</a></div></div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00171">dso()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00171">dso()</a>, and <a class="el" href="dsocommand_8cpp_source.html#l00161">DsoCommand::getService()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a3ded76591f3ec2b0620a2fbc617ed117_cgraph.svg" width="142" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a3ded76591f3ec2b0620a2fbc617ed117_icgraph.svg" width="380" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a226ebf9d65326afc3b2b8413c48412df" name="a226ebf9d65326afc3b2b8413c48412df"></a>
@@ -783,16 +915,16 @@ Here is the caller graph for this function:</div>
 <p>Returns a pointer to <a class="el" href="classGenericAccessService.html" title="The GenericAccessService class accesses the Generic Access service of Pokit devices.">GenericAccessService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00187">187</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  188</span>{</div>
-<div class="line"><span class="lineno">  189</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>, <a class="code hl_function" href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">genericAccess</a>);</div>
-<div class="line"><span class="lineno">  190</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00183">183</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  184</span>{</div>
+<div class="line"><span class="lineno">  185</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>, <a class="code hl_function" href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">genericAccess</a>);</div>
+<div class="line"><span class="lineno">  186</span>}</div>
 <div class="ttc" id="aclassGenericAccessService_html"><div class="ttname"><a href="classGenericAccessService.html">GenericAccessService</a></div><div class="ttdoc">The GenericAccessService class accesses the Generic Access service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="genericaccessservice_8h_source.html#l00038">genericaccessservice.h:39</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_a226ebf9d65326afc3b2b8413c48412df"><div class="ttname"><a href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">PokitDevice::genericAccess</a></div><div class="ttdeci">GenericAccessService * genericAccess()</div><div class="ttdoc">Returns a pointer to GenericAccessService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00187">pokitdevice.cpp:187</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a226ebf9d65326afc3b2b8413c48412df"><div class="ttname"><a href="classPokitDevice.html#a226ebf9d65326afc3b2b8413c48412df">PokitDevice::genericAccess</a></div><div class="ttdeci">GenericAccessService * genericAccess()</div><div class="ttdoc">Returns a pointer to GenericAccessService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00183">pokitdevice.cpp:183</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00187">genericAccess()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00183">genericAccess()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00187">genericAccess()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00183">genericAccess()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -826,16 +958,16 @@ Here is the caller graph for this function:</div>
 <p>Returns a pointer to <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Pokit Status service of Pokit devices.">MultimeterService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00199">199</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  200</span>{</div>
-<div class="line"><span class="lineno">  201</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>, <a class="code hl_function" href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">multimeter</a>);</div>
-<div class="line"><span class="lineno">  202</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00195">195</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  196</span>{</div>
+<div class="line"><span class="lineno">  197</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>, <a class="code hl_function" href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">multimeter</a>);</div>
+<div class="line"><span class="lineno">  198</span>}</div>
 <div class="ttc" id="aclassMultimeterService_html"><div class="ttname"><a href="classMultimeterService.html">MultimeterService</a></div><div class="ttdoc">The MultimeterService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00038">multimeterservice.h:39</a></div></div>
-<div class="ttc" id="aclassPokitDevice_html_a7b4467f667ace65992a8fd152e9799ce"><div class="ttname"><a href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">PokitDevice::multimeter</a></div><div class="ttdeci">MultimeterService * multimeter()</div><div class="ttdoc">Returns a pointer to MultimeterService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00199">pokitdevice.cpp:199</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_a7b4467f667ace65992a8fd152e9799ce"><div class="ttname"><a href="classPokitDevice.html#a7b4467f667ace65992a8fd152e9799ce">PokitDevice::multimeter</a></div><div class="ttdeci">MultimeterService * multimeter()</div><div class="ttdoc">Returns a pointer to MultimeterService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00195">pokitdevice.cpp:195</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00199">multimeter()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00195">multimeter()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00172">MeterCommand::getService()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00199">multimeter()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00172">MeterCommand::getService()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00195">multimeter()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -846,6 +978,75 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a7b4467f667ace65992a8fd152e9799ce_icgraph.svg" width="444" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="aca9393595de5676f20e3d0fd795358b5" name="aca9393595de5676f20e3d0fd795358b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca9393595de5676f20e3d0fd795358b5">&#9670;&nbsp;</a></span>serviceToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> PokitDevice::serviceToString </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> &amp;&#160;</td>
+          <td class="paramname"><em>uuid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a human-readable name for the <em>uuid</em> service, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if unknonw. </p>
+<p >This is equivalent to <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#serviceClassToString">QBluetoothUuid::serviceClassToString()</a> but for services provided by Pokit devices. </p>
+
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00219">219</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  220</span>{</div>
+<div class="line"><span class="lineno">  221</span>    <span class="keyword">static</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qhash.html">QHash&lt;QBluetoothUuid, QString&gt;</a> hash{</div>
+<div class="line"><span class="lineno">  222</span>        { <a class="code hl_variable" href="classCalibrationService.html#a787406e3fbda9e5ad966a3851d2c9fbc">CalibrationService::serviceUuid</a>, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Calibration&quot;</span>) },</div>
+<div class="line"><span class="lineno">  223</span>        { <a class="code hl_variable" href="classDataLoggerService.html#a17be902e87a778365fd439fbcc5548d4">DataLoggerService::serviceUuid</a>,  <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Data Logger&quot;</span>) },</div>
+<div class="line"><span class="lineno">  224</span>        { <a class="code hl_variable" href="classDsoService.html#a3d9a3fcb52d059fc454fdb71530d9a7d">DsoService::serviceUuid</a>,         <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;DSO&quot;</span>) },</div>
+<div class="line"><span class="lineno">  225</span>        { <a class="code hl_variable" href="classMultimeterService.html#a552c46066db898a3ba428fdad175327b">MultimeterService::serviceUuid</a>,  <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Multimeter&quot;</span>) },</div>
+<div class="line"><span class="lineno">  226</span>        { <a class="code hl_variable" href="classStatusService.html#a2f29742224a879c4f1fb81a2fdd39ea5">StatusService::serviceUuid</a>,      <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Status&quot;</span>) },</div>
+<div class="line"><span class="lineno">  227</span>        { <a class="code hl_variable" href="classDeviceInfoService.html#a3e790c39794cb40473573555ee485191">DeviceInfoService::serviceUuid</a>,</div>
+<div class="line"><span class="lineno">  228</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#serviceClassToString">QBluetoothUuid::serviceClassToString</a>(QBluetoothUuid::ServiceClassUuid::DeviceInformation) },</div>
+<div class="line"><span class="lineno">  229</span>        { <a class="code hl_variable" href="classGenericAccessService.html#aa0752f0fdf6bca0a4acb163f3151534e">GenericAccessService::serviceUuid</a>,</div>
+<div class="line"><span class="lineno">  230</span>            <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#serviceClassToString">QBluetoothUuid::serviceClassToString</a>(QBluetoothUuid::ServiceClassUuid::GenericAccess) },</div>
+<div class="line"><span class="lineno">  231</span>    };</div>
+<div class="line"><span class="lineno">  232</span>    <span class="keywordflow">return</span> hash.value(uuid);</div>
+<div class="line"><span class="lineno">  233</span>}</div>
+<div class="ttc" id="aclassCalibrationService_html_a787406e3fbda9e5ad966a3851d2c9fbc"><div class="ttname"><a href="classCalibrationService.html#a787406e3fbda9e5ad966a3851d2c9fbc">CalibrationService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;Calibration&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00043">calibrationservice.h:43</a></div></div>
+<div class="ttc" id="aclassDataLoggerService_html_a17be902e87a778365fd439fbcc5548d4"><div class="ttname"><a href="classDataLoggerService.html#a17be902e87a778365fd439fbcc5548d4">DataLoggerService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;DataLogger&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00043">dataloggerservice.h:43</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a3e790c39794cb40473573555ee485191"><div class="ttname"><a href="classDeviceInfoService.html#a3e790c39794cb40473573555ee485191">DeviceInfoService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;Device Info&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="deviceinfoservice_8h_source.html#l00043">deviceinfoservice.h:43</a></div></div>
+<div class="ttc" id="aclassDsoService_html_a3d9a3fcb52d059fc454fdb71530d9a7d"><div class="ttname"><a href="classDsoService.html#a3d9a3fcb52d059fc454fdb71530d9a7d">DsoService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;DSO&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00043">dsoservice.h:43</a></div></div>
+<div class="ttc" id="aclassGenericAccessService_html_aa0752f0fdf6bca0a4acb163f3151534e"><div class="ttname"><a href="classGenericAccessService.html#aa0752f0fdf6bca0a4acb163f3151534e">GenericAccessService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;Generic Access&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="genericaccessservice_8h_source.html#l00043">genericaccessservice.h:43</a></div></div>
+<div class="ttc" id="aclassMultimeterService_html_a552c46066db898a3ba428fdad175327b"><div class="ttname"><a href="classMultimeterService.html#a552c46066db898a3ba428fdad175327b">MultimeterService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;Multimeter&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00043">multimeterservice.h:43</a></div></div>
+<div class="ttc" id="aclassStatusService_html_a2f29742224a879c4f1fb81a2fdd39ea5"><div class="ttname"><a href="classStatusService.html#a2f29742224a879c4f1fb81a2fdd39ea5">StatusService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;Pokit Status&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00043">statusservice.h:43</a></div></div>
+<div class="ttc" id="aqbluetoothuuid_html_serviceClassToString"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbluetoothuuid.html#serviceClassToString">QBluetoothUuid::serviceClassToString</a></div><div class="ttdeci">QString serviceClassToString(QBluetoothUuid::ServiceClassUuid uuid)</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html#serviceClassToString">QBluetoothUuid::serviceClassToString()</a>, <a class="el" href="calibrationservice_8h_source.html#l00043">CalibrationService::serviceUuid</a>, <a class="el" href="dataloggerservice_8h_source.html#l00043">DataLoggerService::serviceUuid</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00043">DeviceInfoService::serviceUuid</a>, <a class="el" href="dsoservice_8h_source.html#l00043">DsoService::serviceUuid</a>, <a class="el" href="genericaccessservice_8h_source.html#l00043">GenericAccessService::serviceUuid</a>, <a class="el" href="multimeterservice_8h_source.html#l00043">MultimeterService::serviceUuid</a>, <a class="el" href="statusservice_8h_source.html#l00043">StatusService::serviceUuid</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00235">AbstractPokitServicePrivate::getCharacteristic()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00410">PokitDevicePrivate::serviceDiscovered()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_aca9393595de5676f20e3d0fd795358b5_cgraph.svg" width="480" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_aca9393595de5676f20e3d0fd795358b5_icgraph.svg" width="762" height="248"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -869,16 +1070,16 @@ Here is the caller graph for this function:</div>
 <p>Returns a pointer to <a class="el" href="classStatusService.html" title="The StatusService class accesses the Pokit Status service of Pokit devices.">StatusService</a> instance that uses this device's controller for access. </p>
 <p >This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00211">211</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  212</span>{</div>
-<div class="line"><span class="lineno">  213</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classStatusService.html">StatusService</a>, <a class="code hl_function" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a>);</div>
-<div class="line"><span class="lineno">  214</span>}</div>
-<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00211">pokitdevice.cpp:211</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00207">207</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>{</div>
+<div class="line"><span class="lineno">  209</span>    POKIT_INTERNAL_GET_SERVICE(<a class="code hl_class" href="classStatusService.html">StatusService</a>, <a class="code hl_function" href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">status</a>);</div>
+<div class="line"><span class="lineno">  210</span>}</div>
+<div class="ttc" id="aclassPokitDevice_html_adaaaedcb434b3dda9608ad58192e9142"><div class="ttname"><a href="classPokitDevice.html#adaaaedcb434b3dda9608ad58192e9142">PokitDevice::status</a></div><div class="ttdeci">StatusService * status()</div><div class="ttdoc">Returns a pointer to StatusService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00207">pokitdevice.cpp:207</a></div></div>
 <div class="ttc" id="aclassStatusService_html"><div class="ttname"><a href="classStatusService.html">StatusService</a></div><div class="ttdoc">The StatusService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00038">statusservice.h:39</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00211">status()</a>.</p>
+<p class="reference">References <a class="el" href="pokitdevice_8cpp_source.html#l00207">status()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00071">FlashLedCommand::getService()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00078">SetNameCommand::getService()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00074">StatusCommand::getService()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00211">status()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="flashledcommand_8cpp_source.html#l00071">FlashLedCommand::getService()</a>, <a class="el" href="setnamecommand_8cpp_source.html#l00078">SetNameCommand::getService()</a>, <a class="el" href="statuscommand_8cpp_source.html#l00074">StatusCommand::getService()</a>, and <a class="el" href="pokitdevice_8cpp_source.html#l00207">status()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -915,7 +1116,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8h_source.html#l00080">80</a> of file <a class="el" href="pokitdevice_8h_source.html">pokitdevice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8h_source.html#l00083">83</a> of file <a class="el" href="pokitdevice_8h_source.html">pokitdevice.h</a>.</p>
 
 </div>
 </div>
@@ -942,9 +1143,9 @@ Here is the caller graph for this function:</div>
 
 <p>Internal d-pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitdevice_8h_source.html#l00073">73</a> of file <a class="el" href="pokitdevice_8h_source.html">pokitdevice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pokitdevice_8h_source.html#l00076">76</a> of file <a class="el" href="pokitdevice_8h_source.html">pokitdevice.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00093">~PokitDevice()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00094">~PokitDevice()</a>.</p>
 
 </div>
 </div>

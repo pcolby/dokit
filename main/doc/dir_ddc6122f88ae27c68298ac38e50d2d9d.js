@@ -4,6 +4,7 @@ var dir_ddc6122f88ae27c68298ac38e50d2d9d =
     [ "calibrationservice.h", "calibrationservice_8h.html", "calibrationservice_8h" ],
     [ "dataloggerservice.h", "dataloggerservice_8h.html", "dataloggerservice_8h" ],
     [ "deviceinfoservice.h", "deviceinfoservice_8h.html", "deviceinfoservice_8h" ],
+    [ "dsoservice.h", "dsoservice_8h.html", "dsoservice_8h" ],
     [ "genericaccessservice.h", "genericaccessservice_8h.html", "genericaccessservice_8h" ],
     [ "multimeterservice.h", "multimeterservice_8h.html", "multimeterservice_8h" ],
     [ "pokitdevice.h", "pokitdevice_8h.html", "pokitdevice_8h" ],

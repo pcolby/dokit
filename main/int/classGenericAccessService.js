@@ -11,7 +11,7 @@ var classGenericAccessService =
     [ "deviceNameRead", "classGenericAccessService.html#ab6a9e04d98f18cc5cb4f1514ad40c1dc", null ],
     [ "readAppearanceCharacteristic", "classGenericAccessService.html#a74542246a9a578267700eb810ff116c1", null ],
     [ "readCharacteristics", "classGenericAccessService.html#ac8c19de24829fd54ee1907020899785f", null ],
-    [ "readNameCharacteristic", "classGenericAccessService.html#ae0818b6c21462d1527ced3447e937032", null ],
+    [ "readDeviceNameCharacteristic", "classGenericAccessService.html#a21e6e924fcdf403e4d3081a52ba5ced7", null ],
     [ "setDeviceName", "classGenericAccessService.html#ac21cf069d2f5257e2a92ece4d8365042", null ],
     [ "serviceUuid", "classGenericAccessService.html#aa0752f0fdf6bca0a4acb163f3151534e", null ]
 ];

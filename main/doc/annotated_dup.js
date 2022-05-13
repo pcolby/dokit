@@ -4,6 +4,7 @@ var annotated_dup =
     [ "CalibrationService", "classCalibrationService.html", "classCalibrationService" ],
     [ "DataLoggerService", "classDataLoggerService.html", "classDataLoggerService" ],
     [ "DeviceInfoService", "classDeviceInfoService.html", "classDeviceInfoService" ],
+    [ "DsoService", "classDsoService.html", "classDsoService" ],
     [ "GenericAccessService", "classGenericAccessService.html", "classGenericAccessService" ],
     [ "MultimeterService", "classMultimeterService.html", "classMultimeterService" ],
     [ "PokitDevice", "classPokitDevice.html", "classPokitDevice" ],

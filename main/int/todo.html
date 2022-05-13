@@ -93,28 +93,34 @@ $(document).ready(function(){initNavTree('todo.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Member <a class="el" href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a>  (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</dt>
-<dd><a class="anchor" id="_todo000009"></a>Abstract out this style of min/max size checking.  </dd>
-<dt>Member <a class="el" href="classLoggerCommand.html#a757f17e5aeaa4e2f1fe9a4c6f11cee3c">LoggerCommand::metadataRead</a>  (const <a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">DataLoggerService::Metadata</a> &amp;metadata)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000005"></a>Presumably we need to at least record the metadata.scale here. Probably also need the metadata.numberOfSamples. Of course, log and check for errors etc. too. </p>
-<p class="enddd"><a class="anchor" id="_todo000006"></a>  </p>
+<dt>Member <a class="el" href="classDsoCommand.html#ae5c33b9f7b6fc2d1ed194b024f9e6fb7">DsoCommand::metadataRead</a>  (const <a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">DsoService::Metadata</a> &amp;metadata)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000011"></a>Presumably we need to at least record the metadata.scale here. Probably also need the metadata.numberOfSamples. Of course, log and check for errors etc. too. </p>
+<p class="enddd"><a class="anchor" id="_todo000012"></a>Remember the metadata.  </p>
 </dd>
-<dt>Member <a class="el" href="classLoggerCommand.html#a9574cd7ecbb9b6adb57b4b6bac490673">LoggerCommand::outputSamples</a>  (const <a class="el" href="classDataLoggerService.html#a24111305ff4f8f8b41c5ebf5dfe10b62" title="Raw samples from the Reading characteristic.">DataLoggerService::Samples</a> &amp;samples)</dt>
-<dd><a class="anchor" id="_todo000007"></a>  </dd>
-<dt>Member <a class="el" href="classLoggerCommand.html#aee1e274d05dfa103bc3d0054070650fb">LoggerCommand::processOptions</a>  (const <a class="elRef" href="https://doc.qt.io/qt-5/qcommandlineparser.html">QCommandLineParser</a> &amp;parser) override</dt>
-<dd><a class="anchor" id="_todo000003"></a>Parse the timestamp option.  </dd>
-<dt>Member <a class="el" href="classLoggerCommand.html#a5252e1fb0792136b792b88a897e9654f">LoggerCommand::serviceDetailsDiscovered</a>  () override</dt>
-<dd><a class="anchor" id="_todo000004"></a>Move this next block to a new DataLoggerService::toString(range, mode) function.  </dd>
-<dt>Member <a class="el" href="classLoggerCommand.html#a613d8f216b23715be98ebc2a1d1c1319">LoggerCommand::supportedOptions</a>  () const override</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000001"></a>Do we want/need this option? </p>
-<p class="enddd"><a class="anchor" id="_todo000002"></a>Do we want/need this option?  </p>
+<dt>Member <a class="el" href="classDsoCommand.html#a5ed6988ac93f2964979b8dce1425816e">DsoCommand::outputSamples</a>  (const <a class="el" href="classDsoService.html#a72ff7eb3da52fb5e41e9aecb8fb6dc65" title="Raw samples from the Reading characteristic.">DsoService::Samples</a> &amp;samples)</dt>
+<dd><a class="anchor" id="_todo000013"></a>Output the samples.  </dd>
+<dt>Member <a class="el" href="classDsoCommand.html#a96c56e497f56ab5ed43201ad13aede7b">DsoCommand::settingsWritten</a>  ()</dt>
+<dd><a class="anchor" id="_todo000010"></a>Output the settings used as CSV, JSON and Text.  </dd>
+<dt>Member <a class="el" href="classDsoService.html#a97904ffa3fdc99df045b4ef43ccc2321">DsoService::stopDso</a>  ()</dt>
+<dd><a class="anchor" id="_todo000019"></a>How do we stop / do we need this function at all?  </dd>
+<dt>Member <a class="el" href="classLoggerFetchCommand.html#a0a5a664e90bbee6f6f695d83466fa43a">LoggerFetchCommand::metadataRead</a>  (const <a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">DataLoggerService::Metadata</a> &amp;metadata)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000014"></a>Presumably we need to at least record the metadata.scale here. Probably also need the metadata.numberOfSamples. Of course, log and check for errors etc. too. </p>
+<p class="enddd"><a class="anchor" id="_todo000015"></a>Remember the metadata.  </p>
 </dd>
-<dt>Member <a class="el" href="classMultimeterServicePrivate.html#ac9594dce487207bafd123e1093f399db">MultimeterServicePrivate::parseReading</a>  (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</dt>
-<dd><a class="anchor" id="_todo000010"></a>Abstract out this style of min/max size checking.  </dd>
-<dt>Member <a class="el" href="classPokitDevice.html#a3ded76591f3ec2b0620a2fbc617ed117">PokitDevice::dso</a>  ()</dt>
-<dd><a class="anchor" id="_todo000011"></a>Implement this function when the DsoService is implemented.  </dd>
+<dt>Member <a class="el" href="classLoggerFetchCommand.html#a2f093386853fc6667de091a0e921a665">LoggerFetchCommand::outputSamples</a>  (const <a class="el" href="classDataLoggerService.html#a24111305ff4f8f8b41c5ebf5dfe10b62" title="Raw samples from the Reading characteristic.">DataLoggerService::Samples</a> &amp;samples)</dt>
+<dd><a class="anchor" id="_todo000016"></a>Output the samples.  </dd>
+<dt>Member <a class="el" href="classLoggerStartCommand.html#a6b0922cf2e55e23c2df85cddf35e0b12">LoggerStartCommand::settingsWritten</a>  ()</dt>
+<dd><a class="anchor" id="_todo000017"></a>Output the settings used as CSV, JSON and Text.  </dd>
+<dt>Member <a class="el" href="classLoggerStopCommand.html#a0fc328ff975018ca87c14c38a56a2412">LoggerStopCommand::settingsWritten</a>  ()</dt>
+<dd><a class="anchor" id="_todo000018"></a>Output the result as CSV, JSON and Text.  </dd>
+<dt>Member <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a5c8523b038abf04d86fcc5358cd893cf">MultimeterService::AutoRange</a>  </dt>
+<dd><a class="anchor" id="_todo000009"></a>Pokit Pro supports up to 3M ohms.  </dd>
+<dt>Member <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2a5c8523b038abf04d86fcc5358cd893cf">MultimeterService::AutoRange</a>  </dt>
+<dd><a class="anchor" id="_todo000008"></a>Pokit Pro supports up to 10A.  </dd>
+<dt>Member <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf">MultimeterService::AutoRange</a>  </dt>
+<dd><a class="anchor" id="_todo000007"></a>Pokit Pro supports up to 600V.  </dd>
 <dt>Member <a class="el" href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">StatusService::flashLed</a>  ()</dt>
-<dd><a class="anchor" id="_todo000012"></a>Diagnose and/or follow up with Pokit Innovations. </dd>
+<dd><a class="anchor" id="_todo000020"></a>Diagnose and/or follow up with Pokit Innovations. </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -13,9 +13,9 @@ var classAbstractCommand =
     [ "parseWholeValue", "classAbstractCommand.html#a77b59d2b62aae9580aea93ca65c3af9a", null ],
     [ "processOptions", "classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d", null ],
     [ "Q_LOGGING_CATEGORY", "classAbstractCommand.html#a91d544b7f14475f55e9043832f3d1eb2", null ],
-    [ "requiredOptions", "classAbstractCommand.html#aec006493cf0a4ba88c092c597bf247b8", null ],
+    [ "requiredOptions", "classAbstractCommand.html#afd6f41cfc925751415cfa45e3b2d0b4a", null ],
     [ "start", "classAbstractCommand.html#a549d6f1071016fe56d20d2ba81575b2c", null ],
-    [ "supportedOptions", "classAbstractCommand.html#a002fc48054b9df13bbb2e0bdc488c6d3", null ],
+    [ "supportedOptions", "classAbstractCommand.html#a1ceca3c5b4cb24277dd4d4054f45db18", null ],
     [ "deviceToScanFor", "classAbstractCommand.html#a07d979bc039d61f5c720cb1521b31208", null ],
     [ "discoveryAgent", "classAbstractCommand.html#a86878df43cd818f4a7f333a97dabac3c", null ],
     [ "format", "classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b", null ]

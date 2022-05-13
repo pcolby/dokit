@@ -254,11 +254,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a4da4acfcabf989288c2063458f1ad3cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCalibrationServicePrivate.html#a4da4acfcabf989288c2063458f1ad3cb">characteristicRead</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> &amp;characteristic, const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value) override</td></tr>
-<tr class="memdesc:a4da4acfcabf989288c2063458f1ad3cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26" title="Handles QLowEnergyService::characteristicRead events.">AbstractPokitServicePrivate::characteristicRead</a> to parse <em>value</em>, then emit a specialised signal, for each supported <em>characteristic</em>.  <a href="classCalibrationServicePrivate.html#a4da4acfcabf989288c2063458f1ad3cb">More...</a><br /></td></tr>
-<tr class="separator:a4da4acfcabf989288c2063458f1ad3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1319763f3101ba47ad5e3dedacb630ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCalibrationServicePrivate.html#a1319763f3101ba47ad5e3dedacb630ac">characteristicWritten</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> &amp;characteristic, const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;newValue) override</td></tr>
-<tr class="memdesc:a1319763f3101ba47ad5e3dedacb630ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8" title="Handles QLowEnergyService::characteristicWritten events.">AbstractPokitServicePrivate::characteristicWritten</a> to parse <em>newValue</em>, then emit a specialised signal, for each supported <em>characteristic</em>.  <a href="classCalibrationServicePrivate.html#a1319763f3101ba47ad5e3dedacb630ac">More...</a><br /></td></tr>
+<tr class="memdesc:a1319763f3101ba47ad5e3dedacb630ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201" title="Handles QLowEnergyService::characteristicWritten events.">AbstractPokitServicePrivate::characteristicWritten</a> to parse <em>newValue</em>, then emit a specialised signal, for each supported <em>characteristic</em>.  <a href="classCalibrationServicePrivate.html#a1319763f3101ba47ad5e3dedacb630ac">More...</a><br /></td></tr>
 <tr class="separator:a1319763f3101ba47ad5e3dedacb630ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_qobject"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_qobject')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el"  href="https://doc.qt.io/qt-5/qobject.html">QObject</a></td></tr>
 <tr class="memitem:sender inherit pro_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="sender" name="sender"></a>
@@ -300,6 +297,12 @@ Additional Inherited Members</h2></td></tr>
 static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY</b> (lc, &quot;pokit.ble.service&quot;, QtInfoMsg)</td></tr>
 <tr class="memdesc:a32f402260c965002c68f7b9191d38af6 inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging category. <br /></td></tr>
 <tr class="separator:a32f402260c965002c68f7b9191d38af6 inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8b480a950244540bfff7fc4b476a0ef inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> &amp;label, const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;data, const int minSize, const int maxSize=-1, const bool failOnMax=false)</td></tr>
+<tr class="memdesc:af8b480a950244540bfff7fc4b476a0ef inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <code>false</code> if <em>data</em> is smaller than <em>minSize</em>, otherwise returns <em>failOnMax</em> if <em>data</em> is bigger than <em>maxSize</em>, otherwise returns <code>true</code>.  <a href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">More...</a><br /></td></tr>
+<tr class="separator:af8b480a950244540bfff7fc4b476a0ef inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af748600fc201fe47f29b58e8e93179d8 inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#af748600fc201fe47f29b58e8e93179d8">toHexString</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;data, const int maxSize=20)</td></tr>
+<tr class="memdesc:af748600fc201fe47f29b58e8e93179d8 inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns up to <em>maxSize</em> bytes of <em>data</em> as a human readable hexadecimal string.  <a href="classAbstractPokitServicePrivate.html#af748600fc201fe47f29b58e8e93179d8">More...</a><br /></td></tr>
+<tr class="separator:af748600fc201fe47f29b58e8e93179d8 inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_qobject"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_qobject')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el"  href="https://doc.qt.io/qt-5/qobject.html">QObject</a></td></tr>
 <tr class="memitem:tr inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="tr" name="tr"></a>
 <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a> (const char *sourceText, const char *disambiguation, int n)</td></tr>
@@ -363,12 +366,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 <tr class="memitem:ad4cd6a5700b0b764b3a81f67603dc68f inherit pro_slots_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#ad4cd6a5700b0b764b3a81f67603dc68f">stateChanged</a> (QLowEnergyService::ServiceState newState)</td></tr>
 <tr class="memdesc:ad4cd6a5700b0b764b3a81f67603dc68f inherit pro_slots_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#stateChanged">QLowEnergyController::stateChanged</a></code> events.  <a href="classAbstractPokitServicePrivate.html#ad4cd6a5700b0b764b3a81f67603dc68f">More...</a><br /></td></tr>
 <tr class="separator:ad4cd6a5700b0b764b3a81f67603dc68f inherit pro_slots_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4d66a5350233f431e869cd09bf4aa26 inherit pro_slots_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26">characteristicRead</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> &amp;characteristic, const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)=0</td></tr>
-<tr class="memdesc:af4d66a5350233f431e869cd09bf4aa26 inherit pro_slots_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicRead">QLowEnergyService::characteristicRead</a></code> events.  <a href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26">More...</a><br /></td></tr>
-<tr class="separator:af4d66a5350233f431e869cd09bf4aa26 inherit pro_slots_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20a20e4261112601e0c82b9389b1c7d8 inherit pro_slots_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">characteristicWritten</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> &amp;characteristic, const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;newValue)=0</td></tr>
-<tr class="memdesc:a20a20e4261112601e0c82b9389b1c7d8 inherit pro_slots_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicWritten">QLowEnergyService::characteristicWritten</a></code> events.  <a href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">More...</a><br /></td></tr>
-<tr class="separator:a20a20e4261112601e0c82b9389b1c7d8 inherit pro_slots_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84bef330c6ff124f1e460bb8949d82da inherit pro_slots_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#a84bef330c6ff124f1e460bb8949d82da">characteristicRead</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> &amp;characteristic, const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</td></tr>
+<tr class="memdesc:a84bef330c6ff124f1e460bb8949d82da inherit pro_slots_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicRead">QLowEnergyService::characteristicRead</a></code> events.  <a href="classAbstractPokitServicePrivate.html#a84bef330c6ff124f1e460bb8949d82da">More...</a><br /></td></tr>
+<tr class="separator:a84bef330c6ff124f1e460bb8949d82da inherit pro_slots_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf4a6cb9f0b1fe537877d615a6634201 inherit pro_slots_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">characteristicWritten</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> &amp;characteristic, const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;newValue)</td></tr>
+<tr class="memdesc:aaf4a6cb9f0b1fe537877d615a6634201 inherit pro_slots_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicWritten">QLowEnergyService::characteristicWritten</a></code> events.  <a href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">More...</a><br /></td></tr>
+<tr class="separator:aaf4a6cb9f0b1fe537877d615a6634201 inherit pro_slots_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a642431b7bfb76baa5d976ae24e90d9ef inherit pro_slots_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitServicePrivate.html#a642431b7bfb76baa5d976ae24e90d9ef">characteristicChanged</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> &amp;characteristic, const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;newValue)</td></tr>
 <tr class="memdesc:a642431b7bfb76baa5d976ae24e90d9ef inherit pro_slots_classAbstractPokitServicePrivate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicChanged">QLowEnergyService::characteristicChanged</a></code> events.  <a href="classAbstractPokitServicePrivate.html#a642431b7bfb76baa5d976ae24e90d9ef">More...</a><br /></td></tr>
 <tr class="separator:a642431b7bfb76baa5d976ae24e90d9ef inherit pro_slots_classAbstractPokitServicePrivate"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -426,72 +429,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 <div class="line"><span class="lineno">  136</span>{</div>
 <div class="line"><span class="lineno">  137</span> </div>
 <div class="line"><span class="lineno">  138</span>}</div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a73d4b6cd1a53f997f78d1c266a1c1871"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a73d4b6cd1a53f997f78d1c266a1c1871">AbstractPokitServicePrivate::AbstractPokitServicePrivate</a></div><div class="ttdeci">AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid, QLowEnergyController *controller, AbstractPokitService *const q)</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00139">abstractpokitservice.cpp:139</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a73d4b6cd1a53f997f78d1c266a1c1871"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a73d4b6cd1a53f997f78d1c266a1c1871">AbstractPokitServicePrivate::AbstractPokitServicePrivate</a></div><div class="ttdeci">AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid, QLowEnergyController *controller, AbstractPokitService *const q)</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00141">abstractpokitservice.cpp:141</a></div></div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_aefc2f27e42be44bf63d9e4f944737da1"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">AbstractPokitServicePrivate::controller</a></div><div class="ttdeci">QLowEnergyController * controller</div><div class="ttdoc">BLE controller to fetch the service from.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00048">abstractpokitservice_p.h:48</a></div></div>
 <div class="ttc" id="aclassCalibrationService_html_a787406e3fbda9e5ad966a3851d2c9fbc"><div class="ttname"><a href="classCalibrationService.html#a787406e3fbda9e5ad966a3851d2c9fbc">CalibrationService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;Calibration&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00043">calibrationservice.h:43</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4da4acfcabf989288c2063458f1ad3cb" name="a4da4acfcabf989288c2063458f1ad3cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4da4acfcabf989288c2063458f1ad3cb">&#9670;&nbsp;</a></span>characteristicRead()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CalibrationServicePrivate::characteristicRead </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> &amp;&#160;</td>
-          <td class="paramname"><em>characteristic</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26" title="Handles QLowEnergyService::characteristicRead events.">AbstractPokitServicePrivate::characteristicRead</a> to parse <em>value</em>, then emit a specialised signal, for each supported <em>characteristic</em>. </p>
-
-<p>Implements <a class="el" href="classAbstractPokitServicePrivate.html#af4d66a5350233f431e869cd09bf4aa26">AbstractPokitServicePrivate</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00144">144</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
-<div class="line"><span class="lineno">  147</span>    Q_UNUSED(value);</div>
-<div class="line"><span class="lineno">  148</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Characteristic read event on write-only service&quot;</span>)</div>
-<div class="line"><span class="lineno">  149</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
-<div class="line"><span class="lineno">  150</span>}</div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_ac869da6d14ebe8eb381351d84b36e275"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">AbstractPokitServicePrivate::serviceUuid</a></div><div class="ttdeci">const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID for service.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00050">abstractpokitservice_p.h:50</a></div></div>
-<div class="ttc" id="aqlowenergycharacteristic_html_name"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name</a></div><div class="ttdeci">QString name() const const</div></div>
-<div class="ttc" id="aqlowenergycharacteristic_html_uuid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid</a></div><div class="ttdeci">QBluetoothUuid uuid() const const</div></div>
-<div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00050">AbstractPokitServicePrivate::serviceUuid</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classCalibrationServicePrivate_a4da4acfcabf989288c2063458f1ad3cb_cgraph.svg" width="439" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
 <a id="a1319763f3101ba47ad5e3dedacb630ac" name="a1319763f3101ba47ad5e3dedacb630ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1319763f3101ba47ad5e3dedacb630ac">&#9670;&nbsp;</a></span>characteristicWritten()</h2>
 
@@ -526,34 +470,36 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8" title="Handles QLowEnergyService::characteristicWritten events.">AbstractPokitServicePrivate::characteristicWritten</a> to parse <em>newValue</em>, then emit a specialised signal, for each supported <em>characteristic</em>. </p>
+<p>Implements <a class="el" href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201" title="Handles QLowEnergyService::characteristicWritten events.">AbstractPokitServicePrivate::characteristicWritten</a> to parse <em>newValue</em>, then emit a specialised signal, for each supported <em>characteristic</em>. </p>
 
-<p>Implements <a class="el" href="classAbstractPokitServicePrivate.html#a20a20e4261112601e0c82b9389b1c7d8">AbstractPokitServicePrivate</a>.</p>
+<p>Reimplemented from <a class="el" href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">AbstractPokitServicePrivate</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00156">156</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  158</span>{</div>
-<div class="line"><span class="lineno">  159</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Characteristic \&quot;%1\&quot; (%2) written, with new value:&quot;</span>)</div>
-<div class="line"><span class="lineno">  160</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>(), characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>().<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/quuid.html#toString">toString</a>()) &lt;&lt; newValue;</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>    Q_Q(<a class="code hl_class" href="classCalibrationService.html">CalibrationService</a>);</div>
-<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CalibrationService::CharacteristicUuids::temperature</a>) {</div>
-<div class="line"><span class="lineno">  164</span>        emit q-&gt;temperatureCalibrated();</div>
-<div class="line"><span class="lineno">  165</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  166</span>    }</div>
-<div class="line"><span class="lineno">  167</span> </div>
-<div class="line"><span class="lineno">  168</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Unknown characteristic written for Calibration service&quot;</span>)</div>
-<div class="line"><span class="lineno">  169</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
-<div class="line"><span class="lineno">  170</span>}</div>
+<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00144">144</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
+<div class="line"><span class="lineno">  147</span>    <a class="code hl_slot" href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">AbstractPokitServicePrivate::characteristicWritten</a>(characteristic, newValue);</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>    Q_Q(<a class="code hl_class" href="classCalibrationService.html">CalibrationService</a>);</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CalibrationService::CharacteristicUuids::temperature</a>) {</div>
+<div class="line"><span class="lineno">  151</span>        emit q-&gt;temperatureCalibrated();</div>
+<div class="line"><span class="lineno">  152</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  153</span>    }</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Unknown characteristic written for Calibration service&quot;</span>)</div>
+<div class="line"><span class="lineno">  156</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
+<div class="line"><span class="lineno">  157</span>}</div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aaf4a6cb9f0b1fe537877d615a6634201"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">AbstractPokitServicePrivate::characteristicWritten</a></div><div class="ttdeci">virtual void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</div><div class="ttdoc">Handles QLowEnergyService::characteristicWritten events.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00524">abstractpokitservice.cpp:524</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_ac869da6d14ebe8eb381351d84b36e275"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275">AbstractPokitServicePrivate::serviceUuid</a></div><div class="ttdeci">const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID for service.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00050">abstractpokitservice_p.h:50</a></div></div>
 <div class="ttc" id="aclassCalibrationService_html"><div class="ttname"><a href="classCalibrationService.html">CalibrationService</a></div><div class="ttdoc">The CalibrationService class accesses the Calibrartion service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00038">calibrationservice.h:39</a></div></div>
-<div class="ttc" id="aqstring_html_arg-11"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg</a></div><div class="ttdeci">QString arg(qlonglong a, int fieldWidth, int base, QChar fillChar) const const</div></div>
-<div class="ttc" id="aquuid_html_toString"><div class="ttname"><a href="https://doc.qt.io/qt-5/quuid.html#toString">QUuid::toString</a></div><div class="ttdeci">QString toString() const const</div></div>
+<div class="ttc" id="aqlowenergycharacteristic_html_name"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name</a></div><div class="ttdeci">QString name() const const</div></div>
+<div class="ttc" id="aqlowenergycharacteristic_html_uuid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid</a></div><div class="ttdeci">QBluetoothUuid uuid() const const</div></div>
+<div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
 <div class="ttc" id="astructCalibrationService_1_1CharacteristicUuids_html_aee6c3fbd10b0d2f1c59914f30fe23327"><div class="ttname"><a href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CalibrationService::CharacteristicUuids::temperature</a></div><div class="ttdeci">static const QBluetoothUuid temperature</div><div class="ttdoc">UUID of the Calibration service's Temperature characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00046">calibrationservice.h:46</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00050">AbstractPokitServicePrivate::serviceUuid</a>, <a class="el" href="calibrationservice_8h_source.html#l00046">CalibrationService::CharacteristicUuids::temperature</a>, <a class="elRef" href="https://doc.qt.io/qt-5/quuid.html#toString">QUuid::toString()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid()</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00524">AbstractPokitServicePrivate::characteristicWritten()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00050">AbstractPokitServicePrivate::serviceUuid</a>, <a class="el" href="calibrationservice_8h_source.html#l00046">CalibrationService::CharacteristicUuids::temperature</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classCalibrationServicePrivate_a1319763f3101ba47ad5e3dedacb630ac_cgraph.svg" width="439" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classCalibrationServicePrivate_a1319763f3101ba47ad5e3dedacb630ac_cgraph.svg" width="968" height="622"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -580,7 +526,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="calibrationservice__p_8h_source.html#l00050">50</a> of file <a class="el" href="calibrationservice__p_8h_source.html">calibrationservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="calibrationservice__p_8h_source.html#l00048">48</a> of file <a class="el" href="calibrationservice__p_8h_source.html">calibrationservice_p.h</a>.</p>
 
 </div>
 </div>

@@ -8,6 +8,8 @@ var dir_db9736cc4d66dfa51ee2d2b49d100b59 =
     [ "dataloggerservice_p.h", "dataloggerservice__p_8h.html", "dataloggerservice__p_8h" ],
     [ "deviceinfoservice.cpp", "deviceinfoservice_8cpp.html", null ],
     [ "deviceinfoservice_p.h", "deviceinfoservice__p_8h.html", "deviceinfoservice__p_8h" ],
+    [ "dsoservice.cpp", "dsoservice_8cpp.html", null ],
+    [ "dsoservice_p.h", "dsoservice__p_8h.html", "dsoservice__p_8h" ],
     [ "genericaccessservice.cpp", "genericaccessservice_8cpp.html", null ],
     [ "genericaccessservice_p.h", "genericaccessservice__p_8h.html", "genericaccessservice__p_8h" ],
     [ "multimeterservice.cpp", "multimeterservice_8cpp.html", null ],
