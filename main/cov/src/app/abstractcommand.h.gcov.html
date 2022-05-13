@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-07 14:14:43</td>
+            <td class="headerValue">2022-05-13 01:02:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -100,8 +100,8 @@
 <a name="38"><span class="lineNum">      38 </span>            : </a>
 <a name="39"><span class="lineNum">      39 </span>            :     explicit AbstractCommand(QObject * const parent);</a>
 <a name="40"><span class="lineNum">      40 </span>            : </a>
-<a name="41"><span class="lineNum">      41 </span>            :     virtual QStringList requiredOptions() const;</a>
-<a name="42"><span class="lineNum">      42 </span>            :     virtual QStringList supportedOptions() const;</a>
+<a name="41"><span class="lineNum">      41 </span>            :     virtual QStringList requiredOptions(const QCommandLineParser &amp;parser) const;</a>
+<a name="42"><span class="lineNum">      42 </span>            :     virtual QStringList supportedOptions(const QCommandLineParser &amp;parser) const;</a>
 <a name="43"><span class="lineNum">      43 </span>            : </a>
 <a name="44"><span class="lineNum">      44 </span>            :     static QString escapeCsvField(const QString &amp;field);</a>
 <a name="45"><span class="lineNum">      45 </span>            :     static quint32 parseMilliValue(const QString &amp;value, const QString &amp;unit,</a>

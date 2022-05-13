@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">200</td>
+            <td class="headerCovTableEntry">191</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-07 14:14:43</td>
+            <td class="headerValue">2022-05-13 01:02:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -105,16 +105,16 @@
 <a name="43"><span class="lineNum">      43 </span>            : </a>
 <a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="45"><span class="lineNum">      45 </span>            : </a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 : QStringList MeterCommand::requiredOptions() const</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 : QStringList MeterCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></a>
 <a name="47"><span class="lineNum">      47 </span>            : {</a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :     return DeviceCommand::requiredOptions() + QStringList{</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></a>
 <a name="49"><span class="lineNum">      49 </span>            :         QLatin1String(&quot;mode&quot;),</a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :     };</span></a>
 <a name="51"><span class="lineNum">      51 </span>            : }</a>
 <a name="52"><span class="lineNum">      52 </span>            : </a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 : QStringList MeterCommand::supportedOptions() const</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 : QStringList MeterCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></a>
 <a name="54"><span class="lineNum">      54 </span>            : {</a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :     return DeviceCommand::supportedOptions() + QStringList{</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></a>
 <a name="56"><span class="lineNum">      56 </span>            :         QLatin1String(&quot;interval&quot;),</a>
 <a name="57"><span class="lineNum">      57 </span>            :         QLatin1String(&quot;range&quot;),</a>
 <a name="58"><span class="lineNum">      58 </span>            :         QLatin1String(&quot;samples&quot;),</a>
@@ -250,245 +250,228 @@
 <a name="188"><span class="lineNum">     188 </span>            :  */</a>
 <a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 : void MeterCommand::serviceDetailsDiscovered()</span></a>
 <a name="190"><span class="lineNum">     190 </span>            : {</a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :     QString range = tr(&quot;N/A&quot;);</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :     switch (settings.mode) {</span></a>
-<a name="193"><span class="lineNum">     193 </span>            :     case MultimeterService::Mode::Idle:        break;</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:</span></a>
-<a name="195"><span class="lineNum">     195 </span>            :     case MultimeterService::Mode::AcVoltage:</a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(settings.range.voltageRange);</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcCurrent:</span></a>
-<a name="199"><span class="lineNum">     199 </span>            :     case MultimeterService::Mode::AcCurrent:</a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(settings.range.currentRange);</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(settings.range.resitanceRange);</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="205"><span class="lineNum">     205 </span>            :     case MultimeterService::Mode::Diode:       break;</a>
-<a name="206"><span class="lineNum">     206 </span>            :     case MultimeterService::Mode::Continuity:  break;</a>
-<a name="207"><span class="lineNum">     207 </span>            :     case MultimeterService::Mode::Temperature: break;</a>
-<a name="208"><span class="lineNum">     208 </span>            :     }</a>
-<a name="209"><span class="lineNum">     209 </span>            : </a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Measuring %1, with range %2, every %L3ms.&quot;)</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :         .arg(MultimeterService::toString(settings.mode), range).arg(settings.updateInterval);</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :     service-&gt;setSettings(settings);</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="215"><span class="lineNum">     215 </span>            : </a>
-<a name="216"><span class="lineNum">     216 </span>            : /*!</a>
-<a name="217"><span class="lineNum">     217 </span>            :  * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange</a>
-<a name="218"><span class="lineNum">     218 </span>            :  * if no such range is available.</a>
-<a name="219"><span class="lineNum">     219 </span>            :  */</a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 : MultimeterService::Range MeterCommand::lowestRange(</span></a>
-<a name="221"><span class="lineNum">     221 </span>            :     const MultimeterService::Mode mode, const quint32 desiredMax)</a>
-<a name="222"><span class="lineNum">     222 </span>            : {</a>
-<a name="223"><span class="lineNum">     223 </span>            :     MultimeterService::Range range;</a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:</span></a>
-<a name="226"><span class="lineNum">     226 </span>            :     case MultimeterService::Mode::AcVoltage:</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :         range.voltageRange = lowestVoltageRange(desiredMax);</span></a>
-<a name="228"><span class="lineNum">     228 </span>            :         break;</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcCurrent:</span></a>
-<a name="230"><span class="lineNum">     230 </span>            :     case MultimeterService::Mode::AcCurrent:</a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :         range.currentRange = lowestCurrentRange(desiredMax);</span></a>
-<a name="232"><span class="lineNum">     232 </span>            :         break;</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :         range.resitanceRange = lowestResistanceRange(desiredMax);</span></a>
-<a name="235"><span class="lineNum">     235 </span>            :         break;</a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :     default:</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Mode does not support range.&quot;);</span></a>
-<a name="238"><span class="lineNum">     238 </span>            :         range.voltageRange = MultimeterService::VoltageRange::AutoRange;</a>
-<a name="239"><span class="lineNum">     239 </span>            :     }</a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :     return range;</span></a>
-<a name="241"><span class="lineNum">     241 </span>            : }</a>
-<a name="242"><span class="lineNum">     242 </span>            : </a>
-<a name="243"><span class="lineNum">     243 </span>            : #define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \</a>
-<a name="244"><span class="lineNum">     244 </span>            : if (value &lt;=  MultimeterService::maxValue(MultimeterService::label).toUInt()) { \</a>
-<a name="245"><span class="lineNum">     245 </span>            :     return MultimeterService::label; \</a>
-<a name="246"><span class="lineNum">     246 </span>            : }</a>
-<a name="247"><span class="lineNum">     247 </span>            : </a>
-<a name="248"><span class="lineNum">     248 </span>            : /*!</a>
-<a name="249"><span class="lineNum">     249 </span>            :  * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange</a>
-<a name="250"><span class="lineNum">     250 </span>            :  * if no such range is available.</a>
-<a name="251"><span class="lineNum">     251 </span>            :  */</a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 : MultimeterService::CurrentRange MeterCommand::lowestCurrentRange(const quint32 desiredMax)</span></a>
-<a name="253"><span class="lineNum">     253 </span>            : {</a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</span></a>
-<a name="259"><span class="lineNum">     259 </span>            :     return MultimeterService::CurrentRange::AutoRange;</a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :     const QString range = MultimeterService::toString(settings.range, settings.mode);</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Measuring %1, with range %2, every %L3ms.&quot;).arg(</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :         MultimeterService::toString(settings.mode),</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :         (range.isNull()) ? QString::fromLatin1(&quot;N/A&quot;) : range).arg(settings.updateInterval);</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :     service-&gt;setSettings(settings);</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="198"><span class="lineNum">     198 </span>            : </a>
+<a name="199"><span class="lineNum">     199 </span>            : /*!</a>
+<a name="200"><span class="lineNum">     200 </span>            :  * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange</a>
+<a name="201"><span class="lineNum">     201 </span>            :  * if no such range is available.</a>
+<a name="202"><span class="lineNum">     202 </span>            :  */</a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 : MultimeterService::Range MeterCommand::lowestRange(</span></a>
+<a name="204"><span class="lineNum">     204 </span>            :     const MultimeterService::Mode mode, const quint32 desiredMax)</a>
+<a name="205"><span class="lineNum">     205 </span>            : {</a>
+<a name="206"><span class="lineNum">     206 </span>            :     MultimeterService::Range range;</a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:</span></a>
+<a name="209"><span class="lineNum">     209 </span>            :     case MultimeterService::Mode::AcVoltage:</a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :         range.voltageRange = lowestVoltageRange(desiredMax);</span></a>
+<a name="211"><span class="lineNum">     211 </span>            :         break;</a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcCurrent:</span></a>
+<a name="213"><span class="lineNum">     213 </span>            :     case MultimeterService::Mode::AcCurrent:</a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :         range.currentRange = lowestCurrentRange(desiredMax);</span></a>
+<a name="215"><span class="lineNum">     215 </span>            :         break;</a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :         range.resitanceRange = lowestResistanceRange(desiredMax);</span></a>
+<a name="218"><span class="lineNum">     218 </span>            :         break;</a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :     default:</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Mode does not support range.&quot;);</span></a>
+<a name="221"><span class="lineNum">     221 </span>            :         range.voltageRange = MultimeterService::VoltageRange::AutoRange;</a>
+<a name="222"><span class="lineNum">     222 </span>            :     }</a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :     return range;</span></a>
+<a name="224"><span class="lineNum">     224 </span>            : }</a>
+<a name="225"><span class="lineNum">     225 </span>            : </a>
+<a name="226"><span class="lineNum">     226 </span>            : #define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \</a>
+<a name="227"><span class="lineNum">     227 </span>            : if (value &lt;=  MultimeterService::maxValue(MultimeterService::label).toUInt()) { \</a>
+<a name="228"><span class="lineNum">     228 </span>            :     return MultimeterService::label; \</a>
+<a name="229"><span class="lineNum">     229 </span>            : }</a>
+<a name="230"><span class="lineNum">     230 </span>            : </a>
+<a name="231"><span class="lineNum">     231 </span>            : /*!</a>
+<a name="232"><span class="lineNum">     232 </span>            :  * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange</a>
+<a name="233"><span class="lineNum">     233 </span>            :  * if no such range is available.</a>
+<a name="234"><span class="lineNum">     234 </span>            :  */</a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 : MultimeterService::CurrentRange MeterCommand::lowestCurrentRange(const quint32 desiredMax)</span></a>
+<a name="236"><span class="lineNum">     236 </span>            : {</a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</span></a>
+<a name="242"><span class="lineNum">     242 </span>            :     return MultimeterService::CurrentRange::AutoRange;</a>
+<a name="243"><span class="lineNum">     243 </span>            : }</a>
+<a name="244"><span class="lineNum">     244 </span>            : </a>
+<a name="245"><span class="lineNum">     245 </span>            : /*!</a>
+<a name="246"><span class="lineNum">     246 </span>            :  * Returns the lowest resistance range that can measure at least up to \a desired max, or AutoRange</a>
+<a name="247"><span class="lineNum">     247 </span>            :  * if no such range is available.</a>
+<a name="248"><span class="lineNum">     248 </span>            :  */</a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 : MultimeterService::ResistanceRange MeterCommand::lowestResistanceRange(const quint32 desiredMax)</span></a>
+<a name="250"><span class="lineNum">     250 </span>            : {</a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_330_to_890)</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_890_to_1K5)</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_1K5_to_10K)</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_10K_to_100K)</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_100K_to_470K)</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_470K_to_1M)</span></a>
+<a name="259"><span class="lineNum">     259 </span>            :     return MultimeterService::ResistanceRange::AutoRange;</a>
 <a name="260"><span class="lineNum">     260 </span>            : }</a>
 <a name="261"><span class="lineNum">     261 </span>            : </a>
 <a name="262"><span class="lineNum">     262 </span>            : /*!</a>
-<a name="263"><span class="lineNum">     263 </span>            :  * Returns the lowest resistance range that can measure at least up to \a desired max, or AutoRange</a>
+<a name="263"><span class="lineNum">     263 </span>            :  * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange</a>
 <a name="264"><span class="lineNum">     264 </span>            :  * if no such range is available.</a>
 <a name="265"><span class="lineNum">     265 </span>            :  */</a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 : MultimeterService::ResistanceRange MeterCommand::lowestResistanceRange(const quint32 desiredMax)</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 : MultimeterService::VoltageRange MeterCommand::lowestVoltageRange(const quint32 desiredMax)</span></a>
 <a name="267"><span class="lineNum">     267 </span>            : {</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_330_to_890)</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_890_to_1K5)</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_1K5_to_10K)</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_10K_to_100K)</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_100K_to_470K)</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_470K_to_1M)</span></a>
-<a name="276"><span class="lineNum">     276 </span>            :     return MultimeterService::ResistanceRange::AutoRange;</a>
-<a name="277"><span class="lineNum">     277 </span>            : }</a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</span></a>
+<a name="274"><span class="lineNum">     274 </span>            :     return MultimeterService::VoltageRange::AutoRange;</a>
+<a name="275"><span class="lineNum">     275 </span>            : }</a>
+<a name="276"><span class="lineNum">     276 </span>            : </a>
+<a name="277"><span class="lineNum">     277 </span>            : #undef POKIT_APP_IF_LESS_THAN_RETURN</a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
 <a name="279"><span class="lineNum">     279 </span>            : /*!</a>
-<a name="280"><span class="lineNum">     280 </span>            :  * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange</a>
-<a name="281"><span class="lineNum">     281 </span>            :  * if no such range is available.</a>
-<a name="282"><span class="lineNum">     282 </span>            :  */</a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 : MultimeterService::VoltageRange MeterCommand::lowestVoltageRange(const quint32 desiredMax)</span></a>
-<a name="284"><span class="lineNum">     284 </span>            : {</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</span></a>
-<a name="291"><span class="lineNum">     291 </span>            :     return MultimeterService::VoltageRange::AutoRange;</a>
-<a name="292"><span class="lineNum">     292 </span>            : }</a>
-<a name="293"><span class="lineNum">     293 </span>            : </a>
-<a name="294"><span class="lineNum">     294 </span>            : #undef POKIT_APP_IF_LESS_THAN_RETURN</a>
-<a name="295"><span class="lineNum">     295 </span>            : </a>
-<a name="296"><span class="lineNum">     296 </span>            : /*!</a>
-<a name="297"><span class="lineNum">     297 </span>            :  * Invoked when the multimeter settings have been written, to begin reading the meter values.</a>
-<a name="298"><span class="lineNum">     298 </span>            :  */</a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 : void MeterCommand::settingsWritten()</span></a>
-<a name="300"><span class="lineNum">     300 </span>            : {</a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; starting meter readings...&quot;);</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 :     connect(service, &amp;MultimeterService::readingRead,</span></a>
-<a name="303"><span class="lineNum">     303 </span>            :             this, &amp;MeterCommand::outputReading);</a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :     service-&gt;beginClientReadings();</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="306"><span class="lineNum">     306 </span>            : </a>
-<a name="307"><span class="lineNum">     307 </span>            : /*!</a>
-<a name="308"><span class="lineNum">     308 </span>            :  * Outputs meter \a reading in the selected ouput format.</a>
-<a name="309"><span class="lineNum">     309 </span>            :  */</a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 : void MeterCommand::outputReading(const MultimeterService::Reading &amp;reading)</span></a>
-<a name="311"><span class="lineNum">     311 </span>            : {</a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :     QString status;</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :     if (reading.status == MultimeterService::MeterStatus::Error) {</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :         status = QLatin1String(&quot;Error&quot;);</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :     } else switch (reading.mode) {</span></a>
-<a name="316"><span class="lineNum">     316 </span>            :     case MultimeterService::Mode::Idle:</a>
-<a name="317"><span class="lineNum">     317 </span>            :         break;</a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:</span></a>
-<a name="319"><span class="lineNum">     319 </span>            :     case MultimeterService::Mode::AcVoltage:</a>
-<a name="320"><span class="lineNum">     320 </span>            :     case MultimeterService::Mode::DcCurrent:</a>
-<a name="321"><span class="lineNum">     321 </span>            :     case MultimeterService::Mode::AcCurrent:</a>
-<a name="322"><span class="lineNum">     322 </span>            :     case MultimeterService::Mode::Resistance:</a>
-<a name="323"><span class="lineNum">     323 </span>            :         status = (reading.status == MultimeterService::MeterStatus::AutoRangeOn)</a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :             ? tr(&quot;Auto Range On&quot;) : tr(&quot;Auto Range Off&quot;);</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Continuity:</span></a>
-<a name="327"><span class="lineNum">     327 </span>            :         status = (reading.status == MultimeterService::MeterStatus::Continuity)</a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :             ? tr(&quot;Continuity&quot;) : tr(&quot;No continuity&quot;);</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="330"><span class="lineNum">     330 </span>            :     case MultimeterService::Mode::Temperature:</a>
-<a name="331"><span class="lineNum">     331 </span>            :     case MultimeterService::Mode::Diode:</a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :         status = tr(&quot;Ok&quot;);</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="334"><span class="lineNum">     334 </span>            :     }</a>
-<a name="335"><span class="lineNum">     335 </span>            : </a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     QString units;</span></a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :     switch (reading.mode) {</span></a>
-<a name="338"><span class="lineNum">     338 </span>            :     case MultimeterService::Mode::Idle:        break;</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:   units = QLatin1String(&quot;Vdc&quot;); break;</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::AcVoltage:   units = QLatin1String(&quot;Vac&quot;); break;</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcCurrent:   units = QLatin1String(&quot;Adc&quot;); break;</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::AcCurrent:   units = QLatin1String(&quot;Aac&quot;); break;</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:  units = QString::fromUtf8(&quot;Ω&quot;); break;</span></a>
-<a name="344"><span class="lineNum">     344 </span>            :     case MultimeterService::Mode::Diode:       break;</a>
-<a name="345"><span class="lineNum">     345 </span>            :     case MultimeterService::Mode::Continuity:  break;</a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Temperature: units = QString::fromUtf8(&quot;°C&quot;); break;</span></a>
-<a name="347"><span class="lineNum">     347 </span>            :     }</a>
-<a name="348"><span class="lineNum">     348 </span>            : </a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :     QString range;</span></a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :     QVariant rangeMin, rangeMax;</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :     switch (reading.mode) {</span></a>
-<a name="352"><span class="lineNum">     352 </span>            :     case MultimeterService::Mode::Idle:        break;</a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:</span></a>
-<a name="354"><span class="lineNum">     354 </span>            :     case MultimeterService::Mode::AcVoltage:</a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(reading.range.voltageRange);</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineNoCov">          0 :         rangeMin = MultimeterService::minValue(reading.range.voltageRange);</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.voltageRange);</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcCurrent:</span></a>
-<a name="360"><span class="lineNum">     360 </span>            :     case MultimeterService::Mode::AcCurrent:</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(reading.range.currentRange);</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineNoCov">          0 :         rangeMin = MultimeterService::minValue(reading.range.currentRange);</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.currentRange);</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(reading.range.resitanceRange);</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :         rangeMin = MultimeterService::minValue(reading.range.resitanceRange);</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.resitanceRange);</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="370"><span class="lineNum">     370 </span>            :     case MultimeterService::Mode::Diode:       break;</a>
-<a name="371"><span class="lineNum">     371 </span>            :     case MultimeterService::Mode::Continuity:  break;</a>
-<a name="372"><span class="lineNum">     372 </span>            :     case MultimeterService::Mode::Temperature: break;</a>
-<a name="373"><span class="lineNum">     373 </span>            :     }</a>
-<a name="374"><span class="lineNum">     374 </span>            : </a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :     switch (format) {</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :     case OutputFormat::Csv:</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineNoCov">          0 :         for (static bool firstTime = true; firstTime; firstTime = false) {</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineNoCov">          0 :             fputs(qPrintable(tr(&quot;mode,value,units,status,range_min_milli,range_max_milli\n&quot;)), stdout);</span></a>
-<a name="379"><span class="lineNum">     379 </span>            :         }</a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :         fputs(qPrintable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5,%6\n&quot;)</span></a>
-<a name="381"><span class="lineNum">     381 </span>            :             .arg(escapeCsvField(MultimeterService::toString(reading.mode)))</a>
-<a name="382"><span class="lineNum">     382 </span>            :             .arg(reading.value, 0, 'f').arg(units, status, rangeMin.toString(), rangeMax.toString())</a>
-<a name="383"><span class="lineNum">     383 </span>            :             ), stdout);</a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="385"><span class="lineNum">     385 </span>            :     case OutputFormat::Json: {</a>
-<a name="386"><span class="lineNum">     386 </span>            :         QJsonObject jsonObject{</a>
-<a name="387"><span class="lineNum">     387 </span>            :             { QLatin1String(&quot;status&quot;), status },</a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineNoCov">          0 :             { QLatin1String(&quot;value&quot;), qIsInf(reading.value) ?</span></a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineNoCov">          0 :                 QJsonValue(tr(&quot;Infinity&quot;)) : QJsonValue(reading.value) },</span></a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 :             { QLatin1String(&quot;mode&quot;),   MultimeterService::toString(reading.mode) },</span></a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineNoCov">          0 :         };</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineNoCov">          0 :         if ((!rangeMin.isNull()) || (!rangeMax.isNull())) {</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 :             jsonObject.insert(QLatin1String(&quot;range&quot;), QJsonObject{</span></a>
-<a name="394"><span class="lineNum">     394 </span>            :                 { QLatin1String(&quot;min&quot;),</a>
-<a name="395"><span class="lineNum">     395 </span>            :                     #if (QT_VERSION &gt;= QT_VERSION_CHECK(6, 0, 0))</a>
-<a name="396"><span class="lineNum">     396 </span>            :                     (rangeMin.typeId() == QMetaType::Int)</a>
-<a name="397"><span class="lineNum">     397 </span>            :                     #else</a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :                     (rangeMin.type() == QVariant::Int)</span></a>
-<a name="399"><span class="lineNum">     399 </span>            :                     #endif</a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 :                     ? QJsonValue(rangeMin.toInt()/1000.0) : rangeMin.toJsonValue() },</span></a>
-<a name="401"><span class="lineNum">     401 </span>            :                 { QLatin1String(&quot;max&quot;),</a>
-<a name="402"><span class="lineNum">     402 </span>            :                     #if (QT_VERSION &gt;= QT_VERSION_CHECK(6, 0, 0))</a>
-<a name="403"><span class="lineNum">     403 </span>            :                     (rangeMax.typeId() == QMetaType::Int) ?</a>
-<a name="404"><span class="lineNum">     404 </span>            :                     #else</a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineNoCov">          0 :                     (rangeMax.type() == QVariant::Int) ?</span></a>
-<a name="406"><span class="lineNum">     406 </span>            :                     #endif</a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :                     QJsonValue(rangeMax.toInt()/1000.0) : rangeMax.toJsonValue() },</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :             });</span></a>
-<a name="409"><span class="lineNum">     409 </span>            :         }</a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 :         fputs(QJsonDocument(jsonObject).toJson(), stdout);</span></a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :     }   break;</span></a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineNoCov">          0 :     case OutputFormat::Text:</span></a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Mode:   %1 (0x%2)\n&quot;).arg(MultimeterService::toString(reading.mode))</span></a>
-<a name="414"><span class="lineNum">     414 </span>            :             .arg((quint8)reading.mode,2,16,QLatin1Char('0'))), stdout);</a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Value:  %1 %2\n&quot;).arg(reading.value,0,'f').arg(units)), stdout);</span></a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Status: %1 (0x%2)\n&quot;).arg(status)</span></a>
-<a name="417"><span class="lineNum">     417 </span>            :             .arg((quint8)reading.status,2,16,QLatin1Char('0'))), stdout);</a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Range:  %1 (0x%2)\n&quot;).arg(range)</span></a>
-<a name="419"><span class="lineNum">     419 </span>            :             .arg((quint8)reading.range.voltageRange,2,16,QLatin1Char('0'))), stdout);</a>
-<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :         break;</span></a>
-<a name="421"><span class="lineNum">     421 </span>            :     }</a>
-<a name="422"><span class="lineNum">     422 </span>            : </a>
-<a name="423"><span class="lineNum">     423 </span><span class="lineNoCov">          0 :     if (numberOfSamplesToRead &gt; 0) {</span></a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :         if (--numberOfSamplesToRead == 0) {</span></a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineNoCov">          0 :             service-&gt;stopClientReadings();</span></a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineNoCov">          0 :             QCoreApplication::exit(EXIT_SUCCESS);</span></a>
-<a name="427"><span class="lineNum">     427 </span>            :         }</a>
-<a name="428"><span class="lineNum">     428 </span>            :     }</a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="280"><span class="lineNum">     280 </span>            :  * Invoked when the multimeter settings have been written, to begin reading the meter values.</a>
+<a name="281"><span class="lineNum">     281 </span>            :  */</a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 : void MeterCommand::settingsWritten()</span></a>
+<a name="283"><span class="lineNum">     283 </span>            : {</a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; starting meter readings...&quot;);</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :     connect(service, &amp;MultimeterService::readingRead,</span></a>
+<a name="286"><span class="lineNum">     286 </span>            :             this, &amp;MeterCommand::outputReading);</a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :     service-&gt;beginClientReadings();</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="289"><span class="lineNum">     289 </span>            : </a>
+<a name="290"><span class="lineNum">     290 </span>            : /*!</a>
+<a name="291"><span class="lineNum">     291 </span>            :  * Outputs meter \a reading in the selected ouput format.</a>
+<a name="292"><span class="lineNum">     292 </span>            :  */</a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 : void MeterCommand::outputReading(const MultimeterService::Reading &amp;reading)</span></a>
+<a name="294"><span class="lineNum">     294 </span>            : {</a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :     QString status;</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :     if (reading.status == MultimeterService::MeterStatus::Error) {</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 :         status = QLatin1String(&quot;Error&quot;);</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 :     } else switch (reading.mode) {</span></a>
+<a name="299"><span class="lineNum">     299 </span>            :     case MultimeterService::Mode::Idle:</a>
+<a name="300"><span class="lineNum">     300 </span>            :         break;</a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:</span></a>
+<a name="302"><span class="lineNum">     302 </span>            :     case MultimeterService::Mode::AcVoltage:</a>
+<a name="303"><span class="lineNum">     303 </span>            :     case MultimeterService::Mode::DcCurrent:</a>
+<a name="304"><span class="lineNum">     304 </span>            :     case MultimeterService::Mode::AcCurrent:</a>
+<a name="305"><span class="lineNum">     305 </span>            :     case MultimeterService::Mode::Resistance:</a>
+<a name="306"><span class="lineNum">     306 </span>            :         status = (reading.status == MultimeterService::MeterStatus::AutoRangeOn)</a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :             ? tr(&quot;Auto Range On&quot;) : tr(&quot;Auto Range Off&quot;);</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Continuity:</span></a>
+<a name="310"><span class="lineNum">     310 </span>            :         status = (reading.status == MultimeterService::MeterStatus::Continuity)</a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :             ? tr(&quot;Continuity&quot;) : tr(&quot;No continuity&quot;);</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="313"><span class="lineNum">     313 </span>            :     case MultimeterService::Mode::Temperature:</a>
+<a name="314"><span class="lineNum">     314 </span>            :     case MultimeterService::Mode::Diode:</a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :         status = tr(&quot;Ok&quot;);</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="317"><span class="lineNum">     317 </span>            :     }</a>
+<a name="318"><span class="lineNum">     318 </span>            : </a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :     QString units;</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 :     switch (reading.mode) {</span></a>
+<a name="321"><span class="lineNum">     321 </span>            :     case MultimeterService::Mode::Idle:        break;</a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:   units = QLatin1String(&quot;Vdc&quot;); break;</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::AcVoltage:   units = QLatin1String(&quot;Vac&quot;); break;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcCurrent:   units = QLatin1String(&quot;Adc&quot;); break;</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::AcCurrent:   units = QLatin1String(&quot;Aac&quot;); break;</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:  units = QString::fromUtf8(&quot;Ω&quot;); break;</span></a>
+<a name="327"><span class="lineNum">     327 </span>            :     case MultimeterService::Mode::Diode:       break;</a>
+<a name="328"><span class="lineNum">     328 </span>            :     case MultimeterService::Mode::Continuity:  break;</a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Temperature: units = QString::fromUtf8(&quot;°C&quot;); break;</span></a>
+<a name="330"><span class="lineNum">     330 </span>            :     }</a>
+<a name="331"><span class="lineNum">     331 </span>            : </a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :     QString range;</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :     QVariant rangeMin, rangeMax;</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineNoCov">          0 :     switch (reading.mode) {</span></a>
+<a name="335"><span class="lineNum">     335 </span>            :     case MultimeterService::Mode::Idle:        break;</a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:</span></a>
+<a name="337"><span class="lineNum">     337 </span>            :     case MultimeterService::Mode::AcVoltage:</a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(reading.range.voltageRange);</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :         rangeMin = MultimeterService::minValue(reading.range.voltageRange);</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.voltageRange);</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcCurrent:</span></a>
+<a name="343"><span class="lineNum">     343 </span>            :     case MultimeterService::Mode::AcCurrent:</a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(reading.range.currentRange);</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 :         rangeMin = MultimeterService::minValue(reading.range.currentRange);</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.currentRange);</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(reading.range.resitanceRange);</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :         rangeMin = MultimeterService::minValue(reading.range.resitanceRange);</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.resitanceRange);</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="353"><span class="lineNum">     353 </span>            :     case MultimeterService::Mode::Diode:       break;</a>
+<a name="354"><span class="lineNum">     354 </span>            :     case MultimeterService::Mode::Continuity:  break;</a>
+<a name="355"><span class="lineNum">     355 </span>            :     case MultimeterService::Mode::Temperature: break;</a>
+<a name="356"><span class="lineNum">     356 </span>            :     }</a>
+<a name="357"><span class="lineNum">     357 </span>            : </a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineNoCov">          0 :     switch (format) {</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :     case OutputFormat::Csv:</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineNoCov">          0 :         for (static bool firstTime = true; firstTime; firstTime = false) {</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :             fputs(qPrintable(tr(&quot;mode,value,units,status,range_min_milli,range_max_milli\n&quot;)), stdout);</span></a>
+<a name="362"><span class="lineNum">     362 </span>            :         }</a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineNoCov">          0 :         fputs(qPrintable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5,%6\n&quot;)</span></a>
+<a name="364"><span class="lineNum">     364 </span>            :             .arg(escapeCsvField(MultimeterService::toString(reading.mode)))</a>
+<a name="365"><span class="lineNum">     365 </span>            :             .arg(reading.value, 0, 'f').arg(units, status, rangeMin.toString(), rangeMax.toString())</a>
+<a name="366"><span class="lineNum">     366 </span>            :             ), stdout);</a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="368"><span class="lineNum">     368 </span>            :     case OutputFormat::Json: {</a>
+<a name="369"><span class="lineNum">     369 </span>            :         QJsonObject jsonObject{</a>
+<a name="370"><span class="lineNum">     370 </span>            :             { QLatin1String(&quot;status&quot;), status },</a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 :             { QLatin1String(&quot;value&quot;), qIsInf(reading.value) ?</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineNoCov">          0 :                 QJsonValue(tr(&quot;Infinity&quot;)) : QJsonValue(reading.value) },</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :             { QLatin1String(&quot;mode&quot;),   MultimeterService::toString(reading.mode) },</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :         };</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :         if ((!rangeMin.isNull()) || (!rangeMax.isNull())) {</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :             jsonObject.insert(QLatin1String(&quot;range&quot;), QJsonObject{</span></a>
+<a name="377"><span class="lineNum">     377 </span>            :                 { QLatin1String(&quot;min&quot;),</a>
+<a name="378"><span class="lineNum">     378 </span>            :                     #if (QT_VERSION &gt;= QT_VERSION_CHECK(6, 0, 0))</a>
+<a name="379"><span class="lineNum">     379 </span>            :                     (rangeMin.typeId() == QMetaType::Int)</a>
+<a name="380"><span class="lineNum">     380 </span>            :                     #else</a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineNoCov">          0 :                     (rangeMin.type() == QVariant::Int)</span></a>
+<a name="382"><span class="lineNum">     382 </span>            :                     #endif</a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 :                     ? QJsonValue(rangeMin.toInt()/1000.0) : rangeMin.toJsonValue() },</span></a>
+<a name="384"><span class="lineNum">     384 </span>            :                 { QLatin1String(&quot;max&quot;),</a>
+<a name="385"><span class="lineNum">     385 </span>            :                     #if (QT_VERSION &gt;= QT_VERSION_CHECK(6, 0, 0))</a>
+<a name="386"><span class="lineNum">     386 </span>            :                     (rangeMax.typeId() == QMetaType::Int) ?</a>
+<a name="387"><span class="lineNum">     387 </span>            :                     #else</a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineNoCov">          0 :                     (rangeMax.type() == QVariant::Int) ?</span></a>
+<a name="389"><span class="lineNum">     389 </span>            :                     #endif</a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 :                     QJsonValue(rangeMax.toInt()/1000.0) : rangeMax.toJsonValue() },</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineNoCov">          0 :             });</span></a>
+<a name="392"><span class="lineNum">     392 </span>            :         }</a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 :         fputs(QJsonDocument(jsonObject).toJson(), stdout);</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :     }   break;</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineNoCov">          0 :     case OutputFormat::Text:</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Mode:   %1 (0x%2)\n&quot;).arg(MultimeterService::toString(reading.mode))</span></a>
+<a name="397"><span class="lineNum">     397 </span>            :             .arg((quint8)reading.mode,2,16,QLatin1Char('0'))), stdout);</a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Value:  %1 %2\n&quot;).arg(reading.value,0,'f').arg(units)), stdout);</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Status: %1 (0x%2)\n&quot;).arg(status)</span></a>
+<a name="400"><span class="lineNum">     400 </span>            :             .arg((quint8)reading.status,2,16,QLatin1Char('0'))), stdout);</a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Range:  %1 (0x%2)\n&quot;).arg(range)</span></a>
+<a name="402"><span class="lineNum">     402 </span>            :             .arg((quint8)reading.range.voltageRange,2,16,QLatin1Char('0'))), stdout);</a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="404"><span class="lineNum">     404 </span>            :     }</a>
+<a name="405"><span class="lineNum">     405 </span>            : </a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :     if (numberOfSamplesToRead &gt; 0) {</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :         if (--numberOfSamplesToRead == 0) {</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :             service-&gt;stopClientReadings();</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :             QCoreApplication::exit(EXIT_SUCCESS);</span></a>
+<a name="410"><span class="lineNum">     410 </span>            :         }</a>
+<a name="411"><span class="lineNum">     411 </span>            :     }</a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineNoCov">          0 : }</span></a>
 </pre>
       </td>
     </tr>
