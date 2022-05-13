@@ -331,7 +331,7 @@ bool DataLoggerService::startLogger(const Settings &settings)
 }
 
 /*!
- * Start the data logger.
+ * Stop the data logger.
  *
  * This is just a convenience function equivalent to calling setSettings() with the command set to
  * DataLoggerService::Command::Stop.

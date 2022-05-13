@@ -251,7 +251,6 @@ DsoService::VoltageRange DsoCommand::lowestVoltageRange(const quint32 desiredMax
 void DsoCommand::settingsWritten()
 {
     qCDebug(lc).noquote() << tr("Settings written; DSO has started.");
-    /// \todo Output the settings used as CSV, JSON and Text.
     connect(service, &DsoService::metadataRead, this, &DsoCommand::metadataRead);
     connect(service, &DsoService::samplesRead, this, &DsoCommand::outputSamples);
     service->beginMetadata();
