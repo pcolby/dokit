@@ -129,15 +129,16 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
 
     // Parse the trigger-mode option.
     if (parser.isSet(QLatin1String("trigger-mode"))) {
-        const QString mode = parser.value(QLatin1String("trigger-mode")).trimmed().toLower();
-        if (mode.startsWith(QLatin1String("free"))) {
+        const QString triggerMode = parser.value(QLatin1String("trigger-mode")).trimmed().toLower();
+        if (triggerMode.startsWith(QLatin1String("free"))) {
             settings.command = DsoService::Command::FreeRunning;
-        } else if (mode.startsWith(QLatin1String("ris"))) {
+        } else if (triggerMode.startsWith(QLatin1String("ris"))) {
            settings.command = DsoService::Command::RisingEdgeTrigger;
-        } else if (mode.startsWith(QLatin1String("fall"))) {
+        } else if (triggerMode.startsWith(QLatin1String("fall"))) {
             settings.command = DsoService::Command::FallingEdgeTrigger;
         } else {
-            errors.append(tr("Unknown trigger mode: %1").arg(parser.value(QLatin1String("mode"))));
+            errors.append(tr("Unknown trigger mode: %1").arg(
+                parser.value(QLatin1String("trigger-mode"))));
         }
     }
 
