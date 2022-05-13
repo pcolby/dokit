@@ -38,7 +38,7 @@ MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent),
         MultimeterService::Mode::DcVoltage,
         { MultimeterService::VoltageRange::AutoRange },
         1000
-    }, numberOfSamplesToRead(-1)
+    }, samplesToGo(-1)
 {
 
 }
@@ -157,7 +157,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
         if (!ok) {
             errors.append(tr("Invalid number of samples: %1").arg(value));
         } else {
-            numberOfSamplesToRead = samples;
+            samplesToGo = samples;
         }
     }
 
@@ -403,10 +403,7 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
         break;
     }
 
-    if (numberOfSamplesToRead > 0) {
-        if (--numberOfSamplesToRead == 0) {
-            service->disableReadingNotifications();
-            disconnect(); // Will exit the application once disconnected.
-        }
+    if ((samplesToGo > 0) && (--samplesToGo == 0)) {
+        disconnect(); // Will exit the application once disconnected.
     }
 }
