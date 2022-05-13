@@ -405,9 +405,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a2f29742224a879c4f1fb81a2fdd39ea5"><td class="memItemLeft" align="right" valign="top"><a id="a2f29742224a879c4f1fb81a2fdd39ea5" name="a2f29742224a879c4f1fb81a2fdd39ea5"></a>
-static const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a>&#160;</td><td class="memItemRight" valign="bottom"><b>serviceUuid</b></td></tr>
-<tr class="memdesc:a2f29742224a879c4f1fb81a2fdd39ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">UUID of the "Pokit Status" service. <br /></td></tr>
+<tr class="memitem:a2f29742224a879c4f1fb81a2fdd39ea5"><td class="memItemLeft" align="right" valign="top">static const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a2f29742224a879c4f1fb81a2fdd39ea5">serviceUuid</a></td></tr>
 <tr class="separator:a2f29742224a879c4f1fb81a2fdd39ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -724,9 +722,7 @@ Here is the call graph for this function:</div>
 
 <p>Flash the Pokit device's LED. </p>
 <p >Returns <code>true</code> if the flash request was successfully queued, <code>false</code> otherwise.</p>
-<p >Emits <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee" title="This signal is emitted when device&#39;s LED has flashed in response to a write of the Flash LED characte...">deviceLedFlashed()</a> if/when the LED has flashed successfully.</p>
-<dl class="section note"><dt>Note</dt><dd>This does not appear to work currently, for the one (Pokit Pro) device available for testing. Instead, the underlying Bluetooth stack returns ATT error <code>0x80</code>.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Diagnose and/or follow up with Pokit Innovations. </dd></dl>
+<p >Emits <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee" title="This signal is emitted when device&#39;s LED has flashed in response to a write of the Flash LED characte...">deviceLedFlashed()</a> if/when the LED has flashed successfully. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -903,7 +899,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a>.batteryLevel)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassStatusService_html_ae7be4aae021ae50faef48ed2812eb6a7"><div class="ttname"><a href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">StatusService::status</a></div><div class="ttdeci">Status status() const</div><div class="ttdoc">Returns the most recent value of the Status service's Status characteristic.</div><div class="ttdef"><b>Definition:</b> statusservice.cpp:193</div></div>
+<div class="ttc" id="aclassStatusService_html_ae7be4aae021ae50faef48ed2812eb6a7"><div class="ttname"><a href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">StatusService::status</a></div><div class="ttdeci">Status status() const</div><div class="ttdoc">Returns the most recent value of the Status service's Status characteristic.</div><div class="ttdef"><b>Definition:</b> statusservice.cpp:198</div></div>
 <div class="ttc" id="astructStatusService_1_1Status_html"><div class="ttname"><a href="structStatusService_1_1Status.html">StatusService::Status</a></div><div class="ttdoc">Attributes included in the Status characterstic.</div><div class="ttdef"><b>Definition:</b> statusservice.h:82</div></div>
 </div><!-- fragment --> <div class="dynheader">
 Here is the call graph for this function:</div>
@@ -917,6 +913,30 @@ Here is the caller graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_ae7be4aae021ae50faef48ed2812eb6a7_icgraph.svg" width="424" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a2f29742224a879c4f1fb81a2fdd39ea5" name="a2f29742224a879c4f1fb81a2fdd39ea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f29742224a879c4f1fb81a2fdd39ea5">&#9670;&nbsp;</a></span>serviceUuid</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> StatusService::serviceUuid</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >UUID of the "Pokit Status" service. </p>
 
 </div>
 </div>

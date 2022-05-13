@@ -34,18 +34,13 @@ var NAVTREE =
     [ "Placeholder Page", "md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html", null ],
     [ "Notes", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html", [
       [ "Pokit Bluetooth API", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md6", [
-        [ "Things to Query", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md7", [
-          [ "Status Service UUID", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md8", null ],
-          [ "Status Characteristic Value Length", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md9", null ]
-        ] ],
-        [ "Flash LED Service", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md10", null ],
-        [ "Generic Access Service", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md11", null ],
-        [ "Undocumented Services", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md12", null ]
+        [ "Undocumented Services", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md7", null ]
       ] ],
-      [ "Qt Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md13", null ],
-      [ "CMake Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md14", null ]
+      [ "Qt Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md8", null ],
+      [ "CMake Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md9", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
+    [ "Pokit API Errata", "pokit.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -73,7 +68,7 @@ var NAVTREEINDEX =
 "abstractcommand_8cpp_source.html",
 "classDsoService.html#af2baee0dc3fa5e308be06c691dece236adbf4d21ae7c8f69c3a9375d0d16613d6",
 "classSetNameCommand.html#a25871d2f3a6aded92a89559fd36370f4",
-"structDsoService_1_1Settings.html#a661cb2920a504d5f3fc7437529c37f15"
+"structGenericAccessService_1_1CharacteristicUuids.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
