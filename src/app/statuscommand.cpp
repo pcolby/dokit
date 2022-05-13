@@ -91,8 +91,8 @@ void StatusCommand::serviceDetailsDiscovered()
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     const QString deviceName = service->deviceName();
     const StatusService::Status status = service->status();
-    const QString statusLabel = StatusService::deviceStatusLabel(status.deviceStatus);
-    const QString batteryLabel = StatusService::batteryStatusLabel(status.batteryStatus);
+    const QString statusLabel = StatusService::toString(status.deviceStatus);
+    const QString batteryLabel = StatusService::toString(status.batteryStatus);
     const StatusService::DeviceCharacteristics chrs = service->deviceCharacteristics();
     if (chrs.firmwareVersion.isNull()) {
         qCWarning(lc).noquote() << tr("Failed to parse device information");

@@ -67,8 +67,41 @@ const QBluetoothUuid StatusService::CharacteristicUuids::
 /// \enum StatusService::DeviceStatus
 /// \brief Values supported by the `Status` attribute of the `Status` characteristic.
 
+/*!
+ * Returns a string version of the \a status enum label.
+ */
+QString StatusService::toString(const StatusService::DeviceStatus &status)
+{
+    switch (status) {
+    case DeviceStatus::Idle:                 return  QLatin1String("Idle");
+    case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String("MultimeterDcVoltage");
+    case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String("MultimeterAcVoltage");
+    case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String("MultimeterDcCurrent");
+    case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String("MultimeterAcCurrent");
+    case DeviceStatus::MultimeterResistance: return  QLatin1String("MultimeterResistance");
+    case DeviceStatus::MultimeterDiode:      return  QLatin1String("MultimeterDiode");
+    case DeviceStatus::MultimeterContinuity: return  QLatin1String("MultimeterContinuity");
+    case DeviceStatus::MultimeterTemperature:return  QLatin1String("MultimeterTemperature");
+    case DeviceStatus::DsoModeSampling:      return  QLatin1String("DsoModeSampling");
+    case DeviceStatus::LoggerModeSampling:   return  QLatin1String("LoggerModeSampling");
+    }
+    return QLatin1String("Invalid");
+}
+
 /// \enum StatusService::BatteryStatus
 /// \brief Values supported by the `Battery Status` attribute of the `Status` characteristic.
+
+/*!
+ * Returns a string version of the \a status enum label.
+ */
+QString StatusService::toString(const StatusService::BatteryStatus &status)
+{
+    switch (status) {
+    case BatteryStatus::Low:  return QLatin1String("Low");
+    case BatteryStatus::Good: return QLatin1String("Good");
+    }
+    return QLatin1String("Invalid");
+}
 
 /// \struct StatusService::Status
 /// \brief Attributes included in the `Status` characterstic.
@@ -203,39 +236,6 @@ StatusService::Status StatusService::status() const
     return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())
         : StatusService::Status{ DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(),
                                  BatteryStatus::Low };
-}
-
-/*!
- * Returns a string version of the \a status enum label.
- */
-QString StatusService::deviceStatusLabel(const StatusService::DeviceStatus &status)
-{
-    switch (status) {
-    case DeviceStatus::Idle:                 return  QLatin1String("Idle");
-    case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String("MultimeterDcVoltage");
-    case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String("MultimeterAcVoltage");
-    case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String("MultimeterDcCurrent");
-    case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String("MultimeterAcCurrent");
-    case DeviceStatus::MultimeterResistance: return  QLatin1String("MultimeterResistance");
-    case DeviceStatus::MultimeterDiode:      return  QLatin1String("MultimeterDiode");
-    case DeviceStatus::MultimeterContinuity: return  QLatin1String("MultimeterContinuity");
-    case DeviceStatus::MultimeterTemperature:return  QLatin1String("MultimeterTemperature");
-    case DeviceStatus::DsoModeSampling:      return  QLatin1String("DsoModeSampling");
-    case DeviceStatus::LoggerModeSampling:   return  QLatin1String("LoggerModeSampling");
-    }
-    return QLatin1String("Invalid");
-}
-
-/*!
- * Returns a string version of the \a status enum label.
- */
-QString StatusService::batteryStatusLabel(const StatusService::BatteryStatus &status)
-{
-    switch (status) {
-    case BatteryStatus::Low:  return QLatin1String("Low");
-    case BatteryStatus::Good: return QLatin1String("Good");
-    }
-    return QLatin1String("Invalid");
 }
 
 /*!
@@ -437,7 +437,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
         status.batteryStatus = static_cast<StatusService::BatteryStatus>(value.at(5));
     }
     qCDebug(lc).noquote() << tr("Device status:   %1 (%2)")
-        .arg((quint8)status.deviceStatus).arg(StatusService::deviceStatusLabel(status.deviceStatus));
+        .arg((quint8)status.deviceStatus).arg(StatusService::toString(status.deviceStatus));
     qCDebug(lc).noquote() << tr("Battery voltage: %1 volts").arg(status.batteryVoltage);
     qCDebug(lc).noquote() << tr("Battery status:  %1 (%2)")
         .arg((quint8)status.batteryStatus);

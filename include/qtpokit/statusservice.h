@@ -73,11 +73,13 @@ public:
         DsoModeSampling = 9,      ///< DSO is sampling.
         LoggerModeSampling = 10,  ///< Data Logger is sampling.
     };
+    static QString toString(const StatusService::DeviceStatus &status);
 
     enum class BatteryStatus : quint8 {
         Low = 0,  ///< Low (replace battery).
         Good = 1, ///< Good.
     };
+    static QString toString(const StatusService::BatteryStatus &label);
 
     struct Status {
         DeviceStatus deviceStatus;   ///< Current Pokit device status.
@@ -99,8 +101,6 @@ public:
 
     // Status characteristic (Read only).
     Status status() const;
-    static QString deviceStatusLabel(const StatusService::DeviceStatus &status);
-    static QString batteryStatusLabel(const StatusService::BatteryStatus &label);
 
     // Device Name characteristic (BLE read/write).
     QString deviceName() const;
