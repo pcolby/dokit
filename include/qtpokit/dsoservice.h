@@ -131,7 +131,6 @@ public:
     // Settings characteristic (BLE write only).
     bool setSettings(const Settings &settings);
     bool startDso(const Settings &settings);
-    bool stopDso();
     bool fetchSamples();
 
     // Metadata characteristic (BLE read/notify).

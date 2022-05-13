@@ -328,26 +328,6 @@ bool DsoService::startDso(const Settings &settings)
  * Start the DSO.
  *
  * This is just a convenience function equivalent to calling setSettings() with the command set to
- * DsoService::Command::Stop.
- */
-bool DsoService::stopDso()
-{
-    // Note, only the Settings::command member need be set, since the others are all ignored by the
-    // Pokit device when the command is Stop. However, we still explicitly initialise all other
-    // members just to ensure we're never exposing uninitialised RAM to an external device.
-    /// \todo How do we stop / do we need this function at all?
-    return false;
-//    return setSettings({
-//        DsoService::Command::Stop,
-//        0, DsoService::Mode::Idle,
-//        { DsoService::VoltageRange::_0_to_300mV }, 0, 0
-//    });
-}
-
-/*!
- * Start the DSO.
- *
- * This is just a convenience function equivalent to calling setSettings() with the command set to
  * DsoService::Command::Refresh.
  *
  * Once the Pokit device has processed this request succesffully, the device will begin notifying
