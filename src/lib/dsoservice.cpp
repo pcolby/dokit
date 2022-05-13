@@ -318,7 +318,7 @@ bool DsoService::startDso(const Settings &settings)
     Q_D(const DsoService);
     Q_ASSERT(settings.command != DsoService::Command::ResendData);
     if (settings.command != DsoService::Command::ResendData) {
-        qCWarning(d->lc) << tr("Settings command must not be 'ResendData'.");
+        qCWarning(d->lc).noquote() << tr("Settings command must not be 'ResendData'.");
         return false;
     }
     return setSettings(settings);

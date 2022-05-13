@@ -103,7 +103,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
     case DataLoggerService::Mode::DcCurrent: unit = QLatin1String("Adc"); break;
     case DataLoggerService::Mode::AcCurrent: unit = QLatin1String("Aac"); break;
     default:
-        qCDebug(lc) << tr("No known unit for mode %1 \"%2\".").arg((int)metadata.mode)
+        qCDebug(lc).noquote() << tr("No known unit for mode %1 \"%2\".").arg((int)metadata.mode)
             .arg(DataLoggerService::toString(metadata.mode));
     }
     const QString range = DataLoggerService::toString(metadata.range, metadata.mode);
@@ -137,7 +137,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
         --samplesToGo;
     }
     if (samplesToGo <= 0) {
-        qCInfo(lc) << tr("Finished fetching %L1 samples (with %L2 to remaining).")
+        qCInfo(lc).noquote() << tr("Finished fetching %L1 samples (with %L2 to remaining).")
             .arg(metadata.numberOfSamples).arg(samplesToGo);
         disconnect(); // Will exit the application once disconnected.
     }

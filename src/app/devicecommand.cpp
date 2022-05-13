@@ -56,7 +56,7 @@ bool DeviceCommand::start()
  */
 void DeviceCommand::disconnect(int exitCode)
 {
-    qCDebug(lc) << tr("Disconnecting Pokit device...");
+    qCDebug(lc).noquote() << tr("Disconnecting Pokit device...");
     Q_ASSERT(device);
     Q_ASSERT(device->controller());
     exitCodeOnDisconnect = exitCode;
@@ -92,7 +92,8 @@ void DeviceCommand::controllerError(QLowEnergyController::Error error)
  */
 void DeviceCommand::deviceDisconnected()
 {
-    qCDebug(lc) << tr("Pokit device disconnected. Exiting with code %1.").arg(exitCodeOnDisconnect);
+    qCDebug(lc).noquote() << tr("Pokit device disconnected. Exiting with code %1.")
+        .arg(exitCodeOnDisconnect);
     QCoreApplication::exit(exitCodeOnDisconnect);
 }
 

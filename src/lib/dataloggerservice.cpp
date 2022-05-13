@@ -324,7 +324,7 @@ bool DataLoggerService::startLogger(const Settings &settings)
     Q_D(const DataLoggerService);
     Q_ASSERT(settings.command == DataLoggerService::Command::Start);
     if (settings.command != DataLoggerService::Command::Start) {
-        qCWarning(d->lc) << tr("Settings command must be 'Start'.");
+        qCWarning(d->lc).noquote() << tr("Settings command must be 'Start'.");
         return false;
     }
     return setSettings(settings);
