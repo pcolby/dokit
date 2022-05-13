@@ -86,8 +86,9 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadat
     qCDebug(lc) << "timestamp:" << metadata.timestamp
                                 << QDateTime::fromSecsSinceEpoch(metadata.timestamp);
     this->metadata = metadata;
+    this->samplesToGo = metadata.numberOfSamples;
     this->timestamp = (qint64)metadata.timestamp * (qint64)1000;
-    /// \todo we might also need to increment timestamp by numberOfSamples*updateInterval?
+    qCInfo(lc).noquote() << tr("Fetching %L1 logger samples...").arg(metadata.numberOfSamples);
 }
 
 /*!
@@ -133,5 +134,11 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
             break;
         }
         timestamp += metadata.updateInterval;
+        --samplesToGo;
+    }
+    if (samplesToGo <= 0) {
+        qCInfo(lc) << tr("Finished fetching %L1 samples (with %L2 to go).")
+            .arg(metadata.numberOfSamples).arg(samplesToGo);
+        disconnect(); // Will exit the application once disconnected.
     }
 }

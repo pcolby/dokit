@@ -35,6 +35,7 @@ protected slots:
 private:
     DataLoggerService * service; ///< Bluetooth service this command interracts with.
     DataLoggerService::Metadata metadata; ///< Most recent data logging metadata.
+    qint32 samplesToGo; ///< Number of samples we're still expecting to receive.
     quint64 timestamp; ///< Current sample's epoch milliseconds timestamp.
 
 private slots:
