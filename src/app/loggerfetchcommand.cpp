@@ -137,7 +137,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
         --samplesToGo;
     }
     if (samplesToGo <= 0) {
-        qCInfo(lc) << tr("Finished fetching %L1 samples (with %L2 to go).")
+        qCInfo(lc) << tr("Finished fetching %L1 samples (with %L2 to remaining).")
             .arg(metadata.numberOfSamples).arg(samplesToGo);
         disconnect(); // Will exit the application once disconnected.
     }

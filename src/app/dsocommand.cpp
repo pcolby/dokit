@@ -36,7 +36,7 @@
 DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
         DsoService::Command::FreeRunning, 0, DsoService::Mode::DcVoltage,
-        { DsoService::VoltageRange::_30V_to_60V }, 1000000, 1000}
+        { DsoService::VoltageRange::_30V_to_60V }, 1000*1000, 1000}
 {
 
 }
@@ -122,34 +122,31 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         }
     }
 
-    // Parse the trigger-level option.
+    /// \todo Parse the trigger-level option.
 
-    // Parse the trigger-mode option.
+    /// \todo Parse the trigger-mode option.
 
     // Parse the interval option.
-//    if (parser.isSet(QLatin1String("interval"))) {
-//        const QString value = parser.value(QLatin1String("interval"));
-//        const quint32 interval = parseWholeValue(value, QLatin1String("s"));
-//        if (interval == 0) {
-//            errors.append(tr("Invalid interval value: %1").arg(value));
-//        } else {
-//            settings.updateInterval = interval;
-//        }
-//    }
+    if (parser.isSet(QLatin1String("interval"))) {
+        const QString value = parser.value(QLatin1String("interval"));
+        const quint32 interval = parseMicroValue(value, QLatin1String("s"), 500*1000);
+        if (interval == 0) {
+            errors.append(tr("Invalid interval value: %1").arg(value));
+        } else {
+            settings.samplingWindow = interval;
+        }
+    }
 
     // Parse the samples option.
-//    settings.timestamp = QDateTime::currentSecsSinceEpoch(); // Note, subject to Y2038 epochalypse.
-//    if (parser.isSet(QLatin1String("timestamp"))) {
-//        const QString value = parser.value(QLatin1String("timestamp"));
-//        QLocale locale; bool ok;
-//        static_assert(sizeof(uint) == sizeof(settings.timestamp));
-//        const int timestamp = locale.toUInt(value, &ok);
-//        if (!ok) {
-//            errors.append(tr("Invalid timestamp value: %1").arg(value));
-//        } else {
-//            settings.timestamp = timestamp;
-//        }
-//    }
+    if (parser.isSet(QLatin1String("samples"))) {
+        const QString value = parser.value(QLatin1String("samples"));
+        const quint32 samples = parseWholeValue(value, QLatin1String("S"));
+        if (samples == 0) {
+            errors.append(tr("Invalid samples value: %1").arg(value));
+        } else {
+            settings.numberOfSamples = samples;
+        }
+    }
     return errors;
 }
 
@@ -257,8 +254,8 @@ void DsoCommand::settingsWritten()
     /// \todo Output the settings used as CSV, JSON and Text.
     connect(service, &DsoService::metadataRead, this, &DsoCommand::metadataRead);
     connect(service, &DsoService::samplesRead, this, &DsoCommand::outputSamples);
-//    service->beginMetadata();
-//    service->beginSampling();
+    service->beginMetadata();
+    service->beginSampling();
 }
 
 /*!
@@ -269,15 +266,15 @@ void DsoCommand::settingsWritten()
  */
 void DsoCommand::metadataRead(const DsoService::Metadata &metadata)
 {
-    /// \todo Remember the metadata.
-    Q_UNUSED(metadata);
     qCDebug(lc) << "status:" << (int)(metadata.status);
     qCDebug(lc) << "scale:" << metadata.scale;
     qCDebug(lc) << "mode:" << DsoService::toString(metadata.mode);
     qCDebug(lc) << "range:" << DsoService::toString(metadata.range.voltageRange);
     qCDebug(lc) << "samplingWindow:" << (int)metadata.samplingWindow;
     qCDebug(lc) << "numberOfSamples:" << metadata.numberOfSamples;
-    qCDebug(lc) << "samplingRate:" << metadata.samplingRate;
+    qCDebug(lc) << "samplingRate:" << metadata.samplingRate << "Hz";
+    this->metadata = metadata;
+    this->samplesToGo = metadata.numberOfSamples;
 }
 
 /*!
@@ -285,7 +282,46 @@ void DsoCommand::metadataRead(const DsoService::Metadata &metadata)
  */
 void DsoCommand::outputSamples(const DsoService::Samples &samples)
 {
-    /// \todo Output the samples.
-    Q_UNUSED(samples);
-    qCDebug(lc) << "samplesRead";
+    QString unit;
+    switch (metadata.mode) {
+    case DsoService::Mode::DcVoltage: unit = QLatin1String("Vdc"); break;
+    case DsoService::Mode::AcVoltage: unit = QLatin1String("Vac"); break;
+    case DsoService::Mode::DcCurrent: unit = QLatin1String("Adc"); break;
+    case DsoService::Mode::AcCurrent: unit = QLatin1String("Aac"); break;
+    default:
+        qCDebug(lc) << tr("No known unit for mode %1 \"%2\".").arg((int)metadata.mode)
+            .arg(DsoService::toString(metadata.mode));
+    }
+    const QString range = DsoService::toString(metadata.range, metadata.mode);
+
+    for (const qint16 &sample: samples) {
+        static int sampleNumber = 0; ++sampleNumber;
+        const float value = sample * metadata.scale;
+        switch (format) {
+        case OutputFormat::Csv:
+            for (static bool firstTime = true; firstTime; firstTime = false) {
+                fputs(qPrintable(tr("sample_number,value,unit,range\n")), stdout);
+            }
+            fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4\n").arg(sampleNumber).arg(value)
+                .arg(unit, range)), stdout);
+            break;
+        case OutputFormat::Json:
+            fputs(QJsonDocument(QJsonObject{
+                    { QLatin1String("value"),  value },
+                    { QLatin1String("unit"),   unit },
+                    { QLatin1String("range"),  range },
+                    { QLatin1String("mode"),   DsoService::toString(metadata.mode) },
+                }).toJson(), stdout);
+            break;
+        case OutputFormat::Text:
+            fputs(qPrintable(tr("%1 %2 %3\n").arg(sampleNumber).arg(value).arg(unit)), stdout);
+            break;
+        }
+        --samplesToGo;
+    }
+    if (samplesToGo <= 0) {
+        qCInfo(lc).noquote() << tr("Finished fetching %L1 samples (with %L3 to remaining).")
+            .arg(metadata.numberOfSamples).arg(samplesToGo);
+        disconnect(); // Will exit the application once disconnected.
+    }
 }

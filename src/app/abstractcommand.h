@@ -42,6 +42,8 @@ public:
     virtual QStringList supportedOptions(const QCommandLineParser &parser) const;
 
     static QString escapeCsvField(const QString &field);
+    static quint32 parseMicroValue(const QString &value, const QString &unit,
+                                   const quint32 sensibleMinimum=0);
     static quint32 parseMilliValue(const QString &value, const QString &unit,
                                    const quint32 sensibleMinimum=0);
     static quint32 parseWholeValue(const QString &value, const QString &unit);

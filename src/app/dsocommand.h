@@ -41,6 +41,8 @@ protected slots:
 private:
     DsoService * service; ///< Bluetooth service this command interracts with.
     DsoService::Settings settings; ///< Settings for the Pokit device's DSO mode.
+    DsoService::Metadata metadata; ///< Most recent DSO metadata.
+    qint32 samplesToGo; ///< Number of samples we're expecting in the current window.
 
     static DsoService::Range lowestRange(const DsoService::Mode mode,
                                                 const quint32 desiredMax);

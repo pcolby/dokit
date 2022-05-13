@@ -127,6 +127,67 @@ QString AbstractCommand::escapeCsvField(const QString &field)
 }
 
 /*!
+ * Returns \a value as a number of micros, such as microseconds, or microvolts. The string \a value
+ * may end with the optional \a unit, such as `V` or `s`, which may also be preceded with a SI unit
+ * prefix such as `m` for `milli`. If \a value contains no SI unit prefix, then the result will be
+ * multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This allows for
+ * convenient use like:
+ *
+ * ```
+ * const quin32t timeout = parseMicroValue(parser.value("window"), 's', 500*1000);
+ * ```
+ *
+ * So that an unqalified period like "300" will be assumed to be 300 milliseconds, and not 300
+ * microseconds, while a period like "1000" will be assume to be 1 second.
+ *
+ * If conversion fails for any reason, 0 is returned.
+ */
+quint32 AbstractCommand::parseMicroValue(const QString &value, const QString &unit,
+                                         const quint32 sensibleMinimum)
+{
+    // Remove the optional (whole) unit suffix.
+    quint32 scale = 0;
+    QString number = value.trimmed();
+    if (number.endsWith(unit, Qt::CaseInsensitive)) {
+        number.chop(unit.length());
+        scale = 1000 * 1000;
+    }
+
+    // Parse, and remove, the optional SI unit prefix.
+    if (number.endsWith(QLatin1String("m"))) {
+        number.chop(1);
+        scale = 1000;
+    }
+
+    // Parse, and remove, the optional SI unit prefix.
+    if (number.endsWith(QLatin1String("u"))) {
+        number.chop(1);
+        scale = 1;
+    }
+
+    // Parse the number as an (unsigned) integer.
+    QLocale locale; bool ok;
+    const quint32 integer = locale.toUInt(number, &ok);
+    if (ok) {
+        if ((scale == 0) && (integer != 0)) {
+            for (scale = 1; (integer * scale) < sensibleMinimum; scale *= 1000);
+        }
+        return integer * scale;
+    }
+
+    // Parse the number as a (double) floating point number.
+    const double dbl = locale.toDouble(number, &ok);
+    if (ok) {
+        if ((scale == 0) && (dbl > 0.0)) {
+            for (scale = 1; (dbl * scale) < sensibleMinimum; scale *= 1000);
+        }
+        return dbl * scale;
+    }
+
+    return 0; // Failed to parse as either integer, or float.
+}
+
+/*!
  * Returns \a value as a number of millis, such as milliseconds, or millivolts. The string \a value
  * may end with the optional \a unit, such as `V` or `s`, which may also be preceded with a SI unit
  * prefix such as `m` for `milli`. If \a value contains no SI unit prefix, then the result will be
