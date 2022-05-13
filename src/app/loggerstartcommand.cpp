@@ -254,5 +254,5 @@ void LoggerStartCommand::settingsWritten()
         fputs(qPrintable(tr("Done.\n")), stdout);
         break;
     }
-    QCoreApplication::exit(EXIT_SUCCESS);
+    disconnect(); // Will exit the application once disconnected.
 }

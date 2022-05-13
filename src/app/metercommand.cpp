@@ -406,7 +406,7 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     if (numberOfSamplesToRead > 0) {
         if (--numberOfSamplesToRead == 0) {
             service->stopClientReadings();
-            QCoreApplication::exit(EXIT_SUCCESS);
+            disconnect(); // Will exit the application once disconnected.
         }
     }
 }

@@ -110,5 +110,5 @@ void FlashLedCommand::deviceLedFlashed()
         fputs(qPrintable(tr("Done.\n")), stdout);
         break;
     }
-    QCoreApplication::quit();
+    disconnect(); // Will exit the application once disconnected.
 }

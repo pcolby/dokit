@@ -37,10 +37,14 @@ public slots:
 
 protected:
     PokitDevice * device; ///< Pokit Bluetooth device (if any) this command inerracts with.
+    int exitCodeOnDisconnect; ///< Exit code to return on device disconnection.
+
+    void disconnect(int exitCode=EXIT_SUCCESS);
     virtual AbstractPokitService * getService() = 0;
 
 protected slots:
     virtual void controllerError(const QLowEnergyController::Error error);
+    virtual void deviceDisconnected();
     virtual void serviceError(const QLowEnergyService::ServiceError error);
     virtual void serviceDetailsDiscovered();
 

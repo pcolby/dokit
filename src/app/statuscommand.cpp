@@ -154,5 +154,5 @@ void StatusCommand::serviceDetailsDiscovered()
             .arg((quint8)status.batteryStatus)), stdout);
         break;
     }
-    QCoreApplication::quit(); // We're all done :)
+    disconnect(); // Will exit the application once disconnected.
 }

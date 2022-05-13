@@ -32,7 +32,8 @@
 /*!
  * Construct a new DeviceCommand object with \a parent.
  */
-DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), device(nullptr)
+DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), device(nullptr),
+    exitCodeOnDisconnect(EXIT_FAILURE)
 {
 
 }
@@ -47,6 +48,19 @@ bool DeviceCommand::start()
         : tr("Looking for device \"%1\"...").arg(deviceToScanFor));
     discoveryAgent->start();
     return true;
+}
+
+/*!
+ * Disconnects the underlying Pokit device, and sets \a exitCode to be return to the OS once the
+ * disconnection has taken place.
+ */
+void DeviceCommand::disconnect(int exitCode)
+{
+    qCDebug(lc) << tr("Disconnecting Pokit device...");
+    Q_ASSERT(device);
+    Q_ASSERT(device->controller());
+    exitCodeOnDisconnect = exitCode;
+    device->controller()->disconnectFromDevice();
 }
 
 /*!
@@ -67,6 +81,19 @@ void DeviceCommand::controllerError(QLowEnergyController::Error error)
 {
     qCWarning(lc).noquote() << tr("Bluetooth controller error:") << error;
     QCoreApplication::exit(EXIT_FAILURE);
+}
+
+/*!
+ * Handles devics disconnection events. This base implementation simply logs and exits the
+ * application (via QCoreApplication::exit) with the current exitCodeOnDisconnect value, which is
+ * initialise to `EXIT_FAILURE` in the constructor, but should be set to `EXIT_SUCESS` if/when
+ * the derived command class has completed its actions and requested the disconnection (as opposed
+ * to a spontaneous disconnection on error).
+ */
+void DeviceCommand::deviceDisconnected()
+{
+    qCDebug(lc) << tr("Pokit device disconnected. Exiting with code %1.").arg(exitCodeOnDisconnect);
+    QCoreApplication::exit(exitCodeOnDisconnect);
 }
 
 /*!
@@ -114,6 +141,8 @@ void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
         discoveryAgent->stop();
 
         device = new PokitDevice(info, this);
+        connect(device->controller(), &QLowEnergyController::disconnected,
+                this, &DeviceCommand::deviceDisconnected);
         connect(device->controller(),
             #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
             QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),

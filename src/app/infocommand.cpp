@@ -140,5 +140,5 @@ void InfoCommand::serviceDetailsDiscovered()
         fputs(qPrintable(tr("Software revision: %1\n").arg(service->softwareRevision())), stdout);
         break;
     }
-    QCoreApplication::quit(); // We're all done :)
+    disconnect(); // Will exit the application once disconnected.
 }
