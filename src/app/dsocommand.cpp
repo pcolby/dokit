@@ -43,19 +43,10 @@ DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent),
 
 QStringList DsoCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    QStringList options = DeviceCommand::requiredOptions(parser) + QStringList{
+    return DeviceCommand::requiredOptions(parser) + QStringList{
         QLatin1String("mode"),
         QLatin1String("range"),
     };
-    if ((parser.isSet(QLatin1String("trigger-level"))) ||
-        (parser.isSet(QLatin1String("trigger-mode"))))
-    {
-        options.append({
-            QLatin1String("trigger-level"),
-            QLatin1String("trigger-mode"),
-        });
-    }
-    return options;
 }
 
 QStringList DsoCommand::supportedOptions(const QCommandLineParser &parser) const
@@ -63,6 +54,8 @@ QStringList DsoCommand::supportedOptions(const QCommandLineParser &parser) const
     return DeviceCommand::supportedOptions(parser) + QStringList{
         QLatin1String("interval"),
         QLatin1String("samples"),
+        QLatin1String("trigger-level"),
+        QLatin1String("trigger-mode"),
     };
 }
 
@@ -95,9 +88,10 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the (required) range option.
+    QString unit;
     {
         const QString value = parser.value(QLatin1String("range"));
-        QString unit; quint32 sensibleMinimum = 0;
+        quint32 sensibleMinimum = 0;
         switch (settings.mode) {
         case DsoService::Mode::Idle:
             Q_ASSERT(false); // Not possible, since the mode parsing above never allows Idle.
@@ -122,9 +116,36 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         }
     }
 
-    /// \todo Parse the trigger-level option.
+    // Parse the trigger-level option.
+    if (parser.isSet(QLatin1String("trigger-level"))) {
+        const QString value = parser.value(QLatin1String("trigger-level"));
+        const quint32 interval = parseMilliValue(value, unit);
+        if (interval == 0) {
+            errors.append(tr("Invalid interval value: %1").arg(value));
+        } else {
+            settings.triggerLevel = interval;
+        }
+    }
 
-    /// \todo Parse the trigger-mode option.
+    // Parse the trigger-mode option.
+    if (parser.isSet(QLatin1String("trigger-mode"))) {
+        const QString mode = parser.value(QLatin1String("trigger-mode")).trimmed().toLower();
+        if (mode.startsWith(QLatin1String("free"))) {
+            settings.command = DsoService::Command::FreeRunning;
+        } else if (mode.startsWith(QLatin1String("ris"))) {
+           settings.command = DsoService::Command::RisingEdgeTrigger;
+        } else if (mode.startsWith(QLatin1String("fall"))) {
+            settings.command = DsoService::Command::FallingEdgeTrigger;
+        } else {
+            errors.append(tr("Unknown trigger mode: %1").arg(parser.value(QLatin1String("mode"))));
+        }
+    }
+
+    // Ensure that if either trigger option is present, then both are.
+    if (parser.isSet(QLatin1String("trigger-level")) !=
+        parser.isSet(QLatin1String("trigger-mode"))) {
+        errors.append(tr("If either option is provided, then both must be: trigger-level, trigger-mode"));
+    }
 
     // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
