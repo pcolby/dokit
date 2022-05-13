@@ -228,7 +228,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a4aac49f9a655408e4b58f05735c5f9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the data logger with <em>settings</em>.  <a href="classDataLoggerService.html#a4aac49f9a655408e4b58f05735c5f9ab">More...</a><br /></td></tr>
 <tr class="separator:a4aac49f9a655408e4b58f05735c5f9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f8a721025e04bf27df18194247b532e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e">stopLogger</a> ()</td></tr>
-<tr class="memdesc:a9f8a721025e04bf27df18194247b532e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the data logger.  <a href="classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e">More...</a><br /></td></tr>
+<tr class="memdesc:a9f8a721025e04bf27df18194247b532e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the data logger.  <a href="classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e">More...</a><br /></td></tr>
 <tr class="separator:a9f8a721025e04bf27df18194247b532e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c9e68b94b0fba82a979bb7e0b0adab4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerService.html#a4c9e68b94b0fba82a979bb7e0b0adab4">fetchSamples</a> ()</td></tr>
 <tr class="memdesc:a4c9e68b94b0fba82a979bb7e0b0adab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the data logger.  <a href="classDataLoggerService.html#a4c9e68b94b0fba82a979bb7e0b0adab4">More...</a><br /></td></tr>
@@ -517,8 +517,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </div><div class="memdoc">
 
 <p>Raw samples from the <code>Reading</code> characteristic. </p>
-<p >These raw samples are (supposedly) wihtin the range -2048 to +2047, and need to be multiplied by the <a class="el" href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571" title="Scale to apply to read samples.">Metadata::scale</a> value from the <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristc to get the true values.</p>
-<p >Also supposedly, there should be no more than 10 samples at a time, according to Pokit's current API docs. There is not artificial limitation imposed by QtPokit, so devices may begin batching more samples in future. </p>
+<p >These raw samples are (supposedly) within the range -2048 to +2047, and need to be multiplied by the <a class="el" href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571" title="Scale to apply to read samples.">Metadata::scale</a> value from the <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristc to get the true values.</p>
+<p >Also supposedly, there should be no more than 10 samples at a time, according to Pokit's current API docs. There is not artificial limitation imposed by QtPokit, so devices may begin batching more samples in future. Specifically, the Pokit Pro seems to send 88 samples (in 176 bytes) at a time. </p>
 
 </div>
 </div>
@@ -725,7 +725,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">metadata</a>.<a class="code hl_variable" href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">scale</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.cpp:380</div></div>
+<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.cpp:387</div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html">DataLoggerService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:114</div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html_a824ce9f37293e435d41af31788145571"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">DataLoggerService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:116</div></div>
 </div><!-- fragment --> <div class="dynheader">
@@ -938,6 +938,7 @@ Here is the caller graph for this function:</div>
 <p>Configures the Pokit device's data logger mode. </p>
 <p >Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p >Emits <a class="el" href="classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em>settings</em> have been writtem successfully. </p>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000001">Pokit Bluetooth API errata:</a></b></dt><dd>Despit the Pokit API docs saying <code>Update Interval</code> is <code>uint16</code>, Pokit Pro devices error if try to set such. However, if we switch <code>Update Interval</code> to <code>uint32</code> then the fields are set properly (according to the resulting <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code>). Not sure if this is a Pokit Pro difference, or general API doc error. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1023,7 +1024,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Start the data logger. </p>
+<p>Stop the data logger. </p>
 <p >This is just a convenience function equivalent to calling <a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> with the command set to DataLoggerService::Command::Stop. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>

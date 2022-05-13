@@ -1057,7 +1057,7 @@ Here is the caller graph for this function:</div>
 <p>Flash the Pokit device's LED. </p>
 <p >Returns <code>true</code> if the flash request was successfully queued, <code>false</code> otherwise.</p>
 <p >Emits <a class="el" href="classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee" title="This signal is emitted when device&#39;s LED has flashed in response to a write of the Flash LED characte...">deviceLedFlashed()</a> if/when the LED has flashed successfully.</p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000004">Pokit Bluetooth API errata:</a></b></dt><dd>This does not appear to work currently, for the one (Pokit Pro) device available for testing. Instead, the underlying Bluetooth stack returns ATT error <code>0x80</code>. Also, despite the Pokit API docs claim "this will cause the LED to flash twice", the Android app can turn the LED on/off, which is presumably an undocumented Pokit Pro extension.</dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000005">Pokit Bluetooth API errata:</a></b></dt><dd>This does not appear to work currently, for the one (Pokit Pro) device available for testing. Instead, the underlying Bluetooth stack returns ATT error <code>0x80</code>. Also, despite the Pokit API docs claim "this will cause the LED to flash twice", the Android app can turn the LED on/off, which is presumably an undocumented Pokit Pro extension.</dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00297">297</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  298</span>{</div>
@@ -1422,7 +1422,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <p >UUID of the "Pokit Status" service.</p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000003">Pokit Bluetooth API errata:</a></b></dt><dd>Pokit API 1.00 (and 0.02) states this UUID as <code>57d3a771-267c-4394-8872-78223e92aec4</code> but the Pokit Pro device reports/supports it as <code>57d3a771-267c-4394-8872-78223e92aec5</code>, that is the last digit is a <code>5</code> not <code>4</code>.</dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000004">Pokit Bluetooth API errata:</a></b></dt><dd>Pokit API 1.00 (and 0.02) states this UUID as <code>57d3a771-267c-4394-8872-78223e92aec4</code> but the Pokit Pro device reports/supports it as <code>57d3a771-267c-4394-8872-78223e92aec5</code>, that is the last digit is a <code>5</code> not <code>4</code>.</dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00043">43</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
 

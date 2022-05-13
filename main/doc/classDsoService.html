@@ -227,9 +227,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4bd74f90cf6b34172cfeaff8112f22fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDsoService.html#a4bd74f90cf6b34172cfeaff8112f22fe">startDso</a> (const <a class="el" href="structDsoService_1_1Settings.html">Settings</a> &amp;settings)</td></tr>
 <tr class="memdesc:a4bd74f90cf6b34172cfeaff8112f22fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the DSO with <em>settings</em>.  <a href="classDsoService.html#a4bd74f90cf6b34172cfeaff8112f22fe">More...</a><br /></td></tr>
 <tr class="separator:a4bd74f90cf6b34172cfeaff8112f22fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97904ffa3fdc99df045b4ef43ccc2321"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDsoService.html#a97904ffa3fdc99df045b4ef43ccc2321">stopDso</a> ()</td></tr>
-<tr class="memdesc:a97904ffa3fdc99df045b4ef43ccc2321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the DSO.  <a href="classDsoService.html#a97904ffa3fdc99df045b4ef43ccc2321">More...</a><br /></td></tr>
-<tr class="separator:a97904ffa3fdc99df045b4ef43ccc2321"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da2f9ae60f06d3b904d6d239bacd09e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDsoService.html#a5da2f9ae60f06d3b904d6d239bacd09e">fetchSamples</a> ()</td></tr>
 <tr class="memdesc:a5da2f9ae60f06d3b904d6d239bacd09e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the DSO.  <a href="classDsoService.html#a5da2f9ae60f06d3b904d6d239bacd09e">More...</a><br /></td></tr>
 <tr class="separator:a5da2f9ae60f06d3b904d6d239bacd09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -725,7 +722,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classDsoService.html#afda4aa4a55ff0af205f10ccf8c77cbf5">metadata</a>.<a class="code hl_variable" href="structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085">scale</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDsoService_html_afda4aa4a55ff0af205f10ccf8c77cbf5"><div class="ttname"><a href="classDsoService.html#afda4aa4a55ff0af205f10ccf8c77cbf5">DsoService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DSO service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dsoservice.cpp:383</div></div>
+<div class="ttc" id="aclassDsoService_html_afda4aa4a55ff0af205f10ccf8c77cbf5"><div class="ttname"><a href="classDsoService.html#afda4aa4a55ff0af205f10ccf8c77cbf5">DsoService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DSO service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dsoservice.cpp:363</div></div>
 <div class="ttc" id="astructDsoService_1_1Metadata_html"><div class="ttname"><a href="structDsoService_1_1Metadata.html">DsoService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> dsoservice.h:113</div></div>
 <div class="ttc" id="astructDsoService_1_1Metadata_html_a6b8a8636619603ff9a52e0ef2eba1085"><div class="ttname"><a href="structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085">DsoService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> dsoservice.h:115</div></div>
 </div><!-- fragment --> <div class="dynheader">
@@ -1005,27 +1002,6 @@ Here is the call graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="classDsoService_a4bd74f90cf6b34172cfeaff8112f22fe_cgraph.svg" width="646" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
-
-</div>
-</div>
-<a id="a97904ffa3fdc99df045b4ef43ccc2321" name="a97904ffa3fdc99df045b4ef43ccc2321"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97904ffa3fdc99df045b4ef43ccc2321">&#9670;&nbsp;</a></span>stopDso()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool DsoService::stopDso </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Start the DSO. </p>
-<p >This is just a convenience function equivalent to calling <a class="el" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e" title="Configures the Pokit device&#39;s DSO mode.">setSettings()</a> with the command set to DsoService::Command::Stop. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>How do we stop / do we need this function at all? </dd></dl>
 
 </div>
 </div>

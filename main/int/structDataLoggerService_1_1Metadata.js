@@ -6,5 +6,5 @@ var structDataLoggerService_1_1Metadata =
     [ "scale", "structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571", null ],
     [ "status", "structDataLoggerService_1_1Metadata.html#a996d2701f1571bbbe51da18d2be3e2b8", null ],
     [ "timestamp", "structDataLoggerService_1_1Metadata.html#a67edabb3d6dbd9c9d425bd825f72d23b", null ],
-    [ "updateInterval", "structDataLoggerService_1_1Metadata.html#a22ffbfed25149cfec07b89750da157d0", null ]
+    [ "updateInterval", "structDataLoggerService_1_1Metadata.html#a9cc636b875d630cf33d3ddead54e27d2", null ]
 ];

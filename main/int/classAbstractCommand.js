@@ -9,6 +9,7 @@ var classAbstractCommand =
     [ "deviceDiscovered", "classAbstractCommand.html#aa8dd50eb6a381ed767c34d8fdfd2a795", null ],
     [ "deviceDiscoveryFinished", "classAbstractCommand.html#ac71606b99b43c3f74dbc64433ee22512", null ],
     [ "escapeCsvField", "classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813", null ],
+    [ "parseMicroValue", "classAbstractCommand.html#a6e67145ebb25a7bac49736245f69ee89", null ],
     [ "parseMilliValue", "classAbstractCommand.html#ab18bb57fe68534739f63c994330a29c2", null ],
     [ "parseWholeValue", "classAbstractCommand.html#a77b59d2b62aae9580aea93ca65c3af9a", null ],
     [ "processOptions", "classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d", null ],

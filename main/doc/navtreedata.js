@@ -27,6 +27,7 @@ var NAVTREE =
   [ "QtPokit", "index.html", [
     [ "Placeholder Page", "md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html", null ],
     [ "Todo List", "todo.html", null ],
+    [ "Pokit API Errata", "pokit.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -48,7 +49,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
-"classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1"
+"classes.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

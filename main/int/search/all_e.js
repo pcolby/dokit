@@ -40,11 +40,11 @@ var searchData=
   ['null_37',['Null',['https://doc.qt.io/qt-5/qstring-null.html',1,'QString']]],
   ['nulldevice_38',['nullDevice',['https://doc.qt.io/qt-5/qprocess.html#nullDevice',1,'QProcess']]],
   ['number_39',['number',['https://doc.qt.io/qt-5/qstring.html#number-6',1,'QString::number()'],['https://doc.qt.io/qt-5/qbytearray.html#number',1,'QByteArray::number()'],['https://doc.qt.io/qt-5/qstring.html#number-5',1,'QString::number(qulonglong n, int base)'],['https://doc.qt.io/qt-5/qstring.html#number-4',1,'QString::number(qlonglong n, int base)'],['https://doc.qt.io/qt-5/qstring.html#number-3',1,'QString::number(ulong n, int base)'],['https://doc.qt.io/qt-5/qstring.html#number',1,'QString::number(long n, int base)'],['https://doc.qt.io/qt-5/qstring.html#number-1',1,'QString::number(uint n, int base)'],['https://doc.qt.io/qt-5/qstring.html#number-2',1,'QString::number(int n, int base)'],['https://doc.qt.io/qt-5/qbytearray.html#number-4',1,'QByteArray::number(double n, char f, int prec)'],['https://doc.qt.io/qt-5/qbytearray.html#number-3',1,'QByteArray::number(qulonglong n, int base)'],['https://doc.qt.io/qt-5/qbytearray.html#number-2',1,'QByteArray::number(qlonglong n, int base)'],['https://doc.qt.io/qt-5/qbytearray.html#number-1',1,'QByteArray::number(uint n, int base)']]],
-  ['numberflags_40',['NumberFlags',['https://doc.qt.io/qt-5/qtextstream.html#NumberFlag-enum',1,'QTextStream']]],
-  ['numberflags_41',['numberFlags',['https://doc.qt.io/qt-5/qtextstream.html#numberFlags',1,'QTextStream']]],
+  ['numberflags_40',['numberFlags',['https://doc.qt.io/qt-5/qtextstream.html#numberFlags',1,'QTextStream']]],
+  ['numberflags_41',['NumberFlags',['https://doc.qt.io/qt-5/qtextstream.html#NumberFlag-enum',1,'QTextStream']]],
   ['numberofsamples_42',['numberOfSamples',['../structDataLoggerService_1_1Metadata.html#a5e40e39f2d21dbf609403f111537b2b0',1,'DataLoggerService::Metadata::numberOfSamples()'],['../structDsoService_1_1Settings.html#ad118943a951c606915bd12c45ded6cd6',1,'DsoService::Settings::numberOfSamples()'],['../structDsoService_1_1Metadata.html#aa2c92c1dd91d2351dbe06c1e7910c78d',1,'DsoService::Metadata::numberOfSamples()']]],
   ['numberofsamplestoread_43',['numberOfSamplesToRead',['../classMeterCommand.html#aa9ffe9c54075836912bf72f2774878bc',1,'MeterCommand']]],
-  ['numberoptions_44',['NumberOptions',['https://doc.qt.io/qt-5/qlocale.html#NumberOption-enum',1,'QLocale']]],
-  ['numberoptions_45',['numberOptions',['https://doc.qt.io/qt-5/qlocale.html#numberOptions',1,'QLocale']]],
+  ['numberoptions_44',['numberOptions',['https://doc.qt.io/qt-5/qlocale.html#numberOptions',1,'QLocale']]],
+  ['numberoptions_45',['NumberOptions',['https://doc.qt.io/qt-5/qlocale.html#NumberOption-enum',1,'QLocale']]],
   ['numericmode_46',['numericMode',['https://doc.qt.io/qt-5/qcollator.html#numericMode',1,'QCollator']]]
 ];

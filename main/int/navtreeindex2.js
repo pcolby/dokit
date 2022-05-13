@@ -1,5 +1,13 @@
 var NAVTREEINDEX2 =
 {
+"classScanCommand.html#a692b7c3f071f31211ab36d754d779330":[5,0,28,13],
+"classScanCommand.html#a9998ef360fde53be932dc3059e86578e":[5,0,28,4],
+"classScanCommand.html#abf73c3339c34841c58f8165839b45b6d":[5,0,28,0],
+"classScanCommand.html#ac9f53dee63d2dfaa3acf82e71db01d64":[5,0,28,1],
+"classScanCommand.html#ae1e453f0e6b1f951b0115e1c96037c48":[5,0,28,11],
+"classScanCommand.html#af75eb6fd7d6d9143c18e1ef2b3e3f5ec":[5,0,28,9],
+"classScanCommand.html#afde6034e9362b2986aa5084b638930d6":[5,0,28,7],
+"classSetNameCommand.html":[5,0,29],
 "classSetNameCommand.html#a25871d2f3a6aded92a89559fd36370f4":[5,0,29,1],
 "classSetNameCommand.html#a3d6d88c52edc3fed5d2326c6d0859b82":[5,0,29,5],
 "classSetNameCommand.html#a67f074dc527a678ee67e52491629c69b":[5,0,29,7],
@@ -212,11 +220,11 @@ var NAVTREEINDEX2 =
 "structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65":[5,0,6,0,1],
 "structDataLoggerService_1_1Metadata.html":[5,0,6,1],
 "structDataLoggerService_1_1Metadata.html#a11bff58ef39f23253d6398bffcb91f84":[5,0,6,1,2],
-"structDataLoggerService_1_1Metadata.html#a22ffbfed25149cfec07b89750da157d0":[5,0,6,1,6],
 "structDataLoggerService_1_1Metadata.html#a5e40e39f2d21dbf609403f111537b2b0":[5,0,6,1,1],
 "structDataLoggerService_1_1Metadata.html#a67edabb3d6dbd9c9d425bd825f72d23b":[5,0,6,1,5],
 "structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571":[5,0,6,1,3],
 "structDataLoggerService_1_1Metadata.html#a996d2701f1571bbbe51da18d2be3e2b8":[5,0,6,1,4],
+"structDataLoggerService_1_1Metadata.html#a9cc636b875d630cf33d3ddead54e27d2":[5,0,6,1,6],
 "structDataLoggerService_1_1Metadata.html#ac976c83a69d67fbd287d9ae406582d81":[5,0,6,1,0],
 "structDataLoggerService_1_1Settings.html":[5,0,6,3],
 "structDataLoggerService_1_1Settings.html#a4bde857f31f27e5574b9d204c7a5aa48":[5,0,6,3,4],
@@ -241,13 +249,5 @@ var NAVTREEINDEX2 =
 "structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085":[5,0,12,1,5],
 "structDsoService_1_1Metadata.html#aa2c92c1dd91d2351dbe06c1e7910c78d":[5,0,12,1,1],
 "structDsoService_1_1Metadata.html#ad0109534b3e7035a93abd47b1028f8ca":[5,0,12,1,0],
-"structDsoService_1_1Metadata.html#adef86fc5e8e8ef5b2348251e2cc419d1":[5,0,12,1,4],
-"structDsoService_1_1Metadata.html#aee367bfb281ec101dfdffb27fad752c8":[5,0,12,1,2],
-"structDsoService_1_1Settings.html":[5,0,12,3],
-"structDsoService_1_1Settings.html#a1a66d9c5ab84eb3d046c1c5842f87faf":[5,0,12,3,1],
-"structDsoService_1_1Settings.html#a373678d7feb78a29d30ebdcc89df9e57":[5,0,12,3,3],
-"structDsoService_1_1Settings.html#a661cb2920a504d5f3fc7437529c37f15":[5,0,12,3,0],
-"structDsoService_1_1Settings.html#a85067aa6f3ad5a734414e97aa623763b":[5,0,12,3,4],
-"structDsoService_1_1Settings.html#a98deec20d34aa9f0e1567bce8ff24bc8":[5,0,12,3,5],
-"structDsoService_1_1Settings.html#ad118943a951c606915bd12c45ded6cd6":[5,0,12,3,2]
+"structDsoService_1_1Metadata.html#adef86fc5e8e8ef5b2348251e2cc419d1":[5,0,12,1,4]
 };

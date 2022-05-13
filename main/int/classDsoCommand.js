@@ -12,6 +12,8 @@ var classDsoCommand =
     [ "serviceDetailsDiscovered", "classDsoCommand.html#a57f3b6be35c7a6fdadfaa737177016a8", null ],
     [ "settingsWritten", "classDsoCommand.html#a96c56e497f56ab5ed43201ad13aede7b", null ],
     [ "supportedOptions", "classDsoCommand.html#a6569d0fd7b8307d6098e93092859301a", null ],
+    [ "metadata", "classDsoCommand.html#ae2d7e39e8a5d61680d8e6da0cf2bc9df", null ],
+    [ "samplesToGo", "classDsoCommand.html#a2fba285441bb9d0a76f3e43d1b718015", null ],
     [ "service", "classDsoCommand.html#a843aa2767953801fc2ec5fa7895714d6", null ],
     [ "settings", "classDsoCommand.html#a0438c5c9aa9fea7c00051ff9be7819d8", null ]
 ];

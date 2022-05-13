@@ -13,8 +13,8 @@ var searchData=
   ['targetstates_10',['targetStates',['https://doc.qt.io/qt-5/qabstracttransition.html#targetStates-prop',1,'QAbstractTransition::targetStates()'],['https://doc.qt.io/qt-5/qabstracttransition.html#targetStates',1,'QAbstractTransition::targetStates() const const']]],
   ['targetstateschanged_11',['targetStatesChanged',['https://doc.qt.io/qt-5/qabstracttransition.html#targetStatesChanged',1,'QAbstractTransition']]],
   ['temp_12',['temp',['https://doc.qt.io/qt-5/qdir.html#temp',1,'QDir']]],
-  ['temperature_13',['Temperature',['../classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd',1,'MultimeterService']]],
-  ['temperature_14',['temperature',['../structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327',1,'CalibrationService::CharacteristicUuids']]],
+  ['temperature_13',['temperature',['../structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327',1,'CalibrationService::CharacteristicUuids']]],
+  ['temperature_14',['Temperature',['../classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd',1,'MultimeterService']]],
   ['temperaturecalibrated_15',['temperatureCalibrated',['../classCalibrationService.html#a9d2d21992939b86c2dbf9ae65b52a59d',1,'CalibrationService']]],
   ['temppath_16',['tempPath',['https://doc.qt.io/qt-5/qdir.html#tempPath',1,'QDir']]],
   ['terminate_17',['terminate',['https://doc.qt.io/qt-5/qprocess.html#terminate',1,'QProcess::terminate()'],['https://doc.qt.io/qt-5/qthread.html#terminate',1,'QThread::terminate()']]],
@@ -213,8 +213,8 @@ var searchData=
   ['type_210',['Type',['https://doc.qt.io/qt-5/qglobalstatic.html#Type-typedef',1,'QGlobalStatic::Type()'],['https://doc.qt.io/qt-5/qshareddatapointer.html#Type-typedef',1,'QSharedDataPointer::Type()'],['https://doc.qt.io/qt-5/qexplicitlyshareddatapointer.html#Type-typedef',1,'QExplicitlySharedDataPointer::Type()']]],
   ['typedconstructor_211',['TypedConstructor',['https://doc.qt.io/qt-5/qmetatype.html#TypedConstructor-typedef',1,'QMetaType']]],
   ['typeddestructor_212',['TypedDestructor',['https://doc.qt.io/qt-5/qmetatype.html#TypedDestructor-typedef',1,'QMetaType']]],
-  ['typeflags_213',['TypeFlags',['https://doc.qt.io/qt-5/qmetatype.html#TypeFlag-enum',1,'QMetaType']]],
-  ['typeflags_214',['typeFlags',['https://doc.qt.io/qt-5/qmetatype.html#typeFlags',1,'QMetaType']]],
+  ['typeflags_213',['typeFlags',['https://doc.qt.io/qt-5/qmetatype.html#typeFlags',1,'QMetaType']]],
+  ['typeflags_214',['TypeFlags',['https://doc.qt.io/qt-5/qmetatype.html#TypeFlag-enum',1,'QMetaType']]],
   ['typename_215',['typeName',['https://doc.qt.io/qt-5/qmetatype.html#typeName',1,'QMetaType::typeName()'],['https://doc.qt.io/qt-5/qvariant.html#typeName',1,'QVariant::typeName()'],['https://doc.qt.io/qt-5/qmetamethod.html#typeName',1,'QMetaMethod::typeName()'],['https://doc.qt.io/qt-5/qmetaproperty.html#typeName',1,'QMetaProperty::typeName()']]],
   ['typetoname_216',['typeToName',['https://doc.qt.io/qt-5/qvariant.html#typeToName',1,'QVariant']]]
 ];

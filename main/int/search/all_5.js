@@ -70,11 +70,12 @@ var searchData=
   ['exists_67',['exists',['https://doc.qt.io/qt-5/qfile.html#exists',1,'QFile::exists()'],['https://doc.qt.io/qt-5/qglobalstatic.html#exists',1,'QGlobalStatic::exists()'],['https://doc.qt.io/qt-5/qdir.html#exists',1,'QDir::exists()'],['https://doc.qt.io/qt-5/qfileinfo.html#exists-1',1,'QFileInfo::exists()'],['https://doc.qt.io/qt-5/qfile.html#exists-1',1,'QFile::exists()'],['https://doc.qt.io/qt-5/qfileinfo.html#exists',1,'QFileInfo::exists()'],['https://doc.qt.io/qt-5/qdir.html#exists-1',1,'QDir::exists()']]],
   ['exit_68',['exit',['https://doc.qt.io/qt-5/qthread.html#exit',1,'QThread::exit()'],['https://doc.qt.io/qt-5/qeventloop.html#exit',1,'QEventLoop::exit()'],['https://doc.qt.io/qt-5/qcoreapplication.html#exit',1,'QCoreApplication::exit()']]],
   ['exitcode_69',['exitCode',['https://doc.qt.io/qt-5/qprocess.html#exitCode',1,'QProcess']]],
-  ['exited_70',['exited',['https://doc.qt.io/qt-5/qabstractstate.html#exited',1,'QAbstractState']]],
-  ['exitstatus_71',['exitStatus',['https://doc.qt.io/qt-5/qprocess.html#exitStatus',1,'QProcess']]],
-  ['expandedto_72',['expandedTo',['https://doc.qt.io/qt-5/qsize.html#expandedTo',1,'QSize::expandedTo()'],['https://doc.qt.io/qt-5/qsizef.html#expandedTo',1,'QSizeF::expandedTo()']]],
-  ['expirytimeout_73',['expiryTimeout',['https://doc.qt.io/qt-5/qthreadpool.html#expiryTimeout-prop',1,'QThreadPool::expiryTimeout()'],['https://doc.qt.io/qt-5/qthreadpool.html#expiryTimeout-prop',1,'QThreadPool::expiryTimeout() const const']]],
-  ['exponential_74',['exponential',['https://doc.qt.io/qt-5/qlocale.html#exponential',1,'QLocale']]],
-  ['extract_75',['extract',['https://doc.qt.io/qt-5/qcborarray.html#extract',1,'QCborArray::extract(QCborArray::ConstIterator it)'],['https://doc.qt.io/qt-5/qcborarray.html#extract-1',1,'QCborArray::extract(QCborArray::Iterator it)'],['https://doc.qt.io/qt-5/qcbormap.html#extract',1,'QCborMap::extract(QCborMap::iterator it)'],['https://doc.qt.io/qt-5/qcbormap.html#extract-1',1,'QCborMap::extract(QCborMap::const_iterator it)']]],
-  ['extraselectors_76',['extraSelectors',['https://doc.qt.io/qt-5/qfileselector.html#extraSelectors',1,'QFileSelector']]]
+  ['exitcodeondisconnect_70',['exitCodeOnDisconnect',['../classDeviceCommand.html#a792b3771a02cb7f4aff6335045b705bf',1,'DeviceCommand']]],
+  ['exited_71',['exited',['https://doc.qt.io/qt-5/qabstractstate.html#exited',1,'QAbstractState']]],
+  ['exitstatus_72',['exitStatus',['https://doc.qt.io/qt-5/qprocess.html#exitStatus',1,'QProcess']]],
+  ['expandedto_73',['expandedTo',['https://doc.qt.io/qt-5/qsize.html#expandedTo',1,'QSize::expandedTo()'],['https://doc.qt.io/qt-5/qsizef.html#expandedTo',1,'QSizeF::expandedTo()']]],
+  ['expirytimeout_74',['expiryTimeout',['https://doc.qt.io/qt-5/qthreadpool.html#expiryTimeout-prop',1,'QThreadPool::expiryTimeout()'],['https://doc.qt.io/qt-5/qthreadpool.html#expiryTimeout-prop',1,'QThreadPool::expiryTimeout() const const']]],
+  ['exponential_75',['exponential',['https://doc.qt.io/qt-5/qlocale.html#exponential',1,'QLocale']]],
+  ['extract_76',['extract',['https://doc.qt.io/qt-5/qcborarray.html#extract',1,'QCborArray::extract(QCborArray::ConstIterator it)'],['https://doc.qt.io/qt-5/qcborarray.html#extract-1',1,'QCborArray::extract(QCborArray::Iterator it)'],['https://doc.qt.io/qt-5/qcbormap.html#extract',1,'QCborMap::extract(QCborMap::iterator it)'],['https://doc.qt.io/qt-5/qcbormap.html#extract-1',1,'QCborMap::extract(QCborMap::const_iterator it)']]],
+  ['extraselectors_77',['extraSelectors',['https://doc.qt.io/qt-5/qfileselector.html#extraSelectors',1,'QFileSelector']]]
 ];

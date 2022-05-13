@@ -56,7 +56,6 @@ var classDsoService =
     [ "setSettings", "classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e", null ],
     [ "settingsWritten", "classDsoService.html#aecb20a42b7d8906f9e84266193424567", null ],
     [ "startDso", "classDsoService.html#a4bd74f90cf6b34172cfeaff8112f22fe", null ],
-    [ "stopDso", "classDsoService.html#a97904ffa3fdc99df045b4ef43ccc2321", null ],
     [ "stopMetadata", "classDsoService.html#a1a181f8197878bdbd425bcee22e8eb5c", null ],
     [ "stopSampling", "classDsoService.html#ab851a651e361ee622fa8613071b01f2c", null ],
     [ "toString", "classDsoService.html#a63183105109ffd6cfba156cfddcbee0a", null ],

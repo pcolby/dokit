@@ -1,5 +1,13 @@
 var NAVTREEINDEX3 =
 {
+"structDsoService_1_1Metadata.html#aee367bfb281ec101dfdffb27fad752c8":[5,0,12,1,2],
+"structDsoService_1_1Settings.html":[5,0,12,3],
+"structDsoService_1_1Settings.html#a1a66d9c5ab84eb3d046c1c5842f87faf":[5,0,12,3,1],
+"structDsoService_1_1Settings.html#a373678d7feb78a29d30ebdcc89df9e57":[5,0,12,3,3],
+"structDsoService_1_1Settings.html#a661cb2920a504d5f3fc7437529c37f15":[5,0,12,3,0],
+"structDsoService_1_1Settings.html#a85067aa6f3ad5a734414e97aa623763b":[5,0,12,3,4],
+"structDsoService_1_1Settings.html#a98deec20d34aa9f0e1567bce8ff24bc8":[5,0,12,3,5],
+"structDsoService_1_1Settings.html#ad118943a951c606915bd12c45ded6cd6":[5,0,12,3,2],
 "structGenericAccessService_1_1CharacteristicUuids.html":[5,0,15,0],
 "structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b":[5,0,15,0,1],
 "structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945":[5,0,15,0,0],
