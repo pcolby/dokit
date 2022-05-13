@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-13 07:52:55</td>
+            <td class="headerValue">2022-05-13 14:35:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -193,37 +193,36 @@
 <a name="131"><span class="lineNum">     131 </span>            :     // Settings characteristic (BLE write only).</a>
 <a name="132"><span class="lineNum">     132 </span>            :     bool setSettings(const Settings &amp;settings);</a>
 <a name="133"><span class="lineNum">     133 </span>            :     bool startDso(const Settings &amp;settings);</a>
-<a name="134"><span class="lineNum">     134 </span>            :     bool stopDso();</a>
-<a name="135"><span class="lineNum">     135 </span>            :     bool fetchSamples();</a>
-<a name="136"><span class="lineNum">     136 </span>            : </a>
-<a name="137"><span class="lineNum">     137 </span>            :     // Metadata characteristic (BLE read/notify).</a>
-<a name="138"><span class="lineNum">     138 </span>            :     Metadata metadata() const;</a>
-<a name="139"><span class="lineNum">     139 </span>            :     bool beginMetadata();</a>
-<a name="140"><span class="lineNum">     140 </span>            :     bool stopMetadata();</a>
-<a name="141"><span class="lineNum">     141 </span>            : </a>
-<a name="142"><span class="lineNum">     142 </span>            :     // Reading characteristic (BLE notify only).</a>
-<a name="143"><span class="lineNum">     143 </span>            :     bool beginSampling();</a>
-<a name="144"><span class="lineNum">     144 </span>            :     bool stopSampling();</a>
-<a name="145"><span class="lineNum">     145 </span>            : </a>
-<a name="146"><span class="lineNum">     146 </span>            : signals:</a>
-<a name="147"><span class="lineNum">     147 </span>            :     void settingsWritten();</a>
-<a name="148"><span class="lineNum">     148 </span>            :     void metadataRead(const DsoService::Metadata &amp;meta);</a>
-<a name="149"><span class="lineNum">     149 </span>            :     void samplesRead(const DsoService::Samples &amp;samples);</a>
-<a name="150"><span class="lineNum">     150 </span>            : </a>
-<a name="151"><span class="lineNum">     151 </span>            : protected:</a>
-<a name="152"><span class="lineNum">     152 </span>            :     /// \cond internal</a>
-<a name="153"><span class="lineNum">     153 </span>            :     DsoService(DsoServicePrivate * const d, QObject * const parent);</a>
-<a name="154"><span class="lineNum">     154 </span>            :     /// \endcond</a>
-<a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span>            : private:</a>
-<a name="157"><span class="lineNum">     157 </span>            :     Q_DECLARE_PRIVATE(DsoService)</a>
-<a name="158"><span class="lineNum">     158 </span>            :     Q_DISABLE_COPY(DsoService)</a>
-<a name="159"><span class="lineNum">     159 </span>            :     friend class TestDsoService;</a>
-<a name="160"><span class="lineNum">     160 </span>            : };</a>
-<a name="161"><span class="lineNum">     161 </span>            : </a>
-<a name="162"><span class="lineNum">     162 </span>            : QTPOKIT_END_NAMESPACE</a>
-<a name="163"><span class="lineNum">     163 </span>            : </a>
-<a name="164"><span class="lineNum">     164 </span>            : #endif // QTPOKIT_DSOSERVICE_H</a>
+<a name="134"><span class="lineNum">     134 </span>            :     bool fetchSamples();</a>
+<a name="135"><span class="lineNum">     135 </span>            : </a>
+<a name="136"><span class="lineNum">     136 </span>            :     // Metadata characteristic (BLE read/notify).</a>
+<a name="137"><span class="lineNum">     137 </span>            :     Metadata metadata() const;</a>
+<a name="138"><span class="lineNum">     138 </span>            :     bool beginMetadata();</a>
+<a name="139"><span class="lineNum">     139 </span>            :     bool stopMetadata();</a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span>            :     // Reading characteristic (BLE notify only).</a>
+<a name="142"><span class="lineNum">     142 </span>            :     bool beginSampling();</a>
+<a name="143"><span class="lineNum">     143 </span>            :     bool stopSampling();</a>
+<a name="144"><span class="lineNum">     144 </span>            : </a>
+<a name="145"><span class="lineNum">     145 </span>            : signals:</a>
+<a name="146"><span class="lineNum">     146 </span>            :     void settingsWritten();</a>
+<a name="147"><span class="lineNum">     147 </span>            :     void metadataRead(const DsoService::Metadata &amp;meta);</a>
+<a name="148"><span class="lineNum">     148 </span>            :     void samplesRead(const DsoService::Samples &amp;samples);</a>
+<a name="149"><span class="lineNum">     149 </span>            : </a>
+<a name="150"><span class="lineNum">     150 </span>            : protected:</a>
+<a name="151"><span class="lineNum">     151 </span>            :     /// \cond internal</a>
+<a name="152"><span class="lineNum">     152 </span>            :     DsoService(DsoServicePrivate * const d, QObject * const parent);</a>
+<a name="153"><span class="lineNum">     153 </span>            :     /// \endcond</a>
+<a name="154"><span class="lineNum">     154 </span>            : </a>
+<a name="155"><span class="lineNum">     155 </span>            : private:</a>
+<a name="156"><span class="lineNum">     156 </span>            :     Q_DECLARE_PRIVATE(DsoService)</a>
+<a name="157"><span class="lineNum">     157 </span>            :     Q_DISABLE_COPY(DsoService)</a>
+<a name="158"><span class="lineNum">     158 </span>            :     friend class TestDsoService;</a>
+<a name="159"><span class="lineNum">     159 </span>            : };</a>
+<a name="160"><span class="lineNum">     160 </span>            : </a>
+<a name="161"><span class="lineNum">     161 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="162"><span class="lineNum">     162 </span>            : </a>
+<a name="163"><span class="lineNum">     163 </span>            : #endif // QTPOKIT_DSOSERVICE_H</a>
 </pre>
       </td>
     </tr>

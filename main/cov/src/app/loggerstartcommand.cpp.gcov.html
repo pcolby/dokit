@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">89</td>
+            <td class="headerCovTableEntry">99</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-13 07:52:55</td>
+            <td class="headerValue">2022-05-13 14:35:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -99,7 +99,7 @@
 <a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 : LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(parent),</span></a>
 <a name="38"><span class="lineNum">      38 </span>            :     service(nullptr), settings{</a>
 <a name="39"><span class="lineNum">      39 </span>            :         DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,</a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :         { DataLoggerService::VoltageRange::_30V_to_60V }, 60, 0}</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :         { DataLoggerService::VoltageRange::_30V_to_60V }, 60000, 0}</span></a>
 <a name="41"><span class="lineNum">      41 </span>            : {</a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
 <a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 : }</span></a>
@@ -179,7 +179,7 @@
 <a name="117"><span class="lineNum">     117 </span>            :     // Parse the interval option.</a>
 <a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;interval&quot;))) {</span></a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :         const QString value = parser.value(QLatin1String(&quot;interval&quot;));</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :         const quint32 interval = parseWholeValue(value, QLatin1String(&quot;s&quot;));</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :         const quint32 interval = parseMilliValue(value, QLatin1String(&quot;s&quot;), 500);</span></a>
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :         if (interval == 0) {</span></a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :         } else {</a>
@@ -229,7 +229,7 @@
 <a name="167"><span class="lineNum">     167 </span>            : {</a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
 <a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :     const QString range = DataLoggerService::toString(settings.range, settings.mode);</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Logging %1, with range %2, every %L3s.&quot;).arg(</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Logging %1, with range %2, every %L3ms.&quot;).arg(</span></a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :         DataLoggerService::toString(settings.mode),</span></a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :         (range.isNull()) ? QString::fromLatin1(&quot;N/A&quot;) : range).arg(settings.updateInterval);</span></a>
 <a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :     service-&gt;setSettings(settings);</span></a>
@@ -305,9 +305,19 @@
 <a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 : void LoggerStartCommand::settingsWritten()</span></a>
 <a name="244"><span class="lineNum">     244 </span>            : {</a>
 <a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has started.&quot;);</span></a>
-<a name="246"><span class="lineNum">     246 </span>            :     /// \todo Output the settings used as CSV, JSON and Text.</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :     QCoreApplication::exit(EXIT_SUCCESS);</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :     switch (format) {</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :     case OutputFormat::Csv:</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;logger_start_result\nsuccess\n&quot;)), stdout);</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :     case OutputFormat::Json:</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :         fputs(qPrintable(QLatin1String(&quot;true\n&quot;)), stdout);</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :     case OutputFormat::Text:</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Done.\n&quot;)), stdout);</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="256"><span class="lineNum">     256 </span>            :     }</a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :     disconnect(); // Will exit the application once disconnected.</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 : }</span></a>
 </pre>
       </td>
     </tr>

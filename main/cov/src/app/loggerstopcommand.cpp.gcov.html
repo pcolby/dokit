@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">27</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-13 07:52:55</td>
+            <td class="headerValue">2022-05-13 14:35:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -136,9 +136,19 @@
 <a name="74"><span class="lineNum">      74 </span><span class="lineNoCov">          0 : void LoggerStopCommand::settingsWritten()</span></a>
 <a name="75"><span class="lineNum">      75 </span>            : {</a>
 <a name="76"><span class="lineNum">      76 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has stopped.&quot;);</span></a>
-<a name="77"><span class="lineNum">      77 </span>            :     /// \todo Output the result as CSV, JSON and Text.</a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineNoCov">          0 :     QCoreApplication::exit(EXIT_SUCCESS);</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineNoCov">          0 :     switch (format) {</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineNoCov">          0 :     case OutputFormat::Csv:</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;logger_start_result\nsuccess\n&quot;)), stdout);</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineNoCov">          0 :     case OutputFormat::Json:</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :         fputs(qPrintable(QLatin1String(&quot;true\n&quot;)), stdout);</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 :     case OutputFormat::Text:</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineNoCov">          0 :         fputs(qPrintable(tr(&quot;Done.\n&quot;)), stdout);</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="87"><span class="lineNum">      87 </span>            :     }</a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 :     disconnect(); // Will exit the application once disconnected.</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 : }</span></a>
 </pre>
       </td>
     </tr>
