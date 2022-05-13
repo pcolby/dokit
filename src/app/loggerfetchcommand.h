@@ -34,6 +34,8 @@ protected slots:
 
 private:
     DataLoggerService * service; ///< Bluetooth service this command interracts with.
+    DataLoggerService::Metadata metadata; ///< Most recent data logging metadata.
+    quint64 timestamp; ///< Current sample's epoch milliseconds timestamp.
 
 private slots:
     void metadataRead(const DataLoggerService::Metadata &metadata);

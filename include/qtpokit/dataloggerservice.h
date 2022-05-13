@@ -116,7 +116,7 @@ public:
         float scale;             ///< Scale to apply to read samples.
         Mode mode;               ///< Current operation mode.
         Range range;             ///< Current range.
-        quint16 updateInterval;  ///< Current logging interval.
+        quint32 updateInterval;  ///< Current logging interval.
         quint16 numberOfSamples; ///< Number of samples acquired (1 to 6192).
         quint32 timestamp;       ///< Timestamp stored at the beginning of the logging session.
     };

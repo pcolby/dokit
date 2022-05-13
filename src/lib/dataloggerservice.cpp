@@ -214,13 +214,14 @@ QString DataLoggerService::toString(const Range &range, const Mode &mode)
 /*!
  * \typedef DataLoggerService::Samples
  *
- * Raw samples from the `Reading` characteristic. These raw samples are (supposedly) wihtin the
+ * Raw samples from the `Reading` characteristic. These raw samples are (supposedly) within the
  * range -2048 to +2047, and need to be multiplied by the Metadata::scale value from the `Metadata`
  * characteristc to get the true values.
  *
  * Also supposedly, there should be no more than 10 samples at a time, according to Pokit's current
  * API docs. There is not artificial limitation imposed by QtPokit, so devices may begin batching
- * more samples in future.
+ * more samples in future. Specifically, the Pokit Pro seems to send 88 samples (in 176 bytes) at a
+ * time.
  */
 
 /*!
@@ -300,8 +301,14 @@ bool DataLoggerService::setSettings(const Settings &settings)
     stream.setByteOrder(QDataStream::LittleEndian);
     stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
     stream << (quint8)settings.command << settings.arguments << (quint8)settings.mode
-           << (quint8)settings.range.voltageRange << settings.updateInterval << settings.timestamp;
-    Q_ASSERT(value.size() == 11);
+           << (quint8)settings.range.voltageRange << (quint32)settings.updateInterval << settings.timestamp;
+    /*!
+     * \pokitApi Despit the Pokit API docs saying `Update Interval` is `uint16`, Pokit Pro devices
+     * error if try to set such. However, if we switch `Update Interval` to `uint32` then the fields
+     * are set properly (according to the resulting `Metadata`). Not sure if this is a Pokit Pro
+     * difference, or general API doc error.
+     */
+    Q_ASSERT(value.size() == 13);
     d->service->writeCharacteristic(characteristic, value);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }

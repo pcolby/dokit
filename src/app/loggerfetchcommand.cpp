@@ -51,8 +51,6 @@ AbstractPokitService * LoggerFetchCommand::getService()
     if (!service) {
         service = device->dataLogger();
         Q_ASSERT(service);
-//        connect(service, &DataLoggerService::settingsWritten,
-//                this, &LoggerFetchCommand::settingsWritten);
         connect(service, &DataLoggerService::metadataRead, this, &LoggerFetchCommand::metadataRead);
         connect(service, &DataLoggerService::samplesRead, this, &LoggerFetchCommand::outputSamples);
     }
@@ -68,29 +66,10 @@ void LoggerFetchCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     qCInfo(lc).noquote() << tr("Fetching logger samples...");
-
-//    service->beginMetadata();
-//    service->beginSampling();
+    service->beginMetadata();
+    service->beginSampling();
     service->fetchSamples();
-
-//    for (int i = 1000; i < 20000; i+=5000) {
-//        QTimer::singleShot(i, this, [this](){
-//            service->fetchSamples();
-//        });
-//    }
 }
-
-/*!
- * Invoked when the data logger settings have been written, to begin reading samples.
- */
-//void LoggerFetchCommand::settingsWritten()
-//{
-//    qCDebug(lc).noquote() << tr("Settings written; starting data logger...");
-//    connect(service, &DataLoggerService::metadataRead, this, &LoggerFetchCommand::metadataRead);
-//    connect(service, &DataLoggerService::samplesRead, this, &LoggerFetchCommand::outputSamples);
-//    service->beginMetadata();
-//    service->beginSampling();
-//}
 
 /*!
  * Invoked when \a metadata has been received from the data logger.
@@ -100,8 +79,6 @@ void LoggerFetchCommand::serviceDetailsDiscovered()
  */
 void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadata)
 {
-    /// \todo Remember the metadata.
-    Q_UNUSED(metadata);
     qCDebug(lc) << "status:" << (int)(metadata.status);
     qCDebug(lc) << "scale:" << metadata.scale;
     qCDebug(lc) << "mode:" << DataLoggerService::toString(metadata.mode) << (quint8)metadata.mode;
@@ -111,6 +88,8 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadat
     qCDebug(lc) << "numberOfSamples:" << metadata.numberOfSamples;
     qCDebug(lc) << "timestamp:" << metadata.timestamp
                                 << QDateTime::fromSecsSinceEpoch(metadata.timestamp);
+    this->metadata = metadata;
+    this->timestamp = (qint64)metadata.timestamp * (qint64)1000;
 }
 
 /*!
@@ -120,5 +99,9 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
 {
     /// \todo Output the samples.
     Q_UNUSED(samples);
-    qCDebug(lc) << "samplesRead";
+    qCDebug(lc) << "samplesRead" << metadata.scale << samples;
+    for (const qint16 &sample: samples) {
+        qCDebug(lc) << timestamp << QDateTime::fromMSecsSinceEpoch(timestamp) << (sample*metadata.scale) << "V";
+        timestamp += metadata.updateInterval;
+    }
 }

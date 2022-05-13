@@ -37,7 +37,7 @@
 LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
         DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
-        { DataLoggerService::VoltageRange::_30V_to_60V }, 60, 0}
+        { DataLoggerService::VoltageRange::_30V_to_60V }, 60000, 0}
 {
 
 }
@@ -117,7 +117,7 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
     // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
         const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseWholeValue(value, QLatin1String("s"));
+        const quint32 interval = parseMilliValue(value, QLatin1String("s"), 500);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
@@ -167,7 +167,7 @@ void LoggerStartCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     const QString range = DataLoggerService::toString(settings.range, settings.mode);
-    qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3s.").arg(
+    qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3ms.").arg(
         DataLoggerService::toString(settings.mode),
         (range.isNull()) ? QString::fromLatin1("N/A") : range).arg(settings.updateInterval);
     service->setSettings(settings);
