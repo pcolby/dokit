@@ -395,7 +395,7 @@ DataLoggerService::Metadata DataLoggerService::metadata() const
 }
 
 /*!
- * Requests the Pokit device to begin reporting metadata.
+ * Enables client-side notifications of Data Logger metadata changes.
  *
  * This is an alternative to manually requesting individual reads via readMetadataCharacteristic().
  *
@@ -403,44 +403,44 @@ DataLoggerService::Metadata DataLoggerService::metadata() const
  *
  * Successfully read values (if any) will be emitted via the metadataRead() signal.
  */
-bool DataLoggerService::beginMetadata()
+bool DataLoggerService::enableMetadataNotifications()
 {
     Q_D(DataLoggerService);
     return d->enableCharacteristicNotificatons(CharacteristicUuids::metadata);
 }
 
 /*!
- * Requests the Pokit device to stop reporting metadata.
+ * Disables client-side notifications of Data Logger metadata changes.
  *
  * Instantaneous reads can still be fetched by readMetadatCharacteristic().
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */
-bool DataLoggerService::stopMetadata()
+bool DataLoggerService::disableMetadatNotifications()
 {
     Q_D(DataLoggerService);
     return d->disableCharacteristicNotificatons(CharacteristicUuids::metadata);
 }
 
 /*!
- * Requests the Pokit device to begin sampling.
+ * Enables client-side notifications of Data Logger readings.
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  *
  * Successfully read samples (if any) will be emitted via the samplesRead() signal.
  */
-bool DataLoggerService::beginSampling()
+bool DataLoggerService::enableReadingNotifications()
 {
     Q_D(DataLoggerService);
     return d->enableCharacteristicNotificatons(CharacteristicUuids::reading);
 }
 
 /*!
- * Requests the Pokit device to stop sampling.
+ * Disables client-side notifications of Data Logger readings.
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */
-bool DataLoggerService::stopSampling()
+bool DataLoggerService::disableReadingNotifications()
 {
     Q_D(DataLoggerService);
     return d->disableCharacteristicNotificatons(CharacteristicUuids::reading);

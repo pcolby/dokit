@@ -137,12 +137,12 @@ public:
 
     // Metadata characteristic (BLE read/notify).
     Metadata metadata() const;
-    bool beginMetadata();
-    bool stopMetadata();
+    bool enableMetadataNotifications();
+    bool disableMetadatNotifications();
 
     // Reading characteristic (BLE notify only).
-    bool beginSampling();
-    bool stopSampling();
+    bool enableReadingNotifications();
+    bool disableReadingNotifications();
 
 signals:
     void settingsWritten();

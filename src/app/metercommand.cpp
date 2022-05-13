@@ -284,7 +284,7 @@ void MeterCommand::settingsWritten()
     qCDebug(lc).noquote() << tr("Settings written; starting meter readings...");
     connect(service, &MultimeterService::readingRead,
             this, &MeterCommand::outputReading);
-    service->beginClientReadings();
+    service->enableReadingNotifications();
 }
 
 /*!
@@ -405,7 +405,7 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
 
     if (numberOfSamplesToRead > 0) {
         if (--numberOfSamplesToRead == 0) {
-            service->stopClientReadings();
+            service->disableReadingNotifications();
             disconnect(); // Will exit the application once disconnected.
         }
     }

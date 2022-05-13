@@ -276,8 +276,8 @@ void DsoCommand::settingsWritten()
     qCDebug(lc).noquote() << tr("Settings written; DSO has started.");
     connect(service, &DsoService::metadataRead, this, &DsoCommand::metadataRead);
     connect(service, &DsoService::samplesRead, this, &DsoCommand::outputSamples);
-    service->beginMetadata();
-    service->beginSampling();
+    service->enableMetadataNotifications();
+    service->enableReadingNotifications();
 }
 
 /*!

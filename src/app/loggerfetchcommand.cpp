@@ -66,8 +66,8 @@ void LoggerFetchCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     qCInfo(lc).noquote() << tr("Fetching logger samples...");
-    service->beginMetadata();
-    service->beginSampling();
+    service->enableMetadataNotifications();
+    service->enableReadingNotifications();
     service->fetchSamples();
 }
 

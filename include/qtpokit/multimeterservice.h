@@ -144,8 +144,8 @@ public:
 
     // Reading characteristic (BLE read/notify).
     Reading reading() const;
-    bool beginClientReadings();
-    bool stopClientReadings();
+    bool enableReadingNotifications();
+    bool disableReadingNotifications();
 
 signals:
     void settingsWritten();

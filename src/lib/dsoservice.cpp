@@ -371,7 +371,7 @@ DsoService::Metadata DsoService::metadata() const
 }
 
 /*!
- * Requests the Pokit device to begin reporting metadata.
+ * Enables client-side notifications of DSO metadata changes.
  *
  * This is an alternative to manually requesting individual reads via readMetadataCharacteristic().
  *
@@ -379,44 +379,44 @@ DsoService::Metadata DsoService::metadata() const
  *
  * Successfully read values (if any) will be emitted via the metadataRead() signal.
  */
-bool DsoService::beginMetadata()
+bool DsoService::enableMetadataNotifications()
 {
     Q_D(DsoService);
     return d->enableCharacteristicNotificatons(CharacteristicUuids::metadata);
 }
 
 /*!
- * Requests the Pokit device to stop reporting metadata.
+ * Disables client-side notifications of DSO metadata changes.
  *
  * Instantaneous reads can still be fetched by readMetadatCharacteristic().
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */
-bool DsoService::stopMetadata()
+bool DsoService::disableMetadataNotifications()
 {
     Q_D(DsoService);
     return d->disableCharacteristicNotificatons(CharacteristicUuids::metadata);
 }
 
 /*!
- * Requests the Pokit device to begin sampling.
+ * Enables client-side notifications of DSO readings.
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  *
  * Successfully read samples (if any) will be emitted via the samplesRead() signal.
  */
-bool DsoService::beginSampling()
+bool DsoService::enableReadingNotifications()
 {
     Q_D(DsoService);
     return d->enableCharacteristicNotificatons(CharacteristicUuids::reading);
 }
 
 /*!
- * Requests the Pokit device to stop sampling.
+ * Disables client-side notifications of DSO readings.
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */
-bool DsoService::stopSampling()
+bool DsoService::disableReadingNotifications()
 {
     Q_D(DsoService);
     return d->disableCharacteristicNotificatons(CharacteristicUuids::reading);

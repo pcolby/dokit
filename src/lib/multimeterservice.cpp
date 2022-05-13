@@ -379,7 +379,7 @@ MultimeterService::Reading MultimeterService::reading() const
 }
 
 /*!
- * Requests the Pokit device to begin reporting multimeter reads.
+ * Enables client-side notifications of meter readings.
  *
  * This is an alternative to manually requesting individual reads via readReadingCharacteristic().
  *
@@ -387,20 +387,20 @@ MultimeterService::Reading MultimeterService::reading() const
  *
  * Successfully read values (if any) will be emitted via the readingRead() signal.
  */
-bool MultimeterService::beginClientReadings()
+bool MultimeterService::enableReadingNotifications()
 {
     Q_D(MultimeterService);
     return d->enableCharacteristicNotificatons(CharacteristicUuids::reading);
 }
 
 /*!
- * Requests the Pokit device to stop reporting multimeter reads.
+ * Disables client-side notifications of meter readings.
  *
  * Instantaneous reads can still be fetched by readReadingCharacteristic().
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */
-bool MultimeterService::stopClientReadings()
+bool MultimeterService::disableReadingNotifications()
 {
     Q_D(MultimeterService);
     return d->disableCharacteristicNotificatons(CharacteristicUuids::reading);
