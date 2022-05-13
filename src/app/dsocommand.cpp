@@ -260,9 +260,6 @@ void DsoCommand::settingsWritten()
 
 /*!
  * Invoked when \a metadata has been received from the DSO.
- *
- * \todo Presumably we need to at least record the metadata.scale here. Probably also need the
- * metadata.numberOfSamples. Of course, log and check for errors etc. too.
  */
 void DsoCommand::metadataRead(const DsoService::Metadata &metadata)
 {
