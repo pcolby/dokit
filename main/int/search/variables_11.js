@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['samplestogo_0',['samplesToGo',['../classLoggerFetchCommand.html#a04a05bff3bc50f8b87a10f7472de26b7',1,'LoggerFetchCommand::samplesToGo()'],['../classDsoCommand.html#a2fba285441bb9d0a76f3e43d1b718015',1,'DsoCommand::samplesToGo()']]],
+  ['samplestogo_0',['samplesToGo',['../classLoggerFetchCommand.html#a04a05bff3bc50f8b87a10f7472de26b7',1,'LoggerFetchCommand::samplesToGo()'],['../classMeterCommand.html#adf371ab0a3848960f9177d80853863b1',1,'MeterCommand::samplesToGo()'],['../classDsoCommand.html#a2fba285441bb9d0a76f3e43d1b718015',1,'DsoCommand::samplesToGo()']]],
   ['samplingbuffersize_1',['samplingBufferSize',['../structStatusService_1_1DeviceCharacteristics.html#a4ddb1ebddb04e6a7b445cff73379e932',1,'StatusService::DeviceCharacteristics']]],
   ['samplingrate_2',['samplingRate',['../structDsoService_1_1Metadata.html#a1ee78a173e219e8224f4db3d4bc5ee97',1,'DsoService::Metadata']]],
   ['samplingwindow_3',['samplingWindow',['../structDsoService_1_1Settings.html#a85067aa6f3ad5a734414e97aa623763b',1,'DsoService::Settings::samplingWindow()'],['../structDsoService_1_1Metadata.html#adef86fc5e8e8ef5b2348251e2cc419d1',1,'DsoService::Metadata::samplingWindow()']]],

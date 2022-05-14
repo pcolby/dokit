@@ -17,8 +17,8 @@ var searchData=
   ['keyvalueat_14',['keyValueAt',['https://doc.qt.io/qt-5/qvariantanimation.html#keyValueAt',1,'QVariantAnimation']]],
   ['keyvaluebegin_15',['keyValueBegin',['https://doc.qt.io/qt-5/qmap.html#keyValueBegin',1,'QMap::keyValueBegin()'],['https://doc.qt.io/qt-5/qmap.html#keyValueBegin-1',1,'QMap::keyValueBegin() const const'],['https://doc.qt.io/qt-5/qhash.html#keyValueBegin',1,'QHash::keyValueBegin()'],['https://doc.qt.io/qt-5/qhash.html#keyValueBegin-1',1,'QHash::keyValueBegin() const const']]],
   ['keyvalueend_16',['keyValueEnd',['https://doc.qt.io/qt-5/qmap.html#keyValueEnd',1,'QMap::keyValueEnd()'],['https://doc.qt.io/qt-5/qmap.html#keyValueEnd-1',1,'QMap::keyValueEnd() const const'],['https://doc.qt.io/qt-5/qhash.html#keyValueEnd',1,'QHash::keyValueEnd()'],['https://doc.qt.io/qt-5/qhash.html#keyValueEnd-1',1,'QHash::keyValueEnd() const const']]],
-  ['keyvalues_17',['KeyValues',['https://doc.qt.io/qt-5/qvariantanimation.html#KeyValues-typedef',1,'QVariantAnimation']]],
-  ['keyvalues_18',['keyValues',['https://doc.qt.io/qt-5/qvariantanimation.html#keyValues',1,'QVariantAnimation']]],
+  ['keyvalues_17',['keyValues',['https://doc.qt.io/qt-5/qvariantanimation.html#keyValues',1,'QVariantAnimation']]],
+  ['keyvalues_18',['KeyValues',['https://doc.qt.io/qt-5/qvariantanimation.html#KeyValues-typedef',1,'QVariantAnimation']]],
   ['kill_19',['kill',['https://doc.qt.io/qt-5/qprocess.html#kill',1,'QProcess']]],
   ['killtimer_20',['killTimer',['https://doc.qt.io/qt-5/qobject.html#killTimer',1,'QObject']]]
 ];

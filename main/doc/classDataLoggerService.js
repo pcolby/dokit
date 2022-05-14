@@ -40,8 +40,10 @@ var classDataLoggerService =
     ] ],
     [ "DataLoggerService", "classDataLoggerService.html#a1c2155abba340d49fc39bfa49ed59a6c", null ],
     [ "~DataLoggerService", "classDataLoggerService.html#ab0b747cc7f0ec24ac2611b9d70877ffc", null ],
-    [ "beginMetadata", "classDataLoggerService.html#ae4d9db71ddbebbe59b2af8c6107b0286", null ],
-    [ "beginSampling", "classDataLoggerService.html#ad94db6be36da2b6d5c0091c0bf29840c", null ],
+    [ "disableMetadatNotifications", "classDataLoggerService.html#a7f757139d8f4b61740524be3e69b9bca", null ],
+    [ "disableReadingNotifications", "classDataLoggerService.html#a8b144b31de4aa3d33c6e9fcb7e606bae", null ],
+    [ "enableMetadataNotifications", "classDataLoggerService.html#a0c63e3cdbc6b39ab68b8442b77938049", null ],
+    [ "enableReadingNotifications", "classDataLoggerService.html#a2b9d2cad9b7b937a2fd20517c5ba825e", null ],
     [ "fetchSamples", "classDataLoggerService.html#a4c9e68b94b0fba82a979bb7e0b0adab4", null ],
     [ "metadata", "classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92", null ],
     [ "metadataRead", "classDataLoggerService.html#a471d660af2be1e375424e1bbdeb6e61f", null ],
@@ -51,7 +53,5 @@ var classDataLoggerService =
     [ "setSettings", "classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c", null ],
     [ "settingsWritten", "classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c", null ],
     [ "startLogger", "classDataLoggerService.html#a4aac49f9a655408e4b58f05735c5f9ab", null ],
-    [ "stopLogger", "classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e", null ],
-    [ "stopMetadata", "classDataLoggerService.html#a1385ecb64ed56cc6cd9080ee01f67959", null ],
-    [ "stopSampling", "classDataLoggerService.html#abce82963092a16f00da0bf49a8d40d11", null ]
+    [ "stopLogger", "classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e", null ]
 ];

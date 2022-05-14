@@ -23,14 +23,12 @@ var classStatusService =
     [ "StatusService", "classStatusService.html#a095254046689e5115ba053c029a2e1b8", null ],
     [ "~StatusService", "classStatusService.html#a6140c2723538587220452d6d4a51f001", null ],
     [ "StatusService", "classStatusService.html#a8c5a28d187cd6cbb61242ff9fef2d25c", null ],
-    [ "batteryStatusLabel", "classStatusService.html#a45993e6794c48ce999b5effcd95b9a74", null ],
     [ "deivceNameWritten", "classStatusService.html#a092e655b40139d94fe046b86f0dd51e5", null ],
     [ "deviceCharacteristics", "classStatusService.html#a008d41a33eedd90e68ccf7a94ed5b65f", null ],
     [ "deviceCharacteristicsRead", "classStatusService.html#aeac02849bd35edeadda7ab7b4a4939c9", null ],
     [ "deviceLedFlashed", "classStatusService.html#a95fac879cf2f0ea82507352fe8c1bbee", null ],
     [ "deviceName", "classStatusService.html#a113a7051f70e642d2c1f67124c1f12c7", null ],
     [ "deviceNameRead", "classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1", null ],
-    [ "deviceStatusLabel", "classStatusService.html#adddc5b563c16a8ad199f6a07966d372c", null ],
     [ "deviceStatusRead", "classStatusService.html#a46ba2b897e99d428e1474988f6f99555", null ],
     [ "flashLed", "classStatusService.html#a425bf65d42b24c4a621b312fcd152708", null ],
     [ "readCharacteristics", "classStatusService.html#ad73514f6f324ca56dffb844b14eb3bc0", null ],
@@ -39,5 +37,7 @@ var classStatusService =
     [ "readStatusCharacteristic", "classStatusService.html#a0410049da4a7ac6a64027c733797c578", null ],
     [ "setDeviceName", "classStatusService.html#ada280bc54493f85e6855a2534bf2a02d", null ],
     [ "status", "classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7", null ],
+    [ "toString", "classStatusService.html#a5b3ed7cd72ea54ba07f8927ff2cb7178", null ],
+    [ "toString", "classStatusService.html#aac79e97cb114be25b2a6771d915f132d", null ],
     [ "serviceUuid", "classStatusService.html#a2f29742224a879c4f1fb81a2fdd39ea5", null ]
 ];

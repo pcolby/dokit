@@ -53,12 +53,12 @@ var classMultimeterService =
     ] ],
     [ "MultimeterService", "classMultimeterService.html#a8121655f13ddf00fc2a65921b5ebc67b", null ],
     [ "~MultimeterService", "classMultimeterService.html#a2bc53e1189ae9ff23d6a557d2a0576b0", null ],
-    [ "beginClientReadings", "classMultimeterService.html#a371ead0ff91d92494ddb8bf9eba56b31", null ],
+    [ "disableReadingNotifications", "classMultimeterService.html#ae51553919b7d659cf6d0ce1210503555", null ],
+    [ "enableReadingNotifications", "classMultimeterService.html#a321c4fdade8d934ac2e1daec3be174fb", null ],
     [ "readCharacteristics", "classMultimeterService.html#a58831d3ca3e6df355fcd6fd1bb8d5e68", null ],
     [ "reading", "classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e", null ],
     [ "readingRead", "classMultimeterService.html#a8e95109e8b75c168642cab28ae63c260", null ],
     [ "readReadingCharacteristic", "classMultimeterService.html#a818612a809f2addc659b44bc537c4428", null ],
     [ "setSettings", "classMultimeterService.html#ab459a9db42aed973bbc18a2bc9fcd957", null ],
-    [ "settingsWritten", "classMultimeterService.html#ab77871f1969da5a13dc1addb658814c6", null ],
-    [ "stopClientReadings", "classMultimeterService.html#aee4f24051a196c67e74ba6f090964693", null ]
+    [ "settingsWritten", "classMultimeterService.html#ab77871f1969da5a13dc1addb658814c6", null ]
 ];

@@ -12,7 +12,7 @@ var classMeterCommand =
     [ "serviceDetailsDiscovered", "classMeterCommand.html#aca51a018963bc384a24154cdb112a49b", null ],
     [ "settingsWritten", "classMeterCommand.html#a994e13d73c26eac303fa34b14082c9a4", null ],
     [ "supportedOptions", "classMeterCommand.html#aa32c65d3e27b6193af5a3bf802d7cccf", null ],
-    [ "numberOfSamplesToRead", "classMeterCommand.html#aa9ffe9c54075836912bf72f2774878bc", null ],
+    [ "samplesToGo", "classMeterCommand.html#adf371ab0a3848960f9177d80853863b1", null ],
     [ "service", "classMeterCommand.html#afbd91fbc89c6d6d8891dcbeb1fcc3280", null ],
     [ "settings", "classMeterCommand.html#a0db4ce8811d8fb3a297aa5cc5b83beb6", null ]
 ];
