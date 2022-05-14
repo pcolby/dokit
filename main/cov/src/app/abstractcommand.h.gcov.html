@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-14 04:16:25</td>
+            <td class="headerValue">2022-05-14 10:00:26</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -89,7 +89,7 @@
 <a name="27"><span class="lineNum">      27 </span>            : </a>
 <a name="28"><span class="lineNum">      28 </span>            : class PokitDiscoveryAgent;</a>
 <a name="29"><span class="lineNum">      29 </span>            : </a>
-<a name="30"><span class="lineNum">      30 </span><span class="lineCov">          2 : class AbstractCommand : public QObject</span></a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">         31 : class AbstractCommand : public QObject</span></a>
 <a name="31"><span class="lineNum">      31 </span>            : {</a>
 <a name="32"><span class="lineNum">      32 </span>            : public:</a>
 <a name="33"><span class="lineNum">      33 </span>            :     enum class OutputFormat {</a>
@@ -117,7 +117,7 @@
 <a name="55"><span class="lineNum">      55 </span>            : protected:</a>
 <a name="56"><span class="lineNum">      56 </span>            :     PokitDiscoveryAgent * discoveryAgent; ///&lt; Agent for Pokit device descovery.</a>
 <a name="57"><span class="lineNum">      57 </span>            :     OutputFormat format; ///&lt; Selected output format.</a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">         43 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ui.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">         45 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ui.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></a>
 <a name="59"><span class="lineNum">      59 </span>            : </a>
 <a name="60"><span class="lineNum">      60 </span>            : protected slots:</a>
 <a name="61"><span class="lineNum">      61 </span>            :     QString deviceToScanFor; ///&lt; Device (if any) that were passed to processOptions().</a>
