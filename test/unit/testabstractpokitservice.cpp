@@ -22,43 +22,84 @@
 #include <qtpokit/abstractpokitservice.h>
 #include "abstractpokitservice_p.h"
 
+#include <QLowEnergyController>
 #include <QRegularExpression>
+
+class MockPokitService : public AbstractPokitService
+{
+public:
+    MockPokitService(QLowEnergyController * const controller, QObject * parent = nullptr)
+        : AbstractPokitService(new AbstractPokitServicePrivate(QBluetoothUuid::createUuid(),
+            controller, this), parent)
+    {
+
+    }
+
+    bool readCharacteristics() override { return false; } // Ignored by our tests.
+};
 
 void TestAbstractPokitService::autoDiscover()
 {
-
+    MockPokitService service(nullptr);
+    QVERIFY(service.autoDiscover()); // On, by default.
+    service.setAutoDiscover(false);
+    QVERIFY(!service.autoDiscover());
+    service.setAutoDiscover(true);
+    QVERIFY(service.autoDiscover());
 }
 
 void TestAbstractPokitService::service()
 {
-
+    MockPokitService service(nullptr);
+    QCOMPARE(service.service(), nullptr);
+    const MockPokitService constService(nullptr);
+    QCOMPARE(constService.service(), nullptr);
 }
 
 void TestAbstractPokitService::createServiceObject()
 {
-
+    /// \todo
 }
 
 void TestAbstractPokitService::getCharacteristic()
 {
+    {   // Verify an invalid characteristic is returned safely, when no controller is set.
+        MockPokitService service(nullptr);
+        const QLowEnergyCharacteristic characteristic =
+            service.d_ptr->getCharacteristic(QUuid::createUuid());
+        QVERIFY(!characteristic.isValid());
+    }
 
+    {   // Verify an invalid characteristic is returned safely, when a device controller is set, but
+        // no services have been discovered (because we have no Bluetooth device to talk to).
+        MockPokitService service(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
+        QVERIFY(!service.d_ptr->createServiceObject());
+        const QLowEnergyCharacteristic characteristic =
+            service.d_ptr->getCharacteristic(QUuid::createUuid());
+        QVERIFY(!characteristic.isValid());
+    }
 }
 
 void TestAbstractPokitService::readCharacteristic()
 {
-
+    // Verify that characteristic reads fail safely, when no Bluetooth device is connected.
+    MockPokitService service(nullptr);
+    QVERIFY(!service.d_ptr->readCharacteristic(QUuid::createUuid()));
 }
 
 void TestAbstractPokitService::enableCharacteristicNotificatons()
 {
-
+    // Verify that CCCD-enable writes fail safely, when no Bluetooth device is connected.
+    MockPokitService service(nullptr);
+    QVERIFY(!service.d_ptr->enableCharacteristicNotificatons(QUuid::createUuid()));
 }
 
 void TestAbstractPokitService::disableCharacteristicNotificatons()
 {
-
+    // Verify that CCCD-disable writes fail safely, when no Bluetooth device is connected.
+    MockPokitService service(nullptr);
+    QVERIFY(!service.d_ptr->disableCharacteristicNotificatons(QUuid::createUuid()));
 }
-
 
 void TestAbstractPokitService::checkSize_data()
 {
@@ -135,43 +176,61 @@ void TestAbstractPokitService::toHexString()
 
 void TestAbstractPokitService::connected()
 {
-
+    // Verify safe error handling.
+    MockPokitService service(nullptr);
+    QTest::ignoreMessage(QtWarningMsg, "Connected with no controller set QObject(0x0)");
+    service.d_ptr->connected();
 }
 
 void TestAbstractPokitService::discoveryFinished()
 {
-
+    // Verify safe error handling.
+    MockPokitService service(nullptr);
+    QTest::ignoreMessage(QtWarningMsg, "Discovery finished with no controller set QObject(0x0)");
+    service.d_ptr->discoveryFinished();
 }
 
 void TestAbstractPokitService::errorOccurred()
 {
-
+    /// \todo Verify signal.
 }
 
 void TestAbstractPokitService::serviceDiscovered()
 {
-
+    /// \todo Verify signal.
 }
 
 void TestAbstractPokitService::stateChanged()
 {
-
+    /// \todo Verify signal.
 }
 
 
 void TestAbstractPokitService::characteristicRead()
 {
-
+    // Verify safe error handling.
+    MockPokitService service(nullptr);
+    const QLowEnergyCharacteristic characteristic =
+        service.d_ptr->getCharacteristic(QUuid::createUuid());
+    service.d_ptr->characteristicRead(characteristic, QByteArray());
 }
 
 void TestAbstractPokitService::characteristicWritten()
 {
-
+    // Verify safe error handling.
+    MockPokitService service(nullptr);
+    const QLowEnergyCharacteristic characteristic =
+        service.d_ptr->getCharacteristic(QUuid::createUuid());
+    service.d_ptr->characteristicWritten(characteristic, QByteArray());
 }
 
 void TestAbstractPokitService::characteristicChanged()
 {
-
+    // Verify safe error handling.
+    MockPokitService service(nullptr);
+    const QLowEnergyCharacteristic characteristic =
+        service.d_ptr->getCharacteristic(QUuid::createUuid());
+    service.d_ptr->characteristicChanged(characteristic, QByteArray());
 }
 
 QTEST_MAIN(TestAbstractPokitService)
