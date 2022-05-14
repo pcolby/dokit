@@ -21,6 +21,10 @@
 
 #include "abstractcommand.h"
 
+#include <qtpokit/pokitdiscoveryagent.h>
+
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
+
 class MockCommand : public AbstractCommand
 {
 public:
@@ -189,20 +193,178 @@ void TestAbstractCommand::parseWholeValue()
     QCOMPARE(AbstractCommand::parseWholeValue(value, unit), expected);
 }
 
-void TestAbstractCommand::processOptions_data()
-{
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
-}
-
 void TestAbstractCommand::processOptions()
 {
-    QFETCH(int, input);
+    QCommandLineParser parser;
+    QVERIFY(parser.addOptions({
+        { QStringLiteral("device"),       QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("mockRequired"), QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("output"),       QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("timeout"),      QStringLiteral("desc"), QStringLiteral("value") },
+    }));
+
+    // With no options, processOptions should fail because our mockRequired option is required.
+    QVERIFY(parser.parse(QStringList{
+        QStringLiteral("executableName"),
+    }));
+    MockCommand mock;
+    QStringList errors = mock.processOptions(parser);
+    QCOMPARE(errors.length(), 1);
+    QVERIFY(errors.first().contains(QStringLiteral("missing"), Qt::CaseInsensitive));
+    QVERIFY(errors.first().contains(QStringLiteral("mockRequired"), Qt::CaseSensitive));
+
+    // With our required option, processOptions should now pass.
+    QVERIFY(parser.parse(QStringList{
+        QStringLiteral("executableName"),
+        QStringLiteral("--mockRequired=abc123"),
+    }));
+    errors = mock.processOptions(parser);
+    QVERIFY(errors.isEmpty());
+
+    // Extraneous options should not cause any errors (though warnings will be logged).
+    QVERIFY(parser.addOption({ QStringLiteral("erroneous"), QStringLiteral("desc") }));
+    QVERIFY(parser.parse(QStringList{
+        QStringLiteral("executableName"),
+        QStringLiteral("--mockRequired=abc123"),
+        QStringLiteral("--erroneous"),
+    }));
+    errors = mock.processOptions(parser);
+    QVERIFY(errors.isEmpty());
+}
+
+void TestAbstractCommand::processOptions_device_data()
+{
+    QTest::addColumn<QString>("device");
+    QTest::addRow("<empty>")  << QString();
+    QTest::addRow("valid")   << QStringLiteral("valid");
+}
+
+void TestAbstractCommand::processOptions_device()
+{
+    QFETCH(QString, device);
+
+    QCommandLineParser parser;
+    QVERIFY(parser.addOptions({
+        { QStringLiteral("device"),       QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("mockRequired"), QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("output"),       QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("timeout"),      QStringLiteral("desc"), QStringLiteral("value") },
+    }));
+    QVERIFY(parser.parse(QStringList{
+        QStringLiteral("executableName"),
+        QStringLiteral("--mockRequired=abc123"),
+        QStringLiteral("--device"), device
+    }));
+
+    MockCommand mock;
+    QVERIFY(mock.deviceToScanFor.isEmpty());
+    const QStringList errors = mock.processOptions(parser);
+    QVERIFY(errors.isEmpty());
+    QCOMPARE(mock.deviceToScanFor, device);
+}
+
+void TestAbstractCommand::processOptions_output_data()
+{
+    QTest::addColumn<QString>("argument");
+    QTest::addColumn<AbstractCommand::OutputFormat>("expected");
+    QTest::addColumn<bool>("expectErrors");
+
+    // Valid values.
+    QTest::addRow("csv" ) << QStringLiteral("csv" ) << AbstractCommand::OutputFormat::Csv  << false;
+    QTest::addRow("cSv" ) << QStringLiteral("cSv" ) << AbstractCommand::OutputFormat::Csv  << false;
+    QTest::addRow("CSV" ) << QStringLiteral("CSV" ) << AbstractCommand::OutputFormat::Csv  << false;
+    QTest::addRow("json") << QStringLiteral("json") << AbstractCommand::OutputFormat::Json << false;
+    QTest::addRow("jSoN") << QStringLiteral("jSoN") << AbstractCommand::OutputFormat::Json << false;
+    QTest::addRow("JSON") << QStringLiteral("JSON") << AbstractCommand::OutputFormat::Json << false;
+    QTest::addRow("text") << QStringLiteral("text") << AbstractCommand::OutputFormat::Text << false;
+    QTest::addRow("tExT") << QStringLiteral("tExT") << AbstractCommand::OutputFormat::Text << false;
+    QTest::addRow("TEXT") << QStringLiteral("TEXT") << AbstractCommand::OutputFormat::Text << false;
+
+    // Invalid values should all remain as the default Text.
+    QTest::addRow("<empty>") << QString()             << AbstractCommand::OutputFormat::Text << true;
+    QTest::addRow("foo")     << QStringLiteral("foo") << AbstractCommand::OutputFormat::Text << true;
+    QTest::addRow("bar")     << QStringLiteral("bar") << AbstractCommand::OutputFormat::Text << true;
+    QTest::addRow("tsv")     << QStringLiteral("tsv") << AbstractCommand::OutputFormat::Text << true;
+}
+
+void TestAbstractCommand::processOptions_output()
+{
+    QFETCH(QString, argument);
+    QFETCH(AbstractCommand::OutputFormat, expected);
+    QFETCH(bool, expectErrors);
+
+    QCommandLineParser parser;
+    QVERIFY(parser.addOptions({
+        { QStringLiteral("device"),       QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("mockRequired"), QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("output"),       QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("timeout"),      QStringLiteral("desc"), QStringLiteral("value") },
+    }));
+    QVERIFY(parser.parse(QStringList{
+        QStringLiteral("executableName"),
+        QStringLiteral("--mockRequired=abc123"),
+        QStringLiteral("--output"), argument
+    }));
+
+    MockCommand mock;
+    QCOMPARE(mock.format, AbstractCommand::OutputFormat::Text); // The default format is Text.
+    const QStringList errors = mock.processOptions(parser);
+    QCOMPARE(!errors.isEmpty(), expectErrors);
+    QCOMPARE(mock.format, expected);
+}
+
+void TestAbstractCommand::processOptions_timeout_data()
+{
+    QTest::addColumn<QString>("argument");
+    QTest::addColumn<int>("expected");
+    QTest::addColumn<bool>("expectErrors");
+
+    // Valid values.
+    QTest::addRow(  "1ms") << QStringLiteral(  "1ms") <<      1 << false;
+    QTest::addRow(    "1") << QStringLiteral(    "1") <<   1000 << false;
+    QTest::addRow(  "123") << QStringLiteral(  "123") << 123000 << false;
+    QTest::addRow( "1000") << QStringLiteral( "1000") <<   1000 << false;
+    QTest::addRow( "50ms") << QStringLiteral( "50ms") <<     50 << false;
+    QTest::addRow("500ms") << QStringLiteral("500ms") <<    500 << false;
+    QTest::addRow(  "60s") << QStringLiteral(  "60s") <<  60000 << false;
+
+    // Invalid values should all remain as the default Text.
+    QTest::addRow(    "-10") << QStringLiteral(  "-10") << 0 << true;
+    QTest::addRow(     "-1") << QStringLiteral(   "-1") << 0 << true;
+    QTest::addRow(      "0") << QStringLiteral(    "0") << 0 << true;
+    QTest::addRow("<empty>") << QString()               << 0 << true;
+    QTest::addRow(    "foo") << QStringLiteral(  "foo") << 0 << true;
+    QTest::addRow(    "bar") << QStringLiteral(  "bar") << 0 << true;
+}
+
+void TestAbstractCommand::processOptions_timeout()
+{
+    QFETCH(QString, argument);
     QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+    QFETCH(bool, expectErrors);
+
+    QCommandLineParser parser;
+    QVERIFY(parser.addOptions({
+        { QStringLiteral("device"),       QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("mockRequired"), QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("output"),       QStringLiteral("desc"), QStringLiteral("value") },
+        { QStringLiteral("timeout"),      QStringLiteral("desc"), QStringLiteral("value") },
+    }));
+    QVERIFY(parser.parse(QStringList{
+        QStringLiteral("executableName"),
+        QStringLiteral("--mockRequired=abc123"),
+        QStringLiteral("--timeout"), argument
+    }));
+
+    MockCommand mock;
+    const int defaultTimeout = mock.discoveryAgent->lowEnergyDiscoveryTimeout(); // eg 20s on Linux.
+    const QStringList errors = mock.processOptions(parser);
+    QCOMPARE(!errors.isEmpty(), expectErrors);
+    if (expectErrors) {
+        QCOMPARE(mock.discoveryAgent->lowEnergyDiscoveryTimeout(), defaultTimeout);
+    } else {
+        QCOMPARE(mock.discoveryAgent->lowEnergyDiscoveryTimeout(), expected);
+    }
 }
 
 QTEST_MAIN(TestAbstractCommand)

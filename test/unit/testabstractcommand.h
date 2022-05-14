@@ -40,6 +40,14 @@ private slots:
     void parseWholeValue_data();
     void parseWholeValue();
 
-    void processOptions_data();
     void processOptions();
+
+    void processOptions_device_data();
+    void processOptions_device();
+
+    void processOptions_output_data();
+    void processOptions_output();
+
+    void processOptions_timeout_data();
+    void processOptions_timeout();
 };
