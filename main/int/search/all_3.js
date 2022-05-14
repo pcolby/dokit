@@ -2,9 +2,9 @@ var searchData=
 [
   ['c_0',['c',['https://doc.qt.io/qt-5/qlocale.html#c',1,'QLocale']]],
   ['caching_1',['caching',['https://doc.qt.io/qt-5/qfileinfo.html#caching',1,'QFileInfo']]],
-  ['calibratetemperature_2',['calibrateTemperature',['../classCalibrationService.html#a301f5b733cacbebbf24459639f04af52',1,'CalibrationService']]],
-  ['calibration_3',['calibration',['../classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e',1,'PokitDevice::calibration()'],['../classPokitDevicePrivate.html#a8d09e175eb40c14368cb6630e6ed5ff1',1,'PokitDevicePrivate::calibration()']]],
-  ['calibrationcommand_4',['CalibrationCommand',['../classCalibrationCommand.html#ab320660d6059b7a70081d0ffc24ddcfa',1,'CalibrationCommand::CalibrationCommand()'],['../classCalibrationCommand.html',1,'CalibrationCommand']]],
+  ['calibratecommand_2',['CalibrateCommand',['../classCalibrateCommand.html#a3b3275701ae0f274e707ed7539d6d370',1,'CalibrateCommand::CalibrateCommand()'],['../classCalibrateCommand.html',1,'CalibrateCommand']]],
+  ['calibratetemperature_3',['calibrateTemperature',['../classCalibrationService.html#a301f5b733cacbebbf24459639f04af52',1,'CalibrationService']]],
+  ['calibration_4',['calibration',['../classPokitDevice.html#abb2eafe232090e82ea1a69e38ebab49e',1,'PokitDevice::calibration()'],['../classPokitDevicePrivate.html#a8d09e175eb40c14368cb6630e6ed5ff1',1,'PokitDevicePrivate::calibration()']]],
   ['calibrationmutex_5',['calibrationMutex',['../classPokitDevicePrivate.html#a5512d8a206e13cf5d8b7aa7e8aa9b486',1,'PokitDevicePrivate']]],
   ['calibrationservice_6',['CalibrationService',['../classCalibrationService.html',1,'CalibrationService'],['../classCalibrationService.html#a3e64be1b1296f1150be8d865190a699d',1,'CalibrationService::CalibrationService(CalibrationServicePrivate *const d, QObject *const parent)'],['../classCalibrationService.html#a6116051fc655e706a0a0f120f423c5b3',1,'CalibrationService::CalibrationService(QLowEnergyController *const pokitDevice, QObject *parent=nullptr)']]],
   ['calibrationservice_2ecpp_7',['calibrationservice.cpp',['../calibrationservice_8cpp.html',1,'']]],

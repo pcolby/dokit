@@ -13,7 +13,7 @@ var hierarchy =
     [ "QObject", "https://doc.qt.io/qt-5/qobject.html", [
       [ "AbstractCommand", "classAbstractCommand.html", [
         [ "DeviceCommand", "classDeviceCommand.html", [
-          [ "CalibrationCommand", "classCalibrationCommand.html", null ],
+          [ "CalibrateCommand", "classCalibrateCommand.html", null ],
           [ "DsoCommand", "classDsoCommand.html", null ],
           [ "FlashLedCommand", "classFlashLedCommand.html", null ],
           [ "InfoCommand", "classInfoCommand.html", null ],

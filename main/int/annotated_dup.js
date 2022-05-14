@@ -3,7 +3,7 @@ var annotated_dup =
     [ "AbstractCommand", "classAbstractCommand.html", "classAbstractCommand" ],
     [ "AbstractPokitService", "classAbstractPokitService.html", "classAbstractPokitService" ],
     [ "AbstractPokitServicePrivate", "classAbstractPokitServicePrivate.html", "classAbstractPokitServicePrivate" ],
-    [ "CalibrationCommand", "classCalibrationCommand.html", "classCalibrationCommand" ],
+    [ "CalibrateCommand", "classCalibrateCommand.html", "classCalibrateCommand" ],
     [ "CalibrationService", "classCalibrationService.html", "classCalibrationService" ],
     [ "CalibrationServicePrivate", "classCalibrationServicePrivate.html", "classCalibrationServicePrivate" ],
     [ "DataLoggerService", "classDataLoggerService.html", "classDataLoggerService" ],
