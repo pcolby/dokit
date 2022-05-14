@@ -24,6 +24,31 @@ class TestAbstractPokitService : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    // AbstractPokitService tests.
+    void autoDiscover();
+    void service();
+
+    // AbstractPokitServicePrivate tests.
+    // Most of these only test safe error handling, since more would require mocking Qt's BLE classes.
+    void createServiceObject();
+    void getCharacteristic();
+    void readCharacteristic();
+    void enableCharacteristicNotificatons();
+    void disableCharacteristicNotificatons();
+
+    void checkSize_data();
+    void checkSize();
+
+    void toHexString_data();
+    void toHexString();
+
+    void connected();
+    void discoveryFinished();
+    void errorOccurred();
+    void serviceDiscovered();
+    void stateChanged();
+
+    void characteristicRead();
+    void characteristicWritten();
+    void characteristicChanged();
 };
