@@ -85,18 +85,18 @@ void TestAbstractPokitService::createServiceObject()
 void TestAbstractPokitService::getCharacteristic()
 {
     {   // Verify an invalid characteristic is returned safely, when no controller is set.
-        MockPokitService service1(nullptr);
+        MockPokitService service(nullptr);
         const QLowEnergyCharacteristic characteristic =
-            service1.d_ptr->getCharacteristic(QUuid::createUuid());
+            service.d_ptr->getCharacteristic(QUuid::createUuid());
         QVERIFY(!characteristic.isValid());
     }
 
     {   // Verify an invalid characteristic is returned safely, when a device controller is set, but
         // no services have been discovered (because we have no Bluetooth device to talk to).
-        MockPokitService service2(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
-        QVERIFY(!service2.d_ptr->createServiceObject());
+        MockPokitService service(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
+        QVERIFY(!service.d_ptr->createServiceObject());
         const QLowEnergyCharacteristic characteristic =
-            service2.d_ptr->getCharacteristic(QUuid::createUuid());
+            service.d_ptr->getCharacteristic(QUuid::createUuid());
         QVERIFY(!characteristic.isValid());
     }
 }
