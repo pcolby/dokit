@@ -687,7 +687,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  148</span>    <span class="comment">// Remove the optional (whole) unit suffix.</span></div>
 <div class="line"><span class="lineno">  149</span>    quint32 scale = 0;</div>
 <div class="line"><span class="lineno">  150</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> number = value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#trimmed">trimmed</a>();</div>
-<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">if</span> (number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">endsWith</a>(unit, Qt::CaseInsensitive)) {</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">if</span> ((!unit.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#isEmpty">isEmpty</a>()) &amp;&amp; (number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">endsWith</a>(unit, Qt::CaseInsensitive))) {</div>
 <div class="line"><span class="lineno">  152</span>        number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#chop">chop</a>(unit.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#length">length</a>());</div>
 <div class="line"><span class="lineno">  153</span>        scale = 1000 * 1000;</div>
 <div class="line"><span class="lineno">  154</span>    }</div>
@@ -730,16 +730,17 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aqlocale_html_toUInt"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlocale.html#toUInt">QLocale::toUInt</a></div><div class="ttdeci">uint toUInt(const QString &amp;s, bool *ok) const const</div></div>
 <div class="ttc" id="aqstring_html_chop"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#chop">QString::chop</a></div><div class="ttdeci">void chop(int n)</div></div>
 <div class="ttc" id="aqstring_html_endsWith"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#endsWith">QString::endsWith</a></div><div class="ttdeci">bool endsWith(const QString &amp;s, Qt::CaseSensitivity cs) const const</div></div>
+<div class="ttc" id="aqstring_html_isEmpty"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#isEmpty">QString::isEmpty</a></div><div class="ttdeci">bool isEmpty() const const</div></div>
 <div class="ttc" id="aqstring_html_length"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#length">QString::length</a></div><div class="ttdeci">int length() const const</div></div>
 <div class="ttc" id="aqstring_html_trimmed"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#trimmed">QString::trimmed</a></div><div class="ttdeci">QString trimmed() const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#chop">QString::chop()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">QString::endsWith()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#length">QString::length()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlocale.html#toDouble">QLocale::toDouble()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlocale.html#toUInt">QLocale::toUInt()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#trimmed">QString::trimmed()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#chop">QString::chop()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">QString::endsWith()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#isEmpty">QString::isEmpty()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#length">QString::length()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlocale.html#toDouble">QLocale::toDouble()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlocale.html#toUInt">QLocale::toUInt()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#trimmed">QString::trimmed()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00068">DsoCommand::processOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_a6e67145ebb25a7bac49736245f69ee89_cgraph.svg" width="423" height="291"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_a6e67145ebb25a7bac49736245f69ee89_cgraph.svg" width="423" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
@@ -803,7 +804,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  209</span>    <span class="comment">// Remove the optional (whole) unit suffix.</span></div>
 <div class="line"><span class="lineno">  210</span>    quint32 scale = 0;</div>
 <div class="line"><span class="lineno">  211</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> number = value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#trimmed">trimmed</a>();</div>
-<div class="line"><span class="lineno">  212</span>    <span class="keywordflow">if</span> (number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">endsWith</a>(unit, Qt::CaseInsensitive)) {</div>
+<div class="line"><span class="lineno">  212</span>    <span class="keywordflow">if</span> ((!unit.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#isEmpty">isEmpty</a>()) &amp;&amp; (number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">endsWith</a>(unit, Qt::CaseInsensitive))) {</div>
 <div class="line"><span class="lineno">  213</span>        number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#chop">chop</a>(unit.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#length">length</a>());</div>
 <div class="line"><span class="lineno">  214</span>        scale = 1000;</div>
 <div class="line"><span class="lineno">  215</span>    }</div>
@@ -836,13 +837,13 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  242</span>    <span class="keywordflow">return</span> 0; <span class="comment">// Failed to parse as either integer, or float.</span></div>
 <div class="line"><span class="lineno">  243</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#chop">QString::chop()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">QString::endsWith()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#length">QString::length()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlocale.html#toDouble">QLocale::toDouble()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlocale.html#toUInt">QLocale::toUInt()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#trimmed">QString::trimmed()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#chop">QString::chop()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">QString::endsWith()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#isEmpty">QString::isEmpty()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#length">QString::length()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlocale.html#toDouble">QLocale::toDouble()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlocale.html#toUInt">QLocale::toUInt()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#trimmed">QString::trimmed()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00313">processOptions()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00068">DsoCommand::processOptions()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00067">LoggerStartCommand::processOptions()</a>, and <a class="el" href="metercommand_8cpp_source.html#l00068">MeterCommand::processOptions()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_ab18bb57fe68534739f63c994330a29c2_cgraph.svg" width="415" height="291"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractCommand_ab18bb57fe68534739f63c994330a29c2_cgraph.svg" width="415" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
@@ -904,7 +905,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  262</span> </div>
 <div class="line"><span class="lineno">  263</span>    <span class="comment">// Parse, and remove, the optional SI unit prefix.</span></div>
 <div class="line"><span class="lineno">  264</span>    quint32 scale = 1;</div>
-<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">if</span> (number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">endsWith</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;k&quot;</span>))) {</div>
+<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">if</span> (number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">endsWith</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;k&quot;</span>), Qt::CaseInsensitive)) {</div>
 <div class="line"><span class="lineno">  266</span>        number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#chop">chop</a>(1);</div>
 <div class="line"><span class="lineno">  267</span>        scale = 1000;</div>
 <div class="line"><span class="lineno">  268</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (number.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#endsWith">endsWith</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;M&quot;</span>))) {</div>
