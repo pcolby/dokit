@@ -29,7 +29,7 @@
 class MockPokitService : public AbstractPokitService
 {
 public:
-    MockPokitService(QLowEnergyController * const controller, QObject * parent = nullptr)
+    explicit MockPokitService(QLowEnergyController * const controller, QObject * parent = nullptr)
         : AbstractPokitService(new AbstractPokitServicePrivate(QBluetoothUuid::createUuid(),
             controller, this), parent)
     {
@@ -59,7 +59,27 @@ void TestAbstractPokitService::service()
 
 void TestAbstractPokitService::createServiceObject()
 {
-    /// \todo
+    // Verify that creation will fail without a Bluetooth device controller
+    MockPokitService service(nullptr);
+    QCOMPARE(service.service(), nullptr);
+    QVERIFY(!service.d_ptr->createServiceObject());
+    QCOMPARE(service.service(), nullptr);
+
+    // Verify that creation will still fail without a connected Bluetooth device.
+    service.d_ptr->controller = QLowEnergyController::createCentral(QBluetoothDeviceInfo(), &service);
+    QVERIFY(!service.d_ptr->createServiceObject());
+    QCOMPARE(service.service(), nullptr);
+
+    // Verify that existing, assigned BLE services will be left intact (even if they are completely
+    // invalid pointers we just re-intrerpreted... dangerous, but only short-lived for testing).
+    // Note, we QCOMPARE with anonymous pointers below, because if our hacked pointer is presented
+    // as a QObject-derived type then QCOMPARE will attempt to invoke QObject::objectName() on it.
+    char x[sizeof(QLowEnergyService)];
+    service.d_ptr->service = reinterpret_cast<QLowEnergyService *>(&x);
+    QCOMPARE((std::uintptr_t)service.service(), (std::uintptr_t)(&x));
+    QVERIFY(service.d_ptr->createServiceObject());
+    QCOMPARE((std::uintptr_t)service.service(), (std::uintptr_t)(&x));
+    service.d_ptr->service = nullptr; // Just in case we ever add more code here, and forget to.
 }
 
 void TestAbstractPokitService::getCharacteristic()
