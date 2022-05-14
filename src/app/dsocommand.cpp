@@ -198,9 +198,9 @@ void DsoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     const QString range = DsoService::toString(settings.range, settings.mode);
-    /// \todo Add more info here, such as trigger and timing settings.
-    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, ...").arg(
-        DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range);
+    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %L3 samples over %L4us").arg(
+        DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range)
+        .arg(settings.numberOfSamples).arg(settings.samplingWindow);
     service->setSettings(settings);
 }
 
