@@ -148,7 +148,7 @@ quint32 AbstractCommand::parseMicroValue(const QString &value, const QString &un
     // Remove the optional (whole) unit suffix.
     quint32 scale = 0;
     QString number = value.trimmed();
-    if (number.endsWith(unit, Qt::CaseInsensitive)) {
+    if ((!unit.isEmpty()) && (number.endsWith(unit, Qt::CaseInsensitive))) {
         number.chop(unit.length());
         scale = 1000 * 1000;
     }
@@ -209,7 +209,7 @@ quint32 AbstractCommand::parseMilliValue(const QString &value, const QString &un
     // Remove the optional (whole) unit suffix.
     quint32 scale = 0;
     QString number = value.trimmed();
-    if (number.endsWith(unit, Qt::CaseInsensitive)) {
+    if ((!unit.isEmpty()) && (number.endsWith(unit, Qt::CaseInsensitive))) {
         number.chop(unit.length());
         scale = 1000;
     }
@@ -262,7 +262,7 @@ quint32 AbstractCommand::parseWholeValue(const QString &value, const QString &un
 
     // Parse, and remove, the optional SI unit prefix.
     quint32 scale = 1;
-    if (number.endsWith(QLatin1String("k"))) {
+    if (number.endsWith(QLatin1String("k"), Qt::CaseInsensitive)) {
         number.chop(1);
         scale = 1000;
     } else if (number.endsWith(QLatin1String("M"))) {

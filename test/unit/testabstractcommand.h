@@ -24,6 +24,22 @@ class TestAbstractCommand : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    void requiredOptions();
+
+    void supportedOptions();
+
+    void escapeCsvField_data();
+    void escapeCsvField();
+
+    void parseMicroValue_data();
+    void parseMicroValue();
+
+    void parseMilliValue_data();
+    void parseMilliValue();
+
+    void parseWholeValue_data();
+    void parseWholeValue();
+
+    void processOptions_data();
+    void processOptions();
 };
