@@ -24,6 +24,7 @@
 
 #include <QLowEnergyController>
 #include <QRegularExpression>
+#include <QSignalSpy>
 
 class MockPokitService : public AbstractPokitService
 {
@@ -192,19 +193,42 @@ void TestAbstractPokitService::discoveryFinished()
 
 void TestAbstractPokitService::errorOccurred()
 {
-    /// \todo Verify signal.
+    // Verify that errors bubble up.
+    MockPokitService service(nullptr);
+    QSignalSpy spy(&service, &AbstractPokitService::serviceErrorOccurred);
+    service.d_ptr->errorOccurred(QLowEnergyService::ServiceError::UnknownError);
+    QCOMPARE(spy.count(), 1);
 }
 
 void TestAbstractPokitService::serviceDiscovered()
 {
-    /// \todo Verify signal.
+    MockPokitService service(nullptr);
+    service.d_ptr->serviceDiscovered(QBluetoothUuid::createUuid()); // Slightly different code paths
+    service.d_ptr->serviceDiscovered(service.d_ptr->serviceUuid);   // but both must be safe.
 }
 
 void TestAbstractPokitService::stateChanged()
 {
-    /// \todo Verify signal.
-}
+    // Verify that signals with [Remote]ServiceDiscovered state bubble up.
+    MockPokitService service(nullptr);
+    QSignalSpy spy(&service, &AbstractPokitService::serviceDetailsDiscovered);
 
+    #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    service.d_ptr->stateChanged(QLowEnergyService::ServiceState::DiscoveryRequired);
+    service.d_ptr->stateChanged(QLowEnergyService::ServiceState::DiscoveringServices);
+    #else
+    service.d_ptr->stateChanged(QLowEnergyService::ServiceState::RemoteService);
+    service.d_ptr->stateChanged(QLowEnergyService::ServiceState::RemoteServiceDiscovering);
+    #endif
+    QCOMPARE(spy.count(), 0); // No signals yet.
+
+    #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    service.d_ptr->stateChanged(QLowEnergyService::ServiceState::ServiceDiscovered);
+    #else
+    service.d_ptr->stateChanged(QLowEnergyService::ServiceState::RemoteServiceDiscovered);
+    #endif
+    QCOMPARE(spy.count(), 1); // Signaled.
+}
 
 void TestAbstractPokitService::characteristicRead()
 {
