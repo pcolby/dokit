@@ -32,6 +32,7 @@ jobs:
            -DQTPOKIT_NAMESPACE=qtpockit --enable=all --error-exitcode=1 -Isrc \
            --suppress={missingInclude,unknownMacro} \
            --suppress=unusedFunction:test/unit/*.cpp \
+           --suppress=unreadVariable:test/unit/testabstractpokitservice.cpp \
            --xml --xml-version=2 src test 2> "$RUNNER_TEMP/cppcheck.xml"
     - name: Generate Report
       if: ${{ failure() }}
