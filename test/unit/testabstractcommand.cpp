@@ -358,6 +358,10 @@ void TestAbstractCommand::processOptions_timeout()
 
     MockCommand mock;
     const int defaultTimeout = mock.discoveryAgent->lowEnergyDiscoveryTimeout(); // eg 20s on Linux.
+    if (defaultTimeout == -1) {
+        QSKIP("This platform does not support timeout for BLE device searches.");
+        // See https://doc.qt.io/qt-5/qbluetoothdevicediscoveryagent.html#lowEnergyDiscoveryTimeout
+    }
     const QStringList errors = mock.processOptions(parser);
     QCOMPARE(!errors.isEmpty(), expectErrors);
     if (expectErrors) {
