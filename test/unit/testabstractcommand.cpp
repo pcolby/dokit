@@ -228,6 +228,7 @@ void TestAbstractCommand::processOptions()
         QStringLiteral("--mockRequired=abc123"),
         QStringLiteral("--erroneous"),
     }));
+    QTest::ignoreMessage(QtInfoMsg, "Ignoring option: erroneous");
     errors = mock.processOptions(parser);
     QVERIFY(errors.isEmpty());
 }
