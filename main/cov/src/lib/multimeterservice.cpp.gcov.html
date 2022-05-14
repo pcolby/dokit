@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-13 14:35:52</td>
+            <td class="headerValue">2022-05-14 01:03:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -441,7 +441,7 @@
 <a name="379"><span class="lineNum">     379 </span>            : }</a>
 <a name="380"><span class="lineNum">     380 </span>            : </a>
 <a name="381"><span class="lineNum">     381 </span>            : /*!</a>
-<a name="382"><span class="lineNum">     382 </span>            :  * Requests the Pokit device to begin reporting multimeter reads.</a>
+<a name="382"><span class="lineNum">     382 </span>            :  * Enables client-side notifications of meter readings.</a>
 <a name="383"><span class="lineNum">     383 </span>            :  *</a>
 <a name="384"><span class="lineNum">     384 </span>            :  * This is an alternative to manually requesting individual reads via readReadingCharacteristic().</a>
 <a name="385"><span class="lineNum">     385 </span>            :  *</a>
@@ -449,20 +449,20 @@
 <a name="387"><span class="lineNum">     387 </span>            :  *</a>
 <a name="388"><span class="lineNum">     388 </span>            :  * Successfully read values (if any) will be emitted via the readingRead() signal.</a>
 <a name="389"><span class="lineNum">     389 </span>            :  */</a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 : bool MultimeterService::beginClientReadings()</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 : bool MultimeterService::enableReadingNotifications()</span></a>
 <a name="391"><span class="lineNum">     391 </span>            : {</a>
 <a name="392"><span class="lineNum">     392 </span><span class="lineNoCov">          0 :     Q_D(MultimeterService);</span></a>
 <a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
 <a name="394"><span class="lineNum">     394 </span>            : }</a>
 <a name="395"><span class="lineNum">     395 </span>            : </a>
 <a name="396"><span class="lineNum">     396 </span>            : /*!</a>
-<a name="397"><span class="lineNum">     397 </span>            :  * Requests the Pokit device to stop reporting multimeter reads.</a>
+<a name="397"><span class="lineNum">     397 </span>            :  * Disables client-side notifications of meter readings.</a>
 <a name="398"><span class="lineNum">     398 </span>            :  *</a>
 <a name="399"><span class="lineNum">     399 </span>            :  * Instantaneous reads can still be fetched by readReadingCharacteristic().</a>
 <a name="400"><span class="lineNum">     400 </span>            :  *</a>
 <a name="401"><span class="lineNum">     401 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
 <a name="402"><span class="lineNum">     402 </span>            :  */</a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineNoCov">          0 : bool MultimeterService::stopClientReadings()</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineNoCov">          0 : bool MultimeterService::disableReadingNotifications()</span></a>
 <a name="404"><span class="lineNum">     404 </span>            : {</a>
 <a name="405"><span class="lineNum">     405 </span><span class="lineNoCov">          0 :     Q_D(MultimeterService);</span></a>
 <a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>

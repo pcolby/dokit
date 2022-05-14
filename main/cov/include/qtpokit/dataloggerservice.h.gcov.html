@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-13 14:35:52</td>
+            <td class="headerValue">2022-05-14 01:03:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -199,12 +199,12 @@
 <a name="137"><span class="lineNum">     137 </span>            : </a>
 <a name="138"><span class="lineNum">     138 </span>            :     // Metadata characteristic (BLE read/notify).</a>
 <a name="139"><span class="lineNum">     139 </span>            :     Metadata metadata() const;</a>
-<a name="140"><span class="lineNum">     140 </span>            :     bool beginMetadata();</a>
-<a name="141"><span class="lineNum">     141 </span>            :     bool stopMetadata();</a>
+<a name="140"><span class="lineNum">     140 </span>            :     bool enableMetadataNotifications();</a>
+<a name="141"><span class="lineNum">     141 </span>            :     bool disableMetadatNotifications();</a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
 <a name="143"><span class="lineNum">     143 </span>            :     // Reading characteristic (BLE notify only).</a>
-<a name="144"><span class="lineNum">     144 </span>            :     bool beginSampling();</a>
-<a name="145"><span class="lineNum">     145 </span>            :     bool stopSampling();</a>
+<a name="144"><span class="lineNum">     144 </span>            :     bool enableReadingNotifications();</a>
+<a name="145"><span class="lineNum">     145 </span>            :     bool disableReadingNotifications();</a>
 <a name="146"><span class="lineNum">     146 </span>            : </a>
 <a name="147"><span class="lineNum">     147 </span>            : signals:</a>
 <a name="148"><span class="lineNum">     148 </span>            :     void settingsWritten();</a>

@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">191</td>
+            <td class="headerCovTableEntry">189</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-13 14:35:52</td>
+            <td class="headerValue">2022-05-14 01:03:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -100,7 +100,7 @@
 <a name="38"><span class="lineNum">      38 </span>            :         MultimeterService::Mode::DcVoltage,</a>
 <a name="39"><span class="lineNum">      39 </span>            :         { MultimeterService::VoltageRange::AutoRange },</a>
 <a name="40"><span class="lineNum">      40 </span>            :         1000</a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     }, numberOfSamplesToRead(-1)</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     }, samplesToGo(-1)</span></a>
 <a name="42"><span class="lineNum">      42 </span>            : {</a>
 <a name="43"><span class="lineNum">      43 </span>            : </a>
 <a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : }</span></a>
@@ -219,7 +219,7 @@
 <a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :         if (!ok) {</span></a>
 <a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Invalid number of samples: %1&quot;).arg(value));</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :         } else {</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :             numberOfSamplesToRead = samples;</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :             samplesToGo = samples;</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :         }</a>
 <a name="162"><span class="lineNum">     162 </span>            :     }</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
@@ -346,7 +346,7 @@
 <a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; starting meter readings...&quot;);</span></a>
 <a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :     connect(service, &amp;MultimeterService::readingRead,</span></a>
 <a name="286"><span class="lineNum">     286 </span>            :             this, &amp;MeterCommand::outputReading);</a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :     service-&gt;beginClientReadings();</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :     service-&gt;enableReadingNotifications();</span></a>
 <a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
 <a name="290"><span class="lineNum">     290 </span>            : /*!</a>
@@ -465,13 +465,10 @@
 <a name="403"><span class="lineNum">     403 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="404"><span class="lineNum">     404 </span>            :     }</a>
 <a name="405"><span class="lineNum">     405 </span>            : </a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :     if (numberOfSamplesToRead &gt; 0) {</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :         if (--numberOfSamplesToRead == 0) {</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :             service-&gt;stopClientReadings();</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :             disconnect(); // Will exit the application once disconnected.</span></a>
-<a name="410"><span class="lineNum">     410 </span>            :         }</a>
-<a name="411"><span class="lineNum">     411 </span>            :     }</a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :     if ((samplesToGo &gt; 0) &amp;&amp; (--samplesToGo == 0)) {</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :         disconnect(); // Will exit the application once disconnected.</span></a>
+<a name="408"><span class="lineNum">     408 </span>            :     }</a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 : }</span></a>
 </pre>
       </td>
     </tr>

@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">152</td>
+            <td class="headerCovTableEntry">154</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-13 14:35:52</td>
+            <td class="headerValue">2022-05-14 01:03:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -191,220 +191,221 @@
 <a name="129"><span class="lineNum">     129 </span>            : </a>
 <a name="130"><span class="lineNum">     130 </span>            :     // Parse the trigger-mode option.</a>
 <a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;trigger-mode&quot;))) {</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :         const QString mode = parser.value(QLatin1String(&quot;trigger-mode&quot;)).trimmed().toLower();</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :         if (mode.startsWith(QLatin1String(&quot;free&quot;))) {</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :         const QString triggerMode = parser.value(QLatin1String(&quot;trigger-mode&quot;)).trimmed().toLower();</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :         if (triggerMode.startsWith(QLatin1String(&quot;free&quot;))) {</span></a>
 <a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :             settings.command = DsoService::Command::FreeRunning;</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :         } else if (mode.startsWith(QLatin1String(&quot;ris&quot;))) {</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :         } else if (triggerMode.startsWith(QLatin1String(&quot;ris&quot;))) {</span></a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :            settings.command = DsoService::Command::RisingEdgeTrigger;</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :         } else if (mode.startsWith(QLatin1String(&quot;fall&quot;))) {</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :         } else if (triggerMode.startsWith(QLatin1String(&quot;fall&quot;))) {</span></a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :             settings.command = DsoService::Command::FallingEdgeTrigger;</span></a>
 <a name="139"><span class="lineNum">     139 </span>            :         } else {</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Unknown trigger mode: %1&quot;).arg(parser.value(QLatin1String(&quot;mode&quot;))));</span></a>
-<a name="141"><span class="lineNum">     141 </span>            :         }</a>
-<a name="142"><span class="lineNum">     142 </span>            :     }</a>
-<a name="143"><span class="lineNum">     143 </span>            : </a>
-<a name="144"><span class="lineNum">     144 </span>            :     // Ensure that if either trigger option is present, then both are.</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;trigger-level&quot;)) !=</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :         parser.isSet(QLatin1String(&quot;trigger-mode&quot;))) {</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :         errors.append(tr(&quot;If either option is provided, then both must be: trigger-level, trigger-mode&quot;));</span></a>
-<a name="148"><span class="lineNum">     148 </span>            :     }</a>
-<a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span>            :     // Parse the interval option.</a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;interval&quot;))) {</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :         const QString value = parser.value(QLatin1String(&quot;interval&quot;));</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :         const quint32 interval = parseMicroValue(value, QLatin1String(&quot;s&quot;), 500*1000);</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :         if (interval == 0) {</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></a>
-<a name="156"><span class="lineNum">     156 </span>            :         } else {</a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :             settings.samplingWindow = interval;</span></a>
-<a name="158"><span class="lineNum">     158 </span>            :         }</a>
-<a name="159"><span class="lineNum">     159 </span>            :     }</a>
-<a name="160"><span class="lineNum">     160 </span>            : </a>
-<a name="161"><span class="lineNum">     161 </span>            :     // Parse the samples option.</a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;samples&quot;))) {</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :         const QString value = parser.value(QLatin1String(&quot;samples&quot;));</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :         const quint32 samples = parseWholeValue(value, QLatin1String(&quot;S&quot;));</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :         if (samples == 0) {</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Invalid samples value: %1&quot;).arg(value));</span></a>
-<a name="167"><span class="lineNum">     167 </span>            :         } else {</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :             settings.numberOfSamples = samples;</span></a>
-<a name="169"><span class="lineNum">     169 </span>            :         }</a>
-<a name="170"><span class="lineNum">     170 </span>            :     }</a>
-<a name="171"><span class="lineNum">     171 </span>            :     return errors;</a>
-<a name="172"><span class="lineNum">     172 </span>            : }</a>
-<a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span>            : /*!</a>
-<a name="175"><span class="lineNum">     175 </span>            :  * \copybrief DeviceCommand::getService</a>
-<a name="176"><span class="lineNum">     176 </span>            :  *</a>
-<a name="177"><span class="lineNum">     177 </span>            :  * This override returns a pointer to a DsoService object.</a>
-<a name="178"><span class="lineNum">     178 </span>            :  */</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 : AbstractPokitService * DsoCommand::getService()</span></a>
-<a name="180"><span class="lineNum">     180 </span>            : {</a>
-<a name="181"><span class="lineNum">     181 </span>            :     Q_ASSERT(device);</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :     if (!service) {</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :         service = device-&gt;dso();</span></a>
-<a name="184"><span class="lineNum">     184 </span>            :         Q_ASSERT(service);</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :         connect(service, &amp;DsoService::settingsWritten,</span></a>
-<a name="186"><span class="lineNum">     186 </span>            :                 this, &amp;DsoCommand::settingsWritten);</a>
-<a name="187"><span class="lineNum">     187 </span>            :     }</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :     return service;</span></a>
-<a name="189"><span class="lineNum">     189 </span>            : }</a>
-<a name="190"><span class="lineNum">     190 </span>            : </a>
-<a name="191"><span class="lineNum">     191 </span>            : /*!</a>
-<a name="192"><span class="lineNum">     192 </span>            :  * \copybrief DeviceCommand::serviceDetailsDiscovered</a>
-<a name="193"><span class="lineNum">     193 </span>            :  *</a>
-<a name="194"><span class="lineNum">     194 </span>            :  * This override fetches the current device's status, and outputs it in the selected format.</a>
-<a name="195"><span class="lineNum">     195 </span>            :  */</a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 : void DsoCommand::serviceDetailsDiscovered()</span></a>
-<a name="197"><span class="lineNum">     197 </span>            : {</a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :     const QString range = DsoService::toString(settings.range, settings.mode);</span></a>
-<a name="200"><span class="lineNum">     200 </span>            :     /// \todo Add more info here, such as trigger and timing settings.</a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Sampling %1, with range %2, ...&quot;).arg(</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :         DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1(&quot;N/A&quot;) : range);</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :     service-&gt;setSettings(settings);</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="205"><span class="lineNum">     205 </span>            : </a>
-<a name="206"><span class="lineNum">     206 </span>            : /*!</a>
-<a name="207"><span class="lineNum">     207 </span>            :  * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange</a>
-<a name="208"><span class="lineNum">     208 </span>            :  * if no such range is available.</a>
-<a name="209"><span class="lineNum">     209 </span>            :  */</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 : DsoService::Range DsoCommand::lowestRange(</span></a>
-<a name="211"><span class="lineNum">     211 </span>            :     const DsoService::Mode mode, const quint32 desiredMax)</a>
-<a name="212"><span class="lineNum">     212 </span>            : {</a>
-<a name="213"><span class="lineNum">     213 </span>            :     DsoService::Range range{ DsoService::VoltageRange::_6V_to_12V };</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :     case DsoService::Mode::Idle:</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Idle has no defined ranges.&quot;);</span></a>
-<a name="217"><span class="lineNum">     217 </span>            :         Q_ASSERT(false); // Should never have been called with this Idle mode.</a>
-<a name="218"><span class="lineNum">     218 </span>            :         break;</a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :     case DsoService::Mode::DcVoltage:</span></a>
-<a name="220"><span class="lineNum">     220 </span>            :     case DsoService::Mode::AcVoltage:</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :         range.voltageRange = lowestVoltageRange(desiredMax);</span></a>
-<a name="222"><span class="lineNum">     222 </span>            :         break;</a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :     case DsoService::Mode::DcCurrent:</span></a>
-<a name="224"><span class="lineNum">     224 </span>            :     case DsoService::Mode::AcCurrent:</a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :         range.currentRange = lowestCurrentRange(desiredMax);</span></a>
-<a name="226"><span class="lineNum">     226 </span>            :         break;</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :     default:</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;No defined ranges for mode %1.&quot;).arg((quint8)mode);</span></a>
-<a name="229"><span class="lineNum">     229 </span>            :         Q_ASSERT(false); // Should never have been called with this invalid mode.</a>
-<a name="230"><span class="lineNum">     230 </span>            :     }</a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :     return range;</span></a>
-<a name="232"><span class="lineNum">     232 </span>            : }</a>
-<a name="233"><span class="lineNum">     233 </span>            : </a>
-<a name="234"><span class="lineNum">     234 </span>            : #define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \</a>
-<a name="235"><span class="lineNum">     235 </span>            : if (value &lt;=  DsoService::maxValue(DsoService::label).toUInt()) { \</a>
-<a name="236"><span class="lineNum">     236 </span>            :     return DsoService::label; \</a>
-<a name="237"><span class="lineNum">     237 </span>            : }</a>
-<a name="238"><span class="lineNum">     238 </span>            : </a>
-<a name="239"><span class="lineNum">     239 </span>            : /*!</a>
-<a name="240"><span class="lineNum">     240 </span>            :  * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange</a>
-<a name="241"><span class="lineNum">     241 </span>            :  * if no such range is available.</a>
-<a name="242"><span class="lineNum">     242 </span>            :  */</a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 : DsoService::CurrentRange DsoCommand::lowestCurrentRange(const quint32 desiredMax)</span></a>
-<a name="244"><span class="lineNum">     244 </span>            : {</a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</span></a>
-<a name="250"><span class="lineNum">     250 </span>            :     return DsoService::CurrentRange::_300mA_to_3A; // Out of range, so go with the biggest.</a>
-<a name="251"><span class="lineNum">     251 </span>            : }</a>
-<a name="252"><span class="lineNum">     252 </span>            : </a>
-<a name="253"><span class="lineNum">     253 </span>            : /*!</a>
-<a name="254"><span class="lineNum">     254 </span>            :  * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange</a>
-<a name="255"><span class="lineNum">     255 </span>            :  * if no such range is available.</a>
-<a name="256"><span class="lineNum">     256 </span>            :  */</a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 : DsoService::VoltageRange DsoCommand::lowestVoltageRange(const quint32 desiredMax)</span></a>
-<a name="258"><span class="lineNum">     258 </span>            : {</a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</span></a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</span></a>
-<a name="265"><span class="lineNum">     265 </span>            :     return DsoService::VoltageRange::_30V_to_60V; // Out of range, so go with the biggest.</a>
-<a name="266"><span class="lineNum">     266 </span>            : }</a>
-<a name="267"><span class="lineNum">     267 </span>            : </a>
-<a name="268"><span class="lineNum">     268 </span>            : #undef POKIT_APP_IF_LESS_THAN_RETURN</a>
-<a name="269"><span class="lineNum">     269 </span>            : </a>
-<a name="270"><span class="lineNum">     270 </span>            : /*!</a>
-<a name="271"><span class="lineNum">     271 </span>            :  * Invoked when the DSO settings have been written.</a>
-<a name="272"><span class="lineNum">     272 </span>            :  */</a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 : void DsoCommand::settingsWritten()</span></a>
-<a name="274"><span class="lineNum">     274 </span>            : {</a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; DSO has started.&quot;);</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :     connect(service, &amp;DsoService::metadataRead, this, &amp;DsoCommand::metadataRead);</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :     connect(service, &amp;DsoService::samplesRead, this, &amp;DsoCommand::outputSamples);</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :     service-&gt;beginMetadata();</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :     service-&gt;beginSampling();</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="281"><span class="lineNum">     281 </span>            : </a>
-<a name="282"><span class="lineNum">     282 </span>            : /*!</a>
-<a name="283"><span class="lineNum">     283 </span>            :  * Invoked when \a metadata has been received from the DSO.</a>
-<a name="284"><span class="lineNum">     284 </span>            :  */</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 : void DsoCommand::metadataRead(const DsoService::Metadata &amp;metadata)</span></a>
-<a name="286"><span class="lineNum">     286 </span>            : {</a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(metadata.status);</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; metadata.scale;</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DsoService::toString(metadata.mode);</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; DsoService::toString(metadata.range.voltageRange);</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;samplingWindow:&quot; &lt;&lt; (int)metadata.samplingWindow;</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; metadata.numberOfSamples;</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;samplingRate:&quot; &lt;&lt; metadata.samplingRate &lt;&lt; &quot;Hz&quot;;</span></a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :     this-&gt;metadata = metadata;</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :     this-&gt;samplesToGo = metadata.numberOfSamples;</span></a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="297"><span class="lineNum">     297 </span>            : </a>
-<a name="298"><span class="lineNum">     298 </span>            : /*!</a>
-<a name="299"><span class="lineNum">     299 </span>            :  * Outputs DSO \a samples in the selected ouput format.</a>
-<a name="300"><span class="lineNum">     300 </span>            :  */</a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 : void DsoCommand::outputSamples(const DsoService::Samples &amp;samples)</span></a>
-<a name="302"><span class="lineNum">     302 </span>            : {</a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :     QString unit;</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :     switch (metadata.mode) {</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :     case DsoService::Mode::DcVoltage: unit = QLatin1String(&quot;Vdc&quot;); break;</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :     case DsoService::Mode::AcVoltage: unit = QLatin1String(&quot;Vac&quot;); break;</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :     case DsoService::Mode::DcCurrent: unit = QLatin1String(&quot;Adc&quot;); break;</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :     case DsoService::Mode::AcCurrent: unit = QLatin1String(&quot;Aac&quot;); break;</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :     default:</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;No known unit for mode %1 \&quot;%2\&quot;.&quot;).arg((int)metadata.mode)</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :             .arg(DsoService::toString(metadata.mode));</span></a>
-<a name="312"><span class="lineNum">     312 </span>            :     }</a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :     const QString range = DsoService::toString(metadata.range, metadata.mode);</span></a>
-<a name="314"><span class="lineNum">     314 </span>            : </a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :     for (const qint16 &amp;sample: samples) {</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :         static int sampleNumber = 0; ++sampleNumber;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :         const float value = sample * metadata.scale;</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :         switch (format) {</span></a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :         case OutputFormat::Csv:</span></a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 :             for (static bool firstTime = true; firstTime; firstTime = false) {</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :                 fputs(qPrintable(tr(&quot;sample_number,value,unit,range\n&quot;)), stdout);</span></a>
-<a name="322"><span class="lineNum">     322 </span>            :             }</a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :             fputs(qPrintable(QString::fromLatin1(&quot;%1,%2,%3,%4\n&quot;).arg(sampleNumber).arg(value)</span></a>
-<a name="324"><span class="lineNum">     324 </span>            :                 .arg(unit, range)), stdout);</a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :             break;</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineNoCov">          0 :         case OutputFormat::Json:</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :             fputs(QJsonDocument(QJsonObject{</span></a>
-<a name="328"><span class="lineNum">     328 </span>            :                     { QLatin1String(&quot;value&quot;),  value },</a>
-<a name="329"><span class="lineNum">     329 </span>            :                     { QLatin1String(&quot;unit&quot;),   unit },</a>
-<a name="330"><span class="lineNum">     330 </span>            :                     { QLatin1String(&quot;range&quot;),  range },</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :                     { QLatin1String(&quot;mode&quot;),   DsoService::toString(metadata.mode) },</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :                 }).toJson(), stdout);</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :             break;</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineNoCov">          0 :         case OutputFormat::Text:</span></a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :             fputs(qPrintable(tr(&quot;%1 %2 %3\n&quot;).arg(sampleNumber).arg(value).arg(unit)), stdout);</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :             break;</span></a>
-<a name="337"><span class="lineNum">     337 </span>            :         }</a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :         --samplesToGo;</span></a>
-<a name="339"><span class="lineNum">     339 </span>            :     }</a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :     if (samplesToGo &lt;= 0) {</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %L1 samples (with %L3 to remaining).&quot;)</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :             .arg(metadata.numberOfSamples).arg(samplesToGo);</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :         disconnect(); // Will exit the application once disconnected.</span></a>
-<a name="344"><span class="lineNum">     344 </span>            :     }</a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Unknown trigger mode: %1&quot;).arg(</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :                 parser.value(QLatin1String(&quot;trigger-mode&quot;))));</span></a>
+<a name="142"><span class="lineNum">     142 </span>            :         }</a>
+<a name="143"><span class="lineNum">     143 </span>            :     }</a>
+<a name="144"><span class="lineNum">     144 </span>            : </a>
+<a name="145"><span class="lineNum">     145 </span>            :     // Ensure that if either trigger option is present, then both are.</a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;trigger-level&quot;)) !=</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :         parser.isSet(QLatin1String(&quot;trigger-mode&quot;))) {</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :         errors.append(tr(&quot;If either option is provided, then both must be: trigger-level, trigger-mode&quot;));</span></a>
+<a name="149"><span class="lineNum">     149 </span>            :     }</a>
+<a name="150"><span class="lineNum">     150 </span>            : </a>
+<a name="151"><span class="lineNum">     151 </span>            :     // Parse the interval option.</a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;interval&quot;))) {</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :         const QString value = parser.value(QLatin1String(&quot;interval&quot;));</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :         const quint32 interval = parseMicroValue(value, QLatin1String(&quot;s&quot;), 500*1000);</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :         if (interval == 0) {</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></a>
+<a name="157"><span class="lineNum">     157 </span>            :         } else {</a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :             settings.samplingWindow = interval;</span></a>
+<a name="159"><span class="lineNum">     159 </span>            :         }</a>
+<a name="160"><span class="lineNum">     160 </span>            :     }</a>
+<a name="161"><span class="lineNum">     161 </span>            : </a>
+<a name="162"><span class="lineNum">     162 </span>            :     // Parse the samples option.</a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :     if (parser.isSet(QLatin1String(&quot;samples&quot;))) {</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :         const QString value = parser.value(QLatin1String(&quot;samples&quot;));</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :         const quint32 samples = parseWholeValue(value, QLatin1String(&quot;S&quot;));</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :         if (samples == 0) {</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :             errors.append(tr(&quot;Invalid samples value: %1&quot;).arg(value));</span></a>
+<a name="168"><span class="lineNum">     168 </span>            :         } else {</a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :             settings.numberOfSamples = samples;</span></a>
+<a name="170"><span class="lineNum">     170 </span>            :         }</a>
+<a name="171"><span class="lineNum">     171 </span>            :     }</a>
+<a name="172"><span class="lineNum">     172 </span>            :     return errors;</a>
+<a name="173"><span class="lineNum">     173 </span>            : }</a>
+<a name="174"><span class="lineNum">     174 </span>            : </a>
+<a name="175"><span class="lineNum">     175 </span>            : /*!</a>
+<a name="176"><span class="lineNum">     176 </span>            :  * \copybrief DeviceCommand::getService</a>
+<a name="177"><span class="lineNum">     177 </span>            :  *</a>
+<a name="178"><span class="lineNum">     178 </span>            :  * This override returns a pointer to a DsoService object.</a>
+<a name="179"><span class="lineNum">     179 </span>            :  */</a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 : AbstractPokitService * DsoCommand::getService()</span></a>
+<a name="181"><span class="lineNum">     181 </span>            : {</a>
+<a name="182"><span class="lineNum">     182 </span>            :     Q_ASSERT(device);</a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :     if (!service) {</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 :         service = device-&gt;dso();</span></a>
+<a name="185"><span class="lineNum">     185 </span>            :         Q_ASSERT(service);</a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 :         connect(service, &amp;DsoService::settingsWritten,</span></a>
+<a name="187"><span class="lineNum">     187 </span>            :                 this, &amp;DsoCommand::settingsWritten);</a>
+<a name="188"><span class="lineNum">     188 </span>            :     }</a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :     return service;</span></a>
+<a name="190"><span class="lineNum">     190 </span>            : }</a>
+<a name="191"><span class="lineNum">     191 </span>            : </a>
+<a name="192"><span class="lineNum">     192 </span>            : /*!</a>
+<a name="193"><span class="lineNum">     193 </span>            :  * \copybrief DeviceCommand::serviceDetailsDiscovered</a>
+<a name="194"><span class="lineNum">     194 </span>            :  *</a>
+<a name="195"><span class="lineNum">     195 </span>            :  * This override fetches the current device's status, and outputs it in the selected format.</a>
+<a name="196"><span class="lineNum">     196 </span>            :  */</a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 : void DsoCommand::serviceDetailsDiscovered()</span></a>
+<a name="198"><span class="lineNum">     198 </span>            : {</a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :     const QString range = DsoService::toString(settings.range, settings.mode);</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Sampling %1, with range %2, %L3 samples over %L4us&quot;).arg(</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :         DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1(&quot;N/A&quot;) : range)</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :         .arg(settings.numberOfSamples).arg(settings.samplingWindow);</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :     service-&gt;setSettings(settings);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="206"><span class="lineNum">     206 </span>            : </a>
+<a name="207"><span class="lineNum">     207 </span>            : /*!</a>
+<a name="208"><span class="lineNum">     208 </span>            :  * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange</a>
+<a name="209"><span class="lineNum">     209 </span>            :  * if no such range is available.</a>
+<a name="210"><span class="lineNum">     210 </span>            :  */</a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 : DsoService::Range DsoCommand::lowestRange(</span></a>
+<a name="212"><span class="lineNum">     212 </span>            :     const DsoService::Mode mode, const quint32 desiredMax)</a>
+<a name="213"><span class="lineNum">     213 </span>            : {</a>
+<a name="214"><span class="lineNum">     214 </span>            :     DsoService::Range range{ DsoService::VoltageRange::_6V_to_12V };</a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :     case DsoService::Mode::Idle:</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Idle has no defined ranges.&quot;);</span></a>
+<a name="218"><span class="lineNum">     218 </span>            :         Q_ASSERT(false); // Should never have been called with this Idle mode.</a>
+<a name="219"><span class="lineNum">     219 </span>            :         break;</a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :     case DsoService::Mode::DcVoltage:</span></a>
+<a name="221"><span class="lineNum">     221 </span>            :     case DsoService::Mode::AcVoltage:</a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineNoCov">          0 :         range.voltageRange = lowestVoltageRange(desiredMax);</span></a>
+<a name="223"><span class="lineNum">     223 </span>            :         break;</a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :     case DsoService::Mode::DcCurrent:</span></a>
+<a name="225"><span class="lineNum">     225 </span>            :     case DsoService::Mode::AcCurrent:</a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :         range.currentRange = lowestCurrentRange(desiredMax);</span></a>
+<a name="227"><span class="lineNum">     227 </span>            :         break;</a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :     default:</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;No defined ranges for mode %1.&quot;).arg((quint8)mode);</span></a>
+<a name="230"><span class="lineNum">     230 </span>            :         Q_ASSERT(false); // Should never have been called with this invalid mode.</a>
+<a name="231"><span class="lineNum">     231 </span>            :     }</a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineNoCov">          0 :     return range;</span></a>
+<a name="233"><span class="lineNum">     233 </span>            : }</a>
+<a name="234"><span class="lineNum">     234 </span>            : </a>
+<a name="235"><span class="lineNum">     235 </span>            : #define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \</a>
+<a name="236"><span class="lineNum">     236 </span>            : if (value &lt;=  DsoService::maxValue(DsoService::label).toUInt()) { \</a>
+<a name="237"><span class="lineNum">     237 </span>            :     return DsoService::label; \</a>
+<a name="238"><span class="lineNum">     238 </span>            : }</a>
+<a name="239"><span class="lineNum">     239 </span>            : </a>
+<a name="240"><span class="lineNum">     240 </span>            : /*!</a>
+<a name="241"><span class="lineNum">     241 </span>            :  * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange</a>
+<a name="242"><span class="lineNum">     242 </span>            :  * if no such range is available.</a>
+<a name="243"><span class="lineNum">     243 </span>            :  */</a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 : DsoService::CurrentRange DsoCommand::lowestCurrentRange(const quint32 desiredMax)</span></a>
+<a name="245"><span class="lineNum">     245 </span>            : {</a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</span></a>
+<a name="251"><span class="lineNum">     251 </span>            :     return DsoService::CurrentRange::_300mA_to_3A; // Out of range, so go with the biggest.</a>
+<a name="252"><span class="lineNum">     252 </span>            : }</a>
+<a name="253"><span class="lineNum">     253 </span>            : </a>
+<a name="254"><span class="lineNum">     254 </span>            : /*!</a>
+<a name="255"><span class="lineNum">     255 </span>            :  * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange</a>
+<a name="256"><span class="lineNum">     256 </span>            :  * if no such range is available.</a>
+<a name="257"><span class="lineNum">     257 </span>            :  */</a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 : DsoService::VoltageRange DsoCommand::lowestVoltageRange(const quint32 desiredMax)</span></a>
+<a name="259"><span class="lineNum">     259 </span>            : {</a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</span></a>
+<a name="266"><span class="lineNum">     266 </span>            :     return DsoService::VoltageRange::_30V_to_60V; // Out of range, so go with the biggest.</a>
+<a name="267"><span class="lineNum">     267 </span>            : }</a>
+<a name="268"><span class="lineNum">     268 </span>            : </a>
+<a name="269"><span class="lineNum">     269 </span>            : #undef POKIT_APP_IF_LESS_THAN_RETURN</a>
+<a name="270"><span class="lineNum">     270 </span>            : </a>
+<a name="271"><span class="lineNum">     271 </span>            : /*!</a>
+<a name="272"><span class="lineNum">     272 </span>            :  * Invoked when the DSO settings have been written.</a>
+<a name="273"><span class="lineNum">     273 </span>            :  */</a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 : void DsoCommand::settingsWritten()</span></a>
+<a name="275"><span class="lineNum">     275 </span>            : {</a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; DSO has started.&quot;);</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :     connect(service, &amp;DsoService::metadataRead, this, &amp;DsoCommand::metadataRead);</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :     connect(service, &amp;DsoService::samplesRead, this, &amp;DsoCommand::outputSamples);</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :     service-&gt;enableMetadataNotifications();</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :     service-&gt;enableReadingNotifications();</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="282"><span class="lineNum">     282 </span>            : </a>
+<a name="283"><span class="lineNum">     283 </span>            : /*!</a>
+<a name="284"><span class="lineNum">     284 </span>            :  * Invoked when \a metadata has been received from the DSO.</a>
+<a name="285"><span class="lineNum">     285 </span>            :  */</a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 : void DsoCommand::metadataRead(const DsoService::Metadata &amp;metadata)</span></a>
+<a name="287"><span class="lineNum">     287 </span>            : {</a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(metadata.status);</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; metadata.scale;</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DsoService::toString(metadata.mode);</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; DsoService::toString(metadata.range.voltageRange);</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;samplingWindow:&quot; &lt;&lt; (int)metadata.samplingWindow;</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; metadata.numberOfSamples;</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;samplingRate:&quot; &lt;&lt; metadata.samplingRate &lt;&lt; &quot;Hz&quot;;</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :     this-&gt;metadata = metadata;</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :     this-&gt;samplesToGo = metadata.numberOfSamples;</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="298"><span class="lineNum">     298 </span>            : </a>
+<a name="299"><span class="lineNum">     299 </span>            : /*!</a>
+<a name="300"><span class="lineNum">     300 </span>            :  * Outputs DSO \a samples in the selected ouput format.</a>
+<a name="301"><span class="lineNum">     301 </span>            :  */</a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 : void DsoCommand::outputSamples(const DsoService::Samples &amp;samples)</span></a>
+<a name="303"><span class="lineNum">     303 </span>            : {</a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :     QString unit;</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :     switch (metadata.mode) {</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :     case DsoService::Mode::DcVoltage: unit = QLatin1String(&quot;Vdc&quot;); break;</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :     case DsoService::Mode::AcVoltage: unit = QLatin1String(&quot;Vac&quot;); break;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :     case DsoService::Mode::DcCurrent: unit = QLatin1String(&quot;Adc&quot;); break;</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :     case DsoService::Mode::AcCurrent: unit = QLatin1String(&quot;Aac&quot;); break;</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :     default:</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;No known unit for mode %1 \&quot;%2\&quot;.&quot;).arg((int)metadata.mode)</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :             .arg(DsoService::toString(metadata.mode));</span></a>
+<a name="313"><span class="lineNum">     313 </span>            :     }</a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :     const QString range = DsoService::toString(metadata.range, metadata.mode);</span></a>
+<a name="315"><span class="lineNum">     315 </span>            : </a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :     for (const qint16 &amp;sample: samples) {</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :         static int sampleNumber = 0; ++sampleNumber;</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :         const float value = sample * metadata.scale;</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :         switch (format) {</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 :         case OutputFormat::Csv:</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :             for (static bool firstTime = true; firstTime; firstTime = false) {</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :                 fputs(qPrintable(tr(&quot;sample_number,value,unit,range\n&quot;)), stdout);</span></a>
+<a name="323"><span class="lineNum">     323 </span>            :             }</a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :             fputs(qPrintable(QString::fromLatin1(&quot;%1,%2,%3,%4\n&quot;).arg(sampleNumber).arg(value)</span></a>
+<a name="325"><span class="lineNum">     325 </span>            :                 .arg(unit, range)), stdout);</a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineNoCov">          0 :             break;</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :         case OutputFormat::Json:</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :             fputs(QJsonDocument(QJsonObject{</span></a>
+<a name="329"><span class="lineNum">     329 </span>            :                     { QLatin1String(&quot;value&quot;),  value },</a>
+<a name="330"><span class="lineNum">     330 </span>            :                     { QLatin1String(&quot;unit&quot;),   unit },</a>
+<a name="331"><span class="lineNum">     331 </span>            :                     { QLatin1String(&quot;range&quot;),  range },</a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :                     { QLatin1String(&quot;mode&quot;),   DsoService::toString(metadata.mode) },</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :                 }).toJson(), stdout);</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineNoCov">          0 :             break;</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :         case OutputFormat::Text:</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :             fputs(qPrintable(tr(&quot;%1 %2 %3\n&quot;).arg(sampleNumber).arg(value).arg(unit)), stdout);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :             break;</span></a>
+<a name="338"><span class="lineNum">     338 </span>            :         }</a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :         --samplesToGo;</span></a>
+<a name="340"><span class="lineNum">     340 </span>            :     }</a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :     if (samplesToGo &lt;= 0) {</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %L1 samples (with %L3 to remaining).&quot;)</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :             .arg(metadata.numberOfSamples).arg(samplesToGo);</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :         disconnect(); // Will exit the application once disconnected.</span></a>
+<a name="345"><span class="lineNum">     345 </span>            :     }</a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 : }</span></a>
 </pre>
       </td>
     </tr>
