@@ -21,10 +21,10 @@
 
 class CalibrationService;
 
-class CalibrationCommand : public DeviceCommand
+class CalibrateCommand : public DeviceCommand
 {
 public:
-    explicit CalibrationCommand(QObject * const parent);
+    explicit CalibrateCommand(QObject * const parent);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

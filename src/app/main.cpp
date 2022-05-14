@@ -279,7 +279,7 @@ AbstractCommand * getCommandObject(const Command command, QObject * const parent
         showCliError(QCoreApplication::translate("main",
             "Missing argument: <command>\nSee --help for usage information."));
         return nullptr;
-    case Command::Calibrate:   return new CalibrationCommand(parent);
+    case Command::Calibrate:   return new CalibrateCommand(parent);
     case Command::DSO:         return new DsoCommand(parent);
     case Command::FlashLed:    return new FlashLedCommand(parent);
     case Command::Info:        return new InfoCommand(parent);

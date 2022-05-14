@@ -26,28 +26,28 @@
 #include <QJsonObject>
 
 /*!
- * \class CalibrationCommand
+ * \class CalibrateCommand
  *
- * The CalibrationCommand class implements the `calibrate` CLI command.
+ * The CalibrateCommand class implements the `calibrate` CLI command.
  */
 
 /*!
- * Construct a new CalibrationCommand object with \a parent.
+ * Construct a new CalibrateCommand object with \a parent.
  */
-CalibrationCommand::CalibrationCommand(QObject * const parent) : DeviceCommand(parent),
+CalibrateCommand::CalibrateCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), temperature(std::numeric_limits<float>::quiet_NaN())
 {
 
 }
 
-QStringList CalibrationCommand::requiredOptions(const QCommandLineParser &parser) const
+QStringList CalibrateCommand::requiredOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::requiredOptions(parser) + QStringList{
         QLatin1String("temperature"),
     };
 }
 
-QStringList CalibrationCommand::supportedOptions(const QCommandLineParser &parser) const
+QStringList CalibrateCommand::supportedOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::supportedOptions(parser);
 }
@@ -58,7 +58,7 @@ QStringList CalibrationCommand::supportedOptions(const QCommandLineParser &parse
  * This implementation extends DeviceCommand::processOptions to process additional CLI options
  * supported (or required) by this command.
  */
-QStringList CalibrationCommand::processOptions(const QCommandLineParser &parser)
+QStringList CalibrateCommand::processOptions(const QCommandLineParser &parser)
 {
     QStringList errors = DeviceCommand::processOptions(parser);
     if (!errors.isEmpty()) {
@@ -81,14 +81,14 @@ QStringList CalibrationCommand::processOptions(const QCommandLineParser &parser)
  *
  * This override returns a pointer to a CalibrationService object.
  */
-AbstractPokitService * CalibrationCommand::getService()
+AbstractPokitService * CalibrateCommand::getService()
 {
     Q_ASSERT(device);
     if (!service) {
         service = device->calibration();
         Q_ASSERT(service);
         connect(service, &CalibrationService::temperatureCalibrated,
-                this, &CalibrationCommand::temperatureCalibrated);
+                this, &CalibrateCommand::temperatureCalibrated);
     }
     return service;
 }
@@ -98,7 +98,7 @@ AbstractPokitService * CalibrationCommand::getService()
  *
  * This override sets the ambient temperature, via the Calibration service.
  */
-void CalibrationCommand::serviceDetailsDiscovered()
+void CalibrateCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     qCInfo(lc).noquote() << tr("Calibrating temperature at %1 degrees celcius...").arg(temperature);
@@ -110,7 +110,7 @@ void CalibrationCommand::serviceDetailsDiscovered()
 /*!
  * Handles CalibrationService::temperatureCalibrated events, by outputting the result and exiting.
  */
-void CalibrationCommand::temperatureCalibrated()
+void CalibrateCommand::temperatureCalibrated()
 {
     switch (format) {
     case OutputFormat::Csv:
