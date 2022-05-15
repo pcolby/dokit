@@ -530,15 +530,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 <div class="line"><span class="lineno">  103</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  104</span>    }</div>
 <div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> newValue(<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), <span class="charliteral">&#39;\0&#39;</span>);</div>
-<div class="line"><span class="lineno">  107</span>    qToLittleEndian&lt;float&gt;(ambientTemperature, newValue.data());</div>
-<div class="line"><span class="lineno">  108</span>    qCDebug(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Writing new temperature %1 (0x%2).&quot;</span>)</div>
-<div class="line"><span class="lineno">  109</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(ambientTemperature).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(newValue.toHex()));</div>
-<div class="line"><span class="lineno">  110</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, newValue);</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">  112</span>}</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> newValue = d-&gt;encodeTemperature(ambientTemperature);</div>
+<div class="line"><span class="lineno">  107</span>    qCDebug(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Writing new temperature %1 (0x%2).&quot;</span>)</div>
+<div class="line"><span class="lineno">  108</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(ambientTemperature).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(newValue.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">toHex</a>()));</div>
+<div class="line"><span class="lineno">  109</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, newValue);</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">  111</span>}</div>
 <div class="ttc" id="aclassCalibrationService_html"><div class="ttname"><a href="classCalibrationService.html">CalibrationService</a></div><div class="ttdoc">The CalibrationService class accesses the Calibrartion service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00038">calibrationservice.h:39</a></div></div>
 <div class="ttc" id="aqbytearray_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a></div></div>
+<div class="ttc" id="aqbytearray_html_toHex"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex</a></div><div class="ttdeci">QByteArray toHex() const const</div></div>
 <div class="ttc" id="aqlatin1string_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
@@ -546,13 +546,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 <div class="ttc" id="aqstring_html_arg-11"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg</a></div><div class="ttdeci">QString arg(qlonglong a, int fieldWidth, int base, QChar fillChar) const const</div></div>
 <div class="ttc" id="astructCalibrationService_1_1CharacteristicUuids_html_aee6c3fbd10b0d2f1c59914f30fe23327"><div class="ttname"><a href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CalibrationService::CharacteristicUuids::temperature</a></div><div class="ttdeci">static const QBluetoothUuid temperature</div><div class="ttdoc">UUID of the Calibration service's Temperature characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="calibrationservice_8h_source.html#l00046">calibrationservice.h:46</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#data">QByteArray::data()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="calibrationservice_8h_source.html#l00046">CalibrationService::CharacteristicUuids::temperature</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="calibrationservice_8h_source.html#l00046">CalibrationService::CharacteristicUuids::temperature</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="calibratecommand_8cpp_source.html#l00101">CalibrateCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classCalibrationService_a301f5b733cacbebbf24459639f04af52_cgraph.svg" width="422" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classCalibrationService_a301f5b733cacbebbf24459639f04af52_cgraph.svg" width="422" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
