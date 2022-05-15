@@ -26,6 +26,14 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ env.cc }}
+        path: |
+          "${{ runner.temp }}/src/lib/libQtPokit.so"
+          "${{ runner.temp }}/src/app/pokit"
+        if-no-files-found: error
 
   linux-qts:
     runs-on: ${{ matrix.os }}
@@ -63,6 +71,14 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ env.cc }}-${{ env.qt }}
+        path: |
+          "${{ runner.temp }}/src/lib/libQtPokit.so"
+          "${{ runner.temp }}/src/app/pokit"
+        if-no-files-found: error
 
   mac:
     runs-on: ${{ matrix.os }}
@@ -109,6 +125,14 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ env.cc }}-${{ env.qt }}
+        path: |
+          "${{ runner.temp }}/src/lib/libQtPokit"
+          "${{ runner.temp }}/src/app/pokit"
+        if-no-files-found: error
 
   win:
     runs-on: ${{ matrix.os }}
@@ -183,3 +207,21 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
+    - name: Upload artifacts (mingw)
+      if: ${{ contains(matrix.generator, 'mingw') }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-mingw-${{ env.qt }}
+        path: |
+          "${{ runner.temp }}/src/lib/libQtPokit.dll"
+          "${{ runner.temp }}/src/app/pokit"
+        if-no-files-found: error
+    - name: Upload artifacts (msvc)
+      if: ${{ contains(matrix.generator, 'nmake') }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-msvc-${{ env.qt }}
+        path: |
+          "${{ runner.temp }}/src/lib/QtPokit.dll"
+          "${{ runner.temp }}/src/app/pokit.exe"
+        if-no-files-found: error
