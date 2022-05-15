@@ -86,7 +86,7 @@ DeviceInfoService::DeviceInfoService(
  */
 DeviceInfoService::~DeviceInfoService()
 {
-    delete d_ptr;
+
 }
 
 bool DeviceInfoService::readCharacteristics()

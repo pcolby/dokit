@@ -301,7 +301,7 @@ MultimeterService::MultimeterService(
  */
 MultimeterService::~MultimeterService()
 {
-    delete d_ptr;
+
 }
 
 bool MultimeterService::readCharacteristics()

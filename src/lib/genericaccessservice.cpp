@@ -80,7 +80,7 @@ GenericAccessService::GenericAccessService(
  */
 GenericAccessService::~GenericAccessService()
 {
-    delete d_ptr;
+
 }
 
 bool GenericAccessService::readCharacteristics()

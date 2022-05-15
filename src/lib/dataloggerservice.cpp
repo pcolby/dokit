@@ -250,7 +250,7 @@ DataLoggerService::DataLoggerService(
  */
 DataLoggerService::~DataLoggerService()
 {
-    delete d_ptr;
+
 }
 
 bool DataLoggerService::readCharacteristics()

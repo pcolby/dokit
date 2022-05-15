@@ -249,7 +249,7 @@ DsoService::DsoService(
  */
 DsoService::~DsoService()
 {
-    delete d_ptr;
+
 }
 
 bool DsoService::readCharacteristics()

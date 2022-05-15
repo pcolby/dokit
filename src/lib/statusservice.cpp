@@ -132,7 +132,7 @@ StatusService::StatusService(
  */
 StatusService::~StatusService()
 {
-    delete d_ptr;
+
 }
 
 bool StatusService::readCharacteristics()

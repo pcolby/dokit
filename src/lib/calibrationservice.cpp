@@ -70,7 +70,7 @@ CalibrationService::CalibrationService(
  */
 CalibrationService::~CalibrationService()
 {
-    delete d_ptr;
+
 }
 
 /*!
