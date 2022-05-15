@@ -39,6 +39,24 @@ void TestCalibrationService::calibrateTemperature()
     QVERIFY(!service.calibrateTemperature(123.4));
 }
 
+void TestCalibrationService::encodeTemperature_data()
+{
+    QTest::addColumn<float>("value");
+    QTest::addColumn<QByteArray>("expected");
+    QTest::addRow("-123456.0"  ) << -123456.0f   << QByteArray("\x00\x20\xf1\xc7", 4);
+    QTest::addRow(   "-123.456") <<    -123.456f << QByteArray("\x79\xe9\xf6\xc2", 4);
+    QTest::addRow(      "0.0"  ) <<       0.0f   << QByteArray("\x00\x00\x00\x00", 4);
+    QTest::addRow(    "123.456") <<     123.456f << QByteArray("\x79\xe9\xf6\x42", 4);
+    QTest::addRow( "123456.0"  ) <<   12456.0f   << QByteArray("\x00\xa0\x42\x46", 4);
+}
+
+void TestCalibrationService::encodeTemperature()
+{
+    QFETCH(float, value);
+    QFETCH(QByteArray, expected);
+    QCOMPARE(CalibrationServicePrivate::encodeTemperature(value), expected);
+}
+
 void TestCalibrationService::characteristicWritten()
 {
     // Verify safe error handling.

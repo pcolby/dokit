@@ -38,6 +38,8 @@ class QTPOKIT_EXPORT CalibrationServicePrivate : public AbstractPokitServicePriv
 public:
     explicit CalibrationServicePrivate(QLowEnergyController * controller, CalibrationService * const q);
 
+    static QByteArray encodeTemperature(const float value);
+
 protected:
     void characteristicWritten(const QLowEnergyCharacteristic &characteristic,
                                const QByteArray &newValue) override;

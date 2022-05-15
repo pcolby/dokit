@@ -26,5 +26,9 @@ class TestCalibrationService : public QObject
 private slots:
     void readCharacteristics();
     void calibrateTemperature();
+
+    void encodeTemperature_data();
+    void encodeTemperature();
+
     void characteristicWritten();
 };

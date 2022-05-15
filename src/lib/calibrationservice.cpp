@@ -103,8 +103,7 @@ bool CalibrationService::calibrateTemperature(const float ambientTemperature)
         return false;
     }
 
-    QByteArray newValue(sizeof(float), '\0');
-    qToLittleEndian<float>(ambientTemperature, newValue.data());
+    const QByteArray newValue = d->encodeTemperature(ambientTemperature);
     qCDebug(d->lc).noquote() << tr("Writing new temperature %1 (0x%2).")
         .arg(ambientTemperature).arg(QLatin1String(newValue.toHex()));
     d->service->writeCharacteristic(characteristic, newValue);
@@ -135,6 +134,18 @@ CalibrationServicePrivate::CalibrationServicePrivate(
     : AbstractPokitServicePrivate(CalibrationService::serviceUuid, controller, q)
 {
 
+}
+
+/*!
+ * Returns \a value in a format Pokit devices expect. Specifically, this just enocdes \a value as
+ * a 32-bit float in litte-endian byte order.
+ */
+QByteArray CalibrationServicePrivate::encodeTemperature(const float value)
+{
+    static_assert(sizeof(value) == 4, "Pokit devices expect 32-bit floats");
+    QByteArray bytes(sizeof(float), '\0');
+    qToLittleEndian<float>(value, bytes.data());
+    return bytes;
 }
 
 /*!
