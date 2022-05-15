@@ -29,7 +29,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ env.cc }}
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ matrix.env.cc }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/app/pokit
@@ -74,7 +74,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ matrix.env.cc }}-${{ matrix.env.qt }}
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ matrix.env.cc }}-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/app/pokit
@@ -128,7 +128,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ matrix.env.cc }}-${{ matrix.env.qt }}
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ matrix.env.cc }}-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit
           ${{ runner.temp }}/src/app/pokit
@@ -211,7 +211,7 @@ jobs:
       if: ${{ contains(matrix.generator, 'mingw') }}
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-mingw-${{ matrix.env.qt }}
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-mingw-${{ matrix.qt }}
         path: |
           "${{ runner.temp }}/src/lib/libQtPokit.dll"
           "${{ runner.temp }}/src/app/pokit.exe"
@@ -220,7 +220,7 @@ jobs:
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-msvc-${{ matrix.env.qt }}
+        name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-msvc-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/QtPokit.dll
           ${{ runner.temp }}/src/app/pokit.exe
