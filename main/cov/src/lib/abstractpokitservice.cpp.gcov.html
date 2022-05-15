@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-15 01:48:15</td>
+            <td class="headerValue">2022-05-15 02:15:17</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -101,21 +101,21 @@
 <a name="39"><span class="lineNum">      39 </span>            :  * \cond internal</a>
 <a name="40"><span class="lineNum">      40 </span>            :  * Constructs a new Pokit service with \a parent, and private implementation \a d.</a>
 <a name="41"><span class="lineNum">      41 </span>            :  */</a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         17 : AbstractPokitService::AbstractPokitService(</span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate * const d, QObject * const parent)</span></a>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">         17 :     : QObject(parent), d_ptr(d)</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         20 : AbstractPokitService::AbstractPokitService(</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         20 :     AbstractPokitServicePrivate * const d, QObject * const parent)</span></a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">         20 :     : QObject(parent), d_ptr(d)</span></a>
 <a name="45"><span class="lineNum">      45 </span>            : {</a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         17 : }</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         20 : }</span></a>
 <a name="48"><span class="lineNum">      48 </span>            : /// \endcond</a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span>            : /*!</a>
 <a name="51"><span class="lineNum">      51 </span>            :  * Destroys this AbstractPokitService object.</a>
 <a name="52"><span class="lineNum">      52 </span>            :  */</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">         17 : AbstractPokitService::~AbstractPokitService()</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">         20 : AbstractPokitService::~AbstractPokitService()</span></a>
 <a name="54"><span class="lineNum">      54 </span>            : {</a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         17 :     delete d_ptr;</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         17 : }</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         20 :     delete d_ptr;</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         20 : }</span></a>
 <a name="57"><span class="lineNum">      57 </span>            : </a>
 <a name="58"><span class="lineNum">      58 </span>            : /*!</a>
 <a name="59"><span class="lineNum">      59 </span>            :  * \fn virtual bool AbstractPokitService::readCharacteristics() = 0</a>
@@ -200,25 +200,25 @@
 <a name="138"><span class="lineNum">     138 </span>            :  * \internal</a>
 <a name="139"><span class="lineNum">     139 </span>            :  * Constructs a new AbstractPokitServicePrivate object with public implementation \a q.</a>
 <a name="140"><span class="lineNum">     140 </span>            :  */</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         17 : AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid,</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         17 :     QLowEnergyController * controller, AbstractPokitService * const q)</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         20 : AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid,</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         20 :     QLowEnergyController * controller, AbstractPokitService * const q)</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :     : autoDiscover(true), controller(controller), service(nullptr), serviceUuid(serviceUuid),</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         17 :       q_ptr(q)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         20 :       q_ptr(q)</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : {</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         17 :     if (controller) {</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          1 :         connect(controller, &amp;QLowEnergyController::connected,</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         20 :     if (controller) {</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::connected,</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :                 this, &amp;AbstractPokitServicePrivate::connected);</a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 :         connect(controller, &amp;QLowEnergyController::discoveryFinished,</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::discoveryFinished,</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :                 this, &amp;AbstractPokitServicePrivate::discoveryFinished);</a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          1 :         connect(controller, &amp;QLowEnergyController::serviceDiscovered,</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::serviceDiscovered,</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :                 this, &amp;AbstractPokitServicePrivate::serviceDiscovered);</a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          1 :         createServiceObject();</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          2 :         createServiceObject();</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :     }</a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         17 : }</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         20 : }</span></a>
 <a name="160"><span class="lineNum">     160 </span>            : </a>
 <a name="161"><span class="lineNum">     161 </span>            : /*!</a>
 <a name="162"><span class="lineNum">     162 </span>            :  * Creates an internal service object from the internal controller.</a>
@@ -227,19 +227,19 @@
 <a name="165"><span class="lineNum">     165 </span>            :  *</a>
 <a name="166"><span class="lineNum">     166 </span>            :  * Returns \c true if a service was created successfully, either now, or sometime previously.</a>
 <a name="167"><span class="lineNum">     167 </span>            :  */</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          6 : bool AbstractPokitServicePrivate::createServiceObject()</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          7 : bool AbstractPokitServicePrivate::createServiceObject()</span></a>
 <a name="169"><span class="lineNum">     169 </span>            : {</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          6 :     if (!controller) {</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          7 :     if (!controller) {</span></a>
 <a name="171"><span class="lineNum">     171 </span>            :         return false;</a>
 <a name="172"><span class="lineNum">     172 </span>            :     }</a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          4 :     if (service) {</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          5 :     if (service) {</span></a>
 <a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Already have service object:&quot;) &lt;&lt; service;</span></a>
 <a name="176"><span class="lineNum">     176 </span><span class="lineCov">          1 :         return true;</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :     }</a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          3 :     service = controller-&gt;createServiceObject(serviceUuid, this);</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          3 :     if (!service) {</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          4 :     service = controller-&gt;createServiceObject(serviceUuid, this);</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          4 :     if (!service) {</span></a>
 <a name="181"><span class="lineNum">     181 </span>            :         return false;</a>
 <a name="182"><span class="lineNum">     182 </span>            :     }</a>
 <a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service object created&quot;) &lt;&lt; service;</span></a>
@@ -294,12 +294,12 @@
 <a name="232"><span class="lineNum">     232 </span>            :  * \param uuid</a>
 <a name="233"><span class="lineNum">     233 </span>            :  * \return</a>
 <a name="234"><span class="lineNum">     234 </span>            :  */</a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          8 : QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &amp;uuid) const</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">         10 : QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &amp;uuid) const</span></a>
 <a name="236"><span class="lineNum">     236 </span>            : {</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          8 :     if (!service) {</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          8 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; requested before service assigned.&quot;)</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         10 :     if (!service) {</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">         10 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; requested before service assigned.&quot;)</span></a>
 <a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          8 :         return QLowEnergyCharacteristic();</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         10 :         return QLowEnergyCharacteristic();</span></a>
 <a name="241"><span class="lineNum">     241 </span>            :     }</a>
 <a name="242"><span class="lineNum">     242 </span>            : </a>
 <a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :     const QLowEnergyCharacteristic characteristic = service-&gt;characteristic(uuid);</span></a>
@@ -583,13 +583,13 @@
 <a name="521"><span class="lineNum">     521 </span>            :  * Derived classes should implement this function to handle the successful writes of</a>
 <a name="522"><span class="lineNum">     522 </span>            :  * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.</a>
 <a name="523"><span class="lineNum">     523 </span>            :  */</a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::characteristicWritten(</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">          2 : void AbstractPokitServicePrivate::characteristicWritten(</span></a>
 <a name="525"><span class="lineNum">     525 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
 <a name="526"><span class="lineNum">     526 </span>            : {</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; written with %L3 bytes: %4&quot;).arg(</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">          2 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; written with %L3 bytes: %4&quot;).arg(</span></a>
 <a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
 <a name="529"><span class="lineNum">     529 </span><span class="lineNoCov">          0 :         .arg(newValue.size()).arg(toHexString(newValue));</span></a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">          1 : }</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">          2 : }</span></a>
 <a name="531"><span class="lineNum">     531 </span>            : </a>
 <a name="532"><span class="lineNum">     532 </span>            : /*!</a>
 <a name="533"><span class="lineNum">     533 </span>            :  * Handles `QLowEnergyService::characteristicChanged` events. This base implementation simply debug</a>
