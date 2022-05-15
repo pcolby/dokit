@@ -31,8 +31,8 @@ jobs:
       with:
         name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ env.cc }}
         path: |
-          "${{ runner.temp }}/src/lib/libQtPokit.so"
-          "${{ runner.temp }}/src/app/pokit"
+          ${{ runner.temp }}/src/lib/libQtPokit.so
+          ${{ runner.temp }}/src/app/pokit
         if-no-files-found: error
 
   linux-qts:
@@ -76,8 +76,8 @@ jobs:
       with:
         name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ env.cc }}-${{ env.qt }}
         path: |
-          "${{ runner.temp }}/src/lib/libQtPokit.so"
-          "${{ runner.temp }}/src/app/pokit"
+          ${{ runner.temp }}/src/lib/libQtPokit.so
+          ${{ runner.temp }}/src/app/pokit
         if-no-files-found: error
 
   mac:
@@ -130,8 +130,8 @@ jobs:
       with:
         name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-${{ env.cc }}-${{ env.qt }}
         path: |
-          "${{ runner.temp }}/src/lib/libQtPokit"
-          "${{ runner.temp }}/src/app/pokit"
+          ${{ runner.temp }}/src/lib/libQtPokit
+          ${{ runner.temp }}/src/app/pokit
         if-no-files-found: error
 
   win:
@@ -222,6 +222,6 @@ jobs:
       with:
         name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-msvc-${{ env.qt }}
         path: |
-          "${{ runner.temp }}/src/lib/QtPokit.dll"
-          "${{ runner.temp }}/src/app/pokit.exe"
+          ${{ runner.temp }}/src/lib/QtPokit.dll
+          ${{ runner.temp }}/src/app/pokit.exe
         if-no-files-found: error
