@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-15 02:15:17</td>
+            <td class="headerValue">2022-05-15 02:27:00</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -100,19 +100,21 @@
 <a name="38"><span class="lineNum">      38 </span>            : public:</a>
 <a name="39"><span class="lineNum">      39 </span>            :     explicit CalibrationServicePrivate(QLowEnergyController * controller, CalibrationService * const q);</a>
 <a name="40"><span class="lineNum">      40 </span>            : </a>
-<a name="41"><span class="lineNum">      41 </span>            : protected:</a>
-<a name="42"><span class="lineNum">      42 </span>            :     void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</a>
-<a name="43"><span class="lineNum">      43 </span>            :                                const QByteArray &amp;newValue) override;</a>
-<a name="44"><span class="lineNum">      44 </span>            : </a>
-<a name="45"><span class="lineNum">      45 </span>            : private:</a>
-<a name="46"><span class="lineNum">      46 </span>            :     Q_DECLARE_PUBLIC(CalibrationService)</a>
-<a name="47"><span class="lineNum">      47 </span>            :     Q_DISABLE_COPY(CalibrationServicePrivate)</a>
-<a name="48"><span class="lineNum">      48 </span>            :     friend class TestCalibrationService;</a>
-<a name="49"><span class="lineNum">      49 </span>            : };</a>
-<a name="50"><span class="lineNum">      50 </span>            : </a>
-<a name="51"><span class="lineNum">      51 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="41"><span class="lineNum">      41 </span>            :     static QByteArray encodeTemperature(const float value);</a>
+<a name="42"><span class="lineNum">      42 </span>            : </a>
+<a name="43"><span class="lineNum">      43 </span>            : protected:</a>
+<a name="44"><span class="lineNum">      44 </span>            :     void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</a>
+<a name="45"><span class="lineNum">      45 </span>            :                                const QByteArray &amp;newValue) override;</a>
+<a name="46"><span class="lineNum">      46 </span>            : </a>
+<a name="47"><span class="lineNum">      47 </span>            : private:</a>
+<a name="48"><span class="lineNum">      48 </span>            :     Q_DECLARE_PUBLIC(CalibrationService)</a>
+<a name="49"><span class="lineNum">      49 </span>            :     Q_DISABLE_COPY(CalibrationServicePrivate)</a>
+<a name="50"><span class="lineNum">      50 </span>            :     friend class TestCalibrationService;</a>
+<a name="51"><span class="lineNum">      51 </span>            : };</a>
 <a name="52"><span class="lineNum">      52 </span>            : </a>
-<a name="53"><span class="lineNum">      53 </span>            : #endif // QTPOKIT_CALIBRATIONSERVICE_P_H</a>
+<a name="53"><span class="lineNum">      53 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="54"><span class="lineNum">      54 </span>            : </a>
+<a name="55"><span class="lineNum">      55 </span>            : #endif // QTPOKIT_CALIBRATIONSERVICE_P_H</a>
 </pre>
       </td>
     </tr>
