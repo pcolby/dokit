@@ -214,7 +214,7 @@ jobs:
         name: qtpokit-${{ github.ref_name }}-${{ runner.os }}-mingw-${{ matrix.env.qt }}
         path: |
           "${{ runner.temp }}/src/lib/libQtPokit.dll"
-          "${{ runner.temp }}/src/app/pokit"
+          "${{ runner.temp }}/src/app/pokit.exe"
         if-no-files-found: error
     - name: Upload artifacts (msvc)
       if: ${{ contains(matrix.generator, 'nmake') }}
