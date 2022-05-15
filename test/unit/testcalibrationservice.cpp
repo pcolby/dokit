@@ -20,21 +20,30 @@
 #include "testcalibrationservice.h"
 
 #include <qtpokit/calibrationservice.h>
+#include "calibrationservice_p.h"
 
-void TestCalibrationService::test1_data()
+#include <QLowEnergyController>
+
+void TestCalibrationService::readCharacteristics()
 {
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+    // readCharacteristics always returns true, since the service has no readable characterstics.
+    CalibrationService service(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
+    QVERIFY(service.readCharacteristics());
 }
 
-void TestCalibrationService::test1()
+void TestCalibrationService::calibrateTemperature()
 {
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+    // Verify safe error handling.
+    CalibrationService service(nullptr);
+    QVERIFY(!service.calibrateTemperature(0.0));
+    QVERIFY(!service.calibrateTemperature(123.4));
+}
+
+void TestCalibrationService::characteristicWritten()
+{
+    // Verify safe error handling.
+    CalibrationService service(nullptr);
+    service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 
 QTEST_MAIN(TestCalibrationService)

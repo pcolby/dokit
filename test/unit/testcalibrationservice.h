@@ -24,6 +24,7 @@ class TestCalibrationService : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    void readCharacteristics();
+    void calibrateTemperature();
+    void characteristicWritten();
 };
