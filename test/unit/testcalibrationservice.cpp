@@ -35,8 +35,8 @@ void TestCalibrationService::calibrateTemperature()
 {
     // Verify safe error handling.
     CalibrationService service(nullptr);
-    QVERIFY(!service.calibrateTemperature(0.0));
-    QVERIFY(!service.calibrateTemperature(123.4));
+    QVERIFY(!service.calibrateTemperature(0.0f));
+    QVERIFY(!service.calibrateTemperature(123.4f));
 }
 
 void TestCalibrationService::encodeTemperature_data()
