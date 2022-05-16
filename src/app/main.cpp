@@ -300,7 +300,11 @@ int main(int argc, char *argv[])
     // Setup the core application.
     QCoreApplication app(argc, argv);
     app.setApplicationName(QStringLiteral(CMAKE_PROJECT_NAME));
-    app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));
+    app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION
+        #ifdef POKIT_PRE_RELEASE
+        "-" POKIT_PRE_RELEASE
+        #endif
+    ));
 
     // Parse the command line.
     const QStringList appArguments = app.arguments();

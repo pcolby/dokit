@@ -8,10 +8,20 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(
   QtPokit
-  VERSION 0.1
+  VERSION 0.1.0
   DESCRIPTION "Desktop applications for Pokit measuring devices"
  #HOMEPAGE_URL "https://github.com/pcolby/qtpokit"
   LANGUAGES CXX)
+
+set(POKIT_PRE_RELEASE pre)
+#set(POKIT_PRE_RELEASE rc1)
+#unset(POKIT_PRE_RELEASE)
+if (POKIT_PRE_RELEASE)
+  add_definitions(-DPOKIT_PRE_RELEASE="${POKIT_PRE_RELEASE}")
+  set(POKIT_VERSION_SUFFIX "-${POKIT_PRE_RELEASE}")
+endif()
+message("-- ${CMAKE_PROJECT_NAME} ${CMAKE_PROJECT_VERSION}${POKIT_VERSION_SUFFIX}")
+file(WRITE "${PROJECT_BINARY_DIR}/version.txt" "${CMAKE_PROJECT_VERSION}${POKIT_VERSION_SUFFIX}\n")
 
 add_definitions(
   -DCMAKE_PROJECT_NAME="${CMAKE_PROJECT_NAME}"
