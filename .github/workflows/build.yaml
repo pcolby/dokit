@@ -86,7 +86,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.linux.x86-64.${{ matrix.env.cc }}.${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.linux.x86-64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/app/pokit
@@ -146,7 +146,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.mac.x86-64.${{ matrix.env.cc }}.${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.mac.x86-64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit
           ${{ runner.temp }}/src/app/pokit
@@ -236,7 +236,7 @@ jobs:
       if: ${{ contains(matrix.generator, 'mingw') }}
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.x86-64.mingw.${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.x86-64.mingw.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.dll
           ${{ runner.temp }}/src/app/pokit.exe
@@ -245,7 +245,7 @@ jobs:
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.x86-64.msvc.${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.x86-64.msvc.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/QtPokit.dll
           ${{ runner.temp }}/src/app/pokit.exe
