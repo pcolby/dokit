@@ -130,7 +130,7 @@ jobs:
       env:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
-        CMAKE_OSX_ARCHITECTURES: arm64;x86-64
+        CMAKE_OSX_ARCHITECTURES: arm64;x86_64
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
