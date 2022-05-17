@@ -225,6 +225,19 @@ jobs:
         # See https://github.com/miurahr/aqtinstall/issues/333 and
         # https://github.com/jurplel/install-qt-action/issues/95
         modules: qtconnectivity addons.qtconnectivity
+        arch: win64_mingw81
+    - name: Install Qt ARM
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: ${{ matrix.qt }}
+        # We include both here, because Qt 6.2+ currently needs the 'addons' prefix, while
+        # earlier versions don't, and aqtinstall does not currently break on unknown modules.
+        # Note, this 'addons' prefix issue has been fixed already in aqtinstall v2.0, but
+        # install-qt-action is not compatible with aqtinstall v2 untill install-qt-action v3,
+        # which is close, but not yet released. \todo Clean this up when v3 is released.
+        # See https://github.com/miurahr/aqtinstall/issues/333 and
+        # https://github.com/jurplel/install-qt-action/issues/95
+        modules: qtconnectivity addons.qtconnectivity
         arch: ${{ matrix.qtArch }}
     - name: InspectA
       if: always()
