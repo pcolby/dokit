@@ -130,7 +130,7 @@ jobs:
       env:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
-        CMAKE_OSX_ARCHITECTURES: arm64;x86_64
+        CMAKE_OSX_ARCHITECTURES: ${{ startsWith(matrix.qt, '6') && 'arm64;' || '' }}x86_64
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
@@ -144,7 +144,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.mac.x86-64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.mac.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit
           ${{ runner.temp }}/src/app/pokit
