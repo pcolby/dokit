@@ -26,7 +26,7 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
-    - Setup artifacts
+    - name: Setup artifacts
       run: |
         echo "pokitVersion='$(cat "$RUNNER_TEMP/version.txt")'" >> $GITHUB_ENV
         echo "pokitRevision='$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)'" >> $GITHUB_ENV
@@ -75,7 +75,7 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
-    - Setup artifacts
+    - name: Setup artifacts
       run: |
         echo "pokitVersion='$(cat "$RUNNER_TEMP/version.txt")'" >> $GITHUB_ENV
         echo "pokitRevision='$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)'" >> $GITHUB_ENV
@@ -133,7 +133,7 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
-    - Setup artifacts
+    - name: Setup artifacts
       run: |
         echo "pokitVersion='$(cat "$RUNNER_TEMP/version.txt")'" >> $GITHUB_ENV
         echo "pokitRevision='$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)'" >> $GITHUB_ENV
@@ -219,7 +219,7 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
-    - Setup artifacts
+    - name: Setup artifacts
       shell: bash
       run: |
         echo "pokitVersion='$(cat "$RUNNER_TEMP/version.txt")'" >> $GITHUB_ENV
