@@ -226,10 +226,26 @@ jobs:
         # https://github.com/jurplel/install-qt-action/issues/95
         modules: qtconnectivity addons.qtconnectivity
         arch: ${{ matrix.qtArch }}
-    - name: Inspect
+    - name: InspectA
+      if: always()
       run: |
         dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\
         dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6CoreTools
+    - name: InspectB
+      if: always()
+      run: |
+        dir D:\a\qtpokit\Qt\6.2.4\msvc2019_64\lib\cmake\
+        dir D:\a\qtpokit\Qt\6.2.4\msvc2019_64\lib\cmake\Qt6CoreTools
+    - name: InspectC
+      if: always()
+      run: |
+        dir D:\a\qtpokit\Qt\6.3.0\msvc2019_arm64\lib\cmake\
+        dir D:\a\qtpokit\Qt\6.3.0\msvc2019_arm64\lib\cmake\Qt6CoreTools
+    - name: InspectD
+      if: always()
+      run: |
+        dir D:\a\qtpokit\Qt\6.3.0\msvc2019_64\lib\cmake\
+        dir D:\a\qtpokit\Qt\6.3.0\msvc2019_64\lib\cmake\Qt6CoreTools
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
