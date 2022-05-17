@@ -4,11 +4,10 @@ on: [push, pull_request]
 
 jobs:
   linux:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest ]
         env:
         - { cc: clang, cxx: clang++ }
         - { cc: gcc, cxx: g++ }
@@ -42,11 +41,10 @@ jobs:
         if-no-files-found: error
 
   linux-qts:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest ]
         qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.0' ]
         env:
         - { cc: clang, cxx: clang++ }
@@ -93,11 +91,10 @@ jobs:
         if-no-files-found: error
 
   mac:
-    runs-on: ${{ matrix.os }}
+    runs-on: macOs-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ macOs-latest ]
         qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.0' ]
         env:
         - { cc: clang, cxx: clang++ }
@@ -153,12 +150,11 @@ jobs:
         if-no-files-found: error
 
   win:
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
     defaults: { run: { shell: cmd } }
     strategy:
       fail-fast: false
       matrix:
-        os: [ windows-latest ]
         qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.0' ]
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
         arch: [ x86, x86-64, arm64 ]
