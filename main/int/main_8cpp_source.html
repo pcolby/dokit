@@ -31,7 +31,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">QtPokit<span id="projectnumber">&#160;0.1</span>
+   <div id="projectname">QtPokit<span id="projectnumber">&#160;0.1.0-pre</span>
    </div>
    <div id="projectbrief">Internal development documentation</div>
   </td>
@@ -394,27 +394,31 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <span class="comment">// Setup the core application.</span></div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qcoreapplication.html">QCoreApplication</a> app(argc, argv);</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    app.setApplicationName(QStringLiteral(CMAKE_PROJECT_NAME));</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="comment">// Parse the command line.</span></div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstringlist.html">QStringList</a> appArguments = app.arguments();</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qcommandlineparser.html">QCommandLineParser</a> parser;</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <span class="keyword">const</span> Command commandType = parseCommandLine(appArguments, parser);</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="comment">// Handle the given command.</span></div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <a class="code hl_class" href="classAbstractCommand.html">AbstractCommand</a> * <span class="keyword">const</span> command = getCommandObject(commandType, &amp;app);</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keywordflow">if</span> (command == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        <span class="keywordflow">return</span> EXIT_FAILURE; <span class="comment">// getCommandObject will have logged the reason already.</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    }</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstringlist.html">QStringList</a> cliErrors = command-&gt;<a class="code hl_slot" href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">processOptions</a>(parser);</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> &amp;error: cliErrors) {</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        showCliError(error);</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="preprocessor">    #ifdef POKIT_PRE_RELEASE</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION <span class="stringliteral">&quot;-&quot;</span> POKIT_PRE_RELEASE));</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="preprocessor">    #else</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <span class="comment">// Parse the command line.</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstringlist.html">QStringList</a> appArguments = app.arguments();</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qcommandlineparser.html">QCommandLineParser</a> parser;</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keyword">const</span> Command commandType = parseCommandLine(appArguments, parser);</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="comment">// Handle the given command.</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <a class="code hl_class" href="classAbstractCommand.html">AbstractCommand</a> * <span class="keyword">const</span> command = getCommandObject(commandType, &amp;app);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keywordflow">if</span> (command == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        <span class="keywordflow">return</span> EXIT_FAILURE; <span class="comment">// getCommandObject will have logged the reason already.</span></div>
 <div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    }</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="keywordflow">if</span> (!cliErrors.isEmpty()) {</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    }</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <span class="keywordflow">return</span> (command-&gt;<a class="code hl_slot" href="classAbstractCommand.html#a549d6f1071016fe56d20d2ba81575b2c">start</a>()) ? app.exec() : EXIT_FAILURE;</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>}</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstringlist.html">QStringList</a> cliErrors = command-&gt;<a class="code hl_slot" href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">processOptions</a>(parser);</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> &amp;error: cliErrors) {</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        showCliError(error);</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    }</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <span class="keywordflow">if</span> (!cliErrors.isEmpty()) {</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    }</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    <span class="keywordflow">return</span> (command-&gt;<a class="code hl_slot" href="classAbstractCommand.html#a549d6f1071016fe56d20d2ba81575b2c">start</a>()) ? app.exec() : EXIT_FAILURE;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html"><div class="ttname"><a href="classAbstractCommand.html">AbstractCommand</a></div><div class="ttdoc">The AbstractCommand class provides a consistent base for the classes that implement CLI commands.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00030">abstractcommand.h:31</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_a549d6f1071016fe56d20d2ba81575b2c"><div class="ttname"><a href="classAbstractCommand.html#a549d6f1071016fe56d20d2ba81575b2c">AbstractCommand::start</a></div><div class="ttdeci">virtual bool start()=0</div><div class="ttdoc">Begins the functionality of this command, and returns true if begun successfully, false otherwise.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00313">abstractcommand.cpp:313</a></div></div>
