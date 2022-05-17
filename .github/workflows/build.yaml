@@ -161,32 +161,52 @@ jobs:
         os: [ windows-latest ]
         qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.0' ]
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
+        arch: [ x86, x86-64, arm64 ]
         exclude:
-        # Exclude MinGW builds for pre-Qt5.12, since the GitHub Actions Windows runner includes
-        # MinGW-w64 only, and Qt binaries (used by aqtinstaller) only added builds for w64 in
-        # Qt 5.12. We probably could manually install MinGW (32), but such old Qt versions are not
-        # worth the effort. See https://wiki.qt.io/MinGW#Toolchains_used_in_Qt_binary_packages and
-        # https://github.com/actions/virtual-environments/blob/main/images/win/Windows2022-Readme.md
-        - { qt: '5.9.9',  generator: 'MinGW Makefiles' }
-        - { qt: '5.10.1', generator: 'MinGW Makefiles' }
-        - { qt: '5.11.3', generator: 'MinGW Makefiles' }
-        # Exclude MinGW builds for 6.2.2+ for now, as 6.2.2 shifted to MinGW-w64 v11.2.0 for binary
-        # builds, and GitHub Windows runners only inlucde MinGW-w64 8.1.0 for now. See
-        # https://wiki.qt.io/MinGW#Toolchains_used_in_Qt_binary_packages and
-        # https://github.com/actions/virtual-environments/blob/main/images/win/Windows2022-Readme.md
+        # Exclude arm64 builds for Qt's earlier than 6.2, since Qt only added (Windows) arm64
+        # 'Technology Preview' support in 6.2.
+        - { arch: arm64, qt: '5.9.9'   }
+        - { arch: arm64, qt: '5.10.1'  }
+        - { arch: arm64, qt: '5.11.3'  }
+        - { arch: arm64, qt: '5.12.12' }
+        - { arch: arm64, qt: '5.13.2'  }
+        - { arch: arm64, qt: '5.14.2'  }
+        - { arch: arm64, qt: '5.15.2'  }
+        # Exclude MinGW builds for arm64, since MinGW has no arm64 support.
+        - { arch: arm64, generator: 'MinGW Makefiles' }
+        # Exclude MinGW builds for x86 (32-bit), since the GitHub Actions Windows runners only
+        # includes MinGW-w64, and not MinGW (32-bit).
+        - { arch: x86, generator: 'MinGW Makefiles' }
+        # Exclude MinGW builds for x86-64 with Qt's earlier than 5.12, since the Qt online
+        # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
+        - { arch: x86-64, qt: '5.9.9',  generator: 'MinGW Makefiles' }
+        - { arch: x86-64, qt: '5.10.1', generator: 'MinGW Makefiles' }
+        - { arch: x86-64, qt: '5.11.3', generator: 'MinGW Makefiles' }
+        # Exclude MinGW builds for 6.2.2+ for now, as Qt binary builds shifted to MinGW-w64 v11.2.0
+        # in Qt 6.2.2, and GitHub Windows runners only inlucde MinGW-w64 8.1.0 for now. See
+        # https://wiki.qt.io/MinGW#Toolchains_used_in_Qt_binary_packages
         - { qt: '6.2.4',  generator: 'MinGW Makefiles' }
         - { qt: '6.3.0',  generator: 'MinGW Makefiles' }
-        include:
-        - { qt: '5.12.12', arch: win64_mingw73 }
-        - { qt: '5.13.2',  arch: win64_mingw73 }
-        - { qt: '5.14.2',  arch: win64_mingw73 }
-        - { qt: '5.15.2',  arch: win64_mingw81 }
+        include: # Override default arch's for install-qt-action and msvc-dev-cmd.
+        - { generator: 'MinGW Makefiles', qt: '5.12.12', qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.14.2',  qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
+        - { generator: 'NMake Makefiles', arch: arm64, qtArch: win64_msvc2019_arm64, msvcArch: amd64_arm64 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.10.1',  qtArch: win32_msvc2015 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.13.2',  qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.14.2',  qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.15.2',  qtArch: win32_msvc2019 }
+        - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
+        - { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
     steps:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Install Qt (mingw)
-      if: ${{ contains(matrix.generator, 'mingw') }}
+    - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
@@ -198,23 +218,12 @@ jobs:
         # See https://github.com/miurahr/aqtinstall/issues/333 and
         # https://github.com/jurplel/install-qt-action/issues/95
         modules: qtconnectivity addons.qtconnectivity
-        arch: ${{ matrix.arch }}
-    - name: Install Qt (msvc)
-      if: ${{ contains(matrix.generator, 'nmake') }}
-      uses: jurplel/install-qt-action@v2
-      with:
-        version: ${{ matrix.qt }}
-        # We include both here, because Qt 6.2+ currently needs the 'addons' prefix, while
-        # earlier versions don't, and aqtinstall does not currently break on unknown modules.
-        # Note, this 'addons' prefix issue has been fixed already in aqtinstall v2.0, but
-        # install-qt-action is not compatible with aqtinstall v2 untill install-qt-action v3,
-        # which is close, but not yet released. \todo Clean this up when v3 is released.
-        # See https://github.com/miurahr/aqtinstall/issues/333 and
-        # https://github.com/jurplel/install-qt-action/issues/95
-        modules: qtconnectivity addons.qtconnectivity
+        arch: ${{ matrix.qtArch }}
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: ${{ matrix.msvcArch }}
     - name: Build
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
@@ -236,7 +245,7 @@ jobs:
       if: ${{ contains(matrix.generator, 'mingw') }}
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.x86-64.mingw.qt-${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.mingw.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.dll
           ${{ runner.temp }}/src/app/pokit.exe
@@ -245,7 +254,7 @@ jobs:
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.x86-64.msvc.qt-${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.msvc.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/QtPokit.dll
           ${{ runner.temp }}/src/app/pokit.exe
