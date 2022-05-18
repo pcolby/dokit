@@ -238,8 +238,8 @@ jobs:
       if: matrix.arch == 'arm64'
       shell: bash
       run: |
-        echo "CMAKE_TOOLCHAIN_FILE=$Qt6_DIR\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
-        echo "qtHostPath=${Qt6_DIR/arm/}" >> $GITHUB_ENV
+        echo "CMAKE_TOOLCHAIN_FILE=${Qt6_DIR/_64/_arm64/}\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
+        echo "qtHostPath=${Qt6_DIR/_arm64/_64}" >> $GITHUB_ENV
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
