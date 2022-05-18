@@ -253,6 +253,8 @@ jobs:
       with:
         arch: ${{ matrix.msvcArch }}
     - name: Build
+      env:
+        QT_HOST_PATH: D:\a\qtpokit\Qt\6.2.4\msvc2019_64\
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_TOOLCHAIN_FILE=D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6\qt.toolchain.cmake -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
