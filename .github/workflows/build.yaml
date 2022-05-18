@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   linux:
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -42,7 +41,6 @@ jobs:
         if-no-files-found: error
 
   linux-qts:
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -93,7 +91,6 @@ jobs:
         if-no-files-found: error
 
   mac:
-    if: false
     runs-on: macOs-latest
     strategy:
       fail-fast: false
@@ -159,8 +156,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.0' ]
-        qt: [ '6.2.4', '6.3.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.0' ]
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
         arch: [ x86, x86-64, arm64 ]
         exclude:
@@ -196,16 +192,16 @@ jobs:
         - { qt: '6.2.4',  generator: 'MinGW Makefiles' }
         - { qt: '6.3.0',  generator: 'MinGW Makefiles' }
         include: # Override default arch's for install-qt-action and msvc-dev-cmd.
-        #- { generator: 'MinGW Makefiles', qt: '5.12.12', qtArch: win64_mingw73 }
-        #- { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
-        #- { generator: 'MinGW Makefiles', qt: '5.14.2',  qtArch: win64_mingw73 }
-        #- { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
-        #- { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
-        #- { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
-        #- { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
-        #- { generator: 'NMake Makefiles', arch: x86, qt: '5.13.2',  qtArch: win32_msvc2017 }
-        #- { generator: 'NMake Makefiles', arch: x86, qt: '5.14.2',  qtArch: win32_msvc2017 }
-        #- { generator: 'NMake Makefiles', arch: x86, qt: '5.15.2',  qtArch: win32_msvc2019 }
+        - { generator: 'MinGW Makefiles', qt: '5.12.12', qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.14.2',  qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.13.2',  qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.14.2',  qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.15.2',  qtArch: win32_msvc2019 }
         - { generator: 'NMake Makefiles', arch: arm64,  qtArch: win64_msvc2019_arm64 }
         - { generator: 'NMake Makefiles', arch: arm64,  msvcArch: amd64_arm64 }
         - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
