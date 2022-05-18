@@ -207,9 +207,9 @@ jobs:
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.13.2',  qtArch: win32_msvc2017 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.14.2',  qtArch: win32_msvc2017 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.15.2',  qtArch: win32_msvc2019 }
-        - { generator: 'NMake Makefiles', arch: arm64, msvcArch: amd64_arm64 }
-        #- { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
-        #- { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
+        - { generator: 'NMake Makefiles', arch: arm64,  msvcArch: amd64_arm64 }
+        - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
+        - { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
     steps:
     - uses: actions/checkout@v3
       with:
