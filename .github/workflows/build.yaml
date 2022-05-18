@@ -200,13 +200,14 @@ jobs:
         #- { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
         #- { generator: 'MinGW Makefiles', qt: '5.14.2',  qtArch: win64_mingw73 }
         #- { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
-        - { generator: 'NMake Makefiles', arch: arm64, qtArch: win64_msvc2019_arm64, msvcArch: amd64_arm64 }
+        ##- { generator: 'NMake Makefiles', arch: arm64, qtArch: win64_msvc2019_arm64, msvcArch: amd64_arm64 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.13.2',  qtArch: win32_msvc2017 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.14.2',  qtArch: win32_msvc2017 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.15.2',  qtArch: win32_msvc2019 }
+        - { generator: 'NMake Makefiles', arch: arm64, msvcArch: amd64_arm64 }
         #- { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
         #- { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
     steps:
@@ -225,8 +226,9 @@ jobs:
         # See https://github.com/miurahr/aqtinstall/issues/333 and
         # https://github.com/jurplel/install-qt-action/issues/95
         modules: qtconnectivity addons.qtconnectivity
-        arch: win64_msvc2019_64
-    - name: Install Qt ARM
+        arch: ${{ matrix.qtArch }}
+    - name: Install Qt (arm64)
+      if: matrix.arch == arm64
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
@@ -238,7 +240,7 @@ jobs:
         # See https://github.com/miurahr/aqtinstall/issues/333 and
         # https://github.com/jurplel/install-qt-action/issues/95
         modules: qtconnectivity addons.qtconnectivity
-        arch: ${{ matrix.qtArch }}
+        arch: win64_msvc2019_arm64
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
