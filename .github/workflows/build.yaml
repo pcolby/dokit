@@ -249,7 +249,7 @@ jobs:
       run: copy /v /b src\lib\%QTPOKIT_DLL% /b test\unit
       working-directory: ${{ runner.temp }}
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
-      if: matrix.arch != arm64
+      if: matrix.arch != 'arm64'
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
