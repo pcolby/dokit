@@ -228,7 +228,7 @@ jobs:
         modules: qtconnectivity addons.qtconnectivity
         arch: ${{ matrix.qtArch }}
     - name: Install Qt (arm64)
-      if: matrix.arch == arm64
+      if: matrix.arch == 'arm64'
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
