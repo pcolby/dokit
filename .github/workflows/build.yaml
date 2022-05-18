@@ -221,6 +221,12 @@ jobs:
         version: ${{ matrix.qt }}
         arch: win64_msvc2019_64
         set-env: false
+    - name: Setup environment for cross-compilation
+      if: matrix.arch == 'arm64'
+      shell: bash
+      run: |
+        echo "CMAKE_TOOLCHAIN_FILE=$Qt6_DIR\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
+        echo "qtHostPath=${Qt6_DIR/arm/}" >> $GITHUB_ENV
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -241,7 +247,7 @@ jobs:
         arch: ${{ matrix.msvcArch }}
     - name: Build
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=D:\a\qtpokit\Qt\6.2.4\msvc2019_64\ -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
+        cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
     - name: Install DLL for tests
       env: # MinGW includes a 'lib' prefix, as per the *nix convention.
