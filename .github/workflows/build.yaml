@@ -221,12 +221,6 @@ jobs:
         version: ${{ matrix.qt }}
         arch: win64_msvc2019_64
         set-env: false
-    - name: Setup environment for cross-compilation
-      if: matrix.arch == 'arm64'
-      shell: bash
-      run: |
-        echo "CMAKE_TOOLCHAIN_FILE=$Qt6_DIR\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
-        echo "qtHostPath=${Qt6_DIR/arm/}" >> $GITHUB_ENV
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -240,6 +234,12 @@ jobs:
         # https://github.com/jurplel/install-qt-action/issues/95
         modules: qtconnectivity addons.qtconnectivity
         arch: ${{ matrix.qtArch }}
+    - name: Configure cross-compilation
+      if: matrix.arch == 'arm64'
+      shell: bash
+      run: |
+        echo "CMAKE_TOOLCHAIN_FILE=$Qt6_DIR\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
+        echo "qtHostPath=${Qt6_DIR/arm/}" >> $GITHUB_ENV
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
