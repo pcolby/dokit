@@ -200,13 +200,13 @@ jobs:
         #- { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
         #- { generator: 'MinGW Makefiles', qt: '5.14.2',  qtArch: win64_mingw73 }
         #- { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
-        ##- { generator: 'NMake Makefiles', arch: arm64, qtArch: win64_msvc2019_arm64, msvcArch: amd64_arm64 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.13.2',  qtArch: win32_msvc2017 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.14.2',  qtArch: win32_msvc2017 }
         #- { generator: 'NMake Makefiles', arch: x86, qt: '5.15.2',  qtArch: win32_msvc2019 }
+        - { generator: 'NMake Makefiles', arch: arm64,  qtArch: win64_msvc2019_arm64 }
         - { generator: 'NMake Makefiles', arch: arm64,  msvcArch: amd64_arm64 }
         - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
         - { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
@@ -214,20 +214,13 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Install Qt (arm64)
+    - name: Install host Qt for cross-compilation
       if: matrix.arch == 'arm64'
       uses: jurplel/install-qt-action@v2
       with:
         version: ${{ matrix.qt }}
-        # We include both here, because Qt 6.2+ currently needs the 'addons' prefix, while
-        # earlier versions don't, and aqtinstall does not currently break on unknown modules.
-        # Note, this 'addons' prefix issue has been fixed already in aqtinstall v2.0, but
-        # install-qt-action is not compatible with aqtinstall v2 untill install-qt-action v3,
-        # which is close, but not yet released. \todo Clean this up when v3 is released.
-        # See https://github.com/miurahr/aqtinstall/issues/333 and
-        # https://github.com/jurplel/install-qt-action/issues/95
-        modules: qtconnectivity addons.qtconnectivity
-        arch: win64_msvc2019_arm64
+        arch: win64_msvc2019_64
+        set-env: false
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -241,12 +234,6 @@ jobs:
         # https://github.com/jurplel/install-qt-action/issues/95
         modules: qtconnectivity addons.qtconnectivity
         arch: ${{ matrix.qtArch }}
-        set-env: false
-    - run: |
-        dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\
-        dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6
-        dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6\qt.toolchain.cmake
-        type D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6\qt.toolchain.cmake
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
@@ -261,7 +248,8 @@ jobs:
         QTPOKIT_DLL: ${{ contains(matrix.generator, 'mingw') && 'lib' || '' }}QtPokit.dll
       run: copy /v /b src\lib\%QTPOKIT_DLL% /b test\unit
       working-directory: ${{ runner.temp }}
-    - name: Test
+    - name: Test # We can't execute arm64 binaries on an x86-64 host.
+      if: matrix.arch != arm64
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
