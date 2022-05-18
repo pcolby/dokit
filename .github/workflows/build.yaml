@@ -241,6 +241,11 @@ jobs:
         # https://github.com/jurplel/install-qt-action/issues/95
         modules: qtconnectivity addons.qtconnectivity
         arch: ${{ matrix.qtArch }}
+        set-env: false
+    - run: |
+        dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\
+        dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6
+        dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6\qt.toolchain.cmake
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
