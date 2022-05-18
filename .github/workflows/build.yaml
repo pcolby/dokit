@@ -246,6 +246,7 @@ jobs:
         dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\
         dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6
         dir D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6\qt.toolchain.cmake
+        type D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6\qt.toolchain.cmake
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
@@ -253,7 +254,7 @@ jobs:
         arch: ${{ matrix.msvcArch }}
     - name: Build
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
+        cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_TOOLCHAIN_FILE=D:\a\qtpokit\Qt\6.2.4\msvc2019_arm64\lib\cmake\Qt6\qt.toolchain.cmake -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
     - name: Install DLL for tests
       env: # MinGW includes a 'lib' prefix, as per the *nix convention.
