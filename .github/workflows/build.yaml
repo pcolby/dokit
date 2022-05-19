@@ -42,6 +42,7 @@ jobs:
         if-no-files-found: error
 
   linux-qts:
+    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -140,7 +141,7 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Make app bundle
       run: |
-        macdeployqt pokit -dmg -verbose 2
+        macdeployqt pokit -dmg -verbose=2
       working-directory: ${{ runner.temp }}/src/app
     - name: Setup artifacts
       run: |
@@ -151,7 +152,7 @@ jobs:
       with:
         name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.mac.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
         path: |
-          ${{ runner.temp }}/src
+          ${{ runner.temp }}/test
         if-no-files-found: error
 
   win:
@@ -259,7 +260,14 @@ jobs:
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Make portable
-      run: windeployqt --compiler-runtime --dir portable --verbose 2 src\app\pokit.exe
+      env: # MinGW includes a 'lib' prefix, as per the *nix convention.
+        QTPOKIT_DLL: ${{ contains(matrix.generator, 'mingw') && 'lib' || '' }}QtPokit.dll
+      run:
+        mkdir portable
+        copy /v /b src\lib\%QTPOKIT_DLL% /b portable
+        copy /v /b src\app\pokit.exe /b portable
+        cd portable
+        windeployqt --compiler-runtime --verbose 2 pokit.exe %QTPOKIT_DLL%
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
