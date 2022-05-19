@@ -262,7 +262,7 @@ jobs:
     - name: Make portable
       env: # MinGW includes a 'lib' prefix, as per the *nix convention.
         QTPOKIT_DLL: ${{ contains(matrix.generator, 'mingw') && 'lib' || '' }}QtPokit.dll
-      run:
+      run: |
         mkdir portable
         copy /v /b src\lib\%QTPOKIT_DLL% /b portable
         copy /v /b src\app\pokit.exe /b portable
