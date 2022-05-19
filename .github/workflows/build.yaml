@@ -137,6 +137,10 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
+    #- name: Make app bundle
+    #  run: |
+    #    macdeployqt -dmg -verbose 2
+    #  working-directory: ${{ runner.temp }}/src/app
     - name: Setup artifacts
       run: |
         echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
@@ -146,8 +150,7 @@ jobs:
       with:
         name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.mac.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
         path: |
-          ${{ runner.temp }}/src/lib/libQtPokit
-          ${{ runner.temp }}/src/app/pokit
+          ${{ runner.temp }}/src
         if-no-files-found: error
 
   win:
@@ -254,11 +257,21 @@ jobs:
       if: matrix.arch != 'arm64'
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
+    - name: Make portable
+      run:
+        mkdir portable
+        windeployqt --compiler-runtime --dir portable --verbose 2 src\app\pokit.exe
     - name: Setup artifacts
       shell: bash
       run: |
         echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
         echo "pokitRevision=$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)" >> $GITHUB_ENV
+    - name: Upload artifacts (portable)
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.mingw.qt-${{ matrix.qt }}.portable
+        path: ${{ runner.temp }}/portable
+        if-no-files-found: error
     - name: Upload artifacts (mingw)
       if: ${{ contains(matrix.generator, 'mingw') }}
       uses: actions/upload-artifact@v3
