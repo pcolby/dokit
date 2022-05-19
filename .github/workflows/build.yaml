@@ -4,6 +4,7 @@ on: [push, pull_request]
 
 jobs:
   linux:
+    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -137,10 +138,10 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
-    #- name: Make app bundle
-    #  run: |
-    #    macdeployqt -dmg -verbose 2
-    #  working-directory: ${{ runner.temp }}/src/app
+    - name: Make app bundle
+      run: |
+        macdeployqt pokit -dmg -verbose 2
+      working-directory: ${{ runner.temp }}/src/app
     - name: Setup artifacts
       run: |
         echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
@@ -258,9 +259,8 @@ jobs:
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Make portable
-      run:
-        mkdir portable
-        windeployqt --compiler-runtime --dir portable --verbose 2 src\app\pokit.exe
+      run: windeployqt --compiler-runtime --dir portable --verbose 2 src\app\pokit.exe
+      working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
       run: |
