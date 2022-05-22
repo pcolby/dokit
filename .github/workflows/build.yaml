@@ -291,3 +291,10 @@ jobs:
         name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.${ matrix.tool }}.qt-${{ matrix.qt }}.portable
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
+    - name: Upload debug file
+      if: matrix.arch == 'arm64'
+      uses: actions/upload-artifact@v3
+      with:
+        name: CMAKE_TOOLCHAIN_FILE
+        path: "${Qt6_DIR/_64/_arm64/}\lib\cmake\Qt6\qt.toolchain.cmake"
+        if-no-files-found: error
