@@ -139,10 +139,10 @@ jobs:
     - name: Test
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
-    - name: Make app bundle
-      run: |
-        macdeployqt pokit -dmg -verbose=2
-      working-directory: ${{ runner.temp }}/src/app
+    #- name: Make app bundle
+    #  run: |
+    #    macdeployqt pokit -dmg -verbose=2
+    #  working-directory: ${{ runner.temp }}/src/app
     - name: Setup artifacts
       run: |
         echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
@@ -152,7 +152,8 @@ jobs:
       with:
         name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.mac.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
         path: |
-          ${{ runner.temp }}/test
+          ${{ runner.temp }}/src/lib/libQtPokit.dylib
+          ${{ runner.temp }}/src/app/pokit
         if-no-files-found: error
 
   win:
