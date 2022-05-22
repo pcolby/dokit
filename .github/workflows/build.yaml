@@ -93,6 +93,7 @@ jobs:
         if-no-files-found: error
 
   mac:
+    if: false
     runs-on: macOs-latest
     strategy:
       fail-fast: false
@@ -262,6 +263,7 @@ jobs:
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Make portable
+      if: matrix.arch != 'arm64'
       run: |
         mkdir portable
         copy /v /b src\lib\${{ matrix.dll }} /b portable
@@ -283,6 +285,7 @@ jobs:
           ${{ runner.temp }}/src/app/pokit.exe
         if-no-files-found: error
     - name: Upload artifacts (portable)
+      if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
       with:
         name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.$${ matrix.tool }}.qt-${{ matrix.qt }}.portable
