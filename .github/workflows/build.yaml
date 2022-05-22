@@ -212,6 +212,9 @@ jobs:
         - { generator: 'NMake Makefiles', arch: arm64,  msvcArch: amd64_arm64 }
         - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
         - { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
+        # Define the toolchain and dll names per generator (for artifiact naming mostly).
+        - { generator: 'NMake Makefiles', tool: msvc, dll=QtPokit.dll }
+        - { generator: 'MinGW Makefiles', tool: mingw, dill=libQtPokit.dll }
     steps:
     - uses: actions/checkout@v3
       with:
@@ -252,50 +255,36 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
     - name: Install DLL for tests
-      env: # MinGW includes a 'lib' prefix, as per the *nix convention.
-        QTPOKIT_DLL: ${{ contains(matrix.generator, 'mingw') && 'lib' || '' }}QtPokit.dll
-      run: copy /v /b src\lib\%QTPOKIT_DLL% /b test\unit
+      run: copy /v /b src\lib\${{ matrix.dll }} /b test\unit
       working-directory: ${{ runner.temp }}
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
       if: matrix.arch != 'arm64'
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Make portable
-      env: # MinGW includes a 'lib' prefix, as per the *nix convention.
-        QTPOKIT_DLL: ${{ contains(matrix.generator, 'mingw') && 'lib' || '' }}QtPokit.dll
       run: |
         mkdir portable
-        copy /v /b src\lib\%QTPOKIT_DLL% /b portable
+        copy /v /b src\lib\${{ matrix.dll }} /b portable
         copy /v /b src\app\pokit.exe /b portable
         cd portable
-        windeployqt --compiler-runtime --verbose 2 pokit.exe %QTPOKIT_DLL%
+        windeployqt --compiler-runtime --verbose 2 pokit.exe ${{ matrix.dll }}
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
       run: |
         echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
         echo "pokitRevision=$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)" >> $GITHUB_ENV
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
+        path: |
+          ${{ runner.temp }}/src/lib/${{ matrix.dll }}
+          ${{ runner.temp }}/src/app/pokit.exe
+        if-no-files-found: error
     - name: Upload artifacts (portable)
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.mingw.qt-${{ matrix.qt }}.portable
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.$${ matrix.tool }}.qt-${{ matrix.qt }}.portable
         path: ${{ runner.temp }}/portable
-        if-no-files-found: error
-    - name: Upload artifacts (mingw)
-      if: ${{ contains(matrix.generator, 'mingw') }}
-      uses: actions/upload-artifact@v3
-      with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.mingw.qt-${{ matrix.qt }}
-        path: |
-          ${{ runner.temp }}/src/lib/libQtPokit.dll
-          ${{ runner.temp }}/src/app/pokit.exe
-        if-no-files-found: error
-    - name: Upload artifacts (msvc)
-      if: ${{ contains(matrix.generator, 'nmake') }}
-      uses: actions/upload-artifact@v3
-      with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.msvc.qt-${{ matrix.qt }}
-        path: |
-          ${{ runner.temp }}/src/lib/QtPokit.dll
-          ${{ runner.temp }}/src/app/pokit.exe
         if-no-files-found: error
