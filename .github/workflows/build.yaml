@@ -214,8 +214,8 @@ jobs:
         - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
         - { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
         # Define the toolchain and dll names per generator (for artifiact naming mostly).
-        - { generator: 'NMake Makefiles', tool: msvc, dll=QtPokit.dll }
-        - { generator: 'MinGW Makefiles', tool: mingw, dill=libQtPokit.dll }
+        - { generator: 'NMake Makefiles', tool: msvc,  dll:    QtPokit.dll }
+        - { generator: 'MinGW Makefiles', tool: mingw, dll: libQtPokit.dll }
     steps:
     - uses: actions/checkout@v3
       with:
