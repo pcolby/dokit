@@ -245,6 +245,7 @@ jobs:
       shell: bash
       run: |
         echo "CMAKE_TOOLCHAIN_FILE=${Qt6_DIR/_64/_arm64/}\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
+        echo "qtArmEnvScript=${Qt6_DIR/_64/_arm64/}\bin\qtenv2.bat" >> $GITHUB_ENV
         echo "qtHostPath=${Qt6_DIR/_arm64/_64}" >> $GITHUB_ENV
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
@@ -268,7 +269,7 @@ jobs:
         copy /v /b src\lib\${{ matrix.dll }} /b portable
         copy /v /b src\app\pokit.exe /b portable
         cd portable
-        if ${{ matrix.arch }}==arm64 %Qt6_DIR%/bin/qtenv2.bat
+        if ${{ matrix.arch }}==arm64 %qtArmEnvScript%
         windeployqt --compiler-runtime --verbose 2 pokit.exe ${{ matrix.dll }}
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
