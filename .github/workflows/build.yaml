@@ -296,5 +296,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: CMAKE_TOOLCHAIN_FILE
-        path: "${Qt6_DIR/_64/_arm64/}\lib\cmake\Qt6\qt.toolchain.cmake"
+        path: ${{ env.CMAKE_TOOLCHAIN_FILE }}
         if-no-files-found: error
