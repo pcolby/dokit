@@ -282,7 +282,8 @@ jobs:
         set
         call qtpaths.bat -query
         qtpaths -query
-        windeployqt --compiler-runtime --release --verbose 2 pokit.exe ${{ matrix.dll }}
+        set
+        windeployqt --compiler-runtime --qtpaths %qtTargetPath%\bin\qtpaths --release --verbose 2 pokit.exe ${{ matrix.dll }}
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
