@@ -279,11 +279,17 @@ jobs:
           set
         )
         cd %RUNNER_TEMP%\portable
+        echo 6
         set
+        echo 7
         call qtpaths.bat -query
+        echo 8
         qtpaths -query
+        echo 9
         set
-        windeployqt --compiler-runtime --qtpaths %qtTargetPath%\bin\qtpaths --release --verbose 2 pokit.exe ${{ matrix.dll }}
+        echo 10 %qtTargetPath%\bin\qtpaths
+        windeployqt --compiler-runtime --qtpaths %qtTargetPath%/bin/qtpaths.bat --release --verbose 2 pokit.exe ${{ matrix.dll }}
+        echo 11
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
