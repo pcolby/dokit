@@ -275,9 +275,13 @@ jobs:
           call %qtTargetPath%\bin\qtpaths.bat
           set Qt6_DIR=%qtTargetPath%
           set QMAKESPEC=%qtTargetPath%\mkspecs\win32-arm64-msvc
+          set QT_PLUGIN_PATH=%qtTargetPath%\plugins
           set
         )
         cd %RUNNER_TEMP%\portable
+        set
+        call qtpaths.bat -query
+        qtpaths -query
         windeployqt --compiler-runtime --release --verbose 2 pokit.exe ${{ matrix.dll }}
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
