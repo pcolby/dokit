@@ -285,16 +285,8 @@ jobs:
           ${{ runner.temp }}/src/app/pokit.exe
         if-no-files-found: error
     - name: Upload artifacts (portable)
-      if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
       with:
         name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}.portable
         path: ${{ runner.temp }}/portable
-        if-no-files-found: error
-    - name: Upload debug file
-      if: matrix.arch == 'arm64'
-      uses: actions/upload-artifact@v3
-      with:
-        name: CMAKE_TOOLCHAIN_FILE
-        path: ${{ env.CMAKE_TOOLCHAIN_FILE }}
         if-no-files-found: error
