@@ -246,6 +246,8 @@ jobs:
       run: |
         echo "CMAKE_TOOLCHAIN_FILE=${Qt6_DIR/_64/_arm64/}\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
         echo "qtHostPath=${Qt6_DIR/_arm64/_64}" >> $GITHUB_ENV
+        find "${Qt6_DIR/_arm64/_64}/bin/"
+        find "${Qt6_DIR/_64/_arm64}"
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
