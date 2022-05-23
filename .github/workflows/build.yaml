@@ -288,7 +288,7 @@ jobs:
       if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.${ matrix.tool }}.qt-${{ matrix.qt }}.portable
+        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}.portable
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
     - name: Upload debug file
