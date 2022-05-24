@@ -2,6 +2,7 @@ var classStatusService =
 [
     [ "CharacteristicUuids", "structStatusService_1_1CharacteristicUuids.html", "structStatusService_1_1CharacteristicUuids" ],
     [ "DeviceCharacteristics", "structStatusService_1_1DeviceCharacteristics.html", "structStatusService_1_1DeviceCharacteristics" ],
+    [ "ServiceUuids", "structStatusService_1_1ServiceUuids.html", "structStatusService_1_1ServiceUuids" ],
     [ "Status", "structStatusService_1_1Status.html", "structStatusService_1_1Status" ],
     [ "BatteryStatus", "classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68", [
       [ "Low", "classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68a28d0edd045e05cf5af64e35ae0c4c6ef", null ],
@@ -38,6 +39,5 @@ var classStatusService =
     [ "setDeviceName", "classStatusService.html#ada280bc54493f85e6855a2534bf2a02d", null ],
     [ "status", "classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7", null ],
     [ "toString", "classStatusService.html#a5b3ed7cd72ea54ba07f8927ff2cb7178", null ],
-    [ "toString", "classStatusService.html#aac79e97cb114be25b2a6771d915f132d", null ],
-    [ "serviceUuid", "classStatusService.html#a2f29742224a879c4f1fb81a2fdd39ea5", null ]
+    [ "toString", "classStatusService.html#aac79e97cb114be25b2a6771d915f132d", null ]
 ];

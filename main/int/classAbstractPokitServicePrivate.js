@@ -21,5 +21,5 @@ var classAbstractPokitServicePrivate =
     [ "controller", "classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1", null ],
     [ "q_ptr", "classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845", null ],
     [ "service", "classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d", null ],
-    [ "serviceUuid", "classAbstractPokitServicePrivate.html#ac869da6d14ebe8eb381351d84b36e275", null ]
+    [ "serviceUuid", "classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd", null ]
 ];

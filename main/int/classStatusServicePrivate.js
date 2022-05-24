@@ -4,5 +4,6 @@ var classStatusServicePrivate =
     [ "characteristicRead", "classStatusServicePrivate.html#a08d8faee04fb47ac19d3962609606d52", null ],
     [ "characteristicWritten", "classStatusServicePrivate.html#a8de57b8b27437360d75bd44f74595db1", null ],
     [ "parseDeviceCharacteristics", "classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced", null ],
-    [ "parseStatus", "classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0", null ]
+    [ "parseStatus", "classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0", null ],
+    [ "serviceDiscovered", "classStatusServicePrivate.html#a416f4b2a7e342c39fd667bcf324b4ea4", null ]
 ];
