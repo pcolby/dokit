@@ -27,8 +27,8 @@
             <td width="15%" class="headerCovTableHead">Coverage</td>
           </tr>
           <tr>
-            <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerItem">Project:</td>
+            <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
@@ -36,8 +36,8 @@
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
-            <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-23 22:30:16</td>
+            <td class="headerItem">Version:</td>
+            <td class="headerValue">0.1.0-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -102,96 +102,99 @@
 <a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :     Q_OBJECT</span></a>
 <a name="41"><span class="lineNum">      41 </span>            : </a>
 <a name="42"><span class="lineNum">      42 </span>            : public:</a>
-<a name="43"><span class="lineNum">      43 </span>            :     static const QBluetoothUuid serviceUuid;</a>
-<a name="44"><span class="lineNum">      44 </span>            : </a>
-<a name="45"><span class="lineNum">      45 </span>            :     struct CharacteristicUuids {</a>
-<a name="46"><span class="lineNum">      46 </span>            :         static const QBluetoothUuid deviceCharacteristics;</a>
-<a name="47"><span class="lineNum">      47 </span>            :         static const QBluetoothUuid status;</a>
-<a name="48"><span class="lineNum">      48 </span>            :         static const QBluetoothUuid name;</a>
-<a name="49"><span class="lineNum">      49 </span>            :         static const QBluetoothUuid flashLed;</a>
-<a name="50"><span class="lineNum">      50 </span>            :     };</a>
-<a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :     struct DeviceCharacteristics {</span></a>
-<a name="53"><span class="lineNum">      53 </span>            :         QVersionNumber firmwareVersion; ///&lt; Device's major and minor firmware version.</a>
-<a name="54"><span class="lineNum">      54 </span>            :         quint16 maximumVoltage;         ///&lt; Device's maximum input voltage.</a>
-<a name="55"><span class="lineNum">      55 </span>            :         quint16 maximumCurrent;         ///&lt; Device's maximum input current.</a>
-<a name="56"><span class="lineNum">      56 </span>            :         quint16 maximumResistance;      ///&lt; Device's maximum input resistance.</a>
-<a name="57"><span class="lineNum">      57 </span>            :         quint16 maximumSamplingRate;    ///&lt; Device's maximum sampling rate.</a>
-<a name="58"><span class="lineNum">      58 </span>            :         quint16 samplingBufferSize;     ///&lt; Device's sampling buffer size.</a>
-<a name="59"><span class="lineNum">      59 </span>            :         quint16 capabilityMask;         ///&lt; Reserved.</a>
-<a name="60"><span class="lineNum">      60 </span>            :         QBluetoothAddress macAddress;   ///&lt; Device's MAC address.</a>
-<a name="61"><span class="lineNum">      61 </span>            :     };</a>
-<a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span>            :     enum class DeviceStatus : quint8 {</a>
-<a name="64"><span class="lineNum">      64 </span>            :         Idle = 0,                 ///&lt; Device is idle.</a>
-<a name="65"><span class="lineNum">      65 </span>            :         MultimeterDcVoltage = 1,  ///&lt; Multimeter is measuring DC voltage.</a>
-<a name="66"><span class="lineNum">      66 </span>            :         MultimeterAcVoltage = 2,  ///&lt; Multimeter is measuring AC voltage.</a>
-<a name="67"><span class="lineNum">      67 </span>            :         MultimeterDcCurrent = 3,  ///&lt; Multimeter is measuring DC current.</a>
-<a name="68"><span class="lineNum">      68 </span>            :         MultimeterAcCurrent = 4,  ///&lt; Multimeter is measuring AC current.</a>
-<a name="69"><span class="lineNum">      69 </span>            :         MultimeterResistance = 5, ///&lt; Multimeter is measuring resistance.</a>
-<a name="70"><span class="lineNum">      70 </span>            :         MultimeterDiode = 6,      ///&lt; Multimeter is measuring diode.</a>
-<a name="71"><span class="lineNum">      71 </span>            :         MultimeterContinuity = 7, ///&lt; Multimeter is measuring continuity.</a>
-<a name="72"><span class="lineNum">      72 </span>            :         MultimeterTemperature = 8,///&lt; Multimeter is measuring temperature.</a>
-<a name="73"><span class="lineNum">      73 </span>            :         DsoModeSampling = 9,      ///&lt; DSO is sampling.</a>
-<a name="74"><span class="lineNum">      74 </span>            :         LoggerModeSampling = 10,  ///&lt; Data Logger is sampling.</a>
-<a name="75"><span class="lineNum">      75 </span>            :     };</a>
-<a name="76"><span class="lineNum">      76 </span>            :     static QString toString(const StatusService::DeviceStatus &amp;status);</a>
-<a name="77"><span class="lineNum">      77 </span>            : </a>
-<a name="78"><span class="lineNum">      78 </span>            :     enum class BatteryStatus : quint8 {</a>
-<a name="79"><span class="lineNum">      79 </span>            :         Low = 0,  ///&lt; Low (replace battery).</a>
-<a name="80"><span class="lineNum">      80 </span>            :         Good = 1, ///&lt; Good.</a>
-<a name="81"><span class="lineNum">      81 </span>            :     };</a>
-<a name="82"><span class="lineNum">      82 </span>            :     static QString toString(const StatusService::BatteryStatus &amp;label);</a>
-<a name="83"><span class="lineNum">      83 </span>            : </a>
-<a name="84"><span class="lineNum">      84 </span>            :     struct Status {</a>
-<a name="85"><span class="lineNum">      85 </span>            :         DeviceStatus deviceStatus;   ///&lt; Current Pokit device status.</a>
-<a name="86"><span class="lineNum">      86 </span>            :         float batteryVoltage;        ///&lt; Current battery voltage level.</a>
-<a name="87"><span class="lineNum">      87 </span>            :         BatteryStatus batteryStatus; ///&lt; Logical interpretation the battery voltage level.</a>
-<a name="88"><span class="lineNum">      88 </span>            : </a>
-<a name="89"><span class="lineNum">      89 </span>            :     };</a>
-<a name="90"><span class="lineNum">      90 </span>            : </a>
-<a name="91"><span class="lineNum">      91 </span>            :     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</a>
-<a name="92"><span class="lineNum">      92 </span>            :     ~StatusService() override;</a>
+<a name="43"><span class="lineNum">      43 </span>            :     struct ServiceUuids {</a>
+<a name="44"><span class="lineNum">      44 </span>            :         static const QBluetoothUuid pokitMeter;</a>
+<a name="45"><span class="lineNum">      45 </span>            :         static const QBluetoothUuid pokitPro;</a>
+<a name="46"><span class="lineNum">      46 </span>            :     };</a>
+<a name="47"><span class="lineNum">      47 </span>            : </a>
+<a name="48"><span class="lineNum">      48 </span>            :     struct CharacteristicUuids {</a>
+<a name="49"><span class="lineNum">      49 </span>            :         static const QBluetoothUuid deviceCharacteristics;</a>
+<a name="50"><span class="lineNum">      50 </span>            :         static const QBluetoothUuid status;</a>
+<a name="51"><span class="lineNum">      51 </span>            :         static const QBluetoothUuid name;</a>
+<a name="52"><span class="lineNum">      52 </span>            :         static const QBluetoothUuid flashLed;</a>
+<a name="53"><span class="lineNum">      53 </span>            :     };</a>
+<a name="54"><span class="lineNum">      54 </span>            : </a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :     struct DeviceCharacteristics {</span></a>
+<a name="56"><span class="lineNum">      56 </span>            :         QVersionNumber firmwareVersion; ///&lt; Device's major and minor firmware version.</a>
+<a name="57"><span class="lineNum">      57 </span>            :         quint16 maximumVoltage;         ///&lt; Device's maximum input voltage.</a>
+<a name="58"><span class="lineNum">      58 </span>            :         quint16 maximumCurrent;         ///&lt; Device's maximum input current.</a>
+<a name="59"><span class="lineNum">      59 </span>            :         quint16 maximumResistance;      ///&lt; Device's maximum input resistance.</a>
+<a name="60"><span class="lineNum">      60 </span>            :         quint16 maximumSamplingRate;    ///&lt; Device's maximum sampling rate.</a>
+<a name="61"><span class="lineNum">      61 </span>            :         quint16 samplingBufferSize;     ///&lt; Device's sampling buffer size.</a>
+<a name="62"><span class="lineNum">      62 </span>            :         quint16 capabilityMask;         ///&lt; Reserved.</a>
+<a name="63"><span class="lineNum">      63 </span>            :         QBluetoothAddress macAddress;   ///&lt; Device's MAC address.</a>
+<a name="64"><span class="lineNum">      64 </span>            :     };</a>
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<a name="66"><span class="lineNum">      66 </span>            :     enum class DeviceStatus : quint8 {</a>
+<a name="67"><span class="lineNum">      67 </span>            :         Idle = 0,                 ///&lt; Device is idle.</a>
+<a name="68"><span class="lineNum">      68 </span>            :         MultimeterDcVoltage = 1,  ///&lt; Multimeter is measuring DC voltage.</a>
+<a name="69"><span class="lineNum">      69 </span>            :         MultimeterAcVoltage = 2,  ///&lt; Multimeter is measuring AC voltage.</a>
+<a name="70"><span class="lineNum">      70 </span>            :         MultimeterDcCurrent = 3,  ///&lt; Multimeter is measuring DC current.</a>
+<a name="71"><span class="lineNum">      71 </span>            :         MultimeterAcCurrent = 4,  ///&lt; Multimeter is measuring AC current.</a>
+<a name="72"><span class="lineNum">      72 </span>            :         MultimeterResistance = 5, ///&lt; Multimeter is measuring resistance.</a>
+<a name="73"><span class="lineNum">      73 </span>            :         MultimeterDiode = 6,      ///&lt; Multimeter is measuring diode.</a>
+<a name="74"><span class="lineNum">      74 </span>            :         MultimeterContinuity = 7, ///&lt; Multimeter is measuring continuity.</a>
+<a name="75"><span class="lineNum">      75 </span>            :         MultimeterTemperature = 8,///&lt; Multimeter is measuring temperature.</a>
+<a name="76"><span class="lineNum">      76 </span>            :         DsoModeSampling = 9,      ///&lt; DSO is sampling.</a>
+<a name="77"><span class="lineNum">      77 </span>            :         LoggerModeSampling = 10,  ///&lt; Data Logger is sampling.</a>
+<a name="78"><span class="lineNum">      78 </span>            :     };</a>
+<a name="79"><span class="lineNum">      79 </span>            :     static QString toString(const StatusService::DeviceStatus &amp;status);</a>
+<a name="80"><span class="lineNum">      80 </span>            : </a>
+<a name="81"><span class="lineNum">      81 </span>            :     enum class BatteryStatus : quint8 {</a>
+<a name="82"><span class="lineNum">      82 </span>            :         Low = 0,  ///&lt; Low (replace battery).</a>
+<a name="83"><span class="lineNum">      83 </span>            :         Good = 1, ///&lt; Good.</a>
+<a name="84"><span class="lineNum">      84 </span>            :     };</a>
+<a name="85"><span class="lineNum">      85 </span>            :     static QString toString(const StatusService::BatteryStatus &amp;label);</a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span>            :     struct Status {</a>
+<a name="88"><span class="lineNum">      88 </span>            :         DeviceStatus deviceStatus;   ///&lt; Current Pokit device status.</a>
+<a name="89"><span class="lineNum">      89 </span>            :         float batteryVoltage;        ///&lt; Current battery voltage level.</a>
+<a name="90"><span class="lineNum">      90 </span>            :         BatteryStatus batteryStatus; ///&lt; Logical interpretation the battery voltage level.</a>
+<a name="91"><span class="lineNum">      91 </span>            : </a>
+<a name="92"><span class="lineNum">      92 </span>            :     };</a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
-<a name="94"><span class="lineNum">      94 </span>            :     bool readCharacteristics() override;</a>
-<a name="95"><span class="lineNum">      95 </span>            :     bool readDeviceCharacteristics();</a>
-<a name="96"><span class="lineNum">      96 </span>            :     bool readStatusCharacteristic();</a>
-<a name="97"><span class="lineNum">      97 </span>            :     bool readNameCharacteristic();</a>
-<a name="98"><span class="lineNum">      98 </span>            : </a>
-<a name="99"><span class="lineNum">      99 </span>            :     // Device Characteristics characteristic (BLE read only).</a>
-<a name="100"><span class="lineNum">     100 </span>            :     DeviceCharacteristics deviceCharacteristics() const;</a>
+<a name="94"><span class="lineNum">      94 </span>            :     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</a>
+<a name="95"><span class="lineNum">      95 </span>            :     ~StatusService() override;</a>
+<a name="96"><span class="lineNum">      96 </span>            : </a>
+<a name="97"><span class="lineNum">      97 </span>            :     bool readCharacteristics() override;</a>
+<a name="98"><span class="lineNum">      98 </span>            :     bool readDeviceCharacteristics();</a>
+<a name="99"><span class="lineNum">      99 </span>            :     bool readStatusCharacteristic();</a>
+<a name="100"><span class="lineNum">     100 </span>            :     bool readNameCharacteristic();</a>
 <a name="101"><span class="lineNum">     101 </span>            : </a>
-<a name="102"><span class="lineNum">     102 </span>            :     // Status characteristic (Read only).</a>
-<a name="103"><span class="lineNum">     103 </span>            :     Status status() const;</a>
+<a name="102"><span class="lineNum">     102 </span>            :     // Device Characteristics characteristic (BLE read only).</a>
+<a name="103"><span class="lineNum">     103 </span>            :     DeviceCharacteristics deviceCharacteristics() const;</a>
 <a name="104"><span class="lineNum">     104 </span>            : </a>
-<a name="105"><span class="lineNum">     105 </span>            :     // Device Name characteristic (BLE read/write).</a>
-<a name="106"><span class="lineNum">     106 </span>            :     QString deviceName() const;</a>
-<a name="107"><span class="lineNum">     107 </span>            :     bool setDeviceName(const QString &amp;name);</a>
-<a name="108"><span class="lineNum">     108 </span>            : </a>
-<a name="109"><span class="lineNum">     109 </span>            :     // Flash LED characteristic (BLE write only).</a>
-<a name="110"><span class="lineNum">     110 </span>            :     bool flashLed();</a>
+<a name="105"><span class="lineNum">     105 </span>            :     // Status characteristic (Read only).</a>
+<a name="106"><span class="lineNum">     106 </span>            :     Status status() const;</a>
+<a name="107"><span class="lineNum">     107 </span>            : </a>
+<a name="108"><span class="lineNum">     108 </span>            :     // Device Name characteristic (BLE read/write).</a>
+<a name="109"><span class="lineNum">     109 </span>            :     QString deviceName() const;</a>
+<a name="110"><span class="lineNum">     110 </span>            :     bool setDeviceName(const QString &amp;name);</a>
 <a name="111"><span class="lineNum">     111 </span>            : </a>
-<a name="112"><span class="lineNum">     112 </span>            : signals:</a>
-<a name="113"><span class="lineNum">     113 </span>            :     void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &amp;characteristics);</a>
-<a name="114"><span class="lineNum">     114 </span>            :     void deviceNameRead(const QString &amp;deviceName);</a>
-<a name="115"><span class="lineNum">     115 </span>            :     void deivceNameWritten();</a>
-<a name="116"><span class="lineNum">     116 </span>            :     void deviceStatusRead(const StatusService::Status &amp;status);</a>
-<a name="117"><span class="lineNum">     117 </span>            :     void deviceLedFlashed();</a>
-<a name="118"><span class="lineNum">     118 </span>            : </a>
-<a name="119"><span class="lineNum">     119 </span>            : protected:</a>
-<a name="120"><span class="lineNum">     120 </span>            :     /// \cond internal</a>
-<a name="121"><span class="lineNum">     121 </span>            :     StatusService(StatusServicePrivate * const d, QObject * const parent);</a>
-<a name="122"><span class="lineNum">     122 </span>            :     /// \endcond</a>
-<a name="123"><span class="lineNum">     123 </span>            : </a>
-<a name="124"><span class="lineNum">     124 </span>            : private:</a>
-<a name="125"><span class="lineNum">     125 </span>            :     Q_DECLARE_PRIVATE(StatusService)</a>
-<a name="126"><span class="lineNum">     126 </span>            :     Q_DISABLE_COPY(StatusService)</a>
-<a name="127"><span class="lineNum">     127 </span>            :     friend class TestStatusService;</a>
-<a name="128"><span class="lineNum">     128 </span>            : };</a>
-<a name="129"><span class="lineNum">     129 </span>            : </a>
-<a name="130"><span class="lineNum">     130 </span>            : QTPOKIT_END_NAMESPACE</a>
-<a name="131"><span class="lineNum">     131 </span>            : </a>
-<a name="132"><span class="lineNum">     132 </span>            : #endif // QTPOKIT_STATUSSERVICE_H</a>
+<a name="112"><span class="lineNum">     112 </span>            :     // Flash LED characteristic (BLE write only).</a>
+<a name="113"><span class="lineNum">     113 </span>            :     bool flashLed();</a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span>            : signals:</a>
+<a name="116"><span class="lineNum">     116 </span>            :     void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &amp;characteristics);</a>
+<a name="117"><span class="lineNum">     117 </span>            :     void deviceNameRead(const QString &amp;deviceName);</a>
+<a name="118"><span class="lineNum">     118 </span>            :     void deivceNameWritten();</a>
+<a name="119"><span class="lineNum">     119 </span>            :     void deviceStatusRead(const StatusService::Status &amp;status);</a>
+<a name="120"><span class="lineNum">     120 </span>            :     void deviceLedFlashed();</a>
+<a name="121"><span class="lineNum">     121 </span>            : </a>
+<a name="122"><span class="lineNum">     122 </span>            : protected:</a>
+<a name="123"><span class="lineNum">     123 </span>            :     /// \cond internal</a>
+<a name="124"><span class="lineNum">     124 </span>            :     StatusService(StatusServicePrivate * const d, QObject * const parent);</a>
+<a name="125"><span class="lineNum">     125 </span>            :     /// \endcond</a>
+<a name="126"><span class="lineNum">     126 </span>            : </a>
+<a name="127"><span class="lineNum">     127 </span>            : private:</a>
+<a name="128"><span class="lineNum">     128 </span>            :     Q_DECLARE_PRIVATE(StatusService)</a>
+<a name="129"><span class="lineNum">     129 </span>            :     Q_DISABLE_COPY(StatusService)</a>
+<a name="130"><span class="lineNum">     130 </span>            :     friend class TestStatusService;</a>
+<a name="131"><span class="lineNum">     131 </span>            : };</a>
+<a name="132"><span class="lineNum">     132 </span>            : </a>
+<a name="133"><span class="lineNum">     133 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="134"><span class="lineNum">     134 </span>            : </a>
+<a name="135"><span class="lineNum">     135 </span>            : #endif // QTPOKIT_STATUSSERVICE_H</a>
 </pre>
       </td>
     </tr>

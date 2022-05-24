@@ -27,8 +27,8 @@
             <td width="15%" class="headerCovTableHead">Coverage</td>
           </tr>
           <tr>
-            <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerItem">Project:</td>
+            <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">2</td>
@@ -36,8 +36,8 @@
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
-            <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-23 22:30:16</td>
+            <td class="headerItem">Version:</td>
+            <td class="headerValue">0.1.0-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -109,7 +109,7 @@
 <a name="47"><span class="lineNum">      47 </span>            :     bool autoDiscover;                 ///&lt; Whether autodiscovery is enabled or not.</a>
 <a name="48"><span class="lineNum">      48 </span>            :     QLowEnergyController * controller; ///&lt; BLE controller to fetch the service from.</a>
 <a name="49"><span class="lineNum">      49 </span>            :     QLowEnergyService * service;       ///&lt; BLE service to read/write characteristics.</a>
-<a name="50"><span class="lineNum">      50 </span>            :     const QBluetoothUuid serviceUuid;  ///&lt; UUID for #service.</a>
+<a name="50"><span class="lineNum">      50 </span>            :     QBluetoothUuid serviceUuid;        ///&lt; UUIDs for #service.</a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
 <a name="52"><span class="lineNum">      52 </span>            :     AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid,</a>
 <a name="53"><span class="lineNum">      53 </span>            :         QLowEnergyController * controller, AbstractPokitService * const q);</a>
@@ -132,7 +132,7 @@
 <a name="70"><span class="lineNum">      70 </span>            :     void connected();</a>
 <a name="71"><span class="lineNum">      71 </span>            :     void discoveryFinished();</a>
 <a name="72"><span class="lineNum">      72 </span>            :     void errorOccurred(const QLowEnergyService::ServiceError newError);</a>
-<a name="73"><span class="lineNum">      73 </span>            :     void serviceDiscovered(const QBluetoothUuid &amp;newService);</a>
+<a name="73"><span class="lineNum">      73 </span>            :     virtual void serviceDiscovered(const QBluetoothUuid &amp;newService);</a>
 <a name="74"><span class="lineNum">      74 </span>            :     void stateChanged(QLowEnergyService::ServiceState newState);</a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
 <a name="76"><span class="lineNum">      76 </span>            :     virtual void characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</a>

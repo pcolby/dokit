@@ -27,8 +27,8 @@
             <td width="15%" class="headerCovTableHead">Coverage</td>
           </tr>
           <tr>
-            <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerItem">Project:</td>
+            <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
@@ -36,8 +36,8 @@
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
-            <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-23 22:30:16</td>
+            <td class="headerItem">Version:</td>
+            <td class="headerValue">0.1.0-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -105,34 +105,36 @@
 <a name="43"><span class="lineNum">      43 </span>            :     virtual ~PokitDiscoveryAgent();</a>
 <a name="44"><span class="lineNum">      44 </span>            : </a>
 <a name="45"><span class="lineNum">      45 </span>            :     static bool isPokitDevice(const QBluetoothDeviceInfo &amp;info);</a>
-<a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span>            : public slots:</a>
-<a name="48"><span class="lineNum">      48 </span>            :     void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods);</a>
-<a name="49"><span class="lineNum">      49 </span>            :     void start();</a>
-<a name="50"><span class="lineNum">      50 </span>            : </a>
-<a name="51"><span class="lineNum">      51 </span>            : signals:</a>
-<a name="52"><span class="lineNum">      52 </span>            :     void pokitDeviceDiscovered(const QBluetoothDeviceInfo &amp;info);</a>
-<a name="53"><span class="lineNum">      53 </span>            :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.</a>
-<a name="54"><span class="lineNum">      54 </span>            :     void pokitDeviceUpdated(const QBluetoothDeviceInfo &amp;info, QBluetoothDeviceInfo::Fields updatedFields);</a>
-<a name="55"><span class="lineNum">      55 </span>            :     #endif</a>
-<a name="56"><span class="lineNum">      56 </span>            : </a>
-<a name="57"><span class="lineNum">      57 </span>            : protected:</a>
-<a name="58"><span class="lineNum">      58 </span>            :     /// \cond internal</a>
-<a name="59"><span class="lineNum">      59 </span>            :     PokitDiscoveryAgentPrivate * d_ptr; ///&lt; Internal d-pointer.</a>
-<a name="60"><span class="lineNum">      60 </span>            :     PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d,</a>
-<a name="61"><span class="lineNum">      61 </span>            :                               const QBluetoothAddress &amp;deviceAdapter, QObject * const parent);</a>
-<a name="62"><span class="lineNum">      62 </span>            :     PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d, QObject * const parent);</a>
-<a name="63"><span class="lineNum">      63 </span>            :     /// \endcond</a>
-<a name="64"><span class="lineNum">      64 </span>            : </a>
-<a name="65"><span class="lineNum">      65 </span>            : private:</a>
-<a name="66"><span class="lineNum">      66 </span>            :     Q_DECLARE_PRIVATE(PokitDiscoveryAgent)</a>
-<a name="67"><span class="lineNum">      67 </span>            :     Q_DISABLE_COPY(PokitDiscoveryAgent)</a>
-<a name="68"><span class="lineNum">      68 </span>            :     friend class TestPokitDiscoveryAgent;</a>
-<a name="69"><span class="lineNum">      69 </span>            : };</a>
-<a name="70"><span class="lineNum">      70 </span>            : </a>
-<a name="71"><span class="lineNum">      71 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="46"><span class="lineNum">      46 </span>            :     static bool isPokitMeter(const QBluetoothDeviceInfo &amp;info);</a>
+<a name="47"><span class="lineNum">      47 </span>            :     static bool isPokitPro(const QBluetoothDeviceInfo &amp;info);</a>
+<a name="48"><span class="lineNum">      48 </span>            : </a>
+<a name="49"><span class="lineNum">      49 </span>            : public slots:</a>
+<a name="50"><span class="lineNum">      50 </span>            :     void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods);</a>
+<a name="51"><span class="lineNum">      51 </span>            :     void start();</a>
+<a name="52"><span class="lineNum">      52 </span>            : </a>
+<a name="53"><span class="lineNum">      53 </span>            : signals:</a>
+<a name="54"><span class="lineNum">      54 </span>            :     void pokitDeviceDiscovered(const QBluetoothDeviceInfo &amp;info);</a>
+<a name="55"><span class="lineNum">      55 </span>            :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.</a>
+<a name="56"><span class="lineNum">      56 </span>            :     void pokitDeviceUpdated(const QBluetoothDeviceInfo &amp;info, QBluetoothDeviceInfo::Fields updatedFields);</a>
+<a name="57"><span class="lineNum">      57 </span>            :     #endif</a>
+<a name="58"><span class="lineNum">      58 </span>            : </a>
+<a name="59"><span class="lineNum">      59 </span>            : protected:</a>
+<a name="60"><span class="lineNum">      60 </span>            :     /// \cond internal</a>
+<a name="61"><span class="lineNum">      61 </span>            :     PokitDiscoveryAgentPrivate * d_ptr; ///&lt; Internal d-pointer.</a>
+<a name="62"><span class="lineNum">      62 </span>            :     PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d,</a>
+<a name="63"><span class="lineNum">      63 </span>            :                               const QBluetoothAddress &amp;deviceAdapter, QObject * const parent);</a>
+<a name="64"><span class="lineNum">      64 </span>            :     PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d, QObject * const parent);</a>
+<a name="65"><span class="lineNum">      65 </span>            :     /// \endcond</a>
+<a name="66"><span class="lineNum">      66 </span>            : </a>
+<a name="67"><span class="lineNum">      67 </span>            : private:</a>
+<a name="68"><span class="lineNum">      68 </span>            :     Q_DECLARE_PRIVATE(PokitDiscoveryAgent)</a>
+<a name="69"><span class="lineNum">      69 </span>            :     Q_DISABLE_COPY(PokitDiscoveryAgent)</a>
+<a name="70"><span class="lineNum">      70 </span>            :     friend class TestPokitDiscoveryAgent;</a>
+<a name="71"><span class="lineNum">      71 </span>            : };</a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span>            : #endif // QTPOKIT_POKITDISCOVERYAGENT_H</a>
+<a name="73"><span class="lineNum">      73 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="74"><span class="lineNum">      74 </span>            : </a>
+<a name="75"><span class="lineNum">      75 </span>            : #endif // QTPOKIT_POKITDISCOVERYAGENT_H</a>
 </pre>
       </td>
     </tr>

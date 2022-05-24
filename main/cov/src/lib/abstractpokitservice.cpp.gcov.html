@@ -27,17 +27,17 @@
             <td width="15%" class="headerCovTableHead">Coverage</td>
           </tr>
           <tr>
-            <td class="headerItem">Test:</td>
-            <td class="headerValue">coverage.info</td>
+            <td class="headerItem">Project:</td>
+            <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">100</td>
-            <td class="headerCovTableEntry">171</td>
-            <td class="headerCovTableEntryLo">58.5 %</td>
+            <td class="headerCovTableEntry">101</td>
+            <td class="headerCovTableEntry">174</td>
+            <td class="headerCovTableEntryLo">58.0 %</td>
           </tr>
           <tr>
-            <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-05-23 22:30:16</td>
+            <td class="headerItem">Version:</td>
+            <td class="headerValue">0.1.0-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -199,415 +199,427 @@
 <a name="137"><span class="lineNum">     137 </span>            : /*!</a>
 <a name="138"><span class="lineNum">     138 </span>            :  * \internal</a>
 <a name="139"><span class="lineNum">     139 </span>            :  * Constructs a new AbstractPokitServicePrivate object with public implementation \a q.</a>
-<a name="140"><span class="lineNum">     140 </span>            :  */</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         20 : AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid,</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         20 :     QLowEnergyController * controller, AbstractPokitService * const q)</span></a>
-<a name="143"><span class="lineNum">     143 </span>            :     : autoDiscover(true), controller(controller), service(nullptr), serviceUuid(serviceUuid),</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         20 :       q_ptr(q)</span></a>
-<a name="145"><span class="lineNum">     145 </span>            : {</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         20 :     if (controller) {</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::connected,</span></a>
-<a name="148"><span class="lineNum">     148 </span>            :                 this, &amp;AbstractPokitServicePrivate::connected);</a>
-<a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::discoveryFinished,</span></a>
-<a name="151"><span class="lineNum">     151 </span>            :                 this, &amp;AbstractPokitServicePrivate::discoveryFinished);</a>
-<a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::serviceDiscovered,</span></a>
-<a name="154"><span class="lineNum">     154 </span>            :                 this, &amp;AbstractPokitServicePrivate::serviceDiscovered);</a>
-<a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          2 :         createServiceObject();</span></a>
-<a name="157"><span class="lineNum">     157 </span>            :     }</a>
-<a name="158"><span class="lineNum">     158 </span>            : </a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         20 : }</span></a>
-<a name="160"><span class="lineNum">     160 </span>            : </a>
-<a name="161"><span class="lineNum">     161 </span>            : /*!</a>
-<a name="162"><span class="lineNum">     162 </span>            :  * Creates an internal service object from the internal controller.</a>
-<a name="163"><span class="lineNum">     163 </span>            :  *</a>
-<a name="164"><span class="lineNum">     164 </span>            :  * Any existing service object will *not* be replaced.</a>
-<a name="165"><span class="lineNum">     165 </span>            :  *</a>
-<a name="166"><span class="lineNum">     166 </span>            :  * Returns \c true if a service was created successfully, either now, or sometime previously.</a>
-<a name="167"><span class="lineNum">     167 </span>            :  */</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          7 : bool AbstractPokitServicePrivate::createServiceObject()</span></a>
-<a name="169"><span class="lineNum">     169 </span>            : {</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          7 :     if (!controller) {</span></a>
-<a name="171"><span class="lineNum">     171 </span>            :         return false;</a>
-<a name="172"><span class="lineNum">     172 </span>            :     }</a>
-<a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          5 :     if (service) {</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Already have service object:&quot;) &lt;&lt; service;</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          1 :         return true;</span></a>
-<a name="177"><span class="lineNum">     177 </span>            :     }</a>
-<a name="178"><span class="lineNum">     178 </span>            : </a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          4 :     service = controller-&gt;createServiceObject(serviceUuid, this);</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          4 :     if (!service) {</span></a>
-<a name="181"><span class="lineNum">     181 </span>            :         return false;</a>
-<a name="182"><span class="lineNum">     182 </span>            :     }</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service object created&quot;) &lt;&lt; service;</span></a>
-<a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::stateChanged,</span></a>
-<a name="186"><span class="lineNum">     186 </span>            :             this, &amp;AbstractPokitServicePrivate::stateChanged);</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::characteristicRead,</span></a>
-<a name="188"><span class="lineNum">     188 </span>            :             this, &amp;AbstractPokitServicePrivate::characteristicRead);</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::characteristicWritten,</span></a>
-<a name="190"><span class="lineNum">     190 </span>            :             this, &amp;AbstractPokitServicePrivate::characteristicWritten);</a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::characteristicChanged,</span></a>
-<a name="192"><span class="lineNum">     192 </span>            :             this, &amp;AbstractPokitServicePrivate::characteristicChanged);</a>
-<a name="193"><span class="lineNum">     193 </span>            : </a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorRead,</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;value){</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Descriptor \&quot;%1\&quot; (%2) read.&quot;)</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
-<a name="198"><span class="lineNum">     198 </span>            :             Q_UNUSED(value);</a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :         });</span></a>
-<a name="200"><span class="lineNum">     200 </span>            : </a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorWritten,</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;newValue){</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Descriptor \&quot;%1\&quot; (%2) written.&quot;)</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
-<a name="205"><span class="lineNum">     205 </span>            :             Q_UNUSED(newValue);</a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :         });</span></a>
-<a name="207"><span class="lineNum">     207 </span>            : </a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :     connect(service,</span></a>
-<a name="209"><span class="lineNum">     209 </span>            :     #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</a>
-<a name="210"><span class="lineNum">     210 </span>            :         QOverload&lt;QLowEnergyService::ServiceError&gt;::of(&amp;QLowEnergyService::error),</a>
-<a name="211"><span class="lineNum">     211 </span>            :     #else</a>
-<a name="212"><span class="lineNum">     212 </span>            :         &amp;QLowEnergyService::errorOccurred,</a>
-<a name="213"><span class="lineNum">     213 </span>            :     #endif</a>
-<a name="214"><span class="lineNum">     214 </span>            :         this, &amp;AbstractPokitServicePrivate::errorOccurred);</a>
-<a name="215"><span class="lineNum">     215 </span>            : </a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :     if (autoDiscover) {</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :         service-&gt;discoverDetails();</span></a>
-<a name="218"><span class="lineNum">     218 </span>            :     }</a>
-<a name="219"><span class="lineNum">     219 </span>            :     return true;</a>
-<a name="220"><span class="lineNum">     220 </span>            : }</a>
-<a name="221"><span class="lineNum">     221 </span>            : </a>
-<a name="222"><span class="lineNum">     222 </span>            : /*!</a>
-<a name="223"><span class="lineNum">     223 </span>            :  * Get \a uuid characteristc from the underlying service. This helper function is equivalent to</a>
-<a name="224"><span class="lineNum">     224 </span>            :  *</a>
-<a name="225"><span class="lineNum">     225 </span>            :  * ```</a>
-<a name="226"><span class="lineNum">     226 </span>            :  * return service-&gt;characteristic(uuid);</a>
-<a name="227"><span class="lineNum">     227 </span>            :  * ```</a>
-<a name="228"><span class="lineNum">     228 </span>            :  *</a>
-<a name="229"><span class="lineNum">     229 </span>            :  * except that it performs some sanity checks, such as checking the service object pointer has been</a>
-<a name="230"><span class="lineNum">     230 </span>            :  * assigned first, and also logs failures in a consistent manner.</a>
-<a name="231"><span class="lineNum">     231 </span>            :  *</a>
-<a name="232"><span class="lineNum">     232 </span>            :  * \param uuid</a>
-<a name="233"><span class="lineNum">     233 </span>            :  * \return</a>
-<a name="234"><span class="lineNum">     234 </span>            :  */</a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">         10 : QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &amp;uuid) const</span></a>
-<a name="236"><span class="lineNum">     236 </span>            : {</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         10 :     if (!service) {</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">         10 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; requested before service assigned.&quot;)</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         10 :         return QLowEnergyCharacteristic();</span></a>
-<a name="241"><span class="lineNum">     241 </span>            :     }</a>
-<a name="242"><span class="lineNum">     242 </span>            : </a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :     const QLowEnergyCharacteristic characteristic = service-&gt;characteristic(uuid);</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :     if (characteristic.isValid()) {</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :         return characteristic;</span></a>
-<a name="246"><span class="lineNum">     246 </span>            :     }</a>
-<a name="247"><span class="lineNum">     247 </span>            : </a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :     if (service-&gt;state() != QLowEnergyService::</span></a>
-<a name="249"><span class="lineNum">     249 </span>            :         #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</a>
-<a name="250"><span class="lineNum">     250 </span>            :         ServiceDiscovered</a>
-<a name="251"><span class="lineNum">     251 </span>            :         #else</a>
-<a name="252"><span class="lineNum">     252 </span>            :         RemoteServiceDiscovered</a>
-<a name="253"><span class="lineNum">     253 </span>            :         #endif</a>
-<a name="254"><span class="lineNum">     254 </span>            :     ) {</a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; requested before service %3 \&quot;%4\&quot; discovered.&quot;)</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :             service-&gt;serviceUuid().toString(), PokitDevice::serviceToString(service-&gt;serviceUuid()));</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Current service state:&quot;) &lt;&lt; service-&gt;state();</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :         return QLowEnergyCharacteristic();</span></a>
-<a name="260"><span class="lineNum">     260 </span>            :     }</a>
-<a name="261"><span class="lineNum">     261 </span>            : </a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; not found in service %3 \&quot;%4\&quot;.&quot;)</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :         service-&gt;serviceUuid().toString(), PokitDevice::serviceToString(service-&gt;serviceUuid()));</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :     return QLowEnergyCharacteristic();</span></a>
-<a name="266"><span class="lineNum">     266 </span>            : }</a>
-<a name="267"><span class="lineNum">     267 </span>            : </a>
-<a name="268"><span class="lineNum">     268 </span>            : /*!</a>
-<a name="269"><span class="lineNum">     269 </span>            :  * Read the \a uuid characteristic.</a>
-<a name="270"><span class="lineNum">     270 </span>            :  *</a>
-<a name="271"><span class="lineNum">     271 </span>            :  * If succesful, the `QLowEnergyService::characteristicRead` signal will be emitted by the internal</a>
-<a name="272"><span class="lineNum">     272 </span>            :  * service object.  For convenience, derived classes should implement the characteristicRead()</a>
-<a name="273"><span class="lineNum">     273 </span>            :  * virtual function to handle the read value.</a>
-<a name="274"><span class="lineNum">     274 </span>            :  *</a>
-<a name="275"><span class="lineNum">     275 </span>            :  * Returns \c true if the characteristic read request was successfully queued, \c false otherwise.</a>
-<a name="276"><span class="lineNum">     276 </span>            :  *</a>
-<a name="277"><span class="lineNum">     277 </span>            :  * \see AbstractPokitService::readCharacteristics()</a>
-<a name="278"><span class="lineNum">     278 </span>            :  * \see AbstractPokitServicePrivate::characteristicRead()</a>
-<a name="279"><span class="lineNum">     279 </span>            :  */</a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          1 : bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &amp;uuid)</span></a>
-<a name="281"><span class="lineNum">     281 </span>            : {</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          2 :     const QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          1 :     if (!characteristic.isValid()) {</span></a>
-<a name="284"><span class="lineNum">     284 </span>            :         return false;</a>
-<a name="285"><span class="lineNum">     285 </span>            :     }</a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :     service-&gt;readCharacteristic(characteristic);</span></a>
-<a name="289"><span class="lineNum">     289 </span>            :     return true;</a>
-<a name="290"><span class="lineNum">     290 </span>            : }</a>
-<a name="291"><span class="lineNum">     291 </span>            : </a>
-<a name="292"><span class="lineNum">     292 </span>            : /*!</a>
-<a name="293"><span class="lineNum">     293 </span>            :  * Enables client (Pokit device) side notification for characteristic \a uuid.</a>
-<a name="294"><span class="lineNum">     294 </span>            :  *</a>
-<a name="295"><span class="lineNum">     295 </span>            :  * Returns \c true if the notication enable request was successfully queued, \c false otherwise.</a>
-<a name="296"><span class="lineNum">     296 </span>            :  *</a>
-<a name="297"><span class="lineNum">     297 </span>            :  * \see AbstractPokitServicePrivate::characteristicChanged</a>
-<a name="298"><span class="lineNum">     298 </span>            :  * \see AbstractPokitServicePrivate::disableCharacteristicNotificatons</a>
-<a name="299"><span class="lineNum">     299 </span>            :  */</a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          1 : bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBluetoothUuid &amp;uuid)</span></a>
-<a name="301"><span class="lineNum">     301 </span>            : {</a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Enabling CCCD for characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          2 :     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          1 :     if (!characteristic.isValid()) {</span></a>
-<a name="306"><span class="lineNum">     306 </span>            :         return false;</a>
-<a name="307"><span class="lineNum">     307 </span>            :     }</a>
-<a name="308"><span class="lineNum">     308 </span>            : </a>
-<a name="309"><span class="lineNum">     309 </span>            :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :     if (!descriptor.isValid()) {</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; has no client configuration descriptor.&quot;)</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :         return false;</span></a>
-<a name="315"><span class="lineNum">     315 </span>            :     }</a>
-<a name="316"><span class="lineNum">     316 </span>            : </a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :     service-&gt;writeDescriptor(descriptor,</span></a>
-<a name="318"><span class="lineNum">     318 </span>            :         #if (QT_VERSION &gt;= QT_VERSION_CHECK(6, 2, 0))</a>
-<a name="319"><span class="lineNum">     319 </span>            :         QLowEnergyCharacteristic::CCCDEnableNotification</a>
-<a name="320"><span class="lineNum">     320 </span>            :         #else</a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :         QByteArray::fromHex(&quot;0100&quot;) // See Qt6's QLowEnergyCharacteristic::CCCDEnableNotification.</span></a>
-<a name="322"><span class="lineNum">     322 </span>            :         #endif</a>
-<a name="323"><span class="lineNum">     323 </span>            :     );</a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :     return true;</span></a>
-<a name="325"><span class="lineNum">     325 </span>            : }</a>
-<a name="326"><span class="lineNum">     326 </span>            : </a>
-<a name="327"><span class="lineNum">     327 </span>            : /*!</a>
-<a name="328"><span class="lineNum">     328 </span>            :  * Disables client (Pokit device) side notification for characteristic \a uuid.</a>
-<a name="329"><span class="lineNum">     329 </span>            :  *</a>
-<a name="330"><span class="lineNum">     330 </span>            :  * Returns \c true if the notication disable request was successfully queued, \c false otherwise.</a>
-<a name="331"><span class="lineNum">     331 </span>            :  *</a>
-<a name="332"><span class="lineNum">     332 </span>            :  * \see AbstractPokitServicePrivate::characteristicChanged</a>
-<a name="333"><span class="lineNum">     333 </span>            :  * \see AbstractPokitServicePrivate::enableCharacteristicNotificatons</a>
-<a name="334"><span class="lineNum">     334 </span>            :  */</a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          1 : bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluetoothUuid &amp;uuid)</span></a>
-<a name="336"><span class="lineNum">     336 </span>            : {</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disabling CCCD for characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          2 :     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          1 :     if (!characteristic.isValid()) {</span></a>
-<a name="341"><span class="lineNum">     341 </span>            :         return false;</a>
-<a name="342"><span class="lineNum">     342 </span>            :     }</a>
-<a name="343"><span class="lineNum">     343 </span>            : </a>
-<a name="344"><span class="lineNum">     344 </span>            :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :     if (!descriptor.isValid()) {</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; has no client configuration descriptor.&quot;)</span></a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :         return false;</span></a>
-<a name="350"><span class="lineNum">     350 </span>            :     }</a>
-<a name="351"><span class="lineNum">     351 </span>            : </a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :     service-&gt;writeDescriptor(descriptor,</span></a>
-<a name="353"><span class="lineNum">     353 </span>            :         #if (QT_VERSION &gt;= QT_VERSION_CHECK(6, 2, 0))</a>
-<a name="354"><span class="lineNum">     354 </span>            :         QLowEnergyCharacteristic::CCCDDisable</a>
-<a name="355"><span class="lineNum">     355 </span>            :         #else</a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineNoCov">          0 :         QByteArray::fromHex(&quot;0000&quot;) // See Qt6's QLowEnergyCharacteristic::CCCDDisable.</span></a>
-<a name="357"><span class="lineNum">     357 </span>            :         #endif</a>
-<a name="358"><span class="lineNum">     358 </span>            :     );</a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :     return true;</span></a>
-<a name="360"><span class="lineNum">     360 </span>            : }</a>
-<a name="361"><span class="lineNum">     361 </span>            : </a>
-<a name="362"><span class="lineNum">     362 </span>            : /*!</a>
-<a name="363"><span class="lineNum">     363 </span>            :  * Returns `false` if \a data is smaller than \a minSize, otherwise returns \a failOnMax if \a data</a>
-<a name="364"><span class="lineNum">     364 </span>            :  * is bigger than \a maxSize, otherwise returns `true`.</a>
-<a name="365"><span class="lineNum">     365 </span>            :  *</a>
-<a name="366"><span class="lineNum">     366 </span>            :  * A warning is logged if either \a minSize or \a maxSize is violated, regardless of the returned</a>
-<a name="367"><span class="lineNum">     367 </span>            :  * value; ie this funcion can be used to simply warn if \a data is too big, or it can be used to</a>
-<a name="368"><span class="lineNum">     368 </span>            :  * failed (return `false`) in that case.</a>
-<a name="369"><span class="lineNum">     369 </span>            :  */</a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          4 : bool AbstractPokitServicePrivate::checkSize(const QString &amp;label, const QByteArray &amp;data,</span></a>
-<a name="371"><span class="lineNum">     371 </span>            :                                             const int minSize, const int maxSize,</a>
-<a name="372"><span class="lineNum">     372 </span>            :                                             const bool failOnMax)</a>
-<a name="373"><span class="lineNum">     373 </span>            : {</a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">          4 :     if (data.size() &lt; minSize) {</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">          2 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 requires %2 bytes, but only %3 present: %4&quot;)</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">          2 :             .arg(label).arg(minSize).arg(data.size()).arg(toHexString(data));</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          1 :         return false;</span></a>
-<a name="378"><span class="lineNum">     378 </span>            :     }</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          3 :     if ((maxSize &gt;= 0) &amp;&amp; (data.size() &gt; maxSize)) {</span></a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          4 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %2 extraneous bytes: %3&quot;)</span></a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          2 :             .arg(label).arg(data.size()-maxSize).arg(toHexString(data.mid(maxSize)));</span></a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          2 :         return (!failOnMax);</span></a>
-<a name="383"><span class="lineNum">     383 </span>            :     }</a>
-<a name="384"><span class="lineNum">     384 </span>            :     return true;</a>
-<a name="385"><span class="lineNum">     385 </span>            : }</a>
-<a name="386"><span class="lineNum">     386 </span>            : </a>
-<a name="387"><span class="lineNum">     387 </span>            : /*!</a>
-<a name="388"><span class="lineNum">     388 </span>            :  * Returns up to \a maxSize bytes of \a data as a human readable hexadecimal string. If \a data</a>
-<a name="389"><span class="lineNum">     389 </span>            :  * exceeds \a maxSize, then \a data is elided in the middle. For example:</a>
-<a name="390"><span class="lineNum">     390 </span>            :  *</a>
-<a name="391"><span class="lineNum">     391 </span>            :  * ```</a>
-<a name="392"><span class="lineNum">     392 </span>            :  * toHex(QBytArray(&quot;\x1\x2\x3\x4\x5\x6&quot;, 4); // &quot;0x01,02,...,05,06&quot;</a>
-<a name="393"><span class="lineNum">     393 </span>            :  * ```</a>
-<a name="394"><span class="lineNum">     394 </span>            :  */</a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          8 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></a>
-<a name="396"><span class="lineNum">     396 </span>            : {</a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">          8 :     return (data.size() &lt;= maxSize)</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">         18 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">          2 :         : QString::fromLatin1(&quot;0x%1,...,%2&quot;).arg(</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">         10 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         40 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></a>
-<a name="402"><span class="lineNum">     402 </span>            : }</a>
-<a name="403"><span class="lineNum">     403 </span>            : </a>
-<a name="404"><span class="lineNum">     404 </span>            : /*!</a>
-<a name="405"><span class="lineNum">     405 </span>            :  * Handles `QLowEnergyController::connected` events.</a>
-<a name="406"><span class="lineNum">     406 </span>            :  *</a>
-<a name="407"><span class="lineNum">     407 </span>            :  * If `autoDiscover` is enabled, this will begin service discovery on the newly connected contoller.</a>
-<a name="408"><span class="lineNum">     408 </span>            :  *</a>
-<a name="409"><span class="lineNum">     409 </span>            :  * \see AbstractPokitService::autoDiscover()</a>
-<a name="410"><span class="lineNum">     410 </span>            :  */</a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::connected()</span></a>
-<a name="412"><span class="lineNum">     412 </span>            : {</a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">          1 :     if (!controller) {</span></a>
-<a name="414"><span class="lineNum">     414 </span><span class="lineCov">          2 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Connected with no controller set&quot;) &lt;&lt; sender();</span></a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">          1 :         return;</span></a>
-<a name="416"><span class="lineNum">     416 </span>            :     }</a>
-<a name="417"><span class="lineNum">     417 </span>            : </a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connected to \&quot;%1\&quot; (%2) at %3.&quot;).arg(</span></a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
-<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :     if (autoDiscover) {</span></a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineNoCov">          0 :         controller-&gt;discoverServices();</span></a>
-<a name="423"><span class="lineNum">     423 </span>            :     }</a>
-<a name="424"><span class="lineNum">     424 </span>            : }</a>
-<a name="425"><span class="lineNum">     425 </span>            : </a>
-<a name="426"><span class="lineNum">     426 </span>            : /*!</a>
-<a name="427"><span class="lineNum">     427 </span>            :  * Handles `QLowEnergyController::discoveryFinished` events.</a>
-<a name="428"><span class="lineNum">     428 </span>            :  *</a>
-<a name="429"><span class="lineNum">     429 </span>            :  * As this event indicates that the conroller has finished discovering services, this function will</a>
-<a name="430"><span class="lineNum">     430 </span>            :  * invoke createServiceObject() to create the internal service object (if not already created).</a>
-<a name="431"><span class="lineNum">     431 </span>            :  */</a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::discoveryFinished()</span></a>
-<a name="433"><span class="lineNum">     433 </span>            : {</a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">          1 :     if (!controller) {</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">          2 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Discovery finished with no controller set&quot;) &lt;&lt; sender();</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">          1 :         return;</span></a>
-<a name="437"><span class="lineNum">     437 </span>            :     }</a>
-<a name="438"><span class="lineNum">     438 </span>            : </a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Discovery finished for \&quot;%1\&quot; (%2) at %3.&quot;).arg(</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
-<a name="442"><span class="lineNum">     442 </span>            : </a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :     if (!createServiceObject()) {</span></a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Discovery finished, but service not found.&quot;);</span></a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineNoCov">          0 :         Q_Q(AbstractPokitService);</span></a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineNoCov">          0 :         emit q-&gt;serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);</span></a>
-<a name="447"><span class="lineNum">     447 </span>            :     }</a>
-<a name="448"><span class="lineNum">     448 </span>            : }</a>
-<a name="449"><span class="lineNum">     449 </span>            : </a>
-<a name="450"><span class="lineNum">     450 </span>            : /*!</a>
-<a name="451"><span class="lineNum">     451 </span>            :  * Handles `QLowEnergyController::errorOccurred` events.</a>
-<a name="452"><span class="lineNum">     452 </span>            :  *</a>
-<a name="453"><span class="lineNum">     453 </span>            :  * This function simply re-emits \a newError as AbstractPokitService::serviceErrorOccurred.</a>
-<a name="454"><span class="lineNum">     454 </span>            :  */</a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::errorOccurred(const QLowEnergyService::ServiceError newError)</span></a>
-<a name="456"><span class="lineNum">     456 </span>            : {</a>
-<a name="457"><span class="lineNum">     457 </span><span class="lineCov">          1 :     Q_Q(AbstractPokitService);</span></a>
-<a name="458"><span class="lineNum">     458 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service error&quot;) &lt;&lt; newError;</span></a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">          1 :     emit q-&gt;serviceErrorOccurred(newError);</span></a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">          1 : }</span></a>
+<a name="140"><span class="lineNum">     140 </span>            :  *</a>
+<a name="141"><span class="lineNum">     141 </span>            :  * Note, typically the \a serviceUuid should be set validly, however, in the rare case that a</a>
+<a name="142"><span class="lineNum">     142 </span>            :  * service's UUID can vary (ie the Status Service), \a serviceUuid may be set to a `null`</a>
+<a name="143"><span class="lineNum">     143 </span>            :  * QBluetoothUuid here, and updated when the correct service UUID is known.</a>
+<a name="144"><span class="lineNum">     144 </span>            :  *</a>
+<a name="145"><span class="lineNum">     145 </span>            :  * \see StatusService::ServiceUuids</a>
+<a name="146"><span class="lineNum">     146 </span>            :  * \see StatusServicePrivate::serviceDiscovered</a>
+<a name="147"><span class="lineNum">     147 </span>            :  */</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         20 : AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid,</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         20 :     QLowEnergyController * controller, AbstractPokitService * const q)</span></a>
+<a name="150"><span class="lineNum">     150 </span>            :     : autoDiscover(true), controller(controller), service(nullptr), serviceUuid(serviceUuid),</a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         20 :       q_ptr(q)</span></a>
+<a name="152"><span class="lineNum">     152 </span>            : {</a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         20 :     if (controller) {</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::connected,</span></a>
+<a name="155"><span class="lineNum">     155 </span>            :                 this, &amp;AbstractPokitServicePrivate::connected);</a>
+<a name="156"><span class="lineNum">     156 </span>            : </a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::discoveryFinished,</span></a>
+<a name="158"><span class="lineNum">     158 </span>            :                 this, &amp;AbstractPokitServicePrivate::discoveryFinished);</a>
+<a name="159"><span class="lineNum">     159 </span>            : </a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          2 :         connect(controller, &amp;QLowEnergyController::serviceDiscovered,</span></a>
+<a name="161"><span class="lineNum">     161 </span>            :                 this, &amp;AbstractPokitServicePrivate::serviceDiscovered);</a>
+<a name="162"><span class="lineNum">     162 </span>            : </a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          2 :         createServiceObject();</span></a>
+<a name="164"><span class="lineNum">     164 </span>            :     }</a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         20 : }</span></a>
+<a name="167"><span class="lineNum">     167 </span>            : </a>
+<a name="168"><span class="lineNum">     168 </span>            : /*!</a>
+<a name="169"><span class="lineNum">     169 </span>            :  * Creates an internal service object from the internal controller.</a>
+<a name="170"><span class="lineNum">     170 </span>            :  *</a>
+<a name="171"><span class="lineNum">     171 </span>            :  * Any existing service object will *not* be replaced.</a>
+<a name="172"><span class="lineNum">     172 </span>            :  *</a>
+<a name="173"><span class="lineNum">     173 </span>            :  * Returns \c true if a service was created successfully, either now, or sometime previously.</a>
+<a name="174"><span class="lineNum">     174 </span>            :  */</a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          7 : bool AbstractPokitServicePrivate::createServiceObject()</span></a>
+<a name="176"><span class="lineNum">     176 </span>            : {</a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          7 :     if (!controller) {</span></a>
+<a name="178"><span class="lineNum">     178 </span>            :         return false;</a>
+<a name="179"><span class="lineNum">     179 </span>            :     }</a>
+<a name="180"><span class="lineNum">     180 </span>            : </a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          5 :     if (service) {</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          1 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Already have service object:&quot;) &lt;&lt; service;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          1 :         return true;</span></a>
+<a name="184"><span class="lineNum">     184 </span>            :     }</a>
+<a name="185"><span class="lineNum">     185 </span>            : </a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          4 :     if (serviceUuid.isNull()) {</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service UUID not assigned yet.&quot;);</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :         return false;</span></a>
+<a name="189"><span class="lineNum">     189 </span>            :     }</a>
+<a name="190"><span class="lineNum">     190 </span>            : </a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          4 :     service = controller-&gt;createServiceObject(serviceUuid, this);</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          4 :     if (!service) {</span></a>
+<a name="193"><span class="lineNum">     193 </span>            :         return false;</a>
+<a name="194"><span class="lineNum">     194 </span>            :     }</a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service object created&quot;) &lt;&lt; service;</span></a>
+<a name="196"><span class="lineNum">     196 </span>            : </a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::stateChanged,</span></a>
+<a name="198"><span class="lineNum">     198 </span>            :             this, &amp;AbstractPokitServicePrivate::stateChanged);</a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::characteristicRead,</span></a>
+<a name="200"><span class="lineNum">     200 </span>            :             this, &amp;AbstractPokitServicePrivate::characteristicRead);</a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::characteristicWritten,</span></a>
+<a name="202"><span class="lineNum">     202 </span>            :             this, &amp;AbstractPokitServicePrivate::characteristicWritten);</a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::characteristicChanged,</span></a>
+<a name="204"><span class="lineNum">     204 </span>            :             this, &amp;AbstractPokitServicePrivate::characteristicChanged);</a>
+<a name="205"><span class="lineNum">     205 </span>            : </a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorRead,</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;value){</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Descriptor \&quot;%1\&quot; (%2) read.&quot;)</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
+<a name="210"><span class="lineNum">     210 </span>            :             Q_UNUSED(value);</a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :         });</span></a>
+<a name="212"><span class="lineNum">     212 </span>            : </a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorWritten,</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;newValue){</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Descriptor \&quot;%1\&quot; (%2) written.&quot;)</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
+<a name="217"><span class="lineNum">     217 </span>            :             Q_UNUSED(newValue);</a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :         });</span></a>
+<a name="219"><span class="lineNum">     219 </span>            : </a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :     connect(service,</span></a>
+<a name="221"><span class="lineNum">     221 </span>            :     #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</a>
+<a name="222"><span class="lineNum">     222 </span>            :         QOverload&lt;QLowEnergyService::ServiceError&gt;::of(&amp;QLowEnergyService::error),</a>
+<a name="223"><span class="lineNum">     223 </span>            :     #else</a>
+<a name="224"><span class="lineNum">     224 </span>            :         &amp;QLowEnergyService::errorOccurred,</a>
+<a name="225"><span class="lineNum">     225 </span>            :     #endif</a>
+<a name="226"><span class="lineNum">     226 </span>            :         this, &amp;AbstractPokitServicePrivate::errorOccurred);</a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :     if (autoDiscover) {</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :         service-&gt;discoverDetails();</span></a>
+<a name="230"><span class="lineNum">     230 </span>            :     }</a>
+<a name="231"><span class="lineNum">     231 </span>            :     return true;</a>
+<a name="232"><span class="lineNum">     232 </span>            : }</a>
+<a name="233"><span class="lineNum">     233 </span>            : </a>
+<a name="234"><span class="lineNum">     234 </span>            : /*!</a>
+<a name="235"><span class="lineNum">     235 </span>            :  * Get \a uuid characteristc from the underlying service. This helper function is equivalent to</a>
+<a name="236"><span class="lineNum">     236 </span>            :  *</a>
+<a name="237"><span class="lineNum">     237 </span>            :  * ```</a>
+<a name="238"><span class="lineNum">     238 </span>            :  * return service-&gt;characteristic(uuid);</a>
+<a name="239"><span class="lineNum">     239 </span>            :  * ```</a>
+<a name="240"><span class="lineNum">     240 </span>            :  *</a>
+<a name="241"><span class="lineNum">     241 </span>            :  * except that it performs some sanity checks, such as checking the service object pointer has been</a>
+<a name="242"><span class="lineNum">     242 </span>            :  * assigned first, and also logs failures in a consistent manner.</a>
+<a name="243"><span class="lineNum">     243 </span>            :  *</a>
+<a name="244"><span class="lineNum">     244 </span>            :  * \param uuid</a>
+<a name="245"><span class="lineNum">     245 </span>            :  * \return</a>
+<a name="246"><span class="lineNum">     246 </span>            :  */</a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">         10 : QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &amp;uuid) const</span></a>
+<a name="248"><span class="lineNum">     248 </span>            : {</a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">         10 :     if (!service) {</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         10 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; requested before service assigned.&quot;)</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         10 :         return QLowEnergyCharacteristic();</span></a>
+<a name="253"><span class="lineNum">     253 </span>            :     }</a>
+<a name="254"><span class="lineNum">     254 </span>            : </a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :     const QLowEnergyCharacteristic characteristic = service-&gt;characteristic(uuid);</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :     if (characteristic.isValid()) {</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :         return characteristic;</span></a>
+<a name="258"><span class="lineNum">     258 </span>            :     }</a>
+<a name="259"><span class="lineNum">     259 </span>            : </a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :     if (service-&gt;state() != QLowEnergyService::</span></a>
+<a name="261"><span class="lineNum">     261 </span>            :         #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</a>
+<a name="262"><span class="lineNum">     262 </span>            :         ServiceDiscovered</a>
+<a name="263"><span class="lineNum">     263 </span>            :         #else</a>
+<a name="264"><span class="lineNum">     264 </span>            :         RemoteServiceDiscovered</a>
+<a name="265"><span class="lineNum">     265 </span>            :         #endif</a>
+<a name="266"><span class="lineNum">     266 </span>            :     ) {</a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; requested before service %3 \&quot;%4\&quot; discovered.&quot;)</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :             service-&gt;serviceUuid().toString(), PokitDevice::serviceToString(service-&gt;serviceUuid()));</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Current service state:&quot;) &lt;&lt; service-&gt;state();</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :         return QLowEnergyCharacteristic();</span></a>
+<a name="272"><span class="lineNum">     272 </span>            :     }</a>
+<a name="273"><span class="lineNum">     273 </span>            : </a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; not found in service %3 \&quot;%4\&quot;.&quot;)</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :         service-&gt;serviceUuid().toString(), PokitDevice::serviceToString(service-&gt;serviceUuid()));</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :     return QLowEnergyCharacteristic();</span></a>
+<a name="278"><span class="lineNum">     278 </span>            : }</a>
+<a name="279"><span class="lineNum">     279 </span>            : </a>
+<a name="280"><span class="lineNum">     280 </span>            : /*!</a>
+<a name="281"><span class="lineNum">     281 </span>            :  * Read the \a uuid characteristic.</a>
+<a name="282"><span class="lineNum">     282 </span>            :  *</a>
+<a name="283"><span class="lineNum">     283 </span>            :  * If succesful, the `QLowEnergyService::characteristicRead` signal will be emitted by the internal</a>
+<a name="284"><span class="lineNum">     284 </span>            :  * service object.  For convenience, derived classes should implement the characteristicRead()</a>
+<a name="285"><span class="lineNum">     285 </span>            :  * virtual function to handle the read value.</a>
+<a name="286"><span class="lineNum">     286 </span>            :  *</a>
+<a name="287"><span class="lineNum">     287 </span>            :  * Returns \c true if the characteristic read request was successfully queued, \c false otherwise.</a>
+<a name="288"><span class="lineNum">     288 </span>            :  *</a>
+<a name="289"><span class="lineNum">     289 </span>            :  * \see AbstractPokitService::readCharacteristics()</a>
+<a name="290"><span class="lineNum">     290 </span>            :  * \see AbstractPokitServicePrivate::characteristicRead()</a>
+<a name="291"><span class="lineNum">     291 </span>            :  */</a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">          1 : bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &amp;uuid)</span></a>
+<a name="293"><span class="lineNum">     293 </span>            : {</a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          2 :     const QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          1 :     if (!characteristic.isValid()) {</span></a>
+<a name="296"><span class="lineNum">     296 </span>            :         return false;</a>
+<a name="297"><span class="lineNum">     297 </span>            :     }</a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :     service-&gt;readCharacteristic(characteristic);</span></a>
+<a name="301"><span class="lineNum">     301 </span>            :     return true;</a>
+<a name="302"><span class="lineNum">     302 </span>            : }</a>
+<a name="303"><span class="lineNum">     303 </span>            : </a>
+<a name="304"><span class="lineNum">     304 </span>            : /*!</a>
+<a name="305"><span class="lineNum">     305 </span>            :  * Enables client (Pokit device) side notification for characteristic \a uuid.</a>
+<a name="306"><span class="lineNum">     306 </span>            :  *</a>
+<a name="307"><span class="lineNum">     307 </span>            :  * Returns \c true if the notication enable request was successfully queued, \c false otherwise.</a>
+<a name="308"><span class="lineNum">     308 </span>            :  *</a>
+<a name="309"><span class="lineNum">     309 </span>            :  * \see AbstractPokitServicePrivate::characteristicChanged</a>
+<a name="310"><span class="lineNum">     310 </span>            :  * \see AbstractPokitServicePrivate::disableCharacteristicNotificatons</a>
+<a name="311"><span class="lineNum">     311 </span>            :  */</a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          1 : bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBluetoothUuid &amp;uuid)</span></a>
+<a name="313"><span class="lineNum">     313 </span>            : {</a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Enabling CCCD for characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          2 :     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          1 :     if (!characteristic.isValid()) {</span></a>
+<a name="318"><span class="lineNum">     318 </span>            :         return false;</a>
+<a name="319"><span class="lineNum">     319 </span>            :     }</a>
+<a name="320"><span class="lineNum">     320 </span>            : </a>
+<a name="321"><span class="lineNum">     321 </span>            :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :     if (!descriptor.isValid()) {</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; has no client configuration descriptor.&quot;)</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineNoCov">          0 :         return false;</span></a>
+<a name="327"><span class="lineNum">     327 </span>            :     }</a>
+<a name="328"><span class="lineNum">     328 </span>            : </a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :     service-&gt;writeDescriptor(descriptor,</span></a>
+<a name="330"><span class="lineNum">     330 </span>            :         #if (QT_VERSION &gt;= QT_VERSION_CHECK(6, 2, 0))</a>
+<a name="331"><span class="lineNum">     331 </span>            :         QLowEnergyCharacteristic::CCCDEnableNotification</a>
+<a name="332"><span class="lineNum">     332 </span>            :         #else</a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         QByteArray::fromHex(&quot;0100&quot;) // See Qt6's QLowEnergyCharacteristic::CCCDEnableNotification.</span></a>
+<a name="334"><span class="lineNum">     334 </span>            :         #endif</a>
+<a name="335"><span class="lineNum">     335 </span>            :     );</a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     return true;</span></a>
+<a name="337"><span class="lineNum">     337 </span>            : }</a>
+<a name="338"><span class="lineNum">     338 </span>            : </a>
+<a name="339"><span class="lineNum">     339 </span>            : /*!</a>
+<a name="340"><span class="lineNum">     340 </span>            :  * Disables client (Pokit device) side notification for characteristic \a uuid.</a>
+<a name="341"><span class="lineNum">     341 </span>            :  *</a>
+<a name="342"><span class="lineNum">     342 </span>            :  * Returns \c true if the notication disable request was successfully queued, \c false otherwise.</a>
+<a name="343"><span class="lineNum">     343 </span>            :  *</a>
+<a name="344"><span class="lineNum">     344 </span>            :  * \see AbstractPokitServicePrivate::characteristicChanged</a>
+<a name="345"><span class="lineNum">     345 </span>            :  * \see AbstractPokitServicePrivate::enableCharacteristicNotificatons</a>
+<a name="346"><span class="lineNum">     346 </span>            :  */</a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          1 : bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluetoothUuid &amp;uuid)</span></a>
+<a name="348"><span class="lineNum">     348 </span>            : {</a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disabling CCCD for characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">          2 :     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          1 :     if (!characteristic.isValid()) {</span></a>
+<a name="353"><span class="lineNum">     353 </span>            :         return false;</a>
+<a name="354"><span class="lineNum">     354 </span>            :     }</a>
+<a name="355"><span class="lineNum">     355 </span>            : </a>
+<a name="356"><span class="lineNum">     356 </span>            :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineNoCov">          0 :     if (!descriptor.isValid()) {</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; has no client configuration descriptor.&quot;)</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :         return false;</span></a>
+<a name="362"><span class="lineNum">     362 </span>            :     }</a>
+<a name="363"><span class="lineNum">     363 </span>            : </a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineNoCov">          0 :     service-&gt;writeDescriptor(descriptor,</span></a>
+<a name="365"><span class="lineNum">     365 </span>            :         #if (QT_VERSION &gt;= QT_VERSION_CHECK(6, 2, 0))</a>
+<a name="366"><span class="lineNum">     366 </span>            :         QLowEnergyCharacteristic::CCCDDisable</a>
+<a name="367"><span class="lineNum">     367 </span>            :         #else</a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :         QByteArray::fromHex(&quot;0000&quot;) // See Qt6's QLowEnergyCharacteristic::CCCDDisable.</span></a>
+<a name="369"><span class="lineNum">     369 </span>            :         #endif</a>
+<a name="370"><span class="lineNum">     370 </span>            :     );</a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 :     return true;</span></a>
+<a name="372"><span class="lineNum">     372 </span>            : }</a>
+<a name="373"><span class="lineNum">     373 </span>            : </a>
+<a name="374"><span class="lineNum">     374 </span>            : /*!</a>
+<a name="375"><span class="lineNum">     375 </span>            :  * Returns `false` if \a data is smaller than \a minSize, otherwise returns \a failOnMax if \a data</a>
+<a name="376"><span class="lineNum">     376 </span>            :  * is bigger than \a maxSize, otherwise returns `true`.</a>
+<a name="377"><span class="lineNum">     377 </span>            :  *</a>
+<a name="378"><span class="lineNum">     378 </span>            :  * A warning is logged if either \a minSize or \a maxSize is violated, regardless of the returned</a>
+<a name="379"><span class="lineNum">     379 </span>            :  * value; ie this funcion can be used to simply warn if \a data is too big, or it can be used to</a>
+<a name="380"><span class="lineNum">     380 </span>            :  * failed (return `false`) in that case.</a>
+<a name="381"><span class="lineNum">     381 </span>            :  */</a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          4 : bool AbstractPokitServicePrivate::checkSize(const QString &amp;label, const QByteArray &amp;data,</span></a>
+<a name="383"><span class="lineNum">     383 </span>            :                                             const int minSize, const int maxSize,</a>
+<a name="384"><span class="lineNum">     384 </span>            :                                             const bool failOnMax)</a>
+<a name="385"><span class="lineNum">     385 </span>            : {</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          4 :     if (data.size() &lt; minSize) {</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">          2 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 requires %2 bytes, but only %3 present: %4&quot;)</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">          2 :             .arg(label).arg(minSize).arg(data.size()).arg(toHexString(data));</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          1 :         return false;</span></a>
+<a name="390"><span class="lineNum">     390 </span>            :     }</a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">          3 :     if ((maxSize &gt;= 0) &amp;&amp; (data.size() &gt; maxSize)) {</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">          4 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %2 extraneous bytes: %3&quot;)</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          2 :             .arg(label).arg(data.size()-maxSize).arg(toHexString(data.mid(maxSize)));</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          2 :         return (!failOnMax);</span></a>
+<a name="395"><span class="lineNum">     395 </span>            :     }</a>
+<a name="396"><span class="lineNum">     396 </span>            :     return true;</a>
+<a name="397"><span class="lineNum">     397 </span>            : }</a>
+<a name="398"><span class="lineNum">     398 </span>            : </a>
+<a name="399"><span class="lineNum">     399 </span>            : /*!</a>
+<a name="400"><span class="lineNum">     400 </span>            :  * Returns up to \a maxSize bytes of \a data as a human readable hexadecimal string. If \a data</a>
+<a name="401"><span class="lineNum">     401 </span>            :  * exceeds \a maxSize, then \a data is elided in the middle. For example:</a>
+<a name="402"><span class="lineNum">     402 </span>            :  *</a>
+<a name="403"><span class="lineNum">     403 </span>            :  * ```</a>
+<a name="404"><span class="lineNum">     404 </span>            :  * toHex(QBytArray(&quot;\x1\x2\x3\x4\x5\x6&quot;, 4); // &quot;0x01,02,...,05,06&quot;</a>
+<a name="405"><span class="lineNum">     405 </span>            :  * ```</a>
+<a name="406"><span class="lineNum">     406 </span>            :  */</a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">          8 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></a>
+<a name="408"><span class="lineNum">     408 </span>            : {</a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">          8 :     return (data.size() &lt;= maxSize)</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">         18 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">          2 :         : QString::fromLatin1(&quot;0x%1,...,%2&quot;).arg(</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">         10 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         40 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></a>
+<a name="414"><span class="lineNum">     414 </span>            : }</a>
+<a name="415"><span class="lineNum">     415 </span>            : </a>
+<a name="416"><span class="lineNum">     416 </span>            : /*!</a>
+<a name="417"><span class="lineNum">     417 </span>            :  * Handles `QLowEnergyController::connected` events.</a>
+<a name="418"><span class="lineNum">     418 </span>            :  *</a>
+<a name="419"><span class="lineNum">     419 </span>            :  * If `autoDiscover` is enabled, this will begin service discovery on the newly connected contoller.</a>
+<a name="420"><span class="lineNum">     420 </span>            :  *</a>
+<a name="421"><span class="lineNum">     421 </span>            :  * \see AbstractPokitService::autoDiscover()</a>
+<a name="422"><span class="lineNum">     422 </span>            :  */</a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::connected()</span></a>
+<a name="424"><span class="lineNum">     424 </span>            : {</a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">          1 :     if (!controller) {</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">          2 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Connected with no controller set&quot;) &lt;&lt; sender();</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">          1 :         return;</span></a>
+<a name="428"><span class="lineNum">     428 </span>            :     }</a>
+<a name="429"><span class="lineNum">     429 </span>            : </a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connected to \&quot;%1\&quot; (%2) at %3.&quot;).arg(</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineNoCov">          0 :     if (autoDiscover) {</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineNoCov">          0 :         controller-&gt;discoverServices();</span></a>
+<a name="435"><span class="lineNum">     435 </span>            :     }</a>
+<a name="436"><span class="lineNum">     436 </span>            : }</a>
+<a name="437"><span class="lineNum">     437 </span>            : </a>
+<a name="438"><span class="lineNum">     438 </span>            : /*!</a>
+<a name="439"><span class="lineNum">     439 </span>            :  * Handles `QLowEnergyController::discoveryFinished` events.</a>
+<a name="440"><span class="lineNum">     440 </span>            :  *</a>
+<a name="441"><span class="lineNum">     441 </span>            :  * As this event indicates that the conroller has finished discovering services, this function will</a>
+<a name="442"><span class="lineNum">     442 </span>            :  * invoke createServiceObject() to create the internal service object (if not already created).</a>
+<a name="443"><span class="lineNum">     443 </span>            :  */</a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::discoveryFinished()</span></a>
+<a name="445"><span class="lineNum">     445 </span>            : {</a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">          1 :     if (!controller) {</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">          2 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Discovery finished with no controller set&quot;) &lt;&lt; sender();</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">          1 :         return;</span></a>
+<a name="449"><span class="lineNum">     449 </span>            :     }</a>
+<a name="450"><span class="lineNum">     450 </span>            : </a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Discovery finished for \&quot;%1\&quot; (%2) at %3.&quot;).arg(</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
+<a name="454"><span class="lineNum">     454 </span>            : </a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineNoCov">          0 :     if (!createServiceObject()) {</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Discovery finished, but service not found.&quot;);</span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :         Q_Q(AbstractPokitService);</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineNoCov">          0 :         emit q-&gt;serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);</span></a>
+<a name="459"><span class="lineNum">     459 </span>            :     }</a>
+<a name="460"><span class="lineNum">     460 </span>            : }</a>
 <a name="461"><span class="lineNum">     461 </span>            : </a>
 <a name="462"><span class="lineNum">     462 </span>            : /*!</a>
-<a name="463"><span class="lineNum">     463 </span>            :  * Handles `QLowEnergyController::serviceDiscovered` events.</a>
+<a name="463"><span class="lineNum">     463 </span>            :  * Handles `QLowEnergyController::errorOccurred` events.</a>
 <a name="464"><span class="lineNum">     464 </span>            :  *</a>
-<a name="465"><span class="lineNum">     465 </span>            :  * If the discovered service is the one this (or rather the derived) class wraps, then</a>
-<a name="466"><span class="lineNum">     466 </span>            :  * createServiceObject() will be invoked immediately (otherwise it will be invoked after full</a>
-<a name="467"><span class="lineNum">     467 </span>            :  * service discovery has completed, ie in discoveryFinished()).</a>
-<a name="468"><span class="lineNum">     468 </span>            :  */</a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">          2 : void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &amp;newService)</span></a>
-<a name="470"><span class="lineNum">     470 </span>            : {</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">          2 :     if ((!service) &amp;&amp; (newService == serviceUuid)) {</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">          1 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service discovered&quot;) &lt;&lt; newService;</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">          1 :         createServiceObject();</span></a>
-<a name="474"><span class="lineNum">     474 </span>            :     }</a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">          2 : }</span></a>
-<a name="476"><span class="lineNum">     476 </span>            : </a>
-<a name="477"><span class="lineNum">     477 </span>            : /*!</a>
-<a name="478"><span class="lineNum">     478 </span>            :  * Handles `QLowEnergyController::stateChanged` events.</a>
-<a name="479"><span class="lineNum">     479 </span>            :  *</a>
-<a name="480"><span class="lineNum">     480 </span>            :  * If \a newState indicates that service details have now been discovered, then</a>
-<a name="481"><span class="lineNum">     481 </span>            :  * AbstractPokitService::serviceDetailsDiscovered will be emitted.</a>
-<a name="482"><span class="lineNum">     482 </span>            :  *</a>
-<a name="483"><span class="lineNum">     483 </span>            :  * \see AbstractPokitService::autoDiscover()</a>
-<a name="484"><span class="lineNum">     484 </span>            :  */</a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">          3 : void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState newState)</span></a>
-<a name="486"><span class="lineNum">     486 </span>            : {</a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">          3 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;State changed to&quot;) &lt;&lt; newState;</span></a>
+<a name="465"><span class="lineNum">     465 </span>            :  * This function simply re-emits \a newError as AbstractPokitService::serviceErrorOccurred.</a>
+<a name="466"><span class="lineNum">     466 </span>            :  */</a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::errorOccurred(const QLowEnergyService::ServiceError newError)</span></a>
+<a name="468"><span class="lineNum">     468 </span>            : {</a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">          1 :     Q_Q(AbstractPokitService);</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service error&quot;) &lt;&lt; newError;</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">          1 :     emit q-&gt;serviceErrorOccurred(newError);</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">          1 : }</span></a>
+<a name="473"><span class="lineNum">     473 </span>            : </a>
+<a name="474"><span class="lineNum">     474 </span>            : /*!</a>
+<a name="475"><span class="lineNum">     475 </span>            :  * Handles `QLowEnergyController::serviceDiscovered` events.</a>
+<a name="476"><span class="lineNum">     476 </span>            :  *</a>
+<a name="477"><span class="lineNum">     477 </span>            :  * If the discovered service is the one this (or rather the derived) class wraps, then</a>
+<a name="478"><span class="lineNum">     478 </span>            :  * createServiceObject() will be invoked immediately (otherwise it will be invoked after full</a>
+<a name="479"><span class="lineNum">     479 </span>            :  * service discovery has completed, ie in discoveryFinished()).</a>
+<a name="480"><span class="lineNum">     480 </span>            :  */</a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">          2 : void AbstractPokitServicePrivate::serviceDiscovered(const QBluetoothUuid &amp;newService)</span></a>
+<a name="482"><span class="lineNum">     482 </span>            : {</a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">          2 :     if ((!service) &amp;&amp; (newService == serviceUuid)) {</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">          1 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service discovered&quot;) &lt;&lt; newService;</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">          1 :         createServiceObject();</span></a>
+<a name="486"><span class="lineNum">     486 </span>            :     }</a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">          2 : }</span></a>
 <a name="488"><span class="lineNum">     488 </span>            : </a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">          3 :     if (newState == QLowEnergyService::</span></a>
-<a name="490"><span class="lineNum">     490 </span>            :             #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</a>
-<a name="491"><span class="lineNum">     491 </span>            :             ServiceDiscovered</a>
-<a name="492"><span class="lineNum">     492 </span>            :             #else</a>
-<a name="493"><span class="lineNum">     493 </span>            :             RemoteServiceDiscovered</a>
-<a name="494"><span class="lineNum">     494 </span>            :             #endif</a>
-<a name="495"><span class="lineNum">     495 </span>            :         ) {</a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">          1 :         Q_Q(AbstractPokitService);</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          1 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service details discovered.&quot;);</span></a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">          1 :         emit q-&gt;serviceDetailsDiscovered();</span></a>
-<a name="499"><span class="lineNum">     499 </span>            :     }</a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">          3 : }</span></a>
-<a name="501"><span class="lineNum">     501 </span>            : </a>
-<a name="502"><span class="lineNum">     502 </span>            : /*!</a>
-<a name="503"><span class="lineNum">     503 </span>            :  * Handles `QLowEnergyService::characteristicRead` events. This base implementation simply debug</a>
-<a name="504"><span class="lineNum">     504 </span>            :  * logs the event.</a>
-<a name="505"><span class="lineNum">     505 </span>            :  *</a>
-<a name="506"><span class="lineNum">     506 </span>            :  * Derived classes should implement this function to handle the successful reads of</a>
-<a name="507"><span class="lineNum">     507 </span>            :  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.</a>
-<a name="508"><span class="lineNum">     508 </span>            :  */</a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::characteristicRead(</span></a>
-<a name="510"><span class="lineNum">     510 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;value)</a>
-<a name="511"><span class="lineNum">     511 </span>            : {</a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; read %3 bytes: %4&quot;).arg(</span></a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :         .arg(value.size()).arg(toHexString(value));</span></a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">          1 : }</span></a>
-<a name="516"><span class="lineNum">     516 </span>            : </a>
-<a name="517"><span class="lineNum">     517 </span>            : /*!</a>
-<a name="518"><span class="lineNum">     518 </span>            :  * Handles `QLowEnergyService::characteristicWritten` events. This base implementation simply debug</a>
-<a name="519"><span class="lineNum">     519 </span>            :  * logs the event.</a>
-<a name="520"><span class="lineNum">     520 </span>            :  *</a>
-<a name="521"><span class="lineNum">     521 </span>            :  * Derived classes should implement this function to handle the successful writes of</a>
-<a name="522"><span class="lineNum">     522 </span>            :  * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.</a>
-<a name="523"><span class="lineNum">     523 </span>            :  */</a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">          2 : void AbstractPokitServicePrivate::characteristicWritten(</span></a>
-<a name="525"><span class="lineNum">     525 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
-<a name="526"><span class="lineNum">     526 </span>            : {</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">          2 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; written with %L3 bytes: %4&quot;).arg(</span></a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineNoCov">          0 :         .arg(newValue.size()).arg(toHexString(newValue));</span></a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">          2 : }</span></a>
-<a name="531"><span class="lineNum">     531 </span>            : </a>
-<a name="532"><span class="lineNum">     532 </span>            : /*!</a>
-<a name="533"><span class="lineNum">     533 </span>            :  * Handles `QLowEnergyService::characteristicChanged` events. This base implementation simply debug</a>
-<a name="534"><span class="lineNum">     534 </span>            :  * logs the event.</a>
-<a name="535"><span class="lineNum">     535 </span>            :  *</a>
-<a name="536"><span class="lineNum">     536 </span>            :  * If derived classes support characteristics with client-side notification (ie Notify, as opposed</a>
-<a name="537"><span class="lineNum">     537 </span>            :  * to Read or Write operations), they should implement this function to handle the successful reads of</a>
-<a name="538"><span class="lineNum">     538 </span>            :  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.</a>
-<a name="539"><span class="lineNum">     539 </span>            :  */</a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::characteristicChanged(</span></a>
-<a name="541"><span class="lineNum">     541 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
-<a name="542"><span class="lineNum">     542 </span>            : {</a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; changed to %L3 bytes: %4&quot;).arg(</span></a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineNoCov">          0 :         .arg(newValue.size()).arg(toHexString(newValue));</span></a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">          1 : }</span></a>
-<a name="547"><span class="lineNum">     547 </span>            : </a>
-<a name="548"><span class="lineNum">     548 </span>            : /// \endcond</a>
+<a name="489"><span class="lineNum">     489 </span>            : /*!</a>
+<a name="490"><span class="lineNum">     490 </span>            :  * Handles `QLowEnergyController::stateChanged` events.</a>
+<a name="491"><span class="lineNum">     491 </span>            :  *</a>
+<a name="492"><span class="lineNum">     492 </span>            :  * If \a newState indicates that service details have now been discovered, then</a>
+<a name="493"><span class="lineNum">     493 </span>            :  * AbstractPokitService::serviceDetailsDiscovered will be emitted.</a>
+<a name="494"><span class="lineNum">     494 </span>            :  *</a>
+<a name="495"><span class="lineNum">     495 </span>            :  * \see AbstractPokitService::autoDiscover()</a>
+<a name="496"><span class="lineNum">     496 </span>            :  */</a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          3 : void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState newState)</span></a>
+<a name="498"><span class="lineNum">     498 </span>            : {</a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          3 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;State changed to&quot;) &lt;&lt; newState;</span></a>
+<a name="500"><span class="lineNum">     500 </span>            : </a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">          3 :     if (newState == QLowEnergyService::</span></a>
+<a name="502"><span class="lineNum">     502 </span>            :             #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</a>
+<a name="503"><span class="lineNum">     503 </span>            :             ServiceDiscovered</a>
+<a name="504"><span class="lineNum">     504 </span>            :             #else</a>
+<a name="505"><span class="lineNum">     505 </span>            :             RemoteServiceDiscovered</a>
+<a name="506"><span class="lineNum">     506 </span>            :             #endif</a>
+<a name="507"><span class="lineNum">     507 </span>            :         ) {</a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">          1 :         Q_Q(AbstractPokitService);</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">          1 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service details discovered.&quot;);</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">          1 :         emit q-&gt;serviceDetailsDiscovered();</span></a>
+<a name="511"><span class="lineNum">     511 </span>            :     }</a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">          3 : }</span></a>
+<a name="513"><span class="lineNum">     513 </span>            : </a>
+<a name="514"><span class="lineNum">     514 </span>            : /*!</a>
+<a name="515"><span class="lineNum">     515 </span>            :  * Handles `QLowEnergyService::characteristicRead` events. This base implementation simply debug</a>
+<a name="516"><span class="lineNum">     516 </span>            :  * logs the event.</a>
+<a name="517"><span class="lineNum">     517 </span>            :  *</a>
+<a name="518"><span class="lineNum">     518 </span>            :  * Derived classes should implement this function to handle the successful reads of</a>
+<a name="519"><span class="lineNum">     519 </span>            :  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.</a>
+<a name="520"><span class="lineNum">     520 </span>            :  */</a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::characteristicRead(</span></a>
+<a name="522"><span class="lineNum">     522 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;value)</a>
+<a name="523"><span class="lineNum">     523 </span>            : {</a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; read %3 bytes: %4&quot;).arg(</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :         .arg(value.size()).arg(toHexString(value));</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">          1 : }</span></a>
+<a name="528"><span class="lineNum">     528 </span>            : </a>
+<a name="529"><span class="lineNum">     529 </span>            : /*!</a>
+<a name="530"><span class="lineNum">     530 </span>            :  * Handles `QLowEnergyService::characteristicWritten` events. This base implementation simply debug</a>
+<a name="531"><span class="lineNum">     531 </span>            :  * logs the event.</a>
+<a name="532"><span class="lineNum">     532 </span>            :  *</a>
+<a name="533"><span class="lineNum">     533 </span>            :  * Derived classes should implement this function to handle the successful writes of</a>
+<a name="534"><span class="lineNum">     534 </span>            :  * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.</a>
+<a name="535"><span class="lineNum">     535 </span>            :  */</a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">          2 : void AbstractPokitServicePrivate::characteristicWritten(</span></a>
+<a name="537"><span class="lineNum">     537 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
+<a name="538"><span class="lineNum">     538 </span>            : {</a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">          2 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; written with %L3 bytes: %4&quot;).arg(</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 :         .arg(newValue.size()).arg(toHexString(newValue));</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">          2 : }</span></a>
+<a name="543"><span class="lineNum">     543 </span>            : </a>
+<a name="544"><span class="lineNum">     544 </span>            : /*!</a>
+<a name="545"><span class="lineNum">     545 </span>            :  * Handles `QLowEnergyService::characteristicChanged` events. This base implementation simply debug</a>
+<a name="546"><span class="lineNum">     546 </span>            :  * logs the event.</a>
+<a name="547"><span class="lineNum">     547 </span>            :  *</a>
+<a name="548"><span class="lineNum">     548 </span>            :  * If derived classes support characteristics with client-side notification (ie Notify, as opposed</a>
+<a name="549"><span class="lineNum">     549 </span>            :  * to Read or Write operations), they should implement this function to handle the successful reads of</a>
+<a name="550"><span class="lineNum">     550 </span>            :  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.</a>
+<a name="551"><span class="lineNum">     551 </span>            :  */</a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">          1 : void AbstractPokitServicePrivate::characteristicChanged(</span></a>
+<a name="553"><span class="lineNum">     553 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
+<a name="554"><span class="lineNum">     554 </span>            : {</a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineCov">          1 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; changed to %L3 bytes: %4&quot;).arg(</span></a>
+<a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineNoCov">          0 :         .arg(newValue.size()).arg(toHexString(newValue));</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineCov">          1 : }</span></a>
+<a name="559"><span class="lineNum">     559 </span>            : </a>
+<a name="560"><span class="lineNum">     560 </span>            : /// \endcond</a>
 </pre>
       </td>
     </tr>
