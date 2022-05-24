@@ -25,4 +25,5 @@ if (ENABLE_COVERAGE)
       COMMAND ${CODECOV_GENHTML} --output-directory coverage coverage.info
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
   endif()
+  configure_file(removeHtmlDates.sh.in ${PROJECT_BINARY_DIR}/removeHtmlDates.sh)
 endif()

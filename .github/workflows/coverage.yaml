@@ -27,7 +27,7 @@ jobs:
         path: "${{ runner.temp }}/coverage.info"
         if-no-files-found: error
     - name: Generate HTML report
-      run: make coverage-html
+      run: make coverage-html && ./removeHtmlDates.sh
       working-directory: ${{ runner.temp }}
     - name: Upload HTML report
       uses: actions/upload-artifact@v3
