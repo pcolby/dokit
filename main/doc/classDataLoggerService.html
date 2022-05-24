@@ -739,7 +739,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a4c9e68b94b0fba82a979bb7e0b0adab4_cgraph.svg" width="618" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a4c9e68b94b0fba82a979bb7e0b0adab4_cgraph.svg" width="618" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -766,7 +766,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">metadata</a>.<a class="code hl_variable" href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">scale</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.cpp:371</div></div>
+<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.cpp:386</div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html">DataLoggerService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:98</div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html_a824ce9f37293e435d41af31788145571"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">DataLoggerService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:100</div></div>
 </div><!-- fragment --> <div class="dynheader">
@@ -979,11 +979,12 @@ stopSampling </dd></dl>
 <p>Configures the Pokit device's data logger mode. </p>
 <p >Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p >Emits <a class="el" href="classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em>settings</em> have been writtem successfully. </p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000001">Pokit Bluetooth API errata:</a></b></dt><dd>Despit the Pokit API docs saying <code>Update Interval</code> is <code>uint16</code>, Pokit Pro devices error if try to set such. However, if we switch <code>Update Interval</code> to <code>uint32</code> then the fields are set properly (according to the resulting <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code>). Not sure if this is a Pokit Pro difference, or general API doc error. </dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000001">Pokit Bluetooth API errata:</a></b></dt><dd>For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> seconds (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code> milliseconds, even though that's not officially documented anywhere.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>Refactor the detection if which device / model we're dealing with. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a3b933a1a161a390eb08e5019685f449c_cgraph.svg" width="416" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a3b933a1a161a390eb08e5019685f449c_cgraph.svg" width="416" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
@@ -1044,7 +1045,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a4aac49f9a655408e4b58f05735c5f9ab_cgraph.svg" width="618" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a4aac49f9a655408e4b58f05735c5f9ab_cgraph.svg" width="618" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1070,7 +1071,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a9f8a721025e04bf27df18194247b532e_cgraph.svg" width="618" height="222"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a9f8a721025e04bf27df18194247b532e_cgraph.svg" width="618" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
