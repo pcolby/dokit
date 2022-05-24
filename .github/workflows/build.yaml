@@ -13,8 +13,6 @@ jobs:
         - { cc: gcc, cxx: g++ }
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     - name: Install Qt
       run: sudo apt update && sudo apt upgrade && sudo apt install qtbase5-dev qtconnectivity5-dev
     - name: Build
@@ -28,13 +26,11 @@ jobs:
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
-      run: |
-        echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
-        echo "pokitRevision=$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)" >> $GITHUB_ENV
+      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.linux.x86-64.${{ matrix.env.cc }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/app/pokit
@@ -51,8 +47,6 @@ jobs:
         - { cc: gcc, cxx: g++ }
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     - name: Install Tools
       run: sudo apt update && sudo apt upgrade && sudo apt install clang
     - name: Install Qt
@@ -78,13 +72,11 @@ jobs:
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
-      run: |
-        echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
-        echo "pokitRevision=$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)" >> $GITHUB_ENV
+      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.linux.x86-64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/app/pokit
@@ -112,8 +104,6 @@ jobs:
             env: { cc: gcc-11, cxx: g++-11 }
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -142,13 +132,11 @@ jobs:
     #    macdeployqt pokit -dmg -verbose=2
     #  working-directory: ${{ runner.temp }}/src/app
     - name: Setup artifacts
-      run: |
-        echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
-        echo "pokitRevision=$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)" >> $GITHUB_ENV
+      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.mac.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ github.run_number }}.mac.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.dylib
           ${{ runner.temp }}/src/app/pokit
@@ -215,8 +203,6 @@ jobs:
         - { generator: 'MinGW Makefiles', tool: mingw, dll: libQtPokit.dll }
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     - name: Install host Qt for cross-compilation
       if: matrix.arch == 'arm64'
       uses: jurplel/install-qt-action@v2
@@ -271,13 +257,11 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
-      run: |
-        echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
-        echo "pokitRevision=$(git -C "$GITHUB_WORKSPACE" rev-list --count HEAD)" >> $GITHUB_ENV
+      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
+        name: qtpokit-${{ env.pokitVersion }}+${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/src/lib/${{ matrix.dll }}
           ${{ runner.temp }}/src/app/pokit.exe
@@ -286,6 +270,6 @@ jobs:
       if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}.portable
+        name: qtpokit-${{ env.pokitVersion }}+${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}.portable
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
