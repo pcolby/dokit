@@ -246,7 +246,6 @@ jobs:
       run: |
         echo "CMAKE_TOOLCHAIN_FILE=${Qt6_DIR/_64/_arm64/}\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
         echo "qtHostPath=${Qt6_DIR/_arm64/_64}" >> $GITHUB_ENV
-        echo "qtTargetPath=${Qt6_DIR/_64/_arm64}" >> $GITHUB_ENV
     - name: Configure MSVC
       if: ${{ contains(matrix.generator, 'nmake') }}
       uses: ilammy/msvc-dev-cmd@v1
@@ -264,31 +263,13 @@ jobs:
       run: ctest --verbose
       working-directory: ${{ runner.temp }}
     - name: Make portable
+      if: matrix.arch != 'arm64'
       run: |
         mkdir portable
         copy /v /b src\lib\${{ matrix.dll }} /b portable
         copy /v /b src\app\pokit.exe /b portable
-        if ${{ matrix.arch }}==arm64 (
-          set
-          call %qtTargetPath%\bin\qtenv2.bat
-          set
-          call %qtTargetPath%\bin\qtpaths.bat
-          set Qt6_DIR=%qtTargetPath%
-          set QMAKESPEC=%qtTargetPath%\mkspecs\win32-arm64-msvc
-          set QT_PLUGIN_PATH=%qtTargetPath%\plugins
-          set
-        )
-        cd %RUNNER_TEMP%\portable
-        echo 6
-        set
-        echo 7
-        call qtpaths.bat -query
-        echo 8
-        qtpaths -query
-        echo 9
-        set
-        echo 10 %qtTargetPath%\bin\qtpaths
-        windeployqt --compiler-runtime --qtpaths %qtTargetPath%/bin/qtpaths.bat --release --verbose 2 pokit.exe ${{ matrix.dll }}
+        cd portable
+        windeployqt --compiler-runtime --release --verbose 2 pokit.exe ${{ matrix.dll }}
         echo 11
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
@@ -305,6 +286,7 @@ jobs:
           ${{ runner.temp }}/src/app/pokit.exe
         if-no-files-found: error
     - name: Upload artifacts (portable)
+      if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
       with:
         name: qtpokit-${{ env.pokitVersion }}+${{ env.pokitRevision }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}.portable
