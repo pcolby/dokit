@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   linux:
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -42,7 +41,6 @@ jobs:
         if-no-files-found: error
 
   linux-qts:
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -93,7 +91,6 @@ jobs:
         if-no-files-found: error
 
   mac:
-    if: false
     runs-on: macOs-latest
     strategy:
       fail-fast: false
