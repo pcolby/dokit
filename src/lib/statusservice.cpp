@@ -80,7 +80,7 @@ QString StatusService::toString(const StatusService::DeviceStatus &status)
     case DeviceStatus::DsoModeSampling:      return  QLatin1String("DsoModeSampling");
     case DeviceStatus::LoggerModeSampling:   return  QLatin1String("LoggerModeSampling");
     }
-    return QLatin1String("Invalid");
+    return QString();
 }
 
 /// \enum StatusService::BatteryStatus
@@ -95,11 +95,17 @@ QString StatusService::toString(const StatusService::BatteryStatus &status)
     case BatteryStatus::Low:  return QLatin1String("Low");
     case BatteryStatus::Good: return QLatin1String("Good");
     }
-    return QLatin1String("Invalid");
+    return QString();
 }
 
-/// \struct StatusService::Status
-/// \brief Attributes included in the `Status` characterstic.
+/*!
+ * \struct StatusService::Status
+ * \brief Attributes included in the `Status` characterstic.
+ *
+ * \note Not all Pokit devices support the batteryStatus member, in which case the member will be
+ * initilialised to the maximum value supported by the underlying type (ie `255`) to indicate "not
+ * set".
+ */
 
 /*!
  * Constructs a new Pokit service with \a parent.
@@ -413,10 +419,10 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
 {
     StatusService::Status status{
         static_cast<StatusService::DeviceStatus>
-            (std::numeric_limits<StatusService::DeviceStatus>::max()),
+            (std::numeric_limits<std::underlying_type<StatusService::DeviceStatus>::type>::max()),
         std::numeric_limits<float>::quiet_NaN(),
         static_cast<StatusService::BatteryStatus>
-            (std::numeric_limits<StatusService::BatteryStatus>::max()),
+            (std::numeric_limits<std::underlying_type<StatusService::BatteryStatus>::type>::max()),
     };
 
     /*!

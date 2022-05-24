@@ -88,7 +88,7 @@ void StatusCommand::serviceDetailsDiscovered()
     case OutputFormat::Csv:
         fputs(qPrintable(tr("device_name,device_status,firmware_version,maximum_voltage,"
                             "maximum_current,maximum_resistance,maximum_sampling_rate,"
-                            "sampling_buffer_size,capability_mask,mac_address,battery_voltage"
+                            "sampling_buffer_size,capability_mask,mac_address,battery_voltage,"
                             "battery_status\n")), stdout);
         fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12\n")
             .arg(escapeCsvField(deviceName),statusLabel.toLower(),chrs.firmwareVersion.toString())
@@ -97,7 +97,13 @@ void StatusCommand::serviceDetailsDiscovered()
             .arg(chrs.macAddress.toString()).arg(status.batteryVoltage)
             .arg(batteryLabel.toLower())), stdout);
         break;
-    case OutputFormat::Json:
+    case OutputFormat::Json: {
+        QJsonObject battery{
+            { QLatin1String("level"),  status.batteryVoltage },
+        };
+        if (!batteryLabel.isNull()) {
+            battery.insert(QLatin1String("status"), batteryLabel);
+        }
         fputs(QJsonDocument(QJsonObject{
                 { QLatin1String("deviceName"),   deviceName },
                 { QLatin1String("firmwareVersion"), QJsonObject{
@@ -115,12 +121,9 @@ void StatusCommand::serviceDetailsDiscovered()
                       { QLatin1String("code"), (quint8)status.deviceStatus },
                       { QLatin1String("label"), statusLabel },
                 }},
-                { QLatin1String("battery"), QJsonObject{
-                      { QLatin1String("level"),  status.batteryVoltage },
-                      { QLatin1String("status"), batteryLabel },
-                }},
+                { QLatin1String("battery"), battery },
             }).toJson(), stdout);
-        break;
+    }   break;
     case OutputFormat::Text:
         fputs(qPrintable(tr("Device name:           %1\n").arg(deviceName)), stdout);
         fputs(qPrintable(tr("Firmware version:      %1\n").arg(chrs.firmwareVersion.toString())), stdout);
@@ -134,7 +137,8 @@ void StatusCommand::serviceDetailsDiscovered()
         fputs(qPrintable(tr("Device status:         %1 (%2)\n").arg(statusLabel)
             .arg((quint8)status.deviceStatus)), stdout);
         fputs(qPrintable(tr("Battery voltage:       %1\n").arg(status.batteryVoltage)), stdout);
-        fputs(qPrintable(tr("Battery status:        %1 (%2)\n").arg(batteryLabel)
+        fputs(qPrintable(tr("Battery status:        %1 (%2)\n")
+            .arg(batteryLabel.isNull() ? QString::fromLatin1("N/A") : batteryLabel)
             .arg((quint8)status.batteryStatus)), stdout);
         break;
     }
