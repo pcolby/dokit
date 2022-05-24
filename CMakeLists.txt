@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2022 Paul Colby <git@colby.id.au>
+# SPDX-License-Identifier: LGPL-3.0-or-later
+
 cmake_minimum_required(VERSION 3.0)
 message("-- CMake version is ${CMAKE_VERSION}")
 if (DEFINED CMAKE_BUILD_TYPE)

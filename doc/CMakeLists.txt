@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2022 Paul Colby <git@colby.id.au>
+# SPDX-License-Identifier: LGPL-3.0-or-later
+
 # Include Qt doc tagfiles, if provided.
 if (QT_TAGFILES_PATH)
   set(QT_DOCS_BASEURL "https://doc.qt.io/qt-${QT_VERSION_MAJOR}/")
