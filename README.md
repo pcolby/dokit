@@ -13,9 +13,10 @@ QtPokit is a cross-platform [Qt] library, and console application for accessing 
 
 ## Project Development Status
 
-This project is in very early stages of development, but aims to support both [Pokit Meter] and
-[Pokit Pro], on Linux, Mac and Windows. A separate project (to launch later) will aim to provide a
-cross-platform desktop GUI application using the QtPokit library.
+This project is in very early stages of development, but alread supports most functions of the
+[Pokit Meter] and [Pokit Pro] devices. Most hands-on testing is currently performed on Linux, but
+builds and automated tests all run on Linux, MacOS and Windows. A separate project (to launch later) will
+aim to provide a cross-platform desktop GUI application using the QtPokit library.
 
 ### Pokit Device Services
 
@@ -27,7 +28,7 @@ Pokit devices currently support seven official (and one unofficial) Bluetooth GA
 | Multimeter Service     | Implemented   | Implemented       |                                        |
 | DSO Service            | Implemented   | Implemented       |                                        |
 | Data Logger Service    | Implemented   | Implemented       |                                        |
-| Pokit Status Service   | Implemented   | Implemented       | Flash LED feature not working.         |
+| Pokit Status Service   | Implemented   | Implemented       | Only applicable to Pokit Meter (not Pro). |
 | Calibration Service    | Implemented   | Implemented       | Fails on Linux due to BlueZ issue.     |
 | Device Info Service    | Implemented   | Implemented       |                                        |
 | Generic Access Service | Implemented   | No plans          | Superseded by the Pokit Status service.|

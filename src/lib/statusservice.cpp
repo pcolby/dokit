@@ -282,11 +282,12 @@ bool StatusService::setDeviceName(const QString &name)
  *
  * Emits deviceLedFlashed() if/when the LED has flashed successfully.
  *
+ * \note This operation is only supported by Pokit Meter devices. Pokit Pro devices will report an
+ * Bluetooth ATT error `0x80`.
+ *
  * \cond internal
- * \pokitApi This does not appear to work currently, for the one (Pokit Pro) device available for
- * testing. Instead, the underlying Bluetooth stack returns ATT error `0x80`. Also, despite the
- * Pokit API docs claim "this will cause the LED to flash twice", the Android app can turn the
- * LED on/off, which is presumably an undocumented Pokit Pro extension.
+ * \pokitApi The Android app can turn Pokit Pro LEDs on/off. Perhaps that is handled by an
+ * undocumented use of this characteristic. Or perhaps its via some other service.
  * \endcond
  */
 bool StatusService::flashLed()
@@ -404,7 +405,9 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
 }
 
 /*!
- * Parses the `Status` \a value into a DeviceStatus and battery voltage.
+ * Parses the `Status` \a value into Statu struct. Note, not all Pokit devices support all members
+ * in Status. Specifically, the batteryStatus member is not usually set by Pokit Meter devices, so
+ * will be an invlalid BatteryStatus enum value (`255`) in that case.
  */
 StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
 {
@@ -419,7 +422,8 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     /*!
      * \pokitApi Pokit API 0.02 says the `Status` characteristic is 5 bytes. API 1.00 then added an
      * additional byte for `Battery Status`, for 6 bytes in total. However, Pokit Pro devices return
-     * 8 bytes here. The purpose of those last 2 bytes are not currently known.
+     * 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit
+     * Meter only uses the first 5 bytes - ie `Battery Status` is not present.
      */
 
     if (!checkSize(QLatin1String("Status"), value, 5, 6)) {
@@ -435,7 +439,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
         .arg((quint8)status.deviceStatus).arg(StatusService::toString(status.deviceStatus));
     qCDebug(lc).noquote() << tr("Battery voltage: %1 volts").arg(status.batteryVoltage);
     qCDebug(lc).noquote() << tr("Battery status:  %1 (%2)")
-        .arg((quint8)status.batteryStatus);
+        .arg((quint8)status.batteryStatus).arg(StatusService::toString(status.batteryStatus));
     return status;
 }
 

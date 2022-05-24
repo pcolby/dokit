@@ -304,7 +304,7 @@ bool DataLoggerService::setSettings(const Settings &settings)
         stream << (quint32)settings.updateInterval << settings.timestamp;
         Q_ASSERT(value.size() == 13); // According to testing / experimentation.
     } else {
-        qCWarning(d->lc) << tr("Don't know how to construct settings value for this device");
+        qCWarning(d->lc).noquote() << tr("Don't know how to construct settings value for this device");
         return false;
     }
 
@@ -527,7 +527,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
         metadata.numberOfSamples = qFromLittleEndian<quint32>(value.mid(11,4));
         metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(19,4));
     } else {
-        qCWarning(lc) << tr("Cannot decode metadata of %1 bytes: %2").arg(value.size())
+        qCWarning(lc).noquote() << tr("Cannot decode metadata of %1 bytes: %2").arg(value.size())
             .arg(toHexString(value));
     }
     return metadata;
