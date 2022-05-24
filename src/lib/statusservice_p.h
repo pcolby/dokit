@@ -42,6 +42,8 @@ public:
     static StatusService::Status parseStatus(const QByteArray &value);
 
 protected:
+    void serviceDiscovered(const QBluetoothUuid &newService) override;
+
     void characteristicRead(const QLowEnergyCharacteristic &characteristic,
                             const QByteArray &value) override;
     void characteristicWritten(const QLowEnergyCharacteristic &characteristic,

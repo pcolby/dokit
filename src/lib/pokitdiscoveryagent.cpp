@@ -96,11 +96,33 @@ PokitDiscoveryAgent::~PokitDiscoveryAgent()
  * Returns \c true if \a info describes a Pokit device.
  *
  * Currently, this is based on whether or not \a info's service UUIDs includes a known Pokit
- * service, but this test criteria might be swapped for something more explicity sometime.
+ * service, but this test criteria might be swapped for something else sometime.
  */
 bool PokitDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
 {
-    return info.serviceUuids().contains(StatusService::serviceUuid);
+    return (isPokitMeter(info) || isPokitPro(info));
+}
+
+/*!
+ * Returns \c true if \a info describes a Pokit Meter device.
+ *
+ * Currently, this is based on whether or not \a info's service UUIDs includes a known Pokit
+ * service, but this test criteria might be swapped for something else sometime.
+ */
+bool PokitDiscoveryAgent::isPokitMeter(const QBluetoothDeviceInfo &info)
+{
+    return info.serviceUuids().contains(StatusService::ServiceUuids::pokitMeter);
+}
+
+/*!
+ * Returns \c true if \a info describes a Pokit Pro device.
+ *
+ * Currently, this is based on whether or not \a info's service UUIDs includes a known Pokit
+ * service, but this test criteria might be swapped for something else sometime.
+ */
+bool PokitDiscoveryAgent::isPokitPro(const QBluetoothDeviceInfo &info)
+{
+    return info.serviceUuids().contains(StatusService::ServiceUuids::pokitPro);
 }
 
 /*!

@@ -40,7 +40,10 @@ class QTPOKIT_EXPORT StatusService : public AbstractPokitService
     Q_OBJECT
 
 public:
-    static const QBluetoothUuid serviceUuid;
+    struct ServiceUuids {
+        static const QBluetoothUuid pokitMeter;
+        static const QBluetoothUuid pokitPro;
+    };
 
     struct CharacteristicUuids {
         static const QBluetoothUuid deviceCharacteristics;

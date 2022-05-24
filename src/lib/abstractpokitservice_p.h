@@ -47,7 +47,7 @@ public:
     bool autoDiscover;                 ///< Whether autodiscovery is enabled or not.
     QLowEnergyController * controller; ///< BLE controller to fetch the service from.
     QLowEnergyService * service;       ///< BLE service to read/write characteristics.
-    const QBluetoothUuid serviceUuid;  ///< UUID for #service.
+    QBluetoothUuid serviceUuid;        ///< UUIDs for #service.
 
     AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
         QLowEnergyController * controller, AbstractPokitService * const q);
@@ -70,7 +70,7 @@ protected slots:
     void connected();
     void discoveryFinished();
     void errorOccurred(const QLowEnergyService::ServiceError newError);
-    void serviceDiscovered(const QBluetoothUuid &newService);
+    virtual void serviceDiscovered(const QBluetoothUuid &newService);
     void stateChanged(QLowEnergyService::ServiceState newState);
 
     virtual void characteristicRead(const QLowEnergyCharacteristic &characteristic,

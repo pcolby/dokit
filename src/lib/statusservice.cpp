@@ -33,14 +33,25 @@
  * The StatusService class accesses the `Pokit Status` service of Pokit devices.
  */
 
-/// UUID of the "Pokit Status" service.
-/// \cond internal
-/// \pokitApi Pokit API 1.00 (and 0.02) states this UUID as `57d3a771-267c-4394-8872-78223e92aec4`
-/// but the Pokit Pro device reports/supports it as `57d3a771-267c-4394-8872-78223e92aec5`, that is
-/// the last digit is a `5` not `4`.
-/// \endcond
-const QBluetoothUuid StatusService::
-    serviceUuid(QLatin1String("57d3a771-267c-4394-8872-78223e92aec5"));
+/*!
+ * \struct StatusService::ServiceUuids
+ *
+ * UUIDs of the "Pokit Status" service.
+ *
+ * \cond internal
+ * \pokitApi Pokit API 1.00 (and 0.02) states the Status Service UUID as
+ * `57d3a771-267c-4394-8872-78223e92aec4` which is correct for the Pokit Meter, but Pokit Pro uses
+ * `57d3a771-267c-4394-8872-78223e92aec5` instead, that is the last digit is a `5` not `4`.
+ * \endcond
+ */
+
+/// UUID of the Pokit Meter's `Pokit Status` service.
+const QBluetoothUuid StatusService::ServiceUuids::
+    pokitMeter(QLatin1String("57d3a771-267c-4394-8872-78223e92aec4"));
+
+/// UUID of the Pokit Pro's `Pokit Status` service.
+const QBluetoothUuid StatusService::ServiceUuids::
+    pokitPro(QLatin1String("57d3a771-267c-4394-8872-78223e92aec5"));
 
 /// \struct StatusService::CharacteristicUuids
 /// \brief Characteristics available via the `Pokit Status` service.
@@ -365,7 +376,7 @@ bool StatusService::flashLed()
  */
 StatusServicePrivate::StatusServicePrivate(
     QLowEnergyController * controller, StatusService * const q)
-    : AbstractPokitServicePrivate(StatusService::serviceUuid, controller, q)
+    : AbstractPokitServicePrivate(QBluetoothUuid(), controller, q)
 {
 
 }
@@ -442,6 +453,24 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     qCDebug(lc).noquote() << tr("Battery status:  %1 (%2)")
         .arg((quint8)status.batteryStatus);
     return status;
+}
+
+/*!
+ * Handles `QLowEnergyController::serviceDiscovered` events.
+ *
+ * Here we override the base implementation to detect if we're looking at a Pokit Meter, or Pokit
+ * Pro device, as the two devices have very slightly different Status Service UUIDs.
+ */
+void StatusServicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
+{
+    if (newService == StatusService::ServiceUuids::pokitMeter) {
+        qCDebug(lc).noquote() << tr("Found Status Service for a Pokit Meter device.");
+        serviceUuid = StatusService::ServiceUuids::pokitMeter;
+    } else if (newService == StatusService::ServiceUuids::pokitPro) {
+        qCDebug(lc).noquote() << tr("Found Status Service for a Pokit Pro device.");
+        serviceUuid = StatusService::ServiceUuids::pokitPro;
+    }
+    AbstractPokitServicePrivate::serviceDiscovered(newService);
 }
 
 /*!

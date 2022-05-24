@@ -137,6 +137,13 @@ const QLowEnergyService * AbstractPokitService::service() const
 /*!
  * \internal
  * Constructs a new AbstractPokitServicePrivate object with public implementation \a q.
+ *
+ * Note, typically the \a serviceUuid should be set validly, however, in the rare case that a
+ * service's UUID can vary (ie the Status Service), \a serviceUuid may be set to a `null`
+ * QBluetoothUuid here, and updated when the correct service UUID is known.
+ *
+ * \see StatusService::ServiceUuids
+ * \see StatusServicePrivate::serviceDiscovered
  */
 AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
     QLowEnergyController * controller, AbstractPokitService * const q)
@@ -174,6 +181,11 @@ bool AbstractPokitServicePrivate::createServiceObject()
     if (service) {
         qCDebug(lc).noquote() << tr("Already have service object:") << service;
         return true;
+    }
+
+    if (serviceUuid.isNull()) {
+        qCDebug(lc).noquote() << tr("Service UUID not assigned yet.");
+        return false;
     }
 
     service = controller->createServiceObject(serviceUuid, this);
