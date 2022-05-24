@@ -503,7 +503,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="classDsoService.html" title="The DsoService class accesses the Pokit Status service of Pokit devices.">DsoService</a> class accesses the <code>Pokit Status</code> service of Pokit devices. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00038">38</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00022">22</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a72ff7eb3da52fb5e41e9aecb8fb6dc65" name="a72ff7eb3da52fb5e41e9aecb8fb6dc65"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72ff7eb3da52fb5e41e9aecb8fb6dc65">&#9670;&nbsp;</a></span>Samples</h2>
@@ -521,7 +521,7 @@ Additional Inherited Members</h2></td></tr>
 <p >These raw samples are (supposedly) wihtin the range -2048 to +2047, and need to be multiplied by the <a class="el" href="structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085" title="Scale to apply to read samples.">Metadata::scale</a> value from the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristc to get the true values.</p>
 <p >Also supposedly, there should be no more than 10 samples at a time, according to Pokit's current API docs. There is not artificial limitation imposed by QtPokit, so devices may begin batching more samples in future. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00123">123</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00107">107</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
 
 </div>
 </div>
@@ -548,13 +548,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Values supported by the <code>Command</code> attribute of the <code><a class="el" href="structDsoService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00051">51</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                       : quint8 {</div>
-<div class="line"><span class="lineno">   52</span>        FreeRunning        = 0,</div>
-<div class="line"><span class="lineno">   53</span>        RisingEdgeTrigger  = 1,</div>
-<div class="line"><span class="lineno">   54</span>        FallingEdgeTrigger = 2,</div>
-<div class="line"><span class="lineno">   55</span>        ResendData         = 3</div>
-<div class="line"><span class="lineno">   56</span>    };</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00035">35</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>                       : quint8 {</div>
+<div class="line"><span class="lineno">   36</span>        FreeRunning        = 0,</div>
+<div class="line"><span class="lineno">   37</span>        RisingEdgeTrigger  = 1,</div>
+<div class="line"><span class="lineno">   38</span>        FallingEdgeTrigger = 2,</div>
+<div class="line"><span class="lineno">   39</span>        ResendData         = 3</div>
+<div class="line"><span class="lineno">   40</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -592,15 +592,15 @@ Additional Inherited Members</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00080">80</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>                            : quint8 {</div>
-<div class="line"><span class="lineno">   81</span>        _0_to_10mA      = 0,  <span class="comment">///&lt; 0 to 10mA.</span></div>
-<div class="line"><span class="lineno">   82</span>        _10mA_to_30mA   = 1,  <span class="comment">///&lt; 10mA to 30mA.</span></div>
-<div class="line"><span class="lineno">   83</span>        _30mA_to_150mA  = 2,  <span class="comment">///&lt; 30mA to 150mA.</span></div>
-<div class="line"><span class="lineno">   84</span>        _150mA_to_300mA = 3,  <span class="comment">///&lt; 150mA to 300mA.</span></div>
-<div class="line"><span class="lineno">   85</span>        _300mA_to_3A    = 4,  <span class="comment">///&lt; 300mA to 3A.</span><span class="comment"></span></div>
-<div class="line"><span class="lineno">   86</span><span class="comment">        /// \todo Pokit Pro supports up to 10A.</span></div>
-<div class="line"><span class="lineno">   87</span><span class="comment"></span>    };</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00064">64</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>                            : quint8 {</div>
+<div class="line"><span class="lineno">   65</span>        _0_to_10mA      = 0,  <span class="comment">///&lt; 0 to 10mA.</span></div>
+<div class="line"><span class="lineno">   66</span>        _10mA_to_30mA   = 1,  <span class="comment">///&lt; 10mA to 30mA.</span></div>
+<div class="line"><span class="lineno">   67</span>        _30mA_to_150mA  = 2,  <span class="comment">///&lt; 30mA to 150mA.</span></div>
+<div class="line"><span class="lineno">   68</span>        _150mA_to_300mA = 3,  <span class="comment">///&lt; 150mA to 300mA.</span></div>
+<div class="line"><span class="lineno">   69</span>        _300mA_to_3A    = 4,  <span class="comment">///&lt; 300mA to 3A.</span><span class="comment"></span></div>
+<div class="line"><span class="lineno">   70</span><span class="comment">        /// \todo Pokit Pro supports up to 10A.</span></div>
+<div class="line"><span class="lineno">   71</span><span class="comment"></span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -626,12 +626,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Values supported by the <code>Status</code> attribute of the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristic. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00107">107</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  107</span>                         : quint8 {</div>
-<div class="line"><span class="lineno">  108</span>        Done       = 0,</div>
-<div class="line"><span class="lineno">  109</span>        Sampling   = 1,</div>
-<div class="line"><span class="lineno">  110</span>        Error      = 255</div>
-<div class="line"><span class="lineno">  111</span>    };</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00091">91</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>                         : quint8 {</div>
+<div class="line"><span class="lineno">   92</span>        Done       = 0,</div>
+<div class="line"><span class="lineno">   93</span>        Sampling   = 1,</div>
+<div class="line"><span class="lineno">   94</span>        Error      = 255</div>
+<div class="line"><span class="lineno">   95</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -669,14 +669,14 @@ Additional Inherited Members</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00058">58</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>                    : quint8 {</div>
-<div class="line"><span class="lineno">   59</span>        Idle        = 0, <span class="comment">///&lt; Make device idle.</span></div>
-<div class="line"><span class="lineno">   60</span>        DcVoltage   = 1, <span class="comment">///&lt; Measure DC voltage.</span></div>
-<div class="line"><span class="lineno">   61</span>        AcVoltage   = 2, <span class="comment">///&lt; Measure AC voltage.</span></div>
-<div class="line"><span class="lineno">   62</span>        DcCurrent   = 3, <span class="comment">///&lt; Measure DC current.</span></div>
-<div class="line"><span class="lineno">   63</span>        AcCurrent   = 4, <span class="comment">///&lt; Measure AC current.</span></div>
-<div class="line"><span class="lineno">   64</span>    };</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00042">42</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>                    : quint8 {</div>
+<div class="line"><span class="lineno">   43</span>        Idle        = 0, <span class="comment">///&lt; Make device idle.</span></div>
+<div class="line"><span class="lineno">   44</span>        DcVoltage   = 1, <span class="comment">///&lt; Measure DC voltage.</span></div>
+<div class="line"><span class="lineno">   45</span>        AcVoltage   = 2, <span class="comment">///&lt; Measure AC voltage.</span></div>
+<div class="line"><span class="lineno">   46</span>        DcCurrent   = 3, <span class="comment">///&lt; Measure DC current.</span></div>
+<div class="line"><span class="lineno">   47</span>        AcCurrent   = 4, <span class="comment">///&lt; Measure AC current.</span></div>
+<div class="line"><span class="lineno">   48</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -716,16 +716,16 @@ Additional Inherited Members</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00067">67</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>                            : quint8 {</div>
-<div class="line"><span class="lineno">   68</span>        _0_to_300mV  = 0,  <span class="comment">///&lt; 0 to 300mV.</span></div>
-<div class="line"><span class="lineno">   69</span>        _300mV_to_2V = 1,  <span class="comment">///&lt; 300mV to 2V.</span></div>
-<div class="line"><span class="lineno">   70</span>        _2V_to_6V    = 2,  <span class="comment">///&lt; 2V to 6V.</span></div>
-<div class="line"><span class="lineno">   71</span>        _6V_to_12V   = 3,  <span class="comment">///&lt; 6V to 12V.</span></div>
-<div class="line"><span class="lineno">   72</span>        _12V_to_30V  = 4,  <span class="comment">///&lt; 12V to 30V.</span></div>
-<div class="line"><span class="lineno">   73</span>        _30V_to_60V  = 5,  <span class="comment">///&lt; 30V to 60V.</span><span class="comment"></span></div>
-<div class="line"><span class="lineno">   74</span><span class="comment">        /// \todo Pokit Pro supports up to 600V.</span></div>
-<div class="line"><span class="lineno">   75</span><span class="comment"></span>    };</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00051">51</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>                            : quint8 {</div>
+<div class="line"><span class="lineno">   52</span>        _0_to_300mV  = 0,  <span class="comment">///&lt; 0 to 300mV.</span></div>
+<div class="line"><span class="lineno">   53</span>        _300mV_to_2V = 1,  <span class="comment">///&lt; 300mV to 2V.</span></div>
+<div class="line"><span class="lineno">   54</span>        _2V_to_6V    = 2,  <span class="comment">///&lt; 2V to 6V.</span></div>
+<div class="line"><span class="lineno">   55</span>        _6V_to_12V   = 3,  <span class="comment">///&lt; 6V to 12V.</span></div>
+<div class="line"><span class="lineno">   56</span>        _12V_to_30V  = 4,  <span class="comment">///&lt; 12V to 30V.</span></div>
+<div class="line"><span class="lineno">   57</span>        _30V_to_60V  = 5,  <span class="comment">///&lt; 30V to 60V.</span><span class="comment"></span></div>
+<div class="line"><span class="lineno">   58</span><span class="comment">        /// \todo Pokit Pro supports up to 600V.</span></div>
+<div class="line"><span class="lineno">   59</span><span class="comment"></span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -758,13 +758,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructs a new Pokit service with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00229">229</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  230</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(<span class="keyword">new</span> <a class="code hl_class" href="classDsoServicePrivate.html">DsoServicePrivate</a>(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">  231</span>{</div>
-<div class="line"><span class="lineno">  232</span> </div>
-<div class="line"><span class="lineno">  233</span>}</div>
-<div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00039">abstractpokitservice.h:40</a></div></div>
-<div class="ttc" id="aclassDsoServicePrivate_html"><div class="ttname"><a href="classDsoServicePrivate.html">DsoServicePrivate</a></div><div class="ttdoc">The DsoServicePrivate class provides private implementation for DsoService.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice__p_8h_source.html#l00034">dsoservice_p.h:35</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00213">213</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  214</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(<span class="keyword">new</span> <a class="code hl_class" href="classDsoServicePrivate.html">DsoServicePrivate</a>(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">  215</span>{</div>
+<div class="line"><span class="lineno">  216</span> </div>
+<div class="line"><span class="lineno">  217</span>}</div>
+<div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00023">abstractpokitservice.h:24</a></div></div>
+<div class="ttc" id="aclassDsoServicePrivate_html"><div class="ttname"><a href="classDsoServicePrivate.html">DsoServicePrivate</a></div><div class="ttdoc">The DsoServicePrivate class provides private implementation for DsoService.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice__p_8h_source.html#l00018">dsoservice_p.h:19</a></div></div>
 <div class="ttc" id="aqobject_html_parent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent</a></div><div class="ttdeci">QObject * parent() const const</div></div>
 </div><!-- fragment -->
 </div>
@@ -794,10 +794,10 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Destroys this <a class="el" href="classDsoService.html" title="The DsoService class accesses the Pokit Status service of Pokit devices.">DsoService</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00250">250</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  251</span>{</div>
-<div class="line"><span class="lineno">  252</span> </div>
-<div class="line"><span class="lineno">  253</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00234">234</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>{</div>
+<div class="line"><span class="lineno">  236</span> </div>
+<div class="line"><span class="lineno">  237</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -837,11 +837,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructs a new Pokit service with <em>parent</em>, and private implementation <em>d</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00239">239</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  241</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">  242</span>{</div>
-<div class="line"><span class="lineno">  243</span> </div>
-<div class="line"><span class="lineno">  244</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00223">223</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  225</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">  226</span>{</div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -865,15 +865,15 @@ Additional Inherited Members</h2></td></tr>
 <p >Instantaneous reads can still be fetched by readMetadatCharacteristic().</p>
 <p >Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00395">395</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  396</span>{</div>
-<div class="line"><span class="lineno">  397</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
-<div class="line"><span class="lineno">  398</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  399</span>}</div>
-<div class="ttc" id="aclassDsoService_html"><div class="ttname"><a href="classDsoService.html">DsoService</a></div><div class="ttdoc">The DsoService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00038">dsoservice.h:39</a></div></div>
-<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_a0640c015d85dba780fcad93990e37afa"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">DsoService::CharacteristicUuids::metadata</a></div><div class="ttdeci">static const QBluetoothUuid metadata</div><div class="ttdoc">UUID of the DSO service's Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00047">dsoservice.h:47</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00379">379</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  380</span>{</div>
+<div class="line"><span class="lineno">  381</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
+<div class="line"><span class="lineno">  382</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  383</span>}</div>
+<div class="ttc" id="aclassDsoService_html"><div class="ttname"><a href="classDsoService.html">DsoService</a></div><div class="ttdoc">The DsoService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00022">dsoservice.h:23</a></div></div>
+<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_a0640c015d85dba780fcad93990e37afa"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">DsoService::CharacteristicUuids::metadata</a></div><div class="ttdeci">static const QBluetoothUuid metadata</div><div class="ttdoc">UUID of the DSO service's Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00031">dsoservice.h:31</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00047">DsoService::CharacteristicUuids::metadata</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00031">DsoService::CharacteristicUuids::metadata</a>.</p>
 
 </div>
 </div>
@@ -895,14 +895,14 @@ Additional Inherited Members</h2></td></tr>
 <p>Disables client-side notifications of DSO readings. </p>
 <p >Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00419">419</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  420</span>{</div>
-<div class="line"><span class="lineno">  421</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
-<div class="line"><span class="lineno">  422</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  423</span>}</div>
-<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_a495b006c71a1b15952e54e1ff0791aa7"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7">DsoService::CharacteristicUuids::reading</a></div><div class="ttdeci">static const QBluetoothUuid reading</div><div class="ttdoc">UUID of the DSO service's Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00048">dsoservice.h:48</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00403">403</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  404</span>{</div>
+<div class="line"><span class="lineno">  405</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
+<div class="line"><span class="lineno">  406</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  407</span>}</div>
+<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_a495b006c71a1b15952e54e1ff0791aa7"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7">DsoService::CharacteristicUuids::reading</a></div><div class="ttdeci">static const QBluetoothUuid reading</div><div class="ttdoc">UUID of the DSO service's Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00032">dsoservice.h:32</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00048">DsoService::CharacteristicUuids::reading</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00032">DsoService::CharacteristicUuids::reading</a>.</p>
 
 </div>
 </div>
@@ -926,15 +926,15 @@ Additional Inherited Members</h2></td></tr>
 <p >Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
 <p >Successfully read values (if any) will be emitted via the <a class="el" href="classDsoService.html#aa4691afc3b4b2e674b98fd467a458819" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> signal. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00382">382</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  383</span>{</div>
-<div class="line"><span class="lineno">  384</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
-<div class="line"><span class="lineno">  385</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  386</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00366">366</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  367</span>{</div>
+<div class="line"><span class="lineno">  368</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
+<div class="line"><span class="lineno">  369</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  370</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00047">DsoService::CharacteristicUuids::metadata</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00031">DsoService::CharacteristicUuids::metadata</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00274">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00258">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -963,15 +963,15 @@ Here is the caller graph for this function:</div>
 <p >Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
 <p >Successfully read samples (if any) will be emitted via the <a class="el" href="classDsoService.html#aa715aaa1648b7ca4cb48ca7080289d2d" title="This signal is emitted when the Reading characteristic has been notified.">samplesRead()</a> signal. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00408">408</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  409</span>{</div>
-<div class="line"><span class="lineno">  410</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
-<div class="line"><span class="lineno">  411</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  412</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00392">392</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  393</span>{</div>
+<div class="line"><span class="lineno">  394</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
+<div class="line"><span class="lineno">  395</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  396</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00048">DsoService::CharacteristicUuids::reading</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00032">DsoService::CharacteristicUuids::reading</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00274">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00258">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1000,22 +1000,22 @@ Here is the caller graph for this function:</div>
 <p >This is just a convenience function equivalent to calling <a class="el" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e" title="Configures the Pokit device&#39;s DSO mode.">setSettings()</a> with the command set to DsoService::Command::Refresh.</p>
 <p >Once the Pokit device has processed this request succesffully, the device will begin notifying the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> and <code>Reading</code> characteristic, resulting in emits of metadataRead and samplesRead respectively. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00337">337</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  338</span>{</div>
-<div class="line"><span class="lineno">  339</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
-<div class="line"><span class="lineno">  340</span>    <span class="comment">// Pokit device when the command is Refresh. However, we still explicitly initialise all other</span></div>
-<div class="line"><span class="lineno">  341</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
-<div class="line"><span class="lineno">  342</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">setSettings</a>({</div>
-<div class="line"><span class="lineno">  343</span>        DsoService::Command::ResendData,</div>
-<div class="line"><span class="lineno">  344</span>        0, <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">DsoService::Mode::Idle</a>,</div>
-<div class="line"><span class="lineno">  345</span>        { <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">DsoService::VoltageRange::_0_to_300mV</a> }, 0, 0</div>
-<div class="line"><span class="lineno">  346</span>    });</div>
-<div class="line"><span class="lineno">  347</span>}</div>
-<div class="ttc" id="aclassDsoService_html_a5714c8ccec6ab1d98241312b28a32e9e"><div class="ttname"><a href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">DsoService::setSettings</a></div><div class="ttdeci">bool setSettings(const Settings &amp;settings)</div><div class="ttdoc">Configures the Pokit device's DSO mode.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00282">dsoservice.cpp:282</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00321">321</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  322</span>{</div>
+<div class="line"><span class="lineno">  323</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
+<div class="line"><span class="lineno">  324</span>    <span class="comment">// Pokit device when the command is Refresh. However, we still explicitly initialise all other</span></div>
+<div class="line"><span class="lineno">  325</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
+<div class="line"><span class="lineno">  326</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">setSettings</a>({</div>
+<div class="line"><span class="lineno">  327</span>        DsoService::Command::ResendData,</div>
+<div class="line"><span class="lineno">  328</span>        0, <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">DsoService::Mode::Idle</a>,</div>
+<div class="line"><span class="lineno">  329</span>        { <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">DsoService::VoltageRange::_0_to_300mV</a> }, 0, 0</div>
+<div class="line"><span class="lineno">  330</span>    });</div>
+<div class="line"><span class="lineno">  331</span>}</div>
+<div class="ttc" id="aclassDsoService_html_a5714c8ccec6ab1d98241312b28a32e9e"><div class="ttname"><a href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">DsoService::setSettings</a></div><div class="ttdeci">bool setSettings(const Settings &amp;settings)</div><div class="ttdoc">Configures the Pokit device's DSO mode.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00266">dsoservice.cpp:266</a></div></div>
 <div class="ttc" id="aclassDsoService_html_a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6"><div class="ttname"><a href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">DsoService::VoltageRange::_0_to_300mV</a></div><div class="ttdeci">@ _0_to_300mV</div><div class="ttdoc">0 to 300mV.</div></div>
 <div class="ttc" id="aclassDsoService_html_ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c"><div class="ttname"><a href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">DsoService::Mode::Idle</a></div><div class="ttdeci">@ Idle</div><div class="ttdoc">Make device idle.</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Idle</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00282">setSettings()</a>.</p>
+<p class="reference">References <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Idle</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00266">setSettings()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1051,17 +1051,17 @@ Here is the call graph for this function:</div>
 
 <p>Returns the maximum value for <em>range</em> in (integer) milliamps, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00175">175</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  176</span>{</div>
-<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span>   10;</div>
-<div class="line"><span class="lineno">  179</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span>   30;</div>
-<div class="line"><span class="lineno">  180</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span>  150;</div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span>  300;</div>
-<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> 3000;</div>
-<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
-<div class="line"><span class="lineno">  184</span>    }</div>
-<div class="line"><span class="lineno">  185</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00159">159</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>{</div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span>   10;</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span>   30;</div>
+<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span>  150;</div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span>  300;</div>
+<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> 3000;</div>
+<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
+<div class="line"><span class="lineno">  168</span>    }</div>
+<div class="line"><span class="lineno">  169</span>}</div>
 <div class="ttc" id="aclassDsoService_html_af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8"><div class="ttname"><a href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">DsoService::CurrentRange::_30mA_to_150mA</a></div><div class="ttdeci">@ _30mA_to_150mA</div><div class="ttdoc">30mA to 150mA.</div></div>
 <div class="ttc" id="aclassDsoService_html_af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1"><div class="ttname"><a href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">DsoService::CurrentRange::_300mA_to_3A</a></div><div class="ttdeci">@ _300mA_to_3A</div></div>
 <div class="ttc" id="aclassDsoService_html_af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7"><div class="ttname"><a href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">DsoService::CurrentRange::_150mA_to_300mA</a></div><div class="ttdeci">@ _150mA_to_300mA</div><div class="ttdoc">150mA to 300mA.</div></div>
@@ -1099,18 +1099,18 @@ Here is the call graph for this function:</div>
 
 <p>Returns the maximum value for <em>range</em> in (integer) millivolts, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00120">120</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  121</span>{</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span>   300;</div>
-<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1ab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span>  2000;</div>
-<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span>  6000;</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span> 12000;</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> 30000;</div>
-<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> 60000;</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
-<div class="line"><span class="lineno">  130</span>    }</div>
-<div class="line"><span class="lineno">  131</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00104">104</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  105</span>{</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span>   300;</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1ab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span>  2000;</div>
+<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span>  6000;</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span> 12000;</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> 30000;</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> 60000;</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
+<div class="line"><span class="lineno">  114</span>    }</div>
+<div class="line"><span class="lineno">  115</span>}</div>
 <div class="ttc" id="aclassDsoService_html_a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a"><div class="ttname"><a href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">DsoService::VoltageRange::_12V_to_30V</a></div><div class="ttdeci">@ _12V_to_30V</div><div class="ttdoc">12V to 30V.</div></div>
 <div class="ttc" id="aclassDsoService_html_a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165"><div class="ttname"><a href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">DsoService::VoltageRange::_2V_to_6V</a></div><div class="ttdeci">@ _2V_to_6V</div><div class="ttdoc">2V to 6V.</div></div>
 <div class="ttc" id="aclassDsoService_html_a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc"><div class="ttname"><a href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">DsoService::VoltageRange::_6V_to_12V</a></div><div class="ttdeci">@ _6V_to_12V</div><div class="ttdoc">6V to 12V.</div></div>
@@ -1142,27 +1142,27 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classDsoService.html#afda4aa4a55ff0af205f10ccf8c77cbf5">metadata</a>.<a class="code hl_variable" href="structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085">scale</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDsoService_html_afda4aa4a55ff0af205f10ccf8c77cbf5"><div class="ttname"><a href="classDsoService.html#afda4aa4a55ff0af205f10ccf8c77cbf5">DsoService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DSO service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00363">dsoservice.cpp:363</a></div></div>
-<div class="ttc" id="astructDsoService_1_1Metadata_html"><div class="ttname"><a href="structDsoService_1_1Metadata.html">DsoService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00113">dsoservice.h:113</a></div></div>
-<div class="ttc" id="astructDsoService_1_1Metadata_html_a6b8a8636619603ff9a52e0ef2eba1085"><div class="ttname"><a href="structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085">DsoService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00115">dsoservice.h:115</a></div></div>
+<div class="ttc" id="aclassDsoService_html_afda4aa4a55ff0af205f10ccf8c77cbf5"><div class="ttname"><a href="classDsoService.html#afda4aa4a55ff0af205f10ccf8c77cbf5">DsoService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DSO service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00347">dsoservice.cpp:347</a></div></div>
+<div class="ttc" id="astructDsoService_1_1Metadata_html"><div class="ttname"><a href="structDsoService_1_1Metadata.html">DsoService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00097">dsoservice.h:97</a></div></div>
+<div class="ttc" id="astructDsoService_1_1Metadata_html_a6b8a8636619603ff9a52e0ef2eba1085"><div class="ttname"><a href="structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085">DsoService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00099">dsoservice.h:99</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00363">363</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  364</span>{</div>
-<div class="line"><span class="lineno">  365</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
-<div class="line"><span class="lineno">  366</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  367</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  368</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classDsoServicePrivate.html#af869cf5b228bac719545511ba4247b88">DsoServicePrivate::parseMetadata</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
-<div class="line"><span class="lineno">  369</span>        : Metadata{ <a class="code hl_enumeration" href="classDsoService.html#aaa4e080d3d3e444dabf9d7117561905d">DsoStatus</a>::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
-<div class="line"><span class="lineno">  370</span>                    <a class="code hl_enumeration" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95">Mode</a>::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };</div>
-<div class="line"><span class="lineno">  371</span>}</div>
-<div class="ttc" id="aclassDsoServicePrivate_html_af869cf5b228bac719545511ba4247b88"><div class="ttname"><a href="classDsoServicePrivate.html#af869cf5b228bac719545511ba4247b88">DsoServicePrivate::parseMetadata</a></div><div class="ttdeci">static DsoService::Metadata parseMetadata(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Metadata value into a DsoService::Metatdata struct.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00472">dsoservice.cpp:472</a></div></div>
-<div class="ttc" id="aclassDsoService_html_aaa4e080d3d3e444dabf9d7117561905d"><div class="ttname"><a href="classDsoService.html#aaa4e080d3d3e444dabf9d7117561905d">DsoService::DsoStatus</a></div><div class="ttdeci">DsoStatus</div><div class="ttdoc">Values supported by the Status attribute of the Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00107">dsoservice.h:107</a></div></div>
-<div class="ttc" id="aclassDsoService_html_ae1414a11556e06b49cea9fadcd6f5b95"><div class="ttname"><a href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95">DsoService::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">Values supported by the Mode attribute of the Settings and Metadata characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00058">dsoservice.h:58</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00347">347</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  348</span>{</div>
+<div class="line"><span class="lineno">  349</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
+<div class="line"><span class="lineno">  350</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  351</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  352</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classDsoServicePrivate.html#af869cf5b228bac719545511ba4247b88">DsoServicePrivate::parseMetadata</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
+<div class="line"><span class="lineno">  353</span>        : Metadata{ <a class="code hl_enumeration" href="classDsoService.html#aaa4e080d3d3e444dabf9d7117561905d">DsoStatus</a>::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
+<div class="line"><span class="lineno">  354</span>                    <a class="code hl_enumeration" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95">Mode</a>::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };</div>
+<div class="line"><span class="lineno">  355</span>}</div>
+<div class="ttc" id="aclassDsoServicePrivate_html_af869cf5b228bac719545511ba4247b88"><div class="ttname"><a href="classDsoServicePrivate.html#af869cf5b228bac719545511ba4247b88">DsoServicePrivate::parseMetadata</a></div><div class="ttdeci">static DsoService::Metadata parseMetadata(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Metadata value into a DsoService::Metatdata struct.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00456">dsoservice.cpp:456</a></div></div>
+<div class="ttc" id="aclassDsoService_html_aaa4e080d3d3e444dabf9d7117561905d"><div class="ttname"><a href="classDsoService.html#aaa4e080d3d3e444dabf9d7117561905d">DsoService::DsoStatus</a></div><div class="ttdeci">DsoStatus</div><div class="ttdoc">Values supported by the Status attribute of the Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00091">dsoservice.h:91</a></div></div>
+<div class="ttc" id="aclassDsoService_html_ae1414a11556e06b49cea9fadcd6f5b95"><div class="ttname"><a href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95">DsoService::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">Values supported by the Mode attribute of the Settings and Metadata characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00042">dsoservice.h:42</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_value"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value</a></div><div class="ttdeci">QByteArray value() const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dsoservice_8h_source.html#l00047">DsoService::CharacteristicUuids::metadata</a>, <a class="el" href="dsoservice_8cpp_source.html#l00472">DsoServicePrivate::parseMetadata()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
+<p class="reference">References <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dsoservice_8h_source.html#l00031">DsoService::CharacteristicUuids::metadata</a>, <a class="el" href="dsoservice_8cpp_source.html#l00456">DsoServicePrivate::parseMetadata()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1199,7 +1199,7 @@ Here is the call graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristic has been read successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Read the DSO service&#39;s Metadat characteristic.">readMetadataCharacteristic</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00274">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00258">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1236,17 +1236,17 @@ Here is the caller graph for this function:</div>
 <p>Returns the minimum value for <em>range</em> in (integer) milliamps, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. </p>
 <p >Note, this is an <em>absolute</em> minimum. That is, the true range for DC measurements is from <code>-maxValue(range)</code> to <code>+maxValue(range)</code>. In this sense, <code>minValue(range)</code> indicates the magnitude (ignore signs) that can be measured accurately for the given <em>range</em>. As AC current can never be negative, this is relevant for DC current only. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00159">159</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  160</span>{</div>
-<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span>   0;</div>
-<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span>  10;</div>
-<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span>  30;</div>
-<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span> 150;</div>
-<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> 300;</div>
-<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
-<div class="line"><span class="lineno">  168</span>    }</div>
-<div class="line"><span class="lineno">  169</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00143">143</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>{</div>
+<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span>   0;</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span>  10;</div>
+<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span>  30;</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span> 150;</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> 300;</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
+<div class="line"><span class="lineno">  152</span>    }</div>
+<div class="line"><span class="lineno">  153</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053adf1aa51f69cee99bf34896eedef7ec66">_0_to_10mA</a>, <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ada2587f9e79732bb2eea6ddb20b2a522">_10mA_to_30mA</a>, <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">_150mA_to_300mA</a>, <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">_300mA_to_3A</a>, and <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">_30mA_to_150mA</a>.</p>
 
@@ -1279,18 +1279,18 @@ Here is the caller graph for this function:</div>
 <p>Returns the minimum value for <em>range</em> in (integer) millivolts, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. </p>
 <p >Note, this is an <em>absolute</em> minimum. That is, the true range for DC measurements is from <code>-maxValue(range)</code> to <code>+maxValue(range)</code>. In this sense, <code>minValue(range)</code> indicates the magnitude (ignore signs) that can be measured accurately for the given <em>range</em>. As AC voltage can never be negative, this is relevant for DC voltage only. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00103">103</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>{</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span>     0;</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1ab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span>   300;</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span>  2000;</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span>  6000;</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> 12000;</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> 30000;</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
-<div class="line"><span class="lineno">  113</span>    }</div>
-<div class="line"><span class="lineno">  114</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00087">87</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span>     0;</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1ab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span>   300;</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span>  2000;</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span>  6000;</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> 12000;</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> 30000;</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
+<div class="line"><span class="lineno">   97</span>    }</div>
+<div class="line"><span class="lineno">   98</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">_12V_to_30V</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">_2V_to_6V</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1ab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">_30V_to_60V</a>, and <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">_6V_to_12V</a>.</p>
 
@@ -1325,13 +1325,13 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractPokitService.html#a0d29ffd4ef4f81c6049700f76faa723e">AbstractPokitService</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00255">255</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  256</span>{</div>
-<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c">readMetadataCharacteristic</a>();</div>
-<div class="line"><span class="lineno">  258</span>}</div>
-<div class="ttc" id="aclassDsoService_html_ad8cd148690b9e4fd1b01071e8cfabd0c"><div class="ttname"><a href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c">DsoService::readMetadataCharacteristic</a></div><div class="ttdeci">bool readMetadataCharacteristic()</div><div class="ttdoc">Read the DSO service's Metadat characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00269">dsoservice.cpp:269</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00239">239</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  240</span>{</div>
+<div class="line"><span class="lineno">  241</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c">readMetadataCharacteristic</a>();</div>
+<div class="line"><span class="lineno">  242</span>}</div>
+<div class="ttc" id="aclassDsoService_html_ad8cd148690b9e4fd1b01071e8cfabd0c"><div class="ttname"><a href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c">DsoService::readMetadataCharacteristic</a></div><div class="ttdeci">bool readMetadataCharacteristic()</div><div class="ttdoc">Read the DSO service's Metadat characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00253">dsoservice.cpp:253</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dsoservice_8cpp_source.html#l00269">readMetadataCharacteristic()</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8cpp_source.html#l00253">readMetadataCharacteristic()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1360,15 +1360,15 @@ Here is the call graph for this function:</div>
 <p >Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p >Emits <a class="el" href="classDsoService.html#aa4691afc3b4b2e674b98fd467a458819" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00269">269</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  270</span>{</div>
-<div class="line"><span class="lineno">  271</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
-<div class="line"><span class="lineno">  272</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  273</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00253">253</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  254</span>{</div>
+<div class="line"><span class="lineno">  255</span>    Q_D(<a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
+<div class="line"><span class="lineno">  256</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  257</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00047">DsoService::CharacteristicUuids::metadata</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00031">DsoService::CharacteristicUuids::metadata</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00255">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00239">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1407,7 +1407,7 @@ Here is the caller graph for this function:</div>
 <dd>
 stopSampling </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00274">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00258">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1437,41 +1437,41 @@ Here is the caller graph for this function:</div>
 <p >Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p >Emits <a class="el" href="classDsoService.html#aecb20a42b7d8906f9e84266193424567" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em>settings</em> have been writtem successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00282">282</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  283</span>{</div>
-<div class="line"><span class="lineno">  284</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
-<div class="line"><span class="lineno">  285</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  286</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#aad3144a47fc1cc7edc705b3e823688a6">CharacteristicUuids::settings</a>);</div>
-<div class="line"><span class="lineno">  287</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
-<div class="line"><span class="lineno">  288</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  289</span>    }</div>
-<div class="line"><span class="lineno">  290</span> </div>
-<div class="line"><span class="lineno">  291</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.command)         == 1, <span class="stringliteral">&quot;Expected to be 1 byte.&quot;</span>);</div>
-<div class="line"><span class="lineno">  292</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.triggerLevel)    == 4, <span class="stringliteral">&quot;Expected to be 2 bytes.&quot;</span>);</div>
-<div class="line"><span class="lineno">  293</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.mode)            == 1, <span class="stringliteral">&quot;Expected to be 1 byte.&quot;</span>);</div>
-<div class="line"><span class="lineno">  294</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.range)           == 1, <span class="stringliteral">&quot;Expected to be 1 byte.&quot;</span>);</div>
-<div class="line"><span class="lineno">  295</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.samplingWindow)  == 4, <span class="stringliteral">&quot;Expected to be 4 bytes.&quot;</span>);</div>
-<div class="line"><span class="lineno">  296</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.numberOfSamples) == 2, <span class="stringliteral">&quot;Expected to be 2 bytes.&quot;</span>);</div>
-<div class="line"><span class="lineno">  297</span> </div>
-<div class="line"><span class="lineno">  298</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value;</div>
-<div class="line"><span class="lineno">  299</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a> stream(&amp;value, QIODevice::WriteOnly);</div>
-<div class="line"><span class="lineno">  300</span>    stream.setByteOrder(QDataStream::LittleEndian);</div>
-<div class="line"><span class="lineno">  301</span>    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); <span class="comment">// 32-bit floats, not 64-bit.</span></div>
-<div class="line"><span class="lineno">  302</span>    stream &lt;&lt; (quint8)settings.command &lt;&lt; settings.triggerLevel &lt;&lt; (quint8)settings.mode</div>
-<div class="line"><span class="lineno">  303</span>           &lt;&lt; (quint8)settings.range.voltageRange &lt;&lt; settings.samplingWindow</div>
-<div class="line"><span class="lineno">  304</span>           &lt;&lt; settings.numberOfSamples;</div>
-<div class="line"><span class="lineno">  305</span>    Q_ASSERT(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() == 13);</div>
-<div class="line"><span class="lineno">  306</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
-<div class="line"><span class="lineno">  307</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">  308</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00266">266</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  267</span>{</div>
+<div class="line"><span class="lineno">  268</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  270</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#aad3144a47fc1cc7edc705b3e823688a6">CharacteristicUuids::settings</a>);</div>
+<div class="line"><span class="lineno">  271</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
+<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  273</span>    }</div>
+<div class="line"><span class="lineno">  274</span> </div>
+<div class="line"><span class="lineno">  275</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.command)         == 1, <span class="stringliteral">&quot;Expected to be 1 byte.&quot;</span>);</div>
+<div class="line"><span class="lineno">  276</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.triggerLevel)    == 4, <span class="stringliteral">&quot;Expected to be 2 bytes.&quot;</span>);</div>
+<div class="line"><span class="lineno">  277</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.mode)            == 1, <span class="stringliteral">&quot;Expected to be 1 byte.&quot;</span>);</div>
+<div class="line"><span class="lineno">  278</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.range)           == 1, <span class="stringliteral">&quot;Expected to be 1 byte.&quot;</span>);</div>
+<div class="line"><span class="lineno">  279</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.samplingWindow)  == 4, <span class="stringliteral">&quot;Expected to be 4 bytes.&quot;</span>);</div>
+<div class="line"><span class="lineno">  280</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(settings.numberOfSamples) == 2, <span class="stringliteral">&quot;Expected to be 2 bytes.&quot;</span>);</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value;</div>
+<div class="line"><span class="lineno">  283</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a> stream(&amp;value, QIODevice::WriteOnly);</div>
+<div class="line"><span class="lineno">  284</span>    stream.setByteOrder(QDataStream::LittleEndian);</div>
+<div class="line"><span class="lineno">  285</span>    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); <span class="comment">// 32-bit floats, not 64-bit.</span></div>
+<div class="line"><span class="lineno">  286</span>    stream &lt;&lt; (quint8)settings.command &lt;&lt; settings.triggerLevel &lt;&lt; (quint8)settings.mode</div>
+<div class="line"><span class="lineno">  287</span>           &lt;&lt; (quint8)settings.range.voltageRange &lt;&lt; settings.samplingWindow</div>
+<div class="line"><span class="lineno">  288</span>           &lt;&lt; settings.numberOfSamples;</div>
+<div class="line"><span class="lineno">  289</span>    Q_ASSERT(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() == 13);</div>
+<div class="line"><span class="lineno">  290</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
+<div class="line"><span class="lineno">  291</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">  292</span>}</div>
 <div class="ttc" id="aqbytearray_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a></div></div>
 <div class="ttc" id="aqbytearray_html_size"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size</a></div><div class="ttdeci">int size() const const</div></div>
 <div class="ttc" id="aqdatastream_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a></div></div>
-<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_aad3144a47fc1cc7edc705b3e823688a6"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#aad3144a47fc1cc7edc705b3e823688a6">DsoService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the DSO service's Settings characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00046">dsoservice.h:46</a></div></div>
+<div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_aad3144a47fc1cc7edc705b3e823688a6"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#aad3144a47fc1cc7edc705b3e823688a6">DsoService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the DSO service's Settings characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00030">dsoservice.h:30</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00099">DsoService::Settings::command</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dsoservice_8h_source.html#l00101">DsoService::Settings::mode</a>, <a class="el" href="dsoservice_8h_source.html#l00104">DsoService::Settings::numberOfSamples</a>, <a class="el" href="dsoservice_8h_source.html#l00102">DsoService::Settings::range</a>, <a class="el" href="dsoservice_8h_source.html#l00103">DsoService::Settings::samplingWindow</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qdatastream.html#setByteOrder">QDataStream::setByteOrder()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qdatastream.html#setFloatingPointPrecision">QDataStream::setFloatingPointPrecision()</a>, <a class="el" href="dsoservice_8h_source.html#l00046">DsoService::CharacteristicUuids::settings</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size()</a>, <a class="el" href="dsoservice_8h_source.html#l00100">DsoService::Settings::triggerLevel</a>, and <a class="el" href="dsoservice_8h_source.html#l00093">DsoService::Range::voltageRange</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00083">DsoService::Settings::command</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dsoservice_8h_source.html#l00085">DsoService::Settings::mode</a>, <a class="el" href="dsoservice_8h_source.html#l00088">DsoService::Settings::numberOfSamples</a>, <a class="el" href="dsoservice_8h_source.html#l00086">DsoService::Settings::range</a>, <a class="el" href="dsoservice_8h_source.html#l00087">DsoService::Settings::samplingWindow</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qdatastream.html#setByteOrder">QDataStream::setByteOrder()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qdatastream.html#setFloatingPointPrecision">QDataStream::setFloatingPointPrecision()</a>, <a class="el" href="dsoservice_8h_source.html#l00030">DsoService::CharacteristicUuids::settings</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size()</a>, <a class="el" href="dsoservice_8h_source.html#l00084">DsoService::Settings::triggerLevel</a>, and <a class="el" href="dsoservice_8h_source.html#l00077">DsoService::Range::voltageRange</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00337">fetchSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00197">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00316">startDso()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00321">fetchSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00181">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00300">startDso()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1513,7 +1513,7 @@ Here is the caller graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structDsoService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic has been written successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e" title="Configures the Pokit device&#39;s DSO mode.">setSettings</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00180">DsoCommand::getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00164">DsoCommand::getService()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1542,19 +1542,19 @@ Here is the caller graph for this function:</div>
 <p>Start the DSO with <em>settings</em>. </p>
 <p >This is just a synonym for <a class="el" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e" title="Configures the Pokit device&#39;s DSO mode.">setSettings()</a> except makes the caller's intention more explicit, and sanity-checks that the settings's command is not DsoService::Command::ResendData. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00316">316</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  317</span>{</div>
-<div class="line"><span class="lineno">  318</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
-<div class="line"><span class="lineno">  319</span>    Q_ASSERT(settings.command != DsoService::Command::ResendData);</div>
-<div class="line"><span class="lineno">  320</span>    <span class="keywordflow">if</span> (settings.command != DsoService::Command::ResendData) {</div>
-<div class="line"><span class="lineno">  321</span>        qCWarning(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings command must not be &#39;ResendData&#39;.&quot;</span>);</div>
-<div class="line"><span class="lineno">  322</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  323</span>    }</div>
-<div class="line"><span class="lineno">  324</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">setSettings</a>(settings);</div>
-<div class="line"><span class="lineno">  325</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00300">300</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  301</span>{</div>
+<div class="line"><span class="lineno">  302</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDsoService.html">DsoService</a>);</div>
+<div class="line"><span class="lineno">  303</span>    Q_ASSERT(settings.command != DsoService::Command::ResendData);</div>
+<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">if</span> (settings.command != DsoService::Command::ResendData) {</div>
+<div class="line"><span class="lineno">  305</span>        qCWarning(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings command must not be &#39;ResendData&#39;.&quot;</span>);</div>
+<div class="line"><span class="lineno">  306</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  307</span>    }</div>
+<div class="line"><span class="lineno">  308</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">setSettings</a>(settings);</div>
+<div class="line"><span class="lineno">  309</span>}</div>
 <div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00099">DsoService::Settings::command</a>, <a class="el" href="dsoservice_8cpp_source.html#l00282">setSettings()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00083">DsoService::Settings::command</a>, <a class="el" href="dsoservice_8cpp_source.html#l00266">setSettings()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1590,17 +1590,17 @@ Here is the call graph for this function:</div>
 
 <p>Returns <em>range</em> as a user-friendly string. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00138">138</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  139</span>{</div>
-<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;0 to 10mA&quot;</span>);</div>
-<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;10mA to 30mA&quot;</span>);</div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;30mA to 150mA&quot;</span>);</div>
-<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;150mA to 300mA&quot;</span>);</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;300mA to 3A&quot;</span>);</div>
-<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  147</span>    }</div>
-<div class="line"><span class="lineno">  148</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00122">122</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>{</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;0 to 10mA&quot;</span>);</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;10mA to 30mA&quot;</span>);</div>
+<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;30mA to 150mA&quot;</span>);</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;150mA to 300mA&quot;</span>);</div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;300mA to 3A&quot;</span>);</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  131</span>    }</div>
+<div class="line"><span class="lineno">  132</span>}</div>
 <div class="ttc" id="aqstring_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html">QString</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053adf1aa51f69cee99bf34896eedef7ec66">_0_to_10mA</a>, <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ada2587f9e79732bb2eea6ddb20b2a522">_10mA_to_30mA</a>, <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053ad87056e8caa3511544b29b913caf5cf7">_150mA_to_300mA</a>, <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">_300mA_to_3A</a>, <a class="el" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a10a9947ae0deec34c01e99c4cd12a9f8">_30mA_to_150mA</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
@@ -1639,17 +1639,17 @@ Here is the call graph for this function:</div>
 
 <p>Returns <em>mode</em> as a user-friendly string. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00064">64</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">switch</span> (mode) {</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Mode::Idle</a>:        <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Idle&quot;</span>);</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;DC voltage&quot;</span>);</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;AC voltage&quot;</span>);</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;DC current&quot;</span>);</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;AC current&quot;</span>);</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">default</span>:                <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">   73</span>    }</div>
-<div class="line"><span class="lineno">   74</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00048">48</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">switch</span> (mode) {</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Mode::Idle</a>:        <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Idle&quot;</span>);</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;DC voltage&quot;</span>);</div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;AC voltage&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;DC current&quot;</span>);</div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;AC current&quot;</span>);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">default</span>:                <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">   57</span>    }</div>
+<div class="line"><span class="lineno">   58</span>}</div>
 <div class="ttc" id="aclassDsoService_html_ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5"><div class="ttname"><a href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">DsoService::Mode::DcVoltage</a></div><div class="ttdeci">@ DcVoltage</div><div class="ttdoc">Measure DC voltage.</div></div>
 <div class="ttc" id="aclassDsoService_html_ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9"><div class="ttname"><a href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">DsoService::Mode::AcCurrent</a></div><div class="ttdeci">@ AcCurrent</div><div class="ttdoc">Measure AC current.</div></div>
 <div class="ttc" id="aclassDsoService_html_ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e"><div class="ttname"><a href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">DsoService::Mode::AcVoltage</a></div><div class="ttdeci">@ AcVoltage</div><div class="ttdoc">Measure AC voltage.</div></div>
@@ -1657,7 +1657,7 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Idle</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00286">DsoCommand::metadataRead()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00302">DsoCommand::outputSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00197">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00191">toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00270">DsoCommand::metadataRead()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00286">DsoCommand::outputSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00181">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00175">toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1709,22 +1709,22 @@ Here is the caller graph for this function:</div>
 
 <p>Returns <em>range</em> as a user-friendly string, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if <em>mode</em> has no ranges. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00191">191</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  192</span>{</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">switch</span> (mode) {</div>
-<div class="line"><span class="lineno">  194</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:</div>
-<div class="line"><span class="lineno">  195</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:</div>
-<div class="line"><span class="lineno">  196</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#acc76b93255cf3c5110d90c0df3318afe">toString</a>(range.voltageRange);</div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:</div>
-<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:</div>
-<div class="line"><span class="lineno">  199</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#acc76b93255cf3c5110d90c0df3318afe">toString</a>(range.currentRange);</div>
-<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  201</span>        <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  202</span>    }</div>
-<div class="line"><span class="lineno">  203</span>}</div>
-<div class="ttc" id="aclassDsoService_html_acc76b93255cf3c5110d90c0df3318afe"><div class="ttname"><a href="classDsoService.html#acc76b93255cf3c5110d90c0df3318afe">DsoService::toString</a></div><div class="ttdeci">static QString toString(const Mode &amp;mode)</div><div class="ttdoc">Returns mode as a user-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00064">dsoservice.cpp:64</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00175">175</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>{</div>
+<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">switch</span> (mode) {</div>
+<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:</div>
+<div class="line"><span class="lineno">  179</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:</div>
+<div class="line"><span class="lineno">  180</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#acc76b93255cf3c5110d90c0df3318afe">toString</a>(range.voltageRange);</div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:</div>
+<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:</div>
+<div class="line"><span class="lineno">  183</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#acc76b93255cf3c5110d90c0df3318afe">toString</a>(range.currentRange);</div>
+<div class="line"><span class="lineno">  184</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  185</span>        <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  186</span>    }</div>
+<div class="line"><span class="lineno">  187</span>}</div>
+<div class="ttc" id="aclassDsoService_html_acc76b93255cf3c5110d90c0df3318afe"><div class="ttname"><a href="classDsoService.html#acc76b93255cf3c5110d90c0df3318afe">DsoService::toString</a></div><div class="ttdeci">static QString toString(const Mode &amp;mode)</div><div class="ttdoc">Returns mode as a user-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00048">dsoservice.cpp:48</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="dsoservice_8h_source.html#l00094">DsoService::Range::currentRange</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="dsoservice_8cpp_source.html#l00064">toString()</a>, and <a class="el" href="dsoservice_8h_source.html#l00093">DsoService::Range::voltageRange</a>.</p>
+<p class="reference">References <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="dsoservice_8h_source.html#l00078">DsoService::Range::currentRange</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="dsoservice_8cpp_source.html#l00048">toString()</a>, and <a class="el" href="dsoservice_8h_source.html#l00077">DsoService::Range::voltageRange</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1760,18 +1760,18 @@ Here is the call graph for this function:</div>
 
 <p>Returns <em>range</em> as a user-friendly string. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00081">81</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>{</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;0 to 300mV&quot;</span>);</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1ab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;300mV to 2V&quot;</span>);</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;2V to 6V&quot;</span>);</div>
-<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;6V to 12V&quot;</span>);</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;12V to 30V&quot;</span>);</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;30V to 60V&quot;</span>);</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
-<div class="line"><span class="lineno">   92</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00065">65</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;0 to 300mV&quot;</span>);</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1ab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;300mV to 2V&quot;</span>);</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;2V to 6V&quot;</span>);</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;6V to 12V&quot;</span>);</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;12V to 30V&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;30V to 60V&quot;</span>);</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
+<div class="line"><span class="lineno">   76</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a55b8f557c2c95acba19b42bd66a8760a">_12V_to_30V</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a62449df7495e3d616298a86a32007165">_2V_to_6V</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1ab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">_30V_to_60V</a>, <a class="el" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a691d1e8d08c3542b4aeda8925b2967cc">_6V_to_12V</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 <div class="dynheader">
@@ -1804,7 +1804,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00158">158</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00142">142</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
 
 </div>
 </div>
@@ -1831,9 +1831,9 @@ Here is the call graph for this function:</div>
 
 <p>UUID of the "DSO" service. </p>
 
-<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00043">43</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00027">27</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00219">PokitDevice::serviceToString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00203">PokitDevice::serviceToString()</a>.</p>
 
 </div>
 </div>
