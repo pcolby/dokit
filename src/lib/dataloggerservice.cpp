@@ -9,8 +9,11 @@
 #include <qtpokit/dataloggerservice.h>
 #include "dataloggerservice_p.h"
 
+#include <qtpokit/statusservice.h>
+
 #include <QDataStream>
 #include <QIODevice>
+#include <QLowEnergyController>
 #include <QtEndian>
 
 /*!
@@ -277,7 +280,7 @@ bool DataLoggerService::setSettings(const Settings &settings)
     static_assert(sizeof(settings.arguments)      == 2, "Expected to be 2 bytes.");
     static_assert(sizeof(settings.mode)           == 1, "Expected to be 1 byte.");
     static_assert(sizeof(settings.range)          == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.updateInterval) == 2, "Expected to be 2 bytes.");
+    static_assert(sizeof(settings.updateInterval) == 4, "Expected to be 4 bytes.");
     static_assert(sizeof(settings.timestamp)      == 4, "Expected to be 4 bytes.");
 
     QByteArray value;
@@ -285,14 +288,26 @@ bool DataLoggerService::setSettings(const Settings &settings)
     stream.setByteOrder(QDataStream::LittleEndian);
     stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
     stream << (quint8)settings.command << settings.arguments << (quint8)settings.mode
-           << (quint8)settings.range.voltageRange << (quint32)settings.updateInterval << settings.timestamp;
+           << (quint8)settings.range.voltageRange;
+
     /*!
-     * \pokitApi Despit the Pokit API docs saying `Update Interval` is `uint16`, Pokit Pro devices
-     * error if try to set such. However, if we switch `Update Interval` to `uint32` then the fields
-     * are set properly (according to the resulting `Metadata`). Not sure if this is a Pokit Pro
-     * difference, or general API doc error.
+     * \pokitApi For Pokit Meter, `updateInterval` is `uint16` seconds (as per the Pokit API 1.00),
+     * however for Pokit Pro it's `uint32` milliseconds, even though that's not officially
+     * documented anywhere.
+     *
+     * \todo Refactor the detection if which device / model we're dealing with.
      */
-    Q_ASSERT(value.size() == 13);
+    if (d->controller->services().contains(StatusService::ServiceUuids::pokitMeter)) {
+        stream << (quint16)(settings.updateInterval/1000) << settings.timestamp;
+        Q_ASSERT(value.size() == 11); // According to Pokit API 1.00.
+    } else if (d->controller->services().contains(StatusService::ServiceUuids::pokitPro)) {
+        stream << (quint32)settings.updateInterval << settings.timestamp;
+        Q_ASSERT(value.size() == 13); // According to testing / experimentation.
+    } else {
+        qCWarning(d->lc) << tr("Don't know how to construct settings value for this device");
+        return false;
+    }
+
     d->service->writeCharacteristic(characteristic, value);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
@@ -485,6 +500,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
         0, 0, 0
     };
 
+    // Pokit Meter: 15 bytes, Pokit Pro: 23 bytes.
     if (!checkSize(QLatin1String("Metadata"), value, 15, 23)) {
         return metadata;
     }
@@ -494,24 +510,25 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
     metadata.scale              = qFromLittleEndian<float>(value.mid(1,4));
     metadata.mode               = static_cast<DataLoggerService::Mode>(value.at(5));
     metadata.range.voltageRange = static_cast<DataLoggerService::VoltageRange>(value.at(6));
-    /// \todo All good to here. After this, (Pokit Pro) reality differs to the API docs.
 
     /*!
-     * \pokitApi Pokit API 1.00 (and 0.02) claim that `updateInterval` is `uint16`, but Pokit Pro
-     * returns the value as `uint32`. Indeed, the maxium value (24 hours) does not fit in 16-bits.
+     * \pokitApi For Pokit Meter, `updateInterval` is `uint16` (as per the Pokit API 1.00), however
+     * for Pokit Pro it's `uint32`, even though that's not officially documented anywhere.
      * Also note, the doc claims 'microseconds' (ie 10^-6), but clearly the value is 'milliseconds'
-     * (ie 10^-3).
+     * (ie 10^-3) for Pokit Pro, and whole seconds for Pokit Meter.
      */
 
-    /// \todo No idea (yet) what 8 bytes get inserted *before* the timestamp attribute.
-    if (value.size() < 23) {
-        metadata.updateInterval  = qFromLittleEndian<quint16>(value.mid(7,2));
+    if (value.size() == 15) {
+        metadata.updateInterval  = qFromLittleEndian<quint16>(value.mid(7,2))*1000;
         metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(9,2));
         metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(11,4));
-    } else {
-        metadata.updateInterval  = qFromLittleEndian<quint16>(value.mid(7,4));
-        metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(11,4));
+    } else if (value.size() == 23) {
+        metadata.updateInterval  = qFromLittleEndian<quint32>(value.mid(7,4));
+        metadata.numberOfSamples = qFromLittleEndian<quint32>(value.mid(11,4));
         metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(19,4));
+    } else {
+        qCWarning(lc) << tr("Cannot decode metadata of %1 bytes: %2").arg(value.size())
+            .arg(toHexString(value));
     }
     return metadata;
 }

@@ -84,7 +84,7 @@ public:
         quint16 arguments;      ///< Reserved to used along with #command in future.
         Mode mode;              ///< Desired operation mode.
         Range range;            ///< Desired range.
-        quint16 updateInterval; ///< Desired update interval in seconds.
+        quint32 updateInterval; ///< Desired update interval in milliseconds.
         quint32 timestamp;      ///< Custom timestamp for start time in retrieved metadata.
     };
 
@@ -100,7 +100,7 @@ public:
         float scale;             ///< Scale to apply to read samples.
         Mode mode;               ///< Current operation mode.
         Range range;             ///< Current range.
-        quint32 updateInterval;  ///< Current logging interval.
+        quint32 updateInterval;  ///< Current logging interval in milliseconds.
         quint16 numberOfSamples; ///< Number of samples acquired (1 to 6192).
         quint32 timestamp;       ///< Timestamp stored at the beginning of the logging session.
     };
