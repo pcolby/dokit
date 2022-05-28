@@ -31,18 +31,18 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">42</td>
             <td class="headerCovTableEntry">179</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryLo">23.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
             <td class="headerValue">0.1.0-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">8</td>
             <td class="headerCovTableEntry">29</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryLo">27.6 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -110,9 +110,9 @@
 <a name="48"><span class="lineNum">      48 </span>            : /// \brief Values supported by the `Mode` attribute of the `Settings` and `Metadata` characteristics.</a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span>            : /// Returns \a mode as a user-friendly string.</a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : QString DataLoggerService::toString(const Mode &amp;mode)</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          7 : QString DataLoggerService::toString(const Mode &amp;mode)</span></a>
 <a name="52"><span class="lineNum">      52 </span>            : {</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          7 :     switch (mode) {</span></a>
 <a name="54"><span class="lineNum">      54 </span>            :     case Mode::Idle:        return tr(&quot;Idle&quot;);</a>
 <a name="55"><span class="lineNum">      55 </span>            :     case Mode::DcVoltage:   return tr(&quot;DC voltage&quot;);</a>
 <a name="56"><span class="lineNum">      56 </span>            :     case Mode::AcVoltage:   return tr(&quot;AC voltage&quot;);</a>
@@ -127,9 +127,9 @@
 <a name="65"><span class="lineNum">      65 </span>            : /// when `Mode` is AC or DC voltage.</a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span>            : /// Returns \a range as a user-friendly string.</a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 : QString DataLoggerService::toString(const VoltageRange &amp;range)</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         12 : QString DataLoggerService::toString(const VoltageRange &amp;range)</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : {</a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :     switch (range) {</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         12 :     switch (range) {</span></a>
 <a name="71"><span class="lineNum">      71 </span>            :     case VoltageRange::_0_to_300mV:  return tr(&quot;0 to 300mV&quot;);</a>
 <a name="72"><span class="lineNum">      72 </span>            :     case VoltageRange::_300mV_to_2V: return tr(&quot;300mV to 2V&quot;);</a>
 <a name="73"><span class="lineNum">      73 </span>            :     case VoltageRange::_2V_to_6V:    return tr(&quot;2V to 6V&quot;);</a>
@@ -149,15 +149,15 @@
 <a name="87"><span class="lineNum">      87 </span>            :  *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC voltage</a>
 <a name="88"><span class="lineNum">      88 </span>            :  *  can never be negative, this is relevant for DC voltage only.</a>
 <a name="89"><span class="lineNum">      89 </span>            :  */</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 : QVariant DataLoggerService::minValue(const VoltageRange &amp;range)</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          8 : QVariant DataLoggerService::minValue(const VoltageRange &amp;range)</span></a>
 <a name="91"><span class="lineNum">      91 </span>            : {</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 :     switch (range) {</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :     case VoltageRange::_0_to_300mV:  return     0;</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :     case VoltageRange::_300mV_to_2V: return   300;</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :     case VoltageRange::_2V_to_6V:    return  2000;</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineNoCov">          0 :     case VoltageRange::_6V_to_12V:   return  6000;</span></a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :     case VoltageRange::_12V_to_30V:  return 12000;</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :     case VoltageRange::_30V_to_60V:  return 30000;</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          8 :     switch (range) {</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          1 :     case VoltageRange::_0_to_300mV:  return     0;</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 :     case VoltageRange::_300mV_to_2V: return   300;</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          1 :     case VoltageRange::_2V_to_6V:    return  2000;</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          1 :     case VoltageRange::_6V_to_12V:   return  6000;</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 :     case VoltageRange::_12V_to_30V:  return 12000;</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          1 :     case VoltageRange::_30V_to_60V:  return 30000;</span></a>
 <a name="99"><span class="lineNum">      99 </span>            :     default:                         return QVariant();</a>
 <a name="100"><span class="lineNum">     100 </span>            :     }</a>
 <a name="101"><span class="lineNum">     101 </span>            : }</a>
@@ -166,15 +166,15 @@
 <a name="104"><span class="lineNum">     104 </span>            :  *  Returns the maximum value for \a range in (integer) millivolts, or null QVariant if \a range is</a>
 <a name="105"><span class="lineNum">     105 </span>            :  *  not valid.</a>
 <a name="106"><span class="lineNum">     106 </span>            :  */</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 : QVariant DataLoggerService::maxValue(const VoltageRange &amp;range)</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          8 : QVariant DataLoggerService::maxValue(const VoltageRange &amp;range)</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : {</a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :     switch (range) {</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :     case VoltageRange::_0_to_300mV:  return   300;</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :     case VoltageRange::_300mV_to_2V: return  2000;</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :     case VoltageRange::_2V_to_6V:    return  6000;</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :     case VoltageRange::_6V_to_12V:   return 12000;</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :     case VoltageRange::_12V_to_30V:  return 30000;</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :     case VoltageRange::_30V_to_60V:  return 60000;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          8 :     switch (range) {</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          1 :     case VoltageRange::_0_to_300mV:  return   300;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          1 :     case VoltageRange::_300mV_to_2V: return  2000;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          1 :     case VoltageRange::_2V_to_6V:    return  6000;</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 :     case VoltageRange::_6V_to_12V:   return 12000;</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 :     case VoltageRange::_12V_to_30V:  return 30000;</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          1 :     case VoltageRange::_30V_to_60V:  return 60000;</span></a>
 <a name="116"><span class="lineNum">     116 </span>            :     default:                         return QVariant();</a>
 <a name="117"><span class="lineNum">     117 </span>            :     }</a>
 <a name="118"><span class="lineNum">     118 </span>            : }</a>
@@ -184,9 +184,9 @@
 <a name="122"><span class="lineNum">     122 </span>            : /// when `Mode` is AC or DC current.</a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
 <a name="124"><span class="lineNum">     124 </span>            : /// Returns \a range as a user-friendly string.</a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 : QString DataLoggerService::toString(const CurrentRange &amp;range)</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">         11 : QString DataLoggerService::toString(const CurrentRange &amp;range)</span></a>
 <a name="126"><span class="lineNum">     126 </span>            : {</a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :     switch (range) {</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         11 :     switch (range) {</span></a>
 <a name="128"><span class="lineNum">     128 </span>            :     case CurrentRange::_0_to_10mA:      return tr(&quot;0 to 10mA&quot;);</a>
 <a name="129"><span class="lineNum">     129 </span>            :     case CurrentRange::_10mA_to_30mA:   return tr(&quot;10mA to 30mA&quot;);</a>
 <a name="130"><span class="lineNum">     130 </span>            :     case CurrentRange::_30mA_to_150mA:  return tr(&quot;30mA to 150mA&quot;);</a>
@@ -205,14 +205,14 @@
 <a name="143"><span class="lineNum">     143 </span>            :  *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC current</a>
 <a name="144"><span class="lineNum">     144 </span>            :  *  can never be negative, this is relevant for DC current only.</a>
 <a name="145"><span class="lineNum">     145 </span>            :  */</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 : QVariant DataLoggerService::minValue(const CurrentRange &amp;range)</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          7 : QVariant DataLoggerService::minValue(const CurrentRange &amp;range)</span></a>
 <a name="147"><span class="lineNum">     147 </span>            : {</a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :     switch (range) {</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :     case CurrentRange::_0_to_10mA:      return   0;</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :     case CurrentRange::_10mA_to_30mA:   return  10;</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :     case CurrentRange::_30mA_to_150mA:  return  30;</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :     case CurrentRange::_150mA_to_300mA: return 150;</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :     case CurrentRange::_300mA_to_3A:    return 300;</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          7 :     switch (range) {</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          1 :     case CurrentRange::_0_to_10mA:      return   0;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 :     case CurrentRange::_10mA_to_30mA:   return  10;</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 :     case CurrentRange::_30mA_to_150mA:  return  30;</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          1 :     case CurrentRange::_150mA_to_300mA: return 150;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          1 :     case CurrentRange::_300mA_to_3A:    return 300;</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :     default:                            return QVariant();</a>
 <a name="155"><span class="lineNum">     155 </span>            :     }</a>
 <a name="156"><span class="lineNum">     156 </span>            : }</a>
@@ -221,14 +221,14 @@
 <a name="159"><span class="lineNum">     159 </span>            :  *  Returns the maximum value for \a range in (integer) milliamps, or null QVariant if \a range is</a>
 <a name="160"><span class="lineNum">     160 </span>            :  *  not valid.</a>
 <a name="161"><span class="lineNum">     161 </span>            :  */</a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 : QVariant DataLoggerService::maxValue(const CurrentRange &amp;range)</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          7 : QVariant DataLoggerService::maxValue(const CurrentRange &amp;range)</span></a>
 <a name="163"><span class="lineNum">     163 </span>            : {</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :     switch (range) {</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :     case CurrentRange::_0_to_10mA:      return   10;</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :     case CurrentRange::_10mA_to_30mA:   return   30;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :     case CurrentRange::_30mA_to_150mA:  return  150;</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :     case CurrentRange::_150mA_to_300mA: return  300;</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :     case CurrentRange::_300mA_to_3A:    return 3000;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          7 :     switch (range) {</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 :     case CurrentRange::_0_to_10mA:      return   10;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 :     case CurrentRange::_10mA_to_30mA:   return   30;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 :     case CurrentRange::_30mA_to_150mA:  return  150;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          1 :     case CurrentRange::_150mA_to_300mA: return  300;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 :     case CurrentRange::_300mA_to_3A:    return 3000;</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :     default:                            return QVariant();</a>
 <a name="171"><span class="lineNum">     171 </span>            :     }</a>
 <a name="172"><span class="lineNum">     172 </span>            : }</a>
@@ -237,15 +237,15 @@
 <a name="175"><span class="lineNum">     175 </span>            : /// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics.</a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
 <a name="177"><span class="lineNum">     177 </span>            : /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.</a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 : QString DataLoggerService::toString(const Range &amp;range, const Mode &amp;mode)</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          9 : QString DataLoggerService::toString(const Range &amp;range, const Mode &amp;mode)</span></a>
 <a name="179"><span class="lineNum">     179 </span>            : {</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineNoCov">          0 :     case Mode::DcVoltage:</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          9 :     switch (mode) {</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          4 :     case Mode::DcVoltage:</span></a>
 <a name="182"><span class="lineNum">     182 </span>            :     case Mode::AcVoltage:</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :         return toString(range.voltageRange);</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 :     case Mode::DcCurrent:</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          4 :         return toString(range.voltageRange);</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          4 :     case Mode::DcCurrent:</span></a>
 <a name="185"><span class="lineNum">     185 </span>            :     case Mode::AcCurrent:</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 :         return toString(range.currentRange);</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          4 :         return toString(range.currentRange);</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :     default:</a>
 <a name="188"><span class="lineNum">     188 </span>            :         return QString();</a>
 <a name="189"><span class="lineNum">     189 </span>            :     }</a>
