@@ -276,35 +276,9 @@ bool DataLoggerService::setSettings(const Settings &settings)
         return false;
     }
 
-    static_assert(sizeof(settings.command)        == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.arguments)      == 2, "Expected to be 2 bytes.");
-    static_assert(sizeof(settings.mode)           == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.range)          == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.updateInterval) == 4, "Expected to be 4 bytes.");
-    static_assert(sizeof(settings.timestamp)      == 4, "Expected to be 4 bytes.");
-
-    QByteArray value;
-    QDataStream stream(&value, QIODevice::WriteOnly);
-    stream.setByteOrder(QDataStream::LittleEndian);
-    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
-    stream << (quint8)settings.command << settings.arguments << (quint8)settings.mode
-           << (quint8)settings.range.voltageRange;
-
-    /*!
-     * \pokitApi For Pokit Meter, `updateInterval` is `uint16` seconds (as per the Pokit API 1.00),
-     * however for Pokit Pro it's `uint32` milliseconds, even though that's not officially
-     * documented anywhere.
-     *
-     * \todo Refactor the detection if which device / model we're dealing with.
-     */
-    if (d->controller->services().contains(StatusService::ServiceUuids::pokitMeter)) {
-        stream << (quint16)(settings.updateInterval/1000) << settings.timestamp;
-        Q_ASSERT(value.size() == 11); // According to Pokit API 1.00.
-    } else if (d->controller->services().contains(StatusService::ServiceUuids::pokitPro)) {
-        stream << (quint32)settings.updateInterval << settings.timestamp;
-        Q_ASSERT(value.size() == 13); // According to testing / experimentation.
-    } else {
-        qCWarning(d->lc).noquote() << tr("Don't know how to construct settings value for this device");
+    const QByteArray value = d->encodeSettings(settings,
+        d->controller->services().contains(StatusService::ServiceUuids::pokitPro));
+    if (value.isNull()) {
         return false;
     }
 
@@ -487,6 +461,48 @@ DataLoggerServicePrivate::DataLoggerServicePrivate(
     : AbstractPokitServicePrivate(DataLoggerService::serviceUuid, controller, q)
 {
 
+}
+
+/*!
+ * Returns \a settings in the format Pokit devices expect.
+ *
+ * \todo Make \a pokitPro an enum of known Pokit devices, eg PokitMeter, PokitPro, PokitClamp?
+ */
+QByteArray DataLoggerServicePrivate::encodeSettings(const DataLoggerService::Settings &settings,
+                                                    const bool pokitPro)
+{
+    static_assert(sizeof(settings.command)        == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.arguments)      == 2, "Expected to be 2 bytes.");
+    static_assert(sizeof(settings.mode)           == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.range)          == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.updateInterval) == 4, "Expected to be 4 bytes.");
+    static_assert(sizeof(settings.timestamp)      == 4, "Expected to be 4 bytes.");
+
+    QByteArray value;
+    QDataStream stream(&value, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::LittleEndian);
+    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
+    stream << (quint8)settings.command << settings.arguments << (quint8)settings.mode
+           << (quint8)settings.range.voltageRange;
+
+    /*!
+     * \pokitApi For Pokit Meter, `updateInterval` is `uint16` seconds (as per the Pokit API 1.00),
+     * however for Pokit Pro it's `uint32` milliseconds, even though that's not officially
+     * documented anywhere.
+     */
+
+    if (!pokitPro) {
+        stream << (quint16)(settings.updateInterval/1000) << settings.timestamp;
+        Q_ASSERT(value.size() == 11); // According to Pokit API 1.00.
+    } else {
+        stream << (quint32)settings.updateInterval << settings.timestamp;
+        Q_ASSERT(value.size() == 13); // According to testing / experimentation.
+    }
+
+//    default:
+//        qCWarning(d->lc).noquote() << tr("Don't know how to construct settings value for this device");
+//        return QByteArray();
+    return value;
 }
 
 /*!

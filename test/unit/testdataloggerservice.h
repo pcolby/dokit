@@ -47,6 +47,9 @@ private slots:
     void enableReadingNotifications();
     void disableReadingNotifications();
 
+    void encodeSettings_data();
+    void encodeSettings();
+
     void parseMetadata_data();
     void parseMetadata();
 

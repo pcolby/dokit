@@ -12,6 +12,7 @@ Q_DECLARE_METATYPE(DataLoggerService::Mode);
 Q_DECLARE_METATYPE(DataLoggerService::VoltageRange);
 Q_DECLARE_METATYPE(DataLoggerService::CurrentRange);
 Q_DECLARE_METATYPE(DataLoggerService::Range);
+Q_DECLARE_METATYPE(DataLoggerService::Settings);
 Q_DECLARE_METATYPE(DataLoggerService::Metadata);
 
 void TestDataLoggerService::toString_Mode_data()
@@ -300,6 +301,87 @@ void TestDataLoggerService::disableReadingNotifications()
     // Verify safe error handling (can't do much else without a Bluetooth device).
     DataLoggerService service(nullptr);
     QVERIFY(!service.disableReadingNotifications());
+}
+
+void TestDataLoggerService::encodeSettings_data()
+{
+    QTest::addColumn<DataLoggerService::Settings>("settings");
+    QTest::addColumn<bool>("pokitPro"); ///< \todo This will be an enum sometime.
+    QTest::addColumn<QByteArray>("expected");
+
+    // Valid "stop" settings for Pokit Meter and Pokit Pro.
+    QTest::addRow("stop:meter")
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Stop,
+            0, DataLoggerService::Mode::Idle,
+            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+        }
+        << false
+        << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
+    QTest::addRow("stop:pro")
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Stop,
+            0, DataLoggerService::Mode::Idle,
+            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+        }
+        << true
+        << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
+
+    // Valid "refresh" settings for Pokit Meter and Pokit Pro.
+    QTest::addRow("refresh:meter")
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Refresh,
+            0, DataLoggerService::Mode::Idle,
+            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+        }
+        << false
+        << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
+    QTest::addRow("refresh:pro")
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Refresh,
+            0, DataLoggerService::Mode::Idle,
+            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+        }
+        << true
+        << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
+
+    // Contrived "start" settings.
+    QTest::addRow("zeroed")
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start,
+            0, DataLoggerService::Mode::Idle,
+            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+        }
+        << true
+        << QByteArray("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
+
+    // Realistic "start" settings example.
+    QTest::addRow("AcVoltage")
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start,
+            0, DataLoggerService::Mode::AcVoltage,
+            { DataLoggerService::VoltageRange::_30V_to_60V }, 60*1000, (quint32)16537226070
+        }
+        << true
+        << QByteArray("\x00\x00\x00\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
+
+    // "start" settings with the reserved parameter touched.
+    QTest::addRow("reserved")
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start,
+            (quint16)0xAABB, DataLoggerService::Mode::AcVoltage,
+            { DataLoggerService::VoltageRange::_30V_to_60V }, 60*1000u, (quint32)16537226070
+        }
+        << true
+        << QByteArray("\x00\xBB\xAA\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
+}
+
+void TestDataLoggerService::encodeSettings()
+{
+    QFETCH(DataLoggerService::Settings, settings);
+    QFETCH(bool, pokitPro);
+    QFETCH(QByteArray, expected);
+    QCOMPARE(DataLoggerServicePrivate::encodeSettings(settings, pokitPro), expected);
 }
 
 void TestDataLoggerService::parseMetadata_data()
