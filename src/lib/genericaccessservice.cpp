@@ -245,7 +245,7 @@ void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteris
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic read for Generic Access Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for Generic Access service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

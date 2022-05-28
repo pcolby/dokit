@@ -45,6 +45,8 @@ void TestCalibrationService::characteristicWritten()
 {
     // Verify safe error handling.
     CalibrationService service(nullptr);
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+        "^Unknown characteristic written for Calibration service .*$")));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 

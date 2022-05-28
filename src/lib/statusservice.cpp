@@ -500,7 +500,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic read for Status Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for Status service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

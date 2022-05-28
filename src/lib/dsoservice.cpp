@@ -521,7 +521,7 @@ void DsoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &chara
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic read for DSO Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for DSO service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
