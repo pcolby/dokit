@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">147</td>
-            <td class="headerCovTableEntry">179</td>
-            <td class="headerCovTableEntryMed">82.1 %</td>
+            <td class="headerCovTableEntry">180</td>
+            <td class="headerCovTableEntryMed">81.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -338,200 +338,200 @@
 <a name="276"><span class="lineNum">     276 </span>            :         return false;</a>
 <a name="277"><span class="lineNum">     277 </span>            :     }</a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
-<a name="279"><span class="lineNum">     279 </span>            :     const QByteArray value = d-&gt;encodeSettings(settings,</a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :         d-&gt;controller-&gt;services().contains(StatusService::ServiceUuids::pokitPro));</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :     if (value.isNull()) {</span></a>
-<a name="282"><span class="lineNum">     282 </span>            :         return false;</a>
-<a name="283"><span class="lineNum">     283 </span>            :     }</a>
-<a name="284"><span class="lineNum">     284 </span>            : </a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></a>
-<a name="287"><span class="lineNum">     287 </span>            : }</a>
-<a name="288"><span class="lineNum">     288 </span>            : </a>
-<a name="289"><span class="lineNum">     289 </span>            : /*!</a>
-<a name="290"><span class="lineNum">     290 </span>            :  * Start the data logger with \a settings.</a>
-<a name="291"><span class="lineNum">     291 </span>            :  *</a>
-<a name="292"><span class="lineNum">     292 </span>            :  * This is just a synonym for setSettings() except makes the caller's intention more explicit, and</a>
-<a name="293"><span class="lineNum">     293 </span>            :  * sanity-checks that the settings's command is DataLoggerService::Command::Start.</a>
-<a name="294"><span class="lineNum">     294 </span>            :  */</a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          3 : bool DataLoggerService::startLogger(const Settings &amp;settings)</span></a>
-<a name="296"><span class="lineNum">     296 </span>            : {</a>
-<a name="297"><span class="lineNum">     297 </span>            :     Q_D(const DataLoggerService);</a>
-<a name="298"><span class="lineNum">     298 </span>            :     Q_ASSERT(settings.command == DataLoggerService::Command::Start);</a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          3 :     if (settings.command != DataLoggerService::Command::Start) {</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          4 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(&quot;Settings command must be 'Start'.&quot;);</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          2 :         return false;</span></a>
-<a name="302"><span class="lineNum">     302 </span>            :     }</a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          1 :     return setSettings(settings);</span></a>
-<a name="304"><span class="lineNum">     304 </span>            : }</a>
-<a name="305"><span class="lineNum">     305 </span>            : </a>
-<a name="306"><span class="lineNum">     306 </span>            : /*!</a>
-<a name="307"><span class="lineNum">     307 </span>            :  * Stop the data logger.</a>
-<a name="308"><span class="lineNum">     308 </span>            :  *</a>
-<a name="309"><span class="lineNum">     309 </span>            :  * This is just a convenience function equivalent to calling setSettings() with the command set to</a>
-<a name="310"><span class="lineNum">     310 </span>            :  * DataLoggerService::Command::Stop.</a>
-<a name="311"><span class="lineNum">     311 </span>            :  */</a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          1 : bool DataLoggerService::stopLogger()</span></a>
-<a name="313"><span class="lineNum">     313 </span>            : {</a>
-<a name="314"><span class="lineNum">     314 </span>            :     // Note, only the Settings::command member need be set, since the others are all ignored by the</a>
-<a name="315"><span class="lineNum">     315 </span>            :     // Pokit device when the command is Stop. However, we still explicitly initialise all other</a>
-<a name="316"><span class="lineNum">     316 </span>            :     // members just to ensure we're never exposing uninitialised RAM to an external device.</a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          1 :     return setSettings({</span></a>
-<a name="318"><span class="lineNum">     318 </span>            :         DataLoggerService::Command::Stop,</a>
-<a name="319"><span class="lineNum">     319 </span>            :         0, DataLoggerService::Mode::Idle,</a>
-<a name="320"><span class="lineNum">     320 </span>            :         { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0</a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          1 :     });</span></a>
-<a name="322"><span class="lineNum">     322 </span>            : }</a>
-<a name="323"><span class="lineNum">     323 </span>            : </a>
-<a name="324"><span class="lineNum">     324 </span>            : /*!</a>
-<a name="325"><span class="lineNum">     325 </span>            :  * Start the data logger.</a>
-<a name="326"><span class="lineNum">     326 </span>            :  *</a>
-<a name="327"><span class="lineNum">     327 </span>            :  * This is just a convenience function equivalent to calling setSettings() with the command set to</a>
-<a name="328"><span class="lineNum">     328 </span>            :  * DataLoggerService::Command::Refresh.</a>
-<a name="329"><span class="lineNum">     329 </span>            :  *</a>
-<a name="330"><span class="lineNum">     330 </span>            :  * Once the Pokit device has processed this request succesffully, the device will begin notifying</a>
-<a name="331"><span class="lineNum">     331 </span>            :  * the `Metadata` and `Reading` characteristic, resulting in emits of metadataRead and samplesRead</a>
-<a name="332"><span class="lineNum">     332 </span>            :  * respectively.</a>
-<a name="333"><span class="lineNum">     333 </span>            :  */</a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          1 : bool DataLoggerService::fetchSamples()</span></a>
-<a name="335"><span class="lineNum">     335 </span>            : {</a>
-<a name="336"><span class="lineNum">     336 </span>            :     // Note, only the Settings::command member need be set, since the others are all ignored by the</a>
-<a name="337"><span class="lineNum">     337 </span>            :     // Pokit device when the command is Refresh. However, we still explicitly initialise all other</a>
-<a name="338"><span class="lineNum">     338 </span>            :     // members just to ensure we're never exposing uninitialised RAM to an external device.</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          1 :     return setSettings({</span></a>
-<a name="340"><span class="lineNum">     340 </span>            :         DataLoggerService::Command::Refresh,</a>
-<a name="341"><span class="lineNum">     341 </span>            :         0, DataLoggerService::Mode::Idle,</a>
-<a name="342"><span class="lineNum">     342 </span>            :         { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          1 :     });</span></a>
-<a name="344"><span class="lineNum">     344 </span>            : }</a>
-<a name="345"><span class="lineNum">     345 </span>            : </a>
-<a name="346"><span class="lineNum">     346 </span>            : /*!</a>
-<a name="347"><span class="lineNum">     347 </span>            :  * Returns the most recent value of the `DataLogger` service's `Metadata` characteristic.</a>
-<a name="348"><span class="lineNum">     348 </span>            :  *</a>
-<a name="349"><span class="lineNum">     349 </span>            :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</a>
-<a name="350"><span class="lineNum">     350 </span>            :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the</a>
-<a name="351"><span class="lineNum">     351 </span>            :  * returned DataLoggerService::Metadata::scale member will be a quiet NaN, which can be checked like:</a>
-<a name="352"><span class="lineNum">     352 </span>            :  *</a>
-<a name="353"><span class="lineNum">     353 </span>            :  * ```</a>
-<a name="354"><span class="lineNum">     354 </span>            :  * const DataLoggerService::Metadata metadata = multimeterService-&gt;metadata();</a>
-<a name="355"><span class="lineNum">     355 </span>            :  * if (qIsNaN(metadata.scale)) {</a>
-<a name="356"><span class="lineNum">     356 </span>            :  *     // Handle failure.</a>
-<a name="357"><span class="lineNum">     357 </span>            :  * }</a>
-<a name="358"><span class="lineNum">     358 </span>            :  * ```</a>
-<a name="359"><span class="lineNum">     359 </span>            :  */</a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          1 : DataLoggerService::Metadata DataLoggerService::metadata() const</span></a>
-<a name="361"><span class="lineNum">     361 </span>            : {</a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          1 :     Q_D(const DataLoggerService);</span></a>
-<a name="363"><span class="lineNum">     363 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          1 :         d-&gt;getCharacteristic(CharacteristicUuids::metadata);</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          2 :     return (characteristic.isValid()) ? DataLoggerServicePrivate::parseMetadata(characteristic.value())</span></a>
-<a name="366"><span class="lineNum">     366 </span>            :         : Metadata{ LoggerStatus::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          2 :                     Mode::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };</span></a>
-<a name="368"><span class="lineNum">     368 </span>            : }</a>
-<a name="369"><span class="lineNum">     369 </span>            : </a>
-<a name="370"><span class="lineNum">     370 </span>            : /*!</a>
-<a name="371"><span class="lineNum">     371 </span>            :  * Enables client-side notifications of Data Logger metadata changes.</a>
-<a name="372"><span class="lineNum">     372 </span>            :  *</a>
-<a name="373"><span class="lineNum">     373 </span>            :  * This is an alternative to manually requesting individual reads via readMetadataCharacteristic().</a>
-<a name="374"><span class="lineNum">     374 </span>            :  *</a>
-<a name="375"><span class="lineNum">     375 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
-<a name="376"><span class="lineNum">     376 </span>            :  *</a>
-<a name="377"><span class="lineNum">     377 </span>            :  * Successfully read values (if any) will be emitted via the metadataRead() signal.</a>
-<a name="378"><span class="lineNum">     378 </span>            :  */</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          1 : bool DataLoggerService::enableMetadataNotifications()</span></a>
-<a name="380"><span class="lineNum">     380 </span>            : {</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          1 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::metadata);</span></a>
-<a name="383"><span class="lineNum">     383 </span>            : }</a>
-<a name="384"><span class="lineNum">     384 </span>            : </a>
-<a name="385"><span class="lineNum">     385 </span>            : /*!</a>
-<a name="386"><span class="lineNum">     386 </span>            :  * Disables client-side notifications of Data Logger metadata changes.</a>
-<a name="387"><span class="lineNum">     387 </span>            :  *</a>
-<a name="388"><span class="lineNum">     388 </span>            :  * Instantaneous reads can still be fetched by readMetadatCharacteristic().</a>
-<a name="389"><span class="lineNum">     389 </span>            :  *</a>
-<a name="390"><span class="lineNum">     390 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
-<a name="391"><span class="lineNum">     391 </span>            :  */</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">          1 : bool DataLoggerService::disableMetadatNotifications()</span></a>
-<a name="393"><span class="lineNum">     393 </span>            : {</a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          1 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::metadata);</span></a>
-<a name="396"><span class="lineNum">     396 </span>            : }</a>
-<a name="397"><span class="lineNum">     397 </span>            : </a>
-<a name="398"><span class="lineNum">     398 </span>            : /*!</a>
-<a name="399"><span class="lineNum">     399 </span>            :  * Enables client-side notifications of Data Logger readings.</a>
-<a name="400"><span class="lineNum">     400 </span>            :  *</a>
-<a name="401"><span class="lineNum">     401 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
-<a name="402"><span class="lineNum">     402 </span>            :  *</a>
-<a name="403"><span class="lineNum">     403 </span>            :  * Successfully read samples (if any) will be emitted via the samplesRead() signal.</a>
-<a name="404"><span class="lineNum">     404 </span>            :  */</a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">          1 : bool DataLoggerService::enableReadingNotifications()</span></a>
-<a name="406"><span class="lineNum">     406 </span>            : {</a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          1 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
-<a name="409"><span class="lineNum">     409 </span>            : }</a>
-<a name="410"><span class="lineNum">     410 </span>            : </a>
-<a name="411"><span class="lineNum">     411 </span>            : /*!</a>
-<a name="412"><span class="lineNum">     412 </span>            :  * Disables client-side notifications of Data Logger readings.</a>
-<a name="413"><span class="lineNum">     413 </span>            :  *</a>
-<a name="414"><span class="lineNum">     414 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
-<a name="415"><span class="lineNum">     415 </span>            :  */</a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">          1 : bool DataLoggerService::disableReadingNotifications()</span></a>
-<a name="417"><span class="lineNum">     417 </span>            : {</a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">          1 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
-<a name="420"><span class="lineNum">     420 </span>            : }</a>
-<a name="421"><span class="lineNum">     421 </span>            : </a>
-<a name="422"><span class="lineNum">     422 </span>            : /*!</a>
-<a name="423"><span class="lineNum">     423 </span>            :  * \fn DataLoggerService::settingsWritten</a>
-<a name="424"><span class="lineNum">     424 </span>            :  *</a>
-<a name="425"><span class="lineNum">     425 </span>            :  * This signal is emitted when the `Settings` characteristic has been written successfully.</a>
-<a name="426"><span class="lineNum">     426 </span>            :  *</a>
-<a name="427"><span class="lineNum">     427 </span>            :  * \see setSettings</a>
-<a name="428"><span class="lineNum">     428 </span>            :  */</a>
-<a name="429"><span class="lineNum">     429 </span>            : </a>
-<a name="430"><span class="lineNum">     430 </span>            : /*!</a>
-<a name="431"><span class="lineNum">     431 </span>            :  * \fn DataLoggerService::metadataRead</a>
-<a name="432"><span class="lineNum">     432 </span>            :  *</a>
-<a name="433"><span class="lineNum">     433 </span>            :  * This signal is emitted when the `Metadata` characteristic has been read successfully.</a>
-<a name="434"><span class="lineNum">     434 </span>            :  *</a>
-<a name="435"><span class="lineNum">     435 </span>            :  * \see readMetadataCharacteristic</a>
-<a name="436"><span class="lineNum">     436 </span>            :  */</a>
-<a name="437"><span class="lineNum">     437 </span>            : </a>
-<a name="438"><span class="lineNum">     438 </span>            : /*!</a>
-<a name="439"><span class="lineNum">     439 </span>            :  * \fn DataLoggerService::samplesRead</a>
-<a name="440"><span class="lineNum">     440 </span>            :  *</a>
-<a name="441"><span class="lineNum">     441 </span>            :  * This signal is emitted when the `Reading` characteristic has been notified.</a>
-<a name="442"><span class="lineNum">     442 </span>            :  *</a>
-<a name="443"><span class="lineNum">     443 </span>            :  * \see beginSampling</a>
-<a name="444"><span class="lineNum">     444 </span>            :  * \see stopSampling</a>
-<a name="445"><span class="lineNum">     445 </span>            :  */</a>
-<a name="446"><span class="lineNum">     446 </span>            : </a>
+<a name="279"><span class="lineNum">     279 </span>            :     const bool updateIntervalIs32bit =</a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :         (d-&gt;getCharacteristic(CharacteristicUuids::metadata).value().size() &gt;= 23);</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :     const QByteArray value = d-&gt;encodeSettings(settings, updateIntervalIs32bit);</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :     if (value.isNull()) {</span></a>
+<a name="283"><span class="lineNum">     283 </span>            :         return false;</a>
+<a name="284"><span class="lineNum">     284 </span>            :     }</a>
+<a name="285"><span class="lineNum">     285 </span>            : </a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></a>
+<a name="288"><span class="lineNum">     288 </span>            : }</a>
+<a name="289"><span class="lineNum">     289 </span>            : </a>
+<a name="290"><span class="lineNum">     290 </span>            : /*!</a>
+<a name="291"><span class="lineNum">     291 </span>            :  * Start the data logger with \a settings.</a>
+<a name="292"><span class="lineNum">     292 </span>            :  *</a>
+<a name="293"><span class="lineNum">     293 </span>            :  * This is just a synonym for setSettings() except makes the caller's intention more explicit, and</a>
+<a name="294"><span class="lineNum">     294 </span>            :  * sanity-checks that the settings's command is DataLoggerService::Command::Start.</a>
+<a name="295"><span class="lineNum">     295 </span>            :  */</a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">          3 : bool DataLoggerService::startLogger(const Settings &amp;settings)</span></a>
+<a name="297"><span class="lineNum">     297 </span>            : {</a>
+<a name="298"><span class="lineNum">     298 </span>            :     Q_D(const DataLoggerService);</a>
+<a name="299"><span class="lineNum">     299 </span>            :     Q_ASSERT(settings.command == DataLoggerService::Command::Start);</a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          3 :     if (settings.command != DataLoggerService::Command::Start) {</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          4 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(&quot;Settings command must be 'Start'.&quot;);</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          2 :         return false;</span></a>
+<a name="303"><span class="lineNum">     303 </span>            :     }</a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          1 :     return setSettings(settings);</span></a>
+<a name="305"><span class="lineNum">     305 </span>            : }</a>
+<a name="306"><span class="lineNum">     306 </span>            : </a>
+<a name="307"><span class="lineNum">     307 </span>            : /*!</a>
+<a name="308"><span class="lineNum">     308 </span>            :  * Stop the data logger.</a>
+<a name="309"><span class="lineNum">     309 </span>            :  *</a>
+<a name="310"><span class="lineNum">     310 </span>            :  * This is just a convenience function equivalent to calling setSettings() with the command set to</a>
+<a name="311"><span class="lineNum">     311 </span>            :  * DataLoggerService::Command::Stop.</a>
+<a name="312"><span class="lineNum">     312 </span>            :  */</a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          1 : bool DataLoggerService::stopLogger()</span></a>
+<a name="314"><span class="lineNum">     314 </span>            : {</a>
+<a name="315"><span class="lineNum">     315 </span>            :     // Note, only the Settings::command member need be set, since the others are all ignored by the</a>
+<a name="316"><span class="lineNum">     316 </span>            :     // Pokit device when the command is Stop. However, we still explicitly initialise all other</a>
+<a name="317"><span class="lineNum">     317 </span>            :     // members just to ensure we're never exposing uninitialised RAM to an external device.</a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">          1 :     return setSettings({</span></a>
+<a name="319"><span class="lineNum">     319 </span>            :         DataLoggerService::Command::Stop,</a>
+<a name="320"><span class="lineNum">     320 </span>            :         0, DataLoggerService::Mode::Idle,</a>
+<a name="321"><span class="lineNum">     321 </span>            :         { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0</a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          1 :     });</span></a>
+<a name="323"><span class="lineNum">     323 </span>            : }</a>
+<a name="324"><span class="lineNum">     324 </span>            : </a>
+<a name="325"><span class="lineNum">     325 </span>            : /*!</a>
+<a name="326"><span class="lineNum">     326 </span>            :  * Start the data logger.</a>
+<a name="327"><span class="lineNum">     327 </span>            :  *</a>
+<a name="328"><span class="lineNum">     328 </span>            :  * This is just a convenience function equivalent to calling setSettings() with the command set to</a>
+<a name="329"><span class="lineNum">     329 </span>            :  * DataLoggerService::Command::Refresh.</a>
+<a name="330"><span class="lineNum">     330 </span>            :  *</a>
+<a name="331"><span class="lineNum">     331 </span>            :  * Once the Pokit device has processed this request succesffully, the device will begin notifying</a>
+<a name="332"><span class="lineNum">     332 </span>            :  * the `Metadata` and `Reading` characteristic, resulting in emits of metadataRead and samplesRead</a>
+<a name="333"><span class="lineNum">     333 </span>            :  * respectively.</a>
+<a name="334"><span class="lineNum">     334 </span>            :  */</a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          1 : bool DataLoggerService::fetchSamples()</span></a>
+<a name="336"><span class="lineNum">     336 </span>            : {</a>
+<a name="337"><span class="lineNum">     337 </span>            :     // Note, only the Settings::command member need be set, since the others are all ignored by the</a>
+<a name="338"><span class="lineNum">     338 </span>            :     // Pokit device when the command is Refresh. However, we still explicitly initialise all other</a>
+<a name="339"><span class="lineNum">     339 </span>            :     // members just to ensure we're never exposing uninitialised RAM to an external device.</a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          1 :     return setSettings({</span></a>
+<a name="341"><span class="lineNum">     341 </span>            :         DataLoggerService::Command::Refresh,</a>
+<a name="342"><span class="lineNum">     342 </span>            :         0, DataLoggerService::Mode::Idle,</a>
+<a name="343"><span class="lineNum">     343 </span>            :         { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0</a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          1 :     });</span></a>
+<a name="345"><span class="lineNum">     345 </span>            : }</a>
+<a name="346"><span class="lineNum">     346 </span>            : </a>
+<a name="347"><span class="lineNum">     347 </span>            : /*!</a>
+<a name="348"><span class="lineNum">     348 </span>            :  * Returns the most recent value of the `DataLogger` service's `Metadata` characteristic.</a>
+<a name="349"><span class="lineNum">     349 </span>            :  *</a>
+<a name="350"><span class="lineNum">     350 </span>            :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</a>
+<a name="351"><span class="lineNum">     351 </span>            :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the</a>
+<a name="352"><span class="lineNum">     352 </span>            :  * returned DataLoggerService::Metadata::scale member will be a quiet NaN, which can be checked like:</a>
+<a name="353"><span class="lineNum">     353 </span>            :  *</a>
+<a name="354"><span class="lineNum">     354 </span>            :  * ```</a>
+<a name="355"><span class="lineNum">     355 </span>            :  * const DataLoggerService::Metadata metadata = multimeterService-&gt;metadata();</a>
+<a name="356"><span class="lineNum">     356 </span>            :  * if (qIsNaN(metadata.scale)) {</a>
+<a name="357"><span class="lineNum">     357 </span>            :  *     // Handle failure.</a>
+<a name="358"><span class="lineNum">     358 </span>            :  * }</a>
+<a name="359"><span class="lineNum">     359 </span>            :  * ```</a>
+<a name="360"><span class="lineNum">     360 </span>            :  */</a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">          1 : DataLoggerService::Metadata DataLoggerService::metadata() const</span></a>
+<a name="362"><span class="lineNum">     362 </span>            : {</a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          1 :     Q_D(const DataLoggerService);</span></a>
+<a name="364"><span class="lineNum">     364 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          1 :         d-&gt;getCharacteristic(CharacteristicUuids::metadata);</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          2 :     return (characteristic.isValid()) ? DataLoggerServicePrivate::parseMetadata(characteristic.value())</span></a>
+<a name="367"><span class="lineNum">     367 </span>            :         : Metadata{ LoggerStatus::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          2 :                     Mode::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };</span></a>
+<a name="369"><span class="lineNum">     369 </span>            : }</a>
+<a name="370"><span class="lineNum">     370 </span>            : </a>
+<a name="371"><span class="lineNum">     371 </span>            : /*!</a>
+<a name="372"><span class="lineNum">     372 </span>            :  * Enables client-side notifications of Data Logger metadata changes.</a>
+<a name="373"><span class="lineNum">     373 </span>            :  *</a>
+<a name="374"><span class="lineNum">     374 </span>            :  * This is an alternative to manually requesting individual reads via readMetadataCharacteristic().</a>
+<a name="375"><span class="lineNum">     375 </span>            :  *</a>
+<a name="376"><span class="lineNum">     376 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
+<a name="377"><span class="lineNum">     377 </span>            :  *</a>
+<a name="378"><span class="lineNum">     378 </span>            :  * Successfully read values (if any) will be emitted via the metadataRead() signal.</a>
+<a name="379"><span class="lineNum">     379 </span>            :  */</a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          1 : bool DataLoggerService::enableMetadataNotifications()</span></a>
+<a name="381"><span class="lineNum">     381 </span>            : {</a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">          1 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::metadata);</span></a>
+<a name="384"><span class="lineNum">     384 </span>            : }</a>
+<a name="385"><span class="lineNum">     385 </span>            : </a>
+<a name="386"><span class="lineNum">     386 </span>            : /*!</a>
+<a name="387"><span class="lineNum">     387 </span>            :  * Disables client-side notifications of Data Logger metadata changes.</a>
+<a name="388"><span class="lineNum">     388 </span>            :  *</a>
+<a name="389"><span class="lineNum">     389 </span>            :  * Instantaneous reads can still be fetched by readMetadatCharacteristic().</a>
+<a name="390"><span class="lineNum">     390 </span>            :  *</a>
+<a name="391"><span class="lineNum">     391 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
+<a name="392"><span class="lineNum">     392 </span>            :  */</a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          1 : bool DataLoggerService::disableMetadatNotifications()</span></a>
+<a name="394"><span class="lineNum">     394 </span>            : {</a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">          1 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::metadata);</span></a>
+<a name="397"><span class="lineNum">     397 </span>            : }</a>
+<a name="398"><span class="lineNum">     398 </span>            : </a>
+<a name="399"><span class="lineNum">     399 </span>            : /*!</a>
+<a name="400"><span class="lineNum">     400 </span>            :  * Enables client-side notifications of Data Logger readings.</a>
+<a name="401"><span class="lineNum">     401 </span>            :  *</a>
+<a name="402"><span class="lineNum">     402 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
+<a name="403"><span class="lineNum">     403 </span>            :  *</a>
+<a name="404"><span class="lineNum">     404 </span>            :  * Successfully read samples (if any) will be emitted via the samplesRead() signal.</a>
+<a name="405"><span class="lineNum">     405 </span>            :  */</a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          1 : bool DataLoggerService::enableReadingNotifications()</span></a>
+<a name="407"><span class="lineNum">     407 </span>            : {</a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">          1 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
+<a name="410"><span class="lineNum">     410 </span>            : }</a>
+<a name="411"><span class="lineNum">     411 </span>            : </a>
+<a name="412"><span class="lineNum">     412 </span>            : /*!</a>
+<a name="413"><span class="lineNum">     413 </span>            :  * Disables client-side notifications of Data Logger readings.</a>
+<a name="414"><span class="lineNum">     414 </span>            :  *</a>
+<a name="415"><span class="lineNum">     415 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
+<a name="416"><span class="lineNum">     416 </span>            :  */</a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">          1 : bool DataLoggerService::disableReadingNotifications()</span></a>
+<a name="418"><span class="lineNum">     418 </span>            : {</a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineCov">          1 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
+<a name="421"><span class="lineNum">     421 </span>            : }</a>
+<a name="422"><span class="lineNum">     422 </span>            : </a>
+<a name="423"><span class="lineNum">     423 </span>            : /*!</a>
+<a name="424"><span class="lineNum">     424 </span>            :  * \fn DataLoggerService::settingsWritten</a>
+<a name="425"><span class="lineNum">     425 </span>            :  *</a>
+<a name="426"><span class="lineNum">     426 </span>            :  * This signal is emitted when the `Settings` characteristic has been written successfully.</a>
+<a name="427"><span class="lineNum">     427 </span>            :  *</a>
+<a name="428"><span class="lineNum">     428 </span>            :  * \see setSettings</a>
+<a name="429"><span class="lineNum">     429 </span>            :  */</a>
+<a name="430"><span class="lineNum">     430 </span>            : </a>
+<a name="431"><span class="lineNum">     431 </span>            : /*!</a>
+<a name="432"><span class="lineNum">     432 </span>            :  * \fn DataLoggerService::metadataRead</a>
+<a name="433"><span class="lineNum">     433 </span>            :  *</a>
+<a name="434"><span class="lineNum">     434 </span>            :  * This signal is emitted when the `Metadata` characteristic has been read successfully.</a>
+<a name="435"><span class="lineNum">     435 </span>            :  *</a>
+<a name="436"><span class="lineNum">     436 </span>            :  * \see readMetadataCharacteristic</a>
+<a name="437"><span class="lineNum">     437 </span>            :  */</a>
+<a name="438"><span class="lineNum">     438 </span>            : </a>
+<a name="439"><span class="lineNum">     439 </span>            : /*!</a>
+<a name="440"><span class="lineNum">     440 </span>            :  * \fn DataLoggerService::samplesRead</a>
+<a name="441"><span class="lineNum">     441 </span>            :  *</a>
+<a name="442"><span class="lineNum">     442 </span>            :  * This signal is emitted when the `Reading` characteristic has been notified.</a>
+<a name="443"><span class="lineNum">     443 </span>            :  *</a>
+<a name="444"><span class="lineNum">     444 </span>            :  * \see beginSampling</a>
+<a name="445"><span class="lineNum">     445 </span>            :  * \see stopSampling</a>
+<a name="446"><span class="lineNum">     446 </span>            :  */</a>
 <a name="447"><span class="lineNum">     447 </span>            : </a>
-<a name="448"><span class="lineNum">     448 </span>            : /*!</a>
-<a name="449"><span class="lineNum">     449 </span>            :  * \cond internal</a>
-<a name="450"><span class="lineNum">     450 </span>            :  * \class DataLoggerServicePrivate</a>
-<a name="451"><span class="lineNum">     451 </span>            :  *</a>
-<a name="452"><span class="lineNum">     452 </span>            :  * The DataLoggerServicePrivate class provides private implementation for DataLoggerService.</a>
-<a name="453"><span class="lineNum">     453 </span>            :  */</a>
-<a name="454"><span class="lineNum">     454 </span>            : </a>
-<a name="455"><span class="lineNum">     455 </span>            : /*!</a>
-<a name="456"><span class="lineNum">     456 </span>            :  * \internal</a>
-<a name="457"><span class="lineNum">     457 </span>            :  * Constructs a new DataLoggerServicePrivate object with public implementation \a q.</a>
-<a name="458"><span class="lineNum">     458 </span>            :  */</a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">         14 : DataLoggerServicePrivate::DataLoggerServicePrivate(</span></a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         14 :     QLowEnergyController * controller, DataLoggerService * const q)</span></a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">         14 :     : AbstractPokitServicePrivate(DataLoggerService::serviceUuid, controller, q)</span></a>
-<a name="462"><span class="lineNum">     462 </span>            : {</a>
-<a name="463"><span class="lineNum">     463 </span>            : </a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">         14 : }</span></a>
-<a name="465"><span class="lineNum">     465 </span>            : </a>
-<a name="466"><span class="lineNum">     466 </span>            : /*!</a>
-<a name="467"><span class="lineNum">     467 </span>            :  * Returns \a settings in the format Pokit devices expect.</a>
-<a name="468"><span class="lineNum">     468 </span>            :  *</a>
-<a name="469"><span class="lineNum">     469 </span>            :  * \todo Make \a pokitPro an enum of known Pokit devices, eg PokitMeter, PokitPro, PokitClamp?</a>
+<a name="448"><span class="lineNum">     448 </span>            : </a>
+<a name="449"><span class="lineNum">     449 </span>            : /*!</a>
+<a name="450"><span class="lineNum">     450 </span>            :  * \cond internal</a>
+<a name="451"><span class="lineNum">     451 </span>            :  * \class DataLoggerServicePrivate</a>
+<a name="452"><span class="lineNum">     452 </span>            :  *</a>
+<a name="453"><span class="lineNum">     453 </span>            :  * The DataLoggerServicePrivate class provides private implementation for DataLoggerService.</a>
+<a name="454"><span class="lineNum">     454 </span>            :  */</a>
+<a name="455"><span class="lineNum">     455 </span>            : </a>
+<a name="456"><span class="lineNum">     456 </span>            : /*!</a>
+<a name="457"><span class="lineNum">     457 </span>            :  * \internal</a>
+<a name="458"><span class="lineNum">     458 </span>            :  * Constructs a new DataLoggerServicePrivate object with public implementation \a q.</a>
+<a name="459"><span class="lineNum">     459 </span>            :  */</a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         14 : DataLoggerServicePrivate::DataLoggerServicePrivate(</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">         14 :     QLowEnergyController * controller, DataLoggerService * const q)</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         14 :     : AbstractPokitServicePrivate(DataLoggerService::serviceUuid, controller, q)</span></a>
+<a name="463"><span class="lineNum">     463 </span>            : {</a>
+<a name="464"><span class="lineNum">     464 </span>            : </a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">         14 : }</span></a>
+<a name="466"><span class="lineNum">     466 </span>            : </a>
+<a name="467"><span class="lineNum">     467 </span>            : /*!</a>
+<a name="468"><span class="lineNum">     468 </span>            :  * Returns \a settings in the format Pokit devices expect. If \a updateIntervalIs32bit is 32-bit</a>
+<a name="469"><span class="lineNum">     469 </span>            :  * then the `Update Interval` field will be encoded in 32-bit instead of 16.</a>
 <a name="470"><span class="lineNum">     470 </span>            :  */</a>
 <a name="471"><span class="lineNum">     471 </span><span class="lineCov">          7 : QByteArray DataLoggerServicePrivate::encodeSettings(const DataLoggerService::Settings &amp;settings,</span></a>
-<a name="472"><span class="lineNum">     472 </span>            :                                                     const bool pokitPro)</a>
+<a name="472"><span class="lineNum">     472 </span>            :                                                     const bool updateIntervalIs32bit)</a>
 <a name="473"><span class="lineNum">     473 </span>            : {</a>
 <a name="474"><span class="lineNum">     474 </span>            :     static_assert(sizeof(settings.command)        == 1, &quot;Expected to be 1 byte.&quot;);</a>
 <a name="475"><span class="lineNum">     475 </span>            :     static_assert(sizeof(settings.arguments)      == 2, &quot;Expected to be 2 bytes.&quot;);</a>
@@ -553,8 +553,8 @@
 <a name="491"><span class="lineNum">     491 </span>            :      * documented anywhere.</a>
 <a name="492"><span class="lineNum">     492 </span>            :      */</a>
 <a name="493"><span class="lineNum">     493 </span>            : </a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineCov">          7 :     if (!pokitPro) {</span></a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">          2 :         stream &lt;&lt; (quint16)(settings.updateInterval/1000) &lt;&lt; settings.timestamp;</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">          7 :     if (!updateIntervalIs32bit) {</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">          2 :         stream &lt;&lt; (quint16)((settings.updateInterval+500)/1000) &lt;&lt; settings.timestamp;</span></a>
 <a name="496"><span class="lineNum">     496 </span>            :         Q_ASSERT(value.size() == 11); // According to Pokit API 1.00.</a>
 <a name="497"><span class="lineNum">     497 </span>            :     } else {</a>
 <a name="498"><span class="lineNum">     498 </span><span class="lineCov">          5 :         stream &lt;&lt; (quint32)settings.updateInterval &lt;&lt; settings.timestamp;</span></a>
