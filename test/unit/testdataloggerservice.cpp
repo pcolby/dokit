@@ -180,20 +180,21 @@ void TestDataLoggerService::toString_Range_data()
     QTest::addColumn<DataLoggerService::Mode>("mode");
     QTest::addColumn<QString>("expected");
 
-    #define QTPOKIT_ADD_TEST_ROW(mode, member, range, expected) \
-    QTest::addRow(#mode "," #range) \
-        << DataLoggerService::Range{ member = DataLoggerService::range } \
-        << DataLoggerService::Mode::mode \
-        << QStringLiteral(expected)
-    QTPOKIT_ADD_TEST_ROW(DcVoltage, .voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
-    QTPOKIT_ADD_TEST_ROW(DcVoltage, .voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
-    QTPOKIT_ADD_TEST_ROW(AcVoltage, .voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
-    QTPOKIT_ADD_TEST_ROW(AcVoltage, .voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
-    QTPOKIT_ADD_TEST_ROW(DcCurrent, .currentRange, CurrentRange::_0_to_10mA,   "0 to 10mA");
-    QTPOKIT_ADD_TEST_ROW(DcCurrent, .currentRange, CurrentRange::_300mA_to_3A, "300mA to 3A");
-    QTPOKIT_ADD_TEST_ROW(AcCurrent, .currentRange, CurrentRange::_0_to_10mA,   "0 to 10mA");
-    QTPOKIT_ADD_TEST_ROW(AcCurrent, .currentRange, CurrentRange::_300mA_to_3A, "300mA to 3A");
-    QTPOKIT_ADD_TEST_ROW(Idle,      .voltageRange, VoltageRange::_0_to_300mV,  ""); // Invalid.
+    #define QTPOKIT_ADD_TEST_ROW(mode, member, range, expected) {\
+        DataLoggerService::Range rangeUnion; \
+        rangeUnion.member = DataLoggerService::range; \
+        QTest::addRow(#mode "," #range) \
+            << rangeUnion << DataLoggerService::Mode::mode << QStringLiteral(expected); \
+    }
+    QTPOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
+    QTPOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
+    QTPOKIT_ADD_TEST_ROW(AcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
+    QTPOKIT_ADD_TEST_ROW(AcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
+    QTPOKIT_ADD_TEST_ROW(DcCurrent, currentRange, CurrentRange::_0_to_10mA,   "0 to 10mA");
+    QTPOKIT_ADD_TEST_ROW(DcCurrent, currentRange, CurrentRange::_300mA_to_3A, "300mA to 3A");
+    QTPOKIT_ADD_TEST_ROW(AcCurrent, currentRange, CurrentRange::_0_to_10mA,   "0 to 10mA");
+    QTPOKIT_ADD_TEST_ROW(AcCurrent, currentRange, CurrentRange::_300mA_to_3A, "300mA to 3A");
+    QTPOKIT_ADD_TEST_ROW(Idle,      voltageRange, VoltageRange::_0_to_300mV,  ""); // Invalid.
     #undef QTPOKIT_ADD_TEST_ROW
 }
 
