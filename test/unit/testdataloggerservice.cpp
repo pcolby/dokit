@@ -59,34 +59,50 @@ void TestDataLoggerService::toString_VoltageRange()
 
 void TestDataLoggerService::minValue_VoltageRange_data()
 {
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+    QTest::addColumn<DataLoggerService::VoltageRange>("range");
+    QTest::addColumn<QVariant>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(range, expected) \
+        QTest::addRow(#range) << DataLoggerService::VoltageRange::range << QVariant(expected);
+    QTPOKIT_ADD_TEST_ROW(_0_to_300mV,      0);
+    QTPOKIT_ADD_TEST_ROW(_300mV_to_2V,   300);
+    QTPOKIT_ADD_TEST_ROW(_2V_to_6V,     2000);
+    QTPOKIT_ADD_TEST_ROW(_6V_to_12V,    6000);
+    QTPOKIT_ADD_TEST_ROW(_12V_to_30V,  12000);
+    QTPOKIT_ADD_TEST_ROW(_30V_to_60V,  30000);
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (DataLoggerService::VoltageRange)6    << QVariant();
+    QTest::addRow("max")     << (DataLoggerService::VoltageRange)0xFF << QVariant();
 }
 
 void TestDataLoggerService::minValue_VoltageRange()
 {
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+    QFETCH(DataLoggerService::VoltageRange, range);
+    QFETCH(QVariant, expected);
+    QCOMPARE(DataLoggerService::minValue(range), expected);
 }
 
 void TestDataLoggerService::maxValue_VoltageRange_data()
 {
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+    QTest::addColumn<DataLoggerService::VoltageRange>("range");
+    QTest::addColumn<QVariant>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(range, expected) \
+        QTest::addRow(#range) << DataLoggerService::VoltageRange::range << QVariant(expected);
+    QTPOKIT_ADD_TEST_ROW(_0_to_300mV,    300);
+    QTPOKIT_ADD_TEST_ROW(_300mV_to_2V,  2000);
+    QTPOKIT_ADD_TEST_ROW(_2V_to_6V,     6000);
+    QTPOKIT_ADD_TEST_ROW(_6V_to_12V,   12000);
+    QTPOKIT_ADD_TEST_ROW(_12V_to_30V,  30000);
+    QTPOKIT_ADD_TEST_ROW(_30V_to_60V,  60000);
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (DataLoggerService::VoltageRange)6    << QVariant();
+    QTest::addRow("max")     << (DataLoggerService::VoltageRange)0xFF << QVariant();
 }
 
 void TestDataLoggerService::maxValue_VoltageRange()
 {
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+    QFETCH(DataLoggerService::VoltageRange, range);
+    QFETCH(QVariant, expected);
+    QCOMPARE(DataLoggerService::maxValue(range), expected);
 }
 
 void TestDataLoggerService::toString_CurrentRange_data()
@@ -114,34 +130,48 @@ void TestDataLoggerService::toString_CurrentRange()
 
 void TestDataLoggerService::minValue_CurrentRange_data()
 {
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+    QTest::addColumn<DataLoggerService::CurrentRange>("range");
+    QTest::addColumn<QVariant>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(range, expected) \
+        QTest::addRow(#range) << DataLoggerService::CurrentRange::range << QVariant(expected);
+    QTPOKIT_ADD_TEST_ROW(_0_to_10mA,        0);
+    QTPOKIT_ADD_TEST_ROW(_10mA_to_30mA,    10);
+    QTPOKIT_ADD_TEST_ROW(_30mA_to_150mA,   30);
+    QTPOKIT_ADD_TEST_ROW(_150mA_to_300mA, 150);
+    QTPOKIT_ADD_TEST_ROW(_300mA_to_3A,    300);
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (DataLoggerService::CurrentRange)5    << QVariant();
+    QTest::addRow("max")     << (DataLoggerService::CurrentRange)0xFF << QVariant();
 }
 
 void TestDataLoggerService::minValue_CurrentRange()
 {
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+    QFETCH(DataLoggerService::CurrentRange, range);
+    QFETCH(QVariant, expected);
+    QCOMPARE(DataLoggerService::minValue(range), expected);
 }
 
 void TestDataLoggerService::maxValue_CurrentRange_data()
 {
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+    QTest::addColumn<DataLoggerService::CurrentRange>("range");
+    QTest::addColumn<QVariant>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(range, expected) \
+        QTest::addRow(#range) << DataLoggerService::CurrentRange::range << QVariant(expected);
+    QTPOKIT_ADD_TEST_ROW(_0_to_10mA,        10);
+    QTPOKIT_ADD_TEST_ROW(_10mA_to_30mA,     30);
+    QTPOKIT_ADD_TEST_ROW(_30mA_to_150mA,   150);
+    QTPOKIT_ADD_TEST_ROW(_150mA_to_300mA,  300);
+    QTPOKIT_ADD_TEST_ROW(_300mA_to_3A,    3000);
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (DataLoggerService::CurrentRange)5    << QVariant();
+    QTest::addRow("max")     << (DataLoggerService::CurrentRange)0xFF << QVariant();
 }
 
 void TestDataLoggerService::maxValue_CurrentRange()
 {
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+    QFETCH(DataLoggerService::CurrentRange, range);
+    QFETCH(QVariant, expected);
+    QCOMPARE(DataLoggerService::maxValue(range), expected);
 }
 
 void TestDataLoggerService::toString_Range_data()
