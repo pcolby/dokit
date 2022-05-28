@@ -7,6 +7,7 @@
 #include "calibrationservice_p.h"
 
 #include <QLowEnergyController>
+#include <QRegularExpression>
 
 void TestCalibrationService::readCharacteristics()
 {
