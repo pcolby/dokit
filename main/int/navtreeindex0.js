@@ -152,9 +152,10 @@ var NAVTREEINDEX0 =
 "classDataLoggerServicePrivate.html":[5,0,7],
 "classDataLoggerServicePrivate.html#a687b443e1e36e2c07a9776a6ca02e688":[5,0,7,1],
 "classDataLoggerServicePrivate.html#a6988cc8bf165d4bf1fcdacf7124ea6f9":[5,0,7,3],
+"classDataLoggerServicePrivate.html#a81cb9c609b7d94b2ea77103c1e812d33":[5,0,7,4],
 "classDataLoggerServicePrivate.html#a91ded6976e79e6054954eebe591214be":[5,0,7,2],
-"classDataLoggerServicePrivate.html#aa929b0252b19e3dc2b40fe1b3e94663d":[5,0,7,5],
-"classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd":[5,0,7,4],
+"classDataLoggerServicePrivate.html#aa929b0252b19e3dc2b40fe1b3e94663d":[5,0,7,6],
+"classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd":[5,0,7,5],
 "classDataLoggerServicePrivate.html#afdabd152b55f000163e30a19f06e7f7f":[5,0,7,0],
 "classDeviceCommand.html":[5,0,8],
 "classDeviceCommand.html#a28461c0fe3f2b3398c74298b3df70b93":[5,0,8,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95":[5,0,12,8],
 "classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5":[5,0,12,8,1],
 "classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9":[5,0,12,8,4],
-"classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e":[5,0,12,8,2],
-"classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c":[5,0,12,8,0]
+"classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e":[5,0,12,8,2]
 };

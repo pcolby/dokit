@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"structDsoService_1_1Metadata.html#aa2c92c1dd91d2351dbe06c1e7910c78d":[5,0,12,1,1],
 "structDsoService_1_1Metadata.html#ad0109534b3e7035a93abd47b1028f8ca":[5,0,12,1,0],
 "structDsoService_1_1Metadata.html#adef86fc5e8e8ef5b2348251e2cc419d1":[5,0,12,1,4],
 "structDsoService_1_1Metadata.html#aee367bfb281ec101dfdffb27fad752c8":[5,0,12,1,2],

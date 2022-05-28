@@ -93,8 +93,8 @@ $(document).ready(function(){initNavTree('pokit.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Member <a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">DataLoggerService::setSettings</a>  (const <a class="el" href="structDataLoggerService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a> &amp;settings)</dt>
-<dd><a class="anchor" id="_pokit000001"></a> For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> seconds (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code> milliseconds, even though that's not officially documented anywhere. </dd>
+<dt>Member <a class="el" href="classDataLoggerServicePrivate.html#a81cb9c609b7d94b2ea77103c1e812d33">DataLoggerServicePrivate::encodeSettings</a>  (const <a class="el" href="structDataLoggerService_1_1Settings.html" title="Attributes included in the Settings characterstic.">DataLoggerService::Settings</a> &amp;settings, const bool pokitPro)</dt>
+<dd><a class="anchor" id="_pokit000001"></a> For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> seconds (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code> milliseconds, even though that's not officially documented anywhere.  </dd>
 <dt>Member <a class="el" href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a>  (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</dt>
 <dd><a class="anchor" id="_pokit000002"></a> For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code>, even though that's not officially documented anywhere. Also note, the doc claims 'microseconds' (ie 10^-6), but clearly the value is 'milliseconds' (ie 10^-3) for Pokit Pro, and whole seconds for Pokit Meter.  </dd>
 <dt>Class <a class="el" href="classGenericAccessService.html">GenericAccessService</a>  </dt>
