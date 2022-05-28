@@ -368,7 +368,17 @@ void TestDataLoggerService::parseMetadata()
     }
     const DataLoggerService::Metadata actual = DataLoggerServicePrivate::parseMetadata(value);
     QCOMPARE(actual.status, expected.status);
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+    QCOMPARE(qIsFinite(actual.scale),    qIsFinite(expected.scale));
+    QCOMPARE(qIsInf(actual.scale),       qIsInf(expected.scale));
+    QCOMPARE(qIsNaN(actual.scale),       qIsNaN(expected.scale));
+    QCOMPARE(qFuzzyIsNull(actual.scale), qFuzzyIsNull(expected.scale));
+    if ((qIsFinite(actual.scale)) && (!qFuzzyIsNull(actual.scale))) {
+        QCOMPARE(actual.scale, expected.scale);
+    }
+    #else
     QCOMPARE(actual.scale, expected.scale);
+    #endif
     QCOMPARE(actual.mode, expected.mode);
     QCOMPARE(actual.range.currentRange, expected.range.currentRange);
     QCOMPARE(actual.range.voltageRange, expected.range.voltageRange);
