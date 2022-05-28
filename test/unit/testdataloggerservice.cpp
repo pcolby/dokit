@@ -207,56 +207,94 @@ void TestDataLoggerService::toString_Range()
 
 void TestDataLoggerService::readCharacteristics()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.readCharacteristics());
 }
+
 void TestDataLoggerService::readMetadataCharacteristic()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.readMetadataCharacteristic());
 }
 
 void TestDataLoggerService::setSettings()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.setSettings({}));
 }
 
 void TestDataLoggerService::startLogger()
 {
+    // Verify safe error handling, when called correctly.
+    DataLoggerService service(nullptr);
+    DataLoggerService::Settings settings;
+    settings.command = DataLoggerService::Command::Start;
+    QVERIFY(!service.startLogger(settings));
 
+    #ifndef QT_NO_DEBUG
+    qInfo("Skipping some test conditions that would otherwise Q_ASSERT.");
+    return;
+    #endif
+
+    settings.command = DataLoggerService::Command::Stop;
+    QTest::ignoreMessage(QtWarningMsg, "Settings command must be 'Start'.");
+    QVERIFY(!service.startLogger(settings));
+
+    settings.command = DataLoggerService::Command::Refresh;
+    QTest::ignoreMessage(QtWarningMsg, "Settings command must be 'Start'.");
+    QVERIFY(!service.startLogger(settings));
 }
 
 void TestDataLoggerService::stopLogger()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.stopLogger());
 }
 
 void TestDataLoggerService::fetchSamples()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.fetchSamples());
 }
 
 void TestDataLoggerService::metadata()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(qIsNaN(service.metadata().scale));
 }
 
 void TestDataLoggerService::enableMetadataNotifications()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.enableMetadataNotifications());
 }
 
 void TestDataLoggerService::disableMetadatNotifications()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.disableMetadatNotifications());
 }
 
 void TestDataLoggerService::enableReadingNotifications()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.enableReadingNotifications());
 }
 
 void TestDataLoggerService::disableReadingNotifications()
 {
-
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DataLoggerService service(nullptr);
+    QVERIFY(!service.disableReadingNotifications());
 }
 
 QTEST_MAIN(TestDataLoggerService)
