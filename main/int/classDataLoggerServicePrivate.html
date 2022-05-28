@@ -255,9 +255,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a81cb9c609b7d94b2ea77103c1e812d33"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerServicePrivate.html#a81cb9c609b7d94b2ea77103c1e812d33">encodeSettings</a> (const <a class="el" href="structDataLoggerService_1_1Settings.html">DataLoggerService::Settings</a> &amp;settings, const bool pokitPro)</td></tr>
-<tr class="memdesc:a81cb9c609b7d94b2ea77103c1e812d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>settings</em> in the format Pokit devices expect.  <a href="classDataLoggerServicePrivate.html#a81cb9c609b7d94b2ea77103c1e812d33">More...</a><br /></td></tr>
-<tr class="separator:a81cb9c609b7d94b2ea77103c1e812d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a774d21863bf83168171143ec8492a736"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">encodeSettings</a> (const <a class="el" href="structDataLoggerService_1_1Settings.html">DataLoggerService::Settings</a> &amp;settings, const bool updateIntervalIs32bit)</td></tr>
+<tr class="memdesc:a774d21863bf83168171143ec8492a736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>settings</em> in the format Pokit devices expect.  <a href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">More...</a><br /></td></tr>
+<tr class="separator:a774d21863bf83168171143ec8492a736"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed59b28db53cea0757289a0960bed3fd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structDataLoggerService_1_1Metadata.html">DataLoggerService::Metadata</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">parseMetadata</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</td></tr>
 <tr class="memdesc:aed59b28db53cea0757289a0960bed3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the <code>Metadata</code> <em>value</em> into a DataLoggerService::Metatdata struct.  <a href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">More...</a><br /></td></tr>
 <tr class="separator:aed59b28db53cea0757289a0960bed3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -443,11 +443,11 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Constructs a new <a class="el" href="classDataLoggerServicePrivate.html" title="The DataLoggerServicePrivate class provides private implementation for DataLoggerService.">DataLoggerServicePrivate</a> object with public implementation <em>q</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00459">459</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  461</span>    : <a class="code hl_function" href="classAbstractPokitServicePrivate.html#a73d4b6cd1a53f997f78d1c266a1c1871">AbstractPokitServicePrivate</a>(<a class="code hl_variable" href="classDataLoggerService.html#a17be902e87a778365fd439fbcc5548d4">DataLoggerService::serviceUuid</a>, <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, q)</div>
-<div class="line"><span class="lineno">  462</span>{</div>
-<div class="line"><span class="lineno">  463</span> </div>
-<div class="line"><span class="lineno">  464</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00460">460</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  462</span>    : <a class="code hl_function" href="classAbstractPokitServicePrivate.html#a73d4b6cd1a53f997f78d1c266a1c1871">AbstractPokitServicePrivate</a>(<a class="code hl_variable" href="classDataLoggerService.html#a17be902e87a778365fd439fbcc5548d4">DataLoggerService::serviceUuid</a>, <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, q)</div>
+<div class="line"><span class="lineno">  463</span>{</div>
+<div class="line"><span class="lineno">  464</span> </div>
+<div class="line"><span class="lineno">  465</span>}</div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_a73d4b6cd1a53f997f78d1c266a1c1871"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a73d4b6cd1a53f997f78d1c266a1c1871">AbstractPokitServicePrivate::AbstractPokitServicePrivate</a></div><div class="ttdeci">AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid, QLowEnergyController *controller, AbstractPokitService *const q)</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00132">abstractpokitservice.cpp:132</a></div></div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_aefc2f27e42be44bf63d9e4f944737da1"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">AbstractPokitServicePrivate::controller</a></div><div class="ttdeci">QLowEnergyController * controller</div><div class="ttdoc">BLE controller to fetch the service from.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice__p_8h_source.html#l00032">abstractpokitservice_p.h:32</a></div></div>
 <div class="ttc" id="aclassDataLoggerService_html_a17be902e87a778365fd439fbcc5548d4"><div class="ttname"><a href="classDataLoggerService.html#a17be902e87a778365fd439fbcc5548d4">DataLoggerService::serviceUuid</a></div><div class="ttdeci">static const QBluetoothUuid serviceUuid</div><div class="ttdoc">UUID of the &quot;DataLogger&quot; service.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00027">dataloggerservice.h:27</a></div></div>
@@ -689,8 +689,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a81cb9c609b7d94b2ea77103c1e812d33" name="a81cb9c609b7d94b2ea77103c1e812d33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81cb9c609b7d94b2ea77103c1e812d33">&#9670;&nbsp;</a></span>encodeSettings()</h2>
+<a id="a774d21863bf83168171143ec8492a736" name="a774d21863bf83168171143ec8492a736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a774d21863bf83168171143ec8492a736">&#9670;&nbsp;</a></span>encodeSettings()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -708,7 +708,7 @@ Here is the call graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool&#160;</td>
-          <td class="paramname"><em>pokitPro</em>&#160;</td>
+          <td class="paramname"><em>updateIntervalIs32bit</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -724,7 +724,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Returns <em>settings</em> in the format Pokit devices expect. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>Make <em>pokitPro</em> an enum of known Pokit devices, eg PokitMeter, PokitPro, PokitClamp? </dd></dl>
+<p >If <em>updateIntervalIs32bit</em> is 32-bit then the <code>Update Interval</code> field will be encoded in 32-bit instead of 16. </p>
 <dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000001">Pokit Bluetooth API errata:</a></b></dt><dd>For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> seconds (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code> milliseconds, even though that's not officially documented anywhere. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00471">471</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
@@ -749,8 +749,8 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  491</span><span class="comment">     * documented anywhere.</span></div>
 <div class="line"><span class="lineno">  492</span><span class="comment">     */</span></div>
 <div class="line"><span class="lineno">  493</span> </div>
-<div class="line"><span class="lineno">  494</span>    if (!pokitPro) {</div>
-<div class="line"><span class="lineno">  495</span>        stream &lt;&lt; (quint16)(settings.<a class="code hl_variable" href="structDataLoggerService_1_1Settings.html#afdd04830ac70e2435cfce3d7be601e9c">updateInterval</a>/1000) &lt;&lt; settings.<a class="code hl_variable" href="structDataLoggerService_1_1Settings.html#a4bde857f31f27e5574b9d204c7a5aa48">timestamp</a>;</div>
+<div class="line"><span class="lineno">  494</span>    if (!updateIntervalIs32bit) {</div>
+<div class="line"><span class="lineno">  495</span>        stream &lt;&lt; (quint16)((settings.<a class="code hl_variable" href="structDataLoggerService_1_1Settings.html#afdd04830ac70e2435cfce3d7be601e9c">updateInterval</a>+500)/1000) &lt;&lt; settings.<a class="code hl_variable" href="structDataLoggerService_1_1Settings.html#a4bde857f31f27e5574b9d204c7a5aa48">timestamp</a>;</div>
 <div class="line"><span class="lineno">  496</span>        Q_ASSERT(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() == 11); <span class="comment">// According to Pokit API 1.00.</span></div>
 <div class="line"><span class="lineno">  497</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="lineno">  498</span>        stream &lt;&lt; (quint32)settings.<a class="code hl_variable" href="structDataLoggerService_1_1Settings.html#afdd04830ac70e2435cfce3d7be601e9c">updateInterval</a> &lt;&lt; settings.<a class="code hl_variable" href="structDataLoggerService_1_1Settings.html#a4bde857f31f27e5574b9d204c7a5aa48">timestamp</a>;</div>
@@ -777,7 +777,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerServicePrivate_a81cb9c609b7d94b2ea77103c1e812d33_cgraph.svg" width="454" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerServicePrivate_a774d21863bf83168171143ec8492a736_cgraph.svg" width="454" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -866,7 +866,7 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">DataLoggerService::_0_to_300mV</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">QByteArray::at()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00366">AbstractPokitServicePrivate::checkSize()</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">QByteArray::mid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00391">AbstractPokitServicePrivate::toHexString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00637">characteristicChanged()</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00575">characteristicRead()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00360">DataLoggerService::metadata()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00637">characteristicChanged()</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00575">characteristicRead()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00361">DataLoggerService::metadata()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -966,7 +966,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice__p_8h_source.html#l00041">41</a> of file <a class="el" href="dataloggerservice__p_8h_source.html">dataloggerservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice__p_8h_source.html#l00042">42</a> of file <a class="el" href="dataloggerservice__p_8h_source.html">dataloggerservice_p.h</a>.</p>
 
 </div>
 </div>

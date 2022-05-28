@@ -152,7 +152,7 @@ var NAVTREEINDEX0 =
 "classDataLoggerServicePrivate.html":[5,0,7],
 "classDataLoggerServicePrivate.html#a687b443e1e36e2c07a9776a6ca02e688":[5,0,7,1],
 "classDataLoggerServicePrivate.html#a6988cc8bf165d4bf1fcdacf7124ea6f9":[5,0,7,3],
-"classDataLoggerServicePrivate.html#a81cb9c609b7d94b2ea77103c1e812d33":[5,0,7,4],
+"classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736":[5,0,7,4],
 "classDataLoggerServicePrivate.html#a91ded6976e79e6054954eebe591214be":[5,0,7,2],
 "classDataLoggerServicePrivate.html#aa929b0252b19e3dc2b40fe1b3e94663d":[5,0,7,6],
 "classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd":[5,0,7,5],
