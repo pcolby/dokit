@@ -276,8 +276,9 @@ bool DataLoggerService::setSettings(const Settings &settings)
         return false;
     }
 
-    const QByteArray value = d->encodeSettings(settings,
-        d->controller->services().contains(StatusService::ServiceUuids::pokitPro));
+    const bool updateIntervalIs32bit =
+        (d->getCharacteristic(CharacteristicUuids::metadata).value().size() >= 23);
+    const QByteArray value = d->encodeSettings(settings, updateIntervalIs32bit);
     if (value.isNull()) {
         return false;
     }
@@ -464,12 +465,11 @@ DataLoggerServicePrivate::DataLoggerServicePrivate(
 }
 
 /*!
- * Returns \a settings in the format Pokit devices expect.
- *
- * \todo Make \a pokitPro an enum of known Pokit devices, eg PokitMeter, PokitPro, PokitClamp?
+ * Returns \a settings in the format Pokit devices expect. If \a updateIntervalIs32bit is 32-bit
+ * then the `Update Interval` field will be encoded in 32-bit instead of 16.
  */
 QByteArray DataLoggerServicePrivate::encodeSettings(const DataLoggerService::Settings &settings,
-                                                    const bool pokitPro)
+                                                    const bool updateIntervalIs32bit)
 {
     static_assert(sizeof(settings.command)        == 1, "Expected to be 1 byte.");
     static_assert(sizeof(settings.arguments)      == 2, "Expected to be 2 bytes.");
@@ -491,8 +491,8 @@ QByteArray DataLoggerServicePrivate::encodeSettings(const DataLoggerService::Set
      * documented anywhere.
      */
 
-    if (!pokitPro) {
-        stream << (quint16)(settings.updateInterval/1000) << settings.timestamp;
+    if (!updateIntervalIs32bit) {
+        stream << (quint16)((settings.updateInterval+500)/1000) << settings.timestamp;
         Q_ASSERT(value.size() == 11); // According to Pokit API 1.00.
     } else {
         stream << (quint32)settings.updateInterval << settings.timestamp;

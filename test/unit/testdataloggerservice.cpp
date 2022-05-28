@@ -306,7 +306,7 @@ void TestDataLoggerService::disableReadingNotifications()
 void TestDataLoggerService::encodeSettings_data()
 {
     QTest::addColumn<DataLoggerService::Settings>("settings");
-    QTest::addColumn<bool>("pokitPro"); ///< \todo This will be an enum sometime.
+    QTest::addColumn<bool>("updateIntervalIs32bit");
     QTest::addColumn<QByteArray>("expected");
 
     // Valid "stop" settings for Pokit Meter and Pokit Pro.
@@ -379,9 +379,9 @@ void TestDataLoggerService::encodeSettings_data()
 void TestDataLoggerService::encodeSettings()
 {
     QFETCH(DataLoggerService::Settings, settings);
-    QFETCH(bool, pokitPro);
+    QFETCH(bool, updateIntervalIs32bit);
     QFETCH(QByteArray, expected);
-    QCOMPARE(DataLoggerServicePrivate::encodeSettings(settings, pokitPro), expected);
+    QCOMPARE(DataLoggerServicePrivate::encodeSettings(settings, updateIntervalIs32bit), expected);
 }
 
 void TestDataLoggerService::parseMetadata_data()

@@ -22,7 +22,8 @@ class QTPOKIT_EXPORT DataLoggerServicePrivate : public AbstractPokitServicePriva
 public:
     explicit DataLoggerServicePrivate(QLowEnergyController * controller, DataLoggerService * const q);
 
-    static QByteArray encodeSettings(const DataLoggerService::Settings &settings, const bool pokitPro);
+    static QByteArray encodeSettings(const DataLoggerService::Settings &settings,
+                                     const bool updateIntervalIs32bit);
 
     static DataLoggerService::Metadata parseMetadata(const QByteArray &value);
     static DataLoggerService::Samples parseSamples(const QByteArray &value);
