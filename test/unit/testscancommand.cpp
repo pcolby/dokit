@@ -204,13 +204,13 @@ void TestScanCommand::toJson_coreConfig_data()
     QTest::addColumn<QBluetoothDeviceInfo::CoreConfiguration>("config");
     QTest::addColumn<QJsonArray>("expected");
 
-    #define ADD_ROW(config) QTest::newRow(#config) \
+    #define QTPOKIT_ADD_TEST_ROW(config) QTest::newRow(#config) \
         << QBluetoothDeviceInfo::CoreConfiguration(QBluetoothDeviceInfo::config) \
         << QJsonArray{ QLatin1String(#config) };
-    ADD_ROW(UnknownCoreConfiguration);
-    ADD_ROW(LowEnergyCoreConfiguration);
-    ADD_ROW(BaseRateCoreConfiguration);
-    #undef ADD_ROW
+    QTPOKIT_ADD_TEST_ROW(UnknownCoreConfiguration);
+    QTPOKIT_ADD_TEST_ROW(LowEnergyCoreConfiguration);
+    QTPOKIT_ADD_TEST_ROW(BaseRateCoreConfiguration);
+    #undef QTPOKIT_ADD_TEST_ROW
 
     // BaseRateAndLowEnergy is a combination of LowEnergy and BaseRate core configurations.
     QTest::newRow("BaseRateAndLowEnergyCoreConfiguration") \
@@ -263,18 +263,18 @@ void TestScanCommand::toJson_serviceClasses_data()
 
     QTest::newRow("empty") << QBluetoothDeviceInfo::ServiceClasses() << QJsonArray();
 
-    #define ADD_ROW(serviceClass) QTest::newRow(#serviceClass) \
+    #define QTPOKIT_ADD_TEST_ROW(serviceClass) QTest::newRow(#serviceClass) \
         << QBluetoothDeviceInfo::ServiceClasses(QBluetoothDeviceInfo::serviceClass) \
         << QJsonArray{ QLatin1String(#serviceClass) };
-    ADD_ROW(PositioningService);
-    ADD_ROW(NetworkingService);
-    ADD_ROW(RenderingService);
-    ADD_ROW(CapturingService);
-    ADD_ROW(ObjectTransferService);
-    ADD_ROW(AudioService);
-    ADD_ROW(TelephonyService);
-    ADD_ROW(InformationService);
-    #undef ADD_ROW
+    QTPOKIT_ADD_TEST_ROW(PositioningService);
+    QTPOKIT_ADD_TEST_ROW(NetworkingService);
+    QTPOKIT_ADD_TEST_ROW(RenderingService);
+    QTPOKIT_ADD_TEST_ROW(CapturingService);
+    QTPOKIT_ADD_TEST_ROW(ObjectTransferService);
+    QTPOKIT_ADD_TEST_ROW(AudioService);
+    QTPOKIT_ADD_TEST_ROW(TelephonyService);
+    QTPOKIT_ADD_TEST_ROW(InformationService);
+    #undef QTPOKIT_ADD_TEST_ROW
 
     QTest::newRow("all")
         << QBluetoothDeviceInfo::ServiceClasses(
@@ -383,24 +383,24 @@ void TestScanCommand::toString_majorClass_data()
     QTest::addColumn<QString>("expected");
 
     // Test all happy paths.
-    #define ADD_ROW(majorClass) QTest::addRow(#majorClass) \
+    #define QTPOKIT_ADD_TEST_ROW(majorClass) QTest::addRow(#majorClass) \
         << (int)QBluetoothDeviceInfo::majorClass << QString::fromLatin1(#majorClass)
-    ADD_ROW(MiscellaneousDevice);
-    ADD_ROW(ComputerDevice);
-    ADD_ROW(PhoneDevice);
+    QTPOKIT_ADD_TEST_ROW(MiscellaneousDevice);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice);
+    QTPOKIT_ADD_TEST_ROW(PhoneDevice);
     #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
-    ADD_ROW(LANAccessDevice); // Deprecated since Qt 5.13.
+    QTPOKIT_ADD_TEST_ROW(LANAccessDevice); // Deprecated since Qt 5.13.
     #else
-    ADD_ROW(NetworkDevice); // Added in Qt 5.13.
+    QTPOKIT_ADD_TEST_ROW(NetworkDevice); // Added in Qt 5.13.
     #endif
-    ADD_ROW(AudioVideoDevice);
-    ADD_ROW(PeripheralDevice);
-    ADD_ROW(ImagingDevice);
-    ADD_ROW(WearableDevice);
-    ADD_ROW(ToyDevice);
-    ADD_ROW(HealthDevice);
-    ADD_ROW(UncategorizedDevice);
-    #undef ADD_ROW
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice);
+    QTPOKIT_ADD_TEST_ROW(ImagingDevice);
+    QTPOKIT_ADD_TEST_ROW(WearableDevice);
+    QTPOKIT_ADD_TEST_ROW(ToyDevice);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice);
+    QTPOKIT_ADD_TEST_ROW(UncategorizedDevice);
+    #undef QTPOKIT_ADD_TEST_ROW
 
     // Test unhappy paths; these should all safely return null strings.
     QTest::addRow("-999") << -999 << QString();
@@ -428,110 +428,110 @@ void TestScanCommand::toString_minorClass_data()
     #endif
 
     // Test all happy paths.
-    #define ADD_ROW(majorClass, minorClass) QTest::addRow(#majorClass ":" #minorClass) \
+    #define QTPOKIT_ADD_TEST_ROW(majorClass, minorClass) QTest::addRow(#majorClass ":" #minorClass) \
         << (int)QBluetoothDeviceInfo::majorClass << (quint8)QBluetoothDeviceInfo::minorClass \
         << QString::fromLatin1(#minorClass)
 
-    ADD_ROW(MiscellaneousDevice, UncategorizedMiscellaneous);
+    QTPOKIT_ADD_TEST_ROW(MiscellaneousDevice, UncategorizedMiscellaneous);
 
-    ADD_ROW(ComputerDevice, UncategorizedComputer);
-    ADD_ROW(ComputerDevice, DesktopComputer);
-    ADD_ROW(ComputerDevice, ServerComputer);
-    ADD_ROW(ComputerDevice, LaptopComputer);
-    ADD_ROW(ComputerDevice, HandheldClamShellComputer);
-    ADD_ROW(ComputerDevice, HandheldComputer);
-    ADD_ROW(ComputerDevice, WearableComputer);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice, UncategorizedComputer);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice, DesktopComputer);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice, ServerComputer);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice, LaptopComputer);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice, HandheldClamShellComputer);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice, HandheldComputer);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice, WearableComputer);
 
-    ADD_ROW(PhoneDevice, UncategorizedPhone);
-    ADD_ROW(PhoneDevice, CellularPhone);
-    ADD_ROW(PhoneDevice, CordlessPhone);
-    ADD_ROW(PhoneDevice, SmartPhone);
-    ADD_ROW(PhoneDevice, WiredModemOrVoiceGatewayPhone);
-    ADD_ROW(PhoneDevice, CommonIsdnAccessPhone);
+    QTPOKIT_ADD_TEST_ROW(PhoneDevice, UncategorizedPhone);
+    QTPOKIT_ADD_TEST_ROW(PhoneDevice, CellularPhone);
+    QTPOKIT_ADD_TEST_ROW(PhoneDevice, CordlessPhone);
+    QTPOKIT_ADD_TEST_ROW(PhoneDevice, SmartPhone);
+    QTPOKIT_ADD_TEST_ROW(PhoneDevice, WiredModemOrVoiceGatewayPhone);
+    QTPOKIT_ADD_TEST_ROW(PhoneDevice, CommonIsdnAccessPhone);
 
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkFullService);
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorOne);
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorTwo);
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorThree);
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFour);
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFive);
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorSix);
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkNoService);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkFullService);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorOne);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorTwo);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorThree);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFour);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFive);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorSix);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkNoService);
 
-    ADD_ROW(AudioVideoDevice, UncategorizedAudioVideoDevice);
-    ADD_ROW(AudioVideoDevice, WearableHeadsetDevice);
-    ADD_ROW(AudioVideoDevice, HandsFreeDevice);
-    ADD_ROW(AudioVideoDevice, Microphone);
-    ADD_ROW(AudioVideoDevice, Loudspeaker);
-    ADD_ROW(AudioVideoDevice, Headphones);
-    ADD_ROW(AudioVideoDevice, PortableAudioDevice);
-    ADD_ROW(AudioVideoDevice, CarAudio);
-    ADD_ROW(AudioVideoDevice, SetTopBox);
-    ADD_ROW(AudioVideoDevice, HiFiAudioDevice);
-    ADD_ROW(AudioVideoDevice, Vcr);
-    ADD_ROW(AudioVideoDevice, VideoCamera);
-    ADD_ROW(AudioVideoDevice, Camcorder);
-    ADD_ROW(AudioVideoDevice, VideoMonitor);
-    ADD_ROW(AudioVideoDevice, VideoDisplayAndLoudspeaker);
-    ADD_ROW(AudioVideoDevice, VideoConferencing);
-    ADD_ROW(AudioVideoDevice, GamingDevice);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, UncategorizedAudioVideoDevice);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, WearableHeadsetDevice);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, HandsFreeDevice);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Microphone);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Loudspeaker);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Headphones);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, PortableAudioDevice);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, CarAudio);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, SetTopBox);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, HiFiAudioDevice);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Vcr);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoCamera);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Camcorder);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoMonitor);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoDisplayAndLoudspeaker);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoConferencing);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, GamingDevice);
 
-    ADD_ROW(PeripheralDevice, UncategorizedPeripheral);
-    ADD_ROW(PeripheralDevice, KeyboardPeripheral);
-    ADD_ROW(PeripheralDevice, PointingDevicePeripheral);
-    ADD_ROW(PeripheralDevice, KeyboardWithPointingDevicePeripheral);
-    ADD_ROW(PeripheralDevice, JoystickPeripheral);
-    ADD_ROW(PeripheralDevice, GamepadPeripheral);
-    ADD_ROW(PeripheralDevice, RemoteControlPeripheral);
-    ADD_ROW(PeripheralDevice, SensingDevicePeripheral);
-    ADD_ROW(PeripheralDevice, DigitizerTabletPeripheral);
-    ADD_ROW(PeripheralDevice, CardReaderPeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, UncategorizedPeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, KeyboardPeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, PointingDevicePeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, KeyboardWithPointingDevicePeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, JoystickPeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, GamepadPeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, RemoteControlPeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, SensingDevicePeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, DigitizerTabletPeripheral);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, CardReaderPeripheral);
 
-    ADD_ROW(ImagingDevice, UncategorizedImagingDevice);
-    ADD_ROW(ImagingDevice, ImageDisplay);
-    ADD_ROW(ImagingDevice, ImageCamera);
-    ADD_ROW(ImagingDevice, ImageScanner);
-    ADD_ROW(ImagingDevice, ImagePrinter);
+    QTPOKIT_ADD_TEST_ROW(ImagingDevice, UncategorizedImagingDevice);
+    QTPOKIT_ADD_TEST_ROW(ImagingDevice, ImageDisplay);
+    QTPOKIT_ADD_TEST_ROW(ImagingDevice, ImageCamera);
+    QTPOKIT_ADD_TEST_ROW(ImagingDevice, ImageScanner);
+    QTPOKIT_ADD_TEST_ROW(ImagingDevice, ImagePrinter);
 
-    ADD_ROW(WearableDevice, UncategorizedWearableDevice);
-    ADD_ROW(WearableDevice, WearableWristWatch);
-    ADD_ROW(WearableDevice, WearablePager);
-    ADD_ROW(WearableDevice, WearableJacket);
-    ADD_ROW(WearableDevice, WearableHelmet);
-    ADD_ROW(WearableDevice, WearableGlasses);
+    QTPOKIT_ADD_TEST_ROW(WearableDevice, UncategorizedWearableDevice);
+    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearableWristWatch);
+    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearablePager);
+    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearableJacket);
+    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearableHelmet);
+    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearableGlasses);
 
-    ADD_ROW(ToyDevice, UncategorizedToy);
-    ADD_ROW(ToyDevice, ToyRobot);
-    ADD_ROW(ToyDevice, ToyVehicle);
-    ADD_ROW(ToyDevice, ToyDoll);
-    ADD_ROW(ToyDevice, ToyController);
-    ADD_ROW(ToyDevice, ToyGame);
+    QTPOKIT_ADD_TEST_ROW(ToyDevice, UncategorizedToy);
+    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyRobot);
+    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyVehicle);
+    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyDoll);
+    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyController);
+    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyGame);
 
-    ADD_ROW(HealthDevice, UncategorizedHealthDevice);
-    ADD_ROW(HealthDevice, HealthBloodPressureMonitor);
-    ADD_ROW(HealthDevice, HealthThermometer);
-    ADD_ROW(HealthDevice, HealthWeightScale);
-    ADD_ROW(HealthDevice, HealthGlucoseMeter);
-    ADD_ROW(HealthDevice, HealthPulseOximeter);
-    ADD_ROW(HealthDevice, HealthDataDisplay);
-    ADD_ROW(HealthDevice, HealthStepCounter);
-    #undef ADD_ROW
+    QTPOKIT_ADD_TEST_ROW(HealthDevice, UncategorizedHealthDevice);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthBloodPressureMonitor);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthThermometer);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthWeightScale);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthGlucoseMeter);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthPulseOximeter);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthDataDisplay);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthStepCounter);
+    #undef QTPOKIT_ADD_TEST_ROW
 
     // Test that all major classs fall through on out-of-range minor classes.
-    #define ADD_ROW(majorClass) QTest::addRow(#majorClass ".invalid") \
+    #define QTPOKIT_ADD_TEST_ROW(majorClass) QTest::addRow(#majorClass ".invalid") \
         << (int)QBluetoothDeviceInfo::majorClass << (quint8)999 << QString()
-    ADD_ROW(MiscellaneousDevice);
-    ADD_ROW(ComputerDevice);
-    ADD_ROW(PhoneDevice);
-    ADD_ROW(MAJOR_CLASS_NETWORK_DEVICE);
-    ADD_ROW(AudioVideoDevice);
-    ADD_ROW(PeripheralDevice);
-    ADD_ROW(ImagingDevice);
-    ADD_ROW(WearableDevice);
-    ADD_ROW(ToyDevice);
-    ADD_ROW(HealthDevice);
-    ADD_ROW(UncategorizedDevice);
-    #undef ADD_ROW
+    QTPOKIT_ADD_TEST_ROW(MiscellaneousDevice);
+    QTPOKIT_ADD_TEST_ROW(ComputerDevice);
+    QTPOKIT_ADD_TEST_ROW(PhoneDevice);
+    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE);
+    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice);
+    QTPOKIT_ADD_TEST_ROW(PeripheralDevice);
+    QTPOKIT_ADD_TEST_ROW(ImagingDevice);
+    QTPOKIT_ADD_TEST_ROW(WearableDevice);
+    QTPOKIT_ADD_TEST_ROW(ToyDevice);
+    QTPOKIT_ADD_TEST_ROW(HealthDevice);
+    QTPOKIT_ADD_TEST_ROW(UncategorizedDevice);
+    #undef QTPOKIT_ADD_TEST_ROW
     #undef MAJOR_CLASS_NETWORK_DEVICE
 
     // There are no minor classed for UncategorizedDevice.
