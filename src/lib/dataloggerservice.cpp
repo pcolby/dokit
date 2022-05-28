@@ -540,8 +540,8 @@ DataLoggerService::Samples DataLoggerServicePrivate::parseSamples(const QByteArr
 {
     DataLoggerService::Samples samples;
     if ((value.size()%2) != 0) {
-        qCWarning(lc).noquote() << tr("Samples value has odd size (should be even): 0x%2")
-            .arg(value.size()).arg(QLatin1String(value.toHex()));
+        qCWarning(lc).noquote() << tr("Samples value has odd size %1 (should be even): %2")
+            .arg(value.size()).arg(toHexString(value));
         return samples;
     }
     for (; (samples.size()*2) < value.size();) {
@@ -579,7 +579,7 @@ void DataLoggerServicePrivate::characteristicRead(const QLowEnergyCharacteristic
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic read for Data Logger Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for Data Logger service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

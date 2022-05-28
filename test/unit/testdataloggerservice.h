@@ -46,4 +46,14 @@ private slots:
 
     void enableReadingNotifications();
     void disableReadingNotifications();
+
+    void parseMetadata_data();
+    void parseMetadata();
+
+    void parseSamples_data();
+    void parseSamples();
+
+    void characteristicRead();
+    void characteristicWritten();
+    void characteristicChanged();
 };
