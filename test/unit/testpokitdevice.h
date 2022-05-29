@@ -8,6 +8,30 @@ class TestPokitDevice : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    void controller();
+    void controller_const();
+
+    void calibration();
+    void dataLogger();
+    void deviceInformation();
+    void dso();
+    void genericAccess();
+    void multimeter();
+    void status();
+
+    void serviceToString_data();
+    void serviceToString();
+
+    void charcteristicToString_data();
+    void charcteristicToString();
+
+    void setController();
+
+    void connected();
+    void connectionUpdated();
+    void disconnected();
+    void discoveryFinished();
+    void errorOccurred();
+    void serviceDiscovered();
+    void stateChanged();
 };

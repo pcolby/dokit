@@ -350,6 +350,10 @@ void PokitDevicePrivate::setController(QLowEnergyController * newController)
  */
 void PokitDevicePrivate::connected()
 {
+    if (controller == nullptr) {
+        qCritical(lc).noquote() << "PokitDevicePrivate::connected slot invoked without a controller.";
+        return; // Just to avoid the nullptr dereference below.
+    }
     qCDebug(lc).noquote() << tr("Connected to \"%1\" (%2) at (%3).").arg(
         controller->remoteName(), controller->remoteDeviceUuid().toString(),
         controller->remoteAddress().toString());
