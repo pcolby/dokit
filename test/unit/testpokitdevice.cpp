@@ -6,6 +6,14 @@
 #include <qtpokit/pokitdevice.h>
 #include "pokitdevice_p.h"
 
+#include <qtpokit/calibrationservice.h>
+#include <qtpokit/dataloggerservice.h>
+#include <qtpokit/deviceinfoservice.h>
+#include <qtpokit/dsoservice.h>
+#include <qtpokit/genericaccessservice.h>
+#include <qtpokit/multimeterservice.h>
+#include <qtpokit/statusservice.h>
+
 void TestPokitDevice::controller()
 {
     PokitDevice device(nullptr);
@@ -90,30 +98,77 @@ void TestPokitDevice::status()
 
 void TestPokitDevice::serviceToString_data()
 {
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
+    QTest::addColumn<QBluetoothUuid>("uuid");
+    QTest::addColumn<QString>("expected");
 
-    QTest::addRow("example") << 1 << 2;
+    #define QTPOKIT_ADD_TEST_ROW(service, expected) \
+        QTest::addRow(#service) << service::serviceUuid << QStringLiteral(expected)
+    QTPOKIT_ADD_TEST_ROW(CalibrationService, "Calibration");
+    QTPOKIT_ADD_TEST_ROW(DataLoggerService,  "Data Logger");
+    QTPOKIT_ADD_TEST_ROW(DsoService,         "DSO");
+    QTPOKIT_ADD_TEST_ROW(MultimeterService,  "Multimeter");
+    #undef QTPOKIT_ADD_TEST_ROW
+
+    QTest::addRow("Status (Pokit Meter)")
+        << StatusService::ServiceUuids::pokitMeter << "Status (Pokit Meter)";
+    QTest::addRow("Status (Pokit Pro)")
+        << StatusService::ServiceUuids::pokitPro << "Status (Pokit Pro)";
+
+    QTest::addRow("DeviceInfoService") << DeviceInfoService::serviceUuid <<
+        QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::DeviceInformation);
+    QTest::addRow("GenericAccessService") << GenericAccessService::serviceUuid <<
+        QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess);
 }
 
 void TestPokitDevice::serviceToString()
 {
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
-
-    /// \todo
+    QFETCH(QBluetoothUuid, uuid);
+    QFETCH(QString, expected);
+    QCOMPARE(PokitDevice::serviceToString(uuid), expected);
 }
 
 void TestPokitDevice::charcteristicToString_data()
 {
-    /// \todo
+    QTest::addColumn<QBluetoothUuid>("uuid");
+    QTest::addColumn<QString>("expected");
+
+    #define QTPOKIT_ADD_TEST_ROW(service, characteristic, expected) \
+        QTest::addRow(#service "::" #characteristic) \
+            << service::CharacteristicUuids::characteristic << QStringLiteral(expected)
+    QTPOKIT_ADD_TEST_ROW(CalibrationService, temperature,           "Temperature");
+    QTPOKIT_ADD_TEST_ROW(DataLoggerService,  metadata,              "Metadata");
+    QTPOKIT_ADD_TEST_ROW(DataLoggerService,  reading,               "Reading");
+    QTPOKIT_ADD_TEST_ROW(DataLoggerService,  settings,              "Settings");
+    QTPOKIT_ADD_TEST_ROW(DsoService,         metadata,              "Metadata");
+    QTPOKIT_ADD_TEST_ROW(DsoService,         reading,               "Reading");
+    QTPOKIT_ADD_TEST_ROW(DsoService,         settings,              "Settings");
+    QTPOKIT_ADD_TEST_ROW(MultimeterService,  reading,               "Reading");
+    QTPOKIT_ADD_TEST_ROW(MultimeterService,  settings,              "Settings");
+    QTPOKIT_ADD_TEST_ROW(StatusService,      deviceCharacteristics, "Device Characteristics");
+    QTPOKIT_ADD_TEST_ROW(StatusService,      flashLed,              "Flash LED");
+    QTPOKIT_ADD_TEST_ROW(StatusService,      name,                  "Name");
+    QTPOKIT_ADD_TEST_ROW(StatusService,      status,                "Status");
+    #undef QTPOKIT_ADD_TEST_ROW
+
+    #define QTPOKIT_ADD_TEST_ROW(service, characteristic, expected) \
+        QTest::addRow(#service "::" #characteristic) \
+            << service::CharacteristicUuids::characteristic \
+            << QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::expected)
+    QTPOKIT_ADD_TEST_ROW(DeviceInfoService,    firmwareRevision, FirmwareRevisionString);
+    QTPOKIT_ADD_TEST_ROW(DeviceInfoService,    hardwareRevision, HardwareRevisionString);
+    QTPOKIT_ADD_TEST_ROW(DeviceInfoService,    manufacturerName, ManufacturerNameString);
+    QTPOKIT_ADD_TEST_ROW(DeviceInfoService,    modelNumber,      ModelNumberString);
+    QTPOKIT_ADD_TEST_ROW(DeviceInfoService,    softwareRevision, SoftwareRevisionString);
+    QTPOKIT_ADD_TEST_ROW(GenericAccessService, appearance,       Appearance);
+    QTPOKIT_ADD_TEST_ROW(GenericAccessService, deviceName,       DeviceName);
+    #undef QTPOKIT_ADD_TEST_ROW
 }
 
 void TestPokitDevice::charcteristicToString()
 {
-    /// \todo
+    QFETCH(QBluetoothUuid, uuid);
+    QFETCH(QString, expected);
+    QCOMPARE(PokitDevice::charcteristicToString(uuid), expected);
 }
 
 void TestPokitDevice::setController()
