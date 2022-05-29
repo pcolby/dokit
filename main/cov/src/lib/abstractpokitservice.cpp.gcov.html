@@ -425,19 +425,19 @@
 <a name="363"><span class="lineNum">     363 </span>            :  * value; ie this funcion can be used to simply warn if \a data is too big, or it can be used to</a>
 <a name="364"><span class="lineNum">     364 </span>            :  * failed (return `false`) in that case.</a>
 <a name="365"><span class="lineNum">     365 </span>            :  */</a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         18 : bool AbstractPokitServicePrivate::checkSize(const QString &amp;label, const QByteArray &amp;data,</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         34 : bool AbstractPokitServicePrivate::checkSize(const QString &amp;label, const QByteArray &amp;data,</span></a>
 <a name="367"><span class="lineNum">     367 </span>            :                                             const int minSize, const int maxSize,</a>
 <a name="368"><span class="lineNum">     368 </span>            :                                             const bool failOnMax)</a>
 <a name="369"><span class="lineNum">     369 </span>            : {</a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         18 :     if (data.size() &lt; minSize) {</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">         14 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 requires %2 bytes, but only %3 present: %4&quot;)</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         14 :             .arg(label).arg(minSize).arg(data.size()).arg(toHexString(data));</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          7 :         return false;</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         34 :     if (data.size() &lt; minSize) {</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">         26 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 requires %2 bytes, but only %3 present: %4&quot;)</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         26 :             .arg(label).arg(minSize).arg(data.size()).arg(toHexString(data));</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         13 :         return false;</span></a>
 <a name="374"><span class="lineNum">     374 </span>            :     }</a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         11 :     if ((maxSize &gt;= 0) &amp;&amp; (data.size() &gt; maxSize)) {</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         10 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %2 extraneous bytes: %3&quot;)</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          5 :             .arg(label).arg(data.size()-maxSize).arg(toHexString(data.mid(maxSize)));</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          5 :         return (!failOnMax);</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         21 :     if ((maxSize &gt;= 0) &amp;&amp; (data.size() &gt; maxSize)) {</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         14 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %2 extraneous bytes: %3&quot;)</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          7 :             .arg(label).arg(data.size()-maxSize).arg(toHexString(data.mid(maxSize)));</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          7 :         return (!failOnMax);</span></a>
 <a name="379"><span class="lineNum">     379 </span>            :     }</a>
 <a name="380"><span class="lineNum">     380 </span>            :     return true;</a>
 <a name="381"><span class="lineNum">     381 </span>            : }</a>
@@ -450,13 +450,13 @@
 <a name="388"><span class="lineNum">     388 </span>            :  * toHex(QBytArray(&quot;\x1\x2\x3\x4\x5\x6&quot;, 4); // &quot;0x01,02,...,05,06&quot;</a>
 <a name="389"><span class="lineNum">     389 </span>            :  * ```</a>
 <a name="390"><span class="lineNum">     390 </span>            :  */</a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">         20 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">         28 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></a>
 <a name="392"><span class="lineNum">     392 </span>            : {</a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         20 :     return (data.size() &lt;= maxSize)</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         51 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         28 :     return (data.size() &lt;= maxSize)</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         75 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></a>
 <a name="395"><span class="lineNum">     395 </span><span class="lineCov">          3 :         : QString::fromLatin1(&quot;0x%1,...,%2&quot;).arg(</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         23 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">        100 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         31 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">        140 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></a>
 <a name="398"><span class="lineNum">     398 </span>            : }</a>
 <a name="399"><span class="lineNum">     399 </span>            : </a>
 <a name="400"><span class="lineNum">     400 </span>            : /*!</a>
