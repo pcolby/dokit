@@ -50,5 +50,13 @@ private slots:
     void enableReadingNotifications();
     void disableReadingNotifications();
 
-    /// \todo Private impls.
+    void encodeSettings_data();
+    void encodeSettings();
+
+    void parseReading_data();
+    void parseReading();
+
+    void characteristicRead();
+    void characteristicWritten();
+    void characteristicChanged();
 };

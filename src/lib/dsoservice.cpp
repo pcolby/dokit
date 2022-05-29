@@ -482,8 +482,8 @@ DsoService::Samples DsoServicePrivate::parseSamples(const QByteArray &value)
 {
     DsoService::Samples samples;
     if ((value.size()%2) != 0) {
-        qCWarning(lc).noquote() << tr("Samples value has odd size (should be even): 0x%2")
-            .arg(value.size()).arg(QLatin1String(value.toHex()));
+        qCWarning(lc).noquote() << tr("Samples value has odd size %1 (should be even): %2")
+            .arg(value.size()).arg(toHexString(value));
         return samples;
     }
     for (; (samples.size()*2) < value.size();) {

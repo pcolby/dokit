@@ -468,7 +468,7 @@ void MultimeterServicePrivate::characteristicRead(const QLowEnergyCharacteristic
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic read for Status service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic read for Multimeter service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 
