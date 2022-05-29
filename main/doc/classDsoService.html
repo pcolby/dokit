@@ -219,7 +219,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aad086e99bfe4fe2e8d35d49c1e4d340b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all characteristics.  <a href="classDsoService.html#aad086e99bfe4fe2e8d35d49c1e4d340b">More...</a><br /></td></tr>
 <tr class="separator:aad086e99bfe4fe2e8d35d49c1e4d340b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8cd148690b9e4fd1b01071e8cfabd0c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c">readMetadataCharacteristic</a> ()</td></tr>
-<tr class="memdesc:ad8cd148690b9e4fd1b01071e8cfabd0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the <code>DSO</code> service's <code>Metadat</code> characteristic.  <a href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c">More...</a><br /></td></tr>
+<tr class="memdesc:ad8cd148690b9e4fd1b01071e8cfabd0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the <code>DSO</code> service's <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristic.  <a href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c">More...</a><br /></td></tr>
 <tr class="separator:ad8cd148690b9e4fd1b01071e8cfabd0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5714c8ccec6ab1d98241312b28a32e9e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">setSettings</a> (const <a class="el" href="structDsoService_1_1Settings.html">Settings</a> &amp;settings)</td></tr>
 <tr class="memdesc:a5714c8ccec6ab1d98241312b28a32e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the Pokit device's DSO mode.  <a href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">More...</a><br /></td></tr>
@@ -647,7 +647,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </div><div class="memdoc">
 
 <p>Disables client-side notifications of DSO metadata changes. </p>
-<p >Instantaneous reads can still be fetched by readMetadatCharacteristic().</p>
+<p >Instantaneous reads can still be fetched by <a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Reads the DSO service&#39;s Metadata characteristic.">readMetadataCharacteristic()</a>.</p>
 <p >Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
 
 </div>
@@ -688,7 +688,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </div><div class="memdoc">
 
 <p>Enables client-side notifications of DSO metadata changes. </p>
-<p >This is an alternative to manually requesting individual reads via <a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Read the DSO service&#39;s Metadat characteristic.">readMetadataCharacteristic()</a>.</p>
+<p >This is an alternative to manually requesting individual reads via <a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Reads the DSO service&#39;s Metadata characteristic.">readMetadataCharacteristic()</a>.</p>
 <p >Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
 <p >Successfully read values (if any) will be emitted via the <a class="el" href="classDsoService.html#aa4691afc3b4b2e674b98fd467a458819" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> signal. </p>
 
@@ -800,7 +800,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>This signal is emitted when the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristic has been read successfully. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Read the DSO service&#39;s Metadat characteristic.">readMetadataCharacteristic</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Reads the DSO service&#39;s Metadata characteristic.">readMetadataCharacteristic</a> </dd></dl>
 
 </div>
 </div>
@@ -914,7 +914,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Read the <code>DSO</code> service's <code>Metadat</code> characteristic. </p>
+<p>Reads the <code>DSO</code> service's <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristic. </p>
 <p >Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p >Emits <a class="el" href="classDsoService.html#aa4691afc3b4b2e674b98fd467a458819" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> if/when the characteristic has been read successfully. </p>
 <div class="dynheader">

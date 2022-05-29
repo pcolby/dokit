@@ -41,7 +41,7 @@ var classDataLoggerService =
     [ "DataLoggerService", "classDataLoggerService.html#a1c2155abba340d49fc39bfa49ed59a6c", null ],
     [ "~DataLoggerService", "classDataLoggerService.html#ab0b747cc7f0ec24ac2611b9d70877ffc", null ],
     [ "DataLoggerService", "classDataLoggerService.html#ad3ecbfc9b9f40ff3b1f0c8941d4c0a96", null ],
-    [ "disableMetadatNotifications", "classDataLoggerService.html#a7f757139d8f4b61740524be3e69b9bca", null ],
+    [ "disableMetadataNotifications", "classDataLoggerService.html#a1e007dc2f934757d8b28cdd9939bcaa5", null ],
     [ "disableReadingNotifications", "classDataLoggerService.html#a8b144b31de4aa3d33c6e9fcb7e606bae", null ],
     [ "enableMetadataNotifications", "classDataLoggerService.html#a0c63e3cdbc6b39ab68b8442b77938049", null ],
     [ "enableReadingNotifications", "classDataLoggerService.html#a2b9d2cad9b7b937a2fd20517c5ba825e", null ],
