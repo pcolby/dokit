@@ -24,7 +24,7 @@ void TestStatusService::toString_DeviceStatus_data()
     QTest::addColumn<StatusService::DeviceStatus>("status");
     QTest::addColumn<QString>("expected");
     #define QTPOKIT_ADD_TEST_ROW(status, expected) \
-        QTest::addRow(#status) << StatusService::DeviceStatus::status << QStringLiteral(expected);
+        QTest::addRow(#status) << StatusService::DeviceStatus::status << QStringLiteral(expected)
     QTPOKIT_ADD_TEST_ROW(Idle,                  "Idle");
     QTPOKIT_ADD_TEST_ROW(MultimeterDcVoltage,   "MultimeterDcVoltage");
     QTPOKIT_ADD_TEST_ROW(MultimeterAcVoltage,   "MultimeterAcVoltage");
@@ -53,7 +53,7 @@ void TestStatusService::toString_BatteryStatus_data()
     QTest::addColumn<StatusService::BatteryStatus>("status");
     QTest::addColumn<QString>("expected");
     #define QTPOKIT_ADD_TEST_ROW(status, expected) \
-        QTest::addRow(#status) << StatusService::BatteryStatus::status << QStringLiteral(expected);
+        QTest::addRow(#status) << StatusService::BatteryStatus::status << QStringLiteral(expected)
     QTPOKIT_ADD_TEST_ROW(Low,  "Low");
     QTPOKIT_ADD_TEST_ROW(Good, "Good");
     #undef QTPOKIT_ADD_TEST_ROW

@@ -206,7 +206,7 @@ void TestScanCommand::toJson_coreConfig_data()
 
     #define QTPOKIT_ADD_TEST_ROW(config) QTest::newRow(#config) \
         << QBluetoothDeviceInfo::CoreConfiguration(QBluetoothDeviceInfo::config) \
-        << QJsonArray{ QLatin1String(#config) };
+        << QJsonArray{ QLatin1String(#config) }
     QTPOKIT_ADD_TEST_ROW(UnknownCoreConfiguration);
     QTPOKIT_ADD_TEST_ROW(LowEnergyCoreConfiguration);
     QTPOKIT_ADD_TEST_ROW(BaseRateCoreConfiguration);
@@ -265,7 +265,7 @@ void TestScanCommand::toJson_serviceClasses_data()
 
     #define QTPOKIT_ADD_TEST_ROW(serviceClass) QTest::newRow(#serviceClass) \
         << QBluetoothDeviceInfo::ServiceClasses(QBluetoothDeviceInfo::serviceClass) \
-        << QJsonArray{ QLatin1String(#serviceClass) };
+        << QJsonArray{ QLatin1String(#serviceClass) }
     QTPOKIT_ADD_TEST_ROW(PositioningService);
     QTPOKIT_ADD_TEST_ROW(NetworkingService);
     QTPOKIT_ADD_TEST_ROW(RenderingService);
