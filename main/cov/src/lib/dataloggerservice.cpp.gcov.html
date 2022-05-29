@@ -308,7 +308,7 @@
 <a name="246"><span class="lineNum">     246 </span>            : }</a>
 <a name="247"><span class="lineNum">     247 </span>            : </a>
 <a name="248"><span class="lineNum">     248 </span>            : /*!</a>
-<a name="249"><span class="lineNum">     249 </span>            :  * Read the `DataLogger` service's `Metadat` characteristic.</a>
+<a name="249"><span class="lineNum">     249 </span>            :  * Reads the `DataLogger` service's `Metadata` characteristic.</a>
 <a name="250"><span class="lineNum">     250 </span>            :  *</a>
 <a name="251"><span class="lineNum">     251 </span>            :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</a>
 <a name="252"><span class="lineNum">     252 </span>            :  * underlying controller it not yet connected to the Pokit device, or the device's services have</a>
@@ -448,11 +448,11 @@
 <a name="386"><span class="lineNum">     386 </span>            : /*!</a>
 <a name="387"><span class="lineNum">     387 </span>            :  * Disables client-side notifications of Data Logger metadata changes.</a>
 <a name="388"><span class="lineNum">     388 </span>            :  *</a>
-<a name="389"><span class="lineNum">     389 </span>            :  * Instantaneous reads can still be fetched by readMetadatCharacteristic().</a>
+<a name="389"><span class="lineNum">     389 </span>            :  * Instantaneous reads can still be fetched by readMetadataCharacteristic().</a>
 <a name="390"><span class="lineNum">     390 </span>            :  *</a>
 <a name="391"><span class="lineNum">     391 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
 <a name="392"><span class="lineNum">     392 </span>            :  */</a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          1 : bool DataLoggerService::disableMetadatNotifications()</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          1 : bool DataLoggerService::disableMetadataNotifications()</span></a>
 <a name="394"><span class="lineNum">     394 </span>            : {</a>
 <a name="395"><span class="lineNum">     395 </span><span class="lineCov">          1 :     Q_D(DataLoggerService);</span></a>
 <a name="396"><span class="lineNum">     396 </span><span class="lineCov">          1 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::metadata);</span></a>
