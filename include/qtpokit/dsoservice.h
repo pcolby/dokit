@@ -26,7 +26,7 @@ class QTPOKIT_EXPORT DsoService : public AbstractPokitService
 public:
     static const QBluetoothUuid serviceUuid;
 
-    struct CharacteristicUuids {
+    struct QTPOKIT_EXPORT CharacteristicUuids {
         static const QBluetoothUuid settings;
         static const QBluetoothUuid metadata;
         static const QBluetoothUuid reading;
