@@ -530,7 +530,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoServicePrivate_a7de9e2488240903fee3d88b89bf1d5ec_cgraph.svg" width="1146" height="800"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoServicePrivate_a7de9e2488240903fee3d88b89bf1d5ec_cgraph.svg" width="1146" height="836"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -792,8 +792,8 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  482</span>{</div>
 <div class="line"><span class="lineno">  483</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvector.html">DsoService::Samples</a> samples;</div>
 <div class="line"><span class="lineno">  484</span>    <span class="keywordflow">if</span> ((value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>()%2) != 0) {</div>
-<div class="line"><span class="lineno">  485</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Samples value has odd size (should be even): 0x%2&quot;</span>)</div>
-<div class="line"><span class="lineno">  486</span>            .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>()).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">toHex</a>()));</div>
+<div class="line"><span class="lineno">  485</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Samples value has odd size %1 (should be even): %2&quot;</span>)</div>
+<div class="line"><span class="lineno">  486</span>            .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>()).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af748600fc201fe47f29b58e8e93179d8">toHexString</a>(value));</div>
 <div class="line"><span class="lineno">  487</span>        <span class="keywordflow">return</span> samples;</div>
 <div class="line"><span class="lineno">  488</span>    }</div>
 <div class="line"><span class="lineno">  489</span>    <span class="keywordflow">for</span> (; (samples.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qvector.html#size">size</a>()*2) &lt; value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>();) {</div>
@@ -803,20 +803,20 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  493</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(samples.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qvector.html#size">size</a>()).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">arg</a>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>());</div>
 <div class="line"><span class="lineno">  494</span>    <span class="keywordflow">return</span> samples;</div>
 <div class="line"><span class="lineno">  495</span>}</div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_af748600fc201fe47f29b58e8e93179d8"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#af748600fc201fe47f29b58e8e93179d8">AbstractPokitServicePrivate::toHexString</a></div><div class="ttdeci">static QString toHexString(const QByteArray &amp;data, const int maxSize=20)</div><div class="ttdoc">Returns up to maxSize bytes of data as a human readable hexadecimal string.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00391">abstractpokitservice.cpp:391</a></div></div>
 <div class="ttc" id="aqbytearray_html_size"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size</a></div><div class="ttdeci">int size() const const</div></div>
-<div class="ttc" id="aqbytearray_html_toHex"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex</a></div><div class="ttdeci">QByteArray toHex() const const</div></div>
 <div class="ttc" id="aqstring_html_arg-11"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg</a></div><div class="ttdeci">QString arg(qlonglong a, int fieldWidth, int base, QChar fillChar) const const</div></div>
 <div class="ttc" id="aqvector_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qvector.html">QVector</a></div></div>
 <div class="ttc" id="aqvector_html_append"><div class="ttname"><a href="https://doc.qt.io/qt-5/qvector.html#append">QVector::append</a></div><div class="ttdeci">void append(const T &amp;value)</div></div>
 <div class="ttc" id="aqvector_html_size"><div class="ttname"><a href="https://doc.qt.io/qt-5/qvector.html#size">QVector::size</a></div><div class="ttdeci">int size() const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qvector.html#append">QVector::append()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">QByteArray::mid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qvector.html#size">QVector::size()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qvector.html#append">QVector::append()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-11">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">QByteArray::mid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qvector.html#size">QVector::size()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00391">AbstractPokitServicePrivate::toHexString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00563">characteristicChanged()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoServicePrivate_a404aa10d2278131ea7f787ff5e354e8a_cgraph.svg" width="351" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoServicePrivate_a404aa10d2278131ea7f787ff5e354e8a_cgraph.svg" width="608" height="358"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
