@@ -265,7 +265,25 @@ void TestStatusService::parseStatus()
 
 void TestStatusService::serviceDiscovered()
 {
-    /// \todo
+    // Service UUID begins as null.
+    StatusService service(nullptr);
+    QVERIFY(service.d_func()->serviceUuid.isNull());
+
+    // Random service UUIDs won't affect the object's service UUID.
+    service.d_func()->serviceDiscovered(QBluetoothUuid::createUuid());
+    QVERIFY(service.d_func()->serviceUuid.isNull());
+
+    // Pokit Meter's Status service UUId will be assigned.
+    service.d_func()->serviceDiscovered(StatusService::ServiceUuids::pokitMeter);
+    QCOMPARE(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitMeter);
+
+    // Pokit Pro's Status service UUId will be assigned.
+    service.d_func()->serviceDiscovered(StatusService::ServiceUuids::pokitPro);
+    QCOMPARE(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitPro);
+
+    // Random service UUIDs still won't affect the object's service UUID.
+    service.d_func()->serviceDiscovered(QBluetoothUuid::createUuid());
+    QCOMPARE(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitPro); // ie unchanged.
 }
 
 void TestStatusService::characteristicRead()
