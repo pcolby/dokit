@@ -22,6 +22,8 @@ class QTPOKIT_EXPORT MultimeterServicePrivate : public AbstractPokitServicePriva
 public:
     explicit MultimeterServicePrivate(QLowEnergyController * controller, MultimeterService * const q);
 
+    static QByteArray encodeSettings(const MultimeterService::Settings &settings);
+
     static MultimeterService::Reading parseReading(const QByteArray &value);
 
 protected:

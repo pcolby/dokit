@@ -324,16 +324,11 @@ bool MultimeterService::setSettings(const Settings &settings)
         return false;
     }
 
-    static_assert(sizeof(settings.mode)           == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.range)          == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.updateInterval) == 4, "Expected to be 4 bytes.");
+    const QByteArray value = d->encodeSettings(settings);
+    if (value.isNull()) {
+        return false;
+    }
 
-    QByteArray value;
-    QDataStream stream(&value, QIODevice::WriteOnly);
-    stream.setByteOrder(QDataStream::LittleEndian);
-    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
-    stream << (quint8)settings.mode << (quint8)settings.range.voltageRange << settings.updateInterval;
-    Q_ASSERT(value.size() == 6);
     d->service->writeCharacteristic(characteristic, value);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
@@ -422,6 +417,25 @@ MultimeterServicePrivate::MultimeterServicePrivate(
     : AbstractPokitServicePrivate(MultimeterService::serviceUuid, controller, q)
 {
 
+}
+
+/*!
+ * Returns \a settings in the format Pokit devices expect.
+ */
+QByteArray MultimeterServicePrivate::encodeSettings(const MultimeterService::Settings &settings)
+{
+    static_assert(sizeof(settings.mode)           == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.range)          == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.updateInterval) == 4, "Expected to be 4 bytes.");
+
+    QByteArray value;
+    QDataStream stream(&value, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::LittleEndian);
+    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
+    stream << (quint8)settings.mode << (quint8)settings.range.voltageRange << settings.updateInterval;
+
+    Q_ASSERT(value.size() == 6);
+    return value;
 }
 
 /*!

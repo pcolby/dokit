@@ -14,6 +14,7 @@ Q_DECLARE_METATYPE(MultimeterService::CurrentRange);
 Q_DECLARE_METATYPE(MultimeterService::ResistanceRange);
 Q_DECLARE_METATYPE(MultimeterService::Range);
 Q_DECLARE_METATYPE(MultimeterService::Settings);
+Q_DECLARE_METATYPE(MultimeterService::Reading);
 
 void TestMultimeterService::toString_Mode_data()
 {
@@ -346,83 +347,42 @@ void TestMultimeterService::disableReadingNotifications()
 
 void TestMultimeterService::encodeSettings_data()
 {
-//    QTest::addColumn<MultimeterService::Settings>("settings");
-//    QTest::addColumn<bool>("updateIntervalIs32bit");
-//    QTest::addColumn<QByteArray>("expected");
+    QTest::addColumn<MultimeterService::Settings>("settings");
+    QTest::addColumn<QByteArray>("expected");
 
-//    // Valid "stop" settings for Pokit Meter and Pokit Pro.
-//    QTest::addRow("stop:meter")
-//        << MultimeterService::Settings{
-//            MultimeterService::Command::Stop,
-//            0, MultimeterService::Mode::Idle,
-//            { MultimeterService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << false
-//        << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
-//    QTest::addRow("stop:pro")
-//        << MultimeterService::Settings{
-//            MultimeterService::Command::Stop,
-//            0, MultimeterService::Mode::Idle,
-//            { MultimeterService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << true
-//        << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
+    QTest::addRow("zeroed")
+        << MultimeterService::Settings{
+           MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::_0_to_300mV }, 0
+        }
+        << QByteArray("\x00\x00\x00\x00\x00\x00", 6);
 
-//    // Valid "refresh" settings for Pokit Meter and Pokit Pro.
-//    QTest::addRow("refresh:meter")
-//        << MultimeterService::Settings{
-//            MultimeterService::Command::Refresh,
-//            0, MultimeterService::Mode::Idle,
-//            { MultimeterService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << false
-//        << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
-//    QTest::addRow("refresh:pro")
-//        << MultimeterService::Settings{
-//            MultimeterService::Command::Refresh,
-//            0, MultimeterService::Mode::Idle,
-//            { MultimeterService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << true
-//        << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
+    QTest::addRow("AcVoltage")
+        << MultimeterService::Settings{
+           MultimeterService::Mode::AcVoltage, { MultimeterService::VoltageRange::_2V_to_6V },
+           1000
+        }
+        << QByteArray("\x02\x02\xE8\x03\x00\x00", 6);
 
-//    // Contrived "start" settings.
-//    QTest::addRow("zeroed")
-//        << MultimeterService::Settings{
-//            MultimeterService::Command::Start,
-//            0, MultimeterService::Mode::Idle,
-//            { MultimeterService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << true
-//        << QByteArray("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
+    QTest::addRow("Diode")
+        << MultimeterService::Settings{
+           MultimeterService::Mode::Diode, { MultimeterService::VoltageRange::AutoRange },
+           5000
+        }
+        << QByteArray("\x06\xFF\x88\x13\x00\x00", 6);
 
-//    // Realistic "start" settings example.
-//    QTest::addRow("AcVoltage")
-//        << MultimeterService::Settings{
-//            MultimeterService::Command::Start,
-//            0, MultimeterService::Mode::AcVoltage,
-//            { MultimeterService::VoltageRange::_30V_to_60V }, 60*1000, (quint32)16537226070
-//        }
-//        << true
-//        << QByteArray("\x00\x00\x00\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
-
-//    // "start" settings with the reserved parameter touched.
-//    QTest::addRow("reserved")
-//        << MultimeterService::Settings{
-//            MultimeterService::Command::Start,
-//            (quint16)0xAABB, MultimeterService::Mode::AcVoltage,
-//            { MultimeterService::VoltageRange::_30V_to_60V }, 60*1000u, (quint32)16537226070
-//        }
-//        << true
-//        << QByteArray("\x00\xBB\xAA\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
+    QTest::addRow("Resistance")
+        << MultimeterService::Settings{
+           MultimeterService::Mode::Resistance, { MultimeterService::VoltageRange::AutoRange },
+           60*1000
+        }
+        << QByteArray("\x05\xFF\x60\xEA\x00\x00", 6);
 }
 
 void TestMultimeterService::encodeSettings()
 {
-//    QFETCH(MultimeterService::Settings, settings);
-//    QFETCH(bool, updateIntervalIs32bit);
-//    QFETCH(QByteArray, expected);
-//    QCOMPARE(MultimeterServicePrivate::encodeSettings(settings, updateIntervalIs32bit), expected);
+    QFETCH(MultimeterService::Settings, settings);
+    QFETCH(QByteArray, expected);
+    QCOMPARE(MultimeterServicePrivate::encodeSettings(settings), expected);
 }
 
 void TestMultimeterService::parseReading_data()

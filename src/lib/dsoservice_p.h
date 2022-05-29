@@ -22,6 +22,8 @@ class QTPOKIT_EXPORT DsoServicePrivate : public AbstractPokitServicePrivate
 public:
     explicit DsoServicePrivate(QLowEnergyController * controller, DsoService * const q);
 
+    static QByteArray encodeSettings(const DsoService::Settings &settings);
+
     static DsoService::Metadata parseMetadata(const QByteArray &value);
     static DsoService::Samples parseSamples(const QByteArray &value);
 

@@ -298,83 +298,42 @@ void TestDsoService::disableReadingNotifications()
 
 void TestDsoService::encodeSettings_data()
 {
-//    QTest::addColumn<DsoService::Settings>("settings");
-//    QTest::addColumn<bool>("updateIntervalIs32bit");
-//    QTest::addColumn<QByteArray>("expected");
+    QTest::addColumn<DsoService::Settings>("settings");
+    QTest::addColumn<QByteArray>("expected");
 
-//    // Valid "stop" settings for Pokit Meter and Pokit Pro.
-//    QTest::addRow("stop:meter")
-//        << DsoService::Settings{
-//            DsoService::Command::Stop,
-//            0, DsoService::Mode::Idle,
-//            { DsoService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << false
-//        << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
-//    QTest::addRow("stop:pro")
-//        << DsoService::Settings{
-//            DsoService::Command::Stop,
-//            0, DsoService::Mode::Idle,
-//            { DsoService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << true
-//        << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
+    // Valid "refresh" settings.
+    QTest::addRow("refresh")
+        << DsoService::Settings{
+           DsoService::Command::ResendData,
+           0, DsoService::Mode::Idle,
+           { DsoService::VoltageRange::_0_to_300mV }, 0, 0
+        }
+        << QByteArray("\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
 
-//    // Valid "refresh" settings for Pokit Meter and Pokit Pro.
-//    QTest::addRow("refresh:meter")
-//        << DsoService::Settings{
-//            DsoService::Command::Refresh,
-//            0, DsoService::Mode::Idle,
-//            { DsoService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << false
-//        << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
-//    QTest::addRow("refresh:pro")
-//        << DsoService::Settings{
-//            DsoService::Command::Refresh,
-//            0, DsoService::Mode::Idle,
-//            { DsoService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << true
-//        << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
+    // Contrived "start" settings.
+    QTest::addRow("zeroed")
+        << DsoService::Settings{
+           DsoService::Command::FreeRunning,
+           0, DsoService::Mode::Idle,
+           { DsoService::VoltageRange::_0_to_300mV }, 0, 0
+        }
+        << QByteArray("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
 
-//    // Contrived "start" settings.
-//    QTest::addRow("zeroed")
-//        << DsoService::Settings{
-//            DsoService::Command::Start,
-//            0, DsoService::Mode::Idle,
-//            { DsoService::VoltageRange::_0_to_300mV }, 0, 0
-//        }
-//        << true
-//        << QByteArray("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
-
-//    // Realistic "start" settings example.
-//    QTest::addRow("AcVoltage")
-//        << DsoService::Settings{
-//            DsoService::Command::Start,
-//            0, DsoService::Mode::AcVoltage,
-//            { DsoService::VoltageRange::_30V_to_60V }, 60*1000, (quint32)16537226070
-//        }
-//        << true
-//        << QByteArray("\x00\x00\x00\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
-
-//    // "start" settings with the reserved parameter touched.
-//    QTest::addRow("reserved")
-//        << DsoService::Settings{
-//            DsoService::Command::Start,
-//            (quint16)0xAABB, DsoService::Mode::AcVoltage,
-//            { DsoService::VoltageRange::_30V_to_60V }, 60*1000u, (quint32)16537226070
-//        }
-//        << true
-//        << QByteArray("\x00\xBB\xAA\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
+    // Realistic "start" settings example.
+    QTest::addRow("AcVoltage")
+        << DsoService::Settings{
+           DsoService::Command::RisingEdgeTrigger,
+           1.0f, DsoService::Mode::AcVoltage,
+           { DsoService::VoltageRange::_12V_to_30V }, 1000000, 1000
+        }
+        << QByteArray("\x01\x00\x00\x80\x3f\x02\x04\x40\x42\x0f\x00\xe8\x03", 13);
 }
 
 void TestDsoService::encodeSettings()
 {
-//    QFETCH(DsoService::Settings, settings);
-//    QFETCH(bool, updateIntervalIs32bit);
-//    QFETCH(QByteArray, expected);
-//    QCOMPARE(DsoServicePrivate::encodeSettings(settings, updateIntervalIs32bit), expected);
+    QFETCH(DsoService::Settings, settings);
+    QFETCH(QByteArray, expected);
+    QCOMPARE(DsoServicePrivate::encodeSettings(settings), expected);
 }
 
 void TestDsoService::parseMetadata_data()

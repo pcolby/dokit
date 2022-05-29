@@ -272,21 +272,11 @@ bool DsoService::setSettings(const Settings &settings)
         return false;
     }
 
-    static_assert(sizeof(settings.command)         == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.triggerLevel)    == 4, "Expected to be 2 bytes.");
-    static_assert(sizeof(settings.mode)            == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.range)           == 1, "Expected to be 1 byte.");
-    static_assert(sizeof(settings.samplingWindow)  == 4, "Expected to be 4 bytes.");
-    static_assert(sizeof(settings.numberOfSamples) == 2, "Expected to be 2 bytes.");
+    const QByteArray value = d->encodeSettings(settings);
+    if (value.isNull()) {
+        return false;
+    }
 
-    QByteArray value;
-    QDataStream stream(&value, QIODevice::WriteOnly);
-    stream.setByteOrder(QDataStream::LittleEndian);
-    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
-    stream << (quint8)settings.command << settings.triggerLevel << (quint8)settings.mode
-           << (quint8)settings.range.voltageRange << settings.samplingWindow
-           << settings.numberOfSamples;
-    Q_ASSERT(value.size() == 13);
     d->service->writeCharacteristic(characteristic, value);
     return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
@@ -309,7 +299,7 @@ bool DsoService::startDso(const Settings &settings)
 }
 
 /*!
- * Start the DSO.
+ * Fetch DSO samples.
  *
  * This is just a convenience function equivalent to calling setSettings() with the command set to
  * DsoService::Command::Refresh.
@@ -448,6 +438,30 @@ DsoServicePrivate::DsoServicePrivate(
     : AbstractPokitServicePrivate(DsoService::serviceUuid, controller, q)
 {
 
+}
+
+/*!
+ * Returns \a settings in the format Pokit devices expect.
+ */
+QByteArray DsoServicePrivate::encodeSettings(const DsoService::Settings &settings)
+{
+    static_assert(sizeof(settings.command)         == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.triggerLevel)    == 4, "Expected to be 2 bytes.");
+    static_assert(sizeof(settings.mode)            == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.range)           == 1, "Expected to be 1 byte.");
+    static_assert(sizeof(settings.samplingWindow)  == 4, "Expected to be 4 bytes.");
+    static_assert(sizeof(settings.numberOfSamples) == 2, "Expected to be 2 bytes.");
+
+    QByteArray value;
+    QDataStream stream(&value, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::LittleEndian);
+    stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
+    stream << (quint8)settings.command << settings.triggerLevel << (quint8)settings.mode
+           << (quint8)settings.range.voltageRange << settings.samplingWindow
+           << settings.numberOfSamples;
+
+    Q_ASSERT(value.size() == 13);
+    return value;
 }
 
 /*!
