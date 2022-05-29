@@ -67,8 +67,8 @@ var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
 "classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c",
-"classScanCommand.html#a3f96c110d5f90517ef9a3afc9f2b5501",
-"structDsoService_1_1Metadata.html#aa2c92c1dd91d2351dbe06c1e7910c78d"
+"classScanCommand.html#a2cb218644893d84036ec16cd46f1d488",
+"structDsoService_1_1Metadata.html#a49968d71997c4a744061b547e9c4778e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

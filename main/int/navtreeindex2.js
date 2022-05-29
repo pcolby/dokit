@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classScanCommand.html#a2cb218644893d84036ec16cd46f1d488":[5,0,28,3],
+"classScanCommand.html#a33d8423caad084f3131066a870f697bc":[5,0,28,14],
 "classScanCommand.html#a3f96c110d5f90517ef9a3afc9f2b5501":[5,0,28,10],
 "classScanCommand.html#a4422f8c5972370796065882a622940e1":[5,0,28,15],
 "classScanCommand.html#a509decde7ad462eac744e661b5544c62":[5,0,28,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "structDsoService_1_1CharacteristicUuids.html#a495b006c71a1b15952e54e1ff0791aa7":[5,0,12,0,1],
 "structDsoService_1_1CharacteristicUuids.html#aad3144a47fc1cc7edc705b3e823688a6":[5,0,12,0,2],
 "structDsoService_1_1Metadata.html":[5,0,12,1],
-"structDsoService_1_1Metadata.html#a1ee78a173e219e8224f4db3d4bc5ee97":[5,0,12,1,3],
-"structDsoService_1_1Metadata.html#a49968d71997c4a744061b547e9c4778e":[5,0,12,1,6],
-"structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085":[5,0,12,1,5]
+"structDsoService_1_1Metadata.html#a1ee78a173e219e8224f4db3d4bc5ee97":[5,0,12,1,3]
 };
