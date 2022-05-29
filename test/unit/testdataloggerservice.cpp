@@ -414,7 +414,7 @@ void TestDataLoggerService::parseMetadata_data()
         };
 
     // Sample from a real Pokit Pro device.
-    QTest::addRow("PokitMeter")
+    QTest::addRow("PokitPro")
         << QByteArray("\x00\x39\xf0\x45\x3c\x00\x04\x60\xea\x00\x00\x0d"
                       "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62", 23)
         << DataLoggerService::Metadata{
@@ -424,7 +424,7 @@ void TestDataLoggerService::parseMetadata_data()
         };
 
     // Made-up sample *extended* from a real Pokit Pro device (by appending 3 erroneous bytes).
-    QTest::addRow("PokitMeter")
+    QTest::addRow("PokitPro")
         << QByteArray("\x00\x39\xf0\x45\x3c\x00\x04\x60\xea\x00\x00\x0d"
                       "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62\x01\x02\0x3", 26)
         << DataLoggerService::Metadata{

@@ -378,7 +378,9 @@ StatusServicePrivate::StatusServicePrivate(
 StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteristics(
     const QByteArray &value)
 {
-    StatusService::DeviceCharacteristics characteristics;
+    StatusService::DeviceCharacteristics characteristics{
+        QVersionNumber(), 0, 0, 0, 0, 0, 0, QBluetoothAddress()
+    };
     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.
 
     if (!checkSize(QLatin1String("Device Characterisitcs"), value, 20, 20)) {

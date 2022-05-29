@@ -367,7 +367,7 @@ void TestDsoService::parseMetadata_data()
         };
 
     // Sample from a real Pokit Pro device; note is has 4 extra unknown bytes.
-    QTest::addRow("PokitMeter")
+    QTest::addRow("PokitPro")
         << QByteArray("\x00\xcc\xec\xba\x33\x02\x00\x40\x42\x0f\x00"
                       "\xe8\x03\x0a\x00\x00\x00\x14\x00\x00\x00", 21)
         << DsoService::Metadata{

@@ -412,7 +412,7 @@ void TestMultimeterService::parseReading_data()
         };
 
     // Sample from a real Pokit Pro device.
-    QTest::addRow("PokitMeter")
+    QTest::addRow("PokitPro")
         << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00", 7)
         << MultimeterService::Reading{
            MultimeterService::MeterStatus::AutoRangeOff, 0.007645795122f,
@@ -420,7 +420,7 @@ void TestMultimeterService::parseReading_data()
         };
 
     // Made-up sample *extended* from a real Pokit Pro device (by appending 3 erroneous bytes).
-    QTest::addRow("PokitMeter")
+    QTest::addRow("PokitPro")
         << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00\x01\x02\x03", 10)
         << MultimeterService::Reading{
            MultimeterService::MeterStatus::AutoRangeOff, 0.007645795122f,

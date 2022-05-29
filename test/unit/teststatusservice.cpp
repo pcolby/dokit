@@ -8,24 +8,64 @@
 
 #include <QRegularExpression>
 
+Q_DECLARE_METATYPE(StatusService::DeviceCharacteristics);
+Q_DECLARE_METATYPE(StatusService::DeviceStatus);
+Q_DECLARE_METATYPE(StatusService::BatteryStatus);
+Q_DECLARE_METATYPE(StatusService::Status);
+
+// Serialiser for QCOMPARE to output QBluetoothAddress objects on test failures.
+char *toString(const QBluetoothAddress &address)
+{
+    return qstrdup(("QBluetoothAddress(" + address.toString().toLocal8Bit() + ")").constData());
+}
+
 void TestStatusService::toString_DeviceStatus_data()
 {
-    /// \todo
+    QTest::addColumn<StatusService::DeviceStatus>("status");
+    QTest::addColumn<QString>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(status, expected) \
+        QTest::addRow(#status) << StatusService::DeviceStatus::status << QStringLiteral(expected);
+    QTPOKIT_ADD_TEST_ROW(Idle,                  "Idle");
+    QTPOKIT_ADD_TEST_ROW(MultimeterDcVoltage,   "MultimeterDcVoltage");
+    QTPOKIT_ADD_TEST_ROW(MultimeterAcVoltage,   "MultimeterAcVoltage");
+    QTPOKIT_ADD_TEST_ROW(MultimeterDcCurrent,   "MultimeterDcCurrent");
+    QTPOKIT_ADD_TEST_ROW(MultimeterAcCurrent,   "MultimeterAcCurrent");
+    QTPOKIT_ADD_TEST_ROW(MultimeterResistance,  "MultimeterResistance");
+    QTPOKIT_ADD_TEST_ROW(MultimeterDiode,       "MultimeterDiode");
+    QTPOKIT_ADD_TEST_ROW(MultimeterContinuity,  "MultimeterContinuity");
+    QTPOKIT_ADD_TEST_ROW(MultimeterTemperature, "MultimeterTemperature");
+    QTPOKIT_ADD_TEST_ROW(DsoModeSampling,       "DsoModeSampling");
+    QTPOKIT_ADD_TEST_ROW(LoggerModeSampling,    "LoggerModeSampling");
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (StatusService::DeviceStatus)11   << QString();
+    QTest::addRow("max")     << (StatusService::DeviceStatus)0xFF << QString();
 }
 
 void TestStatusService::toString_DeviceStatus()
 {
-    /// \todo
+    QFETCH(StatusService::DeviceStatus, status);
+    QFETCH(QString, expected);
+    QCOMPARE(StatusService::toString(status), expected);
 }
 
 void TestStatusService::toString_BatteryStatus_data()
 {
-    /// \todo
+    QTest::addColumn<StatusService::BatteryStatus>("status");
+    QTest::addColumn<QString>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(status, expected) \
+        QTest::addRow(#status) << StatusService::BatteryStatus::status << QStringLiteral(expected);
+    QTPOKIT_ADD_TEST_ROW(Low,  "Low");
+    QTPOKIT_ADD_TEST_ROW(Good, "Good");
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (StatusService::BatteryStatus)2    << QString();
+    QTest::addRow("max")     << (StatusService::BatteryStatus)0xFF << QString();
 }
 
 void TestStatusService::toString_BatteryStatus()
 {
-    /// \todo
+    QFETCH(StatusService::BatteryStatus, status);
+    QFETCH(QString, expected);
+    QCOMPARE(StatusService::toString(status), expected);
 }
 
 void TestStatusService::readCharacteristics()
@@ -93,22 +133,134 @@ void TestStatusService::flashLed()
 
 void TestStatusService::parseDeviceCharacteristics_data()
 {
-    /// \todo
+    QTest::addColumn<QByteArray>("value");
+    QTest::addColumn<StatusService::DeviceCharacteristics>("expected");
+
+    QTest::addRow("null") << QByteArray()
+        << StatusService::DeviceCharacteristics{
+            QVersionNumber(), 0, 0, 0, 0, 0, 0, QBluetoothAddress()
+        };
+
+    // Device Characteristics must be at least 20 bytes to be valid / parsable.
+    QTest::addRow("too-small") << QByteArray(19, '\xFF')
+        << StatusService::DeviceCharacteristics{
+           QVersionNumber(), 0, 0, 0, 0, 0, 0, QBluetoothAddress()
+        };
+
+    // Sample from a real Pokit Meter device.
+    QTest::addRow("PokitMeter")
+        << QByteArray("\x01\x04\x3c\x00\x02\x00\xe8\x03\xe8\x03"
+                      "\x00\x20\x00\x00\x84\x2e\x14\x2c\x03\xa8", 20)
+        << StatusService::DeviceCharacteristics{
+           QVersionNumber(1,4), 60, 2, 1000, 1000, 8192, 0,
+           QBluetoothAddress(QStringLiteral("84:2E:14:2C:03:A8"))
+        };
+
+    // Sample from a real Pokit Pro device.
+    QTest::addRow("PokitPro")
+        << QByteArray("\x01\x03\x52\x03\x0a\x00\xb8\x0b\xe8\x03"
+                      "\x00\x40\x00\x00\x5c\x02\x72\x09\xaa\x25", 20)
+        << StatusService::DeviceCharacteristics{
+           QVersionNumber(1,3), 850, 10, 3000, 1000, 16384, 0,
+           QBluetoothAddress(QStringLiteral("5C:02:72:09:AA:25"))
+        };
 }
 
 void TestStatusService::parseDeviceCharacteristics()
 {
-    /// \todo
+    QFETCH(QByteArray, value);
+    QFETCH(StatusService::DeviceCharacteristics, expected);
+    if (value.size() < 20) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Device Characterisitcs requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+    }
+    if (value.size() > 20) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Device Characterisitcs has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+    }
+    const StatusService::DeviceCharacteristics actual =
+        StatusServicePrivate::parseDeviceCharacteristics(value);
+    QCOMPARE(actual.firmwareVersion,     expected.firmwareVersion);
+    QCOMPARE(actual.maximumVoltage,      expected.maximumVoltage);
+    QCOMPARE(actual.maximumCurrent,      expected.maximumCurrent);
+    QCOMPARE(actual.maximumResistance,   expected.maximumResistance);
+    QCOMPARE(actual.maximumSamplingRate, expected.maximumSamplingRate);
+    QCOMPARE(actual.samplingBufferSize,  expected.samplingBufferSize);
+    QCOMPARE(actual.capabilityMask,      expected.capabilityMask);
+    QCOMPARE(actual.macAddress,          expected.macAddress);
 }
 
 void TestStatusService::parseStatus_data()
 {
-    /// \todo
+    QTest::addColumn<QByteArray>("value");
+    QTest::addColumn<StatusService::Status>("expected");
+
+    QTest::addRow("null") << QByteArray()
+        << StatusService::Status{
+           static_cast<StatusService::DeviceStatus>
+               (std::numeric_limits<std::underlying_type<StatusService::DeviceStatus>::type>::max()),
+           std::numeric_limits<float>::quiet_NaN(),
+           static_cast<StatusService::BatteryStatus>
+               (std::numeric_limits<std::underlying_type<StatusService::BatteryStatus>::type>::max()),
+        };
+
+    // Status must be at least 5 bytes to be valid / parsable.
+    QTest::addRow("too-small") << QByteArray(4, '\xFF')
+    << StatusService::Status{
+       static_cast<StatusService::DeviceStatus>
+           (std::numeric_limits<std::underlying_type<StatusService::DeviceStatus>::type>::max()),
+       std::numeric_limits<float>::quiet_NaN(),
+       static_cast<StatusService::BatteryStatus>
+           (std::numeric_limits<std::underlying_type<StatusService::BatteryStatus>::type>::max()),
+    };
+
+
+    // Sample from a real Pokit Meter device. Note that the battery status is invalid (std::max)
+    // because Pokit Meter devices don't report the battery status (legnth is 5, not 6 bytes).
+    QTest::addRow("PokitMeter")
+        << QByteArray("\x00\x25\x07\x33\x40", 5)
+        << StatusService::Status{
+           StatusService::DeviceStatus::Idle, 2.797311068f,
+           static_cast<StatusService::BatteryStatus>
+               (std::numeric_limits<std::underlying_type<StatusService::BatteryStatus>::type>::max()),
+        };
+
+    // Sample from a real Pokit Pro device; note is has 4 extra unknown bytes. Note, this has 2 more
+    // bytes than the longest documented format (6 bytes).
+    QTest::addRow("PokitPro")
+        << QByteArray("\x02\x64\x3b\x83\x40\x01\x00\x00", 8)
+        << StatusService::Status{
+           StatusService::DeviceStatus::MultimeterAcVoltage, 4.100999832f,
+           StatusService::BatteryStatus::Good
+        };
 }
 
 void TestStatusService::parseStatus()
 {
-    /// \todo
+    QFETCH(QByteArray, value);
+    QFETCH(StatusService::Status, expected);
+    if (value.size() < 5) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Status requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+    }
+    if (value.size() > 6) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Status has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+    }
+    const StatusService::Status actual = StatusServicePrivate::parseStatus(value);
+    QCOMPARE(actual.deviceStatus,   expected.deviceStatus);
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+    QCOMPARE(qIsFinite(actual.batteryVoltage),    qIsFinite(expected.batteryVoltage));
+    QCOMPARE(qIsInf(actual.batteryVoltage),       qIsInf(expected.batteryVoltage));
+    QCOMPARE(qIsNaN(actual.batteryVoltage),       qIsNaN(expected.batteryVoltage));
+    QCOMPARE(qFuzzyIsNull(actual.batteryVoltage), qFuzzyIsNull(expected.batteryVoltage));
+    if ((qIsFinite(actual.batteryVoltage)) && (!qFuzzyIsNull(actual.batteryVoltage))) {
+        QCOMPARE(actual.batteryVoltage, expected.batteryVoltage);
+    }
+    #else
+    QCOMPARE(actual.batteryVoltage, expected.batteryVoltage);
+    #endif
+    QCOMPARE(actual.batteryStatus,  expected.batteryStatus);
 }
 
 void TestStatusService::serviceDiscovered()

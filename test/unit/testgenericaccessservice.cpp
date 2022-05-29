@@ -52,12 +52,36 @@ void TestGenericAccessService::setDeviceName()
 
 void TestGenericAccessService::parseAppearance_data()
 {
-    /// \todo
+    QTest::addColumn<QByteArray>("value");
+    QTest::addColumn<quint16>("expected");
+
+    QTest::addRow("null") << QByteArray() << std::numeric_limits<quint16>::max();
+
+    QTest::addRow("short") << QByteArray(1, '\x00') << std::numeric_limits<quint16>::max();
+
+    QTest::addRow("0000") << QByteArray("\x00\x00", 2) << (quint16)0;
+    QTest::addRow("00FF") << QByteArray("\x00\xFF", 2) << (quint16)65280;
+    QTest::addRow("FF00") << QByteArray("\xFF\x00", 2) << (quint16)255;
+    QTest::addRow("ABCD") << QByteArray("\xAB\xCD", 2) << (quint16)52651;
+
+    // Extra bytes emit warnings, but are otherwise ignored.
+    QTest::addRow("AAAA")  << QByteArray("\xAA\xAA", 2) << (quint16)43690;
+    QTest::addRow("extra") << QByteArray(10, '\xAA')    << (quint16)43690;
 }
 
 void TestGenericAccessService::parseAppearance()
 {
-    /// \todo
+    QFETCH(QByteArray, value);
+    QFETCH(quint16, expected);
+    if (value.size() < 2) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Appearance requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+    }
+    if (value.size() > 2) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Appearance has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+    }
+    QCOMPARE(GenericAccessServicePrivate::parseAppearance(value), expected);
 }
 
 void TestGenericAccessService::characteristicRead()
