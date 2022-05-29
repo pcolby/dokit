@@ -8,6 +8,18 @@ class TestDeviceInfoService : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    void readCharacteristics();
+    void readFirmwareRevisionCharacteristic();
+    void readHardwareRevisionCharacteristic();
+    void readManufacturerCharacteristics();
+    void readModelNumberCharacteristic();
+    void readSoftwareRevisionCharacteristic();
+
+    void manufacturer();
+    void modelNumber();
+    void hardwareRevision();
+    void firmwareRevision();
+    void softwareRevision();
+
+    void characteristicRead();
 };

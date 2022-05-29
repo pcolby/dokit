@@ -224,7 +224,7 @@ StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() cons
  *
  * ```
  * const StatusService::Status status = statusService->status();
- * if (qIsNaN(status.batteryLevel)) {
+ * if (qIsNaN(status.batteryVoltage)) {
  *     // Handle failure.
  * }
  * ```
@@ -536,7 +536,7 @@ void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic 
         return;
     }
 
-    qCWarning(lc).noquote() << tr("Unknown characteristic written for Status Service")
+    qCWarning(lc).noquote() << tr("Unknown characteristic written for Status service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
 

@@ -8,6 +8,18 @@ class TestGenericAccessService : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    void readCharacteristics();
+    void readAppearanceCharacteristic();
+    void readDeviceNameCharacteristic();
+
+    void appearance();
+
+    void deviceName();
+    void setDeviceName();
+
+    void parseAppearance_data();
+    void parseAppearance();
+
+    void characteristicRead();
+    void characteristicWritten();
 };

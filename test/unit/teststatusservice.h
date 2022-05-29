@@ -8,6 +8,34 @@ class TestStatusService : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    void toString_DeviceStatus_data();
+    void toString_DeviceStatus();
+
+    void toString_BatteryStatus_data();
+    void toString_BatteryStatus();
+
+    void readCharacteristics();
+    void readDeviceCharacteristics();
+    void readStatusCharacteristic();
+    void readNameCharacteristic();
+
+    void deviceCharacteristics();
+
+    void status();
+
+    void deviceName();
+    void setDeviceName();
+
+    void flashLed();
+
+    void parseDeviceCharacteristics_data();
+    void parseDeviceCharacteristics();
+
+    void parseStatus_data();
+    void parseStatus();
+
+    void serviceDiscovered();
+
+    void characteristicRead();
+    void characteristicWritten();
 };
