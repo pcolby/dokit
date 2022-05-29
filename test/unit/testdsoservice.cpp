@@ -379,87 +379,76 @@ void TestDsoService::encodeSettings()
 
 void TestDsoService::parseMetadata_data()
 {
-//    QTest::addColumn<QByteArray>("value");
-//    QTest::addColumn<DsoService::Metadata>("expected");
+    QTest::addColumn<QByteArray>("value");
+    QTest::addColumn<DsoService::Metadata>("expected");
 
-//    QTest::addRow("null") << QByteArray()
-//        << DsoService::Metadata{
-//            DsoService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-//            DsoService::Mode::Idle, { DsoService::VoltageRange::_0_to_300mV },
-//            0, 0, 0
-//        };
+    QTest::addRow("null") << QByteArray()
+        << DsoService::Metadata{
+           DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
+           DsoService::Mode::Idle, { DsoService::VoltageRange::_0_to_300mV },
+           0, 0, 0
+        };
 
-//    // Metadata must be at least 15 bytes to be valid / parsable.
-//    QTest::addRow("too-small") << QByteArray(14, '\xFF')
-//        << DsoService::Metadata{
-//            DsoService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-//            DsoService::Mode::Idle, { DsoService::VoltageRange::_0_to_300mV },
-//            0, 0, 0
-//        };
+    // Metadata must be at least 17 bytes to be valid / parsable.
+    QTest::addRow("too-small") << QByteArray(16, '\xFF')
+        << DsoService::Metadata{
+           DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
+           DsoService::Mode::Idle, { DsoService::VoltageRange::_0_to_300mV },
+           0, 0, 0
+        };
 
-//    // Sample from a real Pokit Meter device.
-//    QTest::addRow("PokitMeter")
-//        << QByteArray("\x00\x9f\x0f\x49\x37\x00\x04\x3c\x00\x00\x00\xe9\xbb\x8c\x62", 15)
-//        << DsoService::Metadata{
-//            DsoService::LoggerStatus::Done, 1.19842e-05f,
-//            DsoService::Mode::Idle, { DsoService::VoltageRange::_12V_to_30V },
-//            60000, 0, 1653390313 // 2022-05-24 21:05:13.000 AEST.
-//        };
 
-//    // Sample from a real Pokit Pro device.
-//    QTest::addRow("PokitMeter")
-//        << QByteArray("\x00\x39\xf0\x45\x3c\x00\x04\x60\xea\x00\x00\x0d"
-//                      "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62", 23)
-//        << DsoService::Metadata{
-//            DsoService::LoggerStatus::Done, 0.0120812f,
-//            DsoService::Mode::Idle, { DsoService::VoltageRange::_12V_to_30V },
-//            60000, 13, 1653389635 // 2022-05-24 20:53:55.000 AEST.
-//        };
+    // Sample from a real Pokit Meter device.
+    QTest::addRow("PokitMeter")
+        << QByteArray("\x00\x98\xf7\x8b\x33\x02\x00\x40\x42\x0f\x00\x0a\x00\x0a\x00\x00\x00", 17)
+        << DsoService::Metadata{
+           DsoService::DsoStatus::Done, 6.51773e-08f,
+           DsoService::Mode::AcVoltage, { DsoService::VoltageRange::_0_to_300mV },
+           1*1000*1000, 10, 10
+        };
 
-//    // Made-up sample *extended* from a real Pokit Pro device (by appending 3 erroneous bytes).
-//    QTest::addRow("PokitMeter")
-//        << QByteArray("\x00\x39\xf0\x45\x3c\x00\x04\x60\xea\x00\x00\x0d"
-//                      "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62\x01\x02\0x3", 26)
-//        << DsoService::Metadata{
-//           DsoService::LoggerStatus::Done, 0.0120812f,
-//           DsoService::Mode::Idle, { DsoService::VoltageRange::_12V_to_30V },
-//           0, 0, 0 // Will safely parse all but these last three.
-//        };
+    // Sample from a real Pokit Pro device; note is has 4 extra unknown bytes.
+    QTest::addRow("PokitMeter")
+        << QByteArray("\x00\xcc\xec\xba\x33\x02\x00\x40\x42\x0f\x00"
+                      "\xe8\x03\x0a\x00\x00\x00\x14\x00\x00\x00", 21)
+        << DsoService::Metadata{
+              DsoService::DsoStatus::Done, 1.04452e-07f,
+              DsoService::Mode::AcVoltage, { DsoService::VoltageRange::_0_to_300mV },
+              1*1000*1000, 1000, 10
+        };
 }
 
 void TestDsoService::parseMetadata()
 {
-//    QFETCH(QByteArray, value);
-//    QFETCH(DsoService::Metadata, expected);
-//    if (value.size() < 15) {
-//        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-//            "^Metadata requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
-//    }
-//    if (value.size() > 23) {
-//        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-//            "^Metadata has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
-//        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-//            "^Cannot decode metadata of \\d+ bytes: 0x[a-zA-Z0-9,.]*$")));
-//    }
-//    const DsoService::Metadata actual = DsoServicePrivate::parseMetadata(value);
-//    QCOMPARE(actual.status, expected.status);
-//    #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
-//    QCOMPARE(qIsFinite(actual.scale),    qIsFinite(expected.scale));
-//    QCOMPARE(qIsInf(actual.scale),       qIsInf(expected.scale));
-//    QCOMPARE(qIsNaN(actual.scale),       qIsNaN(expected.scale));
-//    QCOMPARE(qFuzzyIsNull(actual.scale), qFuzzyIsNull(expected.scale));
-//    if ((qIsFinite(actual.scale)) && (!qFuzzyIsNull(actual.scale))) {
-//        QCOMPARE(actual.scale, expected.scale);
-//    }
-//    #else
-//    QCOMPARE(actual.scale, expected.scale);
-//    #endif
-//    QCOMPARE(actual.mode, expected.mode);
-//    QCOMPARE(actual.range.currentRange, expected.range.currentRange);
-//    QCOMPARE(actual.range.voltageRange, expected.range.voltageRange);
-//    QCOMPARE(actual.updateInterval, expected.updateInterval);
-//    QCOMPARE(actual.numberOfSamples, expected.numberOfSamples);
-//    QCOMPARE(actual.timestamp, expected.timestamp);
+    QFETCH(QByteArray, value);
+    QFETCH(DsoService::Metadata, expected);
+    if (value.size() < 17) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Metadata requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+    }
+    if (value.size() > 17) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Metadata has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+    }
+    const DsoService::Metadata actual = DsoServicePrivate::parseMetadata(value);
+    QCOMPARE(actual.status,             expected.status);
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+    QCOMPARE(qIsFinite(actual.scale),    qIsFinite(expected.scale));
+    QCOMPARE(qIsInf(actual.scale),       qIsInf(expected.scale));
+    QCOMPARE(qIsNaN(actual.scale),       qIsNaN(expected.scale));
+    QCOMPARE(qFuzzyIsNull(actual.scale), qFuzzyIsNull(expected.scale));
+    if ((qIsFinite(actual.scale)) && (!qFuzzyIsNull(actual.scale))) {
+        QCOMPARE(actual.scale, expected.scale);
+    }
+    #else
+    QCOMPARE(actual.scale,              expected.scale);
+    #endif
+    QCOMPARE(actual.mode,               expected.mode);
+    QCOMPARE(actual.range.currentRange, expected.range.currentRange);
+    QCOMPARE(actual.range.voltageRange, expected.range.voltageRange);
+    QCOMPARE(actual.samplingWindow,     expected.samplingWindow);
+    QCOMPARE(actual.numberOfSamples,    expected.numberOfSamples);
+    QCOMPARE(actual.samplingRate,       expected.samplingRate);
 }
 
 void TestDsoService::parseSamples_data()
@@ -469,10 +458,11 @@ void TestDsoService::parseSamples_data()
 
     QTest::addRow("empty") << QByteArray() << DsoService::Samples();
 
-    // Real, albeit boring, sample from a Pokit Pro device.
+    // Sample from a real Pokit Pro device.
     QTest::addRow("PokitPro")
-        << QByteArray("\xff\x7f\xff\x7f\xff\x7f\xff\x7f\xff\x7f", 10)
-        << DsoService::Samples({32767,32767,32767,32767,32767});
+        << QByteArray("\xda\x36\x91\x24\x24\x09\x02\x80\x91\x64"
+                      "\x48\x12\x23\x49\x01\xc0\x4a\x92\xdc\xf6", 20)
+        << DsoService::Samples({14042,9361,2340,-32766,25745,4680,18723,-16383,-28086,-2340});
 
     // Check bytes are parsed in the correct (little-endian) order.
     QTest::addRow("endianness")

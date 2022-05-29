@@ -427,87 +427,75 @@ void TestMultimeterService::encodeSettings()
 
 void TestMultimeterService::parseReading_data()
 {
-//    QTest::addColumn<QByteArray>("value");
-//    QTest::addColumn<MultimeterService::Metadata>("expected");
+    QTest::addColumn<QByteArray>("value");
+    QTest::addColumn<MultimeterService::Reading>("expected");
 
-//    QTest::addRow("null") << QByteArray()
-//        << MultimeterService::Metadata{
-//            MultimeterService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-//            MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::_0_to_300mV },
-//            0, 0, 0
-//        };
+    QTest::addRow("null") << QByteArray()
+        << MultimeterService::Reading{
+           MultimeterService::MeterStatus::Error, std::numeric_limits<float>::quiet_NaN(),
+           MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::AutoRange }
+        };
 
-//    // Metadata must be at least 15 bytes to be valid / parsable.
-//    QTest::addRow("too-small") << QByteArray(14, '\xFF')
-//        << MultimeterService::Metadata{
-//            MultimeterService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-//            MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::_0_to_300mV },
-//            0, 0, 0
-//        };
+    // Metadata must be at least 7 bytes to be valid / parsable.
+    QTest::addRow("too-small") << QByteArray(6, '\xFF')
+        << MultimeterService::Reading{
+           MultimeterService::MeterStatus::Error, std::numeric_limits<float>::quiet_NaN(),
+           MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::AutoRange }
+        };
 
-//    // Sample from a real Pokit Meter device.
-//    QTest::addRow("PokitMeter")
-//        << QByteArray("\x00\x9f\x0f\x49\x37\x00\x04\x3c\x00\x00\x00\xe9\xbb\x8c\x62", 15)
-//        << MultimeterService::Metadata{
-//            MultimeterService::LoggerStatus::Done, 1.19842e-05f,
-//            MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::_12V_to_30V },
-//            60000, 0, 1653390313 // 2022-05-24 21:05:13.000 AEST.
-//        };
+    // Sample from a real Pokit Meter device.
+    QTest::addRow("PokitMeter")
+        << QByteArray("\x00\x00\x00\x00\x00\x01\x03", 7)
+        << MultimeterService::Reading{
+           MultimeterService::MeterStatus::AutoRangeOff, 0.0f,
+           MultimeterService::Mode::DcVoltage, { MultimeterService::VoltageRange::_6V_to_12V }
+        };
 
-//    // Sample from a real Pokit Pro device.
-//    QTest::addRow("PokitMeter")
-//        << QByteArray("\x00\x39\xf0\x45\x3c\x00\x04\x60\xea\x00\x00\x0d"
-//                      "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62", 23)
-//        << MultimeterService::Metadata{
-//            MultimeterService::LoggerStatus::Done, 0.0120812f,
-//            MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::_12V_to_30V },
-//            60000, 13, 1653389635 // 2022-05-24 20:53:55.000 AEST.
-//        };
+    // Sample from a real Pokit Pro device.
+    QTest::addRow("PokitMeter")
+        << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00", 7)
+        << MultimeterService::Reading{
+           MultimeterService::MeterStatus::AutoRangeOff, 0.0076458f,
+           MultimeterService::Mode::AcVoltage, { MultimeterService::VoltageRange::_0_to_300mV }
+        };
 
-//    // Made-up sample *extended* from a real Pokit Pro device (by appending 3 erroneous bytes).
-//    QTest::addRow("PokitMeter")
-//        << QByteArray("\x00\x39\xf0\x45\x3c\x00\x04\x60\xea\x00\x00\x0d"
-//                      "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62\x01\x02\0x3", 26)
-//        << MultimeterService::Metadata{
-//           MultimeterService::LoggerStatus::Done, 0.0120812f,
-//           MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::_12V_to_30V },
-//           0, 0, 0 // Will safely parse all but these last three.
-//        };
+    // Made-up sample *extended* from a real Pokit Pro device (by appending 3 erroneous bytes).
+    QTest::addRow("PokitMeter")
+        << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00\x01\x02\x03", 10)
+        << MultimeterService::Reading{
+           MultimeterService::MeterStatus::AutoRangeOff, 0.0076458f,
+           MultimeterService::Mode::AcVoltage, { MultimeterService::VoltageRange::_0_to_300mV }
+        };
 }
 
 void TestMultimeterService::parseReading()
 {
-//    QFETCH(QByteArray, value);
-//    QFETCH(MultimeterService::Metadata, expected);
-//    if (value.size() < 15) {
-//        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-//            "^Metadata requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
-//    }
-//    if (value.size() > 23) {
-//        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-//            "^Metadata has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
-//        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-//            "^Cannot decode metadata of \\d+ bytes: 0x[a-zA-Z0-9,.]*$")));
-//    }
-//    const MultimeterService::Metadata actual = MultimeterServicePrivate::parseMetadata(value);
-//    QCOMPARE(actual.status, expected.status);
-//    #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
-//    QCOMPARE(qIsFinite(actual.scale),    qIsFinite(expected.scale));
-//    QCOMPARE(qIsInf(actual.scale),       qIsInf(expected.scale));
-//    QCOMPARE(qIsNaN(actual.scale),       qIsNaN(expected.scale));
-//    QCOMPARE(qFuzzyIsNull(actual.scale), qFuzzyIsNull(expected.scale));
-//    if ((qIsFinite(actual.scale)) && (!qFuzzyIsNull(actual.scale))) {
-//        QCOMPARE(actual.scale, expected.scale);
-//    }
-//    #else
-//    QCOMPARE(actual.scale, expected.scale);
-//    #endif
-//    QCOMPARE(actual.mode, expected.mode);
-//    QCOMPARE(actual.range.currentRange, expected.range.currentRange);
-//    QCOMPARE(actual.range.voltageRange, expected.range.voltageRange);
-//    QCOMPARE(actual.updateInterval, expected.updateInterval);
-//    QCOMPARE(actual.numberOfSamples, expected.numberOfSamples);
-//    QCOMPARE(actual.timestamp, expected.timestamp);
+    QFETCH(QByteArray, value);
+    QFETCH(MultimeterService::Reading, expected);
+    if (value.size() < 7) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Reading requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+    }
+    if (value.size() > 7) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
+            "^Reading has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+    }
+    const MultimeterService::Reading actual = MultimeterServicePrivate::parseReading(value);
+    QCOMPARE(actual.status, expected.status);
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+    QCOMPARE(qIsFinite(actual.value),    qIsFinite(expected.value));
+    QCOMPARE(qIsInf(actual.value),       qIsInf(expected.value));
+    QCOMPARE(qIsNaN(actual.value),       qIsNaN(expected.value));
+    QCOMPARE(qFuzzyIsNull(actual.value), qFuzzyIsNull(expected.value));
+    if ((qIsFinite(actual.value)) && (!qFuzzyIsNull(actual.value))) {
+        QCOMPARE(actual.value, expected.value);
+    }
+    #else
+    QCOMPARE(actual.value, expected.value);
+    #endif
+    QCOMPARE(actual.mode, expected.mode);
+    QCOMPARE(actual.range.currentRange, expected.range.currentRange);
+    QCOMPARE(actual.range.voltageRange, expected.range.voltageRange);
 }
 
 void TestMultimeterService::characteristicRead()
