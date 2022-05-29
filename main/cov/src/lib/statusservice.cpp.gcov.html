@@ -172,11 +172,11 @@
 <a name="110"><span class="lineNum">     110 </span>            : /*!</a>
 <a name="111"><span class="lineNum">     111 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="112"><span class="lineNum">     112 </span>            :  */</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         12 : StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         12 :     : AbstractPokitService(new StatusServicePrivate(controller, this), parent)</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         13 : StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         13 :     : AbstractPokitService(new StatusServicePrivate(controller, this), parent)</span></a>
 <a name="115"><span class="lineNum">     115 </span>            : {</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         12 : }</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         13 : }</span></a>
 <a name="118"><span class="lineNum">     118 </span>            : </a>
 <a name="119"><span class="lineNum">     119 </span>            : /*!</a>
 <a name="120"><span class="lineNum">     120 </span>            :  * \cond internal</a>
@@ -427,12 +427,12 @@
 <a name="365"><span class="lineNum">     365 </span>            :  * \internal</a>
 <a name="366"><span class="lineNum">     366 </span>            :  * Constructs a new StatusServicePrivate object with public implementation \a q.</a>
 <a name="367"><span class="lineNum">     367 </span>            :  */</a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         12 : StatusServicePrivate::StatusServicePrivate(</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         12 :     QLowEnergyController * controller, StatusService * const q)</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         12 :     : AbstractPokitServicePrivate(QBluetoothUuid(), controller, q)</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         13 : StatusServicePrivate::StatusServicePrivate(</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         13 :     QLowEnergyController * controller, StatusService * const q)</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         13 :     : AbstractPokitServicePrivate(QBluetoothUuid(), controller, q)</span></a>
 <a name="371"><span class="lineNum">     371 </span>            : {</a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         12 : }</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         13 : }</span></a>
 <a name="374"><span class="lineNum">     374 </span>            : </a>
 <a name="375"><span class="lineNum">     375 </span>            : /*!</a>
 <a name="376"><span class="lineNum">     376 </span>            :  * Parses the `Device Characteristics` \a value into a DeviceCharacteristics struct.</a>

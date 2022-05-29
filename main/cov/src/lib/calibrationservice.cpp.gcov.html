@@ -93,11 +93,11 @@
 <a name="31"><span class="lineNum">      31 </span>            : /*!</a>
 <a name="32"><span class="lineNum">      32 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="33"><span class="lineNum">      33 </span>            :  */</a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          3 : CalibrationService::CalibrationService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          3 :     : AbstractPokitService(new CalibrationServicePrivate(controller, this), parent)</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          4 : CalibrationService::CalibrationService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          4 :     : AbstractPokitService(new CalibrationServicePrivate(controller, this), parent)</span></a>
 <a name="36"><span class="lineNum">      36 </span>            : {</a>
 <a name="37"><span class="lineNum">      37 </span>            : </a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          3 : }</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          4 : }</span></a>
 <a name="39"><span class="lineNum">      39 </span>            : </a>
 <a name="40"><span class="lineNum">      40 </span>            : /*!</a>
 <a name="41"><span class="lineNum">      41 </span>            :  * \cond internal</a>
@@ -175,12 +175,12 @@
 <a name="113"><span class="lineNum">     113 </span>            :  * \internal</a>
 <a name="114"><span class="lineNum">     114 </span>            :  * Constructs a new CalibrationServicePrivate object with public implementation \a q.</a>
 <a name="115"><span class="lineNum">     115 </span>            :  */</a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          3 : CalibrationServicePrivate::CalibrationServicePrivate(</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          3 :     QLowEnergyController * controller, CalibrationService * const q)</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          3 :     : AbstractPokitServicePrivate(CalibrationService::serviceUuid, controller, q)</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          4 : CalibrationServicePrivate::CalibrationServicePrivate(</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          4 :     QLowEnergyController * controller, CalibrationService * const q)</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          4 :     : AbstractPokitServicePrivate(CalibrationService::serviceUuid, controller, q)</span></a>
 <a name="119"><span class="lineNum">     119 </span>            : {</a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          3 : }</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          4 : }</span></a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
 <a name="123"><span class="lineNum">     123 </span>            : /*!</a>
 <a name="124"><span class="lineNum">     124 </span>            :  * Returns \a value in a format Pokit devices expect. Specifically, this just enocdes \a value as</a>
