@@ -282,11 +282,11 @@ void TestDataLoggerService::enableMetadataNotifications()
     QVERIFY(!service.enableMetadataNotifications());
 }
 
-void TestDataLoggerService::disableMetadatNotifications()
+void TestDataLoggerService::disableMetadataNotifications()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
     DataLoggerService service(nullptr);
-    QVERIFY(!service.disableMetadatNotifications());
+    QVERIFY(!service.disableMetadataNotifications());
 }
 
 void TestDataLoggerService::enableReadingNotifications()

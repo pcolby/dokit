@@ -242,7 +242,7 @@ bool DsoService::readCharacteristics()
 }
 
 /*!
- * Read the `DSO` service's `Metadat` characteristic.
+ * Reads the `DSO` service's `Metadata` characteristic.
  *
  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
@@ -301,7 +301,7 @@ bool DsoService::startDso(const Settings &settings)
 {
     Q_D(const DsoService);
     Q_ASSERT(settings.command != DsoService::Command::ResendData);
-    if (settings.command != DsoService::Command::ResendData) {
+    if (settings.command == DsoService::Command::ResendData) {
         qCWarning(d->lc).noquote() << tr("Settings command must not be 'ResendData'.");
         return false;
     }
@@ -372,7 +372,7 @@ bool DsoService::enableMetadataNotifications()
 /*!
  * Disables client-side notifications of DSO metadata changes.
  *
- * Instantaneous reads can still be fetched by readMetadatCharacteristic().
+ * Instantaneous reads can still be fetched by readMetadataCharacteristic().
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */

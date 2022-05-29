@@ -42,7 +42,7 @@ private slots:
 
     void metadata();
     void enableMetadataNotifications();
-    void disableMetadatNotifications();
+    void disableMetadataNotifications();
 
     void enableReadingNotifications();
     void disableReadingNotifications();

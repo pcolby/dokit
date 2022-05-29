@@ -246,7 +246,7 @@ bool DataLoggerService::readCharacteristics()
 }
 
 /*!
- * Read the `DataLogger` service's `Metadat` characteristic.
+ * Reads the `DataLogger` service's `Metadata` characteristic.
  *
  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
@@ -386,11 +386,11 @@ bool DataLoggerService::enableMetadataNotifications()
 /*!
  * Disables client-side notifications of Data Logger metadata changes.
  *
- * Instantaneous reads can still be fetched by readMetadatCharacteristic().
+ * Instantaneous reads can still be fetched by readMetadataCharacteristic().
  *
  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
  */
-bool DataLoggerService::disableMetadatNotifications()
+bool DataLoggerService::disableMetadataNotifications()
 {
     Q_D(DataLoggerService);
     return d->disableCharacteristicNotificatons(CharacteristicUuids::metadata);

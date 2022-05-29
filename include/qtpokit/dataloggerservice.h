@@ -122,7 +122,7 @@ public:
     // Metadata characteristic (BLE read/notify).
     Metadata metadata() const;
     bool enableMetadataNotifications();
-    bool disableMetadatNotifications();
+    bool disableMetadataNotifications();
 
     // Reading characteristic (BLE notify only).
     bool enableReadingNotifications();
