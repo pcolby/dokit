@@ -188,6 +188,87 @@ void TestMultimeterService::maxValue_CurrentRange()
     QCOMPARE(MultimeterService::maxValue(range), expected);
 }
 
+void TestMultimeterService::toString_ResistanceRange_data()
+{
+    QTest::addColumn<MultimeterService::ResistanceRange>("range");
+    QTest::addColumn<QString>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(range, expected) \
+        QTest::addRow(#range) << MultimeterService::ResistanceRange::range << QStringLiteral(expected);
+    QTPOKIT_ADD_TEST_ROW(_0_to_160,     "0 to 160 ohms");
+    QTPOKIT_ADD_TEST_ROW(_160_to_330,   "160 to 330 ohms");
+    QTPOKIT_ADD_TEST_ROW(_330_to_890,   "330 to 890 ohms");
+    QTPOKIT_ADD_TEST_ROW(_890_to_1K5,   "890 to 1.5K ohms");
+    QTPOKIT_ADD_TEST_ROW(_1K5_to_10K,   "1.5K to 10K ohms");
+    QTPOKIT_ADD_TEST_ROW(_10K_to_100K,  "10K to 100K ohms");
+    QTPOKIT_ADD_TEST_ROW(_100K_to_470K, "100K to 470K ohms");
+    QTPOKIT_ADD_TEST_ROW(_470K_to_1M,   "470K to 1M ohms");
+    QTPOKIT_ADD_TEST_ROW(AutoRange,     "Auto-range");
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (MultimeterService::ResistanceRange)8    << QString();
+    QTest::addRow("max")     << (MultimeterService::ResistanceRange)0xFE << QString();
+}
+
+void TestMultimeterService::toString_ResistanceRange()
+{
+    QFETCH(MultimeterService::ResistanceRange, range);
+    QFETCH(QString, expected);
+    QCOMPARE(MultimeterService::toString(range), expected);
+}
+
+void TestMultimeterService::minValue_ResistanceRange_data()
+{
+    QTest::addColumn<MultimeterService::ResistanceRange>("range");
+    QTest::addColumn<QVariant>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(range, expected) \
+        QTest::addRow(#range) << MultimeterService::ResistanceRange::range << QVariant(expected);
+    QTPOKIT_ADD_TEST_ROW(_0_to_160,            0);
+    QTPOKIT_ADD_TEST_ROW(_160_to_330,        160);
+    QTPOKIT_ADD_TEST_ROW(_330_to_890,        330);
+    QTPOKIT_ADD_TEST_ROW(_890_to_1K5,        890);
+    QTPOKIT_ADD_TEST_ROW(_1K5_to_10K,       1500);
+    QTPOKIT_ADD_TEST_ROW(_10K_to_100K,   10*1000);
+    QTPOKIT_ADD_TEST_ROW(_100K_to_470K, 100*1000);
+    QTPOKIT_ADD_TEST_ROW(_470K_to_1M,   470*1000);
+    QTPOKIT_ADD_TEST_ROW(AutoRange,     QStringLiteral("Auto"));
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (MultimeterService::ResistanceRange)8    << QVariant();
+    QTest::addRow("max")     << (MultimeterService::ResistanceRange)0xFE << QVariant();
+}
+
+void TestMultimeterService::minValue_ResistanceRange()
+{
+    QFETCH(MultimeterService::ResistanceRange, range);
+    QFETCH(QVariant, expected);
+    QCOMPARE(MultimeterService::minValue(range), expected);
+}
+
+void TestMultimeterService::maxValue_ResistanceRange_data()
+{
+    QTest::addColumn<MultimeterService::ResistanceRange>("range");
+    QTest::addColumn<QVariant>("expected");
+    #define QTPOKIT_ADD_TEST_ROW(range, expected) \
+        QTest::addRow(#range) << MultimeterService::ResistanceRange::range << QVariant(expected);
+    QTPOKIT_ADD_TEST_ROW(_0_to_160,             160);
+    QTPOKIT_ADD_TEST_ROW(_160_to_330,           330);
+    QTPOKIT_ADD_TEST_ROW(_330_to_890,           890);
+    QTPOKIT_ADD_TEST_ROW(_890_to_1K5,          1500);
+    QTPOKIT_ADD_TEST_ROW(_1K5_to_10K,       10*1000);
+    QTPOKIT_ADD_TEST_ROW(_10K_to_100K,     100*1000);
+    QTPOKIT_ADD_TEST_ROW(_100K_to_470K,    470*1000);
+    QTPOKIT_ADD_TEST_ROW(_470K_to_1M,   1*1000*1000);
+    QTPOKIT_ADD_TEST_ROW(AutoRange,     QStringLiteral("Auto"));
+    #undef QTPOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (MultimeterService::ResistanceRange)8    << QVariant();
+    QTest::addRow("max")     << (MultimeterService::ResistanceRange)0xFE << QVariant();
+}
+
+void TestMultimeterService::maxValue_ResistanceRange()
+{
+    QFETCH(MultimeterService::ResistanceRange, range);
+    QFETCH(QVariant, expected);
+    QCOMPARE(MultimeterService::maxValue(range), expected);
+}
+
 void TestMultimeterService::toString_Range_data()
 {
     QTest::addColumn<MultimeterService::Range>("range");

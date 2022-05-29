@@ -29,7 +29,14 @@ private slots:
     void maxValue_CurrentRange_data();
     void maxValue_CurrentRange();
 
-    /// \todo Resistance range.
+    void toString_ResistanceRange_data();
+    void toString_ResistanceRange();
+
+    void minValue_ResistanceRange_data();
+    void minValue_ResistanceRange();
+
+    void maxValue_ResistanceRange_data();
+    void maxValue_ResistanceRange();
 
     void toString_Range_data();
     void toString_Range();
