@@ -361,7 +361,7 @@ void TestDsoService::parseMetadata_data()
     QTest::addRow("PokitMeter")
         << QByteArray("\x00\x98\xf7\x8b\x33\x02\x00\x40\x42\x0f\x00\x0a\x00\x0a\x00\x00\x00", 17)
         << DsoService::Metadata{
-           DsoService::DsoStatus::Done, 6.51773e-08f,
+           DsoService::DsoStatus::Done, 6.517728934e-08f,
            DsoService::Mode::AcVoltage, { DsoService::VoltageRange::_0_to_300mV },
            1*1000*1000, 10, 10
         };
@@ -371,7 +371,7 @@ void TestDsoService::parseMetadata_data()
         << QByteArray("\x00\xcc\xec\xba\x33\x02\x00\x40\x42\x0f\x00"
                       "\xe8\x03\x0a\x00\x00\x00\x14\x00\x00\x00", 21)
         << DsoService::Metadata{
-              DsoService::DsoStatus::Done, 1.04452e-07f,
+              DsoService::DsoStatus::Done, 8.704373045e-08f,
               DsoService::Mode::AcVoltage, { DsoService::VoltageRange::_0_to_300mV },
               1*1000*1000, 1000, 10
         };

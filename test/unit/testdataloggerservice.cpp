@@ -408,7 +408,7 @@ void TestDataLoggerService::parseMetadata_data()
     QTest::addRow("PokitMeter")
         << QByteArray("\x00\x9f\x0f\x49\x37\x00\x04\x3c\x00\x00\x00\xe9\xbb\x8c\x62", 15)
         << DataLoggerService::Metadata{
-            DataLoggerService::LoggerStatus::Done, 1.19842e-05f,
+            DataLoggerService::LoggerStatus::Done, 1.198417067e-05f,
             DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_12V_to_30V },
             60000, 0, 1653390313 // 2022-05-24 21:05:13.000 AEST.
         };
@@ -418,7 +418,7 @@ void TestDataLoggerService::parseMetadata_data()
         << QByteArray("\x00\x39\xf0\x45\x3c\x00\x04\x60\xea\x00\x00\x0d"
                       "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62", 23)
         << DataLoggerService::Metadata{
-            DataLoggerService::LoggerStatus::Done, 0.0120812f,
+            DataLoggerService::LoggerStatus::Done, 0.01208119933f,
             DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_12V_to_30V },
             60000, 13, 1653389635 // 2022-05-24 20:53:55.000 AEST.
         };
@@ -428,7 +428,7 @@ void TestDataLoggerService::parseMetadata_data()
         << QByteArray("\x00\x39\xf0\x45\x3c\x00\x04\x60\xea\x00\x00\x0d"
                       "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62\x01\x02\0x3", 26)
         << DataLoggerService::Metadata{
-           DataLoggerService::LoggerStatus::Done, 0.0120812f,
+           DataLoggerService::LoggerStatus::Done, 0.01208119933f,
            DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_12V_to_30V },
            0, 0, 0 // Will safely parse all but these last three.
         };

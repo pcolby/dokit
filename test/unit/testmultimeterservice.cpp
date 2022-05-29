@@ -415,7 +415,7 @@ void TestMultimeterService::parseReading_data()
     QTest::addRow("PokitMeter")
         << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00", 7)
         << MultimeterService::Reading{
-           MultimeterService::MeterStatus::AutoRangeOff, 0.0076458f,
+           MultimeterService::MeterStatus::AutoRangeOff, 0.007645795122f,
            MultimeterService::Mode::AcVoltage, { MultimeterService::VoltageRange::_0_to_300mV }
         };
 
@@ -423,7 +423,7 @@ void TestMultimeterService::parseReading_data()
     QTest::addRow("PokitMeter")
         << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00\x01\x02\x03", 10)
         << MultimeterService::Reading{
-           MultimeterService::MeterStatus::AutoRangeOff, 0.0076458f,
+           MultimeterService::MeterStatus::AutoRangeOff, 0.007645795122f,
            MultimeterService::Mode::AcVoltage, { MultimeterService::VoltageRange::_0_to_300mV }
         };
 }
