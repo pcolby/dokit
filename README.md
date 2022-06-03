@@ -13,34 +13,173 @@ QtPokit is a cross-platform [Qt] library, and console application for accessing 
 
 ## Project Development Status
 
-This project is in very early stages of development, but alread supports most functions of the
+This project is in early stages of development, but already supports most functions of the
 [Pokit Meter] and [Pokit Pro] devices. Most hands-on testing is currently performed on Linux, but
 builds and automated tests all run on Linux, MacOS and Windows. A separate project (to launch later) will
 aim to provide a cross-platform desktop GUI application using the QtPokit library.
 
-### Pokit Device Services
+## Usage
 
-Pokit devices currently support seven official (and one unofficial) Bluetooth GATT Services:
+### QtPokit Library
 
-|       Function         | Library Status| Console App Status|                  Notes                 |
-|------------------------|:-------------:|:-----------------:|----------------------------------------|
-| Device Discovery       | Implemented   | Implemented       |                                        |
-| Multimeter Service     | Implemented   | Implemented       |                                        |
-| DSO Service            | Implemented   | Implemented       |                                        |
-| Data Logger Service    | Implemented   | Implemented       |                                        |
-| Pokit Status Service   | Implemented   | Implemented       | Only applicable to Pokit Meter (not Pro). |
-| Calibration Service    | Implemented   | Implemented       | Fails on Linux due to BlueZ issue.     |
-| Device Info Service    | Implemented   | Implemented       |                                        |
-| Generic Access Service | Implemented   | No plans          | Superseded by the Pokit Status service.|
-| OTA Service            | No plans      | No plans          | Undocumented service, presumably for firmware updates. |
+For shared library usage (for developers to create their own Pokit device applications), see the [latest
+API docs](https://pcolby.github.io/qtpokit/main/doc/index.html).
 
-### Supported Platforms
+### `pokit` Command
 
-| Platform |  Status |                                  Notes                                        |
-|:--------:|:-------:|-------------------------------------------------------------------------------|
-| Linux    | Works   | Known issue with Calibration service.                                         |
-| MacOS    | Untested| Builds on CI/CD, including automated tests. But not yet tested with a device. |
-| Windows  | Untested| Builds on CI/CD, including automated tests. But not yet tested with a device. |
+The `pokit` CLI command is executed like:
+
+```sh
+pokit <command> [options]
+```
+
+Where `<command>` is one of: `info`, `status`, `meter`, `dso`, `logger-start`, `logger-stop`,
+`logger-fetch`, `scan`, `set-name`, `flash-led`, or `calibrate`
+
+For example, to get a device's status:
+
+```
+pokit status
+```
+
+Outputs like:
+
+```
+Device name:           PokitMeter
+Firmware version:      1.4
+Maximum voltage:       60
+Maximum current:       2
+Maximum resistance:    1000
+Maximum sampling rate: 1000
+Sampling buffer size:  8192
+Capability mask:       0
+MAC address:           84:2E:14:2C:03:A8
+Device status:         Idle (0)
+Battery voltage:       2.76221
+Battery status:        N/A (255)
+```
+
+Or, you can output in CSV, or JSON too, like:
+
+```
+pokit status --output json
+```
+
+```json
+{
+    "battery": {
+        "level": 2.760070562362671
+    },
+    "capabilityMask": 0,
+    "deviceName": "PokitMeter",
+    "deviceStatus": {
+        "code": 0,
+        "label": "Idle"
+    },
+    "firmwareVersion": {
+        "major": 1,
+        "minor": 4
+    },
+    "macAddress": "84:2E:14:2C:03:A8",
+    "maximumCurrent": 2,
+    "maximumResistance": 1000,
+    "maximumSamplingRate": 1000,
+    "maximumVoltage": 60,
+    "samplingBufferSize": 8192
+}
+```
+
+By default, the `pokit` command will use the first Pokit device it finds. However, if you have more than
+one device, you can specify the device's name, or MAC address, or (on MacOS) device UUID, such as:
+
+```
+pokit status --device RedPokitPro
+```
+
+Tip: You can rename Pokit devices via the official Pokit app, or the `set-name` command, like:
+
+```
+pokit set-name --device PokitMeter --new-name MyPokitMeter
+```
+
+Here's a more complex usage example:
+
+```
+pokit meter --mode Vac --range 10V --samples 10 --output csv
+```
+
+This will fetch 10 AC meter readings, on the nearest range that can support 10Vac, and output those
+readings in CSV format:
+
+For full usage information (albeit brief), use the `--help` option, which currently outputs something like:
+
+```sh
+Usage: pokit <command> [options]
+
+Options:
+  --color <yes|no|auto>    Colors the console output. Valid options are: yes,
+                           no and auto. The default is auto.
+  --command <command>      Command for logger mode. Supported logger commnds:
+                           start, stop and fetch (or refresh).
+  --debug                  Enable debug output.
+  -d, --device <device>    Set the name, hardware address or MacOS UUID of
+                           Pokit device to use. If not specified, the first
+                           discovered Pokit device will be used.
+  -h, --help               Displays help on commandline options.
+  --help-all               Displays help including Qt specific options.
+  --interval <interval>    Set the update interval for meter and logger modes.
+                           Suffixes such as 's' and 'ms' (for seconds and
+                           milliseconds) may be used. If no suffix is present,
+                           the units will be inferred from the magnitide of the
+                           given interval. If the option itself is not
+                           specified, a sensible default will be chosen
+                           according to the selected command.
+  --mode <mode>            Set the desired operation mode for meter, dso and
+                           logger modes. Supported modes are: AC Voltage, DC
+                           Voltage, AC Current, DC Current, Resistance, Diode,
+                           Continuity, and Temperature. All are case
+                           insensitive. Only the first four options are
+                           available for dso and logger commands; the rest are
+                           available in meter mode only.
+  --new-name <name>        Give the desired new name for the set-name command.
+  --output <format>        Set the format for output. Supported formats are:
+                           CSV, JSON and Text. All are case insenstitve. The
+                           default is Text.
+  --range <range>          Set the desired measurement range. Pokit devices
+                           support specific ranges, such as 0 to 300mV. Specify
+                           the desired upper limit, and the best range will be
+                           selected, or use 'auto' to enable the Pokit device's
+                           auto-range feature. The default is 'auto'.
+  --samples <count>        Set the number of samples to acquire.
+  --temperature <degrees>  Set the current ambient temperature for the
+                           calibration command.
+  --timeout <period>       Set the device discovery scan timeout.Suffixes such
+                           as 's' and 'ms' (for seconds and milliseconds) may be
+                           used. If no suffix is present, the units will be
+                           inferred from the magnitide of the given interval.
+                           The default behaviour is no timeout.
+  --timestamp <period>     Set the optional starting timestamp for data
+                           logging. Default to 'now'.
+  --trigger-level <level>  Set the DSO trigger level.
+  --trigger-mode <mode>    Set the DSO trigger mode. Supported modes are: free,
+                           rising and falling. The default is free.
+  -v, --version            Displays version information.
+  --window <duration>      Sampling window for DSO acquisition
+
+Command:
+  info                     Get Pokit device information
+  status                   Get Pokit device status
+  meter                    Access Pokit device's multimeter mode
+  dso                      Access Pokit device's DSO mode
+  logger-start             Start Pokit device's data logger mode
+  logger-stop              Stop Pokit device's data logger mode
+  logger-fetch             Fetch Pokit device's data logger samples
+  scan                     Scan Bluetooth for Pokit devices
+  set-name                 Set Pokit device's name
+  flash-led                Flash Pokit device's LED
+  calibrate                Calibrate Pokit device temperature
+
+```
 
 ## Requirements
 
