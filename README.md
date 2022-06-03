@@ -119,16 +119,14 @@ Usage: pokit <command> [options]
 Options:
   --color <yes|no|auto>    Colors the console output. Valid options are: yes,
                            no and auto. The default is auto.
-  --command <command>      Command for logger mode. Supported logger commnds:
-                           start, stop and fetch (or refresh).
   --debug                  Enable debug output.
   -d, --device <device>    Set the name, hardware address or MacOS UUID of
                            Pokit device to use. If not specified, the first
                            discovered Pokit device will be used.
   -h, --help               Displays help on commandline options.
   --help-all               Displays help including Qt specific options.
-  --interval <interval>    Set the update interval for meter and logger modes.
-                           Suffixes such as 's' and 'ms' (for seconds and
+  --interval <interval>    Set the update interval for DOS, meter and logger
+                           modes. Suffixes such as 's' and 'ms' (for seconds and
                            milliseconds) may be used. If no suffix is present,
                            the units will be inferred from the magnitide of the
                            given interval. If the option itself is not
@@ -164,7 +162,6 @@ Options:
   --trigger-mode <mode>    Set the DSO trigger mode. Supported modes are: free,
                            rising and falling. The default is free.
   -v, --version            Displays version information.
-  --window <duration>      Sampling window for DSO acquisition
 
 Command:
   info                     Get Pokit device information
@@ -178,7 +175,6 @@ Command:
   set-name                 Set Pokit device's name
   flash-led                Flash Pokit device's LED
   calibrate                Calibrate Pokit device temperature
-
 ```
 
 ## Requirements

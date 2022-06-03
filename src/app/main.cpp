@@ -122,10 +122,6 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           QCoreApplication::translate("parseCommandLine", "Colors the console output. Valid options "
           "are: yes, no and auto. The default is auto."),
           QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
-        {{QStringLiteral("command")},
-          QCoreApplication::translate("parseCommandLine", "Command for logger mode. Supported "
-          "logger commnds: start, stop and fetch (or refresh)."),
-          QCoreApplication::translate("parseCommandLine", "command")},
         {{QStringLiteral("debug")},
           QCoreApplication::translate("parseCommandLine", "Enable debug output.")},
         {{QStringLiteral("d"), QStringLiteral("device")},
@@ -137,7 +133,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     parser.addHelpOption();
     parser.addOptions({
         {{QStringLiteral("interval")},
-          QCoreApplication::translate("parseCommandLine", "Set the update interval for meter and "
+          QCoreApplication::translate("parseCommandLine", "Set the update interval for DOS, meter and "
           "logger modes. Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. "
           "If no suffix is present, the units will be inferred from the magnitide of the given "
           "interval. If the option itself is not specified, a sensible default will be chosen "
@@ -189,11 +185,6 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           QCoreApplication::translate("parseCommandLine", "mode"), QStringLiteral("free")},
     });
     parser.addVersionOption();
-    parser.addOptions({
-        {{QStringLiteral("window")},
-          QCoreApplication::translate("parseCommandLine","Sampling window for DSO acquisition"),
-          QStringLiteral("duration")},
-    });
 
     // Add supported 'commands' (as positional arguments, so they'll appear in the help text).
     parser.addPositionalArgument(QStringLiteral("info"),
