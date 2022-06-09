@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2022 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.0)
 
 find_package(Qt${QT_VERSION_MAJOR}Test REQUIRED)
 
@@ -74,9 +74,13 @@ add_pokit_unit_test(
 # App Unit Tests
 
 function(add_pokit_app_unit_test name)
+if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
+  message("-- Skipping test${name} (needs CMake 3.12+)")
+else()
   add_pokit_unit_test(${name} ${ARGN})
   target_include_directories(test${name} PRIVATE ${CMAKE_SOURCE_DIR}/src/app)
   target_link_libraries(test${name} PRIVATE PokitApp)
+endif()
 endfunction()
 
 add_pokit_app_unit_test(
