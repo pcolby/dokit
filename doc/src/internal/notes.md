@@ -46,14 +46,28 @@ QtPokit requires Qt's support Bluetooth Low Energy, in Central mode.
 
 ## CMake Versions
 
-Building QtPokit requires [CMake] 3.12+.
+In summary (of the below table), for *building* QtPokit:
+
+* CMake 2.8.9 through to pre-3.0 *should* be possible, but the effort and resulting complexity
+  is high enough to not be worth it.
+* any CMake 3.x should be fine, except:
+* CMake 3.12+ is needed for the full set of unit tests.
 
 | Version| Dependency                                                                           |
 |:------:|--------------------------------------------------------------------------------------|
-|  3.1   | Required by Qt5.                                                                     |
+| 2.8.9  | [Qt 5.1+](https://github.com/qt/qtbase/blob/v5.1.0/src/corelib/Qt5Config.cmake.in) |
+| 2.8.11 | [`target_include_directories`](https://cmake.org/cmake/help/v2.8.11/cmake.html#command:target_include_directories) |
+| 2.8.11 | Has `-fPIC` issues with Qt. |
+| 2.8.12 | [`add_compile_options`](https://cmake.org/cmake/help/v2.8.12/cmake.html#command:add_compile_options)
+| 2.8.12 | Has compile isssues with Qt. |
+|  3.0   | `VERSION` option of the `project()` command.
+|  3.1   | [Qt 5.11+](https://github.com/qt/qtbase/blob/v5.11.0/src/corelib/Qt5Config.cmake.in) |
+|        | `target_sources` command. |
 |  3.12  | [Object Libraries] for sharing binary objects between the console app and unit tests.|
-|  3.16  | Required by Qt6+                                                                     |
+|  3.13  | `-B` CLI option (handy, but not essential).                                          |
+|  3.16  | [Qt6.x shared](https://github.com/qt/qtbase/blob/v6.2.0/.cmake.conf)|
 |  3.18  | Not actually a requirement, but this is the minimum version that's regularly tested. |
+|  3.21  | [Qt6.x static](https://github.com/qt/qtbase/blob/v6.2.0/.cmake.conf)|
 
 
 [cmake]: https://cmake.org/

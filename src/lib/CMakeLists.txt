@@ -3,41 +3,39 @@
 
 cmake_minimum_required(VERSION 3.0)
 
-add_library(QtPokit SHARED)
-
-target_sources(
-  QtPokit
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/abstractpokitservice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/calibrationservice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/dataloggerservice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/deviceinfoservice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/dsoservice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/genericaccessservice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/multimeterservice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevice.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdiscoveryagent.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/qtpokit_global.h
-  PRIVATE ${CMAKE_SOURCE_DIR}/include/qtpokit/statusservice.h
-  PRIVATE abstractpokitservice.cpp
-  PRIVATE abstractpokitservice_p.h
-  PRIVATE calibrationservice.cpp
-  PRIVATE calibrationservice_p.h
-  PRIVATE dataloggerservice.cpp
-  PRIVATE dataloggerservice_p.h
-  PRIVATE deviceinfoservice.cpp
-  PRIVATE deviceinfoservice_p.h
-  PRIVATE dsoservice.cpp
-  PRIVATE dsoservice_p.h
-  PRIVATE genericaccessservice.cpp
-  PRIVATE genericaccessservice_p.h
-  PRIVATE multimeterservice.cpp
-  PRIVATE multimeterservice_p.h
-  PRIVATE pokitdevice.cpp
-  PRIVATE pokitdevice_p.h
-  PRIVATE pokitdiscoveryagent.cpp
-  PRIVATE pokitdiscoveryagent_p.h
-  PRIVATE statusservice.cpp
-  PRIVATE statusservice_p.h
+add_library(
+  QtPokit SHARED
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/abstractpokitservice.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/calibrationservice.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/dataloggerservice.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/deviceinfoservice.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/dsoservice.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/genericaccessservice.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/multimeterservice.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevice.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdiscoveryagent.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/qtpokit_global.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/statusservice.h
+  abstractpokitservice.cpp
+  abstractpokitservice_p.h
+  calibrationservice.cpp
+  calibrationservice_p.h
+  dataloggerservice.cpp
+  dataloggerservice_p.h
+  deviceinfoservice.cpp
+  deviceinfoservice_p.h
+  dsoservice.cpp
+  dsoservice_p.h
+  genericaccessservice.cpp
+  genericaccessservice_p.h
+  multimeterservice.cpp
+  multimeterservice_p.h
+  pokitdevice.cpp
+  pokitdevice_p.h
+  pokitdiscoveryagent.cpp
+  pokitdiscoveryagent_p.h
+  statusservice.cpp
+  statusservice_p.h
 )
 
 target_include_directories(QtPokit PUBLIC ${CMAKE_SOURCE_DIR}/include)
