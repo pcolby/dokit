@@ -155,18 +155,41 @@ Qt Versions</h1>
 </table>
 <h1><a class="anchor" id="autotoc_md9"></a>
 CMake Versions</h1>
-<p >Building QtPokit requires <a href="https://cmake.org/">CMake</a> 3.12+.</p>
+<p >In summary (of the below table), for <em>building</em> QtPokit:</p>
+<ul>
+<li>CMake 2.8.9 through to pre-3.0 <em>should</em> be possible, but the effort and resulting complexity is high enough to not be worth it.</li>
+<li>any CMake 3.x should be fine, except:</li>
+<li>CMake 3.12+ is needed for the full set of unit tests.</li>
+</ul>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadCenter">Version   </th><th class="markdownTableHeadNone">Dependency    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">3.1   </td><td class="markdownTableBodyNone">Required by Qt5.    </td></tr>
+<td class="markdownTableBodyCenter">2.8.9   </td><td class="markdownTableBodyNone"><a href="https://github.com/qt/qtbase/blob/v5.1.0/src/corelib/Qt5Config.cmake.in">Qt 5.1+</a>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">3.12   </td><td class="markdownTableBodyNone"><a href="https://cmake.org/cmake/help/latest/command/add_library.html#object-libraries">Object Libraries</a> for sharing binary objects between the console app and unit tests.    </td></tr>
+<td class="markdownTableBodyCenter">2.8.11   </td><td class="markdownTableBodyNone"><a href="https://cmake.org/cmake/help/v2.8.11/cmake.html#command:target_include_directories"><code>target_include_directories</code></a>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">3.16   </td><td class="markdownTableBodyNone">Required by Qt6+    </td></tr>
+<td class="markdownTableBodyCenter">2.8.11   </td><td class="markdownTableBodyNone">Has <code>-fPIC</code> issues with <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a>.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">3.18   </td><td class="markdownTableBodyNone">Not actually a requirement, but this is the minimum version that's regularly tested.   </td></tr>
+<td class="markdownTableBodyCenter">2.8.12   </td><td class="markdownTableBodyNone"><a href="https://cmake.org/cmake/help/v2.8.12/cmake.html#command:add_compile_options"><code>add_compile_options</code></a>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">2.8.12   </td><td class="markdownTableBodyNone">Has compile isssues with <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">3.0   </td><td class="markdownTableBodyNone"><code>VERSION</code> option of the <code>project()</code> command.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">3.1   </td><td class="markdownTableBodyNone"><a href="https://github.com/qt/qtbase/blob/v5.11.0/src/corelib/Qt5Config.cmake.in">Qt 5.11+</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter"></td><td class="markdownTableBodyNone"><code>target_sources</code> command.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">3.12   </td><td class="markdownTableBodyNone"><a href="https://cmake.org/cmake/help/latest/command/add_library.html#object-libraries">Object Libraries</a> for sharing binary objects between the console app and unit tests.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">3.13   </td><td class="markdownTableBodyNone"><code>-B</code> CLI option (handy, but not essential).    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">3.16   </td><td class="markdownTableBodyNone"><a href="https://github.com/qt/qtbase/blob/v6.2.0/.cmake.conf">Qt6.x shared</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">3.18   </td><td class="markdownTableBodyNone">Not actually a requirement, but this is the minimum version that's regularly tested.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">3.21   </td><td class="markdownTableBodyNone"><a href="https://github.com/qt/qtbase/blob/v6.2.0/.cmake.conf">Qt6.x static</a>   </td></tr>
 </table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
