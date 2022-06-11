@@ -182,24 +182,34 @@ Command:
 * Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]
 * a Qt-supported platform, such as Linux, MacOS or Windows
 * a [Pokit] device, such as a [Pokit Meter] or [Pokit Pro]
+* [CMake] (for building the QtPokit itself) 3.0+
+    * some unit tests won't be built unless using CMake 3.12 or later.
 
 ## Building from Source
 
-Prototypical [CMake]-based out-of-source build and test process:
+Prototypical [CMake]-based out-of-source build and test process, for CMake 3.13 or later:
+
+```sh
+cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo> -B <tmp-build-dir>
+cmake --build <tmp-build-dir>
+ctest --test-dir <tmp-build-dir> --verbose
+```
+
+For CMake versions earlier than 3.13 (ie before CMake added the `-B <build-dir>` command line option):
 
 ```sh
 cmake -E make_directory <tmp-build-dir>
-cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo> -B <tmp-build-dir>
+cd <tmp-build-dir>
+cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo>
 cmake --build <tmp-build-dir>
 ctest --test-dir <tmp-build-dir> --verbose
 ```
 
 ### Documentation
 
-Configure the same as above, but build the `doc` and (optionally) `doc-internal` targets.
+Configure the same as above, but build the `doc` and (optionally) `doc-internal` targets, for example:
 
 ```sh
-cmake -E make_directory <tmp-build-dir>
 cmake -S <path-to-cloned-repo> -B <tmp-build-dir>
 cmake --build <tmp-build-dir> --target doc doc-internal
 # ls <tmp-build-dir>/doc/public    # Library end-user documentation
