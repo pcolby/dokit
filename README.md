@@ -38,7 +38,7 @@ Where `<command>` is one of: `info`, `status`, `meter`, `dso`, `logger-start`, `
 
 For example, to get a device's status:
 
-```
+```sh
 pokit status
 ```
 
@@ -61,7 +61,7 @@ Battery status:        N/A (255)
 
 Or, you can output in CSV, or JSON too, like:
 
-```
+```sh
 pokit status --output json
 ```
 
@@ -92,19 +92,19 @@ pokit status --output json
 By default, the `pokit` command will use the first Pokit device it finds. However, if you have more than
 one device, you can specify the device's name, or MAC address, or (on MacOS) device UUID, such as:
 
-```
+```sh
 pokit status --device RedPokitPro
 ```
 
 Tip: You can rename Pokit devices via the official Pokit app, or the `set-name` command, like:
 
-```
+```sh
 pokit set-name --device PokitMeter --new-name MyPokitMeter
 ```
 
 Here's a more complex usage example:
 
-```
+```sh
 pokit meter --mode Vac --range 10V --samples 10 --output csv
 ```
 
@@ -113,7 +113,7 @@ readings in CSV format:
 
 For full usage information (albeit brief), use the `--help` option, which currently outputs something like:
 
-```sh
+```
 Usage: pokit <command> [options]
 
 Options:
@@ -187,24 +187,24 @@ Command:
 
 Prototypical [CMake]-based out-of-source build and test process:
 
-~~~{.sh}
+```sh
 cmake -E make_directory <tmp-build-dir>
 cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo> -B <tmp-build-dir>
 cmake --build <tmp-build-dir>
 ctest --test-dir <tmp-build-dir> --verbose
-~~~
+```
 
 ### Documentation
 
 Configure the same as above, but build the `doc` and (optionally) `doc-internal` targets.
 
-~~~{.sh}
+```sh
 cmake -E make_directory <tmp-build-dir>
 cmake -S <path-to-cloned-repo> -B <tmp-build-dir>
 cmake --build <tmp-build-dir> --target doc doc-internal
 # ls <tmp-build-dir>/doc/public    # Library end-user documentation
 # ls <tmp-build-dir>/doc/internal  # Internal developer documentation
-~~~
+```
 
 These are regularly published to Github Pages via Github Actions:
 
