@@ -28,7 +28,7 @@ jobs:
         if-no-files-found: error
     - name: Generate HTML report
       run: |
-        echo 'genhtml_sort = 1' >> ~/.lcovrc
+        echo 'genhtml_sort = 0' >> ~/.lcovrc
         make coverage-html && ./removeHtmlDates.sh
       working-directory: ${{ runner.temp }}
     - name: Upload HTML report
