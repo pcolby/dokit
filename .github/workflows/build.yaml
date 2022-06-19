@@ -38,7 +38,7 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: coverage.info
+        path-to-lcov: ${{ runner.temp }}/coverage.info
         flag-name: linux0-${{ matrix.env.cc }}
         parallel: true
     - name: Setup artifacts
@@ -100,7 +100,7 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: coverage.info
+        path-to-lcov: ${{ runner.temp }}/coverage.info
         flag-name: linux-${{ matrix.env.cc }}-${{ matrix.qt }}
         parallel: true
     - name: Setup artifacts
@@ -182,7 +182,7 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: coverage.info
+        path-to-lcov: ${{ runner.temp }}/coverage.info
         flag-name: mac-${{ matrix.env.cc }}-${{ matrix.qt }}
         parallel: true
 
