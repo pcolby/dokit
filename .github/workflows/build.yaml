@@ -284,7 +284,7 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
       if: matrix.arch != 'arm64'
-      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+      run: ctest --test-dir "%RUNNER_TEMP%" --verbose
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
