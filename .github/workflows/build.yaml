@@ -33,6 +33,7 @@ jobs:
         name: test-results-linux-${{ matrix.env.cc }}
         path: |
           ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
     - name: Report coverage to Coveralls
@@ -351,10 +352,7 @@ jobs:
     needs: [ linux0, linux, mac, win ]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
     - run: sudo apt update && sudo apt upgrade && sudo apt install lcov
-    - name: Configure removeHtmlDates.sh
-      run: cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=ON -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
     - name: Download all artifacts
       uses: actions/download-artifact@v3
       with:
@@ -370,7 +368,7 @@ jobs:
         shopt -s globstar
         echo 'genhtml_sort = 0' >> ~/.lcovrc
         genhtml --output-directory coverage artifacts/**/coverage.info
-        ./removeHtmlDates.sh
+        ./artifacts/test-results-linux-gcc/removeHtmlDates.sh
       working-directory: ${{ runner.temp }}
     - name: Upload HTML report
       uses: actions/upload-artifact@v3
