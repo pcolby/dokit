@@ -374,7 +374,7 @@ jobs:
         shopt -s globstar
         echo 'genhtml_sort = 0' >> ~/.lcovrc
         genhtml --output-directory coverage artifacts/**/coverage.info
-        ./artifacts/test-results-linux-gcc/removeHtmlDates.sh
+        /usr/bin/env bash ./artifacts/test-results-linux-gcc/removeHtmlDates.sh
       working-directory: ${{ runner.temp }}
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v3
