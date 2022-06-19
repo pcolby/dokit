@@ -3,7 +3,7 @@ name: Build
 on: [push, pull_request]
 
 jobs:
-  linux:
+  linux0:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Qt
-      run: sudo apt update && sudo apt upgrade && sudo apt install qtbase5-dev qtconnectivity5-dev
+      run: sudo apt update && sudo apt upgrade && sudo apt install lcov qtbase5-dev qtconnectivity5-dev
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -23,12 +23,18 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
-      run: |
-        ctest --verbose
-        if compgen -G 'test/unit/*.tap'; then
-          gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
-        fi
-      working-directory: ${{ runner.temp }}
+      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: matrix.env.cc == 'gcc'
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-linux-${{ matrix.env.cc }}
+        path: |
+          coverage.info
+          test/unit/*.tap
+        if-no-files-found: ignore
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
@@ -40,7 +46,7 @@ jobs:
           ${{ runner.temp }}/src/app/pokit
         if-no-files-found: error
 
-  linux-qts:
+  linux:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -52,7 +58,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Tools
-      run: sudo apt update && sudo apt upgrade && sudo apt install clang
+      run: sudo apt update && sudo apt upgrade && sudo apt install clang lcov
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -73,12 +79,18 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
-      run: |
-        ctest --verbose
-        if compgen -G 'test/unit/*.tap'; then
-          gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
-        fi
-      working-directory: ${{ runner.temp }}
+      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: matrix.env.cc == 'gcc'
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-linux-${{ matrix.env.cc }}-${{ matrix.qt }}
+        path: |
+          coverage.info
+          test/unit/*.tap
+        if-no-files-found: ignore
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
@@ -143,12 +155,17 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
     - name: Test
-      run: |
-        ctest --verbose
-        if compgen -G 'test/unit/*.tap'; then
-          gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
-        fi
-      working-directory: ${{ runner.temp }}
+      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: matrix.env.cc == 'gcc'
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-mac-${{ matrix.env.cc }}-${{ matrix.qt }}
+        path: test/unit/*.tap
+        if-no-files-found: ignore
+
     #- name: Make app bundle
     #  run: |
     #    macdeployqt pokit -dmg -verbose=2
@@ -267,8 +284,13 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
       if: matrix.arch != 'arm64'
-      run: ctest --verbose
-      working-directory: ${{ runner.temp }}
+      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-win-${{ matrix.arch }}-${{ matrix.tool }}-${{ matrix.qt }}
+        path: test/unit/*.tap
+        if-no-files-found: ignore
     - name: Make portable
       if: matrix.arch != 'arm64'
       run: |
@@ -301,3 +323,16 @@ jobs:
         name: qtpokit-${{ env.pokitVersion }}+${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}.portable
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
+
+  coverage:
+    needs: [ linux0, linux, mac, win ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Download all artifacts
+      uses: actions/download-artifact@v3
+      with:
+        path: artifacts
+    - name: Take a look around
+      run: ls -R
+      working-directory: artifacts
