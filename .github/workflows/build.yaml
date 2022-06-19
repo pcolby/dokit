@@ -341,7 +341,7 @@ jobs:
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
 
-  coverage:
+  test-results:
     needs: [ linux0, linux, mac, win ]
     runs-on: ubuntu-latest
     steps:
@@ -349,10 +349,12 @@ jobs:
     - name: Download all artifacts
       uses: actions/download-artifact@v3
       with:
-        path: artifacts
+        path: ${{ runner.temp }}/artifacts
     - name: Take a look around
       run: ls -R
       working-directory: artifacts
+    - name: Take a look around
+      run: gawk --file test-summary.gawk --sandbox "${{ runner.temp }}/artifacts/"*/*.tap >> $GITHUB_STEP_SUMMARY
     #- name:
     #  run: genhtml
     #    cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"

@@ -19,6 +19,9 @@ FNR==2 {
   if (length(testName) > maxNameLength)
     maxNameLength = length(testName)
   tests[testName]["skip"] = 0
+  tests[testName]["test"] = 0
+  tests[testName]["pass"] = 0
+  tests[testName]["fail"] = 0
 }
 
 /(not )?ok .*# SKIP/{
@@ -29,7 +32,7 @@ FNR==2 {
 }
 
 /^# (tests|pass|fail) [0-9]+$/ {
-  tests[testName][$2] = $3
+  tests[testName][$2] += $3
 }
 
 END {
