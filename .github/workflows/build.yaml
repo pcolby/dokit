@@ -352,6 +352,7 @@ jobs:
     needs: [ linux0, linux, mac, win ]
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - run: sudo apt update && sudo apt upgrade && sudo apt install lcov
     - name: Download all artifacts
       uses: actions/download-artifact@v3
@@ -370,9 +371,36 @@ jobs:
         genhtml --output-directory coverage artifacts/**/coverage.info
         ./artifacts/test-results-linux-gcc/removeHtmlDates.sh
       working-directory: ${{ runner.temp }}
-    - name: Upload HTML report
+    - name: Upload HTML coverage report
       uses: actions/upload-artifact@v3
       with:
-        name: html-report
+        name: coverage-report
         path: "${{ runner.temp }}/coverage"
         if-no-files-found: error
+
+  update-doc-branch:
+    runs-on: ubuntu-latest
+    if: success() && (github.ref == 'refs/heads/main')
+    needs: test-results
+    steps:
+    - uses: actions/checkout@v3
+      with: { ref: doc }
+    - name: Clear previous coverage report
+      run: rm -rf main/cov
+    - name: Download HTML report
+      uses: actions/download-artifact@v3
+      with:
+        name: coverage-report
+        path: main/cov
+    - name: Inspect changes # for diagnostics only.
+      run: git status && git diff
+    - name: Push updates
+      run: |
+        [[ -z $(git status --porcelain) ]] || {
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git pull
+          git add .
+          git commit -m "Update coverage report for ${GITHUB_SHA}"
+          git push
+        }
