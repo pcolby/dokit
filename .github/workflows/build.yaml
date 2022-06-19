@@ -385,7 +385,7 @@ jobs:
 
   update-doc-branch:
     runs-on: ubuntu-latest
-    if: success() && (github.ref == 'refs/heads/main')
+    #if: success() && (github.ref == 'refs/heads/main')
     needs: test-results
     steps:
     - uses: actions/checkout@v3
@@ -407,5 +407,5 @@ jobs:
           git pull
           git add .
           git commit -m "Update coverage report for ${GITHUB_SHA}"
-          git push
+          #git push
         }
