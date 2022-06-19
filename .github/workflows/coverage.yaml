@@ -17,7 +17,9 @@ jobs:
     - name: Run tests
       run: |
         ctest --verbose
-        gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
+        if compgen -G 'test/unit/*.tap'; then
+          gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
+        fi
       working-directory: ${{ runner.temp }}
     - name: Collate test coverage
       run: make coverage
