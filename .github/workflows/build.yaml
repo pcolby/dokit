@@ -56,7 +56,6 @@ jobs:
         if-no-files-found: error
 
   linux:
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -121,7 +120,6 @@ jobs:
         if-no-files-found: error
 
   mac:
-    if: false
     runs-on: macOs-latest
     strategy:
       fail-fast: false
@@ -211,7 +209,6 @@ jobs:
         if-no-files-found: error
 
   win:
-    if: false
     runs-on: windows-latest
     defaults: { run: { shell: cmd } }
     strategy:
@@ -352,8 +349,7 @@ jobs:
         if-no-files-found: error
 
   test-results:
-    #needs: [ linux0, linux, mac, win ]
-    needs: linux0
+    needs: [ linux0, linux, mac, win ]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -385,7 +381,7 @@ jobs:
 
   update-doc-branch:
     runs-on: ubuntu-latest
-    #if: success() && (github.ref == 'refs/heads/main')
+    if: success() && (github.ref == 'refs/heads/main')
     needs: test-results
     steps:
     - uses: actions/checkout@v3
@@ -407,5 +403,5 @@ jobs:
           git pull
           git add .
           git commit -m "Update coverage report for ${GITHUB_SHA}"
-          #git push
+          git push
         }
