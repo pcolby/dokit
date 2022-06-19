@@ -261,7 +261,7 @@ jobs:
       if: matrix.arch != 'arm64'
       run: |
         ctest --verbose
-        gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
+        gawk -Sf "%GITHUB_WORKSPACE%\.github\workflows\test-summary.gawk" test\unit\*.tap >> "%GITHUB_STEP_SUMMARY%"
       working-directory: ${{ runner.temp }}
     - name: Make portable
       if: matrix.arch != 'arm64'
