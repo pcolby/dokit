@@ -20,7 +20,7 @@ jobs:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.cc == 'gcc' && 'ON' || 'OFF'}} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
@@ -76,7 +76,7 @@ jobs:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.cc == 'gcc' && 'ON' || 'OFF'}} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
@@ -152,7 +152,7 @@ jobs:
         CXX: ${{ matrix.env.cxx }}
         CMAKE_OSX_ARCHITECTURES: ${{ startsWith(matrix.qt, '6') && 'arm64;' || '' }}x86_64
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.cc == 'gcc' && 'ON' || 'OFF'}} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
@@ -336,3 +336,8 @@ jobs:
     - name: Take a look around
       run: ls -R
       working-directory: artifacts
+    #- name:
+    #  run: genhtml
+    #    cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+    #    cmake --build "$RUNNER_TEMP" -- VERBOSE=1
+    #  working-directory: artifacts
