@@ -352,7 +352,8 @@ jobs:
         if-no-files-found: error
 
   test-results:
-    needs: [ linux0, linux, mac, win ]
+    #needs: [ linux0, linux, mac, win ]
+    needs: linux0
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
