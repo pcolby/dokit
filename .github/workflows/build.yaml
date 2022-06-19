@@ -31,7 +31,7 @@ jobs:
         path: ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
     - name: Collate test coverage
-      if: matrix.env.cc == 'gcc'
+      if: startsWith(matrix.env.cc, 'gcc')
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Report coverage to Coveralls
       if: matrix.env.cc == 'gcc'
@@ -93,7 +93,7 @@ jobs:
         path: ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
     - name: Collate test coverage
-      if: matrix.env.cc == 'gcc'
+      if: startsWith(matrix.env.cc, 'gcc')
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Report coverage to Coveralls
       if: matrix.env.cc == 'gcc'
@@ -175,7 +175,7 @@ jobs:
         path: ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
     - name: Collate test coverage
-      if: matrix.env.cc == 'gcc'
+      if: startsWith(matrix.env.cc, 'gcc')
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Report coverage to Coveralls
       if: matrix.env.cc == 'gcc'
