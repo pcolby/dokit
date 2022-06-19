@@ -116,6 +116,8 @@ jobs:
           # in the Build step below, at least until such time as GCC adds support.
     steps:
     - uses: actions/checkout@v3
+    - name: Install GAWK
+      run: brew install gawk
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
