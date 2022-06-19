@@ -144,8 +144,8 @@ jobs:
           # in the Build step below, at least until such time as GCC adds support.
     steps:
     - uses: actions/checkout@v3
-    - name: Install GAWK
-      run: brew install gawk
+    - name: Install lcov
+      run: brew install lcov
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -323,11 +323,7 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
-      run: |
-        echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
-        if compgen -G "$RUNNER_TEMP/test/unit/*.tap"; then
-          gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" "$RUNNER_TEMP"/test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
-        fi
+      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
