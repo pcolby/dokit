@@ -18,7 +18,7 @@ function(add_pokit_unit_test name)
     PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth
     PRIVATE Qt${QT_VERSION_MAJOR}::Test)
 
-  add_test(NAME ${name} COMMAND test${name})
+  add_test(NAME ${name} COMMAND test${name} -o ${name}.tap,tap -o -,txt)
 endfunction()
 
 add_pokit_unit_test(

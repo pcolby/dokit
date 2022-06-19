@@ -23,7 +23,9 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
-      run: ctest --verbose
+      run: |
+        ctest --verbose
+        gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
@@ -69,7 +71,9 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
-      run: ctest --verbose
+      run: |
+        ctest --verbose
+        gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
@@ -133,7 +137,9 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
     - name: Test
-      run: ctest --verbose
+      run: |
+        ctest --verbose
+        gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
       working-directory: ${{ runner.temp }}
     #- name: Make app bundle
     #  run: |
@@ -253,7 +259,9 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
       if: matrix.arch != 'arm64'
-      run: ctest --verbose
+      run: |
+        ctest --verbose
+        gawk -Sf "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" test/unit/*.tap >> "$GITHUB_STEP_SUMMARY"
       working-directory: ${{ runner.temp }}
     - name: Make portable
       if: matrix.arch != 'arm64'
