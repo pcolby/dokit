@@ -19,6 +19,7 @@ function(add_pokit_unit_test name)
     PRIVATE Qt${QT_VERSION_MAJOR}::Test)
 
   add_test(NAME ${name} COMMAND test${name})
+  set_tests_properties(${name} PROPERTIES LABELS "lib;unit")
 endfunction()
 
 add_pokit_unit_test(
@@ -78,6 +79,7 @@ if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
   message("-- Skipping test${name} (needs CMake 3.12+)")
 else()
   add_pokit_unit_test(${name} ${ARGN})
+  set_tests_properties(${name} PROPERTIES LABELS "app;unit")
   target_include_directories(test${name} PRIVATE ${CMAKE_SOURCE_DIR}/src/app)
   target_link_libraries(test${name} PRIVATE PokitApp)
 endif()
