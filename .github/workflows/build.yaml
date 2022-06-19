@@ -306,6 +306,7 @@ jobs:
       if: matrix.arch != 'arm64'
       run: ctest --test-dir "%RUNNER_TEMP%" --verbose
     - name: Upload test results
+      if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
       with:
         name: test-results-win-${{ matrix.arch }}-${{ matrix.tool }}-${{ matrix.qt }}
