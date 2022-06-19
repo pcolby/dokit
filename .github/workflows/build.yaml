@@ -352,18 +352,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - run: sudo apt update && sudo apt upgrade && sudo apt install lcov
+    - name: Configure removeHtmlDates.sh
+      run: cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=ON -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
     - name: Download all artifacts
       uses: actions/download-artifact@v3
       with:
         path: ${{ runner.temp }}/artifacts
     - name: Take a look around
       run: ls -R ${{ runner.temp }}/artifacts
-    - name: Take a look around
+    - name: Generate test summary
       run: |
         shopt -s globstar
-        gawk --file test-summary.gawk --sandbox "${{ runner.temp }}/artifacts/"**/*.tap >> $GITHUB_STEP_SUMMARY
-    #- name:
-    #  run: genhtml
-    #    cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-    #    cmake --build "$RUNNER_TEMP" -- VERBOSE=1
-    #  working-directory: artifacts
+        gawk --file "$GITHUB_WORKSPACE/test-summary.gawk" --sandbox "$RUNNER_TEMP/artifacts/"**/*.tap >> $GITHUB_STEP_SUMMARY
+    - name: Generate HTML coverage report
+      run: |
+        shopt -s globstar
+        echo 'genhtml_sort = 0' >> ~/.lcovrc
+        genhtml --output-directory coverage artifacts/**/coverage.info
+        ./removeHtmlDates.sh
+      working-directory: ${{ runner.temp }}
+    - name: Upload HTML report
+      uses: actions/upload-artifact@v3
+      with:
+        name: html-report
+        path: "${{ runner.temp }}/coverage"
+        if-no-files-found: error
