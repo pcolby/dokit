@@ -11,6 +11,7 @@
 #
 
 BEGIN {
+  IGNORECASE = 1 # Non-zero number means yes.
   maxNameLength = 0
 }
 
@@ -18,20 +19,18 @@ FNR==2 {
   testName = $2
   if (length(testName) > maxNameLength)
     maxNameLength = length(testName)
-  tests[testName]["skip"] = 0
-  tests[testName]["test"] = 0
-  tests[testName]["pass"] = 0
-  tests[testName]["fail"] = 0
+  if (!(testName in tests)) {
+    tests[testName]["skip"] = 0
+    tests[testName]["pass"] = 0
+    tests[testName]["fail"] = 0
+  }
 }
 
-/(not )?ok .*# SKIP/{
-  if (!(testName, "skip") in tests) {
-    tests[testName]["skip"] = 0
-  }
+/^ok .*[^\\]#\s*SKIP/{
   tests[testName]["skip"]++
 }
 
-/^# (tests|pass|fail) [0-9]+$/ {
+/^#\s*(pass|fail)\s+[0-9]+$/ {
   tests[testName][$2] += $3
 }
 
