@@ -24,15 +24,17 @@ jobs:
         cmake --build "$RUNNER_TEMP"
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: startsWith(matrix.env.cc, 'gcc')
+      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
         name: test-results-linux-${{ matrix.env.cc }}
-        path: ${{ runner.temp }}/test/unit/*.tap
+        path: |
+          ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
-    - name: Collate test coverage
-      if: startsWith(matrix.env.cc, 'gcc')
-      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Report coverage to Coveralls
       if: matrix.env.cc == 'gcc'
       uses: coverallsapp/github-action@master
@@ -86,15 +88,17 @@ jobs:
         cmake --build "$RUNNER_TEMP"
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: startsWith(matrix.env.cc, 'gcc')
+      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
         name: test-results-linux-${{ matrix.env.cc }}-${{ matrix.qt }}
-        path: ${{ runner.temp }}/test/unit/*.tap
+        path: |
+          ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
-    - name: Collate test coverage
-      if: startsWith(matrix.env.cc, 'gcc')
-      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Report coverage to Coveralls
       if: matrix.env.cc == 'gcc'
       uses: coverallsapp/github-action@master
@@ -168,15 +172,17 @@ jobs:
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: startsWith(matrix.env.cc, 'gcc')
+      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
         name: test-results-mac-${{ matrix.env.cc }}-${{ matrix.qt }}
-        path: ${{ runner.temp }}/test/unit/*.tap
+        path: |
+          ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
-    - name: Collate test coverage
-      if: startsWith(matrix.env.cc, 'gcc')
-      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Report coverage to Coveralls
       if: matrix.env.cc == 'gcc'
       uses: coverallsapp/github-action@master
@@ -351,10 +357,11 @@ jobs:
       with:
         path: ${{ runner.temp }}/artifacts
     - name: Take a look around
-      run: ls -R
-      working-directory: artifacts
+      run: ls -R ${{ runner.temp }}/artifacts
     - name: Take a look around
-      run: gawk --file test-summary.gawk --sandbox "${{ runner.temp }}/artifacts/"*/*.tap >> $GITHUB_STEP_SUMMARY
+      run: |
+        shopt -s globstar
+        gawk --file test-summary.gawk --sandbox "${{ runner.temp }}/artifacts/"**/*.tap >> $GITHUB_STEP_SUMMARY
     #- name:
     #  run: genhtml
     #    cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
