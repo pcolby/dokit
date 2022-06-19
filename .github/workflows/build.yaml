@@ -56,6 +56,7 @@ jobs:
         if-no-files-found: error
 
   linux:
+    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -120,6 +121,7 @@ jobs:
         if-no-files-found: error
 
   mac:
+    if: false
     runs-on: macOs-latest
     strategy:
       fail-fast: false
@@ -209,6 +211,7 @@ jobs:
         if-no-files-found: error
 
   win:
+    if: false
     runs-on: windows-latest
     defaults: { run: { shell: cmd } }
     strategy:
@@ -363,7 +366,8 @@ jobs:
     - name: Generate test summary
       run: |
         shopt -s globstar
-        gawk --file "$GITHUB_WORKSPACE/test-summary.gawk" --sandbox "$RUNNER_TEMP/artifacts/"**/*.tap >> $GITHUB_STEP_SUMMARY
+        gawk --file "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" \
+          --sandbox "$RUNNER_TEMP/artifacts/"**/*.tap >> $GITHUB_STEP_SUMMARY
     - name: Generate HTML coverage report
       run: |
         shopt -s globstar
