@@ -24,17 +24,23 @@ jobs:
         cmake --build "$RUNNER_TEMP"
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
-    - name: Collate test coverage
-      if: matrix.env.cc == 'gcc'
-      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
         name: test-results-linux-${{ matrix.env.cc }}
-        path: |
-          coverage.info
-          test/unit/*.tap
+        path: test/unit/*.tap
         if-no-files-found: ignore
+    - name: Collate test coverage
+      if: matrix.env.cc == 'gcc'
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Report coverage to Coveralls
+      if: matrix.env.cc == 'gcc'
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: coverage.info
+        flag-name: linux0-${{ matrix.env.cc }}
+        parallel: true
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
@@ -80,17 +86,23 @@ jobs:
         cmake --build "$RUNNER_TEMP"
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
-    - name: Collate test coverage
-      if: matrix.env.cc == 'gcc'
-      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
         name: test-results-linux-${{ matrix.env.cc }}-${{ matrix.qt }}
-        path: |
-          coverage.info
-          test/unit/*.tap
+        path: test/unit/*.tap
         if-no-files-found: ignore
+    - name: Collate test coverage
+      if: matrix.env.cc == 'gcc'
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Report coverage to Coveralls
+      if: matrix.env.cc == 'gcc'
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: coverage.info
+        flag-name: linux-${{ matrix.env.cc }}-${{ matrix.qt }}
+        parallel: true
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
@@ -156,15 +168,23 @@ jobs:
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
-    - name: Collate test coverage
-      if: matrix.env.cc == 'gcc'
-      run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
         name: test-results-mac-${{ matrix.env.cc }}-${{ matrix.qt }}
         path: test/unit/*.tap
         if-no-files-found: ignore
+    - name: Collate test coverage
+      if: matrix.env.cc == 'gcc'
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Report coverage to Coveralls
+      if: matrix.env.cc == 'gcc'
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: coverage.info
+        flag-name: mac-${{ matrix.env.cc }}-${{ matrix.qt }}
+        parallel: true
 
     #- name: Make app bundle
     #  run: |
