@@ -368,9 +368,13 @@ jobs:
     - name: Generate HTML coverage report
       run: |
         shopt -s globstar
+        # Update source code paths from MacOS tracefiles to match Linux.
         sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/**/coverage.info
+        # Combine all tracefiles into one.
+        lcov $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
+        # Generate the HTML report.
         echo 'genhtml_sort = 0' >> ~/.lcovrc
-        genhtml --output-directory coverage artifacts/**/coverage.info
+        genhtml --output-directory coverage coverage.info
         /usr/bin/env bash ./artifacts/test-results-linux-gcc/removeHtmlDates.sh
       working-directory: ${{ runner.temp }}
     - name: Upload HTML coverage report
