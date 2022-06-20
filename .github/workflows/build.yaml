@@ -368,6 +368,7 @@ jobs:
     - name: Generate HTML coverage report
       run: |
         shopt -s globstar
+        sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/**/coverage.info
         echo 'genhtml_sort = 0' >> ~/.lcovrc
         genhtml --output-directory coverage artifacts/**/coverage.info
         /usr/bin/env bash ./artifacts/test-results-linux-gcc/removeHtmlDates.sh
