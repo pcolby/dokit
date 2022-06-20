@@ -17,6 +17,7 @@ if (ENABLE_COVERAGE)
       COMMAND ${CODECOV_LCOV} --remove coverage.info '/usr/*' --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --remove coverage.info '*/moc_*.cpp' --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --remove coverage.info '*/qt/*' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --remove coverage.info '*/Qt/*' --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --remove coverage.info '*/test/*' --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --list coverage.info
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
