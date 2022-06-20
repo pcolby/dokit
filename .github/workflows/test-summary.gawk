@@ -11,6 +11,7 @@
 #
 
 BEGIN {
+  RS="\r?\n"     # Allow both DOS and *nix line endings.
   IGNORECASE = 1 # Non-zero number means yes.
   maxNameLength = 0
 }
