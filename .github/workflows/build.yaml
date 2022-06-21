@@ -36,8 +36,8 @@ jobs:
           ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
-    - name: Report coverage to Coveralls
-      if: matrix.env.cc == 'gcc'
+    - name: Report parallel coverage to Coveralls
+      if: startsWith(matrix.env.cc, 'gcc')
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -100,8 +100,8 @@ jobs:
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
-    - name: Report coverage to Coveralls
-      if: matrix.env.cc == 'gcc'
+    - name: Report parallel coverage to Coveralls
+      if: startsWith(matrix.env.cc, 'gcc')
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -187,8 +187,8 @@ jobs:
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
-    - name: Report coverage to Coveralls
-      if: matrix.env.cc == 'gcc'
+    - name: Report parallel coverage to Coveralls
+      if: startsWith(matrix.env.cc, 'gcc')
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
