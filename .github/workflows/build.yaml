@@ -3,7 +3,7 @@ name: Build
 on: [push, pull_request]
 
 jobs:
-  linux:
+  linux0:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -14,17 +14,36 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Qt
-      run: sudo apt update && sudo apt upgrade && sudo apt install qtbase5-dev qtconnectivity5-dev
+      run: sudo apt update && sudo apt upgrade && sudo apt install lcov qtbase5-dev qtconnectivity5-dev
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ startsWith(matrix.env.cc, 'gcc') && 'ON' || 'OFF'}} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
-      run: ctest --verbose
-      working-directory: ${{ runner.temp }}
+      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: startsWith(matrix.env.cc, 'gcc')
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-linux-${{ matrix.env.cc }}
+        path: |
+          ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/removeHtmlDates.sh
+          ${{ runner.temp }}/test/unit/*.tap
+        if-no-files-found: ignore
+    - name: Report parallel coverage to Coveralls
+      if: startsWith(matrix.env.cc, 'gcc')
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ${{ runner.temp }}/coverage.info
+        flag-name: linux0-${{ matrix.env.cc }}
+        parallel: true
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
@@ -36,7 +55,7 @@ jobs:
           ${{ runner.temp }}/src/app/pokit
         if-no-files-found: error
 
-  linux-qts:
+  linux:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -48,7 +67,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Tools
-      run: sudo apt update && sudo apt upgrade && sudo apt install clang
+      run: sudo apt update && sudo apt upgrade && sudo apt install clang lcov
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -66,11 +85,29 @@ jobs:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ startsWith(matrix.env.cc, 'gcc') && 'ON' || 'OFF'}} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
-      run: ctest --verbose
-      working-directory: ${{ runner.temp }}
+      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: startsWith(matrix.env.cc, 'gcc')
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-linux-${{ matrix.env.cc }}-${{ matrix.qt }}
+        path: |
+          ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/test/unit/*.tap
+        if-no-files-found: ignore
+    - name: Report parallel coverage to Coveralls
+      if: startsWith(matrix.env.cc, 'gcc')
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ${{ runner.temp }}/coverage.info
+        flag-name: linux-${{ matrix.env.cc }}-${{ matrix.qt }}
+        parallel: true
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
@@ -112,6 +149,8 @@ jobs:
           # in the Build step below, at least until such time as GCC adds support.
     steps:
     - uses: actions/checkout@v3
+    - name: Install lcov
+      run: brew install lcov
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -130,11 +169,33 @@ jobs:
         CXX: ${{ matrix.env.cxx }}
         CMAKE_OSX_ARCHITECTURES: ${{ startsWith(matrix.qt, '6') && 'arm64;' || '' }}x86_64
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D CMAKE_BUILD_TYPE=Release \
+              -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-11' || '/usr/bin/gcov'}} \
+              -D ENABLE_COVERAGE=${{ startsWith(matrix.env.cc, 'gcc') && 'ON' || 'OFF'}} \
+              -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
     - name: Test
-      run: ctest --verbose
-      working-directory: ${{ runner.temp }}
+      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+    - name: Collate test coverage
+      if: startsWith(matrix.env.cc, 'gcc')
+      run: cmake --build "$RUNNER_TEMP" --target coverage
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-mac-${{ matrix.env.cc }}-${{ matrix.qt }}
+        path: |
+          ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/test/unit/*.tap
+        if-no-files-found: ignore
+    - name: Report parallel coverage to Coveralls
+      if: startsWith(matrix.env.cc, 'gcc')
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ${{ runner.temp }}/coverage.info
+        flag-name: mac-${{ matrix.env.cc }}-${{ matrix.qt }}
+        parallel: true
+
     #- name: Make app bundle
     #  run: |
     #    macdeployqt pokit -dmg -verbose=2
@@ -253,8 +314,14 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
       if: matrix.arch != 'arm64'
-      run: ctest --verbose
-      working-directory: ${{ runner.temp }}
+      run: ctest --test-dir "%RUNNER_TEMP%" --verbose
+    - name: Upload test results
+      if: matrix.arch != 'arm64'
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-win-${{ matrix.arch }}-${{ matrix.tool }}-${{ matrix.qt }}
+        path: ${{ runner.temp }}/test/unit/*.tap
+        if-no-files-found: ignore
     - name: Make portable
       if: matrix.arch != 'arm64'
       run: |
@@ -283,3 +350,69 @@ jobs:
         name: qtpokit-${{ env.pokitVersion }}+${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}.portable
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
+
+  collate-test-results:
+    needs: [ linux0, linux, mac, win ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: sudo apt update && sudo apt upgrade && sudo apt install lcov
+    - name: Download all artifacts
+      uses: actions/download-artifact@v3
+      with:
+        path: ${{ runner.temp }}/artifacts
+    - name: Generate test summary
+      run: |
+        shopt -s globstar
+        gawk --file "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" \
+          --sandbox "$RUNNER_TEMP/artifacts/"**/*.tap >> $GITHUB_STEP_SUMMARY
+    - name: Generate HTML coverage report
+      run: |
+        shopt -s globstar
+        # Update source code paths from MacOS tracefiles to match Linux.
+        sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/**/coverage.info
+        # Combine all tracefiles into one.
+        lcov $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
+        # Generate the HTML report.
+        echo 'genhtml_sort = 0' >> ~/.lcovrc
+        genhtml --output-directory coverage coverage.info
+        /usr/bin/env bash ./artifacts/test-results-linux-gcc/removeHtmlDates.sh
+      working-directory: ${{ runner.temp }}
+    - name: Upload HTML coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-report
+        path: "${{ runner.temp }}/coverage"
+        if-no-files-found: error
+    - name: Report parallel-finished to Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true
+
+  update-tests-on-doc-branch:
+    runs-on: ubuntu-latest
+    if: success() && (github.ref == 'refs/heads/main')
+    needs: collate-test-results
+    steps:
+    - uses: actions/checkout@v3
+      with: { ref: doc }
+    - name: Clear previous coverage report
+      run: rm -rf main/cov
+    - name: Download HTML report
+      uses: actions/download-artifact@v3
+      with:
+        name: coverage-report
+        path: main/cov
+    - name: Inspect changes # for diagnostics only.
+      run: git status && git diff
+    - name: Push updates
+      run: |
+        [[ -z $(git status --porcelain) ]] || {
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git pull
+          git add .
+          git commit -m "Update coverage report for ${GITHUB_SHA}"
+          git push
+        }
