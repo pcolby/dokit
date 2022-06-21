@@ -351,7 +351,7 @@ jobs:
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
 
-  test-results:
+  report-test-results:
     needs: [ linux0, linux, mac, win ]
     runs-on: ubuntu-latest
     steps:
@@ -390,7 +390,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel-finished: true
 
-  update-doc-branch:
+  update-tests-on-doc-branch:
     runs-on: ubuntu-latest
     if: success() && (github.ref == 'refs/heads/main')
     needs: test-results
