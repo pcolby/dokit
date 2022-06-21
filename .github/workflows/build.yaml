@@ -351,7 +351,7 @@ jobs:
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
 
-  report-test-results:
+  collate-test-results:
     needs: [ linux0, linux, mac, win ]
     runs-on: ubuntu-latest
     steps:
@@ -393,7 +393,7 @@ jobs:
   update-tests-on-doc-branch:
     runs-on: ubuntu-latest
     if: success() && (github.ref == 'refs/heads/main')
-    needs: test-results
+    needs: collate-test-results
     steps:
     - uses: actions/checkout@v3
       with: { ref: doc }
