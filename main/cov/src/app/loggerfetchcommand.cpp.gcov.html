@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">67</td>
+            <td class="headerCovTableEntry">72</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -41,7 +41,7 @@
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">7</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -168,10 +168,10 @@
 <a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :             break;</span></a>
 <a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :         case OutputFormat::Json:</span></a>
 <a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :             fputs(QJsonDocument(QJsonObject{</span></a>
-<a name="109"><span class="lineNum">     109 </span>            :                     { QLatin1String(&quot;timestamp&quot;), timeString },</a>
-<a name="110"><span class="lineNum">     110 </span>            :                     { QLatin1String(&quot;value&quot;),     value },</a>
-<a name="111"><span class="lineNum">     111 </span>            :                     { QLatin1String(&quot;unit&quot;),      unit },</a>
-<a name="112"><span class="lineNum">     112 </span>            :                     { QLatin1String(&quot;range&quot;),     range },</a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :                     { QLatin1String(&quot;timestamp&quot;), timeString },</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :                     { QLatin1String(&quot;value&quot;),     value },</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :                     { QLatin1String(&quot;unit&quot;),      unit },</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :                     { QLatin1String(&quot;range&quot;),     range },</span></a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :                     { QLatin1String(&quot;mode&quot;),      DataLoggerService::toString(metadata.mode) },</span></a>
 <a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :                 }).toJson(), stdout);</span></a>
 <a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :             break;</span></a>
@@ -181,7 +181,7 @@
 <a name="119"><span class="lineNum">     119 </span>            :         }</a>
 <a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :         timestamp += metadata.updateInterval;</span></a>
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :         --samplesToGo;</span></a>
-<a name="122"><span class="lineNum">     122 </span>            :     }</a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :     if (samplesToGo &lt;= 0) {</span></a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %L1 samples (with %L2 to remaining).&quot;)</span></a>
 <a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :             .arg(metadata.numberOfSamples).arg(samplesToGo);</span></a>
