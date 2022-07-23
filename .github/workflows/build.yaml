@@ -363,6 +363,8 @@ jobs:
         path: ${{ runner.temp }}/artifacts
     - name: Generate test summary
       uses: pcolby/tap-summary@v1
+      with:
+        path: ${{ runner.temp }}/artifacts/**/*.tap
     - name: Generate HTML coverage report
       run: |
         shopt -s globstar
