@@ -362,10 +362,7 @@ jobs:
       with:
         path: ${{ runner.temp }}/artifacts
     - name: Generate test summary
-      run: |
-        shopt -s globstar
-        gawk --file "$GITHUB_WORKSPACE/.github/workflows/test-summary.gawk" \
-          --sandbox "$RUNNER_TEMP/artifacts/"**/*.tap >> $GITHUB_STEP_SUMMARY
+      uses: pcolby/tap-summary@v1
     - name: Generate HTML coverage report
       run: |
         shopt -s globstar
