@@ -8,6 +8,19 @@ class TestDeviceCommand : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    void start();
+
+    void disconnect();
+
+    void controllerError();
+
+    void deviceDisconnected();
+
+    void serviceError();
+
+    void serviceDetailsDiscovered();
+
+    void deviceDiscovered();
+
+    void deviceDiscoveryFinished();
 };
