@@ -31,6 +31,63 @@ char *toString(const QJsonObject &object)
     return qstrdup(("QJsonObject(" + QJsonDocument(object).toJson(QJsonDocument::Compact) + ")").constData());
 }
 
+class BaseCommand : public AbstractCommand
+{
+public:
+    BaseCommand() : AbstractCommand(nullptr) { }
+
+    bool start() override { return true; }
+
+    void deviceDiscovered(const QBluetoothDeviceInfo &info) override { Q_UNUSED(info); }
+
+    void deviceDiscoveryFinished() override { }
+};
+
+void TestScanCommand::requiredOptions()
+{
+    ScanCommand command(this);
+    QCommandLineParser parser;
+    QVERIFY(command.requiredOptions(parser).isEmpty());
+}
+
+void TestScanCommand::supportedOptions()
+{
+    BaseCommand base;
+    ScanCommand command(this);
+    QCommandLineParser parser;
+    QCOMPARE(command.supportedOptions(parser), base.supportedOptions(parser));
+}
+
+void TestScanCommand::processOptions()
+{
+    ScanCommand command(this);
+    QCommandLineParser parser;
+    QCOMPARE(command.processOptions(parser), QStringList{});
+}
+
+void TestScanCommand::start()
+{
+    ScanCommand command(this);
+    QTest::ignoreMessage(QtInfoMsg, "Scanning for Pokit devices...");
+    command.start();
+}
+
+void TestScanCommand::deviceDiscovered()
+{
+    /// \todo
+}
+
+void TestScanCommand::deviceUpdated()
+{
+    /// \todo
+}
+
+void TestScanCommand::deviceDiscoveryFinished()
+{
+    ScanCommand command(this);
+    command.deviceDiscoveryFinished(); // Just logs a debug message, and exits.
+}
+
 void TestScanCommand::toJson_info_data()
 {
     QTest::addColumn<QBluetoothDeviceInfo>("info");

@@ -8,6 +8,20 @@ class TestScanCommand : public QObject
     Q_OBJECT
 
 private slots:
+    void requiredOptions();
+
+    void supportedOptions();
+
+    void processOptions();
+
+    void start();
+
+    void deviceDiscovered();
+
+    void deviceUpdated();
+
+    void deviceDiscoveryFinished();
+
     void toJson_info_data();
     void toJson_info();
 
