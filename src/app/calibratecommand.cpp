@@ -84,6 +84,7 @@ AbstractPokitService * CalibrateCommand::getService()
  */
 void CalibrateCommand::serviceDetailsDiscovered()
 {
+    Q_ASSERT(service);
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     qCInfo(lc).noquote() << tr("Calibrating temperature at %1 degrees celcius...").arg(temperature);
     if (!service->calibrateTemperature(0)) {
