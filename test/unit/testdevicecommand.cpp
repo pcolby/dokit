@@ -41,10 +41,20 @@ void TestDeviceCommand::controllerError()
 {
     MockDeviceCommand command;
 
-    QTest::ignoreMessage(QtWarningMsg, "Bluetooth controller error: QLowEnergyController::NetworkError");
+    QTest::ignoreMessage(QtWarningMsg,
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+        "Bluetooth controller error: QLowEnergyController::Error(NetworkError)");
+    #else
+        "Bluetooth controller error: QLowEnergyController::NetworkError");
+    #endif
     command.controllerError(QLowEnergyController::Error::NetworkError);
 
-    QTest::ignoreMessage(QtWarningMsg, "Bluetooth controller error: QLowEnergyController::UnknownError");
+    QTest::ignoreMessage(QtWarningMsg,
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+         "Bluetooth controller error: QLowEnergyController::Error(UnknownError)");
+    #else
+         "Bluetooth controller error: QLowEnergyController::UnknownError");
+    #endif
     command.controllerError(QLowEnergyController::Error::UnknownError);
 }
 
@@ -58,10 +68,20 @@ void TestDeviceCommand::serviceError()
 {
     MockDeviceCommand command;
 
-    QTest::ignoreMessage(QtWarningMsg, "Bluetooth service error: QLowEnergyService::OperationError");
+    QTest::ignoreMessage(QtWarningMsg,
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+         "Bluetooth service error: QLowEnergyService::ServiceError(OperationError)");
+    #else
+         "Bluetooth service error: QLowEnergyService::OperationError");
+    #endif
     command.serviceError(QLowEnergyService::ServiceError::OperationError);
 
-    QTest::ignoreMessage(QtWarningMsg, "Bluetooth service error: QLowEnergyService::UnknownError");
+    QTest::ignoreMessage(QtWarningMsg,
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+         "Bluetooth service error: QLowEnergyService::ServiceError(UnknownError)");
+    #else
+         "Bluetooth service error: QLowEnergyService::UnknownError");
+    #endif
     command.serviceError(QLowEnergyService::ServiceError::UnknownError);
 }
 
