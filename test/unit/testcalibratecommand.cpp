@@ -92,6 +92,11 @@ void TestCalibrateCommand::processOptions()
     CalibrateCommand command(this);
     qInfo() << command.processOptions(parser);
     QCOMPARE(command.processOptions(parser), errors);
+#if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+    if (qIsNaN(expected)) {
+        QCOMPARE(qIsNaN(command.temperature), qIsNaN(expected));
+    } else // Pre Qt 5.12, QCOMPARE would see two NaN's as not matching.
+#endif
     QCOMPARE(command.temperature, expected);
 }
 
