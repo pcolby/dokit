@@ -74,12 +74,12 @@ void TestScanCommand::start()
 
 void TestScanCommand::deviceDiscovered()
 {
-    /// \todo
+    /// \todo Verify the output format.
 }
 
 void TestScanCommand::deviceUpdated()
 {
-    /// \todo
+    /// \todo Verify the output format.
 }
 
 void TestScanCommand::deviceDiscoveryFinished()
