@@ -274,11 +274,11 @@ int main(int argc, char *argv[])
 {
     // Setup the core application.
     QCoreApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral(CMAKE_PROJECT_NAME));
-    #ifdef POKIT_PRE_RELEASE
-    app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION "-" POKIT_PRE_RELEASE));
+    app.setApplicationName(QStringLiteral(PROJECT_NAME));
+    #ifdef PROJECT_PRE_RELEASE
+    app.setApplicationVersion(QStringLiteral(PROJECT_VERSION "-" PROJECT_PRE_RELEASE));
     #else
-    app.setApplicationVersion(QStringLiteral(CMAKE_PROJECT_VERSION));
+    app.setApplicationVersion(QStringLiteral(PROJECT_VERSION));
     #endif
 
     // Parse the command line.
