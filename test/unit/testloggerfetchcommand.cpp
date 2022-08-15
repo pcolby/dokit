@@ -5,20 +5,20 @@
 
 #include "loggerfetchcommand.h"
 
-void TestLoggerFetchCommand::test1_data()
-{
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+void TestLoggerFetchCommand::getService() {
+    /// \todo Implement getService test.
 }
 
-void TestLoggerFetchCommand::test1()
-{
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+void TestLoggerFetchCommand::serviceDetailsDiscovered() {
+    /// \todo Implement serviceDetailsDiscovered test.
+}
+
+void TestLoggerFetchCommand::metadataRead() {
+    /// \todo Implement metadataRead test.
+}
+
+void TestLoggerFetchCommand::outputSamples() {
+    /// \todo Implement outputSamples test.
 }
 
 QTEST_MAIN(TestLoggerFetchCommand)

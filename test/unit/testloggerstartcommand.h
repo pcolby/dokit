@@ -8,6 +8,21 @@ class TestLoggerStartCommand : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+     void requiredOptions();
+
+     void supportedOptions();
+
+     void processOptions();
+
+     void getService();
+
+     void serviceDetailsDiscovered();
+
+     void lowestRange();
+
+     void lowestCurrentRange();
+
+     void lowestVoltageRange();
+
+     void settingsWritten();
 };

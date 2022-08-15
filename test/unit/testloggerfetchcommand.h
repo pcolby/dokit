@@ -8,6 +8,11 @@ class TestLoggerFetchCommand : public QObject
     Q_OBJECT
 
 private slots:
-    void test1_data();
-    void test1();
+    void getService();
+
+    void serviceDetailsDiscovered();
+
+    void metadataRead();
+
+    void outputSamples();
 };

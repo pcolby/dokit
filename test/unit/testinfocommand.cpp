@@ -5,20 +5,24 @@
 
 #include "infocommand.h"
 
-void TestInfoCommand::test1_data()
-{
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+void TestInfoCommand::requiredOptions() {
+    /// \todo Implement requiredOptions test.
 }
 
-void TestInfoCommand::test1()
-{
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+void TestInfoCommand::supportedOptions() {
+    /// \todo Implement supportedOptions test.
+}
+
+void TestInfoCommand::processOptions() {
+    /// \todo Implement processOptions test.
+}
+
+void TestInfoCommand::getService() {
+    /// \todo Implement getService test.
+}
+
+void TestInfoCommand::serviceDetailsDiscovered() {
+    /// \todo Implement serviceDetailsDiscovered test.
 }
 
 QTEST_MAIN(TestInfoCommand)

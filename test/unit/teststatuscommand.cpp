@@ -5,20 +5,24 @@
 
 #include "statuscommand.h"
 
-void TestStatusCommand::test1_data()
-{
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+void TestStatusCommand::requiredOptions() {
+    /// \todo Implement requiredOptions test.
 }
 
-void TestStatusCommand::test1()
-{
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+void TestStatusCommand::supportedOptions() {
+    /// \todo Implement supportedOptions test.
+}
+
+void TestStatusCommand::processOptions() {
+    /// \todo Implement processOptions test.
+}
+
+void TestStatusCommand::getService() {
+    /// \todo Implement getService test.
+}
+
+void TestStatusCommand::serviceDetailsDiscovered() {
+    /// \todo Implement serviceDetailsDiscovered test.
 }
 
 QTEST_MAIN(TestStatusCommand)

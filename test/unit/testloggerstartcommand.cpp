@@ -5,20 +5,40 @@
 
 #include "loggerstartcommand.h"
 
-void TestLoggerStartCommand::test1_data()
-{
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+void TestLoggerStartCommand::requiredOptions() {
+    /// \todo Implement requiredOptions test.
 }
 
-void TestLoggerStartCommand::test1()
-{
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+void TestLoggerStartCommand::supportedOptions() {
+    /// \todo Implement supportedOptions test.
+}
+
+void TestLoggerStartCommand::processOptions() {
+    /// \todo Implement processOptions test.
+}
+
+void TestLoggerStartCommand::getService() {
+    /// \todo Implement getService test.
+}
+
+void TestLoggerStartCommand::serviceDetailsDiscovered() {
+    /// \todo Implement serviceDetailsDiscovered test.
+}
+
+void TestLoggerStartCommand::lowestRange() {
+    /// \todo Implement lowestRange test.
+}
+
+void TestLoggerStartCommand::lowestCurrentRange() {
+    /// \todo Implement lowestCurrentRange test.
+}
+
+void TestLoggerStartCommand::lowestVoltageRange() {
+    /// \todo Implement lowestVoltageRange test.
+}
+
+void TestLoggerStartCommand::settingsWritten() {
+    /// \todo Implement settingsWritten test.
 }
 
 QTEST_MAIN(TestLoggerStartCommand)

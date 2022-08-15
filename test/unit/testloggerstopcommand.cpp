@@ -5,20 +5,16 @@
 
 #include "loggerstopcommand.h"
 
-void TestLoggerStopCommand::test1_data()
-{
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+void TestLoggerStopCommand::getService() {
+    /// \todo Implement getService test.
 }
 
-void TestLoggerStopCommand::test1()
-{
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+void TestLoggerStopCommand::serviceDetailsDiscovered() {
+    /// \todo Implement serviceDetailsDiscovered test.
+}
+
+void TestLoggerStopCommand::settingsWritten() {
+    /// \todo Implement settingsWritten test.
 }
 
 QTEST_MAIN(TestLoggerStopCommand)

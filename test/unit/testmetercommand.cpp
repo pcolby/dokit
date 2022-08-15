@@ -5,20 +5,48 @@
 
 #include "metercommand.h"
 
-void TestMeterCommand::test1_data()
-{
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+void TestMeterCommand::requiredOptions() {
+    /// \todo Implement requiredOptions test.
 }
 
-void TestMeterCommand::test1()
-{
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+void TestMeterCommand::supportedOptions() {
+    /// \todo Implement supportedOptions test.
+}
+
+void TestMeterCommand::processOptions() {
+    /// \todo Implement processOptions test.
+}
+
+void TestMeterCommand::getService() {
+    /// \todo Implement getService test.
+}
+
+void TestMeterCommand::serviceDetailsDiscovered() {
+    /// \todo Implement serviceDetailsDiscovered test.
+}
+
+void TestMeterCommand::lowestRange() {
+    /// \todo Implement lowestRange test.
+}
+
+void TestMeterCommand::lowestCurrentRange() {
+    /// \todo Implement lowestCurrentRange test.
+}
+
+void TestMeterCommand::lowestResistanceRange() {
+    /// \todo Implement lowestResistanceRange test.
+}
+
+void TestMeterCommand::lowestVoltageRange() {
+    /// \todo Implement lowestVoltageRange test.
+}
+
+void TestMeterCommand::settingsWritten() {
+    /// \todo Implement settingsWritten test.
+}
+
+void TestMeterCommand::outputReading() {
+    /// \todo Implement outputReading test.
 }
 
 QTEST_MAIN(TestMeterCommand)

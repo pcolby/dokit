@@ -5,20 +5,28 @@
 
 #include "setnamecommand.h"
 
-void TestSetNameCommand::test1_data()
-{
-    QTest::addColumn<int>("input");
-    QTest::addColumn<int>("expected");
-
-    QTest::addRow("example") << 1 << 2;
+void TestSetNameCommand::requiredOptions() {
+    /// \todo Implement requiredOptions test.
 }
 
-void TestSetNameCommand::test1()
-{
-    QFETCH(int, input);
-    QFETCH(int, expected);
-    const int actual = input * 2;
-    QCOMPARE(actual, expected);
+void TestSetNameCommand::supportedOptions() {
+    /// \todo Implement supportedOptions test.
+}
+
+void TestSetNameCommand::processOptions() {
+    /// \todo Implement processOptions test.
+}
+
+void TestSetNameCommand::getService() {
+    /// \todo Implement getService test.
+}
+
+void TestSetNameCommand::serviceDetailsDiscovered() {
+    /// \todo Implement serviceDetailsDiscovered test.
+}
+
+void TestSetNameCommand::deivceNameWritten() {
+    /// \todo Implement deivceNameWritten test.
 }
 
 QTEST_MAIN(TestSetNameCommand)
