@@ -24,8 +24,8 @@ void TestCalibrateCommand::requiredOptions()
     CalibrateCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
-    QCOMPARE(command.requiredOptions(parser),
-             mock.requiredOptions(parser) + QStringList{ QStringLiteral("temperature") });
+    const QStringList expected = mock.requiredOptions(parser) + QStringList{ QStringLiteral("temperature") };
+    QCOMPARE(command.requiredOptions(parser), expected);
 }
 
 void TestCalibrateCommand::supportedOptions()
@@ -33,8 +33,8 @@ void TestCalibrateCommand::supportedOptions()
     CalibrateCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
-    QCOMPARE(command.supportedOptions(parser),
-             QStringList{ QStringLiteral("temperature") } + mock.supportedOptions(parser));
+    const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser);
+    QCOMPARE(command.supportedOptions(parser), expected);
 }
 
 void TestCalibrateCommand::processOptions_data()
