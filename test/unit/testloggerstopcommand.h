@@ -8,9 +8,9 @@ class TestLoggerStopCommand : public QObject
     Q_OBJECT
 
 private slots:
-     void getService();
+    void getService();
 
-     void serviceDetailsDiscovered();
+    void serviceDetailsDiscovered();
 
-     void settingsWritten();
+    void settingsWritten();
 };

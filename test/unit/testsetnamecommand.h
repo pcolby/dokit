@@ -8,15 +8,15 @@ class TestSetNameCommand : public QObject
     Q_OBJECT
 
 private slots:
-     void requiredOptions();
+    void requiredOptions();
 
-     void supportedOptions();
+    void supportedOptions();
 
-     void processOptions();
+    void processOptions();
 
-     void getService();
+    void getService();
 
-     void serviceDetailsDiscovered();
+    void serviceDetailsDiscovered();
 
-     void deivceNameWritten();
+    void deivceNameWritten();
 };
