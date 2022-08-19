@@ -5,6 +5,12 @@
 
 #include "dsocommand.h"
 
+Q_DECLARE_METATYPE(DsoService::Mode);
+Q_DECLARE_METATYPE(DsoService::VoltageRange);
+Q_DECLARE_METATYPE(DsoService::CurrentRange);
+Q_DECLARE_METATYPE(DsoService::Range);
+Q_DECLARE_METATYPE(DsoService::Settings);
+
 class MockDeviceCommand : public DeviceCommand
 {
 public:
