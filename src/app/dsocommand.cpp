@@ -19,7 +19,7 @@
  */
 DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
-        DsoService::Command::FreeRunning, 0, DsoService::Mode::DcVoltage,
+        DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
         { DsoService::VoltageRange::_30V_to_60V }, 1000*1000, 1000}
 {
 
@@ -64,7 +64,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         settings.mode = DsoService::Mode::DcVoltage;
     } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
         settings.mode = DsoService::Mode::AcCurrent;
-    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("aac"))) {
+    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
         settings.mode = DsoService::Mode::DcCurrent;
     } else {
         errors.append(tr("Unknown DSO mode: %1").arg(parser.value(QLatin1String("mode"))));
@@ -103,11 +103,11 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     // Parse the trigger-level option.
     if (parser.isSet(QLatin1String("trigger-level"))) {
         const QString value = parser.value(QLatin1String("trigger-level"));
-        const quint32 interval = parseMilliValue(value, unit);
-        if (interval == 0) {
-            errors.append(tr("Invalid interval value: %1").arg(value));
+        const quint32 level = parseMicroValue(value, unit);
+        if (level == 0) {
+            errors.append(tr("Invalid trigger-level value: %1").arg(value));
         } else {
-            settings.triggerLevel = interval;
+            settings.triggerLevel = level/1000.0/1000.0;
         }
     }
 

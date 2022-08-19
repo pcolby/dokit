@@ -90,7 +90,6 @@ void TestCalibrateCommand::processOptions()
     parser.process(arguments);
 
     CalibrateCommand command(this);
-    qInfo() << command.processOptions(parser);
     QCOMPARE(command.processOptions(parser), errors);
 #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
     if (qIsNaN(expected)) {

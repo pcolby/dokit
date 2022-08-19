@@ -96,6 +96,10 @@ void TestAbstractCommand::parseMicroValue_data()
     // Invalid numbers return 0.
     QTest::addRow("xxx") << QStringLiteral("xxx") << QString() << (quint32)100 << (quint32)0;
     QTest::addRow("12x") << QStringLiteral("12x") << QString() << (quint32)100 << (quint32)0;
+
+    // Negative numbers are invalid too (ie also return 0).
+    QTest::addRow("-1")   << QStringLiteral("-1")   << QString() << (quint32)100 << (quint32)0;
+    QTest::addRow("-0.1") << QStringLiteral("-0.1") << QString() << (quint32)100 << (quint32)0;
 }
 
 void TestAbstractCommand::parseMicroValue()
@@ -132,6 +136,10 @@ void TestAbstractCommand::parseMilliValue_data()
     // Invalid numbers return 0.
     QTest::addRow("xxx") << QStringLiteral("xxx") << QString() << (quint32)100 << (quint32)0;
     QTest::addRow("12x") << QStringLiteral("12x") << QString() << (quint32)100 << (quint32)0;
+
+    // Negative numbers are invalid too (ie also return 0).
+    QTest::addRow("-1")   << QStringLiteral("-1")   << QString() << (quint32)100 << (quint32)0;
+    QTest::addRow("-0.1") << QStringLiteral("-0.1") << QString() << (quint32)100 << (quint32)0;
 }
 
 void TestAbstractCommand::parseMilliValue()
@@ -167,6 +175,10 @@ void TestAbstractCommand::parseWholeValue_data()
     // Invalid numbers return 0.
     QTest::addRow("xxx") << QStringLiteral("xxx") << QString() << (quint32)0;
     QTest::addRow("12x") << QStringLiteral("12x") << QString() << (quint32)0;
+
+    // Negative numbers are invalid too (ie also return 0).
+    QTest::addRow("-1")   << QStringLiteral("-1")   << QString() << (quint32)0;
+    QTest::addRow("-0.1") << QStringLiteral("-0.1") << QString() << (quint32)0;
 }
 
 void TestAbstractCommand::parseWholeValue()
