@@ -190,7 +190,7 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a> = 255
 <br />
  }</td></tr>
-<tr class="memdesc:a603464d36815b48d54ea91d06bdbc462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is resitance.  <a href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">More...</a><br /></td></tr>
+<tr class="memdesc:a603464d36815b48d54ea91d06bdbc462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is resistance.  <a href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">More...</a><br /></td></tr>
 <tr class="separator:a603464d36815b48d54ea91d06bdbc462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43c735e6c80c4ada9bc8640d06fbe286"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MeterStatus</a> : quint8 { <br />
 &#160;&#160;<a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849">AutoRangeOff</a> = 0
@@ -590,9 +590,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Values supported by the <code>Status</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849" name="a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849"></a>AutoRangeOff&#160;</td><td class="fielddoc"><p >Auto-range is disabled (voltage, current and resitance modes only). </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849" name="a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849"></a>AutoRangeOff&#160;</td><td class="fielddoc"><p >Auto-range is disabled (voltage, current and resistance modes only). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541" name="a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541"></a>AutoRangeOn&#160;</td><td class="fielddoc"><p >Auto-range is enabled (voltage, current and resitance modes only). </p>
+<tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541" name="a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541"></a>AutoRangeOn&#160;</td><td class="fielddoc"><p >Auto-range is enabled (voltage, current and resistance modes only). </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a43c735e6c80c4ada9bc8640d06fbe286aa47e2c0fd15eb75f65390f27f1107a86" name="a43c735e6c80c4ada9bc8640d06fbe286aa47e2c0fd15eb75f65390f27f1107a86"></a>NoContinuity&#160;</td><td class="fielddoc"><p >No continuity (continuity mode only). </p>
 </td></tr>
@@ -604,15 +604,15 @@ Additional Inherited Members</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8h_source.html#l00104">104</a> of file <a class="el" href="multimeterservice_8h_source.html">multimeterservice.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>                           : quint8 {</div>
-<div class="line"><span class="lineno">  105</span>        AutoRangeOff = 0,  <span class="comment">///&lt; Auto-range is disabled (voltage, current and resitance modes only).</span></div>
-<div class="line"><span class="lineno">  106</span>        AutoRangeOn  = 1,  <span class="comment">///&lt; Auto-range is enabled (voltage, current and resitance modes only).</span></div>
-<div class="line"><span class="lineno">  107</span>        NoContinuity = 0,  <span class="comment">///&lt; No continuity (continuity mode only).</span></div>
-<div class="line"><span class="lineno">  108</span>        Continuity   = 1,  <span class="comment">///&lt; Continuity (continuity mode only).</span></div>
-<div class="line"><span class="lineno">  109</span>        Ok           = 0,  <span class="comment">///&lt; Ok (temperature and diode modes only).</span></div>
-<div class="line"><span class="lineno">  110</span>        Error        = 255 <span class="comment">///&lt; Error (all modes).</span></div>
-<div class="line"><span class="lineno">  111</span>    };</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8h_source.html#l00108">108</a> of file <a class="el" href="multimeterservice_8h_source.html">multimeterservice.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>                           : quint8 {</div>
+<div class="line"><span class="lineno">  109</span>        AutoRangeOff = 0,  <span class="comment">///&lt; Auto-range is disabled (voltage, current and resistance modes only).</span></div>
+<div class="line"><span class="lineno">  110</span>        AutoRangeOn  = 1,  <span class="comment">///&lt; Auto-range is enabled (voltage, current and resistance modes only).</span></div>
+<div class="line"><span class="lineno">  111</span>        NoContinuity = 0,  <span class="comment">///&lt; No continuity (continuity mode only).</span></div>
+<div class="line"><span class="lineno">  112</span>        Continuity   = 1,  <span class="comment">///&lt; Continuity (continuity mode only).</span></div>
+<div class="line"><span class="lineno">  113</span>        Ok           = 0,  <span class="comment">///&lt; Ok (temperature and diode modes only).</span></div>
+<div class="line"><span class="lineno">  114</span>        Error        = 255 <span class="comment">///&lt; Error (all modes).</span></div>
+<div class="line"><span class="lineno">  115</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -694,7 +694,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is resitance. </p>
+<p>Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is resistance. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a" name="a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a"></a>_0_to_160&#160;</td><td class="fielddoc"><p >0 to 160 ohms. </p>
 </td></tr>
@@ -815,11 +815,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructs a new Pokit service with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00265">265</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  266</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(<span class="keyword">new</span> <a class="code hl_class" href="classMultimeterServicePrivate.html">MultimeterServicePrivate</a>(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">  267</span>{</div>
-<div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>}</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00335">335</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  336</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(<span class="keyword">new</span> <a class="code hl_class" href="classMultimeterServicePrivate.html">MultimeterServicePrivate</a>(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">  337</span>{</div>
+<div class="line"><span class="lineno">  338</span> </div>
+<div class="line"><span class="lineno">  339</span>}</div>
 <div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00023">abstractpokitservice.h:24</a></div></div>
 <div class="ttc" id="aclassMultimeterServicePrivate_html"><div class="ttname"><a href="classMultimeterServicePrivate.html">MultimeterServicePrivate</a></div><div class="ttdoc">The MultimeterServicePrivate class provides private implementation for MultimeterService.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice__p_8h_source.html#l00018">multimeterservice_p.h:19</a></div></div>
 <div class="ttc" id="aqobject_html_parent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent</a></div><div class="ttdeci">QObject * parent() const const</div></div>
@@ -851,10 +851,10 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Destroys this <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Pokit Status service of Pokit devices.">MultimeterService</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00286">286</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  287</span>{</div>
-<div class="line"><span class="lineno">  288</span> </div>
-<div class="line"><span class="lineno">  289</span>}</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00356">356</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  357</span>{</div>
+<div class="line"><span class="lineno">  358</span> </div>
+<div class="line"><span class="lineno">  359</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -894,11 +894,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructs a new Pokit service with <em>parent</em>, and private implementation <em>d</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00275">275</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  277</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">  278</span>{</div>
-<div class="line"><span class="lineno">  279</span> </div>
-<div class="line"><span class="lineno">  280</span>}</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00345">345</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  347</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">  348</span>{</div>
+<div class="line"><span class="lineno">  349</span> </div>
+<div class="line"><span class="lineno">  350</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -922,11 +922,11 @@ Additional Inherited Members</h2></td></tr>
 <p >Instantaneous reads can still be fetched by <a class="el" href="classMultimeterService.html#a818612a809f2addc659b44bc537c4428" title="Read the Multimeter service&#39;s Reading characteristic.">readReadingCharacteristic()</a>.</p>
 <p >Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00382">382</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  383</span>{</div>
-<div class="line"><span class="lineno">  384</span>    Q_D(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
-<div class="line"><span class="lineno">  385</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  386</span>}</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00452">452</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  453</span>{</div>
+<div class="line"><span class="lineno">  454</span>    Q_D(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
+<div class="line"><span class="lineno">  455</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  456</span>}</div>
 <div class="ttc" id="aclassMultimeterService_html"><div class="ttname"><a href="classMultimeterService.html">MultimeterService</a></div><div class="ttdoc">The MultimeterService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00022">multimeterservice.h:23</a></div></div>
 <div class="ttc" id="astructMultimeterService_1_1CharacteristicUuids_html_a38e61d8cc1060c1166f11b9d8a5c0643"><div class="ttname"><a href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">MultimeterService::CharacteristicUuids::reading</a></div><div class="ttdeci">static const QBluetoothUuid reading</div><div class="ttdoc">UUID of the Multimeter service's Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00031">multimeterservice.h:31</a></div></div>
 </div><!-- fragment -->
@@ -954,11 +954,11 @@ Additional Inherited Members</h2></td></tr>
 <p >Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
 <p >Successfully read values (if any) will be emitted via the <a class="el" href="classMultimeterService.html#a8e95109e8b75c168642cab28ae63c260" title="This signal is emitted when the Reading characteristic has been read successfully.">readingRead()</a> signal. </p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00369">369</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  370</span>{</div>
-<div class="line"><span class="lineno">  371</span>    Q_D(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
-<div class="line"><span class="lineno">  372</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  373</span>}</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00439">439</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  440</span>{</div>
+<div class="line"><span class="lineno">  441</span>    Q_D(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
+<div class="line"><span class="lineno">  442</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  443</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="multimeterservice_8h_source.html#l00031">MultimeterService::CharacteristicUuids::reading</a>.</p>
 
@@ -1351,13 +1351,13 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractPokitService.html#a0d29ffd4ef4f81c6049700f76faa723e">AbstractPokitService</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00291">291</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  292</span>{</div>
-<div class="line"><span class="lineno">  293</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classMultimeterService.html#a818612a809f2addc659b44bc537c4428">readReadingCharacteristic</a>();</div>
-<div class="line"><span class="lineno">  294</span>}</div>
-<div class="ttc" id="aclassMultimeterService_html_a818612a809f2addc659b44bc537c4428"><div class="ttname"><a href="classMultimeterService.html#a818612a809f2addc659b44bc537c4428">MultimeterService::readReadingCharacteristic</a></div><div class="ttdeci">bool readReadingCharacteristic()</div><div class="ttdoc">Read the Multimeter service's Reading characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8cpp_source.html#l00305">multimeterservice.cpp:305</a></div></div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00361">361</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  362</span>{</div>
+<div class="line"><span class="lineno">  363</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classMultimeterService.html#a818612a809f2addc659b44bc537c4428">readReadingCharacteristic</a>();</div>
+<div class="line"><span class="lineno">  364</span>}</div>
+<div class="ttc" id="aclassMultimeterService_html_a818612a809f2addc659b44bc537c4428"><div class="ttname"><a href="classMultimeterService.html#a818612a809f2addc659b44bc537c4428">MultimeterService::readReadingCharacteristic</a></div><div class="ttdeci">bool readReadingCharacteristic()</div><div class="ttdoc">Read the Multimeter service's Reading characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8cpp_source.html#l00375">multimeterservice.cpp:375</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="multimeterservice_8cpp_source.html#l00305">readReadingCharacteristic()</a>.</p>
+<p class="reference">References <a class="el" href="multimeterservice_8cpp_source.html#l00375">readReadingCharacteristic()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1388,27 +1388,27 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">reading</a>.<a class="code hl_variable" href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">value</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassMultimeterService_html_ad7623c59f41fc099bebd3447637a904e"><div class="ttname"><a href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">MultimeterService::reading</a></div><div class="ttdeci">Reading reading() const</div><div class="ttdoc">Returns the most recent value of the Multimeter service's Reading characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8cpp_source.html#l00350">multimeterservice.cpp:350</a></div></div>
-<div class="ttc" id="astructMultimeterService_1_1Reading_html"><div class="ttname"><a href="structMultimeterService_1_1Reading.html">MultimeterService::Reading</a></div><div class="ttdoc">Attributes included in the Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00113">multimeterservice.h:113</a></div></div>
-<div class="ttc" id="astructMultimeterService_1_1Reading_html_a5b6599355c8ae7e67d57da122256521a"><div class="ttname"><a href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">MultimeterService::Reading::value</a></div><div class="ttdeci">float value</div><div class="ttdoc">Last acquired value.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00115">multimeterservice.h:115</a></div></div>
+<div class="ttc" id="aclassMultimeterService_html_ad7623c59f41fc099bebd3447637a904e"><div class="ttname"><a href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">MultimeterService::reading</a></div><div class="ttdeci">Reading reading() const</div><div class="ttdoc">Returns the most recent value of the Multimeter service's Reading characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8cpp_source.html#l00420">multimeterservice.cpp:420</a></div></div>
+<div class="ttc" id="astructMultimeterService_1_1Reading_html"><div class="ttname"><a href="structMultimeterService_1_1Reading.html">MultimeterService::Reading</a></div><div class="ttdoc">Attributes included in the Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00117">multimeterservice.h:117</a></div></div>
+<div class="ttc" id="astructMultimeterService_1_1Reading_html_a5b6599355c8ae7e67d57da122256521a"><div class="ttname"><a href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">MultimeterService::Reading::value</a></div><div class="ttdeci">float value</div><div class="ttdoc">Last acquired value.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00119">multimeterservice.h:119</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00350">350</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  351</span>{</div>
-<div class="line"><span class="lineno">  352</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
-<div class="line"><span class="lineno">  353</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  354</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  355</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classMultimeterServicePrivate.html#ac9594dce487207bafd123e1093f399db">MultimeterServicePrivate::parseReading</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
-<div class="line"><span class="lineno">  356</span>        : Reading{ <a class="code hl_enumeration" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MeterStatus</a>::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
-<div class="line"><span class="lineno">  357</span>                   <a class="code hl_enumeration" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a>::Idle, { VoltageRange::AutoRange } };</div>
-<div class="line"><span class="lineno">  358</span>}</div>
-<div class="ttc" id="aclassMultimeterServicePrivate_html_ac9594dce487207bafd123e1093f399db"><div class="ttname"><a href="classMultimeterServicePrivate.html#ac9594dce487207bafd123e1093f399db">MultimeterServicePrivate::parseReading</a></div><div class="ttdeci">static MultimeterService::Reading parseReading(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Reading value into a MultimeterService::Reading struct.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8cpp_source.html#l00444">multimeterservice.cpp:444</a></div></div>
-<div class="ttc" id="aclassMultimeterService_html_a43c735e6c80c4ada9bc8640d06fbe286"><div class="ttname"><a href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MultimeterService::MeterStatus</a></div><div class="ttdeci">MeterStatus</div><div class="ttdoc">Values supported by the Status attribute of the Settings characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00104">multimeterservice.h:104</a></div></div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00420">420</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  421</span>{</div>
+<div class="line"><span class="lineno">  422</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
+<div class="line"><span class="lineno">  423</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  424</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  425</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classMultimeterServicePrivate.html#ac9594dce487207bafd123e1093f399db">MultimeterServicePrivate::parseReading</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
+<div class="line"><span class="lineno">  426</span>        : Reading{ <a class="code hl_enumeration" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MeterStatus</a>::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
+<div class="line"><span class="lineno">  427</span>                   <a class="code hl_enumeration" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a>::Idle, { VoltageRange::AutoRange } };</div>
+<div class="line"><span class="lineno">  428</span>}</div>
+<div class="ttc" id="aclassMultimeterServicePrivate_html_ac9594dce487207bafd123e1093f399db"><div class="ttname"><a href="classMultimeterServicePrivate.html#ac9594dce487207bafd123e1093f399db">MultimeterServicePrivate::parseReading</a></div><div class="ttdeci">static MultimeterService::Reading parseReading(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Reading value into a MultimeterService::Reading struct.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8cpp_source.html#l00514">multimeterservice.cpp:514</a></div></div>
+<div class="ttc" id="aclassMultimeterService_html_a43c735e6c80c4ada9bc8640d06fbe286"><div class="ttname"><a href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MultimeterService::MeterStatus</a></div><div class="ttdeci">MeterStatus</div><div class="ttdoc">Values supported by the Status attribute of the Settings characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00108">multimeterservice.h:108</a></div></div>
 <div class="ttc" id="aclassMultimeterService_html_a51f66d0b81dace3115c5c68bc931eaea"><div class="ttname"><a href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">MultimeterService::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">Values supported by the Mode attribute of the Settings and Reading characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00034">multimeterservice.h:34</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_value"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value</a></div><div class="ttdeci">QByteArray value() const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a>, <a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="multimeterservice_8cpp_source.html#l00444">MultimeterServicePrivate::parseReading()</a>, <a class="el" href="multimeterservice_8h_source.html#l00031">MultimeterService::CharacteristicUuids::reading</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
+<p class="reference">References <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a>, <a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="multimeterservice_8cpp_source.html#l00514">MultimeterServicePrivate::parseReading()</a>, <a class="el" href="multimeterservice_8h_source.html#l00031">MultimeterService::CharacteristicUuids::reading</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1474,15 +1474,15 @@ Here is the caller graph for this function:</div>
 <p >Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p >Emits <a class="el" href="classMultimeterService.html#a8e95109e8b75c168642cab28ae63c260" title="This signal is emitted when the Reading characteristic has been read successfully.">readingRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00305">305</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  306</span>{</div>
-<div class="line"><span class="lineno">  307</span>    Q_D(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
-<div class="line"><span class="lineno">  308</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  309</span>}</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00375">375</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  376</span>{</div>
+<div class="line"><span class="lineno">  377</span>    Q_D(<a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
+<div class="line"><span class="lineno">  378</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  379</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="multimeterservice_8h_source.html#l00031">MultimeterService::CharacteristicUuids::reading</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00291">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00361">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1512,23 +1512,23 @@ Here is the caller graph for this function:</div>
 <p >Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p >Emits <a class="el" href="classMultimeterService.html#ab77871f1969da5a13dc1addb658814c6" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em>settings</em> have been writtem successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00318">318</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  319</span>{</div>
-<div class="line"><span class="lineno">  320</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
-<div class="line"><span class="lineno">  321</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  322</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a502132c1d5922e86256dd70e6935b6d2">CharacteristicUuids::settings</a>);</div>
-<div class="line"><span class="lineno">  323</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
-<div class="line"><span class="lineno">  324</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  325</span>    }</div>
-<div class="line"><span class="lineno">  326</span> </div>
-<div class="line"><span class="lineno">  327</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = d-&gt;encodeSettings(settings);</div>
-<div class="line"><span class="lineno">  328</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">isNull</a>()) {</div>
-<div class="line"><span class="lineno">  329</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  330</span>    }</div>
-<div class="line"><span class="lineno">  331</span> </div>
-<div class="line"><span class="lineno">  332</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
-<div class="line"><span class="lineno">  333</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">  334</span>}</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00388">388</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  389</span>{</div>
+<div class="line"><span class="lineno">  390</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classMultimeterService.html">MultimeterService</a>);</div>
+<div class="line"><span class="lineno">  391</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  392</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a502132c1d5922e86256dd70e6935b6d2">CharacteristicUuids::settings</a>);</div>
+<div class="line"><span class="lineno">  393</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
+<div class="line"><span class="lineno">  394</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  395</span>    }</div>
+<div class="line"><span class="lineno">  396</span> </div>
+<div class="line"><span class="lineno">  397</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = d-&gt;encodeSettings(settings);</div>
+<div class="line"><span class="lineno">  398</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">isNull</a>()) {</div>
+<div class="line"><span class="lineno">  399</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  400</span>    }</div>
+<div class="line"><span class="lineno">  401</span> </div>
+<div class="line"><span class="lineno">  402</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
+<div class="line"><span class="lineno">  403</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">  404</span>}</div>
 <div class="ttc" id="aqbytearray_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a></div></div>
 <div class="ttc" id="aqbytearray_html_isNull"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull</a></div><div class="ttdeci">bool isNull() const const</div></div>
 <div class="ttc" id="astructMultimeterService_1_1CharacteristicUuids_html_a502132c1d5922e86256dd70e6935b6d2"><div class="ttname"><a href="structMultimeterService_1_1CharacteristicUuids.html#a502132c1d5922e86256dd70e6935b6d2">MultimeterService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the Multimeter service's Settings characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00030">multimeterservice.h:30</a></div></div>
@@ -1690,7 +1690,7 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf73d2c55dc3628b7071e45104874c485">Continuity</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa0f31a45b6daa6a5478050c36732a2549">Diode</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9db444f7a3b8ba8f817647de53b7a6fe">Resistance</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00277">MeterCommand::outputReading()</a>, <a class="el" href="metercommand_8cpp_source.html#l00173">MeterCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="multimeterservice_8cpp_source.html#l00239">toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00277">MeterCommand::outputReading()</a>, <a class="el" href="metercommand_8cpp_source.html#l00173">MeterCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="multimeterservice_8cpp_source.html#l00267">toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1742,19 +1742,19 @@ Here is the caller graph for this function:</div>
 
 <p>Returns <em>range</em> as a user-friendly string, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if <em>mode</em> has no ranges. </p>
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00239">239</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  240</span>{</div>
-<div class="line"><span class="lineno">  241</span>    <span class="keywordflow">switch</span> (mode) {</div>
-<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:</div>
-<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:</div>
-<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classMultimeterService.html#a58a03dbc0ae216dc60f27d975af92cf8">toString</a>(range.voltageRange);</div>
-<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:</div>
-<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:</div>
-<div class="line"><span class="lineno">  247</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classMultimeterService.html#a58a03dbc0ae216dc60f27d975af92cf8">toString</a>(range.currentRange);</div>
-<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  249</span>        <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  250</span>    }</div>
-<div class="line"><span class="lineno">  251</span>}</div>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8cpp_source.html#l00267">267</a> of file <a class="el" href="multimeterservice_8cpp_source.html">multimeterservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  268</span>{</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordflow">switch</span> (mode) {</div>
+<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:</div>
+<div class="line"><span class="lineno">  271</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:</div>
+<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classMultimeterService.html#a58a03dbc0ae216dc60f27d975af92cf8">toString</a>(range.voltageRange);</div>
+<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:</div>
+<div class="line"><span class="lineno">  274</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:</div>
+<div class="line"><span class="lineno">  275</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classMultimeterService.html#a58a03dbc0ae216dc60f27d975af92cf8">toString</a>(range.currentRange);</div>
+<div class="line"><span class="lineno">  276</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  277</span>        <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  278</span>    }</div>
+<div class="line"><span class="lineno">  279</span>}</div>
 <div class="ttc" id="aclassMultimeterService_html_a58a03dbc0ae216dc60f27d975af92cf8"><div class="ttname"><a href="classMultimeterService.html#a58a03dbc0ae216dc60f27d975af92cf8">MultimeterService::toString</a></div><div class="ttdeci">static QString toString(const Mode &amp;mode)</div><div class="ttdoc">Returns mode as a user-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8cpp_source.html#l00041">multimeterservice.cpp:41</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="multimeterservice_8h_source.html#l00093">MultimeterService::Range::currentRange</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="multimeterservice_8cpp_source.html#l00041">toString()</a>, and <a class="el" href="multimeterservice_8h_source.html#l00092">MultimeterService::Range::voltageRange</a>.</p>
@@ -1890,7 +1890,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="multimeterservice_8h_source.html#l00146">146</a> of file <a class="el" href="multimeterservice_8h_source.html">multimeterservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="multimeterservice_8h_source.html#l00150">150</a> of file <a class="el" href="multimeterservice_8h_source.html">multimeterservice.h</a>.</p>
 
 </div>
 </div>

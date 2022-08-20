@@ -41,7 +41,7 @@ var searchData=
   ['numberflags_38',['numberFlags',['https://doc.qt.io/qt-5/qtextstream.html#numberFlags',1,'QTextStream']]],
   ['numberflags_39',['NumberFlags',['https://doc.qt.io/qt-5/qtextstream.html#NumberFlag-enum',1,'QTextStream']]],
   ['numberofsamples_40',['numberOfSamples',['../structDataLoggerService_1_1Metadata.html#a5e40e39f2d21dbf609403f111537b2b0',1,'DataLoggerService::Metadata::numberOfSamples()'],['../structDsoService_1_1Settings.html#ad118943a951c606915bd12c45ded6cd6',1,'DsoService::Settings::numberOfSamples()'],['../structDsoService_1_1Metadata.html#aa2c92c1dd91d2351dbe06c1e7910c78d',1,'DsoService::Metadata::numberOfSamples()']]],
-  ['numberoptions_41',['numberOptions',['https://doc.qt.io/qt-5/qlocale.html#numberOptions',1,'QLocale']]],
-  ['numberoptions_42',['NumberOptions',['https://doc.qt.io/qt-5/qlocale.html#NumberOption-enum',1,'QLocale']]],
+  ['numberoptions_41',['NumberOptions',['https://doc.qt.io/qt-5/qlocale.html#NumberOption-enum',1,'QLocale']]],
+  ['numberoptions_42',['numberOptions',['https://doc.qt.io/qt-5/qlocale.html#numberOptions',1,'QLocale']]],
   ['numericmode_43',['numericMode',['https://doc.qt.io/qt-5/qcollator.html#numericMode',1,'QCollator']]]
 ];
