@@ -145,12 +145,12 @@ private:
     friend class TestDsoService;
 };
 
-bool operator==(const DsoService::Range &lhs, const DsoService::Range &rhs);
-bool operator!=(const DsoService::Range &lhs, const DsoService::Range &rhs);
-bool operator< (const DsoService::Range &lhs, const DsoService::Range &rhs);
-bool operator> (const DsoService::Range &lhs, const DsoService::Range &rhs);
-bool operator<=(const DsoService::Range &lhs, const DsoService::Range &rhs);
-bool operator>=(const DsoService::Range &lhs, const DsoService::Range &rhs);
+QTPOKIT_EXPORT bool operator==(const DsoService::Range &lhs, const DsoService::Range &rhs);
+QTPOKIT_EXPORT bool operator!=(const DsoService::Range &lhs, const DsoService::Range &rhs);
+QTPOKIT_EXPORT bool operator< (const DsoService::Range &lhs, const DsoService::Range &rhs);
+QTPOKIT_EXPORT bool operator> (const DsoService::Range &lhs, const DsoService::Range &rhs);
+QTPOKIT_EXPORT bool operator<=(const DsoService::Range &lhs, const DsoService::Range &rhs);
+QTPOKIT_EXPORT bool operator>=(const DsoService::Range &lhs, const DsoService::Range &rhs);
 
 QTPOKIT_END_NAMESPACE
 
