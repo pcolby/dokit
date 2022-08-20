@@ -182,8 +182,8 @@ void TestDsoService::maxValue_CurrentRange()
 void TestDsoService::range_Range()
 {
     const DsoService::Range range;
-    QCOMPARE((quint8)range.currentRange, 0);
-    QCOMPARE((quint8)range.voltageRange, 0);
+    QCOMPARE((quint8)range.currentRange, (quint8)0);
+    QCOMPARE((quint8)range.voltageRange, (quint8)0);
 
     const DsoService::Range voltage(DsoService::VoltageRange::_6V_to_12V);
     QCOMPARE(voltage.voltageRange, DsoService::VoltageRange::_6V_to_12V);
@@ -226,10 +226,8 @@ void TestDsoService::toString_Range_data()
     QTest::addColumn<QString>("expected");
 
     #define QTPOKIT_ADD_TEST_ROW(mode, member, range, expected) {\
-        DsoService::Range rangeUnion; \
-        rangeUnion.member = DsoService::range; \
-        QTest::addRow(#mode "," #range) \
-            << rangeUnion << DsoService::Mode::mode << QStringLiteral(expected); \
+        QTest::addRow(#mode "," #range) << DsoService::Range(DsoService::range) \
+            << DsoService::Mode::mode << QStringLiteral(expected); \
     }
     QTPOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
     QTPOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
