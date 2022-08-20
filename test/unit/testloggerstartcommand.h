@@ -18,10 +18,13 @@ private slots:
 
     void serviceDetailsDiscovered();
 
+    void lowestRange_data();
     void lowestRange();
 
+    void lowestCurrentRange_data();
     void lowestCurrentRange();
 
+    void lowestVoltageRange_data();
     void lowestVoltageRange();
 
     void settingsWritten();
