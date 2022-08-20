@@ -65,8 +65,8 @@ AbstractPokitService * SetNameCommand::getService()
     if (!service) {
         service = device->status();
         Q_ASSERT(service);
-        connect(service, &StatusService::deivceNameWritten,
-                this, &SetNameCommand::deivceNameWritten);
+        connect(service, &StatusService::deviceNameWritten,
+                this, &SetNameCommand::deviceNameWritten);
     }
     return service;
 }
@@ -85,9 +85,9 @@ void SetNameCommand::serviceDetailsDiscovered()
 }
 
 /*!
- * Handles StatusService::deivceNameWritten events, by outputting the result and exiting.
+ * Handles StatusService::deviceNameWritten events, by outputting the result and exiting.
  */
-void SetNameCommand::deivceNameWritten()
+void SetNameCommand::deviceNameWritten()
 {
     switch (format) {
     case OutputFormat::Csv:

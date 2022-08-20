@@ -75,7 +75,7 @@ bool CalibrationService::readCharacteristics()
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
- * Emits deivceNameWritten() if/when the \a name has been set.
+ * Emits deviceNameWritten() if/when the \a name has been set.
  */
 bool CalibrationService::calibrateTemperature(const float ambientTemperature)
 {

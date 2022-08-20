@@ -259,7 +259,7 @@ QString StatusService::deviceName() const
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
- * Emits deivceNameWritten() if/when the \a name has been set.
+ * Emits deviceNameWritten() if/when the \a name has been set.
  */
 bool StatusService::setDeviceName(const QString &name)
 {
@@ -332,7 +332,7 @@ bool StatusService::flashLed()
  */
 
 /*!
- * \fn StatusService::deivceNameWritten
+ * \fn StatusService::deviceNameWritten
  *
  * This signal is emitted when the `Device Name` characteristic has been written successfully.
  *
@@ -529,7 +529,7 @@ void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic 
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {
-        emit q->deivceNameWritten();
+        emit q->deviceNameWritten();
         return;
     }
 

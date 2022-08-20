@@ -144,7 +144,7 @@ QString GenericAccessService::deviceName() const
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
- * Emits deivceNameWritten() if/when the \a name has been set.
+ * Emits deviceNameWritten() if/when the \a name has been set.
  */
 bool GenericAccessService::setDeviceName(const QString &name)
 {
@@ -185,7 +185,7 @@ bool GenericAccessService::setDeviceName(const QString &name)
  */
 
 /*!
- * \fn GenericAccessService::deivceNameWritten
+ * \fn GenericAccessService::deviceNameWritten
  *
  * This signal is emitted when the `Device Name` characteristic has been written successfully.
  *
@@ -266,7 +266,7 @@ void GenericAccessServicePrivate::characteristicWritten(const QLowEnergyCharacte
     }
 
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::deviceName) {
-        emit q->deivceNameWritten();
+        emit q->deviceNameWritten();
         return;
     }
 

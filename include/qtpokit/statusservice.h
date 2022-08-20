@@ -99,7 +99,7 @@ public:
 signals:
     void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &characteristics);
     void deviceNameRead(const QString &deviceName);
-    void deivceNameWritten();
+    void deviceNameWritten();
     void deviceStatusRead(const StatusService::Status &status);
     void deviceLedFlashed();
 

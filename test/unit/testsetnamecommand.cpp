@@ -48,8 +48,8 @@ void TestSetNameCommand::serviceDetailsDiscovered() {
     // Unable to safely invoke SetNameCommand::serviceDetailsDiscovered() without a valid service.
 }
 
-void TestSetNameCommand::deivceNameWritten() {
-    /// \todo Implement deivceNameWritten test.
+void TestSetNameCommand::deviceNameWritten() {
+    /// \todo Verify the output format.
 }
 
 void TestSetNameCommand::tr()

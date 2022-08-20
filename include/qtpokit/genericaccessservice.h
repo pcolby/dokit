@@ -48,7 +48,7 @@ public:
 signals:
     void appearanceRead(const quint16 appearance);
     void deviceNameRead(const QString &deviceName);
-    void deivceNameWritten();
+    void deviceNameWritten();
 
 protected:
     /// \cond internal

@@ -27,7 +27,7 @@ private:
     StatusService * service; ///< Bluetooth service this command interracts with.
 
 private slots:
-    void deivceNameWritten();
+    void deviceNameWritten();
 
     friend class TestSetNameCommand;
 };
