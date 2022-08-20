@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">199</td>
+            <td class="headerCovTableEntry">204</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -176,7 +176,7 @@
 <a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :             break;</span></a>
 <a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :         case MultimeterService::Mode::Resistance:</span></a>
 <a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :             if (isAuto) {</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :                 settings.range.resitanceRange = MultimeterService::ResistanceRange::AutoRange;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :                 settings.range.resistanceRange = MultimeterService::ResistanceRange::AutoRange;</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :             }</a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :             unit = QLatin1String(&quot;ohms&quot;);</span></a>
 <a name="120"><span class="lineNum">     120 </span>            :             sensibleMinimum = 0; // Unused.</a>
@@ -249,22 +249,22 @@
 <a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 : MultimeterService::Range MeterCommand::lowestRange(</span></a>
 <a name="188"><span class="lineNum">     188 </span>            :     const MultimeterService::Mode mode, const quint32 desiredMax)</a>
 <a name="189"><span class="lineNum">     189 </span>            : {</a>
-<a name="190"><span class="lineNum">     190 </span>            :     MultimeterService::Range range;</a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :     MultimeterService::Range range;</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcVoltage:</span></a>
 <a name="193"><span class="lineNum">     193 </span>            :     case MultimeterService::Mode::AcVoltage:</a>
 <a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :         range.voltageRange = lowestVoltageRange(desiredMax);</span></a>
-<a name="195"><span class="lineNum">     195 </span>            :         break;</a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::DcCurrent:</span></a>
 <a name="197"><span class="lineNum">     197 </span>            :     case MultimeterService::Mode::AcCurrent:</a>
 <a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :         range.currentRange = lowestCurrentRange(desiredMax);</span></a>
-<a name="199"><span class="lineNum">     199 </span>            :         break;</a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :         range.resitanceRange = lowestResistanceRange(desiredMax);</span></a>
-<a name="202"><span class="lineNum">     202 </span>            :         break;</a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :         range.resistanceRange = lowestResistanceRange(desiredMax);</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :     default:</span></a>
 <a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Mode does not support range.&quot;);</span></a>
-<a name="205"><span class="lineNum">     205 </span>            :         range.voltageRange = MultimeterService::VoltageRange::AutoRange;</a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :         range.voltageRange = MultimeterService::VoltageRange::AutoRange;</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :     }</a>
 <a name="207"><span class="lineNum">     207 </span><span class="lineNoCov">          0 :     return range;</span></a>
 <a name="208"><span class="lineNum">     208 </span>            : }</a>
@@ -392,9 +392,9 @@
 <a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.currentRange);</span></a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :     case MultimeterService::Mode::Resistance:</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(reading.range.resitanceRange);</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineNoCov">          0 :         rangeMin = MultimeterService::minValue(reading.range.resitanceRange);</span></a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.resitanceRange);</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         range = MultimeterService::toString(reading.range.resistanceRange);</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineNoCov">          0 :         rangeMin = MultimeterService::minValue(reading.range.resistanceRange);</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :         rangeMax = MultimeterService::maxValue(reading.range.resistanceRange);</span></a>
 <a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="337"><span class="lineNum">     337 </span>            :     case MultimeterService::Mode::Diode:       break;</a>
 <a name="338"><span class="lineNum">     338 </span>            :     case MultimeterService::Mode::Continuity:  break;</a>

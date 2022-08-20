@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">105</td>
+            <td class="headerCovTableEntry">108</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -226,7 +226,7 @@
 <a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 : DataLoggerService::Range LoggerStartCommand::lowestRange(</span></a>
 <a name="165"><span class="lineNum">     165 </span>            :     const DataLoggerService::Mode mode, const quint32 desiredMax)</a>
 <a name="166"><span class="lineNum">     166 </span>            : {</a>
-<a name="167"><span class="lineNum">     167 </span>            :     DataLoggerService::Range range{ DataLoggerService::VoltageRange::_6V_to_12V };</a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :     DataLoggerService::Range range{ DataLoggerService::VoltageRange::_6V_to_12V };</span></a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
 <a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :     case DataLoggerService::Mode::Idle:</span></a>
 <a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Idle has no defined ranges.&quot;);</span></a>
@@ -235,11 +235,11 @@
 <a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :     case DataLoggerService::Mode::DcVoltage:</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :     case DataLoggerService::Mode::AcVoltage:</a>
 <a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 :         range.voltageRange = lowestVoltageRange(desiredMax);</span></a>
-<a name="176"><span class="lineNum">     176 </span>            :         break;</a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :     case DataLoggerService::Mode::DcCurrent:</span></a>
 <a name="178"><span class="lineNum">     178 </span>            :     case DataLoggerService::Mode::AcCurrent:</a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :         range.currentRange = lowestCurrentRange(desiredMax);</span></a>
-<a name="180"><span class="lineNum">     180 </span>            :         break;</a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="181"><span class="lineNum">     181 </span><span class="lineNoCov">          0 :     default:</span></a>
 <a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;No defined ranges for mode %1.&quot;).arg((quint8)mode);</span></a>
 <a name="183"><span class="lineNum">     183 </span>            :         Q_ASSERT(false); // Should never have been called with this invalid mode.</a>

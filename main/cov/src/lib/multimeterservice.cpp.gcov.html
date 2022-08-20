@@ -31,18 +31,18 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">169</td>
-            <td class="headerCovTableEntry">192</td>
-            <td class="headerCovTableEntryMed">88.0 %</td>
+            <td class="headerCovTableEntry">197</td>
+            <td class="headerCovTableEntry">220</td>
+            <td class="headerCovTableEntryMed">89.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
             <td class="headerValue">0.1.0-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">27</td>
-            <td class="headerCovTableEntry">31</td>
-            <td class="headerCovTableEntryMed">87.1 %</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntryHi">91.1 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -235,7 +235,7 @@
 <a name="173"><span class="lineNum">     173 </span>            : </a>
 <a name="174"><span class="lineNum">     174 </span>            : /// \enum MultimeterService::ResistanceRange</a>
 <a name="175"><span class="lineNum">     175 </span>            : /// \brief Values supported by the `Range` attribute of the `Settings` and `Reading` characteristics,</a>
-<a name="176"><span class="lineNum">     176 </span>            : /// when `Mode` is resitance.</a>
+<a name="176"><span class="lineNum">     176 </span>            : /// when `Mode` is resistance.</a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
 <a name="178"><span class="lineNum">     178 </span>            : /// Returns \a range as a user-friendly string.</a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineCov">        187 : QString MultimeterService::toString(const ResistanceRange &amp;range)</span></a>
@@ -297,308 +297,378 @@
 <a name="235"><span class="lineNum">     235 </span>            : /// \union MultimeterService::Range</a>
 <a name="236"><span class="lineNum">     236 </span>            : /// \brief Values supported by the `Range` attribute of the `Settings` characteristic.</a>
 <a name="237"><span class="lineNum">     237 </span>            : </a>
-<a name="238"><span class="lineNum">     238 </span>            : /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.</a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">        153 : QString MultimeterService::toString(const Range &amp;range, const Mode &amp;mode)</span></a>
-<a name="240"><span class="lineNum">     240 </span>            : {</a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        153 :     switch (mode) {</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">         68 :     case Mode::DcVoltage:</span></a>
-<a name="243"><span class="lineNum">     243 </span>            :     case Mode::AcVoltage:</a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">         68 :         return toString(range.voltageRange);</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">         68 :     case Mode::DcCurrent:</span></a>
-<a name="246"><span class="lineNum">     246 </span>            :     case Mode::AcCurrent:</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">         68 :         return toString(range.currentRange);</span></a>
-<a name="248"><span class="lineNum">     248 </span>            :     default:</a>
-<a name="249"><span class="lineNum">     249 </span>            :         return QString();</a>
-<a name="250"><span class="lineNum">     250 </span>            :     }</a>
-<a name="251"><span class="lineNum">     251 </span>            : }</a>
-<a name="252"><span class="lineNum">     252 </span>            : </a>
-<a name="253"><span class="lineNum">     253 </span>            : /// \struct MultimeterService::Settings</a>
-<a name="254"><span class="lineNum">     254 </span>            : /// \brief Attributes included in the `Settings` characterstic.</a>
-<a name="255"><span class="lineNum">     255 </span>            : </a>
-<a name="256"><span class="lineNum">     256 </span>            : /// \enum MultimeterService::MeterStatus</a>
-<a name="257"><span class="lineNum">     257 </span>            : /// \brief Values supported by the `Status` attribute of the `Settings` characteristic.</a>
-<a name="258"><span class="lineNum">     258 </span>            : </a>
-<a name="259"><span class="lineNum">     259 </span>            : /// \struct MultimeterService::Reading</a>
-<a name="260"><span class="lineNum">     260 </span>            : /// \brief Attributes included in the `Reading` characterstic.</a>
-<a name="261"><span class="lineNum">     261 </span>            : </a>
-<a name="262"><span class="lineNum">     262 </span>            : /*!</a>
-<a name="263"><span class="lineNum">     263 </span>            :  * Constructs a new Pokit service with \a parent.</a>
-<a name="264"><span class="lineNum">     264 </span>            :  */</a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">        170 : MultimeterService::MultimeterService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">        170 :     : AbstractPokitService(new MultimeterServicePrivate(controller, this), parent)</span></a>
-<a name="267"><span class="lineNum">     267 </span>            : {</a>
-<a name="268"><span class="lineNum">     268 </span>            : </a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">        170 : }</span></a>
-<a name="270"><span class="lineNum">     270 </span>            : </a>
-<a name="271"><span class="lineNum">     271 </span>            : /*!</a>
-<a name="272"><span class="lineNum">     272 </span>            :  * \cond internal</a>
-<a name="273"><span class="lineNum">     273 </span>            :  * Constructs a new Pokit service with \a parent, and private implementation \a d.</a>
-<a name="274"><span class="lineNum">     274 </span>            :  */</a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 : MultimeterService::MultimeterService(</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :     MultimeterServicePrivate * const d, QObject * const parent)</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :     : AbstractPokitService(d, parent)</span></a>
-<a name="278"><span class="lineNum">     278 </span>            : {</a>
-<a name="279"><span class="lineNum">     279 </span>            : </a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="281"><span class="lineNum">     281 </span>            : /// \endcond</a>
-<a name="282"><span class="lineNum">     282 </span>            : </a>
-<a name="283"><span class="lineNum">     283 </span>            : /*!</a>
-<a name="284"><span class="lineNum">     284 </span>            :  * Destroys this MultimeterService object.</a>
-<a name="285"><span class="lineNum">     285 </span>            :  */</a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">        153 : MultimeterService::~MultimeterService()</span></a>
-<a name="287"><span class="lineNum">     287 </span>            : {</a>
-<a name="288"><span class="lineNum">     288 </span>            : </a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">        153 : }</span></a>
-<a name="290"><span class="lineNum">     290 </span>            : </a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         17 : bool MultimeterService::readCharacteristics()</span></a>
-<a name="292"><span class="lineNum">     292 </span>            : {</a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">         17 :     return readReadingCharacteristic();</span></a>
-<a name="294"><span class="lineNum">     294 </span>            : }</a>
-<a name="295"><span class="lineNum">     295 </span>            : </a>
-<a name="296"><span class="lineNum">     296 </span>            : /*!</a>
-<a name="297"><span class="lineNum">     297 </span>            :  * Read the `Multimeter` service's `Reading` characteristic.</a>
-<a name="298"><span class="lineNum">     298 </span>            :  *</a>
-<a name="299"><span class="lineNum">     299 </span>            :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</a>
-<a name="300"><span class="lineNum">     300 </span>            :  * underlying controller it not yet connected to the Pokit device, or the device's services have</a>
-<a name="301"><span class="lineNum">     301 </span>            :  * not yet been discovered).</a>
-<a name="302"><span class="lineNum">     302 </span>            :  *</a>
-<a name="303"><span class="lineNum">     303 </span>            :  * Emits readingRead() if/when the characteristic has been read successfully.</a>
-<a name="304"><span class="lineNum">     304 </span>            :  */</a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">         28 : bool MultimeterService::readReadingCharacteristic()</span></a>
-<a name="306"><span class="lineNum">     306 </span>            : {</a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         22 :     Q_D(MultimeterService);</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         34 :     return d-&gt;readCharacteristic(CharacteristicUuids::reading);</span></a>
-<a name="309"><span class="lineNum">     309 </span>            : }</a>
-<a name="310"><span class="lineNum">     310 </span>            : </a>
-<a name="311"><span class="lineNum">     311 </span>            : /*!</a>
-<a name="312"><span class="lineNum">     312 </span>            :  * Configures the Pokit device's multimeter mode.</a>
-<a name="313"><span class="lineNum">     313 </span>            :  *</a>
-<a name="314"><span class="lineNum">     314 </span>            :  * Returns `true` if the write request was successfully queued, `false` otherwise.</a>
-<a name="315"><span class="lineNum">     315 </span>            :  *</a>
-<a name="316"><span class="lineNum">     316 </span>            :  * Emits settingsWritten() if/when the \a settings have been writtem successfully.</a>
-<a name="317"><span class="lineNum">     317 </span>            :  */</a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         17 : bool MultimeterService::setSettings(const Settings &amp;settings)</span></a>
-<a name="319"><span class="lineNum">     319 </span>            : {</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         11 :     Q_D(const MultimeterService);</span></a>
-<a name="321"><span class="lineNum">     321 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         28 :         d-&gt;getCharacteristic(CharacteristicUuids::settings);</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">         17 :     if (!characteristic.isValid()) {</span></a>
-<a name="324"><span class="lineNum">     324 </span>            :         return false;</a>
-<a name="325"><span class="lineNum">     325 </span>            :     }</a>
-<a name="326"><span class="lineNum">     326 </span>            : </a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :     const QByteArray value = d-&gt;encodeSettings(settings);</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :     if (value.isNull()) {</span></a>
-<a name="329"><span class="lineNum">     329 </span>            :         return false;</a>
-<a name="330"><span class="lineNum">     330 </span>            :     }</a>
+<a name="238"><span class="lineNum">     238 </span>            : static_assert(std::is_same&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;,</a>
+<a name="239"><span class="lineNum">     239 </span>            :                            std::underlying_type_t&lt;MultimeterService::CurrentRange&gt;&gt;::value,</a>
+<a name="240"><span class="lineNum">     240 </span>            :               &quot;MultimeterService::Range members must all have the same underlying type.&quot;);</a>
+<a name="241"><span class="lineNum">     241 </span>            : </a>
+<a name="242"><span class="lineNum">     242 </span>            : /// Constructs a new MultimeterService::Range instance with 0. This should be considered</a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">         34 : MultimeterService::Range::Range() : voltageRange(static_cast&lt;MultimeterService::VoltageRange&gt;(0))</span></a>
+<a name="244"><span class="lineNum">     244 </span>            : {</a>
+<a name="245"><span class="lineNum">     245 </span>            : </a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">         34 : }</span></a>
+<a name="247"><span class="lineNum">     247 </span>            : </a>
+<a name="248"><span class="lineNum">     248 </span>            : /// Constructs a new MultimeterService::Range instance with \a range.</a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        599 : MultimeterService::Range::Range(const MultimeterService::VoltageRange range) : voltageRange(range)</span></a>
+<a name="250"><span class="lineNum">     250 </span>            : {</a>
+<a name="251"><span class="lineNum">     251 </span>            : </a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">        593 : }</span></a>
+<a name="253"><span class="lineNum">     253 </span>            : </a>
+<a name="254"><span class="lineNum">     254 </span>            : /// Constructs a new MultimeterService::Range instance with \a range.</a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         85 : MultimeterService::Range::Range(const MultimeterService::CurrentRange range) : currentRange(range)</span></a>
+<a name="256"><span class="lineNum">     256 </span>            : {</a>
+<a name="257"><span class="lineNum">     257 </span>            : </a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">         85 : }</span></a>
+<a name="259"><span class="lineNum">     259 </span>            : </a>
+<a name="260"><span class="lineNum">     260 </span>            : /// Constructs a new MultimeterService::Range instance with \a range.</a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         17 : MultimeterService::Range::Range(const MultimeterService::ResistanceRange range) : resistanceRange(range)</span></a>
+<a name="262"><span class="lineNum">     262 </span>            : {</a>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         17 : }</span></a>
+<a name="265"><span class="lineNum">     265 </span>            : </a>
+<a name="266"><span class="lineNum">     266 </span>            : /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.</a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        153 : QString MultimeterService::toString(const Range &amp;range, const Mode &amp;mode)</span></a>
+<a name="268"><span class="lineNum">     268 </span>            : {</a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">        153 :     switch (mode) {</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         68 :     case Mode::DcVoltage:</span></a>
+<a name="271"><span class="lineNum">     271 </span>            :     case Mode::AcVoltage:</a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         68 :         return toString(range.voltageRange);</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         68 :     case Mode::DcCurrent:</span></a>
+<a name="274"><span class="lineNum">     274 </span>            :     case Mode::AcCurrent:</a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">         68 :         return toString(range.currentRange);</span></a>
+<a name="276"><span class="lineNum">     276 </span>            :     default:</a>
+<a name="277"><span class="lineNum">     277 </span>            :         return QString();</a>
+<a name="278"><span class="lineNum">     278 </span>            :     }</a>
+<a name="279"><span class="lineNum">     279 </span>            : }</a>
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<a name="281"><span class="lineNum">     281 </span>            : /// Returns \c true if \a lhs is numerically equal to \a rhs, \c false otherwise.</a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">         17 : bool operator==(const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs)</span></a>
+<a name="283"><span class="lineNum">     283 </span>            : {</a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         17 :     return static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">         17 :         == static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
+<a name="286"><span class="lineNum">     286 </span>            : }</a>
+<a name="287"><span class="lineNum">     287 </span>            : </a>
+<a name="288"><span class="lineNum">     288 </span>            : /// Returns \c true if \a lhs is numerically not-equal to \a rhs, \c false otherwise.</a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">         17 : bool operator!=(const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs)</span></a>
+<a name="290"><span class="lineNum">     290 </span>            : {</a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         17 :     return static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">         17 :         != static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
+<a name="293"><span class="lineNum">     293 </span>            : }</a>
+<a name="294"><span class="lineNum">     294 </span>            : </a>
+<a name="295"><span class="lineNum">     295 </span>            : /// Returns \c true if \a lhs is numerically less than \a rhs, \c false otherwise.</a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         17 : bool operator&lt; (const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs)</span></a>
+<a name="297"><span class="lineNum">     297 </span>            : {</a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">         17 :     return static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         17 :          &lt; static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
+<a name="300"><span class="lineNum">     300 </span>            : }</a>
+<a name="301"><span class="lineNum">     301 </span>            : </a>
+<a name="302"><span class="lineNum">     302 </span>            : /// Returns \c true if \a lhs is numerically greater than \a rhs, \c false otherwise.</a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         17 : bool operator&gt; (const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs)</span></a>
+<a name="304"><span class="lineNum">     304 </span>            : {</a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">         17 :     return static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         17 :          &gt; static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
+<a name="307"><span class="lineNum">     307 </span>            : }</a>
+<a name="308"><span class="lineNum">     308 </span>            : </a>
+<a name="309"><span class="lineNum">     309 </span>            : /// Returns \c true if \a lhs is numerically less than or equal to \a rhs, \c false otherwise.</a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">         34 : bool operator&lt;=(const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs)</span></a>
+<a name="311"><span class="lineNum">     311 </span>            : {</a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">         34 :     return static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         34 :         &lt;= static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
+<a name="314"><span class="lineNum">     314 </span>            : }</a>
+<a name="315"><span class="lineNum">     315 </span>            : </a>
+<a name="316"><span class="lineNum">     316 </span>            : /// Returns \c true if \a lhs is numerically greater than or equal to \a rhs, \c false otherwise.</a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         34 : bool operator&gt;=(const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs)</span></a>
+<a name="318"><span class="lineNum">     318 </span>            : {</a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">         34 :     return static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         34 :         &gt;= static_cast&lt;std::underlying_type_t&lt;MultimeterService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
+<a name="321"><span class="lineNum">     321 </span>            : }</a>
+<a name="322"><span class="lineNum">     322 </span>            : </a>
+<a name="323"><span class="lineNum">     323 </span>            : /// \struct MultimeterService::Settings</a>
+<a name="324"><span class="lineNum">     324 </span>            : /// \brief Attributes included in the `Settings` characterstic.</a>
+<a name="325"><span class="lineNum">     325 </span>            : </a>
+<a name="326"><span class="lineNum">     326 </span>            : /// \enum MultimeterService::MeterStatus</a>
+<a name="327"><span class="lineNum">     327 </span>            : /// \brief Values supported by the `Status` attribute of the `Settings` characteristic.</a>
+<a name="328"><span class="lineNum">     328 </span>            : </a>
+<a name="329"><span class="lineNum">     329 </span>            : /// \struct MultimeterService::Reading</a>
+<a name="330"><span class="lineNum">     330 </span>            : /// \brief Attributes included in the `Reading` characterstic.</a>
 <a name="331"><span class="lineNum">     331 </span>            : </a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          6 : }</span></a>
-<a name="335"><span class="lineNum">     335 </span>            : </a>
-<a name="336"><span class="lineNum">     336 </span>            : /*!</a>
-<a name="337"><span class="lineNum">     337 </span>            :  * Returns the most recent value of the `Multimeter` service's `Reading` characteristic.</a>
-<a name="338"><span class="lineNum">     338 </span>            :  *</a>
-<a name="339"><span class="lineNum">     339 </span>            :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</a>
-<a name="340"><span class="lineNum">     340 </span>            :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the</a>
-<a name="341"><span class="lineNum">     341 </span>            :  * returned MultimeterService::Reading::value member will be a quiet NaN, which can be checked like:</a>
-<a name="342"><span class="lineNum">     342 </span>            :  *</a>
-<a name="343"><span class="lineNum">     343 </span>            :  * ```</a>
-<a name="344"><span class="lineNum">     344 </span>            :  * const MultimeterService::Reading reading = multimeterService-&gt;reading();</a>
-<a name="345"><span class="lineNum">     345 </span>            :  * if (qIsNaN(reading.value)) {</a>
-<a name="346"><span class="lineNum">     346 </span>            :  *     // Handle failure.</a>
-<a name="347"><span class="lineNum">     347 </span>            :  * }</a>
-<a name="348"><span class="lineNum">     348 </span>            :  * ```</a>
-<a name="349"><span class="lineNum">     349 </span>            :  */</a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">         17 : MultimeterService::Reading MultimeterService::reading() const</span></a>
-<a name="351"><span class="lineNum">     351 </span>            : {</a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">         11 :     Q_D(const MultimeterService);</span></a>
-<a name="353"><span class="lineNum">     353 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         17 :         d-&gt;getCharacteristic(CharacteristicUuids::reading);</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         28 :     return (characteristic.isValid()) ? MultimeterServicePrivate::parseReading(characteristic.value())</span></a>
-<a name="356"><span class="lineNum">     356 </span>            :         : Reading{ MeterStatus::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">         34 :                    Mode::Idle, { VoltageRange::AutoRange } };</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          6 : }</span></a>
-<a name="359"><span class="lineNum">     359 </span>            : </a>
-<a name="360"><span class="lineNum">     360 </span>            : /*!</a>
-<a name="361"><span class="lineNum">     361 </span>            :  * Enables client-side notifications of meter readings.</a>
-<a name="362"><span class="lineNum">     362 </span>            :  *</a>
-<a name="363"><span class="lineNum">     363 </span>            :  * This is an alternative to manually requesting individual reads via readReadingCharacteristic().</a>
-<a name="364"><span class="lineNum">     364 </span>            :  *</a>
-<a name="365"><span class="lineNum">     365 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
-<a name="366"><span class="lineNum">     366 </span>            :  *</a>
-<a name="367"><span class="lineNum">     367 </span>            :  * Successfully read values (if any) will be emitted via the readingRead() signal.</a>
-<a name="368"><span class="lineNum">     368 </span>            :  */</a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         17 : bool MultimeterService::enableReadingNotifications()</span></a>
-<a name="370"><span class="lineNum">     370 </span>            : {</a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">         11 :     Q_D(MultimeterService);</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         17 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
-<a name="373"><span class="lineNum">     373 </span>            : }</a>
-<a name="374"><span class="lineNum">     374 </span>            : </a>
-<a name="375"><span class="lineNum">     375 </span>            : /*!</a>
-<a name="376"><span class="lineNum">     376 </span>            :  * Disables client-side notifications of meter readings.</a>
-<a name="377"><span class="lineNum">     377 </span>            :  *</a>
-<a name="378"><span class="lineNum">     378 </span>            :  * Instantaneous reads can still be fetched by readReadingCharacteristic().</a>
-<a name="379"><span class="lineNum">     379 </span>            :  *</a>
-<a name="380"><span class="lineNum">     380 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
-<a name="381"><span class="lineNum">     381 </span>            :  */</a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         17 : bool MultimeterService::disableReadingNotifications()</span></a>
-<a name="383"><span class="lineNum">     383 </span>            : {</a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">         11 :     Q_D(MultimeterService);</span></a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">         17 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
-<a name="386"><span class="lineNum">     386 </span>            : }</a>
-<a name="387"><span class="lineNum">     387 </span>            : </a>
-<a name="388"><span class="lineNum">     388 </span>            : /*!</a>
-<a name="389"><span class="lineNum">     389 </span>            :  * \fn MultimeterService::readingRead</a>
-<a name="390"><span class="lineNum">     390 </span>            :  *</a>
-<a name="391"><span class="lineNum">     391 </span>            :  * This signal is emitted when the `Reading` characteristic has been read successfully.</a>
-<a name="392"><span class="lineNum">     392 </span>            :  *</a>
-<a name="393"><span class="lineNum">     393 </span>            :  * \see readReadingCharacteristic</a>
-<a name="394"><span class="lineNum">     394 </span>            :  */</a>
-<a name="395"><span class="lineNum">     395 </span>            : </a>
-<a name="396"><span class="lineNum">     396 </span>            : /*!</a>
-<a name="397"><span class="lineNum">     397 </span>            :  * \fn MultimeterService::settingsWritten</a>
-<a name="398"><span class="lineNum">     398 </span>            :  *</a>
-<a name="399"><span class="lineNum">     399 </span>            :  * This signal is emitted when the `Settings` characteristic has been written successfully.</a>
-<a name="400"><span class="lineNum">     400 </span>            :  *</a>
-<a name="401"><span class="lineNum">     401 </span>            :  * \see setSettings</a>
-<a name="402"><span class="lineNum">     402 </span>            :  */</a>
-<a name="403"><span class="lineNum">     403 </span>            : </a>
-<a name="404"><span class="lineNum">     404 </span>            : /*!</a>
-<a name="405"><span class="lineNum">     405 </span>            :  * \cond internal</a>
-<a name="406"><span class="lineNum">     406 </span>            :  * \class MultimeterServicePrivate</a>
-<a name="407"><span class="lineNum">     407 </span>            :  *</a>
-<a name="408"><span class="lineNum">     408 </span>            :  * The MultimeterServicePrivate class provides private implementation for MultimeterService.</a>
-<a name="409"><span class="lineNum">     409 </span>            :  */</a>
-<a name="410"><span class="lineNum">     410 </span>            : </a>
-<a name="411"><span class="lineNum">     411 </span>            : /*!</a>
-<a name="412"><span class="lineNum">     412 </span>            :  * \internal</a>
-<a name="413"><span class="lineNum">     413 </span>            :  * Constructs a new MultimeterServicePrivate object with public implementation \a q.</a>
-<a name="414"><span class="lineNum">     414 </span>            :  */</a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">        110 : MultimeterServicePrivate::MultimeterServicePrivate(</span></a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">        170 :     QLowEnergyController * controller, MultimeterService * const q)</span></a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">        170 :     : AbstractPokitServicePrivate(MultimeterService::serviceUuid, controller, q)</span></a>
-<a name="418"><span class="lineNum">     418 </span>            : {</a>
-<a name="419"><span class="lineNum">     419 </span>            : </a>
-<a name="420"><span class="lineNum">     420 </span><span class="lineCov">        110 : }</span></a>
-<a name="421"><span class="lineNum">     421 </span>            : </a>
-<a name="422"><span class="lineNum">     422 </span>            : /*!</a>
-<a name="423"><span class="lineNum">     423 </span>            :  * Returns \a settings in the format Pokit devices expect.</a>
-<a name="424"><span class="lineNum">     424 </span>            :  */</a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">         68 : QByteArray MultimeterServicePrivate::encodeSettings(const MultimeterService::Settings &amp;settings)</span></a>
-<a name="426"><span class="lineNum">     426 </span>            : {</a>
-<a name="427"><span class="lineNum">     427 </span>            :     static_assert(sizeof(settings.mode)           == 1, &quot;Expected to be 1 byte.&quot;);</a>
-<a name="428"><span class="lineNum">     428 </span>            :     static_assert(sizeof(settings.range)          == 1, &quot;Expected to be 1 byte.&quot;);</a>
-<a name="429"><span class="lineNum">     429 </span>            :     static_assert(sizeof(settings.updateInterval) == 4, &quot;Expected to be 4 bytes.&quot;);</a>
-<a name="430"><span class="lineNum">     430 </span>            : </a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">         12 :     QByteArray value;</span></a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">        112 :     QDataStream stream(&amp;value, QIODevice::WriteOnly);</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">         68 :     stream.setByteOrder(QDataStream::LittleEndian);</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">         68 :     stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">         68 :     stream &lt;&lt; (quint8)settings.mode &lt;&lt; (quint8)settings.range.voltageRange &lt;&lt; settings.updateInterval;</span></a>
-<a name="436"><span class="lineNum">     436 </span>            : </a>
-<a name="437"><span class="lineNum">     437 </span>            :     Q_ASSERT(value.size() == 6);</a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         68 :     return value;</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">         24 : }</span></a>
-<a name="440"><span class="lineNum">     440 </span>            : </a>
-<a name="441"><span class="lineNum">     441 </span>            : /*!</a>
-<a name="442"><span class="lineNum">     442 </span>            :  * Parses the `Reading` \a value into a MultimeterService::Reading struct.</a>
-<a name="443"><span class="lineNum">     443 </span>            :  */</a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         85 : MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArray &amp;value)</span></a>
-<a name="445"><span class="lineNum">     445 </span>            : {</a>
-<a name="446"><span class="lineNum">     446 </span>            :     MultimeterService::Reading reading{</a>
-<a name="447"><span class="lineNum">     447 </span>            :         MultimeterService::MeterStatus::Error,</a>
-<a name="448"><span class="lineNum">     448 </span>            :         std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
-<a name="449"><span class="lineNum">     449 </span>            :         MultimeterService::Mode::Idle,</a>
-<a name="450"><span class="lineNum">     450 </span>            :         { MultimeterService::VoltageRange::AutoRange }</a>
-<a name="451"><span class="lineNum">     451 </span>            :     };</a>
-<a name="452"><span class="lineNum">     452 </span>            : </a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">        100 :     if (!checkSize(QLatin1String(&quot;Reading&quot;), value, 7, 7)) {</span></a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">         34 :         return reading;</span></a>
-<a name="455"><span class="lineNum">     455 </span>            :     }</a>
-<a name="456"><span class="lineNum">     456 </span>            : </a>
-<a name="457"><span class="lineNum">     457 </span><span class="lineCov">         51 :     reading.status = MultimeterService::MeterStatus(value.at(0));</span></a>
-<a name="458"><span class="lineNum">     458 </span><span class="lineCov">         60 :     reading.value = qFromLittleEndian&lt;float&gt;(value.mid(1,4));</span></a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">         51 :     reading.mode = static_cast&lt;MultimeterService::Mode&gt;(value.at(5));</span></a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         51 :     reading.range.voltageRange = static_cast&lt;MultimeterService::VoltageRange&gt;(value.at(6));</span></a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">         51 :     return reading;</span></a>
-<a name="462"><span class="lineNum">     462 </span>            : }</a>
-<a name="463"><span class="lineNum">     463 </span>            : </a>
-<a name="464"><span class="lineNum">     464 </span>            : /*!</a>
-<a name="465"><span class="lineNum">     465 </span>            :  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a</a>
-<a name="466"><span class="lineNum">     466 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="467"><span class="lineNum">     467 </span>            :  */</a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">         17 : void MultimeterServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="469"><span class="lineNum">     469 </span>            :                                               const QByteArray &amp;value)</a>
-<a name="470"><span class="lineNum">     470 </span>            : {</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicRead(characteristic, value);</span></a>
-<a name="472"><span class="lineNum">     472 </span>            : </a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">         11 :     Q_Q(MultimeterService);</span></a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {</span></a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineNoCov">          0 :         emit q-&gt;readingRead(parseReading(value));</span></a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="477"><span class="lineNum">     477 </span>            :     }</a>
-<a name="478"><span class="lineNum">     478 </span>            : </a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Settings characteristic is write-only, but somehow read&quot;)</span></a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="483"><span class="lineNum">     483 </span>            :     }</a>
-<a name="484"><span class="lineNum">     484 </span>            : </a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Multimeter service&quot;)</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="487"><span class="lineNum">     487 </span>            : }</a>
-<a name="488"><span class="lineNum">     488 </span>            : </a>
-<a name="489"><span class="lineNum">     489 </span>            : /*!</a>
-<a name="490"><span class="lineNum">     490 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
-<a name="491"><span class="lineNum">     491 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="492"><span class="lineNum">     492 </span>            :  */</a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">         17 : void MultimeterServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="494"><span class="lineNum">     494 </span>            :                                                      const QByteArray &amp;newValue)</a>
-<a name="495"><span class="lineNum">     495 </span>            : {</a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);</span></a>
-<a name="497"><span class="lineNum">     497 </span>            : </a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">         11 :     Q_Q(MultimeterService);</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :         emit q-&gt;settingsWritten();</span></a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="502"><span class="lineNum">     502 </span>            :     }</a>
-<a name="503"><span class="lineNum">     503 </span>            : </a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic is read/notify, but somehow written&quot;)</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="508"><span class="lineNum">     508 </span>            :     }</a>
-<a name="509"><span class="lineNum">     509 </span>            : </a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Multimeter service&quot;)</span></a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="512"><span class="lineNum">     512 </span>            : }</a>
-<a name="513"><span class="lineNum">     513 </span>            : </a>
-<a name="514"><span class="lineNum">     514 </span>            : /*!</a>
-<a name="515"><span class="lineNum">     515 </span>            :  * Implements AbstractPokitServicePrivate::characteristicChanged to parse \a newValue, then emit a</a>
-<a name="516"><span class="lineNum">     516 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="517"><span class="lineNum">     517 </span>            :  */</a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">         17 : void MultimeterServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="519"><span class="lineNum">     519 </span>            :                                                      const QByteArray &amp;newValue)</a>
-<a name="520"><span class="lineNum">     520 </span>            : {</a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicChanged(characteristic, newValue);</span></a>
+<a name="332"><span class="lineNum">     332 </span>            : /*!</a>
+<a name="333"><span class="lineNum">     333 </span>            :  * Constructs a new Pokit service with \a parent.</a>
+<a name="334"><span class="lineNum">     334 </span>            :  */</a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">        170 : MultimeterService::MultimeterService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        170 :     : AbstractPokitService(new MultimeterServicePrivate(controller, this), parent)</span></a>
+<a name="337"><span class="lineNum">     337 </span>            : {</a>
+<a name="338"><span class="lineNum">     338 </span>            : </a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">        170 : }</span></a>
+<a name="340"><span class="lineNum">     340 </span>            : </a>
+<a name="341"><span class="lineNum">     341 </span>            : /*!</a>
+<a name="342"><span class="lineNum">     342 </span>            :  * \cond internal</a>
+<a name="343"><span class="lineNum">     343 </span>            :  * Constructs a new Pokit service with \a parent, and private implementation \a d.</a>
+<a name="344"><span class="lineNum">     344 </span>            :  */</a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 : MultimeterService::MultimeterService(</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :     MultimeterServicePrivate * const d, QObject * const parent)</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :     : AbstractPokitService(d, parent)</span></a>
+<a name="348"><span class="lineNum">     348 </span>            : {</a>
+<a name="349"><span class="lineNum">     349 </span>            : </a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="351"><span class="lineNum">     351 </span>            : /// \endcond</a>
+<a name="352"><span class="lineNum">     352 </span>            : </a>
+<a name="353"><span class="lineNum">     353 </span>            : /*!</a>
+<a name="354"><span class="lineNum">     354 </span>            :  * Destroys this MultimeterService object.</a>
+<a name="355"><span class="lineNum">     355 </span>            :  */</a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">        153 : MultimeterService::~MultimeterService()</span></a>
+<a name="357"><span class="lineNum">     357 </span>            : {</a>
+<a name="358"><span class="lineNum">     358 </span>            : </a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">        153 : }</span></a>
+<a name="360"><span class="lineNum">     360 </span>            : </a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">         17 : bool MultimeterService::readCharacteristics()</span></a>
+<a name="362"><span class="lineNum">     362 </span>            : {</a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         17 :     return readReadingCharacteristic();</span></a>
+<a name="364"><span class="lineNum">     364 </span>            : }</a>
+<a name="365"><span class="lineNum">     365 </span>            : </a>
+<a name="366"><span class="lineNum">     366 </span>            : /*!</a>
+<a name="367"><span class="lineNum">     367 </span>            :  * Read the `Multimeter` service's `Reading` characteristic.</a>
+<a name="368"><span class="lineNum">     368 </span>            :  *</a>
+<a name="369"><span class="lineNum">     369 </span>            :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</a>
+<a name="370"><span class="lineNum">     370 </span>            :  * underlying controller it not yet connected to the Pokit device, or the device's services have</a>
+<a name="371"><span class="lineNum">     371 </span>            :  * not yet been discovered).</a>
+<a name="372"><span class="lineNum">     372 </span>            :  *</a>
+<a name="373"><span class="lineNum">     373 </span>            :  * Emits readingRead() if/when the characteristic has been read successfully.</a>
+<a name="374"><span class="lineNum">     374 </span>            :  */</a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         28 : bool MultimeterService::readReadingCharacteristic()</span></a>
+<a name="376"><span class="lineNum">     376 </span>            : {</a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">         22 :     Q_D(MultimeterService);</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         34 :     return d-&gt;readCharacteristic(CharacteristicUuids::reading);</span></a>
+<a name="379"><span class="lineNum">     379 </span>            : }</a>
+<a name="380"><span class="lineNum">     380 </span>            : </a>
+<a name="381"><span class="lineNum">     381 </span>            : /*!</a>
+<a name="382"><span class="lineNum">     382 </span>            :  * Configures the Pokit device's multimeter mode.</a>
+<a name="383"><span class="lineNum">     383 </span>            :  *</a>
+<a name="384"><span class="lineNum">     384 </span>            :  * Returns `true` if the write request was successfully queued, `false` otherwise.</a>
+<a name="385"><span class="lineNum">     385 </span>            :  *</a>
+<a name="386"><span class="lineNum">     386 </span>            :  * Emits settingsWritten() if/when the \a settings have been writtem successfully.</a>
+<a name="387"><span class="lineNum">     387 </span>            :  */</a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         17 : bool MultimeterService::setSettings(const Settings &amp;settings)</span></a>
+<a name="389"><span class="lineNum">     389 </span>            : {</a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         11 :     Q_D(const MultimeterService);</span></a>
+<a name="391"><span class="lineNum">     391 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         28 :         d-&gt;getCharacteristic(CharacteristicUuids::settings);</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         17 :     if (!characteristic.isValid()) {</span></a>
+<a name="394"><span class="lineNum">     394 </span>            :         return false;</a>
+<a name="395"><span class="lineNum">     395 </span>            :     }</a>
+<a name="396"><span class="lineNum">     396 </span>            : </a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineNoCov">          0 :     const QByteArray value = d-&gt;encodeSettings(settings);</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :     if (value.isNull()) {</span></a>
+<a name="399"><span class="lineNum">     399 </span>            :         return false;</a>
+<a name="400"><span class="lineNum">     400 </span>            :     }</a>
+<a name="401"><span class="lineNum">     401 </span>            : </a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineNoCov">          0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineNoCov">          0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">          6 : }</span></a>
+<a name="405"><span class="lineNum">     405 </span>            : </a>
+<a name="406"><span class="lineNum">     406 </span>            : /*!</a>
+<a name="407"><span class="lineNum">     407 </span>            :  * Returns the most recent value of the `Multimeter` service's `Reading` characteristic.</a>
+<a name="408"><span class="lineNum">     408 </span>            :  *</a>
+<a name="409"><span class="lineNum">     409 </span>            :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</a>
+<a name="410"><span class="lineNum">     410 </span>            :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the</a>
+<a name="411"><span class="lineNum">     411 </span>            :  * returned MultimeterService::Reading::value member will be a quiet NaN, which can be checked like:</a>
+<a name="412"><span class="lineNum">     412 </span>            :  *</a>
+<a name="413"><span class="lineNum">     413 </span>            :  * ```</a>
+<a name="414"><span class="lineNum">     414 </span>            :  * const MultimeterService::Reading reading = multimeterService-&gt;reading();</a>
+<a name="415"><span class="lineNum">     415 </span>            :  * if (qIsNaN(reading.value)) {</a>
+<a name="416"><span class="lineNum">     416 </span>            :  *     // Handle failure.</a>
+<a name="417"><span class="lineNum">     417 </span>            :  * }</a>
+<a name="418"><span class="lineNum">     418 </span>            :  * ```</a>
+<a name="419"><span class="lineNum">     419 </span>            :  */</a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineCov">         17 : MultimeterService::Reading MultimeterService::reading() const</span></a>
+<a name="421"><span class="lineNum">     421 </span>            : {</a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">         11 :     Q_D(const MultimeterService);</span></a>
+<a name="423"><span class="lineNum">     423 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">         17 :         d-&gt;getCharacteristic(CharacteristicUuids::reading);</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">         28 :     return (characteristic.isValid()) ? MultimeterServicePrivate::parseReading(characteristic.value())</span></a>
+<a name="426"><span class="lineNum">     426 </span>            :         : Reading{ MeterStatus::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">         34 :                    Mode::Idle, { VoltageRange::AutoRange } };</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">          6 : }</span></a>
+<a name="429"><span class="lineNum">     429 </span>            : </a>
+<a name="430"><span class="lineNum">     430 </span>            : /*!</a>
+<a name="431"><span class="lineNum">     431 </span>            :  * Enables client-side notifications of meter readings.</a>
+<a name="432"><span class="lineNum">     432 </span>            :  *</a>
+<a name="433"><span class="lineNum">     433 </span>            :  * This is an alternative to manually requesting individual reads via readReadingCharacteristic().</a>
+<a name="434"><span class="lineNum">     434 </span>            :  *</a>
+<a name="435"><span class="lineNum">     435 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
+<a name="436"><span class="lineNum">     436 </span>            :  *</a>
+<a name="437"><span class="lineNum">     437 </span>            :  * Successfully read values (if any) will be emitted via the readingRead() signal.</a>
+<a name="438"><span class="lineNum">     438 </span>            :  */</a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">         17 : bool MultimeterService::enableReadingNotifications()</span></a>
+<a name="440"><span class="lineNum">     440 </span>            : {</a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">         11 :     Q_D(MultimeterService);</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">         17 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
+<a name="443"><span class="lineNum">     443 </span>            : }</a>
+<a name="444"><span class="lineNum">     444 </span>            : </a>
+<a name="445"><span class="lineNum">     445 </span>            : /*!</a>
+<a name="446"><span class="lineNum">     446 </span>            :  * Disables client-side notifications of meter readings.</a>
+<a name="447"><span class="lineNum">     447 </span>            :  *</a>
+<a name="448"><span class="lineNum">     448 </span>            :  * Instantaneous reads can still be fetched by readReadingCharacteristic().</a>
+<a name="449"><span class="lineNum">     449 </span>            :  *</a>
+<a name="450"><span class="lineNum">     450 </span>            :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</a>
+<a name="451"><span class="lineNum">     451 </span>            :  */</a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">         17 : bool MultimeterService::disableReadingNotifications()</span></a>
+<a name="453"><span class="lineNum">     453 </span>            : {</a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">         11 :     Q_D(MultimeterService);</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         17 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::reading);</span></a>
+<a name="456"><span class="lineNum">     456 </span>            : }</a>
+<a name="457"><span class="lineNum">     457 </span>            : </a>
+<a name="458"><span class="lineNum">     458 </span>            : /*!</a>
+<a name="459"><span class="lineNum">     459 </span>            :  * \fn MultimeterService::readingRead</a>
+<a name="460"><span class="lineNum">     460 </span>            :  *</a>
+<a name="461"><span class="lineNum">     461 </span>            :  * This signal is emitted when the `Reading` characteristic has been read successfully.</a>
+<a name="462"><span class="lineNum">     462 </span>            :  *</a>
+<a name="463"><span class="lineNum">     463 </span>            :  * \see readReadingCharacteristic</a>
+<a name="464"><span class="lineNum">     464 </span>            :  */</a>
+<a name="465"><span class="lineNum">     465 </span>            : </a>
+<a name="466"><span class="lineNum">     466 </span>            : /*!</a>
+<a name="467"><span class="lineNum">     467 </span>            :  * \fn MultimeterService::settingsWritten</a>
+<a name="468"><span class="lineNum">     468 </span>            :  *</a>
+<a name="469"><span class="lineNum">     469 </span>            :  * This signal is emitted when the `Settings` characteristic has been written successfully.</a>
+<a name="470"><span class="lineNum">     470 </span>            :  *</a>
+<a name="471"><span class="lineNum">     471 </span>            :  * \see setSettings</a>
+<a name="472"><span class="lineNum">     472 </span>            :  */</a>
+<a name="473"><span class="lineNum">     473 </span>            : </a>
+<a name="474"><span class="lineNum">     474 </span>            : /*!</a>
+<a name="475"><span class="lineNum">     475 </span>            :  * \cond internal</a>
+<a name="476"><span class="lineNum">     476 </span>            :  * \class MultimeterServicePrivate</a>
+<a name="477"><span class="lineNum">     477 </span>            :  *</a>
+<a name="478"><span class="lineNum">     478 </span>            :  * The MultimeterServicePrivate class provides private implementation for MultimeterService.</a>
+<a name="479"><span class="lineNum">     479 </span>            :  */</a>
+<a name="480"><span class="lineNum">     480 </span>            : </a>
+<a name="481"><span class="lineNum">     481 </span>            : /*!</a>
+<a name="482"><span class="lineNum">     482 </span>            :  * \internal</a>
+<a name="483"><span class="lineNum">     483 </span>            :  * Constructs a new MultimeterServicePrivate object with public implementation \a q.</a>
+<a name="484"><span class="lineNum">     484 </span>            :  */</a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        110 : MultimeterServicePrivate::MultimeterServicePrivate(</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        170 :     QLowEnergyController * controller, MultimeterService * const q)</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">        170 :     : AbstractPokitServicePrivate(MultimeterService::serviceUuid, controller, q)</span></a>
+<a name="488"><span class="lineNum">     488 </span>            : {</a>
+<a name="489"><span class="lineNum">     489 </span>            : </a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">        110 : }</span></a>
+<a name="491"><span class="lineNum">     491 </span>            : </a>
+<a name="492"><span class="lineNum">     492 </span>            : /*!</a>
+<a name="493"><span class="lineNum">     493 </span>            :  * Returns \a settings in the format Pokit devices expect.</a>
+<a name="494"><span class="lineNum">     494 </span>            :  */</a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">         68 : QByteArray MultimeterServicePrivate::encodeSettings(const MultimeterService::Settings &amp;settings)</span></a>
+<a name="496"><span class="lineNum">     496 </span>            : {</a>
+<a name="497"><span class="lineNum">     497 </span>            :     static_assert(sizeof(settings.mode)           == 1, &quot;Expected to be 1 byte.&quot;);</a>
+<a name="498"><span class="lineNum">     498 </span>            :     static_assert(sizeof(settings.range)          == 1, &quot;Expected to be 1 byte.&quot;);</a>
+<a name="499"><span class="lineNum">     499 </span>            :     static_assert(sizeof(settings.updateInterval) == 4, &quot;Expected to be 4 bytes.&quot;);</a>
+<a name="500"><span class="lineNum">     500 </span>            : </a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">         12 :     QByteArray value;</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">        112 :     QDataStream stream(&amp;value, QIODevice::WriteOnly);</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">         68 :     stream.setByteOrder(QDataStream::LittleEndian);</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">         68 :     stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         68 :     stream &lt;&lt; (quint8)settings.mode &lt;&lt; (quint8)settings.range.voltageRange &lt;&lt; settings.updateInterval;</span></a>
+<a name="506"><span class="lineNum">     506 </span>            : </a>
+<a name="507"><span class="lineNum">     507 </span>            :     Q_ASSERT(value.size() == 6);</a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">         68 :     return value;</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">         24 : }</span></a>
+<a name="510"><span class="lineNum">     510 </span>            : </a>
+<a name="511"><span class="lineNum">     511 </span>            : /*!</a>
+<a name="512"><span class="lineNum">     512 </span>            :  * Parses the `Reading` \a value into a MultimeterService::Reading struct.</a>
+<a name="513"><span class="lineNum">     513 </span>            :  */</a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">         85 : MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArray &amp;value)</span></a>
+<a name="515"><span class="lineNum">     515 </span>            : {</a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         85 :     MultimeterService::Reading reading{</span></a>
+<a name="517"><span class="lineNum">     517 </span>            :         MultimeterService::MeterStatus::Error,</a>
+<a name="518"><span class="lineNum">     518 </span>            :         std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
+<a name="519"><span class="lineNum">     519 </span>            :         MultimeterService::Mode::Idle,</a>
+<a name="520"><span class="lineNum">     520 </span>            :         { MultimeterService::VoltageRange::AutoRange }</a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         55 :     };</span></a>
 <a name="522"><span class="lineNum">     522 </span>            : </a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">         11 :     Q_Q(MultimeterService);</span></a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Settings characteristic is write-only, but somehow updated&quot;)</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="528"><span class="lineNum">     528 </span>            :     }</a>
-<a name="529"><span class="lineNum">     529 </span>            : </a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :         emit q-&gt;readingRead(parseReading(newValue));</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="533"><span class="lineNum">     533 </span>            :     }</a>
-<a name="534"><span class="lineNum">     534 </span>            : </a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for Multimeter service&quot;)</span></a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="537"><span class="lineNum">     537 </span>            : }</a>
-<a name="538"><span class="lineNum">     538 </span>            : </a>
-<a name="539"><span class="lineNum">     539 </span>            : /// \endcond</a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">        100 :     if (!checkSize(QLatin1String(&quot;Reading&quot;), value, 7, 7)) {</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">         34 :         return reading;</span></a>
+<a name="525"><span class="lineNum">     525 </span>            :     }</a>
+<a name="526"><span class="lineNum">     526 </span>            : </a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">         51 :     reading.status = MultimeterService::MeterStatus(value.at(0));</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">         60 :     reading.value = qFromLittleEndian&lt;float&gt;(value.mid(1,4));</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         51 :     reading.mode = static_cast&lt;MultimeterService::Mode&gt;(value.at(5));</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">         51 :     reading.range.voltageRange = static_cast&lt;MultimeterService::VoltageRange&gt;(value.at(6));</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">         51 :     return reading;</span></a>
+<a name="532"><span class="lineNum">     532 </span>            : }</a>
+<a name="533"><span class="lineNum">     533 </span>            : </a>
+<a name="534"><span class="lineNum">     534 </span>            : /*!</a>
+<a name="535"><span class="lineNum">     535 </span>            :  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a</a>
+<a name="536"><span class="lineNum">     536 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="537"><span class="lineNum">     537 </span>            :  */</a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">         17 : void MultimeterServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="539"><span class="lineNum">     539 </span>            :                                               const QByteArray &amp;value)</a>
+<a name="540"><span class="lineNum">     540 </span>            : {</a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicRead(characteristic, value);</span></a>
+<a name="542"><span class="lineNum">     542 </span>            : </a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineCov">         11 :     Q_Q(MultimeterService);</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineNoCov">          0 :         emit q-&gt;readingRead(parseReading(value));</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="547"><span class="lineNum">     547 </span>            :     }</a>
+<a name="548"><span class="lineNum">     548 </span>            : </a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {</span></a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Settings characteristic is write-only, but somehow read&quot;)</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="553"><span class="lineNum">     553 </span>            :     }</a>
+<a name="554"><span class="lineNum">     554 </span>            : </a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Multimeter service&quot;)</span></a>
+<a name="556"><span class="lineNum">     556 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="557"><span class="lineNum">     557 </span>            : }</a>
+<a name="558"><span class="lineNum">     558 </span>            : </a>
+<a name="559"><span class="lineNum">     559 </span>            : /*!</a>
+<a name="560"><span class="lineNum">     560 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
+<a name="561"><span class="lineNum">     561 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="562"><span class="lineNum">     562 </span>            :  */</a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">         17 : void MultimeterServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="564"><span class="lineNum">     564 </span>            :                                                      const QByteArray &amp;newValue)</a>
+<a name="565"><span class="lineNum">     565 </span>            : {</a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);</span></a>
+<a name="567"><span class="lineNum">     567 </span>            : </a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">         11 :     Q_Q(MultimeterService);</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineNoCov">          0 :         emit q-&gt;settingsWritten();</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="572"><span class="lineNum">     572 </span>            :     }</a>
+<a name="573"><span class="lineNum">     573 </span>            : </a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic is read/notify, but somehow written&quot;)</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="578"><span class="lineNum">     578 </span>            :     }</a>
+<a name="579"><span class="lineNum">     579 </span>            : </a>
+<a name="580"><span class="lineNum">     580 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Multimeter service&quot;)</span></a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="582"><span class="lineNum">     582 </span>            : }</a>
+<a name="583"><span class="lineNum">     583 </span>            : </a>
+<a name="584"><span class="lineNum">     584 </span>            : /*!</a>
+<a name="585"><span class="lineNum">     585 </span>            :  * Implements AbstractPokitServicePrivate::characteristicChanged to parse \a newValue, then emit a</a>
+<a name="586"><span class="lineNum">     586 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="587"><span class="lineNum">     587 </span>            :  */</a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineCov">         17 : void MultimeterServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="589"><span class="lineNum">     589 </span>            :                                                      const QByteArray &amp;newValue)</a>
+<a name="590"><span class="lineNum">     590 </span>            : {</a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicChanged(characteristic, newValue);</span></a>
+<a name="592"><span class="lineNum">     592 </span>            : </a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">         11 :     Q_Q(MultimeterService);</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Settings characteristic is write-only, but somehow updated&quot;)</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="598"><span class="lineNum">     598 </span>            :     }</a>
+<a name="599"><span class="lineNum">     599 </span>            : </a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">         17 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineNoCov">          0 :         emit q-&gt;readingRead(parseReading(newValue));</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="603"><span class="lineNum">     603 </span>            :     }</a>
+<a name="604"><span class="lineNum">     604 </span>            : </a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for Multimeter service&quot;)</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="607"><span class="lineNum">     607 </span>            : }</a>
+<a name="608"><span class="lineNum">     608 </span>            : </a>
+<a name="609"><span class="lineNum">     609 </span>            : /// \endcond</a>
 </pre>
       </td>
     </tr>
