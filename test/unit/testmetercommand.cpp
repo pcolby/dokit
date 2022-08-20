@@ -5,12 +5,36 @@
 
 #include "metercommand.h"
 
+class MockDeviceCommand : public DeviceCommand
+{
+public:
+    MockDeviceCommand() : DeviceCommand(nullptr)
+    {
+
+    }
+
+    AbstractPokitService * getService() override
+    {
+        return nullptr;
+    }
+};
+
 void TestMeterCommand::requiredOptions() {
-    /// \todo Implement requiredOptions test.
+    MeterCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = mock.requiredOptions(parser) +
+        QStringList{ QStringLiteral("mode") };
+    QCOMPARE(command.requiredOptions(parser), expected);
 }
 
 void TestMeterCommand::supportedOptions() {
-    /// \todo Implement supportedOptions test.
+    MeterCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser) +
+        QStringList{ QStringLiteral("interval"), QStringLiteral("range"), QStringLiteral("samples") };
+    QCOMPARE(command.supportedOptions(parser), expected);
 }
 
 void TestMeterCommand::processOptions() {

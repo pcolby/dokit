@@ -5,12 +5,34 @@
 
 #include "flashledcommand.h"
 
+class MockDeviceCommand : public DeviceCommand
+{
+public:
+    MockDeviceCommand() : DeviceCommand(nullptr)
+    {
+
+    }
+
+    AbstractPokitService * getService() override
+    {
+        return nullptr;
+    }
+};
+
 void TestFlashLedCommand::requiredOptions() {
-    /// \todo Implement requiredOptions test.
+    FlashLedCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = mock.requiredOptions(parser);
+    QCOMPARE(command.requiredOptions(parser), expected);
 }
 
 void TestFlashLedCommand::supportedOptions() {
-    /// \todo Implement supportedOptions test.
+    FlashLedCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser);
+    QCOMPARE(command.supportedOptions(parser), expected);
 }
 
 void TestFlashLedCommand::processOptions() {

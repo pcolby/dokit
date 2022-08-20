@@ -5,12 +5,35 @@
 
 #include "setnamecommand.h"
 
+class MockDeviceCommand : public DeviceCommand
+{
+public:
+    MockDeviceCommand() : DeviceCommand(nullptr)
+    {
+
+    }
+
+    AbstractPokitService * getService() override
+    {
+        return nullptr;
+    }
+};
+
 void TestSetNameCommand::requiredOptions() {
-    /// \todo Implement requiredOptions test.
+    SetNameCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = mock.requiredOptions(parser) +
+        QStringList{ QStringLiteral("new-name") };
+    QCOMPARE(command.requiredOptions(parser), expected);
 }
 
 void TestSetNameCommand::supportedOptions() {
-    /// \todo Implement supportedOptions test.
+    SetNameCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser);
+    QCOMPARE(command.supportedOptions(parser), expected);
 }
 
 void TestSetNameCommand::processOptions() {

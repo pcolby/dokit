@@ -5,12 +5,34 @@
 
 #include "infocommand.h"
 
+class MockDeviceCommand : public DeviceCommand
+{
+public:
+    MockDeviceCommand() : DeviceCommand(nullptr)
+    {
+
+    }
+
+    AbstractPokitService * getService() override
+    {
+        return nullptr;
+    }
+};
+
 void TestInfoCommand::requiredOptions() {
-    /// \todo Implement requiredOptions test.
+    InfoCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = mock.requiredOptions(parser);
+    QCOMPARE(command.requiredOptions(parser), expected);
 }
 
 void TestInfoCommand::supportedOptions() {
-    /// \todo Implement supportedOptions test.
+    InfoCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser);
+    QCOMPARE(command.supportedOptions(parser), expected);
 }
 
 void TestInfoCommand::processOptions() {

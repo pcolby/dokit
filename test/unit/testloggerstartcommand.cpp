@@ -5,12 +5,36 @@
 
 #include "loggerstartcommand.h"
 
+class MockDeviceCommand : public DeviceCommand
+{
+public:
+    MockDeviceCommand() : DeviceCommand(nullptr)
+    {
+
+    }
+
+    AbstractPokitService * getService() override
+    {
+        return nullptr;
+    }
+};
+
 void TestLoggerStartCommand::requiredOptions() {
-    /// \todo Implement requiredOptions test.
+    LoggerStartCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = mock.requiredOptions(parser) +
+        QStringList{ QStringLiteral("mode"), QStringLiteral("range") };
+    QCOMPARE(command.requiredOptions(parser), expected);
 }
 
 void TestLoggerStartCommand::supportedOptions() {
-    /// \todo Implement supportedOptions test.
+    LoggerStartCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser) +
+        QStringList{ QStringLiteral("interval"), QStringLiteral("timestamp")};
+    QCOMPARE(command.supportedOptions(parser), expected);
 }
 
 void TestLoggerStartCommand::processOptions() {

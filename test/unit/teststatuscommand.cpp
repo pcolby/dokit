@@ -5,12 +5,34 @@
 
 #include "statuscommand.h"
 
+class MockDeviceCommand : public DeviceCommand
+{
+public:
+    MockDeviceCommand() : DeviceCommand(nullptr)
+    {
+
+    }
+
+    AbstractPokitService * getService() override
+    {
+        return nullptr;
+    }
+};
+
 void TestStatusCommand::requiredOptions() {
-    /// \todo Implement requiredOptions test.
+    StatusCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = mock.requiredOptions(parser);
+    QCOMPARE(command.requiredOptions(parser), expected);
 }
 
 void TestStatusCommand::supportedOptions() {
-    /// \todo Implement supportedOptions test.
+    StatusCommand command(this);
+    MockDeviceCommand mock;
+    QCommandLineParser parser;
+    const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser);
+    QCOMPARE(command.supportedOptions(parser), expected);
 }
 
 void TestStatusCommand::processOptions() {
