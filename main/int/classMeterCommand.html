@@ -95,7 +95,6 @@ $(document).ready(function(){initNavTree('classMeterCommand.html',''); initResiz
 <a href="#pro-slots">Protected Slots</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-slots">Private Slots</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
@@ -354,14 +353,11 @@ Private Slots</h2></td></tr>
 <tr class="memdesc:a551a1c3d1c6f10384b5ccf264a640eff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs meter <em>reading</em> in the selected ouput format.  <a href="classMeterCommand.html#a551a1c3d1c6f10384b5ccf264a640eff">More...</a><br /></td></tr>
 <tr class="separator:a551a1c3d1c6f10384b5ccf264a640eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:aa0da7d9e482b6752f233d068561fe9e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionMultimeterService_1_1Range.html">MultimeterService::Range</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeterCommand.html#aa0da7d9e482b6752f233d068561fe9e8">lowestRange</a> (const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">MultimeterService::Mode</a> mode, const quint32 desiredMax)</td></tr>
-<tr class="memdesc:aa0da7d9e482b6752f233d068561fe9e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the lowest <em>mode</em> range that can measure at least up to <em>desired</em> max, or AutoRange if no such range is available.  <a href="classMeterCommand.html#aa0da7d9e482b6752f233d068561fe9e8">More...</a><br /></td></tr>
-<tr class="separator:aa0da7d9e482b6752f233d068561fe9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
+<tr class="memitem:aa0da7d9e482b6752f233d068561fe9e8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="unionMultimeterService_1_1Range.html">MultimeterService::Range</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeterCommand.html#aa0da7d9e482b6752f233d068561fe9e8">lowestRange</a> (const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">MultimeterService::Mode</a> mode, const quint32 desiredMax)</td></tr>
+<tr class="memdesc:aa0da7d9e482b6752f233d068561fe9e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the lowest <em>mode</em> range that can measure at least up to <em>desired</em> max, or AutoRange if no such range is available.  <a href="classMeterCommand.html#aa0da7d9e482b6752f233d068561fe9e8">More...</a><br /></td></tr>
+<tr class="separator:aa0da7d9e482b6752f233d068561fe9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcc916b68fa32670962f99f640a0254e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">MultimeterService::CurrentRange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeterCommand.html#adcc916b68fa32670962f99f640a0254e">lowestCurrentRange</a> (const quint32 desiredMax)</td></tr>
 <tr class="memdesc:adcc916b68fa32670962f99f640a0254e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the lowest current range that can measure at least up to <em>desired</em> max, or AutoRange if no such range is available.  <a href="classMeterCommand.html#adcc916b68fa32670962f99f640a0254e">More...</a><br /></td></tr>
 <tr class="separator:adcc916b68fa32670962f99f640a0254e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -659,7 +655,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1145,7 +1141,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassAbstractCommand_html_a77b59d2b62aae9580aea93ca65c3af9a"><div class="ttname"><a href="classAbstractCommand.html#a77b59d2b62aae9580aea93ca65c3af9a">AbstractCommand::parseWholeValue</a></div><div class="ttdeci">static quint32 parseWholeValue(const QString &amp;value, const QString &amp;unit)</div><div class="ttdoc">Returns value as a number, with optional SI unit prefix, and optional unit suffix.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00239">abstractcommand.cpp:239</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_ab18bb57fe68534739f63c994330a29c2"><div class="ttname"><a href="classAbstractCommand.html#ab18bb57fe68534739f63c994330a29c2">AbstractCommand::parseMilliValue</a></div><div class="ttdeci">static quint32 parseMilliValue(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum=0)</div><div class="ttdoc">Returns value as a number of millis, such as milliseconds, or millivolts.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00190">abstractcommand.cpp:190</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_ad827a18a24776efeb955739459d48f7d"><div class="ttname"><a href="classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a></div><div class="ttdeci">virtual QStringList processOptions(const QCommandLineParser &amp;parser)</div><div class="ttdoc">Processes the relevant options from the command line parser.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8cpp_source.html#l00297">abstractcommand.cpp:297</a></div></div>
-<div class="ttc" id="aclassMeterCommand_html_aa0da7d9e482b6752f233d068561fe9e8"><div class="ttname"><a href="classMeterCommand.html#aa0da7d9e482b6752f233d068561fe9e8">MeterCommand::lowestRange</a></div><div class="ttdeci">MultimeterService::Range lowestRange(const MultimeterService::Mode mode, const quint32 desiredMax)</div><div class="ttdoc">Returns the lowest mode range that can measure at least up to desired max, or AutoRange if no such ra...</div><div class="ttdef"><b>Definition:</b> <a href="metercommand_8cpp_source.html#l00187">metercommand.cpp:187</a></div></div>
+<div class="ttc" id="aclassMeterCommand_html_aa0da7d9e482b6752f233d068561fe9e8"><div class="ttname"><a href="classMeterCommand.html#aa0da7d9e482b6752f233d068561fe9e8">MeterCommand::lowestRange</a></div><div class="ttdeci">static MultimeterService::Range lowestRange(const MultimeterService::Mode mode, const quint32 desiredMax)</div><div class="ttdoc">Returns the lowest mode range that can measure at least up to desired max, or AutoRange if no such ra...</div><div class="ttdef"><b>Definition:</b> <a href="metercommand_8cpp_source.html#l00187">metercommand.cpp:187</a></div></div>
 <div class="ttc" id="aqcommandlineparser_html_isSet"><div class="ttname"><a href="https://doc.qt.io/qt-5/qcommandlineparser.html#isSet">QCommandLineParser::isSet</a></div><div class="ttdeci">bool isSet(const QString &amp;name) const const</div></div>
 <div class="ttc" id="aqcommandlineparser_html_value"><div class="ttname"><a href="https://doc.qt.io/qt-5/qcommandlineparser.html#value">QCommandLineParser::value</a></div><div class="ttdeci">QString value(const QString &amp;optionName) const const</div></div>
 <div class="ttc" id="aqlist_html_append"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlist.html#append">QList::append</a></div><div class="ttdeci">void append(const T &amp;value)</div></div>

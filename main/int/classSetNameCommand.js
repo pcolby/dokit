@@ -1,7 +1,7 @@
 var classSetNameCommand =
 [
     [ "SetNameCommand", "classSetNameCommand.html#aa5ccd316df3ab11ef393fd3327402a45", null ],
-    [ "deivceNameWritten", "classSetNameCommand.html#a25871d2f3a6aded92a89559fd36370f4", null ],
+    [ "deviceNameWritten", "classSetNameCommand.html#a6488980e62ffb16274644152a1364bce", null ],
     [ "getService", "classSetNameCommand.html#ac57aeeca51642c3ba79e6c6578677210", null ],
     [ "processOptions", "classSetNameCommand.html#aac72587ddb035857cd224d843fc3d00c", null ],
     [ "requiredOptions", "classSetNameCommand.html#abcffd0ec969f0b8b21bcfa4d55a6aac6", null ],
