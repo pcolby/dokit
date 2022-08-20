@@ -9,6 +9,7 @@ Q_DECLARE_METATYPE(DataLoggerService::Mode);
 Q_DECLARE_METATYPE(DataLoggerService::VoltageRange);
 Q_DECLARE_METATYPE(DataLoggerService::CurrentRange);
 Q_DECLARE_METATYPE(DataLoggerService::Range);
+Q_DECLARE_METATYPE(DataLoggerService::Settings);
 
 class MockDeviceCommand : public DeviceCommand
 {
