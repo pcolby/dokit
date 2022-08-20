@@ -36,8 +36,52 @@ void TestSetNameCommand::supportedOptions() {
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
+void TestSetNameCommand::processOptions_data() {
+    QTest::addColumn<QStringList>("arguments");
+    QTest::addColumn<QString>("expected");
+    QTest::addColumn<QStringList>("errors");
+
+    QTest::addRow("missing-new-name")
+        << QStringList{}
+        << QString()
+        << QStringList{ QStringLiteral("Missing required option: new-name") };
+
+    QTest::addRow("empty-new-name")
+        << QStringList{ QStringLiteral("--new-name"), QStringLiteral("") }
+        << QStringLiteral("")
+        << QStringList{ QStringLiteral("New name cannot be empty.") };
+
+    QTest::addRow("valid-new-name")
+        << QStringList{ QStringLiteral("--new-name"), QStringLiteral("valid") }
+        << QStringLiteral("valid")
+        << QStringList{};
+
+    QTest::addRow("11-char-new-name")
+        << QStringList{ QStringLiteral("--new-name"), QString(11, QLatin1Char('A')) }
+        << QStringLiteral("AAAAAAAAAAA")
+        << QStringList{};
+
+    QTest::addRow("12-char-new-name")
+        << QStringList{ QStringLiteral("--new-name"), QString(12, QLatin1Char('A')) }
+        << QStringLiteral("AAAAAAAAAAAA")
+        << QStringList{ QStringLiteral("New name cannot exceed 11 characters.") };
+}
+
 void TestSetNameCommand::processOptions() {
-    /// \todo Implement processOptions test.
+    QFETCH(QStringList, arguments);
+    QFETCH(QString, expected);
+    QFETCH(QStringList, errors);
+
+    arguments.prepend(QStringLiteral("pokit")); // The first argument is always the app name.
+
+    QCommandLineParser parser;
+    parser.addOption({QStringLiteral("new-name"), QStringLiteral("description"), QStringLiteral("name")});
+    parser.process(arguments);
+
+    SetNameCommand command(this);
+    qInfo() << command.processOptions(parser);
+    QCOMPARE(command.processOptions(parser), errors);
+    QCOMPARE(command.newName, expected);
 }
 
 void TestSetNameCommand::getService() {
