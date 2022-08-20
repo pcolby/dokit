@@ -7,6 +7,9 @@ if (DEFINED CMAKE_BUILD_TYPE)
   message("-- CMake build type is ${CMAKE_BUILD_TYPE}")
 endif()
 
+# C++14 needed for std::underlying_type_t support.
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(QtPokit VERSION 0.1.0 LANGUAGES CXX)
