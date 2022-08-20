@@ -206,7 +206,7 @@
 <a name="144"><span class="lineNum">     144 </span>            :  *</a>
 <a name="145"><span class="lineNum">     145 </span>            :  * Returns `true` if the write request was successfully queued, `false` otherwise.</a>
 <a name="146"><span class="lineNum">     146 </span>            :  *</a>
-<a name="147"><span class="lineNum">     147 </span>            :  * Emits deivceNameWritten() if/when the \a name has been set.</a>
+<a name="147"><span class="lineNum">     147 </span>            :  * Emits deviceNameWritten() if/when the \a name has been set.</a>
 <a name="148"><span class="lineNum">     148 </span>            :  */</a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineCov">         17 : bool GenericAccessService::setDeviceName(const QString &amp;name)</span></a>
 <a name="150"><span class="lineNum">     150 </span>            : {</a>
@@ -247,7 +247,7 @@
 <a name="185"><span class="lineNum">     185 </span>            :  */</a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
 <a name="187"><span class="lineNum">     187 </span>            : /*!</a>
-<a name="188"><span class="lineNum">     188 </span>            :  * \fn GenericAccessService::deivceNameWritten</a>
+<a name="188"><span class="lineNum">     188 </span>            :  * \fn GenericAccessService::deviceNameWritten</a>
 <a name="189"><span class="lineNum">     189 </span>            :  *</a>
 <a name="190"><span class="lineNum">     190 </span>            :  * This signal is emitted when the `Device Name` characteristic has been written successfully.</a>
 <a name="191"><span class="lineNum">     191 </span>            :  *</a>
@@ -328,7 +328,7 @@
 <a name="266"><span class="lineNum">     266 </span>            :     }</a>
 <a name="267"><span class="lineNum">     267 </span>            : </a>
 <a name="268"><span class="lineNum">     268 </span><span class="lineCov">         17 :     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::deviceName) {</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :         emit q-&gt;deivceNameWritten();</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameWritten();</span></a>
 <a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="271"><span class="lineNum">     271 </span>            :     }</a>
 <a name="272"><span class="lineNum">     272 </span>            : </a>
