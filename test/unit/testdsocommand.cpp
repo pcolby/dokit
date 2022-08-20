@@ -507,7 +507,7 @@ void TestDsoCommand::metadataRead()
     QCOMPARE(command.metadata.samplingWindow,     metadata.samplingWindow);
     QCOMPARE(command.metadata.numberOfSamples,    metadata.numberOfSamples);
     QCOMPARE(command.metadata.samplingRate,       metadata.samplingRate);
-    QCOMPARE(command.samplesToGo,                 metadata.numberOfSamples);
+    QCOMPARE(command.samplesToGo,         (qint32)metadata.numberOfSamples);
 }
 
 void TestDsoCommand::outputSamples()
