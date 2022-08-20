@@ -14,7 +14,25 @@ void TestLoggerFetchCommand::serviceDetailsDiscovered() {
 }
 
 void TestLoggerFetchCommand::metadataRead() {
-    /// \todo Implement metadataRead test.
+    const DataLoggerService::Metadata metadata{
+        DataLoggerService::LoggerStatus::Sampling,
+        0.123f,
+        DataLoggerService::Mode::DcCurrent,
+        DataLoggerService::CurrentRange::_300mA_to_3A,
+        1000, 1234, (quint32)QDateTime::currentSecsSinceEpoch()
+    };
+    LoggerFetchCommand command(this);
+    QTest::ignoreMessage(QtInfoMsg, "Fetching 1,234 logger samples...");
+    command.metadataRead(metadata);
+    QCOMPARE(command.metadata.status,          metadata.status);
+    QCOMPARE(command.metadata.scale,           metadata.scale);
+    QCOMPARE(command.metadata.mode,            metadata.mode);
+    QCOMPARE(command.metadata.range,           metadata.range);
+    QCOMPARE(command.metadata.updateInterval,  metadata.updateInterval);
+    QCOMPARE(command.metadata.numberOfSamples, metadata.numberOfSamples);
+    QCOMPARE(command.metadata.timestamp,       metadata.timestamp);
+    QCOMPARE(command.samplesToGo,              metadata.numberOfSamples);
+    QCOMPARE(command.timestamp,                (quint64)metadata.timestamp * (quint64)1000);
 }
 
 void TestLoggerFetchCommand::outputSamples() {

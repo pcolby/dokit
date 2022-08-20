@@ -71,7 +71,7 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadat
                                 << QDateTime::fromSecsSinceEpoch(metadata.timestamp);
     this->metadata = metadata;
     this->samplesToGo = metadata.numberOfSamples;
-    this->timestamp = (qint64)metadata.timestamp * (qint64)1000;
+    this->timestamp = (quint64)metadata.timestamp * (quint64)1000;
     qCInfo(lc).noquote() << tr("Fetching %L1 logger samples...").arg(metadata.numberOfSamples);
 }
 

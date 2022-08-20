@@ -298,7 +298,7 @@ void TestMeterCommand::lowestVoltageRange()
 }
 
 void TestMeterCommand::settingsWritten() {
-    /// \todo Implement settingsWritten test.
+    // Unable to safely invoke MeterCommand::settingsWritten() without a valid Bluetooth service.
 }
 
 void TestMeterCommand::outputReading() {
