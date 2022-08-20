@@ -51,4 +51,6 @@ private slots:
 
     void toString_minorClass_data();
     void toString_minorClass();
+
+    void tr();
 };

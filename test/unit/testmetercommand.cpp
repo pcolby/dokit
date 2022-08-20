@@ -49,4 +49,12 @@ void TestMeterCommand::outputReading() {
     /// \todo Implement outputReading test.
 }
 
+void TestMeterCommand::tr()
+{
+    // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
+    // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
+    MeterCommand command(nullptr);
+    QVERIFY(!command.tr("ignored").isEmpty());
+}
+
 QTEST_MAIN(TestMeterCommand)

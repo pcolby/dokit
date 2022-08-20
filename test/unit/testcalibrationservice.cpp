@@ -51,4 +51,12 @@ void TestCalibrationService::characteristicWritten()
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 
+void TestCalibrationService::tr()
+{
+    // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
+    // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
+    CalibrationService service(nullptr);
+    QVERIFY(!service.tr("ignored").isEmpty());
+}
+
 QTEST_MAIN(TestCalibrationService)

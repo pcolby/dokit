@@ -17,4 +17,6 @@ private slots:
     void getService();
 
     void serviceDetailsDiscovered();
+
+    void tr();
 };

@@ -30,4 +30,6 @@ private slots:
     void error();
 
     void finished();
+
+    void tr();
 };

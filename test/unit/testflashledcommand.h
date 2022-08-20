@@ -19,4 +19,6 @@ private slots:
     void serviceDetailsDiscovered();
 
     void deviceLedFlashed();
+
+    void tr();
 };

@@ -22,4 +22,6 @@ private slots:
     void softwareRevision();
 
     void characteristicRead();
+
+    void tr();
 };

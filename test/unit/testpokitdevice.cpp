@@ -265,4 +265,13 @@ void TestPokitDevice::stateChanged()
     device.d_func()->stateChanged(QLowEnergyController::ControllerState::ClosingState);
 }
 
+void TestPokitDevice::tr()
+{
+    // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
+    // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
+    PokitDevice device(nullptr);
+    QVERIFY(!device.tr("ignored").isEmpty());
+    QVERIFY(!device.d_ptr->tr("ignored").isEmpty());
+}
+
 QTEST_MAIN(TestPokitDevice)

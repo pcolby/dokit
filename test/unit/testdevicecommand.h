@@ -23,4 +23,6 @@ private slots:
     void deviceDiscovered();
 
     void deviceDiscoveryFinished();
+
+    void tr();
 };

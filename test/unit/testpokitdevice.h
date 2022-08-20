@@ -34,4 +34,6 @@ private slots:
     void errorOccurred();
     void serviceDiscovered();
     void stateChanged();
+
+    void tr();
 };

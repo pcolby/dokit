@@ -111,4 +111,12 @@ void TestDeviceCommand::deviceDiscoveryFinished()
     command.deviceDiscoveryFinished();
 }
 
+void TestDeviceCommand::tr()
+{
+    // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
+    // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
+    MockDeviceCommand command;
+    QVERIFY(!command.tr("ignored").isEmpty());
+}
+
 QTEST_MAIN(TestDeviceCommand)

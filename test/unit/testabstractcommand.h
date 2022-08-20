@@ -34,4 +34,6 @@ private slots:
 
     void processOptions_timeout_data();
     void processOptions_timeout();
+
+    void tr();
 };

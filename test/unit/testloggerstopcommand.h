@@ -13,4 +13,6 @@ private slots:
     void serviceDetailsDiscovered();
 
     void settingsWritten();
+
+    void tr();
 };

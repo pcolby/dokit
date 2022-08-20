@@ -15,4 +15,6 @@ private slots:
     void encodeTemperature();
 
     void characteristicWritten();
+
+    void tr();
 };

@@ -21,4 +21,12 @@ void TestLoggerFetchCommand::outputSamples() {
     /// \todo Implement outputSamples test.
 }
 
+void TestLoggerFetchCommand::tr()
+{
+    // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
+    // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
+    LoggerFetchCommand command(nullptr);
+    QVERIFY(!command.tr("ignored").isEmpty());
+}
+
 QTEST_MAIN(TestLoggerFetchCommand)

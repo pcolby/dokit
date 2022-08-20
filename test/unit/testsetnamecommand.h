@@ -19,4 +19,6 @@ private slots:
     void serviceDetailsDiscovered();
 
     void deivceNameWritten();
+
+    void tr();
 };

@@ -22,4 +22,6 @@ private slots:
 
     void characteristicRead();
     void characteristicWritten();
+
+    void tr();
 };

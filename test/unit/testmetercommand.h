@@ -29,4 +29,6 @@ private slots:
     void settingsWritten();
 
     void outputReading();
+
+    void tr();
 };
