@@ -36,7 +36,9 @@ void TestStatusCommand::supportedOptions() {
 }
 
 void TestStatusCommand::processOptions() {
-    /// \todo Implement processOptions test.
+    StatusCommand command(this);
+    QCommandLineParser parser;
+    QCOMPARE(command.processOptions(parser), QStringList());
 }
 
 void TestStatusCommand::getService() {

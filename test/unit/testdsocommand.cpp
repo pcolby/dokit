@@ -329,7 +329,6 @@ void TestDsoCommand::processOptions()
     parser.process(arguments);
 
     DsoCommand command(this);
-    qInfo() << command.processOptions(parser);
     QCOMPARE(command.processOptions(parser),   errors);
     QCOMPARE(command.settings.command,         expected.command);
     QCOMPARE(command.settings.triggerLevel,    expected.triggerLevel);

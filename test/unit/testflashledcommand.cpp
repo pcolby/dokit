@@ -36,7 +36,9 @@ void TestFlashLedCommand::supportedOptions() {
 }
 
 void TestFlashLedCommand::processOptions() {
-    /// \todo Implement processOptions test.
+    FlashLedCommand command(this);
+    QCommandLineParser parser;
+    QCOMPARE(command.processOptions(parser), QStringList());
 }
 
 void TestFlashLedCommand::getService() {

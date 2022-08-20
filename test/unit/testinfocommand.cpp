@@ -36,7 +36,9 @@ void TestInfoCommand::supportedOptions() {
 }
 
 void TestInfoCommand::processOptions() {
-    /// \todo Implement processOptions test.
+    InfoCommand command(this);
+    QCommandLineParser parser;
+    QCOMPARE(command.processOptions(parser), QStringList());
 }
 
 void TestInfoCommand::getService() {
