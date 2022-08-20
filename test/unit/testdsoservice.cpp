@@ -179,6 +179,46 @@ void TestDsoService::maxValue_CurrentRange()
     QCOMPARE(DsoService::maxValue(range), expected);
 }
 
+void TestDsoService::range_Range()
+{
+    const DsoService::Range range;
+    QCOMPARE((quint8)range.currentRange, 0);
+    QCOMPARE((quint8)range.voltageRange, 0);
+
+    const DsoService::Range voltage(DsoService::VoltageRange::_6V_to_12V);
+    QCOMPARE(voltage.voltageRange, DsoService::VoltageRange::_6V_to_12V);
+
+    const DsoService::Range current(DsoService::CurrentRange::_150mA_to_300mA);
+    QCOMPARE(voltage.currentRange, DsoService::CurrentRange::_150mA_to_300mA);
+}
+
+void TestDsoService::range_Operators()
+{
+    QVERIFY(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) ==
+            DsoService::Range(DsoService::VoltageRange::_300mV_to_2V));
+
+    QVERIFY(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) !=
+            DsoService::Range(DsoService::VoltageRange::_2V_to_6V));
+
+    QVERIFY(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) <
+            DsoService::Range(DsoService::VoltageRange::_2V_to_6V));
+
+    QVERIFY(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) <=
+            DsoService::Range(DsoService::VoltageRange::_2V_to_6V));
+
+    QVERIFY(!(DsoService::Range(DsoService::VoltageRange::_2V_to_6V) <=
+              DsoService::Range(DsoService::VoltageRange::_300mV_to_2V)));
+
+    QVERIFY(DsoService::Range(DsoService::VoltageRange::_2V_to_6V) >
+            DsoService::Range(DsoService::VoltageRange::_300mV_to_2V));
+
+    QVERIFY(DsoService::Range(DsoService::VoltageRange::_2V_to_6V) >=
+            DsoService::Range(DsoService::VoltageRange::_300mV_to_2V));
+
+    QVERIFY(!(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) >=
+              DsoService::Range(DsoService::VoltageRange::_2V_to_6V)));
+}
+
 void TestDsoService::toString_Range_data()
 {
     QTest::addColumn<DsoService::Range>("range");
@@ -403,8 +443,7 @@ void TestDsoService::parseMetadata()
     QCOMPARE(actual.scale,              expected.scale);
     #endif
     QCOMPARE(actual.mode,               expected.mode);
-    QCOMPARE(actual.range.currentRange, expected.range.currentRange);
-    QCOMPARE(actual.range.voltageRange, expected.range.voltageRange);
+    QCOMPARE(actual.range,              expected.range);
     QCOMPARE(actual.samplingWindow,     expected.samplingWindow);
     QCOMPARE(actual.numberOfSamples,    expected.numberOfSamples);
     QCOMPARE(actual.samplingRate,       expected.samplingRate);

@@ -76,6 +76,9 @@ public:
     union Range {
         VoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange; ///< Range when in AC/DC current mode.
+        Range();
+        Range(const VoltageRange range);
+        Range(const CurrentRange range);
     };
     static QString toString(const Range &range, const Mode &mode);
 
@@ -141,6 +144,13 @@ private:
     Q_DISABLE_COPY(DsoService)
     friend class TestDsoService;
 };
+
+bool operator==(const DsoService::Range &lhs, const DsoService::Range &rhs);
+bool operator!=(const DsoService::Range &lhs, const DsoService::Range &rhs);
+bool operator< (const DsoService::Range &lhs, const DsoService::Range &rhs);
+bool operator> (const DsoService::Range &lhs, const DsoService::Range &rhs);
+bool operator<=(const DsoService::Range &lhs, const DsoService::Range &rhs);
+bool operator>=(const DsoService::Range &lhs, const DsoService::Range &rhs);
 
 QTPOKIT_END_NAMESPACE
 

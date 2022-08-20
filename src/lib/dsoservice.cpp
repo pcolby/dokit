@@ -171,6 +171,28 @@ QVariant DsoService::maxValue(const CurrentRange &range)
 /// \union DsoService::Range
 /// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics.
 
+static_assert(std::is_same<std::underlying_type_t<DsoService::VoltageRange>,
+                           std::underlying_type_t<DsoService::CurrentRange>>::value,
+              "DsoService::Range members must all have the same underlying type.");
+
+/// Constructs a new DsoService::Range instance with 0. This should be considered
+DsoService::Range::Range() : voltageRange(static_cast<DsoService::VoltageRange>(0))
+{
+
+}
+
+/// Constructs a new DsoService::Range instance with \a range.
+DsoService::Range::Range(const DsoService::VoltageRange range) : voltageRange(range)
+{
+
+}
+
+/// Constructs a new DsoService::Range instance with \a range.
+DsoService::Range::Range(const DsoService::CurrentRange range) : currentRange(range)
+{
+
+}
+
 /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
 QString DsoService::toString(const Range &range, const Mode &mode)
 {
@@ -184,6 +206,48 @@ QString DsoService::toString(const Range &range, const Mode &mode)
     default:
         return QString();
     }
+}
+
+/// Returns \c true if \a lhs is numerically equal to \a rhs, \c false otherwise.
+bool operator==(const DsoService::Range &lhs, const DsoService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
+        == static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically not-equal to \a rhs, \c false otherwise.
+bool operator!=(const DsoService::Range &lhs, const DsoService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
+        != static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically less than \a rhs, \c false otherwise.
+bool operator< (const DsoService::Range &lhs, const DsoService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
+         < static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically greater than \a rhs, \c false otherwise.
+bool operator> (const DsoService::Range &lhs, const DsoService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
+         > static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically less than or equal to \a rhs, \c false otherwise.
+bool operator<=(const DsoService::Range &lhs, const DsoService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
+        <= static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically greater than or equal to \a rhs, \c false otherwise.
+bool operator>=(const DsoService::Range &lhs, const DsoService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
+        >= static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
 }
 
 /// \struct DsoService::Settings
