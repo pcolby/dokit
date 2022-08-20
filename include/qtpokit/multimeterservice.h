@@ -89,9 +89,9 @@ public:
     static QVariant maxValue(const ResistanceRange &range);
 
     union QTPOKIT_EXPORT Range {
-        VoltageRange voltageRange;      ///< Range when in AC/DC voltage mode.
-        CurrentRange currentRange;      ///< Range when in AC/DC current mode.
-        ResistanceRange resitanceRange; ///< Range when in resistance mode.
+        VoltageRange voltageRange;       ///< Range when in AC/DC voltage mode.
+        CurrentRange currentRange;       ///< Range when in AC/DC current mode.
+        ResistanceRange resistanceRange; ///< Range when in resistance mode.
         Range();
         Range(const VoltageRange range);
         Range(const CurrentRange range);
@@ -106,8 +106,8 @@ public:
     };
 
     enum class MeterStatus : quint8 {
-        AutoRangeOff = 0,  ///< Auto-range is disabled (voltage, current and resitance modes only).
-        AutoRangeOn  = 1,  ///< Auto-range is enabled (voltage, current and resitance modes only).
+        AutoRangeOff = 0,  ///< Auto-range is disabled (voltage, current and resistance modes only).
+        AutoRangeOn  = 1,  ///< Auto-range is enabled (voltage, current and resistance modes only).
         NoContinuity = 0,  ///< No continuity (continuity mode only).
         Continuity   = 1,  ///< Continuity (continuity mode only).
         Ok           = 0,  ///< Ok (temperature and diode modes only).

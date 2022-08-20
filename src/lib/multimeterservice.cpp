@@ -173,7 +173,7 @@ QVariant MultimeterService::maxValue(const CurrentRange &range)
 
 /// \enum MultimeterService::ResistanceRange
 /// \brief Values supported by the `Range` attribute of the `Settings` and `Reading` characteristics,
-/// when `Mode` is resitance.
+/// when `Mode` is resistance.
 
 /// Returns \a range as a user-friendly string.
 QString MultimeterService::toString(const ResistanceRange &range)
@@ -258,7 +258,7 @@ MultimeterService::Range::Range(const MultimeterService::CurrentRange range) : c
 }
 
 /// Constructs a new MultimeterService::Range instance with \a range.
-MultimeterService::Range::Range(const MultimeterService::ResistanceRange range) : resitanceRange(range)
+MultimeterService::Range::Range(const MultimeterService::ResistanceRange range) : resistanceRange(range)
 {
 
 }

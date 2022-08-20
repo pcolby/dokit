@@ -284,7 +284,7 @@ void TestMultimeterService::range_Range()
     QCOMPARE(voltage.currentRange, MultimeterService::CurrentRange::_150mA_to_300mA);
 
     const MultimeterService::Range resistance(MultimeterService::ResistanceRange::_470K_to_1M);
-    QCOMPARE(resistance.resitanceRange, MultimeterService::ResistanceRange::_470K_to_1M);
+    QCOMPARE(resistance.resistanceRange, MultimeterService::ResistanceRange::_470K_to_1M);
 }
 
 void TestMultimeterService::range_Operators()

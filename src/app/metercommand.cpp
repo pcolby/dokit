@@ -114,7 +114,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
             break;
         case MultimeterService::Mode::Resistance:
             if (isAuto) {
-                settings.range.resitanceRange = MultimeterService::ResistanceRange::AutoRange;
+                settings.range.resistanceRange = MultimeterService::ResistanceRange::AutoRange;
             }
             unit = QLatin1String("ohms");
             sensibleMinimum = 0; // Unused.
@@ -198,7 +198,7 @@ MultimeterService::Range MeterCommand::lowestRange(
         range.currentRange = lowestCurrentRange(desiredMax);
         break;
     case MultimeterService::Mode::Resistance:
-        range.resitanceRange = lowestResistanceRange(desiredMax);
+        range.resistanceRange = lowestResistanceRange(desiredMax);
         break;
     default:
         qCWarning(lc).noquote() << tr("Mode does not support range.");
@@ -330,9 +330,9 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
         rangeMax = MultimeterService::maxValue(reading.range.currentRange);
         break;
     case MultimeterService::Mode::Resistance:
-        range = MultimeterService::toString(reading.range.resitanceRange);
-        rangeMin = MultimeterService::minValue(reading.range.resitanceRange);
-        rangeMax = MultimeterService::maxValue(reading.range.resitanceRange);
+        range = MultimeterService::toString(reading.range.resistanceRange);
+        rangeMin = MultimeterService::minValue(reading.range.resistanceRange);
+        rangeMax = MultimeterService::maxValue(reading.range.resistanceRange);
         break;
     case MultimeterService::Mode::Diode:       break;
     case MultimeterService::Mode::Continuity:  break;
