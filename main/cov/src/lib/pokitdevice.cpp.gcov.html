@@ -113,12 +113,12 @@
 <a name="51"><span class="lineNum">      51 </span>            : /*!</a>
 <a name="52"><span class="lineNum">      52 </span>            :  * Constructs a new Pokit device controller wrapper for \a controller, with \a parent.</a>
 <a name="53"><span class="lineNum">      53 </span>            :  */</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        289 : PokitDevice::PokitDevice(QLowEnergyController *controller, QObject *parent)</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">        289 :     : QObject(parent), d_ptr(new PokitDevicePrivate(this))</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        306 : PokitDevice::PokitDevice(QLowEnergyController *controller, QObject *parent)</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">        306 :     : QObject(parent), d_ptr(new PokitDevicePrivate(this))</span></a>
 <a name="56"><span class="lineNum">      56 </span>            : {</a>
 <a name="57"><span class="lineNum">      57 </span>            :     Q_D(PokitDevice);</a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        289 :     d-&gt;setController(controller);</span></a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        289 : }</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        306 :     d-&gt;setController(controller);</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        306 : }</span></a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            : /*!</a>
 <a name="62"><span class="lineNum">      62 </span>            :  * \cond internal</a>
@@ -137,10 +137,10 @@
 <a name="75"><span class="lineNum">      75 </span>            : /*!</a>
 <a name="76"><span class="lineNum">      76 </span>            :  * Destroys this PokitDevice object.</a>
 <a name="77"><span class="lineNum">      77 </span>            :  */</a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        289 : PokitDevice::~PokitDevice()</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        306 : PokitDevice::~PokitDevice()</span></a>
 <a name="79"><span class="lineNum">      79 </span>            : {</a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        289 :     delete d_ptr;</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        289 : }</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        306 :     delete d_ptr;</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        306 : }</span></a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
 <a name="83"><span class="lineNum">      83 </span>            : /*!</a>
 <a name="84"><span class="lineNum">      84 </span>            :  * Returns a non-const pointer to the controller used to access the Pokit device.</a>
@@ -335,12 +335,12 @@
 <a name="273"><span class="lineNum">     273 </span>            : /*!</a>
 <a name="274"><span class="lineNum">     274 </span>            :  * Constructs a new PokitDevicePrivate object with public implementation \a q.</a>
 <a name="275"><span class="lineNum">     275 </span>            :  */</a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">        289 : PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">        102 :     : controller(nullptr), calibration(nullptr), dataLogger(nullptr), deviceInfo(nullptr),</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">        289 :       dso(nullptr), genericAccess(nullptr), multimeter(nullptr), status(nullptr), q_ptr(q)</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">        306 : PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">        108 :     : controller(nullptr), calibration(nullptr), dataLogger(nullptr), deviceInfo(nullptr),</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">        306 :       dso(nullptr), genericAccess(nullptr), multimeter(nullptr), status(nullptr), q_ptr(q)</span></a>
 <a name="279"><span class="lineNum">     279 </span>            : {</a>
 <a name="280"><span class="lineNum">     280 </span>            : </a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        289 : }</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        306 : }</span></a>
 <a name="282"><span class="lineNum">     282 </span>            : </a>
 <a name="283"><span class="lineNum">     283 </span>            : /*!</a>
 <a name="284"><span class="lineNum">     284 </span>            :  * Sets \a newController to be used for accessing Pokit devices.</a>
@@ -355,11 +355,11 @@
 <a name="293"><span class="lineNum">     293 </span>            :  * \see controller</a>
 <a name="294"><span class="lineNum">     294 </span>            :  * \see PokitDevice::controller()</a>
 <a name="295"><span class="lineNum">     295 </span>            :  */</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">        408 : void PokitDevicePrivate::setController(QLowEnergyController * newController)</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">        425 : void PokitDevicePrivate::setController(QLowEnergyController * newController)</span></a>
 <a name="297"><span class="lineNum">     297 </span>            : {</a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">        408 :     if (newController == this-&gt;controller) {</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">        323 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Controller already set to:&quot;) &lt;&lt; newController;</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">        323 :         return;</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">        425 :     if (newController == this-&gt;controller) {</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">        340 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Controller already set to:&quot;) &lt;&lt; newController;</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">        340 :         return;</span></a>
 <a name="301"><span class="lineNum">     301 </span>            :     }</a>
 <a name="302"><span class="lineNum">     302 </span>            : </a>
 <a name="303"><span class="lineNum">     303 </span><span class="lineCov">         85 :     if (this-&gt;controller) {</span></a>

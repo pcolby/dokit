@@ -241,16 +241,16 @@
 <a name="179"><span class="lineNum">     179 </span>            :               &quot;DataLoggerService::Range members must all have the same underlying type.&quot;);</a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
 <a name="181"><span class="lineNum">     181 </span>            : /// Constructs a new DataLoggerService::Range instance with 0. This should be considered</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         51 : DataLoggerService::Range::Range() : voltageRange(static_cast&lt;DataLoggerService::VoltageRange&gt;(0))</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         68 : DataLoggerService::Range::Range() : voltageRange(static_cast&lt;DataLoggerService::VoltageRange&gt;(0))</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : {</a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">         51 : }</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">         68 : }</span></a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
 <a name="187"><span class="lineNum">     187 </span>            : /// Constructs a new DataLoggerService::Range instance with \a range.</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">        714 : DataLoggerService::Range::Range(const DataLoggerService::VoltageRange range) : voltageRange(range)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">        731 : DataLoggerService::Range::Range(const DataLoggerService::VoltageRange range) : voltageRange(range)</span></a>
 <a name="189"><span class="lineNum">     189 </span>            : {</a>
 <a name="190"><span class="lineNum">     190 </span>            : </a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        666 : }</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        683 : }</span></a>
 <a name="192"><span class="lineNum">     192 </span>            : </a>
 <a name="193"><span class="lineNum">     193 </span>            : /// Constructs a new DataLoggerService::Range instance with \a range.</a>
 <a name="194"><span class="lineNum">     194 </span><span class="lineCov">         85 : DataLoggerService::Range::Range(const DataLoggerService::CurrentRange range) : currentRange(range)</span></a>
@@ -340,11 +340,11 @@
 <a name="278"><span class="lineNum">     278 </span>            : /*!</a>
 <a name="279"><span class="lineNum">     279 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="280"><span class="lineNum">     280 </span>            :  */</a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        255 : DataLoggerService::DataLoggerService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        255 :     : AbstractPokitService(new DataLoggerServicePrivate(controller, this), parent)</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        272 : DataLoggerService::DataLoggerService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        272 :     : AbstractPokitService(new DataLoggerServicePrivate(controller, this), parent)</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : {</a>
 <a name="284"><span class="lineNum">     284 </span>            : </a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">        255 : }</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">        272 : }</span></a>
 <a name="286"><span class="lineNum">     286 </span>            : </a>
 <a name="287"><span class="lineNum">     287 </span>            : /*!</a>
 <a name="288"><span class="lineNum">     288 </span>            :  * \cond internal</a>
@@ -361,10 +361,10 @@
 <a name="299"><span class="lineNum">     299 </span>            : /*!</a>
 <a name="300"><span class="lineNum">     300 </span>            :  * Destroys this DataLoggerService object.</a>
 <a name="301"><span class="lineNum">     301 </span>            :  */</a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">        238 : DataLoggerService::~DataLoggerService()</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">        255 : DataLoggerService::~DataLoggerService()</span></a>
 <a name="303"><span class="lineNum">     303 </span>            : {</a>
 <a name="304"><span class="lineNum">     304 </span>            : </a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">        238 : }</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">        255 : }</span></a>
 <a name="306"><span class="lineNum">     306 </span>            : </a>
 <a name="307"><span class="lineNum">     307 </span><span class="lineCov">         17 : bool DataLoggerService::readCharacteristics()</span></a>
 <a name="308"><span class="lineNum">     308 </span>            : {</a>
@@ -583,12 +583,12 @@
 <a name="521"><span class="lineNum">     521 </span>            :  * \internal</a>
 <a name="522"><span class="lineNum">     522 </span>            :  * Constructs a new DataLoggerServicePrivate object with public implementation \a q.</a>
 <a name="523"><span class="lineNum">     523 </span>            :  */</a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">        165 : DataLoggerServicePrivate::DataLoggerServicePrivate(</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        255 :     QLowEnergyController * controller, DataLoggerService * const q)</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineCov">        255 :     : AbstractPokitServicePrivate(DataLoggerService::serviceUuid, controller, q)</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">        176 : DataLoggerServicePrivate::DataLoggerServicePrivate(</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        272 :     QLowEnergyController * controller, DataLoggerService * const q)</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineCov">        272 :     : AbstractPokitServicePrivate(DataLoggerService::serviceUuid, controller, q)</span></a>
 <a name="527"><span class="lineNum">     527 </span>            : {</a>
 <a name="528"><span class="lineNum">     528 </span>            : </a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">        165 : }</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">        176 : }</span></a>
 <a name="530"><span class="lineNum">     530 </span>            : </a>
 <a name="531"><span class="lineNum">     531 </span>            : /*!</a>
 <a name="532"><span class="lineNum">     532 </span>            :  * Returns \a settings in the format Pokit devices expect. If \a updateIntervalIs32bit is 32-bit</a>

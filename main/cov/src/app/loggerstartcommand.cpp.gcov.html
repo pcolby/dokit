@@ -31,18 +31,18 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntry">108</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryLo">3.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
             <td class="headerValue">0.1.0-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryLo">18.2 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -80,13 +80,13 @@
 <a name="18"><span class="lineNum">      18 </span>            : /*!</a>
 <a name="19"><span class="lineNum">      19 </span>            :  * Construct a new LoggerStartCommand object with \a parent.</a>
 <a name="20"><span class="lineNum">      20 </span>            :  */</a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 : LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(parent),</span></a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 :     service(nullptr), settings{</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">         17 : LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(parent),</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         12 :     service(nullptr), settings{</span></a>
 <a name="23"><span class="lineNum">      23 </span>            :         DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,</a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineNoCov">          0 :         { DataLoggerService::VoltageRange::_30V_to_60V }, 60000, 0}</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">         17 :         { DataLoggerService::VoltageRange::_30V_to_60V }, 60000, 0}</span></a>
 <a name="25"><span class="lineNum">      25 </span>            : {</a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
-<a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">         17 : }</span></a>
 <a name="28"><span class="lineNum">      28 </span>            : </a>
 <a name="29"><span class="lineNum">      29 </span><span class="lineNoCov">          0 : QStringList LoggerStartCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></a>
 <a name="30"><span class="lineNum">      30 </span>            : {</a>

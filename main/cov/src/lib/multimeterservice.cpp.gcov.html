@@ -308,10 +308,10 @@
 <a name="246"><span class="lineNum">     246 </span><span class="lineCov">         34 : }</span></a>
 <a name="247"><span class="lineNum">     247 </span>            : </a>
 <a name="248"><span class="lineNum">     248 </span>            : /// Constructs a new MultimeterService::Range instance with \a range.</a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        599 : MultimeterService::Range::Range(const MultimeterService::VoltageRange range) : voltageRange(range)</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        616 : MultimeterService::Range::Range(const MultimeterService::VoltageRange range) : voltageRange(range)</span></a>
 <a name="250"><span class="lineNum">     250 </span>            : {</a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">        593 : }</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">        610 : }</span></a>
 <a name="253"><span class="lineNum">     253 </span>            : </a>
 <a name="254"><span class="lineNum">     254 </span>            : /// Constructs a new MultimeterService::Range instance with \a range.</a>
 <a name="255"><span class="lineNum">     255 </span><span class="lineCov">         85 : MultimeterService::Range::Range(const MultimeterService::CurrentRange range) : currentRange(range)</span></a>
@@ -394,11 +394,11 @@
 <a name="332"><span class="lineNum">     332 </span>            : /*!</a>
 <a name="333"><span class="lineNum">     333 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="334"><span class="lineNum">     334 </span>            :  */</a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">        170 : MultimeterService::MultimeterService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        170 :     : AbstractPokitService(new MultimeterServicePrivate(controller, this), parent)</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">        187 : MultimeterService::MultimeterService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        187 :     : AbstractPokitService(new MultimeterServicePrivate(controller, this), parent)</span></a>
 <a name="337"><span class="lineNum">     337 </span>            : {</a>
 <a name="338"><span class="lineNum">     338 </span>            : </a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">        170 : }</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">        187 : }</span></a>
 <a name="340"><span class="lineNum">     340 </span>            : </a>
 <a name="341"><span class="lineNum">     341 </span>            : /*!</a>
 <a name="342"><span class="lineNum">     342 </span>            :  * \cond internal</a>
@@ -415,10 +415,10 @@
 <a name="353"><span class="lineNum">     353 </span>            : /*!</a>
 <a name="354"><span class="lineNum">     354 </span>            :  * Destroys this MultimeterService object.</a>
 <a name="355"><span class="lineNum">     355 </span>            :  */</a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">        153 : MultimeterService::~MultimeterService()</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">        170 : MultimeterService::~MultimeterService()</span></a>
 <a name="357"><span class="lineNum">     357 </span>            : {</a>
 <a name="358"><span class="lineNum">     358 </span>            : </a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">        153 : }</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">        170 : }</span></a>
 <a name="360"><span class="lineNum">     360 </span>            : </a>
 <a name="361"><span class="lineNum">     361 </span><span class="lineCov">         17 : bool MultimeterService::readCharacteristics()</span></a>
 <a name="362"><span class="lineNum">     362 </span>            : {</a>
@@ -544,12 +544,12 @@
 <a name="482"><span class="lineNum">     482 </span>            :  * \internal</a>
 <a name="483"><span class="lineNum">     483 </span>            :  * Constructs a new MultimeterServicePrivate object with public implementation \a q.</a>
 <a name="484"><span class="lineNum">     484 </span>            :  */</a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        110 : MultimeterServicePrivate::MultimeterServicePrivate(</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        170 :     QLowEnergyController * controller, MultimeterService * const q)</span></a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">        170 :     : AbstractPokitServicePrivate(MultimeterService::serviceUuid, controller, q)</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        121 : MultimeterServicePrivate::MultimeterServicePrivate(</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        187 :     QLowEnergyController * controller, MultimeterService * const q)</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">        187 :     : AbstractPokitServicePrivate(MultimeterService::serviceUuid, controller, q)</span></a>
 <a name="488"><span class="lineNum">     488 </span>            : {</a>
 <a name="489"><span class="lineNum">     489 </span>            : </a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">        110 : }</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">        121 : }</span></a>
 <a name="491"><span class="lineNum">     491 </span>            : </a>
 <a name="492"><span class="lineNum">     492 </span>            : /*!</a>
 <a name="493"><span class="lineNum">     493 </span>            :  * Returns \a settings in the format Pokit devices expect.</a>

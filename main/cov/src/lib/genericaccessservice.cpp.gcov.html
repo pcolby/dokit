@@ -103,11 +103,11 @@
 <a name="41"><span class="lineNum">      41 </span>            : /*!</a>
 <a name="42"><span class="lineNum">      42 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="43"><span class="lineNum">      43 </span>            :  */</a>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">        153 : GenericAccessService::GenericAccessService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">        153 :     : AbstractPokitService(new GenericAccessServicePrivate(controller, this), parent)</span></a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">        170 : GenericAccessService::GenericAccessService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">        170 :     : AbstractPokitService(new GenericAccessServicePrivate(controller, this), parent)</span></a>
 <a name="46"><span class="lineNum">      46 </span>            : {</a>
 <a name="47"><span class="lineNum">      47 </span>            : </a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">        153 : }</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">        170 : }</span></a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span>            : /*!</a>
 <a name="51"><span class="lineNum">      51 </span>            :  * \cond internal</a>
@@ -124,10 +124,10 @@
 <a name="62"><span class="lineNum">      62 </span>            : /*!</a>
 <a name="63"><span class="lineNum">      63 </span>            :  * Destroys this GenericAccessService object.</a>
 <a name="64"><span class="lineNum">      64 </span>            :  */</a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        136 : GenericAccessService::~GenericAccessService()</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        153 : GenericAccessService::~GenericAccessService()</span></a>
 <a name="66"><span class="lineNum">      66 </span>            : {</a>
 <a name="67"><span class="lineNum">      67 </span>            : </a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        136 : }</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        153 : }</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">         17 : bool GenericAccessService::readCharacteristics()</span></a>
 <a name="71"><span class="lineNum">      71 </span>            : {</a>
@@ -265,12 +265,12 @@
 <a name="203"><span class="lineNum">     203 </span>            :  * \internal</a>
 <a name="204"><span class="lineNum">     204 </span>            :  * Constructs a new GenericAccessServicePrivate object with public implementation \a q.</a>
 <a name="205"><span class="lineNum">     205 </span>            :  */</a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         99 : GenericAccessServicePrivate::GenericAccessServicePrivate(</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        153 :     QLowEnergyController * controller, GenericAccessService * const q)</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">        153 :     : AbstractPokitServicePrivate(GenericAccessService::serviceUuid, controller, q)</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">        110 : GenericAccessServicePrivate::GenericAccessServicePrivate(</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        170 :     QLowEnergyController * controller, GenericAccessService * const q)</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">        170 :     : AbstractPokitServicePrivate(GenericAccessService::serviceUuid, controller, q)</span></a>
 <a name="209"><span class="lineNum">     209 </span>            : {</a>
 <a name="210"><span class="lineNum">     210 </span>            : </a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         99 : }</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">        110 : }</span></a>
 <a name="212"><span class="lineNum">     212 </span>            : </a>
 <a name="213"><span class="lineNum">     213 </span>            : /*!</a>
 <a name="214"><span class="lineNum">     214 </span>            :  * Parses the `Appearance` \a value. Returns `0xFFFF` if not valid.</a>
