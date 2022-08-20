@@ -6,11 +6,11 @@
 #include "loggerstopcommand.h"
 
 void TestLoggerStopCommand::getService() {
-    /// \todo Implement getService test.
+    // Unable to safely invoke LoggerStopCommand::getService() without a valid Bluetooth device.
 }
 
 void TestLoggerStopCommand::serviceDetailsDiscovered() {
-    /// \todo Implement serviceDetailsDiscovered test.
+    // Unable to safely invoke LoggerStopCommand::serviceDetailsDiscovered() without a valid service.
 }
 
 void TestLoggerStopCommand::settingsWritten() {

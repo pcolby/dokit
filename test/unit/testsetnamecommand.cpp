@@ -41,11 +41,11 @@ void TestSetNameCommand::processOptions() {
 }
 
 void TestSetNameCommand::getService() {
-    /// \todo Implement getService test.
+    // Unable to safely invoke SetNameCommand::getService() without a valid Bluetooth device.
 }
 
 void TestSetNameCommand::serviceDetailsDiscovered() {
-    /// \todo Implement serviceDetailsDiscovered test.
+    // Unable to safely invoke SetNameCommand::serviceDetailsDiscovered() without a valid service.
 }
 
 void TestSetNameCommand::deivceNameWritten() {

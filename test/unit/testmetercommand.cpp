@@ -42,11 +42,11 @@ void TestMeterCommand::processOptions() {
 }
 
 void TestMeterCommand::getService() {
-    /// \todo Implement getService test.
+    // Unable to safely invoke MeterCommand::getService() without a valid Bluetooth device.
 }
 
 void TestMeterCommand::serviceDetailsDiscovered() {
-    /// \todo Implement serviceDetailsDiscovered test.
+    // Unable to safely invoke MeterCommand::serviceDetailsDiscovered() without a valid service.
 }
 
 void TestMeterCommand::lowestRange_data()

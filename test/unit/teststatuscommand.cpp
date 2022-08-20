@@ -40,11 +40,11 @@ void TestStatusCommand::processOptions() {
 }
 
 void TestStatusCommand::getService() {
-    /// \todo Implement getService test.
+    // Unable to safely invoke StatusCommand::getService() without a valid Bluetooth device.
 }
 
 void TestStatusCommand::serviceDetailsDiscovered() {
-    /// \todo Implement serviceDetailsDiscovered test.
+    // Unable to safely invoke StatusCommand::serviceDetailsDiscovered() without a valid service.
 }
 
 void TestStatusCommand::tr()

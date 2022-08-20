@@ -42,11 +42,11 @@ void TestLoggerStartCommand::processOptions() {
 }
 
 void TestLoggerStartCommand::getService() {
-    /// \todo Implement getService test.
+    // Unable to safely invoke LoggerStartCommand::getService() without a valid Bluetooth device.
 }
 
 void TestLoggerStartCommand::serviceDetailsDiscovered() {
-    /// \todo Implement serviceDetailsDiscovered test.
+    // Unable to safely invoke LoggerStartCommand::serviceDetailsDiscovered() without a valid service.
 }
 
 void TestLoggerStartCommand::lowestRange_data()

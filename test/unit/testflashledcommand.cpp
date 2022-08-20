@@ -40,11 +40,11 @@ void TestFlashLedCommand::processOptions() {
 }
 
 void TestFlashLedCommand::getService() {
-    /// \todo Implement getService test.
+    // Unable to safely invoke FlashLedCommand::getService() without a valid Bluetooth device.
 }
 
 void TestFlashLedCommand::serviceDetailsDiscovered() {
-    /// \todo Implement serviceDetailsDiscovered test.
+    // Unable to safely invoke FlashLedCommand::serviceDetailsDiscovered() without a valid service.
 }
 
 void TestFlashLedCommand::deviceLedFlashed() {

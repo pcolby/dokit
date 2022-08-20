@@ -6,11 +6,11 @@
 #include "loggerfetchcommand.h"
 
 void TestLoggerFetchCommand::getService() {
-    /// \todo Implement getService test.
+    // Unable to safely invoke LoggerFetchCommand::getService() without a valid Bluetooth device.
 }
 
 void TestLoggerFetchCommand::serviceDetailsDiscovered() {
-    /// \todo Implement serviceDetailsDiscovered test.
+    // Unable to safely invoke LoggerFetchCommand::serviceDetailsDiscovered() without a valid service.
 }
 
 void TestLoggerFetchCommand::metadataRead() {
