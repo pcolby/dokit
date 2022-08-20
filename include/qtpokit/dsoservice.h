@@ -73,7 +73,7 @@ public:
     static QVariant minValue(const CurrentRange &range);
     static QVariant maxValue(const CurrentRange &range);
 
-    union Range {
+    union QTPOKIT_EXPORT Range {
         VoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange; ///< Range when in AC/DC current mode.
         Range();
