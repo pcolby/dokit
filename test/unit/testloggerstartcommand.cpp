@@ -5,6 +5,11 @@
 
 #include "loggerstartcommand.h"
 
+Q_DECLARE_METATYPE(DataLoggerService::Mode);
+Q_DECLARE_METATYPE(DataLoggerService::VoltageRange);
+Q_DECLARE_METATYPE(DataLoggerService::CurrentRange);
+Q_DECLARE_METATYPE(DataLoggerService::Range);
+
 class MockDeviceCommand : public DeviceCommand
 {
 public:

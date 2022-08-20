@@ -5,6 +5,12 @@
 
 #include "metercommand.h"
 
+Q_DECLARE_METATYPE(MultimeterService::Mode);
+Q_DECLARE_METATYPE(MultimeterService::VoltageRange);
+Q_DECLARE_METATYPE(MultimeterService::CurrentRange);
+Q_DECLARE_METATYPE(MultimeterService::ResistanceRange);
+Q_DECLARE_METATYPE(MultimeterService::Range);
+
 class MockDeviceCommand : public DeviceCommand
 {
 public:
