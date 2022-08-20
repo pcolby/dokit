@@ -225,10 +225,9 @@ void TestDsoService::toString_Range_data()
     QTest::addColumn<DsoService::Mode>("mode");
     QTest::addColumn<QString>("expected");
 
-    #define QTPOKIT_ADD_TEST_ROW(mode, member, range, expected) {\
+    #define QTPOKIT_ADD_TEST_ROW(mode, member, range, expected) \
         QTest::addRow(#mode "," #range) << DsoService::Range(DsoService::range) \
-            << DsoService::Mode::mode << QStringLiteral(expected); \
-    }
+            << DsoService::Mode::mode << QStringLiteral(expected)
     QTPOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
     QTPOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
     QTPOKIT_ADD_TEST_ROW(AcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");

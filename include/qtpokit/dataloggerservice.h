@@ -73,9 +73,12 @@ public:
     static QVariant minValue(const CurrentRange &range);
     static QVariant maxValue(const CurrentRange &range);
 
-    union Range {
+    union QTPOKIT_EXPORT Range {
         VoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange; ///< Range when in AC/DC current mode.
+        Range();
+        Range(const VoltageRange range);
+        Range(const CurrentRange range);
     };
     static QString toString(const Range &range, const Mode &mode);
 
@@ -143,6 +146,13 @@ private:
     Q_DISABLE_COPY(DataLoggerService)
     friend class TestDataLoggerService;
 };
+
+QTPOKIT_EXPORT bool operator==(const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs);
+QTPOKIT_EXPORT bool operator!=(const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs);
+QTPOKIT_EXPORT bool operator< (const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs);
+QTPOKIT_EXPORT bool operator> (const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs);
+QTPOKIT_EXPORT bool operator<=(const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs);
+QTPOKIT_EXPORT bool operator>=(const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs);
 
 QTPOKIT_END_NAMESPACE
 

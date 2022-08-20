@@ -88,10 +88,14 @@ public:
     static QVariant minValue(const ResistanceRange &range);
     static QVariant maxValue(const ResistanceRange &range);
 
-    union Range {
+    union QTPOKIT_EXPORT Range {
         VoltageRange voltageRange;      ///< Range when in AC/DC voltage mode.
         CurrentRange currentRange;      ///< Range when in AC/DC current mode.
         ResistanceRange resitanceRange; ///< Range when in resistance mode.
+        Range();
+        Range(const VoltageRange range);
+        Range(const CurrentRange range);
+        Range(const ResistanceRange range);
     };
     static QString toString(const Range &range, const Mode &mode);
 
@@ -145,6 +149,13 @@ private:
     Q_DISABLE_COPY(MultimeterService)
     friend class TestMultimeterService;
 };
+
+QTPOKIT_EXPORT bool operator==(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
+QTPOKIT_EXPORT bool operator!=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
+QTPOKIT_EXPORT bool operator< (const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
+QTPOKIT_EXPORT bool operator> (const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
+QTPOKIT_EXPORT bool operator<=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
+QTPOKIT_EXPORT bool operator>=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
 
 QTPOKIT_END_NAMESPACE
 

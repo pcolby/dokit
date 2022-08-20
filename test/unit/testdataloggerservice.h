@@ -29,6 +29,9 @@ private slots:
     void maxValue_CurrentRange_data();
     void maxValue_CurrentRange();
 
+    void range_Range();
+    void range_Operators();
+
     void toString_Range_data();
     void toString_Range();
 

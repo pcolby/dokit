@@ -235,6 +235,34 @@ QVariant MultimeterService::maxValue(const ResistanceRange &range)
 /// \union MultimeterService::Range
 /// \brief Values supported by the `Range` attribute of the `Settings` characteristic.
 
+static_assert(std::is_same<std::underlying_type_t<MultimeterService::VoltageRange>,
+                           std::underlying_type_t<MultimeterService::CurrentRange>>::value,
+              "MultimeterService::Range members must all have the same underlying type.");
+
+/// Constructs a new MultimeterService::Range instance with 0. This should be considered
+MultimeterService::Range::Range() : voltageRange(static_cast<MultimeterService::VoltageRange>(0))
+{
+
+}
+
+/// Constructs a new MultimeterService::Range instance with \a range.
+MultimeterService::Range::Range(const MultimeterService::VoltageRange range) : voltageRange(range)
+{
+
+}
+
+/// Constructs a new MultimeterService::Range instance with \a range.
+MultimeterService::Range::Range(const MultimeterService::CurrentRange range) : currentRange(range)
+{
+
+}
+
+/// Constructs a new MultimeterService::Range instance with \a range.
+MultimeterService::Range::Range(const MultimeterService::ResistanceRange range) : resitanceRange(range)
+{
+
+}
+
 /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
 QString MultimeterService::toString(const Range &range, const Mode &mode)
 {
@@ -248,6 +276,48 @@ QString MultimeterService::toString(const Range &range, const Mode &mode)
     default:
         return QString();
     }
+}
+
+/// Returns \c true if \a lhs is numerically equal to \a rhs, \c false otherwise.
+bool operator==(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
+        == static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically not-equal to \a rhs, \c false otherwise.
+bool operator!=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
+        != static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically less than \a rhs, \c false otherwise.
+bool operator< (const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
+         < static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically greater than \a rhs, \c false otherwise.
+bool operator> (const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
+         > static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically less than or equal to \a rhs, \c false otherwise.
+bool operator<=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
+        <= static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically greater than or equal to \a rhs, \c false otherwise.
+bool operator>=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
+        >= static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
 }
 
 /// \struct MultimeterService::Settings

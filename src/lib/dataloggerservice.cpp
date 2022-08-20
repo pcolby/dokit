@@ -174,6 +174,28 @@ QVariant DataLoggerService::maxValue(const CurrentRange &range)
 /// \union DataLoggerService::Range
 /// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics.
 
+static_assert(std::is_same<std::underlying_type_t<DataLoggerService::VoltageRange>,
+                           std::underlying_type_t<DataLoggerService::CurrentRange>>::value,
+              "DataLoggerService::Range members must all have the same underlying type.");
+
+/// Constructs a new DataLoggerService::Range instance with 0. This should be considered
+DataLoggerService::Range::Range() : voltageRange(static_cast<DataLoggerService::VoltageRange>(0))
+{
+
+}
+
+/// Constructs a new DataLoggerService::Range instance with \a range.
+DataLoggerService::Range::Range(const DataLoggerService::VoltageRange range) : voltageRange(range)
+{
+
+}
+
+/// Constructs a new DataLoggerService::Range instance with \a range.
+DataLoggerService::Range::Range(const DataLoggerService::CurrentRange range) : currentRange(range)
+{
+
+}
+
 /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
 QString DataLoggerService::toString(const Range &range, const Mode &mode)
 {
@@ -187,6 +209,48 @@ QString DataLoggerService::toString(const Range &range, const Mode &mode)
     default:
         return QString();
     }
+}
+
+/// Returns \c true if \a lhs is numerically equal to \a rhs, \c false otherwise.
+bool operator==(const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(lhs.voltageRange)
+        == static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically not-equal to \a rhs, \c false otherwise.
+bool operator!=(const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(lhs.voltageRange)
+        != static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically less than \a rhs, \c false otherwise.
+bool operator< (const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(lhs.voltageRange)
+         < static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically greater than \a rhs, \c false otherwise.
+bool operator> (const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(lhs.voltageRange)
+         > static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically less than or equal to \a rhs, \c false otherwise.
+bool operator<=(const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(lhs.voltageRange)
+        <= static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(rhs.voltageRange);
+}
+
+/// Returns \c true if \a lhs is numerically greater than or equal to \a rhs, \c false otherwise.
+bool operator>=(const DataLoggerService::Range &lhs, const DataLoggerService::Range &rhs)
+{
+    return static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(lhs.voltageRange)
+        >= static_cast<std::underlying_type_t<DataLoggerService::VoltageRange>>(rhs.voltageRange);
 }
 
 /// \struct DataLoggerService::Settings

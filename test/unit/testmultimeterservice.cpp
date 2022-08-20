@@ -271,18 +271,58 @@ void TestMultimeterService::maxValue_ResistanceRange()
     QCOMPARE(MultimeterService::maxValue(range), expected);
 }
 
+void TestMultimeterService::range_Range()
+{
+    const MultimeterService::Range range;
+    QCOMPARE((quint8)range.currentRange, (quint8)0);
+    QCOMPARE((quint8)range.voltageRange, (quint8)0);
+
+    const MultimeterService::Range voltage(MultimeterService::VoltageRange::_6V_to_12V);
+    QCOMPARE(voltage.voltageRange, MultimeterService::VoltageRange::_6V_to_12V);
+
+    const MultimeterService::Range current(MultimeterService::CurrentRange::_150mA_to_300mA);
+    QCOMPARE(voltage.currentRange, MultimeterService::CurrentRange::_150mA_to_300mA);
+
+    const MultimeterService::Range resistance(MultimeterService::ResistanceRange::_470K_to_1M);
+    QCOMPARE(resistance.resitanceRange, MultimeterService::ResistanceRange::_470K_to_1M);
+}
+
+void TestMultimeterService::range_Operators()
+{
+    QVERIFY(MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V) ==
+            MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V));
+
+    QVERIFY(MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V) !=
+            MultimeterService::Range(MultimeterService::VoltageRange::_2V_to_6V));
+
+    QVERIFY(MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V) <
+            MultimeterService::Range(MultimeterService::VoltageRange::_2V_to_6V));
+
+    QVERIFY(MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V) <=
+            MultimeterService::Range(MultimeterService::VoltageRange::_2V_to_6V));
+
+    QVERIFY(!(MultimeterService::Range(MultimeterService::VoltageRange::_2V_to_6V) <=
+              MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V)));
+
+    QVERIFY(MultimeterService::Range(MultimeterService::VoltageRange::_2V_to_6V) >
+            MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V));
+
+    QVERIFY(MultimeterService::Range(MultimeterService::VoltageRange::_2V_to_6V) >=
+            MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V));
+
+    QVERIFY(!(MultimeterService::Range(MultimeterService::VoltageRange::_300mV_to_2V) >=
+              MultimeterService::Range(MultimeterService::VoltageRange::_2V_to_6V)));
+}
+
 void TestMultimeterService::toString_Range_data()
 {
     QTest::addColumn<MultimeterService::Range>("range");
     QTest::addColumn<MultimeterService::Mode>("mode");
     QTest::addColumn<QString>("expected");
 
-    #define QTPOKIT_ADD_TEST_ROW(mode, member, range, expected) {\
-        MultimeterService::Range rangeUnion; \
-        rangeUnion.member = MultimeterService::range; \
-        QTest::addRow(#mode "," #range) \
-            << rangeUnion << MultimeterService::Mode::mode << QStringLiteral(expected); \
-    }
+    #define QTPOKIT_ADD_TEST_ROW(mode, member, range, expected) \
+        QTest::addRow(#mode "," #range) << MultimeterService::Range(MultimeterService::range) \
+            << MultimeterService::Mode::mode << QStringLiteral(expected)
     QTPOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
     QTPOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
     QTPOKIT_ADD_TEST_ROW(AcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");

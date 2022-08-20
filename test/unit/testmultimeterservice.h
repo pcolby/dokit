@@ -38,6 +38,9 @@ private slots:
     void maxValue_ResistanceRange_data();
     void maxValue_ResistanceRange();
 
+    void range_Range();
+    void range_Operators();
+
     void toString_Range_data();
     void toString_Range();
 
