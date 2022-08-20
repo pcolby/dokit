@@ -14,7 +14,7 @@ void TestLoggerStopCommand::serviceDetailsDiscovered() {
 }
 
 void TestLoggerStopCommand::settingsWritten() {
-    /// \todo Implement settingsWritten test.
+    /// \todo Verify the output format.
 }
 
 void TestLoggerStopCommand::tr()

@@ -48,7 +48,7 @@ void TestFlashLedCommand::serviceDetailsDiscovered() {
 }
 
 void TestFlashLedCommand::deviceLedFlashed() {
-    /// \todo Implement deviceLedFlashed test.
+    /// \todo Verify the output format.
 }
 
 void TestFlashLedCommand::tr()

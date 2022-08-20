@@ -296,7 +296,7 @@ void TestMeterCommand::settingsWritten() {
 }
 
 void TestMeterCommand::outputReading() {
-    /// \todo Implement outputReading test.
+    /// \todo Verify the output format.
 }
 
 void TestMeterCommand::tr()

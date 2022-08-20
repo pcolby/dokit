@@ -183,7 +183,7 @@ void TestLoggerStartCommand::lowestVoltageRange()
 }
 
 void TestLoggerStartCommand::settingsWritten() {
-    /// \todo Implement settingsWritten test.
+    /// \todo Verify the output format.
 }
 
 void TestLoggerStartCommand::tr()

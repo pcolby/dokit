@@ -18,7 +18,7 @@ void TestLoggerFetchCommand::metadataRead() {
 }
 
 void TestLoggerFetchCommand::outputSamples() {
-    /// \todo Implement outputSamples test.
+    /// \todo Verify the output format.
 }
 
 void TestLoggerFetchCommand::tr()
