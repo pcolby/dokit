@@ -12,6 +12,7 @@ private slots:
 
     void supportedOptions();
 
+    void processOptions_data();
     void processOptions();
 
     void getService();

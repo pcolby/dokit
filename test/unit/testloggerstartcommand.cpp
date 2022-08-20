@@ -42,8 +42,253 @@ void TestLoggerStartCommand::supportedOptions() {
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
+void TestLoggerStartCommand::processOptions_data()
+{
+    QTest::addColumn<QStringList>("arguments");
+    QTest::addColumn<DataLoggerService::Settings>("expected");
+    QTest::addColumn<bool>("expectNowish");
+    QTest::addColumn<QStringList>("errors");
+
+//    Command command;        ///< Custom operation request.
+//    quint16 arguments;      ///< Reserved to used along with #command in future.
+//    Mode mode;              ///< Desired operation mode.
+//    Range range;            ///< Desired range.
+//    quint32 updateInterval; ///< Desired update interval in milliseconds.
+//    quint32 timestamp;      ///< Custom timestamp for start time in retrieved metadata.
+
+
+    QTest::addRow("missing-required-options")
+        << QStringList{}
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
+        << false
+        << QStringList{
+            QStringLiteral("Missing required option: mode"),
+            QStringLiteral("Missing required option: range") };
+
+    QTest::addRow("missing-required-mode")
+        << QStringList{
+           QStringLiteral("--range"), QStringLiteral("100")}
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+            DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
+        << false
+        << QStringList{ QStringLiteral("Missing required option: mode") };
+
+    QTest::addRow("missing-required-range")
+        << QStringList{
+           QStringLiteral("--mode"), QStringLiteral("Vdc") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
+        << false
+        << QStringList{ QStringLiteral("Missing required option: range") };
+
+    QTest::addRow("Vdc")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV") }
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+            DataLoggerService::VoltageRange::_300mV_to_2V, 60000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("Vac")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vac"),
+           QStringLiteral("--range"), QStringLiteral("5V") }
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::AcVoltage,
+            DataLoggerService::VoltageRange::_2V_to_6V, 60000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("Adc")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Adc"),
+           QStringLiteral("--range"), QStringLiteral("100mA") }
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcCurrent,
+            DataLoggerService::CurrentRange::_30mA_to_150mA, 60000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("Aac")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Aac"),
+           QStringLiteral("--range"), QStringLiteral("2A") }
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::AcCurrent,
+            DataLoggerService::CurrentRange::_300mA_to_3A, 60000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("invalid-mode")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("invalid"),
+           QStringLiteral("--range"), QStringLiteral("123") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
+        << false
+        << QStringList{ QStringLiteral("Unknown logger mode: invalid") };
+
+    QTest::addRow("invalid-range")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("invalid") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
+        << true
+        << QStringList{ QStringLiteral("Invalid range value: invalid") };
+
+    QTest::addRow("interval:100") // Defaults to 100 seconds (ie 100,000ms).
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--interval"), QStringLiteral("100") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 100000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("interval:499") // Defaults to 499 seconds.
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--interval"), QStringLiteral("499") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 499000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("interval:500") // Defaults to 500ms.
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--interval"), QStringLiteral("500") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 500, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("invalid-interval")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--interval"), QStringLiteral("invalid") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 60000, 0}
+        << true
+        << QStringList{ QStringLiteral("Invalid interval value: invalid") };
+
+    QTest::addRow("negative-interval")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--interval"), QStringLiteral("-123") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 60000, 0}
+        << true
+        << QStringList{ QStringLiteral("Invalid interval value: -123") };
+
+    QTest::addRow("timestamp:0")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--timestamp"), QStringLiteral("0") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 60000, 0}
+        << false
+        << QStringList{ };
+
+    QTest::addRow("timestamp:1")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--timestamp"), QStringLiteral("1") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 60000, 1}
+        << false
+        << QStringList{ };
+
+    QTest::addRow("timestamp:now")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--timestamp"), QString::number(QDateTime::currentSecsSinceEpoch()) }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 60000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("invalid-timestamp")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--timestamp"), QStringLiteral("invalid") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 60000, 0}
+        << true
+        << QStringList{ QStringLiteral("Invalid timestamp value: invalid") };
+
+    QTest::addRow("negative-timestamp")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV"),
+           QStringLiteral("--timestamp"), QStringLiteral("-123") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+           DataLoggerService::VoltageRange::_300mV_to_2V, 60000, 0}
+        << true
+        << QStringList{ QStringLiteral("Invalid timestamp value: -123") };
+}
+
 void TestLoggerStartCommand::processOptions() {
-    /// \todo Implement processOptions test.
+    QFETCH(QStringList, arguments);
+    QFETCH(DataLoggerService::Settings, expected);
+    QFETCH(bool, expectNowish);
+    QFETCH(QStringList, errors);
+
+    arguments.prepend(QStringLiteral("pokit")); // The first argument is always the app name.
+
+    QCommandLineParser parser;
+    parser.addOption({QStringLiteral("mode"), QStringLiteral("description"), QStringLiteral("mode")});
+    parser.addOption({QStringLiteral("range"), QStringLiteral("description"), QStringLiteral("range")});
+    parser.addOption({QStringLiteral("interval"), QStringLiteral("description"), QStringLiteral("interval")});
+    parser.addOption({QStringLiteral("timestamp"), QStringLiteral("description"), QStringLiteral("timestamp")});
+    parser.process(arguments);
+
+    LoggerStartCommand command(this);
+    const quint32 now = (quint32)QDateTime::currentSecsSinceEpoch();
+    qInfo() << command.processOptions(parser);
+    QCOMPARE(command.processOptions(parser),  errors);
+    QCOMPARE(command.settings.command,        expected.command);
+    QCOMPARE(command.settings.arguments,      expected.arguments);
+    QCOMPARE(command.settings.mode,           expected.mode);
+    QCOMPARE(command.settings.range,          expected.range);
+    QCOMPARE(command.settings.updateInterval, expected.updateInterval);
+
+    // Recoginise if/when LoggerStartCommand::processOptions automatically uses 'now' for timestamp.
+    if (expectNowish) {
+        Q_ASSERT(expected.timestamp == 0);
+        QVERIFY(now <= command.settings.timestamp);
+        QVERIFY((command.settings.timestamp - now) <= 3);
+    } else {
+        QCOMPARE(command.settings.timestamp,  expected.timestamp);
+    }
 }
 
 void TestLoggerStartCommand::getService() {

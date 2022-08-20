@@ -63,7 +63,7 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
         settings.mode = DataLoggerService::Mode::DcVoltage;
     } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
         settings.mode = DataLoggerService::Mode::AcCurrent;
-    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("aac"))) {
+    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
         settings.mode = DataLoggerService::Mode::DcCurrent;
     } else {
         errors.append(tr("Unknown logger mode: %1").arg(parser.value(QLatin1String("mode"))));

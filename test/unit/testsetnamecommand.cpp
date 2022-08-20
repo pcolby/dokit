@@ -79,7 +79,6 @@ void TestSetNameCommand::processOptions() {
     parser.process(arguments);
 
     SetNameCommand command(this);
-    qInfo() << command.processOptions(parser);
     QCOMPARE(command.processOptions(parser), errors);
     QCOMPARE(command.newName, expected);
 }
