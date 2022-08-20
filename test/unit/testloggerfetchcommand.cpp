@@ -31,7 +31,7 @@ void TestLoggerFetchCommand::metadataRead() {
     QCOMPARE(command.metadata.updateInterval,  metadata.updateInterval);
     QCOMPARE(command.metadata.numberOfSamples, metadata.numberOfSamples);
     QCOMPARE(command.metadata.timestamp,       metadata.timestamp);
-    QCOMPARE(command.samplesToGo,              metadata.numberOfSamples);
+    QCOMPARE(command.samplesToGo,              (qint32)metadata.numberOfSamples);
     QCOMPARE(command.timestamp,                (quint64)metadata.timestamp * (quint64)1000);
 }
 
