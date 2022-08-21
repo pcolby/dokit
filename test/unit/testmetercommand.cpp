@@ -10,6 +10,7 @@ Q_DECLARE_METATYPE(MultimeterService::VoltageRange);
 Q_DECLARE_METATYPE(MultimeterService::CurrentRange);
 Q_DECLARE_METATYPE(MultimeterService::ResistanceRange);
 Q_DECLARE_METATYPE(MultimeterService::Range);
+Q_DECLARE_METATYPE(MultimeterService::Settings);
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -43,8 +44,231 @@ void TestMeterCommand::supportedOptions() {
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
+void TestMeterCommand::processOptions_data()
+{
+    QTest::addColumn<QStringList>("arguments");
+    QTest::addColumn<MultimeterService::Settings>("expected");
+    QTest::addColumn<int>("expectedSamples");
+    QTest::addColumn<QStringList>("errors");
+
+    QTest::addRow("missing-required-mode")
+        << QStringList{
+           QStringLiteral("--range"), QStringLiteral("100")}
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ QStringLiteral("Missing required option: mode") };
+
+    QTest::addRow("Vdc")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("1000mV") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::_300mV_to_2V, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("Vac")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vac"),
+           QStringLiteral("--range"), QStringLiteral("5V") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::AcVoltage, MultimeterService::VoltageRange::_2V_to_6V, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("Adc")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Adc"),
+           QStringLiteral("--range"), QStringLiteral("100mA") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcCurrent, MultimeterService::CurrentRange::_30mA_to_150mA, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("Aac")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Aac"),
+           QStringLiteral("--range"), QStringLiteral("2A") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::AcCurrent, MultimeterService::CurrentRange::_300mA_to_3A, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("Resistance")
+        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("res") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::Resistance, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("Diode")
+        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("dio") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::Diode, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("Continuity")
+        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("cont") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::Continuity, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("Temperature")
+        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("temp") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::Temperature, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("invalid-mode")
+        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("invalid") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ QStringLiteral("Unknown meter mode: invalid") };
+
+    QTest::addRow("interval:100") // Defaults to 100 seconds (ie 100,000ms).
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--interval"), QStringLiteral("100") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 100000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("interval:499") // Defaults to 499 seconds.
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--interval"), QStringLiteral("499") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 499000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("interval:500") // Defaults to 500ms.
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--interval"), QStringLiteral("500") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 500}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("invalid-interval")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--interval"), QStringLiteral("invalid") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ QStringLiteral("Invalid interval value: invalid") };
+
+    QTest::addRow("negative-interval")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--interval"), QStringLiteral("-123") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ QStringLiteral("Invalid interval value: -123") };
+
+    QTest::addRow("auto-range-voltage")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("auto") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("auto-range-current")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Adc"),
+           QStringLiteral("--range"), QStringLiteral("auto") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcCurrent, MultimeterService::CurrentRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("auto-range-resistance")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("resis"),
+           QStringLiteral("--range"), QStringLiteral("auto") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::Resistance, MultimeterService::ResistanceRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("invalid-range")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--range"), QStringLiteral("invalid") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ QStringLiteral("Invalid range value: invalid") };
+
+    QTest::addRow("rangeless-range")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("diode"),
+           QStringLiteral("--range"), QStringLiteral("1000") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::Diode, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
+    QTest::addRow("samples:100")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--samples"), QStringLiteral("100") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << 100
+        << QStringList{ };
+
+    QTest::addRow("invald-samples")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--samples"), QStringLiteral("invalid") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ QStringLiteral("Invalid samples value: invalid") };
+
+    QTest::addRow("negative-samples")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+           QStringLiteral("--samples"), QStringLiteral("-123") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::AutoRange, 1000}
+        << -1
+        << QStringList{ QStringLiteral("Invalid samples value: -123") };
+}
+
 void TestMeterCommand::processOptions() {
-    /// \todo Implement processOptions test.
+    QFETCH(QStringList, arguments);
+    QFETCH(MultimeterService::Settings, expected);
+    QFETCH(int, expectedSamples);
+    QFETCH(QStringList, errors);
+
+    arguments.prepend(QStringLiteral("pokit")); // The first argument is always the app name.
+
+    QCommandLineParser parser;
+    parser.addOption({QStringLiteral("mode"), QStringLiteral("description"), QStringLiteral("mode")});
+    parser.addOption({QStringLiteral("range"), QStringLiteral("description"), QStringLiteral("range")});
+    parser.addOption({QStringLiteral("interval"), QStringLiteral("description"), QStringLiteral("interval")});
+    parser.addOption({QStringLiteral("samples"), QStringLiteral("description"), QStringLiteral("samples")});
+    parser.process(arguments);
+
+    MeterCommand command(this);
+    QCOMPARE(command.processOptions(parser),  errors);
+    QCOMPARE(command.settings.mode,           expected.mode);
+    QCOMPARE(command.settings.range,          expected.range);
+    QCOMPARE(command.settings.updateInterval, expected.updateInterval);
+    QCOMPARE(command.samplesToGo,             expectedSamples);
 }
 
 void TestMeterCommand::getService() {

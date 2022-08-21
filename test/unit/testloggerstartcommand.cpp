@@ -50,14 +50,6 @@ void TestLoggerStartCommand::processOptions_data()
     QTest::addColumn<bool>("expectNowish");
     QTest::addColumn<QStringList>("errors");
 
-//    Command command;        ///< Custom operation request.
-//    quint16 arguments;      ///< Reserved to used along with #command in future.
-//    Mode mode;              ///< Desired operation mode.
-//    Range range;            ///< Desired range.
-//    quint32 updateInterval; ///< Desired update interval in milliseconds.
-//    quint32 timestamp;      ///< Custom timestamp for start time in retrieved metadata.
-
-
     QTest::addRow("missing-required-options")
         << QStringList{}
         << DataLoggerService::Settings{
@@ -274,7 +266,6 @@ void TestLoggerStartCommand::processOptions() {
 
     LoggerStartCommand command(this);
     const quint32 now = (quint32)QDateTime::currentSecsSinceEpoch();
-    qInfo() << command.processOptions(parser);
     QCOMPARE(command.processOptions(parser),  errors);
     QCOMPARE(command.settings.command,        expected.command);
     QCOMPARE(command.settings.arguments,      expected.arguments);

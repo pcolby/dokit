@@ -64,7 +64,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
         settings.mode = MultimeterService::Mode::DcVoltage;
     } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
         settings.mode = MultimeterService::Mode::AcCurrent;
-    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("aac"))) {
+    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
         settings.mode = MultimeterService::Mode::DcCurrent;
     } else if (mode.startsWith(QLatin1String("res"))) {
         settings.mode = MultimeterService::Mode::Resistance;
@@ -120,7 +120,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
             sensibleMinimum = 0; // Unused.
             break;
         default:
-            qCInfo(lc).noquote() << tr("Ignoring option: %1").arg(value);
+            qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
         }
         if ((!unit.isEmpty()) && (!isAuto)) { // isEmpty indicates a mode that has no range option.
             const quint32 rangeMax = (sensibleMinimum == 0)
@@ -136,15 +136,13 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     // Parse the samples option.
     if (parser.isSet(QLatin1String("samples"))) {
         const QString value = parser.value(QLatin1String("samples"));
-        QLocale locale; bool ok;
-        const int samples = locale.toInt(value, &ok);
-        if (!ok) {
-            errors.append(tr("Invalid number of samples: %1").arg(value));
+        const quint32 samples = parseWholeValue(value, QLatin1String("S"));
+        if (samples == 0) {
+            errors.append(tr("Invalid samples value: %1").arg(value));
         } else {
             samplesToGo = samples;
         }
     }
-
     return errors;
 }
 
