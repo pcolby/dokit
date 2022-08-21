@@ -424,7 +424,7 @@ MultimeterService::Reading MultimeterService::reading() const
         d->getCharacteristic(CharacteristicUuids::reading);
     return (characteristic.isValid()) ? MultimeterServicePrivate::parseReading(characteristic.value())
         : Reading{ MeterStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-                   Mode::Idle, { VoltageRange::AutoRange } };
+                   Mode::Idle, VoltageRange::AutoRange };
 }
 
 /*!
@@ -517,7 +517,7 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
         MultimeterService::MeterStatus::Error,
         std::numeric_limits<float>::quiet_NaN(),
         MultimeterService::Mode::Idle,
-        { MultimeterService::VoltageRange::AutoRange }
+        MultimeterService::VoltageRange::AutoRange
     };
 
     if (!checkSize(QLatin1String("Reading"), value, 7, 7)) {

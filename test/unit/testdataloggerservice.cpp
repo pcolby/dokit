@@ -351,7 +351,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Stop,
             0, DataLoggerService::Mode::Idle,
-            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
         }
         << false
         << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
@@ -359,7 +359,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Stop,
             0, DataLoggerService::Mode::Idle,
-            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
         }
         << true
         << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
@@ -369,7 +369,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Refresh,
             0, DataLoggerService::Mode::Idle,
-            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
         }
         << false
         << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
@@ -377,7 +377,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Refresh,
             0, DataLoggerService::Mode::Idle,
-            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
         }
         << true
         << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
@@ -387,7 +387,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start,
             0, DataLoggerService::Mode::Idle,
-            { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
         }
         << true
         << QByteArray("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
@@ -397,7 +397,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start,
             0, DataLoggerService::Mode::AcVoltage,
-            { DataLoggerService::VoltageRange::_30V_to_60V }, 60*1000, (quint32)16537226070
+            DataLoggerService::VoltageRange::_30V_to_60V, 60*1000, (quint32)16537226070
         }
         << true
         << QByteArray("\x00\x00\x00\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
@@ -407,7 +407,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start,
             (quint16)0xAABB, DataLoggerService::Mode::AcVoltage,
-            { DataLoggerService::VoltageRange::_30V_to_60V }, 60*1000u, (quint32)16537226070
+            DataLoggerService::VoltageRange::_30V_to_60V, 60*1000u, (quint32)16537226070
         }
         << true
         << QByteArray("\x00\xBB\xAA\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
@@ -429,7 +429,7 @@ void TestDataLoggerService::parseMetadata_data()
     QTest::addRow("null") << QByteArray()
         << DataLoggerService::Metadata{
             DataLoggerService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-            DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_0_to_300mV },
+            DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_0_to_300mV,
             0, 0, 0
         };
 
@@ -437,7 +437,7 @@ void TestDataLoggerService::parseMetadata_data()
     QTest::addRow("too-small") << QByteArray(14, '\xFF')
         << DataLoggerService::Metadata{
             DataLoggerService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-            DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_0_to_300mV },
+            DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_0_to_300mV,
             0, 0, 0
         };
 
@@ -446,7 +446,7 @@ void TestDataLoggerService::parseMetadata_data()
         << QByteArray("\x00\x9f\x0f\x49\x37\x00\x04\x3c\x00\x00\x00\xe9\xbb\x8c\x62", 15)
         << DataLoggerService::Metadata{
             DataLoggerService::LoggerStatus::Done, 1.198417067e-05f,
-            DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_12V_to_30V },
+            DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_12V_to_30V,
             60000, 0, 1653390313 // 2022-05-24 21:05:13.000 AEST.
         };
 
@@ -456,7 +456,7 @@ void TestDataLoggerService::parseMetadata_data()
                       "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62", 23)
         << DataLoggerService::Metadata{
             DataLoggerService::LoggerStatus::Done, 0.01208119933f,
-            DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_12V_to_30V },
+            DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_12V_to_30V,
             60000, 13, 1653389635 // 2022-05-24 20:53:55.000 AEST.
         };
 
@@ -466,7 +466,7 @@ void TestDataLoggerService::parseMetadata_data()
                       "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62\x01\x02\0x3", 26)
         << DataLoggerService::Metadata{
            DataLoggerService::LoggerStatus::Done, 0.01208119933f,
-           DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_12V_to_30V },
+           DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_12V_to_30V,
            0, 0, 0 // Will safely parse all but these last three.
         };
 }

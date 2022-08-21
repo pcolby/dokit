@@ -343,7 +343,7 @@ void TestDsoService::encodeSettings_data()
         << DsoService::Settings{
            DsoService::Command::ResendData,
            0, DsoService::Mode::Idle,
-           { DsoService::VoltageRange::_0_to_300mV }, 0, 0
+           DsoService::VoltageRange::_0_to_300mV, 0, 0
         }
         << QByteArray("\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
 
@@ -352,7 +352,7 @@ void TestDsoService::encodeSettings_data()
         << DsoService::Settings{
            DsoService::Command::FreeRunning,
            0, DsoService::Mode::Idle,
-           { DsoService::VoltageRange::_0_to_300mV }, 0, 0
+           DsoService::VoltageRange::_0_to_300mV, 0, 0
         }
         << QByteArray("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
 
@@ -361,7 +361,7 @@ void TestDsoService::encodeSettings_data()
         << DsoService::Settings{
            DsoService::Command::RisingEdgeTrigger,
            1.0f, DsoService::Mode::AcVoltage,
-           { DsoService::VoltageRange::_12V_to_30V }, 1000000, 1000
+           DsoService::VoltageRange::_12V_to_30V, 1000000, 1000
         }
         << QByteArray("\x01\x00\x00\x80\x3f\x02\x04\x40\x42\x0f\x00\xe8\x03", 13);
 }
@@ -381,7 +381,7 @@ void TestDsoService::parseMetadata_data()
     QTest::addRow("null") << QByteArray()
         << DsoService::Metadata{
            DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-           DsoService::Mode::Idle, { DsoService::VoltageRange::_0_to_300mV },
+           DsoService::Mode::Idle, DsoService::VoltageRange::_0_to_300mV,
            0, 0, 0
         };
 
@@ -389,7 +389,7 @@ void TestDsoService::parseMetadata_data()
     QTest::addRow("too-small") << QByteArray(16, '\xFF')
         << DsoService::Metadata{
            DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-           DsoService::Mode::Idle, { DsoService::VoltageRange::_0_to_300mV },
+           DsoService::Mode::Idle, DsoService::VoltageRange::_0_to_300mV,
            0, 0, 0
         };
 
@@ -399,7 +399,7 @@ void TestDsoService::parseMetadata_data()
         << QByteArray("\x00\x98\xf7\x8b\x33\x02\x00\x40\x42\x0f\x00\x0a\x00\x0a\x00\x00\x00", 17)
         << DsoService::Metadata{
            DsoService::DsoStatus::Done, 6.517728934e-08f,
-           DsoService::Mode::AcVoltage, { DsoService::VoltageRange::_0_to_300mV },
+           DsoService::Mode::AcVoltage, DsoService::VoltageRange::_0_to_300mV,
            1*1000*1000, 10, 10
         };
 
@@ -409,7 +409,7 @@ void TestDsoService::parseMetadata_data()
                       "\xe8\x03\x0a\x00\x00\x00\x14\x00\x00\x00", 21)
         << DsoService::Metadata{
               DsoService::DsoStatus::Done, 8.704373045e-08f,
-              DsoService::Mode::AcVoltage, { DsoService::VoltageRange::_0_to_300mV },
+              DsoService::Mode::AcVoltage, DsoService::VoltageRange::_0_to_300mV,
               1*1000*1000, 1000, 10
         };
 }

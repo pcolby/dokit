@@ -20,7 +20,7 @@
 DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
         DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
-        { DsoService::VoltageRange::_30V_to_60V }, 1000*1000, 1000}
+        DsoService::VoltageRange::_30V_to_60V, 1000*1000, 1000}
 {
 
 }
@@ -195,7 +195,6 @@ void DsoCommand::serviceDetailsDiscovered()
 DsoService::Range DsoCommand::lowestRange(
     const DsoService::Mode mode, const quint32 desiredMax)
 {
-    DsoService::Range range{ DsoService::VoltageRange::_6V_to_12V };
     switch (mode) {
     case DsoService::Mode::Idle:
         qCWarning(lc).noquote() << tr("Idle has no defined ranges.");
@@ -203,17 +202,15 @@ DsoService::Range DsoCommand::lowestRange(
         break;
     case DsoService::Mode::DcVoltage:
     case DsoService::Mode::AcVoltage:
-        range.voltageRange = lowestVoltageRange(desiredMax);
-        break;
+        return lowestVoltageRange(desiredMax);
     case DsoService::Mode::DcCurrent:
     case DsoService::Mode::AcCurrent:
-        range.currentRange = lowestCurrentRange(desiredMax);
-        break;
+        return lowestCurrentRange(desiredMax);
     default:
         qCWarning(lc).noquote() << tr("No defined ranges for mode %1.").arg((quint8)mode);
         Q_ASSERT(false); // Should never have been called with this invalid mode.
     }
-    return range;
+    return DsoService::Range();
 }
 
 #define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \

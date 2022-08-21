@@ -21,7 +21,7 @@
 LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
         DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
-        { DataLoggerService::VoltageRange::_30V_to_60V }, 60000, 0}
+        DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
 {
 
 }
@@ -164,7 +164,6 @@ void LoggerStartCommand::serviceDetailsDiscovered()
 DataLoggerService::Range LoggerStartCommand::lowestRange(
     const DataLoggerService::Mode mode, const quint32 desiredMax)
 {
-    DataLoggerService::Range range{ DataLoggerService::VoltageRange::_6V_to_12V };
     switch (mode) {
     case DataLoggerService::Mode::Idle:
         qCWarning(lc).noquote() << tr("Idle has no defined ranges.");
@@ -172,17 +171,15 @@ DataLoggerService::Range LoggerStartCommand::lowestRange(
         break;
     case DataLoggerService::Mode::DcVoltage:
     case DataLoggerService::Mode::AcVoltage:
-        range.voltageRange = lowestVoltageRange(desiredMax);
-        break;
+        return lowestVoltageRange(desiredMax);
     case DataLoggerService::Mode::DcCurrent:
     case DataLoggerService::Mode::AcCurrent:
-        range.currentRange = lowestCurrentRange(desiredMax);
-        break;
+        return lowestCurrentRange(desiredMax);
     default:
         qCWarning(lc).noquote() << tr("No defined ranges for mode %1.").arg((quint8)mode);
         Q_ASSERT(false); // Should never have been called with this invalid mode.
     }
-    return range;
+    return DataLoggerService::Range();
 }
 
 #define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \

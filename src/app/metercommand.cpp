@@ -20,7 +20,7 @@
 MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
         MultimeterService::Mode::DcVoltage,
-        { MultimeterService::VoltageRange::AutoRange },
+        MultimeterService::VoltageRange::AutoRange,
         1000
     }, samplesToGo(-1)
 {

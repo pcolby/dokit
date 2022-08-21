@@ -392,27 +392,27 @@ void TestMultimeterService::encodeSettings_data()
 
     QTest::addRow("zeroed")
         << MultimeterService::Settings{
-           MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::_0_to_300mV }, 0
+           MultimeterService::Mode::Idle, MultimeterService::VoltageRange::_0_to_300mV, 0
         }
         << QByteArray("\x00\x00\x00\x00\x00\x00", 6);
 
     QTest::addRow("AcVoltage")
         << MultimeterService::Settings{
-           MultimeterService::Mode::AcVoltage, { MultimeterService::VoltageRange::_2V_to_6V },
+           MultimeterService::Mode::AcVoltage, MultimeterService::VoltageRange::_2V_to_6V,
            1000
         }
         << QByteArray("\x02\x02\xE8\x03\x00\x00", 6);
 
     QTest::addRow("Diode")
         << MultimeterService::Settings{
-           MultimeterService::Mode::Diode, { MultimeterService::VoltageRange::AutoRange },
+           MultimeterService::Mode::Diode, MultimeterService::VoltageRange::AutoRange,
            5000
         }
         << QByteArray("\x06\xFF\x88\x13\x00\x00", 6);
 
     QTest::addRow("Resistance")
         << MultimeterService::Settings{
-           MultimeterService::Mode::Resistance, { MultimeterService::VoltageRange::AutoRange },
+           MultimeterService::Mode::Resistance, MultimeterService::VoltageRange::AutoRange,
            60*1000
         }
         << QByteArray("\x05\xFF\x60\xEA\x00\x00", 6);
@@ -433,14 +433,14 @@ void TestMultimeterService::parseReading_data()
     QTest::addRow("null") << QByteArray()
         << MultimeterService::Reading{
            MultimeterService::MeterStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-           MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::AutoRange }
+           MultimeterService::Mode::Idle, MultimeterService::VoltageRange::AutoRange
         };
 
     // Metadata must be at least 7 bytes to be valid / parsable.
     QTest::addRow("too-small") << QByteArray(6, '\xFF')
         << MultimeterService::Reading{
            MultimeterService::MeterStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-           MultimeterService::Mode::Idle, { MultimeterService::VoltageRange::AutoRange }
+           MultimeterService::Mode::Idle, MultimeterService::VoltageRange::AutoRange
         };
 
     // Sample from a real Pokit Meter device.
@@ -448,7 +448,7 @@ void TestMultimeterService::parseReading_data()
         << QByteArray("\x00\x00\x00\x00\x00\x01\x03", 7)
         << MultimeterService::Reading{
            MultimeterService::MeterStatus::AutoRangeOff, 0.0f,
-           MultimeterService::Mode::DcVoltage, { MultimeterService::VoltageRange::_6V_to_12V }
+           MultimeterService::Mode::DcVoltage, MultimeterService::VoltageRange::_6V_to_12V
         };
 
     // Sample from a real Pokit Pro device.
@@ -456,7 +456,7 @@ void TestMultimeterService::parseReading_data()
         << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00", 7)
         << MultimeterService::Reading{
            MultimeterService::MeterStatus::AutoRangeOff, 0.007645795122f,
-           MultimeterService::Mode::AcVoltage, { MultimeterService::VoltageRange::_0_to_300mV }
+           MultimeterService::Mode::AcVoltage, MultimeterService::VoltageRange::_0_to_300mV
         };
 
     // Made-up sample *extended* from a real Pokit Pro device (by appending 3 erroneous bytes).
@@ -464,7 +464,7 @@ void TestMultimeterService::parseReading_data()
         << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00\x01\x02\x03", 10)
         << MultimeterService::Reading{
            MultimeterService::MeterStatus::AutoRangeOff, 0.007645795122f,
-           MultimeterService::Mode::AcVoltage, { MultimeterService::VoltageRange::_0_to_300mV }
+           MultimeterService::Mode::AcVoltage, MultimeterService::VoltageRange::_0_to_300mV
         };
 }
 

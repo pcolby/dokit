@@ -380,7 +380,7 @@ bool DsoService::fetchSamples()
     return setSettings({
         DsoService::Command::ResendData,
         0, DsoService::Mode::Idle,
-        { DsoService::VoltageRange::_0_to_300mV }, 0, 0
+        DsoService::VoltageRange::_0_to_300mV, 0, 0
     });
 }
 
@@ -405,7 +405,7 @@ DsoService::Metadata DsoService::metadata() const
         d->getCharacteristic(CharacteristicUuids::metadata);
     return (characteristic.isValid()) ? DsoServicePrivate::parseMetadata(characteristic.value())
         : Metadata{ DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-                    Mode::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };
+                    Mode::Idle, VoltageRange::_0_to_300mV, 0, 0, 0 };
 }
 
 /*!
@@ -535,7 +535,7 @@ DsoService::Metadata DsoServicePrivate::parseMetadata(const QByteArray &value)
 {
     DsoService::Metadata metadata{
         DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-        DsoService::Mode::Idle, { DsoService::VoltageRange::_0_to_300mV },
+        DsoService::Mode::Idle, DsoService::VoltageRange::_0_to_300mV,
         0, 0, 0
     };
 

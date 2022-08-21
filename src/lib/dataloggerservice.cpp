@@ -382,7 +382,7 @@ bool DataLoggerService::stopLogger()
     return setSettings({
         DataLoggerService::Command::Stop,
         0, DataLoggerService::Mode::Idle,
-        { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+        DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
     });
 }
 
@@ -404,7 +404,7 @@ bool DataLoggerService::fetchSamples()
     return setSettings({
         DataLoggerService::Command::Refresh,
         0, DataLoggerService::Mode::Idle,
-        { DataLoggerService::VoltageRange::_0_to_300mV }, 0, 0
+        DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
     });
 }
 
@@ -429,7 +429,7 @@ DataLoggerService::Metadata DataLoggerService::metadata() const
         d->getCharacteristic(CharacteristicUuids::metadata);
     return (characteristic.isValid()) ? DataLoggerServicePrivate::parseMetadata(characteristic.value())
         : Metadata{ LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-                    Mode::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };
+                    Mode::Idle, VoltageRange::_0_to_300mV, 0, 0, 0 };
 }
 
 /*!
@@ -576,7 +576,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
 {
     DataLoggerService::Metadata metadata{
         DataLoggerService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-        DataLoggerService::Mode::Idle, { DataLoggerService::VoltageRange::_0_to_300mV },
+        DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_0_to_300mV,
         0, 0, 0
     };
 
