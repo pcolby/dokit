@@ -123,6 +123,8 @@ void TestMeterCommand::processOptions_data()
         << -1
         << QStringList{ };
 
+    /// \todo Pokit Pro supports capacitance too.
+
     QTest::addRow("invalid-mode")
         << QStringList{ QStringLiteral("--mode"),  QStringLiteral("invalid") }
         << MultimeterService::Settings{
