@@ -166,12 +166,12 @@
 <a name="104"><span class="lineNum">     104 </span>            :  *  Returns the maximum value for \a range in (integer) millivolts, or null QVariant if \a range is</a>
 <a name="105"><span class="lineNum">     105 </span>            :  *  not valid.</a>
 <a name="106"><span class="lineNum">     106 </span>            :  */</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">       3043 : QVariant DataLoggerService::maxValue(const VoltageRange &amp;range)</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">       3893 : QVariant DataLoggerService::maxValue(const VoltageRange &amp;range)</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : {</a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">       3043 :     switch (range) {</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">        884 :     case VoltageRange::_0_to_300mV:  return   300;</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">        731 :     case VoltageRange::_300mV_to_2V: return  2000;</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">        578 :     case VoltageRange::_2V_to_6V:    return  6000;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">       3893 :     switch (range) {</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       1292 :     case VoltageRange::_0_to_300mV:  return   300;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">       1139 :     case VoltageRange::_300mV_to_2V: return  2000;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">        612 :     case VoltageRange::_2V_to_6V:    return  6000;</span></a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">        425 :     case VoltageRange::_6V_to_12V:   return 12000;</span></a>
 <a name="114"><span class="lineNum">     114 </span><span class="lineCov">        272 :     case VoltageRange::_12V_to_30V:  return 30000;</span></a>
 <a name="115"><span class="lineNum">     115 </span><span class="lineCov">        119 :     case VoltageRange::_30V_to_60V:  return 60000;</span></a>
@@ -221,14 +221,14 @@
 <a name="159"><span class="lineNum">     159 </span>            :  *  Returns the maximum value for \a range in (integer) milliamps, or null QVariant if \a range is</a>
 <a name="160"><span class="lineNum">     160 </span>            :  *  not valid.</a>
 <a name="161"><span class="lineNum">     161 </span>            :  */</a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">       2159 : QVariant DataLoggerService::maxValue(const CurrentRange &amp;range)</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">       2431 : QVariant DataLoggerService::maxValue(const CurrentRange &amp;range)</span></a>
 <a name="163"><span class="lineNum">     163 </span>            : {</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">       2159 :     switch (range) {</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">        731 :     case CurrentRange::_0_to_10mA:      return   10;</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">        578 :     case CurrentRange::_10mA_to_30mA:   return   30;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        425 :     case CurrentRange::_30mA_to_150mA:  return  150;</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        272 :     case CurrentRange::_150mA_to_300mA: return  300;</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        119 :     case CurrentRange::_300mA_to_3A:    return 3000;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">       2431 :     switch (range) {</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">        799 :     case CurrentRange::_0_to_10mA:      return   10;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">        646 :     case CurrentRange::_10mA_to_30mA:   return   30;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        493 :     case CurrentRange::_30mA_to_150mA:  return  150;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">        306 :     case CurrentRange::_150mA_to_300mA: return  300;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        153 :     case CurrentRange::_300mA_to_3A:    return 3000;</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :     default:                            return QVariant();</a>
 <a name="171"><span class="lineNum">     171 </span>            :     }</a>
 <a name="172"><span class="lineNum">     172 </span>            : }</a>
@@ -241,22 +241,22 @@
 <a name="179"><span class="lineNum">     179 </span>            :               &quot;DataLoggerService::Range members must all have the same underlying type.&quot;);</a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
 <a name="181"><span class="lineNum">     181 </span>            : /// Constructs a new DataLoggerService::Range instance with 0. This should be considered</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         68 : DataLoggerService::Range::Range() : voltageRange(static_cast&lt;DataLoggerService::VoltageRange&gt;(0))</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         85 : DataLoggerService::Range::Range() : voltageRange(static_cast&lt;DataLoggerService::VoltageRange&gt;(0))</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : {</a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">         68 : }</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">         85 : }</span></a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
 <a name="187"><span class="lineNum">     187 </span>            : /// Constructs a new DataLoggerService::Range instance with \a range.</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       2397 : DataLoggerService::Range::Range(const DataLoggerService::VoltageRange range) : voltageRange(range)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       3485 : DataLoggerService::Range::Range(const DataLoggerService::VoltageRange range) : voltageRange(range)</span></a>
 <a name="189"><span class="lineNum">     189 </span>            : {</a>
 <a name="190"><span class="lineNum">     190 </span>            : </a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       2349 : }</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       3437 : }</span></a>
 <a name="192"><span class="lineNum">     192 </span>            : </a>
 <a name="193"><span class="lineNum">     193 </span>            : /// Constructs a new DataLoggerService::Range instance with \a range.</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        561 : DataLoggerService::Range::Range(const DataLoggerService::CurrentRange range) : currentRange(range)</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        612 : DataLoggerService::Range::Range(const DataLoggerService::CurrentRange range) : currentRange(range)</span></a>
 <a name="195"><span class="lineNum">     195 </span>            : {</a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        561 : }</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        612 : }</span></a>
 <a name="198"><span class="lineNum">     198 </span>            : </a>
 <a name="199"><span class="lineNum">     199 </span>            : /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.</a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineCov">        153 : QString DataLoggerService::toString(const Range &amp;range, const Mode &amp;mode)</span></a>
@@ -274,10 +274,10 @@
 <a name="212"><span class="lineNum">     212 </span>            : }</a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
 <a name="214"><span class="lineNum">     214 </span>            : /// Returns \c true if \a lhs is numerically equal to \a rhs, \c false otherwise.</a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       1071 : bool operator==(const DataLoggerService::Range &amp;lhs, const DataLoggerService::Range &amp;rhs)</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       1411 : bool operator==(const DataLoggerService::Range &amp;lhs, const DataLoggerService::Range &amp;rhs)</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : {</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       1071 :     return static_cast&lt;std::underlying_type_t&lt;DataLoggerService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       1071 :         == static_cast&lt;std::underlying_type_t&lt;DataLoggerService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       1411 :     return static_cast&lt;std::underlying_type_t&lt;DataLoggerService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       1411 :         == static_cast&lt;std::underlying_type_t&lt;DataLoggerService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
 <a name="219"><span class="lineNum">     219 </span>            : }</a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span>            : /// Returns \c true if \a lhs is numerically not-equal to \a rhs, \c false otherwise.</a>

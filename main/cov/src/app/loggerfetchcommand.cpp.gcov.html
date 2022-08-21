@@ -31,18 +31,18 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">16</td>
             <td class="headerCovTableEntry">72</td>
-            <td class="headerCovTableEntryLo">4.2 %</td>
+            <td class="headerCovTableEntryLo">22.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
             <td class="headerValue">0.1.0-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntryLo">28.6 %</td>
+            <td class="headerCovTableEntryLo">42.9 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -80,11 +80,11 @@
 <a name="18"><span class="lineNum">      18 </span>            : /*!</a>
 <a name="19"><span class="lineNum">      19 </span>            :  * Construct a new LoggerFetchCommand object with \a parent.</a>
 <a name="20"><span class="lineNum">      20 </span>            :  */</a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">         17 : LoggerFetchCommand::LoggerFetchCommand(QObject * const parent)</span></a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         17 :     : DeviceCommand(parent), service(nullptr)</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">         34 : LoggerFetchCommand::LoggerFetchCommand(QObject * const parent)</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         34 :     : DeviceCommand(parent), service(nullptr)</span></a>
 <a name="23"><span class="lineNum">      23 </span>            : {</a>
 <a name="24"><span class="lineNum">      24 </span>            : </a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">         17 : }</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">         34 : }</span></a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
 <a name="27"><span class="lineNum">      27 </span>            : /*!</a>
 <a name="28"><span class="lineNum">      28 </span>            :  * \copybrief DeviceCommand::getService</a>
@@ -120,22 +120,22 @@
 <a name="58"><span class="lineNum">      58 </span>            : /*!</a>
 <a name="59"><span class="lineNum">      59 </span>            :  * Invoked when \a metadata has been received from the data logger.</a>
 <a name="60"><span class="lineNum">      60 </span>            :  */</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 : void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &amp;metadata)</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         17 : void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &amp;metadata)</span></a>
 <a name="62"><span class="lineNum">      62 </span>            : {</a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(metadata.status);</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; metadata.scale;</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DataLoggerService::toString(metadata.mode) &lt;&lt; (quint8)metadata.mode;</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; DataLoggerService::toString(metadata.range.voltageRange)</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         17 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(metadata.status);</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         17 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; metadata.scale;</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">         17 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DataLoggerService::toString(metadata.mode) &lt;&lt; (quint8)metadata.mode;</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">         17 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; DataLoggerService::toString(metadata.range.voltageRange)</span></a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :                             &lt;&lt; (quint8)metadata.range.voltageRange;</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;updateInterval:&quot; &lt;&lt; (int)metadata.updateInterval;</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; metadata.numberOfSamples;</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :     qCDebug(lc) &lt;&lt; &quot;timestamp:&quot; &lt;&lt; metadata.timestamp</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         17 :     qCDebug(lc) &lt;&lt; &quot;updateInterval:&quot; &lt;&lt; (int)metadata.updateInterval;</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         17 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; metadata.numberOfSamples;</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         17 :     qCDebug(lc) &lt;&lt; &quot;timestamp:&quot; &lt;&lt; metadata.timestamp</span></a>
 <a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :                                 &lt;&lt; QDateTime::fromSecsSinceEpoch(metadata.timestamp);</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 :     this-&gt;metadata = metadata;</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :     this-&gt;samplesToGo = metadata.numberOfSamples;</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineNoCov">          0 :     this-&gt;timestamp = (qint64)metadata.timestamp * (qint64)1000;</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Fetching %L1 logger samples...&quot;).arg(metadata.numberOfSamples);</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">         17 :     this-&gt;metadata = metadata;</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         17 :     this-&gt;samplesToGo = metadata.numberOfSamples;</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         17 :     this-&gt;timestamp = (quint64)metadata.timestamp * (quint64)1000;</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         37 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Fetching %L1 logger samples...&quot;).arg(metadata.numberOfSamples);</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         17 : }</span></a>
 <a name="77"><span class="lineNum">      77 </span>            : </a>
 <a name="78"><span class="lineNum">      78 </span>            : /*!</a>
 <a name="79"><span class="lineNum">      79 </span>            :  * Outputs logger \a samples in the selected ouput format.</a>
