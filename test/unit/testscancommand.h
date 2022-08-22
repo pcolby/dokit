@@ -16,8 +16,10 @@ private slots:
 
     void start();
 
+    void deviceDiscovered_data();
     void deviceDiscovered();
 
+    void deviceUpdated_data();
     void deviceUpdated();
 
     void deviceDiscoveryFinished();

@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testscancommand.h"
+#include "outputstreamcapture.h"
+#include "testdata.h"
 
 #include "scancommand.h"
 
@@ -16,6 +18,7 @@
 
 typedef QMultiHash<quint16, QByteArray> ManufacturerData;
 Q_DECLARE_METATYPE(ManufacturerData)
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(QBluetoothDeviceInfo::CoreConfiguration)
 Q_DECLARE_METATYPE(QBluetoothDeviceInfo::ServiceClasses)
 
@@ -72,14 +75,77 @@ void TestScanCommand::start()
     command.start();
 }
 
+void TestScanCommand::deviceDiscovered_data()
+{
+    QTest::addColumn<QList<QBluetoothDeviceInfo>>("infos");
+    QTest::addColumn<AbstractCommand::OutputFormat>("format");
+
+    QBluetoothDeviceInfo rssi(QBluetoothUuid(
+        QStringLiteral("661d1ed3-8e28-4f2b-88da-a1c02fe98aed")), QStringLiteral("rssi"), 0);
+    rssi.setRssi(12345);
+
+    const QList<QBluetoothDeviceInfo> list{
+        { QBluetoothAddress(0), QStringLiteral("addr0"), 0},
+        { QBluetoothAddress(0xFFFFFFFFFFFFFFFF), QStringLiteral("addrMax"), 0xFFFFFFFF},
+        { QBluetoothAddress(QStringLiteral("0123456789ABC")), QStringLiteral("addrStr"), 0},
+        { QBluetoothUuid(QStringLiteral("5c0625b1-a46b-44f1-a6aa-058424ce69b0")), QStringLiteral("uuid1"), 123},
+        { QBluetoothUuid(QStringLiteral("e8ee1747-1e43-4699-bac6-88cab02c109c")), QStringLiteral("uuid2"), 456},
+        { QBluetoothUuid(QStringLiteral("381b1e3c-c25a-44a3-9230-2a737cf3f206")), QStringLiteral("uuid3"), 789},
+        rssi
+    };
+
+    #define QTPOKIT_ADD_TEST_ROW(name, list) \
+        QTest::newRow(qPrintable(name + QStringLiteral(".csv")))  << list << AbstractCommand::OutputFormat::Csv; \
+        QTest::newRow(qPrintable(name + QStringLiteral(".json"))) << list << AbstractCommand::OutputFormat::Json; \
+        QTest::newRow(qPrintable(name + QStringLiteral(".txt")))  << list << AbstractCommand::OutputFormat::Text
+
+    QTPOKIT_ADD_TEST_ROW(QStringLiteral("null"), QList<QBluetoothDeviceInfo>{ QBluetoothDeviceInfo() });
+
+    for (const QBluetoothDeviceInfo &info: list) {
+        QTPOKIT_ADD_TEST_ROW(info.name(), QList<QBluetoothDeviceInfo>{ info });
+    }
+
+    QTPOKIT_ADD_TEST_ROW(QStringLiteral("all"), list );
+    #undef QTPOKIT_ADD_TEST_ROW
+}
+
 void TestScanCommand::deviceDiscovered()
 {
-    /// \todo Verify the output format.
+    QFETCH(QList<QBluetoothDeviceInfo>, infos);
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    const OutputStreamCapture capture(&std::cout);
+    ScanCommand command(nullptr);
+    command.format = format;
+    for (const QBluetoothDeviceInfo &info: infos) {
+        command.deviceDiscovered(info);
+    }
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
+}
+
+void TestScanCommand::deviceUpdated_data()
+{
+    deviceDiscovered_data();
 }
 
 void TestScanCommand::deviceUpdated()
 {
-    /// \todo Verify the output format.
+#if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
+    QSKIP("Not applicable before Qt version 5.12.")
+#else
+    QFETCH(QList<QBluetoothDeviceInfo>, infos);
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    const OutputStreamCapture capture(&std::cout);
+    ScanCommand command(nullptr);
+    command.format = format;
+    for (const QBluetoothDeviceInfo &info: infos) {
+        command.deviceUpdated(info, QBluetoothDeviceInfo::Fields());
+    }
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
+#endif
 }
 
 void TestScanCommand::deviceDiscoveryFinished()
