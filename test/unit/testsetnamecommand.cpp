@@ -2,8 +2,15 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testsetnamecommand.h"
+#include "outputstreamcapture.h"
+#include "testdata.h"
 
 #include "setnamecommand.h"
+
+#include <iostream>
+#include <sstream>
+
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -97,9 +104,24 @@ void TestSetNameCommand::serviceDetailsDiscovered()
     // Unable to safely invoke SetNameCommand::serviceDetailsDiscovered() without a valid service.
 }
 
+void TestSetNameCommand::deviceNameWritten_data()
+{
+    QTest::addColumn<AbstractCommand::OutputFormat>("format");
+    QTest::newRow("1.csv") << AbstractCommand::OutputFormat::Csv;
+    QTest::newRow("1.json") << AbstractCommand::OutputFormat::Json;
+    QTest::newRow("1.txt") << AbstractCommand::OutputFormat::Text;
+}
+
 void TestSetNameCommand::deviceNameWritten()
 {
-    /// \todo Verify the output format.
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    OutputStreamCapture capture(&std::cout);
+    SetNameCommand command(nullptr);
+    command.format = format;
+    command.deviceNameWritten();
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestSetNameCommand::tr()

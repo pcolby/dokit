@@ -19,6 +19,7 @@ private slots:
 
     void serviceDetailsDiscovered();
 
+    void deviceNameWritten_data();
     void deviceNameWritten();
 
     void tr();

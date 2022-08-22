@@ -28,6 +28,7 @@ private slots:
     void lowestVoltageRange_data();
     void lowestVoltageRange();
 
+    void settingsWritten_data();
     void settingsWritten();
 
     void tr();

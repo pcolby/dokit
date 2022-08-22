@@ -2,8 +2,12 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testflashledcommand.h"
+#include "outputstreamcapture.h"
+#include "testdata.h"
 
 #include "flashledcommand.h"
+
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -54,9 +58,24 @@ void TestFlashLedCommand::serviceDetailsDiscovered()
     // Unable to safely invoke FlashLedCommand::serviceDetailsDiscovered() without a valid service.
 }
 
+void TestFlashLedCommand::deviceLedFlashed_data()
+{
+    QTest::addColumn<AbstractCommand::OutputFormat>("format");
+    QTest::newRow("1.csv") << AbstractCommand::OutputFormat::Csv;
+    QTest::newRow("1.json") << AbstractCommand::OutputFormat::Json;
+    QTest::newRow("1.txt") << AbstractCommand::OutputFormat::Text;
+}
+
 void TestFlashLedCommand::deviceLedFlashed()
 {
-    /// \todo Verify the output format.
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    OutputStreamCapture capture(&std::cout);
+    FlashLedCommand command(nullptr);
+    command.format = format;
+    command.deviceLedFlashed();
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestFlashLedCommand::tr()

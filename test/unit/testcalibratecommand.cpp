@@ -2,8 +2,12 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testcalibratecommand.h"
+#include "outputstreamcapture.h"
+#include "testdata.h"
 
 #include "calibratecommand.h"
+
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -109,9 +113,24 @@ void TestCalibrateCommand::serviceDetailsDiscovered()
     // Unable to safely invoke CalibrateCommand::serviceDetailsDiscovered() without a valid service.
 }
 
+void TestCalibrateCommand::temperatureCalibrated_data()
+{
+    QTest::addColumn<AbstractCommand::OutputFormat>("format");
+    QTest::newRow("1.csv") << AbstractCommand::OutputFormat::Csv;
+    QTest::newRow("1.json") << AbstractCommand::OutputFormat::Json;
+    QTest::newRow("1.txt") << AbstractCommand::OutputFormat::Text;
+}
+
 void TestCalibrateCommand::temperatureCalibrated()
 {
-    /// \todo Verify the output format.
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    OutputStreamCapture capture(&std::cout);
+    CalibrateCommand command(nullptr);
+    command.format = format;
+    command.temperatureCalibrated();
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestCalibrateCommand::tr()

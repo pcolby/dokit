@@ -2,9 +2,12 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testloggerstartcommand.h"
+#include "outputstreamcapture.h"
+#include "testdata.h"
 
 #include "loggerstartcommand.h"
 
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(DataLoggerService::Mode);
 Q_DECLARE_METATYPE(DataLoggerService::VoltageRange);
 Q_DECLARE_METATYPE(DataLoggerService::CurrentRange);
@@ -429,9 +432,24 @@ void TestLoggerStartCommand::lowestVoltageRange()
     QCOMPARE(LoggerStartCommand::lowestVoltageRange(desiredMax), expected);
 }
 
+void TestLoggerStartCommand::settingsWritten_data()
+{
+    QTest::addColumn<AbstractCommand::OutputFormat>("format");
+    QTest::newRow("1.csv") << AbstractCommand::OutputFormat::Csv;
+    QTest::newRow("1.json") << AbstractCommand::OutputFormat::Json;
+    QTest::newRow("1.txt") << AbstractCommand::OutputFormat::Text;
+}
+
 void TestLoggerStartCommand::settingsWritten()
 {
-    /// \todo Verify the output format.
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    OutputStreamCapture capture(&std::cout);
+    LoggerStartCommand command(nullptr);
+    command.format = format;
+    command.settingsWritten();
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestLoggerStartCommand::tr()

@@ -19,6 +19,7 @@ private slots:
 
     void serviceDetailsDiscovered();
 
+    void temperatureCalibrated_data();
     void temperatureCalibrated();
 
     void tr();
