@@ -9,6 +9,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#include <iostream>
+
 /*!
  * \class LoggerFetchCommand
  *
@@ -99,22 +101,22 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
         switch (format) {
         case OutputFormat::Csv:
             for (static bool firstTime = true; firstTime; firstTime = false) {
-                fputs(qPrintable(tr("timestamp,value,unit,range\n")), stdout);
+                std::cout << qPrintable(tr("timestamp,value,unit,range\n"));
             }
-            fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4\n").arg(timeString).arg(value)
-                .arg(unit, range)), stdout);
+            std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4\n")
+                .arg(timeString).arg(value).arg(unit, range));
             break;
         case OutputFormat::Json:
-            fputs(QJsonDocument(QJsonObject{
+            std::cout << QJsonDocument(QJsonObject{
                     { QLatin1String("timestamp"), timeString },
                     { QLatin1String("value"),     value },
                     { QLatin1String("unit"),      unit },
                     { QLatin1String("range"),     range },
                     { QLatin1String("mode"),      DataLoggerService::toString(metadata.mode) },
-                }).toJson(), stdout);
+                }).toJson().toStdString();
             break;
         case OutputFormat::Text:
-            fputs(qPrintable(tr("%1 %2 %3\n").arg(timeString).arg(value).arg(unit)), stdout);
+            std::cout << qPrintable(tr("%1 %2 %3\n").arg(timeString).arg(value).arg(unit));
             break;
         }
         timestamp += metadata.updateInterval;

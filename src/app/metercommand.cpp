@@ -8,6 +8,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#include <iostream>
+
 /*!
  * \class MeterCommand
  *
@@ -340,12 +342,12 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     switch (format) {
     case OutputFormat::Csv:
         for (static bool firstTime = true; firstTime; firstTime = false) {
-            fputs(qPrintable(tr("mode,value,units,status,range_min_milli,range_max_milli\n")), stdout);
+            std::cout << qPrintable(tr("mode,value,units,status,range_min_milli,range_max_milli\n"));
         }
-        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n")
+        std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n")
             .arg(escapeCsvField(MultimeterService::toString(reading.mode)))
             .arg(reading.value, 0, 'f').arg(units, status, rangeMin.toString(), rangeMax.toString())
-            ), stdout);
+            );
         break;
     case OutputFormat::Json: {
         QJsonObject jsonObject{
@@ -372,16 +374,16 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
                     QJsonValue(rangeMax.toInt()/1000.0) : rangeMax.toJsonValue() },
             });
         }
-        fputs(QJsonDocument(jsonObject).toJson(), stdout);
+        std::cout << QJsonDocument(jsonObject).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
-        fputs(qPrintable(tr("Mode:   %1 (0x%2)\n").arg(MultimeterService::toString(reading.mode))
-            .arg((quint8)reading.mode,2,16,QLatin1Char('0'))), stdout);
-        fputs(qPrintable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(units)), stdout);
-        fputs(qPrintable(tr("Status: %1 (0x%2)\n").arg(status)
-            .arg((quint8)reading.status,2,16,QLatin1Char('0'))), stdout);
-        fputs(qPrintable(tr("Range:  %1 (0x%2)\n").arg(range)
-            .arg((quint8)reading.range.voltageRange,2,16,QLatin1Char('0'))), stdout);
+        std::cout << qPrintable(tr("Mode:   %1 (0x%2)\n").arg(MultimeterService::toString(reading.mode))
+            .arg((quint8)reading.mode,2,16,QLatin1Char('0')));
+        std::cout << qPrintable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(units));
+        std::cout << qPrintable(tr("Status: %1 (0x%2)\n").arg(status)
+            .arg((quint8)reading.status,2,16,QLatin1Char('0')));
+        std::cout << qPrintable(tr("Range:  %1 (0x%2)\n").arg(range)
+            .arg((quint8)reading.range.voltageRange,2,16,QLatin1Char('0')));
         break;
     }
 

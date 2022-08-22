@@ -8,6 +8,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#include <iostream>
+
 /*!
  * \class LoggerStopCommand
  *
@@ -60,13 +62,13 @@ void LoggerStopCommand::settingsWritten()
     qCDebug(lc).noquote() << tr("Settings written; data logger has stopped.");
     switch (format) {
     case OutputFormat::Csv:
-        fputs(qPrintable(tr("logger_start_result\nsuccess\n")), stdout);
+        std::cout << qPrintable(tr("logger_stop_result\nsuccess\n"));
         break;
     case OutputFormat::Json:
-        fputs(qPrintable(QLatin1String("true\n")), stdout);
+        std::cout << qPrintable(QLatin1String("true\n"));
         break;
     case OutputFormat::Text:
-        fputs(qPrintable(tr("Done.\n")), stdout);
+        std::cout << qPrintable(tr("Done.\n"));
         break;
     }
     disconnect(); // Will exit the application once disconnected.

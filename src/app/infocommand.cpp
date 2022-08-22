@@ -9,6 +9,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#include <iostream>
+
 /*!
  * \class InfoCommand
  *
@@ -78,15 +80,15 @@ void InfoCommand::serviceDetailsDiscovered()
     const QBluetoothUuid deviceUuid = device->controller()->remoteDeviceUuid();
     switch (format) {
     case OutputFormat::Csv:
-        fputs(qPrintable(tr("device_name,device_address,device_uuid,manufacturer_name,model_number,"
-                            "hardware_revision,firmware_revision,software_revision\n")), stdout);
-        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8\n").arg(
+        std::cout << qPrintable(tr("device_name,device_address,device_uuid,manufacturer_name,model_number,"
+                            "hardware_revision,firmware_revision,software_revision\n"));
+        std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8\n").arg(
             escapeCsvField(deviceName),
             (deviceAddress.isNull()) ? QString() : deviceAddress.toString(),
             (deviceUuid.isNull()) ? QString() : deviceUuid.toString(),
             escapeCsvField(service->manufacturer()), escapeCsvField(service->modelNumber()),
             escapeCsvField(service->hardwareRevision()), escapeCsvField(service->firmwareRevision()),
-            escapeCsvField(service->softwareRevision()))), stdout);
+            escapeCsvField(service->softwareRevision())));
         break;
     case OutputFormat::Json: {
         QJsonObject jsonObject{
@@ -105,23 +107,23 @@ void InfoCommand::serviceDetailsDiscovered()
         if (!deviceUuid.isNull()) {
             jsonObject.insert(QLatin1String("deviceUuid"), deviceUuid.toString());
         }
-        fputs(QJsonDocument(jsonObject).toJson(), stdout);
+        std::cout << QJsonDocument(jsonObject).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
         if (!deviceName.isEmpty()) {
-            fputs(qPrintable(tr("Device name:       %1\n").arg(deviceName)), stdout);
+            std::cout << qPrintable(tr("Device name:       %1\n").arg(deviceName));
         }
         if (!deviceAddress.isNull()) {
-            fputs(qPrintable(tr("Device addres:     %1\n").arg(deviceAddress.toString())), stdout);
+            std::cout << qPrintable(tr("Device addres:     %1\n").arg(deviceAddress.toString()));
         }
         if (!deviceUuid.isNull()) {
-            fputs(qPrintable(tr("Device UUID:       %1\n").arg(deviceUuid.toString())), stdout);
+            std::cout << qPrintable(tr("Device UUID:       %1\n").arg(deviceUuid.toString()));
         }
-        fputs(qPrintable(tr("Manufacturer name: %1\n").arg(service->manufacturer())), stdout);
-        fputs(qPrintable(tr("Model number:      %1\n").arg(service->modelNumber())), stdout);
-        fputs(qPrintable(tr("Hardware revision: %1\n").arg(service->hardwareRevision())), stdout);
-        fputs(qPrintable(tr("Firmware revision: %1\n").arg(service->firmwareRevision())), stdout);
-        fputs(qPrintable(tr("Software revision: %1\n").arg(service->softwareRevision())), stdout);
+        std::cout << qPrintable(tr("Manufacturer name: %1\n").arg(service->manufacturer()));
+        std::cout << qPrintable(tr("Model number:      %1\n").arg(service->modelNumber()));
+        std::cout << qPrintable(tr("Hardware revision: %1\n").arg(service->hardwareRevision()));
+        std::cout << qPrintable(tr("Firmware revision: %1\n").arg(service->firmwareRevision()));
+        std::cout << qPrintable(tr("Software revision: %1\n").arg(service->softwareRevision()));
         break;
     }
     disconnect(); // Will exit the application once disconnected.

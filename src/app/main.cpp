@@ -17,6 +17,8 @@
 #include <QCoreApplication>
 #include <QLoggingCategory>
 
+#include <iostream>
+
 #if defined(Q_OS_UNIX)
 #include <unistd.h>
 #elif defined(Q_OS_WIN)
@@ -81,7 +83,7 @@ void showCliError(const QString &errorText) {
     // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
     const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
         + errorText + QLatin1Char('\n');
-    fputs(qPrintable(message), stderr);
+    std::cerr << qPrintable(message);
 }
 
 Command getCliCommand(const QStringList &posArguments) {
@@ -235,10 +237,10 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     if (parser.isSet(QStringLiteral("help"))) {
         const QString commandString = (command == Command::None) ? QStringLiteral("<command>")
                 : parser.positionalArguments().constFirst();
-        fputs(qPrintable(parser.helpText()
+        std::cout << qPrintable(parser.helpText()
             .replace(QStringLiteral("[options]"), commandString + QStringLiteral(" [options]"))
             .replace(QStringLiteral("Arguments:"),  QStringLiteral("Command:"))
-        ), stdout);
+        );
         ::exit(EXIT_SUCCESS);
     }
 

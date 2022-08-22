@@ -10,6 +10,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#include <iostream>
+
 /*!
  * \class ScanCommand
  *
@@ -69,18 +71,18 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
     switch (format) {
     case OutputFormat::Csv:
         for (static bool firstTime = true; firstTime; firstTime = false) {
-            fputs(qPrintable(tr("uuid,address,name,major_class,minor_class,signal_strength\n")), stdout);
+            std::cout << qPrintable(tr("uuid,address,name,major_class,minor_class,signal_strength\n"));
         }
-        fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n").arg(info.deviceUuid().toString(),
+        std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n").arg(info.deviceUuid().toString(),
             info.address().toString(), escapeCsvField(info.name()), toString(info.majorDeviceClass()),
-            toString(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi())), stdout);
+            toString(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi()));
         break;
     case OutputFormat::Json:
-        fputs(QJsonDocument(toJson(info)).toJson(), stdout);
+        std::cout << QJsonDocument(toJson(info)).toJson().toStdString();
         break;
     case OutputFormat::Text:
-        fputs(qPrintable(tr("%1 %2 %3 %4\n").arg(info.deviceUuid().toString(),
-            info.address().toString(), info.name()).arg(info.rssi())), stdout);
+        std::cout << qPrintable(tr("%1 %2 %3 %4\n").arg(info.deviceUuid().toString(),
+            info.address().toString(), info.name()).arg(info.rssi()));
         break;
     }
 }

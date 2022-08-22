@@ -8,6 +8,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#include <iostream>
+
 /*!
  * \class DsoCommand
  *
@@ -301,21 +303,21 @@ void DsoCommand::outputSamples(const DsoService::Samples &samples)
         switch (format) {
         case OutputFormat::Csv:
             for (static bool firstTime = true; firstTime; firstTime = false) {
-                fputs(qPrintable(tr("sample_number,value,unit,range\n")), stdout);
+                std::cout << qPrintable(tr("sample_number,value,unit,range\n"));
             }
-            fputs(qPrintable(QString::fromLatin1("%1,%2,%3,%4\n").arg(sampleNumber).arg(value)
-                .arg(unit, range)), stdout);
+            std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4\n")
+                .arg(sampleNumber).arg(value).arg(unit, range));
             break;
         case OutputFormat::Json:
-            fputs(QJsonDocument(QJsonObject{
+            std::cout << QJsonDocument(QJsonObject{
                     { QLatin1String("value"),  value },
                     { QLatin1String("unit"),   unit },
                     { QLatin1String("range"),  range },
                     { QLatin1String("mode"),   DsoService::toString(metadata.mode) },
-                }).toJson(), stdout);
+                }).toJson().toStdString();
             break;
         case OutputFormat::Text:
-            fputs(qPrintable(tr("%1 %2 %3\n").arg(sampleNumber).arg(value).arg(unit)), stdout);
+            std::cout << qPrintable(tr("%1 %2 %3\n").arg(sampleNumber).arg(value).arg(unit));
             break;
         }
         --samplesToGo;

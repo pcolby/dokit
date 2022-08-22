@@ -6,6 +6,8 @@
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/statusservice.h>
 
+#include <iostream>
+
 /*!
  * \class FlashLedCommand
  *
@@ -85,13 +87,13 @@ void FlashLedCommand::deviceLedFlashed()
 {
     switch (format) {
     case OutputFormat::Csv:
-        fputs(qPrintable(tr("flash_led_result\nsuccess\n")), stdout);
+        std::cout << qPrintable(tr("flash_led_result\nsuccess\n"));
         break;
     case OutputFormat::Json:
-        fputs(qPrintable(QLatin1String("true\n")), stdout);
+        std::cout << qPrintable(QLatin1String("true\n"));
         break;
     case OutputFormat::Text:
-        fputs(qPrintable(tr("Done.\n")), stdout);
+        std::cout << qPrintable(tr("Done.\n"));
         break;
     }
     disconnect(); // Will exit the application once disconnected.
