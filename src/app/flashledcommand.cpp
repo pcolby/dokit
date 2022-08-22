@@ -96,5 +96,5 @@ void FlashLedCommand::deviceLedFlashed()
         std::cout << qPrintable(tr("Done.\n"));
         break;
     }
-    disconnect(); // Will exit the application once disconnected.
+    if (device) disconnect(); // Will exit the application once disconnected.
 }

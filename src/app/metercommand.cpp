@@ -388,6 +388,6 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     }
 
     if ((samplesToGo > 0) && (--samplesToGo == 0)) {
-        disconnect(); // Will exit the application once disconnected.
+        if (device) disconnect(); // Will exit the application once disconnected.
     }
 }

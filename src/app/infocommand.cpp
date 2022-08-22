@@ -126,5 +126,5 @@ void InfoCommand::serviceDetailsDiscovered()
         std::cout << qPrintable(tr("Software revision: %1\n").arg(service->softwareRevision()));
         break;
     }
-    disconnect(); // Will exit the application once disconnected.
+    if (device) disconnect(); // Will exit the application once disconnected.
 }
