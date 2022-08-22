@@ -79,14 +79,16 @@ enum class Command {
     Calibrate
 };
 
-void showCliError(const QString &errorText) {
+void showCliError(const QString &errorText)
+{
     // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
     const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
         + errorText + QLatin1Char('\n');
     std::cerr << qPrintable(message);
 }
 
-Command getCliCommand(const QStringList &posArguments) {
+Command getCliCommand(const QStringList &posArguments)
+{
     if (posArguments.isEmpty()) {
         return Command::None;
     }

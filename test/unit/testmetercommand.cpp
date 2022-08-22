@@ -26,7 +26,8 @@ public:
     }
 };
 
-void TestMeterCommand::requiredOptions() {
+void TestMeterCommand::requiredOptions()
+{
     MeterCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -35,7 +36,8 @@ void TestMeterCommand::requiredOptions() {
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
-void TestMeterCommand::supportedOptions() {
+void TestMeterCommand::supportedOptions()
+{
     MeterCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -250,7 +252,8 @@ void TestMeterCommand::processOptions_data()
         << QStringList{ QStringLiteral("Invalid samples value: -123") };
 }
 
-void TestMeterCommand::processOptions() {
+void TestMeterCommand::processOptions()
+{
     QFETCH(QStringList, arguments);
     QFETCH(MultimeterService::Settings, expected);
     QFETCH(int, expectedSamples);
@@ -273,11 +276,13 @@ void TestMeterCommand::processOptions() {
     QCOMPARE(command.samplesToGo,             expectedSamples);
 }
 
-void TestMeterCommand::getService() {
+void TestMeterCommand::getService()
+{
     // Unable to safely invoke MeterCommand::getService() without a valid Bluetooth device.
 }
 
-void TestMeterCommand::serviceDetailsDiscovered() {
+void TestMeterCommand::serviceDetailsDiscovered()
+{
     // Unable to safely invoke MeterCommand::serviceDetailsDiscovered() without a valid service.
 }
 
@@ -523,11 +528,13 @@ void TestMeterCommand::lowestVoltageRange()
     QCOMPARE(MeterCommand::lowestVoltageRange(desiredMax), expected);
 }
 
-void TestMeterCommand::settingsWritten() {
+void TestMeterCommand::settingsWritten()
+{
     // Unable to safely invoke MeterCommand::settingsWritten() without a valid Bluetooth service.
 }
 
-void TestMeterCommand::outputReading() {
+void TestMeterCommand::outputReading()
+{
     /// \todo Verify the output format.
 }
 

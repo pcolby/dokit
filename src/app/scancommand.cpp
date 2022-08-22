@@ -112,7 +112,8 @@ void ScanCommand::deviceDiscoveryFinished()
 /*!
  * Returns \a info as a JSON object.
  */
-QJsonObject ScanCommand::toJson(const QBluetoothDeviceInfo &info) {
+QJsonObject ScanCommand::toJson(const QBluetoothDeviceInfo &info)
+{
     if (!info.isValid()) {
         return QJsonObject();
     }

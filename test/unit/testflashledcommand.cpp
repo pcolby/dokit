@@ -19,7 +19,8 @@ public:
     }
 };
 
-void TestFlashLedCommand::requiredOptions() {
+void TestFlashLedCommand::requiredOptions()
+{
     FlashLedCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -27,7 +28,8 @@ void TestFlashLedCommand::requiredOptions() {
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
-void TestFlashLedCommand::supportedOptions() {
+void TestFlashLedCommand::supportedOptions()
+{
     FlashLedCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -35,21 +37,25 @@ void TestFlashLedCommand::supportedOptions() {
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
-void TestFlashLedCommand::processOptions() {
+void TestFlashLedCommand::processOptions()
+{
     FlashLedCommand command(this);
     QCommandLineParser parser;
     QCOMPARE(command.processOptions(parser), QStringList());
 }
 
-void TestFlashLedCommand::getService() {
+void TestFlashLedCommand::getService()
+{
     // Unable to safely invoke FlashLedCommand::getService() without a valid Bluetooth device.
 }
 
-void TestFlashLedCommand::serviceDetailsDiscovered() {
+void TestFlashLedCommand::serviceDetailsDiscovered()
+{
     // Unable to safely invoke FlashLedCommand::serviceDetailsDiscovered() without a valid service.
 }
 
-void TestFlashLedCommand::deviceLedFlashed() {
+void TestFlashLedCommand::deviceLedFlashed()
+{
     /// \todo Verify the output format.
 }
 

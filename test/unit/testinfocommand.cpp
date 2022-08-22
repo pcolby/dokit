@@ -19,7 +19,8 @@ public:
     }
 };
 
-void TestInfoCommand::requiredOptions() {
+void TestInfoCommand::requiredOptions()
+{
     InfoCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -27,7 +28,8 @@ void TestInfoCommand::requiredOptions() {
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
-void TestInfoCommand::supportedOptions() {
+void TestInfoCommand::supportedOptions()
+{
     InfoCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -35,17 +37,20 @@ void TestInfoCommand::supportedOptions() {
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
-void TestInfoCommand::processOptions() {
+void TestInfoCommand::processOptions()
+{
     InfoCommand command(this);
     QCommandLineParser parser;
     QCOMPARE(command.processOptions(parser), QStringList());
 }
 
-void TestInfoCommand::getService() {
+void TestInfoCommand::getService()
+{
     // Unable to safely invoke InfoCommand::getService() without a valid Bluetooth device.
 }
 
-void TestInfoCommand::serviceDetailsDiscovered() {
+void TestInfoCommand::serviceDetailsDiscovered()
+{
     // Unable to safely invoke InfoCommand::serviceDetailsDiscovered() without a valid service.
 }
 

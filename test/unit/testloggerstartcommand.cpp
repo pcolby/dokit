@@ -25,7 +25,8 @@ public:
     }
 };
 
-void TestLoggerStartCommand::requiredOptions() {
+void TestLoggerStartCommand::requiredOptions()
+{
     LoggerStartCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -34,7 +35,8 @@ void TestLoggerStartCommand::requiredOptions() {
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
-void TestLoggerStartCommand::supportedOptions() {
+void TestLoggerStartCommand::supportedOptions()
+{
     LoggerStartCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -249,7 +251,8 @@ void TestLoggerStartCommand::processOptions_data()
         << QStringList{ QStringLiteral("Invalid timestamp value: -123") };
 }
 
-void TestLoggerStartCommand::processOptions() {
+void TestLoggerStartCommand::processOptions()
+{
     QFETCH(QStringList, arguments);
     QFETCH(DataLoggerService::Settings, expected);
     QFETCH(bool, expectNowish);
@@ -283,11 +286,13 @@ void TestLoggerStartCommand::processOptions() {
     }
 }
 
-void TestLoggerStartCommand::getService() {
+void TestLoggerStartCommand::getService()
+{
     // Unable to safely invoke LoggerStartCommand::getService() without a valid Bluetooth device.
 }
 
-void TestLoggerStartCommand::serviceDetailsDiscovered() {
+void TestLoggerStartCommand::serviceDetailsDiscovered()
+{
     // Unable to safely invoke LoggerStartCommand::serviceDetailsDiscovered() without a valid service.
 }
 
@@ -424,7 +429,8 @@ void TestLoggerStartCommand::lowestVoltageRange()
     QCOMPARE(LoggerStartCommand::lowestVoltageRange(desiredMax), expected);
 }
 
-void TestLoggerStartCommand::settingsWritten() {
+void TestLoggerStartCommand::settingsWritten()
+{
     /// \todo Verify the output format.
 }
 

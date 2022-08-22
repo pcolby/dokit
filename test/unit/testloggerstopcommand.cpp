@@ -5,15 +5,18 @@
 
 #include "loggerstopcommand.h"
 
-void TestLoggerStopCommand::getService() {
+void TestLoggerStopCommand::getService()
+{
     // Unable to safely invoke LoggerStopCommand::getService() without a valid Bluetooth device.
 }
 
-void TestLoggerStopCommand::serviceDetailsDiscovered() {
+void TestLoggerStopCommand::serviceDetailsDiscovered()
+{
     // Unable to safely invoke LoggerStopCommand::serviceDetailsDiscovered() without a valid service.
 }
 
-void TestLoggerStopCommand::settingsWritten() {
+void TestLoggerStopCommand::settingsWritten()
+{
     /// \todo Verify the output format.
 }
 

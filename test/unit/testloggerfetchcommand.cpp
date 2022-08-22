@@ -5,15 +5,18 @@
 
 #include "loggerfetchcommand.h"
 
-void TestLoggerFetchCommand::getService() {
+void TestLoggerFetchCommand::getService()
+{
     // Unable to safely invoke LoggerFetchCommand::getService() without a valid Bluetooth device.
 }
 
-void TestLoggerFetchCommand::serviceDetailsDiscovered() {
+void TestLoggerFetchCommand::serviceDetailsDiscovered()
+{
     // Unable to safely invoke LoggerFetchCommand::serviceDetailsDiscovered() without a valid service.
 }
 
-void TestLoggerFetchCommand::metadataRead() {
+void TestLoggerFetchCommand::metadataRead()
+{
     const DataLoggerService::Metadata metadata{
         DataLoggerService::LoggerStatus::Sampling,
         0.123f,
@@ -35,7 +38,8 @@ void TestLoggerFetchCommand::metadataRead() {
     QCOMPARE(command.timestamp,                (quint64)metadata.timestamp * (quint64)1000);
 }
 
-void TestLoggerFetchCommand::outputSamples() {
+void TestLoggerFetchCommand::outputSamples()
+{
     /// \todo Verify the output format.
 }
 

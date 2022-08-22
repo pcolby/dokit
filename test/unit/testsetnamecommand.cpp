@@ -19,7 +19,8 @@ public:
     }
 };
 
-void TestSetNameCommand::requiredOptions() {
+void TestSetNameCommand::requiredOptions()
+{
     SetNameCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -28,7 +29,8 @@ void TestSetNameCommand::requiredOptions() {
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
-void TestSetNameCommand::supportedOptions() {
+void TestSetNameCommand::supportedOptions()
+{
     SetNameCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
@@ -36,7 +38,8 @@ void TestSetNameCommand::supportedOptions() {
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
-void TestSetNameCommand::processOptions_data() {
+void TestSetNameCommand::processOptions_data()
+{
     QTest::addColumn<QStringList>("arguments");
     QTest::addColumn<QString>("expected");
     QTest::addColumn<QStringList>("errors");
@@ -67,7 +70,8 @@ void TestSetNameCommand::processOptions_data() {
         << QStringList{ QStringLiteral("New name cannot exceed 11 characters.") };
 }
 
-void TestSetNameCommand::processOptions() {
+void TestSetNameCommand::processOptions()
+{
     QFETCH(QStringList, arguments);
     QFETCH(QString, expected);
     QFETCH(QStringList, errors);
@@ -83,15 +87,18 @@ void TestSetNameCommand::processOptions() {
     QCOMPARE(command.newName, expected);
 }
 
-void TestSetNameCommand::getService() {
+void TestSetNameCommand::getService()
+{
     // Unable to safely invoke SetNameCommand::getService() without a valid Bluetooth device.
 }
 
-void TestSetNameCommand::serviceDetailsDiscovered() {
+void TestSetNameCommand::serviceDetailsDiscovered()
+{
     // Unable to safely invoke SetNameCommand::serviceDetailsDiscovered() without a valid service.
 }
 
-void TestSetNameCommand::deviceNameWritten() {
+void TestSetNameCommand::deviceNameWritten()
+{
     /// \todo Verify the output format.
 }
 
