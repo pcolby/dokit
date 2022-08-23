@@ -13,7 +13,7 @@
 class OutputStreamCapture
 {
 public:
-    OutputStreamCapture(std::ostream * const stream) : stream(stream)
+    explicit OutputStreamCapture(std::ostream * const stream) : stream(stream)
     {
         originalBuffer = stream->rdbuf(newBuffer.rdbuf());
     }
