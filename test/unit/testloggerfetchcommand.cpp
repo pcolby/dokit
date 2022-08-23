@@ -102,7 +102,11 @@ void TestLoggerFetchCommand::outputSamples()
     for (const DataLoggerService::Samples &samples: samplesList) {
         command.outputSamples(samples);
     }
-    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
+    QByteArray output = QByteArray::fromStdString(capture.data());
+#if defined(Q_OS_WIN)
+    output.replace("\r\n", "\n");
+#endif
+    QCOMPARE(output, expected);
 }
 
 void TestLoggerFetchCommand::tr()

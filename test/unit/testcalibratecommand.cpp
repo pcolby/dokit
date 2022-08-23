@@ -130,7 +130,11 @@ void TestCalibrateCommand::temperatureCalibrated()
     CalibrateCommand command(nullptr);
     command.format = format;
     command.temperatureCalibrated();
-    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
+    QByteArray output = QByteArray::fromStdString(capture.data());
+#if defined(Q_OS_WIN)
+    output.replace("\r\n", "\n");
+#endif
+    QCOMPARE(output, expected);
 }
 
 void TestCalibrateCommand::tr()

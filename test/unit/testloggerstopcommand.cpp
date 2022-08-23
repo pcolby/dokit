@@ -36,7 +36,11 @@ void TestLoggerStopCommand::settingsWritten()
     LoggerStopCommand command(nullptr);
     command.format = format;
     command.settingsWritten();
-    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
+    QByteArray output = QByteArray::fromStdString(capture.data());
+#if defined(Q_OS_WIN)
+    output.replace("\r\n", "\n");
+#endif
+    QCOMPARE(output, expected);
 }
 
 void TestLoggerStopCommand::tr()

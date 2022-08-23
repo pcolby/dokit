@@ -608,7 +608,11 @@ void TestMeterCommand::outputReading()
     for (const MultimeterService::Reading &reading: readings) {
         command.outputReading(reading);
     }
-    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
+    QByteArray output = QByteArray::fromStdString(capture.data());
+#if defined(Q_OS_WIN)
+    output.replace("\r\n", "\n");
+#endif
+    QCOMPARE(output, expected);
 }
 
 void TestMeterCommand::tr()
