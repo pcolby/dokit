@@ -24,6 +24,8 @@ protected slots:
     void deviceDiscoveryFinished() override;
 
 private:
+    bool showCsvHeader; ///< Whether or not to show a header as the first line of CSV output.
+
     static QJsonObject toJson(const QBluetoothDeviceInfo &info);
     static QJsonArray  toJson(const QBluetoothDeviceInfo::CoreConfigurations &configurations);
     static QJsonValue  toJson(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass);

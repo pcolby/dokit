@@ -27,6 +27,7 @@ private:
     DsoService::Settings settings; ///< Settings for the Pokit device's DSO mode.
     DsoService::Metadata metadata; ///< Most recent DSO metadata.
     qint32 samplesToGo; ///< Number of samples we're expecting in the current window.
+    bool showCsvHeader; ///< Whether or not to show a header as the first line of CSV output.
 
     static DsoService::Range lowestRange(const DsoService::Mode mode,
                                                 const quint32 desiredMax);

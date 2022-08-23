@@ -22,7 +22,7 @@
 /*!
  * Construct a new ScanCommand object with \a parent.
  */
-ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
+ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent), showCsvHeader(true)
 {
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceUpdated,
@@ -70,7 +70,7 @@ void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     switch (format) {
     case OutputFormat::Csv:
-        for (static bool firstTime = true; firstTime; firstTime = false) {
+        for (; showCsvHeader; showCsvHeader = false) {
             std::cout << qPrintable(tr("uuid,address,name,major_class,minor_class,signal_strength\n"));
         }
         std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n").arg(info.deviceUuid().toString(),

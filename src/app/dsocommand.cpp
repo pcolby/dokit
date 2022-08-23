@@ -22,7 +22,7 @@
 DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent),
     service(nullptr), settings{
         DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
-        DsoService::VoltageRange::_30V_to_60V, 1000*1000, 1000}
+        DsoService::VoltageRange::_30V_to_60V, 1000*1000, 1000}, showCsvHeader(true)
 {
 
 }
@@ -302,7 +302,7 @@ void DsoCommand::outputSamples(const DsoService::Samples &samples)
         const float value = sample * metadata.scale;
         switch (format) {
         case OutputFormat::Csv:
-            for (static bool firstTime = true; firstTime; firstTime = false) {
+            for (; showCsvHeader; showCsvHeader = false) {
                 std::cout << qPrintable(tr("sample_number,value,unit,range\n"));
             }
             std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4\n")

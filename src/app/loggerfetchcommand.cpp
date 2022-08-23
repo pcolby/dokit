@@ -21,7 +21,7 @@
  * Construct a new LoggerFetchCommand object with \a parent.
  */
 LoggerFetchCommand::LoggerFetchCommand(QObject * const parent)
-    : DeviceCommand(parent), service(nullptr)
+    : DeviceCommand(parent), service(nullptr), showCsvHeader(true)
 {
 
 }
@@ -100,7 +100,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
         const float value = sample * metadata.scale;
         switch (format) {
         case OutputFormat::Csv:
-            for (static bool firstTime = true; firstTime; firstTime = false) {
+            for (; showCsvHeader; showCsvHeader = false) {
                 std::cout << qPrintable(tr("timestamp,value,unit,range\n"));
             }
             std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4\n")

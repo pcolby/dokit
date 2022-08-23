@@ -24,7 +24,7 @@ MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent),
         MultimeterService::Mode::DcVoltage,
         MultimeterService::VoltageRange::AutoRange,
         1000
-    }, samplesToGo(-1)
+    }, samplesToGo(-1), showCsvHeader(true)
 {
 
 }
@@ -341,7 +341,7 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
 
     switch (format) {
     case OutputFormat::Csv:
-        for (static bool firstTime = true; firstTime; firstTime = false) {
+        for (; showCsvHeader; showCsvHeader = false) {
             std::cout << qPrintable(tr("mode,value,units,status,range_min_milli,range_max_milli\n"));
         }
         std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n")

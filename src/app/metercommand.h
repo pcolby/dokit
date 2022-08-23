@@ -26,6 +26,7 @@ private:
     MultimeterService * service; ///< Bluetooth service this command interracts with.
     MultimeterService::Settings settings; ///< Settings for the Pokit device's multimeter mode.
     int samplesToGo; ///< Number of samples to read, if specified on the CLI.
+    bool showCsvHeader; ///< Whether or not to show a header as the first line of CSV output.
 
     static MultimeterService::Range lowestRange(const MultimeterService::Mode mode, const quint32 desiredMax);
     static MultimeterService::CurrentRange lowestCurrentRange(const quint32 desiredMax);
