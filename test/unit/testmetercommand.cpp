@@ -2,14 +2,18 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testmetercommand.h"
+#include "outputstreamcapture.h"
+#include "testdata.h"
 
 #include "metercommand.h"
 
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(MultimeterService::Mode);
 Q_DECLARE_METATYPE(MultimeterService::VoltageRange);
 Q_DECLARE_METATYPE(MultimeterService::CurrentRange);
 Q_DECLARE_METATYPE(MultimeterService::ResistanceRange);
 Q_DECLARE_METATYPE(MultimeterService::Range);
+Q_DECLARE_METATYPE(MultimeterService::Reading);
 Q_DECLARE_METATYPE(MultimeterService::Settings);
 
 class MockDeviceCommand : public DeviceCommand
@@ -533,9 +537,78 @@ void TestMeterCommand::settingsWritten()
     // Unable to safely invoke MeterCommand::settingsWritten() without a valid Bluetooth service.
 }
 
+void TestMeterCommand::outputReading_data()
+{
+    QTest::addColumn<QList<MultimeterService::Reading>>("readings");
+    QTest::addColumn<AbstractCommand::OutputFormat>("format");
+
+    const QList<MultimeterService::Reading> readings{
+        { MultimeterService::MeterStatus::Ok, 0.0f, MultimeterService::Mode::Idle,
+              MultimeterService::VoltageRange::AutoRange },
+        { MultimeterService::MeterStatus::AutoRangeOn, 1.0f, MultimeterService::Mode::DcVoltage,
+              MultimeterService::VoltageRange::_300mV_to_2V },
+        { MultimeterService::MeterStatus::AutoRangeOff, -1.0f, MultimeterService::Mode::AcVoltage,
+              MultimeterService::VoltageRange::_300mV_to_2V },
+        { MultimeterService::MeterStatus::AutoRangeOn, 0.5f, MultimeterService::Mode::DcCurrent,
+              MultimeterService::CurrentRange::_30mA_to_150mA },
+        { MultimeterService::MeterStatus::AutoRangeOff, 0.1f, MultimeterService::Mode::AcCurrent,
+              MultimeterService::CurrentRange::_300mA_to_3A },
+        { MultimeterService::MeterStatus::AutoRangeOff, 123.4f, MultimeterService::Mode::Resistance,
+              MultimeterService::CurrentRange::_300mA_to_3A },
+        { MultimeterService::MeterStatus::AutoRangeOff, 576.89f, MultimeterService::Mode::Diode,
+              MultimeterService::CurrentRange::_300mA_to_3A },
+        { MultimeterService::MeterStatus::Continuity, 0.0f, MultimeterService::Mode::Continuity,
+              MultimeterService::CurrentRange::AutoRange },
+        { MultimeterService::MeterStatus::NoContinuity, 0.0f, MultimeterService::Mode::Continuity,
+              MultimeterService::CurrentRange::AutoRange },
+        { MultimeterService::MeterStatus::AutoRangeOff, 32.0f, MultimeterService::Mode::Temperature,
+              MultimeterService::CurrentRange::AutoRange },
+        /// \todo Pokit Pro supports capacitance too.
+        { MultimeterService::MeterStatus::Error, 0.0f, MultimeterService::Mode::Idle,
+              MultimeterService::VoltageRange::AutoRange },
+    };
+
+    #define QTPOKIT_ADD_TEST_ROW(name, readings) \
+        QTest::newRow(qPrintable(name + QStringLiteral(".csv"))) \
+            << readings << AbstractCommand::OutputFormat::Csv; \
+        QTest::newRow(qPrintable(name + QStringLiteral(".json"))) \
+            << readings << AbstractCommand::OutputFormat::Json; \
+        QTest::newRow(qPrintable(name + QStringLiteral(".txt"))) \
+            << readings << AbstractCommand::OutputFormat::Text
+
+    QTPOKIT_ADD_TEST_ROW(QStringLiteral("null"),
+                         QList<MultimeterService::Reading>{ MultimeterService::Reading() });
+
+    for (const MultimeterService::Reading &reading: readings) {
+        QString name = MultimeterService::toString(reading.mode)
+            .replace(QLatin1Char(' '), QLatin1Char('-'));
+        if ((reading.mode == MultimeterService::Mode::Continuity) &&
+            (!((quint8)reading.status & (quint8)MultimeterService::MeterStatus::Continuity))) {
+            name.prepend(QStringLiteral("No")); // ie NoContinuity.
+        }
+        if (reading.status == MultimeterService::MeterStatus::Error) {
+            name = QStringLiteral("Error");
+        }
+        QTPOKIT_ADD_TEST_ROW(name, QList<MultimeterService::Reading>{ reading });
+    }
+
+    QTPOKIT_ADD_TEST_ROW(QStringLiteral("all"), readings);
+    #undef QTPOKIT_ADD_TEST_ROW
+}
+
 void TestMeterCommand::outputReading()
 {
-    /// \todo Verify the output format.
+    QFETCH(QList<MultimeterService::Reading>, readings);
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    const OutputStreamCapture capture(&std::cout);
+    MeterCommand command(nullptr);
+    command.format = format;
+    for (const MultimeterService::Reading &reading: readings) {
+        command.outputReading(reading);
+    }
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestMeterCommand::tr()

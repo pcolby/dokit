@@ -2,14 +2,18 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testdsocommand.h"
+#include "outputstreamcapture.h"
+#include "testdata.h"
 
 #include "dsocommand.h"
 
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(DsoService::Mode);
 Q_DECLARE_METATYPE(DsoService::VoltageRange);
 Q_DECLARE_METATYPE(DsoService::CurrentRange);
 Q_DECLARE_METATYPE(DsoService::Range);
 Q_DECLARE_METATYPE(DsoService::Settings);
+Q_DECLARE_METATYPE(DsoService::Metadata);
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -509,9 +513,66 @@ void TestDsoCommand::metadataRead()
     QCOMPARE(command.samplesToGo,         (qint32)metadata.numberOfSamples);
 }
 
+void TestDsoCommand::outputSamples_data()
+{
+    QTest::addColumn<DsoService::Metadata>("metadata");
+    QTest::addColumn<QList<DsoService::Samples>>("samplesList");
+    QTest::addColumn<AbstractCommand::OutputFormat>("format");
+
+    const QList<DsoService::Metadata> metadatas{
+        { DsoService::DsoStatus::Sampling, 1.0f, DsoService::Mode::DcVoltage,
+                    DsoService::VoltageRange::_300mV_to_2V, 1000, 0, 1 },
+        { DsoService::DsoStatus::Done, -1.0f, DsoService::Mode::AcVoltage,
+                    DsoService::VoltageRange::_300mV_to_2V, 500, 0, 1000 },
+        { DsoService::DsoStatus::Error, 0.5f, DsoService::Mode::DcCurrent,
+                    DsoService::CurrentRange::_30mA_to_150mA, 100, 0, 1000000 },
+        { DsoService::DsoStatus::Sampling, 0.1f, DsoService::Mode::AcCurrent,
+                    DsoService::CurrentRange::_300mA_to_3A, 5000, 0, 1000000000 },
+    };
+
+    const QList<DsoService::Samples> samplesList{
+        {0},
+        {1,2,3,4,6,7,8,9,0},
+        {2,-32767,0,32767}
+    };
+
+    #define QTPOKIT_ADD_TEST_ROW(name, metadata, list) \
+        QTest::newRow(qPrintable(name + QStringLiteral(".csv"))) \
+            << metadata << list << AbstractCommand::OutputFormat::Csv; \
+        QTest::newRow(qPrintable(name + QStringLiteral(".json"))) \
+            << metadata << list << AbstractCommand::OutputFormat::Json; \
+        QTest::newRow(qPrintable(name + QStringLiteral(".txt"))) \
+            << metadata << list << AbstractCommand::OutputFormat::Text
+
+    for (const DsoService::Metadata &metadata: metadatas) {
+        const QString namePrefix = DsoService::toString(metadata.mode)
+            .replace(QLatin1Char(' '), QLatin1Char('-'));
+        QTPOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-null"),
+                             metadata, QList<DsoService::Samples>{ });
+        for (const DsoService::Samples &samples: samplesList) {
+            QTPOKIT_ADD_TEST_ROW(namePrefix + QString::number(samples.front()), metadata,
+                                 QList<DsoService::Samples>{ samples });
+        }
+        QTPOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-all"), metadata, samplesList);
+    }
+    #undef QTPOKIT_ADD_TEST_ROW
+}
+
 void TestDsoCommand::outputSamples()
 {
-    /// \todo Verify the output format.
+    QFETCH(DsoService::Metadata, metadata);
+    QFETCH(QList<DsoService::Samples>, samplesList);
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    const OutputStreamCapture capture(&std::cout);
+    DsoCommand command(nullptr);
+    command.metadataRead(metadata);
+    command.format = format;
+    for (const DsoService::Samples &samples: samplesList) {
+        command.outputSamples(samples);
+    }
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestDsoCommand::tr()

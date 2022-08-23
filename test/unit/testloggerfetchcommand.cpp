@@ -2,8 +2,13 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testloggerfetchcommand.h"
+#include "outputstreamcapture.h"
+#include "testdata.h"
 
 #include "loggerfetchcommand.h"
+
+Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
+Q_DECLARE_METATYPE(DataLoggerService::Metadata)
 
 void TestLoggerFetchCommand::getService()
 {
@@ -38,9 +43,66 @@ void TestLoggerFetchCommand::metadataRead()
     QCOMPARE(command.timestamp,                (quint64)metadata.timestamp * (quint64)1000);
 }
 
+void TestLoggerFetchCommand::outputSamples_data()
+{
+    QTest::addColumn<DataLoggerService::Metadata>("metadata");
+    QTest::addColumn<QList<DataLoggerService::Samples>>("samplesList");
+    QTest::addColumn<AbstractCommand::OutputFormat>("format");
+
+    const QList<DataLoggerService::Metadata> metadatas{
+        { DataLoggerService::LoggerStatus::Sampling, 1.0f, DataLoggerService::Mode::DcVoltage,
+                    DataLoggerService::VoltageRange::_300mV_to_2V, 1000, 0, 1661235278 },
+        { DataLoggerService::LoggerStatus::Done, -1.0f, DataLoggerService::Mode::AcVoltage,
+                    DataLoggerService::VoltageRange::_300mV_to_2V, 500, 0, 1661235439 },
+        { DataLoggerService::LoggerStatus::Error, 0.5f, DataLoggerService::Mode::DcCurrent,
+                    DataLoggerService::CurrentRange::_30mA_to_150mA, 100, 0, 0 },
+        { DataLoggerService::LoggerStatus::BufferFull, 0.1f, DataLoggerService::Mode::AcCurrent,
+                    DataLoggerService::CurrentRange::_300mA_to_3A, 5000, 0, 1661235439 },
+    };
+
+    const QList<DataLoggerService::Samples> samplesList{
+        {0},
+        {1,2,3,4,6,7,8,9,0},
+        {2,-32767,0,32767}
+    };
+
+    #define QTPOKIT_ADD_TEST_ROW(name, metadata, list) \
+        QTest::newRow(qPrintable(name + QStringLiteral(".csv"))) \
+            << metadata << list << AbstractCommand::OutputFormat::Csv; \
+        QTest::newRow(qPrintable(name + QStringLiteral(".json"))) \
+            << metadata << list << AbstractCommand::OutputFormat::Json; \
+        QTest::newRow(qPrintable(name + QStringLiteral(".txt"))) \
+            << metadata << list << AbstractCommand::OutputFormat::Text
+
+    for (const DataLoggerService::Metadata &metadata: metadatas) {
+        const QString namePrefix = DataLoggerService::toString(metadata.mode)
+            .replace(QLatin1Char(' '), QLatin1Char('-'));
+        QTPOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-null"),
+                             metadata, QList<DataLoggerService::Samples>{ });
+        for (const DataLoggerService::Samples &samples: samplesList) {
+            QTPOKIT_ADD_TEST_ROW(namePrefix + QString::number(samples.front()), metadata,
+                                 QList<DataLoggerService::Samples>{ samples });
+        }
+        QTPOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-all"), metadata, samplesList);
+    }
+    #undef QTPOKIT_ADD_TEST_ROW
+}
+
 void TestLoggerFetchCommand::outputSamples()
 {
-    /// \todo Verify the output format.
+    QFETCH(DataLoggerService::Metadata, metadata);
+    QFETCH(QList<DataLoggerService::Samples>, samplesList);
+    QFETCH(AbstractCommand::OutputFormat, format);
+    LOADTESTDATA(expected);
+
+    const OutputStreamCapture capture(&std::cout);
+    LoggerFetchCommand command(nullptr);
+    command.metadataRead(metadata);
+    command.format = format;
+    for (const DataLoggerService::Samples &samples: samplesList) {
+        command.outputSamples(samples);
+    }
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestLoggerFetchCommand::tr()

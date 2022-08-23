@@ -30,8 +30,6 @@ inline QByteArray loadTestData(const char * const testClassName)
     return data;
 }
 
-#define LOADTESTDATA(name) \
-    const QByteArray name = loadTestData(metaObject()->className()); \
-    QVERIFY(!name.isEmpty())
+#define LOADTESTDATA(name) const QByteArray name = loadTestData(metaObject()->className());
 
 #endif // QTPOKIT_TESTS_TESTDATA_H

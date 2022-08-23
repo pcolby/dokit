@@ -32,6 +32,7 @@ private slots:
 
     void metadataRead();
 
+    void outputSamples_data();
     void outputSamples();
 
     void tr();

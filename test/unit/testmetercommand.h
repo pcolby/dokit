@@ -33,6 +33,7 @@ private slots:
 
     void settingsWritten();
 
+    void outputReading_data();
     void outputReading();
 
     void tr();
