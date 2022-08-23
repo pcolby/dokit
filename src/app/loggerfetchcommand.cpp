@@ -70,7 +70,7 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadat
     qCDebug(lc) << "updateInterval:" << (int)metadata.updateInterval;
     qCDebug(lc) << "numberOfSamples:" << metadata.numberOfSamples;
     qCDebug(lc) << "timestamp:" << metadata.timestamp
-                                << QDateTime::fromSecsSinceEpoch(metadata.timestamp);
+                                << QDateTime::fromSecsSinceEpoch(metadata.timestamp, Qt::UTC);
     this->metadata = metadata;
     this->samplesToGo = metadata.numberOfSamples;
     this->timestamp = (quint64)metadata.timestamp * (quint64)1000;
@@ -96,7 +96,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
 
     for (const qint16 &sample: samples) {
         const QString timeString = (metadata.timestamp == 0) ? QString::number(timestamp)
-            : QDateTime::fromMSecsSinceEpoch(timestamp).toString(Qt::ISODateWithMs);
+            : QDateTime::fromMSecsSinceEpoch(timestamp, Qt::UTC).toString(Qt::ISODateWithMs);
         const float value = sample * metadata.scale;
         switch (format) {
         case OutputFormat::Csv:
