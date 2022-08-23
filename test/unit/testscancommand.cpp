@@ -132,7 +132,7 @@ void TestScanCommand::deviceUpdated_data()
 void TestScanCommand::deviceUpdated()
 {
 #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    QSKIP("Not applicable before Qt version 5.12.")
+    QSKIP("Not applicable before Qt version 5.12.");
 #else
     QFETCH(QList<QBluetoothDeviceInfo>, infos);
     QFETCH(AbstractCommand::OutputFormat, format);
