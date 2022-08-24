@@ -121,11 +121,7 @@ void TestScanCommand::deviceDiscovered()
     for (const QBluetoothDeviceInfo &info: infos) {
         command.deviceDiscovered(info);
     }
-    QByteArray output = QByteArray::fromStdString(capture.data());
-#if defined(Q_OS_WIN)
-    output.replace("\r\n", "\n");
-#endif
-    QCOMPARE(output, expected);
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestScanCommand::deviceUpdated_data()
@@ -148,11 +144,7 @@ void TestScanCommand::deviceUpdated()
     for (const QBluetoothDeviceInfo &info: infos) {
         command.deviceUpdated(info, QBluetoothDeviceInfo::Fields());
     }
-    QByteArray output = QByteArray::fromStdString(capture.data());
-#if defined(Q_OS_WIN)
-    output.replace("\r\n", "\n");
-#endif
-    QCOMPARE(output, expected);
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 #endif
 }
 

@@ -572,11 +572,7 @@ void TestDsoCommand::outputSamples()
     for (const DsoService::Samples &samples: samplesList) {
         command.outputSamples(samples);
     }
-    QByteArray output = QByteArray::fromStdString(capture.data());
-#if defined(Q_OS_WIN)
-    output.replace("\r\n", "\n");
-#endif
-    QCOMPARE(output, expected);
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestDsoCommand::tr()
