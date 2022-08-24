@@ -101,13 +101,13 @@ void CalibrateCommand::temperatureCalibrated()
 {
     switch (format) {
     case OutputFormat::Csv:
-        std::cout << qPrintable(tr("calibration_result\nsuccess\n"));
+        std::cout << qUtf8Printable(tr("calibration_result\nsuccess\n"));
         break;
     case OutputFormat::Json:
-        std::cout << qPrintable(QLatin1String("true\n"));
+        std::cout << qUtf8Printable(QLatin1String("true\n"));
         break;
     case OutputFormat::Text:
-        std::cout << qPrintable(tr("Done.\n"));
+        std::cout << qUtf8Printable(tr("Done.\n"));
         break;
     }
     if (device) disconnect(); // Will exit the application once disconnected.

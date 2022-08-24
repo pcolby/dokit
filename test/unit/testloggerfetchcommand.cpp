@@ -67,11 +67,11 @@ void TestLoggerFetchCommand::outputSamples_data()
     };
 
     #define QTPOKIT_ADD_TEST_ROW(name, metadata, list) \
-        QTest::newRow(qPrintable(name + QStringLiteral(".csv"))) \
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv"))) \
             << metadata << list << AbstractCommand::OutputFormat::Csv; \
-        QTest::newRow(qPrintable(name + QStringLiteral(".json"))) \
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) \
             << metadata << list << AbstractCommand::OutputFormat::Json; \
-        QTest::newRow(qPrintable(name + QStringLiteral(".txt"))) \
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".txt"))) \
             << metadata << list << AbstractCommand::OutputFormat::Text
 
     for (const DataLoggerService::Metadata &metadata: metadatas) {

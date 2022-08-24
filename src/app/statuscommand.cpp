@@ -88,11 +88,11 @@ void StatusCommand::serviceDetailsDiscovered()
 
     switch (format) {
     case OutputFormat::Csv:
-        std::cout << qPrintable(tr("device_name,device_status,firmware_version,maximum_voltage,"
+        std::cout << qUtf8Printable(tr("device_name,device_status,firmware_version,maximum_voltage,"
                             "maximum_current,maximum_resistance,maximum_sampling_rate,"
                             "sampling_buffer_size,capability_mask,mac_address,battery_voltage,"
                             "battery_status\n"));
-        std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12\n")
+        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12\n")
             .arg(escapeCsvField(deviceName),statusLabel.toLower(),chrs.firmwareVersion.toString())
             .arg(chrs.maximumVoltage).arg(chrs.maximumCurrent).arg(chrs.maximumResistance)
             .arg(chrs.maximumSamplingRate).arg(chrs.samplingBufferSize).arg(chrs.capabilityMask)
@@ -127,19 +127,19 @@ void StatusCommand::serviceDetailsDiscovered()
             }).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
-        std::cout << qPrintable(tr("Device name:           %1\n").arg(deviceName));
-        std::cout << qPrintable(tr("Firmware version:      %1\n").arg(chrs.firmwareVersion.toString()));
-        std::cout << qPrintable(tr("Maximum voltage:       %1\n").arg(chrs.maximumVoltage));
-        std::cout << qPrintable(tr("Maximum current:       %1\n").arg(chrs.maximumCurrent));
-        std::cout << qPrintable(tr("Maximum resistance:    %1\n").arg(chrs.maximumResistance));
-        std::cout << qPrintable(tr("Maximum sampling rate: %1\n").arg(chrs.maximumSamplingRate));
-        std::cout << qPrintable(tr("Sampling buffer size:  %1\n").arg(chrs.samplingBufferSize));
-        std::cout << qPrintable(tr("Capability mask:       %1\n").arg(chrs.capabilityMask));
-        std::cout << qPrintable(tr("MAC address:           %1\n").arg(chrs.macAddress.toString()));
-        std::cout << qPrintable(tr("Device status:         %1 (%2)\n").arg(statusLabel)
+        std::cout << qUtf8Printable(tr("Device name:           %1\n").arg(deviceName));
+        std::cout << qUtf8Printable(tr("Firmware version:      %1\n").arg(chrs.firmwareVersion.toString()));
+        std::cout << qUtf8Printable(tr("Maximum voltage:       %1\n").arg(chrs.maximumVoltage));
+        std::cout << qUtf8Printable(tr("Maximum current:       %1\n").arg(chrs.maximumCurrent));
+        std::cout << qUtf8Printable(tr("Maximum resistance:    %1\n").arg(chrs.maximumResistance));
+        std::cout << qUtf8Printable(tr("Maximum sampling rate: %1\n").arg(chrs.maximumSamplingRate));
+        std::cout << qUtf8Printable(tr("Sampling buffer size:  %1\n").arg(chrs.samplingBufferSize));
+        std::cout << qUtf8Printable(tr("Capability mask:       %1\n").arg(chrs.capabilityMask));
+        std::cout << qUtf8Printable(tr("MAC address:           %1\n").arg(chrs.macAddress.toString()));
+        std::cout << qUtf8Printable(tr("Device status:         %1 (%2)\n").arg(statusLabel)
             .arg((quint8)status.deviceStatus));
-        std::cout << qPrintable(tr("Battery voltage:       %1\n").arg(status.batteryVoltage));
-        std::cout << qPrintable(tr("Battery status:        %1 (%2)\n")
+        std::cout << qUtf8Printable(tr("Battery voltage:       %1\n").arg(status.batteryVoltage));
+        std::cout << qUtf8Printable(tr("Battery status:        %1 (%2)\n")
             .arg(batteryLabel.isNull() ? QString::fromLatin1("N/A") : batteryLabel)
             .arg((quint8)status.batteryStatus));
         break;

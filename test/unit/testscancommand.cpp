@@ -95,9 +95,9 @@ void TestScanCommand::deviceDiscovered_data()
     };
 
     #define QTPOKIT_ADD_TEST_ROW(name, list) \
-        QTest::newRow(qPrintable(name + QStringLiteral(".csv")))  << list << AbstractCommand::OutputFormat::Csv; \
-        QTest::newRow(qPrintable(name + QStringLiteral(".json"))) << list << AbstractCommand::OutputFormat::Json; \
-        QTest::newRow(qPrintable(name + QStringLiteral(".txt")))  << list << AbstractCommand::OutputFormat::Text
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv")))  << list << AbstractCommand::OutputFormat::Csv; \
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) << list << AbstractCommand::OutputFormat::Json; \
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".txt")))  << list << AbstractCommand::OutputFormat::Text
 
     QTPOKIT_ADD_TEST_ROW(QStringLiteral("null"), QList<QBluetoothDeviceInfo>{ QBluetoothDeviceInfo() });
 

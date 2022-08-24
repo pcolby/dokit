@@ -16,10 +16,10 @@ inline void loadTestData(const char * const testClassName, QByteArray &output)
         QString::fromUtf8(QTest::currentTestFunction()), QString::fromUtf8(QTest::currentDataTag()));
     const QString dataPathName = QFINDTESTDATA(dataBasePath);
     QVERIFY2(!dataPathName.isEmpty(),
-             qPrintable(QStringLiteral("failed to locate test data: %1").arg(dataBasePath)));
+             qUtf8Printable(QStringLiteral("failed to locate test data: %1").arg(dataBasePath)));
     QFile dataFile(dataPathName);
     QVERIFY2(dataFile.open(QFile::ReadOnly),
-             qPrintable(QStringLiteral("open %1: %2").arg(dataFile.fileName(), dataFile.errorString())));
+             qUtf8Printable(QStringLiteral("open %1: %2").arg(dataFile.fileName(), dataFile.errorString())));
     output = dataFile.readAll();
 }
 

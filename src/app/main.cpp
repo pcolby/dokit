@@ -84,7 +84,7 @@ void showCliError(const QString &errorText)
     // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
     const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
         + errorText + QLatin1Char('\n');
-    std::cerr << qPrintable(message);
+    std::cerr << qUtf8Printable(message);
 }
 
 Command getCliCommand(const QStringList &posArguments)
@@ -239,7 +239,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     if (parser.isSet(QStringLiteral("help"))) {
         const QString commandString = (command == Command::None) ? QStringLiteral("<command>")
                 : parser.positionalArguments().constFirst();
-        std::cout << qPrintable(parser.helpText()
+        std::cout << qUtf8Printable(parser.helpText()
             .replace(QStringLiteral("[options]"), commandString + QStringLiteral(" [options]"))
             .replace(QStringLiteral("Arguments:"),  QStringLiteral("Command:"))
         );

@@ -80,9 +80,9 @@ void InfoCommand::serviceDetailsDiscovered()
     const QBluetoothUuid deviceUuid = device->controller()->remoteDeviceUuid();
     switch (format) {
     case OutputFormat::Csv:
-        std::cout << qPrintable(tr("device_name,device_address,device_uuid,manufacturer_name,model_number,"
+        std::cout << qUtf8Printable(tr("device_name,device_address,device_uuid,manufacturer_name,model_number,"
                             "hardware_revision,firmware_revision,software_revision\n"));
-        std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8\n").arg(
+        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8\n").arg(
             escapeCsvField(deviceName),
             (deviceAddress.isNull()) ? QString() : deviceAddress.toString(),
             (deviceUuid.isNull()) ? QString() : deviceUuid.toString(),
@@ -111,19 +111,19 @@ void InfoCommand::serviceDetailsDiscovered()
     }   break;
     case OutputFormat::Text:
         if (!deviceName.isEmpty()) {
-            std::cout << qPrintable(tr("Device name:       %1\n").arg(deviceName));
+            std::cout << qUtf8Printable(tr("Device name:       %1\n").arg(deviceName));
         }
         if (!deviceAddress.isNull()) {
-            std::cout << qPrintable(tr("Device addres:     %1\n").arg(deviceAddress.toString()));
+            std::cout << qUtf8Printable(tr("Device addres:     %1\n").arg(deviceAddress.toString()));
         }
         if (!deviceUuid.isNull()) {
-            std::cout << qPrintable(tr("Device UUID:       %1\n").arg(deviceUuid.toString()));
+            std::cout << qUtf8Printable(tr("Device UUID:       %1\n").arg(deviceUuid.toString()));
         }
-        std::cout << qPrintable(tr("Manufacturer name: %1\n").arg(service->manufacturer()));
-        std::cout << qPrintable(tr("Model number:      %1\n").arg(service->modelNumber()));
-        std::cout << qPrintable(tr("Hardware revision: %1\n").arg(service->hardwareRevision()));
-        std::cout << qPrintable(tr("Firmware revision: %1\n").arg(service->firmwareRevision()));
-        std::cout << qPrintable(tr("Software revision: %1\n").arg(service->softwareRevision()));
+        std::cout << qUtf8Printable(tr("Manufacturer name: %1\n").arg(service->manufacturer()));
+        std::cout << qUtf8Printable(tr("Model number:      %1\n").arg(service->modelNumber()));
+        std::cout << qUtf8Printable(tr("Hardware revision: %1\n").arg(service->hardwareRevision()));
+        std::cout << qUtf8Printable(tr("Firmware revision: %1\n").arg(service->firmwareRevision()));
+        std::cout << qUtf8Printable(tr("Software revision: %1\n").arg(service->softwareRevision()));
         break;
     }
     if (device) disconnect(); // Will exit the application once disconnected.

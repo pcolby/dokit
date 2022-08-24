@@ -569,11 +569,11 @@ void TestMeterCommand::outputReading_data()
     };
 
     #define QTPOKIT_ADD_TEST_ROW(name, readings) \
-        QTest::newRow(qPrintable(name + QStringLiteral(".csv"))) \
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv"))) \
             << readings << AbstractCommand::OutputFormat::Csv; \
-        QTest::newRow(qPrintable(name + QStringLiteral(".json"))) \
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) \
             << readings << AbstractCommand::OutputFormat::Json; \
-        QTest::newRow(qPrintable(name + QStringLiteral(".txt"))) \
+        QTest::newRow(qUtf8Printable(name + QStringLiteral(".txt"))) \
             << readings << AbstractCommand::OutputFormat::Text
 
     QTPOKIT_ADD_TEST_ROW(QStringLiteral("null"),

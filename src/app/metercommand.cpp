@@ -342,9 +342,9 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     switch (format) {
     case OutputFormat::Csv:
         for (; showCsvHeader; showCsvHeader = false) {
-            std::cout << qPrintable(tr("mode,value,units,status,range_min_milli,range_max_milli\n"));
+            std::cout << qUtf8Printable(tr("mode,value,units,status,range_min_milli,range_max_milli\n"));
         }
-        std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n")
+        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n")
             .arg(escapeCsvField(MultimeterService::toString(reading.mode)))
             .arg(reading.value, 0, 'f').arg(units, status, rangeMin.toString(), rangeMax.toString())
             );
@@ -377,12 +377,12 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
         std::cout << QJsonDocument(jsonObject).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
-        std::cout << qPrintable(tr("Mode:   %1 (0x%2)\n").arg(MultimeterService::toString(reading.mode))
+        std::cout << qUtf8Printable(tr("Mode:   %1 (0x%2)\n").arg(MultimeterService::toString(reading.mode))
             .arg((quint8)reading.mode,2,16,QLatin1Char('0')));
-        std::cout << qPrintable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(units));
-        std::cout << qPrintable(tr("Status: %1 (0x%2)\n").arg(status)
+        std::cout << qUtf8Printable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(units));
+        std::cout << qUtf8Printable(tr("Status: %1 (0x%2)\n").arg(status)
             .arg((quint8)reading.status,2,16,QLatin1Char('0')));
-        std::cout << qPrintable(tr("Range:  %1 (0x%2)\n").arg(range)
+        std::cout << qUtf8Printable(tr("Range:  %1 (0x%2)\n").arg(range)
             .arg((quint8)reading.range.voltageRange,2,16,QLatin1Char('0')));
         break;
     }

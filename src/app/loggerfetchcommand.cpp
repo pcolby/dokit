@@ -101,9 +101,9 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
         switch (format) {
         case OutputFormat::Csv:
             for (; showCsvHeader; showCsvHeader = false) {
-                std::cout << qPrintable(tr("timestamp,value,unit,range\n"));
+                std::cout << qUtf8Printable(tr("timestamp,value,unit,range\n"));
             }
-            std::cout << qPrintable(QString::fromLatin1("%1,%2,%3,%4\n")
+            std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4\n")
                 .arg(timeString).arg(value).arg(unit, range));
             break;
         case OutputFormat::Json:
@@ -116,7 +116,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
                 }).toJson().toStdString();
             break;
         case OutputFormat::Text:
-            std::cout << qPrintable(tr("%1 %2 %3\n").arg(timeString).arg(value).arg(unit));
+            std::cout << qUtf8Printable(tr("%1 %2 %3\n").arg(timeString).arg(value).arg(unit));
             break;
         }
         timestamp += metadata.updateInterval;
