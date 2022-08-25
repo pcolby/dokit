@@ -4,7 +4,6 @@
 #include "statuscommand.h"
 
 #include <qtpokit/pokitdevice.h>
-#include <qtpokit/statusservice.h>
 
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -75,16 +74,24 @@ AbstractPokitService * StatusCommand::getService()
 void StatusCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    const QString deviceName = service->deviceName();
-    const StatusService::Status status = service->status();
-    const QString statusLabel = StatusService::toString(status.deviceStatus);
-    const QString batteryLabel = StatusService::toString(status.batteryStatus);
     const StatusService::DeviceCharacteristics chrs = service->deviceCharacteristics();
     if (chrs.firmwareVersion.isNull()) {
         qCWarning(lc).noquote() << tr("Failed to parse device information");
         QCoreApplication::exit(EXIT_FAILURE);
         return;
     }
+    outputDeviceStatus(chrs);
+}
+
+/*!
+ * Outputs the Pokit device's details, including \a chrs, in the selected format.
+ */
+void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristics chrs)
+{
+    const QString deviceName = service->deviceName();
+    const StatusService::Status status = service->status();
+    const QString statusLabel = StatusService::toString(status.deviceStatus);
+    const QString batteryLabel = StatusService::toString(status.batteryStatus);
 
     switch (format) {
     case OutputFormat::Csv:

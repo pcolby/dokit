@@ -18,5 +18,8 @@ private slots:
 
     void serviceDetailsDiscovered();
 
+    void outputDeviceStatus_data();
+    void outputDeviceStatus();
+
     void tr();
 };

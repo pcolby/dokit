@@ -3,7 +3,7 @@
 
 #include "devicecommand.h"
 
-class StatusService;
+#include <qtpokit/statusservice.h>
 
 class StatusCommand : public DeviceCommand
 {
@@ -24,6 +24,8 @@ protected slots:
 
 private:
     StatusService * service; ///< Bluetooth service this command interracts with.
+
+    void outputDeviceStatus(const StatusService::DeviceCharacteristics chrs);
 
     friend class TestStatusCommand;
 };
