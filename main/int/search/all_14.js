@@ -215,8 +215,8 @@ var searchData=
   ['type_212',['Type',['https://doc.qt.io/qt-5/qglobalstatic.html#Type-typedef',1,'QGlobalStatic::Type()'],['https://doc.qt.io/qt-5/qshareddatapointer.html#Type-typedef',1,'QSharedDataPointer::Type()'],['https://doc.qt.io/qt-5/qexplicitlyshareddatapointer.html#Type-typedef',1,'QExplicitlySharedDataPointer::Type()']]],
   ['typedconstructor_213',['TypedConstructor',['https://doc.qt.io/qt-5/qmetatype.html#TypedConstructor-typedef',1,'QMetaType']]],
   ['typeddestructor_214',['TypedDestructor',['https://doc.qt.io/qt-5/qmetatype.html#TypedDestructor-typedef',1,'QMetaType']]],
-  ['typeflags_215',['TypeFlags',['https://doc.qt.io/qt-5/qmetatype.html#TypeFlag-enum',1,'QMetaType']]],
-  ['typeflags_216',['typeFlags',['https://doc.qt.io/qt-5/qmetatype.html#typeFlags',1,'QMetaType']]],
+  ['typeflags_215',['typeFlags',['https://doc.qt.io/qt-5/qmetatype.html#typeFlags',1,'QMetaType']]],
+  ['typeflags_216',['TypeFlags',['https://doc.qt.io/qt-5/qmetatype.html#TypeFlag-enum',1,'QMetaType']]],
   ['typename_217',['typeName',['https://doc.qt.io/qt-5/qmetatype.html#typeName',1,'QMetaType::typeName()'],['https://doc.qt.io/qt-5/qvariant.html#typeName',1,'QVariant::typeName()'],['https://doc.qt.io/qt-5/qmetamethod.html#typeName',1,'QMetaMethod::typeName()'],['https://doc.qt.io/qt-5/qmetaproperty.html#typeName',1,'QMetaProperty::typeName()']]],
   ['typetoname_218',['typeToName',['https://doc.qt.io/qt-5/qvariant.html#typeToName',1,'QVariant']]]
 ];

@@ -461,11 +461,11 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 
 <p>Construct a new <a class="el" href="classLoggerStopCommand.html" title="The LoggerStopCommand class implements the logger stop CLI command.">LoggerStopCommand</a> object with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="loggerstopcommand_8cpp_source.html#l00020">20</a> of file <a class="el" href="loggerstopcommand_8cpp_source.html">loggerstopcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>    : <a class="code hl_function" href="classDeviceCommand.html#a4a3454a7095975848884d93f61c6cd89">DeviceCommand</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>(<span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   22</span>{</div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>}</div>
+<p class="definition">Definition at line <a class="el" href="loggerstopcommand_8cpp_source.html#l00022">22</a> of file <a class="el" href="loggerstopcommand_8cpp_source.html">loggerstopcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>    : <a class="code hl_function" href="classDeviceCommand.html#a4a3454a7095975848884d93f61c6cd89">DeviceCommand</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>(<span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   24</span>{</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>}</div>
 <div class="ttc" id="aclassDeviceCommand_html_a4a3454a7095975848884d93f61c6cd89"><div class="ttname"><a href="classDeviceCommand.html#a4a3454a7095975848884d93f61c6cd89">DeviceCommand::DeviceCommand</a></div><div class="ttdeci">DeviceCommand(QObject *const parent)</div><div class="ttdoc">Construct a new DeviceCommand object with parent.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00019">devicecommand.cpp:19</a></div></div>
 <div class="ttc" id="aclassLoggerStopCommand_html_a0a065e9209cfc8ef75c1f4e5d1835165"><div class="ttname"><a href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">LoggerStopCommand::service</a></div><div class="ttdeci">DataLoggerService * service</div><div class="ttdoc">Bluetooth service this command interracts with.</div><div class="ttdef"><b>Definition:</b> <a href="loggerstopcommand_8h_source.html#l00020">loggerstopcommand.h:20</a></div></div>
 <div class="ttc" id="aqobject_html_parent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent</a></div><div class="ttdeci">QObject * parent() const const</div></div>
@@ -501,24 +501,24 @@ static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY<
 
 <p>Implements <a class="el" href="classDeviceCommand.html#a8f890b3a7389d158ad8fd06aa54035b3">DeviceCommand</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="loggerstopcommand_8cpp_source.html#l00031">31</a> of file <a class="el" href="loggerstopcommand_8cpp_source.html">loggerstopcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
-<div class="line"><span class="lineno">   33</span>    Q_ASSERT(<a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>);</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>) {</div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a> = <a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>-&gt;<a class="code hl_function" href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">dataLogger</a>();</div>
-<div class="line"><span class="lineno">   36</span>        Q_ASSERT(<a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>);</div>
-<div class="line"><span class="lineno">   37</span>        <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#connect">connect</a>(<a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>, &amp;<a class="code hl_signal" href="classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c">DataLoggerService::settingsWritten</a>,</div>
-<div class="line"><span class="lineno">   38</span>        <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classLoggerStopCommand.html#a0fc328ff975018ca87c14c38a56a2412">LoggerStopCommand::settingsWritten</a>);</div>
-<div class="line"><span class="lineno">   39</span>    }</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>;</div>
-<div class="line"><span class="lineno">   41</span>}</div>
+<p class="definition">Definition at line <a class="el" href="loggerstopcommand_8cpp_source.html#l00033">33</a> of file <a class="el" href="loggerstopcommand_8cpp_source.html">loggerstopcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>    Q_ASSERT(<a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>);</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>) {</div>
+<div class="line"><span class="lineno">   37</span>        <a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a> = <a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>-&gt;<a class="code hl_function" href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">dataLogger</a>();</div>
+<div class="line"><span class="lineno">   38</span>        Q_ASSERT(<a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>);</div>
+<div class="line"><span class="lineno">   39</span>        <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#connect">connect</a>(<a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>, &amp;<a class="code hl_signal" href="classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c">DataLoggerService::settingsWritten</a>,</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classLoggerStopCommand.html#a0fc328ff975018ca87c14c38a56a2412">LoggerStopCommand::settingsWritten</a>);</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>;</div>
+<div class="line"><span class="lineno">   43</span>}</div>
 <div class="ttc" id="aclassDataLoggerService_html_afa68d0589ac69afd9b465f67c017b35c"><div class="ttname"><a href="classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c">DataLoggerService::settingsWritten</a></div><div class="ttdeci">void settingsWritten()</div><div class="ttdoc">This signal is emitted when the Settings characteristic has been written successfully.</div></div>
 <div class="ttc" id="aclassDeviceCommand_html_a2bbf2dc9bb0ba85a2bf29263746c7b57"><div class="ttname"><a href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">DeviceCommand::device</a></div><div class="ttdeci">PokitDevice * device</div><div class="ttdoc">Pokit Bluetooth device (if any) this command inerracts with.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8h_source.html#l00023">devicecommand.h:23</a></div></div>
-<div class="ttc" id="aclassLoggerStopCommand_html_a0fc328ff975018ca87c14c38a56a2412"><div class="ttname"><a href="classLoggerStopCommand.html#a0fc328ff975018ca87c14c38a56a2412">LoggerStopCommand::settingsWritten</a></div><div class="ttdeci">void settingsWritten()</div><div class="ttdoc">Invoked when the data logger settings have been written.</div><div class="ttdef"><b>Definition:</b> <a href="loggerstopcommand_8cpp_source.html#l00058">loggerstopcommand.cpp:58</a></div></div>
+<div class="ttc" id="aclassLoggerStopCommand_html_a0fc328ff975018ca87c14c38a56a2412"><div class="ttname"><a href="classLoggerStopCommand.html#a0fc328ff975018ca87c14c38a56a2412">LoggerStopCommand::settingsWritten</a></div><div class="ttdeci">void settingsWritten()</div><div class="ttdoc">Invoked when the data logger settings have been written.</div><div class="ttdef"><b>Definition:</b> <a href="loggerstopcommand_8cpp_source.html#l00060">loggerstopcommand.cpp:60</a></div></div>
 <div class="ttc" id="aclassPokitDevice_html_a77d94b8b0cf19bdbbd8f994e3c66c961"><div class="ttname"><a href="classPokitDevice.html#a77d94b8b0cf19bdbbd8f994e3c66c961">PokitDevice::dataLogger</a></div><div class="ttdeci">DataLoggerService * dataLogger()</div><div class="ttdoc">Returns a pointer to a DataLoggerService instance that uses this device's controller for access.</div><div class="ttdef"><b>Definition:</b> <a href="pokitdevice_8cpp_source.html#l00130">pokitdevice.cpp:130</a></div></div>
 <div class="ttc" id="aqobject_html_connect"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#connect">QObject::connect</a></div><div class="ttdeci">QMetaObject::Connection connect(const QObject *sender, const char *signal, const QObject *receiver, const char *method, Qt::ConnectionType type)</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect">QObject::connect()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00130">PokitDevice::dataLogger()</a>, <a class="el" href="devicecommand_8h_source.html#l00023">DeviceCommand::device</a>, <a class="el" href="loggerstopcommand_8h_source.html#l00020">service</a>, <a class="el" href="classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c">DataLoggerService::settingsWritten()</a>, and <a class="el" href="loggerstopcommand_8cpp_source.html#l00058">settingsWritten()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#connect">QObject::connect()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00130">PokitDevice::dataLogger()</a>, <a class="el" href="devicecommand_8h_source.html#l00023">DeviceCommand::device</a>, <a class="el" href="loggerstopcommand_8h_source.html#l00020">service</a>, <a class="el" href="classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c">DataLoggerService::settingsWritten()</a>, and <a class="el" href="loggerstopcommand_8cpp_source.html#l00060">settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -554,12 +554,12 @@ Here is the call graph for this function:</div>
 <p>Handles service detail discovery events. </p>
 <p >This override stops the device's logger. </p>
 
-<p class="definition">Definition at line <a class="el" href="loggerstopcommand_8cpp_source.html#l00048">48</a> of file <a class="el" href="loggerstopcommand_8cpp_source.html">loggerstopcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
-<div class="line"><span class="lineno">   50</span>    <a class="code hl_slot" href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a>(); <span class="comment">// Just logs consistently.</span></div>
-<div class="line"><span class="lineno">   51</span>    qCInfo(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Stopping logger.&quot;</span>);</div>
-<div class="line"><span class="lineno">   52</span>    <a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>-&gt;<a class="code hl_function" href="classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e">stopLogger</a>();</div>
-<div class="line"><span class="lineno">   53</span>}</div>
+<p class="definition">Definition at line <a class="el" href="loggerstopcommand_8cpp_source.html#l00050">50</a> of file <a class="el" href="loggerstopcommand_8cpp_source.html">loggerstopcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    <a class="code hl_slot" href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a>(); <span class="comment">// Just logs consistently.</span></div>
+<div class="line"><span class="lineno">   53</span>    qCInfo(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Stopping logger.&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classLoggerStopCommand.html#a0a065e9209cfc8ef75c1f4e5d1835165">service</a>-&gt;<a class="code hl_function" href="classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e">stopLogger</a>();</div>
+<div class="line"><span class="lineno">   55</span>}</div>
 <div class="ttc" id="aclassDataLoggerService_html_a9f8a721025e04bf27df18194247b532e"><div class="ttname"><a href="classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e">DataLoggerService::stopLogger</a></div><div class="ttdeci">bool stopLogger()</div><div class="ttdoc">Stop the data logger.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00377">dataloggerservice.cpp:377</a></div></div>
 <div class="ttc" id="aclassDeviceCommand_html_a906fd97d832be0e8d2ba1c917fba41db"><div class="ttname"><a href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a></div><div class="ttdeci">virtual void serviceDetailsDiscovered()</div><div class="ttdoc">Handles service detail discovery events.</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00103">devicecommand.cpp:103</a></div></div>
 <div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
@@ -599,22 +599,22 @@ Here is the call graph for this function:</div>
 
 <p>Invoked when the data logger settings have been written. </p>
 
-<p class="definition">Definition at line <a class="el" href="loggerstopcommand_8cpp_source.html#l00058">58</a> of file <a class="el" href="loggerstopcommand_8cpp_source.html">loggerstopcommand.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>{</div>
-<div class="line"><span class="lineno">   60</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings written; data logger has stopped.&quot;</span>);</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
-<div class="line"><span class="lineno">   63</span>        fputs(qPrintable(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;logger_start_result\nsuccess\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
-<div class="line"><span class="lineno">   66</span>        fputs(qPrintable(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;true\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
-<div class="line"><span class="lineno">   69</span>        fputs(qPrintable(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Done.\n&quot;</span>)), stdout);</div>
-<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   71</span>    }</div>
-<div class="line"><span class="lineno">   72</span>    <a class="code hl_function" href="classDeviceCommand.html#ae619166395b5651f1316fd5336d9fa2c">disconnect</a>(); <span class="comment">// Will exit the application once disconnected.</span></div>
-<div class="line"><span class="lineno">   73</span>}</div>
+<p class="definition">Definition at line <a class="el" href="loggerstopcommand_8cpp_source.html#l00060">60</a> of file <a class="el" href="loggerstopcommand_8cpp_source.html">loggerstopcommand.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
+<div class="line"><span class="lineno">   62</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings written; data logger has stopped.&quot;</span>);</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">format</a>) {</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">OutputFormat::Csv</a>:</div>
+<div class="line"><span class="lineno">   65</span>        std::cout &lt;&lt; qUtf8Printable(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;logger_stop_result\nsuccess\n&quot;</span>));</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">OutputFormat::Json</a>:</div>
+<div class="line"><span class="lineno">   68</span>        std::cout &lt;&lt; qUtf8Printable(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;true\n&quot;</span>));</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a>:</div>
+<div class="line"><span class="lineno">   71</span>        std::cout &lt;&lt; qUtf8Printable(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Done.\n&quot;</span>));</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a>) <a class="code hl_function" href="classDeviceCommand.html#ae619166395b5651f1316fd5336d9fa2c">disconnect</a>(); <span class="comment">// Will exit the application once disconnected.</span></div>
+<div class="line"><span class="lineno">   75</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html_a881d85cd96b6fcc0652b916c366dda7b"><div class="ttname"><a href="classAbstractCommand.html#a881d85cd96b6fcc0652b916c366dda7b">AbstractCommand::format</a></div><div class="ttdeci">OutputFormat format</div><div class="ttdoc">Selected output format.</div><div class="ttdef"><b>Definition:</b> <a href="abstractcommand_8h_source.html#l00042">abstractcommand.h:42</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::OutputFormat::Text</a></div><div class="ttdeci">@ Text</div><div class="ttdoc">Plain unstructured text.</div></div>
 <div class="ttc" id="aclassAbstractCommand_html_aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0"><div class="ttname"><a href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::OutputFormat::Csv</a></div><div class="ttdeci">@ Csv</div><div class="ttdoc">RFC 4180 compliant CSV text.</div></div>
@@ -622,9 +622,9 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="aclassDeviceCommand_html_ae619166395b5651f1316fd5336d9fa2c"><div class="ttname"><a href="classDeviceCommand.html#ae619166395b5651f1316fd5336d9fa2c">DeviceCommand::disconnect</a></div><div class="ttdeci">void disconnect(int exitCode=EXIT_SUCCESS)</div><div class="ttdoc">Disconnects the underlying Pokit device, and sets exitCode to be return to the OS once the disconnect...</div><div class="ttdef"><b>Definition:</b> <a href="devicecommand_8cpp_source.html#l00041">devicecommand.cpp:41</a></div></div>
 <div class="ttc" id="aqlatin1string_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="devicecommand_8cpp_source.html#l00041">DeviceCommand::disconnect()</a>, <a class="el" href="abstractcommand_8h_source.html#l00042">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcab20daea8bfacec3891fcf5b7be4adca0">AbstractCommand::Csv</a>, <a class="el" href="devicecommand_8h_source.html#l00023">DeviceCommand::device</a>, <a class="el" href="devicecommand_8cpp_source.html#l00041">DeviceCommand::disconnect()</a>, <a class="el" href="abstractcommand_8h_source.html#l00042">AbstractCommand::format</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333">AbstractCommand::Json</a>, <a class="el" href="classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">AbstractCommand::Text</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="loggerstopcommand_8cpp_source.html#l00031">getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="loggerstopcommand_8cpp_source.html#l00033">getService()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -690,7 +690,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="loggerstopcommand_8h_source.html#l00020">20</a> of file <a class="el" href="loggerstopcommand_8h_source.html">loggerstopcommand.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="loggerstopcommand_8cpp_source.html#l00031">getService()</a>, and <a class="el" href="loggerstopcommand_8cpp_source.html#l00048">serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="loggerstopcommand_8cpp_source.html#l00033">getService()</a>, and <a class="el" href="loggerstopcommand_8cpp_source.html#l00050">serviceDetailsDiscovered()</a>.</p>
 
 </div>
 </div>

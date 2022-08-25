@@ -16,5 +16,6 @@ var classScanCommand =
     [ "toJson", "classScanCommand.html#a692b7c3f071f31211ab36d754d779330", null ],
     [ "toJson", "classScanCommand.html#a33d8423caad084f3131066a870f697bc", null ],
     [ "toString", "classScanCommand.html#a4422f8c5972370796065882a622940e1", null ],
-    [ "toString", "classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23", null ]
+    [ "toString", "classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23", null ],
+    [ "showCsvHeader", "classScanCommand.html#a9bdde80750c61e63e21dead03fef3629", null ]
 ];

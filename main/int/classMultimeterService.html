@@ -962,7 +962,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="multimeterservice_8h_source.html#l00031">MultimeterService::CharacteristicUuids::reading</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00264">MeterCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00266">MeterCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1142,7 +1142,7 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a55b8f557c2c95acba19b42bd66a8760a">_12V_to_30V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a62449df7495e3d616298a86a32007165">_2V_to_6V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942ab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a8d6ed04283cbc4c0f1b89006e9c3e96b">_30V_to_60V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a691d1e8d08c3542b4aeda8925b2967cc">_6V_to_12V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00275">MeterCommand::outputReading()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00277">MeterCommand::outputReading()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1306,7 +1306,7 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a55b8f557c2c95acba19b42bd66a8760a">_12V_to_30V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a62449df7495e3d616298a86a32007165">_2V_to_6V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942ab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a8d6ed04283cbc4c0f1b89006e9c3e96b">_30V_to_60V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a691d1e8d08c3542b4aeda8925b2967cc">_6V_to_12V</a>, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00275">MeterCommand::outputReading()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00277">MeterCommand::outputReading()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1399,11 +1399,12 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  424</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structMultimeterService_1_1CharacteristicUuids.html#a38e61d8cc1060c1166f11b9d8a5c0643">CharacteristicUuids::reading</a>);</div>
 <div class="line"><span class="lineno">  425</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classMultimeterServicePrivate.html#ac9594dce487207bafd123e1093f399db">MultimeterServicePrivate::parseReading</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
 <div class="line"><span class="lineno">  426</span>        : Reading{ <a class="code hl_enumeration" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MeterStatus</a>::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
-<div class="line"><span class="lineno">  427</span>                   <a class="code hl_enumeration" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a>::Idle, { VoltageRange::AutoRange } };</div>
+<div class="line"><span class="lineno">  427</span>                   <a class="code hl_enumeration" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a>::Idle, <a class="code hl_enumeration" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a>::AutoRange };</div>
 <div class="line"><span class="lineno">  428</span>}</div>
 <div class="ttc" id="aclassMultimeterServicePrivate_html_ac9594dce487207bafd123e1093f399db"><div class="ttname"><a href="classMultimeterServicePrivate.html#ac9594dce487207bafd123e1093f399db">MultimeterServicePrivate::parseReading</a></div><div class="ttdeci">static MultimeterService::Reading parseReading(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Reading value into a MultimeterService::Reading struct.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8cpp_source.html#l00514">multimeterservice.cpp:514</a></div></div>
 <div class="ttc" id="aclassMultimeterService_html_a43c735e6c80c4ada9bc8640d06fbe286"><div class="ttname"><a href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MultimeterService::MeterStatus</a></div><div class="ttdeci">MeterStatus</div><div class="ttdoc">Values supported by the Status attribute of the Settings characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00108">multimeterservice.h:108</a></div></div>
 <div class="ttc" id="aclassMultimeterService_html_a51f66d0b81dace3115c5c68bc931eaea"><div class="ttname"><a href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">MultimeterService::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">Values supported by the Mode attribute of the Settings and Reading characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00034">multimeterservice.h:34</a></div></div>
+<div class="ttc" id="aclassMultimeterService_html_ae0116d83a5bb23121c27f2ea12406942"><div class="ttname"><a href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">MultimeterService::VoltageRange</a></div><div class="ttdeci">VoltageRange</div><div class="ttdoc">Values supported by the Range attribute of the Settings and Reading characteristics,...</div><div class="ttdef"><b>Definition:</b> <a href="multimeterservice_8h_source.html#l00048">multimeterservice.h:48</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_value"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value</a></div><div class="ttdeci">QByteArray value() const const</div></div>
@@ -1445,7 +1446,7 @@ Here is the call graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristic has been read successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classMultimeterService.html#a818612a809f2addc659b44bc537c4428" title="Read the Multimeter service&#39;s Reading characteristic.">readReadingCharacteristic</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00264">MeterCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00266">MeterCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1535,7 +1536,7 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, and <a class="el" href="multimeterservice_8h_source.html#l00030">MultimeterService::CharacteristicUuids::settings</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00171">MeterCommand::serviceDetailsDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00173">MeterCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1577,7 +1578,7 @@ Here is the caller graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic has been written successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classMultimeterService.html#ab459a9db42aed973bbc18a2bc9fcd957" title="Configures the Pokit device&#39;s multimeter mode.">setSettings</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00154">MeterCommand::getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00156">MeterCommand::getService()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1690,7 +1691,7 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf73d2c55dc3628b7071e45104874c485">Continuity</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa0f31a45b6daa6a5478050c36732a2549">Diode</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9db444f7a3b8ba8f817647de53b7a6fe">Resistance</a>, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00275">MeterCommand::outputReading()</a>, <a class="el" href="metercommand_8cpp_source.html#l00171">MeterCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="multimeterservice_8cpp_source.html#l00267">toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="metercommand_8cpp_source.html#l00277">MeterCommand::outputReading()</a>, <a class="el" href="metercommand_8cpp_source.html#l00173">MeterCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="multimeterservice_8cpp_source.html#l00267">toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

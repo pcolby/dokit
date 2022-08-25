@@ -14,5 +14,6 @@ var classMeterCommand =
     [ "supportedOptions", "classMeterCommand.html#aa32c65d3e27b6193af5a3bf802d7cccf", null ],
     [ "samplesToGo", "classMeterCommand.html#adf371ab0a3848960f9177d80853863b1", null ],
     [ "service", "classMeterCommand.html#afbd91fbc89c6d6d8891dcbeb1fcc3280", null ],
-    [ "settings", "classMeterCommand.html#a0db4ce8811d8fb3a297aa5cc5b83beb6", null ]
+    [ "settings", "classMeterCommand.html#a0db4ce8811d8fb3a297aa5cc5b83beb6", null ],
+    [ "showCsvHeader", "classMeterCommand.html#a4dd5d50f974af64685b5e318010d4d43", null ]
 ];

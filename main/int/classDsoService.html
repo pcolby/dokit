@@ -934,7 +934,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00031">DsoService::CharacteristicUuids::metadata</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00258">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00257">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -971,7 +971,7 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00032">DsoService::CharacteristicUuids::reading</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00258">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00257">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1008,7 +1008,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  380</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">setSettings</a>({</div>
 <div class="line"><span class="lineno">  381</span>        DsoService::Command::ResendData,</div>
 <div class="line"><span class="lineno">  382</span>        0, <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">DsoService::Mode::Idle</a>,</div>
-<div class="line"><span class="lineno">  383</span>        { <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">DsoService::VoltageRange::_0_to_300mV</a> }, 0, 0</div>
+<div class="line"><span class="lineno">  383</span>        <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a198067396ed0459ea6894b2397468ef6">DsoService::VoltageRange::_0_to_300mV</a>, 0, 0</div>
 <div class="line"><span class="lineno">  384</span>    });</div>
 <div class="line"><span class="lineno">  385</span>}</div>
 <div class="ttc" id="aclassDsoService_html_a5714c8ccec6ab1d98241312b28a32e9e"><div class="ttname"><a href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e">DsoService::setSettings</a></div><div class="ttdeci">bool setSettings(const Settings &amp;settings)</div><div class="ttdoc">Configures the Pokit device's DSO mode.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00330">dsoservice.cpp:330</a></div></div>
@@ -1153,9 +1153,10 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  405</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDsoService_1_1CharacteristicUuids.html#a0640c015d85dba780fcad93990e37afa">CharacteristicUuids::metadata</a>);</div>
 <div class="line"><span class="lineno">  406</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classDsoServicePrivate.html#af869cf5b228bac719545511ba4247b88">DsoServicePrivate::parseMetadata</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
 <div class="line"><span class="lineno">  407</span>        : Metadata{ <a class="code hl_enumeration" href="classDsoService.html#aaa4e080d3d3e444dabf9d7117561905d">DsoStatus</a>::Error, std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
-<div class="line"><span class="lineno">  408</span>                    <a class="code hl_enumeration" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95">Mode</a>::Idle, { VoltageRange::_0_to_300mV }, 0, 0, 0 };</div>
+<div class="line"><span class="lineno">  408</span>                    <a class="code hl_enumeration" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95">Mode</a>::Idle, <a class="code hl_enumeration" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1">VoltageRange</a>::_0_to_300mV, 0, 0, 0 };</div>
 <div class="line"><span class="lineno">  409</span>}</div>
 <div class="ttc" id="aclassDsoServicePrivate_html_af869cf5b228bac719545511ba4247b88"><div class="ttname"><a href="classDsoServicePrivate.html#af869cf5b228bac719545511ba4247b88">DsoServicePrivate::parseMetadata</a></div><div class="ttdeci">static DsoService::Metadata parseMetadata(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Metadata value into a DsoService::Metatdata struct.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00534">dsoservice.cpp:534</a></div></div>
+<div class="ttc" id="aclassDsoService_html_a72e17ce03f8046819ba71597d6f753a1"><div class="ttname"><a href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1">DsoService::VoltageRange</a></div><div class="ttdeci">VoltageRange</div><div class="ttdoc">Values supported by the Range attribute of the Settings and Metadata characteristics,...</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00051">dsoservice.h:51</a></div></div>
 <div class="ttc" id="aclassDsoService_html_aaa4e080d3d3e444dabf9d7117561905d"><div class="ttname"><a href="classDsoService.html#aaa4e080d3d3e444dabf9d7117561905d">DsoService::DsoStatus</a></div><div class="ttdeci">DsoStatus</div><div class="ttdoc">Values supported by the Status attribute of the Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00094">dsoservice.h:94</a></div></div>
 <div class="ttc" id="aclassDsoService_html_ae1414a11556e06b49cea9fadcd6f5b95"><div class="ttname"><a href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95">DsoService::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">Values supported by the Mode attribute of the Settings and Metadata characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00042">dsoservice.h:42</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a></div></div>
@@ -1199,7 +1200,7 @@ Here is the call graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristic has been read successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Reads the DSO service&#39;s Metadata characteristic.">readMetadataCharacteristic</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00258">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00257">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1407,7 +1408,7 @@ Here is the caller graph for this function:</div>
 <dd>
 stopSampling </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00258">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00257">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1460,7 +1461,7 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, and <a class="el" href="dsoservice_8h_source.html#l00030">DsoService::CharacteristicUuids::settings</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00375">fetchSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00181">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00354">startDso()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00375">fetchSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00183">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00354">startDso()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1502,7 +1503,7 @@ Here is the caller graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structDsoService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic has been written successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e" title="Configures the Pokit device&#39;s DSO mode.">setSettings</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00164">DsoCommand::getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00166">DsoCommand::getService()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1646,7 +1647,7 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Idle</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00271">DsoCommand::metadataRead()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00287">DsoCommand::outputSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00181">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00197">toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00270">DsoCommand::metadataRead()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00286">DsoCommand::outputSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00183">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00197">toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

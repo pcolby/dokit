@@ -15,5 +15,6 @@ var classDsoCommand =
     [ "metadata", "classDsoCommand.html#ae2d7e39e8a5d61680d8e6da0cf2bc9df", null ],
     [ "samplesToGo", "classDsoCommand.html#a2fba285441bb9d0a76f3e43d1b718015", null ],
     [ "service", "classDsoCommand.html#a843aa2767953801fc2ec5fa7895714d6", null ],
-    [ "settings", "classDsoCommand.html#a0438c5c9aa9fea7c00051ff9be7819d8", null ]
+    [ "settings", "classDsoCommand.html#a0438c5c9aa9fea7c00051ff9be7819d8", null ],
+    [ "showCsvHeader", "classDsoCommand.html#a4768b502cbfeb3436892a112b51f6b4a", null ]
 ];
