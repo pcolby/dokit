@@ -282,8 +282,10 @@ void TestLoggerStartCommand::processOptions()
     // Recoginise if/when LoggerStartCommand::processOptions automatically uses 'now' for timestamp.
     if (expectNowish) {
         Q_ASSERT(expected.timestamp == 0);
-        QVERIFY(now <= command.settings.timestamp);
-        QVERIFY((command.settings.timestamp - now) <= 3);
+        // Fuzzy compare, with up 3 seconds tolerance. Using qMin and qMax here instead of qAbs to
+        // avoid negative wrap-around, since both values are unsigned.
+        QVERIFY((qMax(now, command.settings.timestamp) -
+                 qMin(now, command.settings.timestamp)) <= 3);
     } else {
         QCOMPARE(command.settings.timestamp,  expected.timestamp);
     }
