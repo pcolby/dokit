@@ -5,31 +5,42 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>QtPokit</title>
+<link href="main/doc/doxygen.css" rel="stylesheet" type="text/css" />
 <link href="main/doc/doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="main/doc/doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<iframe id="frame" src="main/doc/index.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:1;">
-</iframe>
-<div style="position:fixed; bottom:0; left:0; border:none; margin:10px 15px; padding:0; overflow:hidden; z-index:2;">
- Version:
- <select id="version">
-  <option value="main">HEAD</option>
-  <option value="0.1.0">0.1.0</option>
- </select>
- <select id="scope">
-  <option value="doc">Library user docs</option>
-  <option value="int">Internal dev docs</option>
-  <option value="cov">Test coverage</option>
- </select>
-</div>
-<script>
-  function updateFrame() {
-    document.getElementById('frame').src =
-      document.getElementById('version').value + '/' +
-      document.getElementById('scope'  ).value + '/index.html';
-  }
-  document.getElementById('version').onchange = updateFrame;
-  document.getElementById('scope').onchange = updateFrame;
-</script>
+<div class="PageDoc">
+<div class="header">
+<div class="headertitle">
+<div class="title">QtPokit</div>
+</div><!--headertitle-->
+</div><!--header-->
+<div class="contents">
+<p><a href="https://github.com/pcolby/qtpokit" title="pcolby/qtpokit">QtPokit</a> is a
+cross-platform <a href="https://www.qt.io/">Qt</a> library, and console application for
+accessing <a href="https://www.pokitinnovations.com/" title="Pokit Innovations">Pokit</a>
+measuring devices.</p>
+<p>See <a href="https://github.com/pcolby/qtpokit">github.com/pcolby/qtpokit</a> for
+more information.</p>
+<table>
+ <tr>
+  <td>Library user docs:</td>
+  <td><a href="0.1.0/doc/index.html">0.1.0</a></td>
+  <td><a href="main/doc/index.html">HEAD</a></td>
+ </tr>
+ <tr>
+  <td>Internal dev docs:</td>
+  <td><a href="0.1.0/int/index.html">0.1.0</a></td>
+  <td><a href="main/int/index.html">main</a></td>
+ </tr>
+ <tr>
+  <td>Test coverage:</td>
+  <td><a href="0.1.0/cov/index.html">0.1.0</a></td>
+  <td><a href="main/cov/index.html">main</a></td>
+ </tr>
+</table>
+</div><!-- contents -->
+</div><!-- PageDoc -->
 </body>
 </html>
