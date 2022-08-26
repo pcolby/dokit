@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"setnamecommand_8h_source.html":[6,0,0,0,1,0,24],
 "statuscommand_8cpp_source.html":[6,0,0,0,1,0,25],
 "statuscommand_8h_source.html":[6,0,0,0,1,0,26],
 "statusservice_8cpp.html":[6,0,0,0,1,1,18],
