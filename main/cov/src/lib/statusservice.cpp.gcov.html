@@ -127,10 +127,10 @@
 <a name="65"><span class="lineNum">      65 </span>            : /*!</a>
 <a name="66"><span class="lineNum">      66 </span>            :  * Returns a string version of the \a status enum label.</a>
 <a name="67"><span class="lineNum">      67 </span>            :  */</a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        221 : QString StatusService::toString(const StatusService::DeviceStatus &amp;status)</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        374 : QString StatusService::toString(const StatusService::DeviceStatus &amp;status)</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : {</a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        221 :     switch (status) {</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          3 :     case DeviceStatus::Idle:                 return  QLatin1String(&quot;Idle&quot;);</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        374 :     switch (status) {</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         30 :     case DeviceStatus::Idle:                 return  QLatin1String(&quot;Idle&quot;);</span></a>
 <a name="72"><span class="lineNum">      72 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String(&quot;MultimeterDcVoltage&quot;);</span></a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String(&quot;MultimeterAcVoltage&quot;);</span></a>
 <a name="74"><span class="lineNum">      74 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String(&quot;MultimeterDcCurrent&quot;);</span></a>
@@ -151,10 +151,10 @@
 <a name="89"><span class="lineNum">      89 </span>            : /*!</a>
 <a name="90"><span class="lineNum">      90 </span>            :  * Returns a string version of the \a status enum label.</a>
 <a name="91"><span class="lineNum">      91 </span>            :  */</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">         68 : QString StatusService::toString(const StatusService::BatteryStatus &amp;status)</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">        221 : QString StatusService::toString(const StatusService::BatteryStatus &amp;status)</span></a>
 <a name="93"><span class="lineNum">      93 </span>            : {</a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         68 :     switch (status) {</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          3 :     case BatteryStatus::Low:  return QLatin1String(&quot;Low&quot;);</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        221 :     switch (status) {</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         30 :     case BatteryStatus::Low:  return QLatin1String(&quot;Low&quot;);</span></a>
 <a name="96"><span class="lineNum">      96 </span><span class="lineCov">          3 :     case BatteryStatus::Good: return QLatin1String(&quot;Good&quot;);</span></a>
 <a name="97"><span class="lineNum">      97 </span>            :     }</a>
 <a name="98"><span class="lineNum">      98 </span>            :     return QString();</a>
@@ -172,11 +172,11 @@
 <a name="110"><span class="lineNum">     110 </span>            : /*!</a>
 <a name="111"><span class="lineNum">     111 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="112"><span class="lineNum">     112 </span>            :  */</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        238 : StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        238 :     : AbstractPokitService(new StatusServicePrivate(controller, this), parent)</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        408 : StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        408 :     : AbstractPokitService(new StatusServicePrivate(controller, this), parent)</span></a>
 <a name="115"><span class="lineNum">     115 </span>            : {</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        238 : }</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        408 : }</span></a>
 <a name="118"><span class="lineNum">     118 </span>            : </a>
 <a name="119"><span class="lineNum">     119 </span>            : /*!</a>
 <a name="120"><span class="lineNum">     120 </span>            :  * \cond internal</a>
@@ -266,15 +266,15 @@
 <a name="204"><span class="lineNum">     204 </span>            :  * }</a>
 <a name="205"><span class="lineNum">     205 </span>            :  * ```</a>
 <a name="206"><span class="lineNum">     206 </span>            :  */</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">         17 : StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() const</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">         34 : StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() const</span></a>
 <a name="208"><span class="lineNum">     208 </span>            : {</a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         11 :     Q_D(const StatusService);</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         22 :     Q_D(const StatusService);</span></a>
 <a name="210"><span class="lineNum">     210 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         17 :         d-&gt;getCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         17 :     return (characteristic.isValid())</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         11 :         ? StatusServicePrivate::parseDeviceCharacteristics(characteristic.value())</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         34 :         : StatusService::DeviceCharacteristics();</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          6 : }</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         34 :         d-&gt;getCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         34 :     return (characteristic.isValid())</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         22 :         ? StatusServicePrivate::parseDeviceCharacteristics(characteristic.value())</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         68 :         : StatusService::DeviceCharacteristics();</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         12 : }</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
 <a name="217"><span class="lineNum">     217 </span>            : /*!</a>
 <a name="218"><span class="lineNum">     218 </span>            :  * Returns the most recent value of the `Status` service's `Status` characteristic.</a>
@@ -291,15 +291,15 @@
 <a name="229"><span class="lineNum">     229 </span>            :  * }</a>
 <a name="230"><span class="lineNum">     230 </span>            :  * ```</a>
 <a name="231"><span class="lineNum">     231 </span>            :  */</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">         17 : StatusService::Status StatusService::status() const</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        170 : StatusService::Status StatusService::status() const</span></a>
 <a name="233"><span class="lineNum">     233 </span>            : {</a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">         11 :     Q_D(const StatusService);</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">        110 :     Q_D(const StatusService);</span></a>
 <a name="235"><span class="lineNum">     235 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">         17 :         d-&gt;getCharacteristic(CharacteristicUuids::status);</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         28 :     return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">        170 :         d-&gt;getCharacteristic(CharacteristicUuids::status);</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">        280 :     return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())</span></a>
 <a name="238"><span class="lineNum">     238 </span>            :         : StatusService::Status{ DeviceStatus::Idle, std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         34 :                                  BatteryStatus::Low };</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          6 : }</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">        340 :                                  BatteryStatus::Low };</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         60 : }</span></a>
 <a name="241"><span class="lineNum">     241 </span>            : </a>
 <a name="242"><span class="lineNum">     242 </span>            : /*!</a>
 <a name="243"><span class="lineNum">     243 </span>            :  * Returns the most recent value of the `Status` services's `Device Name` characteristic.</a>
@@ -308,13 +308,13 @@
 <a name="246"><span class="lineNum">     246 </span>            :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</a>
 <a name="247"><span class="lineNum">     247 </span>            :  * null QString is returned.</a>
 <a name="248"><span class="lineNum">     248 </span>            :  */</a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">         17 : QString StatusService::deviceName() const</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        170 : QString StatusService::deviceName() const</span></a>
 <a name="250"><span class="lineNum">     250 </span>            : {</a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         11 :     Q_D(const StatusService);</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">        110 :     Q_D(const StatusService);</span></a>
 <a name="252"><span class="lineNum">     252 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         17 :         d-&gt;getCharacteristic(CharacteristicUuids::name);</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         34 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          6 : }</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">        170 :         d-&gt;getCharacteristic(CharacteristicUuids::name);</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">        340 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         60 : }</span></a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
 <a name="257"><span class="lineNum">     257 </span>            : /*!</a>
 <a name="258"><span class="lineNum">     258 </span>            :  * Set's the Pokit device's name to \a name.</a>
@@ -427,12 +427,12 @@
 <a name="365"><span class="lineNum">     365 </span>            :  * \internal</a>
 <a name="366"><span class="lineNum">     366 </span>            :  * Constructs a new StatusServicePrivate object with public implementation \a q.</a>
 <a name="367"><span class="lineNum">     367 </span>            :  */</a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">        238 : StatusServicePrivate::StatusServicePrivate(</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">        238 :     QLowEnergyController * controller, StatusService * const q)</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        238 :     : AbstractPokitServicePrivate(QBluetoothUuid(), controller, q)</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">        408 : StatusServicePrivate::StatusServicePrivate(</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">        408 :     QLowEnergyController * controller, StatusService * const q)</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        408 :     : AbstractPokitServicePrivate(QBluetoothUuid(), controller, q)</span></a>
 <a name="371"><span class="lineNum">     371 </span>            : {</a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">        238 : }</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">        408 : }</span></a>
 <a name="374"><span class="lineNum">     374 </span>            : </a>
 <a name="375"><span class="lineNum">     375 </span>            : /*!</a>
 <a name="376"><span class="lineNum">     376 </span>            :  * Parses the `Device Characteristics` \a value into a DeviceCharacteristics struct.</a>
