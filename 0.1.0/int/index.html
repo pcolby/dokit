@@ -93,14 +93,14 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md__home_runner_work_qtpokit_qtpokit_doc_src_internal_mainpage"></a> This is <em>internal</em> documentation, aimed at developers that contribute to the QtPokit project itself.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md1"></a>
 Building from Source</h1>
 <p >Prototypical <a href="https://cmake.org/">CMake</a>-based out-of-source build and test process:</p>
 <div class="fragment"><div class="line">cmake -E make_directory &lt;tmp-build-dir&gt;</div>
 <div class="line">cmake -D CMAKE_BUILD_TYPE=Release -S &lt;path-to-cloned-repo&gt; -B &lt;tmp-build-dir&gt;</div>
 <div class="line">cmake --build &lt;tmp-build-dir&gt;</div>
 <div class="line">ctest --test-dir &lt;tmp-build-dir&gt; --verbose</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
 Test Coverage</h2>
 <p >Similar to above, but specify <code>ENABLE_COVERAGE=YES</code>, which will add dependencies on <a href="https://gcc.gnu.org/onlinedocs/gcc/Gcov.html" title="gcov — a Test Coverage Program">gcov</a> and <a href="http://ltp.sourceforge.net/coverage/lcov.php" title="LCOV — the LTP GCOV extension">LCOV</a>.</p>
 <div class="fragment"><div class="line">cmake -E make_directory &lt;tmp-build-dir&gt;</div>
@@ -110,7 +110,7 @@ Test Coverage</h2>
 <div class="line">cmake --build &lt;tmp-build-dir&gt; --target coverage coverage-html</div>
 <div class="line"># ls &lt;tmp-build-dir&gt;/test/coverage.info # Coverage tracefile.</div>
 <div class="line"># ls &lt;tmp-build-dir&gt;/test/coverage/ # HTML report.</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
 Documentation</h2>
 <p >Configure the same as above, but build the <code>doc</code> and (optionally) <code>doc-internal</code> targets.</p>
 <div class="fragment"><div class="line">cmake -E make_directory &lt;tmp-build-dir&gt;</div>

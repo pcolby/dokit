@@ -25,7 +25,6 @@
 var NAVTREE =
 [
   [ "QtPokit", "index.html", [
-    [ "Placeholder Page", "md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
