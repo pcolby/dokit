@@ -26,18 +26,17 @@ var NAVTREE =
 [
   [ "QtPokit", "index.html", [
     [ "QtPokit - Internal", "index.html", [
-      [ "Building from Source", "index.html#autotoc_md2", [
-        [ "Test Coverage", "index.html#autotoc_md3", null ],
-        [ "Documentation", "index.html#autotoc_md4", null ]
+      [ "Building from Source", "index.html#autotoc_md1", [
+        [ "Test Coverage", "index.html#autotoc_md2", null ],
+        [ "Documentation", "index.html#autotoc_md3", null ]
       ] ]
     ] ],
-    [ "Placeholder Page", "md__home_runner_work_qtpokit_qtpokit_doc_src_common_placeholder.html", null ],
     [ "Notes", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html", [
-      [ "Pokit Bluetooth API", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md6", [
-        [ "Undocumented Services", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md7", null ]
+      [ "Pokit Bluetooth API", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md5", [
+        [ "Undocumented Services", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md6", null ]
       ] ],
-      [ "Qt Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md8", null ],
-      [ "CMake Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md9", null ]
+      [ "Qt Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md7", null ],
+      [ "CMake Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md8", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Pokit API Errata", "pokit.html", null ],
@@ -69,7 +68,7 @@ var NAVTREEINDEX =
 "abstractcommand_8cpp_source.html",
 "classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e",
 "classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23",
-"setnamecommand_8h_source.html"
+"statuscommand_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
