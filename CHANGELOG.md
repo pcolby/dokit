@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [0.1.0] (2022-08-2x)
+## [0.1.0] (2022-08-26)
 
 ### Added
 - Support for [Pokit Meter] and [Pokit Pro] devices.
