@@ -1,3 +1,0 @@
-# Placeholder Page
-
-Just an example...
