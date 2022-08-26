@@ -120,7 +120,7 @@ jobs:
         if-no-files-found: error
 
   mac:
-    runs-on: macOs-latest
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -129,17 +129,17 @@ jobs:
         - { cc: clang, cxx: clang++ }
         - { cc: gcc-11, cxx: g++-11 }
         exclude:
-          # Exclude Qt 5.10 with GCC on MacOS. See https://bugreports.qt.io/browse/QTBUG-66585
+          # Exclude Qt 5.10 with GCC on macOS. See https://bugreports.qt.io/browse/QTBUG-66585
           - qt: '5.10.1'
             env: { cc: gcc-11, cxx: g++-11 }
-          # Exclude Qt 6.2 and 6.3 with GCC on MacOS for now, as GCC (only) fails to find the
+          # Exclude Qt 6.2 and 6.3 with GCC on macOS for now, as GCC (only) fails to find the
           # QJsonObject initialiser list constructor. This is probably a GCC, or Qt binary bug.
           # \todo Report this upstream sometime, and/or check if its been fixed yet.
           - qt: '6.2.4'
             env: { cc: gcc-11, cxx: g++-11 }
           - qt: '6.3.1'
             env: { cc: gcc-11, cxx: g++-11 }
-          # Exclude 6.4 with GCC on MacOS for now, as GCC (only) failed with internal QMetaType
+          # Exclude 6.4 with GCC on macOS for now, as GCC (only) failed with internal QMetaType
           # symbol errors when linking.
           - qt: '6.4.0'
             env: { cc: gcc-11, cxx: g++-11 }
@@ -368,7 +368,7 @@ jobs:
     - name: Generate HTML coverage report
       run: |
         shopt -s globstar
-        # Update source code paths from MacOS tracefiles to match Linux.
+        # Update source code paths from macOS tracefiles to match Linux.
         sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/**/coverage.info
         # Combine all tracefiles into one.
         lcov $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info

@@ -9,21 +9,28 @@
 [![Coverage Status](https://img.shields.io/coveralls/github/pcolby/qtpokit/main?label=Coverage&logo=coveralls)](
   https://coveralls.io/github/pcolby/qtpokit?branch=main)
 
-QtPokit is a cross-platform [Qt] library, and console application for accessing [Pokit] measuring devices.
+QtPokit is a cross-platform [Qt] library, and console application for accessing [Pokit]
+measuring devices. The QtPokit library is intended to be suitable for other projects -
+the console application is really just an extensive example to demonstrate the library's
+use. In particular, a GUI application using the QtPokit library would be most welcome ;)
 
-## Project Development Status
+Most [Pokit Meter] and [Pokit Pro] functions are supported, including the multimeter,
+oscilloscope and data logger functions. The one real feature missing currently is
+[Pokit Pro]'s capacitance mode, which is not currently documented by [Pokit] (support will
+be added as soon as [Pokit] updates their documentation to include it... or I get around to
+reverse engineering it).
 
-This project is in early stages of development, but already supports most functions of the
-[Pokit Meter] and [Pokit Pro] devices. Most hands-on testing is currently performed on Linux, but
-builds and automated tests all run on Linux, MacOS and Windows. A separate project (to launch later) will
-aim to provide a cross-platform desktop GUI application using the QtPokit library.
+Also worth noting, is that while this project has extensive automated tests that run
+regularly on Linux, macOS and Windows, using a range of Qt versions from 5.9 to 6.4, most of
+the hands-on testing so far has been performed on Linux only. Testers with [Pokit] devices
+on macOS and Windows would be most welcome to help!
 
 ## Usage
 
 ### QtPokit Library
 
-For shared library usage (for developers to create their own Pokit device applications), see the [latest
-API docs](https://pcolby.github.io/qtpokit/main/doc/index.html).
+For shared library usage (for developers to create their own Pokit device applications), see
+the latest [API docs].
 
 ### `pokit` Command
 
@@ -90,7 +97,7 @@ pokit status --output json
 ```
 
 By default, the `pokit` command will use the first Pokit device it finds. However, if you have more than
-one device, you can specify the device's name, or MAC address, or (on MacOS) device UUID, such as:
+one device, you can specify the device's name, or MAC address, or (on macOS) device UUID, such as:
 
 ```sh
 pokit status --device RedPokitPro
@@ -120,7 +127,7 @@ Options:
   --color <yes|no|auto>    Colors the console output. Valid options are: yes,
                            no and auto. The default is auto.
   --debug                  Enable debug output.
-  -d, --device <device>    Set the name, hardware address or MacOS UUID of
+  -d, --device <device>    Set the name, hardware address or macOS UUID of
                            Pokit device to use. If not specified, the first
                            discovered Pokit device will be used.
   -h, --help               Displays help on commandline options.
@@ -180,7 +187,7 @@ Command:
 ## Requirements
 
 * Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]
-* a Qt-supported platform, such as Linux, MacOS or Windows
+* a Qt-supported platform, such as Linux, macOS or Windows
 * a [Pokit] device, such as a [Pokit Meter] or [Pokit Pro]
 * [CMake] (for building the QtPokit itself) 3.0+
     * some unit tests won't be built unless using CMake 3.12 or later.
@@ -230,6 +237,7 @@ https://pcolby.github.io/qtpokit/main/int/md__home_runner_work_qtpokit_qtpokit_d
 [^minQt5]: The Qt BLE API was first [added in v5.4](https://doc.qt.io/qt-5/qtbluetooth-le-overview.html)
 [^minQt6]: The Qt Bluetooth module was [ported to Qt6 in v6.2](https://www.qt.io/blog/qt-6.2-lts-released)
 
+[API docs]:    https://pcolby.github.io/qtpokit/ "QtPokit API Documentation"
 [CMake]:       https://cmake.org/
 [GPL]:         https://www.gnu.org/licenses/gpl-3.0.en.html "GNU General Public License"
 [LGPL]:        https://www.gnu.org/licenses/lgpl-3.0.html "GNU Lesser General Public License"

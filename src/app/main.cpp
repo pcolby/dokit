@@ -130,7 +130,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           QCoreApplication::translate("parseCommandLine", "Enable debug output.")},
         {{QStringLiteral("d"), QStringLiteral("device")},
           QCoreApplication::translate("parseCommandLine",
-          "Set the name, hardware address or MacOS UUID of Pokit device to use. If not specified, "
+          "Set the name, hardware address or macOS UUID of Pokit device to use. If not specified, "
           "the first discovered Pokit device will be used."),
           QCoreApplication::translate("parseCommandLine", "device")},
     });
