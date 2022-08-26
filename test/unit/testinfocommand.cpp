@@ -96,7 +96,12 @@ void TestInfoCommand::serviceDetailsDiscovered()
         // Fixed (though not called out) by https://bugreports.qt.io/browse/QTBUG-75348
         QSKIP("QLowEnergyController fails to track device UUIDs prior to Qt 5.14.");
     }
-    #endif
+    #if defined(Q_OS_MACOS)
+    if (!info.address().isNull()) {
+        QSKIP("On macOS, QLowEnergyController fails to track device addresses prior to Qt 5.14.");
+    }
+    #endif // macOS
+    #endif // < Qt 5.14
 
     const OutputStreamCapture capture(&std::cout);
     InfoCommand command(this);
