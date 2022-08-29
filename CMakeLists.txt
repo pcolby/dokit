@@ -53,7 +53,7 @@ endif()
 # Default to Qt6 where available, otherwise Qt5.
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-find_package(QT REQUIRED COMPONENTS Core Network NAMES Qt6 Qt5)
+find_package(QT REQUIRED COMPONENTS Core Bluetooth NAMES Qt6 Qt5)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Bluetooth)
 message("-- Found Qt ${Qt${QT_VERSION_MAJOR}_VERSION}")
 message("-- Found Qt Bluetooth ${Qt${QT_VERSION_MAJOR}Bluetooth_VERSION}")
