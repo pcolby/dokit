@@ -80,7 +80,7 @@ add_pokit_unit_test(
 
 function(add_pokit_app_unit_test name)
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  message("-- Skipping test${name} (needs CMake 3.12+)")
+  message(STATUS "Skipping test${name} (needs CMake 3.12+)")
 else()
   add_pokit_unit_test(${name} ${ARGN} outputstreamcapture.h testdata.h)
   set_tests_properties(${name} PROPERTIES LABELS "app;unit")

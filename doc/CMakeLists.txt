@@ -4,7 +4,7 @@
 # Include Qt doc tagfiles, if provided.
 if (QT_TAGFILES_PATH)
   set(QT_DOCS_BASEURL "https://doc.qt.io/qt-${QT_VERSION_MAJOR}/")
-  message("-- Using Qt doc tagfiles ${QT_TAGFILES_PATH} (${QT_DOCS_BASEURL})")
+  message(STATUS "Using Qt doc tagfiles ${QT_TAGFILES_PATH} (${QT_DOCS_BASEURL})")
   set(DOX_TAGFILES "\\
   \"${QT_TAGFILES_PATH}/qtcore/qtcore.tags=${QT_DOCS_BASEURL}\" \\
   \"${QT_TAGFILES_PATH}/qtbluetooth/qtbluetooth.tags=${QT_DOCS_BASEURL}\" \\")
