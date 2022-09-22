@@ -237,14 +237,17 @@ jobs:
         # Exclude MinGW builds for 6.2.2+ for now, as Qt binary builds shifted to MinGW-w64 v11.2.0
         # in Qt 6.2.2, and GitHub Windows runners only inlucde MinGW-w64 8.1.0 for now. See
         # https://wiki.qt.io/MinGW#Toolchains_used_in_Qt_binary_packages
-        - { qt: '6.2.4',  generator: 'MinGW Makefiles' }
-        - { qt: '6.3.2',  generator: 'MinGW Makefiles' }
-        - { qt: '6.4.0',  generator: 'MinGW Makefiles' }
+        #- { qt: '6.2.4',  generator: 'MinGW Makefiles' }
+        #- { qt: '6.3.2',  generator: 'MinGW Makefiles' }
+        #- { qt: '6.4.0',  generator: 'MinGW Makefiles' }
         include: # Override default arch's for install-qt-action and msvc-dev-cmd.
         - { generator: 'MinGW Makefiles', qt: '5.12.12', qtArch: win64_mingw73 }
         - { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
         - { generator: 'MinGW Makefiles', qt: '5.14.2',  qtArch: win64_mingw73 }
         - { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
+        - { generator: 'MinGW Makefiles', qt: '6.2.4',   qtArch: win64_mingw112 }
+        - { generator: 'MinGW Makefiles', qt: '6.3.2',   qtArch: win64_mingw112 }
+        - { generator: 'MinGW Makefiles', qt: '6.4.0',   qtArch: win64_mingw122 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
