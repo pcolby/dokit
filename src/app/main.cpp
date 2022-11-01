@@ -46,7 +46,7 @@ void configureLogging(const QCommandLineParser &parser)
         // %{file}, %{line} and %{function} are only available when QT_MESSAGELOGCONTEXT is set.
         messagePattern.prepend(QStringLiteral("%{function} "));
         #endif
-        messagePattern.prepend(QStringLiteral("%{time process} %{type} "));
+        messagePattern.prepend(QStringLiteral("%{time process} %{threadid} %{type} "));
         QLoggingCategory::setFilterRules(QStringLiteral("pokit.*.debug=true"));
     }
 
