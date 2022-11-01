@@ -60,7 +60,7 @@ PokitDevice::PokitDevice(QLowEnergyController *controller, QObject *parent)
 
 /*!
  * \cond internal
- * Constructs a new Pokit device discovery agent with \a parent, and private implementation \a d.
+ * Constructs a new Pokit device controller wrapper with \a parent, and private implementation \a d.
  *
  * Derived classes using this constructor should use PokitDevicePrivate::setController to assign
  * the BLE controller as some point.

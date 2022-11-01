@@ -161,6 +161,9 @@ void PokitDiscoveryAgent::start()
 PokitDiscoveryAgentPrivate::PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * const q)
     : q_ptr(q)
 {
+    connect(q, &QBluetoothDeviceDiscoveryAgent::canceled,
+            this, &PokitDiscoveryAgentPrivate::canceled);
+
     connect(q, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this, &PokitDiscoveryAgentPrivate::deviceDiscovered);
 
@@ -168,6 +171,17 @@ PokitDiscoveryAgentPrivate::PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * con
     connect(q, &QBluetoothDeviceDiscoveryAgent::deviceUpdated,
             this, &PokitDiscoveryAgentPrivate::deviceUpdated);
     #endif
+
+    connect(q,
+        #if (QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+            QOverload<PokitDiscoveryAgent::Error>::of(&PokitDiscoveryAgent::error),
+        #else
+            &QBluetoothDeviceDiscoveryAgent::errorOccurred,
+        #endif
+        this, &PokitDiscoveryAgentPrivate::error);
+
+    connect(q, &QBluetoothDeviceDiscoveryAgent::finished,
+            this, &PokitDiscoveryAgentPrivate::finished);
 }
 
 /*!
