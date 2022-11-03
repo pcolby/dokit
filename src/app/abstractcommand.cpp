@@ -82,7 +82,7 @@ QStringList AbstractCommand::supportedOptions(const QCommandLineParser &parser) 
 {
     return requiredOptions(parser) + QStringList{
         QLatin1String("debug"),
-        QLatin1String("device"),
+        QLatin1String("device"), QLatin1String("d"),
         QLatin1String("output"),
         QLatin1String("timeout"),
     };
