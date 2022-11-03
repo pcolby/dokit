@@ -295,6 +295,7 @@ int main(int argc, char *argv[])
     QCommandLineParser parser;
     const Command commandType = parseCommandLine(appArguments, parser);
     qCDebug(lc).noquote() << app.applicationName() << app.applicationVersion();
+    qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
 
     // Handle the given command.
     AbstractCommand * const command = getCommandObject(commandType, &app);
