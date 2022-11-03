@@ -25,6 +25,8 @@
 #include <Windows.h>
 #endif
 
+static Q_LOGGING_CATEGORY(lc, "pokit.ui.main", QtInfoMsg);
+
 inline bool haveConsole()
 {
     #if defined(Q_OS_UNIX)
@@ -279,16 +281,20 @@ int main(int argc, char *argv[])
     // Setup the core application.
     QCoreApplication app(argc, argv);
     app.setApplicationName(QStringLiteral(PROJECT_NAME));
-    #ifdef PROJECT_PRE_RELEASE
-    app.setApplicationVersion(QStringLiteral(PROJECT_VERSION "-" PROJECT_PRE_RELEASE));
-    #else
-    app.setApplicationVersion(QStringLiteral(PROJECT_VERSION));
-    #endif
+    app.setApplicationVersion(QStringLiteral(PROJECT_VERSION
+        #ifdef PROJECT_PRE_RELEASE
+        "-" PROJECT_PRE_RELEASE
+        #endif
+        #ifdef PROJECT_BUILD_ID
+        "+" PROJECT_BUILD_ID
+        #endif
+    ));
 
     // Parse the command line.
     const QStringList appArguments = app.arguments();
     QCommandLineParser parser;
     const Command commandType = parseCommandLine(appArguments, parser);
+    qCDebug(lc).noquote() << app.applicationName() << app.applicationVersion();
 
     // Handle the given command.
     AbstractCommand * const command = getCommandObject(commandType, &app);
