@@ -2,8 +2,13 @@
 
 ## [Unreleased]
 
+### Added
+- Project build identifiers in `-v` output.
+
 ### Changed
-- Improved debug logging.
+- Fix benign "Ignoring `-d` option" warning.
+- Improve debug logging.
+- Upgrade to Doxygen 1.9.5.
 
 ## [0.1.0] (2022-08-26)
 
