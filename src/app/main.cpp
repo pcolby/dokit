@@ -281,7 +281,7 @@ int main(int argc, char *argv[])
     // Setup the core application.
     QCoreApplication app(argc, argv);
     app.setApplicationName(QStringLiteral(PROJECT_NAME));
-    app.setApplicationVersion(QStringLiteral(PROJECT_VERSION
+    app.setApplicationVersion(QString::fromLatin1(PROJECT_VERSION
         #ifdef PROJECT_PRE_RELEASE
         "-" PROJECT_PRE_RELEASE
         #endif
