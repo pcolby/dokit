@@ -28,7 +28,7 @@ DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), 
 bool DeviceCommand::start()
 {
     qCInfo(lc).noquote() << ((deviceToScanFor.isNull())
-        ? tr("Looking first available Pokit device...")
+        ? tr("Looking for first available Pokit device...")
         : tr("Looking for device \"%1\"...").arg(deviceToScanFor));
     discoveryAgent->start();
     return true;

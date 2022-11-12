@@ -24,7 +24,7 @@ void TestDeviceCommand::start()
     MockDeviceCommand command;
 
     QVERIFY(command.deviceToScanFor.isNull());
-    QTest::ignoreMessage(QtInfoMsg, "Looking first available Pokit device...");
+    QTest::ignoreMessage(QtInfoMsg, "Looking for first available Pokit device...");
     QVERIFY(command.start());
 
     command.deviceToScanFor = QStringLiteral("example");
