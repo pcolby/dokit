@@ -61,7 +61,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.1' ]
         env:
         - { cc: clang, cxx: clang++ }
         - { cc: gcc, cxx: g++ }
@@ -119,7 +119,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.1' ]
         env:
         - { cc: clang, cxx: clang++ }
         - { cc: gcc-11, cxx: g++-11 }
@@ -136,7 +136,7 @@ jobs:
             env: { cc: gcc-11, cxx: g++-11 }
           # Exclude 6.4 with GCC on macOS for now, as GCC (only) failed with internal QMetaType
           # symbol errors when linking.
-          - qt: '6.4.0'
+          - qt: '6.4.1'
             env: { cc: gcc-11, cxx: g++-11 }
           # Note, for Qt6 we build "universal" binaries (arm64 + x86_64), which gcc-11 does not
           # yet support. So if we didn't happen to exclude all 6.x GCC builds above, then we'd
@@ -205,7 +205,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.1' ]
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
         arch: [ x86, x86-64, arm64 ]
         exclude:
@@ -230,7 +230,7 @@ jobs:
         # those binaries for Qt6.
         - { arch: x86, qt: '6.2.4' }
         - { arch: x86, qt: '6.3.2' }
-        - { arch: x86, qt: '6.4.0' }
+        - { arch: x86, qt: '6.4.1' }
         # Exclude MinGW builds for x86-64 with Qt's earlier than 5.12, since the Qt online
         # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
         - { arch: x86-64, qt: '5.9.9',  generator: 'MinGW Makefiles' }
@@ -243,7 +243,7 @@ jobs:
         - { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
         - { generator: 'MinGW Makefiles', qt: '6.2.4',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.3.2',   qtArch: win64_mingw   }
-        - { generator: 'MinGW Makefiles', qt: '6.4.0',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.4.1',   qtArch: win64_mingw   }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
