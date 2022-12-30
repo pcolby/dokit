@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
-            <td class="headerValue">0.1.2-pre+443.linux.x86-64.gcc</td>
+            <td class="headerValue">0.1.2-pre+445.linux.x86-64.gcc</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -123,13 +123,13 @@
 <a name="61"><span class="lineNum">      61 </span>            : {</a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">         51 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has stopped.&quot;);</span></a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">         51 :     switch (format) {</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">          6 :     case OutputFormat::Csv:</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         17 :     case OutputFormat::Csv:</span></a>
 <a name="65"><span class="lineNum">      65 </span><span class="lineCov">         20 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_stop_result\nsuccess\n&quot;));</span></a>
 <a name="66"><span class="lineNum">      66 </span><span class="lineCov">         17 :         break;</span></a>
 <a name="67"><span class="lineNum">      67 </span>            :     case OutputFormat::Json:</a>
 <a name="68"><span class="lineNum">      68 </span><span class="lineCov">         23 :         std::cout &lt;&lt; qUtf8Printable(QLatin1String(&quot;true\n&quot;));</span></a>
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">         17 :         break;</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          6 :     case OutputFormat::Text:</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         17 :     case OutputFormat::Text:</span></a>
 <a name="71"><span class="lineNum">      71 </span><span class="lineCov">         20 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></a>
 <a name="72"><span class="lineNum">      72 </span><span class="lineCov">         17 :         break;</span></a>
 <a name="73"><span class="lineNum">      73 </span>            :     }</a>

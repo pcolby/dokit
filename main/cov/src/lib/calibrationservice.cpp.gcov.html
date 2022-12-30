@@ -31,13 +31,13 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">26</td>
-            <td class="headerCovTableEntry">38</td>
-            <td class="headerCovTableEntryLo">68.4 %</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
-            <td class="headerValue">0.1.2-pre+443.linux.x86-64.gcc</td>
+            <td class="headerValue">0.1.2-pre+445.linux.x86-64.gcc</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -142,9 +142,9 @@
 <a name="80"><span class="lineNum">      80 </span><span class="lineCov">         34 : bool CalibrationService::calibrateTemperature(const float ambientTemperature)</span></a>
 <a name="81"><span class="lineNum">      81 </span>            : {</a>
 <a name="82"><span class="lineNum">      82 </span>            :     static_assert(sizeof(float) == 4, &quot;Pokit devices expect 32-bit floats&quot;);</a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         22 :     Q_D(const CalibrationService);</span></a>
+<a name="83"><span class="lineNum">      83 </span>            :     Q_D(const CalibrationService);</a>
 <a name="84"><span class="lineNum">      84 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">         56 :         d-&gt;getCharacteristic(CharacteristicUuids::temperature);</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">         34 :         d-&gt;getCharacteristic(CharacteristicUuids::temperature);</span></a>
 <a name="86"><span class="lineNum">      86 </span><span class="lineCov">         34 :     if (!characteristic.isValid()) {</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :         return false;</a>
 <a name="88"><span class="lineNum">      88 </span>            :     }</a>
@@ -154,7 +154,7 @@
 <a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 :         .arg(ambientTemperature).arg(QLatin1String(newValue.toHex()));</span></a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, newValue);</span></a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         12 : }</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         34 : }</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <a name="97"><span class="lineNum">      97 </span>            : /*!</a>
 <a name="98"><span class="lineNum">      98 </span>            :  * \fn CalibrationService::temperatureCalibrated</a>
@@ -203,7 +203,7 @@
 <a name="141"><span class="lineNum">     141 </span>            : {</a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);</span></a>
 <a name="143"><span class="lineNum">     143 </span>            : </a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         11 :     Q_Q(CalibrationService);</span></a>
+<a name="144"><span class="lineNum">     144 </span>            :     Q_Q(CalibrationService);</a>
 <a name="145"><span class="lineNum">     145 </span><span class="lineCov">         17 :     if (characteristic.uuid() == CalibrationService::CharacteristicUuids::temperature) {</span></a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :         emit q-&gt;temperatureCalibrated();</span></a>
 <a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :         return;</span></a>

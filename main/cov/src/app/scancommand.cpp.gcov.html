@@ -31,13 +31,13 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">204</td>
-            <td class="headerCovTableEntry">208</td>
+            <td class="headerCovTableEntry">202</td>
+            <td class="headerCovTableEntry">206</td>
             <td class="headerCovTableEntryHi">98.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
-            <td class="headerValue">0.1.2-pre+443.linux.x86-64.gcc</td>
+            <td class="headerValue">0.1.2-pre+445.linux.x86-64.gcc</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">18</td>
@@ -131,19 +131,19 @@
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">       1305 : void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</span></a>
 <a name="70"><span class="lineNum">      70 </span>            : {</a>
 <a name="71"><span class="lineNum">      71 </span><span class="lineCov">       1305 :     switch (format) {</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        456 :     case OutputFormat::Csv:</span></a>
+<a name="72"><span class="lineNum">      72 </span>            :     case OutputFormat::Csv:</a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">        696 :         for (; showCsvHeader; showCsvHeader = false) {</span></a>
 <a name="74"><span class="lineNum">      74 </span><span class="lineCov">        315 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;));</span></a>
 <a name="75"><span class="lineNum">      75 </span>            :         }</a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       1275 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5,%6\n&quot;).arg(info.deviceUuid().toString(),</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       1245 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5,%6\n&quot;).arg(info.deviceUuid().toString(),</span></a>
 <a name="77"><span class="lineNum">      77 </span>            :             info.address().toString(), escapeCsvField(info.name()), toString(info.majorDeviceClass()),</a>
 <a name="78"><span class="lineNum">      78 </span>            :             toString(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi()));</a>
 <a name="79"><span class="lineNum">      79 </span><span class="lineCov">        435 :         break;</span></a>
 <a name="80"><span class="lineNum">      80 </span><span class="lineCov">        435 :     case OutputFormat::Json:</span></a>
 <a name="81"><span class="lineNum">      81 </span><span class="lineCov">        870 :         std::cout &lt;&lt; QJsonDocument(toJson(info)).toJson().toStdString();</span></a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineCov">        435 :         break;</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        150 :     case OutputFormat::Text:</span></a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       1275 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;%1 %2 %3 %4\n&quot;).arg(info.deviceUuid().toString(),</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        435 :     case OutputFormat::Text:</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       1245 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;%1 %2 %3 %4\n&quot;).arg(info.deviceUuid().toString(),</span></a>
 <a name="85"><span class="lineNum">      85 </span>            :             info.address().toString(), info.name()).arg(info.rssi()));</a>
 <a name="86"><span class="lineNum">      86 </span><span class="lineCov">        435 :         break;</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :     }</a>
@@ -187,26 +187,26 @@
 <a name="125"><span class="lineNum">     125 </span><span class="lineCov">       1040 :         { QLatin1String(&quot;majorDeviceClass&quot;), toJson(info.majorDeviceClass()) },</span></a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineCov">       1040 :         { QLatin1String(&quot;minorDeviceClass&quot;), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },</span></a>
 <a name="127"><span class="lineNum">     127 </span><span class="lineCov">        520 :         { QLatin1String(&quot;signalStrength&quot;), info.rssi() },</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       6795 :     };</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       8835 :     };</span></a>
 <a name="129"><span class="lineNum">     129 </span><span class="lineCov">        520 :     if (info.coreConfigurations() != QBluetoothDeviceInfo::UnknownCoreConfiguration) {</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         98 :         json.insert(QLatin1String(&quot;coreConfiguration&quot;), toJson(info.coreConfigurations()));</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         94 :         json.insert(QLatin1String(&quot;coreConfiguration&quot;), toJson(info.coreConfigurations()));</span></a>
 <a name="131"><span class="lineNum">     131 </span>            :     }</a>
 <a name="132"><span class="lineNum">     132 </span><span class="lineCov">        520 :     if (!info.deviceUuid().isNull()) {</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">        504 :         json.insert(QLatin1String(&quot;deviceUuid&quot;), info.deviceUuid().toString());</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">        482 :         json.insert(QLatin1String(&quot;deviceUuid&quot;), info.deviceUuid().toString());</span></a>
 <a name="134"><span class="lineNum">     134 </span>            :     }</a>
 <a name="135"><span class="lineNum">     135 </span>            :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Added in Qt 5.12.</a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineCov">        420 :     if (!info.manufacturerData().isEmpty()) {</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         51 :         json.insert(QLatin1String(&quot;manufacturerData&quot;), toJson(info.manufacturerData()));</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         48 :         json.insert(QLatin1String(&quot;manufacturerData&quot;), toJson(info.manufacturerData()));</span></a>
 <a name="138"><span class="lineNum">     138 </span>            :     }</a>
 <a name="139"><span class="lineNum">     139 </span>            :     #endif</a>
 <a name="140"><span class="lineNum">     140 </span><span class="lineCov">        520 :     if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        115 :         json.insert(QLatin1String(&quot;serviceClasses&quot;), toJson(info.serviceClasses()));</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        110 :         json.insert(QLatin1String(&quot;serviceClasses&quot;), toJson(info.serviceClasses()));</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :     }</a>
 <a name="143"><span class="lineNum">     143 </span><span class="lineCov">        625 :     if (!info.serviceUuids().isEmpty()) {</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         27 :         json.insert(QLatin1String(&quot;serviceUuids&quot;), toJson(info.serviceUuids()));</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         26 :         json.insert(QLatin1String(&quot;serviceUuids&quot;), toJson(info.serviceUuids()));</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :     }</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">        215 :     return json;</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        180 : }</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">        250 :     return json;</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        520 : }</span></a>
 <a name="148"><span class="lineNum">     148 </span>            : </a>
 <a name="149"><span class="lineNum">     149 </span>            : /*!</a>
 <a name="150"><span class="lineNum">     150 </span>            :  * Returns \a configuration as a JSON array of strings.</a>
@@ -217,9 +217,9 @@
 <a name="155"><span class="lineNum">     155 </span>            :     #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \</a>
 <a name="156"><span class="lineNum">     156 </span>            :         if (configurations.testFlag(QBluetoothDeviceInfo::flag)) \</a>
 <a name="157"><span class="lineNum">     157 </span>            :             array.append(QLatin1String(#flag))</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         91 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(UnknownCoreConfiguration);</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">        119 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(LowEnergyCoreConfiguration);</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         97 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateCoreConfiguration);</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         38 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(UnknownCoreConfiguration);</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">        103 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(LowEnergyCoreConfiguration);</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         52 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateCoreConfiguration);</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :   //QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateAndLowEnergyCoreConfiguration); // Combination flag.</a>
 <a name="162"><span class="lineNum">     162 </span>            :     #undef QTPOKIT_INTERNAL_IF_SET_THEN_APPEND</a>
 <a name="163"><span class="lineNum">     163 </span><span class="lineCov">        131 :     return array;</span></a>
@@ -233,9 +233,9 @@
 <a name="171"><span class="lineNum">     171 </span>            :  */</a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineCov">        758 : QJsonValue ScanCommand::toJson(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</span></a>
 <a name="173"><span class="lineNum">     173 </span>            : {</a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">       1105 :     const QString string = toString(majorClass);</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">        758 :     const QString string = toString(majorClass);</span></a>
 <a name="175"><span class="lineNum">     175 </span><span class="lineCov">       1516 :     return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">        264 : }</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">        611 : }</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
 <a name="178"><span class="lineNum">     178 </span>            : /*!</a>
 <a name="179"><span class="lineNum">     179 </span>            :  * Returns \a minorClass as a JSON value. This is equivalent to toString, except that if toString</a>
@@ -246,9 +246,9 @@
 <a name="184"><span class="lineNum">     184 </span>            :  */</a>
 <a name="185"><span class="lineNum">     185 </span><span class="lineCov">       2084 : QJsonValue ScanCommand::toJson(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</span></a>
 <a name="186"><span class="lineNum">     186 </span>            : {</a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       3055 :     const QString string = toString(majorClass, minorClass);</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       2084 :     const QString string = toString(majorClass, minorClass);</span></a>
 <a name="188"><span class="lineNum">     188 </span><span class="lineCov">       4168 :     return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">        732 : }</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       1703 : }</span></a>
 <a name="190"><span class="lineNum">     190 </span>            : </a>
 <a name="191"><span class="lineNum">     191 </span>            : /*!</a>
 <a name="192"><span class="lineNum">     192 </span>            :  * Returns \a classes as a JSON array of strings.</a>
@@ -259,14 +259,14 @@
 <a name="197"><span class="lineNum">     197 </span>            :     #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \</a>
 <a name="198"><span class="lineNum">     198 </span>            :         if (classes.testFlag(QBluetoothDeviceInfo::flag)) \</a>
 <a name="199"><span class="lineNum">     199 </span>            :             array.append(QLatin1String(#flag))</a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        197 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">        197 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        197 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">        191 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">        191 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">        191 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">        191 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        191 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        133 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">        133 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        133 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">        119 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">        119 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">        119 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">        119 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        119 :     QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);</span></a>
 <a name="208"><span class="lineNum">     208 </span>            :     #undef QTPOKIT_INTERNAL_IF_SET_THEN_APPEND</a>
 <a name="209"><span class="lineNum">     209 </span><span class="lineCov">        245 :     return array;</span></a>
 <a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 : }</span></a>
@@ -290,22 +290,22 @@
 <a name="228"><span class="lineNum">     228 </span><span class="lineCov">         84 : QJsonObject ScanCommand::toJson(const QMultiHash&lt;quint16, QByteArray&gt; &amp;data)</span></a>
 <a name="229"><span class="lineNum">     229 </span>            : {</a>
 <a name="230"><span class="lineNum">     230 </span><span class="lineCov">         84 :     QJsonObject object;</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        119 :     QList&lt;quint16&gt; keys = data.uniqueKeys();</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">         84 :     QList&lt;quint16&gt; keys = data.uniqueKeys();</span></a>
 <a name="232"><span class="lineNum">     232 </span><span class="lineCov">         21 :     std::sort(keys.begin(), keys.end());</span></a>
 <a name="233"><span class="lineNum">     233 </span><span class="lineCov">        204 :     for (const quint16 key: keys) {</span></a>
 <a name="234"><span class="lineNum">     234 </span>            :         // Convert the key's values to a JSON array, reversing the order, because QMultiHash</a>
 <a name="235"><span class="lineNum">     235 </span>            :         // guarantees that the values are orderer &quot;from the most recently inserted to the least</a>
 <a name="236"><span class="lineNum">     236 </span>            :         // recently inserted&quot;, which is the oppoosit of what we want.</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">        170 :         QList&lt;QByteArray&gt; values = data.values(key);</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">        120 :         QList&lt;QByteArray&gt; values = data.values(key);</span></a>
 <a name="238"><span class="lineNum">     238 </span><span class="lineCov">         30 :         std::reverse(values.begin(), values.end());</span></a>
 <a name="239"><span class="lineNum">     239 </span><span class="lineCov">        120 :         QJsonArray array;</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        285 :         for (const QByteArray &amp;value: values) {</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        330 :             array.append(QLatin1String(value.toBase64()));</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        288 :         for (const QByteArray &amp;value: values) {</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">        336 :             array.append(QLatin1String(value.toBase64()));</span></a>
 <a name="242"><span class="lineNum">     242 </span>            :         }</a>
 <a name="243"><span class="lineNum">     243 </span><span class="lineCov">        150 :         object.insert(QString::number(key), array);</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">         40 :     }</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">        120 :     }</span></a>
 <a name="245"><span class="lineNum">     245 </span><span class="lineCov">         84 :     return object;</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">         28 : }</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">         63 : }</span></a>
 <a name="247"><span class="lineNum">     247 </span>            : </a>
 <a name="248"><span class="lineNum">     248 </span>            : /*!</a>
 <a name="249"><span class="lineNum">     249 </span>            :  * Returns \a majorClass as a human-readable string, or a null QString if \a majorClass is not</a>
@@ -320,20 +320,20 @@
 <a name="258"><span class="lineNum">     258 </span>            :         if (majorClass == QBluetoothDeviceInfo::value) \</a>
 <a name="259"><span class="lineNum">     259 </span>            :             return QLatin1String(#value)</a>
 <a name="260"><span class="lineNum">     260 </span><span class="lineCov">       1431 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(MiscellaneousDevice);</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">        525 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ComputerDevice);</span></a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">        427 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PhoneDevice);</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         30 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ComputerDevice);</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">         30 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PhoneDevice);</span></a>
 <a name="263"><span class="lineNum">     263 </span>            :     #if (QT_VERSION &lt; QT_VERSION_CHECK(5, 13, 0))</a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">        143 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LANAccessDevice); // Deprecated since Qt 5.13.</span></a>
+<a name="264"><span class="lineNum">     264 </span>            :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LANAccessDevice); // Deprecated since Qt 5.13.</a>
 <a name="265"><span class="lineNum">     265 </span>            :     #else</a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">        186 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkDevice); // Added in Qt 5.13.</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          6 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkDevice); // Added in Qt 5.13.</span></a>
 <a name="267"><span class="lineNum">     267 </span>            :     #endif</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">        307 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(AudioVideoDevice);</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">        285 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PeripheralDevice);</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">        263 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagingDevice);</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">        241 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableDevice);</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        219 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDevice);</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">        197 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">        175 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          6 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(AudioVideoDevice);</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          6 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PeripheralDevice);</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          6 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagingDevice);</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          6 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableDevice);</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          6 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDevice);</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          6 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">         33 :     QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);</span></a>
 <a name="275"><span class="lineNum">     275 </span>            :     #undef QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN</a>
 <a name="276"><span class="lineNum">     276 </span><span class="lineCov">        102 :     qCDebug(lc).noquote() &lt;&lt; QObject::tr(&quot;Unknown major class %1.&quot;).arg(majorClass);</span></a>
 <a name="277"><span class="lineNum">     277 </span>            :     return QString(); // Null QString indicates unknown minor class.</a>
@@ -357,65 +357,65 @@
 <a name="295"><span class="lineNum">     295 </span>            :         break;</a>
 <a name="296"><span class="lineNum">     296 </span><span class="lineCov">        388 :     case QBluetoothDeviceInfo::ComputerDevice:</span></a>
 <a name="297"><span class="lineNum">     297 </span><span class="lineCov">        388 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedComputer);</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">        230 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DesktopComputer);</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">        208 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ServerComputer);</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">        186 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LaptopComputer);</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">        164 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldClamShellComputer);</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">        142 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldComputer);</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">        120 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableComputer);</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DesktopComputer);</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ServerComputer);</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LaptopComputer);</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldClamShellComputer);</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldComputer);</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableComputer);</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :         break;</a>
 <a name="305"><span class="lineNum">     305 </span><span class="lineCov">        354 :     case QBluetoothDeviceInfo::PhoneDevice:</span></a>
 <a name="306"><span class="lineNum">     306 </span><span class="lineCov">        354 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPhone);</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">        208 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CellularPhone);</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">        186 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CordlessPhone);</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">        164 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SmartPhone);</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">        142 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WiredModemOrVoiceGatewayPhone);</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">        120 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CommonIsdnAccessPhone);</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CellularPhone);</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CordlessPhone);</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SmartPhone);</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WiredModemOrVoiceGatewayPhone);</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CommonIsdnAccessPhone);</span></a>
 <a name="312"><span class="lineNum">     312 </span>            :         break;</a>
 <a name="313"><span class="lineNum">     313 </span>            :     #if (QT_VERSION &lt; QT_VERSION_CHECK(5, 13, 0))</a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">        144 :     case QBluetoothDeviceInfo::LANAccessDevice: // Deprecated since Qt 5.13.</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">        126 :     case QBluetoothDeviceInfo::LANAccessDevice: // Deprecated since Qt 5.13.</span></a>
 <a name="315"><span class="lineNum">     315 </span>            :     #else</a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">        162 :     case QBluetoothDeviceInfo::NetworkDevice: // Added in Qt 5.13.</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">        180 :     case QBluetoothDeviceInfo::NetworkDevice: // Added in Qt 5.13.</span></a>
 <a name="317"><span class="lineNum">     317 </span>            :     #endif</a>
 <a name="318"><span class="lineNum">     318 </span><span class="lineCov">        306 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkFullService);</span></a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">        176 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorOne);</span></a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">        154 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorTwo);</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        132 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorThree);</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        110 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFour);</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">         88 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFive);</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         66 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorSix);</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">         44 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkNoService);</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorOne);</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorTwo);</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorThree);</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFour);</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFive);</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorSix);</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkNoService);</span></a>
 <a name="326"><span class="lineNum">     326 </span>            :         break;</a>
 <a name="327"><span class="lineNum">     327 </span><span class="lineCov">        612 :     case QBluetoothDeviceInfo::AudioVideoDevice:</span></a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineCov">        612 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedAudioVideoDevice);</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        374 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHeadsetDevice);</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">        352 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandsFreeDevice);</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">        330 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Microphone);</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">        308 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Loudspeaker);</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">        286 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Headphones);</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">        264 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PortableAudioDevice);</span></a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">        242 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CarAudio);</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">        220 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SetTopBox);</span></a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">        198 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HiFiAudioDevice);</span></a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">        176 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Vcr);</span></a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">        154 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoCamera);</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">        132 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Camcorder);</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">        110 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoMonitor);</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         88 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoDisplayAndLoudspeaker);</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">         66 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoConferencing);</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         44 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamingDevice);</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHeadsetDevice);</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandsFreeDevice);</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Microphone);</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Loudspeaker);</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Headphones);</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PortableAudioDevice);</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CarAudio);</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SetTopBox);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HiFiAudioDevice);</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Vcr);</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoCamera);</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Camcorder);</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoMonitor);</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoDisplayAndLoudspeaker);</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoConferencing);</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamingDevice);</span></a>
 <a name="345"><span class="lineNum">     345 </span>            :         break;</a>
 <a name="346"><span class="lineNum">     346 </span><span class="lineCov">        374 :     case QBluetoothDeviceInfo::PeripheralDevice:</span></a>
 <a name="347"><span class="lineNum">     347 </span><span class="lineCov">        374 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPeripheral);</span></a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">        220 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardPeripheral);</span></a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">        198 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PointingDevicePeripheral);</span></a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">        176 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardWithPointingDevicePeripheral);</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">        154 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(JoystickPeripheral);</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">        132 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamepadPeripheral);</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">        110 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(RemoteControlPeripheral);</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         88 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SensingDevicePeripheral);</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         66 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DigitizerTabletPeripheral);</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         44 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CardReaderPeripheral);</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardPeripheral);</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PointingDevicePeripheral);</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardWithPointingDevicePeripheral);</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(JoystickPeripheral);</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamepadPeripheral);</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(RemoteControlPeripheral);</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SensingDevicePeripheral);</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DigitizerTabletPeripheral);</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CardReaderPeripheral);</span></a>
 <a name="357"><span class="lineNum">     357 </span>            :         break;</a>
 <a name="358"><span class="lineNum">     358 </span><span class="lineCov">        204 :     case QBluetoothDeviceInfo::ImagingDevice:</span></a>
 <a name="359"><span class="lineNum">     359 </span><span class="lineCov">        204 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedImagingDevice);</span></a>
@@ -426,29 +426,29 @@
 <a name="364"><span class="lineNum">     364 </span>            :         break;</a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineCov">        238 :     case QBluetoothDeviceInfo::WearableDevice:</span></a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineCov">        238 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedWearableDevice);</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">        132 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableWristWatch);</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">        110 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearablePager);</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         88 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableJacket);</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">         66 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHelmet);</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">         44 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableGlasses);</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableWristWatch);</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearablePager);</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableJacket);</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHelmet);</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableGlasses);</span></a>
 <a name="372"><span class="lineNum">     372 </span>            :         break;</a>
 <a name="373"><span class="lineNum">     373 </span><span class="lineCov">        306 :     case QBluetoothDeviceInfo::ToyDevice:</span></a>
 <a name="374"><span class="lineNum">     374 </span><span class="lineCov">        306 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedToy);</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        176 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyRobot);</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        154 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyVehicle);</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        132 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDoll);</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">        110 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyController);</span></a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         88 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyGame);</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyRobot);</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyVehicle);</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDoll);</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyController);</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyGame);</span></a>
 <a name="380"><span class="lineNum">     380 </span>            :         break;</a>
 <a name="381"><span class="lineNum">     381 </span><span class="lineCov">        306 :     case QBluetoothDeviceInfo::HealthDevice:</span></a>
 <a name="382"><span class="lineNum">     382 </span><span class="lineCov">        306 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedHealthDevice);</span></a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">        176 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthBloodPressureMonitor);</span></a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">        154 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthThermometer);</span></a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">        132 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthWeightScale);</span></a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">        110 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthGlucoseMeter);</span></a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">         88 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthPulseOximeter);</span></a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         66 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDataDisplay);</span></a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">         44 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthStepCounter);</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthBloodPressureMonitor);</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthThermometer);</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthWeightScale);</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthGlucoseMeter);</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthPulseOximeter);</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDataDisplay);</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          6 :         QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthStepCounter);</span></a>
 <a name="390"><span class="lineNum">     390 </span>            :         break;</a>
 <a name="391"><span class="lineNum">     391 </span>            :     case QBluetoothDeviceInfo::UncategorizedDevice:</a>
 <a name="392"><span class="lineNum">     392 </span>            :         // There are no minor classes defined (in Qt) for uncategorized devices.</a>

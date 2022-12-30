@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
-            <td class="headerValue">0.1.2-pre+443.linux.x86-64.gcc</td>
+            <td class="headerValue">0.1.2-pre+445.linux.x86-64.gcc</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -78,11 +78,11 @@
 <a name="16"><span class="lineNum">      16 </span>            : /*!</a>
 <a name="17"><span class="lineNum">      17 </span>            :  * Construct a new DeviceCommand object with \a parent.</a>
 <a name="18"><span class="lineNum">      18 </span>            :  */</a>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">       7812 : DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), device(nullptr),</span></a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">       5784 :     exitCodeOnDisconnect(EXIT_FAILURE)</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">      11592 : DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), device(nullptr),</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">       5796 :     exitCodeOnDisconnect(EXIT_FAILURE)</span></a>
 <a name="21"><span class="lineNum">      21 </span>            : {</a>
 <a name="22"><span class="lineNum">      22 </span>            : </a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">       5784 : }</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">       5796 : }</span></a>
 <a name="24"><span class="lineNum">      24 </span>            : </a>
 <a name="25"><span class="lineNum">      25 </span>            : /*!</a>
 <a name="26"><span class="lineNum">      26 </span>            :  * Begins scanning for the Pokit device.</a>
@@ -100,14 +100,14 @@
 <a name="38"><span class="lineNum">      38 </span>            :  * Disconnects the underlying Pokit device, and sets \a exitCode to be return to the OS once the</a>
 <a name="39"><span class="lineNum">      39 </span>            :  * disconnection has taken place.</a>
 <a name="40"><span class="lineNum">      40 </span>            :  */</a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        429 : void DeviceCommand::disconnect(int exitCode)</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        441 : void DeviceCommand::disconnect(int exitCode)</span></a>
 <a name="42"><span class="lineNum">      42 </span>            : {</a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">        429 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disconnecting Pokit device...&quot;);</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">        441 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disconnecting Pokit device...&quot;);</span></a>
 <a name="44"><span class="lineNum">      44 </span>            :     Q_ASSERT(device);</a>
 <a name="45"><span class="lineNum">      45 </span>            :     Q_ASSERT(device-&gt;controller());</a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">        429 :     exitCodeOnDisconnect = exitCode;</span></a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">        429 :     device-&gt;controller()-&gt;disconnectFromDevice();</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">        429 : }</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">        441 :     exitCodeOnDisconnect = exitCode;</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">        441 :     device-&gt;controller()-&gt;disconnectFromDevice();</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">        441 : }</span></a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span>            : /*!</a>
 <a name="51"><span class="lineNum">      51 </span>            :  * \fn virtual AbstractPokitService * DeviceCommand::getService() = 0</a>
@@ -162,10 +162,10 @@
 <a name="100"><span class="lineNum">     100 </span>            :  * nothing more. Derived classes may (usually do) override this slot to provide their own processing</a>
 <a name="101"><span class="lineNum">     101 </span>            :  * when a services details have been discovered.</a>
 <a name="102"><span class="lineNum">     102 </span>            :  */</a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">        310 : void DeviceCommand::serviceDetailsDiscovered()</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">        322 : void DeviceCommand::serviceDetailsDiscovered()</span></a>
 <a name="104"><span class="lineNum">     104 </span>            : {</a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        310 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service details discovered.&quot;);</span></a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">        310 : }</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        322 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service details discovered.&quot;);</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">        322 : }</span></a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
 <a name="108"><span class="lineNum">     108 </span>            : /*!</a>
 <a name="109"><span class="lineNum">     109 </span>            :  * Checks if \a info is the device (if any) we're looking for, and if so, create a contoller and</a>
