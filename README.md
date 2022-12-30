@@ -106,7 +106,7 @@ pokit status --device RedPokitPro
 Tip: You can rename Pokit devices via the official Pokit app, or the `set-name` command, like:
 
 ```sh
-pokit set-name --device PokitMeter --new-name MyPokitMeter
+pokit set-name --device Pokit --new-name PokitMeter
 ```
 
 Here's a more complex usage example:
