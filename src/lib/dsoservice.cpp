@@ -16,7 +16,7 @@
 /*!
  * \class DsoService
  *
- * The DsoService class accesses the `Pokit Status` service of Pokit devices.
+ * The DsoService class accesses the `DSO` (Digital Storage Oscilloscope) service of Pokit devices.
  */
 
 /// UUID of the "DSO" service.

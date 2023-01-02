@@ -16,7 +16,7 @@
 /*!
  * \class MultimeterService
  *
- * The MultimeterService class accesses the `Pokit Status` service of Pokit devices.
+ * The MultimeterService class accesses the `Multimeter` service of Pokit devices.
  */
 
 /// UUID of the "Multimeter" service.

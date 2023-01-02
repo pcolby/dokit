@@ -33,10 +33,10 @@ public:
     };
 
     enum class Command : quint8 {
-        FreeRunning        = 0,
-        RisingEdgeTrigger  = 1,
-        FallingEdgeTrigger = 2,
-        ResendData         = 3
+        FreeRunning        = 0, ///< Run free, without waiting for edge triggers.
+        RisingEdgeTrigger  = 1, ///< Trigger on a rising edge.
+        FallingEdgeTrigger = 2, ///< Trigger on a falling edge.
+        ResendData         = 3  ///< Resend the last acquired data.
     };
 
     enum class Mode : quint8 {
@@ -92,9 +92,9 @@ public:
     };
 
     enum class DsoStatus : quint8 {
-        Done       = 0,
-        Sampling   = 1,
-        Error      = 255
+        Done       = 0,  ///< Sampling has completed.
+        Sampling   = 1,  ///< Actively sampling.
+        Error      = 255 ///< An error has occurred.
     };
 
     struct Metadata {

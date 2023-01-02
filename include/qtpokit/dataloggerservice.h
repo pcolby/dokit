@@ -33,9 +33,9 @@ public:
     };
 
     enum class Command : quint8 {
-        Start   = 0,
-        Stop    = 1,
-        Refresh = 2,
+        Start   = 0, ///< Start the Data Logger.
+        Stop    = 1, ///< Stop the Data Logger.
+        Refresh = 2, ///< Refresh the Data Logger.
     };
 
     enum class Mode : quint8 {
@@ -92,10 +92,10 @@ public:
     };
 
     enum class LoggerStatus : quint8 {
-        Done       = 0,
-        Sampling   = 1,
-        BufferFull = 2,
-        Error      = 255
+        Done       = 0,   ///< Sampling has completed.
+        Sampling   = 1,   ///< Actively sampling.
+        BufferFull = 2,   ///< Buffer is full.
+        Error      = 255  ///< An error has occurred.
     };
 
     struct Metadata {

@@ -19,7 +19,7 @@
 /*!
  * \class DataLoggerService
  *
- * The DataLoggerService class accesses the `Pokit Status` service of Pokit devices.
+ * The DataLoggerService class accesses the `Data Logger` service of Pokit devices.
  */
 
 /// UUID of the "DataLogger" service.
