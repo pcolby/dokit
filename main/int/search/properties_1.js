@@ -6,5 +6,5 @@ var searchData=
   ['currentloop_3',['currentLoop',['https://doc.qt.io/qt-5/qabstractanimation.html#currentLoop-prop',1,'QAbstractAnimation']]],
   ['currenttime_4',['currentTime',['https://doc.qt.io/qt-5/qabstractanimation.html#currentTime-prop',1,'QAbstractAnimation::currentTime()'],['https://doc.qt.io/qt-5/qtimeline.html#currentTime-prop',1,'QTimeLine::currentTime()']]],
   ['currentvalue_5',['currentValue',['https://doc.qt.io/qt-5/qvariantanimation.html#currentValue-prop',1,'QVariantAnimation']]],
-  ['curveshape_6',['curveShape',['https://doc.qt.io/qt-5/qtimeline.html#curveShape-prop',1,'QTimeLine']]]
+  ['curveshape_6',['curveShape',['https://doc.qt.io/qt-5/qtimeline-obsolete.html#curveShape-prop',1,'QTimeLine']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['loggerfetchcommand_0',['LoggerFetchCommand',['../classLoggerFetchCommand.html',1,'']]],
-  ['loggerstartcommand_1',['LoggerStartCommand',['../classLoggerStartCommand.html',1,'']]],
-  ['loggerstopcommand_2',['LoggerStopCommand',['../classLoggerStopCommand.html',1,'']]]
+  ['metadata_0',['Metadata',['../structDataLoggerService_1_1Metadata.html',1,'DataLoggerService::Metadata'],['../structDsoService_1_1Metadata.html',1,'DsoService::Metadata']]],
+  ['metercommand_1',['MeterCommand',['../classMeterCommand.html',1,'']]],
+  ['multimeterservice_2',['MultimeterService',['../classMultimeterService.html',1,'']]],
+  ['multimeterserviceprivate_3',['MultimeterServicePrivate',['../classMultimeterServicePrivate.html',1,'']]]
 ];

@@ -1,8 +1,23 @@
 var searchData=
 [
-  ['key_5ftype_0',['key_type',['https://doc.qt.io/qt-5/qmap.html#key_type-typedef',1,'QMap::key_type()'],['https://doc.qt.io/qt-5/qhash.html#key_type-typedef',1,'QHash::key_type()'],['https://doc.qt.io/qt-5/qset.html#key_type-typedef',1,'QSet::key_type()'],['https://doc.qt.io/qt-5/qcbormap.html#key_type-typedef',1,'QCborMap::key_type()'],['https://doc.qt.io/qt-5/qjsonobject.html#key_type-typedef',1,'QJsonObject::key_type()']]],
-  ['key_5fvalue_5fiterator_1',['key_value_iterator',['https://doc.qt.io/qt-5/qmap.html#key_value_iterator-typedef',1,'QMap::key_value_iterator()'],['https://doc.qt.io/qt-5/qhash.html#key_value_iterator-typedef',1,'QHash::key_value_iterator()']]],
-  ['keyboardmodifiers_2',['KeyboardModifiers',['https://doc.qt.io/qt-5/qt.html#KeyboardModifier-enum',1,'Qt']]],
-  ['keyvalue_3',['KeyValue',['https://doc.qt.io/qt-5/qvariantanimation.html#KeyValue-typedef',1,'QVariantAnimation']]],
-  ['keyvalues_4',['KeyValues',['https://doc.qt.io/qt-5/qvariantanimation.html#KeyValues-typedef',1,'QVariantAnimation']]]
+  ['jalali_0',['Jalali',['https://doc.qt.io/qt-5/qcalendar.html#System-enum',1,'QCalendar']]],
+  ['jamaica_1',['Jamaica',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['jamoscript_2',['JamoScript',['https://doc.qt.io/qt-5/qlocale.html#Script-enum',1,'QLocale']]],
+  ['japan_3',['Japan',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['japanese_4',['Japanese',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['japanesescript_5',['JapaneseScript',['https://doc.qt.io/qt-5/qlocale.html#Script-enum',1,'QLocale']]],
+  ['javanese_6',['Javanese',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['javanesescript_7',['JavaneseScript',['https://doc.qt.io/qt-5/qlocale.html#Script-enum',1,'QLocale']]],
+  ['jersey_8',['Jersey',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['jju_9',['Jju',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['joining_5fcausing_10',['Joining_Causing',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5fdual_11',['Joining_Dual',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5fleft_12',['Joining_Left',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5fnone_13',['Joining_None',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5fright_14',['Joining_Right',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5ftransparent_15',['Joining_Transparent',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['jolafonyi_16',['JolaFonyi',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['jordan_17',['Jordan',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['joystickperipheral_18',['JoystickPeripheral',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#MinorPeripheralClass-enum',1,'QBluetoothDeviceInfo']]],
+  ['julian_19',['Julian',['https://doc.qt.io/qt-5/qcalendar.html#System-enum',1,'QCalendar']]]
 ];

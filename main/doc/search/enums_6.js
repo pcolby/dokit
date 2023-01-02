@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['voltagerange_0',['VoltageRange',['../classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7c',1,'DataLoggerService::VoltageRange()'],['../classDsoService.html#a72e17ce03f8046819ba71597d6f753a1',1,'DsoService::VoltageRange()'],['../classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942',1,'MultimeterService::VoltageRange()']]]
+  ['gestureflag_0',['GestureFlag',['https://doc.qt.io/qt-5/qt.html#GestureFlag-enum',1,'Qt']]],
+  ['gesturestate_1',['GestureState',['https://doc.qt.io/qt-5/qt.html#GestureState-enum',1,'Qt']]],
+  ['gesturetype_2',['GestureType',['https://doc.qt.io/qt-5/qt.html#GestureType-enum',1,'Qt']]],
+  ['globalcolor_3',['GlobalColor',['https://doc.qt.io/qt-5/qt.html#GlobalColor-enum',1,'Qt']]]
 ];

@@ -1,5 +1,30 @@
 var searchData=
 [
-  ['devicestatus_0',['DeviceStatus',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35',1,'StatusService']]],
-  ['dsostatus_1',['DsoStatus',['../classDsoService.html#aaa4e080d3d3e444dabf9d7117561905d',1,'DsoService']]]
+  ['caretmode_0',['CaretMode',['https://doc.qt.io/qt-5/qregexp.html#CaretMode-enum',1,'QRegExp']]],
+  ['casesensitivity_1',['CaseSensitivity',['https://doc.qt.io/qt-5/qt.html#CaseSensitivity-enum',1,'Qt']]],
+  ['category_2',['Category',['https://doc.qt.io/qt-5/qchar.html#Category-enum',1,'QChar']]],
+  ['characteristictype_3',['CharacteristicType',['https://doc.qt.io/qt-5/qbluetoothuuid.html#CharacteristicType-enum',1,'QBluetoothUuid']]],
+  ['checkindexoption_4',['CheckIndexOption',['https://doc.qt.io/qt-5/qabstractitemmodel.html#CheckIndexOption-enum',1,'QAbstractItemModel']]],
+  ['checkstate_5',['CheckState',['https://doc.qt.io/qt-5/qt.html#CheckState-enum',1,'Qt']]],
+  ['checksumtype_6',['ChecksumType',['https://doc.qt.io/qt-5/qt.html#ChecksumType-enum',1,'Qt']]],
+  ['childmode_7',['ChildMode',['https://doc.qt.io/qt-5/qstate.html#ChildMode-enum',1,'QState']]],
+  ['clipoperation_8',['ClipOperation',['https://doc.qt.io/qt-5/qt.html#ClipOperation-enum',1,'Qt']]],
+  ['clocktype_9',['ClockType',['https://doc.qt.io/qt-5/qelapsedtimer.html#ClockType-enum',1,'QElapsedTimer']]],
+  ['code_10',['Code',['https://doc.qt.io/qt-5/qcborerror.html#Code-enum',1,'QCborError']]],
+  ['command_11',['Command',['../classDsoService.html#af2baee0dc3fa5e308be06c691dece236',1,'DsoService::Command()'],['../classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cc',1,'DataLoggerService::Command()']]],
+  ['componentformattingoption_12',['ComponentFormattingOption',['https://doc.qt.io/qt-5/qurl.html#ComponentFormattingOption-enum',1,'QUrl']]],
+  ['compression_13',['Compression',['https://doc.qt.io/qt-5/qresource.html#Compression-enum',1,'QResource']]],
+  ['connectiontype_14',['ConnectionType',['https://doc.qt.io/qt-5/qt.html#ConnectionType-enum',1,'Qt']]],
+  ['contextmenupolicy_15',['ContextMenuPolicy',['https://doc.qt.io/qt-5/qt.html#ContextMenuPolicy-enum',1,'Qt']]],
+  ['controllerstate_16',['ControllerState',['https://doc.qt.io/qt-5/qlowenergycontroller.html#ControllerState-enum',1,'QLowEnergyController']]],
+  ['conversionflag_17',['ConversionFlag',['https://doc.qt.io/qt-5/qtextcodec.html#ConversionFlag-enum',1,'QTextCodec']]],
+  ['coordinatesystem_18',['CoordinateSystem',['https://doc.qt.io/qt-5/qt.html#CoordinateSystem-enum',1,'Qt']]],
+  ['coreconfiguration_19',['CoreConfiguration',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#CoreConfiguration-enum',1,'QBluetoothDeviceInfo']]],
+  ['corner_20',['Corner',['https://doc.qt.io/qt-5/qt.html#Corner-enum',1,'Qt']]],
+  ['country_21',['Country',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['currencysymbolformat_22',['CurrencySymbolFormat',['https://doc.qt.io/qt-5/qlocale.html#CurrencySymbolFormat-enum',1,'QLocale']]],
+  ['currentrange_23',['CurrentRange',['../classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2',1,'MultimeterService::CurrentRange()'],['../classDsoService.html#af8270cd794b3e41f68c30032a9d9d053',1,'DsoService::CurrentRange()'],['../classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2',1,'DataLoggerService::CurrentRange()']]],
+  ['cursormovestyle_24',['CursorMoveStyle',['https://doc.qt.io/qt-5/qt.html#CursorMoveStyle-enum',1,'Qt']]],
+  ['cursorshape_25',['CursorShape',['https://doc.qt.io/qt-5/qt.html#CursorShape-enum',1,'Qt']]],
+  ['curveshape_26',['CurveShape',['https://doc.qt.io/qt-5/qtimeline-obsolete.html#CurveShape-enum',1,'QTimeLine']]]
 ];

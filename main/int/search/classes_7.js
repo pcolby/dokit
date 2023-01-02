@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['key_5fiterator_0',['key_iterator',['https://doc.qt.io/qt-5/qhash-key-iterator.html',1,'QHash::key_iterator'],['https://doc.qt.io/qt-5/qmap-key-iterator.html',1,'QMap::key_iterator']]]
+  ['loggerfetchcommand_0',['LoggerFetchCommand',['../classLoggerFetchCommand.html',1,'']]],
+  ['loggerstartcommand_1',['LoggerStartCommand',['../classLoggerStartCommand.html',1,'']]],
+  ['loggerstopcommand_2',['LoggerStopCommand',['../classLoggerStopCommand.html',1,'']]]
 ];

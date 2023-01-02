@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resistance_0',['Resistance',['../classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa9db444f7a3b8ba8f817647de53b7a6fe',1,'MultimeterService']]]
+  ['nocontinuity_0',['NoContinuity',['../classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286aa47e2c0fd15eb75f65390f27f1107a86',1,'MultimeterService']]]
 ];

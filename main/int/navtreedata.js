@@ -25,12 +25,7 @@
 var NAVTREE =
 [
   [ "QtPokit", "index.html", [
-    [ "QtPokit - Internal", "index.html", [
-      [ "Building from Source", "index.html#autotoc_md1", [
-        [ "Test Coverage", "index.html#autotoc_md2", null ],
-        [ "Documentation", "index.html#autotoc_md3", null ]
-      ] ]
-    ] ],
+    [ "QtPokit - Internal", "index.html", "index" ],
     [ "Notes", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html", [
       [ "Pokit Bluetooth API", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md5", [
         [ "Undocumented Services", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md6", null ]
