@@ -33,7 +33,8 @@ void TestAbstractPokitService::autoDiscover()
     QVERIFY(service.autoDiscover());
 }
 
-void TestAbstractPokitService::service()
+// Underscore suffix is just to prevent local `service` variables shadowing this function.
+void TestAbstractPokitService::service_()
 {
     MockPokitService service(nullptr);
     QCOMPARE(service.service(), nullptr);

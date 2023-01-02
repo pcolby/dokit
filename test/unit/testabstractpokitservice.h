@@ -10,7 +10,7 @@ class TestAbstractPokitService : public QObject
 private slots:
     // AbstractPokitService tests.
     void autoDiscover();
-    void service();
+    void service_();
 
     // AbstractPokitServicePrivate tests.
     // Most of these only test safe error handling, since more would require mocking Qt's BLE classes.

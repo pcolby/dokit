@@ -297,10 +297,10 @@ quint32 AbstractCommand::parseWholeValue(const QString &value, const QString &un
 QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 {
     // Report any supplied options that are not supported by this command.
-    const QStringList suppliedOptions = parser.optionNames();
-    const QStringList supportedOptions = this->supportedOptions(parser);
-    for (const QString &option: suppliedOptions) {
-        if (!supportedOptions.contains(option)) {
+    const QStringList suppliedOptionNames = parser.optionNames();
+    const QStringList supportedOptionNames = supportedOptions(parser);
+    for (const QString &option: suppliedOptionNames) {
+        if (!supportedOptionNames.contains(option)) {
             qCInfo(lc).noquote() << tr("Ignoring option: %1").arg(option);
         }
     }
@@ -312,7 +312,7 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the output format options (if supported, and supplied).
-    if ((supportedOptions.contains(QLatin1String("output"))) && // Derived classes may have removed.
+    if ((supportedOptionNames.contains(QLatin1String("output"))) && // Derived classes may have removed.
         (parser.isSet(QLatin1String("output"))))
     {
         const QString output = parser.value(QLatin1String("output")).toLower();
@@ -341,8 +341,8 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Return errors for any required options that are absent.
-    const QStringList requiredOptions = this->requiredOptions(parser);
-    for (const QString &option: requiredOptions) {
+    const QStringList requiredOptionNames = this->requiredOptions(parser);
+    for (const QString &option: requiredOptionNames) {
         if (!parser.isSet(option)) {
             errors.append(tr("Missing required option: %1").arg(option));
         }

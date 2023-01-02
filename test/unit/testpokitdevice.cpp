@@ -210,9 +210,9 @@ void TestPokitDevice::connected()
         "PokitDevicePrivate::connected slot invoked without a controller.");
     device.d_func()->connected();
 
-    QLowEnergyController * const controller =
+    QLowEnergyController * const tempController =
         QLowEnergyController::createCentral(QBluetoothDeviceInfo());
-    device.d_func()->setController(controller);
+    device.d_func()->setController(tempController);
     device.d_func()->connected();
 
     device.d_func()->setController(nullptr);
@@ -220,7 +220,7 @@ void TestPokitDevice::connected()
         "PokitDevicePrivate::connected slot invoked without a controller.");
     device.d_func()->connected();
 
-    delete controller;
+    delete tempController;
 }
 
 void TestPokitDevice::connectionUpdated()
