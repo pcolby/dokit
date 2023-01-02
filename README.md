@@ -9,6 +9,8 @@
 [![Coverage Status](https://img.shields.io/coveralls/github/pcolby/qtpokit/main?label=Coverage&logo=coveralls)](
   https://coveralls.io/github/pcolby/qtpokit?branch=main)
 
+some random change
+
 QtPokit is a cross-platform [Qt] library, and console application for accessing [Pokit]
 measuring devices. The QtPokit library is intended to be suitable for other projects -
 the console application is really just an extensive example to demonstrate the library's
