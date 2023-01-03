@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
-            <td class="headerValue">0.1.2-pre+446.linux.x86-64.gcc</td>
+            <td class="headerValue">0.1.2-pre+451.linux.x86-64.gcc</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -60,7 +60,7 @@
       <td>
 <pre class="sourceHeading">          Line data    Source code</pre>
 <pre class="source">
-<a name="1"><span class="lineNum">       1 </span>            : // SPDX-FileCopyrightText: 2022 Paul Colby &lt;git@colby.id.au&gt;</a>
+<a name="1"><span class="lineNum">       1 </span>            : // SPDX-FileCopyrightText: 2022-2023 Paul Colby &lt;git@colby.id.au&gt;</a>
 <a name="2"><span class="lineNum">       2 </span>            : // SPDX-License-Identifier: LGPL-3.0-or-later</a>
 <a name="3"><span class="lineNum">       3 </span>            : </a>
 <a name="4"><span class="lineNum">       4 </span>            : #include &quot;abstractcommand.h&quot;</a>
@@ -359,10 +359,10 @@
 <a name="297"><span class="lineNum">     297 </span><span class="lineCov">       1936 : QStringList AbstractCommand::processOptions(const QCommandLineParser &amp;parser)</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : {</a>
 <a name="299"><span class="lineNum">     299 </span>            :     // Report any supplied options that are not supported by this command.</a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">       1936 :     const QStringList suppliedOptions = parser.optionNames();</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">       1936 :     const QStringList supportedOptions = this-&gt;supportedOptions(parser);</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">       5638 :     for (const QString &amp;option: suppliedOptions) {</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">       3702 :         if (!supportedOptions.contains(option)) {</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">       1936 :     const QStringList suppliedOptionNames = parser.optionNames();</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">       1936 :     const QStringList supportedOptionNames = supportedOptions(parser);</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">       5638 :     for (const QString &amp;option: suppliedOptionNames) {</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">       3702 :         if (!supportedOptionNames.contains(option)) {</span></a>
 <a name="304"><span class="lineNum">     304 </span><span class="lineCov">         37 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></a>
 <a name="305"><span class="lineNum">     305 </span>            :         }</a>
 <a name="306"><span class="lineNum">     306 </span>            :     }</a>
@@ -374,7 +374,7 @@
 <a name="312"><span class="lineNum">     312 </span>            :     }</a>
 <a name="313"><span class="lineNum">     313 </span>            : </a>
 <a name="314"><span class="lineNum">     314 </span>            :     // Parse the output format options (if supported, and supplied).</a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">       4099 :     if ((supportedOptions.contains(QLatin1String(&quot;output&quot;))) &amp;&amp; // Derived classes may have removed.</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">       4099 :     if ((supportedOptionNames.contains(QLatin1String(&quot;output&quot;))) &amp;&amp; // Derived classes may have removed.</span></a>
 <a name="316"><span class="lineNum">     316 </span><span class="lineCov">       4193 :         (parser.isSet(QLatin1String(&quot;output&quot;))))</span></a>
 <a name="317"><span class="lineNum">     317 </span>            :     {</a>
 <a name="318"><span class="lineNum">     318 </span><span class="lineCov">        442 :         const QString output = parser.value(QLatin1String(&quot;output&quot;)).toLower();</span></a>
@@ -403,8 +403,8 @@
 <a name="341"><span class="lineNum">     341 </span>            :     }</a>
 <a name="342"><span class="lineNum">     342 </span>            : </a>
 <a name="343"><span class="lineNum">     343 </span>            :     // Return errors for any required options that are absent.</a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">       1936 :     const QStringList requiredOptions = this-&gt;requiredOptions(parser);</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       4569 :     for (const QString &amp;option: requiredOptions) {</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">       1936 :     const QStringList requiredOptionNames = this-&gt;requiredOptions(parser);</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">       4569 :     for (const QString &amp;option: requiredOptionNames) {</span></a>
 <a name="346"><span class="lineNum">     346 </span><span class="lineCov">       2633 :         if (!parser.isSet(option)) {</span></a>
 <a name="347"><span class="lineNum">     347 </span><span class="lineCov">        240 :             errors.append(tr(&quot;Missing required option: %1&quot;).arg(option));</span></a>
 <a name="348"><span class="lineNum">     348 </span>            :         }</a>
