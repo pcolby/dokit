@@ -136,7 +136,7 @@ jobs:
             env: { cc: gcc-11, cxx: g++-11 }
           # Exclude 6.4 with GCC on macOS for now, as GCC (only) failed with internal QMetaType
           # symbol errors when linking.
-          - qt: '6.4.1'
+          - qt: '6.4.2'
             env: { cc: gcc-11, cxx: g++-11 }
           # Note, for Qt6 we build "universal" binaries (arm64 + x86_64), which gcc-11 does not
           # yet support. So if we didn't happen to exclude all 6.x GCC builds above, then we'd
