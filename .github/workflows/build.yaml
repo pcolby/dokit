@@ -14,7 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Qt
-      run: sudo apt update && sudo apt upgrade && sudo apt install lcov qtbase5-dev qtconnectivity5-dev
+      run: |
+        sudo apt-mark hold grub-efi-amd64-signed
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install lcov qtbase5-dev qtconnectivity5-dev
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -68,7 +72,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Tools
-      run: sudo apt update && sudo apt upgrade && sudo apt install clang lcov
+      run: |
+        sudo apt-mark hold grub-efi-amd64-signed
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install clang lcov
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
@@ -336,7 +344,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: sudo apt update && sudo apt upgrade && sudo apt install lcov
+    - name: Install lcov
+      run: |
+        sudo apt-mark hold grub-efi-amd64-signed
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install lcov
     - name: Download all artifacts
       uses: actions/download-artifact@v3
       with:
