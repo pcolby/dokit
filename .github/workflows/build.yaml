@@ -41,6 +41,11 @@ jobs:
           ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
+    - name: Report parallel coverage to Codacy
+      if: startsWith(matrix.env.cc, 'gcc')
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -l CPP -r "${{ runner.temp }}/coverage.info"
     - name: Report parallel coverage to Coveralls
       if: startsWith(matrix.env.cc, 'gcc')
       uses: coverallsapp/github-action@master
@@ -376,6 +381,10 @@ jobs:
         name: coverage-report
         path: "${{ runner.temp }}/coverage"
         if-no-files-found: error
+    - name: Report partial-finished to Codacy
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) final
     - name: Report parallel-finished to Coveralls
       uses: coverallsapp/github-action@master
       with:

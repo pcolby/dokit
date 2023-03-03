@@ -6,6 +6,8 @@
   https://github.com/pcolby/qtpokit/actions/workflows/static.yaml?query=branch%3Amain)
 [![Static Analysis](https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml/badge.svg?branch=main)](
   https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml?query=branch%3Amain)
+[![Codacy Grade](https://img.shields.io/codacy/grade/50f86ac1809f438eae51d294ad11f36f?label=Code%20Quality&logo=codacy)](
+  https://www.codacy.com/gh/pcolby/qtpokit/dashboard)
 [![Coverage Status](https://img.shields.io/coveralls/github/pcolby/qtpokit/main?label=Coverage&logo=coveralls)](
   https://coveralls.io/github/pcolby/qtpokit?branch=main)
 
