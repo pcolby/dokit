@@ -53,7 +53,7 @@ pokit status
 
 Outputs like:
 
-```
+```text
 Device name:           PokitMeter
 Firmware version:      1.4
 Maximum voltage:       60
@@ -122,7 +122,7 @@ readings in CSV format:
 
 For full usage information (albeit brief), use the `--help` option, which currently outputs something like:
 
-```
+```text
 Usage: pokit <command> [options]
 
 Options:
@@ -192,7 +192,7 @@ Command:
 * a Qt-supported platform, such as Linux, macOS or Windows
 * a [Pokit][] device, such as a [Pokit Meter][] or [Pokit Pro][]
 * [CMake][] (for building the QtPokit itself) 3.0+
-    * some unit tests won't be built unless using CMake 3.12 or later.
+  * some unit tests won't be built unless using CMake 3.12 or later.
 
 ## Building from Source
 
