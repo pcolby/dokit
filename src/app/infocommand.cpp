@@ -75,8 +75,6 @@ AbstractPokitService * InfoCommand::getService()
 void InfoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    Q_ASSERT(device);               // The device and controller should both be valid at this point,
-    Q_ASSERT(device->controller()); // but handle by degrading gracefully, just in case.
     const QLowEnergyController * const controller = (device) ? device->controller() : nullptr;
     const QString deviceName = (controller) ? controller->remoteName() : QString();
     const QBluetoothAddress deviceAddress = (controller) ? controller->remoteAddress() : QBluetoothAddress();
