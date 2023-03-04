@@ -5,9 +5,11 @@
 ## [0.1.1][] (2022-11-05)
 
 ### Added
+
 - Project build identifiers in `-v` output.
 
 ### Changed
+
 - Fix benign "Ignoring `-d` option" warning.
 - Improve debug logging.
 - Upgrade to Doxygen 1.9.5.
@@ -15,6 +17,7 @@
 ## [0.1.0][] (2022-08-26)
 
 ### Added
+
 - Support for [Pokit Meter][] and [Pokit Pro][] devices.
 - Support for multimeter, oscilloscope and data-logger modes.
 - Support for Linux, macOS and Windows.
