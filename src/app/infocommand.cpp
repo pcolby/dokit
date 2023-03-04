@@ -75,9 +75,12 @@ AbstractPokitService * InfoCommand::getService()
 void InfoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    const QString deviceName = device->controller()->remoteName();
-    const QBluetoothAddress deviceAddress = device->controller()->remoteAddress();
-    const QBluetoothUuid deviceUuid = device->controller()->remoteDeviceUuid();
+    Q_ASSERT(device);               // The device and controller should both be valid at this point,
+    Q_ASSERT(device->controller()); // but handle by degrading gracefully, just in case.
+    const QLowEnergyController * const controller = (device) ? device->controller() : nullptr;
+    const QString deviceName = (controller) ? controller->remoteName() : QString();
+    const QBluetoothAddress deviceAddress = (controller) ? controller->remoteAddress() : QBluetoothAddress();
+    const QBluetoothUuid deviceUuid = (controller) ? controller->remoteDeviceUuid() : QBluetoothUuid();
     switch (format) {
     case OutputFormat::Csv:
         std::cout << qUtf8Printable(tr("device_name,device_address,device_uuid,manufacturer_name,model_number,"
