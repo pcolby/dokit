@@ -232,19 +232,15 @@ These are regularly published to Github Pages via Github Actions:
 
 ## License
 
-QtPocket is freely available under the [LGPL]
+QtPocket is freely available under the [LGPL].
 
-[^undocumentedServices]: See the "Undocumented Services" seciont of the [internal dev notes](
-https://pcolby.github.io/qtpokit/main/int/md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html)
 [^minQt5]: The Qt BLE API was first [added in v5.4](https://doc.qt.io/qt-5/qtbluetooth-le-overview.html)
 [^minQt6]: The Qt Bluetooth module was [ported to Qt6 in v6.2](https://www.qt.io/blog/qt-6.2-lts-released)
 
 [API docs]:    https://pcolby.github.io/qtpokit/ "QtPokit API Documentation"
 [CMake]:       https://cmake.org/
-[GPL]:         https://www.gnu.org/licenses/gpl-3.0.en.html "GNU General Public License"
 [LGPL]:        https://www.gnu.org/licenses/lgpl-3.0.html "GNU Lesser General Public License"
 [Pokit]:       https://www.pokitinnovations.com/ "Pokit Innovations"
-[Pokit Bluetooth API]: https://help.pokitmeter.com/hc/en-us/community/posts/360023523213-Bluetooth-API-Documentation
 [Pokit Meter]: https://www.pokitinnovations.com/pokit-meter/
 [Pokit Pro]:   https://www.pokitinnovations.com/pokit-pro/
 [Qt]:          https://www.qt.io/
