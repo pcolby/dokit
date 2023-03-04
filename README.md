@@ -11,20 +11,20 @@
 [![Coverage Status](https://img.shields.io/coveralls/github/pcolby/qtpokit/main?label=Coverage&logo=coveralls)](
   https://coveralls.io/github/pcolby/qtpokit?branch=main)
 
-QtPokit is a cross-platform [Qt] library, and console application for accessing [Pokit]
+QtPokit is a cross-platform [Qt][] library, and console application for accessing [Pokit][]
 measuring devices. The QtPokit library is intended to be suitable for other projects -
 the console application is really just an extensive example to demonstrate the library's
 use. In particular, a GUI application using the QtPokit library would be most welcome ;)
 
-Most [Pokit Meter] and [Pokit Pro] functions are supported, including the multimeter,
+Most [Pokit Meter][] and [Pokit Pro][] functions are supported, including the multimeter,
 oscilloscope and data logger functions. The one real feature missing currently is
-[Pokit Pro]'s capacitance mode, which is not currently documented by [Pokit] (support will
-be added as soon as [Pokit] updates their documentation to include it... or I get around to
+[Pokit Pro][]'s capacitance mode, which is not currently documented by [Pokit][] (support will
+be added as soon as [Pokit][] updates their documentation to include it... or I get around to
 reverse engineering it).
 
 Also worth noting, is that while this project has extensive automated tests that run
 regularly on Linux, macOS and Windows, using a range of Qt versions from 5.9 to 6.4, most of
-the hands-on testing so far has been performed on Linux only. Testers with [Pokit] devices
+the hands-on testing so far has been performed on Linux only. Testers with [Pokit][] devices
 on macOS and Windows would be most welcome to help!
 
 ## Usage
@@ -32,7 +32,7 @@ on macOS and Windows would be most welcome to help!
 ### QtPokit Library
 
 For shared library usage (for developers to create their own Pokit device applications), see
-the latest [API docs].
+the latest [API docs][].
 
 ### `pokit` Command
 
@@ -190,13 +190,13 @@ Command:
 
 * Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]
 * a Qt-supported platform, such as Linux, macOS or Windows
-* a [Pokit] device, such as a [Pokit Meter] or [Pokit Pro]
-* [CMake] (for building the QtPokit itself) 3.0+
+* a [Pokit][] device, such as a [Pokit Meter][] or [Pokit Pro][]
+* [CMake][] (for building the QtPokit itself) 3.0+
     * some unit tests won't be built unless using CMake 3.12 or later.
 
 ## Building from Source
 
-Prototypical [CMake]-based out-of-source build and test process, for CMake 3.13 or later:
+Prototypical [CMake][]-based out-of-source build and test process, for CMake 3.13 or later:
 
 ```sh
 cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo> -B <tmp-build-dir>

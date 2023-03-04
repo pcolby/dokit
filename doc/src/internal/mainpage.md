@@ -4,7 +4,7 @@ This is *internal* documentation, aimed at developers that contribute to the QtP
 
 ## Building from Source
 
-Prototypical [CMake]-based out-of-source build and test process:
+Prototypical [CMake][]-based out-of-source build and test process:
 
 ~~~{.sh}
 cmake -E make_directory <tmp-build-dir>
@@ -15,7 +15,7 @@ ctest --test-dir <tmp-build-dir> --verbose
 
 ### Test Coverage
 
-Similar to above, but specify `ENABLE_COVERAGE=YES`, which will add dependencies on [gcov] and [LCOV].
+Similar to above, but specify `ENABLE_COVERAGE=YES`, which will add dependencies on [gcov][] and [LCOV][].
 
 ~~~{.sh}
 cmake -E make_directory <tmp-build-dir>
