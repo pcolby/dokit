@@ -2,7 +2,7 @@
 
 ## Pokit Bluetooth API
 
-See also: <a href="pokit.html">Pokit API Errata</a>
+See also: [Pokit API Errata](pokit.html)
 
 ### Undocumented Services
 
@@ -43,7 +43,6 @@ QtPokit requires Qt's support Bluetooth Low Energy, in Central mode.
 | 6.2 | Yes      |                                          |
 | 6.3 | Yes      |                                          |
 
-
 ## CMake Versions
 
 In summary (of the below table), for *building* QtPokit:
@@ -69,8 +68,6 @@ In summary (of the below table), for *building* QtPokit:
 |  3.18  | Not actually a requirement, but this is the minimum version that's regularly tested. |
 |  3.21  | [Qt6.x static](https://github.com/qt/qtbase/blob/v6.2.0/.cmake.conf)|
 
-
-[cmake]: https://cmake.org/
 [not added until v5.4]: https://doc.qt.io/qt-5/qtbluetooth-le-overview.html
 [Object Libraries]: https://cmake.org/cmake/help/latest/command/add_library.html#object-libraries
 [ported to Qt6 in v6.2]: https://www.qt.io/blog/qt-6.2-lts-released

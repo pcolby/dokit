@@ -39,8 +39,6 @@ cmake --build <tmp-build-dir> --target doc doc-internal
 # ls <tmp-build-dir>/doc/internal  # Internal developer documentation
 ~~~
 
-
 [CMake]: https://cmake.org/
 [gcov]:  https://gcc.gnu.org/onlinedocs/gcc/Gcov.html "gcov — a Test Coverage Program"
 [LCOV]:  http://ltp.sourceforge.net/coverage/lcov.php "LCOV — the LTP GCOV extension"
-[Qt]:    https://www.qt.io/
