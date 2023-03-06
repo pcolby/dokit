@@ -1,0 +1,47 @@
+name: Sonar
+
+on:
+  push:
+    branches:
+      - main
+      - sonar
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        env:
+        - { cc: clang, cxx: clang++ }
+        - { cc: gcc, cxx: g++ }
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Install Qt
+      run: |
+        sudo apt-mark hold grub-efi-amd64-signed
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install lcov qtbase5-dev qtconnectivity5-dev
+    - name: Install sonar-scanner and build-wrapper
+      uses: SonarSource/sonarcloud-github-c-cpp@v1
+    - name: Run build-wrapper
+      env:
+        CC:  ${{ matrix.env.cc }}
+        CXX: ${{ matrix.env.cxx }}
+        PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}
+      run: |
+        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ startsWith(matrix.env.cc, 'gcc') && 'ON' || 'OFF'}} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        build-wrapper-linux-x86-64 --out-dir "$RUNNER_TEMP/sonar" cmake --build "$RUNNER_TEMP" --config Release
+    - name: Run sonar-scanner
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        sonar-scanner \
+          --define sonar.cfamily.build-wrapper-output="$RUNNER_TEMP/sonar" \
+          --define sonar.organization=pcolby --define sonar.projectKey=pcolby_qtpokit
