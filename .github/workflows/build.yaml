@@ -18,7 +18,14 @@ jobs:
         sudo apt-mark hold grub-efi-amd64-signed
         sudo apt update
         sudo apt upgrade
-        sudo apt install lcov qtbase5-dev qtconnectivity5-dev
+        sudo apt install lcov libfuse2 qtbase5-dev qtconnectivity5-dev
+    - name: Install linuxdeploy
+      run: |
+        curl --create-dirs --location --output-dir /home/runner/.local/bin --remote-name-all \
+          'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage' \
+          'https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage' \
+          'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage'
+        chmod a+x /home/runner/.local/bin/linuxdeploy{,-plugin-{appimage,qt}}-x86_64.AppImage
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -54,15 +61,23 @@ jobs:
         path-to-lcov: ${{ runner.temp }}/coverage.info
         flag-name: linux0-${{ matrix.env.cc }}
         parallel: true
+    - name: Build AppImage
+      run: cmake --build "$RUNNER_TEMP" --target appimage
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
-    - name: Upload artifacts
+    - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
         name: qtpokit-${{ env.pokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/app/pokit
+        if-no-files-found: error
+    - name: Upload AppImage
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ env.pokitVersion }}.AppImage
+        path: ${{ runner.temp }}/pokit-${{ env.pokitVersion }}.AppImage
         if-no-files-found: error
 
   linux:
@@ -81,12 +96,19 @@ jobs:
         sudo apt-mark hold grub-efi-amd64-signed
         sudo apt update
         sudo apt upgrade
-        sudo apt install clang lcov
+        sudo apt install clang lcov libfuse2
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
+    - name: Install linuxdeploy
+      run: |
+        curl --create-dirs --location --output-dir /home/runner/.local/bin --remote-name-all \
+          'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage' \
+          'https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage' \
+          'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage'
+        chmod a+x /home/runner/.local/bin/linuxdeploy{,-plugin-{appimage,qt}}-x86_64.AppImage
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
@@ -116,15 +138,23 @@ jobs:
         path-to-lcov: ${{ runner.temp }}/coverage.info
         flag-name: linux-${{ matrix.env.cc }}-${{ matrix.qt }}
         parallel: true
+    - name: Build AppImage
+      run: cmake --build "$RUNNER_TEMP" --target appimage
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
-    - name: Upload artifacts
+    - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
         name: qtpokit-${{ env.pokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/app/pokit
+        if-no-files-found: error
+    - name: Upload AppImage
+      uses: actions/upload-artifact@v3
+      with:
+        name: qtpokit-${{ env.pokitVersion }}.AppImage
+        path: ${{ runner.temp }}/pokit-${{ env.pokitVersion }}.AppImage
         if-no-files-found: error
 
   mac:
