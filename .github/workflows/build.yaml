@@ -21,12 +21,11 @@ jobs:
         sudo apt install lcov qtbase5-dev qtconnectivity5-dev
     - name: Install linuxdeploy
       run: |
-        echo "$PATH"
-        wget 'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage'
-        wget 'https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage'
-        wget 'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage'
+        curl --create-dirs --location --output-dir /home/runner/.local/bin --remote-name-all \
+          'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage' \
+          'https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage' \
+          'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage'
         chmod a+x linuxdeploy{,-plugin-{appimage,qt}}-x86_64.AppImage
-      working-directory: /home/runner/.local/bin
     - name: Build
       env:
         CC:  ${{ matrix.env.cc }}
