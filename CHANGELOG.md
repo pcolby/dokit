@@ -2,6 +2,19 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Support AppImage builds on Linux.
+- Integrate Codacy and SonarCloud.
+
+### Changed
+
+- Fix minor codestyle and documentation issues.
+- Upgrade to Doxygen 1.9.6.
+- Upgrade to Qt 6.4.3.
+
+Thanks to @lnxsr for contributing to this release.
+
 ## [0.1.1][] (2022-11-05)
 
 ### Added
