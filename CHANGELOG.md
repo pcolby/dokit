@@ -13,7 +13,7 @@
 - Upgrade to Doxygen 1.9.6.
 - Upgrade to Qt 6.4.3.
 
-Thanks to @lnxsr for contributing to this release.
+Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 
 ## [0.1.1][] (2022-11-05)
 
