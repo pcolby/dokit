@@ -9,8 +9,9 @@ jobs:
       fail-fast: false
       matrix:
         env:
-        - { cc: clang, cxx: clang++ }
-        - { cc: gcc, cxx: g++ }
+        - { cc: clang, cxx: clang++, coverage: false }
+        - { cc: gcc, cxx: g++, coverage: false }
+        - { cc: gcc, cxx: g++, coverage: true }
     steps:
     - uses: actions/checkout@v3
     - name: Install Qt
@@ -30,14 +31,14 @@ jobs:
       env:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
-        PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}
+        PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' }}
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ startsWith(matrix.env.cc, 'gcc') && 'ON' || 'OFF'}} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
       run: ctest --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
-      if: startsWith(matrix.env.cc, 'gcc')
+      if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
       uses: actions/upload-artifact@v3
@@ -49,12 +50,12 @@ jobs:
           ${{ runner.temp }}/test/unit/*.tap
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
-      if: startsWith(matrix.env.cc, 'gcc')
+      if: matrix.env.coverage
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -l CPP -r "${{ runner.temp }}/coverage.info"
     - name: Report parallel coverage to Coveralls
-      if: startsWith(matrix.env.cc, 'gcc')
+      if: matrix.env.coverage
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
