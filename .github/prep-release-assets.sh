@@ -8,8 +8,8 @@ shopt -s extglob inherit_errexit
 : "${REPO_SLUG:=pcolby/pokit}"
 : "${OUTPUT_DIR:=output}"
 
-#runId=$(gh run list -R "$REPO_SLUG" -b "$1" -w 'Build and Test' --json databaseId --jq '.[].databaseId')
-#gh run download "$runId"
+runId=$(gh run list -R "$REPO_SLUG" -b "$1" -w 'Build and Test' --json databaseId --jq '.[].databaseId')
+gh run download "$runId" -R "$REPO_SLUG"
 
 mkdir -p "$OUTPUT_DIR"
 
