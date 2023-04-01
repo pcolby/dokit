@@ -10,7 +10,7 @@
 #include <qtpokit/pokitdevice.h>
 
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
-Q_DECLARE_METATYPE(StatusService::DeviceCharacteristics);
+Q_DECLARE_METATYPE(StatusService::DeviceCharacteristics)
 
 class MockDeviceCommand : public DeviceCommand
 {

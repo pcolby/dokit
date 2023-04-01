@@ -8,13 +8,13 @@
 #include "metercommand.h"
 
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
-Q_DECLARE_METATYPE(MultimeterService::Mode);
-Q_DECLARE_METATYPE(MultimeterService::VoltageRange);
-Q_DECLARE_METATYPE(MultimeterService::CurrentRange);
-Q_DECLARE_METATYPE(MultimeterService::ResistanceRange);
-Q_DECLARE_METATYPE(MultimeterService::Range);
-Q_DECLARE_METATYPE(MultimeterService::Reading);
-Q_DECLARE_METATYPE(MultimeterService::Settings);
+Q_DECLARE_METATYPE(MultimeterService::Mode)
+Q_DECLARE_METATYPE(MultimeterService::VoltageRange)
+Q_DECLARE_METATYPE(MultimeterService::CurrentRange)
+Q_DECLARE_METATYPE(MultimeterService::ResistanceRange)
+Q_DECLARE_METATYPE(MultimeterService::Range)
+Q_DECLARE_METATYPE(MultimeterService::Reading)
+Q_DECLARE_METATYPE(MultimeterService::Settings)
 
 class MockDeviceCommand : public DeviceCommand
 {
