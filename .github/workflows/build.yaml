@@ -172,27 +172,16 @@ jobs:
         qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3' ]
         env:
         - { cc: clang, cxx: clang++, coverage: false }
-        - { cc: gcc-11, cxx: g++-11, coverage: false }
-        - { cc: gcc-11, cxx: g++-11, coverage: true }
+        - { cc: gcc-12, cxx: g++-12, coverage: false }
+        - { cc: gcc-12, cxx: g++-12, coverage: true }
         exclude:
           # Exclude Qt 5.10 with GCC on macOS. See https://bugreports.qt.io/browse/QTBUG-66585
-          - qt: '5.10.1'
-            env: { cc: gcc-11, cxx: g++-11 }
-          # Exclude Qt 6.2 and 6.3 with GCC on macOS for now, as GCC (only) fails to find the
-          # QJsonObject initialiser list constructor. This is probably a GCC, or Qt binary bug.
-          # \todo Report this upstream sometime, and/or check if its been fixed yet.
-          - qt: '6.2.4'
-            env: { cc: gcc-11, cxx: g++-11 }
-          - qt: '6.3.2'
-            env: { cc: gcc-11, cxx: g++-11 }
-          # Exclude 6.4 with GCC on macOS for now, as GCC (only) failed with internal QMetaType
-          # symbol errors when linking.
-          - qt: '6.4.3'
-            env: { cc: gcc-11, cxx: g++-11 }
-          # Note, for Qt6 we build "universal" binaries (arm64 + x86_64), which gcc-11 does not
-          # yet support. So if we didn't happen to exclude all 6.x GCC builds above, then we'd
-          # need to selectively enable/disable universal builds for clang/gcc-11 respectively
-          # in the Build step below, at least until such time as GCC adds support.
+          - { qt: '5.10.1', env: { cc: gcc-12 } }
+          # Exclude Qt6 with GCC on macOS for now, as GCC (only) has lots of false compiler
+          # errors, and even if worked-around, result in SIGBUS errors in unit tests.
+          - { qt: '6.2.4', env: { cc: gcc-12 } }
+          - { qt: '6.3.2', env: { cc: gcc-12 } }
+          - { qt: '6.4.3', env: { cc: gcc-12 } }
     steps:
     - uses: actions/checkout@v3
     - name: Install lcov
@@ -210,7 +199,7 @@ jobs:
         PROJECT_BUILD_ID: ${{ github.run_number }}.mac.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release \
-              -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-11' || '/usr/bin/gcov'}} \
+              -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-12' || '/usr/bin/gcov'}} \
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
