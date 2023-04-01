@@ -622,8 +622,8 @@
 <a name="560"><span class="lineNum">     560 </span>            : {</a>
 <a name="561"><span class="lineNum">     561 </span><span class="lineCov">         12 :     DsoService::Samples samples;</span></a>
 <a name="562"><span class="lineNum">     562 </span><span class="lineCov">         68 :     if ((value.size()%2) != 0) {</span></a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">         34 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Samples value has odd size %1 (should be even): %2&quot;)</span></a>
-<a name="564"><span class="lineNum">     564 </span><span class="lineCov">         20 :             .arg(value.size()).arg(toHexString(value));</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">         40 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Samples value has odd size %1 (should be even): %2&quot;)</span></a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineCov">         26 :             .arg(value.size()).arg(toHexString(value));</span></a>
 <a name="565"><span class="lineNum">     565 </span><span class="lineCov">          2 :         return samples;</span></a>
 <a name="566"><span class="lineNum">     566 </span>            :     }</a>
 <a name="567"><span class="lineNum">     567 </span><span class="lineCov">        289 :     for (; (samples.size()*2) &lt; value.size();) {</span></a>
@@ -662,7 +662,7 @@
 <a name="600"><span class="lineNum">     600 </span>            :     }</a>
 <a name="601"><span class="lineNum">     601 </span>            : </a>
 <a name="602"><span class="lineNum">     602 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for DSO service&quot;)</span></a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">         23 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="604"><span class="lineNum">     604 </span>            : }</a>
 <a name="605"><span class="lineNum">     605 </span>            : </a>
 <a name="606"><span class="lineNum">     606 </span>            : /*!</a>
@@ -693,7 +693,7 @@
 <a name="631"><span class="lineNum">     631 </span>            :     }</a>
 <a name="632"><span class="lineNum">     632 </span>            : </a>
 <a name="633"><span class="lineNum">     633 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for DSO service&quot;)</span></a>
-<a name="634"><span class="lineNum">     634 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="634"><span class="lineNum">     634 </span><span class="lineCov">         23 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="635"><span class="lineNum">     635 </span>            : }</a>
 <a name="636"><span class="lineNum">     636 </span>            : </a>
 <a name="637"><span class="lineNum">     637 </span>            : /*!</a>
@@ -723,7 +723,7 @@
 <a name="661"><span class="lineNum">     661 </span>            :     }</a>
 <a name="662"><span class="lineNum">     662 </span>            : </a>
 <a name="663"><span class="lineNum">     663 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for DSO service&quot;)</span></a>
-<a name="664"><span class="lineNum">     664 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="664"><span class="lineNum">     664 </span><span class="lineCov">         23 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="665"><span class="lineNum">     665 </span>            : }</a>
 <a name="666"><span class="lineNum">     666 </span>            : </a>
 <a name="667"><span class="lineNum">     667 </span>            : /// \endcond</a>

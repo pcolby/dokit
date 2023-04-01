@@ -31,9 +31,9 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">120</td>
+            <td class="headerCovTableEntry">121</td>
             <td class="headerCovTableEntry">157</td>
-            <td class="headerCovTableEntryMed">76.4 %</td>
+            <td class="headerCovTableEntryMed">77.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -272,7 +272,7 @@
 <a name="210"><span class="lineNum">     210 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
 <a name="211"><span class="lineNum">     211 </span><span class="lineCov">         34 :         d-&gt;getCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></a>
 <a name="212"><span class="lineNum">     212 </span><span class="lineCov">         34 :     return (characteristic.isValid())</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :         ? StatusServicePrivate::parseDeviceCharacteristics(characteristic.value())</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         12 :         ? StatusServicePrivate::parseDeviceCharacteristics(characteristic.value())</span></a>
 <a name="214"><span class="lineNum">     214 </span><span class="lineCov">         68 :         : StatusService::DeviceCharacteristics();</span></a>
 <a name="215"><span class="lineNum">     215 </span><span class="lineCov">         34 : }</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
@@ -565,7 +565,7 @@
 <a name="503"><span class="lineNum">     503 </span>            :     }</a>
 <a name="504"><span class="lineNum">     504 </span>            : </a>
 <a name="505"><span class="lineNum">     505 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status service&quot;)</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         23 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="507"><span class="lineNum">     507 </span>            : }</a>
 <a name="508"><span class="lineNum">     508 </span>            : </a>
 <a name="509"><span class="lineNum">     509 </span>            : /*!</a>
@@ -601,7 +601,7 @@
 <a name="539"><span class="lineNum">     539 </span>            :     }</a>
 <a name="540"><span class="lineNum">     540 </span>            : </a>
 <a name="541"><span class="lineNum">     541 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status service&quot;)</span></a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">         23 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="543"><span class="lineNum">     543 </span>            : }</a>
 <a name="544"><span class="lineNum">     544 </span>            : </a>
 <a name="545"><span class="lineNum">     545 </span>            : /// \endcond</a>
