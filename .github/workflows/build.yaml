@@ -360,7 +360,6 @@ jobs:
         copy /v /b src\app\pokit.exe /b portable
         cd portable
         windeployqt --compiler-runtime --release --verbose 2 pokit.exe ${{ matrix.dll }}
-        echo 11
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
@@ -374,7 +373,8 @@ jobs:
           ${{ runner.temp }}/src/app/pokit.exe
         if-no-files-found: error
     - name: Upload artifacts (portable)
-      if: matrix.arch != 'arm64'
+      # Exclude Qt 6.5.0 due to https://bugreports.qt.io/browse/QTBUG-112204
+      if: matrix.arch != 'arm64' && matrix.qt != '6.5.0'
       uses: actions/upload-artifact@v3
       with:
         name: qtpokit-${{ env.pokitVersion }}.portable
