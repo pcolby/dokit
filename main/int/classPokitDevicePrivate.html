@@ -573,7 +573,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <p class="definition">Definition at line <a class="el" href="pokitdevice_8cpp_source.html#l00351">351</a> of file <a class="el" href="pokitdevice_8cpp_source.html">pokitdevice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  352</span>{</div>
 <div class="line"><span class="lineno">  353</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classPokitDevicePrivate.html#a9a6acf432d18d31566271ddca3ae5a80">controller</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  354</span>        qCCritical(lc).noquote() &lt;&lt; <span class="stringliteral">&quot;PokitDevicePrivate::connected slot invoked without a controller.&quot;</span>;</div>
+<div class="line"><span class="lineno">  354</span>        qCCritical(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;PokitDevicePrivate::connected slot invoked without a controller.&quot;</span>);</div>
 <div class="line"><span class="lineno">  355</span>        <span class="keywordflow">return</span>; <span class="comment">// Just to avoid the nullptr dereference below.</span></div>
 <div class="line"><span class="lineno">  356</span>    }</div>
 <div class="line"><span class="lineno">  357</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Connected to \&quot;%1\&quot; (%2) at (%3).&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(</div>
