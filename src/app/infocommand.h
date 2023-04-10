@@ -7,6 +7,8 @@ class DeviceInfoService;
 
 class InfoCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit InfoCommand(QObject * const parent);
 

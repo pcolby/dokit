@@ -7,6 +7,8 @@ class CalibrationService;
 
 class CalibrateCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit CalibrateCommand(QObject * const parent);
 

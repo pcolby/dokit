@@ -13,6 +13,8 @@ class PokitDevice;
 
 class DeviceCommand : public AbstractCommand
 {
+    Q_OBJECT
+
 public:
     explicit DeviceCommand(QObject * const parent);
 

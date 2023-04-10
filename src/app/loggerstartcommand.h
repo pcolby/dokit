@@ -7,6 +7,8 @@
 
 class LoggerStartCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit LoggerStartCommand(QObject * const parent);
 

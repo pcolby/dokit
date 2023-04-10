@@ -7,6 +7,8 @@
 
 class LoggerFetchCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit LoggerFetchCommand(QObject * const parent);
 

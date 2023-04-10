@@ -7,6 +7,8 @@
 
 class MeterCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit MeterCommand(QObject * const parent);
 

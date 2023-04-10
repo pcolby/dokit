@@ -7,6 +7,8 @@
 
 class StatusCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit StatusCommand(QObject * const parent);
 

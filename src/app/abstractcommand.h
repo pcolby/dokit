@@ -13,6 +13,8 @@ class PokitDiscoveryAgent;
 
 class AbstractCommand : public QObject
 {
+    Q_OBJECT
+
 public:
     enum class OutputFormat {
         Csv,  ///< RFC 4180 compliant CSV text.

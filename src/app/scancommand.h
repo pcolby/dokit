@@ -5,6 +5,8 @@
 
 class ScanCommand : public AbstractCommand
 {
+    Q_OBJECT
+
 public:
     explicit ScanCommand(QObject * const parent);
 

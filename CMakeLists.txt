@@ -57,10 +57,11 @@ endif()
 # Default to Qt6 where available, otherwise Qt5.
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-find_package(QT REQUIRED COMPONENTS Core Bluetooth NAMES Qt6 Qt5)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Bluetooth)
+find_package(QT REQUIRED COMPONENTS Core Bluetooth LinguistTools NAMES Qt6 Qt5)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Bluetooth LinguistTools)
 message(STATUS "Found Qt ${Qt${QT_VERSION_MAJOR}_VERSION}")
 message(STATUS "Found Qt Bluetooth ${Qt${QT_VERSION_MAJOR}Bluetooth_VERSION}")
+message(STATUS "Found Qt Linguist Tools ${Qt${QT_VERSION_MAJOR}LinguistTools_VERSION}")
 
 include(CTest)
 add_subdirectory(doc)

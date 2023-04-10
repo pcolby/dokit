@@ -7,6 +7,8 @@
 
 class DsoCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit DsoCommand(QObject * const parent);
 

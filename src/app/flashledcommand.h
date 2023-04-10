@@ -7,6 +7,8 @@ class StatusService;
 
 class FlashLedCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit FlashLedCommand(QObject * const parent);
 

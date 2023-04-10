@@ -50,6 +50,11 @@ else()
   target_link_libraries(pokit PRIVATE PokitApp)
 endif()
 
+qt_add_translations(
+  pokit
+  TS_FILES pokit.ts
+  SOURCES main.cpp ${PokitAppSources})
+
 target_link_libraries(
   pokit
   PRIVATE QtPokit

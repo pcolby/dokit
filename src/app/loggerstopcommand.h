@@ -7,6 +7,8 @@
 
 class LoggerStopCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit LoggerStopCommand(QObject * const parent);
 

@@ -7,6 +7,8 @@ class StatusService;
 
 class SetNameCommand : public DeviceCommand
 {
+    Q_OBJECT
+
 public:
     explicit SetNameCommand(QObject * const parent);
 
