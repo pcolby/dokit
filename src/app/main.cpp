@@ -15,7 +15,9 @@
 
 #include <QCommandLineParser>
 #include <QCoreApplication>
+#include <QLocale>
 #include <QLoggingCategory>
+#include <QTranslator>
 
 #include <iostream>
 
@@ -95,7 +97,8 @@ Command getCliCommand(const QStringList &posArguments)
         return Command::None;
     }
     if (posArguments.size() > 1) {
-        showCliError(QObject::tr("More than one command: %1").arg(posArguments.join(QStringLiteral(", "))));
+        showCliError(QCoreApplication::translate("getCliCommand", "More than one command: %1")
+            .arg(posArguments.join(QStringLiteral(", "))));
         ::exit(EXIT_FAILURE);
     }
 
@@ -114,7 +117,7 @@ Command getCliCommand(const QStringList &posArguments)
     };
     const Command command = supportedCommands.value(posArguments.first().toLower(), Command::None);
     if (command == Command::None) {
-        showCliError(QObject::tr("Unknown command: %1").arg(posArguments.first()));
+        showCliError(QCoreApplication::translate("getCliCommand", "Unknown command: %1").arg(posArguments.first()));
         ::exit(EXIT_FAILURE);
     }
     return command;
@@ -289,6 +292,12 @@ int main(int argc, char *argv[])
         "+" PROJECT_BUILD_ID
         #endif
     ));
+
+    // Install a localised translator, if we have one for the current locale.
+    QTranslator translator;
+    if (translator.load(QLocale(), QString(), QString(), QStringLiteral(":/i18n"))) {
+        QCoreApplication::installTranslator(&translator);
+    }
 
     // Parse the command line.
     const QStringList appArguments = app.arguments();

@@ -51,8 +51,8 @@ else()
 endif()
 
 qt_add_translations(
-  pokit
-  TS_FILES pokit.ts
+  pokit TS_FILES
+    i18n/en_US.ts
   SOURCES main.cpp ${PokitAppSources})
 
 target_link_libraries(
