@@ -39,7 +39,7 @@
     <message>
         <location filename="../calibratecommand.cpp" line="60"/>
         <source>Unrecognised temperature format: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Unrecognized temperature format: %1</translation>
     </message>
     <message>
         <location filename="../calibratecommand.cpp" line="91"/>

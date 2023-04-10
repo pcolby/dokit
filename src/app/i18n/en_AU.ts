@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en_AU">
 <context>
     <name>AbstractCommand</name>
     <message>
@@ -690,7 +690,7 @@ See --help for usage information.</source>
     <message>
         <location filename="../main.cpp" line="131"/>
         <source>Colors the console output. Valid options are: yes, no and auto. The default is auto.</source>
-        <translation type="unfinished"></translation>
+        <translation>Colours the console output. Valid options are: yes, no and auto. The default is auto.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="135"/>
