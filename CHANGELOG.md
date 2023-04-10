@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Localisation for en_AU, en_GB and en_US.
+
 ## [0.1.2][] (2023-03-30)
 
 ### Added
