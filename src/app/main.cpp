@@ -293,10 +293,13 @@ int main(int argc, char *argv[])
         #endif
     ));
 
-    // Install a localised translator, if we have one for the current locale.
-    QTranslator translator;
-    if (translator.load(QLocale(), QString(), QString(), QStringLiteral(":/i18n"))) {
-        QCoreApplication::installTranslator(&translator);
+    // Install localised translators, if we have translations for the current locale.
+    QTranslator appTranslator, libTranslator;
+    if (appTranslator.load(QLocale(), QStringLiteral("app"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {
+        QCoreApplication::installTranslator(&appTranslator);
+    }
+    if (libTranslator.load(QLocale(), QStringLiteral("lib"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {
+        QCoreApplication::installTranslator(&libTranslator);
     }
 
     // Parse the command line.
@@ -305,6 +308,10 @@ int main(int argc, char *argv[])
     const Command commandType = parseCommandLine(appArguments, parser);
     qCDebug(lc).noquote() << app.applicationName() << app.applicationVersion();
     qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
+    qCDebug(lc).noquote() << "App translations:" <<
+        (appTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : appTranslator.filePath());
+    qCDebug(lc).noquote() << "Library translations:" <<
+        (libTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : libTranslator.filePath());
 
     // Handle the given command.
     AbstractCommand * const command = getCommandObject(commandType, &app);
