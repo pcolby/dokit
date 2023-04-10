@@ -17,6 +17,7 @@ if (ENABLE_COVERAGE)
       COMMAND ${CODECOV_LCOV} --capture --directory . --gcov-tool ${CODECOV_GCOV} --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --list coverage.info
       COMMAND ${CODECOV_LCOV} --remove coverage.info '/usr/*' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --remove coverage.info '*/.rcc/*' --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --remove coverage.info '*/moc_*.cpp' --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --remove coverage.info '*/mocs_compilation.cpp' --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --remove coverage.info '*/qt/*' --output-file coverage.info
