@@ -44,6 +44,8 @@ add_library(
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_translations(
     QtPokit TS_FILES
+      i18n/en_AU.ts
+      i18n/en_GB.ts
       i18n/en_US.ts
   )
 endif()
