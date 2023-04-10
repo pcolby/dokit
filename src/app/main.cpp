@@ -308,10 +308,15 @@ int main(int argc, char *argv[])
     const Command commandType = parseCommandLine(appArguments, parser);
     qCDebug(lc).noquote() << app.applicationName() << app.applicationVersion();
     qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.
     qCDebug(lc).noquote() << "App translations:" <<
         (appTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : appTranslator.filePath());
     qCDebug(lc).noquote() << "Library translations:" <<
         (libTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : libTranslator.filePath());
+#else
+    qCDebug(lc).noquote() << "App translations:" << (!appTranslator.isEmpty());
+    qCDebug(lc).noquote() << "Lib translations:" << (!libTranslator.isEmpty());
+#endif
 
     // Handle the given command.
     AbstractCommand * const command = getCommandObject(commandType, &app);
