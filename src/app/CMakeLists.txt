@@ -50,10 +50,15 @@ else()
   target_link_libraries(pokit PRIVATE PokitApp)
 endif()
 
-qt_add_translations(
-  pokit TS_FILES
-    i18n/en_US.ts
-  SOURCES main.cpp ${PokitAppSources})
+# Only include localisation for Qt6+ for now. We could support Qt5
+# too, but we'd need to manually implement some of Qt6's CMake
+# functions, which would be easier if we had a bespoke qrc file.
+if({QT_VERSION_MAJOR} GREATER_EQUAL 6)
+  qt_add_translations(
+    pokit TS_FILES
+      i18n/en_US.ts
+    SOURCES main.cpp ${PokitAppSources})
+endif()
 
 target_link_libraries(
   pokit
