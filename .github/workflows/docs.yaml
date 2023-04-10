@@ -14,7 +14,7 @@ jobs:
         sudo apt-mark hold grub-efi-amd64-signed
         sudo apt update
         sudo apt upgrade
-        sudo apt install graphviz qtbase5-dev qtbase5-doc-dev qtconnectivity5-dev qtconnectivity5-doc-html qttools5-dev-tools
+        sudo apt install graphviz qtbase5-dev qtbase5-doc-dev qtconnectivity5-dev qtconnectivity5-doc-html qttools5-dev qttools5-dev-tools
         wget --quiet https://doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz --output-document "$RUNNER_TEMP/doxygen-1.9.6.linux.bin.tar.gz"
         tar --extract --file "$RUNNER_TEMP/doxygen-1.9.6.linux.bin.tar.gz" --directory "$RUNNER_TEMP"
         "$RUNNER_TEMP/doxygen-1.9.6/bin/doxygen" --version
