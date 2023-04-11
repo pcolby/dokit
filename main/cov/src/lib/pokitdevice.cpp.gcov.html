@@ -413,7 +413,7 @@
 <a name="351"><span class="lineNum">     351 </span><span class="lineCov">         54 : void PokitDevicePrivate::connected()</span></a>
 <a name="352"><span class="lineNum">     352 </span>            : {</a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineCov">         54 :     if (controller == nullptr) {</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         70 :         qCCritical(lc).noquote() &lt;&lt; &quot;PokitDevicePrivate::connected slot invoked without a controller.&quot;;</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         80 :         qCCritical(lc).noquote() &lt;&lt; tr(&quot;PokitDevicePrivate::connected slot invoked without a controller.&quot;);</span></a>
 <a name="355"><span class="lineNum">     355 </span><span class="lineCov">         36 :         return; // Just to avoid the nullptr dereference below.</span></a>
 <a name="356"><span class="lineNum">     356 </span>            :     }</a>
 <a name="357"><span class="lineNum">     357 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connected to \&quot;%1\&quot; (%2) at (%3).&quot;).arg(</span></a>

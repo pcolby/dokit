@@ -31,8 +31,8 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
@@ -69,23 +69,25 @@
 <a name="7"><span class="lineNum">       7 </span>            : </a>
 <a name="8"><span class="lineNum">       8 </span><span class="lineCov">         72 : class LoggerStopCommand : public DeviceCommand</span></a>
 <a name="9"><span class="lineNum">       9 </span>            : {</a>
-<a name="10"><span class="lineNum">      10 </span>            : public:</a>
-<a name="11"><span class="lineNum">      11 </span>            :     explicit LoggerStopCommand(QObject * const parent);</a>
-<a name="12"><span class="lineNum">      12 </span>            : </a>
-<a name="13"><span class="lineNum">      13 </span>            : protected:</a>
-<a name="14"><span class="lineNum">      14 </span>            :     AbstractPokitService * getService() override;</a>
-<a name="15"><span class="lineNum">      15 </span>            : </a>
-<a name="16"><span class="lineNum">      16 </span>            : protected slots:</a>
-<a name="17"><span class="lineNum">      17 </span>            :     void serviceDetailsDiscovered() override;</a>
-<a name="18"><span class="lineNum">      18 </span>            : </a>
-<a name="19"><span class="lineNum">      19 </span>            : private:</a>
-<a name="20"><span class="lineNum">      20 </span>            :     DataLoggerService * service; ///&lt; Bluetooth service this command interracts with.</a>
-<a name="21"><span class="lineNum">      21 </span>            : </a>
-<a name="22"><span class="lineNum">      22 </span>            : private slots:</a>
-<a name="23"><span class="lineNum">      23 </span>            :     void settingsWritten();</a>
-<a name="24"><span class="lineNum">      24 </span>            : </a>
-<a name="25"><span class="lineNum">      25 </span>            :     friend class TestLoggerStopCommand;</a>
-<a name="26"><span class="lineNum">      26 </span>            : };</a>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">         54 :     Q_OBJECT</span></a>
+<a name="11"><span class="lineNum">      11 </span>            : </a>
+<a name="12"><span class="lineNum">      12 </span>            : public:</a>
+<a name="13"><span class="lineNum">      13 </span>            :     explicit LoggerStopCommand(QObject * const parent);</a>
+<a name="14"><span class="lineNum">      14 </span>            : </a>
+<a name="15"><span class="lineNum">      15 </span>            : protected:</a>
+<a name="16"><span class="lineNum">      16 </span>            :     AbstractPokitService * getService() override;</a>
+<a name="17"><span class="lineNum">      17 </span>            : </a>
+<a name="18"><span class="lineNum">      18 </span>            : protected slots:</a>
+<a name="19"><span class="lineNum">      19 </span>            :     void serviceDetailsDiscovered() override;</a>
+<a name="20"><span class="lineNum">      20 </span>            : </a>
+<a name="21"><span class="lineNum">      21 </span>            : private:</a>
+<a name="22"><span class="lineNum">      22 </span>            :     DataLoggerService * service; ///&lt; Bluetooth service this command interracts with.</a>
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<a name="24"><span class="lineNum">      24 </span>            : private slots:</a>
+<a name="25"><span class="lineNum">      25 </span>            :     void settingsWritten();</a>
+<a name="26"><span class="lineNum">      26 </span>            : </a>
+<a name="27"><span class="lineNum">      27 </span>            :     friend class TestLoggerStopCommand;</a>
+<a name="28"><span class="lineNum">      28 </span>            : };</a>
 </pre>
       </td>
     </tr>
