@@ -4,6 +4,13 @@
 add_subdirectory(app)
 add_subdirectory(lib)
 
+# Experimental (for now) GUI app, off by default.
+option(ENABLE_GUI "Enable test coverage reporting" OFF)
+if (ENABLE_GUI)
+  message(STATUS "Enabling experimental GUI app")
+  add_subdirectory(gui)
+endif()
+
 find_program(LINUXDEPLOY NAMES linuxdeploy linuxdeploy-x86_64.AppImage)
 if (LINUXDEPLOY)
   message(STATUS "Found linuxdeploy: ${LINUXDEPLOY}")
