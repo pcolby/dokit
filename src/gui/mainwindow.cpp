@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+#include "scandialog.h"
+
 #include "mainwindow.h"
 
 #include <QApplication>
@@ -29,4 +31,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     // Let the base class accept or ignore the event.
     QMainWindow::closeEvent(event);
+}
+
+void MainWindow::showEvent(QShowEvent *event)
+{
+    /// \todo Probably not the best way to launch this. It'll do for early experimentation.
+    ScanDialog scanDialog;
+    scanDialog.exec();
+    QMainWindow::showEvent(event);
 }

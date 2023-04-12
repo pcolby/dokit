@@ -10,6 +10,8 @@ message(STATUS "Found Qt Widgets ${Qt${QT_VERSION_MAJOR}Widgets_VERSION}")
 set(PokitGuiSources
   mainwindow.cpp
   mainwindow.h
+  scandialog.cpp
+  scandialog.h
 )
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")

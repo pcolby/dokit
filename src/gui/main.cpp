@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
     /// \todo Install localised translators, if we have translations for the current locale.
 
     /// \todo Parse the command line.
+    // QLoggingCategory::setFilterRules(QStringLiteral("pokit.*.debug=true"));
 
     // Instantiate the main window.
     MainWindow mainWindow;
