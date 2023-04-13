@@ -77,9 +77,8 @@ void ScanDialog::onDiscoveryFinished()
 void ScanDialog::onDiscoveryError()
 {
     status->setText(discoveryAgent->errorString());
-    auto messageBox = new QMessageBox(QMessageBox::Warning, tr("Bluetooth Error"),
-                                      tr("An error occured while scanning for Pokit devices."),
-                                      QMessageBox::NoButton, this);
+    auto const messageBox = new QMessageBox(QMessageBox::Warning, tr("Bluetooth Error"),
+        tr("An error occured while scanning for Pokit devices."), QMessageBox::NoButton, this);
     messageBox->setDetailedText(tr("discoveryAgent->errorString()"));
     messageBox->setModal(true);
     connect(messageBox, &QMessageBox::finished, messageBox, &QMessageBox::deleteLater);
