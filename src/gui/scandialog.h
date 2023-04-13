@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include <QDialog>
+#include <QLabel>
 #include <QLoggingCategory>
+#include <QStandardItemModel>
 
 #include <qtpokit/pokitdiscoveryagent.h>
 
@@ -17,14 +19,18 @@ public:
 
 protected:
     static Q_LOGGING_CATEGORY(lc, "pokit.gui.scanDialog", QtInfoMsg);
-    PokitDiscoveryAgent discoveryAgent;
+    QStandardItemModel * devicesModel;
+    PokitDiscoveryAgent * discoveryAgent;
+    QLabel * status; /// \todo Make this an icon, or a throbber etc.
 
     virtual void showEvent(QShowEvent *event) override;
 
 protected slots:
-    void deviceDiscovered(const QBluetoothDeviceInfo &info);
+    void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    void deviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
+    void onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
     #endif
+    void onDiscoveryFinished();
+    void onDiscoveryError();
 
 };
