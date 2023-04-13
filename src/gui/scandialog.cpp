@@ -21,6 +21,7 @@ ScanDialog::ScanDialog(QWidget * const parent, const Qt::WindowFlags flags) : QD
 
     auto listView = new QListView;
     listView->setModel(devicesModel = new QStandardItemModel);
+    listView->setSelectionMode(QListView::MultiSelection);
 
     setLayout(new QVBoxLayout);
     layout()->addWidget(new QLabel(QStringLiteral("Pokit devices:")));
@@ -37,6 +38,8 @@ ScanDialog::ScanDialog(QWidget * const parent, const Qt::WindowFlags flags) : QD
     #endif
     connect(discoveryAgent, &PokitDiscoveryAgent::finished, this, &ScanDialog::onDiscoveryFinished);
     connect(discoveryAgent, &PokitDiscoveryAgent::errorOccurred, this, &ScanDialog::onDiscoveryError);
+
+    connect(listView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ScanDialog::selectionChanged);
 }
 
 void ScanDialog::showEvent(QShowEvent *event)
@@ -83,4 +86,9 @@ void ScanDialog::onDiscoveryError()
     messageBox->setModal(true);
     connect(messageBox, &QMessageBox::finished, messageBox, &QMessageBox::deleteLater);
     messageBox->open();
+}
+
+void ScanDialog::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+{
+    qCInfo(lc) << selected << deselected;
 }

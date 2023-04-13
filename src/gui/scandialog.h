@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QLabel>
 #include <QLoggingCategory>
+#include <QItemSelection>
 #include <QStandardItemModel>
 
 #include <qtpokit/pokitdiscoveryagent.h>
@@ -32,5 +33,5 @@ protected slots:
     #endif
     void onDiscoveryFinished();
     void onDiscoveryError();
-
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 };
