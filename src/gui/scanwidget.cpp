@@ -53,6 +53,7 @@ void ScanWidget::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
     } else {
         item->setIcon(QIcon::fromTheme(QStringLiteral("libreoffice-main"))); /// \todo Use our own icons?
     }
+    item->setToolTip(info.address().isNull() ? info.deviceUuid().toString() : info.address().toString());
     /// \todo item->setData(info);
     devicesModel->appendRow(item);
 }
