@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QM
     auto pokitDevicesListView = new QListView(this);
     pokitDevicesListView->setModel(devicesModel);
     auto const scanDockWidget = new QDockWidget(tr("Pokit Devices"));
+    scanDockWidget->setObjectName("pokitDevicesDockWidget"); ///< For save/restore state (and presumably geometry).
     scanDockWidget->setWidget(pokitDevicesListView);
     addDockWidget(Qt::RightDockWidgetArea, scanDockWidget);
 
