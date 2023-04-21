@@ -36,7 +36,9 @@ void PokitDevicesModel::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
         item->setIcon(QIcon::fromTheme(QStringLiteral("libreoffice-main"))); /// \todo Use our own icons?
     }
     item->setToolTip(info.address().isNull() ? info.deviceUuid().toString() : info.address().toString());
-    /// \todo item->setData(info);
+    item->setData(info.address().toUInt64(), BluetoothAddressRole);
+    item->setData(info.deviceUuid(), DeviceUuidRole);
+    /// \todo plenty of other data.
     appendRow(item);
 }
 
@@ -44,6 +46,8 @@ void PokitDevicesModel::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 void PokitDevicesModel::onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields)
 {
     qCDebug(lc) << "Updated" << info.deviceUuid() << updatedFields;
-    /// \todo Update the model item.
+    /// \todo 1. Locate the existing item.
+    /// \todo 2. Set the updated field/s.
+    /// \todo 3. emit item->dataChanged().
 }
 #endif
