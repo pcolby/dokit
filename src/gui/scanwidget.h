@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#include <QDialog>
+#include <QWidget>
 #include <QLabel>
 #include <QLoggingCategory>
 #include <QItemSelection>
@@ -11,15 +11,15 @@
 
 /// \todo Move this file into a widgets folder?
 
-class ScanDialog : public QDialog
+class ScanWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ScanDialog(QWidget * const parent = nullptr, const Qt::WindowFlags flags = Qt::WindowFlags());
+    explicit ScanWidget(QWidget * const parent = nullptr, const Qt::WindowFlags flags = Qt::WindowFlags());
 
 protected:
-    static Q_LOGGING_CATEGORY(lc, "pokit.gui.scanDialog", QtInfoMsg);
+    static Q_LOGGING_CATEGORY(lc, "pokit.gui.scanWidget", QtInfoMsg);
     QStandardItemModel * devicesModel;
     PokitDiscoveryAgent * discoveryAgent;
     QLabel * status; /// \todo Make this an icon, or a throbber etc.

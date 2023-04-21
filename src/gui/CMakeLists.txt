@@ -4,14 +4,15 @@
 cmake_minimum_required(VERSION 3.0)
 
 # \todo Move this to the top-level CMakeLists.txt when the GUI app is ready.
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Charts Widgets)
+message(STATUS "Found Qt Charts ${Qt${QT_VERSION_MAJOR}Charts_VERSION}")
 message(STATUS "Found Qt Widgets ${Qt${QT_VERSION_MAJOR}Widgets_VERSION}")
 
 set(PokitGuiSources
   mainwindow.cpp
   mainwindow.h
-  scandialog.cpp
-  scandialog.h
+  scanwidget.cpp
+  scanwidget.h
 )
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
@@ -26,6 +27,7 @@ else()
     PRIVATE QtPokit
     PRIVATE Qt${QT_VERSION_MAJOR}::Core
     PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth
+    PRIVATE Qt${QT_VERSION_MAJOR}::Charts
     PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
   add_executable(Pokit main.cpp)
@@ -51,4 +53,5 @@ target_link_libraries(
   PRIVATE QtPokit
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth
+  PRIVATE Qt${QT_VERSION_MAJOR}::Charts
   PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

@@ -1,10 +1,9 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#include "scandialog.h"
+#include "scanwidget.h"
 
 #include <QBluetoothUuid>
-#include <QDialogButtonBox>
 #include <QDebug>
 #include <QLabel>
 #include <QListView>
@@ -14,42 +13,35 @@
 
 /// \todo Move this file into a widgets folder?
 
-ScanDialog::ScanDialog(QWidget * const parent, const Qt::WindowFlags flags) : QDialog(parent, flags)
+ScanWidget::ScanWidget(QWidget * const parent, const Qt::WindowFlags flags) : QWidget(parent, flags)
 {
-    setWindowTitle(tr("Open Pokit Device"));
-    /// \todo setWindowIcon(...);
-
     auto listView = new QListView;
     listView->setModel(devicesModel = new QStandardItemModel);
     listView->setSelectionMode(QListView::MultiSelection);
 
     setLayout(new QVBoxLayout);
-    layout()->addWidget(new QLabel(QStringLiteral("Pokit devices:")));
     layout()->addWidget(listView);
     layout()->addWidget(status = new QLabel(QStringLiteral("Init")));
 
-    auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Open|QDialogButtonBox::Close);
-    layout()->addWidget(buttonBox);
-
     discoveryAgent = new PokitDiscoveryAgent(this);
-    connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceDiscovered, this, &ScanDialog::onDeviceDiscovered);
+    connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceDiscovered, this, &ScanWidget::onDeviceDiscovered);
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceUpdated, this, &ScanDialog::onDeviceUpdated);
+    connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceUpdated, this, &ScanWidget::onDeviceUpdated);
     #endif
-    connect(discoveryAgent, &PokitDiscoveryAgent::finished, this, &ScanDialog::onDiscoveryFinished);
-    connect(discoveryAgent, &PokitDiscoveryAgent::errorOccurred, this, &ScanDialog::onDiscoveryError);
+    connect(discoveryAgent, &PokitDiscoveryAgent::finished, this, &ScanWidget::onDiscoveryFinished);
+    connect(discoveryAgent, &PokitDiscoveryAgent::errorOccurred, this, &ScanWidget::onDiscoveryError);
 
-    connect(listView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ScanDialog::selectionChanged);
+    connect(listView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ScanWidget::selectionChanged);
 }
 
-void ScanDialog::showEvent(QShowEvent *event)
+void ScanWidget::showEvent(QShowEvent *event)
 {
     discoveryAgent->start();
     status->setText(QStringLiteral("Scanning..."));
-    QDialog::showEvent(event);
+    QWidget::showEvent(event);
 }
 
-void ScanDialog::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
+void ScanWidget::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     qCInfo(lc) << "Discovered" << info.deviceUuid() << QIcon::themeName() << QIcon::themeSearchPaths();
     auto item = new QStandardItem(info.name());
@@ -66,18 +58,18 @@ void ScanDialog::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 }
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-void ScanDialog::onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields)
+void ScanWidget::onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields)
 {
     qCDebug(lc) << "Updated" << info.deviceUuid() << updatedFields;
 }
 #endif
 
-void ScanDialog::onDiscoveryFinished()
+void ScanWidget::onDiscoveryFinished()
 {
     status->setText(QStringLiteral("Stopped scanning"));
 }
 
-void ScanDialog::onDiscoveryError()
+void ScanWidget::onDiscoveryError()
 {
     status->setText(discoveryAgent->errorString());
     auto const messageBox = new QMessageBox(QMessageBox::Warning, tr("Bluetooth Error"),
@@ -88,7 +80,7 @@ void ScanDialog::onDiscoveryError()
     messageBox->open();
 }
 
-void ScanDialog::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+void ScanWidget::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     qCInfo(lc) << selected << deselected;
 }

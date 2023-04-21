@@ -1,11 +1,13 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#include "scandialog.h"
+#include "scanwidget.h"
 
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QChartView>
+#include <QDockWidget>
 #include <QSettings>
 
 /// \todo Move this file into a widgets folder?
@@ -13,6 +15,13 @@
 MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QMainWindow(parent, flags)
 {
     setWindowTitle(tr("%1 %2").arg(QApplication::applicationName(), QApplication::applicationVersion()));
+
+    setCentralWidget(new QChartView);
+    setDockOptions(QMainWindow::AnimatedDocks);
+
+    auto * const scanDockWidget = new QDockWidget(tr("Pokit Devices"));
+    scanDockWidget->setWidget(new ScanWidget);
+    addDockWidget(Qt::RightDockWidgetArea, scanDockWidget);
 
     // Restore the window's geometry and state.
     QSettings settings;
@@ -31,12 +40,4 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     // Let the base class accept or ignore the event.
     QMainWindow::closeEvent(event);
-}
-
-void MainWindow::showEvent(QShowEvent *event)
-{
-    /// \todo Probably not the best way to launch this. It'll do for early experimentation.
-    ScanDialog scanDialog;
-    scanDialog.exec();
-    QMainWindow::showEvent(event);
 }

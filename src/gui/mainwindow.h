@@ -17,6 +17,4 @@ protected:
     static Q_LOGGING_CATEGORY(lc, "pokit.gui.mainWindow", QtInfoMsg);
 
     virtual void closeEvent(QCloseEvent *event) override;
-    virtual void showEvent(QShowEvent *event) override;
-
 };
