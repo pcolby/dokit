@@ -25,4 +25,7 @@ protected:
 private:
     PokitDiscoveryAgent * discoveryAgent;
     PokitDevicesModel * devicesModel;
+
+private slots:
+    void discoveryFinished();
 };

@@ -19,7 +19,6 @@ void PokitDevicesModel::setDiscoveryAgent(const PokitDiscoveryAgent * agent)
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     connect(agent, &PokitDiscoveryAgent::pokitDeviceUpdated, this, &PokitDevicesModel::onDeviceUpdated);
     #endif
-    connect(agent, &PokitDiscoveryAgent::finished, this, &PokitDevicesModel::onDiscoveryFinished);
 }
 
 void PokitDevicesModel::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
@@ -48,8 +47,3 @@ void PokitDevicesModel::onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluet
     /// \todo Update the model item.
 }
 #endif
-
-void PokitDevicesModel::onDiscoveryFinished()
-{
-//    status->setText(QStringLiteral("Stopped scanning"));
-}

@@ -8,6 +8,7 @@
 #include <QDockWidget>
 #include <QListView>
 #include <QSettings>
+#include <QStatusBar>
 
 MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QMainWindow(parent, flags)
 {
@@ -36,6 +37,8 @@ MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QM
     /// \todo Restore the model's default check states.
 
     // Begin the Pokit device discovery.
+    connect(discoveryAgent, &PokitDiscoveryAgent::finished, this, &MainWindow::discoveryFinished);
+    statusBar()->showMessage(tr("Scanning for Pokit devices"));
     discoveryAgent->start();
 }
 
@@ -51,4 +54,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     // Let the base class accept or ignore the event.
     QMainWindow::closeEvent(event);
+}
+
+void MainWindow::discoveryFinished()
+{
+    statusBar()->showMessage(tr("Finishing scanning for Pokit Devices"));
 }
