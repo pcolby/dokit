@@ -13,15 +13,15 @@
 
 /// \todo Move this file into a widgets folder?
 
-ScanWidget::ScanWidget(QWidget * const parent, const Qt::WindowFlags flags) : QWidget(parent, flags)
+ScanWidget::ScanWidget(QWidget * const parent, const Qt::WindowFlags) : QListView(parent)
 {
-    auto listView = new QListView;
-    listView->setModel(devicesModel = new QStandardItemModel);
-    listView->setSelectionMode(QListView::MultiSelection);
+//    auto listView = new QListView;
+    setModel(devicesModel = new QStandardItemModel);
+    setSelectionMode(QListView::MultiSelection);
 
-    setLayout(new QVBoxLayout);
-    layout()->addWidget(listView);
-    layout()->addWidget(status = new QLabel(QStringLiteral("Init")));
+//    setLayout(new QVBoxLayout);
+//    layout()->addWidget(listView);
+//    layout()->addWidget(status = new QLabel(QStringLiteral("Init")));
 
     discoveryAgent = new PokitDiscoveryAgent(this);
     connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceDiscovered, this, &ScanWidget::onDeviceDiscovered);
@@ -31,13 +31,13 @@ ScanWidget::ScanWidget(QWidget * const parent, const Qt::WindowFlags flags) : QW
     connect(discoveryAgent, &PokitDiscoveryAgent::finished, this, &ScanWidget::onDiscoveryFinished);
     connect(discoveryAgent, &PokitDiscoveryAgent::errorOccurred, this, &ScanWidget::onDiscoveryError);
 
-    connect(listView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ScanWidget::selectionChanged);
+//    connect(listView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ScanWidget::selectionChanged);
 }
 
 void ScanWidget::showEvent(QShowEvent *event)
 {
     discoveryAgent->start();
-    status->setText(QStringLiteral("Scanning..."));
+//    status->setText(QStringLiteral("Scanning..."));
     QWidget::showEvent(event);
 }
 
@@ -67,21 +67,16 @@ void ScanWidget::onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDev
 
 void ScanWidget::onDiscoveryFinished()
 {
-    status->setText(QStringLiteral("Stopped scanning"));
+//    status->setText(QStringLiteral("Stopped scanning"));
 }
 
 void ScanWidget::onDiscoveryError()
 {
-    status->setText(discoveryAgent->errorString());
+//    status->setText(discoveryAgent->errorString());
     auto const messageBox = new QMessageBox(QMessageBox::Warning, tr("Bluetooth Error"),
         tr("An error occured while scanning for Pokit devices."), QMessageBox::NoButton, this);
     messageBox->setDetailedText(tr("discoveryAgent->errorString()"));
     messageBox->setModal(true);
     connect(messageBox, &QMessageBox::finished, messageBox, &QMessageBox::deleteLater);
     messageBox->open();
-}
-
-void ScanWidget::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
-{
-    qCInfo(lc) << selected << deselected;
 }
