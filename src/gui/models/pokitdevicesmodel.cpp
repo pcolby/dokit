@@ -8,7 +8,7 @@
 #include <QBluetoothUuid>
 #include <QDebug>
 
-PokitDevicesModel::PokitDevicesModel(QWidget * const parent) : QStandardItemModel(parent)
+PokitDevicesModel::PokitDevicesModel(QObject * const parent) : QStandardItemModel(parent)
 {
 
 }

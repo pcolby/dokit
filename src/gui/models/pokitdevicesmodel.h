@@ -15,7 +15,7 @@ class PokitDevicesModel : public QStandardItemModel
     Q_OBJECT
 
 public:
-    PokitDevicesModel(QWidget * const parent = nullptr);
+    PokitDevicesModel(QObject * const parent = nullptr);
     void setDiscoveryAgent(const PokitDiscoveryAgent * agent);
 
 protected:
