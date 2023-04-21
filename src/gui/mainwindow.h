@@ -1,6 +1,10 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+#include "models/pokitdevicesmodel.h"
+
+#include "qtpokit/pokitdiscoveryagent.h"
+
 #include <QLoggingCategory>
 #include <QMainWindow>
 
@@ -17,4 +21,8 @@ protected:
     static Q_LOGGING_CATEGORY(lc, "pokit.gui.mainWindow", QtInfoMsg);
 
     virtual void closeEvent(QCloseEvent *event) override;
+
+private:
+    PokitDiscoveryAgent * discoveryAgent;
+    PokitDevicesModel * devicesModel;
 };
