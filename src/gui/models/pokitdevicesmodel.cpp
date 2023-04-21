@@ -27,6 +27,7 @@ void PokitDevicesModel::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
     qCInfo(lc) << "Discovered" << info.deviceUuid() << QIcon::themeName() << QIcon::themeSearchPaths();
     /// \todo Check for existing entries (ie avoid duplicates).
     auto item = new QStandardItem(info.name());
+    item->setCheckable(true);
     item->setEditable(false);
     if (PokitDiscoveryAgent::isPokitMeter(info)) {
         item->setIcon(QIcon::fromTheme(QStringLiteral("libreoffice-calc"))); /// \todo Use our own icons?
