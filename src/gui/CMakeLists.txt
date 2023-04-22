@@ -15,8 +15,11 @@ set(PokitGuiSources
   models/pokitdevicesmodel.h
 )
 
+qt_add_resources(PokitGuiSources
+  qrc/icons.qrc)
+
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  add_executable(Pokit main.cpp ${PokitAppSources})
+  add_executable(Pokit main.cpp ${PokitGuiSources})
 else()
   # We put all but main.cpp into a shared 'object' library so
   # our app unit tests can link against the same binary objects.

@@ -26,11 +26,17 @@ public:
 protected:
     static Q_LOGGING_CATEGORY(lc, "pokit.model.devices", QtInfoMsg);
 
+private:
+  /// \todo Maybe move these to another class / namespace?
+  static QIcon getPokitMeterIcon();
+  static QIcon getPokitProIcon();
+
 protected slots:
     void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     void onDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);
     #endif
+
 };
 
 #endif // POKIT_GUI_POKITDEVICESMODEL_H
