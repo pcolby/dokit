@@ -295,7 +295,7 @@ int main(int argc, char *argv[])
 
     // Install localised translators, if we have translations for the current locale.
     QTranslator appTranslator, libTranslator;
-    if (appTranslator.load(QLocale(), QStringLiteral("app"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {
+    if (appTranslator.load(QLocale(), QStringLiteral("cli"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {
         QCoreApplication::installTranslator(&appTranslator);
     }
     if (libTranslator.load(QLocale(), QStringLiteral("lib"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {

@@ -72,7 +72,7 @@ jobs:
         name: qtpokit-${{ env.pokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
-          ${{ runner.temp }}/src/app/pokit
+          ${{ runner.temp }}/src/cli/pokit
         if-no-files-found: error
     - name: Upload AppImage
       uses: actions/upload-artifact@v3
@@ -155,7 +155,7 @@ jobs:
         name: qtpokit-${{ env.pokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
-          ${{ runner.temp }}/src/app/pokit
+          ${{ runner.temp }}/src/cli/pokit
         if-no-files-found: error
     - name: Upload AppImage
       uses: actions/upload-artifact@v3
@@ -234,7 +234,7 @@ jobs:
     #- name: Make app bundle
     #  run: |
     #    macdeployqt pokit -dmg -verbose=2
-    #  working-directory: ${{ runner.temp }}/src/app
+    #  working-directory: ${{ runner.temp }}/src/cli
     - name: Setup artifacts
       run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
@@ -243,7 +243,7 @@ jobs:
         name: qtpokit-${{ env.pokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.dylib
-          ${{ runner.temp }}/src/app/pokit
+          ${{ runner.temp }}/src/cli/pokit
         if-no-files-found: error
 
   win:
@@ -357,7 +357,7 @@ jobs:
       run: |
         mkdir portable
         copy /v /b src\lib\${{ matrix.dll }} /b portable
-        copy /v /b src\app\pokit.exe /b portable
+        copy /v /b src\cli\pokit.exe /b portable
         cd portable
         windeployqt --compiler-runtime --release --verbose 2 pokit.exe ${{ matrix.dll }}
       working-directory: ${{ runner.temp }}
@@ -370,7 +370,7 @@ jobs:
         name: qtpokit-${{ env.pokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/${{ matrix.dll }}
-          ${{ runner.temp }}/src/app/pokit.exe
+          ${{ runner.temp }}/src/cli/pokit.exe
         if-no-files-found: error
     - name: Upload artifacts (portable)
       # Exclude Qt 6.5.0 due to https://bugreports.qt.io/browse/QTBUG-112204

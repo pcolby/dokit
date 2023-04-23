@@ -59,7 +59,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
       i18n/en_AU.ts
       i18n/en_GB.ts
       i18n/en_US.ts
-    RESOURCE_PREFIX "i18n/app"
+    RESOURCE_PREFIX "i18n/cli"
     SOURCES main.cpp ${PokitAppSources})
 endif()
 
