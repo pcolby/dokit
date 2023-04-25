@@ -72,13 +72,13 @@ jobs:
         name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
-          ${{ runner.temp }}/src/cli/pokit
+          ${{ runner.temp }}/src/cli/dokit
         if-no-files-found: error
     - name: Upload AppImage
       uses: actions/upload-artifact@v3
       with:
         name: dokit-${{ env.dokitVersion }}.AppImage
-        path: ${{ runner.temp }}/pokit-${{ env.dokitVersion }}.AppImage
+        path: ${{ runner.temp }}/dokit-${{ env.dokitVersion }}.AppImage
         if-no-files-found: error
 
   linux:
@@ -155,13 +155,13 @@ jobs:
         name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
-          ${{ runner.temp }}/src/cli/pokit
+          ${{ runner.temp }}/src/cli/dokit
         if-no-files-found: error
     - name: Upload AppImage
       uses: actions/upload-artifact@v3
       with:
         name: dokit-${{ env.dokitVersion }}.AppImage
-        path: ${{ runner.temp }}/pokit-${{ env.dokitVersion }}.AppImage
+        path: ${{ runner.temp }}/dokit-${{ env.dokitVersion }}.AppImage
         if-no-files-found: error
 
   mac:
@@ -233,7 +233,7 @@ jobs:
         parallel: true
     #- name: Make app bundle
     #  run: |
-    #    macdeployqt pokit -dmg -verbose=2
+    #    macdeployqt dokit -dmg -verbose=2
     #  working-directory: ${{ runner.temp }}/src/cli
     - name: Setup artifacts
       run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
@@ -243,7 +243,7 @@ jobs:
         name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.dylib
-          ${{ runner.temp }}/src/cli/pokit
+          ${{ runner.temp }}/src/cli/dokit
         if-no-files-found: error
 
   win:
@@ -357,9 +357,9 @@ jobs:
       run: |
         mkdir portable
         copy /v /b src\lib\${{ matrix.dll }} /b portable
-        copy /v /b src\cli\pokit.exe /b portable
+        copy /v /b src\cli\dokit.exe /b portable
         cd portable
-        windeployqt --compiler-runtime --release --verbose 2 pokit.exe ${{ matrix.dll }}
+        windeployqt --compiler-runtime --release --verbose 2 dokit.exe ${{ matrix.dll }}
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
@@ -370,7 +370,7 @@ jobs:
         name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/${{ matrix.dll }}
-          ${{ runner.temp }}/src/cli/pokit.exe
+          ${{ runner.temp }}/src/cli/dokit.exe
         if-no-files-found: error
     - name: Upload artifacts (portable)
       # Exclude Qt 6.5.0 due to https://bugreports.qt.io/browse/QTBUG-112204
