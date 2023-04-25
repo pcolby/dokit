@@ -11,6 +11,7 @@ if (ENABLE_GUI)
   add_subdirectory(gui)
 endif()
 
+# \todo Push this down into ./cli/ and duplicate for ./gui?
 find_program(LINUXDEPLOY NAMES linuxdeploy linuxdeploy-x86_64.AppImage)
 if (LINUXDEPLOY)
   message(STATUS "Found linuxdeploy: ${LINUXDEPLOY}")
@@ -30,3 +31,5 @@ if (LINUXDEPLOY)
     DEPENDS dokit QtPokit
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
+
+# \todo Add windeployqt targets?
