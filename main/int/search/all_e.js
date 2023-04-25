@@ -171,7 +171,7 @@ var searchData=
   ['notatboundary_168',['NotAtBoundary',['https://doc.qt.io/qt-5/qtextboundaryfinder.html#BoundaryReason-enum',1,'QTextBoundaryFinder']]],
   ['notationdeclarations_169',['notationDeclarations',['https://doc.qt.io/qt-5/qxmlstreamreader.html#notationDeclarations',1,'QXmlStreamReader']]],
   ['notationname_170',['notationName',['https://doc.qt.io/qt-5/qxmlstreamentitydeclaration.html#notationName',1,'QXmlStreamEntityDeclaration']]],
-  ['notes_171',['Notes',['../md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html',1,'']]],
+  ['notes_171',['Notes',['../md__home_runner_work_dokit_dokit_doc_src_internal_notes.html',1,'']]],
   ['notextinteraction_172',['NoTextInteraction',['https://doc.qt.io/qt-5/qt.html#TextInteractionFlag-enum',1,'Qt']]],
   ['notfound_173',['NotFound',['https://doc.qt.io/qt-5/qsharedmemory.html#SharedMemoryError-enum',1,'QSharedMemory::NotFound()'],['https://doc.qt.io/qt-5/qsystemsemaphore.html#SystemSemaphoreError-enum',1,'QSystemSemaphore::NotFound()']]],
   ['notify_174',['notify',['https://doc.qt.io/qt-5/qcoreapplication.html#notify',1,'QCoreApplication']]],

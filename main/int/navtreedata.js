@@ -24,14 +24,14 @@
 */
 var NAVTREE =
 [
-  [ "QtPokit", "index.html", [
+  [ "Dokit", "index.html", [
     [ "QtPokit - Internal", "index.html", "index" ],
-    [ "Notes", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html", [
-      [ "Pokit Bluetooth API", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md5", [
-        [ "Undocumented Services", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md6", null ]
+    [ "Notes", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html", [
+      [ "Pokit Bluetooth API", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md5", [
+        [ "Undocumented Services", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md6", null ]
       ] ],
-      [ "Qt Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md7", null ],
-      [ "CMake Versions", "md__home_runner_work_qtpokit_qtpokit_doc_src_internal_notes.html#autotoc_md8", null ]
+      [ "Qt Versions", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md7", null ],
+      [ "CMake Versions", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md8", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Pokit API Errata", "pokit.html", null ],

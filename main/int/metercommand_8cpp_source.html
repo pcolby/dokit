@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>QtPokit: metercommand.cpp Source File</title>
+<title>Dokit: metercommand.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">QtPokit<span id="projectnumber">&#160;0.1.3-pre</span>
+   <div id="projectname">Dokit<span id="projectnumber">&#160;0.1.3-pre</span>
    </div>
    <div id="projectbrief">Internal development documentation</div>
   </td>
@@ -306,7 +306,7 @@ $(document).ready(function(){initNavTree('metercommand_8cpp_source.html',''); in
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordflow">return</span> range;</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>}</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="preprocessor">#define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="preprocessor">#define DOKIT_CLI_IF_LESS_THAN_RETURN(value, label) \</span></div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="preprocessor">if (value &lt;=  MultimeterService::maxValue(MultimeterService::label).toUInt()) { \</span></div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="preprocessor">    return MultimeterService::label; \</span></div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="preprocessor">}</span></div>
@@ -317,11 +317,11 @@ $(document).ready(function(){initNavTree('metercommand_8cpp_source.html',''); in
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="classMeterCommand.html#adcc916b68fa32670962f99f640a0254e">  219</a></span><a class="code hl_enumeration" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">MultimeterService::CurrentRange</a> <a class="code hl_function" href="classMeterCommand.html#adcc916b68fa32670962f99f640a0254e">MeterCommand::lowestCurrentRange</a>(<span class="keyword">const</span> quint32 desiredMax)</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>{</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2a5c8523b038abf04d86fcc5358cd893cf">MultimeterService::CurrentRange::AutoRange</a>;</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>}</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment"></span> </div>
@@ -331,14 +331,14 @@ $(document).ready(function(){initNavTree('metercommand_8cpp_source.html',''); in
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="classMeterCommand.html#a4f5535a0b9d26e9b45903374561d4c97">  233</a></span><a class="code hl_enumeration" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">MultimeterService::ResistanceRange</a> <a class="code hl_function" href="classMeterCommand.html#a4f5535a0b9d26e9b45903374561d4c97">MeterCommand::lowestResistanceRange</a>(<span class="keyword">const</span> quint32 desiredMax)</div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>{</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_330_to_890)</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_890_to_1K5)</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_1K5_to_10K)</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_10K_to_100K)</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_100K_to_470K)</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_470K_to_1M)</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_330_to_890)</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_890_to_1K5)</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_1K5_to_10K)</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_10K_to_100K)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_100K_to_470K)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_470K_to_1M)</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a5c8523b038abf04d86fcc5358cd893cf">MultimeterService::ResistanceRange::AutoRange</a>;</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>}</div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment"></span> </div>
@@ -348,16 +348,16 @@ $(document).ready(function(){initNavTree('metercommand_8cpp_source.html',''); in
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classMeterCommand.html#a84a9af540f43dfd03c4cd2a68dc87476">  250</a></span><a class="code hl_enumeration" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">MultimeterService::VoltageRange</a> <a class="code hl_function" href="classMeterCommand.html#a84a9af540f43dfd03c4cd2a68dc87476">MeterCommand::lowestVoltageRange</a>(<span class="keyword">const</span> quint32 desiredMax)</div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>{</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</div>
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf">MultimeterService::VoltageRange::AutoRange</a>;</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>}</div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#undef POKIT_APP_IF_LESS_THAN_RETURN</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#undef DOKIT_CLI_IF_LESS_THAN_RETURN</span></div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment"></span> </div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="comment">/*!</span></div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="comment"> * Invoked when the multimeter settings have been written, to begin reading the meter values.</span></div>
@@ -603,7 +603,7 @@ $(document).ready(function(){initNavTree('metercommand_8cpp_source.html',''); in
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_8d9614c8875cb2a66bb99a41cd4cbdc4.html">qtpokit</a></li><li class="navelem"><a class="el" href="dir_483047b42e0856958a5abffbac41e54e.html">qtpokit</a></li><li class="navelem"><a class="el" href="dir_17e69c269f7749027d28c3e5a3ec9399.html">src</a></li><li class="navelem"><a class="el" href="dir_d06efc450cba0195427a4ca34737b1d9.html">cli</a></li><li class="navelem"><b>metercommand.cpp</b></li>
+    <li class="navelem"><a class="el" href="dir_6d05515408e4946c0bcad079cca6efc5.html">dokit</a></li><li class="navelem"><a class="el" href="dir_a3ec3dc7b22ecb477e17dc7e0f03ab9d.html">dokit</a></li><li class="navelem"><a class="el" href="dir_dace1188d80d4c00b7e29e6313d6d97b.html">src</a></li><li class="navelem"><a class="el" href="dir_34242b7d78ea4d816dc4ead22a0a72fb.html">cli</a></li><li class="navelem"><b>metercommand.cpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

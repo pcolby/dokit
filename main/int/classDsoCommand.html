@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>QtPokit: DsoCommand Class Reference</title>
+<title>Dokit: DsoCommand Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">QtPokit<span id="projectnumber">&#160;0.1.3-pre</span>
+   <div id="projectname">Dokit<span id="projectnumber">&#160;0.1.3-pre</span>
    </div>
    <div id="projectbrief">Internal development documentation</div>
   </td>
@@ -544,10 +544,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="h
 typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#QObjectList-typedef">QObjectList</a></td></tr>
 <tr class="separator:QObjectList-typedef inherit pub_attribs_qobject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_methods_classAbstractCommand"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_classAbstractCommand')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="classAbstractCommand.html">AbstractCommand</a></td></tr>
-<tr class="memitem:a91d544b7f14475f55e9043832f3d1eb2 inherit pro_static_methods_classAbstractCommand"><td class="memItemLeft" align="right" valign="top"><a id="a91d544b7f14475f55e9043832f3d1eb2" name="a91d544b7f14475f55e9043832f3d1eb2"></a>
-static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY</b> (lc, &quot;pokit.ui.command&quot;, QtInfoMsg)</td></tr>
-<tr class="memdesc:a91d544b7f14475f55e9043832f3d1eb2 inherit pro_static_methods_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging category for UI commands. <br /></td></tr>
-<tr class="separator:a91d544b7f14475f55e9043832f3d1eb2 inherit pro_static_methods_classAbstractCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8bafb6db670b3c127ab59130584274f inherit pro_static_methods_classAbstractCommand"><td class="memItemLeft" align="right" valign="top"><a id="ac8bafb6db670b3c127ab59130584274f" name="ac8bafb6db670b3c127ab59130584274f"></a>
+static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY</b> (lc, &quot;dokit.cli.command&quot;, QtInfoMsg)</td></tr>
+<tr class="memdesc:ac8bafb6db670b3c127ab59130584274f inherit pro_static_methods_classAbstractCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging category for UI commands. <br /></td></tr>
+<tr class="separator:ac8bafb6db670b3c127ab59130584274f inherit pro_static_methods_classAbstractCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classDeviceCommand"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classDeviceCommand')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classDeviceCommand.html">DeviceCommand</a></td></tr>
 <tr class="memitem:a2bbf2dc9bb0ba85a2bf29263746c7b57 inherit pro_attribs_classDeviceCommand"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPokitDevice.html">PokitDevice</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeviceCommand.html#a2bbf2dc9bb0ba85a2bf29263746c7b57">device</a></td></tr>
 <tr class="memdesc:a2bbf2dc9bb0ba85a2bf29263746c7b57 inherit pro_attribs_classDeviceCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pokit Bluetooth device (if any) this command inerracts with.  <br /></td></tr>
@@ -704,11 +704,11 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="dsocommand_8cpp_source.html#l00227">227</a> of file <a class="el" href="dsocommand_8cpp_source.html">dsocommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  228</span>{</div>
-<div class="line"><span class="lineno">  229</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</div>
-<div class="line"><span class="lineno">  230</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</div>
-<div class="line"><span class="lineno">  231</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</div>
-<div class="line"><span class="lineno">  232</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</div>
-<div class="line"><span class="lineno">  233</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</div>
+<div class="line"><span class="lineno">  229</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</div>
+<div class="line"><span class="lineno">  230</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</div>
+<div class="line"><span class="lineno">  231</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</div>
+<div class="line"><span class="lineno">  232</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</div>
+<div class="line"><span class="lineno">  233</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</div>
 <div class="line"><span class="lineno">  234</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">DsoService::CurrentRange::_300mA_to_3A</a>; <span class="comment">// Out of range, so go with the biggest.</span></div>
 <div class="line"><span class="lineno">  235</span>}</div>
 <div class="ttc" id="aclassDsoService_html_af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1"><div class="ttname"><a href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">DsoService::CurrentRange::_300mA_to_3A</a></div><div class="ttdeci">@ _300mA_to_3A</div></div>
@@ -836,12 +836,12 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="dsocommand_8cpp_source.html#l00241">241</a> of file <a class="el" href="dsocommand_8cpp_source.html">dsocommand.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  242</span>{</div>
-<div class="line"><span class="lineno">  243</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</div>
-<div class="line"><span class="lineno">  244</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</div>
-<div class="line"><span class="lineno">  245</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</div>
-<div class="line"><span class="lineno">  246</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</div>
-<div class="line"><span class="lineno">  247</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</div>
-<div class="line"><span class="lineno">  248</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</div>
+<div class="line"><span class="lineno">  243</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</div>
+<div class="line"><span class="lineno">  244</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</div>
+<div class="line"><span class="lineno">  245</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</div>
+<div class="line"><span class="lineno">  246</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</div>
+<div class="line"><span class="lineno">  247</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</div>
+<div class="line"><span class="lineno">  248</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</div>
 <div class="line"><span class="lineno">  249</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">DsoService::VoltageRange::_30V_to_60V</a>; <span class="comment">// Out of range, so go with the biggest.</span></div>
 <div class="line"><span class="lineno">  250</span>}</div>
 </div><!-- fragment -->

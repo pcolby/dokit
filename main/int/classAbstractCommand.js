@@ -13,7 +13,7 @@ var classAbstractCommand =
     [ "parseMilliValue", "classAbstractCommand.html#ab18bb57fe68534739f63c994330a29c2", null ],
     [ "parseWholeValue", "classAbstractCommand.html#a77b59d2b62aae9580aea93ca65c3af9a", null ],
     [ "processOptions", "classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d", null ],
-    [ "Q_LOGGING_CATEGORY", "classAbstractCommand.html#a91d544b7f14475f55e9043832f3d1eb2", null ],
+    [ "Q_LOGGING_CATEGORY", "classAbstractCommand.html#ac8bafb6db670b3c127ab59130584274f", null ],
     [ "requiredOptions", "classAbstractCommand.html#afd6f41cfc925751415cfa45e3b2d0b4a", null ],
     [ "start", "classAbstractCommand.html#a549d6f1071016fe56d20d2ba81575b2c", null ],
     [ "supportedOptions", "classAbstractCommand.html#a1ceca3c5b4cb24277dd4d4054f45db18", null ],

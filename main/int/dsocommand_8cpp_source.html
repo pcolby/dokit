@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>QtPokit: dsocommand.cpp Source File</title>
+<title>Dokit: dsocommand.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">QtPokit<span id="projectnumber">&#160;0.1.3-pre</span>
+   <div id="projectname">Dokit<span id="projectnumber">&#160;0.1.3-pre</span>
    </div>
    <div id="projectbrief">Internal development documentation</div>
   </td>
@@ -314,7 +314,7 @@ $(document).ready(function(){initNavTree('dsocommand_8cpp_source.html',''); init
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">return</span> <a class="code hl_union" href="unionDsoService_1_1Range.html">DsoService::Range</a>();</div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="preprocessor">#define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="preprocessor">#define DOKIT_CLI_IF_LESS_THAN_RETURN(value, label) \</span></div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="preprocessor">if (value &lt;=  DsoService::maxValue(DsoService::label).toUInt()) { \</span></div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="preprocessor">    return DsoService::label; \</span></div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="preprocessor">}</span></div>
@@ -325,11 +325,11 @@ $(document).ready(function(){initNavTree('dsocommand_8cpp_source.html',''); init
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno"><a class="line" href="classDsoCommand.html#a7591804892fcf259b18ff7e465ad8931">  227</a></span><a class="code hl_enumeration" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053">DsoService::CurrentRange</a> <a class="code hl_function" href="classDsoCommand.html#a7591804892fcf259b18ff7e465ad8931">DsoCommand::lowestCurrentRange</a>(<span class="keyword">const</span> quint32 desiredMax)</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>{</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="classDsoService.html#af8270cd794b3e41f68c30032a9d9d053a36fd02dd400c54ef118025070ad4feb1">DsoService::CurrentRange::_300mA_to_3A</a>; <span class="comment">// Out of range, so go with the biggest.</span></div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>}</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment"></span> </div>
@@ -339,16 +339,16 @@ $(document).ready(function(){initNavTree('dsocommand_8cpp_source.html',''); init
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="classDsoCommand.html#ab56ebce50ae16d193004eb2260986515">  241</a></span><a class="code hl_enumeration" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1">DsoService::VoltageRange</a> <a class="code hl_function" href="classDsoCommand.html#ab56ebce50ae16d193004eb2260986515">DsoCommand::lowestVoltageRange</a>(<span class="keyword">const</span> quint32 desiredMax)</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>{</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="classDsoService.html#a72e17ce03f8046819ba71597d6f753a1a8d6ed04283cbc4c0f1b89006e9c3e96b">DsoService::VoltageRange::_30V_to_60V</a>; <span class="comment">// Out of range, so go with the biggest.</span></div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>}</div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#undef POKIT_APP_IF_LESS_THAN_RETURN</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#undef DOKIT_CLI_IF_LESS_THAN_RETURN</span></div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment"></span> </div>
 <div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment">/*!</span></div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="comment"> * Invoked when the DSO settings have been written.</span></div>
@@ -524,7 +524,7 @@ $(document).ready(function(){initNavTree('dsocommand_8cpp_source.html',''); init
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_8d9614c8875cb2a66bb99a41cd4cbdc4.html">qtpokit</a></li><li class="navelem"><a class="el" href="dir_483047b42e0856958a5abffbac41e54e.html">qtpokit</a></li><li class="navelem"><a class="el" href="dir_17e69c269f7749027d28c3e5a3ec9399.html">src</a></li><li class="navelem"><a class="el" href="dir_d06efc450cba0195427a4ca34737b1d9.html">cli</a></li><li class="navelem"><b>dsocommand.cpp</b></li>
+    <li class="navelem"><a class="el" href="dir_6d05515408e4946c0bcad079cca6efc5.html">dokit</a></li><li class="navelem"><a class="el" href="dir_a3ec3dc7b22ecb477e17dc7e0f03ab9d.html">dokit</a></li><li class="navelem"><a class="el" href="dir_dace1188d80d4c00b7e29e6313d6d97b.html">src</a></li><li class="navelem"><a class="el" href="dir_34242b7d78ea4d816dc4ead22a0a72fb.html">cli</a></li><li class="navelem"><b>dsocommand.cpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
