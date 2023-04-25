@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Project:</td>
-            <td class="headerValue">QtPokit</td>
+            <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">135</td>
@@ -277,7 +277,7 @@
 <a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :     return DsoService::Range();</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : }</a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
-<a name="218"><span class="lineNum">     218 </span>            : #define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \</a>
+<a name="218"><span class="lineNum">     218 </span>            : #define DOKIT_CLI_IF_LESS_THAN_RETURN(value, label) \</a>
 <a name="219"><span class="lineNum">     219 </span>            : if (value &lt;=  DsoService::maxValue(DsoService::label).toUInt()) { \</a>
 <a name="220"><span class="lineNum">     220 </span>            :     return DsoService::label; \</a>
 <a name="221"><span class="lineNum">     221 </span>            : }</a>
@@ -288,11 +288,11 @@
 <a name="226"><span class="lineNum">     226 </span>            :  */</a>
 <a name="227"><span class="lineNum">     227 </span><span class="lineCov">        792 : DsoService::CurrentRange DsoCommand::lowestCurrentRange(const quint32 desiredMax)</span></a>
 <a name="228"><span class="lineNum">     228 </span>            : {</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        792 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        630 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        468 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        288 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        126 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        792 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        630 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        468 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        288 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        126 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)</span></a>
 <a name="234"><span class="lineNum">     234 </span>            :     return DsoService::CurrentRange::_300mA_to_3A; // Out of range, so go with the biggest.</a>
 <a name="235"><span class="lineNum">     235 </span>            : }</a>
 <a name="236"><span class="lineNum">     236 </span>            : </a>
@@ -302,16 +302,16 @@
 <a name="240"><span class="lineNum">     240 </span>            :  */</a>
 <a name="241"><span class="lineNum">     241 </span><span class="lineCov">       1260 : DsoService::VoltageRange DsoCommand::lowestVoltageRange(const quint32 desiredMax)</span></a>
 <a name="242"><span class="lineNum">     242 </span>            : {</a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">       1260 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       1098 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">        612 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">        432 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        270 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        108 :     POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">       1260 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">       1098 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">        612 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">        432 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        270 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        108 :     DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)</span></a>
 <a name="249"><span class="lineNum">     249 </span>            :     return DsoService::VoltageRange::_30V_to_60V; // Out of range, so go with the biggest.</a>
 <a name="250"><span class="lineNum">     250 </span>            : }</a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span>            : #undef POKIT_APP_IF_LESS_THAN_RETURN</a>
+<a name="252"><span class="lineNum">     252 </span>            : #undef DOKIT_CLI_IF_LESS_THAN_RETURN</a>
 <a name="253"><span class="lineNum">     253 </span>            : </a>
 <a name="254"><span class="lineNum">     254 </span>            : /*!</a>
 <a name="255"><span class="lineNum">     255 </span>            :  * Invoked when the DSO settings have been written.</a>

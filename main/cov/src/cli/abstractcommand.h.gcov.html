@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Project:</td>
-            <td class="headerValue">QtPokit</td>
+            <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">3</td>
@@ -63,8 +63,8 @@
 <a name="1"><span class="lineNum">       1 </span>            : // SPDX-FileCopyrightText: 2022-2023 Paul Colby &lt;git@colby.id.au&gt;</a>
 <a name="2"><span class="lineNum">       2 </span>            : // SPDX-License-Identifier: LGPL-3.0-or-later</a>
 <a name="3"><span class="lineNum">       3 </span>            : </a>
-<a name="4"><span class="lineNum">       4 </span>            : #ifndef QTPOKIT_ABSTRACTCOMMAND_H</a>
-<a name="5"><span class="lineNum">       5 </span>            : #define QTPOKIT_ABSTRACTCOMMAND_H</a>
+<a name="4"><span class="lineNum">       4 </span>            : #ifndef DOKIT_ABSTRACTCOMMAND_H</a>
+<a name="5"><span class="lineNum">       5 </span>            : #define DOKIT_ABSTRACTCOMMAND_H</a>
 <a name="6"><span class="lineNum">       6 </span>            : </a>
 <a name="7"><span class="lineNum">       7 </span>            : #include &lt;QBluetoothDeviceInfo&gt;</a>
 <a name="8"><span class="lineNum">       8 </span>            : #include &lt;QCommandLineParser&gt;</a>
@@ -104,7 +104,7 @@
 <a name="42"><span class="lineNum">      42 </span>            :     QString deviceToScanFor; ///&lt; Device (if any) that were passed to processOptions().</a>
 <a name="43"><span class="lineNum">      43 </span>            :     PokitDiscoveryAgent * discoveryAgent; ///&lt; Agent for Pokit device descovery.</a>
 <a name="44"><span class="lineNum">      44 </span>            :     OutputFormat format; ///&lt; Selected output format.</a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">      25076 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ui.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">      25076 :     static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
 <a name="47"><span class="lineNum">      47 </span>            : protected slots:</a>
 <a name="48"><span class="lineNum">      48 </span>            :     virtual void deviceDiscovered(const QBluetoothDeviceInfo &amp;info) = 0;</a>
@@ -113,7 +113,7 @@
 <a name="51"><span class="lineNum">      51 </span>            :     friend class TestAbstractCommand;</a>
 <a name="52"><span class="lineNum">      52 </span>            : };</a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>
-<a name="54"><span class="lineNum">      54 </span>            : #endif // QTPOKIT_ABSTRACTCOMMAND_H</a>
+<a name="54"><span class="lineNum">      54 </span>            : #endif // DOKIT_ABSTRACTCOMMAND_H</a>
 </pre>
       </td>
     </tr>
