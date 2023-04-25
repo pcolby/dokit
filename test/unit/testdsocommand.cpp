@@ -358,56 +358,56 @@ void TestDsoCommand::lowestRange_data()
     QTest::addColumn<quint32>("desiredMax");
     QTest::addColumn<DsoService::Range>("expected");
 
-    #define QTPOKIT_ADD_TEST_ROW(value, range) \
+    #define DOKIT_ADD_TEST_ROW(value, range) \
         QTest::addRow(#value "mVdc") \
             << DsoService::Mode::DcVoltage << (quint32)value \
             << DsoService::Range(DsoService::VoltageRange::range); \
         QTest::addRow(#value "mVac") \
             << DsoService::Mode::AcVoltage << (quint32)value \
             << DsoService::Range(DsoService::VoltageRange::range)
-    QTPOKIT_ADD_TEST_ROW(    0, _0_to_300mV);
-    QTPOKIT_ADD_TEST_ROW(  299, _0_to_300mV);
-    QTPOKIT_ADD_TEST_ROW(  300, _0_to_300mV);
-    QTPOKIT_ADD_TEST_ROW(  301, _300mV_to_2V);
-    QTPOKIT_ADD_TEST_ROW( 1999, _300mV_to_2V);
-    QTPOKIT_ADD_TEST_ROW( 2000, _300mV_to_2V);
-    QTPOKIT_ADD_TEST_ROW( 2001, _2V_to_6V);
-    QTPOKIT_ADD_TEST_ROW( 5999, _2V_to_6V);
-    QTPOKIT_ADD_TEST_ROW( 6000, _2V_to_6V);
-    QTPOKIT_ADD_TEST_ROW( 6001, _6V_to_12V);
-    QTPOKIT_ADD_TEST_ROW(11999, _6V_to_12V);
-    QTPOKIT_ADD_TEST_ROW(12000, _6V_to_12V);
-    QTPOKIT_ADD_TEST_ROW(12001, _12V_to_30V);
-    QTPOKIT_ADD_TEST_ROW(29999, _12V_to_30V);
-    QTPOKIT_ADD_TEST_ROW(30000, _12V_to_30V);
-    QTPOKIT_ADD_TEST_ROW(30001, _30V_to_60V);
-    QTPOKIT_ADD_TEST_ROW(99999, _30V_to_60V); // DSO has no 'auto', so use the max range available.
+    DOKIT_ADD_TEST_ROW(    0, _0_to_300mV);
+    DOKIT_ADD_TEST_ROW(  299, _0_to_300mV);
+    DOKIT_ADD_TEST_ROW(  300, _0_to_300mV);
+    DOKIT_ADD_TEST_ROW(  301, _300mV_to_2V);
+    DOKIT_ADD_TEST_ROW( 1999, _300mV_to_2V);
+    DOKIT_ADD_TEST_ROW( 2000, _300mV_to_2V);
+    DOKIT_ADD_TEST_ROW( 2001, _2V_to_6V);
+    DOKIT_ADD_TEST_ROW( 5999, _2V_to_6V);
+    DOKIT_ADD_TEST_ROW( 6000, _2V_to_6V);
+    DOKIT_ADD_TEST_ROW( 6001, _6V_to_12V);
+    DOKIT_ADD_TEST_ROW(11999, _6V_to_12V);
+    DOKIT_ADD_TEST_ROW(12000, _6V_to_12V);
+    DOKIT_ADD_TEST_ROW(12001, _12V_to_30V);
+    DOKIT_ADD_TEST_ROW(29999, _12V_to_30V);
+    DOKIT_ADD_TEST_ROW(30000, _12V_to_30V);
+    DOKIT_ADD_TEST_ROW(30001, _30V_to_60V);
+    DOKIT_ADD_TEST_ROW(99999, _30V_to_60V); // DSO has no 'auto', so use the max range available.
     /// \todo Pokit Pro supports up to 600V.
-    #undef QTPOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
 
-    #define QTPOKIT_ADD_TEST_ROW(value, range) \
+    #define DOKIT_ADD_TEST_ROW(value, range) \
         QTest::addRow(#value "mAdc") \
             << DsoService::Mode::DcCurrent << (quint32)value \
             << DsoService::Range(DsoService::CurrentRange::range); \
         QTest::addRow(#value "mAac") \
             << DsoService::Mode::AcCurrent << (quint32)value \
             << DsoService::Range(DsoService::CurrentRange::range)
-    QTPOKIT_ADD_TEST_ROW(   0, _0_to_10mA);
-    QTPOKIT_ADD_TEST_ROW(   9, _0_to_10mA);
-    QTPOKIT_ADD_TEST_ROW(  10, _0_to_10mA);
-    QTPOKIT_ADD_TEST_ROW(  11, _10mA_to_30mA);
-    QTPOKIT_ADD_TEST_ROW(  29, _10mA_to_30mA);
-    QTPOKIT_ADD_TEST_ROW(  30, _10mA_to_30mA);
-    QTPOKIT_ADD_TEST_ROW(  31, _30mA_to_150mA);
-    QTPOKIT_ADD_TEST_ROW( 149, _30mA_to_150mA);
-    QTPOKIT_ADD_TEST_ROW( 150, _30mA_to_150mA);
-    QTPOKIT_ADD_TEST_ROW( 151, _150mA_to_300mA);
-    QTPOKIT_ADD_TEST_ROW( 299, _150mA_to_300mA);
-    QTPOKIT_ADD_TEST_ROW( 300, _150mA_to_300mA);
-    QTPOKIT_ADD_TEST_ROW( 301, _300mA_to_3A);
-    QTPOKIT_ADD_TEST_ROW(9999, _300mA_to_3A);
+    DOKIT_ADD_TEST_ROW(   0, _0_to_10mA);
+    DOKIT_ADD_TEST_ROW(   9, _0_to_10mA);
+    DOKIT_ADD_TEST_ROW(  10, _0_to_10mA);
+    DOKIT_ADD_TEST_ROW(  11, _10mA_to_30mA);
+    DOKIT_ADD_TEST_ROW(  29, _10mA_to_30mA);
+    DOKIT_ADD_TEST_ROW(  30, _10mA_to_30mA);
+    DOKIT_ADD_TEST_ROW(  31, _30mA_to_150mA);
+    DOKIT_ADD_TEST_ROW( 149, _30mA_to_150mA);
+    DOKIT_ADD_TEST_ROW( 150, _30mA_to_150mA);
+    DOKIT_ADD_TEST_ROW( 151, _150mA_to_300mA);
+    DOKIT_ADD_TEST_ROW( 299, _150mA_to_300mA);
+    DOKIT_ADD_TEST_ROW( 300, _150mA_to_300mA);
+    DOKIT_ADD_TEST_ROW( 301, _300mA_to_3A);
+    DOKIT_ADD_TEST_ROW(9999, _300mA_to_3A);
     /// \todo Pokit Pro supports up to 10A.
-    #undef QTPOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
 }
 
 void TestDsoCommand::lowestRange()
@@ -423,24 +423,24 @@ void TestDsoCommand::lowestCurrentRange_data()
     QTest::addColumn<quint32>("desiredMax");
     QTest::addColumn<DsoService::CurrentRange>("expected");
 
-    #define QTPOKIT_ADD_TEST_ROW(value, range) \
+    #define DOKIT_ADD_TEST_ROW(value, range) \
         QTest::addRow(#value "mA") << (quint32)value << DsoService::CurrentRange::range
-    QTPOKIT_ADD_TEST_ROW(   0, _0_to_10mA);
-    QTPOKIT_ADD_TEST_ROW(   9, _0_to_10mA);
-    QTPOKIT_ADD_TEST_ROW(  10, _0_to_10mA);
-    QTPOKIT_ADD_TEST_ROW(  11, _10mA_to_30mA);
-    QTPOKIT_ADD_TEST_ROW(  29, _10mA_to_30mA);
-    QTPOKIT_ADD_TEST_ROW(  30, _10mA_to_30mA);
-    QTPOKIT_ADD_TEST_ROW(  31, _30mA_to_150mA);
-    QTPOKIT_ADD_TEST_ROW( 149, _30mA_to_150mA);
-    QTPOKIT_ADD_TEST_ROW( 150, _30mA_to_150mA);
-    QTPOKIT_ADD_TEST_ROW( 151, _150mA_to_300mA);
-    QTPOKIT_ADD_TEST_ROW( 299, _150mA_to_300mA);
-    QTPOKIT_ADD_TEST_ROW( 300, _150mA_to_300mA);
-    QTPOKIT_ADD_TEST_ROW( 301, _300mA_to_3A);
-    QTPOKIT_ADD_TEST_ROW(9999, _300mA_to_3A);
+    DOKIT_ADD_TEST_ROW(   0, _0_to_10mA);
+    DOKIT_ADD_TEST_ROW(   9, _0_to_10mA);
+    DOKIT_ADD_TEST_ROW(  10, _0_to_10mA);
+    DOKIT_ADD_TEST_ROW(  11, _10mA_to_30mA);
+    DOKIT_ADD_TEST_ROW(  29, _10mA_to_30mA);
+    DOKIT_ADD_TEST_ROW(  30, _10mA_to_30mA);
+    DOKIT_ADD_TEST_ROW(  31, _30mA_to_150mA);
+    DOKIT_ADD_TEST_ROW( 149, _30mA_to_150mA);
+    DOKIT_ADD_TEST_ROW( 150, _30mA_to_150mA);
+    DOKIT_ADD_TEST_ROW( 151, _150mA_to_300mA);
+    DOKIT_ADD_TEST_ROW( 299, _150mA_to_300mA);
+    DOKIT_ADD_TEST_ROW( 300, _150mA_to_300mA);
+    DOKIT_ADD_TEST_ROW( 301, _300mA_to_3A);
+    DOKIT_ADD_TEST_ROW(9999, _300mA_to_3A);
     /// \todo Pokit Pro supports up to 10A.
-    #undef QTPOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
 }
 
 void TestDsoCommand::lowestCurrentRange()
@@ -455,27 +455,27 @@ void TestDsoCommand::lowestVoltageRange_data()
     QTest::addColumn<quint32>("desiredMax");
     QTest::addColumn<DsoService::VoltageRange>("expected");
 
-    #define QTPOKIT_ADD_TEST_ROW(value, range) \
+    #define DOKIT_ADD_TEST_ROW(value, range) \
         QTest::addRow(#value "mV") << (quint32)value << DsoService::VoltageRange::range
-    QTPOKIT_ADD_TEST_ROW(    0, _0_to_300mV);
-    QTPOKIT_ADD_TEST_ROW(  299, _0_to_300mV);
-    QTPOKIT_ADD_TEST_ROW(  300, _0_to_300mV);
-    QTPOKIT_ADD_TEST_ROW(  301, _300mV_to_2V);
-    QTPOKIT_ADD_TEST_ROW( 1999, _300mV_to_2V);
-    QTPOKIT_ADD_TEST_ROW( 2000, _300mV_to_2V);
-    QTPOKIT_ADD_TEST_ROW( 2001, _2V_to_6V);
-    QTPOKIT_ADD_TEST_ROW( 5999, _2V_to_6V);
-    QTPOKIT_ADD_TEST_ROW( 6000, _2V_to_6V);
-    QTPOKIT_ADD_TEST_ROW( 6001, _6V_to_12V);
-    QTPOKIT_ADD_TEST_ROW(11999, _6V_to_12V);
-    QTPOKIT_ADD_TEST_ROW(12000, _6V_to_12V);
-    QTPOKIT_ADD_TEST_ROW(12001, _12V_to_30V);
-    QTPOKIT_ADD_TEST_ROW(29999, _12V_to_30V);
-    QTPOKIT_ADD_TEST_ROW(30000, _12V_to_30V);
-    QTPOKIT_ADD_TEST_ROW(30001, _30V_to_60V);
-    QTPOKIT_ADD_TEST_ROW(99999, _30V_to_60V); // DSO has no 'auto', so use the max range available.
+    DOKIT_ADD_TEST_ROW(    0, _0_to_300mV);
+    DOKIT_ADD_TEST_ROW(  299, _0_to_300mV);
+    DOKIT_ADD_TEST_ROW(  300, _0_to_300mV);
+    DOKIT_ADD_TEST_ROW(  301, _300mV_to_2V);
+    DOKIT_ADD_TEST_ROW( 1999, _300mV_to_2V);
+    DOKIT_ADD_TEST_ROW( 2000, _300mV_to_2V);
+    DOKIT_ADD_TEST_ROW( 2001, _2V_to_6V);
+    DOKIT_ADD_TEST_ROW( 5999, _2V_to_6V);
+    DOKIT_ADD_TEST_ROW( 6000, _2V_to_6V);
+    DOKIT_ADD_TEST_ROW( 6001, _6V_to_12V);
+    DOKIT_ADD_TEST_ROW(11999, _6V_to_12V);
+    DOKIT_ADD_TEST_ROW(12000, _6V_to_12V);
+    DOKIT_ADD_TEST_ROW(12001, _12V_to_30V);
+    DOKIT_ADD_TEST_ROW(29999, _12V_to_30V);
+    DOKIT_ADD_TEST_ROW(30000, _12V_to_30V);
+    DOKIT_ADD_TEST_ROW(30001, _30V_to_60V);
+    DOKIT_ADD_TEST_ROW(99999, _30V_to_60V); // DSO has no 'auto', so use the max range available.
     /// \todo Pokit Pro supports up to 600V.
-    #undef QTPOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
 }
 
 void TestDsoCommand::lowestVoltageRange()
@@ -536,7 +536,7 @@ void TestDsoCommand::outputSamples_data()
         {2,-32767,0,32767}
     };
 
-    #define QTPOKIT_ADD_TEST_ROW(name, metadata, list) \
+    #define DOKIT_ADD_TEST_ROW(name, metadata, list) \
         QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv"))) \
             << metadata << list << AbstractCommand::OutputFormat::Csv; \
         QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) \
@@ -547,15 +547,15 @@ void TestDsoCommand::outputSamples_data()
     for (const DsoService::Metadata &metadata: metadatas) {
         const QString namePrefix = DsoService::toString(metadata.mode)
             .replace(QLatin1Char(' '), QLatin1Char('-'));
-        QTPOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-null"),
+        DOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-null"),
                              metadata, QList<DsoService::Samples>{ });
         for (const DsoService::Samples &samples: samplesList) {
-            QTPOKIT_ADD_TEST_ROW(namePrefix + QString::number(samples.front()), metadata,
+            DOKIT_ADD_TEST_ROW(namePrefix + QString::number(samples.front()), metadata,
                                  QList<DsoService::Samples>{ samples });
         }
-        QTPOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-all"), metadata, samplesList);
+        DOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-all"), metadata, samplesList);
     }
-    #undef QTPOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
 }
 
 void TestDsoCommand::outputSamples()

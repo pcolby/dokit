@@ -23,20 +23,20 @@ void TestStatusService::toString_DeviceStatus_data()
 {
     QTest::addColumn<StatusService::DeviceStatus>("status");
     QTest::addColumn<QString>("expected");
-    #define QTPOKIT_ADD_TEST_ROW(status, expected) \
+    #define DOKIT_ADD_TEST_ROW(status, expected) \
         QTest::addRow(#status) << StatusService::DeviceStatus::status << QStringLiteral(expected)
-    QTPOKIT_ADD_TEST_ROW(Idle,                  "Idle");
-    QTPOKIT_ADD_TEST_ROW(MultimeterDcVoltage,   "MultimeterDcVoltage");
-    QTPOKIT_ADD_TEST_ROW(MultimeterAcVoltage,   "MultimeterAcVoltage");
-    QTPOKIT_ADD_TEST_ROW(MultimeterDcCurrent,   "MultimeterDcCurrent");
-    QTPOKIT_ADD_TEST_ROW(MultimeterAcCurrent,   "MultimeterAcCurrent");
-    QTPOKIT_ADD_TEST_ROW(MultimeterResistance,  "MultimeterResistance");
-    QTPOKIT_ADD_TEST_ROW(MultimeterDiode,       "MultimeterDiode");
-    QTPOKIT_ADD_TEST_ROW(MultimeterContinuity,  "MultimeterContinuity");
-    QTPOKIT_ADD_TEST_ROW(MultimeterTemperature, "MultimeterTemperature");
-    QTPOKIT_ADD_TEST_ROW(DsoModeSampling,       "DsoModeSampling");
-    QTPOKIT_ADD_TEST_ROW(LoggerModeSampling,    "LoggerModeSampling");
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(Idle,                  "Idle");
+    DOKIT_ADD_TEST_ROW(MultimeterDcVoltage,   "MultimeterDcVoltage");
+    DOKIT_ADD_TEST_ROW(MultimeterAcVoltage,   "MultimeterAcVoltage");
+    DOKIT_ADD_TEST_ROW(MultimeterDcCurrent,   "MultimeterDcCurrent");
+    DOKIT_ADD_TEST_ROW(MultimeterAcCurrent,   "MultimeterAcCurrent");
+    DOKIT_ADD_TEST_ROW(MultimeterResistance,  "MultimeterResistance");
+    DOKIT_ADD_TEST_ROW(MultimeterDiode,       "MultimeterDiode");
+    DOKIT_ADD_TEST_ROW(MultimeterContinuity,  "MultimeterContinuity");
+    DOKIT_ADD_TEST_ROW(MultimeterTemperature, "MultimeterTemperature");
+    DOKIT_ADD_TEST_ROW(DsoModeSampling,       "DsoModeSampling");
+    DOKIT_ADD_TEST_ROW(LoggerModeSampling,    "LoggerModeSampling");
+    #undef DOKIT_ADD_TEST_ROW
     QTest::addRow("invalid") << (StatusService::DeviceStatus)11   << QString();
     QTest::addRow("max")     << (StatusService::DeviceStatus)0xFF << QString();
 }
@@ -52,11 +52,11 @@ void TestStatusService::toString_BatteryStatus_data()
 {
     QTest::addColumn<StatusService::BatteryStatus>("status");
     QTest::addColumn<QString>("expected");
-    #define QTPOKIT_ADD_TEST_ROW(status, expected) \
+    #define DOKIT_ADD_TEST_ROW(status, expected) \
         QTest::addRow(#status) << StatusService::BatteryStatus::status << QStringLiteral(expected)
-    QTPOKIT_ADD_TEST_ROW(Low,  "Low");
-    QTPOKIT_ADD_TEST_ROW(Good, "Good");
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(Low,  "Low");
+    DOKIT_ADD_TEST_ROW(Good, "Good");
+    #undef DOKIT_ADD_TEST_ROW
     QTest::addRow("invalid") << (StatusService::BatteryStatus)2    << QString();
     QTest::addRow("max")     << (StatusService::BatteryStatus)0xFF << QString();
 }

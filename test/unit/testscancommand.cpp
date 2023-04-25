@@ -94,19 +94,19 @@ void TestScanCommand::deviceDiscovered_data()
         rssi
     };
 
-    #define QTPOKIT_ADD_TEST_ROW(name, list) \
+    #define DOKIT_ADD_TEST_ROW(name, list) \
         QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv")))  << list << AbstractCommand::OutputFormat::Csv; \
         QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) << list << AbstractCommand::OutputFormat::Json; \
         QTest::newRow(qUtf8Printable(name + QStringLiteral(".txt")))  << list << AbstractCommand::OutputFormat::Text
 
-    QTPOKIT_ADD_TEST_ROW(QStringLiteral("null"), QList<QBluetoothDeviceInfo>{ QBluetoothDeviceInfo() });
+    DOKIT_ADD_TEST_ROW(QStringLiteral("null"), QList<QBluetoothDeviceInfo>{ QBluetoothDeviceInfo() });
 
     for (const QBluetoothDeviceInfo &info: list) {
-        QTPOKIT_ADD_TEST_ROW(info.name(), QList<QBluetoothDeviceInfo>{ info });
+        DOKIT_ADD_TEST_ROW(info.name(), QList<QBluetoothDeviceInfo>{ info });
     }
 
-    QTPOKIT_ADD_TEST_ROW(QStringLiteral("all"), list );
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(QStringLiteral("all"), list );
+    #undef DOKIT_ADD_TEST_ROW
 }
 
 void TestScanCommand::deviceDiscovered()
@@ -327,13 +327,13 @@ void TestScanCommand::toJson_coreConfig_data()
     QTest::addColumn<QBluetoothDeviceInfo::CoreConfiguration>("config");
     QTest::addColumn<QJsonArray>("expected");
 
-    #define QTPOKIT_ADD_TEST_ROW(config) QTest::newRow(#config) \
+    #define DOKIT_ADD_TEST_ROW(config) QTest::newRow(#config) \
         << QBluetoothDeviceInfo::CoreConfiguration(QBluetoothDeviceInfo::config) \
         << QJsonArray{ QLatin1String(#config) }
-    QTPOKIT_ADD_TEST_ROW(UnknownCoreConfiguration);
-    QTPOKIT_ADD_TEST_ROW(LowEnergyCoreConfiguration);
-    QTPOKIT_ADD_TEST_ROW(BaseRateCoreConfiguration);
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(UnknownCoreConfiguration);
+    DOKIT_ADD_TEST_ROW(LowEnergyCoreConfiguration);
+    DOKIT_ADD_TEST_ROW(BaseRateCoreConfiguration);
+    #undef DOKIT_ADD_TEST_ROW
 
     // BaseRateAndLowEnergy is a combination of LowEnergy and BaseRate core configurations.
     QTest::newRow("BaseRateAndLowEnergyCoreConfiguration") \
@@ -386,18 +386,18 @@ void TestScanCommand::toJson_serviceClasses_data()
 
     QTest::newRow("empty") << QBluetoothDeviceInfo::ServiceClasses() << QJsonArray();
 
-    #define QTPOKIT_ADD_TEST_ROW(serviceClass) QTest::newRow(#serviceClass) \
+    #define DOKIT_ADD_TEST_ROW(serviceClass) QTest::newRow(#serviceClass) \
         << QBluetoothDeviceInfo::ServiceClasses(QBluetoothDeviceInfo::serviceClass) \
         << QJsonArray{ QLatin1String(#serviceClass) }
-    QTPOKIT_ADD_TEST_ROW(PositioningService);
-    QTPOKIT_ADD_TEST_ROW(NetworkingService);
-    QTPOKIT_ADD_TEST_ROW(RenderingService);
-    QTPOKIT_ADD_TEST_ROW(CapturingService);
-    QTPOKIT_ADD_TEST_ROW(ObjectTransferService);
-    QTPOKIT_ADD_TEST_ROW(AudioService);
-    QTPOKIT_ADD_TEST_ROW(TelephonyService);
-    QTPOKIT_ADD_TEST_ROW(InformationService);
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(PositioningService);
+    DOKIT_ADD_TEST_ROW(NetworkingService);
+    DOKIT_ADD_TEST_ROW(RenderingService);
+    DOKIT_ADD_TEST_ROW(CapturingService);
+    DOKIT_ADD_TEST_ROW(ObjectTransferService);
+    DOKIT_ADD_TEST_ROW(AudioService);
+    DOKIT_ADD_TEST_ROW(TelephonyService);
+    DOKIT_ADD_TEST_ROW(InformationService);
+    #undef DOKIT_ADD_TEST_ROW
 
     QTest::newRow("all")
         << QBluetoothDeviceInfo::ServiceClasses(
@@ -506,24 +506,24 @@ void TestScanCommand::toString_majorClass_data()
     QTest::addColumn<QString>("expected");
 
     // Test all happy paths.
-    #define QTPOKIT_ADD_TEST_ROW(majorClass) QTest::addRow(#majorClass) \
+    #define DOKIT_ADD_TEST_ROW(majorClass) QTest::addRow(#majorClass) \
         << (int)QBluetoothDeviceInfo::majorClass << QString::fromLatin1(#majorClass)
-    QTPOKIT_ADD_TEST_ROW(MiscellaneousDevice);
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice);
-    QTPOKIT_ADD_TEST_ROW(PhoneDevice);
+    DOKIT_ADD_TEST_ROW(MiscellaneousDevice);
+    DOKIT_ADD_TEST_ROW(ComputerDevice);
+    DOKIT_ADD_TEST_ROW(PhoneDevice);
     #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
-    QTPOKIT_ADD_TEST_ROW(LANAccessDevice); // Deprecated since Qt 5.13.
+    DOKIT_ADD_TEST_ROW(LANAccessDevice); // Deprecated since Qt 5.13.
     #else
-    QTPOKIT_ADD_TEST_ROW(NetworkDevice); // Added in Qt 5.13.
+    DOKIT_ADD_TEST_ROW(NetworkDevice); // Added in Qt 5.13.
     #endif
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice);
-    QTPOKIT_ADD_TEST_ROW(ImagingDevice);
-    QTPOKIT_ADD_TEST_ROW(WearableDevice);
-    QTPOKIT_ADD_TEST_ROW(ToyDevice);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice);
-    QTPOKIT_ADD_TEST_ROW(UncategorizedDevice);
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice);
+    DOKIT_ADD_TEST_ROW(ImagingDevice);
+    DOKIT_ADD_TEST_ROW(WearableDevice);
+    DOKIT_ADD_TEST_ROW(ToyDevice);
+    DOKIT_ADD_TEST_ROW(HealthDevice);
+    DOKIT_ADD_TEST_ROW(UncategorizedDevice);
+    #undef DOKIT_ADD_TEST_ROW
 
     // Test unhappy paths; these should all safely return null strings.
     QTest::addRow("-999") << -999 << QString();
@@ -551,110 +551,110 @@ void TestScanCommand::toString_minorClass_data()
     #endif
 
     // Test all happy paths.
-    #define QTPOKIT_ADD_TEST_ROW(majorClass, minorClass) QTest::addRow(#majorClass ":" #minorClass) \
+    #define DOKIT_ADD_TEST_ROW(majorClass, minorClass) QTest::addRow(#majorClass ":" #minorClass) \
         << (int)QBluetoothDeviceInfo::majorClass << (quint8)QBluetoothDeviceInfo::minorClass \
         << QString::fromLatin1(#minorClass)
 
-    QTPOKIT_ADD_TEST_ROW(MiscellaneousDevice, UncategorizedMiscellaneous);
+    DOKIT_ADD_TEST_ROW(MiscellaneousDevice, UncategorizedMiscellaneous);
 
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice, UncategorizedComputer);
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice, DesktopComputer);
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice, ServerComputer);
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice, LaptopComputer);
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice, HandheldClamShellComputer);
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice, HandheldComputer);
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice, WearableComputer);
+    DOKIT_ADD_TEST_ROW(ComputerDevice, UncategorizedComputer);
+    DOKIT_ADD_TEST_ROW(ComputerDevice, DesktopComputer);
+    DOKIT_ADD_TEST_ROW(ComputerDevice, ServerComputer);
+    DOKIT_ADD_TEST_ROW(ComputerDevice, LaptopComputer);
+    DOKIT_ADD_TEST_ROW(ComputerDevice, HandheldClamShellComputer);
+    DOKIT_ADD_TEST_ROW(ComputerDevice, HandheldComputer);
+    DOKIT_ADD_TEST_ROW(ComputerDevice, WearableComputer);
 
-    QTPOKIT_ADD_TEST_ROW(PhoneDevice, UncategorizedPhone);
-    QTPOKIT_ADD_TEST_ROW(PhoneDevice, CellularPhone);
-    QTPOKIT_ADD_TEST_ROW(PhoneDevice, CordlessPhone);
-    QTPOKIT_ADD_TEST_ROW(PhoneDevice, SmartPhone);
-    QTPOKIT_ADD_TEST_ROW(PhoneDevice, WiredModemOrVoiceGatewayPhone);
-    QTPOKIT_ADD_TEST_ROW(PhoneDevice, CommonIsdnAccessPhone);
+    DOKIT_ADD_TEST_ROW(PhoneDevice, UncategorizedPhone);
+    DOKIT_ADD_TEST_ROW(PhoneDevice, CellularPhone);
+    DOKIT_ADD_TEST_ROW(PhoneDevice, CordlessPhone);
+    DOKIT_ADD_TEST_ROW(PhoneDevice, SmartPhone);
+    DOKIT_ADD_TEST_ROW(PhoneDevice, WiredModemOrVoiceGatewayPhone);
+    DOKIT_ADD_TEST_ROW(PhoneDevice, CommonIsdnAccessPhone);
 
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkFullService);
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorOne);
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorTwo);
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorThree);
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFour);
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFive);
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorSix);
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkNoService);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkFullService);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorOne);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorTwo);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorThree);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFour);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorFive);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkLoadFactorSix);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE, NetworkNoService);
 
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, UncategorizedAudioVideoDevice);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, WearableHeadsetDevice);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, HandsFreeDevice);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Microphone);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Loudspeaker);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Headphones);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, PortableAudioDevice);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, CarAudio);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, SetTopBox);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, HiFiAudioDevice);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Vcr);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoCamera);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, Camcorder);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoMonitor);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoDisplayAndLoudspeaker);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoConferencing);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice, GamingDevice);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, UncategorizedAudioVideoDevice);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, WearableHeadsetDevice);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, HandsFreeDevice);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, Microphone);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, Loudspeaker);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, Headphones);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, PortableAudioDevice);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, CarAudio);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, SetTopBox);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, HiFiAudioDevice);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, Vcr);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoCamera);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, Camcorder);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoMonitor);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoDisplayAndLoudspeaker);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, VideoConferencing);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice, GamingDevice);
 
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, UncategorizedPeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, KeyboardPeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, PointingDevicePeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, KeyboardWithPointingDevicePeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, JoystickPeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, GamepadPeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, RemoteControlPeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, SensingDevicePeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, DigitizerTabletPeripheral);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice, CardReaderPeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, UncategorizedPeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, KeyboardPeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, PointingDevicePeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, KeyboardWithPointingDevicePeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, JoystickPeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, GamepadPeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, RemoteControlPeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, SensingDevicePeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, DigitizerTabletPeripheral);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice, CardReaderPeripheral);
 
-    QTPOKIT_ADD_TEST_ROW(ImagingDevice, UncategorizedImagingDevice);
-    QTPOKIT_ADD_TEST_ROW(ImagingDevice, ImageDisplay);
-    QTPOKIT_ADD_TEST_ROW(ImagingDevice, ImageCamera);
-    QTPOKIT_ADD_TEST_ROW(ImagingDevice, ImageScanner);
-    QTPOKIT_ADD_TEST_ROW(ImagingDevice, ImagePrinter);
+    DOKIT_ADD_TEST_ROW(ImagingDevice, UncategorizedImagingDevice);
+    DOKIT_ADD_TEST_ROW(ImagingDevice, ImageDisplay);
+    DOKIT_ADD_TEST_ROW(ImagingDevice, ImageCamera);
+    DOKIT_ADD_TEST_ROW(ImagingDevice, ImageScanner);
+    DOKIT_ADD_TEST_ROW(ImagingDevice, ImagePrinter);
 
-    QTPOKIT_ADD_TEST_ROW(WearableDevice, UncategorizedWearableDevice);
-    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearableWristWatch);
-    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearablePager);
-    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearableJacket);
-    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearableHelmet);
-    QTPOKIT_ADD_TEST_ROW(WearableDevice, WearableGlasses);
+    DOKIT_ADD_TEST_ROW(WearableDevice, UncategorizedWearableDevice);
+    DOKIT_ADD_TEST_ROW(WearableDevice, WearableWristWatch);
+    DOKIT_ADD_TEST_ROW(WearableDevice, WearablePager);
+    DOKIT_ADD_TEST_ROW(WearableDevice, WearableJacket);
+    DOKIT_ADD_TEST_ROW(WearableDevice, WearableHelmet);
+    DOKIT_ADD_TEST_ROW(WearableDevice, WearableGlasses);
 
-    QTPOKIT_ADD_TEST_ROW(ToyDevice, UncategorizedToy);
-    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyRobot);
-    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyVehicle);
-    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyDoll);
-    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyController);
-    QTPOKIT_ADD_TEST_ROW(ToyDevice, ToyGame);
+    DOKIT_ADD_TEST_ROW(ToyDevice, UncategorizedToy);
+    DOKIT_ADD_TEST_ROW(ToyDevice, ToyRobot);
+    DOKIT_ADD_TEST_ROW(ToyDevice, ToyVehicle);
+    DOKIT_ADD_TEST_ROW(ToyDevice, ToyDoll);
+    DOKIT_ADD_TEST_ROW(ToyDevice, ToyController);
+    DOKIT_ADD_TEST_ROW(ToyDevice, ToyGame);
 
-    QTPOKIT_ADD_TEST_ROW(HealthDevice, UncategorizedHealthDevice);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthBloodPressureMonitor);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthThermometer);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthWeightScale);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthGlucoseMeter);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthPulseOximeter);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthDataDisplay);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice, HealthStepCounter);
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(HealthDevice, UncategorizedHealthDevice);
+    DOKIT_ADD_TEST_ROW(HealthDevice, HealthBloodPressureMonitor);
+    DOKIT_ADD_TEST_ROW(HealthDevice, HealthThermometer);
+    DOKIT_ADD_TEST_ROW(HealthDevice, HealthWeightScale);
+    DOKIT_ADD_TEST_ROW(HealthDevice, HealthGlucoseMeter);
+    DOKIT_ADD_TEST_ROW(HealthDevice, HealthPulseOximeter);
+    DOKIT_ADD_TEST_ROW(HealthDevice, HealthDataDisplay);
+    DOKIT_ADD_TEST_ROW(HealthDevice, HealthStepCounter);
+    #undef DOKIT_ADD_TEST_ROW
 
     // Test that all major classs fall through on out-of-range minor classes.
-    #define QTPOKIT_ADD_TEST_ROW(majorClass) QTest::addRow(#majorClass ".invalid") \
+    #define DOKIT_ADD_TEST_ROW(majorClass) QTest::addRow(#majorClass ".invalid") \
         << (int)QBluetoothDeviceInfo::majorClass << (quint8)999 << QString()
-    QTPOKIT_ADD_TEST_ROW(MiscellaneousDevice);
-    QTPOKIT_ADD_TEST_ROW(ComputerDevice);
-    QTPOKIT_ADD_TEST_ROW(PhoneDevice);
-    QTPOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE);
-    QTPOKIT_ADD_TEST_ROW(AudioVideoDevice);
-    QTPOKIT_ADD_TEST_ROW(PeripheralDevice);
-    QTPOKIT_ADD_TEST_ROW(ImagingDevice);
-    QTPOKIT_ADD_TEST_ROW(WearableDevice);
-    QTPOKIT_ADD_TEST_ROW(ToyDevice);
-    QTPOKIT_ADD_TEST_ROW(HealthDevice);
-    QTPOKIT_ADD_TEST_ROW(UncategorizedDevice);
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(MiscellaneousDevice);
+    DOKIT_ADD_TEST_ROW(ComputerDevice);
+    DOKIT_ADD_TEST_ROW(PhoneDevice);
+    DOKIT_ADD_TEST_ROW(MAJOR_CLASS_NETWORK_DEVICE);
+    DOKIT_ADD_TEST_ROW(AudioVideoDevice);
+    DOKIT_ADD_TEST_ROW(PeripheralDevice);
+    DOKIT_ADD_TEST_ROW(ImagingDevice);
+    DOKIT_ADD_TEST_ROW(WearableDevice);
+    DOKIT_ADD_TEST_ROW(ToyDevice);
+    DOKIT_ADD_TEST_ROW(HealthDevice);
+    DOKIT_ADD_TEST_ROW(UncategorizedDevice);
+    #undef DOKIT_ADD_TEST_ROW
     #undef MAJOR_CLASS_NETWORK_DEVICE
 
     // There are no minor classed for UncategorizedDevice.

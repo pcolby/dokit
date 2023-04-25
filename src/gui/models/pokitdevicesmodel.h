@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#ifndef POKIT_GUI_POKITDEVICESMODEL_H
-#define POKIT_GUI_POKITDEVICESMODEL_H
+#ifndef DOKIT_GUI_POKITDEVICESMODEL_H
+#define DOKIT_GUI_POKITDEVICESMODEL_H
 
 #include <QBluetoothDeviceInfo>
 #include <QLoggingCategory>
@@ -24,7 +24,7 @@ public:
     void setDiscoveryAgent(const PokitDiscoveryAgent * agent);
 
 protected:
-    static Q_LOGGING_CATEGORY(lc, "pokit.model.devices", QtInfoMsg);
+    static Q_LOGGING_CATEGORY(lc, "dokit.model.devices", QtInfoMsg);
 
 private:
   /// \todo Maybe move these to another class / namespace?
@@ -39,4 +39,4 @@ protected slots:
 
 };
 
-#endif // POKIT_GUI_POKITDEVICESMODEL_H
+#endif // DOKIT_GUI_POKITDEVICESMODEL_H

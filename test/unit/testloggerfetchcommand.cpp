@@ -66,7 +66,7 @@ void TestLoggerFetchCommand::outputSamples_data()
         {2,-32767,0,32767}
     };
 
-    #define QTPOKIT_ADD_TEST_ROW(name, metadata, list) \
+    #define DOKIT_ADD_TEST_ROW(name, metadata, list) \
         QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv"))) \
             << metadata << list << AbstractCommand::OutputFormat::Csv; \
         QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) \
@@ -77,15 +77,15 @@ void TestLoggerFetchCommand::outputSamples_data()
     for (const DataLoggerService::Metadata &metadata: metadatas) {
         const QString namePrefix = DataLoggerService::toString(metadata.mode)
             .replace(QLatin1Char(' '), QLatin1Char('-'));
-        QTPOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-null"),
+        DOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-null"),
                              metadata, QList<DataLoggerService::Samples>{ });
         for (const DataLoggerService::Samples &samples: samplesList) {
-            QTPOKIT_ADD_TEST_ROW(namePrefix + QString::number(samples.front()), metadata,
+            DOKIT_ADD_TEST_ROW(namePrefix + QString::number(samples.front()), metadata,
                                  QList<DataLoggerService::Samples>{ samples });
         }
-        QTPOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-all"), metadata, samplesList);
+        DOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-all"), metadata, samplesList);
     }
-    #undef QTPOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
 }
 
 void TestLoggerFetchCommand::outputSamples()

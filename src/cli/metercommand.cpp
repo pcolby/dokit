@@ -207,7 +207,7 @@ MultimeterService::Range MeterCommand::lowestRange(
     return range;
 }
 
-#define POKIT_APP_IF_LESS_THAN_RETURN(value, label) \
+#define DOKIT_CLI_IF_LESS_THAN_RETURN(value, label) \
 if (value <=  MultimeterService::maxValue(MultimeterService::label).toUInt()) { \
     return MultimeterService::label; \
 }
@@ -218,11 +218,11 @@ if (value <=  MultimeterService::maxValue(MultimeterService::label).toUInt()) { 
  */
 MultimeterService::CurrentRange MeterCommand::lowestCurrentRange(const quint32 desiredMax)
 {
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)
     return MultimeterService::CurrentRange::AutoRange;
 }
 
@@ -232,14 +232,14 @@ MultimeterService::CurrentRange MeterCommand::lowestCurrentRange(const quint32 d
  */
 MultimeterService::ResistanceRange MeterCommand::lowestResistanceRange(const quint32 desiredMax)
 {
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_330_to_890)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_890_to_1K5)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_1K5_to_10K)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_10K_to_100K)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_100K_to_470K)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_470K_to_1M)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_330_to_890)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_890_to_1K5)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_1K5_to_10K)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_10K_to_100K)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_100K_to_470K)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_470K_to_1M)
     return MultimeterService::ResistanceRange::AutoRange;
 }
 
@@ -249,16 +249,16 @@ MultimeterService::ResistanceRange MeterCommand::lowestResistanceRange(const qui
  */
 MultimeterService::VoltageRange MeterCommand::lowestVoltageRange(const quint32 desiredMax)
 {
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)
-    POKIT_APP_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)
+    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)
     return MultimeterService::VoltageRange::AutoRange;
 }
 
-#undef POKIT_APP_IF_LESS_THAN_RETURN
+#undef DOKIT_CLI_IF_LESS_THAN_RETURN
 
 /*!
  * Invoked when the multimeter settings have been written, to begin reading the meter values.

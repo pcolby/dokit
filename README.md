@@ -1,10 +1,10 @@
-# QtPokit
+# Dokit
 
-[![Build Status](https://github.com/pcolby/qtpokit/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/pcolby/qtpokit/actions/workflows/build.yaml?query=branch%3Amain)
-[![Static Analysis](https://github.com/pcolby/qtpokit/actions/workflows/static.yaml/badge.svg?branch=main)](https://github.com/pcolby/qtpokit/actions/workflows/static.yaml?query=branch%3Amain)
-[![Documentation](https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml/badge.svg?branch=main)](https://github.com/pcolby/qtpokit/actions/workflows/docs.yaml?query=branch%3Amain)
-[![Codacy Grade](https://img.shields.io/codacy/grade/50f86ac1809f438eae51d294ad11f36f?label=Code%20Quality&logo=codacy)](https://www.codacy.com/gh/pcolby/qtpokit/dashboard)
-[![Coverage Status](https://img.shields.io/coveralls/github/pcolby/qtpokit/main?label=Coverage&logo=coveralls)](https://coveralls.io/github/pcolby/qtpokit?branch=main)
+[![Build Status](https://github.com/pcolby/dokit/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/pcolby/dokit/actions/workflows/build.yaml?query=branch%3Amain)
+[![Static Analysis](https://github.com/pcolby/dokit/actions/workflows/static.yaml/badge.svg?branch=main)](https://github.com/pcolby/dokit/actions/workflows/static.yaml?query=branch%3Amain)
+[![Documentation](https://github.com/pcolby/dokit/actions/workflows/docs.yaml/badge.svg?branch=main)](https://github.com/pcolby/dokit/actions/workflows/docs.yaml?query=branch%3Amain)
+[![Codacy Grade](https://img.shields.io/codacy/grade/50f86ac1809f438eae51d294ad11f36f?label=Code%20Quality&logo=codacy)](https://www.codacy.com/gh/pcolby/dokit/dashboard)
+[![Coverage Status](https://img.shields.io/coveralls/github/pcolby/dokit/main?label=Coverage&logo=coveralls)](https://coveralls.io/github/pcolby/dokit?branch=main)
 
 QtPokit is a cross-platform [Qt][] library, and console application for accessing [Pokit][]
 measuring devices. The QtPokit library is intended to be suitable for other projects -
@@ -222,8 +222,8 @@ cmake --build <tmp-build-dir> --target doc doc-internal
 
 These are regularly published to Github Pages via Github Actions:
 
-* [public end-user docs](https://pcolby.github.io/qtpokit/main/doc/index.html)
-* [internal dev docs](https://pcolby.github.io/qtpokit/main/int/index.html)
+* [public end-user docs](https://pcolby.github.io/dokit/main/doc/index.html)
+* [internal dev docs](https://pcolby.github.io/dokit/main/int/index.html)
 
 ## License
 
@@ -232,7 +232,7 @@ QtPocket is freely available under the [LGPL].
 [^minQt5]: The Qt BLE API was first [added in v5.4](https://doc.qt.io/qt-5/qtbluetooth-le-overview.html)
 [^minQt6]: The Qt Bluetooth module was [ported to Qt6 in v6.2](https://www.qt.io/blog/qt-6.2-lts-released)
 
-[API docs]:    https://pcolby.github.io/qtpokit/ "QtPokit API Documentation"
+[API docs]:    https://pcolby.github.io/dokit/ "QtPokit API Documentation"
 [CMake]:       https://cmake.org/
 [LGPL]:        https://www.gnu.org/licenses/lgpl-3.0.html "GNU Lesser General Public License"
 [Pokit]:       https://www.pokitinnovations.com/ "Pokit Innovations"

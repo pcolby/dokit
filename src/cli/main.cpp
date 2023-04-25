@@ -27,7 +27,7 @@
 #include <Windows.h>
 #endif
 
-static Q_LOGGING_CATEGORY(lc, "pokit.ui.main", QtInfoMsg);
+static Q_LOGGING_CATEGORY(lc, "dokit.cli.main", QtInfoMsg);
 
 inline bool haveConsole()
 {
@@ -51,7 +51,7 @@ void configureLogging(const QCommandLineParser &parser)
         messagePattern.prepend(QStringLiteral("%{function} "));
         #endif
         messagePattern.prepend(QStringLiteral("%{time process} %{threadid} %{type} "));
-        QLoggingCategory::setFilterRules(QStringLiteral("pokit.*.debug=true"));
+        QLoggingCategory::setFilterRules(QStringLiteral("dokit.*.debug=true\npokit.*.debug=true"));
     }
 
     const QString color = parser.value(QStringLiteral("color"));

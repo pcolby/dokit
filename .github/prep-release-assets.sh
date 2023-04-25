@@ -5,7 +5,7 @@
 set -o errexit -o noclobber -o nounset -o pipefail # or set -Ceuo pipefail
 shopt -s extglob inherit_errexit
 
-: "${REPO_SLUG:=pcolby/pokit}"
+: "${REPO_SLUG:=pcolby/dokit}"
 : "${OUTPUT_DIR:=output}"
 
 runId=$(gh run list -R "$REPO_SLUG" -b "$1" -w 'Build and Test' --json databaseId --jq '.[].databaseId')
@@ -13,10 +13,10 @@ gh run download "$runId" -R "$REPO_SLUG"
 
 mkdir -p "$OUTPUT_DIR"
 
-ls -1d qtpokit-* | grep -Eve '(-cov|\.win)\.|\.AppImage$' |
+ls -1d dokit-* | grep -Eve '(-cov|\.win)\.|\.AppImage$' |
   xargs -I '{}' tar -cJvf "$OUTPUT_DIR/{}.txz" '{}'
 
-ls -1d qtpokit-*.win.* | grep -Eve '-cov\.' |
+ls -1d dokit-*.win.* | grep -Eve '-cov\.' |
   xargs -I '{}' zip -r "$OUTPUT_DIR/{}.zip" '{}'
 
 zip -r "$OUTPUT_DIR/test-results.zip" coverage-report test-results-*

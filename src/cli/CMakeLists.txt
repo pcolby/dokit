@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.0)
 
-set(PokitCliSources
+set(DokitCliSources
   abstractcommand.cpp
   abstractcommand.h
   calibratecommand.cpp
@@ -33,21 +33,21 @@ set(PokitCliSources
 )
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  add_executable(pokit main.cpp ${PokitCliSources})
+  add_executable(dokit main.cpp ${DokitCliSources})
 else()
   # We put all but main.cpp into a shared 'object' library so
   # our app unit tests can link against the same binary objects.
-  add_library(PokitCli OBJECT ${PokitCliSources})
+  add_library(DokitCli OBJECT ${DokitCliSources})
 
   target_link_libraries(
-    PokitCli
+    DokitCli
     PRIVATE QtPokit
     PRIVATE Qt${QT_VERSION_MAJOR}::Core
     PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 
-  add_executable(pokit main.cpp)
+  add_executable(dokit main.cpp)
 
-  target_link_libraries(pokit PRIVATE PokitCli)
+  target_link_libraries(dokit PRIVATE DokitCli)
 endif()
 
 # Only include localisation for Qt6+ for now. We could support Qt5
@@ -55,16 +55,16 @@ endif()
 # functions, which would be easier if we had a bespoke qrc file.
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_translations(
-    pokit TS_FILES
+    dokit TS_FILES
       i18n/en_AU.ts
       i18n/en_GB.ts
       i18n/en_US.ts
     RESOURCE_PREFIX "i18n/cli"
-    SOURCES main.cpp ${PokitCliSources})
+    SOURCES main.cpp ${DokitCliSources})
 endif()
 
 target_link_libraries(
-  pokit
+  dokit
   PRIVATE QtPokit
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)

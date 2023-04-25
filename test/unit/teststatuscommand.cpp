@@ -69,7 +69,7 @@ void TestStatusCommand::outputDeviceStatus_data()
     QTest::addColumn<StatusService::DeviceCharacteristics>("chrs");
     QTest::addColumn<AbstractCommand::OutputFormat>("format");
 
-    #define QTPOKIT_ADD_TEST_ROW(name, chrs) \
+    #define DOKIT_ADD_TEST_ROW(name, chrs) \
         QTest::newRow(name ".csv") << StatusService::DeviceCharacteristics chrs \
             << AbstractCommand::OutputFormat::Csv; \
         QTest::newRow(name ".json") << StatusService::DeviceCharacteristics chrs \
@@ -78,23 +78,23 @@ void TestStatusCommand::outputDeviceStatus_data()
             << AbstractCommand::OutputFormat::Text
 
 
-    QTPOKIT_ADD_TEST_ROW("null", ({
+    DOKIT_ADD_TEST_ROW("null", ({
         QVersionNumber(), 0, 0, 0, 0, 0, 0, QBluetoothAddress()
     }));
 
     // Sample from a real Pokit Meter device.
-    QTPOKIT_ADD_TEST_ROW("PokitMeter", ({
+    DOKIT_ADD_TEST_ROW("PokitMeter", ({
         QVersionNumber(1,4), 60, 2, 1000, 1000, 8192, 0,
         QBluetoothAddress(QStringLiteral("84:2E:14:2C:03:A8"))
     }));
 
     // Sample from a real Pokit Pro device.
-    QTPOKIT_ADD_TEST_ROW("PokitPro", ({
+    DOKIT_ADD_TEST_ROW("PokitPro", ({
         QVersionNumber(1,3), 850, 10, 3000, 1000, 16384, 0,
         QBluetoothAddress(QStringLiteral("5C:02:72:09:AA:25"))
     }));
 
-    #undef QTPOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
 }
 
 void TestStatusCommand::outputDeviceStatus()

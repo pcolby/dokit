@@ -68,21 +68,21 @@ void TestInfoCommand::serviceDetailsDiscovered_data()
     QTest::addRow("null.json") << QBluetoothDeviceInfo() << AbstractCommand::OutputFormat::Json;
     QTest::addRow("null.txt")  << QBluetoothDeviceInfo() << AbstractCommand::OutputFormat::Text;
 
-    #define QTPOKIT_ADD_TEST_ROW(info) \
+    #define DOKIT_ADD_TEST_ROW(info) \
         QTest::newRow(qUtf8Printable(info.name() + QStringLiteral(".csv"))) \
             << info << AbstractCommand::OutputFormat::Csv; \
         QTest::newRow(qUtf8Printable(info.name() + QStringLiteral(".json"))) \
             << info << AbstractCommand::OutputFormat::Json; \
         QTest::newRow(qUtf8Printable(info.name() + QStringLiteral(".txt"))) \
             << info << AbstractCommand::OutputFormat::Text
-    QTPOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothAddress(0), QStringLiteral("addr0"), 0));
-    QTPOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothAddress(0xFFFFFFFFFFFFFFFF), QStringLiteral("addrMax"), 0xFFFFFFFF));
-    QTPOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothAddress(QStringLiteral("0123456789ABC")), QStringLiteral("addrStr"), 0));
-    QTPOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothUuid(QStringLiteral("5c0625b1-a46b-44f1-a6aa-058424ce69b0")), QStringLiteral("uuid1"), 123));
-    QTPOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothUuid(QStringLiteral("e8ee1747-1e43-4699-bac6-88cab02c109c")), QStringLiteral("uuid2"), 456));
-    QTPOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothUuid(QStringLiteral("381b1e3c-c25a-44a3-9230-2a737cf3f206")), QStringLiteral("uuid3"), 678 ));
-    QTPOKIT_ADD_TEST_ROW(rssi);
-    #undef QTPOKIT_ADD_TEST_ROW
+    DOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothAddress(0), QStringLiteral("addr0"), 0));
+    DOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothAddress(0xFFFFFFFFFFFFFFFF), QStringLiteral("addrMax"), 0xFFFFFFFF));
+    DOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothAddress(QStringLiteral("0123456789ABC")), QStringLiteral("addrStr"), 0));
+    DOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothUuid(QStringLiteral("5c0625b1-a46b-44f1-a6aa-058424ce69b0")), QStringLiteral("uuid1"), 123));
+    DOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothUuid(QStringLiteral("e8ee1747-1e43-4699-bac6-88cab02c109c")), QStringLiteral("uuid2"), 456));
+    DOKIT_ADD_TEST_ROW(QBluetoothDeviceInfo(QBluetoothUuid(QStringLiteral("381b1e3c-c25a-44a3-9230-2a737cf3f206")), QStringLiteral("uuid3"), 678 ));
+    DOKIT_ADD_TEST_ROW(rssi);
+    #undef DOKIT_ADD_TEST_ROW
 }
 
 void TestInfoCommand::serviceDetailsDiscovered()

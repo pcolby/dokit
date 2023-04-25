@@ -18,7 +18,7 @@ public:
     explicit MainWindow(QWidget * const parent = nullptr, const Qt::WindowFlags flags = Qt::WindowFlags());
 
 protected:
-    static Q_LOGGING_CATEGORY(lc, "pokit.gui.mainWindow", QtInfoMsg);
+    static Q_LOGGING_CATEGORY(lc, "dokit.gui.mainWindow", QtInfoMsg);
 
     virtual void closeEvent(QCloseEvent *event) override;
 

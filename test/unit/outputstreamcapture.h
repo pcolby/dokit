@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#ifndef QTPOKIT_TESTS_OUTPUTSTREAMCAPTURE_H
-#define QTPOKIT_TESTS_OUTPUTSTREAMCAPTURE_H
+#ifndef DOKIT_TESTS_OUTPUTSTREAMCAPTURE_H
+#define DOKIT_TESTS_OUTPUTSTREAMCAPTURE_H
 
 #include <iostream>
 #include <sstream>
@@ -34,4 +34,4 @@ private:
     std::ostream * stream;
 };
 
-#endif // QTPOKIT_TESTS_OUTPUTSTREAMCAPTURE_H
+#endif // DOKIT_TESTS_OUTPUTSTREAMCAPTURE_H

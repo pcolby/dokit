@@ -152,14 +152,14 @@ QJsonObject ScanCommand::toJson(const QBluetoothDeviceInfo &info)
 QJsonArray ScanCommand::toJson(const QBluetoothDeviceInfo::CoreConfigurations &configurations)
 {
     QJsonArray array;
-    #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \
+    #define DOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \
         if (configurations.testFlag(QBluetoothDeviceInfo::flag)) \
             array.append(QLatin1String(#flag))
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(UnknownCoreConfiguration);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(LowEnergyCoreConfiguration);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateCoreConfiguration);
-  //QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateAndLowEnergyCoreConfiguration); // Combination flag.
-    #undef QTPOKIT_INTERNAL_IF_SET_THEN_APPEND
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(UnknownCoreConfiguration);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(LowEnergyCoreConfiguration);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateCoreConfiguration);
+  //DOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateAndLowEnergyCoreConfiguration); // Combination flag.
+    #undef DOKIT_INTERNAL_IF_SET_THEN_APPEND
     return array;
 }
 
@@ -194,18 +194,18 @@ QJsonValue ScanCommand::toJson(const QBluetoothDeviceInfo::MajorDeviceClass &maj
 QJsonArray ScanCommand::toJson(const QBluetoothDeviceInfo::ServiceClasses &classes)
 {
     QJsonArray array;
-    #define QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \
+    #define DOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \
         if (classes.testFlag(QBluetoothDeviceInfo::flag)) \
             array.append(QLatin1String(#flag))
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);
-    QTPOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);
-    #undef QTPOKIT_INTERNAL_IF_SET_THEN_APPEND
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);
+    DOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);
+    #undef DOKIT_INTERNAL_IF_SET_THEN_APPEND
     return array;
 }
 
@@ -254,25 +254,25 @@ QJsonObject ScanCommand::toJson(const QMultiHash<quint16, QByteArray> &data)
  */
 QString ScanCommand::toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass)
 {
-    #define QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \
+    #define DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \
         if (majorClass == QBluetoothDeviceInfo::value) \
             return QLatin1String(#value)
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(MiscellaneousDevice);
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ComputerDevice);
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PhoneDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(MiscellaneousDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ComputerDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PhoneDevice);
     #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LANAccessDevice); // Deprecated since Qt 5.13.
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LANAccessDevice); // Deprecated since Qt 5.13.
     #else
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkDevice); // Added in Qt 5.13.
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkDevice); // Added in Qt 5.13.
     #endif
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(AudioVideoDevice);
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PeripheralDevice);
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagingDevice);
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableDevice);
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDevice);
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);
-    QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);
-    #undef QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(AudioVideoDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PeripheralDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagingDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);
+    DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);
+    #undef DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN
     qCDebug(lc).noquote() << tr("Unknown major class %1.").arg(majorClass);
     return QString(); // Null QString indicates unknown minor class.
 }
@@ -286,116 +286,114 @@ QString ScanCommand::toString(const QBluetoothDeviceInfo::MajorDeviceClass &majo
  */
 QString ScanCommand::toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass)
 {
-    #define QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \
+    #define DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \
         if (minorClass == QBluetoothDeviceInfo::value) \
             return QLatin1String(#value)
     switch (majorClass) {
     case QBluetoothDeviceInfo::MiscellaneousDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedMiscellaneous);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedMiscellaneous);
         break;
     case QBluetoothDeviceInfo::ComputerDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedComputer);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DesktopComputer);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ServerComputer);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LaptopComputer);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldClamShellComputer);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldComputer);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableComputer);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedComputer);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DesktopComputer);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ServerComputer);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LaptopComputer);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldClamShellComputer);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldComputer);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableComputer);
         break;
     case QBluetoothDeviceInfo::PhoneDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPhone);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CellularPhone);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CordlessPhone);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SmartPhone);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WiredModemOrVoiceGatewayPhone);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CommonIsdnAccessPhone);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPhone);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CellularPhone);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CordlessPhone);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SmartPhone);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WiredModemOrVoiceGatewayPhone);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CommonIsdnAccessPhone);
         break;
     #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
     case QBluetoothDeviceInfo::LANAccessDevice: // Deprecated since Qt 5.13.
     #else
     case QBluetoothDeviceInfo::NetworkDevice: // Added in Qt 5.13.
     #endif
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkFullService);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorOne);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorTwo);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorThree);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFour);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFive);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorSix);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkNoService);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkFullService);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorOne);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorTwo);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorThree);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFour);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorFive);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorSix);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkNoService);
         break;
     case QBluetoothDeviceInfo::AudioVideoDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedAudioVideoDevice);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHeadsetDevice);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandsFreeDevice);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Microphone);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Loudspeaker);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Headphones);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PortableAudioDevice);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CarAudio);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SetTopBox);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HiFiAudioDevice);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Vcr);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoCamera);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Camcorder);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoMonitor);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoDisplayAndLoudspeaker);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoConferencing);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamingDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedAudioVideoDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHeadsetDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandsFreeDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Microphone);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Loudspeaker);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Headphones);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PortableAudioDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CarAudio);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SetTopBox);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HiFiAudioDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Vcr);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoCamera);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Camcorder);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoMonitor);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoDisplayAndLoudspeaker);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoConferencing);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamingDevice);
         break;
     case QBluetoothDeviceInfo::PeripheralDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardPeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PointingDevicePeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardWithPointingDevicePeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(JoystickPeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamepadPeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(RemoteControlPeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SensingDevicePeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DigitizerTabletPeripheral);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CardReaderPeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardPeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PointingDevicePeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardWithPointingDevicePeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(JoystickPeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamepadPeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(RemoteControlPeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SensingDevicePeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DigitizerTabletPeripheral);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CardReaderPeripheral);
         break;
     case QBluetoothDeviceInfo::ImagingDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedImagingDevice);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageDisplay);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageCamera);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageScanner);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagePrinter);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedImagingDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageDisplay);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageCamera);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageScanner);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagePrinter);
         break;
     case QBluetoothDeviceInfo::WearableDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedWearableDevice);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableWristWatch);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearablePager);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableJacket);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHelmet);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableGlasses);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedWearableDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableWristWatch);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearablePager);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableJacket);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHelmet);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableGlasses);
         break;
     case QBluetoothDeviceInfo::ToyDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedToy);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyRobot);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyVehicle);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDoll);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyController);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyGame);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedToy);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyRobot);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyVehicle);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDoll);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyController);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyGame);
         break;
     case QBluetoothDeviceInfo::HealthDevice:
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedHealthDevice);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthBloodPressureMonitor);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthThermometer);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthWeightScale);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthGlucoseMeter);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthPulseOximeter);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDataDisplay);
-        QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthStepCounter);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedHealthDevice);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthBloodPressureMonitor);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthThermometer);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthWeightScale);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthGlucoseMeter);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthPulseOximeter);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDataDisplay);
+        DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthStepCounter);
         break;
     case QBluetoothDeviceInfo::UncategorizedDevice:
         // There are no minor classes defined (in Qt) for uncategorized devices.
         break;
     }
-    #undef QTPOKIT_INTERNAL_IF_EQUAL_THEN_RETURN
+    #undef DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN
     qCDebug(lc).noquote() << tr("Unknown minor class %1 for major class %2.")
         .arg(minorClass).arg(majorClass);
     return QString(); // Null QString indicates unknown minor class.
 }
-
-QTPOKIT_END_NAMESPACE

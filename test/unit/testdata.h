@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#ifndef QTPOKIT_TESTS_TESTDATA_H
-#define QTPOKIT_TESTS_TESTDATA_H
+#ifndef DOKIT_TESTS_TESTDATA_H
+#define DOKIT_TESTS_TESTDATA_H
 
 #include <QTest>
 
@@ -32,4 +32,4 @@ inline QByteArray loadTestData(const char * const testClassName)
 
 #define LOADTESTDATA(name) const QByteArray name = loadTestData(metaObject()->className());
 
-#endif // QTPOKIT_TESTS_TESTDATA_H
+#endif // DOKIT_TESTS_TESTDATA_H

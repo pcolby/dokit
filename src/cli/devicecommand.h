@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#ifndef QTPOKIT_DEVICECOMMAND_H
-#define QTPOKIT_DEVICECOMMAND_H
+#ifndef DOKIT_DEVICECOMMAND_H
+#define DOKIT_DEVICECOMMAND_H
 
 #include "abstractcommand.h"
 
@@ -42,4 +42,4 @@ private slots:
     friend class TestDeviceCommand;
 };
 
-#endif // QTPOKIT_DEVICECOMMAND_H
+#endif // DOKIT_DEVICECOMMAND_H

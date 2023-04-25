@@ -99,7 +99,7 @@ const QLowEnergyController * PokitDevice::controller() const
 }
 
 /// \cond
-#define POKIT_INTERNAL_GET_SERVICE(typeName, varName) \
+#define QTPOKIT_INTERNAL_GET_SERVICE(typeName, varName) \
     Q_D(PokitDevice);                                 \
     const QMutexLocker scopedLock(&d->varName##Mutex);\
     if (d->varName == nullptr) {                      \
@@ -117,7 +117,7 @@ const QLowEnergyController * PokitDevice::controller() const
  */
 CalibrationService * PokitDevice::calibration()
 {
-    POKIT_INTERNAL_GET_SERVICE(CalibrationService, calibration);
+    QTPOKIT_INTERNAL_GET_SERVICE(CalibrationService, calibration);
 }
 
 /*!
@@ -129,7 +129,7 @@ CalibrationService * PokitDevice::calibration()
  */
 DataLoggerService * PokitDevice::dataLogger()
 {
-    POKIT_INTERNAL_GET_SERVICE(DataLoggerService, dataLogger);
+    QTPOKIT_INTERNAL_GET_SERVICE(DataLoggerService, dataLogger);
 }
 
 /*!
@@ -142,7 +142,7 @@ DataLoggerService * PokitDevice::dataLogger()
  */
 DeviceInfoService * PokitDevice::deviceInformation()
 {
-    POKIT_INTERNAL_GET_SERVICE(DeviceInfoService, deviceInfo);
+    QTPOKIT_INTERNAL_GET_SERVICE(DeviceInfoService, deviceInfo);
 }
 
 /*!
@@ -154,7 +154,7 @@ DeviceInfoService * PokitDevice::deviceInformation()
  */
 DsoService * PokitDevice::dso()
 {
-    POKIT_INTERNAL_GET_SERVICE(DsoService, dso);
+    QTPOKIT_INTERNAL_GET_SERVICE(DsoService, dso);
 }
 
 /*!
@@ -166,7 +166,7 @@ DsoService * PokitDevice::dso()
  */
 GenericAccessService * PokitDevice::genericAccess()
 {
-    POKIT_INTERNAL_GET_SERVICE(GenericAccessService, genericAccess);
+    QTPOKIT_INTERNAL_GET_SERVICE(GenericAccessService, genericAccess);
 }
 
 /*!
@@ -178,7 +178,7 @@ GenericAccessService * PokitDevice::genericAccess()
  */
 MultimeterService * PokitDevice::multimeter()
 {
-    POKIT_INTERNAL_GET_SERVICE(MultimeterService, multimeter);
+    QTPOKIT_INTERNAL_GET_SERVICE(MultimeterService, multimeter);
 }
 
 /*!
@@ -190,9 +190,9 @@ MultimeterService * PokitDevice::multimeter()
  */
 StatusService * PokitDevice::status()
 {
-    POKIT_INTERNAL_GET_SERVICE(StatusService, status);
+    QTPOKIT_INTERNAL_GET_SERVICE(StatusService, status);
 }
-#undef POKIT_INTERNAL_GET_SERVICE
+#undef QTPOKIT_INTERNAL_GET_SERVICE
 
 /*!
  * Returns a human-readable name for the \a uuid service, or a null QString if unknonw.

@@ -65,11 +65,11 @@ jobs:
     - name: Build AppImage
       run: cmake --build "$RUNNER_TEMP" --target appimage
     - name: Setup artifacts
-      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
+      run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}
+        name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/cli/pokit
@@ -77,8 +77,8 @@ jobs:
     - name: Upload AppImage
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}.AppImage
-        path: ${{ runner.temp }}/pokit-${{ env.pokitVersion }}.AppImage
+        name: dokit-${{ env.dokitVersion }}.AppImage
+        path: ${{ runner.temp }}/pokit-${{ env.dokitVersion }}.AppImage
         if-no-files-found: error
 
   linux:
@@ -148,11 +148,11 @@ jobs:
     - name: Build AppImage
       run: cmake --build "$RUNNER_TEMP" --target appimage
     - name: Setup artifacts
-      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
+      run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}
+        name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/cli/pokit
@@ -160,8 +160,8 @@ jobs:
     - name: Upload AppImage
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}.AppImage
-        path: ${{ runner.temp }}/pokit-${{ env.pokitVersion }}.AppImage
+        name: dokit-${{ env.dokitVersion }}.AppImage
+        path: ${{ runner.temp }}/pokit-${{ env.dokitVersion }}.AppImage
         if-no-files-found: error
 
   mac:
@@ -236,11 +236,11 @@ jobs:
     #    macdeployqt pokit -dmg -verbose=2
     #  working-directory: ${{ runner.temp }}/src/cli
     - name: Setup artifacts
-      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
+      run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}
+        name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.dylib
           ${{ runner.temp }}/src/cli/pokit
@@ -363,11 +363,11 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
-      run: echo "pokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
+      run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}
+        name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/${{ matrix.dll }}
           ${{ runner.temp }}/src/cli/pokit.exe
@@ -377,7 +377,7 @@ jobs:
       if: matrix.arch != 'arm64' && matrix.qt != '6.5.0'
       uses: actions/upload-artifact@v3
       with:
-        name: qtpokit-${{ env.pokitVersion }}.portable
+        name: dokit-${{ env.dokitVersion }}.portable
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
 

@@ -42,10 +42,10 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/qtpokit/compare/v0.1.2...HEAD
-[0.1.2]: https://github.com/pcolby/qtpokit/releases/tag/v0.1.2
-[0.1.1]: https://github.com/pcolby/qtpokit/releases/tag/v0.1.1
-[0.1.0]: https://github.com/pcolby/qtpokit/releases/tag/v0.1.0
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/pcolby/dokit/releases/tag/v0.1.2
+[0.1.1]: https://github.com/pcolby/dokit/releases/tag/v0.1.1
+[0.1.0]: https://github.com/pcolby/dokit/releases/tag/v0.1.0
 
 [Pokit Meter]: https://www.pokitinnovations.com/pokit-meter/
 [Pokit Pro]:   https://www.pokitinnovations.com/pokit-pro/

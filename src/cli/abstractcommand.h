@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#ifndef QTPOKIT_ABSTRACTCOMMAND_H
-#define QTPOKIT_ABSTRACTCOMMAND_H
+#ifndef DOKIT_ABSTRACTCOMMAND_H
+#define DOKIT_ABSTRACTCOMMAND_H
 
 #include <QBluetoothDeviceInfo>
 #include <QCommandLineParser>
@@ -42,7 +42,7 @@ protected:
     QString deviceToScanFor; ///< Device (if any) that were passed to processOptions().
     PokitDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
     OutputFormat format; ///< Selected output format.
-    static Q_LOGGING_CATEGORY(lc, "pokit.ui.command", QtInfoMsg); ///< Logging category for UI commands.
+    static Q_LOGGING_CATEGORY(lc, "dokit.cli.command", QtInfoMsg); ///< Logging category for UI commands.
 
 protected slots:
     virtual void deviceDiscovered(const QBluetoothDeviceInfo &info) = 0;
@@ -51,4 +51,4 @@ protected slots:
     friend class TestAbstractCommand;
 };
 
-#endif // QTPOKIT_ABSTRACTCOMMAND_H
+#endif // DOKIT_ABSTRACTCOMMAND_H
