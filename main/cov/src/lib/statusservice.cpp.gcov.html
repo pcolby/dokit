@@ -31,13 +31,13 @@
             <td class="headerValue">QtPokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">120</td>
+            <td class="headerCovTableEntry">121</td>
             <td class="headerCovTableEntry">157</td>
-            <td class="headerCovTableEntryMed">76.4 %</td>
+            <td class="headerCovTableEntryMed">77.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
-            <td class="headerValue">0.1.2-pre+linux.x86-64.gcc</td>
+            <td class="headerValue">0.1.3-pre+linux.x86-64.gcc-cov</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -127,20 +127,20 @@
 <a name="65"><span class="lineNum">      65 </span>            : /*!</a>
 <a name="66"><span class="lineNum">      66 </span>            :  * Returns a string version of the \a status enum label.</a>
 <a name="67"><span class="lineNum">      67 </span>            :  */</a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        374 : QString StatusService::toString(const StatusService::DeviceStatus &amp;status)</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        396 : QString StatusService::toString(const StatusService::DeviceStatus &amp;status)</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : {</a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        374 :     switch (status) {</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         30 :     case DeviceStatus::Idle:                 return  QLatin1String(&quot;Idle&quot;);</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String(&quot;MultimeterDcVoltage&quot;);</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String(&quot;MultimeterAcVoltage&quot;);</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String(&quot;MultimeterDcCurrent&quot;);</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String(&quot;MultimeterAcCurrent&quot;);</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterResistance: return  QLatin1String(&quot;MultimeterResistance&quot;);</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterDiode:      return  QLatin1String(&quot;MultimeterDiode&quot;);</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterContinuity: return  QLatin1String(&quot;MultimeterContinuity&quot;);</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          3 :     case DeviceStatus::MultimeterTemperature:return  QLatin1String(&quot;MultimeterTemperature&quot;);</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          3 :     case DeviceStatus::DsoModeSampling:      return  QLatin1String(&quot;DsoModeSampling&quot;);</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          3 :     case DeviceStatus::LoggerModeSampling:   return  QLatin1String(&quot;LoggerModeSampling&quot;);</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        396 :     switch (status) {</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         40 :     case DeviceStatus::Idle:                 return  QLatin1String(&quot;Idle&quot;);</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          4 :     case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String(&quot;MultimeterDcVoltage&quot;);</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          4 :     case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String(&quot;MultimeterAcVoltage&quot;);</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          4 :     case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String(&quot;MultimeterDcCurrent&quot;);</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          4 :     case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String(&quot;MultimeterAcCurrent&quot;);</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          4 :     case DeviceStatus::MultimeterResistance: return  QLatin1String(&quot;MultimeterResistance&quot;);</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          4 :     case DeviceStatus::MultimeterDiode:      return  QLatin1String(&quot;MultimeterDiode&quot;);</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          4 :     case DeviceStatus::MultimeterContinuity: return  QLatin1String(&quot;MultimeterContinuity&quot;);</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          4 :     case DeviceStatus::MultimeterTemperature:return  QLatin1String(&quot;MultimeterTemperature&quot;);</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          4 :     case DeviceStatus::DsoModeSampling:      return  QLatin1String(&quot;DsoModeSampling&quot;);</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          4 :     case DeviceStatus::LoggerModeSampling:   return  QLatin1String(&quot;LoggerModeSampling&quot;);</span></a>
 <a name="82"><span class="lineNum">      82 </span>            :     }</a>
 <a name="83"><span class="lineNum">      83 </span>            :     return QString();</a>
 <a name="84"><span class="lineNum">      84 </span>            : }</a>
@@ -151,11 +151,11 @@
 <a name="89"><span class="lineNum">      89 </span>            : /*!</a>
 <a name="90"><span class="lineNum">      90 </span>            :  * Returns a string version of the \a status enum label.</a>
 <a name="91"><span class="lineNum">      91 </span>            :  */</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">        221 : QString StatusService::toString(const StatusService::BatteryStatus &amp;status)</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">        234 : QString StatusService::toString(const StatusService::BatteryStatus &amp;status)</span></a>
 <a name="93"><span class="lineNum">      93 </span>            : {</a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        221 :     switch (status) {</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         30 :     case BatteryStatus::Low:  return QLatin1String(&quot;Low&quot;);</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          3 :     case BatteryStatus::Good: return QLatin1String(&quot;Good&quot;);</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        234 :     switch (status) {</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         40 :     case BatteryStatus::Low:  return QLatin1String(&quot;Low&quot;);</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          4 :     case BatteryStatus::Good: return QLatin1String(&quot;Good&quot;);</span></a>
 <a name="97"><span class="lineNum">      97 </span>            :     }</a>
 <a name="98"><span class="lineNum">      98 </span>            :     return QString();</a>
 <a name="99"><span class="lineNum">      99 </span>            : }</a>
@@ -172,11 +172,11 @@
 <a name="110"><span class="lineNum">     110 </span>            : /*!</a>
 <a name="111"><span class="lineNum">     111 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="112"><span class="lineNum">     112 </span>            :  */</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        408 : StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        408 :     : AbstractPokitService(new StatusServicePrivate(controller, this), parent)</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        432 : StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        432 :     : AbstractPokitService(new StatusServicePrivate(controller, this), parent)</span></a>
 <a name="115"><span class="lineNum">     115 </span>            : {</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        408 : }</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        432 : }</span></a>
 <a name="118"><span class="lineNum">     118 </span>            : </a>
 <a name="119"><span class="lineNum">     119 </span>            : /*!</a>
 <a name="120"><span class="lineNum">     120 </span>            :  * \cond internal</a>
@@ -193,17 +193,17 @@
 <a name="131"><span class="lineNum">     131 </span>            : /*!</a>
 <a name="132"><span class="lineNum">     132 </span>            :  * Destroys this StatusService object.</a>
 <a name="133"><span class="lineNum">     133 </span>            :  */</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        221 : StatusService::~StatusService()</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        234 : StatusService::~StatusService()</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : {</a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">        221 : }</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">        234 : }</span></a>
 <a name="138"><span class="lineNum">     138 </span>            : </a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         17 : bool StatusService::readCharacteristics()</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         18 : bool StatusService::readCharacteristics()</span></a>
 <a name="140"><span class="lineNum">     140 </span>            : {</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         11 :     const bool r1 = readDeviceCharacteristics();</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         11 :     const bool r2 = readStatusCharacteristic();</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         11 :     const bool r3 = readNameCharacteristic();</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         17 :     return (r1 &amp;&amp; r2 &amp;&amp; r3);</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         12 :     const bool r1 = readDeviceCharacteristics();</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         12 :     const bool r2 = readStatusCharacteristic();</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         12 :     const bool r3 = readNameCharacteristic();</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         18 :     return (r1 &amp;&amp; r2 &amp;&amp; r3);</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : }</a>
 <a name="146"><span class="lineNum">     146 </span>            : </a>
 <a name="147"><span class="lineNum">     147 </span>            : /*!</a>
@@ -215,10 +215,10 @@
 <a name="153"><span class="lineNum">     153 </span>            :  *</a>
 <a name="154"><span class="lineNum">     154 </span>            :  * Emits deviceCharacteristicsRead() if/when the characteristic has been read successfully.</a>
 <a name="155"><span class="lineNum">     155 </span>            :  */</a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         28 : bool StatusService::readDeviceCharacteristics()</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         30 : bool StatusService::readDeviceCharacteristics()</span></a>
 <a name="157"><span class="lineNum">     157 </span>            : {</a>
 <a name="158"><span class="lineNum">     158 </span>            :     Q_D(StatusService);</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         34 :     return d-&gt;readCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         36 :     return d-&gt;readCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></a>
 <a name="160"><span class="lineNum">     160 </span>            : }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
 <a name="162"><span class="lineNum">     162 </span>            : /*!</a>
@@ -230,10 +230,10 @@
 <a name="168"><span class="lineNum">     168 </span>            :  *</a>
 <a name="169"><span class="lineNum">     169 </span>            :  * Emits deviceStatusRead() if/when the characteristic has been read successfully.</a>
 <a name="170"><span class="lineNum">     170 </span>            :  */</a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         28 : bool StatusService::readStatusCharacteristic()</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         30 : bool StatusService::readStatusCharacteristic()</span></a>
 <a name="172"><span class="lineNum">     172 </span>            : {</a>
 <a name="173"><span class="lineNum">     173 </span>            :     Q_D(StatusService);</a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         34 :     return d-&gt;readCharacteristic(CharacteristicUuids::status);</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         36 :     return d-&gt;readCharacteristic(CharacteristicUuids::status);</span></a>
 <a name="175"><span class="lineNum">     175 </span>            : }</a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
 <a name="177"><span class="lineNum">     177 </span>            : /*!</a>
@@ -245,10 +245,10 @@
 <a name="183"><span class="lineNum">     183 </span>            :  *</a>
 <a name="184"><span class="lineNum">     184 </span>            :  * Emits deviceNameRead() if/when the characteristic has been read successfully.</a>
 <a name="185"><span class="lineNum">     185 </span>            :  */</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         28 : bool StatusService::readNameCharacteristic()</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         30 : bool StatusService::readNameCharacteristic()</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : {</a>
 <a name="188"><span class="lineNum">     188 </span>            :     Q_D(StatusService);</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">         34 :     return d-&gt;readCharacteristic(CharacteristicUuids::name);</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">         36 :     return d-&gt;readCharacteristic(CharacteristicUuids::name);</span></a>
 <a name="190"><span class="lineNum">     190 </span>            : }</a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
 <a name="192"><span class="lineNum">     192 </span>            : /*!</a>
@@ -266,15 +266,15 @@
 <a name="204"><span class="lineNum">     204 </span>            :  * }</a>
 <a name="205"><span class="lineNum">     205 </span>            :  * ```</a>
 <a name="206"><span class="lineNum">     206 </span>            :  */</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">         34 : StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() const</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">         36 : StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() const</span></a>
 <a name="208"><span class="lineNum">     208 </span>            : {</a>
 <a name="209"><span class="lineNum">     209 </span>            :     Q_D(const StatusService);</a>
 <a name="210"><span class="lineNum">     210 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         34 :         d-&gt;getCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         34 :     return (characteristic.isValid())</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :         ? StatusServicePrivate::parseDeviceCharacteristics(characteristic.value())</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         68 :         : StatusService::DeviceCharacteristics();</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         34 : }</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         36 :         d-&gt;getCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         36 :     return (characteristic.isValid())</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         12 :         ? StatusServicePrivate::parseDeviceCharacteristics(characteristic.value())</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         72 :         : StatusService::DeviceCharacteristics();</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         36 : }</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
 <a name="217"><span class="lineNum">     217 </span>            : /*!</a>
 <a name="218"><span class="lineNum">     218 </span>            :  * Returns the most recent value of the `Status` service's `Status` characteristic.</a>
@@ -291,15 +291,15 @@
 <a name="229"><span class="lineNum">     229 </span>            :  * }</a>
 <a name="230"><span class="lineNum">     230 </span>            :  * ```</a>
 <a name="231"><span class="lineNum">     231 </span>            :  */</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        170 : StatusService::Status StatusService::status() const</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        180 : StatusService::Status StatusService::status() const</span></a>
 <a name="233"><span class="lineNum">     233 </span>            : {</a>
 <a name="234"><span class="lineNum">     234 </span>            :     Q_D(const StatusService);</a>
 <a name="235"><span class="lineNum">     235 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">        170 :         d-&gt;getCharacteristic(CharacteristicUuids::status);</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">        170 :     return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">        180 :         d-&gt;getCharacteristic(CharacteristicUuids::status);</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">        180 :     return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())</span></a>
 <a name="238"><span class="lineNum">     238 </span>            :         : StatusService::Status{ DeviceStatus::Idle, std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">        340 :                                  BatteryStatus::Low };</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        170 : }</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">        360 :                                  BatteryStatus::Low };</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">        180 : }</span></a>
 <a name="241"><span class="lineNum">     241 </span>            : </a>
 <a name="242"><span class="lineNum">     242 </span>            : /*!</a>
 <a name="243"><span class="lineNum">     243 </span>            :  * Returns the most recent value of the `Status` services's `Device Name` characteristic.</a>
@@ -308,13 +308,13 @@
 <a name="246"><span class="lineNum">     246 </span>            :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</a>
 <a name="247"><span class="lineNum">     247 </span>            :  * null QString is returned.</a>
 <a name="248"><span class="lineNum">     248 </span>            :  */</a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        170 : QString StatusService::deviceName() const</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">        180 : QString StatusService::deviceName() const</span></a>
 <a name="250"><span class="lineNum">     250 </span>            : {</a>
 <a name="251"><span class="lineNum">     251 </span>            :     Q_D(const StatusService);</a>
 <a name="252"><span class="lineNum">     252 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">        170 :         d-&gt;getCharacteristic(CharacteristicUuids::name);</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">        340 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">        170 : }</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">        180 :         d-&gt;getCharacteristic(CharacteristicUuids::name);</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">        360 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">        180 : }</span></a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
 <a name="257"><span class="lineNum">     257 </span>            : /*!</a>
 <a name="258"><span class="lineNum">     258 </span>            :  * Set's the Pokit device's name to \a name.</a>
@@ -323,12 +323,12 @@
 <a name="261"><span class="lineNum">     261 </span>            :  *</a>
 <a name="262"><span class="lineNum">     262 </span>            :  * Emits deviceNameWritten() if/when the \a name has been set.</a>
 <a name="263"><span class="lineNum">     263 </span>            :  */</a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         17 : bool StatusService::setDeviceName(const QString &amp;name)</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         18 : bool StatusService::setDeviceName(const QString &amp;name)</span></a>
 <a name="265"><span class="lineNum">     265 </span>            : {</a>
 <a name="266"><span class="lineNum">     266 </span>            :     Q_D(const StatusService);</a>
 <a name="267"><span class="lineNum">     267 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         17 :         d-&gt;getCharacteristic(CharacteristicUuids::name);</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         17 :     if (!characteristic.isValid()) {</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         18 :         d-&gt;getCharacteristic(CharacteristicUuids::name);</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         18 :     if (!characteristic.isValid()) {</span></a>
 <a name="270"><span class="lineNum">     270 </span>            :         return false;</a>
 <a name="271"><span class="lineNum">     271 </span>            :     }</a>
 <a name="272"><span class="lineNum">     272 </span>            : </a>
@@ -341,7 +341,7 @@
 <a name="279"><span class="lineNum">     279 </span>            : </a>
 <a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></a>
 <a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">         17 : }</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">         18 : }</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
 <a name="284"><span class="lineNum">     284 </span>            : /*!</a>
 <a name="285"><span class="lineNum">     285 </span>            :  * Flash the Pokit device's LED.</a>
@@ -358,12 +358,12 @@
 <a name="296"><span class="lineNum">     296 </span>            :  * undocumented use of this characteristic. Or perhaps its via some other service.</a>
 <a name="297"><span class="lineNum">     297 </span>            :  * \endcond</a>
 <a name="298"><span class="lineNum">     298 </span>            :  */</a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         17 : bool StatusService::flashLed()</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         18 : bool StatusService::flashLed()</span></a>
 <a name="300"><span class="lineNum">     300 </span>            : {</a>
 <a name="301"><span class="lineNum">     301 </span>            :     Q_D(const StatusService);</a>
 <a name="302"><span class="lineNum">     302 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         17 :         d-&gt;getCharacteristic(CharacteristicUuids::flashLed);</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         17 :     if (!characteristic.isValid()) {</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         18 :         d-&gt;getCharacteristic(CharacteristicUuids::flashLed);</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         18 :     if (!characteristic.isValid()) {</span></a>
 <a name="305"><span class="lineNum">     305 </span>            :         return false;</a>
 <a name="306"><span class="lineNum">     306 </span>            :     }</a>
 <a name="307"><span class="lineNum">     307 </span>            : </a>
@@ -374,7 +374,7 @@
 <a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :     const QByteArray value(1, '\x01');</span></a>
 <a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></a>
 <a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         17 : }</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         18 : }</span></a>
 <a name="316"><span class="lineNum">     316 </span>            : </a>
 <a name="317"><span class="lineNum">     317 </span>            : /*!</a>
 <a name="318"><span class="lineNum">     318 </span>            :  * \fn StatusService::deviceCharacteristicsRead</a>
@@ -427,51 +427,51 @@
 <a name="365"><span class="lineNum">     365 </span>            :  * \internal</a>
 <a name="366"><span class="lineNum">     366 </span>            :  * Constructs a new StatusServicePrivate object with public implementation \a q.</a>
 <a name="367"><span class="lineNum">     367 </span>            :  */</a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">        408 : StatusServicePrivate::StatusServicePrivate(</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">        408 :     QLowEnergyController * controller, StatusService * const q)</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        408 :     : AbstractPokitServicePrivate(QBluetoothUuid(), controller, q)</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">        432 : StatusServicePrivate::StatusServicePrivate(</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">        432 :     QLowEnergyController * controller, StatusService * const q)</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        432 :     : AbstractPokitServicePrivate(QBluetoothUuid(), controller, q)</span></a>
 <a name="371"><span class="lineNum">     371 </span>            : {</a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">        408 : }</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">        432 : }</span></a>
 <a name="374"><span class="lineNum">     374 </span>            : </a>
 <a name="375"><span class="lineNum">     375 </span>            : /*!</a>
 <a name="376"><span class="lineNum">     376 </span>            :  * Parses the `Device Characteristics` \a value into a DeviceCharacteristics struct.</a>
 <a name="377"><span class="lineNum">     377 </span>            :  */</a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         68 : StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteristics(</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         72 : StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteristics(</span></a>
 <a name="379"><span class="lineNum">     379 </span>            :     const QByteArray &amp;value)</a>
 <a name="380"><span class="lineNum">     380 </span>            : {</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">         68 :     StatusService::DeviceCharacteristics characteristics{</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">         72 :     StatusService::DeviceCharacteristics characteristics{</span></a>
 <a name="382"><span class="lineNum">     382 </span>            :         QVersionNumber(), 0, 0, 0, 0, 0, 0, QBluetoothAddress()</a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         68 :     };</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         72 :     };</span></a>
 <a name="384"><span class="lineNum">     384 </span>            :     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.</a>
 <a name="385"><span class="lineNum">     385 </span>            : </a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         80 :     if (!checkSize(QLatin1String(&quot;Device Characterisitcs&quot;), value, 20, 20)) {</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         88 :     if (!checkSize(QLatin1String(&quot;Device Characterisitcs&quot;), value, 20, 20)) {</span></a>
 <a name="387"><span class="lineNum">     387 </span>            :         return characteristics;</a>
 <a name="388"><span class="lineNum">     388 </span>            :     }</a>
 <a name="389"><span class="lineNum">     389 </span>            : </a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         40 :     characteristics.firmwareVersion = QVersionNumber(</span></a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">         68 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(0,1)),</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         62 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(1,1)));</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         40 :     characteristics.maximumVoltage      = qFromLittleEndian&lt;quint16&gt;(value.mid(2,2));</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         40 :     characteristics.maximumCurrent      = qFromLittleEndian&lt;quint16&gt;(value.mid(4,2));</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">         40 :     characteristics.maximumResistance   = qFromLittleEndian&lt;quint16&gt;(value.mid(6,2));</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         40 :     characteristics.maximumSamplingRate = qFromLittleEndian&lt;quint16&gt;(value.mid(8,2));</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         40 :     characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.mid(10,2));</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">         40 :     characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.mid(12,2));</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         62 :     characteristics.macAddress = QBluetoothAddress(qFromBigEndian&lt;quint64&gt;</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">        102 :                                                    (QByteArray(2, '\0') + value.mid(14,6)));</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         44 :     characteristics.firmwareVersion = QVersionNumber(</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">         72 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(0,1)),</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         64 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(1,1)));</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         44 :     characteristics.maximumVoltage      = qFromLittleEndian&lt;quint16&gt;(value.mid(2,2));</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         44 :     characteristics.maximumCurrent      = qFromLittleEndian&lt;quint16&gt;(value.mid(4,2));</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">         44 :     characteristics.maximumResistance   = qFromLittleEndian&lt;quint16&gt;(value.mid(6,2));</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         44 :     characteristics.maximumSamplingRate = qFromLittleEndian&lt;quint16&gt;(value.mid(8,2));</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         44 :     characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.mid(10,2));</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">         44 :     characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.mid(12,2));</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         64 :     characteristics.macAddress = QBluetoothAddress(qFromBigEndian&lt;quint64&gt;</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">        108 :                                                    (QByteArray(2, '\0') + value.mid(14,6)));</span></a>
 <a name="401"><span class="lineNum">     401 </span>            : </a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Firmware version:     &quot;) &lt;&lt; characteristics.firmwareVersion;</span></a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum voltage:      &quot;) &lt;&lt; characteristics.maximumVoltage;</span></a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum current:      &quot;) &lt;&lt; characteristics.maximumCurrent;</span></a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum resistance:   &quot;) &lt;&lt; characteristics.maximumResistance;</span></a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum sampling rate:&quot;) &lt;&lt; characteristics.maximumSamplingRate;</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Sampling buffer size: &quot;) &lt;&lt; characteristics.samplingBufferSize;</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Capability mask:      &quot;) &lt;&lt; characteristics.capabilityMask;</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;MAC address:          &quot;) &lt;&lt; characteristics.macAddress;</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Firmware version:     &quot;) &lt;&lt; characteristics.firmwareVersion;</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum voltage:      &quot;) &lt;&lt; characteristics.maximumVoltage;</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum current:      &quot;) &lt;&lt; characteristics.maximumCurrent;</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum resistance:   &quot;) &lt;&lt; characteristics.maximumResistance;</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum sampling rate:&quot;) &lt;&lt; characteristics.maximumSamplingRate;</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Sampling buffer size: &quot;) &lt;&lt; characteristics.samplingBufferSize;</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Capability mask:      &quot;) &lt;&lt; characteristics.capabilityMask;</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;MAC address:          &quot;) &lt;&lt; characteristics.macAddress;</span></a>
 <a name="410"><span class="lineNum">     410 </span>            : </a>
 <a name="411"><span class="lineNum">     411 </span>            :     Q_ASSERT(!characteristics.firmwareVersion.isNull()); // How we indicate success.</a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">          4 :     return characteristics;</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">          6 :     return characteristics;</span></a>
 <a name="413"><span class="lineNum">     413 </span>            : }</a>
 <a name="414"><span class="lineNum">     414 </span>            : </a>
 <a name="415"><span class="lineNum">     415 </span>            : /*!</a>
@@ -479,9 +479,9 @@
 <a name="417"><span class="lineNum">     417 </span>            :  * in Status. Specifically, the batteryStatus member is not usually set by Pokit Meter devices, so</a>
 <a name="418"><span class="lineNum">     418 </span>            :  * will be an invlalid BatteryStatus enum value (`255`) in that case.</a>
 <a name="419"><span class="lineNum">     419 </span>            :  */</a>
-<a name="420"><span class="lineNum">     420 </span><span class="lineCov">         68 : StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &amp;value)</span></a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineCov">         72 : StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &amp;value)</span></a>
 <a name="421"><span class="lineNum">     421 </span>            : {</a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">         68 :     StatusService::Status status{</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">         72 :     StatusService::Status status{</span></a>
 <a name="423"><span class="lineNum">     423 </span>            :         static_cast&lt;StatusService::DeviceStatus&gt;</a>
 <a name="424"><span class="lineNum">     424 </span>            :             (std::numeric_limits&lt;std::underlying_type&lt;StatusService::DeviceStatus&gt;::type&gt;::max()),</a>
 <a name="425"><span class="lineNum">     425 </span>            :         std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
@@ -496,21 +496,21 @@
 <a name="434"><span class="lineNum">     434 </span>            :      * Meter only uses the first 5 bytes - ie `Battery Status` is not present.</a>
 <a name="435"><span class="lineNum">     435 </span>            :      */</a>
 <a name="436"><span class="lineNum">     436 </span>            : </a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">         80 :     if (!checkSize(QLatin1String(&quot;Status&quot;), value, 5, 6)) {</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         34 :         return status;</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">         88 :     if (!checkSize(QLatin1String(&quot;Status&quot;), value, 5, 6)) {</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         36 :         return status;</span></a>
 <a name="439"><span class="lineNum">     439 </span>            :     }</a>
 <a name="440"><span class="lineNum">     440 </span>            : </a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineCov">         34 :     status.deviceStatus = static_cast&lt;StatusService::DeviceStatus&gt;(value.at(0));</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">         40 :     status.batteryVoltage = qFromLittleEndian&lt;float&gt;(value.mid(1,4));</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">         34 :     if (value.size() &gt;= 6) { // Battery Status added to Pokit API docs v1.00.</span></a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         17 :         status.batteryStatus = static_cast&lt;StatusService::BatteryStatus&gt;(value.at(5));</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">         36 :     status.deviceStatus = static_cast&lt;StatusService::DeviceStatus&gt;(value.at(0));</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">         44 :     status.batteryVoltage = qFromLittleEndian&lt;float&gt;(value.mid(1,4));</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">         36 :     if (value.size() &gt;= 6) { // Battery Status added to Pokit API docs v1.00.</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         18 :         status.batteryStatus = static_cast&lt;StatusService::BatteryStatus&gt;(value.at(5));</span></a>
 <a name="445"><span class="lineNum">     445 </span>            :     }</a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device status:   %1 (%2)&quot;)</span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device status:   %1 (%2)&quot;)</span></a>
 <a name="447"><span class="lineNum">     447 </span><span class="lineNoCov">          0 :         .arg((quint8)status.deviceStatus).arg(StatusService::toString(status.deviceStatus));</span></a>
-<a name="448"><span class="lineNum">     448 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery voltage: %1 volts&quot;).arg(status.batteryVoltage);</span></a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineCov">         34 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery status:  %1 (%2)&quot;)</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery voltage: %1 volts&quot;).arg(status.batteryVoltage);</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">         36 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery status:  %1 (%2)&quot;)</span></a>
 <a name="450"><span class="lineNum">     450 </span><span class="lineNoCov">          0 :         .arg((quint8)status.batteryStatus).arg(StatusService::toString(status.batteryStatus));</span></a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">         34 :     return status;</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">         36 :     return status;</span></a>
 <a name="452"><span class="lineNum">     452 </span>            : }</a>
 <a name="453"><span class="lineNum">     453 </span>            : </a>
 <a name="454"><span class="lineNum">     454 </span>            : /*!</a>
@@ -519,89 +519,89 @@
 <a name="457"><span class="lineNum">     457 </span>            :  * Here we override the base implementation to detect if we're looking at a Pokit Meter, or Pokit</a>
 <a name="458"><span class="lineNum">     458 </span>            :  * Pro device, as the two devices have very slightly different Status Service UUIDs.</a>
 <a name="459"><span class="lineNum">     459 </span>            :  */</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         68 : void StatusServicePrivate::serviceDiscovered(const QBluetoothUuid &amp;newService)</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         72 : void StatusServicePrivate::serviceDiscovered(const QBluetoothUuid &amp;newService)</span></a>
 <a name="461"><span class="lineNum">     461 </span>            : {</a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         68 :     if (newService == StatusService::ServiceUuids::pokitMeter) {</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">         17 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Found Status Service for a Pokit Meter device.&quot;);</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">         17 :         serviceUuid = StatusService::ServiceUuids::pokitMeter;</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">         51 :     } else if (newService == StatusService::ServiceUuids::pokitPro) {</span></a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         17 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Found Status Service for a Pokit Pro device.&quot;);</span></a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">         17 :         serviceUuid = StatusService::ServiceUuids::pokitPro;</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         72 :     if (newService == StatusService::ServiceUuids::pokitMeter) {</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">         18 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Found Status Service for a Pokit Meter device.&quot;);</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">         18 :         serviceUuid = StatusService::ServiceUuids::pokitMeter;</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">         54 :     } else if (newService == StatusService::ServiceUuids::pokitPro) {</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         18 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Found Status Service for a Pokit Pro device.&quot;);</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">         18 :         serviceUuid = StatusService::ServiceUuids::pokitPro;</span></a>
 <a name="468"><span class="lineNum">     468 </span>            :     }</a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">         68 :     AbstractPokitServicePrivate::serviceDiscovered(newService);</span></a>
-<a name="470"><span class="lineNum">     470 </span><span class="lineCov">         68 : }</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">         72 :     AbstractPokitServicePrivate::serviceDiscovered(newService);</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">         72 : }</span></a>
 <a name="471"><span class="lineNum">     471 </span>            : </a>
 <a name="472"><span class="lineNum">     472 </span>            : /*!</a>
 <a name="473"><span class="lineNum">     473 </span>            :  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a</a>
 <a name="474"><span class="lineNum">     474 </span>            :  * specialised signal, for each supported \a characteristic.</a>
 <a name="475"><span class="lineNum">     475 </span>            :  */</a>
-<a name="476"><span class="lineNum">     476 </span><span class="lineCov">         17 : void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineCov">         18 : void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
 <a name="477"><span class="lineNum">     477 </span>            :                                               const QByteArray &amp;value)</a>
 <a name="478"><span class="lineNum">     478 </span>            : {</a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicRead(characteristic, value);</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">         18 :     AbstractPokitServicePrivate::characteristicRead(characteristic, value);</span></a>
 <a name="480"><span class="lineNum">     480 </span>            : </a>
 <a name="481"><span class="lineNum">     481 </span>            :     Q_Q(StatusService);</a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">         17 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
 <a name="483"><span class="lineNum">     483 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceCharacteristicsRead(parseDeviceCharacteristics(value));</span></a>
 <a name="484"><span class="lineNum">     484 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="485"><span class="lineNum">     485 </span>            :     }</a>
 <a name="486"><span class="lineNum">     486 </span>            : </a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">         17 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
 <a name="488"><span class="lineNum">     488 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceStatusRead(parseStatus(value));</span></a>
 <a name="489"><span class="lineNum">     489 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="490"><span class="lineNum">     490 </span>            :     }</a>
 <a name="491"><span class="lineNum">     491 </span>            : </a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">         17 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
 <a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 :         const QString deviceName = QString::fromUtf8(value);</span></a>
 <a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device name: \&quot;%1\&quot;&quot;).arg(deviceName);</span></a>
 <a name="495"><span class="lineNum">     495 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameRead(deviceName);</span></a>
 <a name="496"><span class="lineNum">     496 </span>            :         return;</a>
 <a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="498"><span class="lineNum">     498 </span>            : </a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">         17 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
 <a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Flash LED characteristic is write-only, but somehow read&quot;)</span></a>
 <a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="503"><span class="lineNum">     503 </span>            :     }</a>
 <a name="504"><span class="lineNum">     504 </span>            : </a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status service&quot;)</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         54 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status service&quot;)</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         24 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="507"><span class="lineNum">     507 </span>            : }</a>
 <a name="508"><span class="lineNum">     508 </span>            : </a>
 <a name="509"><span class="lineNum">     509 </span>            : /*!</a>
 <a name="510"><span class="lineNum">     510 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
 <a name="511"><span class="lineNum">     511 </span>            :  * specialised signal, for each supported \a characteristic.</a>
 <a name="512"><span class="lineNum">     512 </span>            :  */</a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">         17 : void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">         18 : void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
 <a name="514"><span class="lineNum">     514 </span>            :                                                  const QByteArray &amp;newValue)</a>
 <a name="515"><span class="lineNum">     515 </span>            : {</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         17 :     AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         18 :     AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);</span></a>
 <a name="517"><span class="lineNum">     517 </span>            : </a>
 <a name="518"><span class="lineNum">     518 </span>            :     Q_Q(StatusService);</a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         17 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
 <a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Device Characteristics is read-only, but somehow written&quot;)</span></a>
 <a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="523"><span class="lineNum">     523 </span>            :     }</a>
 <a name="524"><span class="lineNum">     524 </span>            : </a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         17 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
 <a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Status characteristic is read-only, but somehow written&quot;)</span></a>
 <a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="529"><span class="lineNum">     529 </span>            :     }</a>
 <a name="530"><span class="lineNum">     530 </span>            : </a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">         17 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
 <a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameWritten();</span></a>
 <a name="533"><span class="lineNum">     533 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="534"><span class="lineNum">     534 </span>            :     }</a>
 <a name="535"><span class="lineNum">     535 </span>            : </a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineCov">         17 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
 <a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceLedFlashed();</span></a>
 <a name="538"><span class="lineNum">     538 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="539"><span class="lineNum">     539 </span>            :     }</a>
 <a name="540"><span class="lineNum">     540 </span>            : </a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">         51 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status service&quot;)</span></a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">         17 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">         54 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status service&quot;)</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">         24 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="543"><span class="lineNum">     543 </span>            : }</a>
 <a name="544"><span class="lineNum">     544 </span>            : </a>
 <a name="545"><span class="lineNum">     545 </span>            : /// \endcond</a>
