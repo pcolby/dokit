@@ -559,7 +559,7 @@ QByteArray DataLoggerServicePrivate::encodeSettings(const DataLoggerService::Set
         stream << (quint16)((settings.updateInterval+500)/1000) << settings.timestamp;
         Q_ASSERT(value.size() == 11); // According to Pokit API 1.00.
     } else {
-        stream << (quint32)settings.updateInterval << settings.timestamp;
+        stream << settings.updateInterval << settings.timestamp;
         Q_ASSERT(value.size() == 13); // According to testing / experimentation.
     }
 
