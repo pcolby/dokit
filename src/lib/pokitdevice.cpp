@@ -348,7 +348,7 @@ void PokitDevicePrivate::setController(QLowEnergyController * newController)
 /*!
  * Handle connected signals.
  */
-void PokitDevicePrivate::connected()
+void PokitDevicePrivate::connected() const
 {
     if (controller == nullptr) {
         qCCritical(lc).noquote() << tr("PokitDevicePrivate::connected slot invoked without a controller.");
@@ -362,7 +362,7 @@ void PokitDevicePrivate::connected()
 /*!
  * Handle connectionUpdated signals.
  */
-void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters &newParameters)
+void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters &newParameters) const
 {
     qCDebug(lc).noquote() << tr("Connection updated:") << newParameters.latency()
         << newParameters.minimumInterval() << newParameters.maximumInterval()
@@ -372,7 +372,7 @@ void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters 
 /*!
  * Handle disconnected signals.
  */
-void PokitDevicePrivate::disconnected()
+void PokitDevicePrivate::disconnected() const
 {
     qCDebug(lc).noquote() << tr("Device disconnected.");
 }
@@ -380,7 +380,7 @@ void PokitDevicePrivate::disconnected()
 /*!
  * Handle discoveryFinished signals.
  */
-void PokitDevicePrivate::discoveryFinished()
+void PokitDevicePrivate::discoveryFinished() const
 {
     qCDebug(lc).noquote() << tr("Service discovery finished.");
 }
@@ -388,7 +388,7 @@ void PokitDevicePrivate::discoveryFinished()
 /*!
  * Handle error signals.
  */
-void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError)
+void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError) const
 {
     qCDebug(lc).noquote() << tr("Controller error:") << newError;
 }
@@ -396,7 +396,7 @@ void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError)
 /*!
  * Handle serviceDiscovered signals.
  */
-void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
+void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService) const
 {
     qCDebug(lc).noquote() << tr("Service discovered: %1 \"%2\"")
         .arg(newService.toString(), PokitDevice::serviceToString(newService));
@@ -405,7 +405,7 @@ void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService)
 /*!
  * Handle stateChanged signals.
  */
-void PokitDevicePrivate::stateChanged(QLowEnergyController::ControllerState state)
+void PokitDevicePrivate::stateChanged(QLowEnergyController::ControllerState state) const
 {
     qCDebug(lc).noquote() << tr("State changed to:") << state;
 }

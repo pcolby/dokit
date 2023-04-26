@@ -59,13 +59,13 @@ public:
     void setController(QLowEnergyController * newController);
 
 public slots:
-    void connected();
-    void connectionUpdated(const QLowEnergyConnectionParameters &newParameters);
-    void disconnected();
-    void discoveryFinished();
-    void errorOccurred(QLowEnergyController::Error newError);
-    void serviceDiscovered(const QBluetoothUuid &newService);
-    void stateChanged(QLowEnergyController::ControllerState state);
+    void connected() const;
+    void connectionUpdated(const QLowEnergyConnectionParameters &newParameters) const;
+    void disconnected() const;
+    void discoveryFinished() const;
+    void errorOccurred(QLowEnergyController::Error newError) const;
+    void serviceDiscovered(const QBluetoothUuid &newService) const;
+    void stateChanged(QLowEnergyController::ControllerState state) const;
 
 protected:
     PokitDevice * q_ptr; ///< Internal q-pointer.

@@ -187,7 +187,7 @@ PokitDiscoveryAgentPrivate::PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * con
 /*!
  * Handle scan canceled signals, by simply logging the event for diagnostic purposes.
  */
-void PokitDiscoveryAgentPrivate::canceled()
+void PokitDiscoveryAgentPrivate::canceled() const
 {
     qCDebug(lc).noquote() << tr("Pokit device scan cancelled.");
 }
@@ -228,7 +228,7 @@ void PokitDiscoveryAgentPrivate::deviceUpdated(
 /*!
  * Handle scan errors, by simply logging \a error for diagnostic purposes.
  */
-void PokitDiscoveryAgentPrivate::error(const QBluetoothDeviceDiscoveryAgent::Error error)
+void PokitDiscoveryAgentPrivate::error(const QBluetoothDeviceDiscoveryAgent::Error error) const
 {
     qCWarning(lc).noquote() << tr("Pokit device scan error:") << error;
 }
@@ -236,7 +236,7 @@ void PokitDiscoveryAgentPrivate::error(const QBluetoothDeviceDiscoveryAgent::Err
 /*!
  * Handle scan finished signals, by simply logging the event for diagnostic purposes.
  */
-void PokitDiscoveryAgentPrivate::finished()
+void PokitDiscoveryAgentPrivate::finished() const
 {
     qCDebug(lc).noquote() << tr("Pokit device scan finished.");
 }
