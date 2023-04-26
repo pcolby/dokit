@@ -136,7 +136,7 @@ void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
             #endif
             this, &DeviceCommand::controllerError, Qt::QueuedConnection);
 
-        AbstractPokitService * const service = getService();
+        const AbstractPokitService * const service = getService();
 
         Q_ASSERT(service);
         connect(service, &AbstractPokitService::serviceDetailsDiscovered,
