@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
 {
     // Setup the application.
     QApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral(PROJECT_NAME));
-    app.setApplicationVersion(QString::fromLatin1(PROJECT_VERSION
+    QApplication::setApplicationName(QStringLiteral(PROJECT_NAME));
+    QApplication::setApplicationVersion(QString::fromLatin1(PROJECT_VERSION
         #ifdef PROJECT_PRE_RELEASE
         "-" PROJECT_PRE_RELEASE
         #endif
@@ -19,8 +19,8 @@ int main(int argc, char *argv[])
         "+" PROJECT_BUILD_ID
         #endif
     ));
-    app.setOrganizationName(QStringLiteral("pcolby"));        // Only used for QSettings. We should Manage these via
-    app.setOrganizationDomain(QStringLiteral("colby.id.au")); // CMake if we ever add settings to the console app too.
+    QApplication::setOrganizationName(QStringLiteral("pcolby"));        // Only used for QSettings. We should Manage these via
+    QApplication::setOrganizationDomain(QStringLiteral("colby.id.au")); // CMake if we ever add settings to the console app too.
 
     /// \todo Install localised translators, if we have translations for the current locale.
 
@@ -30,5 +30,5 @@ int main(int argc, char *argv[])
     // Instantiate the main window.
     MainWindow mainWindow;
     mainWindow.show();
-    return app.exec();
+    return QApplication::exec();
 }

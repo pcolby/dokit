@@ -283,8 +283,8 @@ int main(int argc, char *argv[])
 {
     // Setup the core application.
     QCoreApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral(PROJECT_NAME));
-    app.setApplicationVersion(QString::fromLatin1(PROJECT_VERSION
+    QCoreApplication::setApplicationName(QStringLiteral(PROJECT_NAME));
+    QCoreApplication::setApplicationVersion(QString::fromLatin1(PROJECT_VERSION
         #ifdef PROJECT_PRE_RELEASE
         "-" PROJECT_PRE_RELEASE
         #endif
@@ -303,10 +303,10 @@ int main(int argc, char *argv[])
     }
 
     // Parse the command line.
-    const QStringList appArguments = app.arguments();
+    const QStringList appArguments = QCoreApplication::arguments();
     QCommandLineParser parser;
     const Command commandType = parseCommandLine(appArguments, parser);
-    qCDebug(lc).noquote() << app.applicationName() << app.applicationVersion();
+    qCDebug(lc).noquote() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion();
     qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.
     qCDebug(lc).noquote() << "App translations:" <<
@@ -330,5 +330,5 @@ int main(int argc, char *argv[])
     if (!cliErrors.isEmpty()) {
         return EXIT_FAILURE;
     }
-    return (command->start()) ? app.exec() : EXIT_FAILURE;
+    return (command->start()) ? QCoreApplication::exec() : EXIT_FAILURE;
 }
