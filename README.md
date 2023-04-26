@@ -6,6 +6,13 @@
 [![Codacy Grade](https://img.shields.io/codacy/grade/50f86ac1809f438eae51d294ad11f36f?label=Code%20Quality&logo=codacy)](https://www.codacy.com/gh/pcolby/dokit/dashboard)
 [![Coverage Status](https://img.shields.io/coveralls/github/pcolby/dokit/main?label=Coverage&logo=coveralls)](https://coveralls.io/github/pcolby/dokit?branch=main)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
+
 QtPokit is a cross-platform [Qt][] library, and console application for accessing [Pokit][]
 measuring devices. The QtPokit library is intended to be suitable for other projects -
 the console application is really just an extensive example to demonstrate the library's
