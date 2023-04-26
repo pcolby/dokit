@@ -30,7 +30,7 @@ public:
 
     void deviceDiscovered(const QBluetoothDeviceInfo &info) override
     {
-        Q_UNUSED(info);
+        Q_UNUSED(info)
     }
 
     void deviceDiscoveryFinished() override

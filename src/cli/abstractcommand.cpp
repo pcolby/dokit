@@ -53,7 +53,7 @@ AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
  */
 QStringList AbstractCommand::requiredOptions(const QCommandLineParser &parser) const
 {
-    Q_UNUSED(parser);
+    Q_UNUSED(parser)
     return QStringList();
 }
 

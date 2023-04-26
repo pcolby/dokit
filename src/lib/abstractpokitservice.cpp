@@ -191,14 +191,14 @@ bool AbstractPokitServicePrivate::createServiceObject()
         [](const QLowEnergyDescriptor &descriptor, const QByteArray &value){
             qCDebug(lc).noquote() << tr("Descriptor \"%1\" (%2) read.")
                 .arg(descriptor.name(), descriptor.uuid().toString());
-            Q_UNUSED(value);
+            Q_UNUSED(value)
         });
 
     connect(service, &QLowEnergyService::descriptorWritten,
         [](const QLowEnergyDescriptor &descriptor, const QByteArray &newValue){
             qCDebug(lc).noquote() << tr("Descriptor \"%1\" (%2) written.")
                 .arg(descriptor.name(), descriptor.uuid().toString());
-            Q_UNUSED(newValue);
+            Q_UNUSED(newValue)
         });
 
     connect(service,

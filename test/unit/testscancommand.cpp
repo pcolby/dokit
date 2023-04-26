@@ -41,7 +41,7 @@ public:
 
     bool start() override { return true; }
 
-    void deviceDiscovered(const QBluetoothDeviceInfo &info) override { Q_UNUSED(info); }
+    void deviceDiscovered(const QBluetoothDeviceInfo &info) override { Q_UNUSED(info) }
 
     void deviceDiscoveryFinished() override { }
 };
