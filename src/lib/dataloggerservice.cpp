@@ -624,7 +624,7 @@ DataLoggerService::Samples DataLoggerServicePrivate::parseSamples(const QByteArr
             .arg(value.size()).arg(toHexString(value));
         return samples;
     }
-    for (; (samples.size()*2) < value.size();) {
+    while ((samples.size()*2) < value.size()) {
         samples.append(qFromLittleEndian<qint16>(value.mid(samples.size()*2,2)));
     }
     qCDebug(lc).noquote() << tr("Read %1 samples from %2-bytes.")
