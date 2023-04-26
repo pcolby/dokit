@@ -165,7 +165,7 @@ quint32 AbstractCommand::parseMicroValue(const QString &value, const QString &un
         if ((scale == 0) && (dbl > 0.0)) {
             for (scale = 1; (dbl * scale) < sensibleMinimum; scale *= 1000);
         }
-        return dbl * scale;
+        return (quint32)(dbl * scale);
     }
 
     return 0; // Failed to parse as either integer, or float.
@@ -220,7 +220,7 @@ quint32 AbstractCommand::parseMilliValue(const QString &value, const QString &un
         if ((scale == 0) && (dbl > 0.0)) {
             for (scale = 1; (dbl * scale) < sensibleMinimum; scale *= 1000);
         }
-        return dbl * scale;
+        return (quint32)(dbl * scale);
     }
 
     return 0; // Failed to parse as either integer, or float.
@@ -256,7 +256,7 @@ quint32 AbstractCommand::parseWholeValue(const QString &value, const QString &un
 
     // Parse the number as an (unsigned) integer.
     QLocale locale; bool ok;
-    const quint16 integer = locale.toUInt(number, &ok);
+    const quint32 integer = locale.toUInt(number, &ok);
     if (ok) {
         return integer * scale;
     }
@@ -264,7 +264,7 @@ quint32 AbstractCommand::parseWholeValue(const QString &value, const QString &un
     // Parse the number as a (double) floating point number, and check that it is positive.
     const double dbl = locale.toDouble(number, &ok);
     if ((ok) && (dbl > 0)) {
-        return dbl * scale;
+        return (quint32)(dbl * scale);
     }
 
     return 0; // Failed to parse as either integer, or float.

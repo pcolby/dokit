@@ -112,7 +112,7 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the timestamp option.
-    settings.timestamp = QDateTime::currentSecsSinceEpoch(); // Note, subject to Y2038 epochalypse.
+    settings.timestamp = (quint32)QDateTime::currentSecsSinceEpoch(); // Note, subject to Y2038 epochalypse.
     if (parser.isSet(QLatin1String("timestamp"))) {
         const QString value = parser.value(QLatin1String("timestamp"));
         QLocale locale; bool ok;

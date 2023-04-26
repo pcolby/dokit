@@ -109,7 +109,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         if (level == 0) {
             errors.append(tr("Invalid trigger-level value: %1").arg(value));
         } else {
-            settings.triggerLevel = level/1000.0/1000.0;
+            settings.triggerLevel = (float)(level/1000.0/1000.0);
         }
     }
 
