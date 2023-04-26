@@ -38,7 +38,7 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ startsWith(matrix.env.cc, 'gcc') && 'ON' || 'OFF'}} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         build-wrapper-linux-x86-64 --out-dir "$RUNNER_TEMP/sonar" cmake --build "$RUNNER_TEMP" --config Release
     - name: Run sonar-scanner
-      if: gcc # Generate only one report for now, since Sonar can only deal with one (could just as easily be clang).
+      if: matrix.env.cxx == 'g++' # Generate only one report for now, since Sonar can only deal with one (could just as easily be clang).
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
