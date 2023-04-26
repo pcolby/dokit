@@ -198,20 +198,20 @@ void TestStatusService::parseStatus_data()
     QTest::addRow("null") << QByteArray()
         << StatusService::Status{
            static_cast<StatusService::DeviceStatus>
-               (std::numeric_limits<std::underlying_type<StatusService::DeviceStatus>::type>::max()),
+               (std::numeric_limits<std::underlying_type_t<StatusService::DeviceStatus>>::max()),
            std::numeric_limits<float>::quiet_NaN(),
            static_cast<StatusService::BatteryStatus>
-               (std::numeric_limits<std::underlying_type<StatusService::BatteryStatus>::type>::max()),
+               (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
         };
 
     // Status must be at least 5 bytes to be valid / parsable.
     QTest::addRow("too-small") << QByteArray(4, '\xFF')
     << StatusService::Status{
        static_cast<StatusService::DeviceStatus>
-           (std::numeric_limits<std::underlying_type<StatusService::DeviceStatus>::type>::max()),
+           (std::numeric_limits<std::underlying_type_t<StatusService::DeviceStatus>>::max()),
        std::numeric_limits<float>::quiet_NaN(),
        static_cast<StatusService::BatteryStatus>
-           (std::numeric_limits<std::underlying_type<StatusService::BatteryStatus>::type>::max()),
+           (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
     };
 
 
@@ -222,7 +222,7 @@ void TestStatusService::parseStatus_data()
         << StatusService::Status{
            StatusService::DeviceStatus::Idle, 2.797311068f,
            static_cast<StatusService::BatteryStatus>
-               (std::numeric_limits<std::underlying_type<StatusService::BatteryStatus>::type>::max()),
+               (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
         };
 
     // Sample from a real Pokit Pro device; note is has 4 extra unknown bytes. Note, this has 2 more

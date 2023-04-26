@@ -421,10 +421,10 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
 {
     StatusService::Status status{
         static_cast<StatusService::DeviceStatus>
-            (std::numeric_limits<std::underlying_type<StatusService::DeviceStatus>::type>::max()),
+            (std::numeric_limits<std::underlying_type_t<StatusService::DeviceStatus>>::max()),
         std::numeric_limits<float>::quiet_NaN(),
         static_cast<StatusService::BatteryStatus>
-            (std::numeric_limits<std::underlying_type<StatusService::BatteryStatus>::type>::max()),
+            (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
     };
 
     /*!
