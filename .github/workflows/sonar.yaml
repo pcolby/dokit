@@ -42,7 +42,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
-        sonar-scanner \
-          --define sonar.cfamily.build-wrapper-output="$RUNNER_TEMP/sonar" \
-          --define sonar.organization=pcolby --define sonar.projectKey=pcolby_dokit \
-          --define sonar.projectName=Dokit
+        sonar-scanner --define project.settings=.sonar.properties \
+          --define sonar.cfamily.build-wrapper-output="$RUNNER_TEMP/sonar"
