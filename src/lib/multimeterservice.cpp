@@ -394,7 +394,7 @@ bool MultimeterService::setSettings(const Settings &settings)
         return false;
     }
 
-    const QByteArray value = d->encodeSettings(settings);
+    const QByteArray value = MultimeterServicePrivate::encodeSettings(settings);
     if (value.isNull()) {
         return false;
     }

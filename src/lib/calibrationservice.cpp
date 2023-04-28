@@ -87,7 +87,7 @@ bool CalibrationService::calibrateTemperature(const float ambientTemperature)
         return false;
     }
 
-    const QByteArray newValue = d->encodeTemperature(ambientTemperature);
+    const QByteArray newValue = CalibrationServicePrivate::encodeTemperature(ambientTemperature);
     qCDebug(d->lc).noquote() << tr("Writing new temperature %1 (0x%2).")
         .arg(ambientTemperature).arg(QLatin1String(newValue.toHex()));
     d->service->writeCharacteristic(characteristic, newValue);

@@ -120,7 +120,7 @@ quint16 GenericAccessService::appearance() const
     Q_D(const GenericAccessService);
     const QLowEnergyCharacteristic characteristic =
         d->getCharacteristic(CharacteristicUuids::appearance);
-    return (characteristic.isValid()) ? d->parseAppearance(characteristic.value())
+    return (characteristic.isValid()) ? GenericAccessServicePrivate::parseAppearance(characteristic.value())
         : std::numeric_limits<quint16>::max();
 }
 

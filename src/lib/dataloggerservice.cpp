@@ -342,7 +342,7 @@ bool DataLoggerService::setSettings(const Settings &settings)
 
     const bool updateIntervalIs32bit =
         (d->getCharacteristic(CharacteristicUuids::metadata).value().size() >= 23);
-    const QByteArray value = d->encodeSettings(settings, updateIntervalIs32bit);
+    const QByteArray value = DataLoggerServicePrivate::encodeSettings(settings, updateIntervalIs32bit);
     if (value.isNull()) {
         return false;
     }

@@ -336,7 +336,7 @@ bool DsoService::setSettings(const Settings &settings)
         return false;
     }
 
-    const QByteArray value = d->encodeSettings(settings);
+    const QByteArray value = DsoServicePrivate::encodeSettings(settings);
     if (value.isNull()) {
         return false;
     }
