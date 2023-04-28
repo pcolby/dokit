@@ -529,7 +529,7 @@ DataLoggerServicePrivate::DataLoggerServicePrivate(
 }
 
 /*!
- * Returns \a settings in the format Pokit devices expect. If \a updateIntervalIs32bit is 32-bit
+ * Returns \a settings in the format Pokit devices expect. If \a updateIntervalIs32bit is \c true
  * then the `Update Interval` field will be encoded in 32-bit instead of 16.
  */
 QByteArray DataLoggerServicePrivate::encodeSettings(const DataLoggerService::Settings &settings,
@@ -562,10 +562,6 @@ QByteArray DataLoggerServicePrivate::encodeSettings(const DataLoggerService::Set
         stream << settings.updateInterval << settings.timestamp;
         Q_ASSERT(value.size() == 13); // According to testing / experimentation.
     }
-
-//    default:
-//        qCWarning(d->lc).noquote() << tr("Don't know how to construct settings value for this device");
-//        return QByteArray();
     return value;
 }
 
