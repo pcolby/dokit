@@ -27,7 +27,7 @@ protected slots:
 private:
     StatusService * service { nullptr }; ///< Bluetooth service this command interracts with.
 
-    void outputDeviceStatus(const StatusService::DeviceCharacteristics chrs);
+    void outputDeviceStatus(const StatusService::DeviceCharacteristics &chrs);
 
     friend class TestStatusCommand;
 };

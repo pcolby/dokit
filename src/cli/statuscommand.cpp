@@ -86,7 +86,7 @@ void StatusCommand::serviceDetailsDiscovered()
 /*!
  * Outputs the Pokit device's details, including \a chrs, in the selected format.
  */
-void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristics chrs)
+void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristics &chrs)
 {
     const QString deviceName = service->deviceName();
     const StatusService::Status status = service->status();
