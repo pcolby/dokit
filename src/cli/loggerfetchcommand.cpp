@@ -20,8 +20,7 @@
 /*!
  * Construct a new LoggerFetchCommand object with \a parent.
  */
-LoggerFetchCommand::LoggerFetchCommand(QObject * const parent)
-    : DeviceCommand(parent), service(nullptr), showCsvHeader(true)
+LoggerFetchCommand::LoggerFetchCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

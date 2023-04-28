@@ -273,9 +273,7 @@ QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
 /*!
  * Constructs a new PokitDevicePrivate object with public implementation \a q.
  */
-PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q)
-    : controller(nullptr), calibration(nullptr), dataLogger(nullptr), deviceInfo(nullptr),
-      dso(nullptr), genericAccess(nullptr), multimeter(nullptr), status(nullptr), q_ptr(q)
+PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q) : q_ptr(q)
 {
 
 }

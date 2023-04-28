@@ -131,8 +131,7 @@ const QLowEnergyService * AbstractPokitService::service() const
  */
 AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
     QLowEnergyController * controller, AbstractPokitService * const q)
-    : autoDiscover(true), controller(controller), service(nullptr), serviceUuid(serviceUuid),
-      q_ptr(q)
+    : controller(controller), serviceUuid(serviceUuid), q_ptr(q)
 {
     if (controller) {
         connect(controller, &QLowEnergyController::connected,

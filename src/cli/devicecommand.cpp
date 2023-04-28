@@ -16,8 +16,7 @@
 /*!
  * Construct a new DeviceCommand object with \a parent.
  */
-DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent), device(nullptr),
-    exitCodeOnDisconnect(EXIT_FAILURE)
+DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent)
 {
 
 }

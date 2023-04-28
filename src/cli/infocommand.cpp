@@ -20,7 +20,7 @@
 /*!
  * Construct a new InfoCommand object with \a parent.
  */
-InfoCommand::InfoCommand(QObject * const parent) : DeviceCommand(parent), service(nullptr)
+InfoCommand::InfoCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

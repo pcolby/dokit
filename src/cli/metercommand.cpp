@@ -19,12 +19,7 @@
 /*!
  * Construct a new MeterCommand object with \a parent.
  */
-MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent),
-    service(nullptr), settings{
-        MultimeterService::Mode::DcVoltage,
-        MultimeterService::VoltageRange::AutoRange,
-        1000
-    }, samplesToGo(-1), showCsvHeader(true)
+MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

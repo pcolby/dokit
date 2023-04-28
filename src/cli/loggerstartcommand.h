@@ -25,8 +25,11 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    DataLoggerService * service; ///< Bluetooth service this command interracts with.
-    DataLoggerService::Settings settings; ///< Settings for the Pokit device's data logger mode.
+    DataLoggerService * service { nullptr }; ///< Bluetooth service this command interracts with.
+    DataLoggerService::Settings settings {   ///< Settings for the Pokit device's data logger mode.
+        DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
+        DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0
+    };
 
     static DataLoggerService::Range lowestRange(const DataLoggerService::Mode mode,
                                                 const quint32 desiredMax);

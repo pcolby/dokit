@@ -19,7 +19,7 @@
 /*!
  * Construct a new StatusCommand object with \a parent.
  */
-StatusCommand::StatusCommand(QObject * const parent) : DeviceCommand(parent), service(nullptr)
+StatusCommand::StatusCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

@@ -25,11 +25,14 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    DsoService * service; ///< Bluetooth service this command interracts with.
-    DsoService::Settings settings; ///< Settings for the Pokit device's DSO mode.
+    DsoService * service { nullptr }; ///< Bluetooth service this command interracts with.
+    DsoService::Settings settings {   ///< Settings for the Pokit device's DSO mode.
+        DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+        DsoService::VoltageRange::_30V_to_60V, 1000*1000, 1000
+    };
     DsoService::Metadata metadata; ///< Most recent DSO metadata.
-    qint32 samplesToGo; ///< Number of samples we're expecting in the current window.
-    bool showCsvHeader; ///< Whether or not to show a header as the first line of CSV output.
+    qint32 samplesToGo { 0 };      ///< Number of samples we're expecting in the current window.
+    bool showCsvHeader { true };   ///< Whether or not to show a header as the first line of CSV output.
 
     static DsoService::Range lowestRange(const DsoService::Mode mode,
                                                 const quint32 desiredMax);

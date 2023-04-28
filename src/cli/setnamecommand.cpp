@@ -17,7 +17,7 @@
 /*!
  * Construct a new SetNameCommand object with \a parent.
  */
-SetNameCommand::SetNameCommand(QObject * const parent) : DeviceCommand(parent), service(nullptr)
+SetNameCommand::SetNameCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

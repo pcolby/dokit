@@ -36,15 +36,15 @@ class QTPOKIT_EXPORT PokitDevicePrivate : public QObject
 public:
     static Q_LOGGING_CATEGORY(lc, "pokit.ble.controller", QtInfoMsg); ///< Logging category.
 
-    QLowEnergyController * controller; ///< BLE controller for accessing the Pokit device.
+    QLowEnergyController * controller { nullptr };    ///< BLE controller for accessing the Pokit device.
 
-    CalibrationService * calibration;     ///< Calibration service for this Pokit device.
-    DataLoggerService * dataLogger;       ///< Data Logger service for this Pokit device.
-    DeviceInfoService * deviceInfo;       ///< Device Info service for this Pokit device.
-    DsoService * dso;                     ///< DSO service for this Pokit device.
-    GenericAccessService * genericAccess; ///< Generic Access service for this Pokit device.
-    MultimeterService * multimeter;       ///< Multimeter service for this Pokit device.
-    StatusService * status;               ///< Status service for this Pokit device.
+    CalibrationService * calibration { nullptr };     ///< Calibration service for this Pokit device.
+    DataLoggerService * dataLogger { nullptr };       ///< Data Logger service for this Pokit device.
+    DeviceInfoService * deviceInfo { nullptr };       ///< Device Info service for this Pokit device.
+    DsoService * dso { nullptr };                     ///< DSO service for this Pokit device.
+    GenericAccessService * genericAccess { nullptr }; ///< Generic Access service for this Pokit device.
+    MultimeterService * multimeter { nullptr };       ///< Multimeter service for this Pokit device.
+    StatusService * status { nullptr };               ///< Status service for this Pokit device.
 
     QMutex calibrationMutex;   ///< Mutex for protecting access to #calibration.
     QMutex dataLoggerMutex;    ///< Mutex for protecting access to #dataLogger.

@@ -25,7 +25,7 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    StatusService * service; ///< Bluetooth service this command interracts with.
+    StatusService * service { nullptr }; ///< Bluetooth service this command interracts with.
 
 private slots:
     void deviceLedFlashed();

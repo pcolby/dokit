@@ -17,7 +17,7 @@
 /*!
  * Construct a new FlashLedCommand object with \a parent.
  */
-FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent), service(nullptr)
+FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

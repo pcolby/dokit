@@ -21,7 +21,7 @@
  * Constructs a new command with \a parent.
  */
 AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
-    discoveryAgent(new PokitDiscoveryAgent(this)), format(OutputFormat::Text)
+    discoveryAgent(new PokitDiscoveryAgent(this))
 {
     connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceDiscovered,
             this, &AbstractCommand::deviceDiscovered);

@@ -22,7 +22,7 @@
 /*!
  * Construct a new ScanCommand object with \a parent.
  */
-ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent), showCsvHeader(true)
+ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)
 {
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     connect(discoveryAgent, &PokitDiscoveryAgent::pokitDeviceUpdated,

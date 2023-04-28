@@ -19,8 +19,7 @@
 /*!
  * Construct a new LoggerStopCommand object with \a parent.
  */
-LoggerStopCommand::LoggerStopCommand(QObject * const parent)
-    : DeviceCommand(parent), service(nullptr)
+LoggerStopCommand::LoggerStopCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

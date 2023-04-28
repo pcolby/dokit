@@ -19,10 +19,7 @@
 /*!
  * Construct a new DsoCommand object with \a parent.
  */
-DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent),
-    service(nullptr), settings{
-        DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
-        DsoService::VoltageRange::_30V_to_60V, 1000*1000, 1000}, showCsvHeader(true)
+DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

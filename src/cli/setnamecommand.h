@@ -26,7 +26,7 @@ protected slots:
 
 private:
     QString newName; ///< New name to set on the Pokit device.
-    StatusService * service; ///< Bluetooth service this command interracts with.
+    StatusService * service { nullptr }; ///< Bluetooth service this command interracts with.
 
 private slots:
     void deviceNameWritten();

@@ -41,7 +41,7 @@ public slots:
 protected:
     QString deviceToScanFor; ///< Device (if any) that were passed to processOptions().
     PokitDiscoveryAgent * discoveryAgent; ///< Agent for Pokit device descovery.
-    OutputFormat format; ///< Selected output format.
+    OutputFormat format { OutputFormat::Text }; ///< Selected output format.
     static Q_LOGGING_CATEGORY(lc, "dokit.cli.command", QtInfoMsg); ///< Logging category for UI commands.
 
 protected slots:

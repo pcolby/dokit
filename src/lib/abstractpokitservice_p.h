@@ -28,10 +28,10 @@ class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject
 public:
     static Q_LOGGING_CATEGORY(lc, "pokit.ble.service", QtInfoMsg); ///< Logging category.
 
-    bool autoDiscover;                 ///< Whether autodiscovery is enabled or not.
-    QLowEnergyController * controller; ///< BLE controller to fetch the service from.
-    QLowEnergyService * service;       ///< BLE service to read/write characteristics.
-    QBluetoothUuid serviceUuid;        ///< UUIDs for #service.
+    bool autoDiscover { true };                    ///< Whether autodiscovery is enabled or not.
+    QLowEnergyController * controller { nullptr }; ///< BLE controller to fetch the service from.
+    QLowEnergyService * service { nullptr };       ///< BLE service to read/write characteristics.
+    QBluetoothUuid serviceUuid;                    ///< UUIDs for #service.
 
     AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
         QLowEnergyController * controller, AbstractPokitService * const q);

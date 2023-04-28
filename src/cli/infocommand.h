@@ -25,7 +25,7 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    DeviceInfoService * service; ///< Bluetooth service this command interracts with.
+    DeviceInfoService * service { nullptr }; ///< Bluetooth service this command interracts with.
 
     friend class TestInfoCommand;
 };

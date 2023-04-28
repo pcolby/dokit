@@ -19,7 +19,7 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    DataLoggerService * service; ///< Bluetooth service this command interracts with.
+    DataLoggerService * service { nullptr }; ///< Bluetooth service this command interracts with.
 
 private slots:
     void settingsWritten();

@@ -20,8 +20,7 @@
 /*!
  * Construct a new CalibrateCommand object with \a parent.
  */
-CalibrateCommand::CalibrateCommand(QObject * const parent) : DeviceCommand(parent),
-    service(nullptr), temperature(std::numeric_limits<float>::quiet_NaN())
+CalibrateCommand::CalibrateCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }

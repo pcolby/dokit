@@ -20,10 +20,7 @@
 /*!
  * Construct a new LoggerStartCommand object with \a parent.
  */
-LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(parent),
-    service(nullptr), settings{
-        DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
-        DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
+LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(parent)
 {
 
 }
