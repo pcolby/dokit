@@ -1071,7 +1071,7 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00031">DsoService::CharacteristicUuids::metadata</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00254">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00260">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1108,7 +1108,7 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dsoservice_8h_source.html#l00032">DsoService::CharacteristicUuids::reading</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00254">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00260">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1154,7 +1154,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoService_a5da2f9ae60f06d3b904d6d239bacd09e_cgraph.svg" width="668" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoService_a5da2f9ae60f06d3b904d6d239bacd09e_cgraph.svg" width="920" height="216"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1325,7 +1325,7 @@ Here is the call graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristic has been read successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Reads the DSO service&#39;s Metadata characteristic.">readMetadataCharacteristic</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00254">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00260">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1533,7 +1533,7 @@ Here is the caller graph for this function:</div>
 <dd>
 stopSampling </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00254">DsoCommand::settingsWritten()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00260">DsoCommand::settingsWritten()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1572,7 +1572,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  336</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  337</span>    }</div>
 <div class="line"><span class="lineno">  338</span> </div>
-<div class="line"><span class="lineno">  339</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = d-&gt;encodeSettings(settings);</div>
+<div class="line"><span class="lineno">  339</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = <a class="code hl_function" href="classDsoServicePrivate.html#af35779b15db5c0e8c027104cc6ce014b">DsoServicePrivate::encodeSettings</a>(settings);</div>
 <div class="line"><span class="lineno">  340</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">isNull</a>()) {</div>
 <div class="line"><span class="lineno">  341</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  342</span>    }</div>
@@ -1580,17 +1580,18 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  344</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
 <div class="line"><span class="lineno">  345</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
 <div class="line"><span class="lineno">  346</span>}</div>
+<div class="ttc" id="aclassDsoServicePrivate_html_af35779b15db5c0e8c027104cc6ce014b"><div class="ttname"><a href="classDsoServicePrivate.html#af35779b15db5c0e8c027104cc6ce014b">DsoServicePrivate::encodeSettings</a></div><div class="ttdeci">static QByteArray encodeSettings(const DsoService::Settings &amp;settings)</div><div class="ttdoc">Returns settings in the format Pokit devices expect.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8cpp_source.html#l00510">dsoservice.cpp:510</a></div></div>
 <div class="ttc" id="aqbytearray_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a></div></div>
 <div class="ttc" id="aqbytearray_html_isNull"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull</a></div><div class="ttdeci">bool isNull() const const</div></div>
 <div class="ttc" id="astructDsoService_1_1CharacteristicUuids_html_aad3144a47fc1cc7edc705b3e823688a6"><div class="ttname"><a href="structDsoService_1_1CharacteristicUuids.html#aad3144a47fc1cc7edc705b3e823688a6">DsoService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the DSO service's Settings characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dsoservice_8h_source.html#l00030">dsoservice.h:30</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, and <a class="el" href="dsoservice_8h_source.html#l00030">DsoService::CharacteristicUuids::settings</a>.</p>
+<p class="reference">References <a class="el" href="dsoservice_8cpp_source.html#l00510">DsoServicePrivate::encodeSettings()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, and <a class="el" href="dsoservice_8h_source.html#l00030">DsoService::CharacteristicUuids::settings</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00375">fetchSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00180">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00354">startDso()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsoservice_8cpp_source.html#l00375">fetchSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00186">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00354">startDso()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoService_a5714c8ccec6ab1d98241312b28a32e9e_cgraph.svg" width="428" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoService_a5714c8ccec6ab1d98241312b28a32e9e_cgraph.svg" width="680" height="216"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
@@ -1628,7 +1629,7 @@ Here is the caller graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structDsoService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic has been written successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e" title="Configures the Pokit device&#39;s DSO mode.">setSettings</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00163">DsoCommand::getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00169">DsoCommand::getService()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1673,7 +1674,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoService_a4bd74f90cf6b34172cfeaff8112f22fe_cgraph.svg" width="635" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDsoService_a4bd74f90cf6b34172cfeaff8112f22fe_cgraph.svg" width="887" height="216"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1768,7 +1769,7 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95ae599161956d626eda4cb0a5ffb85271c">Idle</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00267">DsoCommand::metadataRead()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00283">DsoCommand::outputSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00180">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00197">toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dsocommand_8cpp_source.html#l00273">DsoCommand::metadataRead()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00289">DsoCommand::outputSamples()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00186">DsoCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dsoservice_8cpp_source.html#l00197">toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

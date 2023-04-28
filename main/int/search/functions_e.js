@@ -63,7 +63,7 @@ var searchData=
   ['organizationdomainchanged_60',['organizationDomainChanged',['https://doc.qt.io/qt-5/qcoreapplication.html#organizationDomain-prop',1,'QCoreApplication']]],
   ['organizationname_61',['organizationName',['https://doc.qt.io/qt-5/qsettings.html#organizationName',1,'QSettings::organizationName()'],['https://doc.qt.io/qt-5/qcoreapplication.html#organizationName-prop',1,'QCoreApplication::organizationName()']]],
   ['organizationnamechanged_62',['organizationNameChanged',['https://doc.qt.io/qt-5/qcoreapplication.html#organizationName-prop',1,'QCoreApplication']]],
-  ['outputdevicestatus_63',['outputDeviceStatus',['../classStatusCommand.html#a44fa20846ec8d74d1f6e3844832e9f1a',1,'StatusCommand']]],
+  ['outputdevicestatus_63',['outputDeviceStatus',['../classStatusCommand.html#ae2349e3d64b1b4db9b80465c0b7dadb7',1,'StatusCommand']]],
   ['outputreading_64',['outputReading',['../classMeterCommand.html#a551a1c3d1c6f10384b5ccf264a640eff',1,'MeterCommand']]],
   ['outputsamples_65',['outputSamples',['../classDsoCommand.html#a5ed6988ac93f2964979b8dce1425816e',1,'DsoCommand::outputSamples()'],['../classLoggerFetchCommand.html#a2f093386853fc6667de091a0e921a665',1,'LoggerFetchCommand::outputSamples()']]],
   ['overshoot_66',['overshoot',['https://doc.qt.io/qt-5/qeasingcurve.html#overshoot',1,'QEasingCurve']]],

@@ -144,7 +144,7 @@ var searchData=
   ['outinsine_141',['OutInSine',['https://doc.qt.io/qt-5/qeasingcurve.html#Type-enum',1,'QEasingCurve']]],
   ['outlyingoceania_142',['OutlyingOceania',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
   ['outofresources_143',['OutOfResources',['https://doc.qt.io/qt-5/qsharedmemory.html#SharedMemoryError-enum',1,'QSharedMemory::OutOfResources()'],['https://doc.qt.io/qt-5/qsystemsemaphore.html#SystemSemaphoreError-enum',1,'QSystemSemaphore::OutOfResources()']]],
-  ['outputdevicestatus_144',['outputDeviceStatus',['../classStatusCommand.html#a44fa20846ec8d74d1f6e3844832e9f1a',1,'StatusCommand']]],
+  ['outputdevicestatus_144',['outputDeviceStatus',['../classStatusCommand.html#ae2349e3d64b1b4db9b80465c0b7dadb7',1,'StatusCommand']]],
   ['outputformat_145',['OutputFormat',['../classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dc',1,'AbstractCommand']]],
   ['outputreading_146',['outputReading',['../classMeterCommand.html#a551a1c3d1c6f10384b5ccf264a640eff',1,'MeterCommand']]],
   ['outputsamples_147',['outputSamples',['../classDsoCommand.html#a5ed6988ac93f2964979b8dce1425816e',1,'DsoCommand::outputSamples()'],['../classLoggerFetchCommand.html#a2f093386853fc6667de091a0e921a665',1,'LoggerFetchCommand::outputSamples()']]],

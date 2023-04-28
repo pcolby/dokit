@@ -5,7 +5,7 @@ var classDsoCommand =
     [ "lowestCurrentRange", "classDsoCommand.html#a7591804892fcf259b18ff7e465ad8931", null ],
     [ "lowestRange", "classDsoCommand.html#a1388219080b5b956a3f175a9652911e6", null ],
     [ "lowestVoltageRange", "classDsoCommand.html#ab56ebce50ae16d193004eb2260986515", null ],
-    [ "metadataRead", "classDsoCommand.html#ae5c33b9f7b6fc2d1ed194b024f9e6fb7", null ],
+    [ "metadataRead", "classDsoCommand.html#ae3458da4747f34661ec0ef1d36657e24", null ],
     [ "outputSamples", "classDsoCommand.html#a5ed6988ac93f2964979b8dce1425816e", null ],
     [ "processOptions", "classDsoCommand.html#a87db950042b5ea7707bd76648536c943", null ],
     [ "requiredOptions", "classDsoCommand.html#abbdf205b4b6ca5271e8e8c6b633b0462", null ],
