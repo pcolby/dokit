@@ -264,17 +264,17 @@ void DsoCommand::settingsWritten()
 /*!
  * Invoked when \a metadata has been received from the DSO.
  */
-void DsoCommand::metadataRead(const DsoService::Metadata &metadata)
+void DsoCommand::metadataRead(const DsoService::Metadata &data)
 {
-    qCDebug(lc) << "status:" << (int)(metadata.status);
-    qCDebug(lc) << "scale:" << metadata.scale;
-    qCDebug(lc) << "mode:" << DsoService::toString(metadata.mode);
-    qCDebug(lc) << "range:" << DsoService::toString(metadata.range.voltageRange);
-    qCDebug(lc) << "samplingWindow:" << (int)metadata.samplingWindow;
-    qCDebug(lc) << "numberOfSamples:" << metadata.numberOfSamples;
-    qCDebug(lc) << "samplingRate:" << metadata.samplingRate << "Hz";
-    this->metadata = metadata;
-    this->samplesToGo = metadata.numberOfSamples;
+    qCDebug(lc) << "status:" << (int)(data.status);
+    qCDebug(lc) << "scale:" << data.scale;
+    qCDebug(lc) << "mode:" << DsoService::toString(data.mode);
+    qCDebug(lc) << "range:" << DsoService::toString(data.range.voltageRange);
+    qCDebug(lc) << "samplingWindow:" << (int)data.samplingWindow;
+    qCDebug(lc) << "numberOfSamples:" << data.numberOfSamples;
+    qCDebug(lc) << "samplingRate:" << data.samplingRate << "Hz";
+    this->metadata = data;
+    this->samplesToGo = data.numberOfSamples;
 }
 
 /*!

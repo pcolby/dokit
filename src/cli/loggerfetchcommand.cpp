@@ -59,21 +59,21 @@ void LoggerFetchCommand::serviceDetailsDiscovered()
 /*!
  * Invoked when \a metadata has been received from the data logger.
  */
-void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &metadata)
+void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &data)
 {
-    qCDebug(lc) << "status:" << (int)(metadata.status);
-    qCDebug(lc) << "scale:" << metadata.scale;
-    qCDebug(lc) << "mode:" << DataLoggerService::toString(metadata.mode) << (quint8)metadata.mode;
-    qCDebug(lc) << "range:" << DataLoggerService::toString(metadata.range.voltageRange)
-                            << (quint8)metadata.range.voltageRange;
-    qCDebug(lc) << "updateInterval:" << (int)metadata.updateInterval;
-    qCDebug(lc) << "numberOfSamples:" << metadata.numberOfSamples;
-    qCDebug(lc) << "timestamp:" << metadata.timestamp
-                                << QDateTime::fromSecsSinceEpoch(metadata.timestamp, Qt::UTC);
-    this->metadata = metadata;
-    this->samplesToGo = metadata.numberOfSamples;
-    this->timestamp = (quint64)metadata.timestamp * (quint64)1000;
-    qCInfo(lc).noquote() << tr("Fetching %L1 logger samples...").arg(metadata.numberOfSamples);
+    qCDebug(lc) << "status:" << (int)(data.status);
+    qCDebug(lc) << "scale:" << data.scale;
+    qCDebug(lc) << "mode:" << DataLoggerService::toString(data.mode) << (quint8)data.mode;
+    qCDebug(lc) << "range:" << DataLoggerService::toString(data.range.voltageRange)
+                            << (quint8)data.range.voltageRange;
+    qCDebug(lc) << "updateInterval:" << (int)data.updateInterval;
+    qCDebug(lc) << "numberOfSamples:" << data.numberOfSamples;
+    qCDebug(lc) << "timestamp:" << data.timestamp
+                                << QDateTime::fromSecsSinceEpoch(data.timestamp, Qt::UTC);
+    this->metadata = data;
+    this->samplesToGo = data.numberOfSamples;
+    this->timestamp = (quint64)data.timestamp * (quint64)1000;
+    qCInfo(lc).noquote() << tr("Fetching %L1 logger samples...").arg(data.numberOfSamples);
 }
 
 /*!

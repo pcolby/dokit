@@ -26,7 +26,7 @@ private:
     bool showCsvHeader { true }; ///< Whether or not to show a header as the first line of CSV output.
 
 private slots:
-    void metadataRead(const DataLoggerService::Metadata &metadata);
+    void metadataRead(const DataLoggerService::Metadata &data);
     void outputSamples(const DataLoggerService::Samples &samples);
 
     friend class TestLoggerFetchCommand;

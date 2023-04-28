@@ -41,7 +41,7 @@ private:
 
 private slots:
     void settingsWritten();
-    void metadataRead(const DsoService::Metadata &metadata);
+    void metadataRead(const DsoService::Metadata &data);
     void outputSamples(const DsoService::Samples &samples);
 
     friend class TestDsoCommand;
