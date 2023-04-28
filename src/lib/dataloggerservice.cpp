@@ -600,7 +600,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
         metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(11,4));
     } else if (value.size() == 23) {
         metadata.updateInterval  = qFromLittleEndian<quint32>(value.mid(7,4));
-        metadata.numberOfSamples = qFromLittleEndian<quint32>(value.mid(11,4));
+        metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(11,2));
         metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(19,4));
     } else {
         qCWarning(lc).noquote() << tr("Cannot decode metadata of %1 bytes: %2").arg(value.size())
