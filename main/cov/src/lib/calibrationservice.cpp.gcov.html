@@ -149,7 +149,7 @@
 <a name="87"><span class="lineNum">      87 </span>            :         return false;</a>
 <a name="88"><span class="lineNum">      88 </span>            :     }</a>
 <a name="89"><span class="lineNum">      89 </span>            : </a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 :     const QByteArray newValue = d-&gt;encodeTemperature(ambientTemperature);</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 :     const QByteArray newValue = CalibrationServicePrivate::encodeTemperature(ambientTemperature);</span></a>
 <a name="91"><span class="lineNum">      91 </span><span class="lineNoCov">          0 :     qCDebug(d-&gt;lc).noquote() &lt;&lt; tr(&quot;Writing new temperature %1 (0x%2).&quot;)</span></a>
 <a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 :         .arg(ambientTemperature).arg(QLatin1String(newValue.toHex()));</span></a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, newValue);</span></a>

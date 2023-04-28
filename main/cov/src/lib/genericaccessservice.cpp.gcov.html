@@ -182,7 +182,7 @@
 <a name="120"><span class="lineNum">     120 </span>            :     Q_D(const GenericAccessService);</a>
 <a name="121"><span class="lineNum">     121 </span>            :     const QLowEnergyCharacteristic characteristic =</a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineCov">         18 :         d-&gt;getCharacteristic(CharacteristicUuids::appearance);</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         18 :     return (characteristic.isValid()) ? d-&gt;parseAppearance(characteristic.value())</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         18 :     return (characteristic.isValid()) ? GenericAccessServicePrivate::parseAppearance(characteristic.value())</span></a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineCov">         18 :         : std::numeric_limits&lt;quint16&gt;::max();</span></a>
 <a name="125"><span class="lineNum">     125 </span><span class="lineCov">         18 : }</span></a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>

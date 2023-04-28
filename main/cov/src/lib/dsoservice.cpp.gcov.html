@@ -163,11 +163,11 @@
 <a name="101"><span class="lineNum">     101 </span>            :  *  Returns the maximum value for \a range in (integer) millivolts, or null QVariant if \a range is</a>
 <a name="102"><span class="lineNum">     102 </span>            :  *  not valid.</a>
 <a name="103"><span class="lineNum">     103 </span>            :  */</a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">       3924 : QVariant DsoService::maxValue(const VoltageRange &amp;range)</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">       3996 : QVariant DsoService::maxValue(const VoltageRange &amp;range)</span></a>
 <a name="105"><span class="lineNum">     105 </span>            : {</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">       3924 :     switch (range) {</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">       1278 :     case VoltageRange::_0_to_300mV:  return   300;</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">       1116 :     case VoltageRange::_300mV_to_2V: return  2000;</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">       3996 :     switch (range) {</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">       1314 :     case VoltageRange::_0_to_300mV:  return   300;</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">       1152 :     case VoltageRange::_300mV_to_2V: return  2000;</span></a>
 <a name="109"><span class="lineNum">     109 </span><span class="lineCov">        630 :     case VoltageRange::_2V_to_6V:    return  6000;</span></a>
 <a name="110"><span class="lineNum">     110 </span><span class="lineCov">        450 :     case VoltageRange::_6V_to_12V:   return 12000;</span></a>
 <a name="111"><span class="lineNum">     111 </span><span class="lineCov">        288 :     case VoltageRange::_12V_to_30V:  return 30000;</span></a>
@@ -238,16 +238,16 @@
 <a name="176"><span class="lineNum">     176 </span>            :               &quot;DsoService::Range members must all have the same underlying type.&quot;);</a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
 <a name="178"><span class="lineNum">     178 </span>            : /// Constructs a new DsoService::Range instance with 0. This should be considered</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       1674 : DsoService::Range::Range() : voltageRange(static_cast&lt;DsoService::VoltageRange&gt;(0))</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">       1710 : DsoService::Range::Range() : voltageRange(static_cast&lt;DsoService::VoltageRange&gt;(0))</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : {</a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">       1674 : }</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">       1710 : }</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : </a>
 <a name="184"><span class="lineNum">     184 </span>            : /// Constructs a new DsoService::Range instance with \a range.</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       4302 : DsoService::Range::Range(const DsoService::VoltageRange range) : voltageRange(range)</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       4410 : DsoService::Range::Range(const DsoService::VoltageRange range) : voltageRange(range)</span></a>
 <a name="186"><span class="lineNum">     186 </span>            : {</a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       4266 : }</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">       4374 : }</span></a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
 <a name="190"><span class="lineNum">     190 </span>            : /// Constructs a new DsoService::Range instance with \a range.</a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineCov">       1206 : DsoService::Range::Range(const DsoService::CurrentRange range) : currentRange(range)</span></a>
@@ -271,10 +271,10 @@
 <a name="209"><span class="lineNum">     209 </span>            : }</a>
 <a name="210"><span class="lineNum">     210 </span>            : </a>
 <a name="211"><span class="lineNum">     211 </span>            : /// Returns \c true if \a lhs is numerically equal to \a rhs, \c false otherwise.</a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">       1692 : bool operator==(const DsoService::Range &amp;lhs, const DsoService::Range &amp;rhs)</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">       1728 : bool operator==(const DsoService::Range &amp;lhs, const DsoService::Range &amp;rhs)</span></a>
 <a name="213"><span class="lineNum">     213 </span>            : {</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       1692 :     return static_cast&lt;std::underlying_type_t&lt;DsoService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       1692 :         == static_cast&lt;std::underlying_type_t&lt;DsoService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       1728 :     return static_cast&lt;std::underlying_type_t&lt;DsoService::VoltageRange&gt;&gt;(lhs.voltageRange)</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       1728 :         == static_cast&lt;std::underlying_type_t&lt;DsoService::VoltageRange&gt;&gt;(rhs.voltageRange);</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : }</a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
 <a name="218"><span class="lineNum">     218 </span>            : /// Returns \c true if \a lhs is numerically not-equal to \a rhs, \c false otherwise.</a>
@@ -398,7 +398,7 @@
 <a name="336"><span class="lineNum">     336 </span>            :         return false;</a>
 <a name="337"><span class="lineNum">     337 </span>            :     }</a>
 <a name="338"><span class="lineNum">     338 </span>            : </a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :     const QByteArray value = d-&gt;encodeSettings(settings);</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :     const QByteArray value = DsoServicePrivate::encodeSettings(settings);</span></a>
 <a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :     if (value.isNull()) {</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :         return false;</a>
 <a name="342"><span class="lineNum">     342 </span>            :     }</a>
