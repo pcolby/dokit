@@ -294,7 +294,7 @@ void TestDsoCommand::processOptions_data()
             DsoService::VoltageRange::_300mV_to_2V, 1000*1000, 100}
         << QStringList{ };
 
-    QTest::addRow("invald-samples")
+    QTest::addRow("invalid-samples")
         << QStringList{
            QStringLiteral("--mode"),  QStringLiteral("Vdc"),
            QStringLiteral("--range"), QStringLiteral("1000mV"),
@@ -303,6 +303,26 @@ void TestDsoCommand::processOptions_data()
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             DsoService::VoltageRange::_300mV_to_2V, 1000*1000, 1000}
         << QStringList{ QStringLiteral("Invalid samples value: invalid") };
+
+    QTest::addRow("too-big-samples")
+        << QStringList{
+                       QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+                       QStringLiteral("--range"), QStringLiteral("1000mV"),
+                       QStringLiteral("--samples"), QStringLiteral("65536") }
+        << DsoService::Settings{
+                                DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+                                DsoService::VoltageRange::_300mV_to_2V, 1000*1000, 1000}
+        << QStringList{ QStringLiteral("Samples value (65536) must be no greater than 65535") };
+
+    QTest::addRow("possibly-too-big-samples")
+        << QStringList{
+                       QStringLiteral("--mode"),  QStringLiteral("Vdc"),
+                       QStringLiteral("--range"), QStringLiteral("1000mV"),
+                       QStringLiteral("--samples"), QStringLiteral("8193") }
+        << DsoService::Settings{
+                                DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+                                DsoService::VoltageRange::_300mV_to_2V, 1000*1000, 8193}
+        << QStringList{ };
 
     QTest::addRow("negative-samples")
         << QStringList{
@@ -331,6 +351,10 @@ void TestDsoCommand::processOptions()
     parser.addOption({QStringLiteral("interval"), QStringLiteral("description"), QStringLiteral("interval")});
     parser.addOption({QStringLiteral("samples"), QStringLiteral("description"), QStringLiteral("samples")});
     parser.process(arguments);
+
+    if (expected.numberOfSamples > 8192) {
+        QTest::ignoreMessage(QtWarningMsg, "Pokit devices do not officially support great than 8192 samples");
+    }
 
     DsoCommand command(this);
     QCOMPARE(command.processOptions(parser),   errors);

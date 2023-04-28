@@ -237,7 +237,7 @@ void TestMeterCommand::processOptions_data()
         << 100
         << QStringList{ };
 
-    QTest::addRow("invald-samples")
+    QTest::addRow("invalid-samples")
         << QStringList{
            QStringLiteral("--mode"),  QStringLiteral("Vdc"),
            QStringLiteral("--samples"), QStringLiteral("invalid") }

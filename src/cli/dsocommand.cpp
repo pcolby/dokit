@@ -148,8 +148,14 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         const quint32 samples = parseWholeValue(value, QLatin1String("S"));
         if (samples == 0) {
             errors.append(tr("Invalid samples value: %1").arg(value));
+        } else if (samples > std::numeric_limits<quint16>::max()) {
+            errors.append(tr("Samples value (%1) must be no greater than %2")
+                .arg(value).arg(std::numeric_limits<quint16>::max()));
         } else {
-            settings.numberOfSamples = samples;
+            if (samples > 8192) {
+                qCWarning(lc).noquote() << tr("Pokit devices do not officially support great than 8192 samples");
+            }
+            settings.numberOfSamples = (quint16)samples;
         }
     }
     return errors;
