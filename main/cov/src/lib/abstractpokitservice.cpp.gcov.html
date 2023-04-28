@@ -253,14 +253,14 @@
 <a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;value){</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Descriptor \&quot;%1\&quot; (%2) read.&quot;)</span></a>
 <a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
-<a name="194"><span class="lineNum">     194 </span>            :             Q_UNUSED(value);</a>
+<a name="194"><span class="lineNum">     194 </span>            :             Q_UNUSED(value)</a>
 <a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :         });</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
 <a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorWritten,</span></a>
 <a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;newValue){</span></a>
 <a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Descriptor \&quot;%1\&quot; (%2) written.&quot;)</span></a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
-<a name="201"><span class="lineNum">     201 </span>            :             Q_UNUSED(newValue);</a>
+<a name="201"><span class="lineNum">     201 </span>            :             Q_UNUSED(newValue)</a>
 <a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :         });</span></a>
 <a name="203"><span class="lineNum">     203 </span>            : </a>
 <a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :     connect(service,</span></a>

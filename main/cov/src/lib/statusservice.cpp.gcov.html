@@ -483,10 +483,10 @@
 <a name="421"><span class="lineNum">     421 </span>            : {</a>
 <a name="422"><span class="lineNum">     422 </span><span class="lineCov">         72 :     StatusService::Status status{</span></a>
 <a name="423"><span class="lineNum">     423 </span>            :         static_cast&lt;StatusService::DeviceStatus&gt;</a>
-<a name="424"><span class="lineNum">     424 </span>            :             (std::numeric_limits&lt;std::underlying_type&lt;StatusService::DeviceStatus&gt;::type&gt;::max()),</a>
+<a name="424"><span class="lineNum">     424 </span>            :             (std::numeric_limits&lt;std::underlying_type_t&lt;StatusService::DeviceStatus&gt;&gt;::max()),</a>
 <a name="425"><span class="lineNum">     425 </span>            :         std::numeric_limits&lt;float&gt;::quiet_NaN(),</a>
 <a name="426"><span class="lineNum">     426 </span>            :         static_cast&lt;StatusService::BatteryStatus&gt;</a>
-<a name="427"><span class="lineNum">     427 </span>            :             (std::numeric_limits&lt;std::underlying_type&lt;StatusService::BatteryStatus&gt;::type&gt;::max()),</a>
+<a name="427"><span class="lineNum">     427 </span>            :             (std::numeric_limits&lt;std::underlying_type_t&lt;StatusService::BatteryStatus&gt;&gt;::max()),</a>
 <a name="428"><span class="lineNum">     428 </span>            :     };</a>
 <a name="429"><span class="lineNum">     429 </span>            : </a>
 <a name="430"><span class="lineNum">     430 </span>            :     /*!</a>

@@ -626,7 +626,7 @@
 <a name="564"><span class="lineNum">     564 </span><span class="lineCov">         28 :             .arg(value.size()).arg(toHexString(value));</span></a>
 <a name="565"><span class="lineNum">     565 </span><span class="lineCov">          3 :         return samples;</span></a>
 <a name="566"><span class="lineNum">     566 </span>            :     }</a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineCov">        306 :     for (; (samples.size()*2) &lt; value.size();) {</span></a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineCov">        306 :     while ((samples.size()*2) &lt; value.size()) {</span></a>
 <a name="568"><span class="lineNum">     568 </span><span class="lineCov">        308 :         samples.append(qFromLittleEndian&lt;qint16&gt;(value.mid(samples.size()*2,2)));</span></a>
 <a name="569"><span class="lineNum">     569 </span>            :     }</a>
 <a name="570"><span class="lineNum">     570 </span><span class="lineCov">         54 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Read %1 samples from %2-bytes.&quot;)</span></a>

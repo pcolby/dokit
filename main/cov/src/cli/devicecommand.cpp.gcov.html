@@ -198,7 +198,7 @@
 <a name="136"><span class="lineNum">     136 </span>            :             #endif</a>
 <a name="137"><span class="lineNum">     137 </span>            :             this, &amp;DeviceCommand::controllerError, Qt::QueuedConnection);</a>
 <a name="138"><span class="lineNum">     138 </span>            : </a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :         AbstractPokitService * const service = getService();</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :         const AbstractPokitService * const service = getService();</span></a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
 <a name="141"><span class="lineNum">     141 </span>            :         Q_ASSERT(service);</a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 :         connect(service, &amp;AbstractPokitService::serviceDetailsDiscovered,</span></a>
