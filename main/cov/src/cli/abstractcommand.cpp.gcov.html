@@ -83,7 +83,7 @@
 <a name="21"><span class="lineNum">      21 </span>            :  * Constructs a new command with \a parent.</a>
 <a name="22"><span class="lineNum">      22 </span>            :  */</a>
 <a name="23"><span class="lineNum">      23 </span><span class="lineCov">       7683 : AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),</span></a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">       7683 :     discoveryAgent(new PokitDiscoveryAgent(this)), format(OutputFormat::Text)</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">       7683 :     discoveryAgent(new PokitDiscoveryAgent(this))</span></a>
 <a name="25"><span class="lineNum">      25 </span>            : {</a>
 <a name="26"><span class="lineNum">      26 </span><span class="lineCov">       7683 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::pokitDeviceDiscovered,</span></a>
 <a name="27"><span class="lineNum">      27 </span>            :             this, &amp;AbstractCommand::deviceDiscovered);</a>
@@ -227,7 +227,7 @@
 <a name="165"><span class="lineNum">     165 </span><span class="lineCov">         72 :         if ((scale == 0) &amp;&amp; (dbl &gt; 0.0)) {</span></a>
 <a name="166"><span class="lineNum">     166 </span><span class="lineCov">         54 :             for (scale = 1; (dbl * scale) &lt; sensibleMinimum; scale *= 1000);</span></a>
 <a name="167"><span class="lineNum">     167 </span>            :         }</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         72 :         return dbl * scale;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         72 :         return (quint32)(dbl * scale);</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :     }</a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
 <a name="171"><span class="lineNum">     171 </span>            :     return 0; // Failed to parse as either integer, or float.</a>
@@ -282,7 +282,7 @@
 <a name="220"><span class="lineNum">     220 </span><span class="lineCov">         72 :         if ((scale == 0) &amp;&amp; (dbl &gt; 0.0)) {</span></a>
 <a name="221"><span class="lineNum">     221 </span><span class="lineCov">         54 :             for (scale = 1; (dbl * scale) &lt; sensibleMinimum; scale *= 1000);</span></a>
 <a name="222"><span class="lineNum">     222 </span>            :         }</a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">         72 :         return dbl * scale;</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">         72 :         return (quint32)(dbl * scale);</span></a>
 <a name="224"><span class="lineNum">     224 </span>            :     }</a>
 <a name="225"><span class="lineNum">     225 </span>            : </a>
 <a name="226"><span class="lineNum">     226 </span>            :     return 0; // Failed to parse as either integer, or float.</a>
@@ -318,7 +318,7 @@
 <a name="256"><span class="lineNum">     256 </span>            : </a>
 <a name="257"><span class="lineNum">     257 </span>            :     // Parse the number as an (unsigned) integer.</a>
 <a name="258"><span class="lineNum">     258 </span><span class="lineCov">        342 :     QLocale locale; bool ok;</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">        266 :     const quint16 integer = locale.toUInt(number, &amp;ok);</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">        266 :     const quint32 integer = locale.toUInt(number, &amp;ok);</span></a>
 <a name="260"><span class="lineNum">     260 </span><span class="lineCov">        342 :     if (ok) {</span></a>
 <a name="261"><span class="lineNum">     261 </span><span class="lineCov">        144 :         return integer * scale;</span></a>
 <a name="262"><span class="lineNum">     262 </span>            :     }</a>
@@ -326,7 +326,7 @@
 <a name="264"><span class="lineNum">     264 </span>            :     // Parse the number as a (double) floating point number, and check that it is positive.</a>
 <a name="265"><span class="lineNum">     265 </span><span class="lineCov">        154 :     const double dbl = locale.toDouble(number, &amp;ok);</span></a>
 <a name="266"><span class="lineNum">     266 </span><span class="lineCov">        198 :     if ((ok) &amp;&amp; (dbl &gt; 0)) {</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">         54 :         return dbl * scale;</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">         54 :         return (quint32)(dbl * scale);</span></a>
 <a name="268"><span class="lineNum">     268 </span>            :     }</a>
 <a name="269"><span class="lineNum">     269 </span>            : </a>
 <a name="270"><span class="lineNum">     270 </span>            :     return 0; // Failed to parse as either integer, or float.</a>

@@ -81,11 +81,11 @@
 <a name="19"><span class="lineNum">      19 </span>            :     void serviceDetailsDiscovered() override;</a>
 <a name="20"><span class="lineNum">      20 </span>            : </a>
 <a name="21"><span class="lineNum">      21 </span>            : private:</a>
-<a name="22"><span class="lineNum">      22 </span>            :     DataLoggerService * service; ///&lt; Bluetooth service this command interracts with.</a>
-<a name="23"><span class="lineNum">      23 </span>            :     DataLoggerService::Metadata metadata; ///&lt; Most recent data logging metadata.</a>
-<a name="24"><span class="lineNum">      24 </span>            :     qint32 samplesToGo; ///&lt; Number of samples we're still expecting to receive.</a>
-<a name="25"><span class="lineNum">      25 </span>            :     quint64 timestamp; ///&lt; Current sample's epoch milliseconds timestamp.</a>
-<a name="26"><span class="lineNum">      26 </span>            :     bool showCsvHeader; ///&lt; Whether or not to show a header as the first line of CSV output.</a>
+<a name="22"><span class="lineNum">      22 </span>            :     DataLoggerService * service { nullptr }; ///&lt; Bluetooth service this command interracts with.</a>
+<a name="23"><span class="lineNum">      23 </span>            :     DataLoggerService::Metadata metadata;    ///&lt; Most recent data logging metadata.</a>
+<a name="24"><span class="lineNum">      24 </span>            :     qint32 samplesToGo { 0 };    ///&lt; Number of samples we're still expecting to receive.</a>
+<a name="25"><span class="lineNum">      25 </span>            :     quint64 timestamp { 0 };     ///&lt; Current sample's epoch milliseconds timestamp.</a>
+<a name="26"><span class="lineNum">      26 </span>            :     bool showCsvHeader { true }; ///&lt; Whether or not to show a header as the first line of CSV output.</a>
 <a name="27"><span class="lineNum">      27 </span>            : </a>
 <a name="28"><span class="lineNum">      28 </span>            : private slots:</a>
 <a name="29"><span class="lineNum">      29 </span>            :     void metadataRead(const DataLoggerService::Metadata &amp;metadata);</a>

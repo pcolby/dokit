@@ -84,8 +84,8 @@
 <a name="22"><span class="lineNum">      22 </span>            :     bool start() override;</a>
 <a name="23"><span class="lineNum">      23 </span>            : </a>
 <a name="24"><span class="lineNum">      24 </span>            : protected:</a>
-<a name="25"><span class="lineNum">      25 </span>            :     PokitDevice * device; ///&lt; Pokit Bluetooth device (if any) this command inerracts with.</a>
-<a name="26"><span class="lineNum">      26 </span>            :     int exitCodeOnDisconnect; ///&lt; Exit code to return on device disconnection.</a>
+<a name="25"><span class="lineNum">      25 </span>            :     PokitDevice * device { nullptr }; ///&lt; Pokit Bluetooth device (if any) this command inerracts with.</a>
+<a name="26"><span class="lineNum">      26 </span>            :     int exitCodeOnDisconnect { EXIT_FAILURE }; ///&lt; Exit code to return on device disconnection.</a>
 <a name="27"><span class="lineNum">      27 </span>            : </a>
 <a name="28"><span class="lineNum">      28 </span>            :     void disconnect(int exitCode=EXIT_SUCCESS);</a>
 <a name="29"><span class="lineNum">      29 </span>            :     virtual AbstractPokitService * getService() = 0;</a>

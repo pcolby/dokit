@@ -249,7 +249,7 @@
 <a name="187"><span class="lineNum">     187 </span>            : /*!</a>
 <a name="188"><span class="lineNum">     188 </span>            :  * Handle scan canceled signals, by simply logging the event for diagnostic purposes.</a>
 <a name="189"><span class="lineNum">     189 </span>            :  */</a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         18 : void PokitDiscoveryAgentPrivate::canceled()</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         18 : void PokitDiscoveryAgentPrivate::canceled() const</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : {</a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Pokit device scan cancelled.&quot;);</span></a>
 <a name="193"><span class="lineNum">     193 </span><span class="lineCov">         18 : }</span></a>
@@ -290,7 +290,7 @@
 <a name="228"><span class="lineNum">     228 </span>            : /*!</a>
 <a name="229"><span class="lineNum">     229 </span>            :  * Handle scan errors, by simply logging \a error for diagnostic purposes.</a>
 <a name="230"><span class="lineNum">     230 </span>            :  */</a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">         66 : void PokitDiscoveryAgentPrivate::error(const QBluetoothDeviceDiscoveryAgent::Error error)</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">         66 : void PokitDiscoveryAgentPrivate::error(const QBluetoothDeviceDiscoveryAgent::Error error) const</span></a>
 <a name="232"><span class="lineNum">     232 </span>            : {</a>
 <a name="233"><span class="lineNum">     233 </span><span class="lineCov">        198 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Pokit device scan error:&quot;) &lt;&lt; error;</span></a>
 <a name="234"><span class="lineNum">     234 </span><span class="lineCov">         66 : }</span></a>
@@ -298,7 +298,7 @@
 <a name="236"><span class="lineNum">     236 </span>            : /*!</a>
 <a name="237"><span class="lineNum">     237 </span>            :  * Handle scan finished signals, by simply logging the event for diagnostic purposes.</a>
 <a name="238"><span class="lineNum">     238 </span>            :  */</a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         18 : void PokitDiscoveryAgentPrivate::finished()</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         18 : void PokitDiscoveryAgentPrivate::finished() const</span></a>
 <a name="240"><span class="lineNum">     240 </span>            : {</a>
 <a name="241"><span class="lineNum">     241 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Pokit device scan finished.&quot;);</span></a>
 <a name="242"><span class="lineNum">     242 </span><span class="lineCov">         18 : }</span></a>

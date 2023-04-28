@@ -621,7 +621,7 @@
 <a name="559"><span class="lineNum">     559 </span><span class="lineCov">         36 :         stream &lt;&lt; (quint16)((settings.updateInterval+500)/1000) &lt;&lt; settings.timestamp;</span></a>
 <a name="560"><span class="lineNum">     560 </span>            :         Q_ASSERT(value.size() == 11); // According to Pokit API 1.00.</a>
 <a name="561"><span class="lineNum">     561 </span>            :     } else {</a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">         90 :         stream &lt;&lt; (quint32)settings.updateInterval &lt;&lt; settings.timestamp;</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">         90 :         stream &lt;&lt; settings.updateInterval &lt;&lt; settings.timestamp;</span></a>
 <a name="563"><span class="lineNum">     563 </span>            :         Q_ASSERT(value.size() == 13); // According to testing / experimentation.</a>
 <a name="564"><span class="lineNum">     564 </span>            :     }</a>
 <a name="565"><span class="lineNum">     565 </span>            : </a>

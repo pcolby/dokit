@@ -84,7 +84,7 @@
 <a name="22"><span class="lineNum">      22 </span>            : /*!</a>
 <a name="23"><span class="lineNum">      23 </span>            :  * Construct a new ScanCommand object with \a parent.</a>
 <a name="24"><span class="lineNum">      24 </span>            :  */</a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">        945 : ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent), showCsvHeader(true)</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">        945 : ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)</span></a>
 <a name="26"><span class="lineNum">      26 </span>            : {</a>
 <a name="27"><span class="lineNum">      27 </span>            :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.</a>
 <a name="28"><span class="lineNum">      28 </span><span class="lineCov">        780 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::pokitDeviceUpdated,</span></a>

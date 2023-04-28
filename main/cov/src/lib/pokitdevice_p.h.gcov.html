@@ -98,15 +98,15 @@
 <a name="36"><span class="lineNum">      36 </span>            : public:</a>
 <a name="37"><span class="lineNum">      37 </span><span class="lineCov">       1734 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ble.controller&quot;, QtInfoMsg); ///&lt; Logging category.</span></a>
 <a name="38"><span class="lineNum">      38 </span>            : </a>
-<a name="39"><span class="lineNum">      39 </span>            :     QLowEnergyController * controller; ///&lt; BLE controller for accessing the Pokit device.</a>
+<a name="39"><span class="lineNum">      39 </span>            :     QLowEnergyController * controller { nullptr };    ///&lt; BLE controller for accessing the Pokit device.</a>
 <a name="40"><span class="lineNum">      40 </span>            : </a>
-<a name="41"><span class="lineNum">      41 </span>            :     CalibrationService * calibration;     ///&lt; Calibration service for this Pokit device.</a>
-<a name="42"><span class="lineNum">      42 </span>            :     DataLoggerService * dataLogger;       ///&lt; Data Logger service for this Pokit device.</a>
-<a name="43"><span class="lineNum">      43 </span>            :     DeviceInfoService * deviceInfo;       ///&lt; Device Info service for this Pokit device.</a>
-<a name="44"><span class="lineNum">      44 </span>            :     DsoService * dso;                     ///&lt; DSO service for this Pokit device.</a>
-<a name="45"><span class="lineNum">      45 </span>            :     GenericAccessService * genericAccess; ///&lt; Generic Access service for this Pokit device.</a>
-<a name="46"><span class="lineNum">      46 </span>            :     MultimeterService * multimeter;       ///&lt; Multimeter service for this Pokit device.</a>
-<a name="47"><span class="lineNum">      47 </span>            :     StatusService * status;               ///&lt; Status service for this Pokit device.</a>
+<a name="41"><span class="lineNum">      41 </span>            :     CalibrationService * calibration { nullptr };     ///&lt; Calibration service for this Pokit device.</a>
+<a name="42"><span class="lineNum">      42 </span>            :     DataLoggerService * dataLogger { nullptr };       ///&lt; Data Logger service for this Pokit device.</a>
+<a name="43"><span class="lineNum">      43 </span>            :     DeviceInfoService * deviceInfo { nullptr };       ///&lt; Device Info service for this Pokit device.</a>
+<a name="44"><span class="lineNum">      44 </span>            :     DsoService * dso { nullptr };                     ///&lt; DSO service for this Pokit device.</a>
+<a name="45"><span class="lineNum">      45 </span>            :     GenericAccessService * genericAccess { nullptr }; ///&lt; Generic Access service for this Pokit device.</a>
+<a name="46"><span class="lineNum">      46 </span>            :     MultimeterService * multimeter { nullptr };       ///&lt; Multimeter service for this Pokit device.</a>
+<a name="47"><span class="lineNum">      47 </span>            :     StatusService * status { nullptr };               ///&lt; Status service for this Pokit device.</a>
 <a name="48"><span class="lineNum">      48 </span>            : </a>
 <a name="49"><span class="lineNum">      49 </span>            :     QMutex calibrationMutex;   ///&lt; Mutex for protecting access to #calibration.</a>
 <a name="50"><span class="lineNum">      50 </span>            :     QMutex dataLoggerMutex;    ///&lt; Mutex for protecting access to #dataLogger.</a>
@@ -121,13 +121,13 @@
 <a name="59"><span class="lineNum">      59 </span>            :     void setController(QLowEnergyController * newController);</a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            : public slots:</a>
-<a name="62"><span class="lineNum">      62 </span>            :     void connected();</a>
-<a name="63"><span class="lineNum">      63 </span>            :     void connectionUpdated(const QLowEnergyConnectionParameters &amp;newParameters);</a>
-<a name="64"><span class="lineNum">      64 </span>            :     void disconnected();</a>
-<a name="65"><span class="lineNum">      65 </span>            :     void discoveryFinished();</a>
-<a name="66"><span class="lineNum">      66 </span>            :     void errorOccurred(QLowEnergyController::Error newError);</a>
-<a name="67"><span class="lineNum">      67 </span>            :     void serviceDiscovered(const QBluetoothUuid &amp;newService);</a>
-<a name="68"><span class="lineNum">      68 </span>            :     void stateChanged(QLowEnergyController::ControllerState state);</a>
+<a name="62"><span class="lineNum">      62 </span>            :     void connected() const;</a>
+<a name="63"><span class="lineNum">      63 </span>            :     void connectionUpdated(const QLowEnergyConnectionParameters &amp;newParameters) const;</a>
+<a name="64"><span class="lineNum">      64 </span>            :     void disconnected() const;</a>
+<a name="65"><span class="lineNum">      65 </span>            :     void discoveryFinished() const;</a>
+<a name="66"><span class="lineNum">      66 </span>            :     void errorOccurred(QLowEnergyController::Error newError) const;</a>
+<a name="67"><span class="lineNum">      67 </span>            :     void serviceDiscovered(const QBluetoothUuid &amp;newService) const;</a>
+<a name="68"><span class="lineNum">      68 </span>            :     void stateChanged(QLowEnergyController::ControllerState state) const;</a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span>            : protected:</a>
 <a name="71"><span class="lineNum">      71 </span>            :     PokitDevice * q_ptr; ///&lt; Internal q-pointer.</a>
