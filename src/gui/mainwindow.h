@@ -17,6 +17,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget * const parent = nullptr, const Qt::WindowFlags flags = Qt::WindowFlags());
 
+public slots:
+    void about();
+
 protected:
     static Q_LOGGING_CATEGORY(lc, "dokit.gui.mainWindow", QtInfoMsg);
 

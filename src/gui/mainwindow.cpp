@@ -7,6 +7,8 @@
 #include <QChartView>
 #include <QDockWidget>
 #include <QListView>
+#include <QMenuBar>
+#include <QMessageBox>
 #include <QSettings>
 #include <QStatusBar>
 
@@ -19,6 +21,16 @@ MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QM
 {
     setWindowIcon(QIcon(QStringLiteral(":/dokit-icon-512.png")));
     setWindowTitle(tr("%1 %2").arg(QApplication::applicationName(), QApplication::applicationVersion()));
+
+    /// \todo move this
+    QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addSeparator();
+    fileMenu->addAction(tr("E&xit"), qApp, &QApplication::quit);
+    QMenu *aboutMenu = menuBar()->addMenu(tr("&About"));
+    QAction *aboutAct = aboutMenu->addAction(tr("About &%1").arg(QApplication::applicationName()), this, &MainWindow::about);
+    aboutAct->setStatusTip(tr("Show the application's About box"));
+    QAction *aboutQtAct = aboutMenu->addAction(tr("About &Qt"), qApp, &QApplication::aboutQt);
+    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
 
     discoveryAgent = new PokitDiscoveryAgent(this);
     devicesModel = new PokitDevicesModel(this);
@@ -77,6 +89,14 @@ MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QM
     connect(discoveryAgent, &PokitDiscoveryAgent::finished, this, &MainWindow::discoveryFinished);
     statusBar()->showMessage(tr("Scanning for Pokit devices"));
     discoveryAgent->start();
+}
+
+void MainWindow::about()
+{
+    QMessageBox::about(this, tr("About %1").arg(QApplication::applicationName()), tr(
+        "<p><b>%1 %2</b></p>"
+        "<p>More info goes here...</p>" ///< \todo
+    ).arg(QApplication::applicationName(), QApplication::applicationVersion()));
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
