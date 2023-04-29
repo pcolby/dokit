@@ -5,6 +5,11 @@
 ### Added
 
 - Localisation for en_AU, en_GB and en_US.
+- Very early GUI app prototype.
+
+### Changed
+
+- Renamed the project to `Dokit` (the shared library is still `QtPokit`).
 
 ## [0.1.2][] (2023-03-30)
 

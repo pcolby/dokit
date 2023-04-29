@@ -13,10 +13,13 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
 
-QtPokit is a cross-platform [Qt][] library, and console application for accessing [Pokit][]
-measuring devices. The QtPokit library is intended to be suitable for other projects -
-the console application is really just an extensive example to demonstrate the library's
-use. In particular, a GUI application using the QtPokit library would be most welcome ;)
+Dokit is a set of cross-platform, open source tools for accessing [Pokit][] measuring devices.
+It consists if primarily three components:
+
+1. `QtPokit` cross-platform [Qt][] library - used extensively by the applications below, but
+    also easily re-usable under the [LGPL][]; and
+2. dokit CLI console application demonstrating most of the features of [QtPokit]; and
+3. Dokit GUI application - currently in very early stages of development.
 
 Most [Pokit Meter][] and [Pokit Pro][] functions are supported, including the multimeter,
 oscilloscope and data logger functions. The one real feature missing currently is
@@ -36,12 +39,12 @@ on macOS and Windows would be most welcome to help!
 For shared library usage (for developers to create their own Pokit device applications), see
 the latest [API docs][].
 
-### `pokit` Command
+### `dokit` Command
 
-The `pokit` CLI command is executed like:
+The `dokit` CLI command is executed like:
 
 ```sh
-pokit <command> [options]
+dokit <command> [options]
 ```
 
 Where `<command>` is one of: `info`, `status`, `meter`, `dso`, `logger-start`, `logger-stop`,
@@ -50,7 +53,7 @@ Where `<command>` is one of: `info`, `status`, `meter`, `dso`, `logger-start`, `
 For example, to get a device's status:
 
 ```sh
-pokit status
+dokit status
 ```
 
 Outputs like:
@@ -73,7 +76,7 @@ Battery status:        N/A (255)
 Or, you can output in CSV, or JSON too, like:
 
 ```sh
-pokit status --output json
+dokit status --output json
 ```
 
 ```json
@@ -100,23 +103,23 @@ pokit status --output json
 }
 ```
 
-By default, the `pokit` command will use the first Pokit device it finds. However, if you have more than
+By default, the `dokit` command will use the first Pokit device it finds. However, if you have more than
 one device, you can specify the device's name, or MAC address, or (on macOS) device UUID, such as:
 
 ```sh
-pokit status --device RedPokitPro
+dokit status --device RedPokitPro
 ```
 
 Tip: You can rename Pokit devices via the official Pokit app, or the `set-name` command, like:
 
 ```sh
-pokit set-name --device Pokit --new-name PokitMeter
+dokit set-name --device Pokit --new-name PokitMeter
 ```
 
 Here's a more complex usage example:
 
 ```sh
-pokit meter --mode Vac --range 10V --samples 10 --output csv
+dokit meter --mode Vac --range 10V --samples 10 --output csv
 ```
 
 This will fetch 10 AC meter readings, on the nearest range that can support 10Vac, and output those
@@ -125,7 +128,7 @@ readings in CSV format:
 For full usage information (albeit brief), use the `--help` option, which currently outputs something like:
 
 ```text
-Usage: pokit <command> [options]
+Usage: dokit <command> [options]
 
 Options:
   --color <yes|no|auto>    Colors the console output. Valid options are: yes,
@@ -193,7 +196,7 @@ Command:
 * Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]
 * a Qt-supported platform, such as Linux, macOS or Windows
 * a [Pokit][] device, such as a [Pokit Meter][] or [Pokit Pro][]
-* [CMake][] (for building the QtPokit itself) 3.0+
+* [CMake][] (for building Dokit itself) 3.0+
   * some unit tests won't be built unless using CMake 3.12 or later.
 
 ## Building from Source
