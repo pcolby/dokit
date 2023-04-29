@@ -17,6 +17,7 @@
 
 MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QMainWindow(parent, flags)
 {
+    setWindowIcon(QIcon(QStringLiteral(":/dokit-icon-512.png")));
     setWindowTitle(tr("%1 %2").arg(QApplication::applicationName(), QApplication::applicationVersion()));
 
     discoveryAgent = new PokitDiscoveryAgent(this);
