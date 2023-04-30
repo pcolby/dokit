@@ -24,9 +24,6 @@ void PokitDevicesModel::setDiscoveryAgent(const PokitDiscoveryAgent * agent)
 
 void PokitDevicesModel::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 {
-    static QIcon pokitMeterIcon = loadPokitMeterIcon(QStringLiteral("transparent"));
-    static QIcon pokitProIcon = loadPokitProIcon(QStringLiteral("gray"));
-
     qCInfo(lc) << "Discovered" << info.deviceUuid() << QIcon::themeName() << QIcon::themeSearchPaths();
     /// \todo Check for existing entries (ie avoid duplicates).
     auto item = new QStandardItem(info.name());
@@ -34,11 +31,14 @@ void PokitDevicesModel::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
     item->setEditable(false);
 
     if (PokitDiscoveryAgent::isPokitMeter(info)) {
+        static QIcon pokitMeterIcon = loadPokitMeterIcon(QStringLiteral("transparent"));
         item->setIcon(pokitMeterIcon);
     } else if (PokitDiscoveryAgent::isPokitPro(info)) {
+        static QIcon pokitProIcon = loadPokitProIcon(QStringLiteral("gray"));
         item->setIcon(pokitProIcon);
     } else {
-        item->setIcon(QIcon(QStringLiteral(":/devices/pokit_pro-150x135.png"))); /// \todo Use our own icons?
+        static QIcon pokitLogoIcon = loadPokitLogoIcon();
+        item->setIcon(pokitLogoIcon);
     }
     item->setToolTip(info.address().isNull() ? info.deviceUuid().toString() : info.address().toString());
     item->setData(info.address().toUInt64(), BluetoothAddressRole);

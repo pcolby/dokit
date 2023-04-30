@@ -8,6 +8,7 @@
 
 QIcon loadIcon(const QString &path, const QStringList &nameFilters);
 
+QIcon loadPokitLogoIcon();
 QIcon loadPokitMeterIcon(const QString &color);
 QIcon loadPokitProIcon(const QString &color);
 

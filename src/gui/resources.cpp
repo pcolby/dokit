@@ -15,6 +15,13 @@ QIcon loadIcon(const QString &path, const QStringList &nameFilters)
     return icon;
 }
 
+QIcon loadPokitLogoIcon()
+{
+    const QIcon icon = loadIcon(QStringLiteral(":/icons/pokit"), { QStringLiteral("pokit-logo-*.png")});
+    Q_ASSERT(icon.availableSizes().size() == 1);
+    return icon;
+}
+
 QIcon loadPokitMeterIcon(const QString &color)
 {
     const QIcon icon = loadIcon(QStringLiteral(":/icons/pokit"),
