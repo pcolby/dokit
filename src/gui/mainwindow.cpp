@@ -21,16 +21,7 @@ MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QM
 {
     setWindowIcon(QIcon(QStringLiteral(":/dokit-icon-512.png")));
     setWindowTitle(tr("%1 %2").arg(QApplication::applicationName(), QApplication::applicationVersion()));
-
-    /// \todo move this
-    QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
-    fileMenu->addSeparator();
-    fileMenu->addAction(tr("E&xit"), qApp, &QApplication::quit);
-    QMenu *aboutMenu = menuBar()->addMenu(tr("&About"));
-    QAction *aboutAct = aboutMenu->addAction(tr("About &%1").arg(QApplication::applicationName()), this, &MainWindow::about);
-    aboutAct->setStatusTip(tr("Show the application's About box"));
-    QAction *aboutQtAct = aboutMenu->addAction(tr("About &Qt"), qApp, &QApplication::aboutQt);
-    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
+    setupMenuBar();
 
     discoveryAgent = new PokitDiscoveryAgent(this);
     devicesModel = new PokitDevicesModel(this);
@@ -111,6 +102,19 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     // Let the base class accept or ignore the event.
     QMainWindow::closeEvent(event);
+}
+
+void MainWindow::setupMenuBar()
+{
+    QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addSeparator();
+    fileMenu->addAction(tr("E&xit"), qApp, &QApplication::quit);
+
+    QMenu *aboutMenu = menuBar()->addMenu(tr("&About"));
+    QAction *aboutAct = aboutMenu->addAction(tr("About &%1").arg(QApplication::applicationName()), this, &MainWindow::about);
+    aboutAct->setStatusTip(tr("Show the application's About box"));
+    QAction *aboutQtAct = aboutMenu->addAction(tr("About &Qt"), qApp, &QApplication::aboutQt);
+    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
 }
 
 void MainWindow::discoveryFinished()

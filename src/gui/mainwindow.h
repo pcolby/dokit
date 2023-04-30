@@ -29,6 +29,8 @@ private:
     PokitDiscoveryAgent * discoveryAgent;
     PokitDevicesModel * devicesModel;
 
+    void setupMenuBar();
+
 private slots:
     void discoveryFinished();
 };
