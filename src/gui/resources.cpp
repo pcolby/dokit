@@ -17,7 +17,7 @@ QIcon loadIcon(const QString &path, const QStringList &nameFilters)
 
 QIcon loadPokitMeterIcon(const QString &color)
 {
-    const QIcon icon = loadIcon(QStringLiteral(":/devices"),
+    const QIcon icon = loadIcon(QStringLiteral(":/icons/pokit"),
         { QStringLiteral("pokit_meter-%1-*.png").arg(color) });
     Q_ASSERT(icon.availableSizes().size() == 5);
     return icon;
@@ -25,7 +25,7 @@ QIcon loadPokitMeterIcon(const QString &color)
 
 QIcon loadPokitProIcon(const QString &color)
 {
-    const QIcon icon = loadIcon(QStringLiteral(":/devices"),
+    const QIcon icon = loadIcon(QStringLiteral(":/icons/pokit"),
         { QStringLiteral("pokit_pro-%1-*.png").arg(color) });
     Q_ASSERT(icon.availableSizes().size() == 5);
     return icon;
