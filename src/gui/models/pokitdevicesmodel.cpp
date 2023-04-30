@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "pokitdevicesmodel.h"
+#include "../resources.h"
 
 #include "qtpokit/pokitdiscoveryagent.h"
 
@@ -21,34 +22,10 @@ void PokitDevicesModel::setDiscoveryAgent(const PokitDiscoveryAgent * agent)
     #endif
 }
 
-QIcon PokitDevicesModel::getPokitMeterIcon()
-{
-    QIcon icon;
-    icon.addFile(QStringLiteral(":/devices/pokit_meter-157x166.png"));
-    icon.addFile(QStringLiteral(":/devices/pokit_meter-236x249.png"));
-    icon.addFile(QStringLiteral(":/devices/pokit_meter-315x333.png"));
-    icon.addFile(QStringLiteral(":/devices/pokit_meter-472x499.png"));
-    icon.addFile(QStringLiteral(":/devices/pokit_meter-630x666.png"));
-    Q_ASSERT(icon.availableSizes().size() == 5);
-    return icon;
-}
-
-QIcon PokitDevicesModel::getPokitProIcon()
-{
-    QIcon icon;
-    icon.addFile(QStringLiteral(":/devices/pokit_pro-75x68.png"));
-    icon.addFile(QStringLiteral(":/devices/pokit_pro-112x101.png"));
-    icon.addFile(QStringLiteral(":/devices/pokit_pro-150x135.png"));
-    icon.addFile(QStringLiteral(":/devices/pokit_pro-225x203.png"));
-    icon.addFile(QStringLiteral(":/devices/pokit_pro-300x270.png"));
-    Q_ASSERT(icon.availableSizes().size() == 5);
-    return icon;
-}
-
 void PokitDevicesModel::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 {
-    static QIcon pokitMeterIcon = getPokitMeterIcon();
-    static QIcon pokitProIcon = getPokitProIcon();
+    static QIcon pokitMeterIcon = loadPokitMeterIcon(QStringLiteral("transparent"));
+    static QIcon pokitProIcon = loadPokitProIcon(QStringLiteral("gray"));
 
     qCInfo(lc) << "Discovered" << info.deviceUuid() << QIcon::themeName() << QIcon::themeSearchPaths();
     /// \todo Check for existing entries (ie avoid duplicates).

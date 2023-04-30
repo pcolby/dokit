@@ -13,6 +13,8 @@ set(DokitGuiSources
   mainwindow.h
   models/pokitdevicesmodel.cpp
   models/pokitdevicesmodel.h
+  resources.cpp
+  resources.h
 )
 
 qt_add_resources(DokitGuiSources
