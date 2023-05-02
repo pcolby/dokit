@@ -477,13 +477,13 @@ void TestDataLoggerService::parseMetadata()
     QFETCH(DataLoggerService::Metadata, expected);
     if (value.size() < 15) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Metadata requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+            "^Metadata requires \\d+ byte/s, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
     }
     if (value.size() > 23) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Metadata has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+            "^Metadata has \\d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$")));
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Cannot decode metadata of \\d+ bytes: 0x[a-zA-Z0-9,.]*$")));
+            "^Cannot decode metadata of \\d+ byte/s: 0x[a-zA-Z0-9,.]*$")));
     }
     const DataLoggerService::Metadata actual = DataLoggerServicePrivate::parseMetadata(value);
     QCOMPARE(actual.status, expected.status);

@@ -420,11 +420,11 @@ void TestDsoService::parseMetadata()
     QFETCH(DsoService::Metadata, expected);
     if (value.size() < 17) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Metadata requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+            "^Metadata requires \\d+ byte/s, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
     }
     if (value.size() > 17) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Metadata has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+            "^Metadata has \\d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$")));
     }
     const DsoService::Metadata actual = DsoServicePrivate::parseMetadata(value);
     QCOMPARE(actual.status,             expected.status);

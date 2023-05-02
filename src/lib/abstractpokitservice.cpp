@@ -367,13 +367,13 @@ bool AbstractPokitServicePrivate::checkSize(const QString &label, const QByteArr
                                             const bool failOnMax)
 {
     if (data.size() < minSize) {
-        qCWarning(lc).noquote() << tr("%1 requires %2 bytes, but only %3 present: %4")
-            .arg(label).arg(minSize).arg(data.size()).arg(toHexString(data));
+        qCWarning(lc).noquote() << tr("%1 requires %n byte/s, but only %2 present: %3", nullptr, minSize)
+            .arg(label).arg(data.size()).arg(toHexString(data));
         return false;
     }
     if ((maxSize >= 0) && (data.size() > maxSize)) {
-        qCWarning(lc).noquote() << tr("%1 has %2 extraneous bytes: %3")
-            .arg(label).arg(data.size()-maxSize).arg(toHexString(data.mid(maxSize)));
+        qCWarning(lc).noquote() << tr("%1 has %n extraneous byte/s: %2", nullptr, data.size()-maxSize)
+            .arg(label, toHexString(data.mid(maxSize)));
         return (!failOnMax);
     }
     return true;
@@ -504,9 +504,8 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
 void AbstractPokitServicePrivate::characteristicRead(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" read %3 bytes: %4").arg(
-        characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
-        .arg(value.size()).arg(toHexString(value));
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" read %n byte/s: %3", nullptr, value.size()).arg(
+        characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(value));
 }
 
 /*!
@@ -519,9 +518,8 @@ void AbstractPokitServicePrivate::characteristicRead(
 void AbstractPokitServicePrivate::characteristicWritten(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" written with %L3 bytes: %4").arg(
-        characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
-        .arg(newValue.size()).arg(toHexString(newValue));
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" written with %Ln byte/s: %3", nullptr, newValue.size())
+        .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(newValue));
 }
 
 /*!
@@ -535,9 +533,8 @@ void AbstractPokitServicePrivate::characteristicWritten(
 void AbstractPokitServicePrivate::characteristicChanged(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" changed to %L3 bytes: %4").arg(
-        characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))
-        .arg(newValue.size()).arg(toHexString(newValue));
+    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" changed to %Ln byte/s: %3", nullptr, newValue.size())
+        .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(newValue));
 }
 
 /// \endcond

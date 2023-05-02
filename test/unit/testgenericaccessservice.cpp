@@ -75,11 +75,11 @@ void TestGenericAccessService::parseAppearance()
     QFETCH(quint16, expected);
     if (value.size() < 2) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Appearance requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+            "^Appearance requires \\d+ byte/s, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
     }
     if (value.size() > 2) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Appearance has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+            "^Appearance has \\d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$")));
     }
     QCOMPARE(GenericAccessServicePrivate::parseAppearance(value), expected);
 }

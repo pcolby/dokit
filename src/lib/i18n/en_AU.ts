@@ -69,15 +69,45 @@
         <source>Disabling CCCD for characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../abstractpokitservice.cpp" line="370"/>
-        <source>%1 requires %2 bytes, but only %3 present: %4</source>
-        <translation type="unfinished"></translation>
+        <source>%1 requires %n byte/s, but only %2 present: %3</source>
+        <translation>
+            <numerusform>%1 requires %n byte, but only %2 present: %3</numerusform>
+            <numerusform>%1 requires %n bytes, but only %2 present: %3</numerusform>
+        </translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../abstractpokitservice.cpp" line="375"/>
-        <source>%1 has %2 extraneous bytes: %3</source>
-        <translation type="unfinished"></translation>
+        <source>%1 has %n extraneous byte/s: %2</source>
+        <translation>
+            <numerusform>%1 has %n extraneous byte: %2</numerusform>
+            <numerusform>%1 has %n extraneous bytes: %2</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../abstractpokitservice.cpp" line="507"/>
+        <source>Characteristic %1 &quot;%2&quot; read %n byte/s: %3</source>
+        <translation>
+            <numerusform>Characteristic %1 &quot;%2&quot; read %n byte: %3</numerusform>
+            <numerusform>Characteristic %1 &quot;%2&quot; read %n bytes: %3</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../abstractpokitservice.cpp" line="521"/>
+        <source>Characteristic %1 &quot;%2&quot; written with %Ln byte/s: %3</source>
+        <translation>
+            <numerusform>Characteristic %1 &quot;%2&quot; written with %Ln byte: %3</numerusform>
+            <numerusform>Characteristic %1 &quot;%2&quot; written with %Ln bytes: %3</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../abstractpokitservice.cpp" line="536"/>
+        <source>Characteristic %1 &quot;%2&quot; changed to %Ln byte/s: %3</source>
+        <translation>
+            <numerusform>Characteristic %1 &quot;%2&quot; changed to %Ln byte: %3</numerusform>
+            <numerusform>Characteristic %1 &quot;%2&quot; changed to %Ln bytes: %3</numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../abstractpokitservice.cpp" line="409"/>
@@ -122,21 +152,6 @@
     <message>
         <location filename="../abstractpokitservice.cpp" line="492"/>
         <source>Service details discovered.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../abstractpokitservice.cpp" line="507"/>
-        <source>Characteristic %1 &quot;%2&quot; read %3 bytes: %4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../abstractpokitservice.cpp" line="522"/>
-        <source>Characteristic %1 &quot;%2&quot; written with %L3 bytes: %4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../abstractpokitservice.cpp" line="538"/>
-        <source>Characteristic %1 &quot;%2&quot; changed to %L3 bytes: %4</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -252,57 +267,63 @@
 <context>
     <name>DataLoggerServicePrivate</name>
     <message>
-        <location filename="../dataloggerservice.cpp" line="606"/>
-        <source>Cannot decode metadata of %1 bytes: %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../dataloggerservice.cpp" line="619"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
+        <location filename="../dataloggerservice.cpp" line="606"/>
+        <source>Cannot decode metadata of %n byte/s: %1</source>
+        <translation>
+            <numerusform>Cannot decode metadata of %n byte: %1</numerusform>
+            <numerusform>Cannot decode metadata of %n bytes: %1</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
         <location filename="../dataloggerservice.cpp" line="626"/>
-        <source>Read %1 samples from %2-bytes.</source>
-        <translation type="unfinished"></translation>
+        <source>Read %n sample/s from %1-bytes.</source>
+        <translation>
+            <numerusform>Read %n sample from %1-bytes.</numerusform>
+            <numerusform>Read %n samples from %1-bytes.</numerusform>
+        </translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="641"/>
+        <location filename="../dataloggerservice.cpp" line="640"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="653"/>
+        <location filename="../dataloggerservice.cpp" line="652"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="658"/>
+        <location filename="../dataloggerservice.cpp" line="657"/>
         <source>Unknown characteristic read for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="678"/>
+        <location filename="../dataloggerservice.cpp" line="677"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="684"/>
+        <location filename="../dataloggerservice.cpp" line="683"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="689"/>
+        <location filename="../dataloggerservice.cpp" line="688"/>
         <source>Unknown characteristic written for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="704"/>
+        <location filename="../dataloggerservice.cpp" line="703"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="719"/>
+        <location filename="../dataloggerservice.cpp" line="718"/>
         <source>Unknown characteristic notified for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -435,48 +456,51 @@
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../dsoservice.cpp" line="570"/>
-        <source>Read %1 samples from %2-bytes.</source>
-        <translation type="unfinished"></translation>
+        <source>Read %n sample/s from %1-bytes.</source>
+        <translation>
+            <numerusform>Read %n sample from %1-bytes.</numerusform>
+            <numerusform>Read %n samples from %1-bytes.</numerusform>
+        </translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="585"/>
+        <location filename="../dsoservice.cpp" line="584"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="597"/>
+        <location filename="../dsoservice.cpp" line="596"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="602"/>
+        <location filename="../dsoservice.cpp" line="601"/>
         <source>Unknown characteristic read for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="622"/>
+        <location filename="../dsoservice.cpp" line="621"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="628"/>
+        <location filename="../dsoservice.cpp" line="627"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="633"/>
+        <location filename="../dsoservice.cpp" line="632"/>
         <source>Unknown characteristic written for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="648"/>
+        <location filename="../dsoservice.cpp" line="647"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="663"/>
+        <location filename="../dsoservice.cpp" line="662"/>
         <source>Unknown characteristic notified for DSO service</source>
         <translation type="unfinished"></translation>
     </message>

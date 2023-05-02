@@ -139,11 +139,11 @@ void TestAbstractPokitService::checkSize()
     QFETCH(bool, expected);
     if (data.size() < min) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^<label> requires \\d+ bytes, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+            "^<label> requires \\d+ byte/s, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
     }
     if (data.size() > max) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^<label> has \\d+ extraneous bytes: 0x[a-zA-Z0-9,]*$")));
+            "^<label> has \\d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$")));
     }
     QCOMPARE(AbstractPokitServicePrivate::checkSize(label, data, min, max, failOnMax), expected);
 }

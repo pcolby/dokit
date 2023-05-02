@@ -73,7 +73,7 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &data)
     this->metadata = data;
     this->samplesToGo = data.numberOfSamples;
     this->timestamp = (quint64)data.timestamp * (quint64)1000;
-    qCInfo(lc).noquote() << tr("Fetching %L1 logger samples...").arg(data.numberOfSamples);
+    qCInfo(lc).noquote() << tr("Fetching %Ln logger sample/s...", nullptr, data.numberOfSamples);
 }
 
 /*!
@@ -122,8 +122,8 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
         --samplesToGo;
     }
     if (samplesToGo <= 0) {
-        qCInfo(lc).noquote() << tr("Finished fetching %L1 samples (with %L2 to remaining).")
-            .arg(metadata.numberOfSamples).arg(samplesToGo);
+        qCInfo(lc).noquote() << tr("Finished fetching %Ln sample/s (with %L1 remaining).",
+            nullptr, metadata.numberOfSamples).arg(samplesToGo);
         if (device) disconnect(); // Will exit the application once disconnected.
     }
 }

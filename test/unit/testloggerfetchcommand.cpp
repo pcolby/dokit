@@ -30,7 +30,7 @@ void TestLoggerFetchCommand::metadataRead()
         1000, 1234, (quint32)QDateTime::currentSecsSinceEpoch()
     };
     LoggerFetchCommand command(this);
-    QTest::ignoreMessage(QtInfoMsg, "Fetching 1,234 logger samples...");
+    QTest::ignoreMessage(QtInfoMsg, "Fetching 1,234 logger sample/s...");
     command.metadataRead(metadata);
     QCOMPARE(command.metadata.status,          metadata.status);
     QCOMPARE(command.metadata.scale,           metadata.scale);

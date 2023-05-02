@@ -187,9 +187,9 @@ void DsoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     const QString range = DsoService::toString(settings.range, settings.mode);
-    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %L3 samples over %L4us").arg(
-        DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range)
-        .arg(settings.numberOfSamples).arg(settings.samplingWindow);
+    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %Ln sample/s over %L3us", nullptr, settings.numberOfSamples)
+        .arg(DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range)
+        .arg(settings.samplingWindow);
     service->setSettings(settings);
 }
 
@@ -326,8 +326,8 @@ void DsoCommand::outputSamples(const DsoService::Samples &samples)
         --samplesToGo;
     }
     if (samplesToGo <= 0) {
-        qCInfo(lc).noquote() << tr("Finished fetching %L1 samples (with %L3 to remaining).")
-            .arg(metadata.numberOfSamples).arg(samplesToGo);
+        qCInfo(lc).noquote() << tr("Finished fetching %Ln sample/s (with %L2 to remaining).",
+            nullptr, metadata.numberOfSamples).arg(samplesToGo);
         if (device) disconnect(); // Will exit the application once disconnected.
     }
 }

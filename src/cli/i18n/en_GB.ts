@@ -175,10 +175,21 @@ success
         <source>Pokit devices do not officially support great than 8192 samples</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../dsocommand.cpp" line="190"/>
-        <source>Sampling %1, with range %2, %L3 samples over %L4us</source>
-        <translation type="unfinished"></translation>
+        <source>Sampling %1, with range %2, %Ln sample/s over %L3us</source>
+        <translation>
+            <numerusform>Sampling %1, with range %2, %Ln sample over %L3us</numerusform>
+            <numerusform>Sampling %1, with range %2, %Ln samples over %L3us</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../dsocommand.cpp" line="329"/>
+        <source>Finished fetching %Ln sample/s (with %L2 to remaining).</source>
+        <translation>
+            <numerusform>Finished fetching %Ln sample (with %L2 to remaining).</numerusform>
+            <numerusform>Finished fetching %Ln samples (with %L2 to remaining).</numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../dsocommand.cpp" line="205"/>
@@ -210,11 +221,6 @@ success
         <location filename="../dsocommand.cpp" line="323"/>
         <source>%1 %2 %3
 </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dsocommand.cpp" line="329"/>
-        <source>Finished fetching %L1 samples (with %L3 to remaining).</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -303,10 +309,13 @@ success
         <source>Fetching logger samples...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../loggerfetchcommand.cpp" line="76"/>
-        <source>Fetching %L1 logger samples...</source>
-        <translation type="unfinished"></translation>
+        <source>Fetching %Ln logger sample/s...</source>
+        <translation>
+            <numerusform>Fetching %Ln logger sample...</numerusform>
+            <numerusform>Fetching %Ln logger samples...</numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../loggerfetchcommand.cpp" line="91"/>
@@ -325,10 +334,13 @@ success
 </source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location filename="../loggerfetchcommand.cpp" line="125"/>
-        <source>Finished fetching %L1 samples (with %L2 to remaining).</source>
-        <translation type="unfinished"></translation>
+        <source>Finished fetching %Ln sample/s (with %L1 remaining).</source>
+        <translation>
+            <numerusform>Finished fetching %Ln sample (with %L1 remaining).</numerusform>
+            <numerusform>Finished fetching %Ln samples (with %L1 remaining).</numerusform>
+        </translation>
     </message>
 </context>
 <context>

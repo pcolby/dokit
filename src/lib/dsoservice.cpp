@@ -567,8 +567,7 @@ DsoService::Samples DsoServicePrivate::parseSamples(const QByteArray &value)
     while ((samples.size()*2) < value.size()) {
         samples.append(qFromLittleEndian<qint16>(value.mid(samples.size()*2,2)));
     }
-    qCDebug(lc).noquote() << tr("Read %1 samples from %2-bytes.")
-        .arg(samples.size()).arg(value.size());
+    qCDebug(lc).noquote() << tr("Read %n sample/s from %1-bytes.", nullptr, samples.size()).arg(value.size());
     return samples;
 }
 
