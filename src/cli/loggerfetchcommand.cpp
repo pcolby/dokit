@@ -87,7 +87,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
     case DataLoggerService::Mode::AcVoltage: unit = QLatin1String("Vac"); break;
     case DataLoggerService::Mode::DcCurrent: unit = QLatin1String("Adc"); break;
     case DataLoggerService::Mode::AcCurrent: unit = QLatin1String("Aac"); break;
-    case DataLoggerService::Mode::Temperature: unit = QStringLiteral(u"°C"); break;
+    case DataLoggerService::Mode::Temperature: unit = QString::fromUtf8("°C"); break;
     default:
         qCDebug(lc).noquote() << tr("No known unit for mode %1 \"%2\".").arg((int)metadata.mode)
             .arg(DataLoggerService::toString(metadata.mode));
