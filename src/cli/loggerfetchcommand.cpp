@@ -64,7 +64,7 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &data)
     qCDebug(lc) << "status:" << (int)(data.status);
     qCDebug(lc) << "scale:" << data.scale;
     qCDebug(lc) << "mode:" << DataLoggerService::toString(data.mode) << (quint8)data.mode;
-    qCDebug(lc) << "range:" << DataLoggerService::toString(data.range.voltageRange)
+    qCDebug(lc) << "range:" << DataLoggerService::toString(data.range, data.mode)
                             << (quint8)data.range.voltageRange;
     qCDebug(lc) << "updateInterval:" << (int)data.updateInterval;
     qCDebug(lc) << "numberOfSamples:" << data.numberOfSamples;
@@ -87,6 +87,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
     case DataLoggerService::Mode::AcVoltage: unit = QLatin1String("Vac"); break;
     case DataLoggerService::Mode::DcCurrent: unit = QLatin1String("Adc"); break;
     case DataLoggerService::Mode::AcCurrent: unit = QLatin1String("Aac"); break;
+    case DataLoggerService::Mode::Temperature: unit = QStringLiteral("°C"); break;
     default:
         qCDebug(lc).noquote() << tr("No known unit for mode %1 \"%2\".").arg((int)metadata.mode)
             .arg(DataLoggerService::toString(metadata.mode));
@@ -105,15 +106,18 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
             std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4\n")
                 .arg(timeString).arg(value).arg(unit, range));
             break;
-        case OutputFormat::Json:
-            std::cout << QJsonDocument(QJsonObject{
-                    { QLatin1String("timestamp"), timeString },
-                    { QLatin1String("value"),     value },
-                    { QLatin1String("unit"),      unit },
-                    { QLatin1String("range"),     range },
-                    { QLatin1String("mode"),      DataLoggerService::toString(metadata.mode) },
-                }).toJson().toStdString();
-            break;
+        case OutputFormat::Json: {
+            QJsonObject object{
+                { QLatin1String("timestamp"), timeString },
+                { QLatin1String("value"),     value },
+                { QLatin1String("unit"),      unit },
+                { QLatin1String("mode"),      DataLoggerService::toString(metadata.mode) },
+            };
+            if (!range.isEmpty()) {
+                object.insert(QLatin1String("range"), range);
+            }
+            std::cout << QJsonDocument(object).toJson().toStdString();
+        }   break;
         case OutputFormat::Text:
             std::cout << qUtf8Printable(tr("%1 %2 %3\n").arg(timeString).arg(value).arg(unit));
             break;

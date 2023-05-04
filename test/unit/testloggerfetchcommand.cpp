@@ -58,6 +58,8 @@ void TestLoggerFetchCommand::outputSamples_data()
                     DataLoggerService::CurrentRange::_30mA_to_150mA, 100, 0, 0 },
         { DataLoggerService::LoggerStatus::BufferFull, 0.1f, DataLoggerService::Mode::AcCurrent,
                     DataLoggerService::CurrentRange::_300mA_to_3A, 5000, 0, 1661235439 },
+        { DataLoggerService::LoggerStatus::BufferFull, 0.1f, DataLoggerService::Mode::Temperature,
+                     DataLoggerService::VoltageRange::_300mV_to_2V, 1000, 0, 1683202811 },
     };
 
     const QList<DataLoggerService::Samples> samplesList{

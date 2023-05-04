@@ -153,7 +153,8 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           "meter, dso and logger modes. Supported modes are: AC Voltage, DC Voltage, AC Current, "
           "DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. "
           "Only the first four options are available for dso and logger commands; the rest are "
-          "available in meter mode only." ),
+          "available in meter mode only. Temperature is also available for logger commands, but "
+          "requires firmware v1.5 or later for Pokit devices to support it."),
           QCoreApplication::translate("parseCommandLine", "mode")},
         {{QStringLiteral("new-name")},
           QCoreApplication::translate("parseCommandLine","Give the desired new name for the set-"

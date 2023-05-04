@@ -4,6 +4,7 @@
 
 ### Added
 
+- Temperature support for logger modes.
 - Localisation for en_AU, en_GB and en_US.
 - Very early GUI app prototype.
 

@@ -29,7 +29,6 @@ QStringList LoggerStartCommand::requiredOptions(const QCommandLineParser &parser
 {
     return DeviceCommand::requiredOptions(parser) + QStringList{
         QLatin1String("mode"),
-        QLatin1String("range"),
     };
 }
 
@@ -37,6 +36,7 @@ QStringList LoggerStartCommand::supportedOptions(const QCommandLineParser &parse
 {
     return DeviceCommand::supportedOptions(parser) + QStringList{
         QLatin1String("interval"),
+        QLatin1String("range"),
         QLatin1String("timestamp"),
     };
 }
@@ -64,13 +64,15 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
         settings.mode = DataLoggerService::Mode::AcCurrent;
     } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
         settings.mode = DataLoggerService::Mode::DcCurrent;
+    } else if (mode.startsWith(QLatin1String("temp"))) {
+        settings.mode = DataLoggerService::Mode::Temperature;
     } else {
         errors.append(tr("Unknown logger mode: %1").arg(parser.value(QLatin1String("mode"))));
         return errors;
     }
 
-    // Parse the (required) range option.
-    {
+    // Parse the range option.
+    if (parser.isSet(QLatin1String("range"))) {
         const QString value = parser.value(QLatin1String("range"));
         QString unit; quint32 sensibleMinimum = 0;
         switch (settings.mode) {
@@ -87,14 +89,24 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
             unit = QLatin1String("A");
             sensibleMinimum = 5; // mA.
             break;
+        case DataLoggerService::Mode::Temperature:
+        default:
+            qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
         }
-        Q_ASSERT(!unit.isEmpty());
-        const quint32 rangeMax = parseMilliValue(value, unit, sensibleMinimum);
-        if (rangeMax == 0) {
-            errors.append(tr("Invalid range value: %1").arg(value));
+        if (unit.isEmpty()) {
+            // The only mode that does not take a range, and thus we don't assign a unit above.
+            Q_ASSERT(settings.mode == DataLoggerService::Mode::Temperature);
         } else {
-            settings.range = lowestRange(settings.mode, rangeMax);
+            const quint32 rangeMax = parseMilliValue(value, unit, sensibleMinimum);
+            if (rangeMax == 0) {
+                errors.append(tr("Invalid range value: %1").arg(value));
+            } else {
+                settings.range = lowestRange(settings.mode, rangeMax);
+            }
         }
+    } else if (settings.mode != DataLoggerService::Mode::Temperature) {
+        errors.append(tr("Missing required option for logger mode '%1': range")
+            .arg(parser.value(QLatin1String("mode"))));
     }
 
     // Parse the interval option.

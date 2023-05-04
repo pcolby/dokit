@@ -44,7 +44,7 @@ public:
         AcVoltage   = 2, ///< Measure AC voltage.
         DcCurrent   = 3, ///< Measure DC current.
         AcCurrent   = 4, ///< Measure AC current.
-        /// \todo Pokit Pro supports temperature in logger mode too.
+        Temperature = 5, ///< Measure temperature.
     };
     static QString toString(const Mode &mode);
 

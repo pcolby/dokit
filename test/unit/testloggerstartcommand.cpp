@@ -34,7 +34,7 @@ void TestLoggerStartCommand::requiredOptions()
     MockDeviceCommand mock;
     QCommandLineParser parser;
     const QStringList expected = mock.requiredOptions(parser) +
-        QStringList{ QStringLiteral("mode"), QStringLiteral("range") };
+        QStringList{ QStringLiteral("mode") };
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
@@ -44,7 +44,7 @@ void TestLoggerStartCommand::supportedOptions()
     MockDeviceCommand mock;
     QCommandLineParser parser;
     const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser) +
-        QStringList{ QStringLiteral("interval"), QStringLiteral("timestamp")};
+        QStringList{ QStringLiteral("interval"), QStringLiteral("range"), QStringLiteral("timestamp")};
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
@@ -61,9 +61,7 @@ void TestLoggerStartCommand::processOptions_data()
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
         << false
-        << QStringList{
-            QStringLiteral("Missing required option: mode"),
-            QStringLiteral("Missing required option: range") };
+        << QStringList{ QStringLiteral("Missing required option: mode") };
 
     QTest::addRow("missing-required-mode")
         << QStringList{
@@ -80,8 +78,8 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
-        << false
-        << QStringList{ QStringLiteral("Missing required option: range") };
+        << true
+        << QStringList{ QStringLiteral("Missing required option for logger mode 'Vdc': range") };
 
     QTest::addRow("Vdc")
         << QStringList{
@@ -120,6 +118,26 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start, 0, DataLoggerService::Mode::AcCurrent,
             DataLoggerService::CurrentRange::_300mA_to_3A, 60000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("Temperature")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("temp"),
+           QStringLiteral("--range"), QStringLiteral("2A") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::Temperature,
+           DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
+        << true
+        << QStringList{ };
+
+    QTest::addRow("unnecessary-range")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("temp"),
+           QStringLiteral("--range"), QStringLiteral("10") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::Temperature,
+           DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0}
         << true
         << QStringList{ };
 

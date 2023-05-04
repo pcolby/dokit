@@ -26,8 +26,9 @@ void TestDataLoggerService::toString_Mode_data()
     DOKIT_ADD_TEST_ROW(AcVoltage, "AC voltage");
     DOKIT_ADD_TEST_ROW(DcCurrent, "DC current");
     DOKIT_ADD_TEST_ROW(AcCurrent, "AC current");
+    DOKIT_ADD_TEST_ROW(Temperature, "Temperature");
     #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DataLoggerService::Mode)5    << QString();
+    QTest::addRow("invalid") << (DataLoggerService::Mode)6    << QString();
     QTest::addRow("max")     << (DataLoggerService::Mode)0xFF << QString();
 }
 

@@ -56,6 +56,7 @@ QString DataLoggerService::toString(const Mode &mode)
     case Mode::AcVoltage:   return tr("AC voltage");
     case Mode::DcCurrent:   return tr("DC current");
     case Mode::AcCurrent:   return tr("AC current");
+    case Mode::Temperature: return tr("Temperature");
     default:                return QString();
     }
 }
