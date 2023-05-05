@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">173</td>
-            <td class="headerCovTableEntry">206</td>
-            <td class="headerCovTableEntryMed">84.0 %</td>
+            <td class="headerCovTableEntry">205</td>
+            <td class="headerCovTableEntryMed">84.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -629,104 +629,103 @@
 <a name="567"><span class="lineNum">     567 </span><span class="lineCov">        306 :     while ((samples.size()*2) &lt; value.size()) {</span></a>
 <a name="568"><span class="lineNum">     568 </span><span class="lineCov">        308 :         samples.append(qFromLittleEndian&lt;qint16&gt;(value.mid(samples.size()*2,2)));</span></a>
 <a name="569"><span class="lineNum">     569 </span>            :     }</a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">         54 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Read %1 samples from %2-bytes.&quot;)</span></a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :         .arg(samples.size()).arg(value.size());</span></a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">          9 :     return samples;</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineNoCov">          0 : }</span></a>
-<a name="574"><span class="lineNum">     574 </span>            : </a>
-<a name="575"><span class="lineNum">     575 </span>            : /*!</a>
-<a name="576"><span class="lineNum">     576 </span>            :  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a</a>
-<a name="577"><span class="lineNum">     577 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="578"><span class="lineNum">     578 </span>            :  */</a>
-<a name="579"><span class="lineNum">     579 </span><span class="lineCov">         18 : void DsoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="580"><span class="lineNum">     580 </span>            :                                               const QByteArray &amp;value)</a>
-<a name="581"><span class="lineNum">     581 </span>            : {</a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineCov">         18 :     AbstractPokitServicePrivate::characteristicRead(characteristic, value);</span></a>
-<a name="583"><span class="lineNum">     583 </span>            : </a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {</span></a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Settings characteristic is write-only, but somehow read&quot;)</span></a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="588"><span class="lineNum">     588 </span>            :     }</a>
-<a name="589"><span class="lineNum">     589 </span>            : </a>
-<a name="590"><span class="lineNum">     590 </span>            :     Q_Q(DsoService);</a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineNoCov">          0 :         emit q-&gt;metadataRead(parseMetadata(value));</span></a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="594"><span class="lineNum">     594 </span>            :     }</a>
-<a name="595"><span class="lineNum">     595 </span>            : </a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic is notify-only&quot;)</span></a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="600"><span class="lineNum">     600 </span>            :     }</a>
-<a name="601"><span class="lineNum">     601 </span>            : </a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">         54 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for DSO service&quot;)</span></a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">         24 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="604"><span class="lineNum">     604 </span>            : }</a>
-<a name="605"><span class="lineNum">     605 </span>            : </a>
-<a name="606"><span class="lineNum">     606 </span>            : /*!</a>
-<a name="607"><span class="lineNum">     607 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
-<a name="608"><span class="lineNum">     608 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="609"><span class="lineNum">     609 </span>            :  */</a>
-<a name="610"><span class="lineNum">     610 </span><span class="lineCov">         18 : void DsoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="611"><span class="lineNum">     611 </span>            :                                                      const QByteArray &amp;newValue)</a>
-<a name="612"><span class="lineNum">     612 </span>            : {</a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">         18 :     AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);</span></a>
-<a name="614"><span class="lineNum">     614 </span>            : </a>
-<a name="615"><span class="lineNum">     615 </span>            :     Q_Q(DsoService);</a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {</span></a>
-<a name="617"><span class="lineNum">     617 </span><span class="lineNoCov">          0 :         emit q-&gt;settingsWritten();</span></a>
-<a name="618"><span class="lineNum">     618 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="619"><span class="lineNum">     619 </span>            :     }</a>
-<a name="620"><span class="lineNum">     620 </span>            : </a>
-<a name="621"><span class="lineNum">     621 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {</span></a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Metadata characteristic is read/notify, but somehow written&quot;)</span></a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="624"><span class="lineNum">     624 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="625"><span class="lineNum">     625 </span>            :     }</a>
-<a name="626"><span class="lineNum">     626 </span>            : </a>
-<a name="627"><span class="lineNum">     627 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {</span></a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic is notify-only, but somehow written&quot;)</span></a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="630"><span class="lineNum">     630 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="631"><span class="lineNum">     631 </span>            :     }</a>
-<a name="632"><span class="lineNum">     632 </span>            : </a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">         54 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for DSO service&quot;)</span></a>
-<a name="634"><span class="lineNum">     634 </span><span class="lineCov">         24 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="635"><span class="lineNum">     635 </span>            : }</a>
-<a name="636"><span class="lineNum">     636 </span>            : </a>
-<a name="637"><span class="lineNum">     637 </span>            : /*!</a>
-<a name="638"><span class="lineNum">     638 </span>            :  * Implements AbstractPokitServicePrivate::characteristicChanged to parse \a newValue, then emit a</a>
-<a name="639"><span class="lineNum">     639 </span>            :  * specialised signal, for each supported \a characteristic.</a>
-<a name="640"><span class="lineNum">     640 </span>            :  */</a>
-<a name="641"><span class="lineNum">     641 </span><span class="lineCov">         18 : void DsoServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
-<a name="642"><span class="lineNum">     642 </span>            :                                                      const QByteArray &amp;newValue)</a>
-<a name="643"><span class="lineNum">     643 </span>            : {</a>
-<a name="644"><span class="lineNum">     644 </span><span class="lineCov">         18 :     AbstractPokitServicePrivate::characteristicChanged(characteristic, newValue);</span></a>
-<a name="645"><span class="lineNum">     645 </span>            : </a>
-<a name="646"><span class="lineNum">     646 </span>            :     Q_Q(DsoService);</a>
-<a name="647"><span class="lineNum">     647 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {</span></a>
-<a name="648"><span class="lineNum">     648 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Settings characteristic is write-only, but somehow updated&quot;)</span></a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="650"><span class="lineNum">     650 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="651"><span class="lineNum">     651 </span>            :     }</a>
-<a name="652"><span class="lineNum">     652 </span>            : </a>
-<a name="653"><span class="lineNum">     653 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {</span></a>
-<a name="654"><span class="lineNum">     654 </span><span class="lineNoCov">          0 :         emit q-&gt;metadataRead(parseMetadata(newValue));</span></a>
-<a name="655"><span class="lineNum">     655 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="656"><span class="lineNum">     656 </span>            :     }</a>
-<a name="657"><span class="lineNum">     657 </span>            : </a>
-<a name="658"><span class="lineNum">     658 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {</span></a>
-<a name="659"><span class="lineNum">     659 </span><span class="lineNoCov">          0 :         emit q-&gt;samplesRead(parseSamples(newValue));</span></a>
-<a name="660"><span class="lineNum">     660 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="661"><span class="lineNum">     661 </span>            :     }</a>
-<a name="662"><span class="lineNum">     662 </span>            : </a>
-<a name="663"><span class="lineNum">     663 </span><span class="lineCov">         54 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for DSO service&quot;)</span></a>
-<a name="664"><span class="lineNum">     664 </span><span class="lineCov">         24 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
-<a name="665"><span class="lineNum">     665 </span>            : }</a>
-<a name="666"><span class="lineNum">     666 </span>            : </a>
-<a name="667"><span class="lineNum">     667 </span>            : /// \endcond</a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">         54 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Read %n sample/s from %1-bytes.&quot;, nullptr, samples.size()).arg(value.size());</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">          9 :     return samples;</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="573"><span class="lineNum">     573 </span>            : </a>
+<a name="574"><span class="lineNum">     574 </span>            : /*!</a>
+<a name="575"><span class="lineNum">     575 </span>            :  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a</a>
+<a name="576"><span class="lineNum">     576 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="577"><span class="lineNum">     577 </span>            :  */</a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">         18 : void DsoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="579"><span class="lineNum">     579 </span>            :                                               const QByteArray &amp;value)</a>
+<a name="580"><span class="lineNum">     580 </span>            : {</a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">         18 :     AbstractPokitServicePrivate::characteristicRead(characteristic, value);</span></a>
+<a name="582"><span class="lineNum">     582 </span>            : </a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {</span></a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Settings characteristic is write-only, but somehow read&quot;)</span></a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="587"><span class="lineNum">     587 </span>            :     }</a>
+<a name="588"><span class="lineNum">     588 </span>            : </a>
+<a name="589"><span class="lineNum">     589 </span>            :     Q_Q(DsoService);</a>
+<a name="590"><span class="lineNum">     590 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineNoCov">          0 :         emit q-&gt;metadataRead(parseMetadata(value));</span></a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="593"><span class="lineNum">     593 </span>            :     }</a>
+<a name="594"><span class="lineNum">     594 </span>            : </a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic is notify-only&quot;)</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="599"><span class="lineNum">     599 </span>            :     }</a>
+<a name="600"><span class="lineNum">     600 </span>            : </a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">         54 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for DSO service&quot;)</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">         24 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="603"><span class="lineNum">     603 </span>            : }</a>
+<a name="604"><span class="lineNum">     604 </span>            : </a>
+<a name="605"><span class="lineNum">     605 </span>            : /*!</a>
+<a name="606"><span class="lineNum">     606 </span>            :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</a>
+<a name="607"><span class="lineNum">     607 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="608"><span class="lineNum">     608 </span>            :  */</a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">         18 : void DsoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="610"><span class="lineNum">     610 </span>            :                                                      const QByteArray &amp;newValue)</a>
+<a name="611"><span class="lineNum">     611 </span>            : {</a>
+<a name="612"><span class="lineNum">     612 </span><span class="lineCov">         18 :     AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);</span></a>
+<a name="613"><span class="lineNum">     613 </span>            : </a>
+<a name="614"><span class="lineNum">     614 </span>            :     Q_Q(DsoService);</a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineNoCov">          0 :         emit q-&gt;settingsWritten();</span></a>
+<a name="617"><span class="lineNum">     617 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="618"><span class="lineNum">     618 </span>            :     }</a>
+<a name="619"><span class="lineNum">     619 </span>            : </a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Metadata characteristic is read/notify, but somehow written&quot;)</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="624"><span class="lineNum">     624 </span>            :     }</a>
+<a name="625"><span class="lineNum">     625 </span>            : </a>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {</span></a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic is notify-only, but somehow written&quot;)</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="630"><span class="lineNum">     630 </span>            :     }</a>
+<a name="631"><span class="lineNum">     631 </span>            : </a>
+<a name="632"><span class="lineNum">     632 </span><span class="lineCov">         54 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for DSO service&quot;)</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">         24 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="634"><span class="lineNum">     634 </span>            : }</a>
+<a name="635"><span class="lineNum">     635 </span>            : </a>
+<a name="636"><span class="lineNum">     636 </span>            : /*!</a>
+<a name="637"><span class="lineNum">     637 </span>            :  * Implements AbstractPokitServicePrivate::characteristicChanged to parse \a newValue, then emit a</a>
+<a name="638"><span class="lineNum">     638 </span>            :  * specialised signal, for each supported \a characteristic.</a>
+<a name="639"><span class="lineNum">     639 </span>            :  */</a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">         18 : void DsoServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &amp;characteristic,</span></a>
+<a name="641"><span class="lineNum">     641 </span>            :                                                      const QByteArray &amp;newValue)</a>
+<a name="642"><span class="lineNum">     642 </span>            : {</a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">         18 :     AbstractPokitServicePrivate::characteristicChanged(characteristic, newValue);</span></a>
+<a name="644"><span class="lineNum">     644 </span>            : </a>
+<a name="645"><span class="lineNum">     645 </span>            :     Q_Q(DsoService);</a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {</span></a>
+<a name="647"><span class="lineNum">     647 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Settings characteristic is write-only, but somehow updated&quot;)</span></a>
+<a name="648"><span class="lineNum">     648 </span><span class="lineNoCov">          0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="650"><span class="lineNum">     650 </span>            :     }</a>
+<a name="651"><span class="lineNum">     651 </span>            : </a>
+<a name="652"><span class="lineNum">     652 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {</span></a>
+<a name="653"><span class="lineNum">     653 </span><span class="lineNoCov">          0 :         emit q-&gt;metadataRead(parseMetadata(newValue));</span></a>
+<a name="654"><span class="lineNum">     654 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="655"><span class="lineNum">     655 </span>            :     }</a>
+<a name="656"><span class="lineNum">     656 </span>            : </a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineCov">         18 :     if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {</span></a>
+<a name="658"><span class="lineNum">     658 </span><span class="lineNoCov">          0 :         emit q-&gt;samplesRead(parseSamples(newValue));</span></a>
+<a name="659"><span class="lineNum">     659 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="660"><span class="lineNum">     660 </span>            :     }</a>
+<a name="661"><span class="lineNum">     661 </span>            : </a>
+<a name="662"><span class="lineNum">     662 </span><span class="lineCov">         54 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for DSO service&quot;)</span></a>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">         24 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
+<a name="664"><span class="lineNum">     664 </span>            : }</a>
+<a name="665"><span class="lineNum">     665 </span>            : </a>
+<a name="666"><span class="lineNum">     666 </span>            : /// \endcond</a>
 </pre>
       </td>
     </tr>

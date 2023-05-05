@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">100</td>
-            <td class="headerCovTableEntry">171</td>
-            <td class="headerCovTableEntryLo">58.5 %</td>
+            <td class="headerCovTableEntry">168</td>
+            <td class="headerCovTableEntryLo">59.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -429,13 +429,13 @@
 <a name="367"><span class="lineNum">     367 </span>            :                                             const bool failOnMax)</a>
 <a name="368"><span class="lineNum">     368 </span>            : {</a>
 <a name="369"><span class="lineNum">     369 </span><span class="lineCov">        612 :     if (data.size() &lt; minSize) {</span></a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        468 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 requires %2 bytes, but only %3 present: %4&quot;)</span></a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">        520 :             .arg(label).arg(minSize).arg(data.size()).arg(toHexString(data));</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        468 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 requires %n byte/s, but only %2 present: %3&quot;, nullptr, minSize)</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">        468 :             .arg(label).arg(data.size()).arg(toHexString(data));</span></a>
 <a name="372"><span class="lineNum">     372 </span><span class="lineCov">        234 :         return false;</span></a>
 <a name="373"><span class="lineNum">     373 </span>            :     }</a>
 <a name="374"><span class="lineNum">     374 </span><span class="lineCov">        378 :     if ((maxSize &gt;= 0) &amp;&amp; (data.size() &gt; maxSize)) {</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        252 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %2 extraneous bytes: %3&quot;)</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        154 :             .arg(label).arg(data.size()-maxSize).arg(toHexString(data.mid(maxSize)));</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        350 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %n extraneous byte/s: %2&quot;, nullptr, data.size()-maxSize)</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        217 :             .arg(label, toHexString(data.mid(maxSize)));</span></a>
 <a name="377"><span class="lineNum">     377 </span><span class="lineCov">        126 :         return (!failOnMax);</span></a>
 <a name="378"><span class="lineNum">     378 </span>            :     }</a>
 <a name="379"><span class="lineNum">     379 </span>            :     return true;</a>
@@ -566,43 +566,40 @@
 <a name="504"><span class="lineNum">     504 </span><span class="lineCov">        126 : void AbstractPokitServicePrivate::characteristicRead(</span></a>
 <a name="505"><span class="lineNum">     505 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;value)</a>
 <a name="506"><span class="lineNum">     506 </span>            : {</a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; read %3 bytes: %4&quot;).arg(</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 :         .arg(value.size()).arg(toHexString(value));</span></a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">        126 : }</span></a>
-<a name="511"><span class="lineNum">     511 </span>            : </a>
-<a name="512"><span class="lineNum">     512 </span>            : /*!</a>
-<a name="513"><span class="lineNum">     513 </span>            :  * Handles `QLowEnergyService::characteristicWritten` events. This base implementation simply debug</a>
-<a name="514"><span class="lineNum">     514 </span>            :  * logs the event.</a>
-<a name="515"><span class="lineNum">     515 </span>            :  *</a>
-<a name="516"><span class="lineNum">     516 </span>            :  * Derived classes should implement this function to handle the successful writes of</a>
-<a name="517"><span class="lineNum">     517 </span>            :  * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.</a>
-<a name="518"><span class="lineNum">     518 </span>            :  */</a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">        126 : void AbstractPokitServicePrivate::characteristicWritten(</span></a>
-<a name="520"><span class="lineNum">     520 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
-<a name="521"><span class="lineNum">     521 </span>            : {</a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; written with %L3 bytes: %4&quot;).arg(</span></a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineNoCov">          0 :         .arg(newValue.size()).arg(toHexString(newValue));</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        126 : }</span></a>
-<a name="526"><span class="lineNum">     526 </span>            : </a>
-<a name="527"><span class="lineNum">     527 </span>            : /*!</a>
-<a name="528"><span class="lineNum">     528 </span>            :  * Handles `QLowEnergyService::characteristicChanged` events. This base implementation simply debug</a>
-<a name="529"><span class="lineNum">     529 </span>            :  * logs the event.</a>
-<a name="530"><span class="lineNum">     530 </span>            :  *</a>
-<a name="531"><span class="lineNum">     531 </span>            :  * If derived classes support characteristics with client-side notification (ie Notify, as opposed</a>
-<a name="532"><span class="lineNum">     532 </span>            :  * to Read or Write operations), they should implement this function to handle the successful reads of</a>
-<a name="533"><span class="lineNum">     533 </span>            :  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.</a>
-<a name="534"><span class="lineNum">     534 </span>            :  */</a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">         72 : void AbstractPokitServicePrivate::characteristicChanged(</span></a>
-<a name="536"><span class="lineNum">     536 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
-<a name="537"><span class="lineNum">     537 </span>            : {</a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineCov">         72 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; changed to %L3 bytes: %4&quot;).arg(</span></a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()))</span></a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :         .arg(newValue.size()).arg(toHexString(newValue));</span></a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">         72 : }</span></a>
-<a name="542"><span class="lineNum">     542 </span>            : </a>
-<a name="543"><span class="lineNum">     543 </span>            : /// \endcond</a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; read %n byte/s: %3&quot;, nullptr, value.size()).arg(</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(value));</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">        126 : }</span></a>
+<a name="510"><span class="lineNum">     510 </span>            : </a>
+<a name="511"><span class="lineNum">     511 </span>            : /*!</a>
+<a name="512"><span class="lineNum">     512 </span>            :  * Handles `QLowEnergyService::characteristicWritten` events. This base implementation simply debug</a>
+<a name="513"><span class="lineNum">     513 </span>            :  * logs the event.</a>
+<a name="514"><span class="lineNum">     514 </span>            :  *</a>
+<a name="515"><span class="lineNum">     515 </span>            :  * Derived classes should implement this function to handle the successful writes of</a>
+<a name="516"><span class="lineNum">     516 </span>            :  * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.</a>
+<a name="517"><span class="lineNum">     517 </span>            :  */</a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">        126 : void AbstractPokitServicePrivate::characteristicWritten(</span></a>
+<a name="519"><span class="lineNum">     519 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
+<a name="520"><span class="lineNum">     520 </span>            : {</a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; written with %Ln byte/s: %3&quot;, nullptr, newValue.size())</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 :         .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(newValue));</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">        126 : }</span></a>
+<a name="524"><span class="lineNum">     524 </span>            : </a>
+<a name="525"><span class="lineNum">     525 </span>            : /*!</a>
+<a name="526"><span class="lineNum">     526 </span>            :  * Handles `QLowEnergyService::characteristicChanged` events. This base implementation simply debug</a>
+<a name="527"><span class="lineNum">     527 </span>            :  * logs the event.</a>
+<a name="528"><span class="lineNum">     528 </span>            :  *</a>
+<a name="529"><span class="lineNum">     529 </span>            :  * If derived classes support characteristics with client-side notification (ie Notify, as opposed</a>
+<a name="530"><span class="lineNum">     530 </span>            :  * to Read or Write operations), they should implement this function to handle the successful reads of</a>
+<a name="531"><span class="lineNum">     531 </span>            :  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.</a>
+<a name="532"><span class="lineNum">     532 </span>            :  */</a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">         72 : void AbstractPokitServicePrivate::characteristicChanged(</span></a>
+<a name="534"><span class="lineNum">     534 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
+<a name="535"><span class="lineNum">     535 </span>            : {</a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">         72 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; changed to %Ln byte/s: %3&quot;, nullptr, newValue.size())</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 :         .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(newValue));</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">         72 : }</span></a>
+<a name="539"><span class="lineNum">     539 </span>            : </a>
+<a name="540"><span class="lineNum">     540 </span>            : /// \endcond</a>
 </pre>
       </td>
     </tr>

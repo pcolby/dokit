@@ -249,9 +249,9 @@
 <a name="187"><span class="lineNum">     187 </span>            : {</a>
 <a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
 <a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :     const QString range = DsoService::toString(settings.range, settings.mode);</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Sampling %1, with range %2, %L3 samples over %L4us&quot;).arg(</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :         DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1(&quot;N/A&quot;) : range)</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :         .arg(settings.numberOfSamples).arg(settings.samplingWindow);</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Sampling %1, with range %2, %Ln sample/s over %L3us&quot;, nullptr, settings.numberOfSamples)</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :         .arg(DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1(&quot;N/A&quot;) : range)</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :         .arg(settings.samplingWindow);</span></a>
 <a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :     service-&gt;setSettings(settings);</span></a>
 <a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
@@ -388,8 +388,8 @@
 <a name="326"><span class="lineNum">     326 </span><span class="lineCov">       6048 :         --samplesToGo;</span></a>
 <a name="327"><span class="lineNum">     327 </span>            :     }</a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineCov">       1296 :     if (samplesToGo &lt;= 0) {</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       3024 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %L1 samples (with %L3 to remaining).&quot;)</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">       2016 :             .arg(metadata.numberOfSamples).arg(samplesToGo);</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       3024 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %Ln sample/s (with %L2 to remaining).&quot;,</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">       2016 :             nullptr, metadata.numberOfSamples).arg(samplesToGo);</span></a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineCov">       1296 :         if (device) disconnect(); // Will exit the application once disconnected.</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :     }</a>
 <a name="333"><span class="lineNum">     333 </span><span class="lineCov">       5328 : }</span></a>
