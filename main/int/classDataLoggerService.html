@@ -153,6 +153,7 @@ Public Types</h2></td></tr>
 , <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a> = 3
 , <br />
 &#160;&#160;<a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a> = 4
+, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a> = 5
 <br />
  }</td></tr>
 <tr class="memdesc:ab7fc5073f8ab9d5e93ba7006df685771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code>Mode</code> attribute of the <code><a class="el" href="structDataLoggerService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristics.  <a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771">More...</a><br /></td></tr>
@@ -796,6 +797,8 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 </td></tr>
 <tr><td class="fieldname"><a id="ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9" name="ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9"></a>AcCurrent&#160;</td><td class="fielddoc"><p>Measure AC current. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd" name="ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd"></a>Temperature&#160;</td><td class="fielddoc"><p>Measure temperature. </p>
+</td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="dataloggerservice_8h_source.html#l00041">41</a> of file <a class="el" href="dataloggerservice_8h_source.html">dataloggerservice.h</a>.</p>
@@ -804,13 +807,14 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <div class="line"><span class="lineno">   43</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>   = 1, <span class="comment">///&lt; Measure DC voltage.</span></div>
 <div class="line"><span class="lineno">   44</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>   = 2, <span class="comment">///&lt; Measure AC voltage.</span></div>
 <div class="line"><span class="lineno">   45</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>   = 3, <span class="comment">///&lt; Measure DC current.</span></div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>   = 4, <span class="comment">///&lt; Measure AC current.</span><span class="comment"></span></div>
-<div class="line"><span class="lineno">   47</span><span class="comment">        /// \todo Pokit Pro supports temperature in logger mode too.</span></div>
-<div class="line"><span class="lineno">   48</span><span class="comment"></span>    };</div>
+<div class="line"><span class="lineno">   46</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>   = 4, <span class="comment">///&lt; Measure AC current.</span></div>
+<div class="line"><span class="lineno">   47</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a> = 5, <span class="comment">///&lt; Measure temperature.</span></div>
+<div class="line"><span class="lineno">   48</span>    };</div>
 <div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5"><div class="ttname"><a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DataLoggerService::Mode::DcVoltage</a></div><div class="ttdeci">@ DcVoltage</div><div class="ttdoc">Measure DC voltage.</div></div>
-<div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9"><div class="ttname"><a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">DataLoggerService::Mode::AcCurrent</a></div><div class="ttdeci">@ AcCurrent</div></div>
+<div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9"><div class="ttname"><a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">DataLoggerService::Mode::AcCurrent</a></div><div class="ttdeci">@ AcCurrent</div><div class="ttdoc">Measure AC current.</div></div>
 <div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e"><div class="ttname"><a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">DataLoggerService::Mode::AcVoltage</a></div><div class="ttdeci">@ AcVoltage</div><div class="ttdoc">Measure AC voltage.</div></div>
 <div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c"><div class="ttname"><a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a></div><div class="ttdeci">@ Idle</div><div class="ttdoc">Make device idle.</div></div>
+<div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd"><div class="ttname"><a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">DataLoggerService::Mode::Temperature</a></div><div class="ttdeci">@ Temperature</div><div class="ttdoc">Measure temperature.</div></div>
 <div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e"><div class="ttname"><a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DataLoggerService::Mode::DcCurrent</a></div><div class="ttdeci">@ DcCurrent</div><div class="ttdoc">Measure DC current.</div></div>
 </div><!-- fragment -->
 </div>
@@ -899,11 +903,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Constructs a new Pokit service with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00281">281</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  282</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(<span class="keyword">new</span> <a class="code hl_class" href="classDataLoggerServicePrivate.html">DataLoggerServicePrivate</a>(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">  283</span>{</div>
-<div class="line"><span class="lineno">  284</span> </div>
-<div class="line"><span class="lineno">  285</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00282">282</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  283</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(<span class="keyword">new</span> <a class="code hl_class" href="classDataLoggerServicePrivate.html">DataLoggerServicePrivate</a>(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">  284</span>{</div>
+<div class="line"><span class="lineno">  285</span> </div>
+<div class="line"><span class="lineno">  286</span>}</div>
 <div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00023">abstractpokitservice.h:24</a></div></div>
 <div class="ttc" id="aclassDataLoggerServicePrivate_html"><div class="ttname"><a href="classDataLoggerServicePrivate.html">DataLoggerServicePrivate</a></div><div class="ttdoc">The DataLoggerServicePrivate class provides private implementation for DataLoggerService.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice__p_8h_source.html#l00018">dataloggerservice_p.h:19</a></div></div>
 <div class="ttc" id="aqobject_html_parent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent</a></div><div class="ttdeci">QObject * parent() const const</div></div>
@@ -935,10 +939,10 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Destroys this <a class="el" href="classDataLoggerService.html" title="The DataLoggerService class accesses the Data Logger service of Pokit devices.">DataLoggerService</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00302">302</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  303</span>{</div>
-<div class="line"><span class="lineno">  304</span> </div>
-<div class="line"><span class="lineno">  305</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00303">303</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  304</span>{</div>
+<div class="line"><span class="lineno">  305</span> </div>
+<div class="line"><span class="lineno">  306</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -978,11 +982,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Constructs a new Pokit service with <em>parent</em>, and private implementation <em>d</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00291">291</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  293</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">  294</span>{</div>
-<div class="line"><span class="lineno">  295</span> </div>
-<div class="line"><span class="lineno">  296</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00292">292</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  294</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">  295</span>{</div>
+<div class="line"><span class="lineno">  296</span> </div>
+<div class="line"><span class="lineno">  297</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1006,11 +1010,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>Instantaneous reads can still be fetched by <a class="el" href="classDataLoggerService.html#a03ef6028ed40b095540dd45ba744c0f5" title="Reads the DataLogger service&#39;s Metadata characteristic.">readMetadataCharacteristic()</a>.</p>
 <p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00457">457</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  458</span>{</div>
-<div class="line"><span class="lineno">  459</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  460</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  461</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00458">458</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  459</span>{</div>
+<div class="line"><span class="lineno">  460</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  461</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  462</span>}</div>
 <div class="ttc" id="aclassDataLoggerService_html"><div class="ttname"><a href="classDataLoggerService.html">DataLoggerService</a></div><div class="ttdoc">The DataLoggerService class accesses the Data Logger service of Pokit devices.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00022">dataloggerservice.h:23</a></div></div>
 <div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_a360ad74780e776a1233d73e5416db0e9"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">DataLoggerService::CharacteristicUuids::metadata</a></div><div class="ttdeci">static const QBluetoothUuid metadata</div><div class="ttdoc">UUID of the DataLogger service's Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00031">dataloggerservice.h:31</a></div></div>
 </div><!-- fragment -->
@@ -1036,11 +1040,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>Disables client-side notifications of Data Logger readings. </p>
 <p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00481">481</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  482</span>{</div>
-<div class="line"><span class="lineno">  483</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  484</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  485</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00482">482</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  483</span>{</div>
+<div class="line"><span class="lineno">  484</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  485</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  486</span>}</div>
 <div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_ae49f85e600ca4eb2753818bb2ef32d65"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">DataLoggerService::CharacteristicUuids::reading</a></div><div class="ttdeci">static const QBluetoothUuid reading</div><div class="ttdoc">UUID of the DataLogger service's Reading characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00032">dataloggerservice.h:32</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00032">DataLoggerService::CharacteristicUuids::reading</a>.</p>
@@ -1067,11 +1071,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
 <p>Successfully read values (if any) will be emitted via the <a class="el" href="classDataLoggerService.html#a471d660af2be1e375424e1bbdeb6e61f" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> signal. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00444">444</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  445</span>{</div>
-<div class="line"><span class="lineno">  446</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  447</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  448</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00445">445</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  446</span>{</div>
+<div class="line"><span class="lineno">  447</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  448</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  449</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00031">DataLoggerService::CharacteristicUuids::metadata</a>.</p>
 
@@ -1104,11 +1108,11 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
 <p>Successfully read samples (if any) will be emitted via the <a class="el" href="classDataLoggerService.html#a7e89c3193b62df98d9bc2e9ee96c3c08" title="This signal is emitted when the Reading characteristic has been notified.">samplesRead()</a> signal. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00470">470</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  471</span>{</div>
-<div class="line"><span class="lineno">  472</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  473</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  474</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00471">471</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  472</span>{</div>
+<div class="line"><span class="lineno">  473</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  474</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  475</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00032">DataLoggerService::CharacteristicUuids::reading</a>.</p>
 
@@ -1141,20 +1145,20 @@ Here is the caller graph for this function:</div>
 <p>This is just a convenience function equivalent to calling <a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> with the command set to <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6" title="Refresh the Data Logger.">DataLoggerService::Command::Refresh</a>.</p>
 <p>Once the Pokit device has processed this request succesffully, the device will begin notifying the <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> and <code>Reading</code> characteristic, resulting in emits of metadataRead and samplesRead respectively. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00399">399</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  400</span>{</div>
-<div class="line"><span class="lineno">  401</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
-<div class="line"><span class="lineno">  402</span>    <span class="comment">// Pokit device when the command is Refresh. However, we still explicitly initialise all other</span></div>
-<div class="line"><span class="lineno">  403</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
-<div class="line"><span class="lineno">  404</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">setSettings</a>({</div>
-<div class="line"><span class="lineno">  405</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6">DataLoggerService::Command::Refresh</a>,</div>
-<div class="line"><span class="lineno">  406</span>        0, <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a>,</div>
-<div class="line"><span class="lineno">  407</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">DataLoggerService::VoltageRange::_0_to_300mV</a>, 0, 0</div>
-<div class="line"><span class="lineno">  408</span>    });</div>
-<div class="line"><span class="lineno">  409</span>}</div>
-<div class="ttc" id="aclassDataLoggerService_html_a3b933a1a161a390eb08e5019685f449c"><div class="ttname"><a href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">DataLoggerService::setSettings</a></div><div class="ttdeci">bool setSettings(const Settings &amp;settings)</div><div class="ttdoc">Configures the Pokit device's data logger mode.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00334">dataloggerservice.cpp:334</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00400">400</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  401</span>{</div>
+<div class="line"><span class="lineno">  402</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
+<div class="line"><span class="lineno">  403</span>    <span class="comment">// Pokit device when the command is Refresh. However, we still explicitly initialise all other</span></div>
+<div class="line"><span class="lineno">  404</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
+<div class="line"><span class="lineno">  405</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">setSettings</a>({</div>
+<div class="line"><span class="lineno">  406</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6">DataLoggerService::Command::Refresh</a>,</div>
+<div class="line"><span class="lineno">  407</span>        0, <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a>,</div>
+<div class="line"><span class="lineno">  408</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">DataLoggerService::VoltageRange::_0_to_300mV</a>, 0, 0</div>
+<div class="line"><span class="lineno">  409</span>    });</div>
+<div class="line"><span class="lineno">  410</span>}</div>
+<div class="ttc" id="aclassDataLoggerService_html_a3b933a1a161a390eb08e5019685f449c"><div class="ttname"><a href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">DataLoggerService::setSettings</a></div><div class="ttdeci">bool setSettings(const Settings &amp;settings)</div><div class="ttdoc">Configures the Pokit device's data logger mode.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00335">dataloggerservice.cpp:335</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6">Refresh</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00334">setSettings()</a>.</p>
+<p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6">Refresh</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00335">setSettings()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="loggerfetchcommand_8cpp_source.html#l00050">LoggerFetchCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
@@ -1198,17 +1202,17 @@ Here is the caller graph for this function:</div>
 
 <p>Returns the maximum value for <em>range</em> in (integer) milliamps, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00162">162</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  163</span>{</div>
-<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span>   10;</div>
-<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span>   30;</div>
-<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span>  150;</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span>  300;</div>
-<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> 3000;</div>
-<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
-<div class="line"><span class="lineno">  171</span>    }</div>
-<div class="line"><span class="lineno">  172</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00163">163</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>{</div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span>   10;</div>
+<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span>   30;</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span>  150;</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span>  300;</div>
+<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> 3000;</div>
+<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
+<div class="line"><span class="lineno">  172</span>    }</div>
+<div class="line"><span class="lineno">  173</span>}</div>
 <div class="ttc" id="aqvariant_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">_0_to_10mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">_10mA_to_30mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">_150mA_to_300mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">_300mA_to_3A</a>, and <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">_30mA_to_150mA</a>.</p>
@@ -1241,18 +1245,18 @@ Here is the caller graph for this function:</div>
 
 <p>Returns the maximum value for <em>range</em> in (integer) millivolts, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00107">107</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  108</span>{</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span>   300;</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span>  2000;</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span>  6000;</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span> 12000;</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> 30000;</div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> 60000;</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
-<div class="line"><span class="lineno">  117</span>    }</div>
-<div class="line"><span class="lineno">  118</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00108">108</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span>   300;</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span>  2000;</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span>  6000;</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span> 12000;</div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> 30000;</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> 60000;</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
+<div class="line"><span class="lineno">  118</span>    }</div>
+<div class="line"><span class="lineno">  119</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">_12V_to_30V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">_2V_to_6V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">_30V_to_60V</a>, and <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">_6V_to_12V</a>.</p>
 
@@ -1279,20 +1283,20 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">metadata</a>.<a class="code hl_variable" href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">scale</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00425">dataloggerservice.cpp:425</a></div></div>
+<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00426">dataloggerservice.cpp:426</a></div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html">DataLoggerService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00101">dataloggerservice.h:101</a></div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html_a824ce9f37293e435d41af31788145571"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">DataLoggerService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00103">dataloggerservice.h:103</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00425">425</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  426</span>{</div>
-<div class="line"><span class="lineno">  427</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  428</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  429</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  430</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
-<div class="line"><span class="lineno">  431</span>        : Metadata{ <a class="code hl_enumeration" href="classDataLoggerService.html#a1a3a38ca8befc3de8121d795879140f6">LoggerStatus</a>::<a class="code hl_enumvalue" href="classDataLoggerService.html#a1a3a38ca8befc3de8121d795879140f6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
-<div class="line"><span class="lineno">  432</span>                    <a class="code hl_enumeration" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771">Mode</a>::<a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="code hl_enumeration" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7c">VoltageRange</a>::<a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, 0, 0, 0 };</div>
-<div class="line"><span class="lineno">  433</span>}</div>
-<div class="ttc" id="aclassDataLoggerServicePrivate_html_aed59b28db53cea0757289a0960bed3fd"><div class="ttname"><a href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a></div><div class="ttdeci">static DataLoggerService::Metadata parseMetadata(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Metadata value into a DataLoggerService::Metatdata struct.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00571">dataloggerservice.cpp:571</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00426">426</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  427</span>{</div>
+<div class="line"><span class="lineno">  428</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  429</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  430</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  431</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
+<div class="line"><span class="lineno">  432</span>        : Metadata{ <a class="code hl_enumeration" href="classDataLoggerService.html#a1a3a38ca8befc3de8121d795879140f6">LoggerStatus</a>::<a class="code hl_enumvalue" href="classDataLoggerService.html#a1a3a38ca8befc3de8121d795879140f6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
+<div class="line"><span class="lineno">  433</span>                    <a class="code hl_enumeration" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771">Mode</a>::<a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="code hl_enumeration" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7c">VoltageRange</a>::<a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, 0, 0, 0 };</div>
+<div class="line"><span class="lineno">  434</span>}</div>
+<div class="ttc" id="aclassDataLoggerServicePrivate_html_aed59b28db53cea0757289a0960bed3fd"><div class="ttname"><a href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a></div><div class="ttdeci">static DataLoggerService::Metadata parseMetadata(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Metadata value into a DataLoggerService::Metatdata struct.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00572">dataloggerservice.cpp:572</a></div></div>
 <div class="ttc" id="aclassDataLoggerService_html_a1a3a38ca8befc3de8121d795879140f6"><div class="ttname"><a href="classDataLoggerService.html#a1a3a38ca8befc3de8121d795879140f6">DataLoggerService::LoggerStatus</a></div><div class="ttdeci">LoggerStatus</div><div class="ttdoc">Values supported by the Status attribute of the Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00094">dataloggerservice.h:94</a></div></div>
 <div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771"><div class="ttname"><a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771">DataLoggerService::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">Values supported by the Mode attribute of the Settings and Metadata characteristics.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00041">dataloggerservice.h:41</a></div></div>
 <div class="ttc" id="aclassDataLoggerService_html_af004ccd6c022993c96eee89eb22b6b7c"><div class="ttname"><a href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7c">DataLoggerService::VoltageRange</a></div><div class="ttdeci">VoltageRange</div><div class="ttdoc">Values supported by the Range attribute of the Settings and Metadata characteristics,...</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00051">dataloggerservice.h:51</a></div></div>
@@ -1300,7 +1304,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_value"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value</a></div><div class="ttdeci">QByteArray value() const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#a1a3a38ca8befc3de8121d795879140f6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dataloggerservice_8h_source.html#l00031">DataLoggerService::CharacteristicUuids::metadata</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00571">DataLoggerServicePrivate::parseMetadata()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
+<p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#a1a3a38ca8befc3de8121d795879140f6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dataloggerservice_8h_source.html#l00031">DataLoggerService::CharacteristicUuids::metadata</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00572">DataLoggerServicePrivate::parseMetadata()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1374,17 +1378,17 @@ Here is the caller graph for this function:</div>
 <p>Returns the minimum value for <em>range</em> in (integer) milliamps, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. </p>
 <p>Note, this is an <em>absolute</em> minimum. That is, the true range for DC measurements is from <code>-maxValue(range)</code> to <code>+maxValue(range)</code>. In this sense, <code>minValue(range)</code> indicates the magnitude (ignore signs) that can be measured accurately for the given <em>range</em>. As AC current can never be negative, this is relevant for DC current only. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00146">146</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  147</span>{</div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span>   0;</div>
-<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span>  10;</div>
-<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span>  30;</div>
-<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span> 150;</div>
-<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> 300;</div>
-<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
-<div class="line"><span class="lineno">  155</span>    }</div>
-<div class="line"><span class="lineno">  156</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00147">147</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>{</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span>   0;</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span>  10;</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span>  30;</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span> 150;</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> 300;</div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
+<div class="line"><span class="lineno">  156</span>    }</div>
+<div class="line"><span class="lineno">  157</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">_0_to_10mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">_10mA_to_30mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">_150mA_to_300mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">_300mA_to_3A</a>, and <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">_30mA_to_150mA</a>.</p>
 
@@ -1417,18 +1421,18 @@ Here is the caller graph for this function:</div>
 <p>Returns the minimum value for <em>range</em> in (integer) millivolts, or null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> if <em>range</em> is not valid. </p>
 <p>Note, this is an <em>absolute</em> minimum. That is, the true range for DC measurements is from <code>-maxValue(range)</code> to <code>+maxValue(range)</code>. In this sense, <code>minValue(range)</code> indicates the magnitude (ignore signs) that can be measured accurately for the given <em>range</em>. As AC voltage can never be negative, this is relevant for DC voltage only. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00090">90</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span>     0;</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span>   300;</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span>  2000;</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span>  6000;</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> 12000;</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> 30000;</div>
-<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
-<div class="line"><span class="lineno">  100</span>    }</div>
-<div class="line"><span class="lineno">  101</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00091">91</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>{</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span>     0;</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span>   300;</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span>  2000;</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span>  6000;</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> 12000;</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> 30000;</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
+<div class="line"><span class="lineno">  101</span>    }</div>
+<div class="line"><span class="lineno">  102</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">_12V_to_30V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">_2V_to_6V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">_30V_to_60V</a>, and <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">_6V_to_12V</a>.</p>
 
@@ -1463,13 +1467,13 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractPokitService.html#a0d29ffd4ef4f81c6049700f76faa723e">AbstractPokitService</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00307">307</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  308</span>{</div>
-<div class="line"><span class="lineno">  309</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a03ef6028ed40b095540dd45ba744c0f5">readMetadataCharacteristic</a>();</div>
-<div class="line"><span class="lineno">  310</span>}</div>
-<div class="ttc" id="aclassDataLoggerService_html_a03ef6028ed40b095540dd45ba744c0f5"><div class="ttname"><a href="classDataLoggerService.html#a03ef6028ed40b095540dd45ba744c0f5">DataLoggerService::readMetadataCharacteristic</a></div><div class="ttdeci">bool readMetadataCharacteristic()</div><div class="ttdoc">Reads the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00321">dataloggerservice.cpp:321</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00308">308</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  309</span>{</div>
+<div class="line"><span class="lineno">  310</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a03ef6028ed40b095540dd45ba744c0f5">readMetadataCharacteristic</a>();</div>
+<div class="line"><span class="lineno">  311</span>}</div>
+<div class="ttc" id="aclassDataLoggerService_html_a03ef6028ed40b095540dd45ba744c0f5"><div class="ttname"><a href="classDataLoggerService.html#a03ef6028ed40b095540dd45ba744c0f5">DataLoggerService::readMetadataCharacteristic</a></div><div class="ttdeci">bool readMetadataCharacteristic()</div><div class="ttdoc">Reads the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00322">dataloggerservice.cpp:322</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00321">readMetadataCharacteristic()</a>.</p>
+<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00322">readMetadataCharacteristic()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1498,15 +1502,15 @@ Here is the call graph for this function:</div>
 <p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="classDataLoggerService.html#a471d660af2be1e375424e1bbdeb6e61f" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00321">321</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  322</span>{</div>
-<div class="line"><span class="lineno">  323</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  324</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  325</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00322">322</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  323</span>{</div>
+<div class="line"><span class="lineno">  324</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  325</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  326</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00031">DataLoggerService::CharacteristicUuids::metadata</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00307">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00308">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1575,33 +1579,33 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p>Emits <a class="el" href="classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em>settings</em> have been writtem successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00334">334</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  335</span>{</div>
-<div class="line"><span class="lineno">  336</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  337</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  338</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ab5fa52ba8b4cacf839abe6d3f8e8a929">CharacteristicUuids::settings</a>);</div>
-<div class="line"><span class="lineno">  339</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
-<div class="line"><span class="lineno">  340</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  341</span>    }</div>
-<div class="line"><span class="lineno">  342</span> </div>
-<div class="line"><span class="lineno">  343</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> updateIntervalIs32bit =</div>
-<div class="line"><span class="lineno">  344</span>        (d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>).value().size() &gt;= 23);</div>
-<div class="line"><span class="lineno">  345</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = <a class="code hl_function" href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">DataLoggerServicePrivate::encodeSettings</a>(settings, updateIntervalIs32bit);</div>
-<div class="line"><span class="lineno">  346</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">isNull</a>()) {</div>
-<div class="line"><span class="lineno">  347</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  348</span>    }</div>
-<div class="line"><span class="lineno">  349</span> </div>
-<div class="line"><span class="lineno">  350</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
-<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">  352</span>}</div>
-<div class="ttc" id="aclassDataLoggerServicePrivate_html_a774d21863bf83168171143ec8492a736"><div class="ttname"><a href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">DataLoggerServicePrivate::encodeSettings</a></div><div class="ttdeci">static QByteArray encodeSettings(const DataLoggerService::Settings &amp;settings, const bool updateIntervalIs32bit)</div><div class="ttdoc">Returns settings in the format Pokit devices expect.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00535">dataloggerservice.cpp:535</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00335">335</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  336</span>{</div>
+<div class="line"><span class="lineno">  337</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  338</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  339</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ab5fa52ba8b4cacf839abe6d3f8e8a929">CharacteristicUuids::settings</a>);</div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
+<div class="line"><span class="lineno">  341</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  342</span>    }</div>
+<div class="line"><span class="lineno">  343</span> </div>
+<div class="line"><span class="lineno">  344</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> updateIntervalIs32bit =</div>
+<div class="line"><span class="lineno">  345</span>        (d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>).value().size() &gt;= 23);</div>
+<div class="line"><span class="lineno">  346</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = <a class="code hl_function" href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">DataLoggerServicePrivate::encodeSettings</a>(settings, updateIntervalIs32bit);</div>
+<div class="line"><span class="lineno">  347</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">isNull</a>()) {</div>
+<div class="line"><span class="lineno">  348</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  349</span>    }</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
+<div class="line"><span class="lineno">  352</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">  353</span>}</div>
+<div class="ttc" id="aclassDataLoggerServicePrivate_html_a774d21863bf83168171143ec8492a736"><div class="ttname"><a href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">DataLoggerServicePrivate::encodeSettings</a></div><div class="ttdeci">static QByteArray encodeSettings(const DataLoggerService::Settings &amp;settings, const bool updateIntervalIs32bit)</div><div class="ttdoc">Returns settings in the format Pokit devices expect.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00536">dataloggerservice.cpp:536</a></div></div>
 <div class="ttc" id="aqbytearray_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a></div></div>
 <div class="ttc" id="aqbytearray_html_isNull"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull</a></div><div class="ttdeci">bool isNull() const const</div></div>
 <div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_ab5fa52ba8b4cacf839abe6d3f8e8a929"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#ab5fa52ba8b4cacf839abe6d3f8e8a929">DataLoggerService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the DataLogger service's Settings characterstic.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8h_source.html#l00030">dataloggerservice.h:30</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00535">DataLoggerServicePrivate::encodeSettings()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dataloggerservice_8h_source.html#l00031">DataLoggerService::CharacteristicUuids::metadata</a>, and <a class="el" href="dataloggerservice_8h_source.html#l00030">DataLoggerService::CharacteristicUuids::settings</a>.</p>
+<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00536">DataLoggerServicePrivate::encodeSettings()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dataloggerservice_8h_source.html#l00031">DataLoggerService::CharacteristicUuids::metadata</a>, and <a class="el" href="dataloggerservice_8h_source.html#l00030">DataLoggerService::CharacteristicUuids::settings</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00399">fetchSamples()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00149">LoggerStartCommand::serviceDetailsDiscovered()</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00360">startLogger()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00377">stopLogger()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00400">fetchSamples()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00161">LoggerStartCommand::serviceDetailsDiscovered()</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00361">startLogger()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00378">stopLogger()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1643,7 +1647,7 @@ Here is the caller graph for this function:</div>
 <p>This signal is emitted when the <code><a class="el" href="structDataLoggerService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic has been written successfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="loggerstartcommand_8cpp_source.html#l00132">LoggerStartCommand::getService()</a>, and <a class="el" href="loggerstopcommand_8cpp_source.html#l00032">LoggerStopCommand::getService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="loggerstartcommand_8cpp_source.html#l00144">LoggerStartCommand::getService()</a>, and <a class="el" href="loggerstopcommand_8cpp_source.html#l00032">LoggerStopCommand::getService()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1672,19 +1676,19 @@ Here is the caller graph for this function:</div>
 <p>Start the data logger with <em>settings</em>. </p>
 <p>This is just a synonym for <a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> except makes the caller's intention more explicit, and sanity-checks that the settings's command is <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37" title="Start the Data Logger.">DataLoggerService::Command::Start</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00360">360</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  361</span>{</div>
-<div class="line"><span class="lineno">  362</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  363</span>    Q_ASSERT(settings.command == <a class="code hl_enumvalue" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">DataLoggerService::Command::Start</a>);</div>
-<div class="line"><span class="lineno">  364</span>    <span class="keywordflow">if</span> (settings.command != <a class="code hl_enumvalue" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">DataLoggerService::Command::Start</a>) {</div>
-<div class="line"><span class="lineno">  365</span>        qCWarning(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings command must be &#39;Start&#39;.&quot;</span>);</div>
-<div class="line"><span class="lineno">  366</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  367</span>    }</div>
-<div class="line"><span class="lineno">  368</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">setSettings</a>(settings);</div>
-<div class="line"><span class="lineno">  369</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00361">361</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  362</span>{</div>
+<div class="line"><span class="lineno">  363</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  364</span>    Q_ASSERT(settings.command == <a class="code hl_enumvalue" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">DataLoggerService::Command::Start</a>);</div>
+<div class="line"><span class="lineno">  365</span>    <span class="keywordflow">if</span> (settings.command != <a class="code hl_enumvalue" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">DataLoggerService::Command::Start</a>) {</div>
+<div class="line"><span class="lineno">  366</span>        qCWarning(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings command must be &#39;Start&#39;.&quot;</span>);</div>
+<div class="line"><span class="lineno">  367</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  368</span>    }</div>
+<div class="line"><span class="lineno">  369</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">setSettings</a>(settings);</div>
+<div class="line"><span class="lineno">  370</span>}</div>
 <div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00086">DataLoggerService::Settings::command</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00334">setSettings()</a>, <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">Start</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00086">DataLoggerService::Settings::command</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00335">setSettings()</a>, <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">Start</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1712,19 +1716,19 @@ Here is the call graph for this function:</div>
 <p>Stop the data logger. </p>
 <p>This is just a convenience function equivalent to calling <a class="el" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> with the command set to <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481" title="Stop the Data Logger.">DataLoggerService::Command::Stop</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00377">377</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  378</span>{</div>
-<div class="line"><span class="lineno">  379</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
-<div class="line"><span class="lineno">  380</span>    <span class="comment">// Pokit device when the command is Stop. However, we still explicitly initialise all other</span></div>
-<div class="line"><span class="lineno">  381</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
-<div class="line"><span class="lineno">  382</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">setSettings</a>({</div>
-<div class="line"><span class="lineno">  383</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481">DataLoggerService::Command::Stop</a>,</div>
-<div class="line"><span class="lineno">  384</span>        0, <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a>,</div>
-<div class="line"><span class="lineno">  385</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">DataLoggerService::VoltageRange::_0_to_300mV</a>, 0, 0</div>
-<div class="line"><span class="lineno">  386</span>    });</div>
-<div class="line"><span class="lineno">  387</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00378">378</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  379</span>{</div>
+<div class="line"><span class="lineno">  380</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
+<div class="line"><span class="lineno">  381</span>    <span class="comment">// Pokit device when the command is Stop. However, we still explicitly initialise all other</span></div>
+<div class="line"><span class="lineno">  382</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
+<div class="line"><span class="lineno">  383</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a3b933a1a161a390eb08e5019685f449c">setSettings</a>({</div>
+<div class="line"><span class="lineno">  384</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481">DataLoggerService::Command::Stop</a>,</div>
+<div class="line"><span class="lineno">  385</span>        0, <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a>,</div>
+<div class="line"><span class="lineno">  386</span>        <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">DataLoggerService::VoltageRange::_0_to_300mV</a>, 0, 0</div>
+<div class="line"><span class="lineno">  387</span>    });</div>
+<div class="line"><span class="lineno">  388</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00334">setSettings()</a>, and <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481">Stop</a>.</p>
+<p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00335">setSettings()</a>, and <a class="el" href="classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481">Stop</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="loggerstopcommand_8cpp_source.html#l00049">LoggerStopCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
@@ -1768,17 +1772,17 @@ Here is the caller graph for this function:</div>
 
 <p>Returns <em>range</em> as a user-friendly string. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00125">125</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  126</span>{</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;0 to 10mA&quot;</span>);</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;10mA to 30mA&quot;</span>);</div>
-<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;30mA to 150mA&quot;</span>);</div>
-<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;150mA to 300mA&quot;</span>);</div>
-<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;300mA to 3A&quot;</span>);</div>
-<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  134</span>    }</div>
-<div class="line"><span class="lineno">  135</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00126">126</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>{</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">CurrentRange::_0_to_10mA</a>:      <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;0 to 10mA&quot;</span>);</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">CurrentRange::_10mA_to_30mA</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;10mA to 30mA&quot;</span>);</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">CurrentRange::_30mA_to_150mA</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;30mA to 150mA&quot;</span>);</div>
+<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">CurrentRange::_150mA_to_300mA</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;150mA to 300mA&quot;</span>);</div>
+<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">CurrentRange::_300mA_to_3A</a>:    <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;300mA to 3A&quot;</span>);</div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">default</span>:                            <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  135</span>    }</div>
+<div class="line"><span class="lineno">  136</span>}</div>
 <div class="ttc" id="aqstring_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html">QString</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2adf1aa51f69cee99bf34896eedef7ec66">_0_to_10mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ada2587f9e79732bb2eea6ddb20b2a522">_10mA_to_30mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2ad87056e8caa3511544b29b913caf5cf7">_150mA_to_300mA</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a36fd02dd400c54ef118025070ad4feb1">_300mA_to_3A</a>, <a class="el" href="classDataLoggerService.html#a0c120f6c46e7e0247a98c8ce1b49b3c2a10a9947ae0deec34c01e99c4cd12a9f8">_30mA_to_150mA</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
@@ -1825,13 +1829,14 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">   56</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;AC voltage&quot;</span>);</div>
 <div class="line"><span class="lineno">   57</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;DC current&quot;</span>);</div>
 <div class="line"><span class="lineno">   58</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;AC current&quot;</span>);</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">default</span>:                <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span>}</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Mode::Temperature</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Temperature&quot;</span>);</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">default</span>:                <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="line"><span class="lineno">   62</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="loggerfetchcommand_8cpp_source.html#l00062">LoggerFetchCommand::metadataRead()</a>, <a class="el" href="loggerfetchcommand_8cpp_source.html#l00082">LoggerFetchCommand::outputSamples()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00149">LoggerStartCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00200">toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="loggerfetchcommand_8cpp_source.html#l00062">LoggerFetchCommand::metadataRead()</a>, <a class="el" href="loggerfetchcommand_8cpp_source.html#l00082">LoggerFetchCommand::outputSamples()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00161">LoggerStartCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00201">toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1883,19 +1888,19 @@ Here is the caller graph for this function:</div>
 
 <p>Returns <em>range</em> as a user-friendly string, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if <em>mode</em> has no ranges. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00200">200</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  201</span>{</div>
-<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">switch</span> (mode) {</div>
-<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:</div>
-<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:</div>
-<div class="line"><span class="lineno">  205</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">toString</a>(range.voltageRange);</div>
-<div class="line"><span class="lineno">  206</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:</div>
-<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:</div>
-<div class="line"><span class="lineno">  208</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">toString</a>(range.currentRange);</div>
-<div class="line"><span class="lineno">  209</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  211</span>    }</div>
-<div class="line"><span class="lineno">  212</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00201">201</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>{</div>
+<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">switch</span> (mode) {</div>
+<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:</div>
+<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:</div>
+<div class="line"><span class="lineno">  206</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">toString</a>(range.voltageRange);</div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:</div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:</div>
+<div class="line"><span class="lineno">  209</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">toString</a>(range.currentRange);</div>
+<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  211</span>        <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  212</span>    }</div>
+<div class="line"><span class="lineno">  213</span>}</div>
 <div class="ttc" id="aclassDataLoggerService_html_a4c696b7500e666959bbec4b0ed677d5d"><div class="ttname"><a href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">DataLoggerService::toString</a></div><div class="ttdeci">static QString toString(const Mode &amp;mode)</div><div class="ttdoc">Returns mode as a user-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00051">dataloggerservice.cpp:51</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="dataloggerservice_8h_source.html#l00078">DataLoggerService::Range::currentRange</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00051">toString()</a>, and <a class="el" href="dataloggerservice_8h_source.html#l00077">DataLoggerService::Range::voltageRange</a>.</p>
@@ -1934,18 +1939,18 @@ Here is the call graph for this function:</div>
 
 <p>Returns <em>range</em> as a user-friendly string. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00068">68</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">switch</span> (range) {</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;0 to 300mV&quot;</span>);</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;300mV to 2V&quot;</span>);</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;2V to 6V&quot;</span>);</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;6V to 12V&quot;</span>);</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;12V to 30V&quot;</span>);</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;30V to 60V&quot;</span>);</div>
-<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">   78</span>    }</div>
-<div class="line"><span class="lineno">   79</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00069">69</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">switch</span> (range) {</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">VoltageRange::_0_to_300mV</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;0 to 300mV&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">VoltageRange::_300mV_to_2V</a>: <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;300mV to 2V&quot;</span>);</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">VoltageRange::_2V_to_6V</a>:    <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;2V to 6V&quot;</span>);</div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">VoltageRange::_6V_to_12V</a>:   <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;6V to 12V&quot;</span>);</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">VoltageRange::_12V_to_30V</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;12V to 30V&quot;</span>);</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">VoltageRange::_30V_to_60V</a>:  <span class="keywordflow">return</span> <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;30V to 60V&quot;</span>);</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">default</span>:                         <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="line"><span class="lineno">   80</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6">_0_to_300mV</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca55b8f557c2c95acba19b42bd66a8760a">_12V_to_30V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca62449df7495e3d616298a86a32007165">_2V_to_6V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7cab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca8d6ed04283cbc4c0f1b89006e9c3e96b">_30V_to_60V</a>, <a class="el" href="classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca691d1e8d08c3542b4aeda8925b2967cc">_6V_to_12V</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 <div class="dynheader">

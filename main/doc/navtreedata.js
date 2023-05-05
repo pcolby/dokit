@@ -52,7 +52,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
-"classes.html"
+"classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

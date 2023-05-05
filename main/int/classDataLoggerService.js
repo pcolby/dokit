@@ -28,7 +28,8 @@ var classDataLoggerService =
       [ "DcVoltage", "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5", null ],
       [ "AcVoltage", "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e", null ],
       [ "DcCurrent", "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e", null ],
-      [ "AcCurrent", "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9", null ]
+      [ "AcCurrent", "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9", null ],
+      [ "Temperature", "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd", null ]
     ] ],
     [ "VoltageRange", "classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7c", [
       [ "_0_to_300mV", "classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6", null ],

@@ -59,6 +59,7 @@ var NAVTREEINDEX0 =
 "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9":[2,0,2,8,4],
 "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e":[2,0,2,8,2],
 "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c":[2,0,2,8,0],
+"classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd":[2,0,2,8,5],
 "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e":[2,0,2,8,3],
 "classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7c":[2,0,2,9],
 "classDataLoggerService.html#af004ccd6c022993c96eee89eb22b6b7ca198067396ed0459ea6894b2397468ef6":[2,0,2,9,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classStatusService.html#ada280bc54493f85e6855a2534bf2a02d":[2,0,9,20],
 "classStatusService.html#adca5ca235e99c7878f8fde507bf487cc":[2,0,9,17],
 "classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7":[2,0,9,21],
-"classStatusService.html#aeac02849bd35edeadda7ab7b4a4939c9":[2,0,9,9],
-"classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1":[2,0,9,12]
+"classStatusService.html#aeac02849bd35edeadda7ab7b4a4939c9":[2,0,9,9]
 };

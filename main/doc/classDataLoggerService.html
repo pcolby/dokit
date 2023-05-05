@@ -152,6 +152,7 @@ Public Types</h2></td></tr>
 , <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a> = 3
 , <br />
 &#160;&#160;<a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a> = 4
+, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a> = 5
 <br />
  }</td></tr>
 <tr class="memdesc:ab7fc5073f8ab9d5e93ba7006df685771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code>Mode</code> attribute of the <code><a class="el" href="structDataLoggerService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> characteristics.  <a href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771">More...</a><br /></td></tr>
@@ -753,6 +754,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </td></tr>
 <tr><td class="fieldname"><a id="ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9" name="ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9"></a>AcCurrent&#160;</td><td class="fielddoc"><p>Measure AC current. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd" name="ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd"></a>Temperature&#160;</td><td class="fielddoc"><p>Measure temperature. </p>
+</td></tr>
 </table>
 
 </div>
@@ -928,7 +931,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">metadata</a>.<a class="code hl_variable" href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">scale</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.cpp:425</div></div>
+<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.cpp:426</div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html">DataLoggerService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:101</div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html_a824ce9f37293e435d41af31788145571"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">DataLoggerService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition:</b> dataloggerservice.h:103</div></div>
 </div><!-- fragment --> <div class="dynheader">

@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c":[4,0,28,8],
 "classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23":[4,0,28,16],
 "classScanCommand.html#a1fbef848493eb849ba6382c00463f275":[4,0,28,5],
 "classScanCommand.html#a28566c7a8789c6f1cacdadabd2b1e697":[4,0,28,12],
@@ -143,8 +144,8 @@ var NAVTREEINDEX2 =
 "functions_e.html":[4,3,0,4],
 "functions_enum.html":[4,3,4],
 "functions_f.html":[4,3,0,5],
-"functions_func.html":[4,3,1,0],
 "functions_func.html":[4,3,1],
+"functions_func.html":[4,3,1,0],
 "functions_func_c.html":[4,3,1,1],
 "functions_func_d.html":[4,3,1,2],
 "functions_func_e.html":[4,3,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "qtpokit__global_8h_source.html":[5,0,0,0,0,0,9],
 "scancommand_8cpp_source.html":[5,0,0,0,1,0,21],
 "scancommand_8h_source.html":[5,0,0,0,1,0,22],
-"setnamecommand_8cpp_source.html":[5,0,0,0,1,0,23],
-"setnamecommand_8h_source.html":[5,0,0,0,1,0,24]
+"setnamecommand_8cpp_source.html":[5,0,0,0,1,0,23]
 };

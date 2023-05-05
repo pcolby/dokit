@@ -136,6 +136,7 @@ var NAVTREEINDEX0 =
 "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9":[4,0,6,8,4],
 "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e":[4,0,6,8,2],
 "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c":[4,0,6,8,0],
+"classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd":[4,0,6,8,5],
 "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e":[4,0,6,8,3],
 "classDataLoggerService.html#ac9051585a27dff574076f0b2c247e0c8":[4,0,6,34],
 "classDataLoggerService.html#ad3ecbfc9b9f40ff3b1f0c8941d4c0a96":[4,0,6,12],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classDsoService.html#ad8cd148690b9e4fd1b01071e8cfabd0c":[4,0,12,25],
 "classDsoService.html#adb308ca510109b7aff20c2df3fd57131":[4,0,12,32],
 "classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95":[4,0,12,8],
-"classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5":[4,0,12,8,1],
-"classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9":[4,0,12,8,4]
+"classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5":[4,0,12,8,1]
 };

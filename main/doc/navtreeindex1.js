@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classStatusService.html#aec2fa83213de28f8b266e0e5dd3f87e1":[2,0,9,12],
 "classes.html":[2,1],
 "dataloggerservice_8cpp.html":[3,0,0,0,1,0,2],
 "dataloggerservice_8cpp.html#a48e7ced5643ad82a4ea41db99c7c504b":[3,0,0,0,1,0,2,4],
