@@ -1,5 +1,11 @@
 # Changelog[^1]
 
+## [Unreleased][]
+
+### Changed
+
+- Separate ranges for Pokit Meter an Pokit Pro devices.
+
 ## [0.2.0][] (2023-05-07)
 
 ### Added
