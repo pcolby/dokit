@@ -318,24 +318,24 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="91"/>
+        <location filename="../loggerfetchcommand.cpp" line="92"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="103"/>
+        <location filename="../loggerfetchcommand.cpp" line="104"/>
         <source>timestamp,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="118"/>
+        <location filename="../loggerfetchcommand.cpp" line="122"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../loggerfetchcommand.cpp" line="125"/>
+        <location filename="../loggerfetchcommand.cpp" line="129"/>
         <source>Finished fetching %Ln sample/s (with %L1 remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L1 remaining).</numerusform>
@@ -346,54 +346,64 @@ success
 <context>
     <name>LoggerStartCommand</name>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="68"/>
+        <location filename="../loggerstartcommand.cpp" line="70"/>
         <source>Unknown logger mode: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../loggerstartcommand.cpp" line="94"/>
+        <source>Ignoring range value: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loggerstartcommand.cpp" line="102"/>
         <source>Invalid range value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="105"/>
+        <location filename="../loggerstartcommand.cpp" line="108"/>
+        <source>Missing required option for logger mode &apos;%1&apos;: range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loggerstartcommand.cpp" line="117"/>
         <source>Invalid interval value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="119"/>
+        <location filename="../loggerstartcommand.cpp" line="131"/>
         <source>Invalid timestamp value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="153"/>
+        <location filename="../loggerstartcommand.cpp" line="165"/>
         <source>Logging %1, with range %2, every %L3ms.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="168"/>
+        <location filename="../loggerstartcommand.cpp" line="180"/>
         <source>Idle has no defined ranges.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="178"/>
+        <location filename="../loggerstartcommand.cpp" line="190"/>
         <source>No defined ranges for mode %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="225"/>
+        <location filename="../loggerstartcommand.cpp" line="237"/>
         <source>Settings written; data logger has started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="228"/>
+        <location filename="../loggerstartcommand.cpp" line="240"/>
         <source>logger_start_result
 success
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="234"/>
+        <location filename="../loggerstartcommand.cpp" line="246"/>
         <source>Done.
 </source>
         <translation type="unfinished"></translation>
@@ -696,13 +706,13 @@ success
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="263"/>
+        <location filename="../main.cpp" line="264"/>
         <source>Missing argument: &lt;command&gt;
 See --help for usage information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="278"/>
+        <location filename="../main.cpp" line="279"/>
         <source>Unknown command (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -741,153 +751,153 @@ See --help for usage information.</source>
     </message>
     <message>
         <location filename="../main.cpp" line="152"/>
-        <source>Set the desired operation mode for meter, dso and logger modes. Supported modes are: AC Voltage, DC Voltage, AC Current, DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. Only the first four options are available for dso and logger commands; the rest are available in meter mode only.</source>
+        <source>Set the desired operation mode for meter, dso and logger modes. Supported modes are: AC Voltage, DC Voltage, AC Current, DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. Only the first four options are available for dso and logger commands; the rest are available in meter mode only. Temperature is also available for logger commands, but requires firmware v1.5 or later for Pokit devices to support it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="157"/>
-        <location filename="../main.cpp" line="194"/>
+        <location filename="../main.cpp" line="158"/>
+        <location filename="../main.cpp" line="195"/>
         <source>mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="159"/>
+        <location filename="../main.cpp" line="160"/>
         <source>Give the desired new name for the set-name command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="160"/>
+        <location filename="../main.cpp" line="161"/>
         <source>name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="162"/>
+        <location filename="../main.cpp" line="163"/>
         <source>Set the format for output. Supported formats are: CSV, JSON and Text. All are case insenstitve. The default is Text.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="164"/>
+        <location filename="../main.cpp" line="165"/>
         <source>format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="165"/>
+        <location filename="../main.cpp" line="166"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="167"/>
+        <location filename="../main.cpp" line="168"/>
         <source>Set the desired measurement range. Pokit devices support specific ranges, such as 0 to 300mV. Specify the desired upper limit, and the best range will be selected, or use &apos;auto&apos; to enable the Pokit device&apos;s auto-range feature. The default is &apos;auto&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="171"/>
+        <location filename="../main.cpp" line="172"/>
         <source>range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="173"/>
+        <location filename="../main.cpp" line="174"/>
         <source>Set the number of samples to acquire.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="174"/>
+        <location filename="../main.cpp" line="175"/>
         <source>count</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="176"/>
+        <location filename="../main.cpp" line="177"/>
         <source>Set the current ambient temperature for the calibration command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="177"/>
+        <location filename="../main.cpp" line="178"/>
         <source>degrees</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="179"/>
+        <location filename="../main.cpp" line="180"/>
         <source>Set the device discovery scan timeout.Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. The default behaviour is no timeout.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="183"/>
-        <location filename="../main.cpp" line="187"/>
+        <location filename="../main.cpp" line="184"/>
+        <location filename="../main.cpp" line="188"/>
         <source>period</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="185"/>
+        <location filename="../main.cpp" line="186"/>
         <source>Set the optional starting timestamp for data logging. Default to &apos;now&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="189"/>
+        <location filename="../main.cpp" line="190"/>
         <source>Set the DSO trigger level.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="190"/>
+        <location filename="../main.cpp" line="191"/>
         <source>level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="192"/>
+        <location filename="../main.cpp" line="193"/>
         <source>Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="200"/>
+        <location filename="../main.cpp" line="201"/>
         <source>Get Pokit device information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="203"/>
+        <location filename="../main.cpp" line="204"/>
         <source>Get Pokit device status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="206"/>
+        <location filename="../main.cpp" line="207"/>
         <source>Access Pokit device&apos;s multimeter mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="209"/>
+        <location filename="../main.cpp" line="210"/>
         <source>Access Pokit device&apos;s DSO mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="212"/>
+        <location filename="../main.cpp" line="213"/>
         <source>Start Pokit device&apos;s data logger mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="215"/>
+        <location filename="../main.cpp" line="216"/>
         <source>Stop Pokit device&apos;s data logger mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="218"/>
+        <location filename="../main.cpp" line="219"/>
         <source>Fetch Pokit device&apos;s data logger samples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="221"/>
+        <location filename="../main.cpp" line="222"/>
         <source>Scan Bluetooth for Pokit devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="224"/>
+        <location filename="../main.cpp" line="225"/>
         <source>Set Pokit device&apos;s name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="227"/>
+        <location filename="../main.cpp" line="228"/>
         <source>Flash Pokit device&apos;s LED</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="230"/>
+        <location filename="../main.cpp" line="231"/>
         <source>Calibrate Pokit device temperature</source>
         <translation type="unfinished"></translation>
     </message>

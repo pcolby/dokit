@@ -204,62 +204,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="71"/>
-        <source>0 to 300mV</source>
+        <location filename="../dataloggerservice.cpp" line="59"/>
+        <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dataloggerservice.cpp" line="72"/>
-        <source>300mV to 2V</source>
+        <source>0 to 300mV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dataloggerservice.cpp" line="73"/>
-        <source>2V to 6V</source>
+        <source>300mV to 2V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dataloggerservice.cpp" line="74"/>
-        <source>6V to 12V</source>
+        <source>2V to 6V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dataloggerservice.cpp" line="75"/>
-        <source>12V to 30V</source>
+        <source>6V to 12V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dataloggerservice.cpp" line="76"/>
+        <source>12V to 30V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dataloggerservice.cpp" line="77"/>
         <source>30V to 60V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="128"/>
+        <location filename="../dataloggerservice.cpp" line="129"/>
         <source>0 to 10mA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="129"/>
+        <location filename="../dataloggerservice.cpp" line="130"/>
         <source>10mA to 30mA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="130"/>
+        <location filename="../dataloggerservice.cpp" line="131"/>
         <source>30mA to 150mA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="131"/>
+        <location filename="../dataloggerservice.cpp" line="132"/>
         <source>150mA to 300mA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="132"/>
+        <location filename="../dataloggerservice.cpp" line="133"/>
         <source>300mA to 3A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="365"/>
+        <location filename="../dataloggerservice.cpp" line="366"/>
         <source>Settings command must be &apos;Start&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -267,12 +272,12 @@
 <context>
     <name>DataLoggerServicePrivate</name>
     <message>
-        <location filename="../dataloggerservice.cpp" line="619"/>
+        <location filename="../dataloggerservice.cpp" line="620"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dataloggerservice.cpp" line="606"/>
+        <location filename="../dataloggerservice.cpp" line="607"/>
         <source>Cannot decode metadata of %n byte/s: %1</source>
         <translation>
             <numerusform>Cannot decode metadata of %n byte: %1</numerusform>
@@ -280,7 +285,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dataloggerservice.cpp" line="626"/>
+        <location filename="../dataloggerservice.cpp" line="627"/>
         <source>Read %n sample/s from %1-bytes.</source>
         <translation>
             <numerusform>Read %n sample from %1-bytes.</numerusform>
@@ -288,42 +293,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="640"/>
+        <location filename="../dataloggerservice.cpp" line="641"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="652"/>
+        <location filename="../dataloggerservice.cpp" line="653"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="657"/>
+        <location filename="../dataloggerservice.cpp" line="658"/>
         <source>Unknown characteristic read for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="677"/>
+        <location filename="../dataloggerservice.cpp" line="678"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="683"/>
+        <location filename="../dataloggerservice.cpp" line="684"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="688"/>
+        <location filename="../dataloggerservice.cpp" line="689"/>
         <source>Unknown characteristic written for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="703"/>
+        <location filename="../dataloggerservice.cpp" line="704"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="718"/>
+        <location filename="../dataloggerservice.cpp" line="719"/>
         <source>Unknown characteristic notified for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
