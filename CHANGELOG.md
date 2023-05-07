@@ -1,11 +1,11 @@
 # Changelog[^1]
 
-## [Unreleased][]
+## [0.2.0][] (2023-05-07)
 
 ### Added
 
 - Temperature support for logger modes.
-- Localisation for en_AU, en_GB and en_US.
+- Localisation for en_AU, en_GB and en_US (Qt6 only for now).
 - Very early GUI app prototype.
 
 ### Changed
@@ -48,7 +48,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/pcolby/dokit/releases/tag/v0.2.0
 [0.1.2]: https://github.com/pcolby/dokit/releases/tag/v0.1.2
 [0.1.1]: https://github.com/pcolby/dokit/releases/tag/v0.1.1
 [0.1.0]: https://github.com/pcolby/dokit/releases/tag/v0.1.0
