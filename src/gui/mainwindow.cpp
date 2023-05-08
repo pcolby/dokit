@@ -17,6 +17,11 @@
 #include <QChart>
 #include <QSplineSeries>
 
+/// As of Qt6, Qt Charts no longer has a custom QtCharts namespace.
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+using namespace QtCharts;
+#endif
+
 MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QMainWindow(parent, flags)
 {
     setWindowIcon(QIcon(QStringLiteral(":/dokit-icon-512.png")));
@@ -64,7 +69,7 @@ MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QM
     auto pokitDevicesListView = new QListView(this);
     pokitDevicesListView->setModel(devicesModel);
     auto const scanDockWidget = new QDockWidget(tr("Pokit Devices"));
-    scanDockWidget->setObjectName("pokitDevicesDockWidget"); ///< For save/restore state (and presumably geometry).
+    scanDockWidget->setObjectName(QStringLiteral("pokitDevicesDockWidget")); ///< For save/restore state.
     scanDockWidget->setWidget(pokitDevicesListView);
     addDockWidget(Qt::RightDockWidgetArea, scanDockWidget);
 

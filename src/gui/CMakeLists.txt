@@ -17,8 +17,11 @@ set(DokitGuiSources
   resources.h
 )
 
-qt_add_resources(DokitGuiSources
-  qrc/icons.qrc)
+if((${QT_VERSION_MAJOR} EQUAL 5) AND (${QT_VERSION_MINOR} LESS 15))
+  qt5_add_resources(DokitGuiSources qrc/icons.qrc)
+else()
+  qt_add_resources(DokitGuiSources qrc/icons.qrc)
+endif()
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
   add_executable(Dokit main.cpp ${DokitGuiSources})
