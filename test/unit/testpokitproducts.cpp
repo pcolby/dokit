@@ -6,6 +6,8 @@
 #include <qtpokit/pokitproducts.h>
 #include <qtpokit/statusservice.h>
 
+Q_DECLARE_METATYPE(PokitProduct)
+
 #define POKIT_METER_STATUS_SERVICE_UUID QLatin1String("57d3a771-267c-4394-8872-78223e92aec4")
 #define POKIT_PRO_STATUS_SERVICE_UUID   QLatin1String("57d3a771-267c-4394-8872-78223e92aec5")
 
