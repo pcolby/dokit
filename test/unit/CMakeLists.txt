@@ -72,6 +72,11 @@ add_dokit_unit_test(
   testpokitdiscoveryagent.h)
 
 add_dokit_unit_test(
+  PokitProducts
+  testpokitproducts.cpp
+  testpokitproducts.h)
+
+add_dokit_unit_test(
   StatusService
   teststatusservice.cpp
   teststatusservice.h)

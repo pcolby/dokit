@@ -7,6 +7,7 @@
  */
 
 #include <qtpokit/pokitdiscoveryagent.h>
+#include <qtpokit/pokitproducts.h>
 #include "pokitdiscoveryagent_p.h"
 
 #include <qtpokit/statusservice.h>
@@ -74,39 +75,6 @@ PokitDiscoveryAgent::PokitDiscoveryAgent(
 PokitDiscoveryAgent::~PokitDiscoveryAgent()
 {
     delete d_ptr;
-}
-
-/*!
- * Returns \c true if \a info describes a Pokit device.
- *
- * Currently, this is based on whether or not \a info's service UUIDs includes a known Pokit
- * service, but this test criteria might be swapped for something else sometime.
- */
-bool PokitDiscoveryAgent::isPokitDevice(const QBluetoothDeviceInfo &info)
-{
-    return (isPokitMeter(info) || isPokitPro(info));
-}
-
-/*!
- * Returns \c true if \a info describes a Pokit Meter device.
- *
- * Currently, this is based on whether or not \a info's service UUIDs includes a known Pokit
- * service, but this test criteria might be swapped for something else sometime.
- */
-bool PokitDiscoveryAgent::isPokitMeter(const QBluetoothDeviceInfo &info)
-{
-    return info.serviceUuids().contains(StatusService::ServiceUuids::pokitMeter);
-}
-
-/*!
- * Returns \c true if \a info describes a Pokit Pro device.
- *
- * Currently, this is based on whether or not \a info's service UUIDs includes a known Pokit
- * service, but this test criteria might be swapped for something else sometime.
- */
-bool PokitDiscoveryAgent::isPokitPro(const QBluetoothDeviceInfo &info)
-{
-    return info.serviceUuids().contains(StatusService::ServiceUuids::pokitPro);
 }
 
 /*!
@@ -200,7 +168,7 @@ void PokitDiscoveryAgentPrivate::canceled() const
 void PokitDiscoveryAgentPrivate::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     Q_Q(PokitDiscoveryAgent);
-    if (!q->isPokitDevice(info)) return;
+    if (!isPokitProduct(info)) return;
     qCDebug(lc).noquote() << tr("Discovered Pokit device \"%1\" at %2.")
         .arg(info.name(), info.address().toString());
     emit q->pokitDeviceDiscovered(info);
@@ -218,7 +186,7 @@ void PokitDiscoveryAgentPrivate::deviceUpdated(
     const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields)
 {
     Q_Q(PokitDiscoveryAgent);
-    if (!q->isPokitDevice(info)) return;
+    if (!isPokitProduct(info)) return;
     qCDebug(lc).noquote() << tr("Pokit device \"%1\" at %2 updated with RSSI %3.")
         .arg(info.name(), info.address().toString()).arg(info.rssi());
     emit q->pokitDeviceUpdated(info, updatedFields);

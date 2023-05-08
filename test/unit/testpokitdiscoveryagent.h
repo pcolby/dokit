@@ -8,15 +8,6 @@ class TestPokitDiscoveryAgent : public QObject
     Q_OBJECT
 
 private slots:
-    void isPokitDevice_data();
-    void isPokitDevice();
-
-    void isPokitMeter_data();
-    void isPokitMeter();
-
-    void isPokitPro_data();
-    void isPokitPro();
-
     //void start(); // Cannot test without impacting Bluetooth devices.
 
     void cancelled();

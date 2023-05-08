@@ -4,6 +4,7 @@
 #include "testpokitdiscoveryagent.h"
 
 #include <qtpokit/pokitdiscoveryagent.h>
+#include <qtpokit/statusservice.h>
 #include "pokitdiscoveryagent_p.h"
 
 #include <QBluetoothUuid>
@@ -20,123 +21,6 @@
 #define DATA_COMPLETENESS
 #endif
 
-void TestPokitDiscoveryAgent::isPokitDevice_data()
-{
-    QTest::addColumn<QBluetoothDeviceInfo>("info");
-    QTest::addColumn<bool>("expected");
-
-    QTest::addRow("invalid") << QBluetoothDeviceInfo() << false;
-
-    QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String("11:22:33:44:55:66")),
-                              QLatin1String("info"), 0);
-    QTest::addRow("unset") << info << false;
-
-    info.setServiceUuids({} DATA_COMPLETENESS);
-    QTest::addRow("empty") << info << false;
-
-    info.setServiceUuids({QBluetoothUuid(QUuid::createUuid())} DATA_COMPLETENESS);
-    QTest::addRow("random") << info << false;
-
-    info.setServiceUuids({ QBluetoothUuid(POKIT_METER_STATUS_SERVICE_UUID) } DATA_COMPLETENESS);
-    QTest::addRow("status") << info << true;
-
-    info.setServiceUuids({ QBluetoothUuid(POKIT_PRO_STATUS_SERVICE_UUID) } DATA_COMPLETENESS);
-    QTest::addRow("status") << info << true;
-
-    info.setServiceUuids({QBluetoothUuid(QUuid::createUuid()),
-                          QBluetoothUuid(QUuid::createUuid())} DATA_COMPLETENESS);
-    QTest::addRow("two") << info << false;
-
-    info.setServiceUuids({QBluetoothUuid(POKIT_METER_STATUS_SERVICE_UUID),
-                          QBluetoothUuid(POKIT_PRO_STATUS_SERVICE_UUID)} DATA_COMPLETENESS);
-    QTest::addRow("both") << info << true;
-}
-
-void TestPokitDiscoveryAgent::isPokitDevice()
-{
-    QFETCH(QBluetoothDeviceInfo, info);
-    QFETCH(bool, expected);
-    QCOMPARE(PokitDiscoveryAgent::isPokitDevice(info), expected);
-}
-
-void TestPokitDiscoveryAgent::isPokitMeter_data()
-{
-    QTest::addColumn<QBluetoothDeviceInfo>("info");
-    QTest::addColumn<bool>("expected");
-
-    QTest::addRow("invalid") << QBluetoothDeviceInfo() << false;
-
-    QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String("11:22:33:44:55:66")),
-                              QLatin1String("info"), 0);
-    QTest::addRow("unset") << info << false;
-
-    info.setServiceUuids({} DATA_COMPLETENESS);
-    QTest::addRow("empty") << info << false;
-
-    info.setServiceUuids({QBluetoothUuid(QUuid::createUuid())} DATA_COMPLETENESS);
-    QTest::addRow("random") << info << false;
-
-    info.setServiceUuids({ QBluetoothUuid(POKIT_METER_STATUS_SERVICE_UUID) } DATA_COMPLETENESS);
-    QTest::addRow("status") << info << true;
-
-    info.setServiceUuids({ QBluetoothUuid(POKIT_PRO_STATUS_SERVICE_UUID) } DATA_COMPLETENESS);
-    QTest::addRow("status") << info << false; // Pro != Meter.
-
-    info.setServiceUuids({QBluetoothUuid(QUuid::createUuid()),
-                          QBluetoothUuid(QUuid::createUuid())} DATA_COMPLETENESS);
-    QTest::addRow("two") << info << false;
-
-    info.setServiceUuids({QBluetoothUuid(POKIT_METER_STATUS_SERVICE_UUID),
-                          QBluetoothUuid(POKIT_PRO_STATUS_SERVICE_UUID)} DATA_COMPLETENESS);
-    QTest::addRow("both") << info << true;
-}
-
-void TestPokitDiscoveryAgent::isPokitMeter()
-{
-    QFETCH(QBluetoothDeviceInfo, info);
-    QFETCH(bool, expected);
-    QCOMPARE(PokitDiscoveryAgent::isPokitMeter(info), expected);
-}
-
-void TestPokitDiscoveryAgent::isPokitPro_data()
-{
-    QTest::addColumn<QBluetoothDeviceInfo>("info");
-    QTest::addColumn<bool>("expected");
-
-    QTest::addRow("invalid") << QBluetoothDeviceInfo() << false;
-
-    QBluetoothDeviceInfo info(QBluetoothAddress(QLatin1String("11:22:33:44:55:66")),
-                              QLatin1String("info"), 0);
-    QTest::addRow("unset") << info << false;
-
-    info.setServiceUuids({} DATA_COMPLETENESS);
-    QTest::addRow("empty") << info << false;
-
-    info.setServiceUuids({QBluetoothUuid(QUuid::createUuid())} DATA_COMPLETENESS);
-    QTest::addRow("random") << info << false;
-
-    info.setServiceUuids({ QBluetoothUuid(POKIT_METER_STATUS_SERVICE_UUID) } DATA_COMPLETENESS);
-    QTest::addRow("status") << info << false; // Meter != Pro.
-
-    info.setServiceUuids({ QBluetoothUuid(POKIT_PRO_STATUS_SERVICE_UUID) } DATA_COMPLETENESS);
-    QTest::addRow("status") << info << true;
-
-    info.setServiceUuids({QBluetoothUuid(QUuid::createUuid()),
-                          QBluetoothUuid(QUuid::createUuid())} DATA_COMPLETENESS);
-    QTest::addRow("two") << info << false;
-
-    info.setServiceUuids({QBluetoothUuid(POKIT_METER_STATUS_SERVICE_UUID),
-                          QBluetoothUuid(POKIT_PRO_STATUS_SERVICE_UUID)} DATA_COMPLETENESS);
-    QTest::addRow("both") << info << true;
-}
-
-void TestPokitDiscoveryAgent::isPokitPro()
-{
-    QFETCH(QBluetoothDeviceInfo, info);
-    QFETCH(bool, expected);
-    QCOMPARE(PokitDiscoveryAgent::isPokitPro(info), expected);
-}
-
 //void TestPokitDiscoveryAgent::start()
 //{
 //    QSKIP("Cannot test without impacting Bluetooth devices.");
@@ -151,16 +35,27 @@ void TestPokitDiscoveryAgent::cancelled()
 
 void TestPokitDiscoveryAgent::deviceDiscovered_data()
 {
-    isPokitDevice_data();
+    QTest::addColumn<QBluetoothUuid>("uuid");
+    QTest::addColumn<bool>("expected");
+
+    QTest::addRow("Pokit Meter") << QBluetoothUuid(POKIT_METER_STATUS_SERVICE_UUID) << true;
+    QTest::addRow("Pokit Pro")   << QBluetoothUuid(POKIT_PRO_STATUS_SERVICE_UUID)   << true;
+    QTest::addRow("pokitMeter")  << StatusService::ServiceUuids::pokitMeter         << true;
+    QTest::addRow("pokitPro")    << StatusService::ServiceUuids::pokitPro           << true;
+    QTest::addRow("null")        << QBluetoothUuid()                                << false;
+    QTest::addRow("random")      << QBluetoothUuid(QUuid::createUuid())             << false;
 }
 
 void TestPokitDiscoveryAgent::deviceDiscovered()
 {
-    QFETCH(QBluetoothDeviceInfo, info);
+    QFETCH(QBluetoothUuid, uuid);
     QFETCH(bool, expected);
     PokitDiscoveryAgent service(nullptr);
     QSignalSpy spy(&service, &PokitDiscoveryAgent::pokitDeviceDiscovered);
     QCOMPARE(spy.count(), 0); // No signals yet.
+
+    QBluetoothDeviceInfo info;
+    info.setServiceUuids({ uuid } DATA_COMPLETENESS);
     service.d_func()->deviceDiscovered(info);
     QCOMPARE(spy.count(), (expected) ? 1 : 0);
 }
@@ -168,18 +63,21 @@ void TestPokitDiscoveryAgent::deviceDiscovered()
 void TestPokitDiscoveryAgent::deviceUpdated_data()
 {
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    isPokitDevice_data();
+    deviceDiscovered_data();
     #endif
 }
 
 void TestPokitDiscoveryAgent::deviceUpdated()
 {
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    QFETCH(QBluetoothDeviceInfo, info);
+    QFETCH(QBluetoothUuid, uuid);
     QFETCH(bool, expected);
     PokitDiscoveryAgent service(nullptr);
     QSignalSpy spy(&service, &PokitDiscoveryAgent::pokitDeviceUpdated);
     QCOMPARE(spy.count(), 0); // No signals yet.
+
+    QBluetoothDeviceInfo info;
+    info.setServiceUuids({ uuid } DATA_COMPLETENESS);
     service.d_func()->deviceUpdated(info, QBluetoothDeviceInfo::Fields());
     QCOMPARE(spy.count(), (expected) ? 1 : 0);
     #else

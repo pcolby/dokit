@@ -26,10 +26,6 @@ public:
     PokitDiscoveryAgent(QObject * parent=nullptr);
     virtual ~PokitDiscoveryAgent();
 
-    static bool isPokitDevice(const QBluetoothDeviceInfo &info);
-    static bool isPokitMeter(const QBluetoothDeviceInfo &info);
-    static bool isPokitPro(const QBluetoothDeviceInfo &info);
-
 public slots:
     void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods);
     void start();
