@@ -21,11 +21,11 @@ enum class PokitProduct : quint8 {
 Q_DECLARE_FLAGS(PokitProducts, PokitProduct)
 QTPOKIT_EXPORT QString toString(const PokitProduct product);
 
-bool isPokitProduct(const QBluetoothDeviceInfo &info);
-bool isPokitProduct(const QLowEnergyController &controller);
+QTPOKIT_EXPORT bool isPokitProduct(const QBluetoothDeviceInfo &info);
+QTPOKIT_EXPORT bool isPokitProduct(const QLowEnergyController &controller);
 
-PokitProduct pokitProduct(const QBluetoothDeviceInfo &info);
-PokitProduct pokitProduct(const QLowEnergyController &controller);
+QTPOKIT_EXPORT PokitProduct pokitProduct(const QBluetoothDeviceInfo &info);
+QTPOKIT_EXPORT PokitProduct pokitProduct(const QLowEnergyController &controller);
 
 /// \todo Range conversion functions.
 
