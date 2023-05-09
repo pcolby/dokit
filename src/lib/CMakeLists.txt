@@ -14,6 +14,8 @@ add_library(
   ${CMAKE_SOURCE_DIR}/include/qtpokit/multimeterservice.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevice.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdiscoveryagent.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitmeter.h
+  ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitpro.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitproducts.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/qtpokit_global.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/statusservice.h
@@ -35,6 +37,8 @@ add_library(
   pokitdevice_p.h
   pokitdiscoveryagent.cpp
   pokitdiscoveryagent_p.h
+  pokitmeter.cpp
+  pokitpro.cpp
   pokitproducts.cpp
   statusservice.cpp
   statusservice_p.h

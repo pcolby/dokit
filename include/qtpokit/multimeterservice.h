@@ -41,9 +41,12 @@ public:
         Diode       = 6, ///< Measure diode.
         Continuity  = 7, ///< Measure continuity.
         Temperature = 8, ///< Measure temperature.
-        /// \todo Pokit Pro supports capacitance too.
+        Capacitance = 9, ///< Measure capacitance.
+        ExternalTemperature = 10, ///< Measure temperature via an external temperature probe.
     };
     static QString toString(const Mode &mode);
+
+    /// \todo Replace all of these "ranges" types and functions with ones from pokit{product,meter,pro}.h versions.
 
     enum class VoltageRange : quint8 {
         _0_to_300mV  = 0,  ///< 0 to 300mV.

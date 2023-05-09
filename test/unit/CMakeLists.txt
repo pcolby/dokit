@@ -72,6 +72,16 @@ add_dokit_unit_test(
   testpokitdiscoveryagent.h)
 
 add_dokit_unit_test(
+  PokitMeter
+  testpokitmeter.cpp
+  testpokitmeter.h)
+
+add_dokit_unit_test(
+  PokitPro
+  testpokitpro.cpp
+  testpokitpro.h)
+
+add_dokit_unit_test(
   PokitProducts
   testpokitproducts.cpp
   testpokitproducts.h)

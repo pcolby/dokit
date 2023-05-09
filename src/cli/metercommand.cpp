@@ -282,6 +282,7 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     case MultimeterService::Mode::DcCurrent:
     case MultimeterService::Mode::AcCurrent:
     case MultimeterService::Mode::Resistance:
+    case MultimeterService::Mode::Capacitance:
         status = (reading.status == MultimeterService::MeterStatus::AutoRangeOn)
             ? tr("Auto Range On") : tr("Auto Range Off");
         break;
@@ -290,6 +291,7 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
             ? tr("Continuity") : tr("No continuity");
         break;
     case MultimeterService::Mode::Temperature:
+    case MultimeterService::Mode::ExternalTemperature:
     case MultimeterService::Mode::Diode:
         status = tr("Ok");
         break;
@@ -306,6 +308,8 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     case MultimeterService::Mode::Diode:       break;
     case MultimeterService::Mode::Continuity:  break;
     case MultimeterService::Mode::Temperature: units = QString::fromUtf8("°C"); break;
+    case MultimeterService::Mode::Capacitance: units = QString::fromUtf8("F");  break;
+    case MultimeterService::Mode::ExternalTemperature: units = QString::fromUtf8("°C"); break;
     }
 
     QString range;
@@ -332,6 +336,10 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     case MultimeterService::Mode::Diode:       break;
     case MultimeterService::Mode::Continuity:  break;
     case MultimeterService::Mode::Temperature: break;
+    case MultimeterService::Mode::Capacitance:
+        /// \todo
+        break;
+    case MultimeterService::Mode::ExternalTemperature: break;
     }
 
     switch (format) {

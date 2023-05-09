@@ -48,6 +48,8 @@ public:
     };
     static QString toString(const Mode &mode);
 
+    /// \todo Replace all of these "ranges" types and functions with ones from pokit{product,meter,pro}.h versions.
+
     enum class VoltageRange : quint8 {
         _0_to_300mV  = 0,  ///< 0 to 300mV.
         _300mV_to_2V = 1,  ///< 300mV to 2V.
