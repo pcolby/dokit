@@ -54,14 +54,14 @@ void TestPokitMeter::toString_Resistance_data()
     QTest::addColumn<PokitMeter::ResistanceRange>("range");
     QTest::addColumn<QString>("expected");
 
-    QTest::addRow("160Ω")  << PokitMeter::ResistanceRange::_160      << QStringLiteral("Up to 160Ω");
-    QTest::addRow("330Ω")  << PokitMeter::ResistanceRange::_330      << QStringLiteral("Up to 330Ω");
-    QTest::addRow("890Ω")  << PokitMeter::ResistanceRange::_890      << QStringLiteral("Up to 890Ω");
-    QTest::addRow("1.5KΩ") << PokitMeter::ResistanceRange::_1K5      << QStringLiteral("Up to 1.5KΩ");
-    QTest::addRow("10KΩ")  << PokitMeter::ResistanceRange::_10K      << QStringLiteral("Up to 10KΩ");
-    QTest::addRow("100KΩ") << PokitMeter::ResistanceRange::_100K     << QStringLiteral("Up to 100KΩ");
-    QTest::addRow("470KΩ") << PokitMeter::ResistanceRange::_470K     << QStringLiteral("Up to 470KΩ");
-    QTest::addRow("1MΩ")   << PokitMeter::ResistanceRange::_1M       << QStringLiteral("Up to 1MΩ");
+    QTest::addRow("160Ω")  << PokitMeter::ResistanceRange::_160      << QString::fromUtf8("Up to 160Ω");
+    QTest::addRow("330Ω")  << PokitMeter::ResistanceRange::_330      << QString::fromUtf8("Up to 330Ω");
+    QTest::addRow("890Ω")  << PokitMeter::ResistanceRange::_890      << QString::fromUtf8("Up to 890Ω");
+    QTest::addRow("1.5KΩ") << PokitMeter::ResistanceRange::_1K5      << QString::fromUtf8("Up to 1.5KΩ");
+    QTest::addRow("10KΩ")  << PokitMeter::ResistanceRange::_10K      << QString::fromUtf8("Up to 10KΩ");
+    QTest::addRow("100KΩ") << PokitMeter::ResistanceRange::_100K     << QString::fromUtf8("Up to 100KΩ");
+    QTest::addRow("470KΩ") << PokitMeter::ResistanceRange::_470K     << QString::fromUtf8("Up to 470KΩ");
+    QTest::addRow("1MΩ")   << PokitMeter::ResistanceRange::_1M       << QString::fromUtf8("Up to 1MΩ");
     QTest::addRow("auto")  << PokitMeter::ResistanceRange::AutoRange << QStringLiteral("Auto-range");
 }
 

@@ -17,7 +17,7 @@ void TestPokitPro::toString_Capacitance_data()
     QTest::addColumn<QString>("expected");
 
     QTest::addRow("100n") << PokitPro::CapacitanceRange::_100nF    << QStringLiteral("Up to 100nF");
-    QTest::addRow("10μF") << PokitPro::CapacitanceRange::_10uF     << QStringLiteral("Up to 10μF");
+    QTest::addRow("10μF") << PokitPro::CapacitanceRange::_10uF     << QString::fromUtf8("Up to 10μF");
     QTest::addRow("1mF")  << PokitPro::CapacitanceRange::_1mF      << QStringLiteral("Up to 1mF");
     QTest::addRow("auto") << PokitPro::CapacitanceRange::AutoRange << QStringLiteral("Auto-range");
 }
@@ -54,7 +54,7 @@ void TestPokitPro::toString_Current_data()
     QTest::addColumn<PokitPro::CurrentRange>("range");
     QTest::addColumn<QString>("expected");
 
-    QTest::addRow("500μA") << PokitPro::CurrentRange::_500uA    << QStringLiteral("Up to 500μA");
+    QTest::addRow("500μA") << PokitPro::CurrentRange::_500uA    << QString::fromUtf8("Up to 500μA");
     QTest::addRow("2mA")   << PokitPro::CurrentRange::_2mA      << QStringLiteral("Up to 2mA");
     QTest::addRow("10mA")  << PokitPro::CurrentRange::_10mA     << QStringLiteral("Up to 10mA");
     QTest::addRow("125mA") << PokitPro::CurrentRange::_125mA    << QStringLiteral("Up to 125mA");
@@ -98,17 +98,17 @@ void TestPokitPro::toString_Resistance_data()
     QTest::addColumn<PokitPro::ResistanceRange>("range");
     QTest::addColumn<QString>("expected");
 
-    QTest::addRow("30Ω")   << PokitPro::ResistanceRange::_30       << QStringLiteral("Up to 30Ω");
-    QTest::addRow("75Ω")   << PokitPro::ResistanceRange::_75       << QStringLiteral("Up to 75Ω");
-    QTest::addRow("400Ω")  << PokitPro::ResistanceRange::_400      << QStringLiteral("Up to 400Ω");
-    QTest::addRow("5KΩ")   << PokitPro::ResistanceRange::_5K       << QStringLiteral("Up to 5KΩ");
-    QTest::addRow("10KΩ")  << PokitPro::ResistanceRange::_10K      << QStringLiteral("Up to 10KΩ");
-    QTest::addRow("15KΩ")  << PokitPro::ResistanceRange::_15K      << QStringLiteral("Up to 15KΩ");
-    QTest::addRow("40KΩ")  << PokitPro::ResistanceRange::_40K      << QStringLiteral("Up to 40KΩ");
-    QTest::addRow("500KΩ") << PokitPro::ResistanceRange::_500K     << QStringLiteral("Up to 500KΩ");
-    QTest::addRow("700KΩ") << PokitPro::ResistanceRange::_700K     << QStringLiteral("Up to 700KΩ");
-    QTest::addRow("1MΩ")   << PokitPro::ResistanceRange::_1M       << QStringLiteral("Up to 1MΩ");
-    QTest::addRow("3MΩ")   << PokitPro::ResistanceRange::_3M       << QStringLiteral("Up to 3MΩ");
+    QTest::addRow("30Ω")   << PokitPro::ResistanceRange::_30       << QString::fromUtf8("Up to 30Ω");
+    QTest::addRow("75Ω")   << PokitPro::ResistanceRange::_75       << QString::fromUtf8("Up to 75Ω");
+    QTest::addRow("400Ω")  << PokitPro::ResistanceRange::_400      << QString::fromUtf8("Up to 400Ω");
+    QTest::addRow("5KΩ")   << PokitPro::ResistanceRange::_5K       << QString::fromUtf8("Up to 5KΩ");
+    QTest::addRow("10KΩ")  << PokitPro::ResistanceRange::_10K      << QString::fromUtf8("Up to 10KΩ");
+    QTest::addRow("15KΩ")  << PokitPro::ResistanceRange::_15K      << QString::fromUtf8("Up to 15KΩ");
+    QTest::addRow("40KΩ")  << PokitPro::ResistanceRange::_40K      << QString::fromUtf8("Up to 40KΩ");
+    QTest::addRow("500KΩ") << PokitPro::ResistanceRange::_500K     << QString::fromUtf8("Up to 500KΩ");
+    QTest::addRow("700KΩ") << PokitPro::ResistanceRange::_700K     << QString::fromUtf8("Up to 700KΩ");
+    QTest::addRow("1MΩ")   << PokitPro::ResistanceRange::_1M       << QString::fromUtf8("Up to 1MΩ");
+    QTest::addRow("3MΩ")   << PokitPro::ResistanceRange::_3M       << QString::fromUtf8("Up to 3MΩ");
     QTest::addRow("auto")  << PokitPro::ResistanceRange::AutoRange << QStringLiteral("Auto-range");
 }
 
