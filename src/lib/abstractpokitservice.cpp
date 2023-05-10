@@ -8,6 +8,7 @@
 
 #include <qtpokit/abstractpokitservice.h>
 #include "abstractpokitservice_p.h"
+#include "pokitproducts_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
@@ -78,6 +79,32 @@ void AbstractPokitService::setAutoDiscover(const bool discover)
 }
 
 /*!
+ * Returns the Pokit product this service is attached to.
+ *
+ * \see setPokitProduct
+ */
+PokitProduct AbstractPokitService::pokitProduct() const
+{
+    Q_D(const AbstractPokitService);
+    return d->pokitProduct;
+}
+
+/*!
+ * Sets the current Pokit \a product.
+ *
+ * Usually, the product is deteced during service construction, but it is possible (though not normally necessary) to
+ * override it.  No attempt is made to valiadate the \a product - this service will simply assume that the attached
+ * BLE device is the \a product specified, and treat it as such.
+ *
+ * \see setPokitProduct
+ */
+void AbstractPokitService::setPokitProduct(const PokitProduct product)
+{
+    Q_D(AbstractPokitService);
+    d->pokitProduct = product;
+}
+
+/*!
  * Returns a non-const pointer to the internal service object, if any.
  */
 QLowEnergyService * AbstractPokitService::service()
@@ -134,6 +161,12 @@ AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &s
     : controller(controller), serviceUuid(serviceUuid), q_ptr(q)
 {
     if (controller) {
+        if (isPokitProduct(*controller)) {
+            this->pokitProduct = ::pokitProduct(*controller);
+        } else {
+            qCWarning(lc).noquote() << tr("Controller does not appear to be a Pokit device");
+            qCDebug(lc) << tr("Controller services:") << controller->services();
+        }
         connect(controller, &QLowEnergyController::connected,
                 this, &AbstractPokitServicePrivate::connected);
 
@@ -145,7 +178,6 @@ AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &s
 
         createServiceObject();
     }
-
 }
 
 /*!

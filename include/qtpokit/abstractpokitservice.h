@@ -10,6 +10,7 @@
 #define QTPOKIT_ABSTRACTPOKITSERVICE_H
 
 #include "qtpokit_global.h"
+#include "pokitproducts.h"
 
 #include <QLowEnergyService>
 #include <QObject>
@@ -32,6 +33,9 @@ public:
 
     bool autoDiscover() const;
     void setAutoDiscover(const bool discover = true);
+
+    PokitProduct pokitProduct() const;
+    void setPokitProduct(const PokitProduct product);
 
     QLowEnergyService * service();
     const QLowEnergyService * service() const;

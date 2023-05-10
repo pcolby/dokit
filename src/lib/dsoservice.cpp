@@ -91,8 +91,7 @@ QString DsoService::toString(const PokitProduct product, const quint8 range, con
 /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
 QString DsoService::toString(const quint8 range, const Mode mode)
 {
-    Q_D(DsoService);
-    return toString(pokitProduct(*d->controller), range, mode);
+    return toString(pokitProduct(), range, mode);
 ;}
 
 /// \struct DsoService::Settings

@@ -10,6 +10,7 @@
 #define QTPOKIT_ABSTRACTPOKITSERVICE_P_H
 
 #include <qtpokit/qtpokit_global.h>
+#include <qtpokit/pokitproducts.h>
 
 #include <QLoggingCategory>
 #include <QLowEnergyService>
@@ -30,6 +31,7 @@ public:
 
     bool autoDiscover { true };                    ///< Whether autodiscovery is enabled or not.
     QLowEnergyController * controller { nullptr }; ///< BLE controller to fetch the service from.
+    PokitProduct pokitProduct { };                 ///< The Pokit product #controller is connected to.
     QLowEnergyService * service { nullptr };       ///< BLE service to read/write characteristics.
     QBluetoothUuid serviceUuid;                    ///< UUIDs for #service.
 
