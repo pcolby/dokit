@@ -22,12 +22,8 @@ Q_DECLARE_FLAGS(PokitProducts, PokitProduct)
 QTPOKIT_EXPORT QString toString(const PokitProduct product);
 
 QTPOKIT_EXPORT bool isPokitProduct(const QBluetoothDeviceInfo &info);
-QTPOKIT_EXPORT bool isPokitProduct(const QLowEnergyController &controller);
 
 QTPOKIT_EXPORT PokitProduct pokitProduct(const QBluetoothDeviceInfo &info);
-QTPOKIT_EXPORT PokitProduct pokitProduct(const QLowEnergyController &controller);
-
-/// \todo Range conversion functions.
 
 QTPOKIT_END_NAMESPACE
 

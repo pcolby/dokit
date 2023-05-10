@@ -9,9 +9,6 @@
 #include <QRegularExpression>
 
 Q_DECLARE_METATYPE(DsoService::Mode)
-Q_DECLARE_METATYPE(DsoService::VoltageRange)
-Q_DECLARE_METATYPE(DsoService::CurrentRange)
-Q_DECLARE_METATYPE(DsoService::Range)
 Q_DECLARE_METATYPE(DsoService::Settings)
 Q_DECLARE_METATYPE(DsoService::Metadata)
 
@@ -36,216 +33,6 @@ void TestDsoService::toString_Mode()
     QFETCH(DsoService::Mode, mode);
     QFETCH(QString, expected);
     QCOMPARE(DsoService::toString(mode), expected);
-}
-
-void TestDsoService::toString_VoltageRange_data()
-{
-    QTest::addColumn<DsoService::VoltageRange>("range");
-    QTest::addColumn<QString>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DsoService::VoltageRange::range << QStringLiteral(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_300mV,  "0 to 300mV");
-    DOKIT_ADD_TEST_ROW(_300mV_to_2V, "300mV to 2V");
-    DOKIT_ADD_TEST_ROW(_2V_to_6V,    "2V to 6V");
-    DOKIT_ADD_TEST_ROW(_6V_to_12V,   "6V to 12V");
-    DOKIT_ADD_TEST_ROW(_12V_to_30V,  "12V to 30V");
-    DOKIT_ADD_TEST_ROW(_30V_to_60V,  "30V to 60V");
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DsoService::VoltageRange)6    << QString();
-    QTest::addRow("max")     << (DsoService::VoltageRange)0xFF << QString();
-}
-
-void TestDsoService::toString_VoltageRange()
-{
-    QFETCH(DsoService::VoltageRange, range);
-    QFETCH(QString, expected);
-    QCOMPARE(DsoService::toString(range), expected);
-}
-
-void TestDsoService::minValue_VoltageRange_data()
-{
-    QTest::addColumn<DsoService::VoltageRange>("range");
-    QTest::addColumn<QVariant>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DsoService::VoltageRange::range << QVariant(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_300mV,      0);
-    DOKIT_ADD_TEST_ROW(_300mV_to_2V,   300);
-    DOKIT_ADD_TEST_ROW(_2V_to_6V,     2000);
-    DOKIT_ADD_TEST_ROW(_6V_to_12V,    6000);
-    DOKIT_ADD_TEST_ROW(_12V_to_30V,  12000);
-    DOKIT_ADD_TEST_ROW(_30V_to_60V,  30000);
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DsoService::VoltageRange)6    << QVariant();
-    QTest::addRow("max")     << (DsoService::VoltageRange)0xFF << QVariant();
-}
-
-void TestDsoService::minValue_VoltageRange()
-{
-    QFETCH(DsoService::VoltageRange, range);
-    QFETCH(QVariant, expected);
-    QCOMPARE(DsoService::minValue(range), expected);
-}
-
-void TestDsoService::maxValue_VoltageRange_data()
-{
-    QTest::addColumn<DsoService::VoltageRange>("range");
-    QTest::addColumn<QVariant>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DsoService::VoltageRange::range << QVariant(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_300mV,    300);
-    DOKIT_ADD_TEST_ROW(_300mV_to_2V,  2000);
-    DOKIT_ADD_TEST_ROW(_2V_to_6V,     6000);
-    DOKIT_ADD_TEST_ROW(_6V_to_12V,   12000);
-    DOKIT_ADD_TEST_ROW(_12V_to_30V,  30000);
-    DOKIT_ADD_TEST_ROW(_30V_to_60V,  60000);
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DsoService::VoltageRange)6    << QVariant();
-    QTest::addRow("max")     << (DsoService::VoltageRange)0xFF << QVariant();
-}
-
-void TestDsoService::maxValue_VoltageRange()
-{
-    QFETCH(DsoService::VoltageRange, range);
-    QFETCH(QVariant, expected);
-    QCOMPARE(DsoService::maxValue(range), expected);
-}
-
-void TestDsoService::toString_CurrentRange_data()
-{
-    QTest::addColumn<DsoService::CurrentRange>("range");
-    QTest::addColumn<QString>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DsoService::CurrentRange::range << QStringLiteral(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_10mA,      "0 to 10mA");
-    DOKIT_ADD_TEST_ROW(_10mA_to_30mA,   "10mA to 30mA");
-    DOKIT_ADD_TEST_ROW(_30mA_to_150mA,  "30mA to 150mA");
-    DOKIT_ADD_TEST_ROW(_150mA_to_300mA, "150mA to 300mA");
-    DOKIT_ADD_TEST_ROW(_300mA_to_3A,    "300mA to 3A");
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DsoService::CurrentRange)5    << QString();
-    QTest::addRow("max")     << (DsoService::CurrentRange)0xFF << QString();
-}
-
-void TestDsoService::toString_CurrentRange()
-{
-    QFETCH(DsoService::CurrentRange, range);
-    QFETCH(QString, expected);
-    QCOMPARE(DsoService::toString(range), expected);
-}
-
-void TestDsoService::minValue_CurrentRange_data()
-{
-    QTest::addColumn<DsoService::CurrentRange>("range");
-    QTest::addColumn<QVariant>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DsoService::CurrentRange::range << QVariant(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_10mA,        0);
-    DOKIT_ADD_TEST_ROW(_10mA_to_30mA,    10);
-    DOKIT_ADD_TEST_ROW(_30mA_to_150mA,   30);
-    DOKIT_ADD_TEST_ROW(_150mA_to_300mA, 150);
-    DOKIT_ADD_TEST_ROW(_300mA_to_3A,    300);
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DsoService::CurrentRange)5    << QVariant();
-    QTest::addRow("max")     << (DsoService::CurrentRange)0xFF << QVariant();
-}
-
-void TestDsoService::minValue_CurrentRange()
-{
-    QFETCH(DsoService::CurrentRange, range);
-    QFETCH(QVariant, expected);
-    QCOMPARE(DsoService::minValue(range), expected);
-}
-
-void TestDsoService::maxValue_CurrentRange_data()
-{
-    QTest::addColumn<DsoService::CurrentRange>("range");
-    QTest::addColumn<QVariant>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DsoService::CurrentRange::range << QVariant(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_10mA,        10);
-    DOKIT_ADD_TEST_ROW(_10mA_to_30mA,     30);
-    DOKIT_ADD_TEST_ROW(_30mA_to_150mA,   150);
-    DOKIT_ADD_TEST_ROW(_150mA_to_300mA,  300);
-    DOKIT_ADD_TEST_ROW(_300mA_to_3A,    3000);
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DsoService::CurrentRange)5    << QVariant();
-    QTest::addRow("max")     << (DsoService::CurrentRange)0xFF << QVariant();
-}
-
-void TestDsoService::maxValue_CurrentRange()
-{
-    QFETCH(DsoService::CurrentRange, range);
-    QFETCH(QVariant, expected);
-    QCOMPARE(DsoService::maxValue(range), expected);
-}
-
-void TestDsoService::range_Range()
-{
-    const DsoService::Range range;
-    QCOMPARE((quint8)range.currentRange, (quint8)0);
-    QCOMPARE((quint8)range.voltageRange, (quint8)0);
-
-    const DsoService::Range voltage(DsoService::VoltageRange::_6V_to_12V);
-    QCOMPARE(voltage.voltageRange, DsoService::VoltageRange::_6V_to_12V);
-
-    const DsoService::Range current(DsoService::CurrentRange::_150mA_to_300mA);
-    QCOMPARE(voltage.currentRange, DsoService::CurrentRange::_150mA_to_300mA);
-}
-
-void TestDsoService::range_Operators()
-{
-    QVERIFY(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) ==
-            DsoService::Range(DsoService::VoltageRange::_300mV_to_2V));
-
-    QVERIFY(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) !=
-            DsoService::Range(DsoService::VoltageRange::_2V_to_6V));
-
-    QVERIFY(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) <
-            DsoService::Range(DsoService::VoltageRange::_2V_to_6V));
-
-    QVERIFY(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) <=
-            DsoService::Range(DsoService::VoltageRange::_2V_to_6V));
-
-    QVERIFY(!(DsoService::Range(DsoService::VoltageRange::_2V_to_6V) <=
-              DsoService::Range(DsoService::VoltageRange::_300mV_to_2V)));
-
-    QVERIFY(DsoService::Range(DsoService::VoltageRange::_2V_to_6V) >
-            DsoService::Range(DsoService::VoltageRange::_300mV_to_2V));
-
-    QVERIFY(DsoService::Range(DsoService::VoltageRange::_2V_to_6V) >=
-            DsoService::Range(DsoService::VoltageRange::_300mV_to_2V));
-
-    QVERIFY(!(DsoService::Range(DsoService::VoltageRange::_300mV_to_2V) >=
-              DsoService::Range(DsoService::VoltageRange::_2V_to_6V)));
-}
-
-void TestDsoService::toString_Range_data()
-{
-    QTest::addColumn<DsoService::Range>("range");
-    QTest::addColumn<DsoService::Mode>("mode");
-    QTest::addColumn<QString>("expected");
-
-    #define DOKIT_ADD_TEST_ROW(mode, member, range, expected) \
-        QTest::addRow(#mode "," #range) << DsoService::Range(DsoService::range) \
-            << DsoService::Mode::mode << QStringLiteral(expected)
-    DOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
-    DOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
-    DOKIT_ADD_TEST_ROW(AcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
-    DOKIT_ADD_TEST_ROW(AcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
-    DOKIT_ADD_TEST_ROW(DcCurrent, currentRange, CurrentRange::_0_to_10mA,   "0 to 10mA");
-    DOKIT_ADD_TEST_ROW(DcCurrent, currentRange, CurrentRange::_300mA_to_3A, "300mA to 3A");
-    DOKIT_ADD_TEST_ROW(AcCurrent, currentRange, CurrentRange::_0_to_10mA,   "0 to 10mA");
-    DOKIT_ADD_TEST_ROW(AcCurrent, currentRange, CurrentRange::_300mA_to_3A, "300mA to 3A");
-    DOKIT_ADD_TEST_ROW(Idle,      voltageRange, VoltageRange::_0_to_300mV,  ""); // Invalid.
-    #undef DOKIT_ADD_TEST_ROW
-}
-
-void TestDsoService::toString_Range()
-{
-    QFETCH(DsoService::Range, range);
-    QFETCH(DsoService::Mode, mode);
-    QFETCH(QString, expected);
-    QCOMPARE(DsoService::toString(range, mode), expected);
 }
 
 void TestDsoService::readCharacteristics()
@@ -343,7 +130,7 @@ void TestDsoService::encodeSettings_data()
         << DsoService::Settings{
            DsoService::Command::ResendData,
            0, DsoService::Mode::Idle,
-           DsoService::VoltageRange::_0_to_300mV, 0, 0
+           0, 0, 0
         }
         << QByteArray("\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
 
@@ -352,7 +139,7 @@ void TestDsoService::encodeSettings_data()
         << DsoService::Settings{
            DsoService::Command::FreeRunning,
            0, DsoService::Mode::Idle,
-           DsoService::VoltageRange::_0_to_300mV, 0, 0
+           0, 0, 0
         }
         << QByteArray("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
 
@@ -361,7 +148,7 @@ void TestDsoService::encodeSettings_data()
         << DsoService::Settings{
            DsoService::Command::RisingEdgeTrigger,
            1.0f, DsoService::Mode::AcVoltage,
-           DsoService::VoltageRange::_12V_to_30V, 1000000, 1000
+           4, 1000000, 1000
         }
         << QByteArray("\x01\x00\x00\x80\x3f\x02\x04\x40\x42\x0f\x00\xe8\x03", 13);
 }
@@ -381,26 +168,22 @@ void TestDsoService::parseMetadata_data()
     QTest::addRow("null") << QByteArray()
         << DsoService::Metadata{
            DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-           DsoService::Mode::Idle, DsoService::VoltageRange::_0_to_300mV,
-           0, 0, 0
+           DsoService::Mode::Idle, 0, 0, 0, 0
         };
 
     // Metadata must be at least 17 bytes to be valid / parsable.
     QTest::addRow("too-small") << QByteArray(16, '\xFF')
         << DsoService::Metadata{
            DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-           DsoService::Mode::Idle, DsoService::VoltageRange::_0_to_300mV,
-           0, 0, 0
+           DsoService::Mode::Idle, 0, 0, 0, 0
         };
-
 
     // Sample from a real Pokit Meter device.
     QTest::addRow("PokitMeter")
         << QByteArray("\x00\x98\xf7\x8b\x33\x02\x00\x40\x42\x0f\x00\x0a\x00\x0a\x00\x00\x00", 17)
         << DsoService::Metadata{
            DsoService::DsoStatus::Done, 6.517728934e-08f,
-           DsoService::Mode::AcVoltage, DsoService::VoltageRange::_0_to_300mV,
-           1*1000*1000, 10, 10
+           DsoService::Mode::AcVoltage, 0, 1*1000*1000, 10, 10
         };
 
     // Sample from a real Pokit Pro device; note is has 4 extra unknown bytes.
@@ -409,8 +192,7 @@ void TestDsoService::parseMetadata_data()
                       "\xe8\x03\x0a\x00\x00\x00\x14\x00\x00\x00", 21)
         << DsoService::Metadata{
               DsoService::DsoStatus::Done, 8.704373045e-08f,
-              DsoService::Mode::AcVoltage, DsoService::VoltageRange::_0_to_300mV,
-              1*1000*1000, 1000, 10
+              DsoService::Mode::AcVoltage, 0, 1*1000*1000, 1000, 10
         };
 }
 

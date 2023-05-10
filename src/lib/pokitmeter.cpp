@@ -108,4 +108,27 @@ QVariant maxValue(const VoltageRange &range)
     }
 }
 
+#define QTPOKIT_IF_LESS_THAN_RETURN(value, label) \
+if (value <= PokitMeter::maxValue(label).toUInt()) { \
+    return label; \
+}
+
+/*!
+ * Returns the lowest \a mode range that can measure at least up to \a maxValue, or AutoRange if no such range is
+ * available.
+ */
+
+template<> PokitMeter::VoltageRange PokitMeter::minRange<PokitMeter::VoltageRange>(const quint32 maxValue)
+{
+    QTPOKIT_IF_LESS_THAN_RETURN(maxValue, VoltageRange::_300mV)
+    QTPOKIT_IF_LESS_THAN_RETURN(maxValue, VoltageRange::_2V)
+    QTPOKIT_IF_LESS_THAN_RETURN(maxValue, VoltageRange::_6V)
+    QTPOKIT_IF_LESS_THAN_RETURN(maxValue, VoltageRange::_12V)
+    QTPOKIT_IF_LESS_THAN_RETURN(maxValue, VoltageRange::_30V)
+    QTPOKIT_IF_LESS_THAN_RETURN(maxValue, VoltageRange::_60V)
+    return VoltageRange::AutoRange; // Out of range, so go with auto-range.
+}
+
+#undef QTPOKIT_IF_LESS_THAN_RETURN
+
 }

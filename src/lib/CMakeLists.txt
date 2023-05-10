@@ -40,6 +40,7 @@ add_library(
   pokitmeter.cpp
   pokitpro.cpp
   pokitproducts.cpp
+  pokitproducts_p.h
   statusservice.cpp
   statusservice_p.h
 )

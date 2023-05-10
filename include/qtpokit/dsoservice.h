@@ -10,6 +10,7 @@
 #define QTPOKIT_DSOSERVICE_H
 
 #include "abstractpokitservice.h"
+#include "pokitproducts.h"
 
 #include <QBluetoothAddress>
 #include <QBluetoothUuid>
@@ -48,47 +49,21 @@ public:
     };
     static QString toString(const Mode &mode);
 
-    /// \todo Replace all of these "ranges" types and functions with ones from pokit{product,meter,pro}.h versions.
-
-    enum class VoltageRange : quint8 {
-        _0_to_300mV  = 0,  ///< 0 to 300mV.
-        _300mV_to_2V = 1,  ///< 300mV to 2V.
-        _2V_to_6V    = 2,  ///< 2V to 6V.
-        _6V_to_12V   = 3,  ///< 6V to 12V.
-        _12V_to_30V  = 4,  ///< 12V to 30V.
-        _30V_to_60V  = 5,  ///< 30V to 60V.
-        /// \todo Pokit Pro supports up to 600V.
-    };
-    static QString toString(const VoltageRange &range);
-    static QVariant minValue(const VoltageRange &range);
-    static QVariant maxValue(const VoltageRange &range);
-
-    enum class CurrentRange : quint8 {
-        _0_to_10mA      = 0,  ///< 0 to 10mA.
-        _10mA_to_30mA   = 1,  ///< 10mA to 30mA.
-        _30mA_to_150mA  = 2,  ///< 30mA to 150mA.
-        _150mA_to_300mA = 3,  ///< 150mA to 300mA.
-        _300mA_to_3A    = 4,  ///< 300mA to 3A.
-        /// \todo Pokit Pro supports up to 10A.
-    };
-    static QString toString(const CurrentRange &range);
-    static QVariant minValue(const CurrentRange &range);
-    static QVariant maxValue(const CurrentRange &range);
-
-    union QTPOKIT_EXPORT Range {
-        VoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
-        CurrentRange currentRange; ///< Range when in AC/DC current mode.
-        Range();
-        Range(const VoltageRange range);
-        Range(const CurrentRange range);
-    };
-    static QString toString(const Range &range, const Mode &mode);
+//    union QTPOKIT_EXPORT Range {
+//        PokitCurrentRange currentRange; ///< Range when in AC/DC current mode.
+//        PokitVoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
+//        Range(const PokitCurrentRange range);
+//        Range(const PokitVoltageRange range);
+//    };
+//    static QString toString(const Range &range, const Mode &mode);
+    static QString toString(const PokitProduct product, const quint8 range, const Mode mode);
+    QString toString(const quint8 range, const Mode mode);
 
     struct Settings {
         Command command;         ///< Custom operation request.
         float triggerLevel;      ///< Trigger threshold level in Volts or Amps, depending on #mode.
         Mode mode;               ///< Desired operation mode.
-        Range range;             ///< Desired range.
+        quint8 range;            ///< Desired range, eg settings.range = +PokitPro::CurrentRange::AutoRange;
         quint32 samplingWindow;  ///< Desired sampling window in microseconds.
         quint16 numberOfSamples; ///< Desired number of samples to acquire.
     };
@@ -103,7 +78,7 @@ public:
         DsoStatus status;        ///< Current DSO status.
         float scale;             ///< Scale to apply to read samples.
         Mode mode;               ///< Operation mode used during last acquisition.
-        Range range;             ///< Range used during last acquisition.
+        quint8 range;            ///< Range used during last acquisition.
         quint32 samplingWindow;  ///< Sampling window (microseconds) used during last acquisition.
         quint16 numberOfSamples; ///< Number of samples acquired (1 to 8192).
         quint32 samplingRate;    ///< Sampling rate  used during last acquisition (1 to 1MHz).
@@ -146,13 +121,6 @@ private:
     Q_DISABLE_COPY(DsoService)
     friend class TestDsoService;
 };
-
-QTPOKIT_EXPORT bool operator==(const DsoService::Range &lhs, const DsoService::Range &rhs);
-QTPOKIT_EXPORT bool operator!=(const DsoService::Range &lhs, const DsoService::Range &rhs);
-QTPOKIT_EXPORT bool operator< (const DsoService::Range &lhs, const DsoService::Range &rhs);
-QTPOKIT_EXPORT bool operator> (const DsoService::Range &lhs, const DsoService::Range &rhs);
-QTPOKIT_EXPORT bool operator<=(const DsoService::Range &lhs, const DsoService::Range &rhs);
-QTPOKIT_EXPORT bool operator>=(const DsoService::Range &lhs, const DsoService::Range &rhs);
 
 QTPOKIT_END_NAMESPACE
 

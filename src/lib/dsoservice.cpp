@@ -7,7 +7,10 @@
  */
 
 #include <qtpokit/dsoservice.h>
+#include <qtpokit/pokitmeter.h>
+#include <qtpokit/pokitpro.h>
 #include "dsoservice_p.h"
+#include "pokitproducts_p.h"
 
 #include <QDataStream>
 #include <QIODevice>
@@ -57,198 +60,40 @@ QString DsoService::toString(const Mode &mode)
     }
 }
 
-/// \enum DsoService::VoltageRange
-/// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics,
-/// when `Mode` is AC or DC voltage.
-
-/// Returns \a range as a user-friendly string.
-QString DsoService::toString(const VoltageRange &range)
+/// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
+QString DsoService::toString(const PokitProduct product, const quint8 range, const Mode mode)
 {
-    switch (range) {
-    case VoltageRange::_0_to_300mV:  return tr("0 to 300mV");
-    case VoltageRange::_300mV_to_2V: return tr("300mV to 2V");
-    case VoltageRange::_2V_to_6V:    return tr("2V to 6V");
-    case VoltageRange::_6V_to_12V:   return tr("6V to 12V");
-    case VoltageRange::_12V_to_30V:  return tr("12V to 30V");
-    case VoltageRange::_30V_to_60V:  return tr("30V to 60V");
-    default:                         return QString();
+    switch (mode) {
+    case Mode::Idle:
+        break;
+    case Mode::DcVoltage:
+    case Mode::AcVoltage:
+        switch (product) {
+        case PokitProduct::PokitMeter:
+            return PokitMeter::toString(static_cast<PokitMeter::VoltageRange>(range));
+        case PokitProduct::PokitPro:
+            return PokitPro::toString(static_cast<PokitPro::VoltageRange>(range));
+        }
+        break;
+    case Mode::DcCurrent:
+    case Mode::AcCurrent:
+        switch (product) {
+        case PokitProduct::PokitMeter:
+            return PokitMeter::toString(static_cast<PokitMeter::VoltageRange>(range));
+        case PokitProduct::PokitPro:
+            return PokitPro::toString(static_cast<PokitPro::VoltageRange>(range));
+        }
+        break;
     }
-}
-
-/*!
- *  Returns the minimum value for \a range in (integer) millivolts, or null QVariant if \a range is
- *  not valid.
- *
- *  Note, this is an *absolute* minimum. That is, the true range for DC measurements is from
- *  `-maxValue(range)` to `+maxValue(range)`. In this sense, `minValue(range)` indicates the
- *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC voltage
- *  can never be negative, this is relevant for DC voltage only.
- */
-QVariant DsoService::minValue(const VoltageRange &range)
-{
-    switch (range) {
-    case VoltageRange::_0_to_300mV:  return     0;
-    case VoltageRange::_300mV_to_2V: return   300;
-    case VoltageRange::_2V_to_6V:    return  2000;
-    case VoltageRange::_6V_to_12V:   return  6000;
-    case VoltageRange::_12V_to_30V:  return 12000;
-    case VoltageRange::_30V_to_60V:  return 30000;
-    default:                         return QVariant();
-    }
-}
-
-/*!
- *  Returns the maximum value for \a range in (integer) millivolts, or null QVariant if \a range is
- *  not valid.
- */
-QVariant DsoService::maxValue(const VoltageRange &range)
-{
-    switch (range) {
-    case VoltageRange::_0_to_300mV:  return   300;
-    case VoltageRange::_300mV_to_2V: return  2000;
-    case VoltageRange::_2V_to_6V:    return  6000;
-    case VoltageRange::_6V_to_12V:   return 12000;
-    case VoltageRange::_12V_to_30V:  return 30000;
-    case VoltageRange::_30V_to_60V:  return 60000;
-    default:                         return QVariant();
-    }
-}
-
-/// \enum DsoService::CurrentRange
-/// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics,
-/// when `Mode` is AC or DC current.
-
-/// Returns \a range as a user-friendly string.
-QString DsoService::toString(const CurrentRange &range)
-{
-    switch (range) {
-    case CurrentRange::_0_to_10mA:      return tr("0 to 10mA");
-    case CurrentRange::_10mA_to_30mA:   return tr("10mA to 30mA");
-    case CurrentRange::_30mA_to_150mA:  return tr("30mA to 150mA");
-    case CurrentRange::_150mA_to_300mA: return tr("150mA to 300mA");
-    case CurrentRange::_300mA_to_3A:    return tr("300mA to 3A");
-    default:                            return QString();
-    }
-}
-
-/*!
- *  Returns the minimum value for \a range in (integer) milliamps, or null QVariant if \a range is
- *  not valid.
- *
- *  Note, this is an *absolute* minimum. That is, the true range for DC measurements is from
- *  `-maxValue(range)` to `+maxValue(range)`. In this sense, `minValue(range)` indicates the
- *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC current
- *  can never be negative, this is relevant for DC current only.
- */
-QVariant DsoService::minValue(const CurrentRange &range)
-{
-    switch (range) {
-    case CurrentRange::_0_to_10mA:      return   0;
-    case CurrentRange::_10mA_to_30mA:   return  10;
-    case CurrentRange::_30mA_to_150mA:  return  30;
-    case CurrentRange::_150mA_to_300mA: return 150;
-    case CurrentRange::_300mA_to_3A:    return 300;
-    default:                            return QVariant();
-    }
-}
-
-/*!
- *  Returns the maximum value for \a range in (integer) milliamps, or null QVariant if \a range is
- *  not valid.
- */
-QVariant DsoService::maxValue(const CurrentRange &range)
-{
-    switch (range) {
-    case CurrentRange::_0_to_10mA:      return   10;
-    case CurrentRange::_10mA_to_30mA:   return   30;
-    case CurrentRange::_30mA_to_150mA:  return  150;
-    case CurrentRange::_150mA_to_300mA: return  300;
-    case CurrentRange::_300mA_to_3A:    return 3000;
-    default:                            return QVariant();
-    }
-}
-
-/// \union DsoService::Range
-/// \brief Values supported by the `Range` attribute of the `Settings` and `Metadata` characteristics.
-
-static_assert(std::is_same<std::underlying_type_t<DsoService::VoltageRange>,
-                           std::underlying_type_t<DsoService::CurrentRange>>::value,
-              "DsoService::Range members must all have the same underlying type.");
-
-/// Constructs a new DsoService::Range instance with 0. This should be considered
-DsoService::Range::Range() : voltageRange(static_cast<DsoService::VoltageRange>(0))
-{
-
-}
-
-/// Constructs a new DsoService::Range instance with \a range.
-DsoService::Range::Range(const DsoService::VoltageRange range) : voltageRange(range)
-{
-
-}
-
-/// Constructs a new DsoService::Range instance with \a range.
-DsoService::Range::Range(const DsoService::CurrentRange range) : currentRange(range)
-{
-
+    return QString();
 }
 
 /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
-QString DsoService::toString(const Range &range, const Mode &mode)
+QString DsoService::toString(const quint8 range, const Mode mode)
 {
-    switch (mode) {
-    case Mode::DcVoltage:
-    case Mode::AcVoltage:
-        return toString(range.voltageRange);
-    case Mode::DcCurrent:
-    case Mode::AcCurrent:
-        return toString(range.currentRange);
-    default:
-        return QString();
-    }
-}
-
-/// Returns \c true if \a lhs is numerically equal to \a rhs, \c false otherwise.
-bool operator==(const DsoService::Range &lhs, const DsoService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
-        == static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
-}
-
-/// Returns \c true if \a lhs is numerically not-equal to \a rhs, \c false otherwise.
-bool operator!=(const DsoService::Range &lhs, const DsoService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
-        != static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
-}
-
-/// Returns \c true if \a lhs is numerically less than \a rhs, \c false otherwise.
-bool operator< (const DsoService::Range &lhs, const DsoService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
-         < static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
-}
-
-/// Returns \c true if \a lhs is numerically greater than \a rhs, \c false otherwise.
-bool operator> (const DsoService::Range &lhs, const DsoService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
-         > static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
-}
-
-/// Returns \c true if \a lhs is numerically less than or equal to \a rhs, \c false otherwise.
-bool operator<=(const DsoService::Range &lhs, const DsoService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
-        <= static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
-}
-
-/// Returns \c true if \a lhs is numerically greater than or equal to \a rhs, \c false otherwise.
-bool operator>=(const DsoService::Range &lhs, const DsoService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<DsoService::VoltageRange>>(lhs.voltageRange)
-        >= static_cast<std::underlying_type_t<DsoService::VoltageRange>>(rhs.voltageRange);
-}
+    Q_D(DsoService);
+    return toString(pokitProduct(*d->controller), range, mode);
+;}
 
 /// \struct DsoService::Settings
 /// \brief Attributes included in the `Settings` characterstic.
@@ -377,11 +222,7 @@ bool DsoService::fetchSamples()
     // Note, only the Settings::command member need be set, since the others are all ignored by the
     // Pokit device when the command is Refresh. However, we still explicitly initialise all other
     // members just to ensure we're never exposing uninitialised RAM to an external device.
-    return setSettings({
-        DsoService::Command::ResendData,
-        0, DsoService::Mode::Idle,
-        DsoService::VoltageRange::_0_to_300mV, 0, 0
-    });
+    return setSettings({ DsoService::Command::ResendData, 0, DsoService::Mode::Idle, 0, 0, 0 });
 }
 
 /*!
@@ -404,8 +245,7 @@ DsoService::Metadata DsoService::metadata() const
     const QLowEnergyCharacteristic characteristic =
         d->getCharacteristic(CharacteristicUuids::metadata);
     return (characteristic.isValid()) ? DsoServicePrivate::parseMetadata(characteristic.value())
-        : Metadata{ DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-                    Mode::Idle, VoltageRange::_0_to_300mV, 0, 0, 0 };
+        : Metadata{ DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(), Mode::Idle, 0, 0, 0, 0 };
 }
 
 /*!
@@ -521,8 +361,7 @@ QByteArray DsoServicePrivate::encodeSettings(const DsoService::Settings &setting
     stream.setByteOrder(QDataStream::LittleEndian);
     stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
     stream << (quint8)settings.command << settings.triggerLevel << (quint8)settings.mode
-           << (quint8)settings.range.voltageRange << settings.samplingWindow
-           << settings.numberOfSamples;
+           << settings.range << settings.samplingWindow << settings.numberOfSamples;
 
     Q_ASSERT(value.size() == 13);
     return value;
@@ -535,8 +374,7 @@ DsoService::Metadata DsoServicePrivate::parseMetadata(const QByteArray &value)
 {
     DsoService::Metadata metadata{
         DsoService::DsoStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-        DsoService::Mode::Idle, DsoService::VoltageRange::_0_to_300mV,
-        0, 0, 0
+        DsoService::Mode::Idle, 0, 0, 0, 0
     };
 
     if (!checkSize(QLatin1String("Metadata"), value, 17, 17)) {
@@ -546,7 +384,7 @@ DsoService::Metadata DsoServicePrivate::parseMetadata(const QByteArray &value)
     metadata.status             = static_cast<DsoService::DsoStatus>(value.at(0));
     metadata.scale              = qFromLittleEndian<float>(value.mid(1,4));
     metadata.mode               = static_cast<DsoService::Mode>(value.at(5));
-    metadata.range.voltageRange = static_cast<DsoService::VoltageRange>(value.at(6));
+    metadata.range              = static_cast<quint8>(value.at(6));
     metadata.samplingWindow     = qFromLittleEndian<quint32>(value.mid(7,4));
     metadata.numberOfSamples    = qFromLittleEndian<quint16>(value.mid(11,2));
     metadata.samplingRate       = qFromLittleEndian<quint32>(value.mid(13,4));
