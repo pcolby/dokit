@@ -54,9 +54,9 @@ namespace PokitMeter {
     template<typename T> T minRange(const quint32 maxValue);
 }
 
-template<> QTPOKIT_EXPORT PokitMeter::CurrentRange    PokitMeter::minRange<PokitMeter::CurrentRange>   (const quint32 maxValue);
-template<> QTPOKIT_EXPORT PokitMeter::ResistanceRange PokitMeter::minRange<PokitMeter::ResistanceRange>(const quint32 maxValue);
-template<> QTPOKIT_EXPORT PokitMeter::VoltageRange    PokitMeter::minRange<PokitMeter::VoltageRange>   (const quint32 maxValue);
+template<> QTPOKIT_EXPORT PokitMeter::CurrentRange    PokitMeter::minRange(const quint32 maxValue);
+template<> QTPOKIT_EXPORT PokitMeter::ResistanceRange PokitMeter::minRange(const quint32 maxValue);
+template<> QTPOKIT_EXPORT PokitMeter::VoltageRange    PokitMeter::minRange(const quint32 maxValue);
 
 constexpr quint8 operator+(PokitMeter::CurrentRange    range) noexcept { return static_cast<quint8>(range); }
 constexpr quint8 operator+(PokitMeter::ResistanceRange range) noexcept { return static_cast<quint8>(range); }

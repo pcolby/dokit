@@ -118,7 +118,7 @@ if (value <= PokitMeter::maxValue(label).toUInt()) { \
  * available.
  */
 
-template<> PokitMeter::VoltageRange PokitMeter::minRange<PokitMeter::VoltageRange>(const quint32 maxValue)
+template<> PokitMeter::VoltageRange minRange(const quint32 maxValue)
 {
     QTPOKIT_IF_LESS_THAN_RETURN(maxValue, VoltageRange::_300mV)
     QTPOKIT_IF_LESS_THAN_RETURN(maxValue, VoltageRange::_2V)
