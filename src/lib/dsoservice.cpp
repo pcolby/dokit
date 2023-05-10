@@ -68,22 +68,10 @@ QString DsoService::toString(const PokitProduct product, const quint8 range, con
         break;
     case Mode::DcVoltage:
     case Mode::AcVoltage:
-        switch (product) {
-        case PokitProduct::PokitMeter:
-            return PokitMeter::toString(static_cast<PokitMeter::VoltageRange>(range));
-        case PokitProduct::PokitPro:
-            return PokitPro::toString(static_cast<PokitPro::VoltageRange>(range));
-        }
-        break;
+        return VoltageRange::toString(product, range);
     case Mode::DcCurrent:
     case Mode::AcCurrent:
-        switch (product) {
-        case PokitProduct::PokitMeter:
-            return PokitMeter::toString(static_cast<PokitMeter::VoltageRange>(range));
-        case PokitProduct::PokitPro:
-            return PokitPro::toString(static_cast<PokitPro::VoltageRange>(range));
-        }
-        break;
+        return CurrentRange::toString(product, range);
     }
     return QString();
 }

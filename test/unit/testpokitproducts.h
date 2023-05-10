@@ -16,4 +16,6 @@ private slots:
 
     void pokitProduct_data();
     void pokitProduct();
+
+    /// \todo Unit tests for pokitproduct_p.h functions too.
 };

@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+#include <qtpokit/pokitmeter.h>
+#include <qtpokit/pokitpro.h>
 #include <qtpokit/pokitproducts.h>
 #include <qtpokit/statusservice.h>
 
@@ -64,4 +66,64 @@ PokitProduct pokitProduct(const QBluetoothDeviceInfo &info)
 PokitProduct pokitProduct(const QLowEnergyController &controller)
 {
     return pokitProduct(controller.services());
+}
+
+namespace CapacitanceRange {
+
+QString toString(const PokitProduct product, const quint8 range)
+{
+    Q_ASSERT(product == PokitProduct::PokitPro);
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        break;
+    case PokitProduct::PokitPro:
+        return PokitPro::toString(static_cast<PokitPro::CapacitanceRange>(range));
+    }
+    return QString();
+}
+
+}
+
+namespace CurrentRange {
+
+QString toString(const PokitProduct product, const quint8 range) {
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        return PokitMeter::toString(static_cast<PokitMeter::CurrentRange>(range));
+    case PokitProduct::PokitPro:
+        return PokitPro::toString(static_cast<PokitPro::CurrentRange>(range));
+    }
+    return QString();
+}
+
+}
+
+namespace ResistanceRange {
+
+QString toString(const PokitProduct product, const quint8 range)
+{
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        return PokitMeter::toString(static_cast<PokitMeter::ResistanceRange>(range));
+    case PokitProduct::PokitPro:
+        return PokitPro::toString(static_cast<PokitPro::ResistanceRange>(range));
+    }
+    return QString();
+}
+
+}
+
+namespace VoltageRange {
+
+QString toString(const PokitProduct product, const quint8 range)
+{
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        return PokitMeter::toString(static_cast<PokitMeter::VoltageRange>(range));
+    case PokitProduct::PokitPro:
+        return PokitPro::toString(static_cast<PokitPro::VoltageRange>(range));
+    }
+    return QString();
+}
+
 }
