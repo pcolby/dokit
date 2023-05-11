@@ -39,8 +39,8 @@ signals:
 protected:
     /// \cond internal
     PokitDiscoveryAgentPrivate * d_ptr; ///< Internal d-pointer.
-    PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d,
-                              const QBluetoothAddress &deviceAdapter, QObject * const parent);
+    PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d, const QBluetoothAddress &deviceAdapter,
+                        QObject * const parent);
     PokitDiscoveryAgent(PokitDiscoveryAgentPrivate * const d, QObject * const parent);
     /// \endcond
 
