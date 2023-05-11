@@ -82,6 +82,17 @@ QString toString(const PokitProduct product, const quint8 range)
     return QString();
 }
 
+QVariant maxValue(const PokitProduct product, const quint8 range)
+{
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        break;
+    case PokitProduct::PokitPro:
+        return PokitPro::maxValue(static_cast<PokitPro::CapacitanceRange>(range));
+    }
+    return QString();
+}
+
 }
 
 namespace CurrentRange {
@@ -92,6 +103,17 @@ QString toString(const PokitProduct product, const quint8 range) {
         return PokitMeter::toString(static_cast<PokitMeter::CurrentRange>(range));
     case PokitProduct::PokitPro:
         return PokitPro::toString(static_cast<PokitPro::CurrentRange>(range));
+    }
+    return QString();
+}
+
+QVariant maxValue(const PokitProduct product, const quint8 range)
+{
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        return PokitMeter::maxValue(static_cast<PokitMeter::CurrentRange>(range));
+    case PokitProduct::PokitPro:
+        return PokitPro::maxValue(static_cast<PokitPro::CurrentRange>(range));
     }
     return QString();
 }
@@ -111,6 +133,17 @@ QString toString(const PokitProduct product, const quint8 range)
     return QString();
 }
 
+QVariant maxValue(const PokitProduct product, const quint8 range)
+{
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        return PokitMeter::maxValue(static_cast<PokitMeter::ResistanceRange>(range));
+    case PokitProduct::PokitPro:
+        return PokitPro::maxValue(static_cast<PokitPro::ResistanceRange>(range));
+    }
+    return QString();
+}
+
 }
 
 namespace VoltageRange {
@@ -122,6 +155,17 @@ QString toString(const PokitProduct product, const quint8 range)
         return PokitMeter::toString(static_cast<PokitMeter::VoltageRange>(range));
     case PokitProduct::PokitPro:
         return PokitPro::toString(static_cast<PokitPro::VoltageRange>(range));
+    }
+    return QString();
+}
+
+QVariant maxValue(const PokitProduct product, const quint8 range)
+{
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        return PokitMeter::maxValue(static_cast<PokitMeter::VoltageRange>(range));
+    case PokitProduct::PokitPro:
+        return PokitPro::maxValue(static_cast<PokitPro::VoltageRange>(range));
     }
     return QString();
 }

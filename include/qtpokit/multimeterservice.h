@@ -46,65 +46,14 @@ public:
     };
     static QString toString(const Mode &mode);
 
-    /// \todo Replace all of these "ranges" types and functions with ones from pokit{product,meter,pro}.h versions.
-
-    enum class VoltageRange : quint8 {
-        _0_to_300mV  = 0,  ///< 0 to 300mV.
-        _300mV_to_2V = 1,  ///< 300mV to 2V.
-        _2V_to_6V    = 2,  ///< 2V to 6V.
-        _6V_to_12V   = 3,  ///< 6V to 12V.
-        _12V_to_30V  = 4,  ///< 12V to 30V.
-        _30V_to_60V  = 5,  ///< 30V to 60V.
-        /// \todo Pokit Pro supports up to 600V.
-        AutoRange    = 255 ///< Auto-range.
-    };
-    static QString toString(const VoltageRange &range);
-    static QVariant minValue(const VoltageRange &range);
-    static QVariant maxValue(const VoltageRange &range);
-
-    enum class CurrentRange : quint8 {
-        _0_to_10mA      = 0,  ///< 0 to 10mA.
-        _10mA_to_30mA   = 1,  ///< 10mA to 30mA.
-        _30mA_to_150mA  = 2,  ///< 30mA to 150mA.
-        _150mA_to_300mA = 3,  ///< 150mA to 300mA.
-        _300mA_to_3A    = 4,  ///< 300mA to 3A.
-        /// \todo Pokit Pro supports up to 10A.
-        AutoRange       = 255 ///< Auto-range.
-    };
-    static QString toString(const CurrentRange &range);
-    static QVariant minValue(const CurrentRange &range);
-    static QVariant maxValue(const CurrentRange &range);
-
-    enum class ResistanceRange : quint8 {
-        _0_to_160     = 0,  ///< 0 to 160 ohms.
-        _160_to_330   = 1,  ///< 160 to 330 ohms.
-        _330_to_890   = 2,  ///< 330 to 890 ohms.
-        _890_to_1K5   = 3,  ///< 890 to 1.5K ohms.
-        _1K5_to_10K   = 4,  ///< 1.5K to 10K ohms.
-        _10K_to_100K  = 5,  ///< 10K to 100K ohms.
-        _100K_to_470K = 6,  ///< 100K to 470K ohms.
-        _470K_to_1M   = 7,  ///< 470K to 1M ohms.
-        /// \todo Pokit Pro supports up to 3M ohms.
-        AutoRange     = 255 ///< Auto-range.
-    };
-    static QString toString(const ResistanceRange &range);
-    static QVariant minValue(const ResistanceRange &range);
-    static QVariant maxValue(const ResistanceRange &range);
-
-    union QTPOKIT_EXPORT Range {
-        VoltageRange voltageRange;       ///< Range when in AC/DC voltage mode.
-        CurrentRange currentRange;       ///< Range when in AC/DC current mode.
-        ResistanceRange resistanceRange; ///< Range when in resistance mode.
-        Range();
-        Range(const VoltageRange range);
-        Range(const CurrentRange range);
-        Range(const ResistanceRange range);
-    };
-    static QString toString(const Range &range, const Mode &mode);
+    static QString toString(const PokitProduct product, const quint8 range, const Mode mode);
+    QString toString(const quint8 range, const Mode mode) const;
+    static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode);
+    QVariant maxValue(const quint8 range, const Mode mode) const;
 
     struct Settings {
         Mode mode;              ///< Desired operation mode.
-        Range range;            ///< Desired range.
+        quint8 range;           ///< Desired range.
         quint32 updateInterval; ///< Desired update interval in milliseconds.
     };
 
@@ -121,7 +70,7 @@ public:
         MeterStatus status; ///< Current multimeter status.
         float value;        ///< Last acquired value.
         Mode mode;          ///< Current operation mode.
-        Range range;        ///< Current range.
+        quint8 range;       ///< Current range.
     };
 
     MultimeterService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
@@ -152,13 +101,6 @@ private:
     Q_DISABLE_COPY(MultimeterService)
     friend class TestMultimeterService;
 };
-
-QTPOKIT_EXPORT bool operator==(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
-QTPOKIT_EXPORT bool operator!=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
-QTPOKIT_EXPORT bool operator< (const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
-QTPOKIT_EXPORT bool operator> (const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
-QTPOKIT_EXPORT bool operator<=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
-QTPOKIT_EXPORT bool operator>=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs);
 
 QTPOKIT_END_NAMESPACE
 

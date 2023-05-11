@@ -82,6 +82,26 @@ QString DsoService::toString(const quint8 range, const Mode mode)
     return toString(pokitProduct(), range, mode);
 ;}
 
+QVariant DsoService::maxValue(const PokitProduct product, const quint8 range, const Mode mode)
+{
+    switch (mode) {
+    case Mode::Idle:
+        break;
+    case Mode::DcVoltage:
+    case Mode::AcVoltage:
+        return VoltageRange::toString(product, range);
+    case Mode::DcCurrent:
+    case Mode::AcCurrent:
+        return CurrentRange::toString(product, range);
+    }
+    return QString();
+}
+
+QVariant DsoService::maxValue(const quint8 range, const Mode mode) const
+{
+    return toString(pokitProduct(), range, mode);
+}
+
 /// \struct DsoService::Settings
 /// \brief Attributes included in the `Settings` characterstic.
 
@@ -368,13 +388,13 @@ DsoService::Metadata DsoServicePrivate::parseMetadata(const QByteArray &value)
         return metadata;
     }
 
-    metadata.status             = static_cast<DsoService::DsoStatus>(value.at(0));
-    metadata.scale              = qFromLittleEndian<float>(value.mid(1,4));
-    metadata.mode               = static_cast<DsoService::Mode>(value.at(5));
-    metadata.range              = static_cast<quint8>(value.at(6));
-    metadata.samplingWindow     = qFromLittleEndian<quint32>(value.mid(7,4));
-    metadata.numberOfSamples    = qFromLittleEndian<quint16>(value.mid(11,2));
-    metadata.samplingRate       = qFromLittleEndian<quint32>(value.mid(13,4));
+    metadata.status          = static_cast<DsoService::DsoStatus>(value.at(0));
+    metadata.scale           = qFromLittleEndian<float>(value.mid(1,4));
+    metadata.mode            = static_cast<DsoService::Mode>(value.at(5));
+    metadata.range           = static_cast<quint8>(value.at(6));
+    metadata.samplingWindow  = qFromLittleEndian<quint32>(value.mid(7,4));
+    metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(11,2));
+    metadata.samplingRate    = qFromLittleEndian<quint32>(value.mid(13,4));
     return metadata;
 }
 

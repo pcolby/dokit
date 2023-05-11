@@ -61,15 +61,13 @@ void LoggerFetchCommand::serviceDetailsDiscovered()
  */
 void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &data)
 {
-    qCDebug(lc) << "status:" << (int)(data.status);
-    qCDebug(lc) << "scale:" << data.scale;
-    qCDebug(lc) << "mode:" << DataLoggerService::toString(data.mode) << (quint8)data.mode;
-    qCDebug(lc) << "range:" << DataLoggerService::toString(data.range, data.mode)
-                            << (quint8)data.range.voltageRange;
-    qCDebug(lc) << "updateInterval:" << (int)data.updateInterval;
+    qCDebug(lc) << "status:"          << (int)(data.status);
+    qCDebug(lc) << "scale:"           << data.scale;
+    qCDebug(lc) << "mode:"            << DataLoggerService::toString(data.mode) << (quint8)data.mode;
+    qCDebug(lc) << "range:"           << service->toString(data.range, data.mode) << data.range;
+    qCDebug(lc) << "updateInterval:"  << (int)data.updateInterval;
     qCDebug(lc) << "numberOfSamples:" << data.numberOfSamples;
-    qCDebug(lc) << "timestamp:" << data.timestamp
-                                << QDateTime::fromSecsSinceEpoch(data.timestamp, Qt::UTC);
+    qCDebug(lc) << "timestamp:"       << data.timestamp << QDateTime::fromSecsSinceEpoch(data.timestamp, Qt::UTC);
     this->metadata = data;
     this->samplesToGo = data.numberOfSamples;
     this->timestamp = (quint64)data.timestamp * (quint64)1000;
@@ -92,7 +90,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
         qCDebug(lc).noquote() << tr("No known unit for mode %1 \"%2\".").arg((int)metadata.mode)
             .arg(DataLoggerService::toString(metadata.mode));
     }
-    const QString range = DataLoggerService::toString(metadata.range, metadata.mode);
+    const QString range = service->toString(metadata.range, metadata.mode);
 
     for (const qint16 &sample: samples) {
         const QString timeString = (metadata.timestamp == 0) ? QString::number(timestamp)

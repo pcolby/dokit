@@ -7,6 +7,9 @@
 
 #include "loggerfetchcommand.h"
 
+#include <qtpokit/pokitmeter.h>
+#include <qtpokit/pokitpro.h>
+
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(DataLoggerService::Metadata)
 
@@ -26,7 +29,7 @@ void TestLoggerFetchCommand::metadataRead()
         DataLoggerService::LoggerStatus::Sampling,
         0.123f,
         DataLoggerService::Mode::DcCurrent,
-        DataLoggerService::CurrentRange::_300mA_to_3A,
+        +PokitMeter::CurrentRange::_2A,
         1000, 1234, (quint32)QDateTime::currentSecsSinceEpoch()
     };
     LoggerFetchCommand command(this);
@@ -51,15 +54,15 @@ void TestLoggerFetchCommand::outputSamples_data()
 
     const QList<DataLoggerService::Metadata> metadatas{
         { DataLoggerService::LoggerStatus::Sampling, 1.0f, DataLoggerService::Mode::DcVoltage,
-                    DataLoggerService::VoltageRange::_300mV_to_2V, 1000, 0, 1661235278 },
+          +PokitMeter::VoltageRange::_2V, 1000, 0, 1661235278 },
         { DataLoggerService::LoggerStatus::Done, -1.0f, DataLoggerService::Mode::AcVoltage,
-                    DataLoggerService::VoltageRange::_300mV_to_2V, 500, 0, 1661235439 },
+          +PokitMeter::VoltageRange::_2V, 500, 0, 1661235439 },
         { DataLoggerService::LoggerStatus::Error, 0.5f, DataLoggerService::Mode::DcCurrent,
-                    DataLoggerService::CurrentRange::_30mA_to_150mA, 100, 0, 0 },
+          +PokitMeter::CurrentRange::_150mA, 100, 0, 0 },
         { DataLoggerService::LoggerStatus::BufferFull, 0.1f, DataLoggerService::Mode::AcCurrent,
-                    DataLoggerService::CurrentRange::_300mA_to_3A, 5000, 0, 1661235439 },
+          +PokitMeter::CurrentRange::_2A, 5000, 0, 1661235439 },
         { DataLoggerService::LoggerStatus::BufferFull, 0.1f, DataLoggerService::Mode::Temperature,
-                     DataLoggerService::VoltageRange::_300mV_to_2V, 1000, 0, 1683202811 },
+          +PokitMeter::VoltageRange::_2V, 1000, 0, 1683202811 },
     };
 
     const QList<DataLoggerService::Samples> samplesList{
@@ -99,6 +102,7 @@ void TestLoggerFetchCommand::outputSamples()
 
     const OutputStreamCapture capture(&std::cout);
     LoggerFetchCommand command(nullptr);
+    command.service = new DataLoggerService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
     command.metadataRead(metadata);
     command.format = format;
     for (const DataLoggerService::Samples &samples: samplesList) {

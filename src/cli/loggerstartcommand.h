@@ -4,6 +4,8 @@
 #include "devicecommand.h"
 
 #include <qtpokit/dataloggerservice.h>
+#include <qtpokit/pokitmeter.h>
+#include <qtpokit/pokitpro.h>
 
 class LoggerStartCommand : public DeviceCommand
 {
@@ -28,13 +30,8 @@ private:
     DataLoggerService * service { nullptr }; ///< Bluetooth service this command interracts with.
     DataLoggerService::Settings settings {   ///< Settings for the Pokit device's data logger mode.
         DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
-        DataLoggerService::VoltageRange::_30V_to_60V, 60000, 0
+        +PokitMeter::VoltageRange::AutoRange, 60000, 0
     };
-
-    static DataLoggerService::Range lowestRange(const DataLoggerService::Mode mode,
-                                                const quint32 desiredMax);
-    static DataLoggerService::CurrentRange lowestCurrentRange(const quint32 desiredMax);
-    static DataLoggerService::VoltageRange lowestVoltageRange(const quint32 desiredMax);
 
 private slots:
     void settingsWritten();

@@ -101,7 +101,9 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
             if (rangeMax == 0) {
                 errors.append(tr("Invalid range value: %1").arg(value));
             } else {
-                settings.range = lowestRange(settings.mode, rangeMax);
+                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp), and move to
+                /// a function like minRange(product, mode, rangeMax).
+                settings.range = +PokitMeter::minRange<PokitMeter::VoltageRange>(rangeMax);//lowestRange(settings.mode, rangeMax);
             }
         }
     } else if (settings.mode != DataLoggerService::Mode::Temperature) {
@@ -161,73 +163,12 @@ AbstractPokitService * LoggerStartCommand::getService()
 void LoggerStartCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    const QString range = DataLoggerService::toString(settings.range, settings.mode);
+    const QString range = service->toString(settings.range, settings.mode);
     qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3ms.").arg(
         DataLoggerService::toString(settings.mode),
         (range.isNull()) ? QString::fromLatin1("N/A") : range).arg(settings.updateInterval);
     service->setSettings(settings);
 }
-
-/*!
- * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange
- * if no such range is available.
- */
-DataLoggerService::Range LoggerStartCommand::lowestRange(
-    const DataLoggerService::Mode mode, const quint32 desiredMax)
-{
-    switch (mode) {
-    case DataLoggerService::Mode::Idle:
-        qCWarning(lc).noquote() << tr("Idle has no defined ranges.");
-        Q_ASSERT(false); // Should never have been called with this Idle mode.
-        break;
-    case DataLoggerService::Mode::DcVoltage:
-    case DataLoggerService::Mode::AcVoltage:
-        return lowestVoltageRange(desiredMax);
-    case DataLoggerService::Mode::DcCurrent:
-    case DataLoggerService::Mode::AcCurrent:
-        return lowestCurrentRange(desiredMax);
-    default:
-        qCWarning(lc).noquote() << tr("No defined ranges for mode %1.").arg((quint8)mode);
-        Q_ASSERT(false); // Should never have been called with this invalid mode.
-    }
-    return DataLoggerService::Range();
-}
-
-#define DOKIT_CLI_IF_LESS_THAN_RETURN(value, label) \
-if (value <=  DataLoggerService::maxValue(DataLoggerService::label).toUInt()) { \
-    return DataLoggerService::label; \
-}
-
-/*!
- * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange
- * if no such range is available.
- */
-DataLoggerService::CurrentRange LoggerStartCommand::lowestCurrentRange(const quint32 desiredMax)
-{
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)
-    return DataLoggerService::CurrentRange::_300mA_to_3A; // Out of range, so go with the biggest.
-}
-
-/*!
- * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange
- * if no such range is available.
- */
-DataLoggerService::VoltageRange LoggerStartCommand::lowestVoltageRange(const quint32 desiredMax)
-{
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)
-    return DataLoggerService::VoltageRange::_30V_to_60V; // Out of range, so go with the biggest.
-}
-
-#undef DOKIT_CLI_IF_LESS_THAN_RETURN
 
 /*!
  * Invoked when the data logger settings have been written.

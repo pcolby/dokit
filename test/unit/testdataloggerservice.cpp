@@ -4,14 +4,13 @@
 #include "testdataloggerservice.h"
 
 #include <qtpokit/dataloggerservice.h>
+#include <qtpokit/pokitmeter.h>
+#include <qtpokit/pokitpro.h>
 #include "dataloggerservice_p.h"
 
 #include <QRegularExpression>
 
 Q_DECLARE_METATYPE(DataLoggerService::Mode)
-Q_DECLARE_METATYPE(DataLoggerService::VoltageRange)
-Q_DECLARE_METATYPE(DataLoggerService::CurrentRange)
-Q_DECLARE_METATYPE(DataLoggerService::Range)
 Q_DECLARE_METATYPE(DataLoggerService::Settings)
 Q_DECLARE_METATYPE(DataLoggerService::Metadata)
 
@@ -37,216 +36,6 @@ void TestDataLoggerService::toString_Mode()
     QFETCH(DataLoggerService::Mode, mode);
     QFETCH(QString, expected);
     QCOMPARE(DataLoggerService::toString(mode), expected);
-}
-
-void TestDataLoggerService::toString_VoltageRange_data()
-{
-    QTest::addColumn<DataLoggerService::VoltageRange>("range");
-    QTest::addColumn<QString>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DataLoggerService::VoltageRange::range << QStringLiteral(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_300mV,  "0 to 300mV");
-    DOKIT_ADD_TEST_ROW(_300mV_to_2V, "300mV to 2V");
-    DOKIT_ADD_TEST_ROW(_2V_to_6V,    "2V to 6V");
-    DOKIT_ADD_TEST_ROW(_6V_to_12V,   "6V to 12V");
-    DOKIT_ADD_TEST_ROW(_12V_to_30V,  "12V to 30V");
-    DOKIT_ADD_TEST_ROW(_30V_to_60V,  "30V to 60V");
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DataLoggerService::VoltageRange)6    << QString();
-    QTest::addRow("max")     << (DataLoggerService::VoltageRange)0xFF << QString();
-}
-
-void TestDataLoggerService::toString_VoltageRange()
-{
-    QFETCH(DataLoggerService::VoltageRange, range);
-    QFETCH(QString, expected);
-    QCOMPARE(DataLoggerService::toString(range), expected);
-}
-
-void TestDataLoggerService::minValue_VoltageRange_data()
-{
-    QTest::addColumn<DataLoggerService::VoltageRange>("range");
-    QTest::addColumn<QVariant>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DataLoggerService::VoltageRange::range << QVariant(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_300mV,      0);
-    DOKIT_ADD_TEST_ROW(_300mV_to_2V,   300);
-    DOKIT_ADD_TEST_ROW(_2V_to_6V,     2000);
-    DOKIT_ADD_TEST_ROW(_6V_to_12V,    6000);
-    DOKIT_ADD_TEST_ROW(_12V_to_30V,  12000);
-    DOKIT_ADD_TEST_ROW(_30V_to_60V,  30000);
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DataLoggerService::VoltageRange)6    << QVariant();
-    QTest::addRow("max")     << (DataLoggerService::VoltageRange)0xFF << QVariant();
-}
-
-void TestDataLoggerService::minValue_VoltageRange()
-{
-    QFETCH(DataLoggerService::VoltageRange, range);
-    QFETCH(QVariant, expected);
-    QCOMPARE(DataLoggerService::minValue(range), expected);
-}
-
-void TestDataLoggerService::maxValue_VoltageRange_data()
-{
-    QTest::addColumn<DataLoggerService::VoltageRange>("range");
-    QTest::addColumn<QVariant>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DataLoggerService::VoltageRange::range << QVariant(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_300mV,    300);
-    DOKIT_ADD_TEST_ROW(_300mV_to_2V,  2000);
-    DOKIT_ADD_TEST_ROW(_2V_to_6V,     6000);
-    DOKIT_ADD_TEST_ROW(_6V_to_12V,   12000);
-    DOKIT_ADD_TEST_ROW(_12V_to_30V,  30000);
-    DOKIT_ADD_TEST_ROW(_30V_to_60V,  60000);
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DataLoggerService::VoltageRange)6    << QVariant();
-    QTest::addRow("max")     << (DataLoggerService::VoltageRange)0xFF << QVariant();
-}
-
-void TestDataLoggerService::maxValue_VoltageRange()
-{
-    QFETCH(DataLoggerService::VoltageRange, range);
-    QFETCH(QVariant, expected);
-    QCOMPARE(DataLoggerService::maxValue(range), expected);
-}
-
-void TestDataLoggerService::toString_CurrentRange_data()
-{
-    QTest::addColumn<DataLoggerService::CurrentRange>("range");
-    QTest::addColumn<QString>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DataLoggerService::CurrentRange::range << QStringLiteral(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_10mA,      "0 to 10mA");
-    DOKIT_ADD_TEST_ROW(_10mA_to_30mA,   "10mA to 30mA");
-    DOKIT_ADD_TEST_ROW(_30mA_to_150mA,  "30mA to 150mA");
-    DOKIT_ADD_TEST_ROW(_150mA_to_300mA, "150mA to 300mA");
-    DOKIT_ADD_TEST_ROW(_300mA_to_3A,    "300mA to 3A");
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DataLoggerService::CurrentRange)5    << QString();
-    QTest::addRow("max")     << (DataLoggerService::CurrentRange)0xFF << QString();
-}
-
-void TestDataLoggerService::toString_CurrentRange()
-{
-    QFETCH(DataLoggerService::CurrentRange, range);
-    QFETCH(QString, expected);
-    QCOMPARE(DataLoggerService::toString(range), expected);
-}
-
-void TestDataLoggerService::minValue_CurrentRange_data()
-{
-    QTest::addColumn<DataLoggerService::CurrentRange>("range");
-    QTest::addColumn<QVariant>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DataLoggerService::CurrentRange::range << QVariant(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_10mA,        0);
-    DOKIT_ADD_TEST_ROW(_10mA_to_30mA,    10);
-    DOKIT_ADD_TEST_ROW(_30mA_to_150mA,   30);
-    DOKIT_ADD_TEST_ROW(_150mA_to_300mA, 150);
-    DOKIT_ADD_TEST_ROW(_300mA_to_3A,    300);
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DataLoggerService::CurrentRange)5    << QVariant();
-    QTest::addRow("max")     << (DataLoggerService::CurrentRange)0xFF << QVariant();
-}
-
-void TestDataLoggerService::minValue_CurrentRange()
-{
-    QFETCH(DataLoggerService::CurrentRange, range);
-    QFETCH(QVariant, expected);
-    QCOMPARE(DataLoggerService::minValue(range), expected);
-}
-
-void TestDataLoggerService::maxValue_CurrentRange_data()
-{
-    QTest::addColumn<DataLoggerService::CurrentRange>("range");
-    QTest::addColumn<QVariant>("expected");
-    #define DOKIT_ADD_TEST_ROW(range, expected) \
-        QTest::addRow(#range) << DataLoggerService::CurrentRange::range << QVariant(expected)
-    DOKIT_ADD_TEST_ROW(_0_to_10mA,        10);
-    DOKIT_ADD_TEST_ROW(_10mA_to_30mA,     30);
-    DOKIT_ADD_TEST_ROW(_30mA_to_150mA,   150);
-    DOKIT_ADD_TEST_ROW(_150mA_to_300mA,  300);
-    DOKIT_ADD_TEST_ROW(_300mA_to_3A,    3000);
-    #undef DOKIT_ADD_TEST_ROW
-    QTest::addRow("invalid") << (DataLoggerService::CurrentRange)5    << QVariant();
-    QTest::addRow("max")     << (DataLoggerService::CurrentRange)0xFF << QVariant();
-}
-
-void TestDataLoggerService::maxValue_CurrentRange()
-{
-    QFETCH(DataLoggerService::CurrentRange, range);
-    QFETCH(QVariant, expected);
-    QCOMPARE(DataLoggerService::maxValue(range), expected);
-}
-
-void TestDataLoggerService::range_Range()
-{
-    const DataLoggerService::Range range;
-    QCOMPARE((quint8)range.currentRange, (quint8)0);
-    QCOMPARE((quint8)range.voltageRange, (quint8)0);
-
-    const DataLoggerService::Range voltage(DataLoggerService::VoltageRange::_6V_to_12V);
-    QCOMPARE(voltage.voltageRange, DataLoggerService::VoltageRange::_6V_to_12V);
-
-    const DataLoggerService::Range current(DataLoggerService::CurrentRange::_150mA_to_300mA);
-    QCOMPARE(voltage.currentRange, DataLoggerService::CurrentRange::_150mA_to_300mA);
-}
-
-void TestDataLoggerService::range_Operators()
-{
-    QVERIFY(DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V) ==
-            DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V));
-
-    QVERIFY(DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V) !=
-            DataLoggerService::Range(DataLoggerService::VoltageRange::_2V_to_6V));
-
-    QVERIFY(DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V) <
-            DataLoggerService::Range(DataLoggerService::VoltageRange::_2V_to_6V));
-
-    QVERIFY(DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V) <=
-            DataLoggerService::Range(DataLoggerService::VoltageRange::_2V_to_6V));
-
-    QVERIFY(!(DataLoggerService::Range(DataLoggerService::VoltageRange::_2V_to_6V) <=
-              DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V)));
-
-    QVERIFY(DataLoggerService::Range(DataLoggerService::VoltageRange::_2V_to_6V) >
-            DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V));
-
-    QVERIFY(DataLoggerService::Range(DataLoggerService::VoltageRange::_2V_to_6V) >=
-            DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V));
-
-    QVERIFY(!(DataLoggerService::Range(DataLoggerService::VoltageRange::_300mV_to_2V) >=
-              DataLoggerService::Range(DataLoggerService::VoltageRange::_2V_to_6V)));
-}
-
-void TestDataLoggerService::toString_Range_data()
-{
-    QTest::addColumn<DataLoggerService::Range>("range");
-    QTest::addColumn<DataLoggerService::Mode>("mode");
-    QTest::addColumn<QString>("expected");
-
-    #define DOKIT_ADD_TEST_ROW(mode, member, range, expected) \
-        QTest::addRow(#mode "," #range) << DataLoggerService::Range(DataLoggerService::range) \
-            << DataLoggerService::Mode::mode << QStringLiteral(expected)
-    DOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
-    DOKIT_ADD_TEST_ROW(DcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
-    DOKIT_ADD_TEST_ROW(AcVoltage, voltageRange, VoltageRange::_0_to_300mV,  "0 to 300mV");
-    DOKIT_ADD_TEST_ROW(AcVoltage, voltageRange, VoltageRange::_30V_to_60V,  "30V to 60V");
-    DOKIT_ADD_TEST_ROW(DcCurrent, currentRange, CurrentRange::_0_to_10mA,   "0 to 10mA");
-    DOKIT_ADD_TEST_ROW(DcCurrent, currentRange, CurrentRange::_300mA_to_3A, "300mA to 3A");
-    DOKIT_ADD_TEST_ROW(AcCurrent, currentRange, CurrentRange::_0_to_10mA,   "0 to 10mA");
-    DOKIT_ADD_TEST_ROW(AcCurrent, currentRange, CurrentRange::_300mA_to_3A, "300mA to 3A");
-    DOKIT_ADD_TEST_ROW(Idle,      voltageRange, VoltageRange::_0_to_300mV,  ""); // Invalid.
-    #undef DOKIT_ADD_TEST_ROW
-}
-
-void TestDataLoggerService::toString_Range()
-{
-    QFETCH(DataLoggerService::Range, range);
-    QFETCH(DataLoggerService::Mode, mode);
-    QFETCH(QString, expected);
-    QCOMPARE(DataLoggerService::toString(range, mode), expected);
 }
 
 void TestDataLoggerService::readCharacteristics()
@@ -352,7 +141,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Stop,
             0, DataLoggerService::Mode::Idle,
-            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
+            0, 0, 0
         }
         << false
         << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
@@ -360,7 +149,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Stop,
             0, DataLoggerService::Mode::Idle,
-            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
+            0, 0, 0
         }
         << true
         << QByteArray("\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
@@ -370,7 +159,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Refresh,
             0, DataLoggerService::Mode::Idle,
-            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
+            0, 0, 0
         }
         << false
         << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 11);
@@ -378,7 +167,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Refresh,
             0, DataLoggerService::Mode::Idle,
-            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
+            0, 0, 0
         }
         << true
         << QByteArray("\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
@@ -388,7 +177,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start,
             0, DataLoggerService::Mode::Idle,
-            DataLoggerService::VoltageRange::_0_to_300mV, 0, 0
+            0, 0, 0
         }
         << true
         << QByteArray("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 13);
@@ -398,7 +187,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start,
             0, DataLoggerService::Mode::AcVoltage,
-            DataLoggerService::VoltageRange::_30V_to_60V, 60*1000, (quint32)16537226070
+            +PokitMeter::VoltageRange::_60V, 60*1000, (quint32)16537226070
         }
         << true
         << QByteArray("\x00\x00\x00\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
@@ -408,7 +197,7 @@ void TestDataLoggerService::encodeSettings_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start,
             (quint16)0xAABB, DataLoggerService::Mode::AcVoltage,
-            DataLoggerService::VoltageRange::_30V_to_60V, 60*1000u, (quint32)16537226070
+            +PokitMeter::VoltageRange::_60V, 60*1000u, (quint32)16537226070
         }
         << true
         << QByteArray("\x00\xBB\xAA\x02\x05\x60\xea\x00\x00\x56\x0b\xb2\xd9", 13);
@@ -430,7 +219,7 @@ void TestDataLoggerService::parseMetadata_data()
     QTest::addRow("null") << QByteArray()
         << DataLoggerService::Metadata{
             DataLoggerService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-            DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_0_to_300mV,
+            DataLoggerService::Mode::Idle, +PokitMeter::VoltageRange::_300mV,
             0, 0, 0
         };
 
@@ -438,7 +227,7 @@ void TestDataLoggerService::parseMetadata_data()
     QTest::addRow("too-small") << QByteArray(14, '\xFF')
         << DataLoggerService::Metadata{
             DataLoggerService::LoggerStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-            DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_0_to_300mV,
+            DataLoggerService::Mode::Idle, +PokitMeter::VoltageRange::_300mV,
             0, 0, 0
         };
 
@@ -447,7 +236,7 @@ void TestDataLoggerService::parseMetadata_data()
         << QByteArray("\x00\x9f\x0f\x49\x37\x00\x04\x3c\x00\x00\x00\xe9\xbb\x8c\x62", 15)
         << DataLoggerService::Metadata{
             DataLoggerService::LoggerStatus::Done, 1.198417067e-05f,
-            DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_12V_to_30V,
+            DataLoggerService::Mode::Idle, +PokitMeter::VoltageRange::_30V,
             60000, 0, 1653390313 // 2022-05-24 21:05:13.000 AEST.
         };
 
@@ -457,7 +246,7 @@ void TestDataLoggerService::parseMetadata_data()
                       "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62", 23)
         << DataLoggerService::Metadata{
             DataLoggerService::LoggerStatus::Done, 0.01208119933f,
-            DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_12V_to_30V,
+            DataLoggerService::Mode::Idle, +PokitMeter::VoltageRange::_30V,
             60000, 13, 1653389635 // 2022-05-24 20:53:55.000 AEST.
         };
 
@@ -467,7 +256,7 @@ void TestDataLoggerService::parseMetadata_data()
                       "\x00\x00\x00\x30\x38\x00\x00\x43\xb9\x8c\x62\x01\x02\0x3", 26)
         << DataLoggerService::Metadata{
            DataLoggerService::LoggerStatus::Done, 0.01208119933f,
-           DataLoggerService::Mode::Idle, DataLoggerService::VoltageRange::_12V_to_30V,
+           DataLoggerService::Mode::Idle, +PokitMeter::VoltageRange::_30V,
            0, 0, 0 // Will safely parse all but these last three.
         };
 }
@@ -500,8 +289,8 @@ void TestDataLoggerService::parseMetadata()
     QCOMPARE(actual.scale, expected.scale);
     #endif
     QCOMPARE(actual.mode, expected.mode);
-    QCOMPARE(actual.range.currentRange, expected.range.currentRange);
-    QCOMPARE(actual.range.voltageRange, expected.range.voltageRange);
+    QCOMPARE(actual.range, expected.range);
+    QCOMPARE(actual.range, expected.range);
     QCOMPARE(actual.updateInterval, expected.updateInterval);
     QCOMPARE(actual.numberOfSamples, expected.numberOfSamples);
     QCOMPARE(actual.timestamp, expected.timestamp);

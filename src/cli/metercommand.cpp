@@ -96,7 +96,8 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
         case MultimeterService::Mode::DcVoltage:
         case MultimeterService::Mode::AcVoltage:
             if (isAuto) {
-                settings.range.voltageRange = MultimeterService::VoltageRange::AutoRange;
+                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp)?
+                settings.range = +PokitMeter::VoltageRange::AutoRange;
             }
             unit = QLatin1String("V");
             sensibleMinimum = 50; // mV.
@@ -104,14 +105,16 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
         case MultimeterService::Mode::DcCurrent:
         case MultimeterService::Mode::AcCurrent:
             if (isAuto) {
-                settings.range.currentRange = MultimeterService::CurrentRange::AutoRange;
+                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp)?
+                settings.range = +PokitMeter::CurrentRange::AutoRange;
             }
             unit = QLatin1String("A");
             sensibleMinimum = 5; // mA.
             break;
         case MultimeterService::Mode::Resistance:
             if (isAuto) {
-                settings.range.resistanceRange = MultimeterService::ResistanceRange::AutoRange;
+                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp)?
+                settings.range = +PokitMeter::ResistanceRange::AutoRange;
             }
             unit = QLatin1String("ohms");
             sensibleMinimum = 0; // Unused.
@@ -125,7 +128,9 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
             if (rangeMax == 0) {
                 errors.append(tr("Invalid range value: %1").arg(value));
             } else {
-                settings.range = lowestRange(settings.mode, rangeMax);
+                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp), and move to
+                /// a function like minRange(product, mode, rangeMax).
+                settings.range = +PokitMeter::minRange<PokitMeter::VoltageRange>(rangeMax);//lowestRange(settings.mode, rangeMax);
             }
         }
     }
@@ -168,92 +173,12 @@ AbstractPokitService * MeterCommand::getService()
 void MeterCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    const QString range = MultimeterService::toString(settings.range, settings.mode);
+    const QString range = service->toString(settings.range, settings.mode);
     qCInfo(lc).noquote() << tr("Measuring %1, with range %2, every %L3ms.").arg(
         MultimeterService::toString(settings.mode),
         (range.isNull()) ? QString::fromLatin1("N/A") : range).arg(settings.updateInterval);
     service->setSettings(settings);
 }
-
-/*!
- * Returns the lowest \a mode range that can measure at least up to \a desired max, or AutoRange
- * if no such range is available.
- */
-MultimeterService::Range MeterCommand::lowestRange(
-    const MultimeterService::Mode mode, const quint32 desiredMax)
-{
-    MultimeterService::Range range;
-    switch (mode) {
-    case MultimeterService::Mode::DcVoltage:
-    case MultimeterService::Mode::AcVoltage:
-        range.voltageRange = lowestVoltageRange(desiredMax);
-        break;
-    case MultimeterService::Mode::DcCurrent:
-    case MultimeterService::Mode::AcCurrent:
-        range.currentRange = lowestCurrentRange(desiredMax);
-        break;
-    case MultimeterService::Mode::Resistance:
-        range.resistanceRange = lowestResistanceRange(desiredMax);
-        break;
-    default:
-        qCWarning(lc).noquote() << tr("Mode does not support range.");
-        range.voltageRange = MultimeterService::VoltageRange::AutoRange;
-    }
-    return range;
-}
-
-#define DOKIT_CLI_IF_LESS_THAN_RETURN(value, label) \
-if (value <=  MultimeterService::maxValue(MultimeterService::label).toUInt()) { \
-    return MultimeterService::label; \
-}
-
-/*!
- * Returns the lowest current range that can measure at least up to \a desired max, or AutoRange
- * if no such range is available.
- */
-MultimeterService::CurrentRange MeterCommand::lowestCurrentRange(const quint32 desiredMax)
-{
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_0_to_10mA)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_10mA_to_30mA)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_30mA_to_150mA)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_150mA_to_300mA)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, CurrentRange::_300mA_to_3A)
-    return MultimeterService::CurrentRange::AutoRange;
-}
-
-/*!
- * Returns the lowest resistance range that can measure at least up to \a desired max, or AutoRange
- * if no such range is available.
- */
-MultimeterService::ResistanceRange MeterCommand::lowestResistanceRange(const quint32 desiredMax)
-{
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_0_to_160)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_160_to_330)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_330_to_890)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_890_to_1K5)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_1K5_to_10K)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_10K_to_100K)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_100K_to_470K)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, ResistanceRange::_470K_to_1M)
-    return MultimeterService::ResistanceRange::AutoRange;
-}
-
-/*!
- * Returns the lowest voltage range that can measure at least up to \a desired max, or AutoRange
- * if no such range is available.
- */
-MultimeterService::VoltageRange MeterCommand::lowestVoltageRange(const quint32 desiredMax)
-{
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_0_to_300mV)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_300mV_to_2V)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_2V_to_6V)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_6V_to_12V)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_12V_to_30V)
-    DOKIT_CLI_IF_LESS_THAN_RETURN(desiredMax, VoltageRange::_30V_to_60V)
-    return MultimeterService::VoltageRange::AutoRange;
-}
-
-#undef DOKIT_CLI_IF_LESS_THAN_RETURN
 
 /*!
  * Invoked when the multimeter settings have been written, to begin reading the meter values.
@@ -297,96 +222,56 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
         break;
     }
 
-    QString units;
+    QString unit;
     switch (reading.mode) {
     case MultimeterService::Mode::Idle:        break;
-    case MultimeterService::Mode::DcVoltage:   units = QLatin1String("Vdc"); break;
-    case MultimeterService::Mode::AcVoltage:   units = QLatin1String("Vac"); break;
-    case MultimeterService::Mode::DcCurrent:   units = QLatin1String("Adc"); break;
-    case MultimeterService::Mode::AcCurrent:   units = QLatin1String("Aac"); break;
-    case MultimeterService::Mode::Resistance:  units = QString::fromUtf8("Ω"); break;
+    case MultimeterService::Mode::DcVoltage:   unit = QLatin1String("Vdc"); break;
+    case MultimeterService::Mode::AcVoltage:   unit = QLatin1String("Vac"); break;
+    case MultimeterService::Mode::DcCurrent:   unit = QLatin1String("Adc"); break;
+    case MultimeterService::Mode::AcCurrent:   unit = QLatin1String("Aac"); break;
+    case MultimeterService::Mode::Resistance:  unit = QString::fromUtf8("Ω"); break;
     case MultimeterService::Mode::Diode:       break;
     case MultimeterService::Mode::Continuity:  break;
-    case MultimeterService::Mode::Temperature: units = QString::fromUtf8("°C"); break;
-    case MultimeterService::Mode::Capacitance: units = QString::fromUtf8("F");  break;
-    case MultimeterService::Mode::ExternalTemperature: units = QString::fromUtf8("°C"); break;
+    case MultimeterService::Mode::Temperature: unit = QString::fromUtf8("°C"); break;
+    case MultimeterService::Mode::Capacitance: unit = QString::fromUtf8("F");  break;
+    case MultimeterService::Mode::ExternalTemperature: unit = QString::fromUtf8("°C"); break;
     }
 
-    QString range;
-    QVariant rangeMin, rangeMax;
-    switch (reading.mode) {
-    case MultimeterService::Mode::Idle:        break;
-    case MultimeterService::Mode::DcVoltage:
-    case MultimeterService::Mode::AcVoltage:
-        range = MultimeterService::toString(reading.range.voltageRange);
-        rangeMin = MultimeterService::minValue(reading.range.voltageRange);
-        rangeMax = MultimeterService::maxValue(reading.range.voltageRange);
-        break;
-    case MultimeterService::Mode::DcCurrent:
-    case MultimeterService::Mode::AcCurrent:
-        range = MultimeterService::toString(reading.range.currentRange);
-        rangeMin = MultimeterService::minValue(reading.range.currentRange);
-        rangeMax = MultimeterService::maxValue(reading.range.currentRange);
-        break;
-    case MultimeterService::Mode::Resistance:
-        range = MultimeterService::toString(reading.range.resistanceRange);
-        rangeMin = MultimeterService::minValue(reading.range.resistanceRange);
-        rangeMax = MultimeterService::maxValue(reading.range.resistanceRange);
-        break;
-    case MultimeterService::Mode::Diode:       break;
-    case MultimeterService::Mode::Continuity:  break;
-    case MultimeterService::Mode::Temperature: break;
-    case MultimeterService::Mode::Capacitance:
-        /// \todo
-        break;
-    case MultimeterService::Mode::ExternalTemperature: break;
-    }
+    const QString range = service->toString(reading.range, reading.mode);
 
     switch (format) {
     case OutputFormat::Csv:
         for (; showCsvHeader; showCsvHeader = false) {
-            std::cout << qUtf8Printable(tr("mode,value,units,status,range_min_milli,range_max_milli\n"));
+            std::cout << qUtf8Printable(tr("mode,value,unit,status,range\n"));
         }
-        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6\n")
+        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5\n")
             .arg(escapeCsvField(MultimeterService::toString(reading.mode)))
-            .arg(reading.value, 0, 'f').arg(units, status, rangeMin.toString(), rangeMax.toString())
+            .arg(reading.value, 0, 'f').arg(unit, status, range)
             );
         break;
     case OutputFormat::Json: {
-        QJsonObject jsonObject{
+        QJsonObject object{
             { QLatin1String("status"), status },
             { QLatin1String("value"), qIsInf(reading.value) ?
                 QJsonValue(tr("Infinity")) : QJsonValue(reading.value) },
             { QLatin1String("mode"),   MultimeterService::toString(reading.mode) },
         };
-        if ((!rangeMin.isNull()) || (!rangeMax.isNull())) {
-            jsonObject.insert(QLatin1String("range"), QJsonObject{
-                { QLatin1String("min"),
-                    #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-                    (rangeMin.typeId() == QMetaType::Int)
-                    #else
-                    (rangeMin.type() == QVariant::Int)
-                    #endif
-                    ? QJsonValue(rangeMin.toInt()/1000.0) : rangeMin.toJsonValue() },
-                { QLatin1String("max"),
-                    #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-                    (rangeMax.typeId() == QMetaType::Int) ?
-                    #else
-                    (rangeMax.type() == QVariant::Int) ?
-                    #endif
-                    QJsonValue(rangeMax.toInt()/1000.0) : rangeMax.toJsonValue() },
-            });
+        if (!unit.isNull()) {
+            object.insert(QLatin1String("unit"), unit);
         }
-        std::cout << QJsonDocument(jsonObject).toJson().toStdString();
+        if (!range.isNull()) {
+            object.insert(QLatin1String("range"), range);
+        }
+        std::cout << QJsonDocument(object).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Mode:   %1 (0x%2)\n").arg(MultimeterService::toString(reading.mode))
             .arg((quint8)reading.mode,2,16,QLatin1Char('0')));
-        std::cout << qUtf8Printable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(units));
+        std::cout << qUtf8Printable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(unit));
         std::cout << qUtf8Printable(tr("Status: %1 (0x%2)\n").arg(status)
             .arg((quint8)reading.status,2,16,QLatin1Char('0')));
         std::cout << qUtf8Printable(tr("Range:  %1 (0x%2)\n").arg(range)
-            .arg((quint8)reading.range.voltageRange,2,16,QLatin1Char('0')));
+            .arg((quint8)reading.range,2,16,QLatin1Char('0')));
         break;
     }
 

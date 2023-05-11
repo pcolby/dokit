@@ -49,15 +49,10 @@ public:
     };
     static QString toString(const Mode &mode);
 
-//    union QTPOKIT_EXPORT Range {
-//        PokitCurrentRange currentRange; ///< Range when in AC/DC current mode.
-//        PokitVoltageRange voltageRange; ///< Range when in AC/DC voltage mode.
-//        Range(const PokitCurrentRange range);
-//        Range(const PokitVoltageRange range);
-//    };
-//    static QString toString(const Range &range, const Mode &mode);
     static QString toString(const PokitProduct product, const quint8 range, const Mode mode);
     QString toString(const quint8 range, const Mode mode);
+    static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode);
+    QVariant maxValue(const quint8 range, const Mode mode) const;
 
     struct Settings {
         Command command;         ///< Custom operation request.

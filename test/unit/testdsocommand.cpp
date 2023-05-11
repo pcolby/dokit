@@ -591,13 +591,13 @@ void TestDsoCommand::outputSamples()
 
     const OutputStreamCapture capture(&std::cout);
     DsoCommand command(nullptr);
+    command.service = new DsoService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
     command.metadataRead(metadata);
     command.format = format;
-    /// \todo DsoCommand::outputSamples needs a valid controller now (or some other workaround).
-//    for (const DsoService::Samples &samples: samplesList) {
-//        command.outputSamples(samples);
-//    }
-//    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
+    for (const DsoService::Samples &samples: samplesList) {
+        command.outputSamples(samples);
+    }
+    QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 
 void TestDsoCommand::tr()

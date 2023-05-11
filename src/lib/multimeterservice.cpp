@@ -8,6 +8,7 @@
 
 #include <qtpokit/multimeterservice.h>
 #include "multimeterservice_p.h"
+#include "pokitproducts_p.h"
 
 #include <QDataStream>
 #include <QIODevice>
@@ -50,274 +51,72 @@ QString MultimeterService::toString(const Mode &mode)
     case Mode::Diode:       return tr("Diode");
     case Mode::Continuity:  return tr("Continuity");
     case Mode::Temperature: return tr("Temperature");
-    default:                return QString();
+    case Mode::Capacitance: return tr("Capacitance");
+    case Mode::ExternalTemperature: return tr("External temperature");
     }
-}
-
-/// \enum MultimeterService::VoltageRange
-/// \brief Values supported by the `Range` attribute of the `Settings` and `Reading` characteristics,
-/// when `Mode` is AC or DC voltage.
-
-/// Returns \a range as a user-friendly string.
-QString MultimeterService::toString(const VoltageRange &range)
-{
-    switch (range) {
-    case VoltageRange::_0_to_300mV:  return tr("0 to 300mV");
-    case VoltageRange::_300mV_to_2V: return tr("300mV to 2V");
-    case VoltageRange::_2V_to_6V:    return tr("2V to 6V");
-    case VoltageRange::_6V_to_12V:   return tr("6V to 12V");
-    case VoltageRange::_12V_to_30V:  return tr("12V to 30V");
-    case VoltageRange::_30V_to_60V:  return tr("30V to 60V");
-    case VoltageRange::AutoRange:    return tr("Auto-range");
-    default:                         return QString();
-    }
-}
-
-/*!
- *  Returns the minimum value for \a range in (integer) millivolts, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
- *
- *  Note, this is an *absolute* minimum. That is, the true range for DC measurements is from
- *  `-maxValue(range)` to `+maxValue(range)`. In this sense, `minValue(range)` indicates the
- *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC voltage
- *  can never be negative, this is relevant for DC voltage only.
- */
-QVariant MultimeterService::minValue(const VoltageRange &range)
-{
-    switch (range) {
-    case VoltageRange::_0_to_300mV:  return     0;
-    case VoltageRange::_300mV_to_2V: return   300;
-    case VoltageRange::_2V_to_6V:    return  2000;
-    case VoltageRange::_6V_to_12V:   return  6000;
-    case VoltageRange::_12V_to_30V:  return 12000;
-    case VoltageRange::_30V_to_60V:  return 30000;
-    case VoltageRange::AutoRange:    return tr("Auto");
-    default:                         return QVariant();
-    }
-}
-
-/*!
- *  Returns the maximum value for \a range in (integer) millivolts, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
- */
-QVariant MultimeterService::maxValue(const VoltageRange &range)
-{
-    switch (range) {
-    case VoltageRange::_0_to_300mV:  return   300;
-    case VoltageRange::_300mV_to_2V: return  2000;
-    case VoltageRange::_2V_to_6V:    return  6000;
-    case VoltageRange::_6V_to_12V:   return 12000;
-    case VoltageRange::_12V_to_30V:  return 30000;
-    case VoltageRange::_30V_to_60V:  return 60000;
-    case VoltageRange::AutoRange:    return tr("Auto");
-    default:                         return QVariant();
-    }
-}
-
-/// \enum MultimeterService::CurrentRange
-/// \brief Values supported by the `Range` attribute of the `Settings` and `Reading` characteristics,
-/// when `Mode` is AC or DC current.
-
-/// Returns \a range as a user-friendly string.
-QString MultimeterService::toString(const CurrentRange &range)
-{
-    switch (range) {
-    case CurrentRange::_0_to_10mA:      return tr("0 to 10mA");
-    case CurrentRange::_10mA_to_30mA:   return tr("10mA to 30mA");
-    case CurrentRange::_30mA_to_150mA:  return tr("30mA to 150mA");
-    case CurrentRange::_150mA_to_300mA: return tr("150mA to 300mA");
-    case CurrentRange::_300mA_to_3A:    return tr("300mA to 3A");
-    case CurrentRange::AutoRange:       return tr("Auto-range");
-    default:                            return QString();
-    }
-}
-
-/*!
- *  Returns the minimum value for \a range in (integer) milliamps, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
- *
- *  Note, this is an *absolute* minimum. That is, the true range for DC measurements is from
- *  `-maxValue(range)` to `+maxValue(range)`. In this sense, `minValue(range)` indicates the
- *  magnitude (ignore signs) that can be measured accurately for the given \a range. As AC current
- *  can never be negative, this is relevant for DC current only.
- */
-QVariant MultimeterService::minValue(const CurrentRange &range)
-{
-    switch (range) {
-    case CurrentRange::_0_to_10mA:      return   0;
-    case CurrentRange::_10mA_to_30mA:   return  10;
-    case CurrentRange::_30mA_to_150mA:  return  30;
-    case CurrentRange::_150mA_to_300mA: return 150;
-    case CurrentRange::_300mA_to_3A:    return 300;
-    case CurrentRange::AutoRange:       return tr("Auto");
-    default:                            return QVariant();
-    }
-}
-
-/*!
- *  Returns the maximum value for \a range in (integer) milliamps, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
- */
-QVariant MultimeterService::maxValue(const CurrentRange &range)
-{
-    switch (range) {
-    case CurrentRange::_0_to_10mA:      return   10;
-    case CurrentRange::_10mA_to_30mA:   return   30;
-    case CurrentRange::_30mA_to_150mA:  return  150;
-    case CurrentRange::_150mA_to_300mA: return  300;
-    case CurrentRange::_300mA_to_3A:    return 3000;
-    case CurrentRange::AutoRange:       return tr("Auto");
-    default:                            return QVariant();
-    }
-}
-
-/// \enum MultimeterService::ResistanceRange
-/// \brief Values supported by the `Range` attribute of the `Settings` and `Reading` characteristics,
-/// when `Mode` is resistance.
-
-/// Returns \a range as a user-friendly string.
-QString MultimeterService::toString(const ResistanceRange &range)
-{
-    switch (range) {
-    case ResistanceRange::_0_to_160:     return tr("0 to 160 ohms");
-    case ResistanceRange::_160_to_330:   return tr("160 to 330 ohms");
-    case ResistanceRange::_330_to_890:   return tr("330 to 890 ohms");
-    case ResistanceRange::_890_to_1K5:   return tr("890 to 1.5K ohms");
-    case ResistanceRange::_1K5_to_10K:   return tr("1.5K to 10K ohms");
-    case ResistanceRange::_10K_to_100K:  return tr("10K to 100K ohms");
-    case ResistanceRange::_100K_to_470K: return tr("100K to 470K ohms");
-    case ResistanceRange::_470K_to_1M:   return tr("470K to 1M ohms");
-    case ResistanceRange::AutoRange:     return tr("Auto-range");
-    default:                             return QString();
-    }
-}
-
-/*!
- *  Returns the minimum value for \a range in (integer) ohms, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
- */
-QVariant MultimeterService::minValue(const ResistanceRange &range)
-{
-    switch (range) {
-    case ResistanceRange::_0_to_160:     return      0;
-    case ResistanceRange::_160_to_330:   return    160;
-    case ResistanceRange::_330_to_890:   return    330;
-    case ResistanceRange::_890_to_1K5:   return    890;
-    case ResistanceRange::_1K5_to_10K:   return   1500;
-    case ResistanceRange::_10K_to_100K:  return  10000;
-    case ResistanceRange::_100K_to_470K: return 100000;
-    case ResistanceRange::_470K_to_1M:   return 470000;
-    case ResistanceRange::AutoRange:     return tr("Auto");
-    default:                             return QVariant();
-    }
-}
-
-/*!
- *  Returns the maximum value for \a range in (integer) ohms, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
- */
-QVariant MultimeterService::maxValue(const ResistanceRange &range)
-{
-    switch (range) {
-    case ResistanceRange::_0_to_160:     return     160;
-    case ResistanceRange::_160_to_330:   return     330;
-    case ResistanceRange::_330_to_890:   return     890;
-    case ResistanceRange::_890_to_1K5:   return    1500;
-    case ResistanceRange::_1K5_to_10K:   return   10000;
-    case ResistanceRange::_10K_to_100K:  return  100000;
-    case ResistanceRange::_100K_to_470K: return  470000;
-    case ResistanceRange::_470K_to_1M:   return 1000000;
-    case ResistanceRange::AutoRange:     return tr("Auto");
-    default:                             return QVariant();
-    }
-}
-
-/// \union MultimeterService::Range
-/// \brief Values supported by the `Range` attribute of the `Settings` characteristic.
-
-static_assert(std::is_same<std::underlying_type_t<MultimeterService::VoltageRange>,
-                           std::underlying_type_t<MultimeterService::CurrentRange>>::value,
-              "MultimeterService::Range members must all have the same underlying type.");
-
-/// Constructs a new MultimeterService::Range instance with 0. This should be considered
-MultimeterService::Range::Range() : voltageRange(static_cast<MultimeterService::VoltageRange>(0))
-{
-
-}
-
-/// Constructs a new MultimeterService::Range instance with \a range.
-MultimeterService::Range::Range(const MultimeterService::VoltageRange range) : voltageRange(range)
-{
-
-}
-
-/// Constructs a new MultimeterService::Range instance with \a range.
-MultimeterService::Range::Range(const MultimeterService::CurrentRange range) : currentRange(range)
-{
-
-}
-
-/// Constructs a new MultimeterService::Range instance with \a range.
-MultimeterService::Range::Range(const MultimeterService::ResistanceRange range) : resistanceRange(range)
-{
-
+    return QString();
 }
 
 /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
-QString MultimeterService::toString(const Range &range, const Mode &mode)
+QString MultimeterService::toString(const PokitProduct product, const quint8 range, const Mode mode)
 {
     switch (mode) {
+    case Mode::Idle:
+        break;
     case Mode::DcVoltage:
     case Mode::AcVoltage:
-        return toString(range.voltageRange);
+        return VoltageRange::toString(product, range);
     case Mode::DcCurrent:
     case Mode::AcCurrent:
-        return toString(range.currentRange);
-    default:
-        return QString();
+        return CurrentRange::toString(product, range);
+    case Mode::Resistance:
+        return ResistanceRange::toString(product, range);
+    case Mode::Diode:
+    case Mode::Continuity:
+    case Mode::Temperature:
+        break;
+    case Mode::Capacitance:
+        return CapacitanceRange::toString(product, range);
+    case Mode::ExternalTemperature:
+        break;
     }
+    return QString();
 }
 
-/// Returns \c true if \a lhs is numerically equal to \a rhs, \c false otherwise.
-bool operator==(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+/// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
+QString MultimeterService::toString(const quint8 range, const Mode mode) const
 {
-    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
-        == static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
+    return toString(pokitProduct(), range, mode);
 }
 
-/// Returns \c true if \a lhs is numerically not-equal to \a rhs, \c false otherwise.
-bool operator!=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+QVariant MultimeterService::maxValue(const PokitProduct product, const quint8 range, const Mode mode)
 {
-    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
-        != static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
+    switch (mode) {
+    case Mode::Idle:
+        break;
+    case Mode::DcVoltage:
+    case Mode::AcVoltage:
+        return VoltageRange::maxValue(product, range);
+    case Mode::DcCurrent:
+    case Mode::AcCurrent:
+        return CurrentRange::maxValue(product, range);
+    case Mode::Resistance:
+        return ResistanceRange::maxValue(product, range);
+    case Mode::Diode:
+    case Mode::Continuity:
+    case Mode::Temperature:
+        break;
+    case Mode::Capacitance:
+        return CapacitanceRange::maxValue(product, range);
+    case Mode::ExternalTemperature:
+        break;
+    }
+    return QVariant();
 }
 
-/// Returns \c true if \a lhs is numerically less than \a rhs, \c false otherwise.
-bool operator< (const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
+QVariant MultimeterService::maxValue(const quint8 range, const Mode mode) const
 {
-    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
-         < static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
-}
-
-/// Returns \c true if \a lhs is numerically greater than \a rhs, \c false otherwise.
-bool operator> (const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
-         > static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
-}
-
-/// Returns \c true if \a lhs is numerically less than or equal to \a rhs, \c false otherwise.
-bool operator<=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
-        <= static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
-}
-
-/// Returns \c true if \a lhs is numerically greater than or equal to \a rhs, \c false otherwise.
-bool operator>=(const MultimeterService::Range &lhs, const MultimeterService::Range &rhs)
-{
-    return static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(lhs.voltageRange)
-        >= static_cast<std::underlying_type_t<MultimeterService::VoltageRange>>(rhs.voltageRange);
+    return maxValue(pokitProduct(), range, mode);
 }
 
 /// \struct MultimeterService::Settings
@@ -423,8 +222,7 @@ MultimeterService::Reading MultimeterService::reading() const
     const QLowEnergyCharacteristic characteristic =
         d->getCharacteristic(CharacteristicUuids::reading);
     return (characteristic.isValid()) ? MultimeterServicePrivate::parseReading(characteristic.value())
-        : Reading{ MeterStatus::Error, std::numeric_limits<float>::quiet_NaN(),
-                   Mode::Idle, VoltageRange::AutoRange };
+        : Reading{ MeterStatus::Error, std::numeric_limits<float>::quiet_NaN(), Mode::Idle, 0 };
 }
 
 /*!
@@ -502,7 +300,7 @@ QByteArray MultimeterServicePrivate::encodeSettings(const MultimeterService::Set
     QDataStream stream(&value, QIODevice::WriteOnly);
     stream.setByteOrder(QDataStream::LittleEndian);
     stream.setFloatingPointPrecision(QDataStream::SinglePrecision); // 32-bit floats, not 64-bit.
-    stream << (quint8)settings.mode << (quint8)settings.range.voltageRange << settings.updateInterval;
+    stream << (quint8)settings.mode << settings.range << settings.updateInterval;
 
     Q_ASSERT(value.size() == 6);
     return value;
@@ -516,8 +314,7 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
     MultimeterService::Reading reading{
         MultimeterService::MeterStatus::Error,
         std::numeric_limits<float>::quiet_NaN(),
-        MultimeterService::Mode::Idle,
-        MultimeterService::VoltageRange::AutoRange
+        MultimeterService::Mode::Idle, 0
     };
 
     if (!checkSize(QLatin1String("Reading"), value, 7, 7)) {
@@ -525,9 +322,9 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
     }
 
     reading.status = MultimeterService::MeterStatus(value.at(0));
-    reading.value = qFromLittleEndian<float>(value.mid(1,4));
-    reading.mode = static_cast<MultimeterService::Mode>(value.at(5));
-    reading.range.voltageRange = static_cast<MultimeterService::VoltageRange>(value.at(6));
+    reading.value  = qFromLittleEndian<float>(value.mid(1,4));
+    reading.mode   = static_cast<MultimeterService::Mode>(value.at(5));
+    reading.range  = static_cast<quint8>(value.at(6));
     return reading;
 }
 

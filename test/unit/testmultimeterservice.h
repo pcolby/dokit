@@ -11,39 +11,6 @@ private slots:
     void toString_Mode_data();
     void toString_Mode();
 
-    void toString_VoltageRange_data();
-    void toString_VoltageRange();
-
-    void minValue_VoltageRange_data();
-    void minValue_VoltageRange();
-
-    void maxValue_VoltageRange_data();
-    void maxValue_VoltageRange();
-
-    void toString_CurrentRange_data();
-    void toString_CurrentRange();
-
-    void minValue_CurrentRange_data();
-    void minValue_CurrentRange();
-
-    void maxValue_CurrentRange_data();
-    void maxValue_CurrentRange();
-
-    void toString_ResistanceRange_data();
-    void toString_ResistanceRange();
-
-    void minValue_ResistanceRange_data();
-    void minValue_ResistanceRange();
-
-    void maxValue_ResistanceRange_data();
-    void maxValue_ResistanceRange();
-
-    void range_Range();
-    void range_Operators();
-
-    void toString_Range_data();
-    void toString_Range();
-
     void readCharacteristics();
     void readReadingCharacteristic();
 

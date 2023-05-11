@@ -14,10 +14,25 @@ bool isPokitProduct(const QLowEnergyController &controller);
 PokitProduct pokitProduct(QList<QBluetoothUuid> &serviceUuids);
 PokitProduct pokitProduct(const QLowEnergyController &controller);
 
-namespace CapacitanceRange { QString toString(const PokitProduct product, const quint8 range); }
-namespace CurrentRange     { QString toString(const PokitProduct product, const quint8 range); }
-namespace ResistanceRange  { QString toString(const PokitProduct product, const quint8 range); }
-namespace VoltageRange     { QString toString(const PokitProduct product, const quint8 range); }
+namespace CapacitanceRange {
+QString toString(const PokitProduct product, const quint8 range);
+QVariant maxValue(const PokitProduct product, const quint8 range);
+}
+
+namespace CurrentRange {
+QString toString(const PokitProduct product, const quint8 range);
+QVariant maxValue(const PokitProduct product, const quint8 range);
+}
+
+namespace ResistanceRange {
+QString toString(const PokitProduct product, const quint8 range);
+QVariant maxValue(const PokitProduct product, const quint8 range);
+}
+
+namespace VoltageRange     {
+QString toString(const PokitProduct product, const quint8 range);
+QVariant maxValue(const PokitProduct product, const quint8 range);
+}
 
 QTPOKIT_END_NAMESPACE
 
