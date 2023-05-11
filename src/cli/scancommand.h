@@ -8,7 +8,7 @@ class ScanCommand : public AbstractCommand
     Q_OBJECT
 
 public:
-    explicit ScanCommand(QObject * const parent);
+    explicit ScanCommand(QObject * const parent = nullptr);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

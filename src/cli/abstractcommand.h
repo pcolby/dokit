@@ -22,7 +22,7 @@ public:
         Text, ///< Plain unstructured text.
     };
 
-    explicit AbstractCommand(QObject * const parent);
+    explicit AbstractCommand(QObject * const parent = nullptr);
 
     virtual QStringList requiredOptions(const QCommandLineParser &parser) const;
     virtual QStringList supportedOptions(const QCommandLineParser &parser) const;

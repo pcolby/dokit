@@ -15,7 +15,7 @@ Q_DECLARE_METATYPE(DsoService::Metadata)
 class MockDeviceCommand : public DeviceCommand
 {
 public:
-    MockDeviceCommand() : DeviceCommand(nullptr)
+    MockDeviceCommand(QObject * const parent = nullptr) : DeviceCommand(parent)
     {
 
     }
@@ -590,7 +590,7 @@ void TestDsoCommand::outputSamples()
     LOADTESTDATA(expected);
 
     const OutputStreamCapture capture(&std::cout);
-    DsoCommand command(nullptr);
+    DsoCommand command;
     command.service = new DsoService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
     command.metadataRead(metadata);
     command.format = format;
@@ -604,7 +604,7 @@ void TestDsoCommand::tr()
 {
     // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
     // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
-    DsoCommand command(nullptr);
+    DsoCommand command;
     QVERIFY(!command.tr("ignored").isEmpty());
 }
 

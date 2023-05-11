@@ -10,7 +10,7 @@ class LoggerStopCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit LoggerStopCommand(QObject * const parent);
+    explicit LoggerStopCommand(QObject * const parent = nullptr);
 
 protected:
     AbstractPokitService * getService() override;

@@ -12,7 +12,7 @@ class MeterCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit MeterCommand(QObject * const parent);
+    explicit MeterCommand(QObject * const parent = nullptr);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

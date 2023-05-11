@@ -10,7 +10,7 @@ class LoggerFetchCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit LoggerFetchCommand(QObject * const parent);
+    explicit LoggerFetchCommand(QObject * const parent = nullptr);
 
 protected:
     AbstractPokitService * getService() override;

@@ -16,7 +16,7 @@ class DeviceCommand : public AbstractCommand
     Q_OBJECT
 
 public:
-    explicit DeviceCommand(QObject * const parent);
+    explicit DeviceCommand(QObject * const parent = nullptr);
 
 public slots:
     bool start() override;

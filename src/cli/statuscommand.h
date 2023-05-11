@@ -10,7 +10,7 @@ class StatusCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit StatusCommand(QObject * const parent);
+    explicit StatusCommand(QObject * const parent = nullptr);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

@@ -10,7 +10,7 @@ class SetNameCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit SetNameCommand(QObject * const parent);
+    explicit SetNameCommand(QObject * const parent = nullptr);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

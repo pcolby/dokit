@@ -12,7 +12,7 @@ Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 class MockDeviceCommand : public DeviceCommand
 {
 public:
-    MockDeviceCommand() : DeviceCommand(nullptr)
+    MockDeviceCommand(QObject * const parent = nullptr) : DeviceCommand(parent)
     {
 
     }
@@ -72,7 +72,7 @@ void TestFlashLedCommand::deviceLedFlashed()
     LOADTESTDATA(expected);
 
     OutputStreamCapture capture(&std::cout);
-    FlashLedCommand command(nullptr);
+    FlashLedCommand command;
     command.format = format;
     command.deviceLedFlashed();
     QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
@@ -82,7 +82,7 @@ void TestFlashLedCommand::tr()
 {
     // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
     // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
-    FlashLedCommand command(nullptr);
+    FlashLedCommand command;
     QVERIFY(!command.tr("ignored").isEmpty());
 }
 

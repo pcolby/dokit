@@ -10,7 +10,7 @@ class FlashLedCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit FlashLedCommand(QObject * const parent);
+    explicit FlashLedCommand(QObject * const parent = nullptr);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

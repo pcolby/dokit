@@ -12,7 +12,7 @@ class DsoCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit DsoCommand(QObject * const parent);
+    explicit DsoCommand(QObject * const parent = nullptr);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

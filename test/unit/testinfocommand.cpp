@@ -14,7 +14,7 @@ Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 class MockDeviceCommand : public DeviceCommand
 {
 public:
-    MockDeviceCommand() : DeviceCommand(nullptr)
+    MockDeviceCommand(QObject * const parent = nullptr) : DeviceCommand(parent)
     {
 
     }
@@ -116,7 +116,7 @@ void TestInfoCommand::tr()
 {
     // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
     // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
-    InfoCommand command(nullptr);
+    InfoCommand command;
     QVERIFY(!command.tr("ignored").isEmpty());
 }
 

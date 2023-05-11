@@ -12,7 +12,7 @@ class LoggerStartCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit LoggerStartCommand(QObject * const parent);
+    explicit LoggerStartCommand(QObject * const parent = nullptr);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

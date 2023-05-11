@@ -33,8 +33,8 @@ class QTPOKIT_EXPORT PokitDevice : public QObject
     Q_OBJECT
 
 public:
-    explicit PokitDevice(const QBluetoothDeviceInfo &deviceInfo, QObject *parent=nullptr);
-    explicit PokitDevice(QLowEnergyController *controller, QObject *parent=nullptr);
+    explicit PokitDevice(const QBluetoothDeviceInfo &deviceInfo, QObject * parent = nullptr);
+    explicit PokitDevice(QLowEnergyController * controller, QObject * parent = nullptr);
     virtual ~PokitDevice();
 
     QLowEnergyController * controller();

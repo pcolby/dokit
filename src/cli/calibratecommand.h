@@ -10,7 +10,7 @@ class CalibrateCommand : public DeviceCommand
     Q_OBJECT
 
 public:
-    explicit CalibrateCommand(QObject * const parent);
+    explicit CalibrateCommand(QObject * const parent = nullptr);
 
     QStringList requiredOptions(const QCommandLineParser &parser) const override;
     QStringList supportedOptions(const QCommandLineParser &parser) const override;

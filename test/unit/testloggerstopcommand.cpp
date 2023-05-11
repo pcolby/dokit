@@ -33,7 +33,7 @@ void TestLoggerStopCommand::settingsWritten()
     LOADTESTDATA(expected);
 
     OutputStreamCapture capture(&std::cout);
-    LoggerStopCommand command(nullptr);
+    LoggerStopCommand command;
     command.format = format;
     command.settingsWritten();
     QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
@@ -43,7 +43,7 @@ void TestLoggerStopCommand::tr()
 {
     // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
     // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
-    LoggerStopCommand command(nullptr);
+    LoggerStopCommand command;
     QVERIFY(!command.tr("ignored").isEmpty());
 }
 

@@ -101,7 +101,7 @@ void TestLoggerFetchCommand::outputSamples()
     LOADTESTDATA(expected);
 
     const OutputStreamCapture capture(&std::cout);
-    LoggerFetchCommand command(nullptr);
+    LoggerFetchCommand command;
     command.service = new DataLoggerService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
     command.metadataRead(metadata);
     command.format = format;
@@ -115,7 +115,7 @@ void TestLoggerFetchCommand::tr()
 {
     // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
     // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
-    LoggerFetchCommand command(nullptr);
+    LoggerFetchCommand command;
     QVERIFY(!command.tr("ignored").isEmpty());
 }
 

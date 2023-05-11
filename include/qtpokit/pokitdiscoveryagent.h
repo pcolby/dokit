@@ -22,8 +22,8 @@ class QTPOKIT_EXPORT PokitDiscoveryAgent : public QBluetoothDeviceDiscoveryAgent
     Q_OBJECT
 
 public:
-    explicit PokitDiscoveryAgent(const QBluetoothAddress &deviceAdapter, QObject *parent=nullptr);
-    PokitDiscoveryAgent(QObject * parent=nullptr);
+    explicit PokitDiscoveryAgent(const QBluetoothAddress &deviceAdapter, QObject * parent = nullptr);
+    PokitDiscoveryAgent(QObject * parent = nullptr);
     virtual ~PokitDiscoveryAgent();
 
 public slots:

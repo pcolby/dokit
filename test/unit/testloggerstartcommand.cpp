@@ -17,7 +17,7 @@ Q_DECLARE_METATYPE(DataLoggerService::Settings)
 class MockDeviceCommand : public DeviceCommand
 {
 public:
-    MockDeviceCommand() : DeviceCommand(nullptr)
+    MockDeviceCommand(QObject * const parent = nullptr) : DeviceCommand(parent)
     {
 
     }
@@ -334,7 +334,7 @@ void TestLoggerStartCommand::settingsWritten()
     LOADTESTDATA(expected);
 
     OutputStreamCapture capture(&std::cout);
-    LoggerStartCommand command(nullptr);
+    LoggerStartCommand command;
     command.format = format;
     command.settingsWritten();
     QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
@@ -344,7 +344,7 @@ void TestLoggerStartCommand::tr()
 {
     // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
     // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
-    LoggerStartCommand command(nullptr);
+    LoggerStartCommand command;
     QVERIFY(!command.tr("ignored").isEmpty());
 }
 

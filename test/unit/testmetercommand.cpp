@@ -18,7 +18,7 @@ Q_DECLARE_METATYPE(MultimeterService::Settings)
 class MockDeviceCommand : public DeviceCommand
 {
 public:
-    MockDeviceCommand() : DeviceCommand(nullptr)
+    MockDeviceCommand(QObject * const parent = nullptr) : DeviceCommand(parent)
     {
 
     }
@@ -361,7 +361,7 @@ void TestMeterCommand::outputReading()
     LOADTESTDATA(expected);
 
     const OutputStreamCapture capture(&std::cout);
-    MeterCommand command(nullptr);
+    MeterCommand command;
     command.service = new MultimeterService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
     command.format = format;
     for (const MultimeterService::Reading &reading: readings) {
@@ -374,7 +374,7 @@ void TestMeterCommand::tr()
 {
     // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
     // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
-    MeterCommand command(nullptr);
+    MeterCommand command;
     QVERIFY(!command.tr("ignored").isEmpty());
 }
 

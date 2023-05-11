@@ -37,7 +37,7 @@ char *toString(const QJsonObject &object)
 class BaseCommand : public AbstractCommand
 {
 public:
-    BaseCommand() : AbstractCommand(nullptr) { }
+    BaseCommand(QObject * const parent = nullptr) : AbstractCommand(parent) { }
 
     bool start() override { return true; }
 
@@ -116,7 +116,7 @@ void TestScanCommand::deviceDiscovered()
     LOADTESTDATA(expected);
 
     const OutputStreamCapture capture(&std::cout);
-    ScanCommand command(nullptr);
+    ScanCommand command;
     command.format = format;
     for (const QBluetoothDeviceInfo &info: infos) {
         command.deviceDiscovered(info);
@@ -139,7 +139,7 @@ void TestScanCommand::deviceUpdated()
     LOADTESTDATA(expected);
 
     const OutputStreamCapture capture(&std::cout);
-    ScanCommand command(nullptr);
+    ScanCommand command;
     command.format = format;
     for (const QBluetoothDeviceInfo &info: infos) {
         command.deviceUpdated(info, QBluetoothDeviceInfo::Fields());
@@ -689,7 +689,7 @@ void TestScanCommand::tr()
 {
     // Exercise the inline tr() function (added by the Q_OBJECT macro) to avoid false negatives in
     // test coverage.  There is no need to actually test tr() here, since its part of the Qt API.
-    ScanCommand command(nullptr);
+    ScanCommand command;
     QVERIFY(!command.tr("ignored").isEmpty());
 }
 
