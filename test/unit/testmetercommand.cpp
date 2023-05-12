@@ -274,7 +274,7 @@ void TestMeterCommand::processOptions()
     MeterCommand command(this);
     QCOMPARE(command.processOptions(parser),  errors);
     QCOMPARE(command.settings.mode,           expected.mode);
-    QCOMPARE(command.settings.range,          255); // Always 255, because range is not set until services discovered.
+    QCOMPARE(command.settings.range,          (quint8)255); // Always 255, because range is not set until services discovered.
     QCOMPARE(command.settings.updateInterval, expected.updateInterval);
     QCOMPARE(command.samplesToGo,             expectedSamples);
     /// \todo COMPARE(command.minRangeFunc == nullptr, expected...);

@@ -294,7 +294,7 @@ void TestLoggerStartCommand::processOptions()
     QCOMPARE(command.settings.command,        expected.command);
     QCOMPARE(command.settings.arguments,      expected.arguments);
     QCOMPARE(command.settings.mode,           expected.mode);
-    QCOMPARE(command.settings.range,          255); // Always 255, because range is not set until services discovered.
+    QCOMPARE(command.settings.range,          (quint8)255); // Always 255, because range is not set until services discovered.
     QCOMPARE(command.settings.updateInterval, expected.updateInterval);
     /// \todo COMPARE(command.minRangeFunc == nullptr, expected...);
     /// \todo COMPARE(command.rangeOptionValue, expected...);

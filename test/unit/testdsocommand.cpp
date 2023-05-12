@@ -358,7 +358,7 @@ void TestDsoCommand::processOptions()
     QCOMPARE(command.settings.command,         expected.command);
     QCOMPARE(command.settings.triggerLevel,    expected.triggerLevel);
     QCOMPARE(command.settings.mode,            expected.mode);
-    QCOMPARE(command.settings.range,           255); // Always 255, because range is not set until services discovered.
+    QCOMPARE(command.settings.range,           (quint8)255); // Always 255, because range is not set until services discovered.
     QCOMPARE(command.settings.samplingWindow,  expected.samplingWindow);
     QCOMPARE(command.settings.numberOfSamples, expected.numberOfSamples);
     /// \todo COMPARE(command.minRangeFunc == nullptr, expected...);
