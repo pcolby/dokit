@@ -2,9 +2,18 @@
 
 ## [Unreleased][]
 
+This release breaks backward compatibility by changing some QtPokit APIs to support [Pokit Pro]'s
+divergent (and not at all documented by Pokit) measurement range enumeration values.
+
+### Added
+
+- Support for [Pokit Pro] measurement ranges (eg 600V).
+- Support for capacitance measurement.
+- Support for external temperature measurement.
+
 ### Changed
 
-- Separate ranges for Pokit Meter an Pokit Pro devices.
+- Update QtPokit API to support separate measurement ranges for [Pokit Meter] and [Pokit Pro].
 
 ## [0.2.0][] (2023-05-07)
 
