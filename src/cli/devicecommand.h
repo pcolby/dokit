@@ -5,6 +5,9 @@
 #define DOKIT_DEVICECOMMAND_H
 
 #include "abstractcommand.h"
+#include "qtpokit/pokitmeter.h"
+#include "qtpokit/pokitpro.h"
+#include "qtpokit/pokitproducts.h"
 
 #include <QLowEnergyController>
 
@@ -28,6 +31,12 @@ protected:
     void disconnect(int exitCode=EXIT_SUCCESS);
     virtual AbstractPokitService * getService() = 0;
 
+    template<typename T> static T minRange(const quint32 maxValue);
+    static quint8 minCapacitanceRange(const PokitProduct product, const quint32 maxValue);
+    static quint8 minCurrentRange(const PokitProduct product, const quint32 maxValue);
+    static quint8 minResistanceRange(const PokitProduct product, const quint32 maxValue);
+    static quint8 minVoltageRange(const PokitProduct product, const quint32 maxValue);
+
 protected slots:
     virtual void controllerError(const QLowEnergyController::Error error);
     virtual void deviceDisconnected();
@@ -41,5 +50,14 @@ private slots:
 
     friend class TestDeviceCommand;
 };
+
+template<> PokitMeter::CurrentRange    DeviceCommand::minRange(const quint32 maxValue);
+template<> PokitMeter::ResistanceRange DeviceCommand::minRange(const quint32 maxValue);
+template<> PokitMeter::VoltageRange    DeviceCommand::minRange(const quint32 maxValue);
+
+template<> PokitPro::CapacitanceRange DeviceCommand::minRange(const quint32 maxValue);
+template<> PokitPro::CurrentRange     DeviceCommand::minRange(const quint32 maxValue);
+template<> PokitPro::ResistanceRange  DeviceCommand::minRange(const quint32 maxValue);
+template<> PokitPro::VoltageRange     DeviceCommand::minRange(const quint32 maxValue);
 
 #endif // DOKIT_DEVICECOMMAND_H

@@ -81,23 +81,21 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
             break;
         case DsoService::Mode::DcVoltage:
         case DsoService::Mode::AcVoltage:
+            minRangeFunc = minVoltageRange;
             unit = QLatin1String("V");
             sensibleMinimum = 50; // mV.
             break;
         case DsoService::Mode::DcCurrent:
         case DsoService::Mode::AcCurrent:
+            minRangeFunc = minCurrentRange;
             unit = QLatin1String("A");
             sensibleMinimum = 5; // mA.
             break;
         }
         Q_ASSERT(!unit.isEmpty());
-        const quint32 rangeMax = parseMilliValue(value, unit, sensibleMinimum);
-        if (rangeMax == 0) {
+        rangeOptionValue = parseMilliValue(value, unit, sensibleMinimum);
+        if (rangeOptionValue == 0) {
             errors.append(tr("Invalid range value: %1").arg(value));
-        } else {
-            /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp), and move to
-            /// a function like minRange(product, mode, rangeMax).
-            settings.range = +PokitMeter::minRange<PokitMeter::VoltageRange>(rangeMax);//lowestRange(settings.mode, rangeMax);
         }
     }
 
@@ -188,6 +186,7 @@ AbstractPokitService * DsoCommand::getService()
 void DsoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
+    settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(service->pokitProduct(), rangeOptionValue);
     const QString range = service->toString(settings.range, settings.mode);
     qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %Ln sample/s over %L3us", nullptr, settings.numberOfSamples)
         .arg(DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range)

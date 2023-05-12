@@ -81,11 +81,13 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
             break;
         case DataLoggerService::Mode::DcVoltage:
         case DataLoggerService::Mode::AcVoltage:
+            minRangeFunc = minVoltageRange;
             unit = QLatin1String("V");
             sensibleMinimum = 50; // mV.
             break;
         case DataLoggerService::Mode::DcCurrent:
         case DataLoggerService::Mode::AcCurrent:
+            minRangeFunc = minCurrentRange;
             unit = QLatin1String("A");
             sensibleMinimum = 5; // mA.
             break;
@@ -97,13 +99,9 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
             // The only mode that does not take a range, and thus we don't assign a unit above.
             Q_ASSERT(settings.mode == DataLoggerService::Mode::Temperature);
         } else {
-            const quint32 rangeMax = parseMilliValue(value, unit, sensibleMinimum);
-            if (rangeMax == 0) {
+            rangeOptionValue = parseMilliValue(value, unit, sensibleMinimum);
+            if (rangeOptionValue == 0) {
                 errors.append(tr("Invalid range value: %1").arg(value));
-            } else {
-                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp), and move to
-                /// a function like minRange(product, mode, rangeMax).
-                settings.range = +PokitMeter::minRange<PokitMeter::VoltageRange>(rangeMax);//lowestRange(settings.mode, rangeMax);
             }
         }
     } else if (settings.mode != DataLoggerService::Mode::Temperature) {
@@ -163,6 +161,7 @@ AbstractPokitService * LoggerStartCommand::getService()
 void LoggerStartCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
+    settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(service->pokitProduct(), rangeOptionValue);
     const QString range = service->toString(settings.range, settings.mode);
     qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3ms.").arg(
         DataLoggerService::toString(settings.mode),

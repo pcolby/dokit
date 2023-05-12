@@ -11,6 +11,7 @@
 QTPOKIT_BEGIN_NAMESPACE
 
 namespace PokitMeter {
+
     // Multimeter, DSO and Logger.
     enum class CurrentRange : quint8 {
         _10mA     = 0,  ///< Up to 10mA.
@@ -51,12 +52,7 @@ namespace PokitMeter {
     QTPOKIT_EXPORT QString toString(const VoltageRange &range);
     QTPOKIT_EXPORT QVariant maxValue(const VoltageRange &range);
 
-    template<typename T> T minRange(const quint32 maxValue);
 }
-
-template<> QTPOKIT_EXPORT PokitMeter::CurrentRange    PokitMeter::minRange(const quint32 maxValue);
-template<> QTPOKIT_EXPORT PokitMeter::ResistanceRange PokitMeter::minRange(const quint32 maxValue);
-template<> QTPOKIT_EXPORT PokitMeter::VoltageRange    PokitMeter::minRange(const quint32 maxValue);
 
 constexpr quint8 operator+(PokitMeter::CurrentRange    range) noexcept { return static_cast<quint8>(range); }
 constexpr quint8 operator+(PokitMeter::ResistanceRange range) noexcept { return static_cast<quint8>(range); }

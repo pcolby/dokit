@@ -93,44 +93,45 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
         const bool isAuto = (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) == 0);
         QString unit; quint32 sensibleMinimum = 0;
         switch (settings.mode) {
+        case MultimeterService::Mode::Idle:
+            Q_ASSERT(false); // Not possible, since the mode parsing above never allows Idle.
+            break;
         case MultimeterService::Mode::DcVoltage:
         case MultimeterService::Mode::AcVoltage:
-            if (isAuto) {
-                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp)?
-                settings.range = +PokitMeter::VoltageRange::AutoRange;
-            }
+            minRangeFunc = minVoltageRange;
             unit = QLatin1String("V");
             sensibleMinimum = 50; // mV.
             break;
         case MultimeterService::Mode::DcCurrent:
         case MultimeterService::Mode::AcCurrent:
-            if (isAuto) {
-                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp)?
-                settings.range = +PokitMeter::CurrentRange::AutoRange;
-            }
+            minRangeFunc = minCurrentRange;
             unit = QLatin1String("A");
             sensibleMinimum = 5; // mA.
             break;
         case MultimeterService::Mode::Resistance:
-            if (isAuto) {
-                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp)?
-                settings.range = +PokitMeter::ResistanceRange::AutoRange;
-            }
+            minRangeFunc = minResistanceRange;
             unit = QLatin1String("ohms");
             sensibleMinimum = 0; // Unused.
+            break;
+        case MultimeterService::Mode::Capacitance:
+            minRangeFunc = minCapacitanceRange;
+            unit = QLatin1String("F");
+            sensibleMinimum = 500; // pV.
+            break;
+        case MultimeterService::Mode::ExternalTemperature:
             break;
         default:
             qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
         }
-        if ((!unit.isEmpty()) && (!isAuto)) { // isEmpty indicates a mode that has no range option.
-            const quint32 rangeMax = (sensibleMinimum == 0)
-                ? parseWholeValue(value, unit) : parseMilliValue(value, unit, sensibleMinimum);
-            if (rangeMax == 0) {
-                errors.append(tr("Invalid range value: %1").arg(value));
+        if (!unit.isEmpty()) { // isEmpty indicates a mode that has no range option.
+            if (isAuto) {
+                rangeOptionValue = 0; // 0 indicates 'auto'.
             } else {
-                /// \todo Postpone this until after we know the device type (eg Pokit Meter vs Pro vs Clamp), and move to
-                /// a function like minRange(product, mode, rangeMax).
-                settings.range = +PokitMeter::minRange<PokitMeter::VoltageRange>(rangeMax);//lowestRange(settings.mode, rangeMax);
+                rangeOptionValue = (sensibleMinimum == 0)
+                    ? parseWholeValue(value, unit) : parseMilliValue(value, unit, sensibleMinimum);
+                if (rangeOptionValue == 0) {
+                    errors.append(tr("Invalid range value: %1").arg(value));
+                }
             }
         }
     }
@@ -173,6 +174,7 @@ AbstractPokitService * MeterCommand::getService()
 void MeterCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
+    settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(service->pokitProduct(), rangeOptionValue);
     const QString range = service->toString(settings.range, settings.mode);
     qCInfo(lc).noquote() << tr("Measuring %1, with range %2, every %L3ms.").arg(
         MultimeterService::toString(settings.mode),

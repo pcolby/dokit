@@ -27,6 +27,8 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
+    quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue) { nullptr };
+    quint32 rangeOptionValue { 0 };          ///< The parsed value of range option, if one was supplied.
     MultimeterService * service { nullptr }; ///< Bluetooth service this command interracts with.
     MultimeterService::Settings settings     ///< Settings for the Pokit device's multimeter mode.
         { MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000 };

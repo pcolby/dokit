@@ -27,6 +27,8 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
+    quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue) { nullptr };
+    quint32 rangeOptionValue { 0 };   ///< The parsed value of range option.
     DsoService * service { nullptr }; ///< Bluetooth service this command interracts with.
     DsoService::Settings settings {   ///< Settings for the Pokit device's DSO mode.
         DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,

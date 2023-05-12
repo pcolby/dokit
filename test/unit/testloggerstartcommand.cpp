@@ -101,46 +101,45 @@ void TestLoggerStartCommand::processOptions_data()
         << true
         << QStringList{ };
 
-    /// \todo Re-instate these tests after CLI parsing is updated.
-//    QTest::addRow("Adc")
-//        << QStringList{
-//           QStringLiteral("--mode"),  QStringLiteral("Adc"),
-//           QStringLiteral("--range"), QStringLiteral("100mA") }
-//        << DataLoggerService::Settings{
-//            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcCurrent,
-//            +PokitMeter::CurrentRange::_150mA, 60000, 0}
-//        << true
-//        << QStringList{ };
+    QTest::addRow("Adc")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Adc"),
+           QStringLiteral("--range"), QStringLiteral("100mA") }
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcCurrent,
+            +PokitMeter::CurrentRange::_150mA, 60000, 0}
+        << true
+        << QStringList{ };
 
-//    QTest::addRow("Aac")
-//        << QStringList{
-//           QStringLiteral("--mode"),  QStringLiteral("Aac"),
-//           QStringLiteral("--range"), QStringLiteral("2A") }
-//        << DataLoggerService::Settings{
-//            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::AcCurrent,
-//            +PokitMeter::CurrentRange::_2A, 60000, 0}
-//        << true
-//        << QStringList{ };
+    QTest::addRow("Aac")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Aac"),
+           QStringLiteral("--range"), QStringLiteral("2A") }
+        << DataLoggerService::Settings{
+            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::AcCurrent,
+            +PokitMeter::CurrentRange::_2A, 60000, 0}
+        << true
+        << QStringList{ };
 
-//    QTest::addRow("Temperature")
-//        << QStringList{
-//           QStringLiteral("--mode"),  QStringLiteral("temp"),
-//           QStringLiteral("--range"), QStringLiteral("2A") }
-//        << DataLoggerService::Settings{
-//           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::Temperature,
-//           +PokitMeter::VoltageRange::_60V, 60000, 0}
-//        << true
-//        << QStringList{ };
+    QTest::addRow("Temperature")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("temp"),
+           QStringLiteral("--range"), QStringLiteral("2A") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::Temperature,
+           +PokitMeter::VoltageRange::_60V, 60000, 0}
+        << true
+        << QStringList{ };
 
-//    QTest::addRow("unnecessary-range")
-//        << QStringList{
-//           QStringLiteral("--mode"),  QStringLiteral("temp"),
-//           QStringLiteral("--range"), QStringLiteral("10") }
-//        << DataLoggerService::Settings{
-//           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::Temperature,
-//           +PokitMeter::VoltageRange::_60V, 60000, 0}
-//        << true
-//        << QStringList{ };
+    QTest::addRow("unnecessary-range")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("temp"),
+           QStringLiteral("--range"), QStringLiteral("10") }
+        << DataLoggerService::Settings{
+           DataLoggerService::Command::Start, 0, DataLoggerService::Mode::Temperature,
+           +PokitMeter::VoltageRange::_60V, 60000, 0}
+        << true
+        << QStringList{ };
 
     QTest::addRow("invalid-mode")
         << QStringList{
@@ -295,8 +294,10 @@ void TestLoggerStartCommand::processOptions()
     QCOMPARE(command.settings.command,        expected.command);
     QCOMPARE(command.settings.arguments,      expected.arguments);
     QCOMPARE(command.settings.mode,           expected.mode);
-    QCOMPARE(command.settings.range,          expected.range);
+    QCOMPARE(command.settings.range,          255); // Always 255, because range is not set until services discovered.
     QCOMPARE(command.settings.updateInterval, expected.updateInterval);
+    /// \todo COMPARE(command.minRangeFunc == nullptr, expected...);
+    /// \todo COMPARE(command.rangeOptionValue, expected...);
 
     // Recoginise if/when LoggerStartCommand::processOptions automatically uses 'now' for timestamp.
     if (expectNowish) {

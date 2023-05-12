@@ -96,24 +96,23 @@ void TestDsoCommand::processOptions_data()
             +PokitMeter::VoltageRange::_6V, 1000*1000, 1000}
         << QStringList{ };
 
-    /// \todo Re-instate when we fix up the --range parsing in DsoCommand.
-//    QTest::addRow("Adc")
-//        << QStringList{
-//           QStringLiteral("--mode"),  QStringLiteral("Adc"),
-//           QStringLiteral("--range"), QStringLiteral("100mA") }
-//        << DsoService::Settings{
-//            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcCurrent,
-//            +PokitMeter::CurrentRange::_150mA, 1000*1000, 1000}
-//        << QStringList{ };
+    QTest::addRow("Adc")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Adc"),
+           QStringLiteral("--range"), QStringLiteral("100mA") }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcCurrent,
+            +PokitMeter::CurrentRange::_150mA, 1000*1000, 1000}
+        << QStringList{ };
 
-//    QTest::addRow("Aac")
-//        << QStringList{
-//           QStringLiteral("--mode"),  QStringLiteral("Aac"),
-//           QStringLiteral("--range"), QStringLiteral("2A") }
-//        << DsoService::Settings{
-//            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::AcCurrent,
-//            +PokitMeter::CurrentRange::_2A, 1000*1000, 1000}
-//        << QStringList{ };
+    QTest::addRow("Aac")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Aac"),
+           QStringLiteral("--range"), QStringLiteral("2A") }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::AcCurrent,
+            +PokitMeter::CurrentRange::_2A, 1000*1000, 1000}
+        << QStringList{ };
 
     QTest::addRow("invalid-mode")
         << QStringList{
@@ -359,9 +358,11 @@ void TestDsoCommand::processOptions()
     QCOMPARE(command.settings.command,         expected.command);
     QCOMPARE(command.settings.triggerLevel,    expected.triggerLevel);
     QCOMPARE(command.settings.mode,            expected.mode);
-    QCOMPARE(command.settings.range,           expected.range);
+    QCOMPARE(command.settings.range,           255); // Always 255, because range is not set until services discovered.
     QCOMPARE(command.settings.samplingWindow,  expected.samplingWindow);
     QCOMPARE(command.settings.numberOfSamples, expected.numberOfSamples);
+    /// \todo COMPARE(command.minRangeFunc == nullptr, expected...);
+    /// \todo COMPARE(command.rangeOptionValue, expected...);
 }
 
 void TestDsoCommand::getService()

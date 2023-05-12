@@ -82,24 +82,23 @@ void TestMeterCommand::processOptions_data()
         << -1
         << QStringList{ };
 
-    /// \todo Re-instate these tests after CLI parsing is updated.
-//    QTest::addRow("Adc")
-//        << QStringList{
-//           QStringLiteral("--mode"),  QStringLiteral("Adc"),
-//           QStringLiteral("--range"), QStringLiteral("100mA") }
-//        << MultimeterService::Settings{
-//            MultimeterService::Mode::DcCurrent, +PokitMeter::CurrentRange::_150mA, 1000}
-//        << -1
-//        << QStringList{ };
+    QTest::addRow("Adc")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Adc"),
+           QStringLiteral("--range"), QStringLiteral("100mA") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::DcCurrent, +PokitMeter::CurrentRange::_150mA, 1000}
+        << -1
+        << QStringList{ };
 
-//    QTest::addRow("Aac")
-//        << QStringList{
-//           QStringLiteral("--mode"),  QStringLiteral("Aac"),
-//           QStringLiteral("--range"), QStringLiteral("2A") }
-//        << MultimeterService::Settings{
-//            MultimeterService::Mode::AcCurrent, +PokitMeter::CurrentRange::_2A, 1000}
-//        << -1
-//        << QStringList{ };
+    QTest::addRow("Aac")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("Aac"),
+           QStringLiteral("--range"), QStringLiteral("2A") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::AcCurrent, +PokitMeter::CurrentRange::_2A, 1000}
+        << -1
+        << QStringList{ };
 
     QTest::addRow("Resistance")
         << QStringList{ QStringLiteral("--mode"),  QStringLiteral("res") }
@@ -275,9 +274,11 @@ void TestMeterCommand::processOptions()
     MeterCommand command(this);
     QCOMPARE(command.processOptions(parser),  errors);
     QCOMPARE(command.settings.mode,           expected.mode);
-    QCOMPARE(command.settings.range,          expected.range);
+    QCOMPARE(command.settings.range,          255); // Always 255, because range is not set until services discovered.
     QCOMPARE(command.settings.updateInterval, expected.updateInterval);
     QCOMPARE(command.samplesToGo,             expectedSamples);
+    /// \todo COMPARE(command.minRangeFunc == nullptr, expected...);
+    /// \todo COMPARE(command.rangeOptionValue, expected...);
 }
 
 void TestMeterCommand::getService()

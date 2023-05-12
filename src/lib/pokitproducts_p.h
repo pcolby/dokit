@@ -29,7 +29,7 @@ QString toString(const PokitProduct product, const quint8 range);
 QVariant maxValue(const PokitProduct product, const quint8 range);
 }
 
-namespace VoltageRange     {
+namespace VoltageRange {
 QString toString(const PokitProduct product, const quint8 range);
 QVariant maxValue(const PokitProduct product, const quint8 range);
 }

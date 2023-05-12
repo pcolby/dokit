@@ -73,6 +73,7 @@ namespace PokitPro {
     QTPOKIT_EXPORT QString toString(const VoltageRange &range);
     QTPOKIT_EXPORT QVariant minValue(const VoltageRange &range);
     QTPOKIT_EXPORT QVariant maxValue(const VoltageRange &range);
+
 }
 
 constexpr quint8 operator+(PokitPro::CapacitanceRange range) noexcept { return static_cast<quint8>(range); }
