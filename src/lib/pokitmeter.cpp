@@ -1,11 +1,19 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+/*!
+ * \file
+ * Declares the PokitMeter namespace.
+ */
+
 #include "qtpokit/pokitmeter.h"
 
 #include <QCoreApplication>
 
 namespace PokitMeter {
+
+/// \enum CurrentRange
+/// \brief Values supported by the Pokit Meter's `Range` attributes in `*Current` modes.
 
 /// Returns \a range as a user-friendly string.
 QString toString(const CurrentRange &range)
@@ -23,7 +31,7 @@ QString toString(const CurrentRange &range)
 
 /*!
  *  Returns the maximum value for \a range in (integer) microamps, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
+ *  If \a range is not a known valid value, then an null QVariant is returned.
  */
 QVariant maxValue(const CurrentRange &range)
 {
@@ -37,6 +45,9 @@ QVariant maxValue(const CurrentRange &range)
     default:                      return QVariant();
     }
 }
+
+/// \enum ResistanceRange
+/// \brief Values supported by the Pokit Meter's `Range` attributes in `Resistance` mode.
 
 /// Returns \a range as a user-friendly string.
 QString toString(const ResistanceRange &range)
@@ -57,7 +68,7 @@ QString toString(const ResistanceRange &range)
 
 /*!
  *  Returns the maximum value for \a range in (integer) ohms, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
+ *  If \a range is not a known valid value, then an null QVariant is returned.
  */
 QVariant maxValue(const ResistanceRange &range)
 {
@@ -74,6 +85,9 @@ QVariant maxValue(const ResistanceRange &range)
     default:                         return QVariant();
     }
 }
+
+/// \enum VoltageRange
+/// \brief Values supported by the Pokit Meter's `Range` attributes in `*Voltage` modes.
 
 /// Returns \a range as a user-friendly string.
 QString toString(const VoltageRange &range)
@@ -92,7 +106,7 @@ QString toString(const VoltageRange &range)
 
 /*!
  *  Returns the maximum value for \a range in (integer) millivolts, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
+ *  If \a range is not a known valid value, then an null QVariant is returned.
  */
 QVariant maxValue(const VoltageRange &range)
 {

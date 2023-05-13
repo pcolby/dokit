@@ -80,8 +80,13 @@ QString DsoService::toString(const PokitProduct product, const quint8 range, con
 QString DsoService::toString(const quint8 range, const Mode mode)
 {
     return toString(pokitProduct(), range, mode);
-;}
+}
 
+/*!
+ *  Returns the maximum value for \a range, or the string "Auto".
+ *
+ *  If \a range is not a known valid enumeration value for \a product's \a mode, then a null QVariant is returned.
+ */
 QVariant DsoService::maxValue(const PokitProduct product, const quint8 range, const Mode mode)
 {
     switch (mode) {
@@ -97,6 +102,12 @@ QVariant DsoService::maxValue(const PokitProduct product, const quint8 range, co
     return QString();
 }
 
+/*!
+ *  Returns the maximum value for \a range, or the string "Auto".
+ *
+ *  If \a range is not a known valid enumeration value for the current \a product's \a mode,
+ *  then a null QVariant is returned.
+ */
 QVariant DsoService::maxValue(const quint8 range, const Mode mode) const
 {
     return toString(pokitProduct(), range, mode);

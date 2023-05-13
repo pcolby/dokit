@@ -1,11 +1,19 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+/*!
+ * \file
+ * Defined the PokitPro helper functions.
+ */
+
 #include "qtpokit/pokitpro.h"
 
 #include <QCoreApplication>
 
 namespace PokitPro {
+
+/// \enum CapacitanceRange
+/// \brief Values supported by the Pokit Pro's `Range` attributes in `Capacitance` mode.
 
 /// Returns \a range as a user-friendly string.
 QString toString(const CapacitanceRange &range)
@@ -21,7 +29,7 @@ QString toString(const CapacitanceRange &range)
 
 /*!
  *  Returns the maximum value for \a range in (integer) nanofarads, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
+ *  If \a range is not a known valid value, then an null QVariant is returned.
  */
 QVariant maxValue(const CapacitanceRange &range)
 {
@@ -33,6 +41,9 @@ QVariant maxValue(const CapacitanceRange &range)
     default:                          return QVariant();
     }
 }
+
+/// \enum CurrentRange
+/// \brief Values supported by the Pokit Pro's `Range` attributes in `*Current` modes.
 
 /// Returns \a range as a user-friendly string.
 QString toString(const CurrentRange &range)
@@ -52,7 +63,7 @@ QString toString(const CurrentRange &range)
 
 /*!
  *  Returns the maximum value for \a range in (integer) microamps, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
+ *  If \a range is not a known valid value, then an null QVariant is returned.
  */
 QVariant maxValue(const CurrentRange &range)
 {
@@ -68,6 +79,9 @@ QVariant maxValue(const CurrentRange &range)
     default:                      return QVariant();
     }
 }
+
+/// \enum ResistanceRange
+/// \brief Values supported by the Pokit Pro's `Range` attributes in `Resistance` mode.
 
 /// Returns \a range as a user-friendly string.
 QString toString(const ResistanceRange &range)
@@ -91,7 +105,7 @@ QString toString(const ResistanceRange &range)
 
 /*!
  *  Returns the maximum value for \a range in (integer) ohms, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
+ *  If \a range is not a known valid value, then an null QVariant is returned.
  */
 QVariant maxValue(const ResistanceRange &range)
 {
@@ -112,6 +126,9 @@ QVariant maxValue(const ResistanceRange &range)
     }
 }
 
+/// \enum VoltageRange
+/// \brief Values supported by the Pokit Pro's `Range` attributes in `*Voltage` modes.
+
 /// Returns \a range as a user-friendly string.
 QString toString(const VoltageRange &range)
 {
@@ -131,7 +148,7 @@ QString toString(const VoltageRange &range)
 
 /*!
  *  Returns the maximum value for \a range in (integer) millivolts, or the string "Auto".
- *  If \a range is not known valid value, then an null QVariant is returned.
+ *  If \a range is not a known valid value, then an null QVariant is returned.
  */
 QVariant maxValue(const VoltageRange &range)
 {

@@ -153,6 +153,14 @@ template<> PokitPro::VoltageRange DeviceCommand::minRange(const quint32 maxValue
     return PokitPro::VoltageRange::AutoRange;
 }
 
+/*!
+ * Returns the \a product's lowest capacitance range that can measure at least up to \a maxValue, or AutoRange if no
+ * such range is available.
+ *
+ * \note Since Pokit Meters do not support capacitance measurement, \a product should not be PokitProduct::PokitMeter.
+ *
+ * \see minRange<PokitPro::CapacitanceRange>
+ */
 quint8 DeviceCommand::minCapacitanceRange(const PokitProduct product, const quint32 maxValue)
 {
     switch (product) {
@@ -166,6 +174,13 @@ quint8 DeviceCommand::minCapacitanceRange(const PokitProduct product, const quin
     return 255;
 }
 
+/*!
+ * Returns the \a product's lowest current range that can measure at least up to \a maxValue, or AutoRange if no
+ * such range is available.
+ *
+ * \see DeviceCommand::minRange<PokitMeter::CurrentRange>(const quint32 maxValue)
+ * \see minRange<PokitPro::CurrentRange>(const quint32 maxValue)
+ */
 quint8 DeviceCommand::minCurrentRange(const PokitProduct product, const quint32 maxValue)
 {
     switch (product) {
@@ -178,6 +193,13 @@ quint8 DeviceCommand::minCurrentRange(const PokitProduct product, const quint32 
     return 255;
 }
 
+/*!
+ * Returns the \a product's lowest resistance range that can measure at least up to \a maxValue, or AutoRange if no
+ * such range is available.
+ *
+ * \see DeviceCommand::minRange<PokitMeter::ResistanceRange>(const quint32 maxValue)
+ * \see minRange<PokitPro::ResistanceRange>(const quint32 maxValue)
+ */
 quint8 DeviceCommand::minResistanceRange(const PokitProduct product, const quint32 maxValue)
 {
     switch (product) {
@@ -190,6 +212,13 @@ quint8 DeviceCommand::minResistanceRange(const PokitProduct product, const quint
     return 255;
 }
 
+/*!
+ * Returns the \a product's lowest voltage range that can measure at least up to \a maxValue, or AutoRange if no
+ * such range is available.
+ *
+ * \see DeviceCommand::minRange<PokitMeter::VoltageRange>(const quint32 maxValue)
+ * \see minRange<PokitPro::VoltageRange>(const quint32 maxValue)
+ */
 quint8 DeviceCommand::minVoltageRange(const PokitProduct product, const quint32 maxValue)
 {
     switch (product) {

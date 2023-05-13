@@ -1,6 +1,11 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+/*!
+ * \file
+ * Declares the PokitMeter namespace.
+ */
+
 #ifndef QTPOKIT_POKITMETER_H
 #define QTPOKIT_POKITMETER_H
 
@@ -10,6 +15,7 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
+/// Encapsulates details specific to Pokit Meter devices.
 namespace PokitMeter {
 
     // Multimeter, DSO and Logger.
@@ -54,9 +60,14 @@ namespace PokitMeter {
 
 }
 
-constexpr quint8 operator+(PokitMeter::CurrentRange    range) noexcept { return static_cast<quint8>(range); }
+/// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.
+constexpr quint8 operator+(PokitMeter::CurrentRange range) noexcept { return static_cast<quint8>(range); }
+
+/// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.
 constexpr quint8 operator+(PokitMeter::ResistanceRange range) noexcept { return static_cast<quint8>(range); }
-constexpr quint8 operator+(PokitMeter::VoltageRange    range) noexcept { return static_cast<quint8>(range); }
+
+/// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.
+constexpr quint8 operator+(PokitMeter::VoltageRange range) noexcept { return static_cast<quint8>(range); }
 
 QTPOKIT_END_NAMESPACE
 

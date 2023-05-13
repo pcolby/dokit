@@ -6,12 +6,14 @@
 
 #include <qtpokit/pokitproducts.h>
 
+#include <QLowEnergyController>
+
 QTPOKIT_BEGIN_NAMESPACE
 
 bool isPokitProduct(const QList<QBluetoothUuid> &serviceUuids);
 bool isPokitProduct(const QLowEnergyController &controller);
 
-PokitProduct pokitProduct(QList<QBluetoothUuid> &serviceUuids);
+PokitProduct pokitProduct(const QList<QBluetoothUuid> &serviceUuids);
 PokitProduct pokitProduct(const QLowEnergyController &controller);
 
 namespace CapacitanceRange {

@@ -1,6 +1,11 @@
 // SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+/*!
+ * \file
+ * Declares the PokitPro namespace.
+ */
+
 #ifndef QTPOKIT_POKITPRO_H
 #define QTPOKIT_POKITPRO_H
 
@@ -10,6 +15,7 @@
 
 QTPOKIT_BEGIN_NAMESPACE
 
+/// Encapsulates details specific to Pokit Pro devices.
 namespace PokitPro {
 
     // Multimeter only.
@@ -20,7 +26,6 @@ namespace PokitPro {
         AutoRange = 255 ///< Auto-range.
     };
     QTPOKIT_EXPORT QString toString(const CapacitanceRange &range);
-    QTPOKIT_EXPORT QVariant minValue(const CapacitanceRange &range);
     QTPOKIT_EXPORT QVariant maxValue(const CapacitanceRange &range);
 
 
@@ -36,7 +41,6 @@ namespace PokitPro {
         AutoRange = 255 ///< Auto-range.
     };
     QTPOKIT_EXPORT QString toString(const CurrentRange &range);
-    QTPOKIT_EXPORT QVariant minValue(const CurrentRange &range);
     QTPOKIT_EXPORT QVariant maxValue(const CurrentRange &range);
 
     // Multimeter only.
@@ -55,7 +59,6 @@ namespace PokitPro {
         AutoRange = 255 ///< Auto-range.
     };
     QTPOKIT_EXPORT QString toString(const ResistanceRange &range);
-    QTPOKIT_EXPORT QVariant minValue(const ResistanceRange &range);
     QTPOKIT_EXPORT QVariant maxValue(const ResistanceRange &range);
 
     // Multimeter, DSO and Logger.
@@ -71,15 +74,21 @@ namespace PokitPro {
         AutoRange = 255 ///< Auto-range.
     };
     QTPOKIT_EXPORT QString toString(const VoltageRange &range);
-    QTPOKIT_EXPORT QVariant minValue(const VoltageRange &range);
     QTPOKIT_EXPORT QVariant maxValue(const VoltageRange &range);
 
 }
 
+/// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.
 constexpr quint8 operator+(PokitPro::CapacitanceRange range) noexcept { return static_cast<quint8>(range); }
-constexpr quint8 operator+(PokitPro::CurrentRange     range) noexcept { return static_cast<quint8>(range); }
-constexpr quint8 operator+(PokitPro::ResistanceRange  range) noexcept { return static_cast<quint8>(range); }
-constexpr quint8 operator+(PokitPro::VoltageRange     range) noexcept { return static_cast<quint8>(range); }
+
+/// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.
+constexpr quint8 operator+(PokitPro::CurrentRange range) noexcept { return static_cast<quint8>(range); }
+
+/// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.
+constexpr quint8 operator+(PokitPro::ResistanceRange range) noexcept { return static_cast<quint8>(range); }
+
+/// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.
+constexpr quint8 operator+(PokitPro::VoltageRange range) noexcept { return static_cast<quint8>(range); }
 
 QTPOKIT_END_NAMESPACE
 
