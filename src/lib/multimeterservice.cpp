@@ -35,8 +35,19 @@ const QBluetoothUuid MultimeterService::CharacteristicUuids::
 const QBluetoothUuid MultimeterService::CharacteristicUuids::
     reading(QLatin1String("047d3559-8bee-423a-b229-4417fa603b90"));
 
-/// \enum MultimeterService::Mode
-/// \brief Values supported by the `Mode` attribute of the `Settings` and `Reading` characteristics.
+/*!
+ * \enum MultimeterService::Mode
+ * \brief Values supported by the `Mode` attribute of the `Settings` and `Reading` characteristics.
+ *
+ * \cond internal
+ * \pokitApi The following enumeration values are as-yet undocumented by Pokit Innovations.
+ * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
+ * [dokit](https://github.com/pcolby/dokit) project.
+ *   * Mode::Capacitance
+ *   * Mode::ExternalTemperature
+ *
+ * \endcond
+ */
 
 /// Returns \a mode as a user-friendly string.
 QString MultimeterService::toString(const Mode &mode)

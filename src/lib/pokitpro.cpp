@@ -12,8 +12,16 @@
 
 namespace PokitPro {
 
-/// \enum CapacitanceRange
-/// \brief Values supported by the Pokit Pro's `Range` attributes in `Capacitance` mode.
+/*!
+ * \enum CapacitanceRange
+ * \brief Values supported by the Pokit Pro's `Range` attributes in `Capacitance` mode.
+ *
+ * \cond internal
+ * \pokitApi These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations.
+ * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
+ * [dokit](https://github.com/pcolby/dokit) project.
+ * \endcond
+ */
 
 /// Returns \a range as a user-friendly string.
 QString toString(const CapacitanceRange &range)
@@ -42,8 +50,16 @@ QVariant maxValue(const CapacitanceRange &range)
     }
 }
 
-/// \enum CurrentRange
-/// \brief Values supported by the Pokit Pro's `Range` attributes in `*Current` modes.
+/*!
+ * \enum CurrentRange
+ * \brief Values supported by the Pokit Pro's `Range` attributes in `*Current` modes.
+ *
+ * \cond internal
+ * \pokitApi These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations.
+ * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
+ * [dokit](https://github.com/pcolby/dokit) project.
+ * \endcond
+ */
 
 /// Returns \a range as a user-friendly string.
 QString toString(const CurrentRange &range)
@@ -80,8 +96,16 @@ QVariant maxValue(const CurrentRange &range)
     }
 }
 
-/// \enum ResistanceRange
-/// \brief Values supported by the Pokit Pro's `Range` attributes in `Resistance` mode.
+/*!
+ * \enum ResistanceRange
+ * \brief Values supported by the Pokit Pro's `Range` attributes in `Resistance` mode.
+ *
+ * \cond internal
+ * \pokitApi These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations.
+ * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
+ * [dokit](https://github.com/pcolby/dokit) project.
+ * \endcond
+ */
 
 /// Returns \a range as a user-friendly string.
 QString toString(const ResistanceRange &range)
@@ -126,8 +150,16 @@ QVariant maxValue(const ResistanceRange &range)
     }
 }
 
-/// \enum VoltageRange
-/// \brief Values supported by the Pokit Pro's `Range` attributes in `*Voltage` modes.
+/*!
+ * \enum VoltageRange
+ * \brief Values supported by the Pokit Pro's `Range` attributes in `*Voltage` modes.
+ *
+ * \cond internal
+ * \pokitApi These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations.
+ * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
+ * [dokit](https://github.com/pcolby/dokit) project.
+ * \endcond
+ */
 
 /// Returns \a range as a user-friendly string.
 QString toString(const VoltageRange &range)
