@@ -9,13 +9,14 @@ var searchData=
   ['penjoinstyle_6',['PenJoinStyle',['https://doc.qt.io/qt-5/qt.html#PenJoinStyle-enum',1,'Qt']]],
   ['penstyle_7',['PenStyle',['https://doc.qt.io/qt-5/qt.html#PenStyle-enum',1,'Qt']]],
   ['permission_8',['Permission',['https://doc.qt.io/qt-5/qfiledevice.html#Permission-enum',1,'QFileDevice']]],
-  ['priority_9',['Priority',['https://doc.qt.io/qt-5/qthread.html#Priority-enum',1,'QThread']]],
-  ['processchannel_10',['ProcessChannel',['https://doc.qt.io/qt-5/qprocess.html#ProcessChannel-enum',1,'QProcess']]],
-  ['processchannelmode_11',['ProcessChannelMode',['https://doc.qt.io/qt-5/qprocess.html#ProcessChannelMode-enum',1,'QProcess']]],
-  ['processerror_12',['ProcessError',['https://doc.qt.io/qt-5/qprocess.html#ProcessError-enum',1,'QProcess']]],
-  ['processeventsflag_13',['ProcessEventsFlag',['https://doc.qt.io/qt-5/qeventloop.html#ProcessEventsFlag-enum',1,'QEventLoop']]],
-  ['processstate_14',['ProcessState',['https://doc.qt.io/qt-5/qprocess.html#ProcessState-enum',1,'QProcess']]],
-  ['propertytype_15',['PropertyType',['https://doc.qt.io/qt-5/qlowenergycharacteristic.html#PropertyType-enum',1,'QLowEnergyCharacteristic']]],
-  ['protocol_16',['Protocol',['https://doc.qt.io/qt-5/qbluetoothserviceinfo.html#Protocol-enum',1,'QBluetoothServiceInfo']]],
-  ['protocoluuid_17',['ProtocolUuid',['https://doc.qt.io/qt-5/qbluetoothuuid.html#ProtocolUuid-enum',1,'QBluetoothUuid']]]
+  ['pokitproduct_9',['PokitProduct',['../pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4',1,'pokitproducts.h']]],
+  ['priority_10',['Priority',['https://doc.qt.io/qt-5/qthread.html#Priority-enum',1,'QThread']]],
+  ['processchannel_11',['ProcessChannel',['https://doc.qt.io/qt-5/qprocess.html#ProcessChannel-enum',1,'QProcess']]],
+  ['processchannelmode_12',['ProcessChannelMode',['https://doc.qt.io/qt-5/qprocess.html#ProcessChannelMode-enum',1,'QProcess']]],
+  ['processerror_13',['ProcessError',['https://doc.qt.io/qt-5/qprocess.html#ProcessError-enum',1,'QProcess']]],
+  ['processeventsflag_14',['ProcessEventsFlag',['https://doc.qt.io/qt-5/qeventloop.html#ProcessEventsFlag-enum',1,'QEventLoop']]],
+  ['processstate_15',['ProcessState',['https://doc.qt.io/qt-5/qprocess.html#ProcessState-enum',1,'QProcess']]],
+  ['propertytype_16',['PropertyType',['https://doc.qt.io/qt-5/qlowenergycharacteristic.html#PropertyType-enum',1,'QLowEnergyCharacteristic']]],
+  ['protocol_17',['Protocol',['https://doc.qt.io/qt-5/qbluetoothserviceinfo.html#Protocol-enum',1,'QBluetoothServiceInfo']]],
+  ['protocoluuid_18',['ProtocolUuid',['https://doc.qt.io/qt-5/qbluetoothuuid.html#ProtocolUuid-enum',1,'QBluetoothUuid']]]
 ];

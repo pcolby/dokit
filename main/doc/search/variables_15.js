@@ -35,6 +35,5 @@ var searchData=
   ['void_32',['Void',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['voidstar_33',['VoidStar',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['volapuk_34',['Volapuk',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
-  ['voltagerange_35',['voltageRange',['../unionDataLoggerService_1_1Range.html#abba47365f8441ad8dbaae4d25e8bf256',1,'DataLoggerService::Range::voltageRange()'],['../unionDsoService_1_1Range.html#a0f863ac82acd96b2bf98c22e640a6ac6',1,'DsoService::Range::voltageRange()'],['../unionMultimeterService_1_1Range.html#afac80e7d2a1836339b64cd47420e0d3c',1,'MultimeterService::Range::voltageRange()']]],
-  ['vunjo_36',['Vunjo',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]]
+  ['vunjo_35',['Vunjo',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]]
 ];

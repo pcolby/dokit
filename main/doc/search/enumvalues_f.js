@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['temperature_0',['Temperature',['../classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd',1,'DataLoggerService::Temperature()'],['../classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd',1,'MultimeterService::Temperature()']]]
+  ['sampling_0',['Sampling',['../classDataLoggerService.html#a1a3a38ca8befc3de8121d795879140f6a1d07814d12178c958e4233501cb0bdc7',1,'DataLoggerService::Sampling()'],['../classDsoService.html#aaa4e080d3d3e444dabf9d7117561905da1d07814d12178c958e4233501cb0bdc7',1,'DsoService::Sampling()']]],
+  ['start_1',['Start',['../classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37',1,'DataLoggerService']]],
+  ['stop_2',['Stop',['../classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481',1,'DataLoggerService']]]
 ];

@@ -33,8 +33,15 @@ var NAVTREE =
       [ "Qt Versions", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md7", null ],
       [ "CMake Versions", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md8", null ]
     ] ],
-    [ "Todo List", "todo.html", null ],
     [ "Pokit API Errata", "pokit.html", null ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -52,6 +59,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -61,9 +69,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9",
-"classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c",
-"setnamecommand_8h_source.html"
+"classDsoServicePrivate.html#af869cf5b228bac719545511ba4247b88",
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c",
+"pokitmeter_8h.html#a22b467360c970e645f6a111b34d50a92",
+"qt.html#ClipOperation-enum",
+"qt.html#InputMethodQuery-enum",
+"qt.html#Key-enum",
+"qt.html#Key-enum",
+"qt.html#TouchPointState-enum",
+"structDataLoggerService_1_1Metadata.html#a9cc636b875d630cf33d3ddead54e27d2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

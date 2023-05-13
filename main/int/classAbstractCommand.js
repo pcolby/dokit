@@ -5,7 +5,7 @@ var classAbstractCommand =
       [ "Json", "classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dcaeed8d85b888a6c015834240885ee6333", null ],
       [ "Text", "classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675", null ]
     ] ],
-    [ "AbstractCommand", "classAbstractCommand.html#a8e7d74468a511b389db490c14043987b", null ],
+    [ "AbstractCommand", "classAbstractCommand.html#a0d6fde269511e87aa6f178c1733073ae", null ],
     [ "deviceDiscovered", "classAbstractCommand.html#aa8dd50eb6a381ed767c34d8fdfd2a795", null ],
     [ "deviceDiscoveryFinished", "classAbstractCommand.html#ac71606b99b43c3f74dbc64433ee22512", null ],
     [ "escapeCsvField", "classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813", null ],

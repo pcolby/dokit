@@ -127,9 +127,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMultimeterService_1_1CharacteristicUuids.html">CharacteristicUuids</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Characteristics available via the <code>Multimeter</code> service.  <a href="structMultimeterService_1_1CharacteristicUuids.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionMultimeterService_1_1Range.html">Range</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> characteristic.  <a href="unionMultimeterService_1_1Range.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMultimeterService_1_1Reading.html">Reading</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attributes included in the <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characterstic.  <a href="structMultimeterService_1_1Reading.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,51 +148,12 @@ Public Types</h2></td></tr>
 , <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaf73d2c55dc3628b7071e45104874c485">Continuity</a> = 7
 , <br />
 &#160;&#160;<a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a> = 8
+, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa22bef5ff8cc5db9cc862164e779f29dc">Capacitance</a> = 9
+, <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa8d6937c3adb213bd7b7beb575aa17687">ExternalTemperature</a> = 10
 <br />
  }</td></tr>
 <tr class="memdesc:a51f66d0b81dace3115c5c68bc931eaea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code>Mode</code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics.  <a href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">More...</a><br /></td></tr>
 <tr class="separator:a51f66d0b81dace3115c5c68bc931eaea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0116d83a5bb23121c27f2ea12406942"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a> : quint8 { <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a198067396ed0459ea6894b2397468ef6">_0_to_300mV</a> = 0
-, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942ab8f085f1c32ac33694044431dfbd4320">_300mV_to_2V</a> = 1
-, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a62449df7495e3d616298a86a32007165">_2V_to_6V</a> = 2
-, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a691d1e8d08c3542b4aeda8925b2967cc">_6V_to_12V</a> = 3
-, <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a55b8f557c2c95acba19b42bd66a8760a">_12V_to_30V</a> = 4
-, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a8d6ed04283cbc4c0f1b89006e9c3e96b">_30V_to_60V</a> = 5
-, <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a> = 255
-<br />
- }</td></tr>
-<tr class="memdesc:ae0116d83a5bb23121c27f2ea12406942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is AC or DC voltage.  <a href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">More...</a><br /></td></tr>
-<tr class="separator:ae0116d83a5bb23121c27f2ea12406942"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19296ef25a85513d3a619871fbcc12c2"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">CurrentRange</a> : quint8 { <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2adf1aa51f69cee99bf34896eedef7ec66">_0_to_10mA</a> = 0
-, <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2ada2587f9e79732bb2eea6ddb20b2a522">_10mA_to_30mA</a> = 1
-, <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2a10a9947ae0deec34c01e99c4cd12a9f8">_30mA_to_150mA</a> = 2
-, <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2ad87056e8caa3511544b29b913caf5cf7">_150mA_to_300mA</a> = 3
-, <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2a36fd02dd400c54ef118025070ad4feb1">_300mA_to_3A</a> = 4
-, <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a> = 255
-<br />
- }</td></tr>
-<tr class="memdesc:a19296ef25a85513d3a619871fbcc12c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is AC or DC current.  <a href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">More...</a><br /></td></tr>
-<tr class="separator:a19296ef25a85513d3a619871fbcc12c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a603464d36815b48d54ea91d06bdbc462"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">ResistanceRange</a> : quint8 { <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a">_0_to_160</a> = 0
-, <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a219c3db3ab3cec3fd3a4c3320d115941">_160_to_330</a> = 1
-, <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462aaa09e98f4709f7497b4d0e2b3cbc86b0">_330_to_890</a> = 2
-, <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462abbc2adae927c0d78b50788e7504393b9">_890_to_1K5</a> = 3
-, <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a62adccbb2f5c4b75a26159ecde12cd46">_1K5_to_10K</a> = 4
-, <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a99fc19257e1e6bec51fc99465192db71">_10K_to_100K</a> = 5
-, <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462aa1ff7a7f402830df7441f7749e2e94de">_100K_to_470K</a> = 6
-, <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a2cc69cf30cef6a65bd0394653a5424b6">_470K_to_1M</a> = 7
-, <br />
-&#160;&#160;<a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462a5c8523b038abf04d86fcc5358cd893cf">AutoRange</a> = 255
-<br />
- }</td></tr>
-<tr class="memdesc:a603464d36815b48d54ea91d06bdbc462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is resistance.  <a href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">More...</a><br /></td></tr>
-<tr class="separator:a603464d36815b48d54ea91d06bdbc462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43c735e6c80c4ada9bc8640d06fbe286"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286">MeterStatus</a> : quint8 { <br />
 &#160;&#160;<a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849">AutoRangeOff</a> = 0
 , <a class="el" href="classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541">AutoRangeOn</a> = 1
@@ -228,6 +186,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>serviceErrorOccurred<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ade75432f62ac592509c4583a415ec04b"><td class="memItemLeft" align="right" valign="top"><a id="ade75432f62ac592509c4583a415ec04b" name="ade75432f62ac592509c4583a415ec04b"></a>
+<a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const quint8 range, const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a> mode) const</td></tr>
+<tr class="memdesc:ade75432f62ac592509c4583a415ec04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if <em>mode</em> has no ranges. <br /></td></tr>
+<tr class="separator:ade75432f62ac592509c4583a415ec04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80dd2c9eed94973bbc532ee42daee1fb"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a80dd2c9eed94973bbc532ee42daee1fb">maxValue</a> (const quint8 range, const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a> mode) const</td></tr>
+<tr class="memdesc:a80dd2c9eed94973bbc532ee42daee1fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em>, or the string "Auto".  <br /></td></tr>
+<tr class="separator:a80dd2c9eed94973bbc532ee42daee1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8121655f13ddf00fc2a65921b5ebc67b"><td class="memItemLeft" align="right" valign="top"><a id="a8121655f13ddf00fc2a65921b5ebc67b" name="a8121655f13ddf00fc2a65921b5ebc67b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>MultimeterService</b> (<a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html">QLowEnergyController</a> *const pokitDevice, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>=nullptr)</td></tr>
 <tr class="memdesc:a8121655f13ddf00fc2a65921b5ebc67b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new Pokit service with <em>parent</em>. <br /></td></tr>
@@ -268,6 +233,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~AbstractPokitServ
 <tr class="memitem:a9d6d50cf31bc5859747a134d6cb4c418 inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a9d6d50cf31bc5859747a134d6cb4c418">setAutoDiscover</a> (const bool discover=true)</td></tr>
 <tr class="memdesc:a9d6d50cf31bc5859747a134d6cb4c418 inherit pub_methods_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <em>discover</em> is <code>true</code>, autodiscovery will be attempted.  <br /></td></tr>
 <tr class="separator:a9d6d50cf31bc5859747a134d6cb4c418 inherit pub_methods_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68091034224a764b1642dd3e99ff5b14 inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a> () const</td></tr>
+<tr class="memdesc:a68091034224a764b1642dd3e99ff5b14 inherit pub_methods_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Pokit product this service is attached to.  <br /></td></tr>
+<tr class="separator:a68091034224a764b1642dd3e99ff5b14 inherit pub_methods_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e323c5e2380709c5a5fde18520ae3f inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#aa0e323c5e2380709c5a5fde18520ae3f">setPokitProduct</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product)</td></tr>
+<tr class="memdesc:aa0e323c5e2380709c5a5fde18520ae3f inherit pub_methods_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current Pokit <em>product</em>.  <br /></td></tr>
+<tr class="separator:aa0e323c5e2380709c5a5fde18520ae3f inherit pub_methods_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a4ff74f51ba6ea6c01cbeb9eda15b9b inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top"><a id="a7a4ff74f51ba6ea6c01cbeb9eda15b9b" name="a7a4ff74f51ba6ea6c01cbeb9eda15b9b"></a>
 <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html">QLowEnergyService</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>service</b> ()</td></tr>
 <tr class="memdesc:a7a4ff74f51ba6ea6c01cbeb9eda15b9b inherit pub_methods_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a non-const pointer to the internal service object, if any. <br /></td></tr>
@@ -486,40 +457,13 @@ Static Public Member Functions</h2></td></tr>
 static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a> &amp;mode)</td></tr>
 <tr class="memdesc:a58a03dbc0ae216dc60f27d975af92cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>mode</em> as a user-friendly string. <br /></td></tr>
 <tr class="separator:a58a03dbc0ae216dc60f27d975af92cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53738a18035bab9e990deee13344ddbe"><td class="memItemLeft" align="right" valign="top"><a id="a53738a18035bab9e990deee13344ddbe" name="a53738a18035bab9e990deee13344ddbe"></a>
-static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a> &amp;range)</td></tr>
-<tr class="memdesc:a53738a18035bab9e990deee13344ddbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string. <br /></td></tr>
-<tr class="separator:a53738a18035bab9e990deee13344ddbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01d0e40b92ddcb6e4c89e4c8504e30d4"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a01d0e40b92ddcb6e4c89e4c8504e30d4">minValue</a> (const <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a> &amp;range)</td></tr>
-<tr class="memdesc:a01d0e40b92ddcb6e4c89e4c8504e30d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum value for <em>range</em> in (integer) millivolts, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a01d0e40b92ddcb6e4c89e4c8504e30d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acafbc2f0d9f123634c54a14c963e88ca"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#acafbc2f0d9f123634c54a14c963e88ca">maxValue</a> (const <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a> &amp;range)</td></tr>
-<tr class="memdesc:acafbc2f0d9f123634c54a14c963e88ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in (integer) millivolts, or the string "Auto".  <br /></td></tr>
-<tr class="separator:acafbc2f0d9f123634c54a14c963e88ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae20f5f6bd1e43d0ddcc2096c86f1d50e"><td class="memItemLeft" align="right" valign="top"><a id="ae20f5f6bd1e43d0ddcc2096c86f1d50e" name="ae20f5f6bd1e43d0ddcc2096c86f1d50e"></a>
-static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">CurrentRange</a> &amp;range)</td></tr>
-<tr class="memdesc:ae20f5f6bd1e43d0ddcc2096c86f1d50e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string. <br /></td></tr>
-<tr class="separator:ae20f5f6bd1e43d0ddcc2096c86f1d50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacbb15c8e197ee52ef305e2e4884dde3"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#aacbb15c8e197ee52ef305e2e4884dde3">minValue</a> (const <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">CurrentRange</a> &amp;range)</td></tr>
-<tr class="memdesc:aacbb15c8e197ee52ef305e2e4884dde3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum value for <em>range</em> in (integer) milliamps, or the string "Auto".  <br /></td></tr>
-<tr class="separator:aacbb15c8e197ee52ef305e2e4884dde3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03333b3a940574f875517985e5a3d47e"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a03333b3a940574f875517985e5a3d47e">maxValue</a> (const <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">CurrentRange</a> &amp;range)</td></tr>
-<tr class="memdesc:a03333b3a940574f875517985e5a3d47e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in (integer) milliamps, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a03333b3a940574f875517985e5a3d47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addd56e334f91aca2bc2d48db4730f57e"><td class="memItemLeft" align="right" valign="top"><a id="addd56e334f91aca2bc2d48db4730f57e" name="addd56e334f91aca2bc2d48db4730f57e"></a>
-static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">ResistanceRange</a> &amp;range)</td></tr>
-<tr class="memdesc:addd56e334f91aca2bc2d48db4730f57e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string. <br /></td></tr>
-<tr class="separator:addd56e334f91aca2bc2d48db4730f57e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ef230423e6821ffd0c342e960414218"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a1ef230423e6821ffd0c342e960414218">minValue</a> (const <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">ResistanceRange</a> &amp;range)</td></tr>
-<tr class="memdesc:a1ef230423e6821ffd0c342e960414218"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the minimum value for <em>range</em> in (integer) ohms, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a1ef230423e6821ffd0c342e960414218"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe33eb153f07dc25ff7ee071a1f6f8fe"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#abe33eb153f07dc25ff7ee071a1f6f8fe">maxValue</a> (const <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">ResistanceRange</a> &amp;range)</td></tr>
-<tr class="memdesc:abe33eb153f07dc25ff7ee071a1f6f8fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in (integer) ohms, or the string "Auto".  <br /></td></tr>
-<tr class="separator:abe33eb153f07dc25ff7ee071a1f6f8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a29cca4d60b8bd3e905a65c39743bf3"><td class="memItemLeft" align="right" valign="top"><a id="a5a29cca4d60b8bd3e905a65c39743bf3" name="a5a29cca4d60b8bd3e905a65c39743bf3"></a>
-static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="unionMultimeterService_1_1Range.html">Range</a> &amp;range, const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a> &amp;mode)</td></tr>
-<tr class="memdesc:a5a29cca4d60b8bd3e905a65c39743bf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if <em>mode</em> has no ranges. <br /></td></tr>
-<tr class="separator:a5a29cca4d60b8bd3e905a65c39743bf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66e1f404c97d779e284c0a6c7c954c49"><td class="memItemLeft" align="right" valign="top"><a id="a66e1f404c97d779e284c0a6c7c954c49" name="a66e1f404c97d779e284c0a6c7c954c49"></a>
+static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range, const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a> mode)</td></tr>
+<tr class="memdesc:a66e1f404c97d779e284c0a6c7c954c49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string, or a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> if <em>mode</em> has no ranges. <br /></td></tr>
+<tr class="separator:a66e1f404c97d779e284c0a6c7c954c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d05ef9c2d80a941bfd4f972d3dc6145"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMultimeterService.html#a9d05ef9c2d80a941bfd4f972d3dc6145">maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range, const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a> mode)</td></tr>
+<tr class="memdesc:a9d05ef9c2d80a941bfd4f972d3dc6145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em>, or the string "Auto".  <br /></td></tr>
+<tr class="separator:a9d05ef9c2d80a941bfd4f972d3dc6145"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_qobject"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_qobject')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el"  href="https://doc.qt.io/qt-5/qobject.html">QObject</a></td></tr>
 <tr class="memitem:tr inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top"><a id="tr" name="tr"></a>
 <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a> (const char *sourceText, const char *disambiguation, int n)</td></tr>
@@ -609,45 +553,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Multimeter service of Pokit devices.">MultimeterService</a> class accesses the <code>Multimeter</code> service of Pokit devices. </p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a19296ef25a85513d3a619871fbcc12c2" name="a19296ef25a85513d3a619871fbcc12c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19296ef25a85513d3a619871fbcc12c2">&#9670;&#160;</a></span>CurrentRange</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">MultimeterService::CurrentRange</a> : quint8</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is AC or DC current. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a19296ef25a85513d3a619871fbcc12c2adf1aa51f69cee99bf34896eedef7ec66" name="a19296ef25a85513d3a619871fbcc12c2adf1aa51f69cee99bf34896eedef7ec66"></a>_0_to_10mA&#160;</td><td class="fielddoc"><p>0 to 10mA. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a19296ef25a85513d3a619871fbcc12c2ada2587f9e79732bb2eea6ddb20b2a522" name="a19296ef25a85513d3a619871fbcc12c2ada2587f9e79732bb2eea6ddb20b2a522"></a>_10mA_to_30mA&#160;</td><td class="fielddoc"><p>10mA to 30mA. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a19296ef25a85513d3a619871fbcc12c2a10a9947ae0deec34c01e99c4cd12a9f8" name="a19296ef25a85513d3a619871fbcc12c2a10a9947ae0deec34c01e99c4cd12a9f8"></a>_30mA_to_150mA&#160;</td><td class="fielddoc"><p>30mA to 150mA. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a19296ef25a85513d3a619871fbcc12c2ad87056e8caa3511544b29b913caf5cf7" name="a19296ef25a85513d3a619871fbcc12c2ad87056e8caa3511544b29b913caf5cf7"></a>_150mA_to_300mA&#160;</td><td class="fielddoc"><p>150mA to 300mA. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a19296ef25a85513d3a619871fbcc12c2a36fd02dd400c54ef118025070ad4feb1" name="a19296ef25a85513d3a619871fbcc12c2a36fd02dd400c54ef118025070ad4feb1"></a>_300mA_to_3A&#160;</td><td class="fielddoc"><p>300mA to 3A. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a19296ef25a85513d3a619871fbcc12c2a5c8523b038abf04d86fcc5358cd893cf" name="a19296ef25a85513d3a619871fbcc12c2a5c8523b038abf04d86fcc5358cd893cf"></a>AutoRange&#160;</td><td class="fielddoc"><p>Auto-range. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Pokit Pro supports up to 10A. </dd></dl>
-</td></tr>
-</table>
-
-</div>
-</div>
 <a id="a43c735e6c80c4ada9bc8640d06fbe286" name="a43c735e6c80c4ada9bc8640d06fbe286"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43c735e6c80c4ada9bc8640d06fbe286">&#9670;&#160;</a></span>MeterStatus</h2>
 
@@ -726,91 +631,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </td></tr>
 <tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd" name="a51f66d0b81dace3115c5c68bc931eaeaaee7a8e262285ed49ea1b4e4ae11525bd"></a>Temperature&#160;</td><td class="fielddoc"><p>Measure temperature. </p>
 </td></tr>
-</table>
-
-</div>
-</div>
-<a id="a603464d36815b48d54ea91d06bdbc462" name="a603464d36815b48d54ea91d06bdbc462"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a603464d36815b48d54ea91d06bdbc462">&#9670;&#160;</a></span>ResistanceRange</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">MultimeterService::ResistanceRange</a> : quint8</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is resistance. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a" name="a603464d36815b48d54ea91d06bdbc462a659a01f4afa7eaaf7fdb4ab13c93727a"></a>_0_to_160&#160;</td><td class="fielddoc"><p>0 to 160 ohms. </p>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaa22bef5ff8cc5db9cc862164e779f29dc" name="a51f66d0b81dace3115c5c68bc931eaeaa22bef5ff8cc5db9cc862164e779f29dc"></a>Capacitance&#160;</td><td class="fielddoc"><p>Measure capacitance. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462a219c3db3ab3cec3fd3a4c3320d115941" name="a603464d36815b48d54ea91d06bdbc462a219c3db3ab3cec3fd3a4c3320d115941"></a>_160_to_330&#160;</td><td class="fielddoc"><p>160 to 330 ohms. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462aaa09e98f4709f7497b4d0e2b3cbc86b0" name="a603464d36815b48d54ea91d06bdbc462aaa09e98f4709f7497b4d0e2b3cbc86b0"></a>_330_to_890&#160;</td><td class="fielddoc"><p>330 to 890 ohms. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462abbc2adae927c0d78b50788e7504393b9" name="a603464d36815b48d54ea91d06bdbc462abbc2adae927c0d78b50788e7504393b9"></a>_890_to_1K5&#160;</td><td class="fielddoc"><p>890 to 1.5K ohms. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462a62adccbb2f5c4b75a26159ecde12cd46" name="a603464d36815b48d54ea91d06bdbc462a62adccbb2f5c4b75a26159ecde12cd46"></a>_1K5_to_10K&#160;</td><td class="fielddoc"><p>1.5K to 10K ohms. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462a99fc19257e1e6bec51fc99465192db71" name="a603464d36815b48d54ea91d06bdbc462a99fc19257e1e6bec51fc99465192db71"></a>_10K_to_100K&#160;</td><td class="fielddoc"><p>10K to 100K ohms. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462aa1ff7a7f402830df7441f7749e2e94de" name="a603464d36815b48d54ea91d06bdbc462aa1ff7a7f402830df7441f7749e2e94de"></a>_100K_to_470K&#160;</td><td class="fielddoc"><p>100K to 470K ohms. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462a2cc69cf30cef6a65bd0394653a5424b6" name="a603464d36815b48d54ea91d06bdbc462a2cc69cf30cef6a65bd0394653a5424b6"></a>_470K_to_1M&#160;</td><td class="fielddoc"><p>470K to 1M ohms. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a603464d36815b48d54ea91d06bdbc462a5c8523b038abf04d86fcc5358cd893cf" name="a603464d36815b48d54ea91d06bdbc462a5c8523b038abf04d86fcc5358cd893cf"></a>AutoRange&#160;</td><td class="fielddoc"><p>Auto-range. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Pokit Pro supports up to 3M ohms. </dd></dl>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a id="ae0116d83a5bb23121c27f2ea12406942" name="ae0116d83a5bb23121c27f2ea12406942"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0116d83a5bb23121c27f2ea12406942">&#9670;&#160;</a></span>VoltageRange</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">MultimeterService::VoltageRange</a> : quint8</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Values supported by the <code><a class="el" href="unionMultimeterService_1_1Range.html" title="Values supported by the Range attribute of the Settings characteristic.">Range</a></code> attribute of the <code><a class="el" href="structMultimeterService_1_1Settings.html" title="Attributes included in the Settings characterstic.">Settings</a></code> and <code><a class="el" href="structMultimeterService_1_1Reading.html" title="Attributes included in the Reading characterstic.">Reading</a></code> characteristics, when <code>Mode</code> is AC or DC voltage. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae0116d83a5bb23121c27f2ea12406942a198067396ed0459ea6894b2397468ef6" name="ae0116d83a5bb23121c27f2ea12406942a198067396ed0459ea6894b2397468ef6"></a>_0_to_300mV&#160;</td><td class="fielddoc"><p>0 to 300mV. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ae0116d83a5bb23121c27f2ea12406942ab8f085f1c32ac33694044431dfbd4320" name="ae0116d83a5bb23121c27f2ea12406942ab8f085f1c32ac33694044431dfbd4320"></a>_300mV_to_2V&#160;</td><td class="fielddoc"><p>300mV to 2V. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ae0116d83a5bb23121c27f2ea12406942a62449df7495e3d616298a86a32007165" name="ae0116d83a5bb23121c27f2ea12406942a62449df7495e3d616298a86a32007165"></a>_2V_to_6V&#160;</td><td class="fielddoc"><p>2V to 6V. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ae0116d83a5bb23121c27f2ea12406942a691d1e8d08c3542b4aeda8925b2967cc" name="ae0116d83a5bb23121c27f2ea12406942a691d1e8d08c3542b4aeda8925b2967cc"></a>_6V_to_12V&#160;</td><td class="fielddoc"><p>6V to 12V. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ae0116d83a5bb23121c27f2ea12406942a55b8f557c2c95acba19b42bd66a8760a" name="ae0116d83a5bb23121c27f2ea12406942a55b8f557c2c95acba19b42bd66a8760a"></a>_12V_to_30V&#160;</td><td class="fielddoc"><p>12V to 30V. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ae0116d83a5bb23121c27f2ea12406942a8d6ed04283cbc4c0f1b89006e9c3e96b" name="ae0116d83a5bb23121c27f2ea12406942a8d6ed04283cbc4c0f1b89006e9c3e96b"></a>_30V_to_60V&#160;</td><td class="fielddoc"><p>30V to 60V. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf" name="ae0116d83a5bb23121c27f2ea12406942a5c8523b038abf04d86fcc5358cd893cf"></a>AutoRange&#160;</td><td class="fielddoc"><p>Auto-range. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Pokit Pro supports up to 600V. </dd></dl>
+<tr><td class="fieldname"><a id="a51f66d0b81dace3115c5c68bc931eaeaa8d6937c3adb213bd7b7beb575aa17687" name="a51f66d0b81dace3115c5c68bc931eaeaa8d6937c3adb213bd7b7beb575aa17687"></a>ExternalTemperature&#160;</td><td class="fielddoc"><p>Measure temperature via an external temperature probe. </p>
 </td></tr>
 </table>
 
@@ -860,8 +683,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 
 </div>
 </div>
-<a id="a03333b3a940574f875517985e5a3d47e" name="a03333b3a940574f875517985e5a3d47e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03333b3a940574f875517985e5a3d47e">&#9670;&#160;</a></span>maxValue() <span class="overload">[1/3]</span></h2>
+<a id="a9d05ef9c2d80a941bfd4f972d3dc6145" name="a9d05ef9c2d80a941bfd4f972d3dc6145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d05ef9c2d80a941bfd4f972d3dc6145">&#9670;&#160;</a></span>maxValue() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -872,9 +695,25 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
         <tr>
           <td class="memname"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> MultimeterService::maxValue </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">CurrentRange</a> &amp;&#160;</td>
-          <td class="paramname"><em>range</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a>&#160;</td>
+          <td class="paramname"><em>product</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const quint8&#160;</td>
+          <td class="paramname"><em>range</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -884,189 +723,49 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 </table>
 </div><div class="memdoc">
 
-<p>Returns the maximum value for <em>range</em> in (integer) milliamps, or the string "Auto". </p>
-<p>If <em>range</em> is not known valid value, then an null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned. </p>
+<p>Returns the maximum value for <em>range</em>, or the string "Auto". </p>
+<p>If <em>range</em> is not a known valid enumeration value for <em>product's</em> <em>mode</em>, then a null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned. </p>
 <div class="dynheader">
-Here is the call graph for this function:</div>
+Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMultimeterService_a03333b3a940574f875517985e5a3d47e_cgraph.svg" width="302" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMultimeterService_a9d05ef9c2d80a941bfd4f972d3dc6145_icgraph.svg" width="360" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="abe33eb153f07dc25ff7ee071a1f6f8fe" name="abe33eb153f07dc25ff7ee071a1f6f8fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe33eb153f07dc25ff7ee071a1f6f8fe">&#9670;&#160;</a></span>maxValue() <span class="overload">[2/3]</span></h2>
+<a id="a80dd2c9eed94973bbc532ee42daee1fb" name="a80dd2c9eed94973bbc532ee42daee1fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80dd2c9eed94973bbc532ee42daee1fb">&#9670;&#160;</a></span>maxValue() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> MultimeterService::maxValue </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">ResistanceRange</a> &amp;&#160;</td>
-          <td class="paramname"><em>range</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const quint8&#160;</td>
+          <td class="paramname"><em>range</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the maximum value for <em>range</em> in (integer) ohms, or the string "Auto". </p>
-<p>If <em>range</em> is not known valid value, then an null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned. </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMultimeterService_abe33eb153f07dc25ff7ee071a1f6f8fe_cgraph.svg" width="302" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="acafbc2f0d9f123634c54a14c963e88ca" name="acafbc2f0d9f123634c54a14c963e88ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acafbc2f0d9f123634c54a14c963e88ca">&#9670;&#160;</a></span>maxValue() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> MultimeterService::maxValue </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a> &amp;&#160;</td>
-          <td class="paramname"><em>range</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea">Mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the maximum value for <em>range</em> in (integer) millivolts, or the string "Auto". </p>
-<p>If <em>range</em> is not known valid value, then an null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned. </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMultimeterService_acafbc2f0d9f123634c54a14c963e88ca_cgraph.svg" width="302" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="aacbb15c8e197ee52ef305e2e4884dde3" name="aacbb15c8e197ee52ef305e2e4884dde3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacbb15c8e197ee52ef305e2e4884dde3">&#9670;&#160;</a></span>minValue() <span class="overload">[1/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> MultimeterService::minValue </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMultimeterService.html#a19296ef25a85513d3a619871fbcc12c2">CurrentRange</a> &amp;&#160;</td>
-          <td class="paramname"><em>range</em></td><td>)</td>
           <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Returns the minimum value for <em>range</em> in (integer) milliamps, or the string "Auto". </p>
-<p>If <em>range</em> is not known valid value, then an null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned.</p>
-<p>Note, this is an <em>absolute</em> minimum. That is, the true range for DC measurements is from <code>-maxValue(range)</code> to <code>+maxValue(range)</code>. In this sense, <code>minValue(range)</code> indicates the magnitude (ignore signs) that can be measured accurately for the given <em>range</em>. As AC current can never be negative, this is relevant for DC current only. </p>
+<p>Returns the maximum value for <em>range</em>, or the string "Auto". </p>
+<p>If <em>range</em> is not a known valid enumeration value for the current <em>product's</em> <em>mode</em>, then a null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMultimeterService_aacbb15c8e197ee52ef305e2e4884dde3_cgraph.svg" width="302" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="a1ef230423e6821ffd0c342e960414218" name="a1ef230423e6821ffd0c342e960414218"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ef230423e6821ffd0c342e960414218">&#9670;&#160;</a></span>minValue() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> MultimeterService::minValue </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMultimeterService.html#a603464d36815b48d54ea91d06bdbc462">ResistanceRange</a> &amp;&#160;</td>
-          <td class="paramname"><em>range</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the minimum value for <em>range</em> in (integer) ohms, or the string "Auto". </p>
-<p>If <em>range</em> is not known valid value, then an null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned. </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMultimeterService_a1ef230423e6821ffd0c342e960414218_cgraph.svg" width="302" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="a01d0e40b92ddcb6e4c89e4c8504e30d4" name="a01d0e40b92ddcb6e4c89e4c8504e30d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01d0e40b92ddcb6e4c89e4c8504e30d4">&#9670;&#160;</a></span>minValue() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> MultimeterService::minValue </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMultimeterService.html#ae0116d83a5bb23121c27f2ea12406942">VoltageRange</a> &amp;&#160;</td>
-          <td class="paramname"><em>range</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the minimum value for <em>range</em> in (integer) millivolts, or the string "Auto". </p>
-<p>If <em>range</em> is not known valid value, then an null <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a> is returned.</p>
-<p>Note, this is an <em>absolute</em> minimum. That is, the true range for DC measurements is from <code>-maxValue(range)</code> to <code>+maxValue(range)</code>. In this sense, <code>minValue(range)</code> indicates the magnitude (ignore signs) that can be measured accurately for the given <em>range</em>. As AC voltage can never be negative, this is relevant for DC voltage only. </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classMultimeterService_a01d0e40b92ddcb6e4c89e4c8504e30d4_cgraph.svg" width="302" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classMultimeterService_a80dd2c9eed94973bbc532ee42daee1fb_cgraph.svg" width="367" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1130,9 +829,9 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">reading</a>.<a class="code hl_variable" href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">value</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassMultimeterService_html_ad7623c59f41fc099bebd3447637a904e"><div class="ttname"><a href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">MultimeterService::reading</a></div><div class="ttdeci">Reading reading() const</div><div class="ttdoc">Returns the most recent value of the Multimeter service's Reading characteristic.</div><div class="ttdef"><b>Definition:</b> multimeterservice.cpp:420</div></div>
-<div class="ttc" id="astructMultimeterService_1_1Reading_html"><div class="ttname"><a href="structMultimeterService_1_1Reading.html">MultimeterService::Reading</a></div><div class="ttdoc">Attributes included in the Reading characterstic.</div><div class="ttdef"><b>Definition:</b> multimeterservice.h:117</div></div>
-<div class="ttc" id="astructMultimeterService_1_1Reading_html_a5b6599355c8ae7e67d57da122256521a"><div class="ttname"><a href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">MultimeterService::Reading::value</a></div><div class="ttdeci">float value</div><div class="ttdoc">Last acquired value.</div><div class="ttdef"><b>Definition:</b> multimeterservice.h:119</div></div>
+<div class="ttc" id="aclassMultimeterService_html_ad7623c59f41fc099bebd3447637a904e"><div class="ttname"><a href="classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e">MultimeterService::reading</a></div><div class="ttdeci">Reading reading() const</div><div class="ttdoc">Returns the most recent value of the Multimeter service's Reading characteristic.</div><div class="ttdef"><b>Definition:</b> multimeterservice.cpp:230</div></div>
+<div class="ttc" id="astructMultimeterService_1_1Reading_html"><div class="ttname"><a href="structMultimeterService_1_1Reading.html">MultimeterService::Reading</a></div><div class="ttdoc">Attributes included in the Reading characterstic.</div><div class="ttdef"><b>Definition:</b> multimeterservice.h:69</div></div>
+<div class="ttc" id="astructMultimeterService_1_1Reading_html_a5b6599355c8ae7e67d57da122256521a"><div class="ttname"><a href="structMultimeterService_1_1Reading.html#a5b6599355c8ae7e67d57da122256521a">MultimeterService::Reading::value</a></div><div class="ttdeci">float value</div><div class="ttdoc">Last acquired value.</div><div class="ttdef"><b>Definition:</b> multimeterservice.h:71</div></div>
 </div><!-- fragment --> <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

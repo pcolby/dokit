@@ -2,8 +2,8 @@ var searchData=
 [
   ['nabataeanscript_0',['NabataeanScript',['https://doc.qt.io/qt-5/qlocale.html#Script-enum',1,'QLocale']]],
   ['nama_1',['Nama',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
-  ['name_2',['name',['../structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8',1,'StatusService::CharacteristicUuids']]],
-  ['name_3',['Name',['https://doc.qt.io/qt-5/qdir.html#SortFlag-enum',1,'QDir::Name()'],['https://doc.qt.io/qt-5/quuid.html#Version-enum',1,'QUuid::Name()']]],
+  ['name_2',['Name',['https://doc.qt.io/qt-5/qdir.html#SortFlag-enum',1,'QDir::Name()'],['https://doc.qt.io/qt-5/quuid.html#Version-enum',1,'QUuid::Name()']]],
+  ['name_3',['name',['../structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8',1,'StatusService::CharacteristicUuids']]],
   ['nameattribute_4',['NameAttribute',['https://doc.qt.io/qt-5/qbluetoothtransferrequest.html#Attribute-enum',1,'QBluetoothTransferRequest']]],
   ['namibia_5',['Namibia',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
   ['nap_6',['NAP',['https://doc.qt.io/qt-5/qbluetoothuuid.html#ServiceClassUuid-enum',1,'QBluetoothUuid']]],

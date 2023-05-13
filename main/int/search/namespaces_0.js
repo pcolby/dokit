@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['qbluetooth_0',['QBluetooth',['https://doc.qt.io/qt-5/qbluetooth.html',1,'']]],
-  ['qt_1',['Qt',['https://doc.qt.io/qt-5/qt.html',1,'']]]
+  ['capacitancerange_0',['CapacitanceRange',['../namespaceCapacitanceRange.html',1,'']]],
+  ['currentrange_1',['CurrentRange',['../namespaceCurrentRange.html',1,'']]]
 ];

@@ -144,6 +144,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9d6d50cf31bc5859747a134d6cb4c418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a9d6d50cf31bc5859747a134d6cb4c418">setAutoDiscover</a> (const bool discover=true)</td></tr>
 <tr class="memdesc:a9d6d50cf31bc5859747a134d6cb4c418"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <em>discover</em> is <code>true</code>, autodiscovery will be attempted.  <br /></td></tr>
 <tr class="separator:a9d6d50cf31bc5859747a134d6cb4c418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68091034224a764b1642dd3e99ff5b14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a> () const</td></tr>
+<tr class="memdesc:a68091034224a764b1642dd3e99ff5b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Pokit product this service is attached to.  <br /></td></tr>
+<tr class="separator:a68091034224a764b1642dd3e99ff5b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e323c5e2380709c5a5fde18520ae3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#aa0e323c5e2380709c5a5fde18520ae3f">setPokitProduct</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product)</td></tr>
+<tr class="memdesc:aa0e323c5e2380709c5a5fde18520ae3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current Pokit <em>product</em>.  <br /></td></tr>
+<tr class="separator:aa0e323c5e2380709c5a5fde18520ae3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html">QLowEnergyService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a> ()</td></tr>
 <tr class="memdesc:a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a non-const pointer to the internal service object, if any.  <br /></td></tr>
 <tr class="separator:a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -446,7 +452,7 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classAbstractPokitService.html" title="The AbstractPokitService class provides a common base for Pokit services classes.">AbstractPokitService</a> class provides a common base for Pokit services classes. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8h_source.html#l00023">23</a> of file <a class="el" href="abstractpokitservice_8h_source.html">abstractpokitservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8h_source.html#l00024">24</a> of file <a class="el" href="abstractpokitservice_8h_source.html">abstractpokitservice.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af0b962913c8be9b1d69ce1b68a5f9bdd" name="af0b962913c8be9b1d69ce1b68a5f9bdd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0b962913c8be9b1d69ce1b68a5f9bdd">&#9670;&#160;</a></span>~AbstractPokitService()</h2>
@@ -473,13 +479,13 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Destroys this <a class="el" href="classAbstractPokitService.html" title="The AbstractPokitService class provides a common base for Pokit services classes.">AbstractPokitService</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00037">37</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8">d_ptr</a>;</div>
-<div class="line"><span class="lineno">   40</span>}</div>
-<div class="ttc" id="aclassAbstractPokitService_html_acb832f24262f3f61f74c878dd79f48e8"><div class="ttname"><a href="classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8">AbstractPokitService::d_ptr</a></div><div class="ttdeci">AbstractPokitServicePrivate * d_ptr</div><div class="ttdoc">Internal d-pointer.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00045">abstractpokitservice.h:45</a></div></div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00038">38</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8">d_ptr</a>;</div>
+<div class="line"><span class="lineno">   41</span>}</div>
+<div class="ttc" id="aclassAbstractPokitService_html_acb832f24262f3f61f74c878dd79f48e8"><div class="ttname"><a href="classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8">AbstractPokitService::d_ptr</a></div><div class="ttdeci">AbstractPokitServicePrivate * d_ptr</div><div class="ttdoc">Internal d-pointer.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00049">abstractpokitservice.h:49</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice_8h_source.html#l00045">d_ptr</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice_8h_source.html#l00049">d_ptr</a>.</p>
 
 </div>
 </div>
@@ -519,11 +525,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Constructs a new Pokit service with <em>parent</em>, and private implementation <em>d</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00026">26</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>    : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8">d_ptr</a>(d)</div>
-<div class="line"><span class="lineno">   29</span>{</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00027">27</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>    : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>), <a class="code hl_variable" href="classAbstractPokitService.html#acb832f24262f3f61f74c878dd79f48e8">d_ptr</a>(d)</div>
+<div class="line"><span class="lineno">   30</span>{</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>}</div>
 <div class="ttc" id="aqobject_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html">QObject</a></div></div>
 <div class="ttc" id="aqobject_html_parent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent</a></div><div class="ttdeci">QObject * parent() const const</div></div>
 </div><!-- fragment -->
@@ -548,13 +554,47 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>Returns <code>true</code> if autodiscovery of services and service details is enabled, <code>false</code> otherwise. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#a9d6d50cf31bc5859747a134d6cb4c418" title="If discover is true, autodiscovery will be attempted.">setAutoDiscover</a> for more information on what autodiscovery provides. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00059">59</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>{</div>
-<div class="line"><span class="lineno">   61</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">return</span> d-&gt;autoDiscover;</div>
-<div class="line"><span class="lineno">   63</span>}</div>
-<div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00023">abstractpokitservice.h:24</a></div></div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00060">60</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
+<div class="line"><span class="lineno">   62</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">return</span> d-&gt;autoDiscover;</div>
+<div class="line"><span class="lineno">   64</span>}</div>
+<div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8h_source.html#l00024">abstractpokitservice.h:25</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a68091034224a764b1642dd3e99ff5b14" name="a68091034224a764b1642dd3e99ff5b14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68091034224a764b1642dd3e99ff5b14">&#9670;&#160;</a></span>pokitProduct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> AbstractPokitService::pokitProduct </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the Pokit product this service is attached to. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#aa0e323c5e2380709c5a5fde18520ae3f" title="Sets the current Pokit product.">setPokitProduct</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00086">86</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> d-&gt;pokitProduct;</div>
+<div class="line"><span class="lineno">   90</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00117">DataLoggerService::maxValue()</a>, <a class="el" href="dsoservice_8cpp_source.html#l00111">DsoService::maxValue()</a>, <a class="el" href="multimeterservice_8cpp_source.html#l00128">MultimeterService::maxValue()</a>, <a class="el" href="dsocommand_8cpp_source.html#l00186">DsoCommand::serviceDetailsDiscovered()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00161">LoggerStartCommand::serviceDetailsDiscovered()</a>, <a class="el" href="metercommand_8cpp_source.html#l00174">MeterCommand::serviceDetailsDiscovered()</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00084">DataLoggerService::toString()</a>, <a class="el" href="dsoservice_8cpp_source.html#l00080">DsoService::toString()</a>, and <a class="el" href="multimeterservice_8cpp_source.html#l00087">MultimeterService::toString()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitService_a68091034224a764b1642dd3e99ff5b14_icgraph.svg" width="444" height="536"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a0d29ffd4ef4f81c6049700f76faa723e" name="a0d29ffd4ef4f81c6049700f76faa723e"></a>
@@ -605,11 +645,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Returns a non-const pointer to the internal service object, if any. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00083">83</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>{</div>
-<div class="line"><span class="lineno">   85</span>    Q_D(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> d-&gt;service;</div>
-<div class="line"><span class="lineno">   87</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00110">110</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    Q_D(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">return</span> d-&gt;service;</div>
+<div class="line"><span class="lineno">  114</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -630,11 +670,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Returns a const pointer to the internal service object, if any. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00092">92</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
-<div class="line"><span class="lineno">   94</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> d-&gt;service;</div>
-<div class="line"><span class="lineno">   96</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00119">119</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>{</div>
+<div class="line"><span class="lineno">  121</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> d-&gt;service;</div>
+<div class="line"><span class="lineno">  123</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -664,7 +704,7 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>This signal is emitted when the Pokit service details have been discovered. </p>
 <p>Once this signal has been emitted, cached characteristics values should be immediately available via derived classes' accessor functions, and refreshes can be queued via <a class="el" href="classAbstractPokitService.html#a0d29ffd4ef4f81c6049700f76faa723e" title="Read all characteristics.">readCharacteristics()</a> and any related read functions provided by derived classes. </p>
 
-<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00111">DeviceCommand::deviceDiscovered()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="devicecommand_8cpp_source.html#l00338">DeviceCommand::deviceDiscovered()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -697,11 +737,39 @@ Here is the caller graph for this function:</div>
 </ul>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#a65c2c9c6163744a7cf52de2c6a83f610" title="Returns true if autodiscovery of services and service details is enabled, false otherwise.">autoDiscover</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00074">74</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
-<div class="line"><span class="lineno">   76</span>    Q_D(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
-<div class="line"><span class="lineno">   77</span>    d-&gt;autoDiscover = discover;</div>
-<div class="line"><span class="lineno">   78</span>}</div>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00075">75</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>{</div>
+<div class="line"><span class="lineno">   77</span>    Q_D(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">   78</span>    d-&gt;autoDiscover = discover;</div>
+<div class="line"><span class="lineno">   79</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa0e323c5e2380709c5a5fde18520ae3f" name="aa0e323c5e2380709c5a5fde18520ae3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e323c5e2380709c5a5fde18520ae3f">&#9670;&#160;</a></span>setPokitProduct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AbstractPokitService::setPokitProduct </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a>&#160;</td>
+          <td class="paramname"><em>product</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the current Pokit <em>product</em>. </p>
+<p>Usually, the product is deteced during service construction, but it is possible (though not normally necessary) to override it. No attempt is made to valiadate the <em>product</em> - this service will simply assume that the attached BLE device is the <em>product</em> specified, and treat it as such.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#aa0e323c5e2380709c5a5fde18520ae3f" title="Sets the current Pokit product.">setPokitProduct</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00101">101</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
+<div class="line"><span class="lineno">  103</span>    Q_D(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
+<div class="line"><span class="lineno">  104</span>    d-&gt;pokitProduct = product;</div>
+<div class="line"><span class="lineno">  105</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -726,7 +794,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8h_source.html#l00052">52</a> of file <a class="el" href="abstractpokitservice_8h_source.html">abstractpokitservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8h_source.html#l00056">56</a> of file <a class="el" href="abstractpokitservice_8h_source.html">abstractpokitservice.h</a>.</p>
 
 </div>
 </div>
@@ -753,9 +821,9 @@ Here is the caller graph for this function:</div>
 
 <p>Internal d-pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8h_source.html#l00045">45</a> of file <a class="el" href="abstractpokitservice_8h_source.html">abstractpokitservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="abstractpokitservice_8h_source.html#l00049">49</a> of file <a class="el" href="abstractpokitservice_8h_source.html">abstractpokitservice.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00037">~AbstractPokitService()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00038">~AbstractPokitService()</a>.</p>
 
 </div>
 </div>

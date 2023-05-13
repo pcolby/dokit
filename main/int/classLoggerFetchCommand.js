@@ -1,6 +1,6 @@
 var classLoggerFetchCommand =
 [
-    [ "LoggerFetchCommand", "classLoggerFetchCommand.html#a94de4f7c50b552c010d10630bea79dee", null ],
+    [ "LoggerFetchCommand", "classLoggerFetchCommand.html#a478ae0a53ab31a494818a1eed08755e6", null ],
     [ "getService", "classLoggerFetchCommand.html#a42654138dfb822007275146802a2c26f", null ],
     [ "metadataRead", "classLoggerFetchCommand.html#ad77b93a8a2ccad9ee9aaacd67f49689e", null ],
     [ "outputSamples", "classLoggerFetchCommand.html#a2f093386853fc6667de091a0e921a665", null ],

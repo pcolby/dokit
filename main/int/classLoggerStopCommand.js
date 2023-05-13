@@ -1,6 +1,6 @@
 var classLoggerStopCommand =
 [
-    [ "LoggerStopCommand", "classLoggerStopCommand.html#ae924b0358409426ccd5605e4524b26dc", null ],
+    [ "LoggerStopCommand", "classLoggerStopCommand.html#ab2606cc5cdb22d6015dd814371ba89ae", null ],
     [ "getService", "classLoggerStopCommand.html#a299a08c063c3a5274e4b9df3ae4b8861", null ],
     [ "serviceDetailsDiscovered", "classLoggerStopCommand.html#a6e1d2dd8ccd4dafacea51c63f4725d7e", null ],
     [ "settingsWritten", "classLoggerStopCommand.html#a0fc328ff975018ca87c14c38a56a2412", null ],
