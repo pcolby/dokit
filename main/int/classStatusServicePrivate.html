@@ -839,7 +839,7 @@ Here is the caller graph for this function:</div>
 
 <p>Parses the <code>Status</code> <em>value</em> into Statu struct. </p>
 <p>Note, not all Pokit devices support all members in Status. Specifically, the batteryStatus member is not usually set by Pokit Meter devices, so will be an invlalid BatteryStatus enum value (<code>255</code>) in that case. </p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000006">Pokit Bluetooth API errata:</a></b></dt><dd>Pokit API 0.02 says the <code>Status</code> characteristic is 5 bytes. API 1.00 then added an additional byte for <code>Battery Status</code>, for 6 bytes in total. However, Pokit Pro devices return 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit Meter only uses the first 5 bytes - ie <code>Battery Status</code> is not present. </dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000011">Pokit Bluetooth API errata:</a></b></dt><dd>Pokit API 0.02 says the <code>Status</code> characteristic is 5 bytes. API 1.00 then added an additional byte for <code>Battery Status</code>, for 6 bytes in total. However, Pokit Pro devices return 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit Meter only uses the first 5 bytes - ie <code>Battery Status</code> is not present. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00420">420</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  421</span>{</div>
