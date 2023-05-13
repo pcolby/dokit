@@ -137,4 +137,37 @@ void TestPokitMeter::maxValue_Voltage()
     QCOMPARE(maxValue(range), expected);
 }
 
+void TestPokitMeter::operatorPlus_Current_data()
+{
+    maxValue_Current_data(); // Either of the *_Current_data() providers would do.
+}
+
+void TestPokitMeter::operatorPlus_Current()
+{
+    QFETCH(PokitMeter::CurrentRange, range);
+    QCOMPARE(+range, static_cast<quint8>(range));
+}
+
+void TestPokitMeter::operatorPlus_Resistance_data()
+{
+    maxValue_Resistance_data(); // Either of the *_Resistance_data() providers would do.
+}
+
+void TestPokitMeter::operatorPlus_Resistance()
+{
+    QFETCH(PokitMeter::ResistanceRange, range);
+    QCOMPARE(+range, static_cast<quint8>(range));
+}
+
+void TestPokitMeter::operatorPlus_Voltage_data()
+{
+    maxValue_Voltage_data(); // Either of the *_Voltage_data() providers would do.
+}
+
+void TestPokitMeter::operatorPlus_Voltage()
+{
+    QFETCH(PokitMeter::VoltageRange, range);
+    QCOMPARE(+range, static_cast<quint8>(range));
+}
+
 QTEST_MAIN(TestPokitMeter)

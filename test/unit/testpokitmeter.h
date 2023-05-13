@@ -25,4 +25,13 @@ private slots:
 
     void maxValue_Voltage_data();
     void maxValue_Voltage();
+
+    void operatorPlus_Current_data();
+    void operatorPlus_Current();
+
+    void operatorPlus_Resistance_data();
+    void operatorPlus_Resistance();
+
+    void operatorPlus_Voltage_data();
+    void operatorPlus_Voltage();
 };

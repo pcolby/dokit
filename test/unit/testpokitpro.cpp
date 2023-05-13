@@ -5,7 +5,6 @@
 
 #include <qtpokit/pokitpro.h>
 
-
 Q_DECLARE_METATYPE(PokitPro::CapacitanceRange)
 Q_DECLARE_METATYPE(PokitPro::CurrentRange)
 Q_DECLARE_METATYPE(PokitPro::ResistanceRange)
@@ -189,6 +188,50 @@ void TestPokitPro::maxValue_Voltage()
     QFETCH(PokitPro::VoltageRange, range);
     QFETCH(QVariant, expected);
     QCOMPARE(maxValue(range), expected);
+}
+
+void TestPokitPro::operatorPlus_Capacitance_data()
+{
+    maxValue_Capacitance_data(); // Either of the *_Capacitance_data() providers would do.
+}
+
+void TestPokitPro::operatorPlus_Capacitance()
+{
+    QFETCH(PokitPro::CapacitanceRange, range);
+    QCOMPARE(+range, static_cast<quint8>(range));
+}
+
+void TestPokitPro::operatorPlus_Current_data()
+{
+    maxValue_Current_data(); // Either of the *_Current_data() providers would do.
+}
+
+void TestPokitPro::operatorPlus_Current()
+{
+    QFETCH(PokitPro::CurrentRange, range);
+    QCOMPARE(+range, static_cast<quint8>(range));
+}
+
+void TestPokitPro::operatorPlus_Resistance_data()
+{
+    maxValue_Resistance_data(); // Either of the *_Resistance_data() providers would do.
+}
+
+void TestPokitPro::operatorPlus_Resistance()
+{
+    QFETCH(PokitPro::ResistanceRange, range);
+    QCOMPARE(+range, static_cast<quint8>(range));
+}
+
+void TestPokitPro::operatorPlus_Voltage_data()
+{
+    maxValue_Voltage_data(); // Either of the *_Voltage_data() providers would do.
+}
+
+void TestPokitPro::operatorPlus_Voltage()
+{
+    QFETCH(PokitPro::VoltageRange, range);
+    QCOMPARE(+range, static_cast<quint8>(range));
 }
 
 QTEST_MAIN(TestPokitPro)
