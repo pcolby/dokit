@@ -84,7 +84,7 @@
 <a name="22"><span class="lineNum">      22 </span>            :         Text, ///&lt; Plain unstructured text.</a>
 <a name="23"><span class="lineNum">      23 </span>            :     };</a>
 <a name="24"><span class="lineNum">      24 </span>            : </a>
-<a name="25"><span class="lineNum">      25 </span>            :     explicit AbstractCommand(QObject * const parent);</a>
+<a name="25"><span class="lineNum">      25 </span>            :     explicit AbstractCommand(QObject * const parent = nullptr);</a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
 <a name="27"><span class="lineNum">      27 </span>            :     virtual QStringList requiredOptions(const QCommandLineParser &amp;parser) const;</a>
 <a name="28"><span class="lineNum">      28 </span>            :     virtual QStringList supportedOptions(const QCommandLineParser &amp;parser) const;</a>
@@ -104,7 +104,7 @@
 <a name="42"><span class="lineNum">      42 </span>            :     QString deviceToScanFor; ///&lt; Device (if any) that were passed to processOptions().</a>
 <a name="43"><span class="lineNum">      43 </span>            :     PokitDiscoveryAgent * discoveryAgent; ///&lt; Agent for Pokit device descovery.</a>
 <a name="44"><span class="lineNum">      44 </span>            :     OutputFormat format { OutputFormat::Text }; ///&lt; Selected output format.</a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">      28154 :     static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">      28022 :     static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
 <a name="47"><span class="lineNum">      47 </span>            : protected slots:</a>
 <a name="48"><span class="lineNum">      48 </span>            :     virtual void deviceDiscovered(const QBluetoothDeviceInfo &amp;info) = 0;</a>

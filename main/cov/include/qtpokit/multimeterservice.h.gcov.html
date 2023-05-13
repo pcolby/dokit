@@ -31,9 +31,9 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryMed">75.0 %</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -83,7 +83,7 @@
 <a name="21"><span class="lineNum">      21 </span>            : </a>
 <a name="22"><span class="lineNum">      22 </span>            : class QTPOKIT_EXPORT MultimeterService : public AbstractPokitService</a>
 <a name="23"><span class="lineNum">      23 </span>            : {</a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">       2808 :     Q_OBJECT</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">       1656 :     Q_OBJECT</span></a>
 <a name="25"><span class="lineNum">      25 </span>            : </a>
 <a name="26"><span class="lineNum">      26 </span>            : public:</a>
 <a name="27"><span class="lineNum">      27 </span>            :     static const QBluetoothUuid serviceUuid;</a>
@@ -103,125 +103,70 @@
 <a name="41"><span class="lineNum">      41 </span>            :         Diode       = 6, ///&lt; Measure diode.</a>
 <a name="42"><span class="lineNum">      42 </span>            :         Continuity  = 7, ///&lt; Measure continuity.</a>
 <a name="43"><span class="lineNum">      43 </span>            :         Temperature = 8, ///&lt; Measure temperature.</a>
-<a name="44"><span class="lineNum">      44 </span>            :         /// \todo Pokit Pro supports capacitance too.</a>
-<a name="45"><span class="lineNum">      45 </span>            :     };</a>
-<a name="46"><span class="lineNum">      46 </span>            :     static QString toString(const Mode &amp;mode);</a>
-<a name="47"><span class="lineNum">      47 </span>            : </a>
-<a name="48"><span class="lineNum">      48 </span>            :     enum class VoltageRange : quint8 {</a>
-<a name="49"><span class="lineNum">      49 </span>            :         _0_to_300mV  = 0,  ///&lt; 0 to 300mV.</a>
-<a name="50"><span class="lineNum">      50 </span>            :         _300mV_to_2V = 1,  ///&lt; 300mV to 2V.</a>
-<a name="51"><span class="lineNum">      51 </span>            :         _2V_to_6V    = 2,  ///&lt; 2V to 6V.</a>
-<a name="52"><span class="lineNum">      52 </span>            :         _6V_to_12V   = 3,  ///&lt; 6V to 12V.</a>
-<a name="53"><span class="lineNum">      53 </span>            :         _12V_to_30V  = 4,  ///&lt; 12V to 30V.</a>
-<a name="54"><span class="lineNum">      54 </span>            :         _30V_to_60V  = 5,  ///&lt; 30V to 60V.</a>
-<a name="55"><span class="lineNum">      55 </span>            :         /// \todo Pokit Pro supports up to 600V.</a>
-<a name="56"><span class="lineNum">      56 </span>            :         AutoRange    = 255 ///&lt; Auto-range.</a>
-<a name="57"><span class="lineNum">      57 </span>            :     };</a>
-<a name="58"><span class="lineNum">      58 </span>            :     static QString toString(const VoltageRange &amp;range);</a>
-<a name="59"><span class="lineNum">      59 </span>            :     static QVariant minValue(const VoltageRange &amp;range);</a>
-<a name="60"><span class="lineNum">      60 </span>            :     static QVariant maxValue(const VoltageRange &amp;range);</a>
-<a name="61"><span class="lineNum">      61 </span>            : </a>
-<a name="62"><span class="lineNum">      62 </span>            :     enum class CurrentRange : quint8 {</a>
-<a name="63"><span class="lineNum">      63 </span>            :         _0_to_10mA      = 0,  ///&lt; 0 to 10mA.</a>
-<a name="64"><span class="lineNum">      64 </span>            :         _10mA_to_30mA   = 1,  ///&lt; 10mA to 30mA.</a>
-<a name="65"><span class="lineNum">      65 </span>            :         _30mA_to_150mA  = 2,  ///&lt; 30mA to 150mA.</a>
-<a name="66"><span class="lineNum">      66 </span>            :         _150mA_to_300mA = 3,  ///&lt; 150mA to 300mA.</a>
-<a name="67"><span class="lineNum">      67 </span>            :         _300mA_to_3A    = 4,  ///&lt; 300mA to 3A.</a>
-<a name="68"><span class="lineNum">      68 </span>            :         /// \todo Pokit Pro supports up to 10A.</a>
-<a name="69"><span class="lineNum">      69 </span>            :         AutoRange       = 255 ///&lt; Auto-range.</a>
-<a name="70"><span class="lineNum">      70 </span>            :     };</a>
-<a name="71"><span class="lineNum">      71 </span>            :     static QString toString(const CurrentRange &amp;range);</a>
-<a name="72"><span class="lineNum">      72 </span>            :     static QVariant minValue(const CurrentRange &amp;range);</a>
-<a name="73"><span class="lineNum">      73 </span>            :     static QVariant maxValue(const CurrentRange &amp;range);</a>
-<a name="74"><span class="lineNum">      74 </span>            : </a>
-<a name="75"><span class="lineNum">      75 </span>            :     enum class ResistanceRange : quint8 {</a>
-<a name="76"><span class="lineNum">      76 </span>            :         _0_to_160     = 0,  ///&lt; 0 to 160 ohms.</a>
-<a name="77"><span class="lineNum">      77 </span>            :         _160_to_330   = 1,  ///&lt; 160 to 330 ohms.</a>
-<a name="78"><span class="lineNum">      78 </span>            :         _330_to_890   = 2,  ///&lt; 330 to 890 ohms.</a>
-<a name="79"><span class="lineNum">      79 </span>            :         _890_to_1K5   = 3,  ///&lt; 890 to 1.5K ohms.</a>
-<a name="80"><span class="lineNum">      80 </span>            :         _1K5_to_10K   = 4,  ///&lt; 1.5K to 10K ohms.</a>
-<a name="81"><span class="lineNum">      81 </span>            :         _10K_to_100K  = 5,  ///&lt; 10K to 100K ohms.</a>
-<a name="82"><span class="lineNum">      82 </span>            :         _100K_to_470K = 6,  ///&lt; 100K to 470K ohms.</a>
-<a name="83"><span class="lineNum">      83 </span>            :         _470K_to_1M   = 7,  ///&lt; 470K to 1M ohms.</a>
-<a name="84"><span class="lineNum">      84 </span>            :         /// \todo Pokit Pro supports up to 3M ohms.</a>
-<a name="85"><span class="lineNum">      85 </span>            :         AutoRange     = 255 ///&lt; Auto-range.</a>
-<a name="86"><span class="lineNum">      86 </span>            :     };</a>
-<a name="87"><span class="lineNum">      87 </span>            :     static QString toString(const ResistanceRange &amp;range);</a>
-<a name="88"><span class="lineNum">      88 </span>            :     static QVariant minValue(const ResistanceRange &amp;range);</a>
-<a name="89"><span class="lineNum">      89 </span>            :     static QVariant maxValue(const ResistanceRange &amp;range);</a>
-<a name="90"><span class="lineNum">      90 </span>            : </a>
-<a name="91"><span class="lineNum">      91 </span>            :     union QTPOKIT_EXPORT Range {</a>
-<a name="92"><span class="lineNum">      92 </span>            :         VoltageRange voltageRange;       ///&lt; Range when in AC/DC voltage mode.</a>
-<a name="93"><span class="lineNum">      93 </span>            :         CurrentRange currentRange;       ///&lt; Range when in AC/DC current mode.</a>
-<a name="94"><span class="lineNum">      94 </span>            :         ResistanceRange resistanceRange; ///&lt; Range when in resistance mode.</a>
-<a name="95"><span class="lineNum">      95 </span>            :         Range();</a>
-<a name="96"><span class="lineNum">      96 </span>            :         Range(const VoltageRange range);</a>
-<a name="97"><span class="lineNum">      97 </span>            :         Range(const CurrentRange range);</a>
-<a name="98"><span class="lineNum">      98 </span>            :         Range(const ResistanceRange range);</a>
-<a name="99"><span class="lineNum">      99 </span>            :     };</a>
-<a name="100"><span class="lineNum">     100 </span>            :     static QString toString(const Range &amp;range, const Mode &amp;mode);</a>
-<a name="101"><span class="lineNum">     101 </span>            : </a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 :     struct Settings {</span></a>
-<a name="103"><span class="lineNum">     103 </span>            :         Mode mode;              ///&lt; Desired operation mode.</a>
-<a name="104"><span class="lineNum">     104 </span>            :         Range range;            ///&lt; Desired range.</a>
-<a name="105"><span class="lineNum">     105 </span>            :         quint32 updateInterval; ///&lt; Desired update interval in milliseconds.</a>
-<a name="106"><span class="lineNum">     106 </span>            :     };</a>
-<a name="107"><span class="lineNum">     107 </span>            : </a>
-<a name="108"><span class="lineNum">     108 </span>            :     enum class MeterStatus : quint8 {</a>
-<a name="109"><span class="lineNum">     109 </span>            :         AutoRangeOff = 0,  ///&lt; Auto-range is disabled (voltage, current and resistance modes only).</a>
-<a name="110"><span class="lineNum">     110 </span>            :         AutoRangeOn  = 1,  ///&lt; Auto-range is enabled (voltage, current and resistance modes only).</a>
-<a name="111"><span class="lineNum">     111 </span>            :         NoContinuity = 0,  ///&lt; No continuity (continuity mode only).</a>
-<a name="112"><span class="lineNum">     112 </span>            :         Continuity   = 1,  ///&lt; Continuity (continuity mode only).</a>
-<a name="113"><span class="lineNum">     113 </span>            :         Ok           = 0,  ///&lt; Ok (temperature and diode modes only).</a>
-<a name="114"><span class="lineNum">     114 </span>            :         Error        = 255 ///&lt; Error (all modes).</a>
-<a name="115"><span class="lineNum">     115 </span>            :     };</a>
-<a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         54 :     struct Reading {</span></a>
-<a name="118"><span class="lineNum">     118 </span>            :         MeterStatus status; ///&lt; Current multimeter status.</a>
-<a name="119"><span class="lineNum">     119 </span>            :         float value;        ///&lt; Last acquired value.</a>
-<a name="120"><span class="lineNum">     120 </span>            :         Mode mode;          ///&lt; Current operation mode.</a>
-<a name="121"><span class="lineNum">     121 </span>            :         Range range;        ///&lt; Current range.</a>
-<a name="122"><span class="lineNum">     122 </span>            :     };</a>
-<a name="123"><span class="lineNum">     123 </span>            : </a>
-<a name="124"><span class="lineNum">     124 </span>            :     MultimeterService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</a>
-<a name="125"><span class="lineNum">     125 </span>            :     ~MultimeterService() override;</a>
-<a name="126"><span class="lineNum">     126 </span>            : </a>
-<a name="127"><span class="lineNum">     127 </span>            :     bool readCharacteristics() override;</a>
-<a name="128"><span class="lineNum">     128 </span>            :     bool readReadingCharacteristic();</a>
-<a name="129"><span class="lineNum">     129 </span>            : </a>
-<a name="130"><span class="lineNum">     130 </span>            :     // Settings characteristic (BLE write only).</a>
-<a name="131"><span class="lineNum">     131 </span>            :     bool setSettings(const Settings &amp;settings);</a>
-<a name="132"><span class="lineNum">     132 </span>            : </a>
-<a name="133"><span class="lineNum">     133 </span>            :     // Reading characteristic (BLE read/notify).</a>
-<a name="134"><span class="lineNum">     134 </span>            :     Reading reading() const;</a>
-<a name="135"><span class="lineNum">     135 </span>            :     bool enableReadingNotifications();</a>
-<a name="136"><span class="lineNum">     136 </span>            :     bool disableReadingNotifications();</a>
-<a name="137"><span class="lineNum">     137 </span>            : </a>
-<a name="138"><span class="lineNum">     138 </span>            : signals:</a>
-<a name="139"><span class="lineNum">     139 </span>            :     void settingsWritten();</a>
-<a name="140"><span class="lineNum">     140 </span>            :     void readingRead(const MultimeterService::Reading &amp;reading);</a>
-<a name="141"><span class="lineNum">     141 </span>            : </a>
-<a name="142"><span class="lineNum">     142 </span>            : protected:</a>
-<a name="143"><span class="lineNum">     143 </span>            :     /// \cond internal</a>
-<a name="144"><span class="lineNum">     144 </span>            :     MultimeterService(MultimeterServicePrivate * const d, QObject * const parent);</a>
-<a name="145"><span class="lineNum">     145 </span>            :     /// \endcond</a>
-<a name="146"><span class="lineNum">     146 </span>            : </a>
-<a name="147"><span class="lineNum">     147 </span>            : private:</a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">        162 :     Q_DECLARE_PRIVATE(MultimeterService)</span></a>
-<a name="149"><span class="lineNum">     149 </span>            :     Q_DISABLE_COPY(MultimeterService)</a>
-<a name="150"><span class="lineNum">     150 </span>            :     friend class TestMultimeterService;</a>
-<a name="151"><span class="lineNum">     151 </span>            : };</a>
-<a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span>            : QTPOKIT_EXPORT bool operator==(const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs);</a>
-<a name="154"><span class="lineNum">     154 </span>            : QTPOKIT_EXPORT bool operator!=(const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs);</a>
-<a name="155"><span class="lineNum">     155 </span>            : QTPOKIT_EXPORT bool operator&lt; (const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs);</a>
-<a name="156"><span class="lineNum">     156 </span>            : QTPOKIT_EXPORT bool operator&gt; (const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs);</a>
-<a name="157"><span class="lineNum">     157 </span>            : QTPOKIT_EXPORT bool operator&lt;=(const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs);</a>
-<a name="158"><span class="lineNum">     158 </span>            : QTPOKIT_EXPORT bool operator&gt;=(const MultimeterService::Range &amp;lhs, const MultimeterService::Range &amp;rhs);</a>
-<a name="159"><span class="lineNum">     159 </span>            : </a>
-<a name="160"><span class="lineNum">     160 </span>            : QTPOKIT_END_NAMESPACE</a>
-<a name="161"><span class="lineNum">     161 </span>            : </a>
-<a name="162"><span class="lineNum">     162 </span>            : #endif // QTPOKIT_MULTIMETERSERVICE_H</a>
+<a name="44"><span class="lineNum">      44 </span>            :         Capacitance = 9, ///&lt; Measure capacitance.</a>
+<a name="45"><span class="lineNum">      45 </span>            :         ExternalTemperature = 10, ///&lt; Measure temperature via an external temperature probe.</a>
+<a name="46"><span class="lineNum">      46 </span>            :     };</a>
+<a name="47"><span class="lineNum">      47 </span>            :     static QString toString(const Mode &amp;mode);</a>
+<a name="48"><span class="lineNum">      48 </span>            : </a>
+<a name="49"><span class="lineNum">      49 </span>            :     static QString toString(const PokitProduct product, const quint8 range, const Mode mode);</a>
+<a name="50"><span class="lineNum">      50 </span>            :     QString toString(const quint8 range, const Mode mode) const;</a>
+<a name="51"><span class="lineNum">      51 </span>            :     static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode);</a>
+<a name="52"><span class="lineNum">      52 </span>            :     QVariant maxValue(const quint8 range, const Mode mode) const;</a>
+<a name="53"><span class="lineNum">      53 </span>            : </a>
+<a name="54"><span class="lineNum">      54 </span>            :     struct Settings {</a>
+<a name="55"><span class="lineNum">      55 </span>            :         Mode mode;              ///&lt; Desired operation mode.</a>
+<a name="56"><span class="lineNum">      56 </span>            :         quint8 range;           ///&lt; Desired range.</a>
+<a name="57"><span class="lineNum">      57 </span>            :         quint32 updateInterval; ///&lt; Desired update interval in milliseconds.</a>
+<a name="58"><span class="lineNum">      58 </span>            :     };</a>
+<a name="59"><span class="lineNum">      59 </span>            : </a>
+<a name="60"><span class="lineNum">      60 </span>            :     enum class MeterStatus : quint8 {</a>
+<a name="61"><span class="lineNum">      61 </span>            :         AutoRangeOff = 0,  ///&lt; Auto-range is disabled (voltage, current and resistance modes only).</a>
+<a name="62"><span class="lineNum">      62 </span>            :         AutoRangeOn  = 1,  ///&lt; Auto-range is enabled (voltage, current and resistance modes only).</a>
+<a name="63"><span class="lineNum">      63 </span>            :         NoContinuity = 0,  ///&lt; No continuity (continuity mode only).</a>
+<a name="64"><span class="lineNum">      64 </span>            :         Continuity   = 1,  ///&lt; Continuity (continuity mode only).</a>
+<a name="65"><span class="lineNum">      65 </span>            :         Ok           = 0,  ///&lt; Ok (temperature and diode modes only).</a>
+<a name="66"><span class="lineNum">      66 </span>            :         Error        = 255 ///&lt; Error (all modes).</a>
+<a name="67"><span class="lineNum">      67 </span>            :     };</a>
+<a name="68"><span class="lineNum">      68 </span>            : </a>
+<a name="69"><span class="lineNum">      69 </span>            :     struct Reading {</a>
+<a name="70"><span class="lineNum">      70 </span>            :         MeterStatus status; ///&lt; Current multimeter status.</a>
+<a name="71"><span class="lineNum">      71 </span>            :         float value;        ///&lt; Last acquired value.</a>
+<a name="72"><span class="lineNum">      72 </span>            :         Mode mode;          ///&lt; Current operation mode.</a>
+<a name="73"><span class="lineNum">      73 </span>            :         quint8 range;       ///&lt; Current range.</a>
+<a name="74"><span class="lineNum">      74 </span>            :     };</a>
+<a name="75"><span class="lineNum">      75 </span>            : </a>
+<a name="76"><span class="lineNum">      76 </span>            :     MultimeterService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</a>
+<a name="77"><span class="lineNum">      77 </span>            :     ~MultimeterService() override;</a>
+<a name="78"><span class="lineNum">      78 </span>            : </a>
+<a name="79"><span class="lineNum">      79 </span>            :     bool readCharacteristics() override;</a>
+<a name="80"><span class="lineNum">      80 </span>            :     bool readReadingCharacteristic();</a>
+<a name="81"><span class="lineNum">      81 </span>            : </a>
+<a name="82"><span class="lineNum">      82 </span>            :     // Settings characteristic (BLE write only).</a>
+<a name="83"><span class="lineNum">      83 </span>            :     bool setSettings(const Settings &amp;settings);</a>
+<a name="84"><span class="lineNum">      84 </span>            : </a>
+<a name="85"><span class="lineNum">      85 </span>            :     // Reading characteristic (BLE read/notify).</a>
+<a name="86"><span class="lineNum">      86 </span>            :     Reading reading() const;</a>
+<a name="87"><span class="lineNum">      87 </span>            :     bool enableReadingNotifications();</a>
+<a name="88"><span class="lineNum">      88 </span>            :     bool disableReadingNotifications();</a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<a name="90"><span class="lineNum">      90 </span>            : signals:</a>
+<a name="91"><span class="lineNum">      91 </span>            :     void settingsWritten();</a>
+<a name="92"><span class="lineNum">      92 </span>            :     void readingRead(const MultimeterService::Reading &amp;reading);</a>
+<a name="93"><span class="lineNum">      93 </span>            : </a>
+<a name="94"><span class="lineNum">      94 </span>            : protected:</a>
+<a name="95"><span class="lineNum">      95 </span>            :     /// \cond internal</a>
+<a name="96"><span class="lineNum">      96 </span>            :     MultimeterService(MultimeterServicePrivate * const d, QObject * const parent);</a>
+<a name="97"><span class="lineNum">      97 </span>            :     /// \endcond</a>
+<a name="98"><span class="lineNum">      98 </span>            : </a>
+<a name="99"><span class="lineNum">      99 </span>            : private:</a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">        162 :     Q_DECLARE_PRIVATE(MultimeterService)</span></a>
+<a name="101"><span class="lineNum">     101 </span>            :     Q_DISABLE_COPY(MultimeterService)</a>
+<a name="102"><span class="lineNum">     102 </span>            :     friend class TestMultimeterService;</a>
+<a name="103"><span class="lineNum">     103 </span>            : };</a>
+<a name="104"><span class="lineNum">     104 </span>            : </a>
+<a name="105"><span class="lineNum">     105 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="106"><span class="lineNum">     106 </span>            : </a>
+<a name="107"><span class="lineNum">     107 </span>            : #endif // QTPOKIT_MULTIMETERSERVICE_H</a>
 </pre>
       </td>
     </tr>
