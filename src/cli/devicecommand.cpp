@@ -60,9 +60,29 @@ if (value <= ns::maxValue(label).toUInt()) { \
         return label; \
 }
 
-/*!
- * Returns the lowest \a mode range that can measure at least up to \a maxValue, or AutoRange if no such range is
+/**
+ * \fn template<typename T> static T DeviceCommand::minRange(const quint32 maxValue)
+ *
+ * Returns the lowest \a T range that can measure at least up to \a maxValue, or AutoRange if no such range is
  * available.
+ *
+ * \tparam T Range enumerator to evaluate ranges for. Must be one of:
+ *   * PokitMeter::CurrentRange
+ *   * PokitMeter::ResistanceRange
+ *   * PokitMeter::VoltageRange
+ *   * PokitPro::CapacitanceRange
+ *   * PokitPro::CurrentRange
+ *   * PokitPro::ResistanceRange
+ *   * PokitPro::VoltageRange
+ *
+ * \cond Doxygen has "only very limited support for member specialization at the moment", so hide these from Doxygen.
+ * Specifically, if we don't hide them, then Doxygen (at least the current version: v1.9.6) sees the following
+ * specialisations as new, public, non-static members.
+ */
+
+/*!
+ * Returns the lowest PokitMeter::CurrentRange value that can measure at least up to \a maxValue, or AutoRange if
+ * the Pokit Meter cannot measure as high as \a maxValue.
  */
 template<> PokitMeter::CurrentRange DeviceCommand::minRange(const quint32 maxValue)
 {
@@ -75,6 +95,10 @@ template<> PokitMeter::CurrentRange DeviceCommand::minRange(const quint32 maxVal
     return PokitMeter::CurrentRange::AutoRange;
 }
 
+/*!
+ * Returns the lowest PokitMeter::ResistanceRange value that can measure at least up to \a maxValue, or AutoRange if
+ * the Pokit Meter cannot measure as high as \a maxValue.
+ */
 template<> PokitMeter::ResistanceRange DeviceCommand::minRange(const quint32 maxValue)
 {
     if (maxValue == 0) return PokitMeter::ResistanceRange::AutoRange;
@@ -89,7 +113,11 @@ template<> PokitMeter::ResistanceRange DeviceCommand::minRange(const quint32 max
     return PokitMeter::ResistanceRange::AutoRange;
 }
 
-template<> PokitMeter::VoltageRange    DeviceCommand::minRange(const quint32 maxValue)
+/*!
+ * Returns the lowest PokitMeter::VoltageRange value that can measure at least up to \a maxValue, or AutoRange if
+ * the Pokit Meter cannot measure as high as \a maxValue.
+ */
+template<> PokitMeter::VoltageRange DeviceCommand::minRange(const quint32 maxValue)
 {
     if (maxValue == 0) return PokitMeter::VoltageRange::AutoRange;
     DOKIT_CLI_IF_LESS_THAN_RETURN(maxValue, PokitMeter, PokitMeter::VoltageRange::_300mV)
@@ -101,6 +129,10 @@ template<> PokitMeter::VoltageRange    DeviceCommand::minRange(const quint32 max
     return PokitMeter::VoltageRange::AutoRange;
 }
 
+/*!
+ * Returns the lowest PokitPro::CapacitanceRange value that can measure at least up to \a maxValue, or AutoRange if
+ * the Pokit Pro cannot measure as high as \a maxValue.
+ */
 template<> PokitPro::CapacitanceRange DeviceCommand::minRange(const quint32 maxValue)
 {
     if (maxValue == 0) return PokitPro::CapacitanceRange::AutoRange;
@@ -110,6 +142,10 @@ template<> PokitPro::CapacitanceRange DeviceCommand::minRange(const quint32 maxV
     return PokitPro::CapacitanceRange::AutoRange;
 }
 
+/*!
+ * Returns the lowest PokitPro::CurrentRange value that can measure at least up to \a maxValue, or AutoRange if
+ * the Pokit Pro cannot measure as high as \a maxValue.
+ */
 template<> PokitPro::CurrentRange DeviceCommand::minRange(const quint32 maxValue)
 {
     if (maxValue == 0) return PokitPro::CurrentRange::AutoRange;
@@ -123,6 +159,10 @@ template<> PokitPro::CurrentRange DeviceCommand::minRange(const quint32 maxValue
     return PokitPro::CurrentRange::AutoRange;
 }
 
+/*!
+ * Returns the lowest PokitPro::ResistanceRange value that can measure at least up to \a maxValue, or AutoRange if
+ * the Pokit Pro cannot measure as high as \a maxValue.
+ */
 template<> PokitPro::ResistanceRange DeviceCommand::minRange(const quint32 maxValue)
 {
     if (maxValue == 0) return PokitPro::ResistanceRange::AutoRange;
@@ -139,6 +179,11 @@ template<> PokitPro::ResistanceRange DeviceCommand::minRange(const quint32 maxVa
     DOKIT_CLI_IF_LESS_THAN_RETURN(maxValue, PokitPro, PokitPro::ResistanceRange::_3M)
     return PokitPro::ResistanceRange::AutoRange;
 }
+
+/*!
+ * Returns the lowest PokitPro::VoltageRange value that can measure at least up to \a maxValue, or AutoRange if
+ * the Pokit Pro cannot measure as high as \a maxValue.
+ */
 template<> PokitPro::VoltageRange DeviceCommand::minRange(const quint32 maxValue)
 {
     if (maxValue == 0) return PokitPro::VoltageRange::AutoRange;
@@ -152,6 +197,8 @@ template<> PokitPro::VoltageRange DeviceCommand::minRange(const quint32 maxValue
     DOKIT_CLI_IF_LESS_THAN_RETURN(maxValue, PokitPro, PokitPro::VoltageRange::_600V)
     return PokitPro::VoltageRange::AutoRange;
 }
+
+/// \endcond
 
 /*!
  * Returns the \a product's lowest capacitance range that can measure at least up to \a maxValue, or AutoRange if no
@@ -213,7 +260,8 @@ quint8 DeviceCommand::minResistanceRange(const PokitProduct product, const quint
 }
 
 /*!
- * Returns the \a product's lowest voltage range that can measure at least up to \a maxValue, or AutoRange if no
+ t
+* Returns the \a product's lowest voltage range that can measure at least up to \a maxValue, or AutoRange if no
  * such range is available.
  *
  * \see DeviceCommand::minRange<PokitMeter::VoltageRange>(const quint32 maxValue)
