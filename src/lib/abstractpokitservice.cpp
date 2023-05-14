@@ -165,7 +165,7 @@ AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &s
             this->pokitProduct = ::pokitProduct(*controller);
         } else {
             qCWarning(lc).noquote() << tr("Controller does not appear to be a Pokit device");
-            qCDebug(lc) << tr("Controller services:") << controller->services();
+            qCDebug(lc) << "Controller services:" << controller->services();
         }
         connect(controller, &QLowEnergyController::connected,
                 this, &AbstractPokitServicePrivate::connected);
