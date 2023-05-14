@@ -246,9 +246,9 @@ void TestPokitProducts::toString_Current_data()
     // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::toString_* functions).
     // So here we just need to test that the right product's range is selected.
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-         << QStringLiteral("Up to 150mA");
+                                 << QStringLiteral("Up to 150mA");
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
-        << QStringLiteral("Up to 500μA");
+                               << QString::fromUtf8("Up to 500μA");
     QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QString();
 }
 
@@ -300,9 +300,9 @@ void TestPokitProducts::toString_Resistance_data()
     // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::toString_* functions).
     // So here we just need to test that the right product's range is selected.
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::ResistanceRange::_470K
-                                 << QStringLiteral("Up to 470KΩ");
+                                 << QString::fromUtf8("Up to 470KΩ");
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::ResistanceRange::_3M
-                               << QStringLiteral("Up to 3MΩ");
+                               << QString::fromUtf8("Up to 3MΩ");
     QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QString();
 }
 
