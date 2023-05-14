@@ -16,7 +16,7 @@
 #include <QCoreApplication>
 #include <QLoggingCategory>
 
-static Q_LOGGING_CATEGORY(lc, "dokit.gui.mainWindow", QtInfoMsg);
+static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products", QtInfoMsg); ///< Logging category for this file.
 
 QTPOKIT_BEGIN_NAMESPACE
 
