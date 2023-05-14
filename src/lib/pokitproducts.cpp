@@ -150,7 +150,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::CapacitanceRange>(range));
     }
-    return QString();
+    return QVariant();
 }
 
 }
@@ -189,7 +189,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::CurrentRange>(range));
     }
-    return QString();
+    return QVariant();
 }
 
 }
@@ -229,7 +229,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::ResistanceRange>(range));
     }
-    return QString();
+    return QVariant();
 }
 
 }
@@ -269,7 +269,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::VoltageRange>(range));
     }
-    return QString();
+    return QVariant();
 }
 
 }
