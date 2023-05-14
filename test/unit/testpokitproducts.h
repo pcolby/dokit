@@ -20,14 +20,14 @@ private slots:
     void isPokitProduct_Uuids_data();
     void isPokitProduct_Uuids();
 
-    //void isPokitProduct_Controller_data();
-    //void isPokitProduct_Controller();
+    void isPokitProduct_Controller_data();
+    void isPokitProduct_Controller();
 
     void pokitProduct_Uuids_data();
     void pokitProduct_Uuids();
 
-    //void pokitProduct_Controller_data();
-    //void pokitProduct_Controller();
+    void pokitProduct_Controller_data();
+    void pokitProduct_Controller();
 
     void toString_Capacitance_data();
     void toString_Capacitance();

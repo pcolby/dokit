@@ -29,12 +29,18 @@ void TestPokitProducts::toString_PokitProduct_data()
 
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << QStringLiteral("Pokit Meter");
     QTest::addRow("Pokit Pro")   << PokitProduct::PokitPro   << QStringLiteral("Pokit Pro");
+    QTest::addRow("invalid")     << static_cast<PokitProduct>(200) << QString();
 }
 
 void TestPokitProducts::toString_PokitProduct()
 {
     QFETCH(PokitProduct, product);
     QFETCH(QString, expected);
+
+    if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(toString(product), expected);
 }
 
@@ -71,6 +77,7 @@ void TestPokitProducts::pokitProduct_data()
     QTest::addRow("Pokit Pro")   << QBluetoothUuid(POKIT_PRO_STATUS_SERVICE_UUID)   << PokitProduct::PokitPro;
     QTest::addRow("pokitMeter")  << StatusService::ServiceUuids::pokitMeter         << PokitProduct::PokitMeter;
     QTest::addRow("pokitPro")    << StatusService::ServiceUuids::pokitPro           << PokitProduct::PokitPro;
+    QTest::addRow("invalid")     << QBluetoothUuid()                                << PokitProduct::PokitMeter;
 }
 
 void TestPokitProducts::pokitProduct()
@@ -81,6 +88,9 @@ void TestPokitProducts::pokitProduct()
     QBluetoothDeviceInfo info;
     QVERIFY(!::isPokitProduct(info));
     info.setServiceUuids({ uuid } DATA_COMPLETENESS);
+    if (uuid.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, "Device is not a Pokit product");
+    }
     QVERIFY(::pokitProduct(info) == expected);
 }
 
@@ -98,30 +108,31 @@ void TestPokitProducts::isPokitProduct_Uuids()
     QCOMPARE(::isPokitProduct(QList<QBluetoothUuid>{ uuid }), expected);
 }
 
-//void TestPokitProducts::isPokitProduct_Controller_data()
-//{
-//    isPokitProduct_data();
-//}
+void TestPokitProducts::isPokitProduct_Controller_data()
+{
+    isPokitProduct_data();
+}
 
-//void TestPokitProducts::isPokitProduct_Controller()
-//{
+void TestPokitProducts::isPokitProduct_Controller()
+{
+    QFETCH(QBluetoothUuid, uuid);
+    QFETCH(bool, expected);
+
+    QBluetoothDeviceInfo info;
+    QLowEnergyController * controller = QLowEnergyController::createCentral(info);
+    QVERIFY(!::isPokitProduct(*controller));
+    delete controller;
+
+    Q_UNUSED(uuid);
+    Q_UNUSED(expected);
 //    QSKIP("Cannot create a controller with our own service UUIDs");
-
-//    QFETCH(QBluetoothUuid, uuid);
-//    QFETCH(bool, expected);
-
-//    QBluetoothDeviceInfo info;
-//    QLowEnergyController * controller = QLowEnergyController::createCentral(info);
-//    QVERIFY(!::isPokitProduct(*controller));
-//    delete controller;
-
 //    info.setServiceUuids({ uuid } DATA_COMPLETENESS);
 //    qDebug() << info.serviceUuids(); /// Has our UUID.
 //    controller = QLowEnergyController::createCentral(info);
 //    qDebug() << controller->services(); ///< Always empty.
 //    QCOMPARE(::isPokitProduct(*controller), expected);
 //    delete controller;
-//}
+}
 
 void TestPokitProducts::pokitProduct_Uuids_data()
 {
@@ -133,29 +144,39 @@ void TestPokitProducts::pokitProduct_Uuids()
     QFETCH(QBluetoothUuid, uuid);
     QFETCH(PokitProduct, expected);
 
+    if (uuid.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, "Device is not a Pokit product");
+    }
+
     QVERIFY(::pokitProduct(QList<QBluetoothUuid>{uuid}) == expected);
 }
 
-//void TestPokitProducts::pokitProduct_Controller_data()
-//{
-//    pokitProduct_data();
-//}
+void TestPokitProducts::pokitProduct_Controller_data()
+{
+    pokitProduct_data();
+}
 
-//void TestPokitProducts::pokitProduct_Controller()
-//{
+void TestPokitProducts::pokitProduct_Controller()
+{
+    QFETCH(QBluetoothUuid, uuid);
+    QFETCH(PokitProduct, expected);
+
+    QBluetoothDeviceInfo info;
+    QLowEnergyController * controller = QLowEnergyController::createCentral(info);
+    QTest::ignoreMessage(QtWarningMsg, "Device is not a Pokit product");
+    QVERIFY(::pokitProduct(*controller) == PokitProduct::PokitMeter);
+    delete controller;
+
+    Q_UNUSED(uuid);
+    Q_UNUSED(expected);
 //    QSKIP("Cannot create a controller with our own service UUIDs");
-
-//    QFETCH(QBluetoothUuid, uuid);
-//    QFETCH(PokitProduct, expected);
-
-//    QBluetoothDeviceInfo info;
 //    info.setServiceUuids({ uuid } DATA_COMPLETENESS);
 //    qDebug() << info.serviceUuids(); /// Has our UUID.
-//    QLowEnergyController * controller = QLowEnergyController::createCentral(info);
+//    controller = QLowEnergyController::createCentral(info);
 //    qDebug() << controller->services(); ///< Always empty.
 //    QVERIFY(::pokitProduct(*controller) == expected);
 //    delete controller;
-//}
+}
 
 void TestPokitProducts::toString_Capacitance_data()
 {
@@ -165,8 +186,10 @@ void TestPokitProducts::toString_Capacitance_data()
 
     // We don't need to test exhaustively here - that's done by TestPokitPro::toString_* functions).
     // So here we just need to test that the right product's range is selected.
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << (quint8)0 << QString();
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CapacitanceRange::_100nF
                                << QStringLiteral("Up to 100nF");
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QString();
 }
 
 void TestPokitProducts::toString_Capacitance()
@@ -174,6 +197,13 @@ void TestPokitProducts::toString_Capacitance()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(QString, expected);
+
+    if (product == PokitProduct::PokitMeter) {
+        QTest::ignoreMessage(QtWarningMsg, "Pokit Meter has no capacitance support");
+    } else if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(CapacitanceRange::toString(product, range), expected);
 }
 
@@ -185,7 +215,9 @@ void TestPokitProducts::maxValue_Capacitance_data()
 
     // We don't need to test exhaustively here - that's done by TestPokitPro::maxValue_* functions).
     // So here we just need to test that the right product's range is selected.
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << (quint8)0 << QVariant();
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CapacitanceRange::_100nF << QVariant(100);
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QVariant();
 }
 
 void TestPokitProducts::maxValue_Capacitance()
@@ -193,6 +225,13 @@ void TestPokitProducts::maxValue_Capacitance()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(QVariant, expected);
+
+    if (product == PokitProduct::PokitMeter) {
+        QTest::ignoreMessage(QtWarningMsg, "Pokit Meter has no capacitance support");
+    } else if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(CapacitanceRange::maxValue(product, range), expected);
 }
 
@@ -208,6 +247,7 @@ void TestPokitProducts::toString_Current_data()
          << QStringLiteral("Up to 150mA");
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
         << QStringLiteral("Up to 500μA");
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QString();
 }
 
 void TestPokitProducts::toString_Current()
@@ -215,6 +255,11 @@ void TestPokitProducts::toString_Current()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(QString, expected);
+
+    if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(CurrentRange::toString(product, range), expected);
 }
 
@@ -228,6 +273,7 @@ void TestPokitProducts::maxValue_Current_data()
     // So here we just need to test that the right product's range is selected.
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA << QVariant(150000);
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA << QVariant(500);
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QVariant();
 }
 
 void TestPokitProducts::maxValue_Current()
@@ -235,6 +281,11 @@ void TestPokitProducts::maxValue_Current()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(QVariant, expected);
+
+    if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(CurrentRange::maxValue(product, range), expected);
 }
 
@@ -250,6 +301,7 @@ void TestPokitProducts::toString_Resistance_data()
                                  << QStringLiteral("Up to 470KΩ");
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::ResistanceRange::_3M
                                << QStringLiteral("Up to 3MΩ");
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QString();
 }
 
 void TestPokitProducts::toString_Resistance()
@@ -257,6 +309,11 @@ void TestPokitProducts::toString_Resistance()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(QString, expected);
+
+    if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(ResistanceRange::toString(product, range), expected);
 }
 
@@ -270,6 +327,7 @@ void TestPokitProducts::maxValue_Resistance_data()
     // So here we just need to test that the right product's range is selected.
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::ResistanceRange::_470K << QVariant(470000);
     QTest::addRow("Pokit Pro")   << PokitProduct::PokitPro << +PokitPro::ResistanceRange::_3M << QVariant(3000000);
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QVariant();
 }
 
 void TestPokitProducts::maxValue_Resistance()
@@ -277,6 +335,11 @@ void TestPokitProducts::maxValue_Resistance()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(QVariant, expected);
+
+    if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(ResistanceRange::maxValue(product, range), expected);
 }
 
@@ -292,6 +355,7 @@ void TestPokitProducts::toString_Voltage_data()
                                  << QStringLiteral("Up to 300mV");
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
                                << QStringLiteral("Up to 600V");
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QString();
 }
 
 void TestPokitProducts::toString_Voltage()
@@ -299,6 +363,11 @@ void TestPokitProducts::toString_Voltage()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(QString, expected);
+
+    if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(VoltageRange::toString(product, range), expected);
 }
 
@@ -312,6 +381,7 @@ void TestPokitProducts::maxValue_Voltage_data()
     // So here we just need to test that the right product's range is selected.
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV << QVariant(300);
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V << QVariant(600000);
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QVariant();
 }
 
 void TestPokitProducts::maxValue_Voltage()
@@ -319,6 +389,11 @@ void TestPokitProducts::maxValue_Voltage()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(QVariant, expected);
+
+    if (expected.isNull()) {
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+    }
+
     QCOMPARE(VoltageRange::maxValue(product, range), expected);
 }
 
