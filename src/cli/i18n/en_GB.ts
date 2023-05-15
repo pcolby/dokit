@@ -418,96 +418,96 @@ success
 <context>
     <name>MeterCommand</name>
     <message>
-        <location filename="../metercommand.cpp" line="75"/>
+        <location filename="../metercommand.cpp" line="77"/>
         <source>Unknown meter mode: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="84"/>
+        <location filename="../metercommand.cpp" line="86"/>
         <source>Invalid interval value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="124"/>
+        <location filename="../metercommand.cpp" line="121"/>
         <source>Ignoring range value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="133"/>
+        <location filename="../metercommand.cpp" line="130"/>
         <source>Invalid range value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="144"/>
+        <location filename="../metercommand.cpp" line="141"/>
         <source>Invalid samples value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="179"/>
+        <location filename="../metercommand.cpp" line="176"/>
         <source>Measuring %1, with range %2, every %L3ms.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="261"/>
+        <location filename="../metercommand.cpp" line="258"/>
         <source>mode,value,unit,status,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="204"/>
+        <location filename="../metercommand.cpp" line="201"/>
         <source>Settings written; starting meter readings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="228"/>
+        <location filename="../metercommand.cpp" line="225"/>
         <source>Auto Range On</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="228"/>
+        <location filename="../metercommand.cpp" line="225"/>
         <source>Auto Range Off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="232"/>
+        <location filename="../metercommand.cpp" line="229"/>
         <source>Continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="232"/>
+        <location filename="../metercommand.cpp" line="229"/>
         <source>No continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="237"/>
+        <location filename="../metercommand.cpp" line="234"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="272"/>
+        <location filename="../metercommand.cpp" line="269"/>
         <source>Infinity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="284"/>
+        <location filename="../metercommand.cpp" line="281"/>
         <source>Mode:   %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="286"/>
+        <location filename="../metercommand.cpp" line="283"/>
         <source>Value:  %1 %2
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="287"/>
+        <location filename="../metercommand.cpp" line="284"/>
         <source>Status: %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="289"/>
+        <location filename="../metercommand.cpp" line="286"/>
         <source>Range:  %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>

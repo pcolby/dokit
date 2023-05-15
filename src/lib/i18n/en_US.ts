@@ -120,11 +120,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="168"/>
-        <source>Controller services:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../abstractpokitservice.cpp" line="445"/>
         <source>Connected to &quot;%1&quot; (%2) at %3.</source>
         <translation type="unfinished"></translation>
@@ -183,6 +178,36 @@
     <message>
         <location filename="../calibrationservice.cpp" line="150"/>
         <source>Unknown characteristic written for Calibration service</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CapacitanceRange</name>
+    <message>
+        <location filename="../pokitproducts.cpp" line="144"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>toString</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitproducts.cpp" line="167"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>maxValue</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CurrentRange</name>
+    <message>
+        <location filename="../pokitproducts.cpp" line="190"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>toString</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitproducts.cpp" line="210"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>maxValue</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -449,57 +474,57 @@
 <context>
     <name>MultimeterService</name>
     <message>
-        <location filename="../multimeterservice.cpp" line="45"/>
+        <location filename="../multimeterservice.cpp" line="56"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="46"/>
+        <location filename="../multimeterservice.cpp" line="57"/>
         <source>DC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="47"/>
+        <location filename="../multimeterservice.cpp" line="58"/>
         <source>AC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="48"/>
+        <location filename="../multimeterservice.cpp" line="59"/>
         <source>DC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="49"/>
+        <location filename="../multimeterservice.cpp" line="60"/>
         <source>AC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="50"/>
+        <location filename="../multimeterservice.cpp" line="61"/>
         <source>Resistance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="51"/>
+        <location filename="../multimeterservice.cpp" line="62"/>
         <source>Diode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="52"/>
+        <location filename="../multimeterservice.cpp" line="63"/>
         <source>Continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="53"/>
+        <location filename="../multimeterservice.cpp" line="64"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="54"/>
+        <location filename="../multimeterservice.cpp" line="65"/>
         <source>Capacitance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="55"/>
+        <location filename="../multimeterservice.cpp" line="66"/>
         <source>External temperature</source>
         <translation type="unfinished"></translation>
     </message>
@@ -507,32 +532,32 @@
 <context>
     <name>MultimeterServicePrivate</name>
     <message>
-        <location filename="../multimeterservice.cpp" line="358"/>
+        <location filename="../multimeterservice.cpp" line="369"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="363"/>
+        <location filename="../multimeterservice.cpp" line="374"/>
         <source>Unknown characteristic read for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="383"/>
+        <location filename="../multimeterservice.cpp" line="394"/>
         <source>Reading characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="388"/>
+        <location filename="../multimeterservice.cpp" line="399"/>
         <source>Unknown characteristic written for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="403"/>
+        <location filename="../multimeterservice.cpp" line="414"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="413"/>
+        <location filename="../multimeterservice.cpp" line="424"/>
         <source>Unknown characteristic notified for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -871,225 +896,262 @@
 <context>
     <name>PokitPro</name>
     <message>
-        <location filename="../pokitpro.cpp" line="22"/>
+        <location filename="../pokitpro.cpp" line="30"/>
         <source>Up to 100nF</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="23"/>
+        <location filename="../pokitpro.cpp" line="31"/>
         <source>Up to 10μF</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="24"/>
+        <location filename="../pokitpro.cpp" line="32"/>
         <source>Up to 1mF</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="25"/>
+        <location filename="../pokitpro.cpp" line="33"/>
         <source>Auto-range</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="40"/>
+        <location filename="../pokitpro.cpp" line="48"/>
         <source>Auto</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="52"/>
+        <location filename="../pokitpro.cpp" line="68"/>
         <source>Up to 500μA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="53"/>
+        <location filename="../pokitpro.cpp" line="69"/>
         <source>Up to 2mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="54"/>
+        <location filename="../pokitpro.cpp" line="70"/>
         <source>Up to 10mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="55"/>
+        <location filename="../pokitpro.cpp" line="71"/>
         <source>Up to 125mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="56"/>
+        <location filename="../pokitpro.cpp" line="72"/>
         <source>Up to 300mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="57"/>
+        <location filename="../pokitpro.cpp" line="73"/>
         <source>Up to 3A</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="58"/>
+        <location filename="../pokitpro.cpp" line="74"/>
         <source>Up to 10A</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="59"/>
+        <location filename="../pokitpro.cpp" line="75"/>
         <source>Auto-range</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="78"/>
+        <location filename="../pokitpro.cpp" line="94"/>
         <source>Auto</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="90"/>
+        <location filename="../pokitpro.cpp" line="114"/>
         <source>Up to 30Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="91"/>
+        <location filename="../pokitpro.cpp" line="115"/>
         <source>Up to 75Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="92"/>
+        <location filename="../pokitpro.cpp" line="116"/>
         <source>Up to 400Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="93"/>
+        <location filename="../pokitpro.cpp" line="117"/>
         <source>Up to 5KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="94"/>
+        <location filename="../pokitpro.cpp" line="118"/>
         <source>Up to 10KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="95"/>
+        <location filename="../pokitpro.cpp" line="119"/>
         <source>Up to 15KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="96"/>
+        <location filename="../pokitpro.cpp" line="120"/>
         <source>Up to 40KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="97"/>
+        <location filename="../pokitpro.cpp" line="121"/>
         <source>Up to 500KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="98"/>
+        <location filename="../pokitpro.cpp" line="122"/>
         <source>Up to 700KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="99"/>
+        <location filename="../pokitpro.cpp" line="123"/>
         <source>Up to 1MΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="100"/>
+        <location filename="../pokitpro.cpp" line="124"/>
         <source>Up to 3MΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="101"/>
+        <location filename="../pokitpro.cpp" line="125"/>
         <source>Auto-range</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="124"/>
+        <location filename="../pokitpro.cpp" line="148"/>
         <source>Auto</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="136"/>
+        <location filename="../pokitpro.cpp" line="168"/>
         <source>Up to 250mV</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="137"/>
+        <location filename="../pokitpro.cpp" line="169"/>
         <source>Up to 2V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="138"/>
+        <location filename="../pokitpro.cpp" line="170"/>
         <source>Up to 10V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="139"/>
+        <location filename="../pokitpro.cpp" line="171"/>
         <source>Up to 30V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="140"/>
+        <location filename="../pokitpro.cpp" line="172"/>
         <source>Up to 60V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="141"/>
+        <location filename="../pokitpro.cpp" line="173"/>
         <source>Up to 125V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="142"/>
+        <location filename="../pokitpro.cpp" line="174"/>
         <source>Up to 400V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="143"/>
+        <location filename="../pokitpro.cpp" line="175"/>
         <source>Up to 600V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="144"/>
+        <location filename="../pokitpro.cpp" line="176"/>
         <source>Auto-range</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="164"/>
+        <location filename="../pokitpro.cpp" line="196"/>
         <source>Auto</source>
         <comment>VoltageRange</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PokitProducts</name>
+    <message>
+        <location filename="../pokitproducts.cpp" line="32"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>toString</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitproducts.cpp" line="103"/>
+        <source>Device is not a Pokit product</source>
+        <comment>pokitProduct</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitproducts.cpp" line="139"/>
+        <location filename="../pokitproducts.cpp" line="162"/>
+        <source>Pokit Meter has no capacitance support</source>
+        <comment>toString</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ResistanceRange</name>
+    <message>
+        <location filename="../pokitproducts.cpp" line="234"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>toString</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitproducts.cpp" line="254"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>maxValue</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1196,6 +1258,21 @@
     <message>
         <location filename="../statusservice.cpp" line="541"/>
         <source>Unknown characteristic written for Status service</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VoltageRange</name>
+    <message>
+        <location filename="../pokitproducts.cpp" line="278"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>toString</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitproducts.cpp" line="298"/>
+        <source>Unknown PokitProduct value: %1</source>
+        <comment>maxValue</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
