@@ -118,8 +118,6 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
             unit = QLatin1String("F");
             sensibleMinimum = 500; // pV.
             break;
-        case MultimeterService::Mode::ExternalTemperature:
-            break;
         default:
             qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
         }
