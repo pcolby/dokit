@@ -13,6 +13,7 @@
 Q_DECLARE_METATYPE(DataLoggerService::Mode)
 Q_DECLARE_METATYPE(DataLoggerService::Settings)
 Q_DECLARE_METATYPE(DataLoggerService::Metadata)
+Q_DECLARE_METATYPE(PokitProduct)
 
 void TestDataLoggerService::toString_Mode_data()
 {
