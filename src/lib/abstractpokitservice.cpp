@@ -220,14 +220,14 @@ bool AbstractPokitServicePrivate::createServiceObject()
 
     connect(service, &QLowEnergyService::descriptorRead,
         [](const QLowEnergyDescriptor &descriptor, const QByteArray &value){
-            qCDebug(lc).noquote() << tr("Descriptor \"%1\" (%2) read.")
+            qCDebug(lc).noquote() << tr(R"(Descriptor "%1" (%2) read.)")
                 .arg(descriptor.name(), descriptor.uuid().toString());
             Q_UNUSED(value)
         });
 
     connect(service, &QLowEnergyService::descriptorWritten,
         [](const QLowEnergyDescriptor &descriptor, const QByteArray &newValue){
-            qCDebug(lc).noquote() << tr("Descriptor \"%1\" (%2) written.")
+            qCDebug(lc).noquote() << tr(R"(Descriptor "%1" (%2) written.)")
                 .arg(descriptor.name(), descriptor.uuid().toString());
             Q_UNUSED(newValue)
         });
@@ -262,7 +262,7 @@ bool AbstractPokitServicePrivate::createServiceObject()
 QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &uuid) const
 {
     if (!service) {
-        qCDebug(lc).noquote() << tr("Characterisitc %1 \"%2\" requested before service assigned.")
+        qCDebug(lc).noquote() << tr(R"(Characterisitc %1 "%2" requested before service assigned.)")
             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
         return QLowEnergyCharacteristic();
     }
@@ -279,14 +279,14 @@ QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QB
         RemoteServiceDiscovered
         #endif
     ) {
-        qCWarning(lc).noquote() << tr("Characterisitc %1 \"%2\" requested before service %3 \"%4\" discovered.")
+        qCWarning(lc).noquote() << tr(R"(Characterisitc %1 "%2" requested before service %3 "%4" discovered.)")
             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),
             service->serviceUuid().toString(), PokitDevice::serviceToString(service->serviceUuid()));
         qCInfo(lc).noquote() << tr("Current service state:") << service->state();
         return QLowEnergyCharacteristic();
     }
 
-    qCWarning(lc).noquote() << tr("Characterisitc %1 \"%2\" not found in service %3 \"%4\".")
+    qCWarning(lc).noquote() << tr(R"(Characterisitc %1 "%2" not found in service %3 "%4".)")
         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),
         service->serviceUuid().toString(), PokitDevice::serviceToString(service->serviceUuid()));
     return QLowEnergyCharacteristic();
@@ -310,7 +310,7 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
     if (!characteristic.isValid()) {
         return false;
     }
-    qCDebug(lc).noquote() << tr("Reading characteristic %1 \"%2\".")
+    qCDebug(lc).noquote() << tr(R"(Reading characteristic %1 "%2".)")
         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
     service->readCharacteristic(characteristic);
     return true;
@@ -326,7 +326,7 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
  */
 bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBluetoothUuid &uuid)
 {
-    qCDebug(lc).noquote() << tr("Enabling CCCD for characteristic %1 \"%2\".")
+    qCDebug(lc).noquote() << tr(R"(Enabling CCCD for characteristic %1 "%2".)")
         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);
     if (!characteristic.isValid()) {
@@ -336,7 +336,7 @@ bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBlueto
     QLowEnergyDescriptor descriptor = characteristic.descriptor(
         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);
     if (!descriptor.isValid()) {
-        qCWarning(lc).noquote() << tr("Characterisitc %1 \"%2\" has no client configuration descriptor.")
+        qCWarning(lc).noquote() << tr(R"(Characterisitc %1 "%2" has no client configuration descriptor.)")
             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
         return false;
     }
@@ -361,7 +361,7 @@ bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBlueto
  */
 bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluetoothUuid &uuid)
 {
-    qCDebug(lc).noquote() << tr("Disabling CCCD for characteristic %1 \"%2\".")
+    qCDebug(lc).noquote() << tr(R"(Disabling CCCD for characteristic %1 "%2".)")
         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);
     if (!characteristic.isValid()) {
@@ -371,7 +371,7 @@ bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluet
     QLowEnergyDescriptor descriptor = characteristic.descriptor(
         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);
     if (!descriptor.isValid()) {
-        qCWarning(lc).noquote() << tr("Characterisitc %1 \"%2\" has no client configuration descriptor.")
+        qCWarning(lc).noquote() << tr(R"(Characterisitc %1 "%2" has no client configuration descriptor.)")
             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
         return false;
     }
@@ -442,7 +442,7 @@ void AbstractPokitServicePrivate::connected()
         return;
     }
 
-    qCDebug(lc).noquote() << tr("Connected to \"%1\" (%2) at %3.").arg(
+    qCDebug(lc).noquote() << tr(R"(Connected to "%1" (%2) at %3.)").arg(
         controller->remoteName(), controller->remoteDeviceUuid().toString(),
         controller->remoteAddress().toString());
     if (autoDiscover) {
@@ -463,7 +463,7 @@ void AbstractPokitServicePrivate::discoveryFinished()
         return;
     }
 
-    qCDebug(lc).noquote() << tr("Discovery finished for \"%1\" (%2) at %3.").arg(
+    qCDebug(lc).noquote() << tr(R"(Discovery finished for "%1" (%2) at %3.)").arg(
         controller->remoteName(), controller->remoteDeviceUuid().toString(),
         controller->remoteAddress().toString());
 
@@ -536,7 +536,7 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
 void AbstractPokitServicePrivate::characteristicRead(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &value)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" read %n byte/s: %3", nullptr, value.size()).arg(
+    qCDebug(lc).noquote() << tr(R"(Characteristic %1 "%2" read %n byte/s: %3)", nullptr, value.size()).arg(
         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(value));
 }
 
@@ -550,7 +550,7 @@ void AbstractPokitServicePrivate::characteristicRead(
 void AbstractPokitServicePrivate::characteristicWritten(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" written with %Ln byte/s: %3", nullptr, newValue.size())
+    qCDebug(lc).noquote() << tr(R"(Characteristic %1 "%2" written with %Ln byte/s: %3)", nullptr, newValue.size())
         .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(newValue));
 }
 
@@ -565,7 +565,7 @@ void AbstractPokitServicePrivate::characteristicWritten(
 void AbstractPokitServicePrivate::characteristicChanged(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
 {
-    qCDebug(lc).noquote() << tr("Characteristic %1 \"%2\" changed to %Ln byte/s: %3", nullptr, newValue.size())
+    qCDebug(lc).noquote() << tr(R"(Characteristic %1 "%2" changed to %Ln byte/s: %3)", nullptr, newValue.size())
         .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(newValue));
 }
 

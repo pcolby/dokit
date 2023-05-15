@@ -272,7 +272,7 @@ bool StatusService::setDeviceName(const QString &name)
 
     const QByteArray value = name.toUtf8();
     if (value.length() > 11) {
-        qCWarning(d->lc).noquote() << tr("Device name \"%1\" is too long (%2 > 11 bytes): 0x3")
+        qCWarning(d->lc).noquote() << tr(R"(Device name "%1" is too long (%2 > 11 bytes): 0x3)")
             .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));
         return false;
     }
@@ -491,7 +491,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {
         const QString deviceName = QString::fromUtf8(value);
-        qCDebug(lc).noquote() << tr("Device name: \"%1\"").arg(deviceName);
+        qCDebug(lc).noquote() << tr(R"(Device name: "%1")").arg(deviceName);
         emit q->deviceNameRead(deviceName);
         return;
     }

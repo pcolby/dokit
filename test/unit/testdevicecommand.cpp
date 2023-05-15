@@ -28,7 +28,7 @@ void TestDeviceCommand::start()
     QVERIFY(command.start());
 
     command.deviceToScanFor = QStringLiteral("example");
-    QTest::ignoreMessage(QtInfoMsg, "Looking for device \"example\"...");
+    QTest::ignoreMessage(QtInfoMsg, R"(Looking for device "example"...)");
     QVERIFY(command.start());
 }
 
@@ -107,7 +107,7 @@ void TestDeviceCommand::deviceDiscoveryFinished()
     command.deviceDiscoveryFinished();
 
     command.deviceToScanFor = QStringLiteral("example");
-    QTest::ignoreMessage(QtWarningMsg, "Failed to find device \"example\".");
+    QTest::ignoreMessage(QtWarningMsg, R"(Failed to find device "example".)");
     command.deviceDiscoveryFinished();
 }
 

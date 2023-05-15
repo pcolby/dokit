@@ -279,11 +279,11 @@ void TestDsoService::parseMetadata()
     QFETCH(DsoService::Metadata, expected);
     if (value.size() < 17) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Metadata requires \\d+ byte/s, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+            R"(^Metadata requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
     }
     if (value.size() > 17) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Metadata has \\d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$")));
+            R"(^Metadata has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
     }
     const DsoService::Metadata actual = DsoServicePrivate::parseMetadata(value);
     QCOMPARE(actual.status,             expected.status);
@@ -333,7 +333,7 @@ void TestDsoService::parseSamples()
     QFETCH(DsoService::Samples, expected);
     if ((data.size()%2) != 0) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Samples value has odd size \\d+ \\(should be even\\): 0x[a-zA-Z0-9,]*$")));
+            R"(^Samples value has odd size \d+ \(should be even\): 0x[a-zA-Z0-9,]*$)")));
     }
     QCOMPARE(DsoServicePrivate::parseSamples(data), expected);
 }

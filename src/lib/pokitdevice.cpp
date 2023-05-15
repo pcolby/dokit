@@ -310,7 +310,7 @@ void PokitDevicePrivate::setController(QLowEnergyController * newController)
         return; // Don't bother continuing to connect if new controller is null.
     }
 
-    qCDebug(lc).noquote() << tr("Set new controller \"%1\" (%2) at (%3).").arg(
+    qCDebug(lc).noquote() << tr(R"(Set new controller "%1" (%2) at (%3).)").arg(
         controller->remoteName(), controller->remoteDeviceUuid().toString(),
         controller->remoteAddress().toString());
 
@@ -352,7 +352,7 @@ void PokitDevicePrivate::connected() const
         qCCritical(lc).noquote() << tr("PokitDevicePrivate::connected slot invoked without a controller.");
         return; // Just to avoid the nullptr dereference below.
     }
-    qCDebug(lc).noquote() << tr("Connected to \"%1\" (%2) at (%3).").arg(
+    qCDebug(lc).noquote() << tr(R"(Connected to "%1" (%2) at (%3).)").arg(
         controller->remoteName(), controller->remoteDeviceUuid().toString(),
         controller->remoteAddress().toString());
 }
@@ -396,7 +396,7 @@ void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError) con
  */
 void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &newService) const
 {
-    qCDebug(lc).noquote() << tr("Service discovered: %1 \"%2\"")
+    qCDebug(lc).noquote() << tr(R"(Service discovered: %1 "%2")")
         .arg(newService.toString(), PokitDevice::serviceToString(newService));
 }
 

@@ -249,7 +249,7 @@ void DsoCommand::outputSamples(const DsoService::Samples &samples)
     case DsoService::Mode::DcCurrent: unit = QLatin1String("Adc"); break;
     case DsoService::Mode::AcCurrent: unit = QLatin1String("Aac"); break;
     default:
-        qCDebug(lc).noquote() << tr("No known unit for mode %1 \"%2\".").arg((int)metadata.mode)
+        qCDebug(lc).noquote() << tr(R"(No known unit for mode %1 "%2".)").arg((int)metadata.mode)
             .arg(DsoService::toString(metadata.mode));
     }
     const QString range = service->toString(metadata.range, metadata.mode);

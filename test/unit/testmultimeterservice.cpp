@@ -269,11 +269,11 @@ void TestMultimeterService::parseReading()
     QFETCH(MultimeterService::Reading, expected);
     if (value.size() < 7) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Reading requires \\d+ byte/s, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+            R"(^Reading requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
     }
     if (value.size() > 7) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Reading has \\d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$")));
+            R"(^Reading has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
     }
     const MultimeterService::Reading actual = MultimeterServicePrivate::parseReading(value);
     QCOMPARE(actual.status, expected.status);

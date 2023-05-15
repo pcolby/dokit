@@ -95,9 +95,9 @@ QStringList AbstractCommand::supportedOptions(const QCommandLineParser &parser) 
  *
  * Some examples:
  * ```
- * QCOMPARE(escapeCsvField("abc"), "abc");       // Returned unchanged.
- * QCOMPARE(escapeCsvField("a,c"), "\"a,c\"");   // Wrapped in double-quotes.
- * QCOMPARE(escapeCsvField("a\"c"), "\"a""c\""); // Existing double-quotes doubles, then wrapped.
+ * QCOMPARE(escapeCsvField("abc"), "abc");           // Returned unchanged.
+ * QCOMPARE(escapeCsvField("a,c"), R"("a,c")");      // Wrapped in double-quotes.
+ * QCOMPARE(escapeCsvField(R"(a"c)"), R("("a""c")"); // Existing double-quotes doubled, then wrapped.
  * ```
  */
 QString AbstractCommand::escapeCsvField(const QString &field)
@@ -105,8 +105,8 @@ QString AbstractCommand::escapeCsvField(const QString &field)
     if (field.contains(QLatin1Char(','))||field.contains(QLatin1Char('\r'))||
         field.contains(QLatin1Char('"'))||field.contains(QLatin1Char('\n')))
     {
-        return QString::fromLatin1("\"%1\"").arg(
-            QString(field).replace(QLatin1Char('"'), QLatin1String("\"\"")));
+        return QString::fromLatin1(R"("%1")").arg(
+            QString(field).replace(QLatin1Char('"'), QLatin1String(R"("")")));
     } else return field;
 }
 

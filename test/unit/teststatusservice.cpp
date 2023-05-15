@@ -172,11 +172,11 @@ void TestStatusService::parseDeviceCharacteristics()
     QFETCH(StatusService::DeviceCharacteristics, expected);
     if (value.size() < 20) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Device Characterisitcs requires \\d+ byte/s, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+            R"(^Device Characterisitcs requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
     }
     if (value.size() > 20) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Device Characterisitcs has \\d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$")));
+            R"(^Device Characterisitcs has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
     }
     const StatusService::DeviceCharacteristics actual =
         StatusServicePrivate::parseDeviceCharacteristics(value);
@@ -241,11 +241,11 @@ void TestStatusService::parseStatus()
     QFETCH(StatusService::Status, expected);
     if (value.size() < 5) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Status requires \\d+ byte/s, but only \\d+ present: 0x[a-zA-Z0-9,]*$")));
+            R"(^Status requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
     }
     if (value.size() > 6) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            "^Status has \\d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$")));
+            R"(^Status has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
     }
     const StatusService::Status actual = StatusServicePrivate::parseStatus(value);
     QCOMPARE(actual.deviceStatus,   expected.deviceStatus);

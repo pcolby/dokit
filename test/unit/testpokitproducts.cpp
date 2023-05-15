@@ -40,7 +40,7 @@ void TestPokitProducts::toString_PokitProduct()
     QFETCH(QString, expected);
 
     if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(toString(product), expected);
@@ -203,7 +203,7 @@ void TestPokitProducts::toString_Capacitance()
     if (product == PokitProduct::PokitMeter) {
         QTest::ignoreMessage(QtWarningMsg, "Pokit Meter has no capacitance support");
     } else if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(CapacitanceRange::toString(product, range), expected);
@@ -231,7 +231,7 @@ void TestPokitProducts::maxValue_Capacitance()
     if (product == PokitProduct::PokitMeter) {
         QTest::ignoreMessage(QtWarningMsg, "Pokit Meter has no capacitance support");
     } else if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(CapacitanceRange::maxValue(product, range), expected);
@@ -259,7 +259,7 @@ void TestPokitProducts::toString_Current()
     QFETCH(QString, expected);
 
     if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(CurrentRange::toString(product, range), expected);
@@ -285,7 +285,7 @@ void TestPokitProducts::maxValue_Current()
     QFETCH(QVariant, expected);
 
     if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(CurrentRange::maxValue(product, range), expected);
@@ -313,7 +313,7 @@ void TestPokitProducts::toString_Resistance()
     QFETCH(QString, expected);
 
     if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(ResistanceRange::toString(product, range), expected);
@@ -339,7 +339,7 @@ void TestPokitProducts::maxValue_Resistance()
     QFETCH(QVariant, expected);
 
     if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(ResistanceRange::maxValue(product, range), expected);
@@ -367,7 +367,7 @@ void TestPokitProducts::toString_Voltage()
     QFETCH(QString, expected);
 
     if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(VoltageRange::toString(product, range), expected);
@@ -393,7 +393,7 @@ void TestPokitProducts::maxValue_Voltage()
     QFETCH(QVariant, expected);
 
     if (expected.isNull()) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral("^Unknown PokitProduct value: \\d+$")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
     QCOMPARE(VoltageRange::maxValue(product, range), expected);

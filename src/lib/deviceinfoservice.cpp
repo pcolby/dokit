@@ -308,35 +308,35 @@ void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic
     Q_Q(DeviceInfoService);
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {
         const QString name = QString::fromUtf8(value);
-        qCDebug(lc).noquote() << tr("Manufacturer name: \"%1\"").arg(name);
+        qCDebug(lc).noquote() << tr(R"(Manufacturer name: "%1")").arg(name);
         emit q->manufacturerRead(name);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {
         const QString model = QString::fromUtf8(value);
-        qCDebug(lc).noquote() << tr("Model number: \"%1\"").arg(model);
+        qCDebug(lc).noquote() << tr(R"(Model number: "%1")").arg(model);
         emit q->modelNumberRead(model);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {
         const QString revision = QString::fromUtf8(value);
-        qCDebug(lc).noquote() << tr("Hardware revision: \"%1\"").arg(revision);
+        qCDebug(lc).noquote() << tr(R"(Hardware revision: "%1")").arg(revision);
         emit q->hardwareRevisionRead(revision);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {
         const QString revision = QString::fromUtf8(value);
-        qCDebug(lc).noquote() << tr("Firmware revision: \"%1\"").arg(revision);
+        qCDebug(lc).noquote() << tr(R"(Firmware revision: "%1")").arg(revision);
         emit q->firmwareRevisionRead(revision);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {
         const QString revision = QString::fromUtf8(value);
-        qCDebug(lc).noquote() << tr("Software revision: \"%1\"").arg(revision);
+        qCDebug(lc).noquote() << tr(R"(Software revision: "%1")").arg(revision);
         emit q->softwareRevisionRead(revision);
         return;
     }

@@ -28,7 +28,7 @@ bool DeviceCommand::start()
 {
     qCInfo(lc).noquote() << ((deviceToScanFor.isNull())
         ? tr("Looking for first available Pokit device...")
-        : tr("Looking for device \"%1\"...").arg(deviceToScanFor));
+        : tr(R"(Looking for device "%1"...)").arg(deviceToScanFor));
     discoveryAgent->start();
     return true;
 }
@@ -338,7 +338,7 @@ void DeviceCommand::serviceDetailsDiscovered()
 void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     if (device) {
-        qCDebug(lc).noquote() << tr("Ignoring additional Pokit device \"%1\" (%2) at (%3).")
+        qCDebug(lc).noquote() << tr(R"(Ignoring additional Pokit device "%1" (%2) at (%3).)")
             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
         return;
     }
@@ -347,7 +347,7 @@ void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
         ((!info.address().isNull()) && (info.address() == QBluetoothAddress(deviceToScanFor))) ||
         ((!info.deviceUuid().isNull()) && (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))
     {
-        qCDebug(lc).noquote() << tr("Found Pokit device \"%1\" (%2) at (%3).")
+        qCDebug(lc).noquote() << tr(R"(Found Pokit device "%1" (%2) at (%3).)")
             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
         discoveryAgent->stop();
 
@@ -370,13 +370,13 @@ void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
         connect(service, &AbstractPokitService::serviceErrorOccurred,
                 this, &DeviceCommand::serviceError);
 
-        qCDebug(lc).noquote() << tr("Connecting to Pokit device \"%1\" (%2) at (%3).")
+        qCDebug(lc).noquote() << tr(R"(Connecting to Pokit device "%1" (%2) at (%3).)")
             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
         device->controller()->connectToDevice();
         return;
     }
 
-    qCDebug(lc).noquote() << tr("Ignoring non-matching Pokit device \"%1\" (%2) at (%3).")
+    qCDebug(lc).noquote() << tr(R"(Ignoring non-matching Pokit device "%1" (%2) at (%3).)")
         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
     return;
 }
@@ -389,7 +389,7 @@ void DeviceCommand::deviceDiscoveryFinished()
     if (!device) {
         qCWarning(lc).noquote() << ((deviceToScanFor.isNull())
             ? tr("Failed to find any Pokit device.")
-            : tr("Failed to find device \"%1\".").arg(deviceToScanFor));
+            : tr(R"(Failed to find device "%1".)").arg(deviceToScanFor));
         QCoreApplication::exit(EXIT_FAILURE);
     }
 }
