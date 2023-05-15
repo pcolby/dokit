@@ -50,7 +50,7 @@ public:
     static QString toString(const Mode &mode);
 
     static QString toString(const PokitProduct product, const quint8 range, const Mode mode);
-    QString toString(const quint8 range, const Mode mode);
+    QString toString(const quint8 range, const Mode mode) const;
     static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode);
     QVariant maxValue(const quint8 range, const Mode mode) const;
 
