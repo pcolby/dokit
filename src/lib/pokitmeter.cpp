@@ -122,6 +122,4 @@ QVariant maxValue(const VoltageRange &range)
     }
 }
 
-#undef QTPOKIT_IF_LESS_THAN_RETURN
-
 }
