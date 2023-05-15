@@ -9,7 +9,12 @@ class TestAbstractPokitService : public QObject
 
 private slots:
     // AbstractPokitService tests.
+
     void autoDiscover();
+
+    void pokitProduct_data();
+    void pokitProduct();
+
     void service_();
 
     // AbstractPokitServicePrivate tests.
