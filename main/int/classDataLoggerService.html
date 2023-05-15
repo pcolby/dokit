@@ -1087,24 +1087,32 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   98</span>        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   99</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:</div>
 <div class="line"><span class="lineno">  100</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:</div>
-<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceVoltageRange.html#a9b19de61217a271c49a29609344a686f">VoltageRange::toString</a>(product, range);</div>
+<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceVoltageRange.html#adc3a8126ae8dcec8010fc8b037fab885">VoltageRange::maxValue</a>(product, range);</div>
 <div class="line"><span class="lineno">  102</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:</div>
 <div class="line"><span class="lineno">  103</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:</div>
-<div class="line"><span class="lineno">  104</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceCurrentRange.html#aa6b6d528c9f92c9dd34076fed36abbed">CurrentRange::toString</a>(product, range);</div>
+<div class="line"><span class="lineno">  104</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceCurrentRange.html#a340ae103126865c13997adcde5976bd1">CurrentRange::maxValue</a>(product, range);</div>
 <div class="line"><span class="lineno">  105</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Mode::Temperature</a>:</div>
 <div class="line"><span class="lineno">  106</span>        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  107</span>    }</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>();</div>
 <div class="line"><span class="lineno">  109</span>}</div>
-<div class="ttc" id="anamespaceCurrentRange_html_aa6b6d528c9f92c9dd34076fed36abbed"><div class="ttname"><a href="namespaceCurrentRange.html#aa6b6d528c9f92c9dd34076fed36abbed">CurrentRange::toString</a></div><div class="ttdeci">QString toString(const PokitProduct product, const quint8 range)</div><div class="ttdoc">Returns product's current range as a human-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00167">pokitproducts.cpp:167</a></div></div>
-<div class="ttc" id="anamespaceVoltageRange_html_a9b19de61217a271c49a29609344a686f"><div class="ttname"><a href="namespaceVoltageRange.html#a9b19de61217a271c49a29609344a686f">VoltageRange::toString</a></div><div class="ttdeci">QString toString(const PokitProduct product, const quint8 range)</div><div class="ttdoc">Returns product's current range as a human-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00246">pokitproducts.cpp:246</a></div></div>
-<div class="ttc" id="aqstring_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html">QString</a></div></div>
+<div class="ttc" id="anamespaceCurrentRange_html_a340ae103126865c13997adcde5976bd1"><div class="ttname"><a href="namespaceCurrentRange.html#a340ae103126865c13997adcde5976bd1">CurrentRange::maxValue</a></div><div class="ttdeci">QVariant maxValue(const PokitProduct product, const quint8 range)</div><div class="ttdoc">Returns the maximum value for product's range in (integer) microamps, or the string &quot;Auto&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00202">pokitproducts.cpp:202</a></div></div>
+<div class="ttc" id="anamespaceVoltageRange_html_adc3a8126ae8dcec8010fc8b037fab885"><div class="ttname"><a href="namespaceVoltageRange.html#adc3a8126ae8dcec8010fc8b037fab885">VoltageRange::maxValue</a></div><div class="ttdeci">QVariant maxValue(const PokitProduct product, const quint8 range)</div><div class="ttdoc">Returns the maximum value for product's range in (integer) millivolts, or the string &quot;Auto&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00290">pokitproducts.cpp:290</a></div></div>
+<div class="ttc" id="aqvariant_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a>, <a class="el" href="pokitproducts_8cpp_source.html#l00167">CurrentRange::toString()</a>, and <a class="el" href="pokitproducts_8cpp_source.html#l00246">VoltageRange::toString()</a>.</p>
+<p class="reference">References <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="pokitproducts_8cpp_source.html#l00202">CurrentRange::maxValue()</a>, <a class="el" href="pokitproducts_8cpp_source.html#l00290">VoltageRange::maxValue()</a>, and <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00117">maxValue()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_ac4d7ef9171f04a4d71b404ba3d99cef4_cgraph.svg" width="832" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_ac4d7ef9171f04a4d71b404ba3d99cef4_cgraph.svg" width="862" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_ac4d7ef9171f04a4d71b404ba3d99cef4_icgraph.svg" width="366" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1141,16 +1149,16 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00117">117</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  118</span>{</div>
-<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">toString</a>(<a class="code hl_function" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a>(), range, mode);</div>
+<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#ac4d7ef9171f04a4d71b404ba3d99cef4">maxValue</a>(<a class="code hl_function" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a>(), range, mode);</div>
 <div class="line"><span class="lineno">  120</span>}</div>
 <div class="ttc" id="aclassAbstractPokitService_html_a68091034224a764b1642dd3e99ff5b14"><div class="ttname"><a href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">AbstractPokitService::pokitProduct</a></div><div class="ttdeci">PokitProduct pokitProduct() const</div><div class="ttdoc">Returns the Pokit product this service is attached to.</div><div class="ttdef"><b>Definition:</b> <a href="abstractpokitservice_8cpp_source.html#l00086">abstractpokitservice.cpp:86</a></div></div>
-<div class="ttc" id="aclassDataLoggerService_html_a4c696b7500e666959bbec4b0ed677d5d"><div class="ttname"><a href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">DataLoggerService::toString</a></div><div class="ttdeci">static QString toString(const Mode &amp;mode)</div><div class="ttdoc">Returns mode as a user-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00052">dataloggerservice.cpp:52</a></div></div>
+<div class="ttc" id="aclassDataLoggerService_html_ac4d7ef9171f04a4d71b404ba3d99cef4"><div class="ttname"><a href="classDataLoggerService.html#ac4d7ef9171f04a4d71b404ba3d99cef4">DataLoggerService::maxValue</a></div><div class="ttdeci">static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode)</div><div class="ttdoc">Returns the maximum value for range, or the string &quot;Auto&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00094">dataloggerservice.cpp:94</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00086">AbstractPokitService::pokitProduct()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00052">toString()</a>.</p>
+<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00094">maxValue()</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00086">AbstractPokitService::pokitProduct()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_ab2fb8703f5724589cdace781b47bb96d_cgraph.svg" width="510" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_ab2fb8703f5724589cdace781b47bb96d_cgraph.svg" width="1067" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1585,10 +1593,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   61</span>    <span class="keywordflow">default</span>:                <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
 <div class="line"><span class="lineno">   62</span>    }</div>
 <div class="line"><span class="lineno">   63</span>}</div>
+<div class="ttc" id="aqstring_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html">QString</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00117">maxValue()</a>, <a class="el" href="loggerfetchcommand_8cpp_source.html#l00062">LoggerFetchCommand::metadataRead()</a>, <a class="el" href="loggerfetchcommand_8cpp_source.html#l00080">LoggerFetchCommand::outputSamples()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00161">LoggerStartCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00084">toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="loggerfetchcommand_8cpp_source.html#l00062">LoggerFetchCommand::metadataRead()</a>, <a class="el" href="loggerfetchcommand_8cpp_source.html#l00080">LoggerFetchCommand::outputSamples()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00161">LoggerStartCommand::serviceDetailsDiscovered()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00084">toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1598,7 +1607,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a4c696b7500e666959bbec4b0ed677d5d_icgraph.svg" width="624" height="307"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_a4c696b7500e666959bbec4b0ed677d5d_icgraph.svg" width="624" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1653,21 +1662,23 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   70</span>        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   71</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">Mode::DcVoltage</a>:</div>
 <div class="line"><span class="lineno">   72</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">Mode::AcVoltage</a>:</div>
-<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceVoltageRange.html#a9b19de61217a271c49a29609344a686f">VoltageRange::toString</a>(product, range);</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceVoltageRange.html#a843ef4bfc3538988c695fa643adcd4d0">VoltageRange::toString</a>(product, range);</div>
 <div class="line"><span class="lineno">   74</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">Mode::DcCurrent</a>:</div>
 <div class="line"><span class="lineno">   75</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">Mode::AcCurrent</a>:</div>
-<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceCurrentRange.html#aa6b6d528c9f92c9dd34076fed36abbed">CurrentRange::toString</a>(product, range);</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceCurrentRange.html#a683a82fdd02371d1d6acb4bbbd91e844">CurrentRange::toString</a>(product, range);</div>
 <div class="line"><span class="lineno">   77</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Mode::Temperature</a>:</div>
 <div class="line"><span class="lineno">   78</span>        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   79</span>    }</div>
 <div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
 <div class="line"><span class="lineno">   81</span>}</div>
+<div class="ttc" id="anamespaceCurrentRange_html_a683a82fdd02371d1d6acb4bbbd91e844"><div class="ttname"><a href="namespaceCurrentRange.html#a683a82fdd02371d1d6acb4bbbd91e844">CurrentRange::toString</a></div><div class="ttdeci">QString toString(const PokitProduct product, const quint8 range)</div><div class="ttdoc">Returns product's current range as a human-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00183">pokitproducts.cpp:183</a></div></div>
+<div class="ttc" id="anamespaceVoltageRange_html_a843ef4bfc3538988c695fa643adcd4d0"><div class="ttname"><a href="namespaceVoltageRange.html#a843ef4bfc3538988c695fa643adcd4d0">VoltageRange::toString</a></div><div class="ttdeci">QString toString(const PokitProduct product, const quint8 range)</div><div class="ttdoc">Returns product's current range as a human-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00270">pokitproducts.cpp:270</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a>, <a class="el" href="pokitproducts_8cpp_source.html#l00167">CurrentRange::toString()</a>, and <a class="el" href="pokitproducts_8cpp_source.html#l00246">VoltageRange::toString()</a>.</p>
+<p class="reference">References <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a7b39f260051ef745ddba9fc57ac23ff9">AcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a9f01dfb531bd23d5cb9c2bb2e49d685e">AcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771af2a03b2c98a6620d4bf33af69572898e">DcCurrent</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771a1a18453c20867d5a990479b3716cbbc5">DcVoltage</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd">Temperature</a>, <a class="el" href="pokitproducts_8cpp_source.html#l00183">CurrentRange::toString()</a>, and <a class="el" href="pokitproducts_8cpp_source.html#l00270">VoltageRange::toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_acb7b2d9480b2756074571c6b96531337_cgraph.svg" width="832" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDataLoggerService_acb7b2d9480b2756074571c6b96531337_cgraph.svg" width="832" height="182"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1705,6 +1716,7 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">   85</span>{</div>
 <div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">toString</a>(<a class="code hl_function" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a>(), range, mode);</div>
 <div class="line"><span class="lineno">   87</span>}</div>
+<div class="ttc" id="aclassDataLoggerService_html_a4c696b7500e666959bbec4b0ed677d5d"><div class="ttname"><a href="classDataLoggerService.html#a4c696b7500e666959bbec4b0ed677d5d">DataLoggerService::toString</a></div><div class="ttdeci">static QString toString(const Mode &amp;mode)</div><div class="ttdoc">Returns mode as a user-friendly string.</div><div class="ttdef"><b>Definition:</b> <a href="dataloggerservice_8cpp_source.html#l00052">dataloggerservice.cpp:52</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00086">AbstractPokitService::pokitProduct()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00052">toString()</a>.</p>
 <div class="dynheader">

@@ -1,12 +1,12 @@
 var namespaces_dup =
 [
     [ "CapacitanceRange", "namespaceCapacitanceRange.html", [
-      [ "maxValue", "namespaceCapacitanceRange.html#a08b309956882fef575456510c8f6145d", null ],
-      [ "toString", "namespaceCapacitanceRange.html#a6479f2bbaff1c1917c6701ab683641f9", null ]
+      [ "maxValue", "namespaceCapacitanceRange.html#ae13fb76d6fab44972334e2b007be4a06", null ],
+      [ "toString", "namespaceCapacitanceRange.html#a14203d0e3a636e5142dccade0c4b5c91", null ]
     ] ],
     [ "CurrentRange", "namespaceCurrentRange.html", [
-      [ "maxValue", "namespaceCurrentRange.html#a49520c1083330ff25586783a3a72b717", null ],
-      [ "toString", "namespaceCurrentRange.html#aa6b6d528c9f92c9dd34076fed36abbed", null ]
+      [ "maxValue", "namespaceCurrentRange.html#a340ae103126865c13997adcde5976bd1", null ],
+      [ "toString", "namespaceCurrentRange.html#a683a82fdd02371d1d6acb4bbbd91e844", null ]
     ] ],
     [ "PokitMeter", "namespacePokitMeter.html", [
       [ "CurrentRange", "namespacePokitMeter.html#a22b467360c970e645f6a111b34d50a92", [
@@ -1447,11 +1447,11 @@ var namespaces_dup =
       [ "ZoomNativeGesture", "https://doc.qt.io/qt-5/qt.html#NativeGestureType-enum", null ]
     ] ],
     [ "ResistanceRange", "namespaceResistanceRange.html", [
-      [ "maxValue", "namespaceResistanceRange.html#a73a157858424f45b6a623da183bd3a4a", null ],
-      [ "toString", "namespaceResistanceRange.html#af0105bd92b237f83728619e8d9fc7f87", null ]
+      [ "maxValue", "namespaceResistanceRange.html#a30fba7f1c73e7a8b9b3c45aed8b5b3e1", null ],
+      [ "toString", "namespaceResistanceRange.html#a6f542c3fe27b9c58c03edc92ceab40ef", null ]
     ] ],
     [ "VoltageRange", "namespaceVoltageRange.html", [
-      [ "maxValue", "namespaceVoltageRange.html#a5aa11f1985c6950f8312e88061449f21", null ],
-      [ "toString", "namespaceVoltageRange.html#a9b19de61217a271c49a29609344a686f", null ]
+      [ "maxValue", "namespaceVoltageRange.html#adc3a8126ae8dcec8010fc8b037fab885", null ],
+      [ "toString", "namespaceVoltageRange.html#a843ef4bfc3538988c695fa643adcd4d0", null ]
     ] ]
 ];

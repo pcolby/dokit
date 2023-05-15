@@ -108,10 +108,12 @@ $(document).ready(function(){initNavTree('pokitproducts_8cpp.html',''); initResi
 <code>#include &lt;<a class="el" href="pokitproducts_8h_source.html">qtpokit/pokitproducts.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="statusservice_8h_source.html">qtpokit/statusservice.h</a>&gt;</code><br />
 <code>#include &quot;pokitproducts_p.h&quot;</code><br />
+<code>#include &lt;QCoreApplication&gt;</code><br />
+<code>#include &lt;QLoggingCategory&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pokitproducts.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="pokitproducts_8cpp__incl.svg" width="1180" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pokitproducts_8cpp__incl.svg" width="1427" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -134,6 +136,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ae34719c67920c33413ec5a0789f048a5"><td class="memItemLeft" align="right" valign="top"><a id="ae34719c67920c33413ec5a0789f048a5" name="ae34719c67920c33413ec5a0789f048a5"></a>
+static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY</b> (lc, &quot;dokit.pokit.products&quot;, QtInfoMsg)</td></tr>
+<tr class="memdesc:ae34719c67920c33413ec5a0789f048a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging category for this file. <br /></td></tr>
+<tr class="separator:ae34719c67920c33413ec5a0789f048a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51231fc0f3ca18f89fca6f00c4bb6df8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="qtpokit__global_8h.html#ac5aca53b48a017f8db467922deee7983">QTPOKIT_BEGIN_NAMESPACE</a> <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pokitproducts_8cpp.html#a51231fc0f3ca18f89fca6f00c4bb6df8">toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product)</td></tr>
 <tr class="memdesc:a51231fc0f3ca18f89fca6f00c4bb6df8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <code>product</code> as user-friendly string.  <br /></td></tr>
 <tr class="separator:a51231fc0f3ca18f89fca6f00c4bb6df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,30 +161,30 @@ Functions</h2></td></tr>
 <tr class="memitem:a9eed245788cc9e68dd314dc5153912b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pokitproducts_8cpp.html#a9eed245788cc9e68dd314dc5153912b9">pokitProduct</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html">QLowEnergyController</a> &amp;controller)</td></tr>
 <tr class="memdesc:a9eed245788cc9e68dd314dc5153912b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4" title="Pokit products known to, and supported by, the QtPokit library.">PokitProduct</a> corresponding to the Bluetooth <em>controller</em>.  <br /></td></tr>
 <tr class="separator:a9eed245788cc9e68dd314dc5153912b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6479f2bbaff1c1917c6701ab683641f9"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCapacitanceRange.html#a6479f2bbaff1c1917c6701ab683641f9">CapacitanceRange::toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
-<tr class="memdesc:a6479f2bbaff1c1917c6701ab683641f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>product's</em> capacitance <em>range</em> as a human-friendly string.  <br /></td></tr>
-<tr class="separator:a6479f2bbaff1c1917c6701ab683641f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08b309956882fef575456510c8f6145d"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCapacitanceRange.html#a08b309956882fef575456510c8f6145d">CapacitanceRange::maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
-<tr class="memdesc:a08b309956882fef575456510c8f6145d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>product's</em> <em>range</em> in (integer) nanofarads, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a08b309956882fef575456510c8f6145d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6b6d528c9f92c9dd34076fed36abbed"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCurrentRange.html#aa6b6d528c9f92c9dd34076fed36abbed">CurrentRange::toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
-<tr class="memdesc:aa6b6d528c9f92c9dd34076fed36abbed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>product's</em> current <em>range</em> as a human-friendly string.  <br /></td></tr>
-<tr class="separator:aa6b6d528c9f92c9dd34076fed36abbed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49520c1083330ff25586783a3a72b717"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCurrentRange.html#a49520c1083330ff25586783a3a72b717">CurrentRange::maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
-<tr class="memdesc:a49520c1083330ff25586783a3a72b717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>product's</em> <em>range</em> in (integer) microamps, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a49520c1083330ff25586783a3a72b717"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0105bd92b237f83728619e8d9fc7f87"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceResistanceRange.html#af0105bd92b237f83728619e8d9fc7f87">ResistanceRange::toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
-<tr class="memdesc:af0105bd92b237f83728619e8d9fc7f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>product's</em> current <em>range</em> as a human-friendly string.  <br /></td></tr>
-<tr class="separator:af0105bd92b237f83728619e8d9fc7f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73a157858424f45b6a623da183bd3a4a"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceResistanceRange.html#a73a157858424f45b6a623da183bd3a4a">ResistanceRange::maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
-<tr class="memdesc:a73a157858424f45b6a623da183bd3a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>product's</em> <em>range</em> in (integer) ohms, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a73a157858424f45b6a623da183bd3a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b19de61217a271c49a29609344a686f"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceVoltageRange.html#a9b19de61217a271c49a29609344a686f">VoltageRange::toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
-<tr class="memdesc:a9b19de61217a271c49a29609344a686f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>product's</em> current <em>range</em> as a human-friendly string.  <br /></td></tr>
-<tr class="separator:a9b19de61217a271c49a29609344a686f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5aa11f1985c6950f8312e88061449f21"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceVoltageRange.html#a5aa11f1985c6950f8312e88061449f21">VoltageRange::maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
-<tr class="memdesc:a5aa11f1985c6950f8312e88061449f21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>product's</em> <em>range</em> in (integer) millivolts, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a5aa11f1985c6950f8312e88061449f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14203d0e3a636e5142dccade0c4b5c91"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCapacitanceRange.html#a14203d0e3a636e5142dccade0c4b5c91">CapacitanceRange::toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
+<tr class="memdesc:a14203d0e3a636e5142dccade0c4b5c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>product's</em> capacitance <em>range</em> as a human-friendly string.  <br /></td></tr>
+<tr class="separator:a14203d0e3a636e5142dccade0c4b5c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae13fb76d6fab44972334e2b007be4a06"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCapacitanceRange.html#ae13fb76d6fab44972334e2b007be4a06">CapacitanceRange::maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
+<tr class="memdesc:ae13fb76d6fab44972334e2b007be4a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>product's</em> <em>range</em> in (integer) nanofarads, or the string "Auto".  <br /></td></tr>
+<tr class="separator:ae13fb76d6fab44972334e2b007be4a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a683a82fdd02371d1d6acb4bbbd91e844"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCurrentRange.html#a683a82fdd02371d1d6acb4bbbd91e844">CurrentRange::toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
+<tr class="memdesc:a683a82fdd02371d1d6acb4bbbd91e844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>product's</em> current <em>range</em> as a human-friendly string.  <br /></td></tr>
+<tr class="separator:a683a82fdd02371d1d6acb4bbbd91e844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a340ae103126865c13997adcde5976bd1"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCurrentRange.html#a340ae103126865c13997adcde5976bd1">CurrentRange::maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
+<tr class="memdesc:a340ae103126865c13997adcde5976bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>product's</em> <em>range</em> in (integer) microamps, or the string "Auto".  <br /></td></tr>
+<tr class="separator:a340ae103126865c13997adcde5976bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f542c3fe27b9c58c03edc92ceab40ef"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceResistanceRange.html#a6f542c3fe27b9c58c03edc92ceab40ef">ResistanceRange::toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
+<tr class="memdesc:a6f542c3fe27b9c58c03edc92ceab40ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>product's</em> current <em>range</em> as a human-friendly string.  <br /></td></tr>
+<tr class="separator:a6f542c3fe27b9c58c03edc92ceab40ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30fba7f1c73e7a8b9b3c45aed8b5b3e1"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceResistanceRange.html#a30fba7f1c73e7a8b9b3c45aed8b5b3e1">ResistanceRange::maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
+<tr class="memdesc:a30fba7f1c73e7a8b9b3c45aed8b5b3e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>product's</em> <em>range</em> in (integer) ohms, or the string "Auto".  <br /></td></tr>
+<tr class="separator:a30fba7f1c73e7a8b9b3c45aed8b5b3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a843ef4bfc3538988c695fa643adcd4d0"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceVoltageRange.html#a843ef4bfc3538988c695fa643adcd4d0">VoltageRange::toString</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
+<tr class="memdesc:a843ef4bfc3538988c695fa643adcd4d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>product's</em> current <em>range</em> as a human-friendly string.  <br /></td></tr>
+<tr class="separator:a843ef4bfc3538988c695fa643adcd4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc3a8126ae8dcec8010fc8b037fab885"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceVoltageRange.html#adc3a8126ae8dcec8010fc8b037fab885">VoltageRange::maxValue</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product, const quint8 range)</td></tr>
+<tr class="memdesc:adc3a8126ae8dcec8010fc8b037fab885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>product's</em> <em>range</em> in (integer) millivolts, or the string "Auto".  <br /></td></tr>
+<tr class="separator:adc3a8126ae8dcec8010fc8b037fab885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines the <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4" title="Pokit products known to, and supported by, the QtPokit library.">PokitProduct</a> helper functions. </p>
@@ -204,16 +210,16 @@ Functions</h2></td></tr>
 <p>Returns <code>true</code> if <em>info</em> describes a Pokit device. </p>
 <p>Currently, this is based on whether or not <em>info's</em> service UUIDs includes a known Pokit Status service, but this test criteria might be swapped for something else sometime. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00036">36</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb">isPokitProduct</a>(info.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">serviceUuids</a>());</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-<div class="ttc" id="apokitproducts_8cpp_html_a4a5ebc5229da2cc0d2d00b43ba199bfb"><div class="ttname"><a href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb">isPokitProduct</a></div><div class="ttdeci">bool isPokitProduct(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns true if info describes a Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00036">pokitproducts.cpp:36</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00043">43</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>{</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb">isPokitProduct</a>(info.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">serviceUuids</a>());</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+<div class="ttc" id="apokitproducts_8cpp_html_a4a5ebc5229da2cc0d2d00b43ba199bfb"><div class="ttname"><a href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb">isPokitProduct</a></div><div class="ttdeci">bool isPokitProduct(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns true if info describes a Pokit device.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00043">pokitproducts.cpp:43</a></div></div>
 <div class="ttc" id="aqbluetoothdeviceinfo_html_serviceUuids"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">QBluetoothDeviceInfo::serviceUuids</a></div><div class="ttdeci">QList&lt; QBluetoothUuid &gt; serviceUuids(QBluetoothDeviceInfo::DataCompleteness *completeness) const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitproducts_8cpp_source.html#l00036">isPokitProduct()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">QBluetoothDeviceInfo::serviceUuids()</a>.</p>
+<p class="reference">References <a class="el" href="pokitproducts_8cpp_source.html#l00043">isPokitProduct()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">QBluetoothDeviceInfo::serviceUuids()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00159">AbstractPokitServicePrivate::AbstractPokitServicePrivate()</a>, <a class="el" href="pokitdiscoveryagent_8cpp_source.html#l00168">PokitDiscoveryAgentPrivate::deviceDiscovered()</a>, <a class="el" href="pokitdiscoveryagent_8cpp_source.html#l00185">PokitDiscoveryAgentPrivate::deviceUpdated()</a>, and <a class="el" href="pokitproducts_8cpp_source.html#l00036">isPokitProduct()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00159">AbstractPokitServicePrivate::AbstractPokitServicePrivate()</a>, <a class="el" href="pokitdiscoveryagent_8cpp_source.html#l00168">PokitDiscoveryAgentPrivate::deviceDiscovered()</a>, <a class="el" href="pokitdiscoveryagent_8cpp_source.html#l00185">PokitDiscoveryAgentPrivate::deviceUpdated()</a>, and <a class="el" href="pokitproducts_8cpp_source.html#l00043">isPokitProduct()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -248,11 +254,11 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> if <em>serviceUuids</em> contains a known Pokit Status service UUID. </p>
 <p>Currently, this is the only known way to detect a Pokit device. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00060">60</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">return</span> (serviceUuids.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#contains">contains</a>(<a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a>) ||</div>
-<div class="line"><span class="lineno">   63</span>            serviceUuids.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#contains">contains</a>(<a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a>));</div>
-<div class="line"><span class="lineno">   64</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00067">67</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> (serviceUuids.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#contains">contains</a>(<a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a>) ||</div>
+<div class="line"><span class="lineno">   70</span>            serviceUuids.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#contains">contains</a>(<a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a>));</div>
+<div class="line"><span class="lineno">   71</span>}</div>
 <div class="ttc" id="aqlist_html_contains"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlist.html#contains">QList::contains</a></div><div class="ttdeci">bool contains(const T &amp;value) const const</div></div>
 <div class="ttc" id="astructStatusService_1_1ServiceUuids_html_a0a9ca0f9377093ff60b282d4bfe3b0cf"><div class="ttname"><a href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a></div><div class="ttdeci">static const QBluetoothUuid pokitPro</div><div class="ttdoc">UUID of the Pokit Pro's Pokit Status service.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00029">statusservice.h:29</a></div></div>
 <div class="ttc" id="astructStatusService_1_1ServiceUuids_html_a8fa373d36e9332df30f38411ab3446de"><div class="ttname"><a href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a></div><div class="ttdeci">static const QBluetoothUuid pokitMeter</div><div class="ttdoc">UUID of the Pokit Meter's Pokit Status service.</div><div class="ttdef"><b>Definition:</b> <a href="statusservice_8h_source.html#l00028">statusservice.h:28</a></div></div>
@@ -287,13 +293,13 @@ Here is the call graph for this function:</div>
 <p>Currently, this is based on whether or not <em>controller's</em> service UUIDs includes a known Pokit Status service, but this test criteria might be swapped for something else sometime.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb" title="Returns true if info describes a Pokit device.">isPokitProduct</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00075">75</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>{</div>
-<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb">isPokitProduct</a>(controller.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">services</a>());</div>
-<div class="line"><span class="lineno">   78</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00082">82</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb">isPokitProduct</a>(controller.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">services</a>());</div>
+<div class="line"><span class="lineno">   85</span>}</div>
 <div class="ttc" id="aqlowenergycontroller_html_services"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">QLowEnergyController::services</a></div><div class="ttdeci">QList&lt; QBluetoothUuid &gt; services() const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitproducts_8cpp_source.html#l00036">isPokitProduct()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">QLowEnergyController::services()</a>.</p>
+<p class="reference">References <a class="el" href="pokitproducts_8cpp_source.html#l00043">isPokitProduct()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">QLowEnergyController::services()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -323,15 +329,15 @@ Here is the call graph for this function:</div>
 <p>If <em>info</em> is not a Pokit device, then result is undefined.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb" title="Returns true if info describes a Pokit device.">isPokitProduct</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00048">48</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566">pokitProduct</a>(info.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">serviceUuids</a>());</div>
-<div class="line"><span class="lineno">   51</span>}</div>
-<div class="ttc" id="apokitproducts_8cpp_html_a3d40e46dc22d896251e8ac089c34b566"><div class="ttname"><a href="pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566">pokitProduct</a></div><div class="ttdeci">PokitProduct pokitProduct(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns the PokitProduct corresponding the Bluetotoh device info.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00048">pokitproducts.cpp:48</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00055">55</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566">pokitProduct</a>(info.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">serviceUuids</a>());</div>
+<div class="line"><span class="lineno">   58</span>}</div>
+<div class="ttc" id="apokitproducts_8cpp_html_a3d40e46dc22d896251e8ac089c34b566"><div class="ttname"><a href="pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566">pokitProduct</a></div><div class="ttdeci">PokitProduct pokitProduct(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns the PokitProduct corresponding the Bluetotoh device info.</div><div class="ttdef"><b>Definition:</b> <a href="pokitproducts_8cpp_source.html#l00055">pokitproducts.cpp:55</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitproducts_8cpp_source.html#l00048">pokitProduct()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">QBluetoothDeviceInfo::serviceUuids()</a>.</p>
+<p class="reference">References <a class="el" href="pokitproducts_8cpp_source.html#l00055">pokitProduct()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#serviceUuids">QBluetoothDeviceInfo::serviceUuids()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pokitproducts_8cpp_source.html#l00048">pokitProduct()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitproducts_8cpp_source.html#l00055">pokitProduct()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -367,25 +373,28 @@ Here is the caller graph for this function:</div>
 <p>Currently, this is based on whether or not <em>servceUuids</em> includes a known Pokit Status service, but this test criteria might be swapped for something else sometime.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb" title="Returns true if info describes a Pokit device.">isPokitProduct</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00088">88</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   89</span>{</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">if</span> (serviceUuids.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#contains">contains</a>(<a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a>)) {</div>
-<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>;</div>
-<div class="line"><span class="lineno">   92</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (serviceUuids.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#contains">contains</a>(<a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a>)) {</div>
-<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>;</div>
-<div class="line"><span class="lineno">   94</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   95</span>        Q_ASSERT_X(<span class="keyword">false</span>, <span class="stringliteral">&quot;pokitProduct&quot;</span>, <span class="stringliteral">&quot;device is not a Pokit product&quot;</span>);</div>
-<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>;</div>
-<div class="line"><span class="lineno">   97</span>    }</div>
-<div class="line"><span class="lineno">   98</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00095">95</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>{</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">if</span> (serviceUuids.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#contains">contains</a>(<a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a>)) {</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>;</div>
+<div class="line"><span class="lineno">   99</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (serviceUuids.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#contains">contains</a>(<a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a>)) {</div>
+<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>;</div>
+<div class="line"><span class="lineno">  101</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  102</span>        qCWarning(lc).noquote()</div>
+<div class="line"><span class="lineno">  103</span>            &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qcoreapplication.html#translate">QCoreApplication::translate</a>(<span class="stringliteral">&quot;PokitProducts&quot;</span>, <span class="stringliteral">&quot;Device is not a Pokit product&quot;</span>, <span class="stringliteral">&quot;pokitProduct&quot;</span>);</div>
+<div class="line"><span class="lineno">  104</span>        qCDebug(lc).noquote() &lt;&lt; <span class="stringliteral">&quot;Service UUIDs:&quot;</span> &lt;&lt; serviceUuids;</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>; <span class="comment">// Need to fallback to something; Pokit Meter is just the lowest product.</span></div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span>}</div>
 <div class="ttc" id="apokitproducts_8h_html_a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae"><div class="ttname"><a href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a></div><div class="ttdeci">@ PokitPro</div><div class="ttdoc">Pokit Pro.</div></div>
 <div class="ttc" id="apokitproducts_8h_html_a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001"><div class="ttname"><a href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a></div><div class="ttdeci">@ PokitMeter</div><div class="ttdoc">Pokit Meter.</div></div>
+<div class="ttc" id="aqcoreapplication_html_translate"><div class="ttname"><a href="https://doc.qt.io/qt-5/qcoreapplication.html#translate">QCoreApplication::translate</a></div><div class="ttdeci">QString translate(const char *context, const char *sourceText, const char *disambiguation, int n)</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qlist.html#contains">QList::contains()</a>, <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitMeter</a>, <a class="el" href="statusservice_8h_source.html#l00028">StatusService::ServiceUuids::pokitMeter</a>, <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitPro</a>, and <a class="el" href="statusservice_8h_source.html#l00029">StatusService::ServiceUuids::pokitPro</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qlist.html#contains">QList::contains()</a>, <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitMeter</a>, <a class="el" href="statusservice_8h_source.html#l00028">StatusService::ServiceUuids::pokitMeter</a>, <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitPro</a>, <a class="el" href="statusservice_8h_source.html#l00029">StatusService::ServiceUuids::pokitPro</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qcoreapplication.html#translate">QCoreApplication::translate()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="pokitproducts_8cpp_a98f11fa57086c8c720a0d31c82169477_cgraph.svg" width="282" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pokitproducts_8cpp_a98f11fa57086c8c720a0d31c82169477_cgraph.svg" width="364" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -411,12 +420,12 @@ Here is the call graph for this function:</div>
 <p>Currently, this is based on whether or not <em>controller's</em> service UUIDs includes a known Pokit Status service, but this test criteria might be swapped for something else sometime.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb" title="Returns true if info describes a Pokit device.">isPokitProduct</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00108">108</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566">pokitProduct</a>(controller.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">services</a>());</div>
-<div class="line"><span class="lineno">  111</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00117">117</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  118</span>{</div>
+<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566">pokitProduct</a>(controller.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">services</a>());</div>
+<div class="line"><span class="lineno">  120</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitproducts_8cpp_source.html#l00048">pokitProduct()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">QLowEnergyController::services()</a>.</p>
+<p class="reference">References <a class="el" href="pokitproducts_8cpp_source.html#l00055">pokitProduct()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#services">QLowEnergyController::services()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -444,17 +453,26 @@ Here is the call graph for this function:</div>
 
 <p>Returns <code>product</code> as user-friendly string. </p>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00021">21</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   22</span>{</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">switch</span> (product) {</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>: <span class="keywordflow">return</span> QStringLiteral(<span class="stringliteral">&quot;Pokit Meter&quot;</span>);</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:   <span class="keywordflow">return</span> QStringLiteral(<span class="stringliteral">&quot;Pokit Pro&quot;</span>);</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">default</span>:                       <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-<div class="line"><span class="lineno">   28</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00026">26</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">switch</span> (product) {</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>: <span class="keywordflow">return</span> QStringLiteral(<span class="stringliteral">&quot;Pokit Meter&quot;</span>);</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:   <span class="keywordflow">return</span> QStringLiteral(<span class="stringliteral">&quot;Pokit Pro&quot;</span>);</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="line"><span class="lineno">   32</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qcoreapplication.html#translate">QCoreApplication::translate</a>(<span class="stringliteral">&quot;PokitProducts&quot;</span>,</div>
+<div class="line"><span class="lineno">   33</span>        <span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>, <span class="stringliteral">&quot;toString&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((<span class="keywordtype">int</span>)product);</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">   35</span>}</div>
 <div class="ttc" id="aqstring_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html">QString</a></div></div>
+<div class="ttc" id="aqstring_html_arg-1"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg</a></div><div class="ttdeci">QString arg(qlonglong a, int fieldWidth, int base, QChar fillChar) const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitMeter</a>, and <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitPro</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitMeter</a>, <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitPro</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qcoreapplication.html#translate">QCoreApplication::translate()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="pokitproducts_8cpp_a51231fc0f3ca18f89fca6f00c4bb6df8_cgraph.svg" width="334" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
