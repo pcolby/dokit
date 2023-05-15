@@ -128,7 +128,14 @@ void TestMeterCommand::processOptions_data()
         << -1
         << QStringList{ };
 
-    /// \todo Pokit Pro supports capacitance too.
+    QTest::addRow("Capacitance")
+        << QStringList{
+           QStringLiteral("--mode"),  QStringLiteral("cap"),
+           QStringLiteral("--range"), QStringLiteral("500") } ///< \todo Add a unit suffix here.
+        << MultimeterService::Settings{
+            MultimeterService::Mode::Capacitance, +PokitPro::CapacitanceRange::_100nF, 1000}
+        << -1
+        << QStringList{ };
 
     QTest::addRow("invalid-mode")
         << QStringList{ QStringLiteral("--mode"),  QStringLiteral("invalid") }
@@ -209,6 +216,15 @@ void TestMeterCommand::processOptions_data()
         << -1
         << QStringList{ };
 
+    QTest::addRow("auto-range-capacitance")
+        << QStringList{
+                       QStringLiteral("--mode"),  QStringLiteral("capac"),
+                       QStringLiteral("--range"), QStringLiteral("auto") }
+        << MultimeterService::Settings{
+            MultimeterService::Mode::Capacitance, +PokitPro::CapacitanceRange::AutoRange, 1000}
+        << -1
+        << QStringList{ };
+
     QTest::addRow("invalid-range")
         << QStringList{
            QStringLiteral("--mode"),  QStringLiteral("Vdc"),
@@ -272,6 +288,7 @@ void TestMeterCommand::processOptions()
     parser.process(arguments);
 
     MeterCommand command(this);
+    qWarning() << command.processOptions(parser);
     QCOMPARE(command.processOptions(parser),  errors);
     QCOMPARE(command.settings.mode,           expected.mode);
     QCOMPARE(command.settings.range,          (quint8)255); // Always 255, because range is not set until services discovered.

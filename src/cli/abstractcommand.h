@@ -28,6 +28,7 @@ public:
     virtual QStringList supportedOptions(const QCommandLineParser &parser) const;
 
     static QString escapeCsvField(const QString &field);
+    /// \todo Merge these, and include supprot for nano, for capacitance.
     static quint32 parseMicroValue(const QString &value, const QString &unit,
                                    const quint32 sensibleMinimum=0);
     static quint32 parseMilliValue(const QString &value, const QString &unit,

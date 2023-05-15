@@ -71,6 +71,8 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
        settings.mode = MultimeterService::Mode::Continuity;
     } else if (mode.startsWith(QLatin1String("temp"))) {
        settings.mode = MultimeterService::Mode::Temperature;
+    } else if (mode.startsWith(QLatin1String("cap"))) {
+       settings.mode = MultimeterService::Mode::Capacitance;
     } else {
         errors.append(tr("Unknown meter mode: %1").arg(parser.value(QLatin1String("mode"))));
         return errors;
