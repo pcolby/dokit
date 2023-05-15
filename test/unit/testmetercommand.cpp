@@ -339,7 +339,8 @@ void TestMeterCommand::outputReading_data()
               +PokitMeter::CurrentRange::AutoRange },
         { MultimeterService::MeterStatus::AutoRangeOff, 32.0f, MultimeterService::Mode::Temperature,
               +PokitMeter::CurrentRange::AutoRange },
-        /// \todo Pokit Pro supports capacitance too.
+        { MultimeterService::MeterStatus::AutoRangeOff, 0.0005f, MultimeterService::Mode::Capacitance,
+              +PokitPro::CapacitanceRange::_1mF },
         { MultimeterService::MeterStatus::Error, 0.0f, MultimeterService::Mode::Idle,
               +PokitMeter::VoltageRange::AutoRange },
     };
@@ -381,6 +382,9 @@ void TestMeterCommand::outputReading()
     const OutputStreamCapture capture(&std::cout);
     MeterCommand command;
     command.service = new MultimeterService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
+    if (readings.first().mode == MultimeterService::Mode::Capacitance) {
+        command.service->setPokitProduct(PokitProduct::PokitPro); // Only Pokit Pro supports capacitance.
+    }
     command.format = format;
     for (const MultimeterService::Reading &reading: readings) {
         command.outputReading(reading);
