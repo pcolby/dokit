@@ -93,9 +93,6 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
         const bool isAuto = (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) == 0);
         QString unit; quint32 sensibleMinimum = 0;
         switch (settings.mode) {
-        case MultimeterService::Mode::Idle:
-            Q_ASSERT(false); // Not possible, since the mode parsing above never allows Idle.
-            break;
         case MultimeterService::Mode::DcVoltage:
         case MultimeterService::Mode::AcVoltage:
             minRangeFunc = minVoltageRange;
