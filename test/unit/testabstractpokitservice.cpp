@@ -10,6 +10,8 @@
 #include <QRegularExpression>
 #include <QSignalSpy>
 
+Q_DECLARE_METATYPE(PokitProduct)
+
 class MockPokitService : public AbstractPokitService
 {
 public:
