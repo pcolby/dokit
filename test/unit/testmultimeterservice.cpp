@@ -13,6 +13,7 @@
 Q_DECLARE_METATYPE(MultimeterService::Mode)
 Q_DECLARE_METATYPE(MultimeterService::Settings)
 Q_DECLARE_METATYPE(MultimeterService::Reading)
+Q_DECLARE_METATYPE(PokitProduct)
 
 void TestMultimeterService::toString_Mode_data()
 {

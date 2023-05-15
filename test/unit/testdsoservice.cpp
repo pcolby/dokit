@@ -13,6 +13,7 @@
 Q_DECLARE_METATYPE(DsoService::Mode)
 Q_DECLARE_METATYPE(DsoService::Settings)
 Q_DECLARE_METATYPE(DsoService::Metadata)
+Q_DECLARE_METATYPE(PokitProduct)
 
 void TestDsoService::toString_Mode_data()
 {
