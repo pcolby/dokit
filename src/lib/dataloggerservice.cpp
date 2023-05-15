@@ -98,14 +98,14 @@ QVariant DataLoggerService::maxValue(const PokitProduct product, const quint8 ra
         break;
     case Mode::DcVoltage:
     case Mode::AcVoltage:
-        return VoltageRange::toString(product, range);
+        return VoltageRange::maxValue(product, range);
     case Mode::DcCurrent:
     case Mode::AcCurrent:
-        return CurrentRange::toString(product, range);
+        return CurrentRange::maxValue(product, range);
     case Mode::Temperature:
         break;
     }
-    return QString();
+    return QVariant();
 }
 
 /*!
@@ -116,7 +116,7 @@ QVariant DataLoggerService::maxValue(const PokitProduct product, const quint8 ra
  */
 QVariant DataLoggerService::maxValue(const quint8 range, const Mode mode) const
 {
-    return toString(pokitProduct(), range, mode);
+    return maxValue(pokitProduct(), range, mode);
 }
 
 /// \struct DataLoggerService::Settings

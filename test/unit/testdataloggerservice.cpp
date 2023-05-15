@@ -38,6 +38,84 @@ void TestDataLoggerService::toString_Mode()
     QCOMPARE(DataLoggerService::toString(mode), expected);
 }
 
+void TestDataLoggerService::toString_Range_data()
+{
+    QTest::addColumn<PokitProduct>("product");
+    QTest::addColumn<quint8>("range");
+    QTest::addColumn<DataLoggerService::Mode>("mode");
+    QTest::addColumn<QString>("expected");
+
+    // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::toString_* functions).
+    // So here we just need to test that the right product's range is selected.
+    QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                          << DataLoggerService::Mode::Idle << QString();
+    QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
+                                   << DataLoggerService::Mode::AcVoltage << QStringLiteral("Up to 300mV");
+    QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
+                                 << DataLoggerService::Mode::AcVoltage << QString::fromUtf8("Up to 600V");
+    QTest::addRow("Current:Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                   << DataLoggerService::Mode::DcCurrent << QStringLiteral("Up to 150mA");
+    QTest::addRow("Current:Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
+                                 << DataLoggerService::Mode::DcCurrent << QString::fromUtf8("Up to 500μA");
+    QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                 << DataLoggerService::Mode::Temperature << QString();
+}
+
+void TestDataLoggerService::toString_Range()
+{
+    QFETCH(PokitProduct, product);
+    QFETCH(quint8, range);
+    QFETCH(DataLoggerService::Mode, mode);
+    QFETCH(QString, expected);
+
+    // Test the static version.
+    QCOMPARE(DataLoggerService::toString(product, range, mode), expected);
+
+    // Test the instance version.
+    DataLoggerService service(nullptr);
+    service.setPokitProduct(product);
+    QCOMPARE(service.toString(range, mode), expected);
+}
+
+void TestDataLoggerService::maxValue_data()
+{
+    QTest::addColumn<PokitProduct>("product");
+    QTest::addColumn<quint8>("range");
+    QTest::addColumn<DataLoggerService::Mode>("mode");
+    QTest::addColumn<QVariant>("expected");
+
+    // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::maxValue* functions).
+    // So here we just need to test that the right product's range is selected.
+    QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                          << DataLoggerService::Mode::Idle << QVariant();
+    QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
+                                   << DataLoggerService::Mode::AcVoltage << QVariant(300);
+    QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
+                                 << DataLoggerService::Mode::AcVoltage<< QVariant(600000);
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                 << DataLoggerService::Mode::DcCurrent << QVariant(150000);
+    QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
+                               << DataLoggerService::Mode::DcCurrent << QVariant(500);
+    QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                 << DataLoggerService::Mode::Temperature << QVariant();
+}
+
+void TestDataLoggerService::maxValue()
+{
+    QFETCH(PokitProduct, product);
+    QFETCH(quint8, range);
+    QFETCH(DataLoggerService::Mode, mode);
+    QFETCH(QVariant, expected);
+
+    // Test the static version.
+    QCOMPARE(DataLoggerService::maxValue(product, range, mode), expected);
+
+    // Test the instance version.
+    DataLoggerService service(nullptr);
+    service.setPokitProduct(product);
+    QCOMPARE(service.maxValue(range, mode), expected);
+}
+
 void TestDataLoggerService::readCharacteristics()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).

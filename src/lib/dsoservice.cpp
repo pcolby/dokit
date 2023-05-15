@@ -94,12 +94,12 @@ QVariant DsoService::maxValue(const PokitProduct product, const quint8 range, co
         break;
     case Mode::DcVoltage:
     case Mode::AcVoltage:
-        return VoltageRange::toString(product, range);
+        return VoltageRange::maxValue(product, range);
     case Mode::DcCurrent:
     case Mode::AcCurrent:
-        return CurrentRange::toString(product, range);
+        return CurrentRange::maxValue(product, range);
     }
-    return QString();
+    return QVariant();
 }
 
 /*!
@@ -110,7 +110,7 @@ QVariant DsoService::maxValue(const PokitProduct product, const quint8 range, co
  */
 QVariant DsoService::maxValue(const quint8 range, const Mode mode) const
 {
-    return toString(pokitProduct(), range, mode);
+    return maxValue(pokitProduct(), range, mode);
 }
 
 /// \struct DsoService::Settings

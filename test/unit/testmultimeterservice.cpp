@@ -43,6 +43,100 @@ void TestMultimeterService::toString_Mode()
     QCOMPARE(MultimeterService::toString(mode), expected);
 }
 
+void TestMultimeterService::toString_Range_data()
+{
+    QTest::addColumn<PokitProduct>("product");
+    QTest::addColumn<quint8>("range");
+    QTest::addColumn<MultimeterService::Mode>("mode");
+    QTest::addColumn<QString>("expected");
+
+    // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::toString_* functions).
+    // So here we just need to test that the right product's range is selected.
+    QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                          << MultimeterService::Mode::Idle << QString();
+    QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
+                                   << MultimeterService::Mode::AcVoltage << QStringLiteral("Up to 300mV");
+    QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
+                                 << MultimeterService::Mode::AcVoltage << QString::fromUtf8("Up to 600V");
+    QTest::addRow("Current:Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                   << MultimeterService::Mode::DcCurrent << QStringLiteral("Up to 150mA");
+    QTest::addRow("Current:Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
+                                 << MultimeterService::Mode::DcCurrent << QString::fromUtf8("Up to 500μA");
+    QTest::addRow("Resistance:Meter") << PokitProduct::PokitMeter << +PokitMeter::ResistanceRange::_470K
+                                      << MultimeterService::Mode::Resistance << QString::fromUtf8("Up to 470KΩ");
+    QTest::addRow("Resistance:Pro") << PokitProduct::PokitPro << +PokitPro::ResistanceRange::_3M
+                                    << MultimeterService::Mode::Resistance << QString::fromUtf8("Up to 3MΩ");
+    QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                             << MultimeterService::Mode::Temperature << QString();
+    QTest::addRow("Capacitance") << PokitProduct::PokitPro << +PokitPro::CapacitanceRange::_1mF
+                                 << MultimeterService::Mode::Capacitance << QStringLiteral("Up to 1mF");
+    QTest::addRow("ExtTemperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                    << MultimeterService::Mode::ExternalTemperature << QString();
+}
+
+void TestMultimeterService::toString_Range()
+{
+    QFETCH(PokitProduct, product);
+    QFETCH(quint8, range);
+    QFETCH(MultimeterService::Mode, mode);
+    QFETCH(QString, expected);
+
+    // Test the static version.
+    QCOMPARE(MultimeterService::toString(product, range, mode), expected);
+
+    // Test the instance version.
+    MultimeterService service(nullptr);
+    service.setPokitProduct(product);
+    QCOMPARE(service.toString(range, mode), expected);
+}
+
+void TestMultimeterService::maxValue_data()
+{
+    QTest::addColumn<PokitProduct>("product");
+    QTest::addColumn<quint8>("range");
+    QTest::addColumn<MultimeterService::Mode>("mode");
+    QTest::addColumn<QVariant>("expected");
+
+    // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::maxValue* functions).
+    // So here we just need to test that the right product's range is selected.
+    QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                          << MultimeterService::Mode::Idle << QVariant();
+    QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
+                                   << MultimeterService::Mode::AcVoltage << QVariant(300);
+    QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
+                                 << MultimeterService::Mode::AcVoltage<< QVariant(600000);
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                 << MultimeterService::Mode::DcCurrent << QVariant(150000);
+    QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
+                               << MultimeterService::Mode::DcCurrent << QVariant(500);
+    QTest::addRow("Resistance:Meter") << PokitProduct::PokitMeter << +PokitMeter::ResistanceRange::_470K
+                                      << MultimeterService::Mode::Resistance << QVariant(470000);
+    QTest::addRow("Resistance:Pro") << PokitProduct::PokitPro << +PokitPro::ResistanceRange::_3M
+                                    << MultimeterService::Mode::Resistance << QVariant(3000000);
+    QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                 << MultimeterService::Mode::Temperature << QVariant();
+    QTest::addRow("Capacitance") << PokitProduct::PokitPro << +PokitPro::CapacitanceRange::_1mF
+                                 << MultimeterService::Mode::Capacitance << QVariant(1000000);
+    QTest::addRow("ExtTemperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
+                                    << MultimeterService::Mode::ExternalTemperature << QVariant();
+}
+
+void TestMultimeterService::maxValue()
+{
+    QFETCH(PokitProduct, product);
+    QFETCH(quint8, range);
+    QFETCH(MultimeterService::Mode, mode);
+    QFETCH(QVariant, expected);
+
+    // Test the static version.
+    QCOMPARE(MultimeterService::maxValue(product, range, mode), expected);
+
+    // Test the instance version.
+    MultimeterService service(nullptr);
+    service.setPokitProduct(product);
+    QCOMPARE(service.maxValue(range, mode), expected);
+}
+
 void TestMultimeterService::readCharacteristics()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).

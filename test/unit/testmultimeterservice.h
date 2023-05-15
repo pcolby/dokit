@@ -11,6 +11,12 @@ private slots:
     void toString_Mode_data();
     void toString_Mode();
 
+    void toString_Range_data();
+    void toString_Range();
+
+    void maxValue_data();
+    void maxValue();
+
     void readCharacteristics();
     void readReadingCharacteristic();
 
