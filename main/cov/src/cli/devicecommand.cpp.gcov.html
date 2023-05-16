@@ -90,7 +90,7 @@
 <a name="28"><span class="lineNum">      28 </span>            : {</a>
 <a name="29"><span class="lineNum">      29 </span><span class="lineCov">         72 :     qCInfo(lc).noquote() &lt;&lt; ((deviceToScanFor.isNull())</span></a>
 <a name="30"><span class="lineNum">      30 </span><span class="lineCov">         64 :         ? tr(&quot;Looking for first available Pokit device...&quot;)</span></a>
-<a name="31"><span class="lineNum">      31 </span><span class="lineCov">         76 :         : tr(&quot;Looking for device \&quot;%1\&quot;...&quot;).arg(deviceToScanFor));</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">         76 :         : tr(R&quot;(Looking for device &quot;%1&quot;...)&quot;).arg(deviceToScanFor));</span></a>
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">         36 :     discoveryAgent-&gt;start();</span></a>
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">         36 :     return true;</span></a>
 <a name="34"><span class="lineNum">      34 </span>            : }</a>
@@ -400,7 +400,7 @@
 <a name="338"><span class="lineNum">     338 </span><span class="lineCov">         18 : void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</span></a>
 <a name="339"><span class="lineNum">     339 </span>            : {</a>
 <a name="340"><span class="lineNum">     340 </span><span class="lineCov">         18 :     if (device) {</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Ignoring additional Pokit device \&quot;%1\&quot; (%2) at (%3).&quot;)</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
 <a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
 <a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="344"><span class="lineNum">     344 </span>            :     }</a>
@@ -409,7 +409,7 @@
 <a name="347"><span class="lineNum">     347 </span><span class="lineCov">         72 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></a>
 <a name="348"><span class="lineNum">     348 </span><span class="lineCov">         36 :         ((!info.deviceUuid().isNull()) &amp;&amp; (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))</span></a>
 <a name="349"><span class="lineNum">     349 </span>            :     {</a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Found Pokit device \&quot;%1\&quot; (%2) at (%3).&quot;)</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Found Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
 <a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
 <a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :         discoveryAgent-&gt;stop();</span></a>
 <a name="353"><span class="lineNum">     353 </span>            : </a>
@@ -432,13 +432,13 @@
 <a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 :         connect(service, &amp;AbstractPokitService::serviceErrorOccurred,</span></a>
 <a name="371"><span class="lineNum">     371 </span>            :                 this, &amp;DeviceCommand::serviceError);</a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connecting to Pokit device \&quot;%1\&quot; (%2) at (%3).&quot;)</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connecting to Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
 <a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
 <a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :         device-&gt;controller()-&gt;connectToDevice();</span></a>
 <a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="377"><span class="lineNum">     377 </span>            :     }</a>
 <a name="378"><span class="lineNum">     378 </span>            : </a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Ignoring non-matching Pokit device \&quot;%1\&quot; (%2) at (%3).&quot;)</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
 <a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
 <a name="381"><span class="lineNum">     381 </span><span class="lineCov">          3 :     return;</span></a>
 <a name="382"><span class="lineNum">     382 </span>            : }</a>
@@ -451,7 +451,7 @@
 <a name="389"><span class="lineNum">     389 </span><span class="lineCov">         36 :     if (!device) {</span></a>
 <a name="390"><span class="lineNum">     390 </span><span class="lineCov">         72 :         qCWarning(lc).noquote() &lt;&lt; ((deviceToScanFor.isNull())</span></a>
 <a name="391"><span class="lineNum">     391 </span><span class="lineCov">         64 :             ? tr(&quot;Failed to find any Pokit device.&quot;)</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         76 :             : tr(&quot;Failed to find device \&quot;%1\&quot;.&quot;).arg(deviceToScanFor));</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         76 :             : tr(R&quot;(Failed to find device &quot;%1&quot;.)&quot;).arg(deviceToScanFor));</span></a>
 <a name="393"><span class="lineNum">     393 </span><span class="lineCov">         36 :         QCoreApplication::exit(EXIT_FAILURE);</span></a>
 <a name="394"><span class="lineNum">     394 </span>            :     }</a>
 <a name="395"><span class="lineNum">     395 </span><span class="lineCov">         36 : }</span></a>

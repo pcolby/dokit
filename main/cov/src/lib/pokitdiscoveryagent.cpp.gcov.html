@@ -231,7 +231,7 @@
 <a name="169"><span class="lineNum">     169 </span>            : {</a>
 <a name="170"><span class="lineNum">     170 </span>            :     Q_Q(PokitDiscoveryAgent);</a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineCov">        108 :     if (!isPokitProduct(info)) return;</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         72 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Discovered Pokit device \&quot;%1\&quot; at %2.&quot;)</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         72 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Discovered Pokit device &quot;%1&quot; at %2.)&quot;)</span></a>
 <a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :         .arg(info.name(), info.address().toString());</span></a>
 <a name="174"><span class="lineNum">     174 </span><span class="lineCov">         72 :     emit q-&gt;pokitDeviceDiscovered(info);</span></a>
 <a name="175"><span class="lineNum">     175 </span>            : }</a>
@@ -249,7 +249,7 @@
 <a name="187"><span class="lineNum">     187 </span>            : {</a>
 <a name="188"><span class="lineNum">     188 </span>            :     Q_Q(PokitDiscoveryAgent);</a>
 <a name="189"><span class="lineNum">     189 </span><span class="lineCov">         78 :     if (!isPokitProduct(info)) return;</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         52 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Pokit device \&quot;%1\&quot; at %2 updated with RSSI %3.&quot;)</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         52 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Pokit device &quot;%1&quot; at %2 updated with RSSI %3.)&quot;)</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :         .arg(info.name(), info.address().toString()).arg(info.rssi());</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineCov">         52 :     emit q-&gt;pokitDeviceUpdated(info, updatedFields);</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : }</a>

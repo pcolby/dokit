@@ -282,14 +282,14 @@
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorRead,</span></a>
 <a name="222"><span class="lineNum">     222 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;value){</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Descriptor \&quot;%1\&quot; (%2) read.&quot;)</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Descriptor &quot;%1&quot; (%2) read.)&quot;)</span></a>
 <a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
 <a name="225"><span class="lineNum">     225 </span>            :             Q_UNUSED(value)</a>
 <a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :         });</span></a>
 <a name="227"><span class="lineNum">     227 </span>            : </a>
 <a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorWritten,</span></a>
 <a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;newValue){</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Descriptor \&quot;%1\&quot; (%2) written.&quot;)</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Descriptor &quot;%1&quot; (%2) written.)&quot;)</span></a>
 <a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
 <a name="232"><span class="lineNum">     232 </span>            :             Q_UNUSED(newValue)</a>
 <a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :         });</span></a>
@@ -324,7 +324,7 @@
 <a name="262"><span class="lineNum">     262 </span><span class="lineCov">       3198 : QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &amp;uuid) const</span></a>
 <a name="263"><span class="lineNum">     263 </span>            : {</a>
 <a name="264"><span class="lineNum">     264 </span><span class="lineCov">       3198 :     if (!service) {</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       3198 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; requested before service assigned.&quot;)</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       3198 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Characterisitc %1 &quot;%2&quot; requested before service assigned.)&quot;)</span></a>
 <a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
 <a name="267"><span class="lineNum">     267 </span><span class="lineCov">       3198 :         return QLowEnergyCharacteristic();</span></a>
 <a name="268"><span class="lineNum">     268 </span>            :     }</a>
@@ -341,14 +341,14 @@
 <a name="279"><span class="lineNum">     279 </span>            :         RemoteServiceDiscovered</a>
 <a name="280"><span class="lineNum">     280 </span>            :         #endif</a>
 <a name="281"><span class="lineNum">     281 </span>            :     ) {</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; requested before service %3 \&quot;%4\&quot; discovered.&quot;)</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(R&quot;(Characterisitc %1 &quot;%2&quot; requested before service %3 &quot;%4&quot; discovered.)&quot;)</span></a>
 <a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),</span></a>
 <a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :             service-&gt;serviceUuid().toString(), PokitDevice::serviceToString(service-&gt;serviceUuid()));</span></a>
 <a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Current service state:&quot;) &lt;&lt; service-&gt;state();</span></a>
 <a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :         return QLowEnergyCharacteristic();</span></a>
 <a name="287"><span class="lineNum">     287 </span>            :     }</a>
 <a name="288"><span class="lineNum">     288 </span>            : </a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; not found in service %3 \&quot;%4\&quot;.&quot;)</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :     qCWarning(lc).noquote() &lt;&lt; tr(R&quot;(Characterisitc %1 &quot;%2&quot; not found in service %3 &quot;%4&quot;.)&quot;)</span></a>
 <a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid),</span></a>
 <a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :         service-&gt;serviceUuid().toString(), PokitDevice::serviceToString(service-&gt;serviceUuid()));</span></a>
 <a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :     return QLowEnergyCharacteristic();</span></a>
@@ -372,7 +372,7 @@
 <a name="310"><span class="lineNum">     310 </span><span class="lineCov">        486 :     if (!characteristic.isValid()) {</span></a>
 <a name="311"><span class="lineNum">     311 </span>            :         return false;</a>
 <a name="312"><span class="lineNum">     312 </span>            :     }</a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Reading characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Reading characteristic %1 &quot;%2&quot;.)&quot;)</span></a>
 <a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
 <a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :     service-&gt;readCharacteristic(characteristic);</span></a>
 <a name="316"><span class="lineNum">     316 </span>            :     return true;</a>
@@ -388,7 +388,7 @@
 <a name="326"><span class="lineNum">     326 </span>            :  */</a>
 <a name="327"><span class="lineNum">     327 </span><span class="lineCov">        108 : bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBluetoothUuid &amp;uuid)</span></a>
 <a name="328"><span class="lineNum">     328 </span>            : {</a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        108 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Enabling CCCD for characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">        108 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Enabling CCCD for characteristic %1 &quot;%2&quot;.)&quot;)</span></a>
 <a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineCov">        108 :     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);</span></a>
 <a name="332"><span class="lineNum">     332 </span><span class="lineCov">        108 :     if (!characteristic.isValid()) {</span></a>
@@ -398,7 +398,7 @@
 <a name="336"><span class="lineNum">     336 </span>            :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</a>
 <a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></a>
 <a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :     if (!descriptor.isValid()) {</span></a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; has no client configuration descriptor.&quot;)</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(R&quot;(Characterisitc %1 &quot;%2&quot; has no client configuration descriptor.)&quot;)</span></a>
 <a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
 <a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :         return false;</span></a>
 <a name="342"><span class="lineNum">     342 </span>            :     }</a>
@@ -423,7 +423,7 @@
 <a name="361"><span class="lineNum">     361 </span>            :  */</a>
 <a name="362"><span class="lineNum">     362 </span><span class="lineCov">        108 : bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluetoothUuid &amp;uuid)</span></a>
 <a name="363"><span class="lineNum">     363 </span>            : {</a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        108 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disabling CCCD for characteristic %1 \&quot;%2\&quot;.&quot;)</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        108 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Disabling CCCD for characteristic %1 &quot;%2&quot;.)&quot;)</span></a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :         .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineCov">        108 :     QLowEnergyCharacteristic characteristic = getCharacteristic(uuid);</span></a>
 <a name="367"><span class="lineNum">     367 </span><span class="lineCov">        108 :     if (!characteristic.isValid()) {</span></a>
@@ -433,7 +433,7 @@
 <a name="371"><span class="lineNum">     371 </span>            :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</a>
 <a name="372"><span class="lineNum">     372 </span><span class="lineNoCov">          0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></a>
 <a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :     if (!descriptor.isValid()) {</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Characterisitc %1 \&quot;%2\&quot; has no client configuration descriptor.&quot;)</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :         qCWarning(lc).noquote() &lt;&lt; tr(R&quot;(Characterisitc %1 &quot;%2&quot; has no client configuration descriptor.)&quot;)</span></a>
 <a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></a>
 <a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :         return false;</span></a>
 <a name="377"><span class="lineNum">     377 </span>            :     }</a>
@@ -504,7 +504,7 @@
 <a name="442"><span class="lineNum">     442 </span><span class="lineCov">         18 :         return;</span></a>
 <a name="443"><span class="lineNum">     443 </span>            :     }</a>
 <a name="444"><span class="lineNum">     444 </span>            : </a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connected to \&quot;%1\&quot; (%2) at %3.&quot;).arg(</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connected to &quot;%1&quot; (%2) at %3.)&quot;).arg(</span></a>
 <a name="446"><span class="lineNum">     446 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
 <a name="447"><span class="lineNum">     447 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
 <a name="448"><span class="lineNum">     448 </span><span class="lineCov">         18 :     if (autoDiscover) {</span></a>
@@ -525,7 +525,7 @@
 <a name="463"><span class="lineNum">     463 </span><span class="lineCov">         18 :         return;</span></a>
 <a name="464"><span class="lineNum">     464 </span>            :     }</a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Discovery finished for \&quot;%1\&quot; (%2) at %3.&quot;).arg(</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Discovery finished for &quot;%1&quot; (%2) at %3.)&quot;).arg(</span></a>
 <a name="467"><span class="lineNum">     467 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
 <a name="468"><span class="lineNum">     468 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
 <a name="469"><span class="lineNum">     469 </span>            : </a>
@@ -598,7 +598,7 @@
 <a name="536"><span class="lineNum">     536 </span><span class="lineCov">        126 : void AbstractPokitServicePrivate::characteristicRead(</span></a>
 <a name="537"><span class="lineNum">     537 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;value)</a>
 <a name="538"><span class="lineNum">     538 </span>            : {</a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; read %n byte/s: %3&quot;, nullptr, value.size()).arg(</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; read %n byte/s: %3)&quot;, nullptr, value.size()).arg(</span></a>
 <a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :         characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(value));</span></a>
 <a name="541"><span class="lineNum">     541 </span><span class="lineCov">        126 : }</span></a>
 <a name="542"><span class="lineNum">     542 </span>            : </a>
@@ -612,7 +612,7 @@
 <a name="550"><span class="lineNum">     550 </span><span class="lineCov">        126 : void AbstractPokitServicePrivate::characteristicWritten(</span></a>
 <a name="551"><span class="lineNum">     551 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
 <a name="552"><span class="lineNum">     552 </span>            : {</a>
-<a name="553"><span class="lineNum">     553 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; written with %Ln byte/s: %3&quot;, nullptr, newValue.size())</span></a>
+<a name="553"><span class="lineNum">     553 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; written with %Ln byte/s: %3)&quot;, nullptr, newValue.size())</span></a>
 <a name="554"><span class="lineNum">     554 </span><span class="lineNoCov">          0 :         .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(newValue));</span></a>
 <a name="555"><span class="lineNum">     555 </span><span class="lineCov">        126 : }</span></a>
 <a name="556"><span class="lineNum">     556 </span>            : </a>
@@ -627,7 +627,7 @@
 <a name="565"><span class="lineNum">     565 </span><span class="lineCov">         72 : void AbstractPokitServicePrivate::characteristicChanged(</span></a>
 <a name="566"><span class="lineNum">     566 </span>            :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</a>
 <a name="567"><span class="lineNum">     567 </span>            : {</a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineCov">         72 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Characteristic %1 \&quot;%2\&quot; changed to %Ln byte/s: %3&quot;, nullptr, newValue.size())</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">         72 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; changed to %Ln byte/s: %3)&quot;, nullptr, newValue.size())</span></a>
 <a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :         .arg(characteristic.uuid().toString(), PokitDevice::charcteristicToString(characteristic.uuid()), toHexString(newValue));</span></a>
 <a name="570"><span class="lineNum">     570 </span><span class="lineCov">         72 : }</span></a>
 <a name="571"><span class="lineNum">     571 </span>            : </a>

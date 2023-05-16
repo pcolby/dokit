@@ -219,7 +219,7 @@
 <a name="157"><span class="lineNum">     157 </span>            : </a>
 <a name="158"><span class="lineNum">     158 </span>            :     const QByteArray value = name.toUtf8();</a>
 <a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :     if (value.length() &gt; 11) {</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes): 0x%3&quot;)</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(R&quot;(Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x%3)&quot;)</span></a>
 <a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :             .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));</span></a>
 <a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :         return false;</span></a>
 <a name="163"><span class="lineNum">     163 </span>            :     }</a>
@@ -302,7 +302,7 @@
 <a name="240"><span class="lineNum">     240 </span>            : </a>
 <a name="241"><span class="lineNum">     241 </span><span class="lineCov">         18 :     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::deviceName) {</span></a>
 <a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :         const QString deviceName = QString::fromUtf8(value);</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device name: \&quot;%1\&quot;&quot;).arg(deviceName);</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Device name: &quot;%1&quot;)&quot;).arg(deviceName);</span></a>
 <a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameRead(deviceName);</span></a>
 <a name="245"><span class="lineNum">     245 </span>            :         return;</a>
 <a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :     }</span></a>

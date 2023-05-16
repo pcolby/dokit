@@ -311,7 +311,7 @@
 <a name="249"><span class="lineNum">     249 </span><span class="lineCov">        324 :     case DsoService::Mode::DcCurrent: unit = QLatin1String(&quot;Adc&quot;); break;</span></a>
 <a name="250"><span class="lineNum">     250 </span><span class="lineCov">        324 :     case DsoService::Mode::AcCurrent: unit = QLatin1String(&quot;Aac&quot;); break;</span></a>
 <a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :     default:</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;No known unit for mode %1 \&quot;%2\&quot;.&quot;).arg((int)metadata.mode)</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(No known unit for mode %1 &quot;%2&quot;.)&quot;).arg((int)metadata.mode)</span></a>
 <a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :             .arg(DsoService::toString(metadata.mode));</span></a>
 <a name="254"><span class="lineNum">     254 </span>            :     }</a>
 <a name="255"><span class="lineNum">     255 </span><span class="lineCov">       2304 :     const QString range = service-&gt;toString(metadata.range, metadata.mode);</span></a>

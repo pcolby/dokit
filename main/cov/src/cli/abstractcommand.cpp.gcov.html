@@ -157,9 +157,9 @@
 <a name="95"><span class="lineNum">      95 </span>            :  *</a>
 <a name="96"><span class="lineNum">      96 </span>            :  * Some examples:</a>
 <a name="97"><span class="lineNum">      97 </span>            :  * ```</a>
-<a name="98"><span class="lineNum">      98 </span>            :  * QCOMPARE(escapeCsvField(&quot;abc&quot;), &quot;abc&quot;);       // Returned unchanged.</a>
-<a name="99"><span class="lineNum">      99 </span>            :  * QCOMPARE(escapeCsvField(&quot;a,c&quot;), &quot;\&quot;a,c\&quot;&quot;);   // Wrapped in double-quotes.</a>
-<a name="100"><span class="lineNum">     100 </span>            :  * QCOMPARE(escapeCsvField(&quot;a\&quot;c&quot;), &quot;\&quot;a&quot;&quot;c\&quot;&quot;); // Existing double-quotes doubles, then wrapped.</a>
+<a name="98"><span class="lineNum">      98 </span>            :  * QCOMPARE(escapeCsvField(&quot;abc&quot;), &quot;abc&quot;);           // Returned unchanged.</a>
+<a name="99"><span class="lineNum">      99 </span>            :  * QCOMPARE(escapeCsvField(&quot;a,c&quot;), R&quot;(&quot;a,c&quot;)&quot;);      // Wrapped in double-quotes.</a>
+<a name="100"><span class="lineNum">     100 </span>            :  * QCOMPARE(escapeCsvField(R&quot;(a&quot;c)&quot;), R(&quot;(&quot;a&quot;&quot;c&quot;)&quot;); // Existing double-quotes doubled, then wrapped.</a>
 <a name="101"><span class="lineNum">     101 </span>            :  * ```</a>
 <a name="102"><span class="lineNum">     102 </span>            :  */</a>
 <a name="103"><span class="lineNum">     103 </span><span class="lineCov">       1665 : QString AbstractCommand::escapeCsvField(const QString &amp;field)</span></a>
@@ -167,8 +167,8 @@
 <a name="105"><span class="lineNum">     105 </span><span class="lineCov">       1647 :     if (field.contains(QLatin1Char(','))||field.contains(QLatin1Char('\r'))||</span></a>
 <a name="106"><span class="lineNum">     106 </span><span class="lineCov">       4941 :         field.contains(QLatin1Char('&quot;'))||field.contains(QLatin1Char('\n')))</span></a>
 <a name="107"><span class="lineNum">     107 </span>            :     {</a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         44 :         return QString::fromLatin1(&quot;\&quot;%1\&quot;&quot;).arg(</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">         36 :             QString(field).replace(QLatin1Char('&quot;'), QLatin1String(&quot;\&quot;\&quot;&quot;)));</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         44 :         return QString::fromLatin1(R&quot;(&quot;%1&quot;)&quot;).arg(</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">         36 :             QString(field).replace(QLatin1Char('&quot;'), QLatin1String(R&quot;(&quot;&quot;)&quot;)));</span></a>
 <a name="110"><span class="lineNum">     110 </span>            :     } else return field;</a>
 <a name="111"><span class="lineNum">     111 </span>            : }</a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>

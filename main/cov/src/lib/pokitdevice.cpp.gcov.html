@@ -372,7 +372,7 @@
 <a name="310"><span class="lineNum">     310 </span>            :         return; // Don't bother continuing to connect if new controller is null.</a>
 <a name="311"><span class="lineNum">     311 </span>            :     }</a>
 <a name="312"><span class="lineNum">     312 </span>            : </a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        546 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set new controller \&quot;%1\&quot; (%2) at (%3).&quot;).arg(</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        546 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Set new controller &quot;%1&quot; (%2) at (%3).)&quot;).arg(</span></a>
 <a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
 <a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
 <a name="316"><span class="lineNum">     316 </span>            : </a>
@@ -414,7 +414,7 @@
 <a name="352"><span class="lineNum">     352 </span><span class="lineCov">         80 :         qCCritical(lc).noquote() &lt;&lt; tr(&quot;PokitDevicePrivate::connected slot invoked without a controller.&quot;);</span></a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineCov">         36 :         return; // Just to avoid the nullptr dereference below.</span></a>
 <a name="354"><span class="lineNum">     354 </span>            :     }</a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connected to \&quot;%1\&quot; (%2) at (%3).&quot;).arg(</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connected to &quot;%1&quot; (%2) at (%3).)&quot;).arg(</span></a>
 <a name="356"><span class="lineNum">     356 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
 <a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
 <a name="358"><span class="lineNum">     358 </span>            : }</a>
@@ -458,7 +458,7 @@
 <a name="396"><span class="lineNum">     396 </span>            :  */</a>
 <a name="397"><span class="lineNum">     397 </span><span class="lineCov">         18 : void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &amp;newService) const</span></a>
 <a name="398"><span class="lineNum">     398 </span>            : {</a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service discovered: %1 \&quot;%2\&quot;&quot;)</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Service discovered: %1 &quot;%2&quot;)&quot;)</span></a>
 <a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 :         .arg(newService.toString(), PokitDevice::serviceToString(newService));</span></a>
 <a name="401"><span class="lineNum">     401 </span><span class="lineCov">         18 : }</span></a>
 <a name="402"><span class="lineNum">     402 </span>            : </a>

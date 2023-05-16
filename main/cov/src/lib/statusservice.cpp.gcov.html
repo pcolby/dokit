@@ -334,7 +334,7 @@
 <a name="272"><span class="lineNum">     272 </span>            : </a>
 <a name="273"><span class="lineNum">     273 </span>            :     const QByteArray value = name.toUtf8();</a>
 <a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :     if (value.length() &gt; 11) {</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(&quot;Device name \&quot;%1\&quot; is too long (%2 &gt; 11 bytes): 0x3&quot;)</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(R&quot;(Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x3)&quot;)</span></a>
 <a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :             .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));</span></a>
 <a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :         return false;</span></a>
 <a name="278"><span class="lineNum">     278 </span>            :     }</a>
@@ -553,7 +553,7 @@
 <a name="491"><span class="lineNum">     491 </span>            : </a>
 <a name="492"><span class="lineNum">     492 </span><span class="lineCov">         18 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
 <a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 :         const QString deviceName = QString::fromUtf8(value);</span></a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device name: \&quot;%1\&quot;&quot;).arg(deviceName);</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Device name: &quot;%1&quot;)&quot;).arg(deviceName);</span></a>
 <a name="495"><span class="lineNum">     495 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameRead(deviceName);</span></a>
 <a name="496"><span class="lineNum">     496 </span>            :         return;</a>
 <a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :     }</span></a>
