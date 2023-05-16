@@ -606,9 +606,9 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <div class="line"><span class="lineno">  491</span> </div>
 <div class="line"><span class="lineno">  492</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a>) {</div>
 <div class="line"><span class="lineno">  493</span>        <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> deviceName = <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(value);</div>
-<div class="line"><span class="lineno">  494</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Device name: \&quot;%1\&quot;&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(deviceName);</div>
-<div class="line"><span class="lineno">  495</span>        emit q-&gt;deviceNameRead(deviceName);</div>
-<div class="line"><span class="lineno">  496</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  494</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(R<span class="stringliteral">&quot;(Device name: &quot;%1&quot;)&quot;).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(deviceName);</span></div>
+<div class="line"><span class="lineno">  495</span><span class="stringliteral">        emit q-&gt;deviceNameRead(deviceName);</span></div>
+<div class="line"><span class="lineno">  496</span><span class="stringliteral">        </span><span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  497</span>    }</div>
 <div class="line"><span class="lineno">  498</span> </div>
 <div class="line"><span class="lineno">  499</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a>) {</div>

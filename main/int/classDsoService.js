@@ -42,6 +42,6 @@ var classDsoService =
     [ "startDso", "classDsoService.html#a4bd74f90cf6b34172cfeaff8112f22fe", null ],
     [ "toString", "classDsoService.html#acc76b93255cf3c5110d90c0df3318afe", null ],
     [ "toString", "classDsoService.html#ae30b37a57050beb9f9d36f8dc38b2bb6", null ],
-    [ "toString", "classDsoService.html#a1f6e8b78ab01b0ac698b7a11f8e66adb", null ],
+    [ "toString", "classDsoService.html#aa106091512457325081f1940ad70c9f7", null ],
     [ "serviceUuid", "classDsoService.html#a3d9a3fcb52d059fc454fdb71530d9a7d", null ]
 ];

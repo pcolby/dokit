@@ -38,5 +38,5 @@ var classDsoService =
     [ "setSettings", "classDsoService.html#a5714c8ccec6ab1d98241312b28a32e9e", null ],
     [ "settingsWritten", "classDsoService.html#aecb20a42b7d8906f9e84266193424567", null ],
     [ "startDso", "classDsoService.html#a4bd74f90cf6b34172cfeaff8112f22fe", null ],
-    [ "toString", "classDsoService.html#a1f6e8b78ab01b0ac698b7a11f8e66adb", null ]
+    [ "toString", "classDsoService.html#aa106091512457325081f1940ad70c9f7", null ]
 ];

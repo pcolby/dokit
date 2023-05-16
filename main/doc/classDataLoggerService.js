@@ -40,5 +40,5 @@ var classDataLoggerService =
     [ "settingsWritten", "classDataLoggerService.html#afa68d0589ac69afd9b465f67c017b35c", null ],
     [ "startLogger", "classDataLoggerService.html#a4aac49f9a655408e4b58f05735c5f9ab", null ],
     [ "stopLogger", "classDataLoggerService.html#a9f8a721025e04bf27df18194247b532e", null ],
-    [ "toString", "classDataLoggerService.html#a7a528bd52f48c2bf91b8933a62b5e9d4", null ]
+    [ "toString", "classDataLoggerService.html#a6f92316f5c2c256b17a74c5ad38eeab8", null ]
 ];

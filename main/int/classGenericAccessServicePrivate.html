@@ -595,9 +595,9 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <div class="line"><span class="lineno">  240</span> </div>
 <div class="line"><span class="lineno">  241</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">GenericAccessService::CharacteristicUuids::deviceName</a>) {</div>
 <div class="line"><span class="lineno">  242</span>        <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> deviceName = <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(value);</div>
-<div class="line"><span class="lineno">  243</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Device name: \&quot;%1\&quot;&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(deviceName);</div>
-<div class="line"><span class="lineno">  244</span>        emit q-&gt;deviceNameRead(deviceName);</div>
-<div class="line"><span class="lineno">  245</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  243</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(R<span class="stringliteral">&quot;(Device name: &quot;%1&quot;)&quot;).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(deviceName);</span></div>
+<div class="line"><span class="lineno">  244</span><span class="stringliteral">        emit q-&gt;deviceNameRead(deviceName);</span></div>
+<div class="line"><span class="lineno">  245</span><span class="stringliteral">        </span><span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  246</span>    }</div>
 <div class="line"><span class="lineno">  247</span> </div>
 <div class="line"><span class="lineno">  248</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Unknown characteristic read for Generic Access service&quot;</span>)</div>
