@@ -31,18 +31,18 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">103</td>
-            <td class="headerCovTableEntry">144</td>
-            <td class="headerCovTableEntryLo">71.5 %</td>
+            <td class="headerCovTableEntry">111</td>
+            <td class="headerCovTableEntry">143</td>
+            <td class="headerCovTableEntryMed">77.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
             <td class="headerValue">0.3.0-pre+linux.x86-64.gcc-cov</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">26</td>
             <td class="headerCovTableEntry">30</td>
-            <td class="headerCovTableEntryMed">80.0 %</td>
+            <td class="headerCovTableEntryMed">86.7 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -123,25 +123,25 @@
 <a name="61"><span class="lineNum">      61 </span>            : }</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
 <a name="63"><span class="lineNum">      63 </span>            : /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.</a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       1296 : QString DsoService::toString(const PokitProduct product, const quint8 range, const Mode mode)</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       1476 : QString DsoService::toString(const PokitProduct product, const quint8 range, const Mode mode)</span></a>
 <a name="65"><span class="lineNum">      65 </span>            : {</a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">       1296 :     switch (mode) {</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">       1476 :     switch (mode) {</span></a>
 <a name="67"><span class="lineNum">      67 </span>            :     case Mode::Idle:</a>
 <a name="68"><span class="lineNum">      68 </span>            :         break;</a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        648 :     case Mode::DcVoltage:</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        720 :     case Mode::DcVoltage:</span></a>
 <a name="70"><span class="lineNum">      70 </span>            :     case Mode::AcVoltage:</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        648 :         return VoltageRange::toString(product, range);</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        648 :     case Mode::DcCurrent:</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        720 :         return VoltageRange::toString(product, range);</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        720 :     case Mode::DcCurrent:</span></a>
 <a name="73"><span class="lineNum">      73 </span>            :     case Mode::AcCurrent:</a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        648 :         return CurrentRange::toString(product, range);</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        720 :         return CurrentRange::toString(product, range);</span></a>
 <a name="75"><span class="lineNum">      75 </span>            :     }</a>
 <a name="76"><span class="lineNum">      76 </span>            :     return QString();</a>
 <a name="77"><span class="lineNum">      77 </span>            : }</a>
 <a name="78"><span class="lineNum">      78 </span>            : </a>
 <a name="79"><span class="lineNum">      79 </span>            : /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.</a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       1296 : QString DsoService::toString(const quint8 range, const Mode mode)</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       1386 : QString DsoService::toString(const quint8 range, const Mode mode)</span></a>
 <a name="81"><span class="lineNum">      81 </span>            : {</a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1296 :     return toString(pokitProduct(), range, mode);</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1386 :     return toString(pokitProduct(), range, mode);</span></a>
 <a name="83"><span class="lineNum">      83 </span>            : }</a>
 <a name="84"><span class="lineNum">      84 </span>            : </a>
 <a name="85"><span class="lineNum">      85 </span>            : /*!</a>
@@ -149,19 +149,19 @@
 <a name="87"><span class="lineNum">      87 </span>            :  *</a>
 <a name="88"><span class="lineNum">      88 </span>            :  *  If \a range is not a known valid enumeration value for \a product's \a mode, then a null QVariant is returned.</a>
 <a name="89"><span class="lineNum">      89 </span>            :  */</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 : QVariant DsoService::maxValue(const PokitProduct product, const quint8 range, const Mode mode)</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">        180 : QVariant DsoService::maxValue(const PokitProduct product, const quint8 range, const Mode mode)</span></a>
 <a name="91"><span class="lineNum">      91 </span>            : {</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 :     switch (mode) {</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">        180 :     switch (mode) {</span></a>
 <a name="93"><span class="lineNum">      93 </span>            :     case Mode::Idle:</a>
 <a name="94"><span class="lineNum">      94 </span>            :         break;</a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :     case Mode::DcVoltage:</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         72 :     case Mode::DcVoltage:</span></a>
 <a name="96"><span class="lineNum">      96 </span>            :     case Mode::AcVoltage:</a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :         return VoltageRange::toString(product, range);</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :     case Mode::DcCurrent:</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">         72 :         return VoltageRange::maxValue(product, range);</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">         72 :     case Mode::DcCurrent:</span></a>
 <a name="99"><span class="lineNum">      99 </span>            :     case Mode::AcCurrent:</a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineNoCov">          0 :         return CurrentRange::toString(product, range);</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">         72 :         return CurrentRange::maxValue(product, range);</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :     }</a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 :     return QString();</span></a>
+<a name="102"><span class="lineNum">     102 </span>            :     return QVariant();</a>
 <a name="103"><span class="lineNum">     103 </span>            : }</a>
 <a name="104"><span class="lineNum">     104 </span>            : </a>
 <a name="105"><span class="lineNum">     105 </span>            : /*!</a>
@@ -170,9 +170,9 @@
 <a name="108"><span class="lineNum">     108 </span>            :  *  If \a range is not a known valid enumeration value for the current \a product's \a mode,</a>
 <a name="109"><span class="lineNum">     109 </span>            :  *  then a null QVariant is returned.</a>
 <a name="110"><span class="lineNum">     110 </span>            :  */</a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 : QVariant DsoService::maxValue(const quint8 range, const Mode mode) const</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         90 : QVariant DsoService::maxValue(const quint8 range, const Mode mode) const</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : {</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :     return toString(pokitProduct(), range, mode);</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         90 :     return maxValue(pokitProduct(), range, mode);</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : }</a>
 <a name="115"><span class="lineNum">     115 </span>            : </a>
 <a name="116"><span class="lineNum">     116 </span>            : /// \struct DsoService::Settings</a>
@@ -199,11 +199,11 @@
 <a name="137"><span class="lineNum">     137 </span>            : /*!</a>
 <a name="138"><span class="lineNum">     138 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="139"><span class="lineNum">     139 </span>            :  */</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1350 : DsoService::DsoService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1350 :     : AbstractPokitService(new DsoServicePrivate(controller, this), parent)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1530 : DsoService::DsoService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1530 :     : AbstractPokitService(new DsoServicePrivate(controller, this), parent)</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : {</a>
 <a name="143"><span class="lineNum">     143 </span>            : </a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       1350 : }</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       1530 : }</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            : /*!</a>
 <a name="147"><span class="lineNum">     147 </span>            :  * \cond internal</a>
@@ -220,10 +220,10 @@
 <a name="158"><span class="lineNum">     158 </span>            : /*!</a>
 <a name="159"><span class="lineNum">     159 </span>            :  * Destroys this DsoService object.</a>
 <a name="160"><span class="lineNum">     160 </span>            :  */</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">        252 : DsoService::~DsoService()</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">        432 : DsoService::~DsoService()</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : {</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">        252 : }</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">        432 : }</span></a>
 <a name="165"><span class="lineNum">     165 </span>            : </a>
 <a name="166"><span class="lineNum">     166 </span><span class="lineCov">         18 : bool DsoService::readCharacteristics()</span></a>
 <a name="167"><span class="lineNum">     167 </span>            : {</a>
@@ -417,12 +417,12 @@
 <a name="355"><span class="lineNum">     355 </span>            :  * \internal</a>
 <a name="356"><span class="lineNum">     356 </span>            :  * Constructs a new DsoServicePrivate object with public implementation \a q.</a>
 <a name="357"><span class="lineNum">     357 </span>            :  */</a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">        900 : DsoServicePrivate::DsoServicePrivate(</span></a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       1350 :     QLowEnergyController * controller, DsoService * const q)</span></a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">       1350 :     : AbstractPokitServicePrivate(DsoService::serviceUuid, controller, q)</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">       1020 : DsoServicePrivate::DsoServicePrivate(</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       1530 :     QLowEnergyController * controller, DsoService * const q)</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">       1530 :     : AbstractPokitServicePrivate(DsoService::serviceUuid, controller, q)</span></a>
 <a name="361"><span class="lineNum">     361 </span>            : {</a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">        900 : }</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       1020 : }</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
 <a name="365"><span class="lineNum">     365 </span>            : /*!</a>
 <a name="366"><span class="lineNum">     366 </span>            :  * Returns \a settings in the format Pokit devices expect.</a>
