@@ -176,9 +176,18 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
     }
 
     // Parse, and remove, the optional SI unit prefix.
-    if ((!number.isEmpty()) && (unitPrefixScaleMap.contains(number.back()))) {
-        ratio = unitPrefixScaleMap.value(number.back());
-        number.chop(1);
+    if (!number.isEmpty()) {
+        #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+        const QChar siPrefix = number.back(); // QString::back() introduced in Qt 5.10.
+        #else
+        const QChar siPrefix = number.at(number.size() - 1);
+        #endif
+        const auto iter = unitPrefixScaleMap.constFind(siPrefix);
+        if (iter != unitPrefixScaleMap.constEnd()) {
+            Q_ASSERT(iter->isValid());
+            ratio = *iter;
+            number.chop(1);
+        }
     }
 
     #define DOKIT_RESULT(var) (var * ratio.num * R::den / ratio.den / R::num)
