@@ -8,6 +8,8 @@
 
 #include <QLocale>
 
+#include <ratio>
+
 /*!
  * \class AbstractCommand
  *
@@ -111,6 +113,101 @@ QString AbstractCommand::escapeCsvField(const QString &field)
 }
 
 /*!
+ * \internal
+ * A (run-time) class approximately equivalent to the compile-time std::ratio template.
+ */
+struct Ratio {
+    std::intmax_t num { 0 }; ///< Numerator.
+    std::intmax_t den { 0 }; ///< Denominator.
+    //! Returns \a true if both #num and #den are non-zero.
+    bool isValid() const { return (num != 0) && (den != 0); }
+};
+
+/*!
+ * \internal
+ * Returns a (run-time) Ratio representation of (compile-time) ratio \a R.
+ */
+template<typename R> Ratio makeRatio() { return Ratio{ R::num, R::den }; }
+
+/*!
+ * Returns \a value as an integer multiple of the ratio \a R. The string \a value
+ * may end with the optional \a unit, such as `V` or `s`, which may also be preceded with a SI unit
+ * prefix such as `m` for `milli`. If \a value contains no SI unit prefix, then the result will be
+ * multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This allows for
+ * convenient use like:
+ *
+ * ```
+ * const quint32 timeout = parseNumber<std::milli>(parser.value("window"), 's', 500*1000);
+ * ```
+ *
+ * So that an unqalified period like "300" will be assumed to be 300 milliseconds, and not 300
+ * microseconds, while a period like "1000" will be assume to be 1 second.
+ *
+ * If conversion fails for any reason, 0 is returned.
+ */
+template<typename R>
+quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, const quint32 sensibleMinimum)
+{
+    static const QMap<QChar, Ratio> unitPrefixScaleMap {
+        { QLatin1Char('E'), makeRatio<std::exa>()   },
+        { QLatin1Char('P'), makeRatio<std::peta>()  },
+        { QLatin1Char('T'), makeRatio<std::tera>()  },
+        { QLatin1Char('G'), makeRatio<std::giga>()  },
+        { QLatin1Char('M'), makeRatio<std::mega>()  },
+        { QLatin1Char('K'), makeRatio<std::kilo>()  }, // Not official SI unit prefix, but commonly used.
+        { QLatin1Char('k'), makeRatio<std::kilo>()  },
+        { QLatin1Char('d'), makeRatio<std::deci>()  },
+        { QLatin1Char('c'), makeRatio<std::centi>() },
+        { QLatin1Char('m'), makeRatio<std::milli>() },
+        { QLatin1Char('u'), makeRatio<std::micro>() }, // Not official SI unit prefix, but commonly used.
+        { QChar     (u'μ'), makeRatio<std::micro>() },
+        { QLatin1Char('n'), makeRatio<std::nano>()  },
+        { QLatin1Char('p'), makeRatio<std::pico>()  },
+        { QLatin1Char('f'), makeRatio<std::femto>() },
+        { QLatin1Char('a'), makeRatio<std::atto>()  },
+    };
+
+    // Remove the optional (whole) unit suffix.
+    Ratio ratio;
+    QString number = value.trimmed();
+    if ((!unit.isEmpty()) && (number.endsWith(unit, Qt::CaseInsensitive))) {
+        number.chop(unit.length());
+        ratio = { 1, 1 };
+    }
+
+    // Parse, and remove, the optional SI unit prefix.
+    if ((!number.isEmpty()) && (unitPrefixScaleMap.contains(number.back()))) {
+        ratio = unitPrefixScaleMap.value(number.back());
+        number.chop(1);
+    }
+
+    #define DOKIT_RESULT(var) (var * ratio.num * R::den / ratio.den / R::num)
+
+    // Parse the number as an (unsigned) integer.
+    QLocale locale; bool ok;
+    qulonglong integer = locale.toULongLong(number, &ok);
+    if (ok) {
+        if (integer == 0) {
+            return 0;
+        }
+        if (!ratio.isValid()) {
+            for (ratio = makeRatio<R>(); DOKIT_RESULT(integer) < sensibleMinimum; ratio.num *= 1000);
+        }
+        return (integer == 0) ? 0 : DOKIT_RESULT(integer);
+    }
+
+    // Parse the number as a (double) floating point number, and check that it is positive.
+    const double dbl = locale.toDouble(number, &ok);
+    if ((ok) && (dbl > 0.0)) {
+        if (!ratio.isValid()) {
+            for (ratio = makeRatio<R>(); DOKIT_RESULT(dbl) < sensibleMinimum; ratio.num *= 1000);
+        }
+        return (quint32)DOKIT_RESULT(dbl);
+    }
+    return 0; // Failed to parse as either integer, or float.
+}
+
+/*!
  * Returns \a value as a number of micros, such as microseconds, or microvolts. The string \a value
  * may end with the optional \a unit, such as `V` or `s`, which may also be preceded with a SI unit
  * prefix such as `m` for `milli`. If \a value contains no SI unit prefix, then the result will be
@@ -118,7 +215,7 @@ QString AbstractCommand::escapeCsvField(const QString &field)
  * convenient use like:
  *
  * ```
- * const quin32t timeout = parseMicroValue(parser.value("window"), 's', 500*1000);
+ * const quin32 timeout = parseMicroValue(parser.value("window"), 's', 500*1000);
  * ```
  *
  * So that an unqalified period like "300" will be assumed to be 300 milliseconds, and not 300
@@ -129,46 +226,7 @@ QString AbstractCommand::escapeCsvField(const QString &field)
 quint32 AbstractCommand::parseMicroValue(const QString &value, const QString &unit,
                                          const quint32 sensibleMinimum)
 {
-    // Remove the optional (whole) unit suffix.
-    quint32 scale = 0;
-    QString number = value.trimmed();
-    if ((!unit.isEmpty()) && (number.endsWith(unit, Qt::CaseInsensitive))) {
-        number.chop(unit.length());
-        scale = 1000 * 1000;
-    }
-
-    // Parse, and remove, the optional SI unit prefix.
-    if (number.endsWith(QLatin1String("m"))) {
-        number.chop(1);
-        scale = 1000;
-    }
-
-    // Parse, and remove, the optional SI unit prefix.
-    if (number.endsWith(QLatin1String("u"))) {
-        number.chop(1);
-        scale = 1;
-    }
-
-    // Parse the number as an (unsigned) integer.
-    QLocale locale; bool ok;
-    const quint32 integer = locale.toUInt(number, &ok);
-    if (ok) {
-        if ((scale == 0) && (integer != 0)) {
-            for (scale = 1; (integer * scale) < sensibleMinimum; scale *= 1000);
-        }
-        return integer * scale;
-    }
-
-    // Parse the number as a (double) floating point number, and check that it is positive.
-    const double dbl = locale.toDouble(number, &ok);
-    if ((ok) && (dbl > 0)) {
-        if ((scale == 0) && (dbl > 0.0)) {
-            for (scale = 1; (dbl * scale) < sensibleMinimum; scale *= 1000);
-        }
-        return (quint32)(dbl * scale);
-    }
-
-    return 0; // Failed to parse as either integer, or float.
+    return parseNumber<std::micro>(value, unit, sensibleMinimum);
 }
 
 /*!
@@ -190,40 +248,7 @@ quint32 AbstractCommand::parseMicroValue(const QString &value, const QString &un
 quint32 AbstractCommand::parseMilliValue(const QString &value, const QString &unit,
                                          const quint32 sensibleMinimum)
 {
-    // Remove the optional (whole) unit suffix.
-    quint32 scale = 0;
-    QString number = value.trimmed();
-    if ((!unit.isEmpty()) && (number.endsWith(unit, Qt::CaseInsensitive))) {
-        number.chop(unit.length());
-        scale = 1000;
-    }
-
-    // Parse, and remove, the optional SI unit prefix.
-    if (number.endsWith(QLatin1String("m"))) {
-        number.chop(1);
-        scale = 1;
-    }
-
-    // Parse the number as an (unsigned) integer.
-    QLocale locale; bool ok;
-    const quint32 integer = locale.toUInt(number, &ok);
-    if (ok) {
-        if ((scale == 0) && (integer != 0)) {
-            for (scale = 1; (integer * scale) < sensibleMinimum; scale *= 1000);
-        }
-        return integer * scale;
-    }
-
-    // Parse the number as a (double) floating point number, and check that it is positive.
-    const double dbl = locale.toDouble(number, &ok);
-    if ((ok) && (dbl > 0)) {
-        if ((scale == 0) && (dbl > 0.0)) {
-            for (scale = 1; (dbl * scale) < sensibleMinimum; scale *= 1000);
-        }
-        return (quint32)(dbl * scale);
-    }
-
-    return 0; // Failed to parse as either integer, or float.
+    return parseNumber<std::milli>(value, unit, sensibleMinimum);
 }
 
 /*!
@@ -238,36 +263,7 @@ quint32 AbstractCommand::parseMilliValue(const QString &value, const QString &un
  */
 quint32 AbstractCommand::parseWholeValue(const QString &value, const QString &unit)
 {
-    // Remove the optional unit suffix.
-    QString number = value.trimmed();
-    if (number.endsWith(unit, Qt::CaseInsensitive)) {
-        number.chop(unit.length());
-    }
-
-    // Parse, and remove, the optional SI unit prefix.
-    quint32 scale = 1;
-    if (number.endsWith(QLatin1String("k"), Qt::CaseInsensitive)) {
-        number.chop(1);
-        scale = 1000;
-    } else if (number.endsWith(QLatin1String("M"))) {
-        number.chop(1);
-        scale = 1000 * 1000;
-    }
-
-    // Parse the number as an (unsigned) integer.
-    QLocale locale; bool ok;
-    const quint32 integer = locale.toUInt(number, &ok);
-    if (ok) {
-        return integer * scale;
-    }
-
-    // Parse the number as a (double) floating point number, and check that it is positive.
-    const double dbl = locale.toDouble(number, &ok);
-    if ((ok) && (dbl > 0)) {
-        return (quint32)(dbl * scale);
-    }
-
-    return 0; // Failed to parse as either integer, or float.
+    return parseNumber<std::ratio<1,1>>(value, unit, 0);
 }
 
 /*!
