@@ -81,7 +81,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
         const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseMilliValue(value, QLatin1String("s"), 500);
+        const quint32 interval = parseNumber<std::milli>(value, QLatin1String("s"), 500);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
@@ -125,7 +125,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
                 rangeOptionValue = 0; // 0 indicates 'auto'.
             } else {
                 rangeOptionValue = (sensibleMinimum == 0)
-                    ? parseWholeValue(value, unit) : parseMilliValue(value, unit, sensibleMinimum);
+                    ? parseNumber<std::ratio<1>>(value, unit) : parseNumber<std::milli>(value, unit, sensibleMinimum);
                 if (rangeOptionValue == 0) {
                     errors.append(tr("Invalid range value: %1").arg(value));
                 }
@@ -136,7 +136,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     // Parse the samples option.
     if (parser.isSet(QLatin1String("samples"))) {
         const QString value = parser.value(QLatin1String("samples"));
-        const quint32 samples = parseWholeValue(value, QLatin1String("S"));
+        const quint32 samples = parseNumber<std::ratio<1>>(value, QLatin1String("S"));
         if (samples == 0) {
             errors.append(tr("Invalid samples value: %1").arg(value));
         } else {

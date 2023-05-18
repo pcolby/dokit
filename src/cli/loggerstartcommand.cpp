@@ -99,7 +99,7 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
             // The only mode that does not take a range, and thus we don't assign a unit above.
             Q_ASSERT(settings.mode == DataLoggerService::Mode::Temperature);
         } else {
-            rangeOptionValue = parseMilliValue(value, unit, sensibleMinimum);
+            rangeOptionValue = parseNumber<std::milli>(value, unit, sensibleMinimum);
             if (rangeOptionValue == 0) {
                 errors.append(tr("Invalid range value: %1").arg(value));
             }
@@ -112,7 +112,7 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
     // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
         const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseMilliValue(value, QLatin1String("s"), 500);
+        const quint32 interval = parseNumber<std::milli>(value, QLatin1String("s"), 500);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {

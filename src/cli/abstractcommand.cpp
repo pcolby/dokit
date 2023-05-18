@@ -156,6 +156,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         { QLatin1Char('M'), makeRatio<std::mega>()  },
         { QLatin1Char('K'), makeRatio<std::kilo>()  }, // Not official SI unit prefix, but commonly used.
         { QLatin1Char('k'), makeRatio<std::kilo>()  },
+        { QLatin1Char('h'), makeRatio<std::hecto>() },
         { QLatin1Char('d'), makeRatio<std::deci>()  },
         { QLatin1Char('c'), makeRatio<std::centi>() },
         { QLatin1Char('m'), makeRatio<std::milli>() },
@@ -172,7 +173,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
     QString number = value.trimmed();
     if ((!unit.isEmpty()) && (number.endsWith(unit, Qt::CaseInsensitive))) {
         number.chop(unit.length());
-        ratio = { 1, 1 };
+        ratio = makeRatio<std::ratio<1>>();
     }
 
     // Parse, and remove, the optional SI unit prefix.
@@ -216,64 +217,26 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
     return 0; // Failed to parse as either integer, or float.
 }
 
-/*!
- * Returns \a value as a number of micros, such as microseconds, or microvolts. The string \a value
- * may end with the optional \a unit, such as `V` or `s`, which may also be preceded with a SI unit
- * prefix such as `m` for `milli`. If \a value contains no SI unit prefix, then the result will be
- * multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This allows for
- * convenient use like:
- *
- * ```
- * const quin32 timeout = parseMicroValue(parser.value("window"), 's', 500*1000);
- * ```
- *
- * So that an unqalified period like "300" will be assumed to be 300 milliseconds, and not 300
- * microseconds, while a period like "1000" will be assume to be 1 second.
- *
- * If conversion fails for any reason, 0 is returned.
- */
-quint32 AbstractCommand::parseMicroValue(const QString &value, const QString &unit,
-                                         const quint32 sensibleMinimum)
-{
-    return parseNumber<std::micro>(value, unit, sensibleMinimum);
-}
-
-/*!
- * Returns \a value as a number of millis, such as milliseconds, or millivolts. The string \a value
- * may end with the optional \a unit, such as `V` or `s`, which may also be preceded with a SI unit
- * prefix such as `m` for `milli`. If \a value contains no SI unit prefix, then the result will be
- * multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This allows for
- * convenient use like:
- *
- * ```
- * const quin32t timeout = parseMilliValue(parser.value("timeout"), 's', 600);
- * ```
- *
- * So that an unqalified period like "300" will be assumed to be 300 seconds, and not 300
- * milliseconds, while a period like "1000" will be assume to be 1 second.
- *
- * If conversion fails for any reason, 0 is returned.
- */
-quint32 AbstractCommand::parseMilliValue(const QString &value, const QString &unit,
-                                         const quint32 sensibleMinimum)
-{
-    return parseNumber<std::milli>(value, unit, sensibleMinimum);
-}
-
-/*!
- * Returns \a value as a number, with optional SI unit prefix, and optional \a unit suffix. For
- * example:
- *
- * ```
- * QCOMPARE(parseWholeValue("1.2Mohm", "ohm"), 1200000);
- * ```
- *
- * If conversion fails for any reason, 0 is returned.
- */
-quint32 AbstractCommand::parseWholeValue(const QString &value, const QString &unit)
-{
-    return parseNumber<std::ratio<1,1>>(value, unit, 0);
-}
+#define DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(type) template \
+quint32 AbstractCommand::parseNumber<type>(const QString &value, const QString &unit, const quint32 sensibleMinimum)
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::exa);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::peta);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::tera);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::giga);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::mega);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::kilo);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::hecto);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deca);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::ratio<1>);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deci);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::centi);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::milli);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::micro);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::nano);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::pico);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::femto);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::atto);
+#undef DOKIT_INSTANTIATE_TEMPLATE_FUNCTION
 
 /*!
  * Processes the relevant options from the command line \a parser.
@@ -334,8 +297,7 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
 
     // Parse the device scan timeout option.
     if (parser.isSet(QLatin1String("timeout"))) {
-        const quint32 timeout = parseMilliValue(parser.value(QLatin1String("timeout")),
-                                                QLatin1String("s"), 500);
+        const quint32 timeout = parseNumber<std::milli>(parser.value(QLatin1String("timeout")), QLatin1String("s"), 500);
         if (timeout == 0) {
             errors.append(tr("Invalid timeout: %1").arg(parser.value(QLatin1String("timeout"))));
         } else {
