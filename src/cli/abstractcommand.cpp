@@ -191,7 +191,6 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
     }
 
     #define DOKIT_RESULT(var) (var * ratio.num * R::den / ratio.den / R::num)
-
     // Parse the number as an (unsigned) integer.
     QLocale locale; bool ok;
     qulonglong integer = locale.toULongLong(number, &ok);
@@ -213,6 +212,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         }
         return (quint32)DOKIT_RESULT(dbl);
     }
+    #undef DOKIT_RESULT
     return 0; // Failed to parse as either integer, or float.
 }
 
