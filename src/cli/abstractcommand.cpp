@@ -160,7 +160,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         { QLatin1Char('c'), makeRatio<std::centi>() },
         { QLatin1Char('m'), makeRatio<std::milli>() },
         { QLatin1Char('u'), makeRatio<std::micro>() }, // Not official SI unit prefix, but commonly used.
-        { QChar     (u'μ'), makeRatio<std::micro>() },
+        { QChar   (0x00B5), makeRatio<std::micro>() }, // Unicode micro symbol (μ).
         { QLatin1Char('n'), makeRatio<std::nano>()  },
         { QLatin1Char('p'), makeRatio<std::pico>()  },
         { QLatin1Char('f'), makeRatio<std::femto>() },
