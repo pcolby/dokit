@@ -155,7 +155,7 @@
 <a name="93"><span class="lineNum">      93 </span><span class="lineCov">         36 :             break;</span></a>
 <a name="94"><span class="lineNum">      94 </span>            :         }</a>
 <a name="95"><span class="lineNum">      95 </span>            :         Q_ASSERT(!unit.isEmpty());</a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">        432 :         rangeOptionValue = parseMilliValue(value, unit, sensibleMinimum);</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">        432 :         rangeOptionValue = parseNumber&lt;std::milli&gt;(value, unit, sensibleMinimum);</span></a>
 <a name="97"><span class="lineNum">      97 </span><span class="lineCov">        432 :         if (rangeOptionValue == 0) {</span></a>
 <a name="98"><span class="lineNum">      98 </span><span class="lineCov">         22 :             errors.append(tr(&quot;Invalid range value: %1&quot;).arg(value));</span></a>
 <a name="99"><span class="lineNum">      99 </span>            :         }</a>
@@ -164,7 +164,7 @@
 <a name="102"><span class="lineNum">     102 </span>            :     // Parse the trigger-level option.</a>
 <a name="103"><span class="lineNum">     103 </span><span class="lineCov">        528 :     if (parser.isSet(QLatin1String(&quot;trigger-level&quot;))) {</span></a>
 <a name="104"><span class="lineNum">     104 </span><span class="lineCov">        144 :         const QString value = parser.value(QLatin1String(&quot;trigger-level&quot;));</span></a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        144 :         const quint32 level = parseMicroValue(value, unit);</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        144 :         const quint32 level = parseNumber&lt;std::micro&gt;(value, unit);</span></a>
 <a name="106"><span class="lineNum">     106 </span><span class="lineCov">        144 :         if (level == 0) {</span></a>
 <a name="107"><span class="lineNum">     107 </span><span class="lineCov">         22 :             errors.append(tr(&quot;Invalid trigger-level value: %1&quot;).arg(value));</span></a>
 <a name="108"><span class="lineNum">     108 </span>            :         } else {</a>
@@ -196,7 +196,7 @@
 <a name="134"><span class="lineNum">     134 </span>            :     // Parse the interval option.</a>
 <a name="135"><span class="lineNum">     135 </span><span class="lineCov">        528 :     if (parser.isSet(QLatin1String(&quot;interval&quot;))) {</span></a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineCov">        150 :         const QString value = parser.value(QLatin1String(&quot;interval&quot;));</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         90 :         const quint32 interval = parseMicroValue(value, QLatin1String(&quot;s&quot;), 500*1000);</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         90 :         const quint32 interval = parseNumber&lt;std::micro&gt;(value, QLatin1String(&quot;s&quot;), 500*1000);</span></a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineCov">         90 :         if (interval == 0) {</span></a>
 <a name="139"><span class="lineNum">     139 </span><span class="lineCov">         44 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :         } else {</a>
@@ -207,7 +207,7 @@
 <a name="145"><span class="lineNum">     145 </span>            :     // Parse the samples option.</a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineCov">        528 :     if (parser.isSet(QLatin1String(&quot;samples&quot;))) {</span></a>
 <a name="147"><span class="lineNum">     147 </span><span class="lineCov">        150 :         const QString value = parser.value(QLatin1String(&quot;samples&quot;));</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         90 :         const quint32 samples = parseWholeValue(value, QLatin1String(&quot;S&quot;));</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         90 :         const quint32 samples = parseNumber&lt;std::ratio&lt;1&gt;&gt;(value, QLatin1String(&quot;S&quot;));</span></a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineCov">         90 :         if (samples == 0) {</span></a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineCov">         44 :             errors.append(tr(&quot;Invalid samples value: %1&quot;).arg(value));</span></a>
 <a name="151"><span class="lineNum">     151 </span><span class="lineCov">         54 :         } else if (samples &gt; std::numeric_limits&lt;quint16&gt;::max()) {</span></a>
