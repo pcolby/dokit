@@ -84,7 +84,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::AutoRange, 60000, 0}
-        << static_cast<minRangeFunc>(nullptr) << 0u
+        << &LoggerStartCommand::minVoltageRange << 0u
         << true
         << QStringList{ QStringLiteral("Missing required option for logger mode 'Vdc': range") };
 
