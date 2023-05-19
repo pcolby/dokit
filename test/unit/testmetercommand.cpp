@@ -49,18 +49,23 @@ void TestMeterCommand::supportedOptions()
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
+typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
+
 void TestMeterCommand::processOptions_data()
 {
     QTest::addColumn<QStringList>("arguments");
-    QTest::addColumn<MultimeterService::Settings>("expected");
+    QTest::addColumn<MultimeterService::Settings>("expectedSettings");
+    QTest::addColumn<minRangeFunc>("expectedMinRangeFunc");
+    QTest::addColumn<quint32>("expectedRangeOptionValue");
     QTest::addColumn<int>("expectedSamples");
-    QTest::addColumn<QStringList>("errors");
+    QTest::addColumn<QStringList>("expectedErrors");
 
     QTest::addRow("missing-required-mode")
         << QStringList{
            QStringLiteral("--range"), QStringLiteral("100")}
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << -1
         << QStringList{ QStringLiteral("Missing required option: mode") };
 
@@ -70,6 +75,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("1000mV") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::_2V, 1000}
+        << &MeterCommand::minVoltageRange << 1000u
         << -1
         << QStringList{ };
 
@@ -79,6 +85,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("5V") }
         << MultimeterService::Settings{
             MultimeterService::Mode::AcVoltage, +PokitMeter::VoltageRange::_6V, 1000}
+        << &MeterCommand::minVoltageRange << 5000u
         << -1
         << QStringList{ };
 
@@ -88,6 +95,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("100mA") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcCurrent, +PokitMeter::CurrentRange::_150mA, 1000}
+        << &MeterCommand::minCurrentRange << 100u
         << -1
         << QStringList{ };
 
@@ -97,6 +105,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("2A") }
         << MultimeterService::Settings{
             MultimeterService::Mode::AcCurrent, +PokitMeter::CurrentRange::_2A, 1000}
+        << &MeterCommand::minCurrentRange << 2000u
         << -1
         << QStringList{ };
 
@@ -104,6 +113,7 @@ void TestMeterCommand::processOptions_data()
         << QStringList{ QStringLiteral("--mode"),  QStringLiteral("res") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Resistance, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << &MeterCommand::minResistanceRange << 0u
         << -1
         << QStringList{ };
 
@@ -111,6 +121,7 @@ void TestMeterCommand::processOptions_data()
         << QStringList{ QStringLiteral("--mode"),  QStringLiteral("dio") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Diode, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << -1
         << QStringList{ };
 
@@ -118,6 +129,7 @@ void TestMeterCommand::processOptions_data()
         << QStringList{ QStringLiteral("--mode"),  QStringLiteral("cont") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Continuity, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << -1
         << QStringList{ };
 
@@ -125,6 +137,7 @@ void TestMeterCommand::processOptions_data()
         << QStringList{ QStringLiteral("--mode"),  QStringLiteral("temp") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Temperature, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << -1
         << QStringList{ };
 
@@ -134,6 +147,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("500uF") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Capacitance, +PokitPro::CapacitanceRange::_100nF, 1000}
+        << &MeterCommand::minCapacitanceRange << 500000u
         << -1
         << QStringList{ };
 
@@ -141,6 +155,7 @@ void TestMeterCommand::processOptions_data()
         << QStringList{ QStringLiteral("--mode"),  QStringLiteral("invalid") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << -1
         << QStringList{ QStringLiteral("Unknown meter mode: invalid") };
 
@@ -150,6 +165,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--interval"), QStringLiteral("100") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 100000}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ };
 
@@ -159,6 +175,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--interval"), QStringLiteral("499") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 499000}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ };
 
@@ -168,6 +185,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--interval"), QStringLiteral("500") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 500}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ };
 
@@ -177,6 +195,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--interval"), QStringLiteral("invalid") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ QStringLiteral("Invalid interval value: invalid") };
 
@@ -186,6 +205,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--interval"), QStringLiteral("-123") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ QStringLiteral("Invalid interval value: -123") };
 
@@ -195,6 +215,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("auto") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ };
 
@@ -204,6 +225,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("auto") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcCurrent, +PokitMeter::CurrentRange::AutoRange, 1000}
+        << &MeterCommand::minCurrentRange << 0u
         << -1
         << QStringList{ };
 
@@ -213,6 +235,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("auto") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Resistance, +PokitMeter::ResistanceRange::AutoRange, 1000}
+        << &MeterCommand::minResistanceRange << 0u
         << -1
         << QStringList{ };
 
@@ -222,6 +245,7 @@ void TestMeterCommand::processOptions_data()
                        QStringLiteral("--range"), QStringLiteral("auto") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Capacitance, +PokitPro::CapacitanceRange::AutoRange, 1000}
+        << &MeterCommand::minCapacitanceRange << 0u
         << -1
         << QStringList{ };
 
@@ -231,6 +255,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("invalid") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ QStringLiteral("Invalid range value: invalid") };
 
@@ -240,6 +265,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--range"), QStringLiteral("1000") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Diode, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << -1
         << QStringList{ };
 
@@ -249,6 +275,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--samples"), QStringLiteral("100") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << &MeterCommand::minVoltageRange << 0u
         << 100
         << QStringList{ };
 
@@ -258,6 +285,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--samples"), QStringLiteral("invalid") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ QStringLiteral("Invalid samples value: invalid") };
 
@@ -267,6 +295,7 @@ void TestMeterCommand::processOptions_data()
            QStringLiteral("--samples"), QStringLiteral("-123") }
         << MultimeterService::Settings{
             MultimeterService::Mode::DcVoltage, +PokitMeter::VoltageRange::AutoRange, 1000}
+        << &MeterCommand::minVoltageRange << 0u
         << -1
         << QStringList{ QStringLiteral("Invalid samples value: -123") };
 }
@@ -274,9 +303,11 @@ void TestMeterCommand::processOptions_data()
 void TestMeterCommand::processOptions()
 {
     QFETCH(QStringList, arguments);
-    QFETCH(MultimeterService::Settings, expected);
+    QFETCH(MultimeterService::Settings, expectedSettings);
+    QFETCH(minRangeFunc, expectedMinRangeFunc);
+    QFETCH(quint32, expectedRangeOptionValue);
     QFETCH(int, expectedSamples);
-    QFETCH(QStringList, errors);
+    QFETCH(QStringList, expectedErrors);
 
     arguments.prepend(QStringLiteral("pokit")); // The first argument is always the app name.
 
@@ -288,14 +319,13 @@ void TestMeterCommand::processOptions()
     parser.process(arguments);
 
     MeterCommand command(this);
-    qWarning() << command.processOptions(parser);
-    QCOMPARE(command.processOptions(parser),  errors);
-    QCOMPARE(command.settings.mode,           expected.mode);
+    QCOMPARE(command.processOptions(parser),  expectedErrors);
+    QCOMPARE(command.settings.mode,           expectedSettings.mode);
     QCOMPARE(command.settings.range,          (quint8)255); // Always 255, because range is not set until services discovered.
-    QCOMPARE(command.settings.updateInterval, expected.updateInterval);
+    QCOMPARE(command.settings.updateInterval, expectedSettings.updateInterval);
     QCOMPARE(command.samplesToGo,             expectedSamples);
-    /// \todo COMPARE(command.minRangeFunc == nullptr, expected...);
-    /// \todo COMPARE(command.rangeOptionValue, expected...);
+    QVERIFY (command.minRangeFunc      ==     expectedMinRangeFunc);
+    QCOMPARE(command.rangeOptionValue,        expectedRangeOptionValue);
 }
 
 void TestMeterCommand::getService()

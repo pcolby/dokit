@@ -48,18 +48,23 @@ void TestLoggerStartCommand::supportedOptions()
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
+typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
+
 void TestLoggerStartCommand::processOptions_data()
 {
     QTest::addColumn<QStringList>("arguments");
-    QTest::addColumn<DataLoggerService::Settings>("expected");
+    QTest::addColumn<DataLoggerService::Settings>("expectedSettings");
+    QTest::addColumn<minRangeFunc>("expectedMinRangeFunc");
+    QTest::addColumn<quint32>("expectedRangeOptionValue");
     QTest::addColumn<bool>("expectNowish");
-    QTest::addColumn<QStringList>("errors");
+    QTest::addColumn<QStringList>("expectedErrors");
 
     QTest::addRow("missing-required-options")
         << QStringList{}
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::AutoRange, 60000, 0}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << false
         << QStringList{ QStringLiteral("Missing required option: mode") };
 
@@ -69,6 +74,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::AutoRange, 60000, 0}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << false
         << QStringList{ QStringLiteral("Missing required option: mode") };
 
@@ -78,6 +84,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::AutoRange, 60000, 0}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << true
         << QStringList{ QStringLiteral("Missing required option for logger mode 'Vdc': range") };
 
@@ -88,6 +95,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ };
 
@@ -98,6 +106,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start, 0, DataLoggerService::Mode::AcVoltage,
             +PokitMeter::VoltageRange::_6V, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 5000u
         << true
         << QStringList{ };
 
@@ -108,6 +117,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcCurrent,
             +PokitMeter::CurrentRange::_150mA, 60000, 0}
+        << &LoggerStartCommand::minCurrentRange << 100u
         << true
         << QStringList{ };
 
@@ -118,6 +128,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
             DataLoggerService::Command::Start, 0, DataLoggerService::Mode::AcCurrent,
             +PokitMeter::CurrentRange::_2A, 60000, 0}
+        << &LoggerStartCommand::minCurrentRange << 2000u
         << true
         << QStringList{ };
 
@@ -128,6 +139,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::Temperature,
            +PokitMeter::VoltageRange::_60V, 60000, 0}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << true
         << QStringList{ };
 
@@ -138,6 +150,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::Temperature,
            +PokitMeter::VoltageRange::_60V, 60000, 0}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << true
         << QStringList{ };
 
@@ -148,6 +161,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::AutoRange, 60000, 0}
+        << static_cast<minRangeFunc>(nullptr) << 0u
         << false
         << QStringList{ QStringLiteral("Unknown logger mode: invalid") };
 
@@ -158,6 +172,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::AutoRange, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 0u
         << true
         << QStringList{ QStringLiteral("Invalid range value: invalid") };
 
@@ -169,6 +184,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 100000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ };
 
@@ -180,6 +196,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 499000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ };
 
@@ -191,6 +208,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 500, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ };
 
@@ -202,6 +220,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ QStringLiteral("Invalid interval value: invalid") };
 
@@ -213,6 +232,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ QStringLiteral("Invalid interval value: -123") };
 
@@ -224,6 +244,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << false
         << QStringList{ };
 
@@ -235,6 +256,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 60000, 1}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << false
         << QStringList{ };
 
@@ -246,6 +268,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ };
 
@@ -257,6 +280,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ QStringLiteral("Invalid timestamp value: invalid") };
 
@@ -268,6 +292,7 @@ void TestLoggerStartCommand::processOptions_data()
         << DataLoggerService::Settings{
            DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
            +PokitMeter::VoltageRange::_2V, 60000, 0}
+        << &LoggerStartCommand::minVoltageRange << 1000u
         << true
         << QStringList{ QStringLiteral("Invalid timestamp value: -123") };
 }
@@ -275,9 +300,11 @@ void TestLoggerStartCommand::processOptions_data()
 void TestLoggerStartCommand::processOptions()
 {
     QFETCH(QStringList, arguments);
-    QFETCH(DataLoggerService::Settings, expected);
+    QFETCH(DataLoggerService::Settings, expectedSettings);
+    QFETCH(minRangeFunc, expectedMinRangeFunc);
+    QFETCH(quint32, expectedRangeOptionValue);
     QFETCH(bool, expectNowish);
-    QFETCH(QStringList, errors);
+    QFETCH(QStringList, expectedErrors);
 
     arguments.prepend(QStringLiteral("pokit")); // The first argument is always the app name.
 
@@ -290,24 +317,24 @@ void TestLoggerStartCommand::processOptions()
 
     LoggerStartCommand command(this);
     const quint32 now = (quint32)QDateTime::currentSecsSinceEpoch();
-    QCOMPARE(command.processOptions(parser),  errors);
-    QCOMPARE(command.settings.command,        expected.command);
-    QCOMPARE(command.settings.arguments,      expected.arguments);
-    QCOMPARE(command.settings.mode,           expected.mode);
+    QCOMPARE(command.processOptions(parser),  expectedErrors);
+    QCOMPARE(command.settings.command,        expectedSettings.command);
+    QCOMPARE(command.settings.arguments,      expectedSettings.arguments);
+    QCOMPARE(command.settings.mode,           expectedSettings.mode);
     QCOMPARE(command.settings.range,          (quint8)255); // Always 255, because range is not set until services discovered.
-    QCOMPARE(command.settings.updateInterval, expected.updateInterval);
-    /// \todo COMPARE(command.minRangeFunc == nullptr, expected...);
-    /// \todo COMPARE(command.rangeOptionValue, expected...);
+    QCOMPARE(command.settings.updateInterval, expectedSettings.updateInterval);
+    QVERIFY (command.minRangeFunc      ==     expectedMinRangeFunc);
+    QCOMPARE(command.rangeOptionValue,        expectedRangeOptionValue);
 
     // Recoginise if/when LoggerStartCommand::processOptions automatically uses 'now' for timestamp.
     if (expectNowish) {
-        Q_ASSERT(expected.timestamp == 0);
+        Q_ASSERT(expectedSettings.timestamp == 0);
         // Fuzzy compare, with up 3 seconds tolerance. Using qMin and qMax here instead of qAbs to
         // avoid negative wrap-around, since both values are unsigned.
         QVERIFY((qMax(now, command.settings.timestamp) -
                  qMin(now, command.settings.timestamp)) <= 3);
     } else {
-        QCOMPARE(command.settings.timestamp,  expected.timestamp);
+        QCOMPARE(command.settings.timestamp,  expectedSettings.timestamp);
     }
 }
 

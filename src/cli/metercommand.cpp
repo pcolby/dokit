@@ -57,22 +57,31 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
     if (mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
         settings.mode = MultimeterService::Mode::AcVoltage;
+        minRangeFunc = minVoltageRange;
     } else if (mode.startsWith(QLatin1String("dc v")) || mode.startsWith(QLatin1String("vdc"))) {
         settings.mode = MultimeterService::Mode::DcVoltage;
+        minRangeFunc = minVoltageRange;
     } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
         settings.mode = MultimeterService::Mode::AcCurrent;
+        minRangeFunc = minCurrentRange;
     } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
         settings.mode = MultimeterService::Mode::DcCurrent;
+        minRangeFunc = minCurrentRange;
     } else if (mode.startsWith(QLatin1String("res"))) {
         settings.mode = MultimeterService::Mode::Resistance;
+        minRangeFunc = minResistanceRange;
     } else if (mode.startsWith(QLatin1String("dio"))) {
         settings.mode = MultimeterService::Mode::Diode;
+        minRangeFunc = nullptr;
     } else if (mode.startsWith(QLatin1String("cont"))) {
-       settings.mode = MultimeterService::Mode::Continuity;
+        settings.mode = MultimeterService::Mode::Continuity;
+        minRangeFunc = nullptr;
     } else if (mode.startsWith(QLatin1String("temp"))) {
-       settings.mode = MultimeterService::Mode::Temperature;
+        settings.mode = MultimeterService::Mode::Temperature;
+        minRangeFunc = nullptr;
     } else if (mode.startsWith(QLatin1String("cap"))) {
-       settings.mode = MultimeterService::Mode::Capacitance;
+        settings.mode = MultimeterService::Mode::Capacitance;
+        minRangeFunc = minCapacitanceRange;
     } else {
         errors.append(tr("Unknown meter mode: %1").arg(parser.value(QLatin1String("mode"))));
         return errors;
@@ -90,35 +99,31 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the range option.
+    rangeOptionValue = 0; // Default to auto.
     if (parser.isSet(QLatin1String("range"))) {
         const QString value = parser.value(QLatin1String("range"));
-        const bool isAuto = (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) == 0);
-        switch (settings.mode) {
-        case MultimeterService::Mode::DcVoltage:
-        case MultimeterService::Mode::AcVoltage:
-            minRangeFunc = minVoltageRange;
-            rangeOptionValue = (isAuto) ? 0u : parseNumber<std::milli>(value, QLatin1String("V"), 50); // mV.
-            break;
-        case MultimeterService::Mode::DcCurrent:
-        case MultimeterService::Mode::AcCurrent:
-            minRangeFunc = minCurrentRange;
-            rangeOptionValue = (isAuto) ? 0u : parseNumber<std::milli>(value, QLatin1String("A"), 5); // mA.
-            break;
-        case MultimeterService::Mode::Resistance:
-            minRangeFunc = minResistanceRange;
-            rangeOptionValue = (isAuto) ? 0u : parseNumber<std::ratio<1>>(value, QLatin1String("ohms"));
-            break;
-        case MultimeterService::Mode::Capacitance:
-            minRangeFunc = minCapacitanceRange;
-            rangeOptionValue = (isAuto) ? 0u : parseNumber<std::nano>(value, QLatin1String("F"), 500); // pF.
-            qWarning() << "here" << value << rangeOptionValue <<  (intptr_t)minRangeFunc << (intptr_t)MeterCommand::minCapacitanceRange;
-            break;
-        default:
-            qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
-        }
-        qWarning() << "here" << value << rangeOptionValue << &minRangeFunc;
-        if ((minRangeFunc != nullptr) && (!isAuto) && (rangeOptionValue == 0)) {
-            errors.append(tr("Invalid range value: %1").arg(value));
+        if (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) != 0) {
+            switch (settings.mode) {
+            case MultimeterService::Mode::DcVoltage:
+            case MultimeterService::Mode::AcVoltage:
+                rangeOptionValue =  parseNumber<std::milli>(value, QLatin1String("V"), 50); // mV.
+                break;
+            case MultimeterService::Mode::DcCurrent:
+            case MultimeterService::Mode::AcCurrent:
+                rangeOptionValue = parseNumber<std::milli>(value, QLatin1String("A"), 5); // mA.
+                break;
+            case MultimeterService::Mode::Resistance:
+                rangeOptionValue = parseNumber<std::ratio<1>>(value, QLatin1String("ohms"));
+                break;
+            case MultimeterService::Mode::Capacitance:
+                rangeOptionValue = parseNumber<std::nano>(value, QLatin1String("F"), 500); // pF.
+                break;
+            default:
+                qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
+            }
+            if ((minRangeFunc != nullptr) && (rangeOptionValue == 0)) {
+                errors.append(tr("Invalid range value: %1").arg(value));
+            }
         }
     }
 
