@@ -84,7 +84,7 @@ void TestCalibrateCommand::processOptions()
     QFETCH(float, expected);
     QFETCH(QStringList, errors);
 
-    QStringList arguments{ QStringLiteral("pokit") }; // The first argument is always the app name.
+    QStringList arguments{ QStringLiteral("dokit") }; // The first argument is always the app name.
     if (!argument.isNull()) {
         arguments += QStringList{ QStringLiteral("--temperature"), argument };
     }

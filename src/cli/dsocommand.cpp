@@ -93,7 +93,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
             break;
         }
         Q_ASSERT(!unit.isEmpty());
-        rangeOptionValue = parseMilliValue(value, unit, sensibleMinimum);
+        rangeOptionValue = parseNumber<std::milli>(value, unit, sensibleMinimum);
         if (rangeOptionValue == 0) {
             errors.append(tr("Invalid range value: %1").arg(value));
         }
@@ -102,7 +102,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     // Parse the trigger-level option.
     if (parser.isSet(QLatin1String("trigger-level"))) {
         const QString value = parser.value(QLatin1String("trigger-level"));
-        const quint32 level = parseMicroValue(value, unit);
+        const quint32 level = parseNumber<std::micro>(value, unit);
         if (level == 0) {
             errors.append(tr("Invalid trigger-level value: %1").arg(value));
         } else {
@@ -134,7 +134,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
         const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseMicroValue(value, QLatin1String("s"), 500*1000);
+        const quint32 interval = parseNumber<std::micro>(value, QLatin1String("s"), 500*1000);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
@@ -145,7 +145,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     // Parse the samples option.
     if (parser.isSet(QLatin1String("samples"))) {
         const QString value = parser.value(QLatin1String("samples"));
-        const quint32 samples = parseWholeValue(value, QLatin1String("S"));
+        const quint32 samples = parseNumber<std::ratio<1>>(value, QLatin1String("S"));
         if (samples == 0) {
             errors.append(tr("Invalid samples value: %1").arg(value));
         } else if (samples > std::numeric_limits<quint16>::max()) {

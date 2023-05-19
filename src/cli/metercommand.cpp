@@ -57,22 +57,31 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
     if (mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
         settings.mode = MultimeterService::Mode::AcVoltage;
+        minRangeFunc = minVoltageRange;
     } else if (mode.startsWith(QLatin1String("dc v")) || mode.startsWith(QLatin1String("vdc"))) {
         settings.mode = MultimeterService::Mode::DcVoltage;
+        minRangeFunc = minVoltageRange;
     } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
         settings.mode = MultimeterService::Mode::AcCurrent;
+        minRangeFunc = minCurrentRange;
     } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
         settings.mode = MultimeterService::Mode::DcCurrent;
+        minRangeFunc = minCurrentRange;
     } else if (mode.startsWith(QLatin1String("res"))) {
         settings.mode = MultimeterService::Mode::Resistance;
+        minRangeFunc = minResistanceRange;
     } else if (mode.startsWith(QLatin1String("dio"))) {
         settings.mode = MultimeterService::Mode::Diode;
+        minRangeFunc = nullptr;
     } else if (mode.startsWith(QLatin1String("cont"))) {
-       settings.mode = MultimeterService::Mode::Continuity;
+        settings.mode = MultimeterService::Mode::Continuity;
+        minRangeFunc = nullptr;
     } else if (mode.startsWith(QLatin1String("temp"))) {
-       settings.mode = MultimeterService::Mode::Temperature;
+        settings.mode = MultimeterService::Mode::Temperature;
+        minRangeFunc = nullptr;
     } else if (mode.startsWith(QLatin1String("cap"))) {
-       settings.mode = MultimeterService::Mode::Capacitance;
+        settings.mode = MultimeterService::Mode::Capacitance;
+        minRangeFunc = minCapacitanceRange;
     } else {
         errors.append(tr("Unknown meter mode: %1").arg(parser.value(QLatin1String("mode"))));
         return errors;
@@ -81,7 +90,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
         const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseMilliValue(value, QLatin1String("s"), 500);
+        const quint32 interval = parseNumber<std::milli>(value, QLatin1String("s"), 500);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
@@ -90,45 +99,30 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the range option.
+    rangeOptionValue = 0; // Default to auto.
     if (parser.isSet(QLatin1String("range"))) {
         const QString value = parser.value(QLatin1String("range"));
-        const bool isAuto = (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) == 0);
-        QString unit; quint32 sensibleMinimum = 0;
-        switch (settings.mode) {
-        case MultimeterService::Mode::DcVoltage:
-        case MultimeterService::Mode::AcVoltage:
-            minRangeFunc = minVoltageRange;
-            unit = QLatin1String("V");
-            sensibleMinimum = 50; // mV.
-            break;
-        case MultimeterService::Mode::DcCurrent:
-        case MultimeterService::Mode::AcCurrent:
-            minRangeFunc = minCurrentRange;
-            unit = QLatin1String("A");
-            sensibleMinimum = 5; // mA.
-            break;
-        case MultimeterService::Mode::Resistance:
-            minRangeFunc = minResistanceRange;
-            unit = QLatin1String("ohms");
-            sensibleMinimum = 0; // Unused.
-            break;
-        case MultimeterService::Mode::Capacitance:
-            minRangeFunc = minCapacitanceRange;
-            unit = QLatin1String("F");
-            sensibleMinimum = 500; // pV.
-            break;
-        default:
-            qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
-        }
-        if (!unit.isEmpty()) { // isEmpty indicates a mode that has no range option.
-            if (isAuto) {
-                rangeOptionValue = 0; // 0 indicates 'auto'.
-            } else {
-                rangeOptionValue = (sensibleMinimum == 0)
-                    ? parseWholeValue(value, unit) : parseMilliValue(value, unit, sensibleMinimum);
-                if (rangeOptionValue == 0) {
-                    errors.append(tr("Invalid range value: %1").arg(value));
-                }
+        if (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) != 0) {
+            switch (settings.mode) {
+            case MultimeterService::Mode::DcVoltage:
+            case MultimeterService::Mode::AcVoltage:
+                rangeOptionValue =  parseNumber<std::milli>(value, QLatin1String("V"), 50); // mV.
+                break;
+            case MultimeterService::Mode::DcCurrent:
+            case MultimeterService::Mode::AcCurrent:
+                rangeOptionValue = parseNumber<std::milli>(value, QLatin1String("A"), 5); // mA.
+                break;
+            case MultimeterService::Mode::Resistance:
+                rangeOptionValue = parseNumber<std::ratio<1>>(value, QLatin1String("ohms"));
+                break;
+            case MultimeterService::Mode::Capacitance:
+                rangeOptionValue = parseNumber<std::nano>(value, QLatin1String("F"), 500); // pF.
+                break;
+            default:
+                qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
+            }
+            if ((minRangeFunc != nullptr) && (rangeOptionValue == 0)) {
+                errors.append(tr("Invalid range value: %1").arg(value));
             }
         }
     }
@@ -136,7 +130,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     // Parse the samples option.
     if (parser.isSet(QLatin1String("samples"))) {
         const QString value = parser.value(QLatin1String("samples"));
-        const quint32 samples = parseWholeValue(value, QLatin1String("S"));
+        const quint32 samples = parseNumber<std::ratio<1>>(value, QLatin1String("S"));
         if (samples == 0) {
             errors.append(tr("Invalid samples value: %1").arg(value));
         } else {

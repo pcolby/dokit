@@ -108,7 +108,7 @@ void TestAbstractCommand::parseMicroValue()
     QFETCH(QString, unit);
     QFETCH(quint32, sensibleMinimum);
     QFETCH(quint32, expected);
-    QCOMPARE(AbstractCommand::parseMicroValue(value, unit, sensibleMinimum), expected);
+    QCOMPARE(AbstractCommand::parseNumber<std::micro>(value, unit, sensibleMinimum), expected);
 }
 
 void TestAbstractCommand::parseMilliValue_data()
@@ -148,7 +148,7 @@ void TestAbstractCommand::parseMilliValue()
     QFETCH(QString, unit);
     QFETCH(quint32, sensibleMinimum);
     QFETCH(quint32, expected);
-    QCOMPARE(AbstractCommand::parseMilliValue(value, unit, sensibleMinimum), expected);
+    QCOMPARE(AbstractCommand::parseNumber<std::milli>(value, unit, sensibleMinimum), expected);
 }
 
 void TestAbstractCommand::parseWholeValue_data()
@@ -186,7 +186,8 @@ void TestAbstractCommand::parseWholeValue()
     QFETCH(QString, value);
     QFETCH(QString, unit);
     QFETCH(quint32, expected);
-    QCOMPARE(AbstractCommand::parseWholeValue(value, unit), expected);
+    const auto actual = AbstractCommand::parseNumber<std::ratio<1>>(value, unit);
+    QCOMPARE(actual, expected);
 }
 
 void TestAbstractCommand::processOptions()

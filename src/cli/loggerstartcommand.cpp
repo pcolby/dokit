@@ -36,7 +36,7 @@ QStringList LoggerStartCommand::supportedOptions(const QCommandLineParser &parse
 {
     return DeviceCommand::supportedOptions(parser) + QStringList{
         QLatin1String("interval"),
-        QLatin1String("range"),
+        QLatin1String("range"), // May still be required by processOptions(), depending on the --mode option's value.
         QLatin1String("timestamp"),
     };
 }
@@ -58,51 +58,44 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
     const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
     if (mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
         settings.mode = DataLoggerService::Mode::AcVoltage;
+        minRangeFunc = minVoltageRange;
     } else if (mode.startsWith(QLatin1String("dc v")) || mode.startsWith(QLatin1String("vdc"))) {
         settings.mode = DataLoggerService::Mode::DcVoltage;
+        minRangeFunc = minVoltageRange;
     } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
         settings.mode = DataLoggerService::Mode::AcCurrent;
+        minRangeFunc = minCurrentRange;
     } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
         settings.mode = DataLoggerService::Mode::DcCurrent;
+        minRangeFunc = minCurrentRange;
     } else if (mode.startsWith(QLatin1String("temp"))) {
         settings.mode = DataLoggerService::Mode::Temperature;
+        minRangeFunc = nullptr;
     } else {
+        minRangeFunc = nullptr;
         errors.append(tr("Unknown logger mode: %1").arg(parser.value(QLatin1String("mode"))));
         return errors;
     }
 
     // Parse the range option.
+    rangeOptionValue = 0;
     if (parser.isSet(QLatin1String("range"))) {
         const QString value = parser.value(QLatin1String("range"));
-        QString unit; quint32 sensibleMinimum = 0;
         switch (settings.mode) {
-        case DataLoggerService::Mode::Idle:
-            Q_ASSERT(false); // Not possible, since the mode parsing above never allows Idle.
-            break;
         case DataLoggerService::Mode::DcVoltage:
         case DataLoggerService::Mode::AcVoltage:
-            minRangeFunc = minVoltageRange;
-            unit = QLatin1String("V");
-            sensibleMinimum = 50; // mV.
+            rangeOptionValue = parseNumber<std::milli>(value, QLatin1String("V"), 50); // mV.
             break;
         case DataLoggerService::Mode::DcCurrent:
         case DataLoggerService::Mode::AcCurrent:
-            minRangeFunc = minCurrentRange;
-            unit = QLatin1String("A");
-            sensibleMinimum = 5; // mA.
+            rangeOptionValue = parseNumber<std::milli>(value, QLatin1String("A"), 5); // mA.
             break;
         case DataLoggerService::Mode::Temperature:
         default:
             qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
         }
-        if (unit.isEmpty()) {
-            // The only mode that does not take a range, and thus we don't assign a unit above.
-            Q_ASSERT(settings.mode == DataLoggerService::Mode::Temperature);
-        } else {
-            rangeOptionValue = parseMilliValue(value, unit, sensibleMinimum);
-            if (rangeOptionValue == 0) {
-                errors.append(tr("Invalid range value: %1").arg(value));
-            }
+        if ((minRangeFunc != nullptr) && (rangeOptionValue == 0)) {
+            errors.append(tr("Invalid range value: %1").arg(value));
         }
     } else if (settings.mode != DataLoggerService::Mode::Temperature) {
         errors.append(tr("Missing required option for logger mode '%1': range")
@@ -112,7 +105,7 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
     // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
         const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseMilliValue(value, QLatin1String("s"), 500);
+        const quint32 interval = parseNumber<std::milli>(value, QLatin1String("s"), 500);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {

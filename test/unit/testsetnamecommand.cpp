@@ -83,7 +83,7 @@ void TestSetNameCommand::processOptions()
     QFETCH(QString, expected);
     QFETCH(QStringList, errors);
 
-    arguments.prepend(QStringLiteral("pokit")); // The first argument is always the app name.
+    arguments.prepend(QStringLiteral("dokit")); // The first argument is always the app name.
 
     QCommandLineParser parser;
     parser.addOption({QStringLiteral("new-name"), QStringLiteral("description"), QStringLiteral("name")});
