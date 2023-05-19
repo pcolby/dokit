@@ -14,6 +14,9 @@ Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(DataLoggerService::Mode)
 Q_DECLARE_METATYPE(DataLoggerService::Settings)
 
+typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
+Q_DECLARE_METATYPE(minRangeFunc)
+
 class MockDeviceCommand : public DeviceCommand
 {
 public:
@@ -47,8 +50,6 @@ void TestLoggerStartCommand::supportedOptions()
         QStringList{ QStringLiteral("interval"), QStringLiteral("range"), QStringLiteral("timestamp")};
     QCOMPARE(command.supportedOptions(parser), expected);
 }
-
-typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
 
 void TestLoggerStartCommand::processOptions_data()
 {

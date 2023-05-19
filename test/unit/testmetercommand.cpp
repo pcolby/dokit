@@ -15,6 +15,9 @@ Q_DECLARE_METATYPE(MultimeterService::Mode)
 Q_DECLARE_METATYPE(MultimeterService::Reading)
 Q_DECLARE_METATYPE(MultimeterService::Settings)
 
+typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
+Q_DECLARE_METATYPE(minRangeFunc)
+
 class MockDeviceCommand : public DeviceCommand
 {
 public:
@@ -48,8 +51,6 @@ void TestMeterCommand::supportedOptions()
         QStringList{ QStringLiteral("interval"), QStringLiteral("range"), QStringLiteral("samples") };
     QCOMPARE(command.supportedOptions(parser), expected);
 }
-
-typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
 
 void TestMeterCommand::processOptions_data()
 {

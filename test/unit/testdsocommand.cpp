@@ -12,6 +12,9 @@ Q_DECLARE_METATYPE(DsoService::Mode)
 Q_DECLARE_METATYPE(DsoService::Settings)
 Q_DECLARE_METATYPE(DsoService::Metadata)
 
+typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
+Q_DECLARE_METATYPE(minRangeFunc)
+
 class MockDeviceCommand : public DeviceCommand
 {
 public:
@@ -46,8 +49,6 @@ void TestDsoCommand::supportedOptions()
                      QStringLiteral("trigger-level"), QStringLiteral("trigger-mode") };
     QCOMPARE(command.supportedOptions(parser), expected);
 }
-
-typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
 
 void TestDsoCommand::processOptions_data()
 {
