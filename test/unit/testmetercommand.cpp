@@ -309,7 +309,7 @@ void TestMeterCommand::processOptions()
     QFETCH(int, expectedSamples);
     QFETCH(QStringList, expectedErrors);
 
-    arguments.prepend(QStringLiteral("pokit")); // The first argument is always the app name.
+    arguments.prepend(QStringLiteral("dokit")); // The first argument is always the app name.
 
     QCommandLineParser parser;
     parser.addOption({QStringLiteral("mode"), QStringLiteral("description"), QStringLiteral("mode")});
