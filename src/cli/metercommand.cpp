@@ -93,43 +93,32 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     if (parser.isSet(QLatin1String("range"))) {
         const QString value = parser.value(QLatin1String("range"));
         const bool isAuto = (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) == 0);
-        QString unit; quint32 sensibleMinimum = 0;
         switch (settings.mode) {
         case MultimeterService::Mode::DcVoltage:
         case MultimeterService::Mode::AcVoltage:
             minRangeFunc = minVoltageRange;
-            unit = QLatin1String("V");
-            sensibleMinimum = 50; // mV.
+            rangeOptionValue = (isAuto) ? 0u : parseNumber<std::milli>(value, QLatin1String("V"), 50); // mV.
             break;
         case MultimeterService::Mode::DcCurrent:
         case MultimeterService::Mode::AcCurrent:
             minRangeFunc = minCurrentRange;
-            unit = QLatin1String("A");
-            sensibleMinimum = 5; // mA.
+            rangeOptionValue = (isAuto) ? 0u : parseNumber<std::milli>(value, QLatin1String("A"), 5); // mA.
             break;
         case MultimeterService::Mode::Resistance:
             minRangeFunc = minResistanceRange;
-            unit = QLatin1String("ohms");
-            sensibleMinimum = 0; // Unused.
+            rangeOptionValue = (isAuto) ? 0u : parseNumber<std::ratio<1>>(value, QLatin1String("ohms"));
             break;
         case MultimeterService::Mode::Capacitance:
             minRangeFunc = minCapacitanceRange;
-            unit = QLatin1String("F");
-            sensibleMinimum = 500; // pV.
+            rangeOptionValue = (isAuto) ? 0u : parseNumber<std::nano>(value, QLatin1String("F"), 500); // pF.
+            qWarning() << "here" << value << rangeOptionValue <<  (intptr_t)minRangeFunc << (intptr_t)MeterCommand::minCapacitanceRange;
             break;
         default:
             qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
         }
-        if (!unit.isEmpty()) { // isEmpty indicates a mode that has no range option.
-            if (isAuto) {
-                rangeOptionValue = 0; // 0 indicates 'auto'.
-            } else {
-                rangeOptionValue = (sensibleMinimum == 0)
-                    ? parseNumber<std::ratio<1>>(value, unit) : parseNumber<std::milli>(value, unit, sensibleMinimum);
-                if (rangeOptionValue == 0) {
-                    errors.append(tr("Invalid range value: %1").arg(value));
-                }
-            }
+        qWarning() << "here" << value << rangeOptionValue << &minRangeFunc;
+        if ((minRangeFunc != nullptr) && (!isAuto) && (rangeOptionValue == 0)) {
+            errors.append(tr("Invalid range value: %1").arg(value));
         }
     }
 

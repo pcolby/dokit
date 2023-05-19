@@ -131,7 +131,7 @@ void TestMeterCommand::processOptions_data()
     QTest::addRow("Capacitance")
         << QStringList{
            QStringLiteral("--mode"),  QStringLiteral("cap"),
-           QStringLiteral("--range"), QStringLiteral("500") } ///< \todo Add a unit suffix here.
+           QStringLiteral("--range"), QStringLiteral("500uF") }
         << MultimeterService::Settings{
             MultimeterService::Mode::Capacitance, +PokitPro::CapacitanceRange::_100nF, 1000}
         << -1
