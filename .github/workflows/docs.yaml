@@ -20,7 +20,7 @@ jobs:
         "$RUNNER_TEMP/doxygen-1.9.7/bin/doxygen" --version
     - name: Build docs
       run: |
-        cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-1.9.6/bin/doxygen" -D "QT_TAGFILES_PATH=/usr/share/qt5/doc" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-1.9.7/bin/doxygen" -D "QT_TAGFILES_PATH=/usr/share/qt5/doc" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" --target doc doc-internal
     - name: Upload public docs
       uses: actions/upload-artifact@v3
