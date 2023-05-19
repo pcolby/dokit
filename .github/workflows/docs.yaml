@@ -15,9 +15,9 @@ jobs:
         sudo apt update
         sudo apt upgrade
         sudo apt install graphviz qtbase5-dev qtbase5-doc-dev qtconnectivity5-dev qtconnectivity5-doc-html qttools5-dev qttools5-dev-tools
-        wget --quiet https://doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz --output-document "$RUNNER_TEMP/doxygen-1.9.6.linux.bin.tar.gz"
-        tar --extract --file "$RUNNER_TEMP/doxygen-1.9.6.linux.bin.tar.gz" --directory "$RUNNER_TEMP"
-        "$RUNNER_TEMP/doxygen-1.9.6/bin/doxygen" --version
+        curl --location --silent 'https://github.com/doxygen/doxygen/releases/download/Release_1_9_7/doxygen-1.9.7.linux.bin.tar.gz' |
+          tar --extract --gzip --directory "$RUNNER_TEMP"
+        "$RUNNER_TEMP/doxygen-1.9.7/bin/doxygen" --version
     - name: Build docs
       run: |
         cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-1.9.6/bin/doxygen" -D "QT_TAGFILES_PATH=/usr/share/qt5/doc" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
