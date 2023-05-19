@@ -51,6 +51,7 @@ var hierarchy =
         [ "PokitDiscoveryAgent", "classPokitDiscoveryAgent.html", null ]
       ] ]
     ] ],
+    [ "Ratio", "structRatio.html", null ],
     [ "MultimeterService::Reading", "structMultimeterService_1_1Reading.html", null ],
     [ "StatusService::ServiceUuids", "structStatusService_1_1ServiceUuids.html", null ],
     [ "DataLoggerService::Settings", "structDataLoggerService_1_1Settings.html", null ],

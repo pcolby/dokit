@@ -26,14 +26,13 @@ var NAVTREE =
 [
   [ "Dokit", "index.html", [
     [ "QtPokit - Internal", "index.html", "index" ],
-    [ "Notes", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html", [
-      [ "Pokit Bluetooth API", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md5", [
-        [ "Undocumented Services", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md6", null ]
+    [ "Notes", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html", [
+      [ "Pokit Bluetooth API", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html#autotoc_md5", [
+        [ "Undocumented Services", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html#autotoc_md6", null ]
       ] ],
-      [ "Qt Versions", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md7", null ],
-      [ "CMake Versions", "md__home_runner_work_dokit_dokit_doc_src_internal_notes.html#autotoc_md8", null ]
+      [ "Qt Versions", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html#autotoc_md7", null ],
+      [ "CMake Versions", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html#autotoc_md8", null ]
     ] ],
-    [ "Todo List", "todo.html", null ],
     [ "Pokit API Errata", "pokit.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -70,15 +69,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"classDsoServicePrivate.html#af869cf5b228bac719545511ba4247b88",
-"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c",
-"pokitmeter_8h.html#a22b467360c970e645f6a111b34d50a92",
-"qt.html#ChecksumType-enum",
-"qt.html#InputMethodQuery-enum",
+"classFlashLedCommand.html#a1caaabf1668fac270ab1701e4daa0456",
+"classStatusService.html#a6140c2723538587220452d6d4a51f001",
+"pokitmeter_8h.html#a22b467360c970e645f6a111b34d50a92a5c8523b038abf04d86fcc5358cd893cf",
+"qt.html#ClipOperation-enum",
+"qt.html#ItemDataRole-enum",
 "qt.html#Key-enum",
 "qt.html#Key-enum",
 "qt.html#TouchPointState-enum",
-"structDataLoggerService_1_1Metadata.html#a996d2701f1571bbbe51da18d2be3e2b8"
+"structDataLoggerService_1_1Metadata.html#ac976c83a69d67fbd287d9ae406582d81"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -8,7 +8,7 @@ var searchData=
   ['gamepadperipheral_5',['GamepadPeripheral',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#MinorPeripheralClass-enum',1,'QBluetoothDeviceInfo']]],
   ['gamingdevice_6',['GamingDevice',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#MinorAudioVideoClass-enum',1,'QBluetoothDeviceInfo']]],
   ['ganda_7',['Ganda',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
-  ['garbageatend_8',['GarbageAtEnd',['https://doc.qt.io/qt-5/qcborerror.html#Code-enum',1,'QCborError::GarbageAtEnd()'],['https://doc.qt.io/qt-5/qjsonparseerror.html#ParseError-enum',1,'QJsonParseError::GarbageAtEnd()']]],
+  ['garbageatend_8',['GarbageAtEnd',['https://doc.qt.io/qt-5/qcborerror.html#Code-enum',1,'QCborError::GarbageAtEnd'],['https://doc.qt.io/qt-5/qjsonparseerror.html#ParseError-enum',1,'QJsonParseError::GarbageAtEnd']]],
   ['geez_9',['Geez',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
   ['gender_10',['Gender',['https://doc.qt.io/qt-5/qbluetoothuuid.html#CharacteristicType-enum',1,'QBluetoothUuid']]],
   ['generalunlimitedinquiry_11',['GeneralUnlimitedInquiry',['https://doc.qt.io/qt-5/qbluetoothdevicediscoveryagent.html#InquiryType-enum',1,'QBluetoothDeviceDiscoveryAgent']]],

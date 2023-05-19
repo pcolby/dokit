@@ -28,6 +28,7 @@ var annotated_dup =
     [ "PokitDevicePrivate", "classPokitDevicePrivate.html", "classPokitDevicePrivate" ],
     [ "PokitDiscoveryAgent", "classPokitDiscoveryAgent.html", "classPokitDiscoveryAgent" ],
     [ "PokitDiscoveryAgentPrivate", "classPokitDiscoveryAgentPrivate.html", "classPokitDiscoveryAgentPrivate" ],
+    [ "Ratio", "structRatio.html", "structRatio" ],
     [ "ScanCommand", "classScanCommand.html", "classScanCommand" ],
     [ "SetNameCommand", "classSetNameCommand.html", "classSetNameCommand" ],
     [ "StatusCommand", "classStatusCommand.html", "classStatusCommand" ],

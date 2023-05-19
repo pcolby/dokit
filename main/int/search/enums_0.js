@@ -1,7 +1,7 @@
 var searchData=
 [
   ['access_0',['Access',['https://doc.qt.io/qt-5/qmetamethod.html#Access-enum',1,'QMetaMethod']]],
-  ['accessmode_1',['AccessMode',['https://doc.qt.io/qt-5/qsharedmemory.html#AccessMode-enum',1,'QSharedMemory::AccessMode()'],['https://doc.qt.io/qt-5/qsystemsemaphore.html#AccessMode-enum',1,'QSystemSemaphore::AccessMode()']]],
+  ['accessmode_1',['AccessMode',['https://doc.qt.io/qt-5/qsharedmemory.html#AccessMode-enum',1,'QSharedMemory::AccessMode'],['https://doc.qt.io/qt-5/qsystemsemaphore.html#AccessMode-enum',1,'QSystemSemaphore::AccessMode']]],
   ['algorithm_2',['Algorithm',['https://doc.qt.io/qt-5/qcryptographichash.html#Algorithm-enum',1,'QCryptographicHash']]],
   ['alignmentflag_3',['AlignmentFlag',['https://doc.qt.io/qt-5/qt.html#AlignmentFlag-enum',1,'Qt']]],
   ['anchorpoint_4',['AnchorPoint',['https://doc.qt.io/qt-5/qt.html#AnchorPoint-enum',1,'Qt']]],
