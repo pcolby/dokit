@@ -63,7 +63,7 @@ jobs:
         flag-name: linux0-${{ matrix.env.cc }}
         parallel: true
     - name: Build AppImage
-      run: cmake --build "$RUNNER_TEMP" --target appimage
+      run: cmake --build "$RUNNER_TEMP" --target cli-appimage
     - name: Setup artifacts
       run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload build artifacts
@@ -146,7 +146,7 @@ jobs:
         flag-name: linux-${{ matrix.env.cc }}-${{ matrix.qt }}
         parallel: true
     - name: Build AppImage
-      run: cmake --build "$RUNNER_TEMP" --target appimage
+      run: cmake --build "$RUNNER_TEMP" --target cli-appimage
     - name: Setup artifacts
       run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload build artifacts
