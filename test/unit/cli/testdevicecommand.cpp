@@ -5,6 +5,8 @@
 
 #include "devicecommand.h"
 
+#include <qtpokit/statusservice.h>
+
 class MockDeviceCommand : public DeviceCommand
 {
 public:
@@ -106,7 +108,9 @@ void TestDeviceCommand::deviceDiscovered()
 {
     MockDeviceCommand command;
     command.deviceToScanFor = QStringLiteral("example");
-    command.deviceDiscovered(QBluetoothDeviceInfo()); // Just logs a debug message, and ignores.
+    QBluetoothDeviceInfo info;
+    info.setServiceUuids(QList<QBluetoothUuid>{ StatusService::ServiceUuids::pokitMeter });
+    command.deviceDiscovered(info); // Just logs a debug message, and ignores.
 }
 
 void TestDeviceCommand::deviceDiscoveryFinished()

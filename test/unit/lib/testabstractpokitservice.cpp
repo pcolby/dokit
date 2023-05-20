@@ -46,7 +46,7 @@ void TestAbstractPokitService::pokitProduct()
 {
     QFETCH(PokitProduct, product);
     MockPokitService service(nullptr);
-    QVERIFY(service.pokitProduct() == PokitProduct::PokitMeter); // Pokit Meter is the default.
+    QCOMPARE(static_cast<quint8>(service.pokitProduct()), 255u); // ie invalid / unset by default.
     service.setPokitProduct(product);
     QVERIFY(service.pokitProduct() == product);
 }

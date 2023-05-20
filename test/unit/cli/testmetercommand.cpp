@@ -413,9 +413,8 @@ void TestMeterCommand::outputReading()
     const OutputStreamCapture capture(&std::cout);
     MeterCommand command;
     command.service = new MultimeterService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
-    if (readings.first().mode == MultimeterService::Mode::Capacitance) {
-        command.service->setPokitProduct(PokitProduct::PokitPro); // Only Pokit Pro supports capacitance.
-    }
+    command.service->setPokitProduct((readings.first().mode == MultimeterService::Mode::Capacitance)
+        ? PokitProduct::PokitPro : PokitProduct::PokitMeter); // Only Pokit Pro supports capacitance.
     command.format = format;
     for (const MultimeterService::Reading &reading: readings) {
         command.outputReading(reading);

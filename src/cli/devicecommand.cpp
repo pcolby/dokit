@@ -337,6 +337,8 @@ void DeviceCommand::serviceDetailsDiscovered()
  */
 void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
 {
+    Q_ASSERT(isPokitProduct(info));
+
     if (device) {
         qCDebug(lc).noquote() << tr(R"(Ignoring additional Pokit device "%1" (%2) at (%3).)")
             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
@@ -362,7 +364,8 @@ void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
             #endif
             this, &DeviceCommand::controllerError, Qt::QueuedConnection);
 
-        const AbstractPokitService * const service = getService();
+        AbstractPokitService * const service = getService();
+        service->setPokitProduct(pokitProduct(info));
 
         Q_ASSERT(service);
         connect(service, &AbstractPokitService::serviceDetailsDiscovered,
@@ -370,8 +373,8 @@ void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
         connect(service, &AbstractPokitService::serviceErrorOccurred,
                 this, &DeviceCommand::serviceError);
 
-        qCDebug(lc).noquote() << tr(R"(Connecting to Pokit device "%1" (%2) at (%3).)")
-            .arg(info.name(), info.deviceUuid().toString(), info.address().toString());
+        qCDebug(lc).noquote() << tr(R"(Connecting to %1 device "%2" (%3) at (%4).)").arg(
+            toString(service->pokitProduct()), info.name(), info.deviceUuid().toString(), info.address().toString());
         device->controller()->connectToDevice();
         return;
     }

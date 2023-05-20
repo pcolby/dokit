@@ -92,11 +92,20 @@ PokitProduct AbstractPokitService::pokitProduct() const
 /*!
  * Sets the current Pokit \a product.
  *
- * Usually, the product is deteced during service construction, but it is possible (though not normally necessary) to
- * override it.  No attempt is made to valiadate the \a product - this service will simply assume that the attached
- * BLE device is the \a product specified, and treat it as such.
+ * This must be called to set the product before this object's BLE controller's services are discovered. If
+ * autoDiscover() is enabled, then this should be done before the controller's \c connectToDevice() is called.
  *
- * \see setPokitProduct
+ * For example:
+ * ```
+ * Q_ASSERT(isPokitProduct(deviceInfo));
+ * auto controller = QLowEnergyController::createCentral(deviceInfo);
+ * auto service = new DsoService(controller);
+ * service->setPokitProduct(pokitProduct(deviceInfo));
+ * controller->connectToDevice();
+ * ```
+ *
+ * \see autoDiscover
+ * \see pokitProduct
  */
 void AbstractPokitService::setPokitProduct(const PokitProduct product)
 {
@@ -201,8 +210,6 @@ bool AbstractPokitServicePrivate::createServiceObject()
     if (!service) {
         return false;
     }
-    Q_ASSERT(isPokitProduct(*controller));
-    this->pokitProduct = ::pokitProduct(*controller);
     qCDebug(lc).noquote() << tr("Service object created for %1 device:").arg(toString(this->pokitProduct)) << service;
 
     connect(service, &QLowEnergyService::stateChanged,

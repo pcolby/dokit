@@ -389,6 +389,8 @@ void TestDsoCommand::processOptions()
     }
 
     DsoCommand command(this);
+    command.service = new DsoService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
+    command.service->setPokitProduct(PokitProduct::PokitMeter);
     QCOMPARE(command.processOptions(parser),   expectedErrors);
     QCOMPARE(command.settings.command,         expectedSettings.command);
     QCOMPARE(command.settings.triggerLevel,    expectedSettings.triggerLevel);
@@ -493,6 +495,7 @@ void TestDsoCommand::outputSamples()
     const OutputStreamCapture capture(&std::cout);
     DsoCommand command;
     command.service = new DsoService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
+    command.service->setPokitProduct(PokitProduct::PokitMeter);
     command.metadataRead(metadata);
     command.format = format;
     for (const DsoService::Samples &samples: samplesList) {

@@ -103,6 +103,7 @@ void TestLoggerFetchCommand::outputSamples()
     const OutputStreamCapture capture(&std::cout);
     LoggerFetchCommand command;
     command.service = new DataLoggerService(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
+    command.service->setPokitProduct(PokitProduct::PokitMeter);
     command.metadataRead(metadata);
     command.format = format;
     for (const DataLoggerService::Samples &samples: samplesList) {
