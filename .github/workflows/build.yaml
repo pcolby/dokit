@@ -47,7 +47,7 @@ jobs:
         path: |
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/removeHtmlDates.sh
-          ${{ runner.temp }}/test/unit/*.tap
+          ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage
@@ -130,7 +130,7 @@ jobs:
         name: test-results-linux-${{ matrix.env.cc }}-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/coverage.info
-          ${{ runner.temp }}/test/unit/*.tap
+          ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage
@@ -216,7 +216,7 @@ jobs:
         name: test-results-mac-${{ matrix.env.cc }}-${{ matrix.qt }}
         path: |
           ${{ runner.temp }}/coverage.info
-          ${{ runner.temp }}/test/unit/*.tap
+          ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage
@@ -351,7 +351,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: test-results-win-${{ matrix.arch }}-${{ matrix.tool }}-${{ matrix.qt }}
-        path: ${{ runner.temp }}/test/unit/*.tap
+        path: ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Make portable
       # Exclude Qt 6.5.0 due to https://bugreports.qt.io/browse/QTBUG-112204
