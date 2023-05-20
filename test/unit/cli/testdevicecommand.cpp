@@ -109,7 +109,8 @@ void TestDeviceCommand::deviceDiscovered()
     MockDeviceCommand command;
     command.deviceToScanFor = QStringLiteral("example");
     QBluetoothDeviceInfo info;
-    info.setServiceUuids(QList<QBluetoothUuid>{ StatusService::ServiceUuids::pokitMeter });
+    const QList<QBluetoothUuid> uuids{ StatusService::ServiceUuids::pokitMeter };
+    info.setServiceUuids(uuids);
     command.deviceDiscovered(info); // Just logs a debug message, and ignores.
 }
 
