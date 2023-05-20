@@ -89,9 +89,7 @@ void TestAbstractPokitService::getCharacteristic()
 {
     {   // Verify an invalid characteristic is returned safely, when no controller is set.
         MockPokitService service(nullptr);
-        QTest::ignoreMessage(QtWarningMsg, "Controller does not appear to be a Pokit device");
-        const QLowEnergyCharacteristic characteristic =
-            service.d_ptr->getCharacteristic(QUuid::createUuid());
+        const QLowEnergyCharacteristic characteristic = service.d_ptr->getCharacteristic(QUuid::createUuid());
         QVERIFY(!characteristic.isValid());
     }
 
@@ -99,8 +97,7 @@ void TestAbstractPokitService::getCharacteristic()
         // no services have been discovered (because we have no Bluetooth device to talk to).
         MockPokitService service(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
         QVERIFY(!service.d_ptr->createServiceObject());
-        const QLowEnergyCharacteristic characteristic =
-            service.d_ptr->getCharacteristic(QUuid::createUuid());
+        const QLowEnergyCharacteristic characteristic = service.d_ptr->getCharacteristic(QUuid::createUuid());
         QVERIFY(!characteristic.isValid());
     }
 }
@@ -198,17 +195,14 @@ void TestAbstractPokitService::toHexString()
     QCOMPARE(AbstractPokitServicePrivate::toHexString(data, max), expected);
 }
 
-
 void TestAbstractPokitService::connected()
 {
     // Verify safe error handling.
     {
         MockPokitService service(nullptr);
-        QTest::ignoreMessage(QtWarningMsg, "Connected with no controller set QObject(0x0)");
         service.d_ptr->connected();
     }
     {
-        QTest::ignoreMessage(QtWarningMsg, "Controller does not appear to be a Pokit device");
         MockPokitService service(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
         service.d_ptr->connected();
     }
@@ -220,12 +214,10 @@ void TestAbstractPokitService::discoveryFinished()
     {
         MockPokitService service(nullptr);
         QTest::ignoreMessage(QtWarningMsg, "Discovery finished with no controller set QObject(0x0)");
-        QTest::ignoreMessage(QtWarningMsg, "Controller does not appear to be a Pokit device");
         service.d_ptr->discoveryFinished();
     }
     {
         MockPokitService service(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
-        QTest::ignoreMessage(QtWarningMsg, "Discovery finished, but service not found.");
         service.d_ptr->discoveryFinished();
     }
 }

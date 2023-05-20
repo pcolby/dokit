@@ -161,12 +161,6 @@ AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &s
     : controller(controller), serviceUuid(serviceUuid), q_ptr(q)
 {
     if (controller) {
-        if (isPokitProduct(*controller)) {
-            this->pokitProduct = ::pokitProduct(*controller);
-        } else {
-            qCWarning(lc).noquote() << tr("Controller does not appear to be a Pokit device");
-            qCDebug(lc) << "Controller services:" << controller->services();
-        }
         connect(controller, &QLowEnergyController::connected,
                 this, &AbstractPokitServicePrivate::connected);
 
@@ -207,7 +201,9 @@ bool AbstractPokitServicePrivate::createServiceObject()
     if (!service) {
         return false;
     }
-    qCDebug(lc).noquote() << tr("Service object created") << service;
+    Q_ASSERT(isPokitProduct(*controller));
+    this->pokitProduct = ::pokitProduct(*controller);
+    qCDebug(lc).noquote() << tr("Service object created for %1 device:").arg(toString(this->pokitProduct)) << service;
 
     connect(service, &QLowEnergyService::stateChanged,
             this, &AbstractPokitServicePrivate::stateChanged);
