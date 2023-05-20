@@ -24,7 +24,7 @@ if (LINUXDEPLOY)
       ${LINUXDEPLOY}
       --appdir "${CMAKE_BINARY_DIR}/AppDir"
       --desktop-file "${CMAKE_CURRENT_BINARY_DIR}/dokit.desktop"
-      --executable "$<TARGET_FILE:dokit>"
+      --executable "$<TARGET_FILE:cli>"
       --icon-file "${CMAKE_CURRENT_SOURCE_DIR}/dokit.png"
       --output appimage
       --plugin qt

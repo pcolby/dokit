@@ -100,7 +100,7 @@ else()
   add_dokit_unit_test(${name} ${ARGN} outputstreamcapture.h testdata.h)
   set_tests_properties(${name} PROPERTIES LABELS "cli;unit")
   target_include_directories(test${name} PRIVATE ${CMAKE_SOURCE_DIR}/src/cli)
-  target_link_libraries(test${name} PRIVATE DokitCli)
+  target_link_libraries(test${name} PRIVATE cli-lib)
 endif()
 endfunction()
 
