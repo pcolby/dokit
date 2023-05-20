@@ -226,7 +226,7 @@ $(document).ready(function(){initNavTree('abstractcommand_8cpp_source.html','');
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment"> * \internal</span></div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment"> * Returns a (run-time) Ratio representation of (compile-time) ratio \a R.</span></div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> R&gt; <span class="keyword">inline</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structRatio.html">Ratio</a> makeRatio() { <span class="keywordflow">return</span> <a class="code hl_struct" href="structRatio.html">Ratio</a>{ R::num, R::den }; }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> R&gt; <span class="keyword">constexpr</span> <a class="code hl_struct" href="structRatio.html">Ratio</a> makeRatio() { <span class="keywordflow">return</span> <a class="code hl_struct" href="structRatio.html">Ratio</a>{ R::num, R::den }; }</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment"></span> </div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">/*!</span></div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment"> * Returns \a value as an integer multiple of the ratio \a R. The string \a value</span></div>
@@ -301,7 +301,7 @@ $(document).ready(function(){initNavTree('abstractcommand_8cpp_source.html','');
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordflow">if</span> (!ratio.<a class="code hl_function" href="structRatio.html#abbfb48e8ebeec5666385f38b31f94215">isValid</a>()) {</div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            <span class="keywordflow">for</span> (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(integer) &lt; sensibleMinimum; ratio.<a class="code hl_variable" href="structRatio.html#a8e07dbd09bf3610c9e3f2d7ddf3f4691">num</a> *= 1000);</div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        }</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keywordflow">return</span> (integer == 0) ? 0 : DOKIT_RESULT(integer);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keywordflow">return</span> (integer == 0) ? 0u : (quint32)DOKIT_RESULT(integer);</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="comment">// Parse the number as a (double) floating point number, and check that it is positive.</span></div>
