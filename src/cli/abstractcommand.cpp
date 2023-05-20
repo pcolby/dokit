@@ -202,7 +202,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(integer) < sensibleMinimum; ratio.num *= 1000);
         }
-        return (integer == 0) ? 0 : DOKIT_RESULT(integer);
+        return (integer == 0) ? 0u : (quint32)DOKIT_RESULT(integer);
     }
 
     // Parse the number as a (double) floating point number, and check that it is positive.
