@@ -586,8 +586,20 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Sets the current Pokit <em>product</em>. </p>
-<p>Usually, the product is deteced during service construction, but it is possible (though not normally necessary) to override it. No attempt is made to valiadate the <em>product</em> - this service will simply assume that the attached BLE device is the <em>product</em> specified, and treat it as such.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#aa0e323c5e2380709c5a5fde18520ae3f" title="Sets the current Pokit product.">setPokitProduct</a> </dd></dl>
+<p>This must be called to set the product before this object's BLE controller's services are discovered. If <a class="el" href="classAbstractPokitService.html#a65c2c9c6163744a7cf52de2c6a83f610" title="Returns true if autodiscovery of services and service details is enabled, false otherwise.">autoDiscover()</a> is enabled, then this should be done before the controller's <code>connectToDevice()</code> is called.</p>
+<p>For example: </p><div class="fragment"><div class="line">Q_ASSERT(<a class="code hl_function" href="pokitproducts_8h.html#adb8bb3a07e937158a294997e60868297">isPokitProduct</a>(deviceInfo));</div>
+<div class="line"><span class="keyword">auto</span> controller = <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#createCentral">QLowEnergyController::createCentral</a>(deviceInfo);</div>
+<div class="line"><span class="keyword">auto</span> <a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a> = <span class="keyword">new</span> <a class="code hl_class" href="classDsoService.html">DsoService</a>(controller);</div>
+<div class="line"><a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>-&gt;setPokitProduct(<a class="code hl_function" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a>(deviceInfo));</div>
+<div class="line">controller-&gt;connectToDevice();</div>
+<div class="ttc" id="aclassAbstractPokitService_html_a68091034224a764b1642dd3e99ff5b14"><div class="ttname"><a href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">AbstractPokitService::pokitProduct</a></div><div class="ttdeci">PokitProduct pokitProduct() const</div><div class="ttdoc">Returns the Pokit product this service is attached to.</div><div class="ttdef"><b>Definition</b> abstractpokitservice.cpp:86</div></div>
+<div class="ttc" id="aclassAbstractPokitService_html_a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><div class="ttname"><a href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">AbstractPokitService::service</a></div><div class="ttdeci">QLowEnergyService * service()</div><div class="ttdoc">Returns a non-const pointer to the internal service object, if any.</div><div class="ttdef"><b>Definition</b> abstractpokitservice.cpp:119</div></div>
+<div class="ttc" id="aclassDsoService_html"><div class="ttname"><a href="classDsoService.html">DsoService</a></div><div class="ttdoc">The DsoService class accesses the DSO (Digital Storage Oscilloscope) service of Pokit devices.</div><div class="ttdef"><b>Definition</b> dsoservice.h:24</div></div>
+<div class="ttc" id="apokitproducts_8h_html_adb8bb3a07e937158a294997e60868297"><div class="ttname"><a href="pokitproducts_8h.html#adb8bb3a07e937158a294997e60868297">isPokitProduct</a></div><div class="ttdeci">QTPOKIT_EXPORT bool isPokitProduct(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns true if info describes a Pokit device.</div><div class="ttdef"><b>Definition</b> pokitproducts.cpp:43</div></div>
+<div class="ttc" id="aqlowenergycontroller_html_createCentral"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycontroller.html#createCentral">QLowEnergyController::createCentral</a></div><div class="ttdeci">QLowEnergyController * createCentral(const QBluetoothDeviceInfo &amp;remoteDevice, QObject *parent)</div></div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#a65c2c9c6163744a7cf52de2c6a83f610" title="Returns true if autodiscovery of services and service details is enabled, false otherwise.">autoDiscover</a> </dd>
+<dd>
+<a class="el" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14" title="Returns the Pokit product this service is attached to.">pokitProduct</a> </dd></dl>
 
 </div>
 </div>
