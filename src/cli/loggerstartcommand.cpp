@@ -90,7 +90,6 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
         case DataLoggerService::Mode::AcCurrent:
             rangeOptionValue = parseNumber<std::milli>(value, QLatin1String("A"), 5); // mA.
             break;
-        case DataLoggerService::Mode::Temperature:
         default:
             qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
         }
