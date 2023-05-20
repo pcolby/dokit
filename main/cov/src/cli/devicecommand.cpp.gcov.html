@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntry">144</td>
-            <td class="headerCovTableEntryLo">29.2 %</td>
+            <td class="headerCovTableEntry">145</td>
+            <td class="headerCovTableEntryLo">29.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -399,62 +399,65 @@
 <a name="337"><span class="lineNum">     337 </span>            :  */</a>
 <a name="338"><span class="lineNum">     338 </span><span class="lineCov">         18 : void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</span></a>
 <a name="339"><span class="lineNum">     339 </span>            : {</a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">         18 :     if (device) {</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="344"><span class="lineNum">     344 </span>            :     }</a>
-<a name="345"><span class="lineNum">     345 </span>            : </a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         54 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">         72 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">         36 :         ((!info.deviceUuid().isNull()) &amp;&amp; (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))</span></a>
-<a name="349"><span class="lineNum">     349 </span>            :     {</a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Found Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :         discoveryAgent-&gt;stop();</span></a>
-<a name="353"><span class="lineNum">     353 </span>            : </a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :         device = new PokitDevice(info, this);</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineNoCov">          0 :         connect(device-&gt;controller(), &amp;QLowEnergyController::disconnected,</span></a>
-<a name="356"><span class="lineNum">     356 </span>            :                 this, &amp;DeviceCommand::deviceDisconnected);</a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :         connect(device-&gt;controller(),</span></a>
-<a name="358"><span class="lineNum">     358 </span>            :             #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</a>
-<a name="359"><span class="lineNum">     359 </span>            :             QOverload&lt;QLowEnergyController::Error&gt;::of(&amp;QLowEnergyController::error),</a>
-<a name="360"><span class="lineNum">     360 </span>            :             #else</a>
-<a name="361"><span class="lineNum">     361 </span>            :             &amp;QLowEnergyController::errorOccurred,</a>
-<a name="362"><span class="lineNum">     362 </span>            :             #endif</a>
-<a name="363"><span class="lineNum">     363 </span>            :             this, &amp;DeviceCommand::controllerError, Qt::QueuedConnection);</a>
-<a name="364"><span class="lineNum">     364 </span>            : </a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :         const AbstractPokitService * const service = getService();</span></a>
+<a name="340"><span class="lineNum">     340 </span>            :     Q_ASSERT(isPokitProduct(info));</a>
+<a name="341"><span class="lineNum">     341 </span>            : </a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         18 :     if (device) {</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="346"><span class="lineNum">     346 </span>            :     }</a>
+<a name="347"><span class="lineNum">     347 </span>            : </a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">         54 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         72 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">         36 :         ((!info.deviceUuid().isNull()) &amp;&amp; (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))</span></a>
+<a name="351"><span class="lineNum">     351 </span>            :     {</a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Found Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :         discoveryAgent-&gt;stop();</span></a>
+<a name="355"><span class="lineNum">     355 </span>            : </a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineNoCov">          0 :         device = new PokitDevice(info, this);</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineNoCov">          0 :         connect(device-&gt;controller(), &amp;QLowEnergyController::disconnected,</span></a>
+<a name="358"><span class="lineNum">     358 </span>            :                 this, &amp;DeviceCommand::deviceDisconnected);</a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :         connect(device-&gt;controller(),</span></a>
+<a name="360"><span class="lineNum">     360 </span>            :             #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</a>
+<a name="361"><span class="lineNum">     361 </span>            :             QOverload&lt;QLowEnergyController::Error&gt;::of(&amp;QLowEnergyController::error),</a>
+<a name="362"><span class="lineNum">     362 </span>            :             #else</a>
+<a name="363"><span class="lineNum">     363 </span>            :             &amp;QLowEnergyController::errorOccurred,</a>
+<a name="364"><span class="lineNum">     364 </span>            :             #endif</a>
+<a name="365"><span class="lineNum">     365 </span>            :             this, &amp;DeviceCommand::controllerError, Qt::QueuedConnection);</a>
 <a name="366"><span class="lineNum">     366 </span>            : </a>
-<a name="367"><span class="lineNum">     367 </span>            :         Q_ASSERT(service);</a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :         connect(service, &amp;AbstractPokitService::serviceDetailsDiscovered,</span></a>
-<a name="369"><span class="lineNum">     369 </span>            :                 this, &amp;DeviceCommand::serviceDetailsDiscovered);</a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 :         connect(service, &amp;AbstractPokitService::serviceErrorOccurred,</span></a>
-<a name="371"><span class="lineNum">     371 </span>            :                 this, &amp;DeviceCommand::serviceError);</a>
-<a name="372"><span class="lineNum">     372 </span>            : </a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connecting to Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :         device-&gt;controller()-&gt;connectToDevice();</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :         return;</span></a>
-<a name="377"><span class="lineNum">     377 </span>            :     }</a>
-<a name="378"><span class="lineNum">     378 </span>            : </a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          3 :     return;</span></a>
-<a name="382"><span class="lineNum">     382 </span>            : }</a>
-<a name="383"><span class="lineNum">     383 </span>            : </a>
-<a name="384"><span class="lineNum">     384 </span>            : /*!</a>
-<a name="385"><span class="lineNum">     385 </span>            :  * Checks that the requested device was discovered, and if not, reports and error and exits.</a>
-<a name="386"><span class="lineNum">     386 </span>            :  */</a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">         36 : void DeviceCommand::deviceDiscoveryFinished()</span></a>
-<a name="388"><span class="lineNum">     388 </span>            : {</a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">         36 :     if (!device) {</span></a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         72 :         qCWarning(lc).noquote() &lt;&lt; ((deviceToScanFor.isNull())</span></a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">         64 :             ? tr(&quot;Failed to find any Pokit device.&quot;)</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         76 :             : tr(R&quot;(Failed to find device &quot;%1&quot;.)&quot;).arg(deviceToScanFor));</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         36 :         QCoreApplication::exit(EXIT_FAILURE);</span></a>
-<a name="394"><span class="lineNum">     394 </span>            :     }</a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">         36 : }</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :         AbstractPokitService * const service = getService();</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :         service-&gt;setPokitProduct(pokitProduct(info));</span></a>
+<a name="369"><span class="lineNum">     369 </span>            : </a>
+<a name="370"><span class="lineNum">     370 </span>            :         Q_ASSERT(service);</a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 :         connect(service, &amp;AbstractPokitService::serviceDetailsDiscovered,</span></a>
+<a name="372"><span class="lineNum">     372 </span>            :                 this, &amp;DeviceCommand::serviceDetailsDiscovered);</a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :         connect(service, &amp;AbstractPokitService::serviceErrorOccurred,</span></a>
+<a name="374"><span class="lineNum">     374 </span>            :                 this, &amp;DeviceCommand::serviceError);</a>
+<a name="375"><span class="lineNum">     375 </span>            : </a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connecting to %1 device &quot;%2&quot; (%3) at (%4).)&quot;).arg(</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineNoCov">          0 :             toString(service-&gt;pokitProduct()), info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineNoCov">          0 :         device-&gt;controller()-&gt;connectToDevice();</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="380"><span class="lineNum">     380 </span>            :     }</a>
+<a name="381"><span class="lineNum">     381 </span>            : </a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         18 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 :         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          3 :     return;</span></a>
+<a name="385"><span class="lineNum">     385 </span>            : }</a>
+<a name="386"><span class="lineNum">     386 </span>            : </a>
+<a name="387"><span class="lineNum">     387 </span>            : /*!</a>
+<a name="388"><span class="lineNum">     388 </span>            :  * Checks that the requested device was discovered, and if not, reports and error and exits.</a>
+<a name="389"><span class="lineNum">     389 </span>            :  */</a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         36 : void DeviceCommand::deviceDiscoveryFinished()</span></a>
+<a name="391"><span class="lineNum">     391 </span>            : {</a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         36 :     if (!device) {</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         72 :         qCWarning(lc).noquote() &lt;&lt; ((deviceToScanFor.isNull())</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         64 :             ? tr(&quot;Failed to find any Pokit device.&quot;)</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">         76 :             : tr(R&quot;(Failed to find device &quot;%1&quot;.)&quot;).arg(deviceToScanFor));</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         36 :         QCoreApplication::exit(EXIT_FAILURE);</span></a>
+<a name="397"><span class="lineNum">     397 </span>            :     }</a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">         36 : }</span></a>
 </pre>
       </td>
     </tr>

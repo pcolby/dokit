@@ -199,11 +199,11 @@
 <a name="137"><span class="lineNum">     137 </span>            : /*!</a>
 <a name="138"><span class="lineNum">     138 </span>            :  * Constructs a new Pokit service with \a parent.</a>
 <a name="139"><span class="lineNum">     139 </span>            :  */</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1530 : DsoService::DsoService(QLowEnergyController * const controller, QObject * parent)</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1530 :     : AbstractPokitService(new DsoServicePrivate(controller, this), parent)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       2034 : DsoService::DsoService(QLowEnergyController * const controller, QObject * parent)</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       2034 :     : AbstractPokitService(new DsoServicePrivate(controller, this), parent)</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : {</a>
 <a name="143"><span class="lineNum">     143 </span>            : </a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       1530 : }</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       2034 : }</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            : /*!</a>
 <a name="147"><span class="lineNum">     147 </span>            :  * \cond internal</a>
@@ -417,12 +417,12 @@
 <a name="355"><span class="lineNum">     355 </span>            :  * \internal</a>
 <a name="356"><span class="lineNum">     356 </span>            :  * Constructs a new DsoServicePrivate object with public implementation \a q.</a>
 <a name="357"><span class="lineNum">     357 </span>            :  */</a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">       1020 : DsoServicePrivate::DsoServicePrivate(</span></a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       1530 :     QLowEnergyController * controller, DsoService * const q)</span></a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">       1530 :     : AbstractPokitServicePrivate(DsoService::serviceUuid, controller, q)</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">       1356 : DsoServicePrivate::DsoServicePrivate(</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">       2034 :     QLowEnergyController * controller, DsoService * const q)</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">       2034 :     : AbstractPokitServicePrivate(DsoService::serviceUuid, controller, q)</span></a>
 <a name="361"><span class="lineNum">     361 </span>            : {</a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       1020 : }</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">       1356 : }</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
 <a name="365"><span class="lineNum">     365 </span>            : /*!</a>
 <a name="366"><span class="lineNum">     366 </span>            :  * Returns \a settings in the format Pokit devices expect.</a>
