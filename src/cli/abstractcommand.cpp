@@ -127,7 +127,7 @@ struct Ratio {
  * \internal
  * Returns a (run-time) Ratio representation of (compile-time) ratio \a R.
  */
-template<typename R> inline constexpr Ratio makeRatio() { return Ratio{ R::num, R::den }; }
+template<typename R> constexpr Ratio makeRatio() { return Ratio{ R::num, R::den }; }
 
 /*!
  * Returns \a value as an integer multiple of the ratio \a R. The string \a value
