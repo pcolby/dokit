@@ -36,7 +36,7 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
-      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+      run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
@@ -120,7 +120,7 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
     - name: Test
-      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+      run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
@@ -206,7 +206,7 @@ jobs:
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
     - name: Test
-      run: ctest --test-dir "$RUNNER_TEMP" --verbose
+      run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
@@ -343,7 +343,7 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
       if: matrix.arch != 'arm64'
-      run: ctest --test-dir "%RUNNER_TEMP%" --verbose
+      run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose
     - name: Upload test results
       if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
