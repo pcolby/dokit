@@ -19,9 +19,20 @@ public:
     }
 };
 
+// Mock device command class that does nothing (but log) if real devices are actually discovered. That is, if testing
+// while real (physical) Pokit devices are withing BLE range. This never happes in CI environments of course.
+class StartableDeviceCommand : public MockDeviceCommand
+{
+protected slots:
+    void deviceDiscovered(const QBluetoothDeviceInfo &info) override
+    {
+        qWarning() << "Ignoring discovered Pokit device:" << info.name() << info.deviceUuid() << info.address();
+    }
+};
+
 void TestDeviceCommand::start()
 {
-    MockDeviceCommand command;
+    StartableDeviceCommand command;
 
     QVERIFY(command.deviceToScanFor.isNull());
     QTest::ignoreMessage(QtInfoMsg, "Looking for first available Pokit device...");
