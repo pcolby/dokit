@@ -126,10 +126,10 @@
 <a name="64"><span class="lineNum">      64 </span>            :  *</a>
 <a name="65"><span class="lineNum">      65 </span>            :  * Currently, this is the only known way to detect a Pokit device.</a>
 <a name="66"><span class="lineNum">      66 </span>            :  */</a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">       4566 : bool isPokitProduct(const QList&lt;QBluetoothUuid&gt; &amp;serviceUuids)</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        816 : bool isPokitProduct(const QList&lt;QBluetoothUuid&gt; &amp;serviceUuids)</span></a>
 <a name="68"><span class="lineNum">      68 </span>            : {</a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">       7982 :     return (serviceUuids.contains(StatusService::ServiceUuids::pokitMeter) ||</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">       4566 :             serviceUuids.contains(StatusService::ServiceUuids::pokitPro));</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">       1342 :     return (serviceUuids.contains(StatusService::ServiceUuids::pokitMeter) ||</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        816 :             serviceUuids.contains(StatusService::ServiceUuids::pokitPro));</span></a>
 <a name="71"><span class="lineNum">      71 </span>            : }</a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
 <a name="73"><span class="lineNum">      73 </span>            : </a>
@@ -141,9 +141,9 @@
 <a name="79"><span class="lineNum">      79 </span>            :  *</a>
 <a name="80"><span class="lineNum">      80 </span>            :  * \see isPokitProduct</a>
 <a name="81"><span class="lineNum">      81 </span>            :  */</a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       3858 : bool isPokitProduct(const QLowEnergyController &amp;controller)</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">        108 : bool isPokitProduct(const QLowEnergyController &amp;controller)</span></a>
 <a name="83"><span class="lineNum">      83 </span>            : {</a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       4742 :     return isPokitProduct(controller.services());</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        132 :     return isPokitProduct(controller.services());</span></a>
 <a name="85"><span class="lineNum">      85 </span>            : }</a>
 <a name="86"><span class="lineNum">      86 </span>            : </a>
 <a name="87"><span class="lineNum">      87 </span>            : /*!</a>
