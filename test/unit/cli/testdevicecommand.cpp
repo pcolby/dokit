@@ -7,13 +7,6 @@
 
 #include <qtpokit/statusservice.h>
 
-// QBluetoothDeviceInfo::setServiceUuids deprecated the completeness argument in Qt 5.13.
-#if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
-#define DATA_COMPLETENESS , QBluetoothDeviceInfo::DataUnavailable
-#else
-#define DATA_COMPLETENESS
-#endif
-
 class MockDeviceCommand : public DeviceCommand
 {
 public:
@@ -116,8 +109,11 @@ void TestDeviceCommand::deviceDiscovered()
     MockDeviceCommand command;
     command.deviceToScanFor = QStringLiteral("example");
     QBluetoothDeviceInfo info;
-    const QList<QBluetoothUuid> uuids{ StatusService::ServiceUuids::pokitMeter };
-    info.setServiceUuids(uuids DATA_COMPLETENESS);
+    info.setServiceUuids({StatusService::ServiceUuids::pokitMeter}
+        #if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)
+        , QBluetoothDeviceInfo::DataUnavailable // Required prior to 5.13, but deprecated in 5.13.
+        #endif
+    );
     command.deviceDiscovered(info); // Just logs a debug message, and ignores.
 }
 
