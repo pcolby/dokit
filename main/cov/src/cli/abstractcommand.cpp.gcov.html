@@ -189,7 +189,7 @@
 <a name="127"><span class="lineNum">     127 </span>            :  * \internal</a>
 <a name="128"><span class="lineNum">     128 </span>            :  * Returns a (run-time) Ratio representation of (compile-time) ratio \a R.</a>
 <a name="129"><span class="lineNum">     129 </span>            :  */</a>
-<a name="130"><span class="lineNum">     130 </span>            : template&lt;typename R&gt; inline constexpr Ratio makeRatio() { return Ratio{ R::num, R::den }; }</a>
+<a name="130"><span class="lineNum">     130 </span>            : template&lt;typename R&gt; constexpr Ratio makeRatio() { return Ratio{ R::num, R::den }; }</a>
 <a name="131"><span class="lineNum">     131 </span>            : </a>
 <a name="132"><span class="lineNum">     132 </span>            : /*!</a>
 <a name="133"><span class="lineNum">     133 </span>            :  * Returns \a value as an integer multiple of the ratio \a R. The string \a value</a>
@@ -264,7 +264,7 @@
 <a name="202"><span class="lineNum">     202 </span>            :         if (!ratio.isValid()) {</a>
 <a name="203"><span class="lineNum">     203 </span><span class="lineCov">        572 :             for (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(integer) &lt; sensibleMinimum; ratio.num *= 1000);</span></a>
 <a name="204"><span class="lineNum">     204 </span>            :         }</a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       1492 :         return (integer == 0) ? 0 : DOKIT_RESULT(integer);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       1492 :         return (integer == 0) ? 0u : (quint32)DOKIT_RESULT(integer);</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :     }</a>
 <a name="207"><span class="lineNum">     207 </span>            : </a>
 <a name="208"><span class="lineNum">     208 </span>            :     // Parse the number as a (double) floating point number, and check that it is positive.</a>
