@@ -1,5 +1,7 @@
 # Changelog[^1]
 
+## [Unreleased][]
+
 ## [0.3.0][] (2023-05-21)
 
 This release breaks backward compatibility by changing some QtPokit APIs to support [Pokit Pro]'s
