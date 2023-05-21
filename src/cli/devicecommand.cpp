@@ -6,6 +6,8 @@
 #include <qtpokit/abstractpokitservice.h>
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/pokitdiscoveryagent.h>
+#include "qtpokit/pokitmeter.h"
+#include "qtpokit/pokitpro.h"
 
 /*!
  * \class DeviceCommand
@@ -84,7 +86,7 @@ if (value <= ns::maxValue(label).toUInt()) { \
  * Returns the lowest PokitMeter::CurrentRange value that can measure at least up to \a maxValue, or AutoRange if
  * the Pokit Meter cannot measure as high as \a maxValue.
  */
-template<> PokitMeter::CurrentRange DeviceCommand::minRange(const quint32 maxValue)
+template<> PokitMeter::CurrentRange DeviceCommand::minRange<>(const quint32 maxValue)
 {
     if (maxValue == 0) return PokitMeter::CurrentRange::AutoRange;
     DOKIT_CLI_IF_LESS_THAN_RETURN(maxValue, PokitMeter, PokitMeter::CurrentRange::_10mA)

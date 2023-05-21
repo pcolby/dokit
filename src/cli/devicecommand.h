@@ -5,8 +5,6 @@
 #define DOKIT_DEVICECOMMAND_H
 
 #include "abstractcommand.h"
-#include "qtpokit/pokitmeter.h"
-#include "qtpokit/pokitpro.h"
 #include "qtpokit/pokitproducts.h"
 
 #include <QLowEnergyController>
@@ -50,16 +48,5 @@ private slots:
 
     friend class TestDeviceCommand;
 };
-
-/// \cond Doxygen has "only very limited support for member specialization at the moment", so hide these from Doxygen.
-template<> PokitMeter::CurrentRange    DeviceCommand::minRange(const quint32 maxValue);
-template<> PokitMeter::ResistanceRange DeviceCommand::minRange(const quint32 maxValue);
-template<> PokitMeter::VoltageRange    DeviceCommand::minRange(const quint32 maxValue);
-
-template<> PokitPro::CapacitanceRange DeviceCommand::minRange(const quint32 maxValue);
-template<> PokitPro::CurrentRange     DeviceCommand::minRange(const quint32 maxValue);
-template<> PokitPro::ResistanceRange  DeviceCommand::minRange(const quint32 maxValue);
-template<> PokitPro::VoltageRange     DeviceCommand::minRange(const quint32 maxValue);
-/// \endcond
 
 #endif // DOKIT_DEVICECOMMAND_H
