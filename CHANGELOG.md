@@ -1,6 +1,6 @@
 # Changelog[^1]
 
-## [Unreleased][]
+## [0.3.0][] (2023-05-21)
 
 This release breaks backward compatibility by changing some QtPokit APIs to support [Pokit Pro]'s
 divergent (and not at all documented by Pokit) measurement range enumeration values.
@@ -63,7 +63,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/pcolby/dokit/releases/tag/v0.3.0
 [0.2.0]: https://github.com/pcolby/dokit/releases/tag/v0.2.0
 [0.1.2]: https://github.com/pcolby/dokit/releases/tag/v0.1.2
 [0.1.1]: https://github.com/pcolby/dokit/releases/tag/v0.1.1

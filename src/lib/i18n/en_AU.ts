@@ -4,73 +4,73 @@
 <context>
     <name>AbstractPokitServicePrivate</name>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="197"/>
+        <location filename="../abstractpokitservice.cpp" line="200"/>
         <source>Already have service object:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="202"/>
+        <location filename="../abstractpokitservice.cpp" line="205"/>
         <source>Service UUID not assigned yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="210"/>
-        <source>Service object created</source>
+        <location filename="../abstractpokitservice.cpp" line="213"/>
+        <source>Service object created for %1 device:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="223"/>
+        <location filename="../abstractpokitservice.cpp" line="226"/>
         <source>Descriptor &quot;%1&quot; (%2) read.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="230"/>
+        <location filename="../abstractpokitservice.cpp" line="233"/>
         <source>Descriptor &quot;%1&quot; (%2) written.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="265"/>
+        <location filename="../abstractpokitservice.cpp" line="268"/>
         <source>Characterisitc %1 &quot;%2&quot; requested before service assigned.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="282"/>
+        <location filename="../abstractpokitservice.cpp" line="285"/>
         <source>Characterisitc %1 &quot;%2&quot; requested before service %3 &quot;%4&quot; discovered.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="285"/>
+        <location filename="../abstractpokitservice.cpp" line="288"/>
         <source>Current service state:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="289"/>
+        <location filename="../abstractpokitservice.cpp" line="292"/>
         <source>Characterisitc %1 &quot;%2&quot; not found in service %3 &quot;%4&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="313"/>
+        <location filename="../abstractpokitservice.cpp" line="316"/>
         <source>Reading characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="329"/>
+        <location filename="../abstractpokitservice.cpp" line="332"/>
         <source>Enabling CCCD for characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="339"/>
-        <location filename="../abstractpokitservice.cpp" line="374"/>
+        <location filename="../abstractpokitservice.cpp" line="342"/>
+        <location filename="../abstractpokitservice.cpp" line="377"/>
         <source>Characterisitc %1 &quot;%2&quot; has no client configuration descriptor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="364"/>
+        <location filename="../abstractpokitservice.cpp" line="367"/>
         <source>Disabling CCCD for characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="402"/>
+        <location filename="../abstractpokitservice.cpp" line="405"/>
         <source>%1 requires %n byte/s, but only %2 present: %3</source>
         <translation>
             <numerusform>%1 requires %n byte, but only %2 present: %3</numerusform>
@@ -78,7 +78,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="407"/>
+        <location filename="../abstractpokitservice.cpp" line="410"/>
         <source>%1 has %n extraneous byte/s: %2</source>
         <translation>
             <numerusform>%1 has %n extraneous byte: %2</numerusform>
@@ -86,7 +86,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="539"/>
+        <location filename="../abstractpokitservice.cpp" line="542"/>
         <source>Characteristic %1 &quot;%2&quot; read %n byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; read %n byte: %3</numerusform>
@@ -94,7 +94,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="553"/>
+        <location filename="../abstractpokitservice.cpp" line="556"/>
         <source>Characteristic %1 &quot;%2&quot; written with %Ln byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; written with %Ln byte: %3</numerusform>
@@ -102,7 +102,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="568"/>
+        <location filename="../abstractpokitservice.cpp" line="571"/>
         <source>Characteristic %1 &quot;%2&quot; changed to %Ln byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; changed to %Ln byte: %3</numerusform>
@@ -110,52 +110,47 @@
         </translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="441"/>
+        <location filename="../abstractpokitservice.cpp" line="444"/>
         <source>Connected with no controller set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="167"/>
-        <source>Controller does not appear to be a Pokit device</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../abstractpokitservice.cpp" line="445"/>
+        <location filename="../abstractpokitservice.cpp" line="448"/>
         <source>Connected to &quot;%1&quot; (%2) at %3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="462"/>
+        <location filename="../abstractpokitservice.cpp" line="465"/>
         <source>Discovery finished with no controller set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="466"/>
+        <location filename="../abstractpokitservice.cpp" line="469"/>
         <source>Discovery finished for &quot;%1&quot; (%2) at %3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="471"/>
+        <location filename="../abstractpokitservice.cpp" line="474"/>
         <source>Discovery finished, but service not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="485"/>
+        <location filename="../abstractpokitservice.cpp" line="488"/>
         <source>Service error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="499"/>
+        <location filename="../abstractpokitservice.cpp" line="502"/>
         <source>Service discovered</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="514"/>
+        <location filename="../abstractpokitservice.cpp" line="517"/>
         <source>State changed to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="524"/>
+        <location filename="../abstractpokitservice.cpp" line="527"/>
         <source>Service details discovered.</source>
         <translation type="unfinished"></translation>
     </message>

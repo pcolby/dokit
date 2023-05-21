@@ -4,32 +4,32 @@
 <context>
     <name>AbstractCommand</name>
     <message>
-        <location filename="../abstractcommand.cpp" line="37"/>
+        <location filename="../abstractcommand.cpp" line="39"/>
         <source>Bluetooth controller error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="304"/>
+        <location filename="../abstractcommand.cpp" line="272"/>
         <source>Ignoring option: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="326"/>
+        <location filename="../abstractcommand.cpp" line="294"/>
         <source>Unknown output format: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="335"/>
+        <location filename="../abstractcommand.cpp" line="302"/>
         <source>Invalid timeout: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="338"/>
+        <location filename="../abstractcommand.cpp" line="305"/>
         <source>Set scan timeout to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="347"/>
+        <location filename="../abstractcommand.cpp" line="314"/>
         <source>Missing required option: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -98,32 +98,32 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="341"/>
+        <location filename="../devicecommand.cpp" line="343"/>
         <source>Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="350"/>
+        <location filename="../devicecommand.cpp" line="352"/>
         <source>Found Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="373"/>
-        <source>Connecting to Pokit device &quot;%1&quot; (%2) at (%3).</source>
+        <location filename="../devicecommand.cpp" line="376"/>
+        <source>Connecting to %1 device &quot;%2&quot; (%3) at (%4).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="379"/>
+        <location filename="../devicecommand.cpp" line="382"/>
         <source>Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="391"/>
+        <location filename="../devicecommand.cpp" line="394"/>
         <source>Failed to find any Pokit device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="392"/>
+        <location filename="../devicecommand.cpp" line="395"/>
         <source>Failed to find device &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -336,54 +336,54 @@ success
 <context>
     <name>LoggerStartCommand</name>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="70"/>
+        <location filename="../loggerstartcommand.cpp" line="76"/>
         <source>Unknown logger mode: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="96"/>
+        <location filename="../loggerstartcommand.cpp" line="94"/>
         <source>Ignoring range value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="104"/>
+        <location filename="../loggerstartcommand.cpp" line="97"/>
         <source>Invalid range value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="108"/>
+        <location filename="../loggerstartcommand.cpp" line="100"/>
         <source>Missing required option for logger mode &apos;%1&apos;: range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="117"/>
+        <location filename="../loggerstartcommand.cpp" line="109"/>
         <source>Invalid interval value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="131"/>
+        <location filename="../loggerstartcommand.cpp" line="123"/>
         <source>Invalid timestamp value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="166"/>
+        <location filename="../loggerstartcommand.cpp" line="158"/>
         <source>Logging %1, with range %2, every %L3ms.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="191"/>
+        <location filename="../loggerstartcommand.cpp" line="183"/>
         <source>Settings written; data logger has started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="194"/>
+        <location filename="../loggerstartcommand.cpp" line="186"/>
         <source>logger_start_result
 success
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerstartcommand.cpp" line="200"/>
+        <location filename="../loggerstartcommand.cpp" line="192"/>
         <source>Done.
 </source>
         <translation type="unfinished"></translation>
@@ -418,96 +418,96 @@ success
 <context>
     <name>MeterCommand</name>
     <message>
-        <location filename="../metercommand.cpp" line="77"/>
+        <location filename="../metercommand.cpp" line="86"/>
         <source>Unknown meter mode: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="86"/>
+        <location filename="../metercommand.cpp" line="95"/>
         <source>Invalid interval value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="121"/>
+        <location filename="../metercommand.cpp" line="122"/>
         <source>Ignoring range value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="130"/>
+        <location filename="../metercommand.cpp" line="125"/>
         <source>Invalid range value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="141"/>
+        <location filename="../metercommand.cpp" line="135"/>
         <source>Invalid samples value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="176"/>
+        <location filename="../metercommand.cpp" line="170"/>
         <source>Measuring %1, with range %2, every %L3ms.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="258"/>
+        <location filename="../metercommand.cpp" line="252"/>
         <source>mode,value,unit,status,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="201"/>
+        <location filename="../metercommand.cpp" line="195"/>
         <source>Settings written; starting meter readings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="225"/>
+        <location filename="../metercommand.cpp" line="219"/>
         <source>Auto Range On</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="225"/>
+        <location filename="../metercommand.cpp" line="219"/>
         <source>Auto Range Off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="229"/>
+        <location filename="../metercommand.cpp" line="223"/>
         <source>Continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="229"/>
+        <location filename="../metercommand.cpp" line="223"/>
         <source>No continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="234"/>
+        <location filename="../metercommand.cpp" line="228"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="269"/>
+        <location filename="../metercommand.cpp" line="263"/>
         <source>Infinity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="281"/>
+        <location filename="../metercommand.cpp" line="275"/>
         <source>Mode:   %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="283"/>
+        <location filename="../metercommand.cpp" line="277"/>
         <source>Value:  %1 %2
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="284"/>
+        <location filename="../metercommand.cpp" line="278"/>
         <source>Status: %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="286"/>
+        <location filename="../metercommand.cpp" line="280"/>
         <source>Range:  %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>
