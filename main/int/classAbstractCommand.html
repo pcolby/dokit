@@ -765,7 +765,7 @@ template&lt;typename R &gt; </div>
 
 <p>Returns <em>value</em> as an integer multiple of the ratio <em>R</em>. </p>
 <p>The string <em>value</em> may end with the optional <em>unit</em>, such as <code>V</code> or <code>s</code>, which may also be preceded with a SI unit prefix such as <code>m</code> for <code>milli</code>. If <em>value</em> contains no SI unit prefix, then the result will be multiplied by 1,000 enough times to be greater than <em>sensibleMinimum</em>. This allows for convenient use like:</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(<span class="stringliteral">&quot;window&quot;</span>), <span class="charliteral">&#39;s&#39;</span>, 500*1000);</div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(<span class="stringliteral">&quot;window&quot;</span>), <span class="charliteral">&#39;s&#39;</span>, 500&#39;000);</div>
 </div><!-- fragment --><p>So that an unqalified period like "300" will be assumed to be 300 milliseconds, and not 300 microseconds, while a period like "1000" will be assume to be 1 second.</p>
 <p>If conversion fails for any reason, 0 is returned. </p>
 

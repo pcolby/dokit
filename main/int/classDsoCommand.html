@@ -924,7 +924,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  106</span>        <span class="keywordflow">if</span> (level == 0) {</div>
 <div class="line"><span class="lineno">  107</span>            errors.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#append">append</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Invalid trigger-level value: %1&quot;</span>).arg(value));</div>
 <div class="line"><span class="lineno">  108</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  109</span>            <a class="code hl_variable" href="classDsoCommand.html#a0438c5c9aa9fea7c00051ff9be7819d8">settings</a>.<a class="code hl_variable" href="structDsoService_1_1Settings.html#a98deec20d34aa9f0e1567bce8ff24bc8">triggerLevel</a> = (float)(level/1000.0/1000.0);</div>
+<div class="line"><span class="lineno">  109</span>            <a class="code hl_variable" href="classDsoCommand.html#a0438c5c9aa9fea7c00051ff9be7819d8">settings</a>.<a class="code hl_variable" href="structDsoService_1_1Settings.html#a98deec20d34aa9f0e1567bce8ff24bc8">triggerLevel</a> = (float)(level/1&#39;000&#39;000.0);</div>
 <div class="line"><span class="lineno">  110</span>        }</div>
 <div class="line"><span class="lineno">  111</span>    }</div>
 <div class="line"><span class="lineno">  112</span> </div>
@@ -952,7 +952,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  134</span>    <span class="comment">// Parse the interval option.</span></div>
 <div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span> (parser.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qcommandlineparser.html#isSet">isSet</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;interval&quot;</span>))) {</div>
 <div class="line"><span class="lineno">  136</span>        <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> value = parser.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qcommandlineparser.html#value">value</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;interval&quot;</span>));</div>
-<div class="line"><span class="lineno">  137</span>        <span class="keyword">const</span> quint32 interval = parseNumber&lt;std::micro&gt;(value, <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;s&quot;</span>), 500*1000);</div>
+<div class="line"><span class="lineno">  137</span>        <span class="keyword">const</span> quint32 interval = parseNumber&lt;std::micro&gt;(value, <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;s&quot;</span>), 500&#39;000);</div>
 <div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (interval == 0) {</div>
 <div class="line"><span class="lineno">  139</span>            errors.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlist.html#append">append</a>(<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Invalid interval value: %1&quot;</span>).arg(value));</div>
 <div class="line"><span class="lineno">  140</span>        } <span class="keywordflow">else</span> {</div>
@@ -1423,7 +1423,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line">        <a class="code hl_enumvalue" href="classDsoService.html#af2baee0dc3fa5e308be06c691dece236a75564fb3d5bebd9283b77cc37a30463f">DsoService::Command::FreeRunning</a>, 0.0f, <a class="code hl_enumvalue" href="classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a1a18453c20867d5a990479b3716cbbc5">DsoService::Mode::DcVoltage</a>,</div>
-<div class="line">        +<a class="code hl_enumvalue" href="namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea5c8523b038abf04d86fcc5358cd893cf">PokitMeter::VoltageRange::AutoRange</a>, 1000*1000, 1000</div>
+<div class="line">        +<a class="code hl_enumvalue" href="namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea5c8523b038abf04d86fcc5358cd893cf">PokitMeter::VoltageRange::AutoRange</a>, 1&#39;000&#39;000, 1000</div>
 <div class="line">    }</div>
 <div class="ttc" id="anamespacePokitMeter_html_ab9abf7a50f13c9cfb1e1b4c49c16dfeea5c8523b038abf04d86fcc5358cd893cf"><div class="ttname"><a href="namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea5c8523b038abf04d86fcc5358cd893cf">PokitMeter::VoltageRange::AutoRange</a></div><div class="ttdeci">@ AutoRange</div><div class="ttdoc">Auto-range.</div></div>
 </div><!-- fragment -->
