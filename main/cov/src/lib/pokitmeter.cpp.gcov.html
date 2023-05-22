@@ -98,11 +98,11 @@
 <a name="36"><span class="lineNum">      36 </span><span class="lineCov">        234 : QVariant maxValue(const CurrentRange &amp;range)</span></a>
 <a name="37"><span class="lineNum">      37 </span>            : {</a>
 <a name="38"><span class="lineNum">      38 </span><span class="lineCov">        234 :     switch (range) {</span></a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">         18 :     case CurrentRange::_10mA:     return   10000;</span></a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">         18 :     case CurrentRange::_30mA:     return   30000;</span></a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        144 :     case CurrentRange::_150mA:    return  150000;</span></a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         18 :     case CurrentRange::_300mA:    return  300000;</span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         18 :     case CurrentRange::_2A:       return 2000000;</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">         18 :     case CurrentRange::_10mA:     return    10'000;</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">         18 :     case CurrentRange::_30mA:     return    30'000;</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        144 :     case CurrentRange::_150mA:    return   150'000;</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         18 :     case CurrentRange::_300mA:    return   300'000;</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         18 :     case CurrentRange::_2A:       return 2'000'000;</span></a>
 <a name="44"><span class="lineNum">      44 </span><span class="lineCov">         22 :     case CurrentRange::AutoRange: return QCoreApplication::translate(&quot;PokitMeter&quot;, &quot;Auto&quot;, &quot;CurrentRange&quot;);</span></a>
 <a name="45"><span class="lineNum">      45 </span>            :     default:                      return QVariant();</a>
 <a name="46"><span class="lineNum">      46 </span>            :     }</a>
@@ -135,14 +135,14 @@
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">        216 : QVariant maxValue(const ResistanceRange &amp;range)</span></a>
 <a name="74"><span class="lineNum">      74 </span>            : {</a>
 <a name="75"><span class="lineNum">      75 </span><span class="lineCov">        216 :     switch (range) {</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         18 :     case ResistanceRange::_160:      return     160;</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         18 :     case ResistanceRange::_330:      return     330;</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         18 :     case ResistanceRange::_890:      return     890;</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         18 :     case ResistanceRange::_1K5:      return    1500;</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         18 :     case ResistanceRange::_10K:      return   10000;</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">         18 :     case ResistanceRange::_100K:     return  100000;</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">         72 :     case ResistanceRange::_470K:     return  470000;</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         18 :     case ResistanceRange::_1M:       return 1000000;</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         18 :     case ResistanceRange::_160:      return       160;</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         18 :     case ResistanceRange::_330:      return       330;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         18 :     case ResistanceRange::_890:      return       890;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         18 :     case ResistanceRange::_1K5:      return     1'500;</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         18 :     case ResistanceRange::_10K:      return    10'000;</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">         18 :     case ResistanceRange::_100K:     return   100'000;</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">         72 :     case ResistanceRange::_470K:     return   470'000;</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         18 :     case ResistanceRange::_1M:       return 1'000'000;</span></a>
 <a name="84"><span class="lineNum">      84 </span><span class="lineCov">         22 :     case ResistanceRange::AutoRange: return QCoreApplication::translate(&quot;PokitMeter&quot;, &quot;Auto&quot;, &quot;ResistanceRange&quot;);</span></a>
 <a name="85"><span class="lineNum">      85 </span>            :     default:                         return QVariant();</a>
 <a name="86"><span class="lineNum">      86 </span>            :     }</a>
@@ -173,12 +173,12 @@
 <a name="111"><span class="lineNum">     111 </span><span class="lineCov">        252 : QVariant maxValue(const VoltageRange &amp;range)</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : {</a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">        252 :     switch (range) {</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        144 :     case VoltageRange::_300mV:    return   300;</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">         18 :     case VoltageRange::_2V:       return  2000;</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         18 :     case VoltageRange::_6V:       return  6000;</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         18 :     case VoltageRange::_12V:      return 12000;</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         18 :     case VoltageRange::_30V:      return 30000;</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         18 :     case VoltageRange::_60V:      return 60000;</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        144 :     case VoltageRange::_300mV:    return    300;</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">         18 :     case VoltageRange::_2V:       return  2'000;</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         18 :     case VoltageRange::_6V:       return  6'000;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         18 :     case VoltageRange::_12V:      return 12'000;</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         18 :     case VoltageRange::_30V:      return 30'000;</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         18 :     case VoltageRange::_60V:      return 60'000;</span></a>
 <a name="120"><span class="lineNum">     120 </span><span class="lineCov">         22 :     case VoltageRange::AutoRange: return QCoreApplication::translate(&quot;PokitMeter&quot;, &quot;Auto&quot;, &quot;VoltageRange&quot;);</span></a>
 <a name="121"><span class="lineNum">     121 </span>            :     default:                      return QVariant();</a>
 <a name="122"><span class="lineNum">     122 </span>            :     }</a>

@@ -168,7 +168,7 @@
 <a name="106"><span class="lineNum">     106 </span><span class="lineCov">        144 :         if (level == 0) {</span></a>
 <a name="107"><span class="lineNum">     107 </span><span class="lineCov">         22 :             errors.append(tr(&quot;Invalid trigger-level value: %1&quot;).arg(value));</span></a>
 <a name="108"><span class="lineNum">     108 </span>            :         } else {</a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">        126 :             settings.triggerLevel = (float)(level/1000.0/1000.0);</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">        126 :             settings.triggerLevel = (float)(level/1'000'000.0);</span></a>
 <a name="110"><span class="lineNum">     110 </span>            :         }</a>
 <a name="111"><span class="lineNum">     111 </span><span class="lineCov">        112 :     }</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
@@ -196,7 +196,7 @@
 <a name="134"><span class="lineNum">     134 </span>            :     // Parse the interval option.</a>
 <a name="135"><span class="lineNum">     135 </span><span class="lineCov">        528 :     if (parser.isSet(QLatin1String(&quot;interval&quot;))) {</span></a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineCov">        150 :         const QString value = parser.value(QLatin1String(&quot;interval&quot;));</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         90 :         const quint32 interval = parseNumber&lt;std::micro&gt;(value, QLatin1String(&quot;s&quot;), 500*1000);</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         90 :         const quint32 interval = parseNumber&lt;std::micro&gt;(value, QLatin1String(&quot;s&quot;), 500'000);</span></a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineCov">         90 :         if (interval == 0) {</span></a>
 <a name="139"><span class="lineNum">     139 </span><span class="lineCov">         44 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :         } else {</a>

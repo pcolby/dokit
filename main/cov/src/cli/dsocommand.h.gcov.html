@@ -94,7 +94,7 @@
 <a name="32"><span class="lineNum">      32 </span>            :     DsoService * service { nullptr }; ///&lt; Bluetooth service this command interracts with.</a>
 <a name="33"><span class="lineNum">      33 </span>            :     DsoService::Settings settings {   ///&lt; Settings for the Pokit device's DSO mode.</a>
 <a name="34"><span class="lineNum">      34 </span>            :         DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,</a>
-<a name="35"><span class="lineNum">      35 </span>            :         +PokitMeter::VoltageRange::AutoRange, 1000*1000, 1000</a>
+<a name="35"><span class="lineNum">      35 </span>            :         +PokitMeter::VoltageRange::AutoRange, 1'000'000, 1000</a>
 <a name="36"><span class="lineNum">      36 </span>            :     };</a>
 <a name="37"><span class="lineNum">      37 </span>            :     DsoService::Metadata metadata; ///&lt; Most recent DSO metadata.</a>
 <a name="38"><span class="lineNum">      38 </span>            :     qint32 samplesToGo { 0 };      ///&lt; Number of samples we're expecting in the current window.</a>
