@@ -106,7 +106,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         if (level == 0) {
             errors.append(tr("Invalid trigger-level value: %1").arg(value));
         } else {
-            settings.triggerLevel = (float)(level/1000.0/1000.0);
+            settings.triggerLevel = (float)(level/1'000'000.0);
         }
     }
 
@@ -134,7 +134,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     // Parse the interval option.
     if (parser.isSet(QLatin1String("interval"))) {
         const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseNumber<std::micro>(value, QLatin1String("s"), 500*1000);
+        const quint32 interval = parseNumber<std::micro>(value, QLatin1String("s"), 500'000);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {

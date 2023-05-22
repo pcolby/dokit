@@ -36,11 +36,11 @@ QString toString(const CurrentRange &range)
 QVariant maxValue(const CurrentRange &range)
 {
     switch (range) {
-    case CurrentRange::_10mA:     return   10000;
-    case CurrentRange::_30mA:     return   30000;
-    case CurrentRange::_150mA:    return  150000;
-    case CurrentRange::_300mA:    return  300000;
-    case CurrentRange::_2A:       return 2000000;
+    case CurrentRange::_10mA:     return    10'000;
+    case CurrentRange::_30mA:     return    30'000;
+    case CurrentRange::_150mA:    return   150'000;
+    case CurrentRange::_300mA:    return   300'000;
+    case CurrentRange::_2A:       return 2'000'000;
     case CurrentRange::AutoRange: return QCoreApplication::translate("PokitMeter", "Auto", "CurrentRange");
     default:                      return QVariant();
     }
@@ -73,14 +73,14 @@ QString toString(const ResistanceRange &range)
 QVariant maxValue(const ResistanceRange &range)
 {
     switch (range) {
-    case ResistanceRange::_160:      return     160;
-    case ResistanceRange::_330:      return     330;
-    case ResistanceRange::_890:      return     890;
-    case ResistanceRange::_1K5:      return    1500;
-    case ResistanceRange::_10K:      return   10000;
-    case ResistanceRange::_100K:     return  100000;
-    case ResistanceRange::_470K:     return  470000;
-    case ResistanceRange::_1M:       return 1000000;
+    case ResistanceRange::_160:      return       160;
+    case ResistanceRange::_330:      return       330;
+    case ResistanceRange::_890:      return       890;
+    case ResistanceRange::_1K5:      return     1'500;
+    case ResistanceRange::_10K:      return    10'000;
+    case ResistanceRange::_100K:     return   100'000;
+    case ResistanceRange::_470K:     return   470'000;
+    case ResistanceRange::_1M:       return 1'000'000;
     case ResistanceRange::AutoRange: return QCoreApplication::translate("PokitMeter", "Auto", "ResistanceRange");
     default:                         return QVariant();
     }
@@ -111,12 +111,12 @@ QString toString(const VoltageRange &range)
 QVariant maxValue(const VoltageRange &range)
 {
     switch (range) {
-    case VoltageRange::_300mV:    return   300;
-    case VoltageRange::_2V:       return  2000;
-    case VoltageRange::_6V:       return  6000;
-    case VoltageRange::_12V:      return 12000;
-    case VoltageRange::_30V:      return 30000;
-    case VoltageRange::_60V:      return 60000;
+    case VoltageRange::_300mV:    return    300;
+    case VoltageRange::_2V:       return  2'000;
+    case VoltageRange::_6V:       return  6'000;
+    case VoltageRange::_12V:      return 12'000;
+    case VoltageRange::_30V:      return 30'000;
+    case VoltageRange::_60V:      return 60'000;
     case VoltageRange::AutoRange: return QCoreApplication::translate("PokitMeter", "Auto", "VoltageRange");
     default:                      return QVariant();
     }

@@ -42,9 +42,9 @@ QString toString(const CapacitanceRange &range)
 QVariant maxValue(const CapacitanceRange &range)
 {
     switch (range) {
-    case CapacitanceRange::_100nF:    return     100;
-    case CapacitanceRange::_10uF:     return   10000;
-    case CapacitanceRange::_1mF:      return 1000000;
+    case CapacitanceRange::_100nF:    return       100;
+    case CapacitanceRange::_10uF:     return    10'000;
+    case CapacitanceRange::_1mF:      return 1'000'000;
     case CapacitanceRange::AutoRange: return QCoreApplication::translate("PokitPro", "Auto", "CapacitanceRange");
     default:                          return QVariant();
     }
@@ -84,13 +84,13 @@ QString toString(const CurrentRange &range)
 QVariant maxValue(const CurrentRange &range)
 {
     switch (range) {
-    case CurrentRange::_500uA:    return      500;
-    case CurrentRange::_2mA:      return     2000;
-    case CurrentRange::_10mA:     return    10000;
-    case CurrentRange::_125mA:    return   125000;
-    case CurrentRange::_300mA:    return   300000;
-    case CurrentRange::_3A:       return  3000000;
-    case CurrentRange::_10A:      return 10000000;
+    case CurrentRange::_500uA:    return        500;
+    case CurrentRange::_2mA:      return      2'000;
+    case CurrentRange::_10mA:     return     10'000;
+    case CurrentRange::_125mA:    return    125'000;
+    case CurrentRange::_300mA:    return    300'000;
+    case CurrentRange::_3A:       return  3'000'000;
+    case CurrentRange::_10A:      return 10'000'000;
     case CurrentRange::AutoRange: return QCoreApplication::translate("PokitPro", "Auto", "CurrentRange");
     default:                      return QVariant();
     }
@@ -134,17 +134,17 @@ QString toString(const ResistanceRange &range)
 QVariant maxValue(const ResistanceRange &range)
 {
     switch (range) {
-    case ResistanceRange::_30:       return      30;
-    case ResistanceRange::_75:       return      75;
-    case ResistanceRange::_400:      return     400;
-    case ResistanceRange::_5K:       return    5000;
-    case ResistanceRange::_10K:      return   10000;
-    case ResistanceRange::_15K:      return   15000;
-    case ResistanceRange::_40K:      return   40000;
-    case ResistanceRange::_500K:     return  500000;
-    case ResistanceRange::_700K:     return  700000;
-    case ResistanceRange::_1M:       return 1000000;
-    case ResistanceRange::_3M:       return 3000000;
+    case ResistanceRange::_30:       return        30;
+    case ResistanceRange::_75:       return        75;
+    case ResistanceRange::_400:      return       400;
+    case ResistanceRange::_5K:       return     5'000;
+    case ResistanceRange::_10K:      return    10'000;
+    case ResistanceRange::_15K:      return    15'000;
+    case ResistanceRange::_40K:      return    40'000;
+    case ResistanceRange::_500K:     return   500'000;
+    case ResistanceRange::_700K:     return   700'000;
+    case ResistanceRange::_1M:       return 1'000'000;
+    case ResistanceRange::_3M:       return 3'000'000;
     case ResistanceRange::AutoRange: return QCoreApplication::translate("PokitPro", "Auto", "ResistanceRange");
     default:                         return QVariant();
     }
@@ -185,14 +185,14 @@ QString toString(const VoltageRange &range)
 QVariant maxValue(const VoltageRange &range)
 {
     switch (range) {
-    case VoltageRange::_250mV:    return    250;
-    case VoltageRange::_2V:       return   2000;
-    case VoltageRange::_10V:      return  10000;
-    case VoltageRange::_30V:      return  30000;
-    case VoltageRange::_60V:      return  60000;
-    case VoltageRange::_125V:     return 125000;
-    case VoltageRange::_400V:     return 400000;
-    case VoltageRange::_600V:     return 600000;
+    case VoltageRange::_250mV:    return     250;
+    case VoltageRange::_2V:       return   2'000;
+    case VoltageRange::_10V:      return  10'000;
+    case VoltageRange::_30V:      return  30'000;
+    case VoltageRange::_60V:      return  60'000;
+    case VoltageRange::_125V:     return 125'000;
+    case VoltageRange::_400V:     return 400'000;
+    case VoltageRange::_600V:     return 600'000;
     case VoltageRange::AutoRange: return QCoreApplication::translate("PokitPro", "Auto", "VoltageRange");
     default:                      return QVariant();
     }

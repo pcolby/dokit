@@ -32,7 +32,7 @@ private:
     DsoService * service { nullptr }; ///< Bluetooth service this command interracts with.
     DsoService::Settings settings {   ///< Settings for the Pokit device's DSO mode.
         DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
-        +PokitMeter::VoltageRange::AutoRange, 1000*1000, 1000
+        +PokitMeter::VoltageRange::AutoRange, 1'000'000, 1000
     };
     DsoService::Metadata metadata; ///< Most recent DSO metadata.
     qint32 samplesToGo { 0 };      ///< Number of samples we're expecting in the current window.

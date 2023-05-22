@@ -137,7 +137,7 @@ template<typename R> constexpr Ratio makeRatio() { return Ratio{ R::num, R::den 
  * convenient use like:
  *
  * ```
- * const quint32 timeout = parseNumber<std::milli>(parser.value("window"), 's', 500*1000);
+ * const quint32 timeout = parseNumber<std::milli>(parser.value("window"), 's', 500'000);
  * ```
  *
  * So that an unqalified period like "300" will be assumed to be 300 milliseconds, and not 300

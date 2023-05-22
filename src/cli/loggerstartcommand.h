@@ -32,7 +32,7 @@ private:
     DataLoggerService * service { nullptr }; ///< Bluetooth service this command interracts with.
     DataLoggerService::Settings settings {   ///< Settings for the Pokit device's data logger mode.
         DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
-        +PokitMeter::VoltageRange::AutoRange, 60000, 0
+        +PokitMeter::VoltageRange::AutoRange, 60'000, 0
     };
 
 private slots:
