@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Changed
+
+- Upgrade to Qt 6.5.1.
+
 ## [0.3.0][] (2023-05-21)
 
 This release breaks backward compatibility by changing some QtPokit APIs to support [Pokit Pro]'s
@@ -16,6 +20,8 @@ divergent (and not at all documented by Pokit) measurement range enumeration val
 ### Changed
 
 - Update QtPokit API to support separate measurement ranges for [Pokit Meter] and [Pokit Pro].
+- Upgrade to Doxygen 1.9.7.
+- Upgrade to Qt 6.5.0 (except for portable Windows builds; [QTBUG-112204])
 
 ## [0.2.0][] (2023-05-07)
 
@@ -75,6 +81,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [Pokit Meter]: https://www.pokitinnovations.com/pokit-meter/
 [Pokit Pro]:   https://www.pokitinnovations.com/pokit-pro/
 [Qt]:          https://www.qt.io/
+[QTBUG-112204]: https://bugreports.qt.io/browse/QTBUG-112204 "windeployqt error when creating translations"
 
 [^1]: Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and
   project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
