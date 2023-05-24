@@ -354,8 +354,7 @@ jobs:
         path: ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Make portable
-      # Exclude Qt 6.5.0 due to https://bugreports.qt.io/browse/QTBUG-112204
-      if: matrix.arch != 'arm64' && matrix.qt != '6.5.0'
+      if: matrix.arch != 'arm64'
       run: |
         mkdir portable
         copy /v /b src\lib\${{ matrix.dll }} /b portable
@@ -375,8 +374,7 @@ jobs:
           ${{ runner.temp }}/src/cli/dokit.exe
         if-no-files-found: error
     - name: Upload artifacts (portable)
-      # Exclude Qt 6.5.0 due to https://bugreports.qt.io/browse/QTBUG-112204
-      if: matrix.arch != 'arm64' && matrix.qt != '6.5.0'
+      if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
       with:
         name: dokit-${{ env.dokitVersion }}.portable
