@@ -16,6 +16,8 @@
 #include <QLowEnergyService>
 #include <QObject>
 
+#include <optional>
+
 class QLowEnergyController;
 
 QTPOKIT_BEGIN_NAMESPACE
