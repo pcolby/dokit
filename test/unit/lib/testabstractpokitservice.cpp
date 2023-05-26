@@ -46,8 +46,9 @@ void TestAbstractPokitService::pokitProduct()
 {
     QFETCH(PokitProduct, product);
     MockPokitService service(nullptr);
-    QCOMPARE(static_cast<quint8>(service.pokitProduct()), (quint8)255u); // ie invalid / unset by default.
+    QVERIFY(!service.pokitProduct());
     service.setPokitProduct(product);
+    QVERIFY(service.pokitProduct());
     QVERIFY(service.pokitProduct() == product);
 }
 

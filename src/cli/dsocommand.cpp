@@ -186,7 +186,7 @@ AbstractPokitService * DsoCommand::getService()
 void DsoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(service->pokitProduct(), rangeOptionValue);
+    settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service->pokitProduct(), rangeOptionValue);
     const QString range = service->toString(settings.range, settings.mode);
     qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %Ln sample/s over %L3us", nullptr, settings.numberOfSamples)
         .arg(DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range)

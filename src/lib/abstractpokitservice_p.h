@@ -31,8 +31,7 @@ public:
 
     bool autoDiscover { true };                    ///< Whether autodiscovery is enabled or not.
     QLowEnergyController * controller { nullptr }; ///< BLE controller to fetch the service from.
-    /// \todo Use std::optional<PokitProduct> when we shift to C++17 (or later).
-    PokitProduct pokitProduct { static_cast<PokitProduct>(255) }; ///< The Pokit product #controller is connected to.
+    std::optional<PokitProduct> pokitProduct;      ///< The Pokit product #controller is connected to.
     QLowEnergyService * service { nullptr };       ///< BLE service to read/write characteristics.
     QBluetoothUuid serviceUuid;                    ///< UUIDs for #service.
 

@@ -34,7 +34,7 @@ public:
     bool autoDiscover() const;
     void setAutoDiscover(const bool discover = true);
 
-    PokitProduct pokitProduct() const;
+    std::optional<PokitProduct> pokitProduct() const;
     void setPokitProduct(const PokitProduct product);
 
     QLowEnergyService * service();

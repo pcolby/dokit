@@ -165,7 +165,7 @@ AbstractPokitService * MeterCommand::getService()
 void MeterCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
-    settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(service->pokitProduct(), rangeOptionValue);
+    settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service->pokitProduct(), rangeOptionValue);
     const QString range = service->toString(settings.range, settings.mode);
     qCInfo(lc).noquote() << tr("Measuring %1, with range %2, every %L3ms.").arg(
         MultimeterService::toString(settings.mode),

@@ -376,7 +376,7 @@ void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)
                 this, &DeviceCommand::serviceError);
 
         qCDebug(lc).noquote() << tr(R"(Connecting to %1 device "%2" (%3) at (%4).)").arg(
-            toString(service->pokitProduct()), info.name(), info.deviceUuid().toString(), info.address().toString());
+            toString(*service->pokitProduct()), info.name(), info.deviceUuid().toString(), info.address().toString());
         device->controller()->connectToDevice();
         return;
     }

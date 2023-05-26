@@ -97,7 +97,7 @@ QString MultimeterService::toString(const PokitProduct product, const quint8 ran
 /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
 QString MultimeterService::toString(const quint8 range, const Mode mode) const
 {
-    return toString(pokitProduct(), range, mode);
+    return toString(*pokitProduct(), range, mode);
 }
 
 /*!
@@ -138,7 +138,7 @@ QVariant MultimeterService::maxValue(const PokitProduct product, const quint8 ra
  */
 QVariant MultimeterService::maxValue(const quint8 range, const Mode mode) const
 {
-    return maxValue(pokitProduct(), range, mode);
+    return maxValue(*pokitProduct(), range, mode);
 }
 
 /// \struct MultimeterService::Settings

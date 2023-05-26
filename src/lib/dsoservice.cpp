@@ -79,7 +79,7 @@ QString DsoService::toString(const PokitProduct product, const quint8 range, con
 /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.
 QString DsoService::toString(const quint8 range, const Mode mode) const
 {
-    return toString(pokitProduct(), range, mode);
+    return toString(*pokitProduct(), range, mode);
 }
 
 /*!
@@ -110,7 +110,7 @@ QVariant DsoService::maxValue(const PokitProduct product, const quint8 range, co
  */
 QVariant DsoService::maxValue(const quint8 range, const Mode mode) const
 {
-    return maxValue(pokitProduct(), range, mode);
+    return maxValue(*pokitProduct(), range, mode);
 }
 
 /// \struct DsoService::Settings

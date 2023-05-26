@@ -83,7 +83,7 @@ void AbstractPokitService::setAutoDiscover(const bool discover)
  *
  * \see setPokitProduct
  */
-PokitProduct AbstractPokitService::pokitProduct() const
+std::optional<PokitProduct> AbstractPokitService::pokitProduct() const
 {
     Q_D(const AbstractPokitService);
     return d->pokitProduct;
@@ -210,7 +210,7 @@ bool AbstractPokitServicePrivate::createServiceObject()
     if (!service) {
         return false;
     }
-    qCDebug(lc).noquote() << tr("Service object created for %1 device:").arg(toString(this->pokitProduct)) << service;
+    qCDebug(lc).noquote() << tr("Service object created for %1 device:").arg(toString(*this->pokitProduct)) << service;
 
     connect(service, &QLowEnergyService::stateChanged,
             this, &AbstractPokitServicePrivate::stateChanged);
