@@ -1,14 +1,13 @@
 # SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
-cmake_minimum_required(VERSION 3.1...3.26 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.8...3.26 FATAL_ERROR)
 message(STATUS "CMake version is ${CMAKE_VERSION}")
 if (DEFINED CMAKE_BUILD_TYPE)
   message(STATUS "CMake build type is ${CMAKE_BUILD_TYPE}")
 endif()
 
-# C++14 needed for std::underlying_type_t support.
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
