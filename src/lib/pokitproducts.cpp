@@ -180,7 +180,8 @@ namespace CurrentRange {
  *  \see PokitMeter::toString(const PokitMeter::CurrentRange &range)
  *  \see PokitPro::toString(const PokitPro::CurrentRange &range)
  */
-QString toString(const PokitProduct product, const quint8 range) {
+QString toString(const PokitProduct product, const quint8 range)
+{
     switch (product) {
     case PokitProduct::PokitMeter:
         return PokitMeter::toString(static_cast<PokitMeter::CurrentRange>(range));
