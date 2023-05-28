@@ -141,9 +141,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~AbstractPokitServ
 <tr class="memitem:a9d6d50cf31bc5859747a134d6cb4c418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a9d6d50cf31bc5859747a134d6cb4c418">setAutoDiscover</a> (const bool discover=true)</td></tr>
 <tr class="memdesc:a9d6d50cf31bc5859747a134d6cb4c418"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <em>discover</em> is <code>true</code>, autodiscovery will be attempted.  <br /></td></tr>
 <tr class="separator:a9d6d50cf31bc5859747a134d6cb4c418"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68091034224a764b1642dd3e99ff5b14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a> () const</td></tr>
-<tr class="memdesc:a68091034224a764b1642dd3e99ff5b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Pokit product this service is attached to.  <br /></td></tr>
-<tr class="separator:a68091034224a764b1642dd3e99ff5b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a039d2f1054788cf586c8decadb53ddc0"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a039d2f1054788cf586c8decadb53ddc0">pokitProduct</a> () const</td></tr>
+<tr class="memdesc:a039d2f1054788cf586c8decadb53ddc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Pokit product this service is attached to.  <br /></td></tr>
+<tr class="separator:a039d2f1054788cf586c8decadb53ddc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0e323c5e2380709c5a5fde18520ae3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#aa0e323c5e2380709c5a5fde18520ae3f">setPokitProduct</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product)</td></tr>
 <tr class="memdesc:aa0e323c5e2380709c5a5fde18520ae3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current Pokit <em>product</em>.  <br /></td></tr>
 <tr class="separator:aa0e323c5e2380709c5a5fde18520ae3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -460,14 +460,14 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 
 </div>
 </div>
-<a id="a68091034224a764b1642dd3e99ff5b14" name="a68091034224a764b1642dd3e99ff5b14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68091034224a764b1642dd3e99ff5b14">&#9670;&#160;</a></span>pokitProduct()</h2>
+<a id="a039d2f1054788cf586c8decadb53ddc0" name="a039d2f1054788cf586c8decadb53ddc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a039d2f1054788cf586c8decadb53ddc0">&#9670;&#160;</a></span>pokitProduct()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> AbstractPokitService::pokitProduct </td>
+          <td class="memname">std::optional&lt; <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> &gt; AbstractPokitService::pokitProduct </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -480,7 +480,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitService_a68091034224a764b1642dd3e99ff5b14_icgraph.svg" width="384" height="344"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitService_a039d2f1054788cf586c8decadb53ddc0_icgraph.svg" width="384" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -590,16 +590,16 @@ Here is the caller graph for this function:</div>
 <p>For example: </p><div class="fragment"><div class="line">Q_ASSERT(<a class="code hl_function" href="pokitproducts_8h.html#adb8bb3a07e937158a294997e60868297">isPokitProduct</a>(deviceInfo));</div>
 <div class="line"><span class="keyword">auto</span> controller = <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#createCentral">QLowEnergyController::createCentral</a>(deviceInfo);</div>
 <div class="line"><span class="keyword">auto</span> <a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a> = <span class="keyword">new</span> <a class="code hl_class" href="classDsoService.html">DsoService</a>(controller);</div>
-<div class="line"><a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>-&gt;setPokitProduct(<a class="code hl_function" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a>(deviceInfo));</div>
+<div class="line"><a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>-&gt;setPokitProduct(<a class="code hl_function" href="classAbstractPokitService.html#a039d2f1054788cf586c8decadb53ddc0">pokitProduct</a>(deviceInfo));</div>
 <div class="line">controller-&gt;connectToDevice();</div>
-<div class="ttc" id="aclassAbstractPokitService_html_a68091034224a764b1642dd3e99ff5b14"><div class="ttname"><a href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">AbstractPokitService::pokitProduct</a></div><div class="ttdeci">PokitProduct pokitProduct() const</div><div class="ttdoc">Returns the Pokit product this service is attached to.</div><div class="ttdef"><b>Definition</b> abstractpokitservice.cpp:86</div></div>
+<div class="ttc" id="aclassAbstractPokitService_html_a039d2f1054788cf586c8decadb53ddc0"><div class="ttname"><a href="classAbstractPokitService.html#a039d2f1054788cf586c8decadb53ddc0">AbstractPokitService::pokitProduct</a></div><div class="ttdeci">std::optional&lt; PokitProduct &gt; pokitProduct() const</div><div class="ttdoc">Returns the Pokit product this service is attached to.</div><div class="ttdef"><b>Definition</b> abstractpokitservice.cpp:86</div></div>
 <div class="ttc" id="aclassAbstractPokitService_html_a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><div class="ttname"><a href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">AbstractPokitService::service</a></div><div class="ttdeci">QLowEnergyService * service()</div><div class="ttdoc">Returns a non-const pointer to the internal service object, if any.</div><div class="ttdef"><b>Definition</b> abstractpokitservice.cpp:119</div></div>
 <div class="ttc" id="aclassDsoService_html"><div class="ttname"><a href="classDsoService.html">DsoService</a></div><div class="ttdoc">The DsoService class accesses the DSO (Digital Storage Oscilloscope) service of Pokit devices.</div><div class="ttdef"><b>Definition</b> dsoservice.h:24</div></div>
 <div class="ttc" id="apokitproducts_8h_html_adb8bb3a07e937158a294997e60868297"><div class="ttname"><a href="pokitproducts_8h.html#adb8bb3a07e937158a294997e60868297">isPokitProduct</a></div><div class="ttdeci">QTPOKIT_EXPORT bool isPokitProduct(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">Returns true if info describes a Pokit device.</div><div class="ttdef"><b>Definition</b> pokitproducts.cpp:43</div></div>
 <div class="ttc" id="aqlowenergycontroller_html_createCentral"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycontroller.html#createCentral">QLowEnergyController::createCentral</a></div><div class="ttdeci">QLowEnergyController * createCentral(const QBluetoothDeviceInfo &amp;remoteDevice, QObject *parent)</div></div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#a65c2c9c6163744a7cf52de2c6a83f610" title="Returns true if autodiscovery of services and service details is enabled, false otherwise.">autoDiscover</a> </dd>
 <dd>
-<a class="el" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14" title="Returns the Pokit product this service is attached to.">pokitProduct</a> </dd></dl>
+<a class="el" href="classAbstractPokitService.html#a039d2f1054788cf586c8decadb53ddc0" title="Returns the Pokit product this service is attached to.">pokitProduct</a> </dd></dl>
 
 </div>
 </div>

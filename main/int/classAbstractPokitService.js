@@ -3,7 +3,7 @@ var classAbstractPokitService =
     [ "~AbstractPokitService", "classAbstractPokitService.html#af0b962913c8be9b1d69ce1b68a5f9bdd", null ],
     [ "AbstractPokitService", "classAbstractPokitService.html#a2d624e58e68663e0420df7d282caf116", null ],
     [ "autoDiscover", "classAbstractPokitService.html#a65c2c9c6163744a7cf52de2c6a83f610", null ],
-    [ "pokitProduct", "classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14", null ],
+    [ "pokitProduct", "classAbstractPokitService.html#a039d2f1054788cf586c8decadb53ddc0", null ],
     [ "readCharacteristics", "classAbstractPokitService.html#a0d29ffd4ef4f81c6049700f76faa723e", null ],
     [ "service", "classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b", null ],
     [ "service", "classAbstractPokitService.html#ab7161dedf8ae431f723a5e225c2ec9ca", null ],

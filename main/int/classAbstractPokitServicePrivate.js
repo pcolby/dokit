@@ -19,7 +19,7 @@ var classAbstractPokitServicePrivate =
     [ "toHexString", "classAbstractPokitServicePrivate.html#af748600fc201fe47f29b58e8e93179d8", null ],
     [ "autoDiscover", "classAbstractPokitServicePrivate.html#a21d38af5e7fc69f2c47c219a7ab545c7", null ],
     [ "controller", "classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1", null ],
-    [ "pokitProduct", "classAbstractPokitServicePrivate.html#aa1e0d86d5242e9650e4acb96bad0ce93", null ],
+    [ "pokitProduct", "classAbstractPokitServicePrivate.html#afd4b02970f049753542e539bdf85e218", null ],
     [ "q_ptr", "classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845", null ],
     [ "service", "classAbstractPokitServicePrivate.html#adc41ee1de2a4783623aa78d0a8beb85d", null ],
     [ "serviceUuid", "classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd", null ]

@@ -82,7 +82,7 @@ var searchData=
   ['pointinghandcursor_79',['PointingHandCursor',['https://doc.qt.io/qt-5/qt.html#CursorShape-enum',1,'Qt']]],
   ['pokitmeter_80',['pokitMeter',['../structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de',1,'StatusService::ServiceUuids']]],
   ['pokitpro_81',['pokitPro',['../structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf',1,'StatusService::ServiceUuids']]],
-  ['pokitproduct_82',['pokitProduct',['../classAbstractPokitServicePrivate.html#aa1e0d86d5242e9650e4acb96bad0ce93',1,'AbstractPokitServicePrivate']]],
+  ['pokitproduct_82',['pokitProduct',['../classAbstractPokitServicePrivate.html#afd4b02970f049753542e539bdf85e218',1,'AbstractPokitServicePrivate']]],
   ['poland_83',['Poland',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
   ['polish_84',['Polish',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale::Polish'],['https://doc.qt.io/qt-5/qevent.html#Type-enum',1,'QEvent::Polish']]],
   ['polishrequest_85',['PolishRequest',['https://doc.qt.io/qt-5/qevent.html#Type-enum',1,'QEvent']]],

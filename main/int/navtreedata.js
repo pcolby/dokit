@@ -33,7 +33,6 @@ var NAVTREE =
       [ "Qt Versions", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html#autotoc_md7", null ],
       [ "CMake Versions", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html#autotoc_md8", null ]
     ] ],
-    [ "Todo List", "todo.html", null ],
     [ "Pokit API Errata", "pokit.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

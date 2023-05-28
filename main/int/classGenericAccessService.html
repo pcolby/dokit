@@ -184,9 +184,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9d6d50cf31bc5859747a134d6cb4c418 inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a9d6d50cf31bc5859747a134d6cb4c418">setAutoDiscover</a> (const bool discover=true)</td></tr>
 <tr class="memdesc:a9d6d50cf31bc5859747a134d6cb4c418 inherit pub_methods_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">If <em>discover</em> is <code>true</code>, autodiscovery will be attempted.  <br /></td></tr>
 <tr class="separator:a9d6d50cf31bc5859747a134d6cb4c418 inherit pub_methods_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68091034224a764b1642dd3e99ff5b14 inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14">pokitProduct</a> () const</td></tr>
-<tr class="memdesc:a68091034224a764b1642dd3e99ff5b14 inherit pub_methods_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Pokit product this service is attached to.  <br /></td></tr>
-<tr class="separator:a68091034224a764b1642dd3e99ff5b14 inherit pub_methods_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a039d2f1054788cf586c8decadb53ddc0 inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#a039d2f1054788cf586c8decadb53ddc0">pokitProduct</a> () const</td></tr>
+<tr class="memdesc:a039d2f1054788cf586c8decadb53ddc0 inherit pub_methods_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Pokit product this service is attached to.  <br /></td></tr>
+<tr class="separator:a039d2f1054788cf586c8decadb53ddc0 inherit pub_methods_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0e323c5e2380709c5a5fde18520ae3f inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#aa0e323c5e2380709c5a5fde18520ae3f">setPokitProduct</a> (const <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4">PokitProduct</a> product)</td></tr>
 <tr class="memdesc:aa0e323c5e2380709c5a5fde18520ae3f inherit pub_methods_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current Pokit <em>product</em>.  <br /></td></tr>
 <tr class="separator:aa0e323c5e2380709c5a5fde18520ae3f inherit pub_methods_classAbstractPokitService"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -402,8 +402,8 @@ T&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:aa0752f0fdf6bca0a4acb163f3151534e"><td class="memItemLeft" align="right" valign="top">static const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenericAccessService.html#aa0752f0fdf6bca0a4acb163f3151534e">serviceUuid</a></td></tr>
-<tr class="memdesc:aa0752f0fdf6bca0a4acb163f3151534e"><td class="mdescLeft">&#160;</td><td class="mdescRight">UUID of the "Generic Access" service.  <br /></td></tr>
+<tr class="memitem:aa0752f0fdf6bca0a4acb163f3151534e"><td class="memItemLeft" align="right" valign="top">static const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenericAccessService.html#aa0752f0fdf6bca0a4acb163f3151534e">serviceUuid</a> { QBluetoothUuid::ServiceClassUuid::GenericAccess }</td></tr>
+<tr class="memdesc:aa0752f0fdf6bca0a4acb163f3151534e"><td class="mdescLeft">&#160;</td><td class="mdescRight">UUID of the <code>Generic Access</code> service.  <br /></td></tr>
 <tr class="separator:aa0752f0fdf6bca0a4acb163f3151534e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -531,12 +531,12 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Constructs a new Pokit service with <em>parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00044">44</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(<span class="keyword">new</span> <a class="code hl_class" href="classGenericAccessServicePrivate.html">GenericAccessServicePrivate</a>(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">   46</span>{</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>}</div>
-<div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8h_source.html#l00024">abstractpokitservice.h:25</a></div></div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00029">29</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(<span class="keyword">new</span> <a class="code hl_class" href="classGenericAccessServicePrivate.html">GenericAccessServicePrivate</a>(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">   31</span>{</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>}</div>
+<div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8h_source.html#l00026">abstractpokitservice.h:27</a></div></div>
 <div class="ttc" id="aclassGenericAccessServicePrivate_html"><div class="ttname"><a href="classGenericAccessServicePrivate.html">GenericAccessServicePrivate</a></div><div class="ttdoc">The GenericAccessServicePrivate class provides private implementation for GenericAccessService.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice__p_8h_source.html#l00018">genericaccessservice_p.h:19</a></div></div>
 <div class="ttc" id="aqobject_html_parent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent</a></div><div class="ttdeci">QObject * parent() const const</div></div>
 </div><!-- fragment -->
@@ -567,10 +567,10 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Destroys this <a class="el" href="classGenericAccessService.html" title="The GenericAccessService class accesses the Generic Access service of Pokit devices.">GenericAccessService</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00065">65</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>}</div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00050">50</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -610,11 +610,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Constructs a new Pokit service with <em>parent</em>, and private implementation <em>d</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00054">54</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">   57</span>{</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>}</div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00039">39</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>    : <a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -639,22 +639,22 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <dl class="section note"><dt>Note</dt><dd>Pokit's Bluetooth API suggests the device's <code>Appearance</code> will always be 0 aka "Unknown
 Appearance", so this is probably not a very useful characteristic if you already know you are dealing with a Pokit device. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00118">118</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>{</div>
-<div class="line"><span class="lineno">  120</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
-<div class="line"><span class="lineno">  121</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  122</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945">CharacteristicUuids::appearance</a>);</div>
-<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classGenericAccessServicePrivate.html#a9f3b84e40f816ad12cf4c8804c0c7505">GenericAccessServicePrivate::parseAppearance</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
-<div class="line"><span class="lineno">  124</span>        : std::numeric_limits&lt;quint16&gt;::max();</div>
-<div class="line"><span class="lineno">  125</span>}</div>
-<div class="ttc" id="aclassGenericAccessServicePrivate_html_a9f3b84e40f816ad12cf4c8804c0c7505"><div class="ttname"><a href="classGenericAccessServicePrivate.html#a9f3b84e40f816ad12cf4c8804c0c7505">GenericAccessServicePrivate::parseAppearance</a></div><div class="ttdeci">static quint16 parseAppearance(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Appearance value.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8cpp_source.html#l00216">genericaccessservice.cpp:216</a></div></div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00103">103</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>{</div>
+<div class="line"><span class="lineno">  105</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  107</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945">CharacteristicUuids::appearance</a>);</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classGenericAccessServicePrivate.html#a9f3b84e40f816ad12cf4c8804c0c7505">GenericAccessServicePrivate::parseAppearance</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
+<div class="line"><span class="lineno">  109</span>        : std::numeric_limits&lt;quint16&gt;::max();</div>
+<div class="line"><span class="lineno">  110</span>}</div>
+<div class="ttc" id="aclassGenericAccessServicePrivate_html_a9f3b84e40f816ad12cf4c8804c0c7505"><div class="ttname"><a href="classGenericAccessServicePrivate.html#a9f3b84e40f816ad12cf4c8804c0c7505">GenericAccessServicePrivate::parseAppearance</a></div><div class="ttdeci">static quint16 parseAppearance(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Appearance value.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8cpp_source.html#l00201">genericaccessservice.cpp:201</a></div></div>
 <div class="ttc" id="aclassGenericAccessService_html"><div class="ttname"><a href="classGenericAccessService.html">GenericAccessService</a></div><div class="ttdoc">The GenericAccessService class accesses the Generic Access service of Pokit devices.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8h_source.html#l00022">genericaccessservice.h:23</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_value"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value</a></div><div class="ttdeci">QByteArray value() const const</div></div>
-<div class="ttc" id="astructGenericAccessService_1_1CharacteristicUuids_html_a6b67f6a3d20c0dcaa6a30ed618f39945"><div class="ttname"><a href="structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945">GenericAccessService::CharacteristicUuids::appearance</a></div><div class="ttdeci">static const QBluetoothUuid appearance</div><div class="ttdoc">UUID of the Generic Access service's Appearance characterstic.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8h_source.html#l00031">genericaccessservice.h:31</a></div></div>
+<div class="ttc" id="astructGenericAccessService_1_1CharacteristicUuids_html_a6b67f6a3d20c0dcaa6a30ed618f39945"><div class="ttname"><a href="structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945">GenericAccessService::CharacteristicUuids::appearance</a></div><div class="ttdeci">static const QBluetoothUuid appearance</div><div class="ttdoc">UUID of the Generic Access service's Appearance characterstic.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8h_source.html#l00036">genericaccessservice.h:36</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00031">GenericAccessService::CharacteristicUuids::appearance</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="genericaccessservice_8cpp_source.html#l00216">GenericAccessServicePrivate::parseAppearance()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
+<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00036">GenericAccessService::CharacteristicUuids::appearance</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="genericaccessservice_8cpp_source.html#l00201">GenericAccessServicePrivate::parseAppearance()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -712,18 +712,18 @@ Here is the call graph for this function:</div>
 <p>Returns the most recent value of the <code>Generic Access</code> services's <code>Device Name</code> characteristic. </p>
 <p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00134">134</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  135</span>{</div>
-<div class="line"><span class="lineno">  136</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  138</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">CharacteristicUuids::deviceName</a>);</div>
-<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  140</span>}</div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00119">119</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>{</div>
+<div class="line"><span class="lineno">  121</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  123</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">CharacteristicUuids::deviceName</a>);</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  125</span>}</div>
 <div class="ttc" id="aqstring_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html">QString</a></div></div>
 <div class="ttc" id="aqstring_html_fromUtf8"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a></div><div class="ttdeci">QString fromUtf8(const char *str, int size)</div></div>
-<div class="ttc" id="astructGenericAccessService_1_1CharacteristicUuids_html_a2425633e4759608cb6a061055c9f5e2b"><div class="ttname"><a href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">GenericAccessService::CharacteristicUuids::deviceName</a></div><div class="ttdeci">static const QBluetoothUuid deviceName</div><div class="ttdoc">UUID of the Generic Access service's Device Name characterstic.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8h_source.html#l00030">genericaccessservice.h:30</a></div></div>
+<div class="ttc" id="astructGenericAccessService_1_1CharacteristicUuids_html_a2425633e4759608cb6a061055c9f5e2b"><div class="ttname"><a href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">GenericAccessService::CharacteristicUuids::deviceName</a></div><div class="ttdeci">static const QBluetoothUuid deviceName</div><div class="ttdoc">UUID of the Generic Access service's Device Name characterstic.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8h_source.html#l00033">genericaccessservice.h:33</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00030">GenericAccessService::CharacteristicUuids::deviceName</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
+<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00033">GenericAccessService::CharacteristicUuids::deviceName</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -808,15 +808,15 @@ Here is the call graph for this function:</div>
 <p>Returns <code>true</code> if the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="classGenericAccessService.html#ac6e9ed3c5d8aac17c19781f4b28a0dc4" title="This signal is emitted when the Appearance characteristic has been read successfully.">appearanceRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00086">86</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
-<div class="line"><span class="lineno">   88</span>    Q_D(<a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945">CharacteristicUuids::appearance</a>);</div>
-<div class="line"><span class="lineno">   90</span>}</div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00071">71</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    Q_D(<a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a6b67f6a3d20c0dcaa6a30ed618f39945">CharacteristicUuids::appearance</a>);</div>
+<div class="line"><span class="lineno">   75</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00031">GenericAccessService::CharacteristicUuids::appearance</a>.</p>
+<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00036">GenericAccessService::CharacteristicUuids::appearance</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="genericaccessservice_8cpp_source.html#l00070">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="genericaccessservice_8cpp_source.html#l00055">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -854,16 +854,16 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractPokitService.html#a0d29ffd4ef4f81c6049700f76faa723e">AbstractPokitService</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00070">70</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r1 = <a class="code hl_function" href="classGenericAccessService.html#a21e6e924fcdf403e4d3081a52ba5ced7">readDeviceNameCharacteristic</a>();</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r2 = <a class="code hl_function" href="classGenericAccessService.html#a74542246a9a578267700eb810ff116c1">readAppearanceCharacteristic</a>();</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> (r1 &amp;&amp; r2);</div>
-<div class="line"><span class="lineno">   75</span>}</div>
-<div class="ttc" id="aclassGenericAccessService_html_a21e6e924fcdf403e4d3081a52ba5ced7"><div class="ttname"><a href="classGenericAccessService.html#a21e6e924fcdf403e4d3081a52ba5ced7">GenericAccessService::readDeviceNameCharacteristic</a></div><div class="ttdeci">bool readDeviceNameCharacteristic()</div><div class="ttdoc">Read the Generic Access service's Device Name characteristic.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8cpp_source.html#l00101">genericaccessservice.cpp:101</a></div></div>
-<div class="ttc" id="aclassGenericAccessService_html_a74542246a9a578267700eb810ff116c1"><div class="ttname"><a href="classGenericAccessService.html#a74542246a9a578267700eb810ff116c1">GenericAccessService::readAppearanceCharacteristic</a></div><div class="ttdeci">bool readAppearanceCharacteristic()</div><div class="ttdoc">Read the Generic Access service's Appearance characteristic.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8cpp_source.html#l00086">genericaccessservice.cpp:86</a></div></div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00055">55</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r1 = <a class="code hl_function" href="classGenericAccessService.html#a21e6e924fcdf403e4d3081a52ba5ced7">readDeviceNameCharacteristic</a>();</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r2 = <a class="code hl_function" href="classGenericAccessService.html#a74542246a9a578267700eb810ff116c1">readAppearanceCharacteristic</a>();</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> (r1 &amp;&amp; r2);</div>
+<div class="line"><span class="lineno">   60</span>}</div>
+<div class="ttc" id="aclassGenericAccessService_html_a21e6e924fcdf403e4d3081a52ba5ced7"><div class="ttname"><a href="classGenericAccessService.html#a21e6e924fcdf403e4d3081a52ba5ced7">GenericAccessService::readDeviceNameCharacteristic</a></div><div class="ttdeci">bool readDeviceNameCharacteristic()</div><div class="ttdoc">Read the Generic Access service's Device Name characteristic.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8cpp_source.html#l00086">genericaccessservice.cpp:86</a></div></div>
+<div class="ttc" id="aclassGenericAccessService_html_a74542246a9a578267700eb810ff116c1"><div class="ttname"><a href="classGenericAccessService.html#a74542246a9a578267700eb810ff116c1">GenericAccessService::readAppearanceCharacteristic</a></div><div class="ttdeci">bool readAppearanceCharacteristic()</div><div class="ttdoc">Read the Generic Access service's Appearance characteristic.</div><div class="ttdef"><b>Definition</b> <a href="genericaccessservice_8cpp_source.html#l00071">genericaccessservice.cpp:71</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="genericaccessservice_8cpp_source.html#l00086">readAppearanceCharacteristic()</a>, and <a class="el" href="genericaccessservice_8cpp_source.html#l00101">readDeviceNameCharacteristic()</a>.</p>
+<p class="reference">References <a class="el" href="genericaccessservice_8cpp_source.html#l00071">readAppearanceCharacteristic()</a>, and <a class="el" href="genericaccessservice_8cpp_source.html#l00086">readDeviceNameCharacteristic()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -891,15 +891,15 @@ Here is the call graph for this function:</div>
 <p>Returns <code>true</code> if the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="classGenericAccessService.html#ab6a9e04d98f18cc5cb4f1514ad40c1dc" title="This signal is emitted when the Device Name characteristic has been read successfully.">deviceNameRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00101">101</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
-<div class="line"><span class="lineno">  103</span>    Q_D(<a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">CharacteristicUuids::deviceName</a>);</div>
-<div class="line"><span class="lineno">  105</span>}</div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00086">86</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    Q_D(<a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">CharacteristicUuids::deviceName</a>);</div>
+<div class="line"><span class="lineno">   90</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00030">GenericAccessService::CharacteristicUuids::deviceName</a>.</p>
+<p class="reference">References <a class="el" href="genericaccessservice_8h_source.html#l00033">GenericAccessService::CharacteristicUuids::deviceName</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="genericaccessservice_8cpp_source.html#l00070">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="genericaccessservice_8cpp_source.html#l00055">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -928,25 +928,25 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p>Emits <a class="el" href="classGenericAccessService.html#aaaca57eb2ad761d758df6595c3f36f83" title="This signal is emitted when the Device Name characteristic has been written successfully.">deviceNameWritten()</a> if/when the <em>name</em> has been set. </p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00149">149</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  150</span>{</div>
-<div class="line"><span class="lineno">  151</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
-<div class="line"><span class="lineno">  152</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  153</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">CharacteristicUuids::deviceName</a>);</div>
-<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
-<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  156</span>    }</div>
-<div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = name.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#toUtf8">toUtf8</a>();</div>
-<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#length">length</a>() &gt; 11) {</div>
-<div class="line"><span class="lineno">  160</span>        qCWarning(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(R<span class="stringliteral">&quot;(Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x%3)&quot;)</span></div>
-<div class="line"><span class="lineno">  161</span><span class="stringliteral">            .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(name).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#length">length</a>()).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">toHex</a>()));</span></div>
-<div class="line"><span class="lineno">  162</span><span class="stringliteral">        </span><span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  163</span>    }</div>
-<div class="line"><span class="lineno">  164</span> </div>
-<div class="line"><span class="lineno">  165</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
-<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">  167</span>}</div>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8cpp_source.html#l00134">134</a> of file <a class="el" href="genericaccessservice_8cpp_source.html">genericaccessservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>{</div>
+<div class="line"><span class="lineno">  136</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classGenericAccessService.html">GenericAccessService</a>);</div>
+<div class="line"><span class="lineno">  137</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  138</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structGenericAccessService_1_1CharacteristicUuids.html#a2425633e4759608cb6a061055c9f5e2b">CharacteristicUuids::deviceName</a>);</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
+<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  141</span>    }</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = name.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#toUtf8">toUtf8</a>();</div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#length">length</a>() &gt; 11) {</div>
+<div class="line"><span class="lineno">  145</span>        qCWarning(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(R<span class="stringliteral">&quot;(Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x%3)&quot;)</span></div>
+<div class="line"><span class="lineno">  146</span><span class="stringliteral">            .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(name).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#length">length</a>()).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">toHex</a>()));</span></div>
+<div class="line"><span class="lineno">  147</span><span class="stringliteral">        </span><span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  148</span>    }</div>
+<div class="line"><span class="lineno">  149</span> </div>
+<div class="line"><span class="lineno">  150</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">  152</span>}</div>
 <div class="ttc" id="aqbytearray_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a></div></div>
 <div class="ttc" id="aqbytearray_html_length"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#length">QByteArray::length</a></div><div class="ttdeci">int length() const const</div></div>
 <div class="ttc" id="aqbytearray_html_toHex"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex</a></div><div class="ttdeci">QByteArray toHex() const const</div></div>
@@ -955,7 +955,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aqstring_html_arg-1"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg</a></div><div class="ttdeci">QString arg(qlonglong a, int fieldWidth, int base, QChar fillChar) const const</div></div>
 <div class="ttc" id="aqstring_html_toUtf8"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#toUtf8">QString::toUtf8</a></div><div class="ttdeci">QByteArray toUtf8() const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="genericaccessservice_8h_source.html#l00030">GenericAccessService::CharacteristicUuids::deviceName</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#length">QByteArray::length()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#toUtf8">QString::toUtf8()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="genericaccessservice_8h_source.html#l00033">GenericAccessService::CharacteristicUuids::deviceName</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#length">QByteArray::length()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#toUtf8">QString::toUtf8()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -985,7 +985,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8h_source.html#l00061">61</a> of file <a class="el" href="genericaccessservice_8h_source.html">genericaccessservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8h_source.html#l00066">66</a> of file <a class="el" href="genericaccessservice_8h_source.html">genericaccessservice.h</a>.</p>
 
 </div>
 </div>
@@ -1000,19 +1000,19 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> GenericAccessService::serviceUuid</td>
+          <td class="memname">const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> GenericAccessService::serviceUuid { QBluetoothUuid::ServiceClassUuid::GenericAccess }</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>UUID of the "Generic Access" service. </p>
+<p>UUID of the <code>Generic Access</code> service. </p>
 
-<p class="definition">Definition at line <a class="el" href="genericaccessservice_8h_source.html#l00027">27</a> of file <a class="el" href="genericaccessservice_8h_source.html">genericaccessservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="genericaccessservice_8h_source.html#l00028">28</a> of file <a class="el" href="genericaccessservice_8h_source.html">genericaccessservice.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00203">PokitDevice::serviceToString()</a>.</p>
 

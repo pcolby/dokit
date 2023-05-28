@@ -146,7 +146,7 @@ var searchData=
   ['pokitpro_143',['PokitPro',['../namespacePokitPro.html',1,'PokitPro'],['../pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae',1,'PokitPro:&#160;pokitproducts.h']]],
   ['pokitpro_2ecpp_144',['pokitpro.cpp',['../pokitpro_8cpp.html',1,'']]],
   ['pokitpro_2eh_145',['pokitpro.h',['../pokitpro_8h.html',1,'']]],
-  ['pokitproduct_146',['pokitProduct',['../classAbstractPokitService.html#a68091034224a764b1642dd3e99ff5b14',1,'AbstractPokitService::pokitProduct()'],['../pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566',1,'pokitProduct(const QBluetoothDeviceInfo &amp;info):&#160;pokitproducts.cpp'],['../pokitproducts_8h.html#a0227e333e3bab67294b49b8b73120943',1,'pokitProduct(const QBluetoothDeviceInfo &amp;info):&#160;pokitproducts.cpp']]],
+  ['pokitproduct_146',['pokitProduct',['../classAbstractPokitService.html#a039d2f1054788cf586c8decadb53ddc0',1,'AbstractPokitService::pokitProduct()'],['../pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566',1,'pokitProduct(const QBluetoothDeviceInfo &amp;info):&#160;pokitproducts.cpp'],['../pokitproducts_8h.html#a0227e333e3bab67294b49b8b73120943',1,'pokitProduct(const QBluetoothDeviceInfo &amp;info):&#160;pokitproducts.cpp']]],
   ['pokitproduct_147',['PokitProduct',['../pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4',1,'pokitproducts.h']]],
   ['pokitproducts_2ecpp_148',['pokitproducts.cpp',['../pokitproducts_8cpp.html',1,'']]],
   ['pokitproducts_2eh_149',['pokitproducts.h',['../pokitproducts_8h.html',1,'']]],
