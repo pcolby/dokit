@@ -16,9 +16,6 @@
  * The AbstractCommand class provides a consistent base for the classes that implement CLI commands.
  */
 
-/// \enum AbstractCommand::OutputFormat
-/// \brief Supported output formats.
-
 /*!
  * Constructs a new command with \a parent.
  */

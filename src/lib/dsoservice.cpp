@@ -22,31 +22,6 @@
  * The DsoService class accesses the `DSO` (Digital Storage Oscilloscope) service of Pokit devices.
  */
 
-/// UUID of the "DSO" service.
-const QBluetoothUuid DsoService::
-    serviceUuid(QLatin1String("1569801e-1425-4a7a-b617-a4f4ed719de6"));
-
-/// \struct DsoService::CharacteristicUuids
-/// \brief Characteristics available via the `DSO` service.
-
-/// UUID of the `DSO` service's `Settings` characterstic.
-const QBluetoothUuid DsoService::CharacteristicUuids::
-    settings(QLatin1String("a81af1b6-b8b3-4244-8859-3da368d2be39"));
-
-/// UUID of the `DSO` service's `Metadata` characterstic.
-const QBluetoothUuid DsoService::CharacteristicUuids::
-    metadata(QLatin1String("970f00ba-f46f-4825-96a8-153a5cd0cda9"));
-
-/// UUID of the `DSO` service's `Reading` characterstic.
-const QBluetoothUuid DsoService::CharacteristicUuids::
-    reading(QLatin1String("98e14f8e-536e-4f24-b4f4-1debfed0a99e"));
-
-/// \enum DsoService::Command
-/// \brief Values supported by the `Command` attribute of the `Settings` characteristic.
-
-/// \enum DsoService::Mode
-/// \brief Values supported by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
-
 /// Returns \a mode as a user-friendly string.
 QString DsoService::toString(const Mode &mode)
 {
@@ -112,15 +87,6 @@ QVariant DsoService::maxValue(const quint8 range, const Mode mode) const
 {
     return maxValue(*pokitProduct(), range, mode);
 }
-
-/// \struct DsoService::Settings
-/// \brief Attributes included in the `Settings` characterstic.
-
-/// \enum DsoService::DsoStatus
-/// \brief Values supported by the `Status` attribute of the `Metadata` characteristic.
-
-/// \struct DsoService::Metadata
-/// \brief Attributes included in the `Metadata` characterstic.
 
 /*!
  * \typedef DsoService::Samples

@@ -20,32 +20,14 @@
  * The MultimeterService class accesses the `Multimeter` service of Pokit devices.
  */
 
-/// UUID of the "Multimeter" service.
-const QBluetoothUuid MultimeterService::
-    serviceUuid(QLatin1String("e7481d2f-5781-442e-bb9a-fd4e3441dadc"));
-
-/// \struct MultimeterService::CharacteristicUuids
-/// \brief Characteristics available via the `Multimeter` service.
-
-/// UUID of the `Multimeter` service's `Settings` characterstic.
-const QBluetoothUuid MultimeterService::CharacteristicUuids::
-    settings(QLatin1String("53dc9a7a-bc19-4280-b76b-002d0e23b078"));
-
-/// UUID of the `Multimeter` service's `Reading` characterstic.
-const QBluetoothUuid MultimeterService::CharacteristicUuids::
-    reading(QLatin1String("047d3559-8bee-423a-b229-4417fa603b90"));
-
 /*!
- * \enum MultimeterService::Mode
- * \brief Values supported by the `Mode` attribute of the `Settings` and `Reading` characteristics.
- *
  * \cond internal
+ * \enum MultimeterService::Mode
  * \pokitApi The following enumeration values are as-yet undocumented by Pokit Innovations.
  * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
  * [dokit](https://github.com/pcolby/dokit) project.
  *   * Mode::Capacitance
  *   * Mode::ExternalTemperature
- *
  * \endcond
  */
 
@@ -140,15 +122,6 @@ QVariant MultimeterService::maxValue(const quint8 range, const Mode mode) const
 {
     return maxValue(*pokitProduct(), range, mode);
 }
-
-/// \struct MultimeterService::Settings
-/// \brief Attributes included in the `Settings` characterstic.
-
-/// \enum MultimeterService::MeterStatus
-/// \brief Values supported by the `Status` attribute of the `Settings` characteristic.
-
-/// \struct MultimeterService::Reading
-/// \brief Attributes included in the `Reading` characterstic.
 
 /*!
  * Constructs a new Pokit service with \a parent.

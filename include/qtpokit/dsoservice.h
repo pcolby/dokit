@@ -25,14 +25,22 @@ class QTPOKIT_EXPORT DsoService : public AbstractPokitService
     Q_OBJECT
 
 public:
-    static const QBluetoothUuid serviceUuid;
+    /// UUID of the "DSO" service.
+    static inline const QBluetoothUuid serviceUuid { QStringLiteral("1569801e-1425-4a7a-b617-a4f4ed719de6") };
 
+    /// Characteristics available via the `DSO` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        static const QBluetoothUuid settings;
-        static const QBluetoothUuid metadata;
-        static const QBluetoothUuid reading;
+        /// UUID of the `DSO` service's `Settings` characterstic.
+        static inline const QBluetoothUuid settings { QStringLiteral("a81af1b6-b8b3-4244-8859-3da368d2be39") };
+
+        /// UUID of the `DSO` service's `Metadata` characterstic.
+        static inline const QBluetoothUuid metadata { QStringLiteral("970f00ba-f46f-4825-96a8-153a5cd0cda9") };
+
+        /// UUID of the `DSO` service's `Reading` characterstic.
+        static inline const QBluetoothUuid reading  { QStringLiteral("98e14f8e-536e-4f24-b4f4-1debfed0a99e") };
     };
 
+    /// Values supported by the `Command` attribute of the `Settings` characteristic.
     enum class Command : quint8 {
         FreeRunning        = 0, ///< Run free, without waiting for edge triggers.
         RisingEdgeTrigger  = 1, ///< Trigger on a rising edge.
@@ -40,6 +48,7 @@ public:
         ResendData         = 3  ///< Resend the last acquired data.
     };
 
+    /// Values supported by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
     enum class Mode : quint8 {
         Idle        = 0, ///< Make device idle.
         DcVoltage   = 1, ///< Measure DC voltage.
@@ -54,6 +63,7 @@ public:
     static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode);
     QVariant maxValue(const quint8 range, const Mode mode) const;
 
+    /// Attributes included in the `Settings` characterstic.
     struct Settings {
         Command command;         ///< Custom operation request.
         float triggerLevel;      ///< Trigger threshold level in Volts or Amps, depending on #mode.
@@ -63,12 +73,14 @@ public:
         quint16 numberOfSamples; ///< Desired number of samples to acquire.
     };
 
+    /// Values supported by the `Status` attribute of the `Metadata` characteristic.
     enum class DsoStatus : quint8 {
         Done       = 0,  ///< Sampling has completed.
         Sampling   = 1,  ///< Actively sampling.
         Error      = 255 ///< An error has occurred.
     };
 
+    /// Attributes included in the `Metadata` characterstic.
     struct Metadata {
         DsoStatus status;        ///< Current DSO status.
         float scale;             ///< Scale to apply to read samples.

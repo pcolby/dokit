@@ -17,33 +17,6 @@
  * The DeviceInfoService class accesses the `Device Info` service of Pokit devices.
  */
 
-/// UUID of the "Device Info" service.
-const QBluetoothUuid DeviceInfoService::
-    serviceUuid(QBluetoothUuid::ServiceClassUuid::DeviceInformation);
-
-/// \struct DeviceInfoService::CharacteristicUuids
-/// \brief Characteristics available via the `Device Info` service.
-
-/// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
-    manufacturerName(QBluetoothUuid::CharacteristicType::ManufacturerNameString);
-
-/// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
-    modelNumber(QBluetoothUuid::CharacteristicType::ModelNumberString);
-
-/// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
-    hardwareRevision(QBluetoothUuid::CharacteristicType::HardwareRevisionString);
-
-/// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
-    firmwareRevision(QBluetoothUuid::CharacteristicType::FirmwareRevisionString);
-
-/// UUID of the `Device Info` service's `xxx` characterstic.
-const QBluetoothUuid DeviceInfoService::CharacteristicUuids::
-    softwareRevision(QBluetoothUuid::CharacteristicType::SoftwareRevisionString);
-
 /*!
  * Constructs a new Pokit service with \a parent.
  */

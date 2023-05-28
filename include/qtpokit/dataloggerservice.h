@@ -24,20 +24,29 @@ class QTPOKIT_EXPORT DataLoggerService : public AbstractPokitService
     Q_OBJECT
 
 public:
-    static const QBluetoothUuid serviceUuid;
+    /// UUID of the "DataLogger" service.
+    static inline const QBluetoothUuid serviceUuid { QStringLiteral("a5ff3566-1fd8-4e10-8362-590a578a4121") };
 
+    /// Characteristics available via the `DataLogger` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        static const QBluetoothUuid settings;
-        static const QBluetoothUuid metadata;
-        static const QBluetoothUuid reading;
+        /// UUID of the `DataLogger` service's `Settings` characterstic.
+        static inline const QBluetoothUuid settings { QStringLiteral("5f97c62b-a83b-46c6-b9cd-cac59e130a78") };
+
+        /// UUID of the `DataLogger` service's `Metadata` characterstic.
+        static inline const QBluetoothUuid metadata { QStringLiteral("9acada2e-3936-430b-a8f7-da407d97ca6e") };
+
+        /// UUID of the `DataLogger` service's `Reading` characterstic.
+        static inline const QBluetoothUuid reading  { QStringLiteral("3c669dab-fc86-411c-9498-4f9415049cc0") };
     };
 
+    /// Values supported by the `Command` attribute of the `Settings` characteristic.
     enum class Command : quint8 {
         Start   = 0, ///< Start the Data Logger.
         Stop    = 1, ///< Stop the Data Logger.
         Refresh = 2, ///< Refresh the Data Logger.
     };
 
+    /// Values supported by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
     enum class Mode : quint8 {
         Idle        = 0, ///< Make device idle.
         DcVoltage   = 1, ///< Measure DC voltage.
@@ -53,6 +62,7 @@ public:
     static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode);
     QVariant maxValue(const quint8 range, const Mode mode) const;
 
+    /// Attributes included in the `Settings` characterstic.
     struct Settings {
         Command command;        ///< Custom operation request.
         quint16 arguments;      ///< Reserved to used along with #command in future.
@@ -62,6 +72,7 @@ public:
         quint32 timestamp;      ///< Custom timestamp for start time in retrieved metadata.
     };
 
+    /// Values supported by the `Status` attribute of the `Metadata` characteristic.
     enum class LoggerStatus : quint8 {
         Done       = 0,   ///< Sampling has completed.
         Sampling   = 1,   ///< Actively sampling.
@@ -69,6 +80,7 @@ public:
         Error      = 255  ///< An error has occurred.
     };
 
+    /// Attributes included in the `Metadata` characterstic.
     struct Metadata {
         LoggerStatus status;     ///< Current data logger status.
         float scale;             ///< Scale to apply to read samples.

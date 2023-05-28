@@ -18,49 +18,13 @@
  */
 
 /*!
- * \struct StatusService::ServiceUuids
- *
- * UUIDs of the "Pokit Status" service.
- *
  * \cond internal
+ * \struct StatusService::ServiceUuids
  * \pokitApi Pokit API 1.00 (and 0.02) states the Status Service UUID as
  * `57d3a771-267c-4394-8872-78223e92aec4` which is correct for the Pokit Meter, but Pokit Pro uses
  * `57d3a771-267c-4394-8872-78223e92aec5` instead, that is the last digit is a `5` not `4`.
  * \endcond
  */
-
-/// UUID of the Pokit Meter's `Pokit Status` service.
-const QBluetoothUuid StatusService::ServiceUuids::
-    pokitMeter(QLatin1String("57d3a771-267c-4394-8872-78223e92aec4"));
-
-/// UUID of the Pokit Pro's `Pokit Status` service.
-const QBluetoothUuid StatusService::ServiceUuids::
-    pokitPro(QLatin1String("57d3a771-267c-4394-8872-78223e92aec5"));
-
-/// \struct StatusService::CharacteristicUuids
-/// \brief Characteristics available via the `Pokit Status` service.
-
-/// UUID of the `Pokit Status` service's `Device Characteristics` characterstic.
-const QBluetoothUuid StatusService::CharacteristicUuids::
-    deviceCharacteristics(QLatin1String("6974f5e5-0e54-45c3-97dd-29e4b5fb0849"));
-
-/// UUID of the `Pokit Status` service's `Status` characterstic.
-const QBluetoothUuid StatusService::CharacteristicUuids::
-    status(QLatin1String("3dba36e1-6120-4706-8dfd-ed9c16e569b6"));
-
-/// UUID of the `Pokit Status` service's `Device Name` characterstic.
-const QBluetoothUuid StatusService::CharacteristicUuids::
-    name(QLatin1String("7f0375de-077e-4555-8f78-800494509cc3"));
-
-/// UUID of the `Pokit Status` service's `Flash LED` characterstic.
-const QBluetoothUuid StatusService::CharacteristicUuids::
-    flashLed(QLatin1String("ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e"));
-
-/// \struct StatusService::DeviceCharacteristics
-/// \brief Attributes included in the `Device Characteristics` characterstic.
-
-/// \enum StatusService::DeviceStatus
-/// \brief Values supported by the `Status` attribute of the `Status` characteristic.
 
 /*!
  * Returns a string version of the \a status enum label.
@@ -82,9 +46,6 @@ QString StatusService::toString(const StatusService::DeviceStatus &status)
     }
     return QString();
 }
-
-/// \enum StatusService::BatteryStatus
-/// \brief Values supported by the `Battery Status` attribute of the `Status` characteristic.
 
 /*!
  * Returns a string version of the \a status enum label.

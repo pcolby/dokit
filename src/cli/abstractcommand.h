@@ -16,6 +16,7 @@ class AbstractCommand : public QObject
     Q_OBJECT
 
 public:
+    /// Supported output formats.
     enum class OutputFormat {
         Csv,  ///< RFC 4180 compliant CSV text.
         Json, ///< RFC 8259 compliant JSON text.

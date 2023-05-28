@@ -24,11 +24,16 @@ class QTPOKIT_EXPORT GenericAccessService : public AbstractPokitService
     Q_OBJECT
 
 public:
-    static const QBluetoothUuid serviceUuid;
+    /// UUID of the `Generic Access` service.
+    static inline const QBluetoothUuid serviceUuid { QBluetoothUuid::ServiceClassUuid::GenericAccess };
 
+    /// Characteristics available via the `Generic Access` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        static const QBluetoothUuid deviceName;
-        static const QBluetoothUuid appearance;
+        /// UUID of the `Generic Access` service's `Device Name` characterstic.
+        static inline const QBluetoothUuid deviceName { QBluetoothUuid::CharacteristicType::DeviceName };
+
+        /// UUID of the `Generic Access` service's `Appearance` characterstic.
+        static inline const QBluetoothUuid appearance { QBluetoothUuid::CharacteristicType::Appearance };
     };
 
     GenericAccessService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

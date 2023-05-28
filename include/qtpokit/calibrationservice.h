@@ -24,10 +24,13 @@ class QTPOKIT_EXPORT CalibrationService : public AbstractPokitService
     Q_OBJECT
 
 public:
-    static const QBluetoothUuid serviceUuid;
+    /// UUID of the `Calibration` service.
+    static inline const QBluetoothUuid serviceUuid { QStringLiteral("6f53be2f-780b-49b8-a7c3-e8a052b3ae2c") };
 
+    /// Characteristics available via the `Calibration` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        static const QBluetoothUuid temperature;
+        /// UUID of the `Calibration` service's `Temperature` characterstic.
+        static inline const QBluetoothUuid temperature { QStringLiteral("0cd0f713-f5aa-4572-9e23-f8049f6bcaaa") };
     };
 
     CalibrationService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

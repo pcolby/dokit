@@ -24,14 +24,31 @@ class QTPOKIT_EXPORT DeviceInfoService : public AbstractPokitService
     Q_OBJECT
 
 public:
-    static const QBluetoothUuid serviceUuid;
+    /// UUID of the "Device Info" service.
+    static inline const QBluetoothUuid serviceUuid
+        { QBluetoothUuid::ServiceClassUuid::DeviceInformation };
 
+    /// Characteristics available via the `Device Info` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        static const QBluetoothUuid manufacturerName;
-        static const QBluetoothUuid modelNumber;
-        static const QBluetoothUuid hardwareRevision;
-        static const QBluetoothUuid firmwareRevision;
-        static const QBluetoothUuid softwareRevision;
+        /// UUID of the `Device Info` service's `Manufacturer Name String` characterstic.
+        static inline const QBluetoothUuid manufacturerName
+            { QBluetoothUuid::CharacteristicType::ManufacturerNameString };
+
+        /// UUID of the `Device Info` service's `Model Number String` characterstic.
+        static inline const QBluetoothUuid modelNumber
+            { QBluetoothUuid::CharacteristicType::ModelNumberString };
+
+        /// UUID of the `Device Info` service's `Firmware Revision String` characterstic.
+        static inline const QBluetoothUuid firmwareRevision
+            { QBluetoothUuid::CharacteristicType::FirmwareRevisionString };
+
+        /// UUID of the `Device Info` service's `Hardware Revision String` characterstic.
+        static inline const QBluetoothUuid hardwareRevision
+            { QBluetoothUuid::CharacteristicType::HardwareRevisionString };
+
+        /// UUID of the `Device Info` service's `Software Revision String` characterstic.
+        static inline const QBluetoothUuid softwareRevision
+            { QBluetoothUuid::CharacteristicType::SoftwareRevisionString };
     };
 
     DeviceInfoService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

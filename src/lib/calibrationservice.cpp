@@ -17,16 +17,6 @@
  * The CalibrationService class accesses the `Calibrartion` service of Pokit devices.
  */
 
-/// UUID of the "Calibration" service.
-const QBluetoothUuid CalibrationService::
-    serviceUuid(QLatin1String("6f53be2f-780b-49b8-a7c3-e8a052b3ae2c"));
-
-/// \struct CalibrationService::CharacteristicUuids
-/// \brief Characteristics available via the `Calibration` service.
-
-/// UUID of the `Calibration` service's `Temperature` characterstic.
-const QBluetoothUuid CalibrationService::CharacteristicUuids::
-    temperature(QLatin1String("0cd0f713-f5aa-4572-9e23-f8049f6bcaaa"));
 
 /*!
  * Constructs a new Pokit service with \a parent.

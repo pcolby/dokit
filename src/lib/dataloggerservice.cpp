@@ -23,31 +23,6 @@
  * The DataLoggerService class accesses the `Data Logger` service of Pokit devices.
  */
 
-/// UUID of the "DataLogger" service.
-const QBluetoothUuid DataLoggerService::
-    serviceUuid(QLatin1String("a5ff3566-1fd8-4e10-8362-590a578a4121"));
-
-/// \struct DataLoggerService::CharacteristicUuids
-/// \brief Characteristics available via the `DataLogger` service.
-
-/// UUID of the `DataLogger` service's `Settings` characterstic.
-const QBluetoothUuid DataLoggerService::CharacteristicUuids::
-    settings(QLatin1String("5f97c62b-a83b-46c6-b9cd-cac59e130a78"));
-
-/// UUID of the `DataLogger` service's `Metadata` characterstic.
-const QBluetoothUuid DataLoggerService::CharacteristicUuids::
-    metadata(QLatin1String("9acada2e-3936-430b-a8f7-da407d97ca6e"));
-
-/// UUID of the `DataLogger` service's `Reading` characterstic.
-const QBluetoothUuid DataLoggerService::CharacteristicUuids::
-    reading(QLatin1String("3c669dab-fc86-411c-9498-4f9415049cc0"));
-
-/// \enum DataLoggerService::Command
-/// \brief Values supported by the `Command` attribute of the `Settings` characteristic.
-
-/// \enum DataLoggerService::Mode
-/// \brief Values supported by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
-
 /// Returns \a mode as a user-friendly string.
 QString DataLoggerService::toString(const Mode &mode)
 {
@@ -118,15 +93,6 @@ QVariant DataLoggerService::maxValue(const quint8 range, const Mode mode) const
 {
     return maxValue(*pokitProduct(), range, mode);
 }
-
-/// \struct DataLoggerService::Settings
-/// \brief Attributes included in the `Settings` characterstic.
-
-/// \enum DataLoggerService::LoggerStatus
-/// \brief Values supported by the `Status` attribute of the `Metadata` characteristic.
-
-/// \struct DataLoggerService::Metadata
-/// \brief Attributes included in the `Metadata` characterstic.
 
 /*!
  * \typedef DataLoggerService::Samples

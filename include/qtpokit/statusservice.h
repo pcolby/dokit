@@ -24,18 +24,31 @@ class QTPOKIT_EXPORT StatusService : public AbstractPokitService
     Q_OBJECT
 
 public:
+    /// UUIDs of the `Pokit Status` service.
     struct QTPOKIT_EXPORT ServiceUuids {
-        static const QBluetoothUuid pokitMeter;
-        static const QBluetoothUuid pokitPro;
+        /// UUID of the Pokit Meter's `Pokit Status` service.
+        static inline const QBluetoothUuid pokitMeter { QStringLiteral("57d3a771-267c-4394-8872-78223e92aec4") };
+
+        /// UUID of the Pokit Pro's `Pokit Status` service.
+        static inline const QBluetoothUuid pokitPro   { QStringLiteral("57d3a771-267c-4394-8872-78223e92aec5") };
     };
 
+    /// Characteristics available via the `Pokit Status` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        static const QBluetoothUuid deviceCharacteristics;
-        static const QBluetoothUuid status;
-        static const QBluetoothUuid name;
-        static const QBluetoothUuid flashLed;
+        /// UUID of the `Pokit Status` service's `Device Characteristics` characterstic.
+        static inline const QBluetoothUuid deviceCharacteristics  { QStringLiteral("6974f5e5-0e54-45c3-97dd-29e4b5fb0849") };
+
+        /// UUID of the `Pokit Status` service's `Status` characterstic.
+        static inline const QBluetoothUuid status { QStringLiteral("3dba36e1-6120-4706-8dfd-ed9c16e569b6") };
+
+        /// UUID of the `Pokit Status` service's `Device Name` characterstic.
+        static inline const QBluetoothUuid name { QStringLiteral("7f0375de-077e-4555-8f78-800494509cc3") };
+
+        /// UUID of the `Pokit Status` service's `Flash LED` characterstic.
+        static inline const QBluetoothUuid flashLed { QStringLiteral("ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e") };
     };
 
+    /// Attributes included in the `Device Characteristics` characterstic.
     struct DeviceCharacteristics {
         QVersionNumber firmwareVersion; ///< Device's major and minor firmware version.
         quint16 maximumVoltage;         ///< Device's maximum input voltage.
@@ -47,6 +60,7 @@ public:
         QBluetoothAddress macAddress;   ///< Device's MAC address.
     };
 
+    /// Values supported by the `Status` attribute of the `Status` characteristic.
     enum class DeviceStatus : quint8 {
         Idle = 0,                 ///< Device is idle.
         MultimeterDcVoltage = 1,  ///< Multimeter is measuring DC voltage.
@@ -62,6 +76,7 @@ public:
     };
     static QString toString(const StatusService::DeviceStatus &status);
 
+    /// Values supported by the `Battery Status` attribute of the `Status` characteristic.
     enum class BatteryStatus : quint8 {
         Low = 0,  ///< Low (replace battery).
         Good = 1, ///< Good.

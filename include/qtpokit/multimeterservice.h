@@ -24,13 +24,19 @@ class QTPOKIT_EXPORT MultimeterService : public AbstractPokitService
     Q_OBJECT
 
 public:
-    static const QBluetoothUuid serviceUuid;
+    /// UUID of the `Multimeter` service.
+    static inline const QBluetoothUuid serviceUuid { QStringLiteral("e7481d2f-5781-442e-bb9a-fd4e3441dadc") };
 
+    /// Characteristics available via the `Multimeter` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        static const QBluetoothUuid settings;
-        static const QBluetoothUuid reading;
+        /// UUID of the `Multimeter` service's `Settings` characterstic.
+        static inline const QBluetoothUuid settings { QStringLiteral("53dc9a7a-bc19-4280-b76b-002d0e23b078") };
+
+        /// UUID of the `Multimeter` service's `Reading` characterstic.
+        static inline const QBluetoothUuid reading  { QStringLiteral("047d3559-8bee-423a-b229-4417fa603b90") };
     };
 
+    /// Values supported by the `Mode` attribute of the `Settings` and `Reading` characteristics.
     enum class Mode : quint8 {
         Idle        = 0, ///< Make device idle.
         DcVoltage   = 1, ///< Measure DC voltage.
@@ -51,12 +57,14 @@ public:
     static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode);
     QVariant maxValue(const quint8 range, const Mode mode) const;
 
+    /// Attributes included in the `Settings` characterstic.
     struct Settings {
         Mode mode;              ///< Desired operation mode.
         quint8 range;           ///< Desired range.
         quint32 updateInterval; ///< Desired update interval in milliseconds.
     };
 
+    /// Values supported by the `Status` attribute of the `Settings` characteristic.
     enum class MeterStatus : quint8 {
         AutoRangeOff = 0,  ///< Auto-range is disabled (voltage, current and resistance modes only).
         AutoRangeOn  = 1,  ///< Auto-range is enabled (voltage, current and resistance modes only).
@@ -66,6 +74,7 @@ public:
         Error        = 255 ///< Error (all modes).
     };
 
+    /// Attributes included in the `Reading` characterstic.
     struct Reading {
         MeterStatus status; ///< Current multimeter status.
         float value;        ///< Last acquired value.

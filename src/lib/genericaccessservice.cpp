@@ -23,21 +23,6 @@
  * \endcond
  */
 
-/// UUID of the "Generic Access" service.
-const QBluetoothUuid GenericAccessService::
-    serviceUuid(QBluetoothUuid::ServiceClassUuid::GenericAccess);
-
-/// \struct GenericAccessService::CharacteristicUuids
-/// \brief Characteristics available via the `Generic Access` service.
-
-/// UUID of the `Generic Access` service's `Device Name` characterstic.
-const QBluetoothUuid GenericAccessService::CharacteristicUuids::
-    deviceName(QBluetoothUuid::CharacteristicType::DeviceName);
-
-/// UUID of the `Generic Access` service's `Appearance` characterstic.
-const QBluetoothUuid GenericAccessService::CharacteristicUuids::
-    appearance(QBluetoothUuid::CharacteristicType::Appearance);
-
 /*!
  * Constructs a new Pokit service with \a parent.
  */
