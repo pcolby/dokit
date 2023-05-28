@@ -12,9 +12,6 @@
 
 namespace PokitMeter {
 
-/// \enum CurrentRange
-/// \brief Values supported by the Pokit Meter's `Range` attributes in `*Current` modes.
-
 /// Returns \a range as a user-friendly string.
 QString toString(const CurrentRange &range)
 {
@@ -45,9 +42,6 @@ QVariant maxValue(const CurrentRange &range)
     default:                      return QVariant();
     }
 }
-
-/// \enum ResistanceRange
-/// \brief Values supported by the Pokit Meter's `Range` attributes in `Resistance` mode.
 
 /// Returns \a range as a user-friendly string.
 QString toString(const ResistanceRange &range)
@@ -85,9 +79,6 @@ QVariant maxValue(const ResistanceRange &range)
     default:                         return QVariant();
     }
 }
-
-/// \enum VoltageRange
-/// \brief Values supported by the Pokit Meter's `Range` attributes in `*Voltage` modes.
 
 /// Returns \a range as a user-friendly string.
 QString toString(const VoltageRange &range)

@@ -83,6 +83,7 @@ public:
     };
     static QString toString(const StatusService::BatteryStatus &label);
 
+    /// Attributes included in the `Status` characterstic.
     struct Status {
         DeviceStatus deviceStatus;   ///< Current Pokit device status.
         float batteryVoltage;        ///< Current battery voltage level.

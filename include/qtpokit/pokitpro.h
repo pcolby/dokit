@@ -18,7 +18,7 @@ QTPOKIT_BEGIN_NAMESPACE
 /// Encapsulates details specific to Pokit Pro devices.
 namespace PokitPro {
 
-    // Multimeter only.
+    /// Values supported by the Pokit Pro's `Range` attributes in `Capacitance` mode.
     enum class CapacitanceRange : quint8 {
         _100nF    = 0,  ///< Up 100nF.
         _10uF     = 1,  ///< Up 10μF.
@@ -29,7 +29,7 @@ namespace PokitPro {
     QTPOKIT_EXPORT QVariant maxValue(const CapacitanceRange &range);
 
 
-    // Multimeter, DSO and Logger.
+    /// Values supported by the Pokit Pro's `Range` attributes in `*Current` modes.
     enum class CurrentRange : quint8 {
         _500uA    = 0,  ///< Up to 5µA.
         _2mA      = 1,  ///< Up to 2mA.
@@ -43,7 +43,7 @@ namespace PokitPro {
     QTPOKIT_EXPORT QString toString(const CurrentRange &range);
     QTPOKIT_EXPORT QVariant maxValue(const CurrentRange &range);
 
-    // Multimeter only.
+    /// Values supported by the Pokit Pro's `Range` attributes in `Resistance` mode.
     enum class ResistanceRange : quint8 {
         _30       = 0,  ///< Up to 30Ω.
         _75       = 1,  ///< Up to 75Ω.
@@ -61,7 +61,7 @@ namespace PokitPro {
     QTPOKIT_EXPORT QString toString(const ResistanceRange &range);
     QTPOKIT_EXPORT QVariant maxValue(const ResistanceRange &range);
 
-    // Multimeter, DSO and Logger.
+    /// Values supported by the Pokit Pro's `Range` attributes in `*Voltage` modes.
     enum class VoltageRange : quint8 {
         _250mV    = 0,  ///< Up to 250mV.
         _2V       = 1,  ///< Up to 2V.

@@ -60,15 +60,6 @@ QString StatusService::toString(const StatusService::BatteryStatus &status)
 }
 
 /*!
- * \struct StatusService::Status
- * \brief Attributes included in the `Status` characterstic.
- *
- * \note Not all Pokit devices support the batteryStatus member, in which case the member will be
- * initilialised to the maximum value supported by the underlying type (ie `255`) to indicate "not
- * set".
- */
-
-/*!
  * Constructs a new Pokit service with \a parent.
  */
 StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)
@@ -189,6 +180,9 @@ StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() cons
  *     // Handle failure.
  * }
  * ```
+ *
+ * Not all Pokit devices support the Status::batteryStatus member, in which case the member will be
+ * initilialised to the maximum value supported by the underlying type (ie `255`) to indicate "not set"
  */
 StatusService::Status StatusService::status() const
 {

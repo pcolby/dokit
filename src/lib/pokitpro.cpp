@@ -13,10 +13,8 @@
 namespace PokitPro {
 
 /*!
- * \enum CapacitanceRange
- * \brief Values supported by the Pokit Pro's `Range` attributes in `Capacitance` mode.
- *
  * \cond internal
+ * \enum CapacitanceRange
  * \pokitApi These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations.
  * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
  * [dokit](https://github.com/pcolby/dokit) project.
@@ -51,10 +49,8 @@ QVariant maxValue(const CapacitanceRange &range)
 }
 
 /*!
- * \enum CurrentRange
- * \brief Values supported by the Pokit Pro's `Range` attributes in `*Current` modes.
- *
  * \cond internal
+ * \enum CurrentRange
  * \pokitApi These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations.
  * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
  * [dokit](https://github.com/pcolby/dokit) project.
@@ -97,10 +93,8 @@ QVariant maxValue(const CurrentRange &range)
 }
 
 /*!
- * \enum ResistanceRange
- * \brief Values supported by the Pokit Pro's `Range` attributes in `Resistance` mode.
- *
  * \cond internal
+ * \enum ResistanceRange
  * \pokitApi These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations.
  * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
  * [dokit](https://github.com/pcolby/dokit) project.
@@ -151,10 +145,8 @@ QVariant maxValue(const ResistanceRange &range)
 }
 
 /*!
- * \enum VoltageRange
- * \brief Values supported by the Pokit Pro's `Range` attributes in `*Voltage` modes.
- *
  * \cond internal
+ * \enum VoltageRange
  * \pokitApi These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations.
  * [\@pcolby](https://github.com/pcolby) reverse-engineered them as part of the
  * [dokit](https://github.com/pcolby/dokit) project.
