@@ -248,7 +248,7 @@
 <a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 : void DsoCommand::serviceDetailsDiscovered()</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : {</a>
 <a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(service-&gt;pokitProduct(), rangeOptionValue);</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service-&gt;pokitProduct(), rangeOptionValue);</span></a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :     const QString range = service-&gt;toString(settings.range, settings.mode);</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Sampling %1, with range %2, %Ln sample/s over %L3us&quot;, nullptr, settings.numberOfSamples)</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :         .arg(DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1(&quot;N/A&quot;) : range)</span></a>

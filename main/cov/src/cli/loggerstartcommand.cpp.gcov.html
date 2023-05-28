@@ -215,7 +215,7 @@
 <a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 : void LoggerStartCommand::serviceDetailsDiscovered()</span></a>
 <a name="154"><span class="lineNum">     154 </span>            : {</a>
 <a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(service-&gt;pokitProduct(), rangeOptionValue);</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service-&gt;pokitProduct(), rangeOptionValue);</span></a>
 <a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :     const QString range = service-&gt;toString(settings.range, settings.mode);</span></a>
 <a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Logging %1, with range %2, every %L3ms.&quot;).arg(</span></a>
 <a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :         DataLoggerService::toString(settings.mode),</span></a>

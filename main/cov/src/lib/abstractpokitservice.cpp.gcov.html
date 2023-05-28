@@ -145,10 +145,10 @@
 <a name="83"><span class="lineNum">      83 </span>            :  *</a>
 <a name="84"><span class="lineNum">      84 </span>            :  * \see setPokitProduct</a>
 <a name="85"><span class="lineNum">      85 </span>            :  */</a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       5094 : PokitProduct AbstractPokitService::pokitProduct() const</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       5130 : std::optional&lt;PokitProduct&gt; AbstractPokitService::pokitProduct() const</span></a>
 <a name="87"><span class="lineNum">      87 </span>            : {</a>
 <a name="88"><span class="lineNum">      88 </span>            :     Q_D(const AbstractPokitService);</a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">       5094 :     return d-&gt;pokitProduct;</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">       5130 :     return d-&gt;pokitProduct;</span></a>
 <a name="90"><span class="lineNum">      90 </span>            : }</a>
 <a name="91"><span class="lineNum">      91 </span>            : </a>
 <a name="92"><span class="lineNum">      92 </span>            : /*!</a>
@@ -272,7 +272,7 @@
 <a name="210"><span class="lineNum">     210 </span><span class="lineCov">       4128 :     if (!service) {</span></a>
 <a name="211"><span class="lineNum">     211 </span>            :         return false;</a>
 <a name="212"><span class="lineNum">     212 </span>            :     }</a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service object created for %1 device:&quot;).arg(toString(this-&gt;pokitProduct)) &lt;&lt; service;</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service object created for %1 device:&quot;).arg(toString(*this-&gt;pokitProduct)) &lt;&lt; service;</span></a>
 <a name="214"><span class="lineNum">     214 </span>            : </a>
 <a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::stateChanged,</span></a>
 <a name="216"><span class="lineNum">     216 </span>            :             this, &amp;AbstractPokitServicePrivate::stateChanged);</a>

@@ -227,7 +227,7 @@
 <a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 : void MeterCommand::serviceDetailsDiscovered()</span></a>
 <a name="166"><span class="lineNum">     166 </span>            : {</a>
 <a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(service-&gt;pokitProduct(), rangeOptionValue);</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service-&gt;pokitProduct(), rangeOptionValue);</span></a>
 <a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :     const QString range = service-&gt;toString(settings.range, settings.mode);</span></a>
 <a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Measuring %1, with range %2, every %L3ms.&quot;).arg(</span></a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :         MultimeterService::toString(settings.mode),</span></a>
