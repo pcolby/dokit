@@ -31,6 +31,7 @@ var searchData=
   ['status_28',['Status',['https://doc.qt.io/qt-5/qtextstream.html#Status-enum',1,'QTextStream::Status'],['https://doc.qt.io/qt-5/qsettings.html#Status-enum',1,'QSettings::Status'],['https://doc.qt.io/qt-5/qdatastream.html#Status-enum',1,'QDataStream::Status']]],
   ['stringformat_29',['StringFormat',['https://doc.qt.io/qt-5/quuid.html#StringFormat-enum',1,'QUuid']]],
   ['stringresultcode_30',['StringResultCode',['https://doc.qt.io/qt-5/qcborstreamreader.html#StringResultCode-enum',1,'QCborStreamReader']]],
-  ['system_31',['System',['https://doc.qt.io/qt-5/qcalendar.html#System-enum',1,'QCalendar']]],
-  ['systemsemaphoreerror_32',['SystemSemaphoreError',['https://doc.qt.io/qt-5/qsystemsemaphore.html#SystemSemaphoreError-enum',1,'QSystemSemaphore']]]
+  ['switchposition_31',['SwitchPosition',['../classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f',1,'StatusService']]],
+  ['system_32',['System',['https://doc.qt.io/qt-5/qcalendar.html#System-enum',1,'QCalendar']]],
+  ['systemsemaphoreerror_33',['SystemSemaphoreError',['https://doc.qt.io/qt-5/qsystemsemaphore.html#SystemSemaphoreError-enum',1,'QSystemSemaphore']]]
 ];

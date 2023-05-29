@@ -119,11 +119,13 @@ $(document).ready(function(){initNavTree('pokit.html',''); initResizable(); });
 <dt>Member <a class="el" href="namespacePokitPro.html#a68ddba45fec73a3391f241f2da38e78a">PokitPro::VoltageRange</a>  </dt>
 <dd><a class="anchor" id="_pokit000008"></a> These Pokit Pro enumeration values are as-yet undocumented by Pokit Innovations. <a href="https://github.com/pcolby">@pcolby</a> reverse-engineered them as part of the <a href="https://github.com/pcolby/dokit">dokit</a> project. </dd>
 <dt>Member <a class="el" href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">StatusService::flashLed</a>  ()</dt>
-<dd><a class="anchor" id="_pokit000010"></a> The Android app can turn Pokit Pro LEDs on/off. Perhaps that is handled by an undocumented use of this characteristic. Or perhaps its via some other service. </dd>
+<dd><a class="anchor" id="_pokit000011"></a> The Android app can turn Pokit Pro LEDs on/off. Perhaps that is handled by an undocumented use of this characteristic. Or perhaps its via some other service. </dd>
 <dt>Struct <a class="el" href="structStatusService_1_1ServiceUuids.html">StatusService::ServiceUuids</a>  </dt>
 <dd><a class="anchor" id="_pokit000009"></a> Pokit API 1.00 (and 0.02) states the <a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a> Service UUID as <code>57d3a771-267c-4394-8872-78223e92aec4</code> which is correct for the Pokit Meter, but Pokit Pro uses <code>57d3a771-267c-4394-8872-78223e92aec5</code> instead, that is the last digit is a <code>5</code> not <code>4</code>. </dd>
+<dt>Member <a class="el" href="classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f">StatusService::SwitchPosition</a>  </dt>
+<dd><a class="anchor" id="_pokit000010"></a> These enum values are undocumented, but easily testable with a physical Pokit Pro device. Internally, Pokit's Android app calls these: <code>SWITCH_MODE_VOLTAGE</code>, <code>SWITCH_MODE_ALL</code> and <code>SWITCH_MODE_CURRENT</code>. </dd>
 <dt>Member <a class="el" href="classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0">StatusServicePrivate::parseStatus</a>  (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</dt>
-<dd><a class="anchor" id="_pokit000011"></a> Pokit API 0.02 says the <code>Status</code> characteristic is 5 bytes. API 1.00 then added an additional byte for <code>Battery Status</code>, for 6 bytes in total. However, Pokit Pro devices return 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit Meter only uses the first 5 bytes - ie <code>Battery Status</code> is not present. </dd>
+<dd><a class="anchor" id="_pokit000012"></a> Pokit API 0.02 says the <code>Status</code> characteristic is 5 bytes. API 1.00 then added an additional byte for <code>Battery Status</code>, for 6 bytes in total. However, Pokit Pro devices return 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit Meter only uses the first 5 bytes - ie <code>Battery Status</code> is not present.</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

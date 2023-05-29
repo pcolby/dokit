@@ -21,6 +21,11 @@ var classStatusService =
       [ "DsoModeSampling", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8098421ff80cec88fe80fd1bd056ee38", null ],
       [ "LoggerModeSampling", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a33c0c04ddb28630380d6e89cc3ef2cca", null ]
     ] ],
+    [ "SwitchPosition", "classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f", [
+      [ "Voltage", "classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1fa4a92fbe41f6463598c39850b8335096c", null ],
+      [ "MultiMode", "classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1fa6295e8a4ca812df79186b50cc61f1f11", null ],
+      [ "HighCurrent", "classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1fa2470ea40cf88a5215231698770d9c489", null ]
+    ] ],
     [ "StatusService", "classStatusService.html#a095254046689e5115ba053c029a2e1b8", null ],
     [ "~StatusService", "classStatusService.html#a6140c2723538587220452d6d4a51f001", null ],
     [ "StatusService", "classStatusService.html#a8c5a28d187cd6cbb61242ff9fef2d25c", null ],
@@ -38,6 +43,7 @@ var classStatusService =
     [ "readStatusCharacteristic", "classStatusService.html#a0410049da4a7ac6a64027c733797c578", null ],
     [ "setDeviceName", "classStatusService.html#ada280bc54493f85e6855a2534bf2a02d", null ],
     [ "status", "classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7", null ],
-    [ "toString", "classStatusService.html#a5b3ed7cd72ea54ba07f8927ff2cb7178", null ],
-    [ "toString", "classStatusService.html#aac79e97cb114be25b2a6771d915f132d", null ]
+    [ "toString", "classStatusService.html#aab6278d4fe2bedc916fc3d96641eaa30", null ],
+    [ "toString", "classStatusService.html#aac79e97cb114be25b2a6771d915f132d", null ],
+    [ "toString", "classStatusService.html#a619989ef8ed6bb9e91c1326d911e23c9", null ]
 ];

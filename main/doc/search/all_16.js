@@ -30,9 +30,9 @@ var searchData=
   ['verbosity_27',['verbosity',['https://doc.qt.io/qt-5/qdebug.html#verbosity',1,'QDebug::verbosity(int verbosityLevel)'],['https://doc.qt.io/qt-5/qdebug.html#verbosity-1',1,'QDebug::verbosity() const const']]],
   ['verbositylevel_28',['VerbosityLevel',['https://doc.qt.io/qt-5/qdebug.html#VerbosityLevel-enum',1,'QDebug']]],
   ['verpattern_29',['VerPattern',['https://doc.qt.io/qt-5/qt.html#BrushStyle-enum',1,'Qt']]],
-  ['version_30',['Version',['https://doc.qt.io/qt-5/quuid.html#Version-enum',1,'QUuid']]],
-  ['version_31',['version',['https://doc.qt.io/qt-5/qdatastream.html#version',1,'QDataStream::version()'],['https://doc.qt.io/qt-5/qlibraryinfo.html#version',1,'QLibraryInfo::version()'],['https://doc.qt.io/qt-5/quuid.html#version',1,'QUuid::version()']]],
-  ['version_32',['Version',['https://doc.qt.io/qt-5/qdatastream.html#Version-enum',1,'QDataStream']]],
+  ['version_30',['version',['https://doc.qt.io/qt-5/qlibraryinfo.html#version',1,'QLibraryInfo::version()'],['https://doc.qt.io/qt-5/quuid.html#version',1,'QUuid::version()']]],
+  ['version_31',['Version',['https://doc.qt.io/qt-5/qdatastream.html#Version-enum',1,'QDataStream::Version'],['https://doc.qt.io/qt-5/quuid.html#Version-enum',1,'QUuid::Version']]],
+  ['version_32',['version',['https://doc.qt.io/qt-5/qdatastream.html#version',1,'QDataStream']]],
   ['vertical_33',['Vertical',['https://doc.qt.io/qt-5/qchar.html#Decomposition-enum',1,'QChar::Vertical'],['https://doc.qt.io/qt-5/qt.html#Orientation-enum',1,'Qt::Vertical']]],
   ['verticalsorthint_34',['VerticalSortHint',['https://doc.qt.io/qt-5/qabstractitemmodel.html#LayoutChangeHint-enum',1,'QAbstractItemModel']]],
   ['verunknown_35',['VerUnknown',['https://doc.qt.io/qt-5/quuid.html#Version-enum',1,'QUuid']]],
@@ -51,7 +51,8 @@ var searchData=
   ['void_48',['Void',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['voidstar_49',['VoidStar',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['volapuk_50',['Volapuk',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
-  ['voltagerange_51',['VoltageRange',['../namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfee',1,'PokitMeter::VoltageRange'],['../namespacePokitPro.html#a68ddba45fec73a3391f241f2da38e78a',1,'PokitPro::VoltageRange']]],
-  ['vsprintf_52',['vsprintf',['https://doc.qt.io/qt-5/qstring-obsolete.html#vsprintf',1,'QString']]],
-  ['vunjo_53',['Vunjo',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]]
+  ['voltage_51',['Voltage',['../classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1fa4a92fbe41f6463598c39850b8335096c',1,'StatusService']]],
+  ['voltagerange_52',['VoltageRange',['../namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfee',1,'PokitMeter::VoltageRange'],['../namespacePokitPro.html#a68ddba45fec73a3391f241f2da38e78a',1,'PokitPro::VoltageRange']]],
+  ['vsprintf_53',['vsprintf',['https://doc.qt.io/qt-5/qstring-obsolete.html#vsprintf',1,'QString']]],
+  ['vunjo_54',['Vunjo',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]]
 ];

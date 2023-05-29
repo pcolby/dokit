@@ -117,11 +117,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af2a1fab33ca1e643988bc9976a44940d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68">BatteryStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structStatusService_1_1Status.html#af2a1fab33ca1e643988bc9976a44940d">batteryStatus</a></td></tr>
 <tr class="memdesc:af2a1fab33ca1e643988bc9976a44940d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical interpretation the battery voltage level.  <br /></td></tr>
 <tr class="separator:af2a1fab33ca1e643988bc9976a44940d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd171243d9bcdfb3c2e354ffb28b3f88"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f">SwitchPosition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structStatusService_1_1Status.html#afd171243d9bcdfb3c2e354ffb28b3f88">switchPosition</a></td></tr>
+<tr class="memdesc:afd171243d9bcdfb3c2e354ffb28b3f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the Pokit device's physical mode switch.  <br /></td></tr>
+<tr class="separator:afd171243d9bcdfb3c2e354ffb28b3f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Attributes included in the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> characterstic. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00087">87</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00097">97</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="af2a1fab33ca1e643988bc9976a44940d" name="af2a1fab33ca1e643988bc9976a44940d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af2a1fab33ca1e643988bc9976a44940d">&#9670;&#160;</a></span>batteryStatus</h2>
@@ -137,7 +140,7 @@ Public Attributes</h2></td></tr>
 
 <p>Logical interpretation the battery voltage level. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00090">90</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00100">100</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::outputDeviceStatus()</a>.</p>
 
@@ -157,7 +160,7 @@ Public Attributes</h2></td></tr>
 
 <p>Current battery voltage level. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00089">89</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00099">99</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::outputDeviceStatus()</a>.</p>
 
@@ -177,9 +180,27 @@ Public Attributes</h2></td></tr>
 
 <p>Current Pokit device status. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00088">88</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00098">98</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::outputDeviceStatus()</a>, and <a class="el" href="statusservice_8cpp_source.html#l00375">StatusServicePrivate::parseStatus()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="statuscommand_8cpp_source.html#l00089">StatusCommand::outputDeviceStatus()</a>, and <a class="el" href="statusservice_8cpp_source.html#l00396">StatusServicePrivate::parseStatus()</a>.</p>
+
+</div>
+</div>
+<a id="afd171243d9bcdfb3c2e354ffb28b3f88" name="afd171243d9bcdfb3c2e354ffb28b3f88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd171243d9bcdfb3c2e354ffb28b3f88">&#9670;&#160;</a></span>switchPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt;<a class="el" href="classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f">SwitchPosition</a>&gt; StatusService::Status::switchPosition</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Position of the Pokit device's physical mode switch. </p>
+
+<p class="definition">Definition at line <a class="el" href="statusservice_8h_source.html#l00101">101</a> of file <a class="el" href="statusservice_8h_source.html">statusservice.h</a>.</p>
 
 </div>
 </div>

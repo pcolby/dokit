@@ -1,5 +1,10 @@
 var NAVTREEINDEX9 =
 {
+"structDataLoggerService_1_1Metadata.html#a5e40e39f2d21dbf609403f111537b2b0":[4,0,6,1,1],
+"structDataLoggerService_1_1Metadata.html#a67edabb3d6dbd9c9d425bd825f72d23b":[4,0,6,1,5],
+"structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571":[4,0,6,1,3],
+"structDataLoggerService_1_1Metadata.html#a996d2701f1571bbbe51da18d2be3e2b8":[4,0,6,1,4],
+"structDataLoggerService_1_1Metadata.html#a9cc636b875d630cf33d3ddead54e27d2":[4,0,6,1,6],
 "structDataLoggerService_1_1Metadata.html#ac976c83a69d67fbd287d9ae406582d81":[4,0,6,1,0],
 "structDataLoggerService_1_1Settings.html":[4,0,6,2],
 "structDataLoggerService_1_1Settings.html#a4bde857f31f27e5574b9d204c7a5aa48":[4,0,6,2,4],
@@ -72,5 +77,6 @@ var NAVTREEINDEX9 =
 "structStatusService_1_1Status.html":[4,0,32,3],
 "structStatusService_1_1Status.html#a34d5f71da1e356a5f8da381f4b715b46":[4,0,32,3,1],
 "structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11":[4,0,32,3,2],
-"structStatusService_1_1Status.html#af2a1fab33ca1e643988bc9976a44940d":[4,0,32,3,0]
+"structStatusService_1_1Status.html#af2a1fab33ca1e643988bc9976a44940d":[4,0,32,3,0],
+"structStatusService_1_1Status.html#afd171243d9bcdfb3c2e354ffb28b3f88":[4,0,32,3,3]
 };
