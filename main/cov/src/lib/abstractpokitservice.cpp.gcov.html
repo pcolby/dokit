@@ -459,19 +459,19 @@
 <a name="397"><span class="lineNum">     397 </span>            :  * value; ie this funcion can be used to simply warn if \a data is too big, or it can be used to</a>
 <a name="398"><span class="lineNum">     398 </span>            :  * failed (return `false`) in that case.</a>
 <a name="399"><span class="lineNum">     399 </span>            :  */</a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">        612 : bool AbstractPokitServicePrivate::checkSize(const QString &amp;label, const QByteArray &amp;data,</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">        666 : bool AbstractPokitServicePrivate::checkSize(const QString &amp;label, const QByteArray &amp;data,</span></a>
 <a name="401"><span class="lineNum">     401 </span>            :                                             const int minSize, const int maxSize,</a>
 <a name="402"><span class="lineNum">     402 </span>            :                                             const bool failOnMax)</a>
 <a name="403"><span class="lineNum">     403 </span>            : {</a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        612 :     if (data.size() &lt; minSize) {</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        666 :     if (data.size() &lt; minSize) {</span></a>
 <a name="405"><span class="lineNum">     405 </span><span class="lineCov">        468 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 requires %n byte/s, but only %2 present: %3&quot;, nullptr, minSize)</span></a>
 <a name="406"><span class="lineNum">     406 </span><span class="lineCov">        468 :             .arg(label).arg(data.size()).arg(toHexString(data));</span></a>
 <a name="407"><span class="lineNum">     407 </span><span class="lineCov">        234 :         return false;</span></a>
 <a name="408"><span class="lineNum">     408 </span>            :     }</a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">        378 :     if ((maxSize &gt;= 0) &amp;&amp; (data.size() &gt; maxSize)) {</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        350 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %n extraneous byte/s: %2&quot;, nullptr, data.size()-maxSize)</span></a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">        217 :             .arg(label, toHexString(data.mid(maxSize)));</span></a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">        126 :         return (!failOnMax);</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">        432 :     if ((maxSize &gt;= 0) &amp;&amp; (data.size() &gt; maxSize)) {</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        500 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %n extraneous byte/s: %2&quot;, nullptr, data.size()-maxSize)</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">        310 :             .arg(label, toHexString(data.mid(maxSize)));</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">        180 :         return (!failOnMax);</span></a>
 <a name="413"><span class="lineNum">     413 </span>            :     }</a>
 <a name="414"><span class="lineNum">     414 </span>            :     return true;</a>
 <a name="415"><span class="lineNum">     415 </span>            : }</a>
@@ -484,13 +484,13 @@
 <a name="422"><span class="lineNum">     422 </span>            :  * toHex(QBytArray(&quot;\x1\x2\x3\x4\x5\x6&quot;, 4); // &quot;0x01,02,...,05,06&quot;</a>
 <a name="423"><span class="lineNum">     423 </span>            :  * ```</a>
 <a name="424"><span class="lineNum">     424 </span>            :  */</a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">        504 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">        558 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></a>
 <a name="426"><span class="lineNum">     426 </span>            : {</a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        112 :     return (data.size() &lt;= maxSize)</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1318 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        124 :     return (data.size() &lt;= maxSize)</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1474 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></a>
 <a name="429"><span class="lineNum">     429 </span><span class="lineCov">         54 :         : QString::fromLatin1(&quot;0x%1,...,%2&quot;).arg(</span></a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        570 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">       2376 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        624 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">       2628 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></a>
 <a name="432"><span class="lineNum">     432 </span>            : }</a>
 <a name="433"><span class="lineNum">     433 </span>            : </a>
 <a name="434"><span class="lineNum">     434 </span>            : /*!</a>
