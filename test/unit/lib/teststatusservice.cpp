@@ -12,6 +12,7 @@ Q_DECLARE_METATYPE(StatusService::DeviceCharacteristics)
 Q_DECLARE_METATYPE(StatusService::DeviceStatus)
 Q_DECLARE_METATYPE(StatusService::BatteryStatus)
 Q_DECLARE_METATYPE(StatusService::Status)
+Q_DECLARE_METATYPE(StatusService::SwitchPosition)
 
 // Serialiser for QCOMPARE to output QBluetoothAddress objects on test failures.
 char *toString(const QBluetoothAddress &address)
