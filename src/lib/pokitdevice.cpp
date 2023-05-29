@@ -213,6 +213,10 @@ QString PokitDevice::serviceToString(const QBluetoothUuid &uuid)
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::DeviceInformation) },
         { GenericAccessService::serviceUuid,
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess) },
+        // The next two are not specifically supported, but strings provided for helpful debug output.
+        { QBluetoothUuid::ServiceClassUuid::GenericAttribute,
+            QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAttribute) },
+        { QBluetoothUuid(QStringLiteral("1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0")), tr("BlueGiga OTA Service") },
     };
     return hash.value(uuid);
 }
