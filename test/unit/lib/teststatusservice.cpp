@@ -296,6 +296,16 @@ void TestStatusService::parseStatus_data()
             StatusService::BatteryStatus::Good,
             StatusService::SwitchPosition::HighCurrent,
         };
+
+    /// \todo Real samepls for testing.
+    // 0x00,e5,d0,82,40,01,01,01 Charging
+    // 0x00,71,3d,86,40,01,01,01 Charging
+    // 0x00,a2,45,86,40,01,01,01 Charging
+    // 0x00,a2,45,86,40,01,01,01 Charging
+    // 0x00,04,56,86,40,01,01,01 Charging
+    // 0x00,04,56,86,40,01,01,02 Charged
+    // 0x00,37,89,85,40,01,01,02 Charged
+    // 0x00,37,89,85,40,01,01,00 Discarging
 }
 
 void TestStatusService::parseStatus()

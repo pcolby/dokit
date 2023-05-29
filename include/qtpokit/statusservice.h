@@ -48,6 +48,12 @@ public:
 
         /// UUID of the `Pokit Status` service's `Flash LED` characterstic.
         static inline const QBluetoothUuid flashLed { QStringLiteral("ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e") };
+
+        /// \todo UUID of the `Pokit Status` service's (undocumented) `Torch` characterstic.
+        /// aaf3f6d5-43d4-4a83-9510-dff3d858d4cc Torch - one byte, 0x00 off, 0x01 on.
+
+        /// \todo UUID of the `Pokit Status` service's (undocumented) `Button Press` characterstic.
+        /// 8fe5b5a9-b5b4-4a7b-8ff2-87224b970f89 - two bytes, unknown layout thus far.
     };
 
     /// Attributes included in the `Device Characteristics` characterstic.
@@ -92,6 +98,14 @@ public:
         HighCurrent = 2, ///< Device is switched to High Current position.
     };
     static QString toString(const StatusService::SwitchPosition &position);
+
+    /// Values supported by the (undocumented) `Charging Statue` attribute of the `Status` characteristic.
+    enum class ChargingStatus : quint8 {
+        Discharging = 0,
+        Charging    = 1,
+        Charged     = 2
+    };
+    static QString toString(const StatusService::ChargingStatus &status);
 
     /// Attributes included in the `Status` characterstic.
     struct Status {
