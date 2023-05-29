@@ -14,6 +14,9 @@ private slots:
     void toString_BatteryStatus_data();
     void toString_BatteryStatus();
 
+    void toString_SwitchPosition_data();
+    void toString_SwitchPosition();
+
     void readCharacteristics();
     void readDeviceCharacteristics();
     void readStatusCharacteristic();

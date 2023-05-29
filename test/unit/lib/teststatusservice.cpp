@@ -19,6 +19,16 @@ char *toString(const QBluetoothAddress &address)
     return qstrdup(("QBluetoothAddress(" + address.toString().toLocal8Bit() + ")").constData());
 }
 
+// Serialiser for QCOMPARE to output optional SwitchPosition values on test failures.
+char *toString(const std::optional<StatusService::SwitchPosition> &position)
+{
+    if (position.has_value()) {
+        return qstrdup(StatusService::toString(*position).toLocal8Bit().constData());
+    } else {
+        return qstrdup("nullopt");
+    }
+}
+
 void TestStatusService::toString_DeviceStatus_data()
 {
     QTest::addColumn<StatusService::DeviceStatus>("status");
@@ -66,6 +76,27 @@ void TestStatusService::toString_BatteryStatus()
     QFETCH(StatusService::BatteryStatus, status);
     QFETCH(QString, expected);
     QCOMPARE(StatusService::toString(status), expected);
+}
+
+void TestStatusService::toString_SwitchPosition_data()
+{
+    QTest::addColumn<StatusService::SwitchPosition>("position");
+    QTest::addColumn<QString>("expected");
+#define DOKIT_ADD_TEST_ROW(position, expected) \
+    QTest::addRow(#position) << StatusService::SwitchPosition::position << QStringLiteral(expected)
+    DOKIT_ADD_TEST_ROW(Voltage,     "Voltage");
+    DOKIT_ADD_TEST_ROW(MultiMode,   "MultiMode");
+    DOKIT_ADD_TEST_ROW(HighCurrent, "HighCurrent");
+#undef DOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (StatusService::SwitchPosition)3    << QString();
+    QTest::addRow("max")     << (StatusService::SwitchPosition)0xFF << QString();
+}
+
+void TestStatusService::toString_SwitchPosition()
+{
+    QFETCH(StatusService::SwitchPosition, position);
+    QFETCH(QString, expected);
+    QCOMPARE(StatusService::toString(position), expected);
 }
 
 void TestStatusService::readCharacteristics()
@@ -202,6 +233,7 @@ void TestStatusService::parseStatus_data()
            std::numeric_limits<float>::quiet_NaN(),
            static_cast<StatusService::BatteryStatus>
                (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
+           std::nullopt,
         };
 
     // Status must be at least 5 bytes to be valid / parsable.
@@ -212,6 +244,7 @@ void TestStatusService::parseStatus_data()
        std::numeric_limits<float>::quiet_NaN(),
        static_cast<StatusService::BatteryStatus>
            (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
+       std::nullopt,
     };
 
 
@@ -223,6 +256,7 @@ void TestStatusService::parseStatus_data()
            StatusService::DeviceStatus::Idle, 2.797311068f,
            static_cast<StatusService::BatteryStatus>
                (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
+           std::nullopt,
         };
 
     // Sample from a real Pokit Pro device; note is has 4 extra unknown bytes. Note, this has 2 more
@@ -231,7 +265,35 @@ void TestStatusService::parseStatus_data()
         << QByteArray("\x02\x64\x3b\x83\x40\x01\x00\x00", 8)
         << StatusService::Status{
            StatusService::DeviceStatus::MultimeterAcVoltage, 4.100999832f,
-           StatusService::BatteryStatus::Good
+           StatusService::BatteryStatus::Good,
+           StatusService::SwitchPosition::Voltage,
+        };
+
+    // Sample from a real Pokit Pro device, with physical switch in 'V' (voltage) position.
+    QTest::addRow("PokitPro-V")
+        << QByteArray("\x00\x48\xe1\x82\x40\x01\x00\x00", 8)
+        << StatusService::Status{
+            StatusService::DeviceStatus::Idle, 4.09f,
+            StatusService::BatteryStatus::Good,
+            StatusService::SwitchPosition::Voltage,
+        };
+
+    // Sample from a real Pokit Pro device, with physical switch in the middle position.
+    QTest::addRow("PokitPro-Multi")
+        << QByteArray("\x00\x48\xe1\x82\x40\x01\x01\x00", 8)
+        << StatusService::Status{
+            StatusService::DeviceStatus::Idle, 4.09f,
+            StatusService::BatteryStatus::Good,
+            StatusService::SwitchPosition::MultiMode,
+        };
+
+    // Sample from a real Pokit Pro device, with physical switch in 'A' (high current) position.
+    QTest::addRow("PokitPro-A")
+        << QByteArray("\x00\x48\xe1\x82\x40\x01\x02\x00", 8)
+        << StatusService::Status{
+            StatusService::DeviceStatus::Idle, 4.09f,
+            StatusService::BatteryStatus::Good,
+            StatusService::SwitchPosition::HighCurrent,
         };
 }
 
@@ -261,6 +323,7 @@ void TestStatusService::parseStatus()
     QCOMPARE(actual.batteryVoltage, expected.batteryVoltage);
     #endif
     QCOMPARE(actual.batteryStatus,  expected.batteryStatus);
+    QCOMPARE(actual.switchPosition, expected.switchPosition);
 }
 
 void TestStatusService::serviceDiscovered()

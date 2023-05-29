@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Detect [Pokit Pro]'s physical mode switch position (not documented by Pokit).
+
 ### Changed
 
 - Upgrade to Qt 6.5.1.

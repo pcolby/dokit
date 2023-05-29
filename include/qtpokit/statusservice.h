@@ -15,6 +15,8 @@
 #include <QBluetoothUuid>
 #include <QVersionNumber>
 
+#include <optional>
+
 QTPOKIT_BEGIN_NAMESPACE
 
 class StatusServicePrivate;
@@ -81,14 +83,22 @@ public:
         Low = 0,  ///< Low (replace battery).
         Good = 1, ///< Good.
     };
-    static QString toString(const StatusService::BatteryStatus &label);
+    static QString toString(const StatusService::BatteryStatus &status);
+
+    /// Values supported by the (undocumented) `Switch Position` attribute of the `Status` characteristic.
+    enum class SwitchPosition : quint8 {
+        Voltage     = 0, ///< Device is switched to Voltage position.
+        MultiMode   = 1, ///< Device is switched to Resistance / Low Current / Capacitance / Diode position.
+        HighCurrent = 2, ///< Device is switched to High Current position.
+    };
+    static QString toString(const StatusService::SwitchPosition &position);
 
     /// Attributes included in the `Status` characterstic.
     struct Status {
         DeviceStatus deviceStatus;   ///< Current Pokit device status.
         float batteryVoltage;        ///< Current battery voltage level.
         BatteryStatus batteryStatus; ///< Logical interpretation the battery voltage level.
-
+        std::optional<SwitchPosition> switchPosition; ///< Position of the Pokit device's physical mode switch.
     };
 
     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

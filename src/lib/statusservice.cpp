@@ -60,6 +60,27 @@ QString StatusService::toString(const StatusService::BatteryStatus &status)
 }
 
 /*!
+ * \cond internal
+ * \enum StatusService::SwitchPosition
+ * \pokitApi These enum values are undocumented, but easily testable with a physical Pokit Pro device.
+ * Internally, Pokit's Android app calls these: `SWITCH_MODE_VOLTAGE`, `SWITCH_MODE_ALL` and `SWITCH_MODE_CURRENT`.
+ * \endcond
+ */
+
+/*!
+ * Returns a string version of the \a position enum label.
+ */
+QString StatusService::toString(const StatusService::SwitchPosition &position)
+{
+    switch (position) {
+    case SwitchPosition::Voltage:     return QLatin1String("Voltage");
+    case SwitchPosition::MultiMode:   return QLatin1String("MultiMode");
+    case SwitchPosition::HighCurrent: return QLatin1String("HighCurrent");
+    }
+    return QString();
+}
+
+/*!
  * Constructs a new Pokit service with \a parent.
  */
 StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)
@@ -191,7 +212,7 @@ StatusService::Status StatusService::status() const
         d->getCharacteristic(CharacteristicUuids::status);
     return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())
         : StatusService::Status{ DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(),
-                                 BatteryStatus::Low };
+                                 BatteryStatus::Low, std::nullopt };
 }
 
 /*!
@@ -380,6 +401,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
         std::numeric_limits<float>::quiet_NaN(),
         static_cast<StatusService::BatteryStatus>
             (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
+        std::nullopt,
     };
 
     /*!
@@ -387,6 +409,9 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
      * additional byte for `Battery Status`, for 6 bytes in total. However, Pokit Pro devices return
      * 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit
      * Meter only uses the first 5 bytes - ie `Battery Status` is not present.
+     *
+     * Update: it appears that the first of those 2 extra bytes is used to indicate the phycical switch
+     * position.
      */
 
     if (!checkSize(QLatin1String("Status"), value, 5, 6)) {
@@ -398,11 +423,18 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     if (value.size() >= 6) { // Battery Status added to Pokit API docs v1.00.
         status.batteryStatus = static_cast<StatusService::BatteryStatus>(value.at(5));
     }
+    if (value.size() >= 7) { // Switch Position - as yet, undocumented by Pokit Innovations.
+        status.switchPosition = static_cast<StatusService::SwitchPosition>(value.at(6));
+    }
     qCDebug(lc).noquote() << tr("Device status:   %1 (%2)")
         .arg((quint8)status.deviceStatus).arg(StatusService::toString(status.deviceStatus));
     qCDebug(lc).noquote() << tr("Battery voltage: %1 volts").arg(status.batteryVoltage);
     qCDebug(lc).noquote() << tr("Battery status:  %1 (%2)")
         .arg((quint8)status.batteryStatus).arg(StatusService::toString(status.batteryStatus));
+    if (status.switchPosition) {
+        qCDebug(lc).noquote() << tr("Switch position: %1 (%2)")
+            .arg((quint8)*status.switchPosition).arg(StatusService::toString(*status.switchPosition));
+    }
     return status;
 }
 
