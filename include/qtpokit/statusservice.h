@@ -49,11 +49,12 @@ public:
         /// UUID of the `Pokit Status` service's `Flash LED` characterstic.
         static inline const QBluetoothUuid flashLed { QStringLiteral("ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e") };
 
-        /// \todo UUID of the `Pokit Status` service's (undocumented) `Torch` characterstic.
-        /// aaf3f6d5-43d4-4a83-9510-dff3d858d4cc Torch - one byte, 0x00 off, 0x01 on.
+        /// UUID of the `Pokit Status` service's (undocumented) `Torch` characterstic.
+        static inline const QBluetoothUuid torch { QStringLiteral("aaf3f6d5-43d4-4a83-9510-dff3d858d4cc") };
+        ///  Torch - one byte, 0x00 off, 0x01 on.
 
-        /// \todo UUID of the `Pokit Status` service's (undocumented) `Button Press` characterstic.
-        /// 8fe5b5a9-b5b4-4a7b-8ff2-87224b970f89 - two bytes, unknown layout thus far.
+        /// UUID of the `Pokit Status` service's (undocumented) `Button Press` characterstic.
+        static inline const QBluetoothUuid buttonPress { QStringLiteral("8fe5b5a9-b5b4-4a7b-8ff2-87224b970f89") };
     };
 
     /// Attributes included in the `Device Characteristics` characterstic.
@@ -116,6 +117,21 @@ public:
         std::optional<ChargingStatus> chargingStatus; ///< Current charging status, if supported by the device.
     };
 
+    /// Values supported by the single byte of the attribute of the (undocumented) `Torch` characteristic.
+    enum class TorchStatus : quint8 {
+        Off = 0, ///< Torch is off.
+        On  = 1, ///< Torch is on.
+    };
+    static QString toString(const StatusService::TorchStatus &status);
+
+    /// Values supported by the second byte of the attribute of the (undocumented) `Button Press` characteristic.
+    enum class ButtonStatus : quint8 {
+        Released = 0, ///< Button was released.
+        Pressed  = 1, ///< Button was pressed.
+        Held     = 2, ///< Button was held down (for typically 1,500ms).
+    };
+    static QString toString(const StatusService::ButtonStatus &status);
+
     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
     ~StatusService() override;
 
@@ -123,12 +139,16 @@ public:
     bool readDeviceCharacteristics();
     bool readStatusCharacteristic();
     bool readNameCharacteristic();
+    bool readTorchCharacteristic();
+    bool readButtonPressCharacteristic();
 
     // Device Characteristics characteristic (BLE read only).
     DeviceCharacteristics deviceCharacteristics() const;
 
     // Status characteristic (Read only).
     Status status() const;
+    /// \todo bool enableStatusNotifications();
+    /// \todo bool disableStatusNotifications();
 
     // Device Name characteristic (BLE read/write).
     QString deviceName() const;
@@ -137,12 +157,25 @@ public:
     // Flash LED characteristic (BLE write only).
     bool flashLed();
 
+    // Undocumented Torch characteristic (BLE read, and possibly write?).
+    TorchStatus torchStatus();
+    bool setTorchStatus(const TorchStatus status); /// \todo Test write.
+    /// \todo bool enableTorchNotifications();
+    /// \todo bool disableTorchNotifications();
+
+    // Undocumented Button Press characteristic (presumably BLE read only).
+    std::pair<quint8, ButtonStatus> buttonPress();
+    /// \todo bool enableButtonPressedNotifications();
+    /// \todo bool disableButtonPressedNotifications();
+
 signals:
     void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &characteristics);
     void deviceNameRead(const QString &deviceName);
     void deviceNameWritten();
     void deviceStatusRead(const StatusService::Status &status);
     void deviceLedFlashed();
+    void torchStatusRead(const TorchStatus &status);
+    void buttonPressRead(const quint8 &unknown, const ButtonStatus status); /// \todo What is the \c unknown byte here?
 
 protected:
     /// \cond internal

@@ -8,12 +8,14 @@
 
 #include <QRegularExpression>
 
-Q_DECLARE_METATYPE(StatusService::ChargingStatus)
 Q_DECLARE_METATYPE(StatusService::BatteryStatus)
+Q_DECLARE_METATYPE(StatusService::ButtonStatus)
+Q_DECLARE_METATYPE(StatusService::ChargingStatus)
 Q_DECLARE_METATYPE(StatusService::DeviceCharacteristics)
 Q_DECLARE_METATYPE(StatusService::DeviceStatus)
 Q_DECLARE_METATYPE(StatusService::Status)
 Q_DECLARE_METATYPE(StatusService::SwitchPosition)
+Q_DECLARE_METATYPE(StatusService::TorchStatus)
 
 // Serialiser for QCOMPARE to output QBluetoothAddress objects on test failures.
 char *toString(const QBluetoothAddress &address)
@@ -84,12 +86,12 @@ void TestStatusService::toString_SwitchPosition_data()
 {
     QTest::addColumn<StatusService::SwitchPosition>("position");
     QTest::addColumn<QString>("expected");
-#define DOKIT_ADD_TEST_ROW(position, expected) \
-    QTest::addRow(#position) << StatusService::SwitchPosition::position << QStringLiteral(expected)
+    #define DOKIT_ADD_TEST_ROW(position, expected) \
+        QTest::addRow(#position) << StatusService::SwitchPosition::position << QStringLiteral(expected)
     DOKIT_ADD_TEST_ROW(Voltage,     "Voltage");
     DOKIT_ADD_TEST_ROW(MultiMode,   "MultiMode");
     DOKIT_ADD_TEST_ROW(HighCurrent, "HighCurrent");
-#undef DOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
     QTest::addRow("invalid") << (StatusService::SwitchPosition)3    << QString();
     QTest::addRow("max")     << (StatusService::SwitchPosition)0xFF << QString();
 }
@@ -105,12 +107,12 @@ void TestStatusService::toString_ChargingStatus_data()
 {
     QTest::addColumn<StatusService::ChargingStatus>("status");
     QTest::addColumn<QString>("expected");
-#define DOKIT_ADD_TEST_ROW(status, expected) \
-    QTest::addRow(#status) << StatusService::ChargingStatus::status << QStringLiteral(expected)
+    #define DOKIT_ADD_TEST_ROW(status, expected) \
+        QTest::addRow(#status) << StatusService::ChargingStatus::status << QStringLiteral(expected)
     DOKIT_ADD_TEST_ROW(Discharging, "Discharging");
     DOKIT_ADD_TEST_ROW(Charging,    "Charging");
     DOKIT_ADD_TEST_ROW(Charged,     "Charged");
-#undef DOKIT_ADD_TEST_ROW
+    #undef DOKIT_ADD_TEST_ROW
     QTest::addRow("invalid") << (StatusService::ChargingStatus)3    << QString();
     QTest::addRow("max")     << (StatusService::ChargingStatus)0xFF << QString();
 }
@@ -118,6 +120,47 @@ void TestStatusService::toString_ChargingStatus_data()
 void TestStatusService::toString_ChargingStatus()
 {
     QFETCH(StatusService::ChargingStatus, status);
+    QFETCH(QString, expected);
+    QCOMPARE(StatusService::toString(status), expected);
+}
+
+void TestStatusService::toString_TorchStatus_data()
+{
+    QTest::addColumn<StatusService::TorchStatus>("status");
+    QTest::addColumn<QString>("expected");
+    #define DOKIT_ADD_TEST_ROW(status, expected) \
+        QTest::addRow(#status) << StatusService::TorchStatus::status << QStringLiteral(expected)
+    DOKIT_ADD_TEST_ROW(Off, "Off");
+    DOKIT_ADD_TEST_ROW(On,  "On");
+    #undef DOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (StatusService::TorchStatus)3    << QString();
+    QTest::addRow("max")     << (StatusService::TorchStatus)0xFF << QString();
+}
+
+void TestStatusService::toString_TorchStatus()
+{
+    QFETCH(StatusService::TorchStatus, status);
+    QFETCH(QString, expected);
+    QCOMPARE(StatusService::toString(status), expected);
+}
+
+void TestStatusService::toString_ButtonStatus_data()
+{
+    QTest::addColumn<StatusService::ButtonStatus>("status");
+    QTest::addColumn<QString>("expected");
+    #define DOKIT_ADD_TEST_ROW(status, expected) \
+        QTest::addRow(#status) << StatusService::ButtonStatus::status << QStringLiteral(expected)
+    DOKIT_ADD_TEST_ROW(Released, "Released");
+    DOKIT_ADD_TEST_ROW(Pressed,  "Pressed");
+    DOKIT_ADD_TEST_ROW(Held,     "Held");
+    #undef DOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (StatusService::ButtonStatus)3    << QString();
+    QTest::addRow("max")     << (StatusService::ButtonStatus)0xFF << QString();
+}
+
+void TestStatusService::toString_ButtonStatus()
+{
+    QFETCH(StatusService::ButtonStatus, status);
     QFETCH(QString, expected);
     QCOMPARE(StatusService::toString(status), expected);
 }
@@ -148,6 +191,20 @@ void TestStatusService::readNameCharacteristic()
     // Verify safe error handling (can't do much else without a Bluetooth device).
     StatusService service(nullptr);
     QVERIFY(!service.readNameCharacteristic());
+}
+
+void TestStatusService::readTorchCharacteristic()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.readTorchCharacteristic());
+}
+
+void TestStatusService::readButtonPressCharacteristic()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.readButtonPressCharacteristic());
 }
 
 void TestStatusService::deviceCharacteristics()

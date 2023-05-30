@@ -94,6 +94,31 @@ QString StatusService::toString(const StatusService::ChargingStatus &status)
 }
 
 /*!
+ * Returns a string version of the \a status enum label.
+ */
+QString StatusService::toString(const StatusService::TorchStatus &status)
+{
+    switch (status) {
+    case TorchStatus::Off: return QLatin1String("Off");
+    case TorchStatus::On:  return QLatin1String("On");
+    }
+    return QString();
+}
+
+/*!
+ * Returns a string version of the \a status enum label.
+ */
+QString StatusService::toString(const StatusService::ButtonStatus &status)
+{
+    switch (status) {
+    case ButtonStatus::Released: return QLatin1String("Released");
+    case ButtonStatus::Pressed:  return QLatin1String("Pressed");
+    case ButtonStatus::Held:     return QLatin1String("Held");
+    }
+    return QString();
+}
+
+/*!
  * Constructs a new Pokit service with \a parent.
  */
 StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)
@@ -127,7 +152,11 @@ bool StatusService::readCharacteristics()
     const bool r1 = readDeviceCharacteristics();
     const bool r2 = readStatusCharacteristic();
     const bool r3 = readNameCharacteristic();
-    return (r1 && r2 && r3);
+    const bool r4 = ((service() != nullptr) && (service()->characteristic(CharacteristicUuids::torch).isValid()))
+        ? readTorchCharacteristic() : true;
+    const bool r5 = ((service() != nullptr) && (service()->characteristic(CharacteristicUuids::buttonPress).isValid()))
+        ? readButtonPressCharacteristic() : true;
+    return (r1 && r2 && r3 && r4 && r5);
 }
 
 /*!
@@ -173,6 +202,36 @@ bool StatusService::readNameCharacteristic()
 {
     Q_D(StatusService);
     return d->readCharacteristic(CharacteristicUuids::name);
+}
+
+/*!
+ * Read the `Status` service's (undocumented) `Torch` characteristic.
+ *
+ * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * underlying controller it not yet connected to the Pokit device, or the device's services have
+ * not yet been discovered).
+ *
+ * Emits torchStatusRead() if/when the characteristic has been read successfully.
+ */
+bool StatusService::readTorchCharacteristic()
+{
+    Q_D(StatusService);
+    return d->readCharacteristic(CharacteristicUuids::torch);
+}
+
+/*!
+ * Read the `Status` service's (undocumented) `Button Press` characteristic.
+ *
+ * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * underlying controller it not yet connected to the Pokit device, or the device's services have
+ * not yet been discovered).
+ *
+ * Emits buttonPressRead() if/when the characteristic has been read successfully.
+ */
+bool StatusService::readButtonPressCharacteristic()
+{
+    Q_D(StatusService);
+    return d->readCharacteristic(CharacteristicUuids::buttonPress);
 }
 
 /*!
@@ -304,6 +363,51 @@ bool StatusService::flashLed()
 }
 
 /*!
+ * Returns the most recent value of the `Status` services's `Torch` characteristic.
+ *
+ * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
+ * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the
+ * result is undefined.
+ */
+StatusService::TorchStatus StatusService::torchStatus()
+{
+    Q_ASSERT_X(false, "StatusService::torchStatus", "Not implemented"); ///< \todo
+    return TorchStatus::Off;
+}
+
+/*!
+ * Set the Pokit device's torch to \a status.
+ *
+ * Returns `true` if the request was successfully queued, `false` otherwise.
+ *
+ * Emits torchStatusWritten() if/when the LED has flashed successfully.
+ *
+ * \note This operation is only supported by Pokit Pro devices, and not Pokit Meter devices.
+ *
+ * \todo Test if this BLE characteristic is writable (I suspect it is, given the Android app's ability),
+ * and if so, create the torchStatusWritten signal. Otherwise remove this function.
+ */
+bool StatusService::setTorchStatus(const StatusService::TorchStatus status)
+{
+    Q_ASSERT_X(false, "StatusService::setTorchStatus", "Not implemented"); ///< \todo
+    Q_UNUSED(status)
+    return false;
+}
+
+/*!
+ * Returns the most recent value of the `Status` services's `Button Press` characteristic.
+ *
+ * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
+ * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the
+ * result is undefined.
+ */
+std::pair<quint8, StatusService::ButtonStatus> StatusService::buttonPress()
+{
+    Q_ASSERT_X(false, "StatusService::buttonPress", "Not implemented"); ///< \todo
+    return std::make_pair(0xFF, StatusService::ButtonStatus::Released);
+}
+
+/*!
  * \fn StatusService::deviceCharacteristicsRead
  *
  * This signal is emitted when the `Device Characteristics` characteristic has been read
@@ -341,6 +445,22 @@ bool StatusService::flashLed()
  *
  * This signal is emitted when device's LED has flashed in response to a write of the `Flash LED`
  * characteristic.
+ */
+
+/*!
+ * \fn StatusService::torchStatusRead
+ *
+ * This signal is emitted when the `Torch` characteristic has been read successfully.
+ *
+ * \see readTorchCharacteristic
+ */
+
+/*!
+ * \fn StatusService::buttonPressRead
+ *
+ * This signal is emitted when the `Button Press` characteristic has been read successfully.
+ *
+ * \see readButtonPressCharacteristic
  */
 
 /*!
@@ -506,6 +626,26 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {
         qCWarning(lc).noquote() << tr("Flash LED characteristic is write-only, but somehow read")
             << serviceUuid << characteristic.name() << characteristic.uuid();
+        return;
+    }
+
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {
+        if (!checkSize(QLatin1String("Torch"), value, 1, 1)) {
+            return;
+        }
+        const StatusService::TorchStatus status = static_cast<StatusService::TorchStatus>(value.at(0));
+        qCDebug(lc).noquote() << tr("Torch status:  %1 (%2)").arg((quint8)status).arg(StatusService::toString(status));
+        emit q->torchStatusRead(status);
+        return;
+    }
+
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::buttonPress) {
+        if (!checkSize(QLatin1String("Torch"), value, 2, 2)) {
+            return;
+        }
+        const StatusService::ButtonStatus status = static_cast<StatusService::ButtonStatus>(value.at(1));
+        qCDebug(lc).noquote() << tr("Button status:  %1 (%2)").arg((quint8)status).arg(StatusService::toString(status));
+        emit q->buttonPressRead(value.at(0), status);
         return;
     }
 

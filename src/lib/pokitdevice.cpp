@@ -247,6 +247,8 @@ QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
         { StatusService::CharacteristicUuids::flashLed,              tr("Flash LED") },
         { StatusService::CharacteristicUuids::name,                  tr("Name") },
         { StatusService::CharacteristicUuids::status,                tr("Status") },
+        { StatusService::CharacteristicUuids::torch,                 tr("Torch") },
+        { StatusService::CharacteristicUuids::buttonPress,           tr("Button Press") },
 
         { DeviceInfoService::CharacteristicUuids::firmwareRevision,
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::FirmwareRevisionString) },

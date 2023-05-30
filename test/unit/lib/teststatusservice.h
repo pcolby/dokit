@@ -20,10 +20,18 @@ private slots:
     void toString_ChargingStatus_data();
     void toString_ChargingStatus();
 
+    void toString_TorchStatus_data();
+    void toString_TorchStatus();
+
+    void toString_ButtonStatus_data();
+    void toString_ButtonStatus();
+
     void readCharacteristics();
     void readDeviceCharacteristics();
     void readStatusCharacteristic();
     void readNameCharacteristic();
+    void readTorchCharacteristic();
+    void readButtonPressCharacteristic();
 
     void deviceCharacteristics();
 
