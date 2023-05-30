@@ -81,6 +81,19 @@ QString StatusService::toString(const StatusService::SwitchPosition &position)
 }
 
 /*!
+ * Returns a string version of the \a status enum label.
+ */
+QString StatusService::toString(const StatusService::ChargingStatus &status)
+{
+    switch (status) {
+    case ChargingStatus::Discharging: return QLatin1String("Discharging");
+    case ChargingStatus::Charging:    return QLatin1String("Charging");
+    case ChargingStatus::Charged:     return QLatin1String("Charged");
+    }
+    return QString();
+}
+
+/*!
  * Constructs a new Pokit service with \a parent.
  */
 StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)
@@ -212,7 +225,7 @@ StatusService::Status StatusService::status() const
         d->getCharacteristic(CharacteristicUuids::status);
     return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())
         : StatusService::Status{ DeviceStatus::Idle, std::numeric_limits<float>::quiet_NaN(),
-                                 BatteryStatus::Low, std::nullopt };
+                                 BatteryStatus::Low, std::nullopt, std::nullopt };
 }
 
 /*!
@@ -401,7 +414,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
         std::numeric_limits<float>::quiet_NaN(),
         static_cast<StatusService::BatteryStatus>
             (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
-        std::nullopt,
+        std::nullopt, std::nullopt,
     };
 
     /*!
@@ -426,6 +439,9 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     if (value.size() >= 7) { // Switch Position - as yet, undocumented by Pokit Innovations.
         status.switchPosition = static_cast<StatusService::SwitchPosition>(value.at(6));
     }
+    if (value.size() >= 8) { // Switch Position - as yet, undocumented by Pokit Innovations.
+        status.chargingStatus = static_cast<StatusService::ChargingStatus>(value.at(7));
+    }
     qCDebug(lc).noquote() << tr("Device status:   %1 (%2)")
         .arg((quint8)status.deviceStatus).arg(StatusService::toString(status.deviceStatus));
     qCDebug(lc).noquote() << tr("Battery voltage: %1 volts").arg(status.batteryVoltage);
@@ -434,6 +450,10 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     if (status.switchPosition) {
         qCDebug(lc).noquote() << tr("Switch position: %1 (%2)")
             .arg((quint8)*status.switchPosition).arg(StatusService::toString(*status.switchPosition));
+    }
+    if (status.chargingStatus) {
+        qCDebug(lc).noquote() << tr("Charging status: %1 (%2)")
+        .arg((quint8)*status.chargingStatus).arg(StatusService::toString(*status.chargingStatus));
     }
     return status;
 }

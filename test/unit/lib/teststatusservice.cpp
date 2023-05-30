@@ -100,6 +100,27 @@ void TestStatusService::toString_SwitchPosition()
     QCOMPARE(StatusService::toString(position), expected);
 }
 
+void TestStatusService::toString_ChargingStatus_data()
+{
+    QTest::addColumn<StatusService::ChargingStatus>("status");
+    QTest::addColumn<QString>("expected");
+#define DOKIT_ADD_TEST_ROW(status, expected) \
+    QTest::addRow(#status) << StatusService::ChargingStatus::status << QStringLiteral(expected)
+    DOKIT_ADD_TEST_ROW(Discharging, "Discharging");
+    DOKIT_ADD_TEST_ROW(Charging,    "Charging");
+    DOKIT_ADD_TEST_ROW(Charged,     "Charged");
+#undef DOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (StatusService::ChargingStatus)3    << QString();
+    QTest::addRow("max")     << (StatusService::ChargingStatus)0xFF << QString();
+}
+
+void TestStatusService::toString_ChargingStatus()
+{
+    QFETCH(StatusService::ChargingStatus, status);
+    QFETCH(QString, expected);
+    QCOMPARE(StatusService::toString(status), expected);
+}
+
 void TestStatusService::readCharacteristics()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
@@ -234,7 +255,7 @@ void TestStatusService::parseStatus_data()
            std::numeric_limits<float>::quiet_NaN(),
            static_cast<StatusService::BatteryStatus>
                (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
-           std::nullopt,
+           std::nullopt, std::nullopt,
         };
 
     // Status must be at least 5 bytes to be valid / parsable.
@@ -245,9 +266,8 @@ void TestStatusService::parseStatus_data()
        std::numeric_limits<float>::quiet_NaN(),
        static_cast<StatusService::BatteryStatus>
            (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
-       std::nullopt,
+       std::nullopt, std::nullopt,
     };
-
 
     // Sample from a real Pokit Meter device. Note that the battery status is invalid (std::max)
     // because Pokit Meter devices don't report the battery status (legnth is 5, not 6 bytes).
@@ -257,7 +277,7 @@ void TestStatusService::parseStatus_data()
            StatusService::DeviceStatus::Idle, 2.797311068f,
            static_cast<StatusService::BatteryStatus>
                (std::numeric_limits<std::underlying_type_t<StatusService::BatteryStatus>>::max()),
-           std::nullopt,
+           std::nullopt, std::nullopt,
         };
 
     // Sample from a real Pokit Pro device; note is has 4 extra unknown bytes. Note, this has 2 more
@@ -268,6 +288,7 @@ void TestStatusService::parseStatus_data()
            StatusService::DeviceStatus::MultimeterAcVoltage, 4.100999832f,
            StatusService::BatteryStatus::Good,
            StatusService::SwitchPosition::Voltage,
+           StatusService::ChargingStatus::Discharging,
         };
 
     // Sample from a real Pokit Pro device, with physical switch in 'V' (voltage) position.
@@ -277,6 +298,7 @@ void TestStatusService::parseStatus_data()
             StatusService::DeviceStatus::Idle, 4.09f,
             StatusService::BatteryStatus::Good,
             StatusService::SwitchPosition::Voltage,
+            StatusService::ChargingStatus::Discharging,
         };
 
     // Sample from a real Pokit Pro device, with physical switch in the middle position.
@@ -286,6 +308,7 @@ void TestStatusService::parseStatus_data()
             StatusService::DeviceStatus::Idle, 4.09f,
             StatusService::BatteryStatus::Good,
             StatusService::SwitchPosition::MultiMode,
+            StatusService::ChargingStatus::Discharging,
         };
 
     // Sample from a real Pokit Pro device, with physical switch in 'A' (high current) position.
@@ -295,17 +318,68 @@ void TestStatusService::parseStatus_data()
             StatusService::DeviceStatus::Idle, 4.09f,
             StatusService::BatteryStatus::Good,
             StatusService::SwitchPosition::HighCurrent,
+            StatusService::ChargingStatus::Discharging,
         };
 
-    /// \todo Real samepls for testing.
-    // 0x00,e5,d0,82,40,01,01,01 Charging
-    // 0x00,71,3d,86,40,01,01,01 Charging
-    // 0x00,a2,45,86,40,01,01,01 Charging
-    // 0x00,a2,45,86,40,01,01,01 Charging
-    // 0x00,04,56,86,40,01,01,01 Charging
-    // 0x00,04,56,86,40,01,01,02 Charged
-    // 0x00,37,89,85,40,01,01,02 Charged
-    // 0x00,37,89,85,40,01,01,00 Discarging
+    // Sample from a real Pokit Pro device, charging.
+    QTest::addRow("charging-A")
+        << QByteArray("\x00\xe5\xd0\x82\x40\x01\x01\x01", 8)
+        << StatusService::Status{
+               StatusService::DeviceStatus::Idle, 4.088f,
+               StatusService::BatteryStatus::Good,
+               StatusService::SwitchPosition::MultiMode,
+               StatusService::ChargingStatus::Discharging,
+        };
+
+    // Sample from a real Pokit Pro device, charging.
+    QTest::addRow("charging-B")
+        << QByteArray("\x00\xa2\x45\x86\x40\x01\x01\x01", 8)
+        << StatusService::Status{
+               StatusService::DeviceStatus::Idle, 4.196f,
+               StatusService::BatteryStatus::Good,
+               StatusService::SwitchPosition::MultiMode,
+               StatusService::ChargingStatus::Discharging,
+        };
+
+    // Sample from a real Pokit Pro device, charging.
+    QTest::addRow("charging-C")
+        << QByteArray("\x00\x04\x56\x86\x40\x01\x01\x01", 8)
+        << StatusService::Status{
+               StatusService::DeviceStatus::Idle, 4.198f,
+               StatusService::BatteryStatus::Good,
+               StatusService::SwitchPosition::MultiMode,
+               StatusService::ChargingStatus::Discharging,
+        };
+
+    // Sample from a real Pokit Pro device, charged.
+    QTest::addRow("charged-A")
+        << QByteArray("\x00\x04\x56\x86\x40\x01\x01\x02", 8)
+        << StatusService::Status{
+               StatusService::DeviceStatus::Idle, 4.198f,
+               StatusService::BatteryStatus::Good,
+               StatusService::SwitchPosition::MultiMode,
+               StatusService::ChargingStatus::Discharging,
+        };
+
+    // Sample from a real Pokit Pro device, charged.
+    QTest::addRow("charged-B")
+        << QByteArray("\x00\x37\x89\x85\x40\x01\x01\x02", 8)
+        << StatusService::Status{
+               StatusService::DeviceStatus::Idle, 4.173f,
+               StatusService::BatteryStatus::Good,
+               StatusService::SwitchPosition::MultiMode,
+               StatusService::ChargingStatus::Discharging,
+        };
+
+    // Sample from a real Pokit Pro device, discharging.
+    QTest::addRow("discharging")
+        << QByteArray("\x00\x37\x89\x85\x40\x01\x01\x00", 8)
+        << StatusService::Status{
+               StatusService::DeviceStatus::Idle, 4.173f,
+               StatusService::BatteryStatus::Good,
+               StatusService::SwitchPosition::MultiMode,
+               StatusService::ChargingStatus::Discharging,
+        };
 }
 
 void TestStatusService::parseStatus()

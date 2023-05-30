@@ -5,6 +5,7 @@
 ### Added
 
 - Detect [Pokit Pro]'s physical mode switch position (not documented by Pokit).
+- Support [Pokit Pro]'s charging status.
 
 ### Changed
 

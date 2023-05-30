@@ -101,9 +101,9 @@ public:
 
     /// Values supported by the (undocumented) `Charging Statue` attribute of the `Status` characteristic.
     enum class ChargingStatus : quint8 {
-        Discharging = 0,
-        Charging    = 1,
-        Charged     = 2
+        Discharging = 0, ///< Battery is dischargin.
+        Charging    = 1, ///< Battery is being charged.
+        Charged     = 2, ///< Battery is fully charged.
     };
     static QString toString(const StatusService::ChargingStatus &status);
 
@@ -113,6 +113,7 @@ public:
         float batteryVoltage;        ///< Current battery voltage level.
         BatteryStatus batteryStatus; ///< Logical interpretation the battery voltage level.
         std::optional<SwitchPosition> switchPosition; ///< Position of the Pokit device's physical mode switch.
+        std::optional<ChargingStatus> chargingStatus; ///< Current charging status, if supported by the device.
     };
 
     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
