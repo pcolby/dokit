@@ -8,6 +8,11 @@ var classStatusService =
       [ "Low", "classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68a28d0edd045e05cf5af64e35ae0c4c6ef", null ],
       [ "Good", "classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68a0c6ad70beb3a7e76c3fc7adab7c46acc", null ]
     ] ],
+    [ "ChargingStatus", "classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1", [
+      [ "Discharging", "classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1a656b8990f73ffbc5dbd823738f3126c9", null ],
+      [ "Charging", "classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1ad7b54fc61b65b19c4694a29b6044aacd", null ],
+      [ "Charged", "classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1ab1c2b9d67c3196aa206d0443269ed775", null ]
+    ] ],
     [ "DeviceStatus", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35", [
       [ "Idle", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c", null ],
       [ "MultimeterDcVoltage", "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a460d1e2dcc6882dc5e0557f9ac227442", null ],

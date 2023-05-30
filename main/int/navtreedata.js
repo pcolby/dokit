@@ -33,6 +33,7 @@ var NAVTREE =
       [ "Qt Versions", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html#autotoc_md7", null ],
       [ "CMake Versions", "md__2home_2runner_2work_2dokit_2dokit_2doc_2src_2internal_2notes.html#autotoc_md8", null ]
     ] ],
+    [ "Todo List", "todo.html", null ],
     [ "Pokit API Errata", "pokit.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -70,14 +71,14 @@ var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
 "classFlashLedCommand.html#a1caaabf1668fac270ab1701e4daa0456",
-"classStatusService.html#a619989ef8ed6bb9e91c1326d911e23c9",
-"pokitmeter_8cpp.html#afdc7a546b276b7533a115aacecc82ff8",
-"qt.html#CheckState-enum",
+"classStatusService.html#a6140c2723538587220452d6d4a51f001",
+"pokitmeter_8cpp.html#a3038daa52676f52266163577f07954e5",
+"qt.html#CaseSensitivity-enum",
 "qt.html#InputMethodQuery-enum",
 "qt.html#Key-enum",
 "qt.html#Key-enum",
 "qt.html#ToolButtonStyle-enum",
-"structDataLoggerService_1_1Metadata.html#a5e40e39f2d21dbf609403f111537b2b0"
+"structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

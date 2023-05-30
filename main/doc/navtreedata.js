@@ -60,13 +60,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
-"functions_u.html",
+"functions_r.html",
 "qt.html#AlignmentFlag-enum",
-"qt.html#GlobalColor-enum",
+"qt.html#GestureType-enum",
 "qt.html#Key-enum",
 "qt.html#Key-enum",
-"qt.html#ScrollPhase-enum",
-"qt.html#WindowState-enum"
+"qt.html#ScrollBarPolicy-enum",
+"qt.html#WindowModality-enum"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
