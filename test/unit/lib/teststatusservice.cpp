@@ -8,9 +8,10 @@
 
 #include <QRegularExpression>
 
+Q_DECLARE_METATYPE(StatusService::ChargingStatus)
+Q_DECLARE_METATYPE(StatusService::BatteryStatus)
 Q_DECLARE_METATYPE(StatusService::DeviceCharacteristics)
 Q_DECLARE_METATYPE(StatusService::DeviceStatus)
-Q_DECLARE_METATYPE(StatusService::BatteryStatus)
 Q_DECLARE_METATYPE(StatusService::Status)
 Q_DECLARE_METATYPE(StatusService::SwitchPosition)
 
