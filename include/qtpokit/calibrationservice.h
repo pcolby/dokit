@@ -31,6 +31,12 @@ public:
     struct QTPOKIT_EXPORT CharacteristicUuids {
         /// UUID of the `Calibration` service's `Temperature` characterstic.
         static inline const QBluetoothUuid temperature { QStringLiteral("0cd0f713-f5aa-4572-9e23-f8049f6bcaaa") };
+
+        /// \todo UUID of the `Calibration` service's (undocumented) `Get Parameter` characterstic.
+        static inline const QBluetoothUuid getParam { QStringLiteral("b6728f91-409c-4d6c-864e-272a6a7a0204") };
+
+        /// \todo UUID of the `Calibration` service's (undocumented) `Set Parameter` characterstic.
+        static inline const QBluetoothUuid setParam { QStringLiteral("5588e47b-cb81-4f7b-acc4-6029a3f39f724") };
     };
 
     CalibrationService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
