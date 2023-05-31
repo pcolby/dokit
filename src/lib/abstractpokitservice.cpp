@@ -516,6 +516,29 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
 {
     qCDebug(lc).noquote() << tr("State changed to") << newState;
 
+    if (lc().isDebugEnabled()) {
+        for (const auto &characteristic: service->characteristics()) {
+            QStringList properties;
+            /// \cond no-doxygen
+            #define QTPOKIT_INTERNAL_TEST_AND_APPEND(property) \
+            if (characteristic.properties().testFlag(QLowEnergyCharacteristic::property)) { \
+                properties.append(QStringLiteral(#property).toLower());\
+            }
+            /// \endcond
+            QTPOKIT_INTERNAL_TEST_AND_APPEND(Broadcasting)
+            QTPOKIT_INTERNAL_TEST_AND_APPEND(Read)
+            QTPOKIT_INTERNAL_TEST_AND_APPEND(WriteNoResponse)
+            QTPOKIT_INTERNAL_TEST_AND_APPEND(Write)
+            QTPOKIT_INTERNAL_TEST_AND_APPEND(Notify)
+            QTPOKIT_INTERNAL_TEST_AND_APPEND(Indicate)
+            QTPOKIT_INTERNAL_TEST_AND_APPEND(WriteSigned)
+            QTPOKIT_INTERNAL_TEST_AND_APPEND(ExtendedProperty)
+            #undef QTPOKIT_INTERNAL_TEST_AND_APPEND
+            qCDebug(lc).noquote() << tr(R"(Characteristic %1 "%2" supports %3.)").arg(characteristic.uuid().toString(),
+                PokitDevice::charcteristicToString(characteristic.uuid()), properties.join(QStringLiteral(", ")));
+        }
+    }
+
     if (newState == QLowEnergyService::
             #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
             ServiceDiscovered
