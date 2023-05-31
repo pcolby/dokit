@@ -79,17 +79,18 @@ void InfoCommand::serviceDetailsDiscovered()
     const QString deviceName = (controller) ? controller->remoteName() : QString();
     const QBluetoothAddress deviceAddress = (controller) ? controller->remoteAddress() : QBluetoothAddress();
     const QBluetoothUuid deviceUuid = (controller) ? controller->remoteDeviceUuid() : QBluetoothUuid();
+    const QString serialNumber = service->serialNumber();
     switch (format) {
     case OutputFormat::Csv:
         std::cout << qUtf8Printable(tr("device_name,device_address,device_uuid,manufacturer_name,model_number,"
-                            "hardware_revision,firmware_revision,software_revision\n"));
-        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8\n").arg(
+                            "hardware_revision,firmware_revision,software_revision,serial_number\n"));
+        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9\n").arg(
             escapeCsvField(deviceName),
             (deviceAddress.isNull()) ? QString() : deviceAddress.toString(),
             (deviceUuid.isNull()) ? QString() : deviceUuid.toString(),
             escapeCsvField(service->manufacturer()), escapeCsvField(service->modelNumber()),
             escapeCsvField(service->hardwareRevision()), escapeCsvField(service->firmwareRevision()),
-            escapeCsvField(service->softwareRevision())));
+            escapeCsvField(service->softwareRevision()), escapeCsvField(serialNumber)));
         break;
     case OutputFormat::Json: {
         QJsonObject jsonObject{
@@ -108,6 +109,9 @@ void InfoCommand::serviceDetailsDiscovered()
         if (!deviceUuid.isNull()) {
             jsonObject.insert(QLatin1String("deviceUuid"), deviceUuid.toString());
         }
+        if (!serialNumber.isNull()) {
+            jsonObject.insert(QLatin1String("serialNumber"), serialNumber);
+        }
         std::cout << QJsonDocument(jsonObject).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
@@ -125,6 +129,9 @@ void InfoCommand::serviceDetailsDiscovered()
         std::cout << qUtf8Printable(tr("Hardware revision: %1\n").arg(service->hardwareRevision()));
         std::cout << qUtf8Printable(tr("Firmware revision: %1\n").arg(service->firmwareRevision()));
         std::cout << qUtf8Printable(tr("Software revision: %1\n").arg(service->softwareRevision()));
+        if (!serialNumber.isNull()) {
+            std::cout << qUtf8Printable(tr("Serial number:     %1\n").arg(serialNumber));
+        }
         break;
     }
     if (device) disconnect(); // Will exit the application once disconnected.

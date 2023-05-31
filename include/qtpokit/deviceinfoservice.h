@@ -49,6 +49,10 @@ public:
         /// UUID of the `Device Info` service's `Software Revision String` characterstic.
         static inline const QBluetoothUuid softwareRevision
             { QBluetoothUuid::CharacteristicType::SoftwareRevisionString };
+
+        /// UUID of the `Device Info` service's `Serial Number String` characterstic.
+        static inline const QBluetoothUuid serialNumber
+            { QBluetoothUuid::CharacteristicType::SerialNumberString };
     };
 
     DeviceInfoService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
@@ -60,6 +64,7 @@ public:
     bool readManufacturerCharacteristics();
     bool readModelNumberCharacteristic();
     bool readSoftwareRevisionCharacteristic();
+    bool readSerialNumberCharacteristic();
 
     // All Device Info characteristics are read-only, single values.
     QString manufacturer() const;
@@ -67,6 +72,7 @@ public:
     QString hardwareRevision() const;
     QString firmwareRevision() const;
     QString softwareRevision() const;
+    QString serialNumber() const;
 
 signals:
     void manufacturerRead(const QString &name);
@@ -74,6 +80,7 @@ signals:
     void hardwareRevisionRead(const QString &revision);
     void firmwareRevisionRead(const QString &revision);
     void softwareRevisionRead(const QString &revision);
+    void serialNumberRead(const QString &serialNumber);
 
 protected:
     /// \cond internal

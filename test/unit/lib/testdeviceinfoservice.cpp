@@ -50,6 +50,13 @@ void TestDeviceInfoService::readSoftwareRevisionCharacteristic()
     QVERIFY(!service.readSoftwareRevisionCharacteristic());
 }
 
+void TestDeviceInfoService::readSerialNumberCharacteristic()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    DeviceInfoService service(nullptr);
+    QVERIFY(!service.readSerialNumberCharacteristic());
+}
+
 void TestDeviceInfoService::manufacturer()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
@@ -83,6 +90,13 @@ void TestDeviceInfoService::softwareRevision()
     // Verify safe error handling (can't do much else without a Bluetooth device).
     const DeviceInfoService service(nullptr);
     QVERIFY(service.softwareRevision().isNull());
+}
+
+void TestDeviceInfoService::serialNumber()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    const DeviceInfoService service(nullptr);
+    QVERIFY(service.serialNumber().isNull());
 }
 
 void TestDeviceInfoService::characteristicRead()

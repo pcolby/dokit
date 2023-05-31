@@ -260,6 +260,8 @@ QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::ModelNumberString) },
         { DeviceInfoService::CharacteristicUuids::softwareRevision,
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::SoftwareRevisionString) },
+        { DeviceInfoService::CharacteristicUuids::serialNumber,
+            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::SerialNumberString) },
 
         { GenericAccessService::CharacteristicUuids::appearance,
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::Appearance) },

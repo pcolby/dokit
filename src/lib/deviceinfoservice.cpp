@@ -53,7 +53,9 @@ bool DeviceInfoService::readCharacteristics()
     const bool r3 = readSoftwareRevisionCharacteristic();
     const bool r4 = readManufacturerCharacteristics();
     const bool r5 = readModelNumberCharacteristic();
-    return (r1 && r2 && r3 && r4 && r5);
+    const bool r6 = ((service() != nullptr) && (service()->characteristic(CharacteristicUuids::serialNumber).isValid()))
+        ? readSerialNumberCharacteristic() : true;
+    return (r1 && r2 && r3 && r4 && r5 && r6);
 }
 
 /*!
@@ -132,6 +134,21 @@ bool DeviceInfoService::readSoftwareRevisionCharacteristic()
 }
 
 /*!
+ * Read the `Device Info` service's (undocumented) `Serial Number` characteristic.
+ *
+ * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * underlying controller it not yet connected to the Pokit device, or the device's services have
+ * not yet been discovered).
+ *
+ * Emits serialNumberRead() if/when the characteristic has been read successfully.
+ */
+bool DeviceInfoService::readSerialNumberCharacteristic()
+{
+    Q_D(DeviceInfoService);
+    return d->readCharacteristic(CharacteristicUuids::serialNumber);
+}
+
+/*!
  * Returns the most recent value of the `Device Info` service's `Manufacturer Name` characteristic.
  *
  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
@@ -207,6 +224,28 @@ QString DeviceInfoService::softwareRevision() const
 }
 
 /*!
+ * Returns the most recent value of the `Device Info` service's (undocumented) `Serial Number`
+ * characteristic.
+ *
+ * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
+ * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a
+ * null QString is returned.
+ */
+QString DeviceInfoService::serialNumber() const
+{
+    Q_D(const DeviceInfoService);
+    const QLowEnergyCharacteristic characteristic =
+        d->getCharacteristic(CharacteristicUuids::serialNumber);
+    /*!
+     * \cond internal
+     * \pokitApi Unlike other string characteristics, Pokit (Pro) devices always appear to add a trailing
+     * `null` byte to serial number strings. So here we strip any that are present.
+     * \endcond
+     */
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()).remove(QLatin1Char('\0')) : QString();
+}
+
+/*!
  * \fn DeviceInfoService::manufacturerRead
  *
  * This signal is emitted when the `Manufacturer Name` characteristic has been read successfully.
@@ -249,6 +288,15 @@ QString DeviceInfoService::softwareRevision() const
  *
  * \see readSoftwareRevisionCharacteristic
  * \see softwareRevision
+ */
+
+/*!
+ * \fn DeviceInfoService::serialNumberRead
+ *
+ * This signal is emitted when the `Serial Number` characteristic has been read successfully.
+ *
+ * \see readSerialNumberCharacteristic
+ * \see serialNumber
  */
 
 /*!
@@ -311,6 +359,13 @@ void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic
         const QString revision = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Software revision: "%1")").arg(revision);
         emit q->softwareRevisionRead(revision);
+        return;
+    }
+
+    if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::serialNumber) {
+        const QString serialNumber = QString::fromUtf8(value);
+        qCDebug(lc).noquote() << tr(R"(Serial number: "%1")").arg(serialNumber);
+        emit q->serialNumberRead(serialNumber);
         return;
     }
 

@@ -14,12 +14,14 @@ private slots:
     void readManufacturerCharacteristics();
     void readModelNumberCharacteristic();
     void readSoftwareRevisionCharacteristic();
+    void readSerialNumberCharacteristic();
 
     void manufacturer();
     void modelNumber();
     void hardwareRevision();
     void firmwareRevision();
     void softwareRevision();
+    void serialNumber();
 
     void characteristicRead();
 
