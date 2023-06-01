@@ -541,6 +541,14 @@ std::optional<StatusService::ButtonStatus> StatusService::buttonPress() const
  *
  * This signal is emitted when the `Torch` characteristic has been read successfully.
  *
+ * \see setTorchStatus
+ */
+
+/*!
+ * \fn StatusService::torchStatusWritten
+ *
+ * This signal is emitted when the `Torch` characteristic has been written successfully.
+ *
  * \see readTorchCharacteristic
  */
 
