@@ -161,7 +161,7 @@ public:
 
     // Undocumented Torch characteristic (Pro only: read/write/notify).
     std::optional<TorchStatus> torchStatus() const;
-    bool setTorchStatus(const TorchStatus status); /// \todo Test write.
+    bool setTorchStatus(const TorchStatus status);
     bool enableTorchStatusNotifications();
     bool disableTorchStatusNotifications();
 
@@ -177,6 +177,7 @@ signals:
     void deviceStatusRead(const StatusService::Status &status);
     void deviceLedFlashed();
     void torchStatusRead(const TorchStatus &status);
+    void torchStatusWritten();
     void buttonPressRead(const quint8 &unknown, const ButtonStatus status); /// \todo What is the \c unknown byte here?
 
 protected:

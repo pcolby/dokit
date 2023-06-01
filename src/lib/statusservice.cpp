@@ -810,6 +810,11 @@ void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic 
         return;
     }
 
+    if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {
+        emit q->torchStatusWritten();
+        return;
+    }
+
     qCWarning(lc).noquote() << tr("Unknown characteristic written for Status service")
         << serviceUuid << characteristic.name() << characteristic.uuid();
 }
