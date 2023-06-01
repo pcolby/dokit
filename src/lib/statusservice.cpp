@@ -366,13 +366,14 @@ bool StatusService::flashLed()
  * Returns the most recent value of the `Status` services's `Torch` characteristic.
  *
  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
- * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the
- * result is undefined.
+ * currently available (eg if the device does not support the Torch characteristic), then `nullopt`
+ * is returned.
  */
-StatusService::TorchStatus StatusService::torchStatus()
+std::optional<StatusService::TorchStatus> StatusService::torchStatus() const
 {
-    Q_ASSERT_X(false, "StatusService::torchStatus", "Not implemented"); ///< \todo
-    return TorchStatus::Off;
+    Q_D(const StatusService);
+    const QLowEnergyCharacteristic characteristic = d->getCharacteristic(CharacteristicUuids::torch);
+    return (characteristic.isValid()) ? d->parseTorchStatus(characteristic.value()) : std::nullopt;
 }
 
 /*!
@@ -395,16 +396,73 @@ bool StatusService::setTorchStatus(const StatusService::TorchStatus status)
 }
 
 /*!
+ * Enables client-side notifications of torch status changes.
+ *
+ * This is an alternative to manually requesting individual reads via readTorchCharacteristic().
+ *
+ * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ *
+ * Successfully read values (if any) will be emitted via the torchStatusRead() signal.
+ */
+bool StatusService::enableTorchStatusNotifications()
+{
+    Q_D(StatusService);
+    return d->enableCharacteristicNotificatons(CharacteristicUuids::torch);
+}
+
+/*!
+ * Disables client-side notifications of torch status changes.
+ *
+ * Instantaneous torch status can still be fetched by readTorchCharacteristic().
+ *
+ * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ */
+bool StatusService::disableTorchStatusNotifications()
+{
+    Q_D(StatusService);
+    return d->disableCharacteristicNotificatons(CharacteristicUuids::torch);
+}
+
+/*!
+ * Enables client-side notifications of button presses.
+ *
+ * This is an alternative to manually requesting individual reads via readButtonPressCharacteristic().
+ *
+ * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ *
+ * Successfully read values (if any) will be emitted via the torchStatusRead() signal.
+ */
+bool StatusService::enableButtonPressedNotifications()
+{
+    Q_D(StatusService);
+    return d->enableCharacteristicNotificatons(CharacteristicUuids::buttonPress);
+}
+
+/*!
+ * Disables client-side notifications of button presses.
+ *
+ * Instantaneous button press statussed can still be fetched by readButtonPressCharacteristic().
+ *
+ * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ */
+bool StatusService::disableButtonPressedNotifications()
+{
+    Q_D(StatusService);
+    return d->disableCharacteristicNotificatons(CharacteristicUuids::buttonPress);
+}
+
+/*!
  * Returns the most recent value of the `Status` services's `Button Press` characteristic.
  *
  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
- * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the
- * result is undefined.
+ * currently available (eg if the device does not support the Torch characteristic), then `nullopt`
+ * is returned.
  */
-std::pair<quint8, StatusService::ButtonStatus> StatusService::buttonPress()
+std::optional<StatusService::ButtonStatus> StatusService::buttonPress() const
 {
-    Q_ASSERT_X(false, "StatusService::buttonPress", "Not implemented"); ///< \todo
-    return std::make_pair(0xFF, StatusService::ButtonStatus::Released);
+    Q_D(const StatusService);
+    const QLowEnergyCharacteristic characteristic = d->getCharacteristic(CharacteristicUuids::buttonPress);
+    return (characteristic.isValid()) ? d->parseButtonPress(characteristic.value()) : std::nullopt;
 }
 
 /*!
@@ -522,7 +580,7 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
 }
 
 /*!
- * Parses the `Status` \a value into Statu struct. Note, not all Pokit devices support all members
+ * Parses the `Status` \a value into a Status struct. Note, not all Pokit devices support all members
  * in Status. Specifically, the batteryStatus member is not usually set by Pokit Meter devices, so
  * will be an invlalid BatteryStatus enum value (`255`) in that case.
  */
@@ -575,6 +633,39 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
         qCDebug(lc).noquote() << tr("Charging status: %1 (%2)")
         .arg((quint8)*status.chargingStatus).arg(StatusService::toString(*status.chargingStatus));
     }
+    return status;
+}
+
+/*!
+ * Parses the torch status \a value, and returns the corresponding TorchStatus.
+ */
+std::optional<StatusService::TorchStatus> StatusServicePrivate::parseTorchStatus(const QByteArray &value)
+{
+    if (!checkSize(QLatin1String("Torch"), value, 1, 1)) {
+        return std::nullopt;
+    }
+
+    const StatusService::TorchStatus status = static_cast<StatusService::TorchStatus>(value.at(0));
+    qCDebug(lc).noquote() << tr("Torch status: %1 (%2)").arg((quint8)status).arg(StatusService::toString(status));
+    return status;
+}
+
+/*!
+ * Parses the button press \a value, and returns the corresponding ButtonStatus.
+ */
+std::optional<StatusService::ButtonStatus> StatusServicePrivate::parseButtonPress(const QByteArray &value)
+{
+    if (!checkSize(QLatin1String("Torch"), value, 2, 2)) {
+        return std::nullopt;
+    }
+
+    /*!
+     * \pokitApi The button event is the second byte, but no idea what the first byte is. In all examples
+     * I've see it's always `0x02`. It appears that the Pokit Android app only ever looks at `bytes[1]`.
+     */
+
+    const StatusService::ButtonStatus status = static_cast<StatusService::ButtonStatus>(value.at(1));
+    qCDebug(lc).noquote() << tr("Button: %1 (%2)").arg((quint8)status).arg(StatusService::toString(status));
     return status;
 }
 

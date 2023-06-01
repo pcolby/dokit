@@ -77,7 +77,6 @@ void TestStatusCommand::outputDeviceStatus_data()
         QTest::newRow(name ".txt") << StatusService::DeviceCharacteristics chrs \
             << AbstractCommand::OutputFormat::Text
 
-
     DOKIT_ADD_TEST_ROW("null", ({
         QVersionNumber(), 0, 0, 0, 0, 0, 0, QBluetoothAddress()
     }));

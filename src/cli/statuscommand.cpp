@@ -90,21 +90,25 @@ void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristic
 {
     const QString deviceName = service->deviceName();
     const StatusService::Status status = service->status();
+    const std::optional<StatusService::TorchStatus> torchStatus = service->torchStatus();
+    const std::optional<StatusService::ButtonStatus> buttonStatus = service->buttonPress();
     const QString statusLabel = StatusService::toString(status.deviceStatus);
     const QString batteryLabel = StatusService::toString(status.batteryStatus);
+    const QString torchLabel = (torchStatus) ? StatusService::toString(*torchStatus) : QString();
+    const QString buttonLabel = (buttonStatus) ? StatusService::toString(*buttonStatus) : QString();
 
     switch (format) {
     case OutputFormat::Csv:
         std::cout << qUtf8Printable(tr("device_name,device_status,firmware_version,maximum_voltage,"
                             "maximum_current,maximum_resistance,maximum_sampling_rate,"
                             "sampling_buffer_size,capability_mask,mac_address,battery_voltage,"
-                            "battery_status\n"));
-        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12\n")
+                            "battery_status,torch_status,button_status\n"));
+        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14\n")
             .arg(escapeCsvField(deviceName),statusLabel.toLower(),chrs.firmwareVersion.toString())
             .arg(chrs.maximumVoltage).arg(chrs.maximumCurrent).arg(chrs.maximumResistance)
             .arg(chrs.maximumSamplingRate).arg(chrs.samplingBufferSize).arg(chrs.capabilityMask)
             .arg(chrs.macAddress.toString()).arg(status.batteryVoltage)
-            .arg(batteryLabel.toLower()));
+            .arg(batteryLabel.toLower(), torchLabel.toLower(), buttonLabel.toLower()));
         break;
     case OutputFormat::Json: {
         QJsonObject battery{
@@ -113,7 +117,7 @@ void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristic
         if (!batteryLabel.isNull()) {
             battery.insert(QLatin1String("status"), batteryLabel);
         }
-        std::cout << QJsonDocument(QJsonObject{
+        QJsonObject object{
                 { QLatin1String("deviceName"),   deviceName },
                 { QLatin1String("firmwareVersion"), QJsonObject{
                       { QLatin1String("major"), chrs.firmwareVersion.majorVersion() },
@@ -131,7 +135,20 @@ void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristic
                       { QLatin1String("label"), statusLabel },
                 }},
                 { QLatin1String("battery"), battery },
-            }).toJson().toStdString();
+            };
+        if (torchStatus) {
+            object.insert(QStringLiteral("torchStatus"), QJsonObject{
+                { QLatin1String("code"), (quint8)*torchStatus },
+                { QLatin1String("label"), torchLabel },
+            });
+        }
+        if (buttonStatus) {
+            object.insert(QStringLiteral("buttonStatus"), QJsonObject{
+                { QLatin1String("code"), (quint8)*buttonStatus },
+                { QLatin1String("label"), buttonLabel },
+            });
+        }
+        std::cout << QJsonDocument(object).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Device name:           %1\n").arg(deviceName));

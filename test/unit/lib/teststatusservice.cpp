@@ -17,6 +17,9 @@ Q_DECLARE_METATYPE(StatusService::Status)
 Q_DECLARE_METATYPE(StatusService::SwitchPosition)
 Q_DECLARE_METATYPE(StatusService::TorchStatus)
 
+Q_DECLARE_METATYPE(std::optional<StatusService::ButtonStatus>)
+Q_DECLARE_METATYPE(std::optional<StatusService::TorchStatus>)
+
 // Serialiser for QCOMPARE to output QBluetoothAddress objects on test failures.
 char *toString(const QBluetoothAddress &address)
 {
@@ -28,6 +31,26 @@ char *toString(const std::optional<StatusService::SwitchPosition> &position)
 {
     if (position.has_value()) {
         return qstrdup(StatusService::toString(*position).toLocal8Bit().constData());
+    } else {
+        return qstrdup("nullopt");
+    }
+}
+
+// Serialiser for QCOMPARE to output optional TorchStatus values on test failures.
+char *toString(const std::optional<StatusService::TorchStatus> &status)
+{
+    if (status.has_value()) {
+        return qstrdup(StatusService::toString(*status).toLocal8Bit().constData());
+    } else {
+        return qstrdup("nullopt");
+    }
+}
+
+// Serialiser for QCOMPARE to output optional TorchStatus values on test failures.
+char *toString(const std::optional<StatusService::ButtonStatus> &status)
+{
+    if (status.has_value()) {
+        return qstrdup(StatusService::toString(*status).toLocal8Bit().constData());
     } else {
         return qstrdup("nullopt");
     }
@@ -467,6 +490,44 @@ void TestStatusService::parseStatus()
     #endif
     QCOMPARE(actual.batteryStatus,  expected.batteryStatus);
     QCOMPARE(actual.switchPosition, expected.switchPosition);
+}
+
+void TestStatusService::parseTorchStatus_data()
+{
+    QTest::addColumn<QByteArray>("value");
+    QTest::addColumn<std::optional<StatusService::TorchStatus>>("expected");
+
+    QTest::addRow("null")    << QByteArray()          << std::optional<StatusService::TorchStatus>();
+    QTest::addRow("off")     << QByteArray("\x00", 1) << std::make_optional(StatusService::TorchStatus::Off);
+    QTest::addRow("on")      << QByteArray("\x01", 1) << std::make_optional(StatusService::TorchStatus::On);
+}
+
+void TestStatusService::parseTorchStatus()
+{
+    QFETCH(QByteArray, value);
+    QFETCH(std::optional<StatusService::TorchStatus>, expected);
+    const auto actual = StatusServicePrivate::parseTorchStatus(value);
+    QCOMPARE(actual, expected);
+}
+
+void TestStatusService::parseButtonPress_data()
+{
+    QTest::addColumn<QByteArray>("value");
+    QTest::addColumn<std::optional<StatusService::ButtonStatus>>("expected");
+
+    // Pokit Pro devices (the only ones that support Button Presses for now) always set the first byte to \x02.
+    QTest::addRow("null")     << QByteArray()              << std::optional<StatusService::ButtonStatus>();
+    QTest::addRow("released") << QByteArray("\x02\x00", 2) << std::make_optional(StatusService::ButtonStatus::Released);
+    QTest::addRow("pressed")  << QByteArray("\x02\x01", 2) << std::make_optional(StatusService::ButtonStatus::Pressed);
+    QTest::addRow("held")     << QByteArray("\x02\x02", 2) << std::make_optional(StatusService::ButtonStatus::Held);
+}
+
+void TestStatusService::parseButtonPress()
+{
+    QFETCH(QByteArray, value);
+    QFETCH(std::optional<StatusService::ButtonStatus>, expected);
+    const auto actual = StatusServicePrivate::parseButtonPress(value);
+    QCOMPARE(actual, expected);
 }
 
 void TestStatusService::serviceDiscovered()

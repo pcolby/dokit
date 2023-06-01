@@ -55,6 +55,8 @@ public:
 
         /// UUID of the `Pokit Status` service's (undocumented) `Button Press` characterstic.
         static inline const QBluetoothUuid buttonPress { QStringLiteral("8fe5b5a9-b5b4-4a7b-8ff2-87224b970f89") };
+
+        // Pokit Pro also reports an unknown "a59f052e-c2a1-46b6-8025-64e485c00162" characteristic.
     };
 
     /// Attributes included in the `Device Characteristics` characterstic.
@@ -145,28 +147,28 @@ public:
     // Device Characteristics characteristic (BLE read only).
     DeviceCharacteristics deviceCharacteristics() const;
 
-    // Status characteristic (Read only).
+    // Status characteristic (Meter: read, Pro: read/notify).
     Status status() const;
     /// \todo bool enableStatusNotifications();
     /// \todo bool disableStatusNotifications();
 
-    // Device Name characteristic (BLE read/write).
+    // Device Name characteristic (Both read/write).
     QString deviceName() const;
     bool setDeviceName(const QString &name);
 
-    // Flash LED characteristic (BLE write only).
+    // Flash LED characteristic (Meter: write only, Pro: read/write, but doesn't function).
     bool flashLed();
 
-    // Undocumented Torch characteristic (BLE read, and possibly write?).
-    TorchStatus torchStatus();
+    // Undocumented Torch characteristic (Pro only: read/write/notify).
+    std::optional<TorchStatus> torchStatus() const;
     bool setTorchStatus(const TorchStatus status); /// \todo Test write.
-    /// \todo bool enableTorchNotifications();
-    /// \todo bool disableTorchNotifications();
+    bool enableTorchStatusNotifications();
+    bool disableTorchStatusNotifications();
 
-    // Undocumented Button Press characteristic (presumably BLE read only).
-    std::pair<quint8, ButtonStatus> buttonPress();
-    /// \todo bool enableButtonPressedNotifications();
-    /// \todo bool disableButtonPressedNotifications();
+    // Undocumented Button Press characteristic (Pro only: read/write(?)/notify). /// \todo Test write.
+    std::optional<ButtonStatus> buttonPress() const;
+    bool enableButtonPressedNotifications();
+    bool disableButtonPressedNotifications();
 
 signals:
     void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &characteristics);

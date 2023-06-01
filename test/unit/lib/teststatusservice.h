@@ -48,6 +48,12 @@ private slots:
     void parseStatus_data();
     void parseStatus();
 
+    void parseTorchStatus_data();
+    void parseTorchStatus();
+
+    void parseButtonPress_data();
+    void parseButtonPress();
+
     void serviceDiscovered();
 
     void characteristicRead();
