@@ -93,33 +93,39 @@
 <a name="31"><span class="lineNum">      31 </span>            :     struct QTPOKIT_EXPORT CharacteristicUuids {</a>
 <a name="32"><span class="lineNum">      32 </span>            :         /// UUID of the `Calibration` service's `Temperature` characterstic.</a>
 <a name="33"><span class="lineNum">      33 </span>            :         static inline const QBluetoothUuid temperature { QStringLiteral(&quot;0cd0f713-f5aa-4572-9e23-f8049f6bcaaa&quot;) };</a>
-<a name="34"><span class="lineNum">      34 </span>            :     };</a>
-<a name="35"><span class="lineNum">      35 </span>            : </a>
-<a name="36"><span class="lineNum">      36 </span>            :     CalibrationService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</a>
-<a name="37"><span class="lineNum">      37 </span>            :     ~CalibrationService() override;</a>
-<a name="38"><span class="lineNum">      38 </span>            : </a>
-<a name="39"><span class="lineNum">      39 </span>            :     bool readCharacteristics() override;</a>
-<a name="40"><span class="lineNum">      40 </span>            : </a>
-<a name="41"><span class="lineNum">      41 </span>            :     // Temperature characteristic (BLE write only).</a>
-<a name="42"><span class="lineNum">      42 </span>            :     bool calibrateTemperature(const float ambientTemperature);</a>
-<a name="43"><span class="lineNum">      43 </span>            : </a>
-<a name="44"><span class="lineNum">      44 </span>            : signals:</a>
-<a name="45"><span class="lineNum">      45 </span>            :     void temperatureCalibrated();</a>
+<a name="34"><span class="lineNum">      34 </span>            : </a>
+<a name="35"><span class="lineNum">      35 </span>            :         /// \todo UUID of the `Calibration` service's (undocumented) `Get Parameter` characterstic.</a>
+<a name="36"><span class="lineNum">      36 </span>            :         static inline const QBluetoothUuid getParam { QStringLiteral(&quot;b6728f91-409c-4d6c-864e-272a6a7a0204&quot;) };</a>
+<a name="37"><span class="lineNum">      37 </span>            : </a>
+<a name="38"><span class="lineNum">      38 </span>            :         /// \todo UUID of the `Calibration` service's (undocumented) `Set Parameter` characterstic.</a>
+<a name="39"><span class="lineNum">      39 </span>            :         static inline const QBluetoothUuid setParam { QStringLiteral(&quot;5588e47b-cb81-4f7b-acc4-6029a3f39f724&quot;) };</a>
+<a name="40"><span class="lineNum">      40 </span>            :     };</a>
+<a name="41"><span class="lineNum">      41 </span>            : </a>
+<a name="42"><span class="lineNum">      42 </span>            :     CalibrationService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</a>
+<a name="43"><span class="lineNum">      43 </span>            :     ~CalibrationService() override;</a>
+<a name="44"><span class="lineNum">      44 </span>            : </a>
+<a name="45"><span class="lineNum">      45 </span>            :     bool readCharacteristics() override;</a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span>            : protected:</a>
-<a name="48"><span class="lineNum">      48 </span>            :     /// \cond internal</a>
-<a name="49"><span class="lineNum">      49 </span>            :     CalibrationService(CalibrationServicePrivate * const d, QObject * const parent);</a>
-<a name="50"><span class="lineNum">      50 </span>            :     /// \endcond</a>
-<a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span>            : private:</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">         54 :     Q_DECLARE_PRIVATE(CalibrationService)</span></a>
-<a name="54"><span class="lineNum">      54 </span>            :     Q_DISABLE_COPY(CalibrationService)</a>
-<a name="55"><span class="lineNum">      55 </span>            :     friend class TestCalibrationService;</a>
-<a name="56"><span class="lineNum">      56 </span>            : };</a>
+<a name="47"><span class="lineNum">      47 </span>            :     // Temperature characteristic (BLE write only).</a>
+<a name="48"><span class="lineNum">      48 </span>            :     bool calibrateTemperature(const float ambientTemperature);</a>
+<a name="49"><span class="lineNum">      49 </span>            : </a>
+<a name="50"><span class="lineNum">      50 </span>            : signals:</a>
+<a name="51"><span class="lineNum">      51 </span>            :     void temperatureCalibrated();</a>
+<a name="52"><span class="lineNum">      52 </span>            : </a>
+<a name="53"><span class="lineNum">      53 </span>            : protected:</a>
+<a name="54"><span class="lineNum">      54 </span>            :     /// \cond internal</a>
+<a name="55"><span class="lineNum">      55 </span>            :     CalibrationService(CalibrationServicePrivate * const d, QObject * const parent);</a>
+<a name="56"><span class="lineNum">      56 </span>            :     /// \endcond</a>
 <a name="57"><span class="lineNum">      57 </span>            : </a>
-<a name="58"><span class="lineNum">      58 </span>            : QTPOKIT_END_NAMESPACE</a>
-<a name="59"><span class="lineNum">      59 </span>            : </a>
-<a name="60"><span class="lineNum">      60 </span>            : #endif // QTPOKIT_CALIBRATIONSERVICE_H</a>
+<a name="58"><span class="lineNum">      58 </span>            : private:</a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">         54 :     Q_DECLARE_PRIVATE(CalibrationService)</span></a>
+<a name="60"><span class="lineNum">      60 </span>            :     Q_DISABLE_COPY(CalibrationService)</a>
+<a name="61"><span class="lineNum">      61 </span>            :     friend class TestCalibrationService;</a>
+<a name="62"><span class="lineNum">      62 </span>            : };</a>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<a name="64"><span class="lineNum">      64 </span>            : QTPOKIT_END_NAMESPACE</a>
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<a name="66"><span class="lineNum">      66 </span>            : #endif // QTPOKIT_CALIBRATIONSERVICE_H</a>
 </pre>
       </td>
     </tr>
