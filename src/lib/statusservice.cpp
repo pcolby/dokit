@@ -418,9 +418,15 @@ std::optional<StatusService::TorchStatus> StatusService::torchStatus() const
  */
 bool StatusService::setTorchStatus(const StatusService::TorchStatus status)
 {
-    Q_ASSERT_X(false, "StatusService::setTorchStatus", "Not implemented"); ///< \todo
-    Q_UNUSED(status)
-    return false;
+    Q_D(const StatusService);
+    const QLowEnergyCharacteristic characteristic = d->getCharacteristic(CharacteristicUuids::torch);
+    if (!characteristic.isValid()) {
+        return false;
+    }
+
+    const QByteArray value(1, static_cast<char>(status));
+    d->service->writeCharacteristic(characteristic, value);
+    return (d->service->error() != QLowEnergyService::ServiceError::CharacteristicWriteError);
 }
 
 /*!

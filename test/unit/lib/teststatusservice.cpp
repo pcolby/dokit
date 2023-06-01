@@ -289,9 +289,8 @@ void TestStatusService::torchStatus()
 void TestStatusService::setTorchStatus()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
-    /// \todo StatusService::setTorchStatus() is not implemented yet.
-//    StatusService service(nullptr);
-//    QVERIFY(!service.setTorchStatus(StatusService::TorchStatus::Off));
+    StatusService service(nullptr);
+    QVERIFY(!service.setTorchStatus(StatusService::TorchStatus::Off));
 }
 
 void TestStatusService::enableTorchStatusNotifications()
