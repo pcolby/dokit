@@ -51,7 +51,6 @@ public:
 
         /// UUID of the `Pokit Status` service's (undocumented) `Torch` characterstic.
         static inline const QBluetoothUuid torch { QStringLiteral("aaf3f6d5-43d4-4a83-9510-dff3d858d4cc") };
-        ///  Torch - one byte, 0x00 off, 0x01 on.
 
         /// UUID of the `Pokit Status` service's (undocumented) `Button Press` characterstic.
         static inline const QBluetoothUuid buttonPress { QStringLiteral("8fe5b5a9-b5b4-4a7b-8ff2-87224b970f89") };
@@ -178,7 +177,7 @@ signals:
     void deviceLedFlashed();
     void torchStatusRead(const TorchStatus &status);
     void torchStatusWritten();
-    void buttonPressRead(const quint8 &unknown, const ButtonStatus status); /// \todo What is the \c unknown byte here?
+    void buttonPressRead(const quint8 &unknown, const ButtonStatus status);
 
 protected:
     /// \cond internal

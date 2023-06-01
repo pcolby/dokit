@@ -412,9 +412,6 @@ std::optional<StatusService::TorchStatus> StatusService::torchStatus() const
  * Emits torchStatusWritten() if/when the LED has flashed successfully.
  *
  * \note This operation is only supported by Pokit Pro devices, and not Pokit Meter devices.
- *
- * \todo Test if this BLE characteristic is writable (I suspect it is, given the Android app's ability),
- * and if so, create the torchStatusWritten signal. Otherwise remove this function.
  */
 bool StatusService::setTorchStatus(const StatusService::TorchStatus status)
 {
