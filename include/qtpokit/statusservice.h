@@ -149,14 +149,14 @@ public:
 
     // Status characteristic (Meter: read, Pro: read/notify).
     Status status() const;
-    /// \todo bool enableStatusNotifications();
-    /// \todo bool disableStatusNotifications();
+    bool enableStatusNotifications();
+    bool disableStatusNotifications();
 
     // Device Name characteristic (Both read/write).
     QString deviceName() const;
     bool setDeviceName(const QString &name);
 
-    // Flash LED characteristic (Meter: write only, Pro: read/write, but doesn't function).
+    // Flash LED characteristic (Meter: write only (Pro claims read/write, but fails if we try).
     bool flashLed();
 
     // Undocumented Torch characteristic (Pro only: read/write/notify).

@@ -36,11 +36,22 @@ private slots:
     void deviceCharacteristics();
 
     void status();
+    void enableStatusNotifications();
+    void disableStatusNotifications();
 
     void deviceName();
     void setDeviceName();
 
     void flashLed();
+
+    void torchStatus();
+    void setTorchStatus();
+    void enableTorchStatusNotifications();
+    void disableTorchStatusNotifications();
+
+    void buttonPress();
+    void enableButtonPressedNotifications();
+    void disableButtonPressedNotifications();
 
     void parseDeviceCharacteristics_data();
     void parseDeviceCharacteristics();

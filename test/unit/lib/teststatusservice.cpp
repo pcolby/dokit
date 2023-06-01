@@ -244,6 +244,20 @@ void TestStatusService::status()
     QVERIFY(qIsNaN(service.status().batteryVoltage));
 }
 
+void TestStatusService::enableStatusNotifications()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.enableStatusNotifications());
+}
+
+void TestStatusService::disableStatusNotifications()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.disableStatusNotifications());
+}
+
 void TestStatusService::deviceName()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
@@ -263,6 +277,56 @@ void TestStatusService::flashLed()
     // Verify safe error handling (can't do much else without a Bluetooth device).
     StatusService service(nullptr);
     QVERIFY(!service.flashLed());
+}
+
+void TestStatusService::torchStatus()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.torchStatus());
+}
+
+void TestStatusService::setTorchStatus()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    /// \todo StatusService::setTorchStatus() is not implemented yet.
+//    StatusService service(nullptr);
+//    QVERIFY(!service.setTorchStatus(StatusService::TorchStatus::Off));
+}
+
+void TestStatusService::enableTorchStatusNotifications()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.enableTorchStatusNotifications());
+}
+
+void TestStatusService::disableTorchStatusNotifications()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.disableTorchStatusNotifications());
+}
+
+void TestStatusService::buttonPress()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.buttonPress());
+}
+
+void TestStatusService::enableButtonPressedNotifications()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.enableButtonPressedNotifications());
+}
+
+void TestStatusService::disableButtonPressedNotifications()
+{
+    // Verify safe error handling (can't do much else without a Bluetooth device).
+    StatusService service(nullptr);
+    QVERIFY(!service.disableButtonPressedNotifications());
 }
 
 void TestStatusService::parseDeviceCharacteristics_data()

@@ -288,6 +288,34 @@ StatusService::Status StatusService::status() const
 }
 
 /*!
+ * Enables client-side notifications of device status changes.
+ *
+ * This is an alternative to manually requesting individual reads via readStatusCharacteristic().
+ *
+ * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ *
+ * Successfully read values (if any) will be emitted via the deviceStatusRead() signal.
+ */
+bool StatusService::enableStatusNotifications()
+{
+    Q_D(StatusService);
+    return d->enableCharacteristicNotificatons(CharacteristicUuids::status);
+}
+
+/*!
+ * Disables client-side notifications of device status changes.
+ *
+ * Instantaneous status can still be fetched by readStatusCharacteristic().
+ *
+ * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ */
+bool StatusService::disableStatusNotifications()
+{
+    Q_D(StatusService);
+    return d->disableCharacteristicNotificatons(CharacteristicUuids::status);
+}
+
+/*!
  * Returns the most recent value of the `Status` services's `Device Name` characteristic.
  *
  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is
