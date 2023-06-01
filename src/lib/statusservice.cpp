@@ -696,6 +696,10 @@ std::optional<StatusService::ButtonStatus> StatusServicePrivate::parseButtonPres
     /*!
      * \pokitApi The button event is the second byte, but no idea what the first byte is. In all examples
      * I've see it's always `0x02`. It appears that the Pokit Android app only ever looks at `bytes[1]`.
+     *
+     * \pokitApi Note, we can actually write to the Button Press characteristic too. If we do, the whatever
+     * we set as the first byte persists, and (unsurprisingly) the second byte reverts to the current
+     * button state. So still no idea what that first byte is for.
      */
 
     const StatusService::ButtonStatus status = static_cast<StatusService::ButtonStatus>(value.at(1));

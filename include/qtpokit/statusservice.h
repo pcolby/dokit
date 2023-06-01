@@ -165,7 +165,7 @@ public:
     bool enableTorchStatusNotifications();
     bool disableTorchStatusNotifications();
 
-    // Undocumented Button Press characteristic (Pro only: read/write(?)/notify). /// \todo Test write.
+    // Undocumented Button Press characteristic (Pro only: read/write/notify).
     std::optional<ButtonStatus> buttonPress() const;
     bool enableButtonPressedNotifications();
     bool disableButtonPressedNotifications();
