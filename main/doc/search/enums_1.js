@@ -6,5 +6,6 @@ var searchData=
   ['boundaryreason_3',['BoundaryReason',['https://doc.qt.io/qt-5/qtextboundaryfinder.html#BoundaryReason-enum',1,'QTextBoundaryFinder']]],
   ['boundarytype_4',['BoundaryType',['https://doc.qt.io/qt-5/qtextboundaryfinder.html#BoundaryType-enum',1,'QTextBoundaryFinder']]],
   ['brushstyle_5',['BrushStyle',['https://doc.qt.io/qt-5/qt.html#BrushStyle-enum',1,'Qt']]],
-  ['byteorder_6',['ByteOrder',['https://doc.qt.io/qt-5/qdatastream.html#ByteOrder-enum',1,'QDataStream']]]
+  ['buttonstatus_6',['ButtonStatus',['../classStatusService.html#a14dc19e0faab66a66e89abebe41082eb',1,'StatusService']]],
+  ['byteorder_7',['ByteOrder',['https://doc.qt.io/qt-5/qdatastream.html#ByteOrder-enum',1,'QDataStream']]]
 ];

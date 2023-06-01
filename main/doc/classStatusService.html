@@ -171,6 +171,17 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:af7f9dcc8c9cfa0a1cd9491b829234dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the (undocumented) <code>Charging Statue</code> attribute of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> characteristic.  <a href="classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1">More...</a><br /></td></tr>
 <tr class="separator:af7f9dcc8c9cfa0a1cd9491b829234dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab219dd54284c7299cce14b36ee59e08b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">TorchStatus</a> : quint8 { <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08bad15305d7a4e34e02489c74a5ef542f36">Off</a> = 0
+, <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08ba521c36a31c2762741cf0f8890cbe05e3">On</a> = 1
+ }</td></tr>
+<tr class="memdesc:ab219dd54284c7299cce14b36ee59e08b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the single byte of the attribute of the (undocumented) <code>Torch</code> characteristic.  <a href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">More...</a><br /></td></tr>
+<tr class="separator:ab219dd54284c7299cce14b36ee59e08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14dc19e0faab66a66e89abebe41082eb"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">ButtonStatus</a> : quint8 { <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082ebaea1e34304a5d8ffa7c9b0ed8ede4ef1a">Released</a> = 0
+, <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082ebad78a68f6a85421ae121c2cb5b73a1040">Pressed</a> = 1
+, <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082ebaeffe06cc3bbfdd18fa0d95a403cd2d3f">Held</a> = 2
+ }</td></tr>
+<tr class="memdesc:a14dc19e0faab66a66e89abebe41082eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values supported by the second byte of the attribute of the (undocumented) <code>Button Press</code> characteristic.  <a href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">More...</a><br /></td></tr>
+<tr class="separator:a14dc19e0faab66a66e89abebe41082eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
@@ -190,6 +201,15 @@ Signals</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>deviceLedFlashed</b> ()</td></tr>
 <tr class="memdesc:a95fac879cf2f0ea82507352fe8c1bbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is emitted when device's LED has flashed in response to a write of the <code>Flash LED</code> characteristic. <br /></td></tr>
 <tr class="separator:a95fac879cf2f0ea82507352fe8c1bbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8741984a6e62d5501cf3847991bb393"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#aa8741984a6e62d5501cf3847991bb393">torchStatusRead</a> (const <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">TorchStatus</a> &amp;<a class="el" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a>)</td></tr>
+<tr class="memdesc:aa8741984a6e62d5501cf3847991bb393"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is emitted when the <code>Torch</code> characteristic has been read successfully.  <br /></td></tr>
+<tr class="separator:aa8741984a6e62d5501cf3847991bb393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31eaae563d29f64c56a0d32816f30e97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a31eaae563d29f64c56a0d32816f30e97">torchStatusWritten</a> ()</td></tr>
+<tr class="memdesc:a31eaae563d29f64c56a0d32816f30e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is emitted when the <code>Torch</code> characteristic has been written successfully.  <br /></td></tr>
+<tr class="separator:a31eaae563d29f64c56a0d32816f30e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa75d9a8bebf7a3372691bf8123fbce91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#aa75d9a8bebf7a3372691bf8123fbce91">buttonPressRead</a> (const quint8 &amp;unknown, const <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">ButtonStatus</a> <a class="el" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a>)</td></tr>
+<tr class="memdesc:aa75d9a8bebf7a3372691bf8123fbce91"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is emitted when the <code>Button Press</code> characteristic has been read successfully.  <br /></td></tr>
+<tr class="separator:aa75d9a8bebf7a3372691bf8123fbce91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header signals_classAbstractPokitService"><td colspan="2" onclick="javascript:toggleInherit('signals_classAbstractPokitService')"><img src="closed.png" alt="-"/>&#160;Signals inherited from <a class="el" href="classAbstractPokitService.html">AbstractPokitService</a></td></tr>
 <tr class="memitem:af67cbea4294ba0a77dcd9540b29528ff inherit signals_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#af67cbea4294ba0a77dcd9540b29528ff">serviceDetailsDiscovered</a> ()</td></tr>
 <tr class="memdesc:af67cbea4294ba0a77dcd9540b29528ff inherit signals_classAbstractPokitService"><td class="mdescLeft">&#160;</td><td class="mdescRight">This signal is emitted when the Pokit service details have been discovered.  <br /></td></tr>
@@ -221,12 +241,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1540af10953c1b4b7d08620ade8c27ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a1540af10953c1b4b7d08620ade8c27ea">readNameCharacteristic</a> ()</td></tr>
 <tr class="memdesc:a1540af10953c1b4b7d08620ade8c27ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> service's <code>Name</code> characteristic.  <br /></td></tr>
 <tr class="separator:a1540af10953c1b4b7d08620ade8c27ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeb96c51e64da0265ab7d026233541d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#afeb96c51e64da0265ab7d026233541d4">readTorchCharacteristic</a> ()</td></tr>
+<tr class="memdesc:afeb96c51e64da0265ab7d026233541d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> service's (undocumented) <code>Torch</code> characteristic.  <br /></td></tr>
+<tr class="separator:afeb96c51e64da0265ab7d026233541d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29d3830c398e06a59b815c6f5d475fec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a29d3830c398e06a59b815c6f5d475fec">readButtonPressCharacteristic</a> ()</td></tr>
+<tr class="memdesc:a29d3830c398e06a59b815c6f5d475fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> service's (undocumented) <code>Button Press</code> characteristic.  <br /></td></tr>
+<tr class="separator:a29d3830c398e06a59b815c6f5d475fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a008d41a33eedd90e68ccf7a94ed5b65f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structStatusService_1_1DeviceCharacteristics.html">DeviceCharacteristics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a008d41a33eedd90e68ccf7a94ed5b65f">deviceCharacteristics</a> () const</td></tr>
 <tr class="memdesc:a008d41a33eedd90e68ccf7a94ed5b65f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the most recent value of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> service's <code>Device Characteristics</code> characteristic.  <br /></td></tr>
 <tr class="separator:a008d41a33eedd90e68ccf7a94ed5b65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7be4aae021ae50faef48ed2812eb6a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structStatusService_1_1Status.html">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a> () const</td></tr>
 <tr class="memdesc:ae7be4aae021ae50faef48ed2812eb6a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the most recent value of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> service's <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> characteristic.  <br /></td></tr>
 <tr class="separator:ae7be4aae021ae50faef48ed2812eb6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d86bed23202402cade7fa8bb09f9c48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a5d86bed23202402cade7fa8bb09f9c48">enableStatusNotifications</a> ()</td></tr>
+<tr class="memdesc:a5d86bed23202402cade7fa8bb09f9c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables client-side notifications of device status changes.  <br /></td></tr>
+<tr class="separator:a5d86bed23202402cade7fa8bb09f9c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1beab67430fc8bc26e9faf3799d537f1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a1beab67430fc8bc26e9faf3799d537f1">disableStatusNotifications</a> ()</td></tr>
+<tr class="memdesc:a1beab67430fc8bc26e9faf3799d537f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables client-side notifications of device status changes.  <br /></td></tr>
+<tr class="separator:a1beab67430fc8bc26e9faf3799d537f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a113a7051f70e642d2c1f67124c1f12c7"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a113a7051f70e642d2c1f67124c1f12c7">deviceName</a> () const</td></tr>
 <tr class="memdesc:a113a7051f70e642d2c1f67124c1f12c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the most recent value of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> services's <code>Device Name</code> characteristic.  <br /></td></tr>
 <tr class="separator:a113a7051f70e642d2c1f67124c1f12c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,6 +268,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a425bf65d42b24c4a621b312fcd152708"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a425bf65d42b24c4a621b312fcd152708">flashLed</a> ()</td></tr>
 <tr class="memdesc:a425bf65d42b24c4a621b312fcd152708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flash the Pokit device's LED.  <br /></td></tr>
 <tr class="separator:a425bf65d42b24c4a621b312fcd152708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb4787284fb5314ee2085421ad4c1d36"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">TorchStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#acb4787284fb5314ee2085421ad4c1d36">torchStatus</a> () const</td></tr>
+<tr class="memdesc:acb4787284fb5314ee2085421ad4c1d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the most recent value of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> services's <code>Torch</code> characteristic.  <br /></td></tr>
+<tr class="separator:acb4787284fb5314ee2085421ad4c1d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc469455e6e704e0643fbc9ad236c70"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a3bc469455e6e704e0643fbc9ad236c70">setTorchStatus</a> (const <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">TorchStatus</a> <a class="el" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a>)</td></tr>
+<tr class="memdesc:a3bc469455e6e704e0643fbc9ad236c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Pokit device's torch to <em>status</em>.  <br /></td></tr>
+<tr class="separator:a3bc469455e6e704e0643fbc9ad236c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a698e0ba79ea0e7d489e4acdb58830884"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a698e0ba79ea0e7d489e4acdb58830884">enableTorchStatusNotifications</a> ()</td></tr>
+<tr class="memdesc:a698e0ba79ea0e7d489e4acdb58830884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables client-side notifications of torch status changes.  <br /></td></tr>
+<tr class="separator:a698e0ba79ea0e7d489e4acdb58830884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c575b15d296c396d7837c6059f10aa8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a8c575b15d296c396d7837c6059f10aa8">disableTorchStatusNotifications</a> ()</td></tr>
+<tr class="memdesc:a8c575b15d296c396d7837c6059f10aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables client-side notifications of torch status changes.  <br /></td></tr>
+<tr class="separator:a8c575b15d296c396d7837c6059f10aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a658e493f2942afd66263a989e99ed633"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">ButtonStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a658e493f2942afd66263a989e99ed633">buttonPress</a> () const</td></tr>
+<tr class="memdesc:a658e493f2942afd66263a989e99ed633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the most recent value of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> services's <code>Button Press</code> characteristic.  <br /></td></tr>
+<tr class="separator:a658e493f2942afd66263a989e99ed633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a031595af37a535074015a121f0b712bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#a031595af37a535074015a121f0b712bb">enableButtonPressedNotifications</a> ()</td></tr>
+<tr class="memdesc:a031595af37a535074015a121f0b712bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables client-side notifications of button presses.  <br /></td></tr>
+<tr class="separator:a031595af37a535074015a121f0b712bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0d571f2729d69375715b3894ec691ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusService.html#ab0d571f2729d69375715b3894ec691ee">disableButtonPressedNotifications</a> ()</td></tr>
+<tr class="memdesc:ab0d571f2729d69375715b3894ec691ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables client-side notifications of button presses.  <br /></td></tr>
+<tr class="separator:ab0d571f2729d69375715b3894ec691ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAbstractPokitService"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classAbstractPokitService')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAbstractPokitService.html">AbstractPokitService</a></td></tr>
 <tr class="memitem:af0b962913c8be9b1d69ce1b68a5f9bdd inherit pub_methods_classAbstractPokitService"><td class="memItemLeft" align="right" valign="top">
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~AbstractPokitService</b> ()</td></tr>
@@ -486,6 +539,14 @@ static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#
 static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1">StatusService::ChargingStatus</a> &amp;<a class="el" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a>)</td></tr>
 <tr class="memdesc:a5e5d307e56870f2a65e9ccf79429bff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string version of the <em>status</em> enum label. <br /></td></tr>
 <tr class="separator:a5e5d307e56870f2a65e9ccf79429bff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a490e0f1d95063c7e0aabaed33f3f8b22"><td class="memItemLeft" align="right" valign="top"><a id="a490e0f1d95063c7e0aabaed33f3f8b22" name="a490e0f1d95063c7e0aabaed33f3f8b22"></a>
+static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a> &amp;<a class="el" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a>)</td></tr>
+<tr class="memdesc:a490e0f1d95063c7e0aabaed33f3f8b22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string version of the <em>status</em> enum label. <br /></td></tr>
+<tr class="separator:a490e0f1d95063c7e0aabaed33f3f8b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a681701df043e0490ed38d127a86f9afb"><td class="memItemLeft" align="right" valign="top"><a id="a681701df043e0490ed38d127a86f9afb" name="a681701df043e0490ed38d127a86f9afb"></a>
+static <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> (const <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a> &amp;<a class="el" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a>)</td></tr>
+<tr class="memdesc:a681701df043e0490ed38d127a86f9afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string version of the <em>status</em> enum label. <br /></td></tr>
+<tr class="separator:a681701df043e0490ed38d127a86f9afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_qobject"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_qobject')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el"  href="https://doc.qt.io/qt-5/qobject.html">QObject</a></td></tr>
 <tr class="memitem:tr inherit pub_static_methods_qobject"><td class="memItemLeft" align="right" valign="top">
 <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a> (const char *sourceText, const char *disambiguation, int n)</td></tr>
@@ -593,6 +654,38 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a26ca2c6e0c1127261cc28a778512bf68a28d0edd045e05cf5af64e35ae0c4c6ef" name="a26ca2c6e0c1127261cc28a778512bf68a28d0edd045e05cf5af64e35ae0c4c6ef"></a>Low&#160;</td><td class="fielddoc"><p>Low (replace battery). </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a26ca2c6e0c1127261cc28a778512bf68a0c6ad70beb3a7e76c3fc7adab7c46acc" name="a26ca2c6e0c1127261cc28a778512bf68a0c6ad70beb3a7e76c3fc7adab7c46acc"></a>Good&#160;</td><td class="fielddoc"><p>Good. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a14dc19e0faab66a66e89abebe41082eb" name="a14dc19e0faab66a66e89abebe41082eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14dc19e0faab66a66e89abebe41082eb">&#9670;&#160;</a></span>ButtonStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a> : quint8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Values supported by the second byte of the attribute of the (undocumented) <code>Button Press</code> characteristic. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a14dc19e0faab66a66e89abebe41082ebaea1e34304a5d8ffa7c9b0ed8ede4ef1a" name="a14dc19e0faab66a66e89abebe41082ebaea1e34304a5d8ffa7c9b0ed8ede4ef1a"></a>Released&#160;</td><td class="fielddoc"><p>Button was released. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a14dc19e0faab66a66e89abebe41082ebad78a68f6a85421ae121c2cb5b73a1040" name="a14dc19e0faab66a66e89abebe41082ebad78a68f6a85421ae121c2cb5b73a1040"></a>Pressed&#160;</td><td class="fielddoc"><p>Button was pressed. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a14dc19e0faab66a66e89abebe41082ebaeffe06cc3bbfdd18fa0d95a403cd2d3f" name="a14dc19e0faab66a66e89abebe41082ebaeffe06cc3bbfdd18fa0d95a403cd2d3f"></a>Held&#160;</td><td class="fielddoc"><p>Button was held down (for typically 1,500ms). </p>
 </td></tr>
 </table>
 
@@ -710,7 +803,101 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 
 </div>
 </div>
+<a id="ab219dd54284c7299cce14b36ee59e08b" name="ab219dd54284c7299cce14b36ee59e08b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab219dd54284c7299cce14b36ee59e08b">&#9670;&#160;</a></span>TorchStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a> : quint8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Values supported by the single byte of the attribute of the (undocumented) <code>Torch</code> characteristic. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab219dd54284c7299cce14b36ee59e08bad15305d7a4e34e02489c74a5ef542f36" name="ab219dd54284c7299cce14b36ee59e08bad15305d7a4e34e02489c74a5ef542f36"></a>Off&#160;</td><td class="fielddoc"><p>Torch is off. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab219dd54284c7299cce14b36ee59e08ba521c36a31c2762741cf0f8890cbe05e3" name="ab219dd54284c7299cce14b36ee59e08ba521c36a31c2762741cf0f8890cbe05e3"></a>On&#160;</td><td class="fielddoc"><p>Torch is on. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a658e493f2942afd66263a989e99ed633" name="a658e493f2942afd66263a989e99ed633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a658e493f2942afd66263a989e99ed633">&#9670;&#160;</a></span>buttonPress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a> &gt; StatusService::buttonPress </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the most recent value of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> services's <code>Button Press</code> characteristic. </p>
+<p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (eg if the device does not support the Torch characteristic), then <code>nullopt</code> is returned. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_a658e493f2942afd66263a989e99ed633_cgraph.svg" width="448" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aa75d9a8bebf7a3372691bf8123fbce91" name="aa75d9a8bebf7a3372691bf8123fbce91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa75d9a8bebf7a3372691bf8123fbce91">&#9670;&#160;</a></span>buttonPressRead</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StatusService::buttonPressRead </td>
+          <td>(</td>
+          <td class="paramtype">const quint8 &amp;&#160;</td>
+          <td class="paramname"><em>unknown</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">ButtonStatus</a>&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This signal is emitted when the <code>Button Press</code> characteristic has been read successfully. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classStatusService.html#a29d3830c398e06a59b815c6f5d475fec" title="Read the Status service&#39;s (undocumented) Button Press characteristic.">readButtonPressCharacteristic</a> </dd></dl>
+
+</div>
+</div>
 <a id="a008d41a33eedd90e68ccf7a94ed5b65f" name="a008d41a33eedd90e68ccf7a94ed5b65f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a008d41a33eedd90e68ccf7a94ed5b65f">&#9670;&#160;</a></span>deviceCharacteristics()</h2>
 
@@ -734,8 +921,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <div class="line">}</div>
 <div class="ttc" id="aclassAbstractPokitService_html_a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><div class="ttname"><a href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">AbstractPokitService::service</a></div><div class="ttdeci">QLowEnergyService * service()</div><div class="ttdoc">Returns a non-const pointer to the internal service object, if any.</div><div class="ttdef"><b>Definition</b> abstractpokitservice.cpp:119</div></div>
 <div class="ttc" id="aqversionnumber_html_isNull"><div class="ttname"><a href="https://doc.qt.io/qt-5/qversionnumber.html#isNull">QVersionNumber::isNull</a></div><div class="ttdeci">bool isNull() const const</div></div>
-<div class="ttc" id="astructStatusService_1_1DeviceCharacteristics_html"><div class="ttname"><a href="structStatusService_1_1DeviceCharacteristics.html">StatusService::DeviceCharacteristics</a></div><div class="ttdoc">Attributes included in the Device Characteristics characterstic.</div><div class="ttdef"><b>Definition</b> statusservice.h:60</div></div>
-<div class="ttc" id="astructStatusService_1_1DeviceCharacteristics_html_afdc814d092204ef6f0628253298ae319"><div class="ttname"><a href="structStatusService_1_1DeviceCharacteristics.html#afdc814d092204ef6f0628253298ae319">StatusService::DeviceCharacteristics::firmwareVersion</a></div><div class="ttdeci">QVersionNumber firmwareVersion</div><div class="ttdoc">Device's major and minor firmware version.</div><div class="ttdef"><b>Definition</b> statusservice.h:61</div></div>
+<div class="ttc" id="astructStatusService_1_1DeviceCharacteristics_html"><div class="ttname"><a href="structStatusService_1_1DeviceCharacteristics.html">StatusService::DeviceCharacteristics</a></div><div class="ttdoc">Attributes included in the Device Characteristics characterstic.</div><div class="ttdef"><b>Definition</b> statusservice.h:62</div></div>
+<div class="ttc" id="astructStatusService_1_1DeviceCharacteristics_html_afdc814d092204ef6f0628253298ae319"><div class="ttname"><a href="structStatusService_1_1DeviceCharacteristics.html#afdc814d092204ef6f0628253298ae319">StatusService::DeviceCharacteristics::firmwareVersion</a></div><div class="ttdeci">QVersionNumber firmwareVersion</div><div class="ttdoc">Device's major and minor firmware version.</div><div class="ttdef"><b>Definition</b> statusservice.h:63</div></div>
 </div><!-- fragment --> <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -884,6 +1071,135 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="ab0d571f2729d69375715b3894ec691ee" name="ab0d571f2729d69375715b3894ec691ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0d571f2729d69375715b3894ec691ee">&#9670;&#160;</a></span>disableButtonPressedNotifications()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::disableButtonPressedNotifications </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables client-side notifications of button presses. </p>
+<p>Instantaneous button press statussed can still be fetched by <a class="el" href="classStatusService.html#a29d3830c398e06a59b815c6f5d475fec" title="Read the Status service&#39;s (undocumented) Button Press characteristic.">readButtonPressCharacteristic()</a>.</p>
+<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
+
+</div>
+</div>
+<a id="a1beab67430fc8bc26e9faf3799d537f1" name="a1beab67430fc8bc26e9faf3799d537f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1beab67430fc8bc26e9faf3799d537f1">&#9670;&#160;</a></span>disableStatusNotifications()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::disableStatusNotifications </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables client-side notifications of device status changes. </p>
+<p>Instantaneous status can still be fetched by <a class="el" href="classStatusService.html#a0410049da4a7ac6a64027c733797c578" title="Read the Status service&#39;s Status characteristic.">readStatusCharacteristic()</a>.</p>
+<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
+
+</div>
+</div>
+<a id="a8c575b15d296c396d7837c6059f10aa8" name="a8c575b15d296c396d7837c6059f10aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c575b15d296c396d7837c6059f10aa8">&#9670;&#160;</a></span>disableTorchStatusNotifications()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::disableTorchStatusNotifications </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables client-side notifications of torch status changes. </p>
+<p>Instantaneous torch status can still be fetched by <a class="el" href="classStatusService.html#afeb96c51e64da0265ab7d026233541d4" title="Read the Status service&#39;s (undocumented) Torch characteristic.">readTorchCharacteristic()</a>.</p>
+<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
+
+</div>
+</div>
+<a id="a031595af37a535074015a121f0b712bb" name="a031595af37a535074015a121f0b712bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a031595af37a535074015a121f0b712bb">&#9670;&#160;</a></span>enableButtonPressedNotifications()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::enableButtonPressedNotifications </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables client-side notifications of button presses. </p>
+<p>This is an alternative to manually requesting individual reads via <a class="el" href="classStatusService.html#a29d3830c398e06a59b815c6f5d475fec" title="Read the Status service&#39;s (undocumented) Button Press characteristic.">readButtonPressCharacteristic()</a>.</p>
+<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
+<p>Successfully read values (if any) will be emitted via the <a class="el" href="classStatusService.html#aa8741984a6e62d5501cf3847991bb393" title="This signal is emitted when the Torch characteristic has been read successfully.">torchStatusRead()</a> signal. </p>
+
+</div>
+</div>
+<a id="a5d86bed23202402cade7fa8bb09f9c48" name="a5d86bed23202402cade7fa8bb09f9c48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d86bed23202402cade7fa8bb09f9c48">&#9670;&#160;</a></span>enableStatusNotifications()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::enableStatusNotifications </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables client-side notifications of device status changes. </p>
+<p>This is an alternative to manually requesting individual reads via <a class="el" href="classStatusService.html#a0410049da4a7ac6a64027c733797c578" title="Read the Status service&#39;s Status characteristic.">readStatusCharacteristic()</a>.</p>
+<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
+<p>Successfully read values (if any) will be emitted via the <a class="el" href="classStatusService.html#a46ba2b897e99d428e1474988f6f99555" title="This signal is emitted when the Status characteristic has been read successfully.">deviceStatusRead()</a> signal. </p>
+
+</div>
+</div>
+<a id="a698e0ba79ea0e7d489e4acdb58830884" name="a698e0ba79ea0e7d489e4acdb58830884"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a698e0ba79ea0e7d489e4acdb58830884">&#9670;&#160;</a></span>enableTorchStatusNotifications()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::enableTorchStatusNotifications </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables client-side notifications of torch status changes. </p>
+<p>This is an alternative to manually requesting individual reads via <a class="el" href="classStatusService.html#afeb96c51e64da0265ab7d026233541d4" title="Read the Status service&#39;s (undocumented) Torch characteristic.">readTorchCharacteristic()</a>.</p>
+<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
+<p>Successfully read values (if any) will be emitted via the <a class="el" href="classStatusService.html#aa8741984a6e62d5501cf3847991bb393" title="This signal is emitted when the Torch characteristic has been read successfully.">torchStatusRead()</a> signal. </p>
+
+</div>
+</div>
 <a id="a425bf65d42b24c4a621b312fcd152708" name="a425bf65d42b24c4a621b312fcd152708"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a425bf65d42b24c4a621b312fcd152708">&#9670;&#160;</a></span>flashLed()</h2>
 
@@ -907,6 +1223,32 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_a425bf65d42b24c4a621b312fcd152708_cgraph.svg" width="426" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a29d3830c398e06a59b815c6f5d475fec" name="a29d3830c398e06a59b815c6f5d475fec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29d3830c398e06a59b815c6f5d475fec">&#9670;&#160;</a></span>readButtonPressCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::readButtonPressCharacteristic </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> service's (undocumented) <code>Button Press</code> characteristic. </p>
+<p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
+<p>Emits <a class="el" href="classStatusService.html#aa75d9a8bebf7a3372691bf8123fbce91" title="This signal is emitted when the Button Press characteristic has been read successfully.">buttonPressRead()</a> if/when the characteristic has been read successfully. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_a29d3830c398e06a59b815c6f5d475fec_icgraph.svg" width="495" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -942,7 +1284,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_ad73514f6f324ca56dffb844b14eb3bc0_cgraph.svg" width="582" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_ad73514f6f324ca56dffb844b14eb3bc0_cgraph.svg" width="582" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1025,6 +1367,32 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="afeb96c51e64da0265ab7d026233541d4" name="afeb96c51e64da0265ab7d026233541d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeb96c51e64da0265ab7d026233541d4">&#9670;&#160;</a></span>readTorchCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::readTorchCharacteristic </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> service's (undocumented) <code>Torch</code> characteristic. </p>
+<p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
+<p>Emits <a class="el" href="classStatusService.html#aa8741984a6e62d5501cf3847991bb393" title="This signal is emitted when the Torch characteristic has been read successfully.">torchStatusRead()</a> if/when the characteristic has been read successfully. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_afeb96c51e64da0265ab7d026233541d4_icgraph.svg" width="487" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="ada280bc54493f85e6855a2534bf2a02d" name="ada280bc54493f85e6855a2534bf2a02d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada280bc54493f85e6855a2534bf2a02d">&#9670;&#160;</a></span>setDeviceName()</h2>
 
@@ -1052,6 +1420,34 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a3bc469455e6e704e0643fbc9ad236c70" name="a3bc469455e6e704e0643fbc9ad236c70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc469455e6e704e0643fbc9ad236c70">&#9670;&#160;</a></span>setTorchStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StatusService::setTorchStatus </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">TorchStatus</a>&#160;</td>
+          <td class="paramname"><em>status</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the Pokit device's torch to <em>status</em>. </p>
+<p>Returns <code>true</code> if the request was successfully queued, <code>false</code> otherwise.</p>
+<p>Emits <a class="el" href="classStatusService.html#a31eaae563d29f64c56a0d32816f30e97" title="This signal is emitted when the Torch characteristic has been written successfully.">torchStatusWritten()</a> if/when the LED has flashed successfully.</p>
+<dl class="section note"><dt>Note</dt><dd>This operation is only supported by Pokit Pro devices, and not Pokit Meter devices. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_a3bc469455e6e704e0643fbc9ad236c70_cgraph.svg" width="674" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="ae7be4aae021ae50faef48ed2812eb6a7" name="ae7be4aae021ae50faef48ed2812eb6a7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7be4aae021ae50faef48ed2812eb6a7">&#9670;&#160;</a></span>status()</h2>
 
@@ -1073,9 +1469,9 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">status</a>.<a class="code hl_variable" href="structStatusService_1_1Status.html#a34d5f71da1e356a5f8da381f4b715b46">batteryVoltage</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassStatusService_html_ae7be4aae021ae50faef48ed2812eb6a7"><div class="ttname"><a href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">StatusService::status</a></div><div class="ttdeci">Status status() const</div><div class="ttdoc">Returns the most recent value of the Status service's Status characteristic.</div><div class="ttdef"><b>Definition</b> statusservice.cpp:221</div></div>
-<div class="ttc" id="astructStatusService_1_1Status_html"><div class="ttname"><a href="structStatusService_1_1Status.html">StatusService::Status</a></div><div class="ttdoc">Attributes included in the Status characterstic.</div><div class="ttdef"><b>Definition</b> statusservice.h:111</div></div>
-<div class="ttc" id="astructStatusService_1_1Status_html_a34d5f71da1e356a5f8da381f4b715b46"><div class="ttname"><a href="structStatusService_1_1Status.html#a34d5f71da1e356a5f8da381f4b715b46">StatusService::Status::batteryVoltage</a></div><div class="ttdeci">float batteryVoltage</div><div class="ttdoc">Current battery voltage level.</div><div class="ttdef"><b>Definition</b> statusservice.h:113</div></div>
+<div class="ttc" id="aclassStatusService_html_ae7be4aae021ae50faef48ed2812eb6a7"><div class="ttname"><a href="classStatusService.html#ae7be4aae021ae50faef48ed2812eb6a7">StatusService::status</a></div><div class="ttdeci">Status status() const</div><div class="ttdoc">Returns the most recent value of the Status service's Status characteristic.</div><div class="ttdef"><b>Definition</b> statusservice.cpp:280</div></div>
+<div class="ttc" id="astructStatusService_1_1Status_html"><div class="ttname"><a href="structStatusService_1_1Status.html">StatusService::Status</a></div><div class="ttdoc">Attributes included in the Status characterstic.</div><div class="ttdef"><b>Definition</b> statusservice.h:113</div></div>
+<div class="ttc" id="astructStatusService_1_1Status_html_a34d5f71da1e356a5f8da381f4b715b46"><div class="ttname"><a href="structStatusService_1_1Status.html#a34d5f71da1e356a5f8da381f4b715b46">StatusService::Status::batteryVoltage</a></div><div class="ttdeci">float batteryVoltage</div><div class="ttdoc">Current battery voltage level.</div><div class="ttdef"><b>Definition</b> statusservice.h:115</div></div>
 </div><!-- fragment --><p>Not all Pokit devices support the <a class="el" href="structStatusService_1_1Status.html#af2a1fab33ca1e643988bc9976a44940d" title="Logical interpretation the battery voltage level.">Status::batteryStatus</a> member, in which case the member will be initilialised to the maximum value supported by the underlying type (ie <code>255</code>) to indicate "not set" </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1085,8 +1481,90 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_ae7be4aae021ae50faef48ed2812eb6a7_icgraph.svg" width="388" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_ae7be4aae021ae50faef48ed2812eb6a7_icgraph.svg" width="432" height="283"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+
+</div>
+</div>
+<a id="acb4787284fb5314ee2085421ad4c1d36" name="acb4787284fb5314ee2085421ad4c1d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4787284fb5314ee2085421ad4c1d36">&#9670;&#160;</a></span>torchStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a> &gt; StatusService::torchStatus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the most recent value of the <code><a class="el" href="structStatusService_1_1Status.html" title="Attributes included in the Status characterstic.">Status</a></code> services's <code>Torch</code> characteristic. </p>
+<p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (eg if the device does not support the Torch characteristic), then <code>nullopt</code> is returned. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusService_acb4787284fb5314ee2085421ad4c1d36_cgraph.svg" width="446" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aa8741984a6e62d5501cf3847991bb393" name="aa8741984a6e62d5501cf3847991bb393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8741984a6e62d5501cf3847991bb393">&#9670;&#160;</a></span>torchStatusRead</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StatusService::torchStatusRead </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">TorchStatus</a> &amp;&#160;</td>
+          <td class="paramname"><em>status</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This signal is emitted when the <code>Torch</code> characteristic has been read successfully. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classStatusService.html#a3bc469455e6e704e0643fbc9ad236c70" title="Set the Pokit device&#39;s torch to status.">setTorchStatus</a> </dd></dl>
+
+</div>
+</div>
+<a id="a31eaae563d29f64c56a0d32816f30e97" name="a31eaae563d29f64c56a0d32816f30e97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31eaae563d29f64c56a0d32816f30e97">&#9670;&#160;</a></span>torchStatusWritten</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StatusService::torchStatusWritten </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This signal is emitted when the <code>Torch</code> characteristic has been written successfully. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classStatusService.html#afeb96c51e64da0265ab7d026233541d4" title="Read the Status service&#39;s (undocumented) Torch characteristic.">readTorchCharacteristic</a> </dd></dl>
 
 </div>
 </div>

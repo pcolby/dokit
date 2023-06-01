@@ -16,7 +16,10 @@ var classDeviceInfoService =
     [ "readHardwareRevisionCharacteristic", "classDeviceInfoService.html#a0be29e195fea415073d07907e7cf65a6", null ],
     [ "readManufacturerCharacteristics", "classDeviceInfoService.html#a5e8128c7432c3ffe4d2ff045e117ab1e", null ],
     [ "readModelNumberCharacteristic", "classDeviceInfoService.html#a826dda294fcd640e43509bad3db71b10", null ],
+    [ "readSerialNumberCharacteristic", "classDeviceInfoService.html#a0b2e0b299e03d9c06a45646d042f7843", null ],
     [ "readSoftwareRevisionCharacteristic", "classDeviceInfoService.html#a1e08a98402611a2a8301012fd33b069c", null ],
+    [ "serialNumber", "classDeviceInfoService.html#a006859d13f7c3d7f4179a0ad9cc04213", null ],
+    [ "serialNumberRead", "classDeviceInfoService.html#af9e545babde43006ff5ecfa44360038f", null ],
     [ "softwareRevision", "classDeviceInfoService.html#a3619ac5734e074de11927352b0fd5054", null ],
     [ "softwareRevisionRead", "classDeviceInfoService.html#a8f1014195d1310ceae6b25992d48c2bc", null ]
 ];

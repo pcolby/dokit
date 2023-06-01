@@ -119,13 +119,14 @@ var searchData=
   ['burmese_116',['Burmese',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
   ['burundi_117',['Burundi',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
   ['busycursor_118',['BusyCursor',['https://doc.qt.io/qt-5/qt.html#CursorShape-enum',1,'Qt']]],
-  ['byelorussian_119',['Byelorussian',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
-  ['bypassgraphicsproxywidget_120',['BypassGraphicsProxyWidget',['https://doc.qt.io/qt-5/qt.html#WindowType-enum',1,'Qt']]],
-  ['bypassvalidation_121',['BypassValidation',['https://doc.qt.io/qt-5/qjsondocument.html#DataValidation-enum',1,'QJsonDocument']]],
-  ['bypasswindowmanagerhint_122',['BypassWindowManagerHint',['https://doc.qt.io/qt-5/qt.html#WindowType-enum',1,'Qt']]],
-  ['bytearray_123',['ByteArray',['https://doc.qt.io/qt-5/qvariant-obsolete.html#Type-enum',1,'QVariant::ByteArray'],['https://doc.qt.io/qt-5/qcborvalue.html#Type-enum',1,'QCborValue::ByteArray'],['https://doc.qt.io/qt-5/qcborstreamreader.html#Type-enum',1,'QCborStreamReader::ByteArray']]],
-  ['byteorder_124',['ByteOrder',['https://doc.qt.io/qt-5/qsysinfo.html#Endian-enum',1,'QSysInfo']]],
-  ['byteordermark_125',['ByteOrderMark',['https://doc.qt.io/qt-5/qchar.html#SpecialCharacter-enum',1,'QChar']]],
-  ['byteorderswapped_126',['ByteOrderSwapped',['https://doc.qt.io/qt-5/qchar.html#SpecialCharacter-enum',1,'QChar']]],
-  ['bytestring_127',['ByteString',['https://doc.qt.io/qt-5/qcborstreamreader.html#Type-enum',1,'QCborStreamReader']]]
+  ['buttonpress_119',['buttonPress',['../structStatusService_1_1CharacteristicUuids.html#ae2abf1183b8b6f2cd2e0cb5206a3975f',1,'StatusService::CharacteristicUuids']]],
+  ['byelorussian_120',['Byelorussian',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['bypassgraphicsproxywidget_121',['BypassGraphicsProxyWidget',['https://doc.qt.io/qt-5/qt.html#WindowType-enum',1,'Qt']]],
+  ['bypassvalidation_122',['BypassValidation',['https://doc.qt.io/qt-5/qjsondocument.html#DataValidation-enum',1,'QJsonDocument']]],
+  ['bypasswindowmanagerhint_123',['BypassWindowManagerHint',['https://doc.qt.io/qt-5/qt.html#WindowType-enum',1,'Qt']]],
+  ['bytearray_124',['ByteArray',['https://doc.qt.io/qt-5/qvariant-obsolete.html#Type-enum',1,'QVariant::ByteArray'],['https://doc.qt.io/qt-5/qcborvalue.html#Type-enum',1,'QCborValue::ByteArray'],['https://doc.qt.io/qt-5/qcborstreamreader.html#Type-enum',1,'QCborStreamReader::ByteArray']]],
+  ['byteorder_125',['ByteOrder',['https://doc.qt.io/qt-5/qsysinfo.html#Endian-enum',1,'QSysInfo']]],
+  ['byteordermark_126',['ByteOrderMark',['https://doc.qt.io/qt-5/qchar.html#SpecialCharacter-enum',1,'QChar']]],
+  ['byteorderswapped_127',['ByteOrderSwapped',['https://doc.qt.io/qt-5/qchar.html#SpecialCharacter-enum',1,'QChar']]],
+  ['bytestring_128',['ByteString',['https://doc.qt.io/qt-5/qcborstreamreader.html#Type-enum',1,'QCborStreamReader']]]
 ];

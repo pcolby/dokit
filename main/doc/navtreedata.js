@@ -26,6 +26,7 @@ var NAVTREE =
 [
   [ "Dokit", "index.html", [
     [ "QtPokit", "index.html", null ],
+    [ "Todo List", "todo.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -60,13 +61,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
-"functions_r.html",
-"qt.html#AlignmentFlag-enum",
-"qt.html#GestureType-enum",
+"dir_6d05515408e4946c0bcad079cca6efc5.html",
+"qbluetooth.html#AttAccessConstraint-enum",
+"qt.html#FocusReason-enum",
 "qt.html#Key-enum",
 "qt.html#Key-enum",
-"qt.html#ScrollBarPolicy-enum",
-"qt.html#WindowModality-enum"
+"qt.html#PenJoinStyle-enum",
+"qt.html#WidgetAttribute-enum"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

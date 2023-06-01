@@ -70,15 +70,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"classFlashLedCommand.html#a1caaabf1668fac270ab1701e4daa0456",
-"classStatusService.html#a6140c2723538587220452d6d4a51f001",
-"pokitmeter_8cpp.html#a3038daa52676f52266163577f07954e5",
-"qt.html#CaseSensitivity-enum",
-"qt.html#InputMethodQuery-enum",
+"classDsoServicePrivate.html#af35779b15db5c0e8c027104cc6ce014b",
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35",
+"namespacePokitPro.html#adc67ba31bcd650dd7535939e42cec17aa5c8523b038abf04d86fcc5358cd893cf",
+"qt.html#AspectRatioMode-enum",
+"qt.html#InputMethodHint-enum",
 "qt.html#Key-enum",
 "qt.html#Key-enum",
-"qt.html#ToolButtonStyle-enum",
-"structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9"
+"qt.html#TextInteractionFlag-enum",
+"qt.html#noshowbase"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

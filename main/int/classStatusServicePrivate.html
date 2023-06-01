@@ -349,8 +349,14 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7bdbc14dbfe0a29bb0333c01890a6ced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the <code>Device Characteristics</code> <em>value</em> into a DeviceCharacteristics struct.  <br /></td></tr>
 <tr class="separator:a7bdbc14dbfe0a29bb0333c01890a6ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a6ff8ca3e9d7c884b269e52dd43aeb0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structStatusService_1_1Status.html">StatusService::Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0">parseStatus</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</td></tr>
-<tr class="memdesc:a3a6ff8ca3e9d7c884b269e52dd43aeb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the <code>Status</code> <em>value</em> into Statu struct.  <br /></td></tr>
+<tr class="memdesc:a3a6ff8ca3e9d7c884b269e52dd43aeb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the <code>Status</code> <em>value</em> into a Status struct.  <br /></td></tr>
 <tr class="separator:a3a6ff8ca3e9d7c884b269e52dd43aeb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe408253ab1c7f08e09d7613691befba"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusServicePrivate.html#abe408253ab1c7f08e09d7613691befba">parseTorchStatus</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</td></tr>
+<tr class="memdesc:abe408253ab1c7f08e09d7613691befba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the torch status <em>value</em>, and returns the corresponding TorchStatus.  <br /></td></tr>
+<tr class="separator:abe408253ab1c7f08e09d7613691befba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d78c3261bea8f23ddf9804ada203c1"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusServicePrivate.html#a90d78c3261bea8f23ddf9804ada203c1">parseButtonPress</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;value)</td></tr>
+<tr class="memdesc:a90d78c3261bea8f23ddf9804ada203c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the button press <em>value</em>, and returns the corresponding ButtonStatus.  <br /></td></tr>
+<tr class="separator:a90d78c3261bea8f23ddf9804ada203c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_classAbstractPokitServicePrivate"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classAbstractPokitServicePrivate')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classAbstractPokitServicePrivate.html">AbstractPokitServicePrivate</a></td></tr>
 <tr class="memitem:a32f402260c965002c68f7b9191d38af6 inherit pub_static_methods_classAbstractPokitServicePrivate"><td class="memItemLeft" align="right" valign="top">
 static&#160;</td><td class="memItemRight" valign="bottom"><b>Q_LOGGING_CATEGORY</b> (lc, &quot;pokit.ble.service&quot;, QtInfoMsg)</td></tr>
@@ -500,7 +506,7 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classStatusServicePrivate.html" title="The StatusServicePrivate class provides private implementation for StatusService.">StatusServicePrivate</a> class provides private implementation for <a class="el" href="classStatusService.html" title="The StatusService class accesses the Pokit Status service of Pokit devices.">StatusService</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice__p_8h_source.html#l00018">18</a> of file <a class="el" href="statusservice__p_8h_source.html">statusservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statusservice__p_8h_source.html#l00020">20</a> of file <a class="el" href="statusservice__p_8h_source.html">statusservice_p.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a15eb3d0b2529f9c9d4ba506b7492b5d5" name="a15eb3d0b2529f9c9d4ba506b7492b5d5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15eb3d0b2529f9c9d4ba506b7492b5d5">&#9670;&#160;</a></span>StatusServicePrivate()</h2>
@@ -537,11 +543,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 </div><div class="memdoc">
 <p>Constructs a new <a class="el" href="classStatusServicePrivate.html" title="The StatusServicePrivate class provides private implementation for StatusService.">StatusServicePrivate</a> object with public implementation <em>q</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00357">357</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  359</span>    : <a class="code hl_class" href="classAbstractPokitServicePrivate.html">AbstractPokitServicePrivate</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a>(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, q)</div>
-<div class="line"><span class="lineno">  360</span>{</div>
-<div class="line"><span class="lineno">  361</span> </div>
-<div class="line"><span class="lineno">  362</span>}</div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00574">574</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  576</span>    : <a class="code hl_class" href="classAbstractPokitServicePrivate.html">AbstractPokitServicePrivate</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a>(), <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">controller</a>, q)</div>
+<div class="line"><span class="lineno">  577</span>{</div>
+<div class="line"><span class="lineno">  578</span> </div>
+<div class="line"><span class="lineno">  579</span>}</div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html"><div class="ttname"><a href="classAbstractPokitServicePrivate.html">AbstractPokitServicePrivate</a></div><div class="ttdoc">The AbstractPokitServicePrivate class provides private implementation for AbstractPokitService.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice__p_8h_source.html#l00027">abstractpokitservice_p.h:28</a></div></div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_aefc2f27e42be44bf63d9e4f944737da1"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aefc2f27e42be44bf63d9e4f944737da1">AbstractPokitServicePrivate::controller</a></div><div class="ttdeci">QLowEnergyController * controller</div><div class="ttdoc">BLE controller to fetch the service from.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice__p_8h_source.html#l00035">abstractpokitservice_p.h:35</a></div></div>
 <div class="ttc" id="aqbluetoothuuid_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a></div></div>
@@ -587,42 +593,68 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Reimplemented from <a class="el" href="classAbstractPokitServicePrivate.html#a84bef330c6ff124f1e460bb8949d82da">AbstractPokitServicePrivate</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00483">483</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  485</span>{</div>
-<div class="line"><span class="lineno">  486</span>    <a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a84bef330c6ff124f1e460bb8949d82da">AbstractPokitServicePrivate::characteristicRead</a>(characteristic, value);</div>
-<div class="line"><span class="lineno">  487</span> </div>
-<div class="line"><span class="lineno">  488</span>    Q_Q(<a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
-<div class="line"><span class="lineno">  489</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0">StatusService::CharacteristicUuids::deviceCharacteristics</a>) {</div>
-<div class="line"><span class="lineno">  490</span>        emit q-&gt;deviceCharacteristicsRead(<a class="code hl_function" href="classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced">parseDeviceCharacteristics</a>(value));</div>
-<div class="line"><span class="lineno">  491</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  492</span>    }</div>
-<div class="line"><span class="lineno">  493</span> </div>
-<div class="line"><span class="lineno">  494</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">StatusService::CharacteristicUuids::status</a>) {</div>
-<div class="line"><span class="lineno">  495</span>        emit q-&gt;deviceStatusRead(<a class="code hl_function" href="classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0">parseStatus</a>(value));</div>
-<div class="line"><span class="lineno">  496</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  497</span>    }</div>
-<div class="line"><span class="lineno">  498</span> </div>
-<div class="line"><span class="lineno">  499</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a>) {</div>
-<div class="line"><span class="lineno">  500</span>        <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> deviceName = <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(value);</div>
-<div class="line"><span class="lineno">  501</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(R<span class="stringliteral">&quot;(Device name: &quot;%1&quot;)&quot;).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(deviceName);</span></div>
-<div class="line"><span class="lineno">  502</span><span class="stringliteral">        emit q-&gt;deviceNameRead(deviceName);</span></div>
-<div class="line"><span class="lineno">  503</span><span class="stringliteral">        </span><span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  504</span>    }</div>
-<div class="line"><span class="lineno">  505</span> </div>
-<div class="line"><span class="lineno">  506</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a>) {</div>
-<div class="line"><span class="lineno">  507</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Flash LED characteristic is write-only, but somehow read&quot;</span>)</div>
-<div class="line"><span class="lineno">  508</span>            &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
-<div class="line"><span class="lineno">  509</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  510</span>    }</div>
-<div class="line"><span class="lineno">  511</span> </div>
-<div class="line"><span class="lineno">  512</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Unknown characteristic read for Status service&quot;</span>)</div>
-<div class="line"><span class="lineno">  513</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
-<div class="line"><span class="lineno">  514</span>}</div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00737">737</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  739</span>{</div>
+<div class="line"><span class="lineno">  740</span>    <a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a84bef330c6ff124f1e460bb8949d82da">AbstractPokitServicePrivate::characteristicRead</a>(characteristic, value);</div>
+<div class="line"><span class="lineno">  741</span> </div>
+<div class="line"><span class="lineno">  742</span>    Q_Q(<a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
+<div class="line"><span class="lineno">  743</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0">StatusService::CharacteristicUuids::deviceCharacteristics</a>) {</div>
+<div class="line"><span class="lineno">  744</span>        emit q-&gt;deviceCharacteristicsRead(<a class="code hl_function" href="classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced">parseDeviceCharacteristics</a>(value));</div>
+<div class="line"><span class="lineno">  745</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  746</span>    }</div>
+<div class="line"><span class="lineno">  747</span> </div>
+<div class="line"><span class="lineno">  748</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">StatusService::CharacteristicUuids::status</a>) {</div>
+<div class="line"><span class="lineno">  749</span>        emit q-&gt;deviceStatusRead(<a class="code hl_function" href="classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0">parseStatus</a>(value));</div>
+<div class="line"><span class="lineno">  750</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  751</span>    }</div>
+<div class="line"><span class="lineno">  752</span> </div>
+<div class="line"><span class="lineno">  753</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a>) {</div>
+<div class="line"><span class="lineno">  754</span>        <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> deviceName = <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(value);</div>
+<div class="line"><span class="lineno">  755</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(R<span class="stringliteral">&quot;(Device name: &quot;%1&quot;)&quot;).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(deviceName);</span></div>
+<div class="line"><span class="lineno">  756</span><span class="stringliteral">        emit q-&gt;deviceNameRead(deviceName);</span></div>
+<div class="line"><span class="lineno">  757</span><span class="stringliteral">        </span><span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  758</span>    }</div>
+<div class="line"><span class="lineno">  759</span> </div>
+<div class="line"><span class="lineno">  760</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a>) {</div>
+<div class="line"><span class="lineno">  761</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Flash LED characteristic is write-only, but somehow read&quot;</span>)</div>
+<div class="line"><span class="lineno">  762</span>            &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
+<div class="line"><span class="lineno">  763</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  764</span>    }</div>
+<div class="line"><span class="lineno">  765</span> </div>
+<div class="line"><span class="lineno">  766</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a8e558d76deeac993d962763fec80aa3d">StatusService::CharacteristicUuids::torch</a>) {</div>
+<div class="line"><span class="lineno">  767</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;Torch&quot;</span>), value, 1, 1)) {</div>
+<div class="line"><span class="lineno">  768</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  769</span>        }</div>
+<div class="line"><span class="lineno">  770</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a> status = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(0));</div>
+<div class="line"><span class="lineno">  771</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Torch status:  %1 (%2)&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)status).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(status));</div>
+<div class="line"><span class="lineno">  772</span>        emit q-&gt;torchStatusRead(status);</div>
+<div class="line"><span class="lineno">  773</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  774</span>    }</div>
+<div class="line"><span class="lineno">  775</span> </div>
+<div class="line"><span class="lineno">  776</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#ae2abf1183b8b6f2cd2e0cb5206a3975f">StatusService::CharacteristicUuids::buttonPress</a>) {</div>
+<div class="line"><span class="lineno">  777</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;Torch&quot;</span>), value, 2, 2)) {</div>
+<div class="line"><span class="lineno">  778</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  779</span>        }</div>
+<div class="line"><span class="lineno">  780</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a> status = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(1));</div>
+<div class="line"><span class="lineno">  781</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Button status:  %1 (%2)&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)status).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(status));</div>
+<div class="line"><span class="lineno">  782</span>        emit q-&gt;buttonPressRead(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(0), status);</div>
+<div class="line"><span class="lineno">  783</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  784</span>    }</div>
+<div class="line"><span class="lineno">  785</span> </div>
+<div class="line"><span class="lineno">  786</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Unknown characteristic read for Status service&quot;</span>)</div>
+<div class="line"><span class="lineno">  787</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
+<div class="line"><span class="lineno">  788</span>}</div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_a37538a1aa1beeb85a041f1735d65cbfd"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">AbstractPokitServicePrivate::serviceUuid</a></div><div class="ttdeci">QBluetoothUuid serviceUuid</div><div class="ttdoc">UUIDs for service.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice__p_8h_source.html#l00038">abstractpokitservice_p.h:38</a></div></div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a84bef330c6ff124f1e460bb8949d82da"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a84bef330c6ff124f1e460bb8949d82da">AbstractPokitServicePrivate::characteristicRead</a></div><div class="ttdeci">virtual void characteristicRead(const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;value)</div><div class="ttdoc">Handles QLowEnergyService::characteristicRead events.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00539">abstractpokitservice.cpp:539</a></div></div>
-<div class="ttc" id="aclassStatusServicePrivate_html_a3a6ff8ca3e9d7c884b269e52dd43aeb0"><div class="ttname"><a href="classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0">StatusServicePrivate::parseStatus</a></div><div class="ttdeci">static StatusService::Status parseStatus(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Status value into Statu struct.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8cpp_source.html#l00409">statusservice.cpp:409</a></div></div>
-<div class="ttc" id="aclassStatusServicePrivate_html_a7bdbc14dbfe0a29bb0333c01890a6ced"><div class="ttname"><a href="classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced">StatusServicePrivate::parseDeviceCharacteristics</a></div><div class="ttdeci">static StatusService::DeviceCharacteristics parseDeviceCharacteristics(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Device Characteristics value into a DeviceCharacteristics struct.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8cpp_source.html#l00367">statusservice.cpp:367</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_a84bef330c6ff124f1e460bb8949d82da"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a84bef330c6ff124f1e460bb8949d82da">AbstractPokitServicePrivate::characteristicRead</a></div><div class="ttdeci">virtual void characteristicRead(const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;value)</div><div class="ttdoc">Handles QLowEnergyService::characteristicRead events.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00562">abstractpokitservice.cpp:562</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_af8b480a950244540bfff7fc4b476a0ef"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">AbstractPokitServicePrivate::checkSize</a></div><div class="ttdeci">static bool checkSize(const QString &amp;label, const QByteArray &amp;data, const int minSize, const int maxSize=-1, const bool failOnMax=false)</div><div class="ttdoc">Returns false if data is smaller than minSize, otherwise returns failOnMax if data is bigger than max...</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00400">abstractpokitservice.cpp:400</a></div></div>
+<div class="ttc" id="aclassStatusServicePrivate_html_a3a6ff8ca3e9d7c884b269e52dd43aeb0"><div class="ttname"><a href="classStatusServicePrivate.html#a3a6ff8ca3e9d7c884b269e52dd43aeb0">StatusServicePrivate::parseStatus</a></div><div class="ttdeci">static StatusService::Status parseStatus(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Status value into a Status struct.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8cpp_source.html#l00626">statusservice.cpp:626</a></div></div>
+<div class="ttc" id="aclassStatusServicePrivate_html_a7bdbc14dbfe0a29bb0333c01890a6ced"><div class="ttname"><a href="classStatusServicePrivate.html#a7bdbc14dbfe0a29bb0333c01890a6ced">StatusServicePrivate::parseDeviceCharacteristics</a></div><div class="ttdeci">static StatusService::DeviceCharacteristics parseDeviceCharacteristics(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Device Characteristics value into a DeviceCharacteristics struct.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8cpp_source.html#l00584">statusservice.cpp:584</a></div></div>
 <div class="ttc" id="aclassStatusService_html"><div class="ttname"><a href="classStatusService.html">StatusService</a></div><div class="ttdoc">The StatusService class accesses the Pokit Status service of Pokit devices.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00024">statusservice.h:25</a></div></div>
+<div class="ttc" id="aclassStatusService_html_a14dc19e0faab66a66e89abebe41082eb"><div class="ttname"><a href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a></div><div class="ttdeci">ButtonStatus</div><div class="ttdoc">Values supported by the second byte of the attribute of the (undocumented) Button Press characteristi...</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00129">statusservice.h:129</a></div></div>
+<div class="ttc" id="aclassStatusService_html_aac79e97cb114be25b2a6771d915f132d"><div class="ttname"><a href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a></div><div class="ttdeci">static QString toString(const StatusService::DeviceStatus &amp;status)</div><div class="ttdoc">Returns a string version of the status enum label.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8cpp_source.html#l00032">statusservice.cpp:32</a></div></div>
+<div class="ttc" id="aclassStatusService_html_ab219dd54284c7299cce14b36ee59e08b"><div class="ttname"><a href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a></div><div class="ttdeci">TorchStatus</div><div class="ttdoc">Values supported by the single byte of the attribute of the (undocumented) Torch characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00122">statusservice.h:122</a></div></div>
+<div class="ttc" id="aqbytearray_html_at"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#at">QByteArray::at</a></div><div class="ttdeci">char at(int i) const const</div></div>
+<div class="ttc" id="aqlatin1string_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_name"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name</a></div><div class="ttdeci">QString name() const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_uuid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid</a></div><div class="ttdeci">QBluetoothUuid uuid() const const</div></div>
 <div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
@@ -630,15 +662,17 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <div class="ttc" id="aqstring_html_arg-1"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg</a></div><div class="ttdeci">QString arg(qlonglong a, int fieldWidth, int base, QChar fillChar) const const</div></div>
 <div class="ttc" id="aqstring_html_fromUtf8"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a></div><div class="ttdeci">QString fromUtf8(const char *str, int size)</div></div>
 <div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_a3ca6f44f245a642f2a5e9147255a7bd8"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a></div><div class="ttdeci">static const QBluetoothUuid name</div><div class="ttdoc">UUID of the Pokit Status service's Device Name characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00047">statusservice.h:47</a></div></div>
+<div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_a8e558d76deeac993d962763fec80aa3d"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#a8e558d76deeac993d962763fec80aa3d">StatusService::CharacteristicUuids::torch</a></div><div class="ttdeci">static const QBluetoothUuid torch</div><div class="ttdoc">UUID of the Pokit Status service's (undocumented) Torch characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00053">statusservice.h:53</a></div></div>
 <div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_ab883f16924c3c325a3400a5146d48ac0"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0">StatusService::CharacteristicUuids::deviceCharacteristics</a></div><div class="ttdeci">static const QBluetoothUuid deviceCharacteristics</div><div class="ttdoc">UUID of the Pokit Status service's Device Characteristics characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00041">statusservice.h:41</a></div></div>
+<div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_ae2abf1183b8b6f2cd2e0cb5206a3975f"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#ae2abf1183b8b6f2cd2e0cb5206a3975f">StatusService::CharacteristicUuids::buttonPress</a></div><div class="ttdeci">static const QBluetoothUuid buttonPress</div><div class="ttdoc">UUID of the Pokit Status service's (undocumented) Button Press characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00056">statusservice.h:56</a></div></div>
 <div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_aeb51331d2510873d95a5993e62aa2cf0"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a></div><div class="ttdeci">static const QBluetoothUuid flashLed</div><div class="ttdoc">UUID of the Pokit Status service's Flash LED characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00050">statusservice.h:50</a></div></div>
 <div class="ttc" id="astructStatusService_1_1CharacteristicUuids_html_af27d015f60e86b0de464eab455c56f7c"><div class="ttname"><a href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">StatusService::CharacteristicUuids::status</a></div><div class="ttdeci">static const QBluetoothUuid status</div><div class="ttdoc">UUID of the Pokit Status service's Status characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00044">statusservice.h:44</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00539">AbstractPokitServicePrivate::characteristicRead()</a>, <a class="el" href="statusservice_8h_source.html#l00041">StatusService::CharacteristicUuids::deviceCharacteristics</a>, <a class="el" href="statusservice_8h_source.html#l00050">StatusService::CharacteristicUuids::flashLed</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8()</a>, <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::name</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name()</a>, <a class="el" href="statusservice_8cpp_source.html#l00367">parseDeviceCharacteristics()</a>, <a class="el" href="statusservice_8cpp_source.html#l00409">parseStatus()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00038">AbstractPokitServicePrivate::serviceUuid</a>, <a class="el" href="statusservice_8h_source.html#l00044">StatusService::CharacteristicUuids::status</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">QByteArray::at()</a>, <a class="el" href="statusservice_8h_source.html#l00056">StatusService::CharacteristicUuids::buttonPress</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00562">AbstractPokitServicePrivate::characteristicRead()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00400">AbstractPokitServicePrivate::checkSize()</a>, <a class="el" href="statusservice_8h_source.html#l00041">StatusService::CharacteristicUuids::deviceCharacteristics</a>, <a class="el" href="statusservice_8h_source.html#l00050">StatusService::CharacteristicUuids::flashLed</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8()</a>, <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::name</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name()</a>, <a class="el" href="statusservice_8cpp_source.html#l00584">parseDeviceCharacteristics()</a>, <a class="el" href="statusservice_8cpp_source.html#l00626">parseStatus()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00038">AbstractPokitServicePrivate::serviceUuid</a>, <a class="el" href="statusservice_8h_source.html#l00044">StatusService::CharacteristicUuids::status</a>, <a class="el" href="statusservice_8h_source.html#l00053">StatusService::CharacteristicUuids::torch</a>, <a class="el" href="statusservice_8cpp_source.html#l00032">StatusService::toString()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_a08d8faee04fb47ac19d3962609606d52_cgraph.svg" width="1186" height="994"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_a08d8faee04fb47ac19d3962609606d52_cgraph.svg" width="1186" height="1134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -681,43 +715,105 @@ Here is the call graph for this function:</div>
 
 <p>Reimplemented from <a class="el" href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">AbstractPokitServicePrivate</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00520">520</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  522</span>{</div>
-<div class="line"><span class="lineno">  523</span>    <a class="code hl_slot" href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">AbstractPokitServicePrivate::characteristicWritten</a>(characteristic, newValue);</div>
-<div class="line"><span class="lineno">  524</span> </div>
-<div class="line"><span class="lineno">  525</span>    Q_Q(<a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
-<div class="line"><span class="lineno">  526</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0">StatusService::CharacteristicUuids::deviceCharacteristics</a>) {</div>
-<div class="line"><span class="lineno">  527</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Device Characteristics is read-only, but somehow written&quot;</span>)</div>
-<div class="line"><span class="lineno">  528</span>            &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
-<div class="line"><span class="lineno">  529</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  530</span>    }</div>
-<div class="line"><span class="lineno">  531</span> </div>
-<div class="line"><span class="lineno">  532</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">StatusService::CharacteristicUuids::status</a>) {</div>
-<div class="line"><span class="lineno">  533</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Status characteristic is read-only, but somehow written&quot;</span>)</div>
-<div class="line"><span class="lineno">  534</span>            &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
-<div class="line"><span class="lineno">  535</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  536</span>    }</div>
-<div class="line"><span class="lineno">  537</span> </div>
-<div class="line"><span class="lineno">  538</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a>) {</div>
-<div class="line"><span class="lineno">  539</span>        emit q-&gt;deviceNameWritten();</div>
-<div class="line"><span class="lineno">  540</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  541</span>    }</div>
-<div class="line"><span class="lineno">  542</span> </div>
-<div class="line"><span class="lineno">  543</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a>) {</div>
-<div class="line"><span class="lineno">  544</span>        emit q-&gt;deviceLedFlashed();</div>
-<div class="line"><span class="lineno">  545</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  546</span>    }</div>
-<div class="line"><span class="lineno">  547</span> </div>
-<div class="line"><span class="lineno">  548</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Unknown characteristic written for Status service&quot;</span>)</div>
-<div class="line"><span class="lineno">  549</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
-<div class="line"><span class="lineno">  550</span>}</div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aaf4a6cb9f0b1fe537877d615a6634201"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">AbstractPokitServicePrivate::characteristicWritten</a></div><div class="ttdeci">virtual void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</div><div class="ttdoc">Handles QLowEnergyService::characteristicWritten events.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00553">abstractpokitservice.cpp:553</a></div></div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00794">794</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  796</span>{</div>
+<div class="line"><span class="lineno">  797</span>    <a class="code hl_slot" href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">AbstractPokitServicePrivate::characteristicWritten</a>(characteristic, newValue);</div>
+<div class="line"><span class="lineno">  798</span> </div>
+<div class="line"><span class="lineno">  799</span>    Q_Q(<a class="code hl_class" href="classStatusService.html">StatusService</a>);</div>
+<div class="line"><span class="lineno">  800</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0">StatusService::CharacteristicUuids::deviceCharacteristics</a>) {</div>
+<div class="line"><span class="lineno">  801</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Device Characteristics is read-only, but somehow written&quot;</span>)</div>
+<div class="line"><span class="lineno">  802</span>            &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
+<div class="line"><span class="lineno">  803</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  804</span>    }</div>
+<div class="line"><span class="lineno">  805</span> </div>
+<div class="line"><span class="lineno">  806</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c">StatusService::CharacteristicUuids::status</a>) {</div>
+<div class="line"><span class="lineno">  807</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Status characteristic is read-only, but somehow written&quot;</span>)</div>
+<div class="line"><span class="lineno">  808</span>            &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
+<div class="line"><span class="lineno">  809</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  810</span>    }</div>
+<div class="line"><span class="lineno">  811</span> </div>
+<div class="line"><span class="lineno">  812</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8">StatusService::CharacteristicUuids::name</a>) {</div>
+<div class="line"><span class="lineno">  813</span>        emit q-&gt;deviceNameWritten();</div>
+<div class="line"><span class="lineno">  814</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  815</span>    }</div>
+<div class="line"><span class="lineno">  816</span> </div>
+<div class="line"><span class="lineno">  817</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0">StatusService::CharacteristicUuids::flashLed</a>) {</div>
+<div class="line"><span class="lineno">  818</span>        emit q-&gt;deviceLedFlashed();</div>
+<div class="line"><span class="lineno">  819</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  820</span>    }</div>
+<div class="line"><span class="lineno">  821</span> </div>
+<div class="line"><span class="lineno">  822</span>    <span class="keywordflow">if</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>() == <a class="code hl_variable" href="structStatusService_1_1CharacteristicUuids.html#a8e558d76deeac993d962763fec80aa3d">StatusService::CharacteristicUuids::torch</a>) {</div>
+<div class="line"><span class="lineno">  823</span>        emit q-&gt;torchStatusWritten();</div>
+<div class="line"><span class="lineno">  824</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  825</span>    }</div>
+<div class="line"><span class="lineno">  826</span> </div>
+<div class="line"><span class="lineno">  827</span>    qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Unknown characteristic written for Status service&quot;</span>)</div>
+<div class="line"><span class="lineno">  828</span>        &lt;&lt; <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">name</a>() &lt;&lt; characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">uuid</a>();</div>
+<div class="line"><span class="lineno">  829</span>}</div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aaf4a6cb9f0b1fe537877d615a6634201"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#aaf4a6cb9f0b1fe537877d615a6634201">AbstractPokitServicePrivate::characteristicWritten</a></div><div class="ttdeci">virtual void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</div><div class="ttdoc">Handles QLowEnergyService::characteristicWritten events.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00576">abstractpokitservice.cpp:576</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00553">AbstractPokitServicePrivate::characteristicWritten()</a>, <a class="el" href="statusservice_8h_source.html#l00041">StatusService::CharacteristicUuids::deviceCharacteristics</a>, <a class="el" href="statusservice_8h_source.html#l00050">StatusService::CharacteristicUuids::flashLed</a>, <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::name</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00038">AbstractPokitServicePrivate::serviceUuid</a>, <a class="el" href="statusservice_8h_source.html#l00044">StatusService::CharacteristicUuids::status</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid()</a>.</p>
+<p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00576">AbstractPokitServicePrivate::characteristicWritten()</a>, <a class="el" href="statusservice_8h_source.html#l00041">StatusService::CharacteristicUuids::deviceCharacteristics</a>, <a class="el" href="statusservice_8h_source.html#l00050">StatusService::CharacteristicUuids::flashLed</a>, <a class="el" href="statusservice_8h_source.html#l00047">StatusService::CharacteristicUuids::name</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#name">QLowEnergyCharacteristic::name()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00038">AbstractPokitServicePrivate::serviceUuid</a>, <a class="el" href="statusservice_8h_source.html#l00044">StatusService::CharacteristicUuids::status</a>, <a class="el" href="statusservice_8h_source.html#l00053">StatusService::CharacteristicUuids::torch</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#uuid">QLowEnergyCharacteristic::uuid()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_a8de57b8b27437360d75bd44f74595db1_cgraph.svg" width="948" height="607"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a90d78c3261bea8f23ddf9804ada203c1" name="a90d78c3261bea8f23ddf9804ada203c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90d78c3261bea8f23ddf9804ada203c1">&#9670;&#160;</a></span>parseButtonPress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a> &gt; StatusServicePrivate::parseButtonPress </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses the button press <em>value</em>, and returns the corresponding ButtonStatus. </p>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000014">Pokit Bluetooth API errata:</a></b></dt><dd>The button event is the second byte, but no idea what the first byte is. In all examples I've see it's always <code>0x02</code>. It appears that the Pokit Android app only ever looks at <code>bytes[1]</code>.</dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000015">Pokit Bluetooth API errata:</a></b></dt><dd>Note, we can actually write to the Button Press characteristic too. If we do, the whatever we set as the first byte persists, and (unsurprisingly) the second byte reverts to the current button state. So still no idea what that first byte is for. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00695">695</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  696</span>{</div>
+<div class="line"><span class="lineno">  697</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;Torch&quot;</span>), value, 2, 2)) {</div>
+<div class="line"><span class="lineno">  698</span>        <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><span class="lineno">  699</span>    }</div>
+<div class="line"><span class="lineno">  700</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  701</span><span class="comment">    /*!</span></div>
+<div class="line"><span class="lineno">  702</span><span class="comment">     * \pokitApi The button event is the second byte, but no idea what the first byte is. In all examples</span></div>
+<div class="line"><span class="lineno">  703</span><span class="comment">     * I&#39;ve see it&#39;s always `0x02`. It appears that the Pokit Android app only ever looks at `bytes[1]`.</span></div>
+<div class="line"><span class="lineno">  704</span><span class="comment">     *</span></div>
+<div class="line"><span class="lineno">  705</span><span class="comment">     * \pokitApi Note, we can actually write to the Button Press characteristic too. If we do, the whatever</span></div>
+<div class="line"><span class="lineno">  706</span><span class="comment">     * we set as the first byte persists, and (unsurprisingly) the second byte reverts to the current</span></div>
+<div class="line"><span class="lineno">  707</span><span class="comment">     * button state. So still no idea what that first byte is for.</span></div>
+<div class="line"><span class="lineno">  708</span><span class="comment">     */</span></div>
+<div class="line"><span class="lineno">  709</span> </div>
+<div class="line"><span class="lineno">  710</span>    <span class="keyword">const</span> <a class="code hl_enumeration" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a> status = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a14dc19e0faab66a66e89abebe41082eb">StatusService::ButtonStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(1));</div>
+<div class="line"><span class="lineno">  711</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Button: %1 (%2)&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)status).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(status));</div>
+<div class="line"><span class="lineno">  712</span>    <span class="keywordflow">return</span> status;</div>
+<div class="line"><span class="lineno">  713</span>}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">QByteArray::at()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00400">AbstractPokitServicePrivate::checkSize()</a>, <a class="el" href="statusservice_8cpp_source.html#l00032">StatusService::toString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_a90d78c3261bea8f23ddf9804ada203c1_cgraph.svg" width="1534" height="508"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -748,52 +844,50 @@ Here is the call graph for this function:</div>
 
 <p>Parses the <code>Device Characteristics</code> <em>value</em> into a DeviceCharacteristics struct. </p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00367">367</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  369</span>{</div>
-<div class="line"><span class="lineno">  370</span>    <a class="code hl_struct" href="structStatusService_1_1DeviceCharacteristics.html">StatusService::DeviceCharacteristics</a> characteristics{</div>
-<div class="line"><span class="lineno">  371</span>        <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qversionnumber.html">QVersionNumber</a>(), 0, 0, 0, 0, 0, 0, <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbluetoothaddress.html">QBluetoothAddress</a>()</div>
-<div class="line"><span class="lineno">  372</span>    };</div>
-<div class="line"><span class="lineno">  373</span>    Q_ASSERT(characteristics.firmwareVersion.isNull());  <span class="comment">// How we indicate failure.</span></div>
-<div class="line"><span class="lineno">  374</span> </div>
-<div class="line"><span class="lineno">  375</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;Device Characterisitcs&quot;</span>), value, 20, 20)) {</div>
-<div class="line"><span class="lineno">  376</span>        <span class="keywordflow">return</span> characteristics;</div>
-<div class="line"><span class="lineno">  377</span>    }</div>
-<div class="line"><span class="lineno">  378</span> </div>
-<div class="line"><span class="lineno">  379</span>    characteristics.firmwareVersion = <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qversionnumber.html">QVersionNumber</a>(</div>
-<div class="line"><span class="lineno">  380</span>                                          qFromLittleEndian&lt;quint8 &gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(0,1)),</div>
-<div class="line"><span class="lineno">  381</span>                                          qFromLittleEndian&lt;quint8 &gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(1,1)));</div>
-<div class="line"><span class="lineno">  382</span>    characteristics.maximumVoltage      = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(2,2));</div>
-<div class="line"><span class="lineno">  383</span>    characteristics.maximumCurrent      = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(4,2));</div>
-<div class="line"><span class="lineno">  384</span>    characteristics.maximumResistance   = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(6,2));</div>
-<div class="line"><span class="lineno">  385</span>    characteristics.maximumSamplingRate = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(8,2));</div>
-<div class="line"><span class="lineno">  386</span>    characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(10,2));</div>
-<div class="line"><span class="lineno">  387</span>    characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(12,2));</div>
-<div class="line"><span class="lineno">  388</span>    characteristics.macAddress = <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbluetoothaddress.html">QBluetoothAddress</a>(qFromBigEndian&lt;quint64&gt;</div>
-<div class="line"><span class="lineno">  389</span>                                                   (<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a>(2, <span class="charliteral">&#39;\0&#39;</span>) + value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(14,6)));</div>
-<div class="line"><span class="lineno">  390</span> </div>
-<div class="line"><span class="lineno">  391</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Firmware version:     &quot;</span>) &lt;&lt; characteristics.firmwareVersion;</div>
-<div class="line"><span class="lineno">  392</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Maximum voltage:      &quot;</span>) &lt;&lt; characteristics.maximumVoltage;</div>
-<div class="line"><span class="lineno">  393</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Maximum current:      &quot;</span>) &lt;&lt; characteristics.maximumCurrent;</div>
-<div class="line"><span class="lineno">  394</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Maximum resistance:   &quot;</span>) &lt;&lt; characteristics.maximumResistance;</div>
-<div class="line"><span class="lineno">  395</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Maximum sampling rate:&quot;</span>) &lt;&lt; characteristics.maximumSamplingRate;</div>
-<div class="line"><span class="lineno">  396</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Sampling buffer size: &quot;</span>) &lt;&lt; characteristics.samplingBufferSize;</div>
-<div class="line"><span class="lineno">  397</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Capability mask:      &quot;</span>) &lt;&lt; characteristics.capabilityMask;</div>
-<div class="line"><span class="lineno">  398</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;MAC address:          &quot;</span>) &lt;&lt; characteristics.macAddress;</div>
-<div class="line"><span class="lineno">  399</span> </div>
-<div class="line"><span class="lineno">  400</span>    Q_ASSERT(!characteristics.firmwareVersion.isNull()); <span class="comment">// How we indicate success.</span></div>
-<div class="line"><span class="lineno">  401</span>    <span class="keywordflow">return</span> characteristics;</div>
-<div class="line"><span class="lineno">  402</span>}</div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_af8b480a950244540bfff7fc4b476a0ef"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">AbstractPokitServicePrivate::checkSize</a></div><div class="ttdeci">static bool checkSize(const QString &amp;label, const QByteArray &amp;data, const int minSize, const int maxSize=-1, const bool failOnMax=false)</div><div class="ttdoc">Returns false if data is smaller than minSize, otherwise returns failOnMax if data is bigger than max...</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00400">abstractpokitservice.cpp:400</a></div></div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00584">584</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  586</span>{</div>
+<div class="line"><span class="lineno">  587</span>    <a class="code hl_struct" href="structStatusService_1_1DeviceCharacteristics.html">StatusService::DeviceCharacteristics</a> characteristics{</div>
+<div class="line"><span class="lineno">  588</span>        <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qversionnumber.html">QVersionNumber</a>(), 0, 0, 0, 0, 0, 0, <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbluetoothaddress.html">QBluetoothAddress</a>()</div>
+<div class="line"><span class="lineno">  589</span>    };</div>
+<div class="line"><span class="lineno">  590</span>    Q_ASSERT(characteristics.firmwareVersion.isNull());  <span class="comment">// How we indicate failure.</span></div>
+<div class="line"><span class="lineno">  591</span> </div>
+<div class="line"><span class="lineno">  592</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;Device Characterisitcs&quot;</span>), value, 20, 20)) {</div>
+<div class="line"><span class="lineno">  593</span>        <span class="keywordflow">return</span> characteristics;</div>
+<div class="line"><span class="lineno">  594</span>    }</div>
+<div class="line"><span class="lineno">  595</span> </div>
+<div class="line"><span class="lineno">  596</span>    characteristics.firmwareVersion = <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qversionnumber.html">QVersionNumber</a>(</div>
+<div class="line"><span class="lineno">  597</span>                                          qFromLittleEndian&lt;quint8 &gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(0,1)),</div>
+<div class="line"><span class="lineno">  598</span>                                          qFromLittleEndian&lt;quint8 &gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(1,1)));</div>
+<div class="line"><span class="lineno">  599</span>    characteristics.maximumVoltage      = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(2,2));</div>
+<div class="line"><span class="lineno">  600</span>    characteristics.maximumCurrent      = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(4,2));</div>
+<div class="line"><span class="lineno">  601</span>    characteristics.maximumResistance   = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(6,2));</div>
+<div class="line"><span class="lineno">  602</span>    characteristics.maximumSamplingRate = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(8,2));</div>
+<div class="line"><span class="lineno">  603</span>    characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(10,2));</div>
+<div class="line"><span class="lineno">  604</span>    characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(12,2));</div>
+<div class="line"><span class="lineno">  605</span>    characteristics.macAddress = <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbluetoothaddress.html">QBluetoothAddress</a>(qFromBigEndian&lt;quint64&gt;</div>
+<div class="line"><span class="lineno">  606</span>                                                   (<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a>(2, <span class="charliteral">&#39;\0&#39;</span>) + value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(14,6)));</div>
+<div class="line"><span class="lineno">  607</span> </div>
+<div class="line"><span class="lineno">  608</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Firmware version:     &quot;</span>) &lt;&lt; characteristics.firmwareVersion;</div>
+<div class="line"><span class="lineno">  609</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Maximum voltage:      &quot;</span>) &lt;&lt; characteristics.maximumVoltage;</div>
+<div class="line"><span class="lineno">  610</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Maximum current:      &quot;</span>) &lt;&lt; characteristics.maximumCurrent;</div>
+<div class="line"><span class="lineno">  611</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Maximum resistance:   &quot;</span>) &lt;&lt; characteristics.maximumResistance;</div>
+<div class="line"><span class="lineno">  612</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Maximum sampling rate:&quot;</span>) &lt;&lt; characteristics.maximumSamplingRate;</div>
+<div class="line"><span class="lineno">  613</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Sampling buffer size: &quot;</span>) &lt;&lt; characteristics.samplingBufferSize;</div>
+<div class="line"><span class="lineno">  614</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Capability mask:      &quot;</span>) &lt;&lt; characteristics.capabilityMask;</div>
+<div class="line"><span class="lineno">  615</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;MAC address:          &quot;</span>) &lt;&lt; characteristics.macAddress;</div>
+<div class="line"><span class="lineno">  616</span> </div>
+<div class="line"><span class="lineno">  617</span>    Q_ASSERT(!characteristics.firmwareVersion.isNull()); <span class="comment">// How we indicate success.</span></div>
+<div class="line"><span class="lineno">  618</span>    <span class="keywordflow">return</span> characteristics;</div>
+<div class="line"><span class="lineno">  619</span>}</div>
 <div class="ttc" id="aqbluetoothaddress_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbluetoothaddress.html">QBluetoothAddress</a></div></div>
 <div class="ttc" id="aqbytearray_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a></div></div>
 <div class="ttc" id="aqbytearray_html_mid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#mid">QByteArray::mid</a></div><div class="ttdeci">QByteArray mid(int pos, int len) const const</div></div>
-<div class="ttc" id="aqlatin1string_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a></div></div>
 <div class="ttc" id="aqversionnumber_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qversionnumber.html">QVersionNumber</a></div></div>
-<div class="ttc" id="astructStatusService_1_1DeviceCharacteristics_html"><div class="ttname"><a href="structStatusService_1_1DeviceCharacteristics.html">StatusService::DeviceCharacteristics</a></div><div class="ttdoc">Attributes included in the Device Characteristics characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00060">statusservice.h:60</a></div></div>
+<div class="ttc" id="astructStatusService_1_1DeviceCharacteristics_html"><div class="ttname"><a href="structStatusService_1_1DeviceCharacteristics.html">StatusService::DeviceCharacteristics</a></div><div class="ttdoc">Attributes included in the Device Characteristics characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00062">statusservice.h:62</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="abstractpokitservice_8cpp_source.html#l00400">AbstractPokitServicePrivate::checkSize()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">QByteArray::mid()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="statusservice_8cpp_source.html#l00483">characteristicRead()</a>, and <a class="el" href="statusservice_8cpp_source.html#l00193">StatusService::deviceCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="statusservice_8cpp_source.html#l00737">characteristicRead()</a>, and <a class="el" href="statusservice_8cpp_source.html#l00252">StatusService::deviceCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -831,75 +925,73 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Parses the <code>Status</code> <em>value</em> into Statu struct. </p>
+<p>Parses the <code>Status</code> <em>value</em> into a Status struct. </p>
 <p>Note, not all Pokit devices support all members in Status. Specifically, the batteryStatus member is not usually set by Pokit Meter devices, so will be an invlalid BatteryStatus enum value (<code>255</code>) in that case. </p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000012">Pokit Bluetooth API errata:</a></b></dt><dd>Pokit API 0.02 says the <code>Status</code> characteristic is 5 bytes. API 1.00 then added an additional byte for <code>Battery Status</code>, for 6 bytes in total. However, Pokit Pro devices return 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit Meter only uses the first 5 bytes - ie <code>Battery Status</code> is not present.</dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000013">Pokit Bluetooth API errata:</a></b></dt><dd>Pokit API 0.02 says the <code>Status</code> characteristic is 5 bytes. API 1.00 then added an additional byte for <code>Battery Status</code>, for 6 bytes in total. However, Pokit Pro devices return 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit Meter only uses the first 5 bytes - ie <code>Battery Status</code> is not present.</dd></dl>
 <p>Update: it appears that the first of those 2 extra bytes is used to indicate the phycical switch position.</p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00409">409</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  410</span>{</div>
-<div class="line"><span class="lineno">  411</span>    <a class="code hl_struct" href="structStatusService_1_1Status.html">StatusService::Status</a> status{</div>
-<div class="line"><span class="lineno">  412</span>        <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35">StatusService::DeviceStatus</a><span class="keyword">&gt;</span></div>
-<div class="line"><span class="lineno">  413</span>            (std::numeric_limits&lt;std::underlying_type_t&lt;StatusService::DeviceStatus&gt;&gt;::max()),</div>
-<div class="line"><span class="lineno">  414</span>        std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
-<div class="line"><span class="lineno">  415</span>        <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68">StatusService::BatteryStatus</a><span class="keyword">&gt;</span></div>
-<div class="line"><span class="lineno">  416</span>            (std::numeric_limits&lt;std::underlying_type_t&lt;StatusService::BatteryStatus&gt;&gt;::max()),</div>
-<div class="line"><span class="lineno">  417</span>        std::nullopt, std::nullopt,</div>
-<div class="line"><span class="lineno">  418</span>    };</div>
-<div class="line"><span class="lineno">  419</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  420</span><span class="comment">    /*!</span></div>
-<div class="line"><span class="lineno">  421</span><span class="comment">     * \pokitApi Pokit API 0.02 says the `Status` characteristic is 5 bytes. API 1.00 then added an</span></div>
-<div class="line"><span class="lineno">  422</span><span class="comment">     * additional byte for `Battery Status`, for 6 bytes in total. However, Pokit Pro devices return</span></div>
-<div class="line"><span class="lineno">  423</span><span class="comment">     * 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit</span></div>
-<div class="line"><span class="lineno">  424</span><span class="comment">     * Meter only uses the first 5 bytes - ie `Battery Status` is not present.</span></div>
-<div class="line"><span class="lineno">  425</span><span class="comment">     *</span></div>
-<div class="line"><span class="lineno">  426</span><span class="comment">     * Update: it appears that the first of those 2 extra bytes is used to indicate the phycical switch</span></div>
-<div class="line"><span class="lineno">  427</span><span class="comment">     * position.</span></div>
-<div class="line"><span class="lineno">  428</span><span class="comment">     */</span></div>
-<div class="line"><span class="lineno">  429</span> </div>
-<div class="line"><span class="lineno">  430</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;Status&quot;</span>), value, 5, 6)) {</div>
-<div class="line"><span class="lineno">  431</span>        <span class="keywordflow">return</span> status;</div>
-<div class="line"><span class="lineno">  432</span>    }</div>
-<div class="line"><span class="lineno">  433</span> </div>
-<div class="line"><span class="lineno">  434</span>    status.<a class="code hl_variable" href="structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11">deviceStatus</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35">StatusService::DeviceStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(0));</div>
-<div class="line"><span class="lineno">  435</span>    status.batteryVoltage = qFromLittleEndian&lt;float&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(1,4));</div>
-<div class="line"><span class="lineno">  436</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() &gt;= 6) { <span class="comment">// Battery Status added to Pokit API docs v1.00.</span></div>
-<div class="line"><span class="lineno">  437</span>        status.batteryStatus = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68">StatusService::BatteryStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(5));</div>
-<div class="line"><span class="lineno">  438</span>    }</div>
-<div class="line"><span class="lineno">  439</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() &gt;= 7) { <span class="comment">// Switch Position - as yet, undocumented by Pokit Innovations.</span></div>
-<div class="line"><span class="lineno">  440</span>        status.switchPosition = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f">StatusService::SwitchPosition</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(6));</div>
-<div class="line"><span class="lineno">  441</span>    }</div>
-<div class="line"><span class="lineno">  442</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() &gt;= 8) { <span class="comment">// Switch Position - as yet, undocumented by Pokit Innovations.</span></div>
-<div class="line"><span class="lineno">  443</span>        status.chargingStatus = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1">StatusService::ChargingStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(7));</div>
-<div class="line"><span class="lineno">  444</span>    }</div>
-<div class="line"><span class="lineno">  445</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Device status:   %1 (%2)&quot;</span>)</div>
-<div class="line"><span class="lineno">  446</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)status.deviceStatus).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(status.deviceStatus));</div>
-<div class="line"><span class="lineno">  447</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Battery voltage: %1 volts&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(status.batteryVoltage);</div>
-<div class="line"><span class="lineno">  448</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Battery status:  %1 (%2)&quot;</span>)</div>
-<div class="line"><span class="lineno">  449</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)status.batteryStatus).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(status.batteryStatus));</div>
-<div class="line"><span class="lineno">  450</span>    <span class="keywordflow">if</span> (status.switchPosition) {</div>
-<div class="line"><span class="lineno">  451</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Switch position: %1 (%2)&quot;</span>)</div>
-<div class="line"><span class="lineno">  452</span>            .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)*status.switchPosition).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(*status.switchPosition));</div>
-<div class="line"><span class="lineno">  453</span>    }</div>
-<div class="line"><span class="lineno">  454</span>    <span class="keywordflow">if</span> (status.chargingStatus) {</div>
-<div class="line"><span class="lineno">  455</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Charging status: %1 (%2)&quot;</span>)</div>
-<div class="line"><span class="lineno">  456</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)*status.chargingStatus).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(*status.chargingStatus));</div>
-<div class="line"><span class="lineno">  457</span>    }</div>
-<div class="line"><span class="lineno">  458</span>    <span class="keywordflow">return</span> status;</div>
-<div class="line"><span class="lineno">  459</span>}</div>
-<div class="ttc" id="aclassStatusService_html_a26ca2c6e0c1127261cc28a778512bf68"><div class="ttname"><a href="classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68">StatusService::BatteryStatus</a></div><div class="ttdeci">BatteryStatus</div><div class="ttdoc">Values supported by the Battery Status attribute of the Status characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00088">statusservice.h:88</a></div></div>
-<div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35">StatusService::DeviceStatus</a></div><div class="ttdeci">DeviceStatus</div><div class="ttdoc">Values supported by the Status attribute of the Status characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00072">statusservice.h:72</a></div></div>
-<div class="ttc" id="aclassStatusService_html_a6bb2f85b6df9942ee108c341f4162e1f"><div class="ttname"><a href="classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f">StatusService::SwitchPosition</a></div><div class="ttdeci">SwitchPosition</div><div class="ttdoc">Values supported by the (undocumented) Switch Position attribute of the Status characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00095">statusservice.h:95</a></div></div>
-<div class="ttc" id="aclassStatusService_html_aac79e97cb114be25b2a6771d915f132d"><div class="ttname"><a href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a></div><div class="ttdeci">static QString toString(const StatusService::DeviceStatus &amp;status)</div><div class="ttdoc">Returns a string version of the status enum label.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8cpp_source.html#l00032">statusservice.cpp:32</a></div></div>
-<div class="ttc" id="aclassStatusService_html_af7f9dcc8c9cfa0a1cd9491b829234dc1"><div class="ttname"><a href="classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1">StatusService::ChargingStatus</a></div><div class="ttdeci">ChargingStatus</div><div class="ttdoc">Values supported by the (undocumented) Charging Statue attribute of the Status characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00103">statusservice.h:103</a></div></div>
-<div class="ttc" id="aqbytearray_html_at"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#at">QByteArray::at</a></div><div class="ttdeci">char at(int i) const const</div></div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00626">626</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  627</span>{</div>
+<div class="line"><span class="lineno">  628</span>    <a class="code hl_struct" href="structStatusService_1_1Status.html">StatusService::Status</a> status{</div>
+<div class="line"><span class="lineno">  629</span>        <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35">StatusService::DeviceStatus</a><span class="keyword">&gt;</span></div>
+<div class="line"><span class="lineno">  630</span>            (std::numeric_limits&lt;std::underlying_type_t&lt;StatusService::DeviceStatus&gt;&gt;::max()),</div>
+<div class="line"><span class="lineno">  631</span>        std::numeric_limits&lt;float&gt;::quiet_NaN(),</div>
+<div class="line"><span class="lineno">  632</span>        <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68">StatusService::BatteryStatus</a><span class="keyword">&gt;</span></div>
+<div class="line"><span class="lineno">  633</span>            (std::numeric_limits&lt;std::underlying_type_t&lt;StatusService::BatteryStatus&gt;&gt;::max()),</div>
+<div class="line"><span class="lineno">  634</span>        std::nullopt, std::nullopt,</div>
+<div class="line"><span class="lineno">  635</span>    };</div>
+<div class="line"><span class="lineno">  636</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  637</span><span class="comment">    /*!</span></div>
+<div class="line"><span class="lineno">  638</span><span class="comment">     * \pokitApi Pokit API 0.02 says the `Status` characteristic is 5 bytes. API 1.00 then added an</span></div>
+<div class="line"><span class="lineno">  639</span><span class="comment">     * additional byte for `Battery Status`, for 6 bytes in total. However, Pokit Pro devices return</span></div>
+<div class="line"><span class="lineno">  640</span><span class="comment">     * 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit</span></div>
+<div class="line"><span class="lineno">  641</span><span class="comment">     * Meter only uses the first 5 bytes - ie `Battery Status` is not present.</span></div>
+<div class="line"><span class="lineno">  642</span><span class="comment">     *</span></div>
+<div class="line"><span class="lineno">  643</span><span class="comment">     * Update: it appears that the first of those 2 extra bytes is used to indicate the phycical switch</span></div>
+<div class="line"><span class="lineno">  644</span><span class="comment">     * position.</span></div>
+<div class="line"><span class="lineno">  645</span><span class="comment">     */</span></div>
+<div class="line"><span class="lineno">  646</span> </div>
+<div class="line"><span class="lineno">  647</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;Status&quot;</span>), value, 5, 6)) {</div>
+<div class="line"><span class="lineno">  648</span>        <span class="keywordflow">return</span> status;</div>
+<div class="line"><span class="lineno">  649</span>    }</div>
+<div class="line"><span class="lineno">  650</span> </div>
+<div class="line"><span class="lineno">  651</span>    status.<a class="code hl_variable" href="structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11">deviceStatus</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35">StatusService::DeviceStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(0));</div>
+<div class="line"><span class="lineno">  652</span>    status.batteryVoltage = qFromLittleEndian&lt;float&gt;(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">mid</a>(1,4));</div>
+<div class="line"><span class="lineno">  653</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() &gt;= 6) { <span class="comment">// Battery Status added to Pokit API docs v1.00.</span></div>
+<div class="line"><span class="lineno">  654</span>        status.batteryStatus = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68">StatusService::BatteryStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(5));</div>
+<div class="line"><span class="lineno">  655</span>    }</div>
+<div class="line"><span class="lineno">  656</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() &gt;= 7) { <span class="comment">// Switch Position - as yet, undocumented by Pokit Innovations.</span></div>
+<div class="line"><span class="lineno">  657</span>        status.switchPosition = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f">StatusService::SwitchPosition</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(6));</div>
+<div class="line"><span class="lineno">  658</span>    }</div>
+<div class="line"><span class="lineno">  659</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">size</a>() &gt;= 8) { <span class="comment">// Switch Position - as yet, undocumented by Pokit Innovations.</span></div>
+<div class="line"><span class="lineno">  660</span>        status.chargingStatus = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1">StatusService::ChargingStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(7));</div>
+<div class="line"><span class="lineno">  661</span>    }</div>
+<div class="line"><span class="lineno">  662</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Device status:   %1 (%2)&quot;</span>)</div>
+<div class="line"><span class="lineno">  663</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)status.deviceStatus).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(status.deviceStatus));</div>
+<div class="line"><span class="lineno">  664</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Battery voltage: %1 volts&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(status.batteryVoltage);</div>
+<div class="line"><span class="lineno">  665</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Battery status:  %1 (%2)&quot;</span>)</div>
+<div class="line"><span class="lineno">  666</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)status.batteryStatus).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(status.batteryStatus));</div>
+<div class="line"><span class="lineno">  667</span>    <span class="keywordflow">if</span> (status.switchPosition) {</div>
+<div class="line"><span class="lineno">  668</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Switch position: %1 (%2)&quot;</span>)</div>
+<div class="line"><span class="lineno">  669</span>            .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)*status.switchPosition).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(*status.switchPosition));</div>
+<div class="line"><span class="lineno">  670</span>    }</div>
+<div class="line"><span class="lineno">  671</span>    <span class="keywordflow">if</span> (status.chargingStatus) {</div>
+<div class="line"><span class="lineno">  672</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Charging status: %1 (%2)&quot;</span>)</div>
+<div class="line"><span class="lineno">  673</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)*status.chargingStatus).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(*status.chargingStatus));</div>
+<div class="line"><span class="lineno">  674</span>    }</div>
+<div class="line"><span class="lineno">  675</span>    <span class="keywordflow">return</span> status;</div>
+<div class="line"><span class="lineno">  676</span>}</div>
+<div class="ttc" id="aclassStatusService_html_a26ca2c6e0c1127261cc28a778512bf68"><div class="ttname"><a href="classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68">StatusService::BatteryStatus</a></div><div class="ttdeci">BatteryStatus</div><div class="ttdoc">Values supported by the Battery Status attribute of the Status characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00090">statusservice.h:90</a></div></div>
+<div class="ttc" id="aclassStatusService_html_a50ae778be2cb8e49b85ef159be19af35"><div class="ttname"><a href="classStatusService.html#a50ae778be2cb8e49b85ef159be19af35">StatusService::DeviceStatus</a></div><div class="ttdeci">DeviceStatus</div><div class="ttdoc">Values supported by the Status attribute of the Status characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00074">statusservice.h:74</a></div></div>
+<div class="ttc" id="aclassStatusService_html_a6bb2f85b6df9942ee108c341f4162e1f"><div class="ttname"><a href="classStatusService.html#a6bb2f85b6df9942ee108c341f4162e1f">StatusService::SwitchPosition</a></div><div class="ttdeci">SwitchPosition</div><div class="ttdoc">Values supported by the (undocumented) Switch Position attribute of the Status characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00097">statusservice.h:97</a></div></div>
+<div class="ttc" id="aclassStatusService_html_af7f9dcc8c9cfa0a1cd9491b829234dc1"><div class="ttname"><a href="classStatusService.html#af7f9dcc8c9cfa0a1cd9491b829234dc1">StatusService::ChargingStatus</a></div><div class="ttdeci">ChargingStatus</div><div class="ttdoc">Values supported by the (undocumented) Charging Statue attribute of the Status characteristic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00105">statusservice.h:105</a></div></div>
 <div class="ttc" id="aqbytearray_html_size"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size</a></div><div class="ttdeci">int size() const const</div></div>
-<div class="ttc" id="astructStatusService_1_1Status_html"><div class="ttname"><a href="structStatusService_1_1Status.html">StatusService::Status</a></div><div class="ttdoc">Attributes included in the Status characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00111">statusservice.h:111</a></div></div>
-<div class="ttc" id="astructStatusService_1_1Status_html_aa5d6fe4e5286126d7604c6ceb4da6d11"><div class="ttname"><a href="structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11">StatusService::Status::deviceStatus</a></div><div class="ttdeci">DeviceStatus deviceStatus</div><div class="ttdoc">Current Pokit device status.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00112">statusservice.h:112</a></div></div>
+<div class="ttc" id="astructStatusService_1_1Status_html"><div class="ttname"><a href="structStatusService_1_1Status.html">StatusService::Status</a></div><div class="ttdoc">Attributes included in the Status characterstic.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00113">statusservice.h:113</a></div></div>
+<div class="ttc" id="astructStatusService_1_1Status_html_aa5d6fe4e5286126d7604c6ceb4da6d11"><div class="ttname"><a href="structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11">StatusService::Status::deviceStatus</a></div><div class="ttdeci">DeviceStatus deviceStatus</div><div class="ttdoc">Current Pokit device status.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00114">statusservice.h:114</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">QByteArray::at()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00400">AbstractPokitServicePrivate::checkSize()</a>, <a class="el" href="statusservice_8h_source.html#l00112">StatusService::Status::deviceStatus</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">QByteArray::mid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size()</a>, <a class="el" href="statusservice_8cpp_source.html#l00032">StatusService::toString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">QByteArray::at()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00400">AbstractPokitServicePrivate::checkSize()</a>, <a class="el" href="statusservice_8h_source.html#l00114">StatusService::Status::deviceStatus</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#mid">QByteArray::mid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#size">QByteArray::size()</a>, <a class="el" href="statusservice_8cpp_source.html#l00032">StatusService::toString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="statusservice_8cpp_source.html#l00483">characteristicRead()</a>, and <a class="el" href="statusservice_8cpp_source.html#l00221">StatusService::status()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="statusservice_8cpp_source.html#l00737">characteristicRead()</a>, and <a class="el" href="statusservice_8cpp_source.html#l00280">StatusService::status()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -908,7 +1000,53 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_a3a6ff8ca3e9d7c884b269e52dd43aeb0_icgraph.svg" width="1146" height="164"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_a3a6ff8ca3e9d7c884b269e52dd43aeb0_icgraph.svg" width="1190" height="439"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="abe408253ab1c7f08e09d7613691befba" name="abe408253ab1c7f08e09d7613691befba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe408253ab1c7f08e09d7613691befba">&#9670;&#160;</a></span>parseTorchStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a> &gt; StatusServicePrivate::parseTorchStatus </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses the torch status <em>value</em>, and returns the corresponding TorchStatus. </p>
+
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00681">681</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  682</span>{</div>
+<div class="line"><span class="lineno">  683</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#af8b480a950244540bfff7fc4b476a0ef">checkSize</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1string.html">QLatin1String</a>(<span class="stringliteral">&quot;Torch&quot;</span>), value, 1, 1)) {</div>
+<div class="line"><span class="lineno">  684</span>        <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><span class="lineno">  685</span>    }</div>
+<div class="line"><span class="lineno">  686</span> </div>
+<div class="line"><span class="lineno">  687</span>    <span class="keyword">const</span> <a class="code hl_enumeration" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a> status = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classStatusService.html#ab219dd54284c7299cce14b36ee59e08b">StatusService::TorchStatus</a><span class="keyword">&gt;</span>(value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">at</a>(0));</div>
+<div class="line"><span class="lineno">  688</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Torch status: %1 (%2)&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>((quint8)status).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_function" href="classStatusService.html#aac79e97cb114be25b2a6771d915f132d">StatusService::toString</a>(status));</div>
+<div class="line"><span class="lineno">  689</span>    <span class="keywordflow">return</span> status;</div>
+<div class="line"><span class="lineno">  690</span>}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#at">QByteArray::at()</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00400">AbstractPokitServicePrivate::checkSize()</a>, <a class="el" href="statusservice_8cpp_source.html#l00032">StatusService::toString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_abe408253ab1c7f08e09d7613691befba_cgraph.svg" width="1534" height="508"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -942,17 +1080,17 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented from <a class="el" href="classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b">AbstractPokitServicePrivate</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00467">467</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  468</span>{</div>
-<div class="line"><span class="lineno">  469</span>    <span class="keywordflow">if</span> (newService == <a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a>) {</div>
-<div class="line"><span class="lineno">  470</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Found Status Service for a Pokit Meter device.&quot;</span>);</div>
-<div class="line"><span class="lineno">  471</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> = <a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a>;</div>
-<div class="line"><span class="lineno">  472</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newService == <a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a>) {</div>
-<div class="line"><span class="lineno">  473</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Found Status Service for a Pokit Pro device.&quot;</span>);</div>
-<div class="line"><span class="lineno">  474</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> = <a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a>;</div>
-<div class="line"><span class="lineno">  475</span>    }</div>
-<div class="line"><span class="lineno">  476</span>    <a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b">AbstractPokitServicePrivate::serviceDiscovered</a>(newService);</div>
-<div class="line"><span class="lineno">  477</span>}</div>
+<p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00721">721</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  722</span>{</div>
+<div class="line"><span class="lineno">  723</span>    <span class="keywordflow">if</span> (newService == <a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a>) {</div>
+<div class="line"><span class="lineno">  724</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Found Status Service for a Pokit Meter device.&quot;</span>);</div>
+<div class="line"><span class="lineno">  725</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> = <a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a>;</div>
+<div class="line"><span class="lineno">  726</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newService == <a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a>) {</div>
+<div class="line"><span class="lineno">  727</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Found Status Service for a Pokit Pro device.&quot;</span>);</div>
+<div class="line"><span class="lineno">  728</span>        <a class="code hl_variable" href="classAbstractPokitServicePrivate.html#a37538a1aa1beeb85a041f1735d65cbfd">serviceUuid</a> = <a class="code hl_variable" href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a>;</div>
+<div class="line"><span class="lineno">  729</span>    }</div>
+<div class="line"><span class="lineno">  730</span>    <a class="code hl_slot" href="classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b">AbstractPokitServicePrivate::serviceDiscovered</a>(newService);</div>
+<div class="line"><span class="lineno">  731</span>}</div>
 <div class="ttc" id="aclassAbstractPokitServicePrivate_html_a654255854b4aca7718ef30e10260d89b"><div class="ttname"><a href="classAbstractPokitServicePrivate.html#a654255854b4aca7718ef30e10260d89b">AbstractPokitServicePrivate::serviceDiscovered</a></div><div class="ttdeci">virtual void serviceDiscovered(const QBluetoothUuid &amp;newService)</div><div class="ttdoc">Handles QLowEnergyController::serviceDiscovered events.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00499">abstractpokitservice.cpp:499</a></div></div>
 <div class="ttc" id="astructStatusService_1_1ServiceUuids_html_a0a9ca0f9377093ff60b282d4bfe3b0cf"><div class="ttname"><a href="structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf">StatusService::ServiceUuids::pokitPro</a></div><div class="ttdeci">static const QBluetoothUuid pokitPro</div><div class="ttdoc">UUID of the Pokit Pro's Pokit Status service.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00035">statusservice.h:35</a></div></div>
 <div class="ttc" id="astructStatusService_1_1ServiceUuids_html_a8fa373d36e9332df30f38411ab3446de"><div class="ttname"><a href="structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de">StatusService::ServiceUuids::pokitMeter</a></div><div class="ttdeci">static const QBluetoothUuid pokitMeter</div><div class="ttdoc">UUID of the Pokit Meter's Pokit Status service.</div><div class="ttdef"><b>Definition</b> <a href="statusservice_8h_source.html#l00032">statusservice.h:32</a></div></div>
@@ -961,7 +1099,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_a416f4b2a7e342c39fd667bcf324b4ea4_cgraph.svg" width="1440" height="1606"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classStatusServicePrivate_a416f4b2a7e342c39fd667bcf324b4ea4_cgraph.svg" width="1440" height="1727"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -987,7 +1125,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statusservice__p_8h_source.html#l00039">39</a> of file <a class="el" href="statusservice__p_8h_source.html">statusservice_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statusservice__p_8h_source.html#l00043">43</a> of file <a class="el" href="statusservice__p_8h_source.html">statusservice_p.h</a>.</p>
 
 </div>
 </div>

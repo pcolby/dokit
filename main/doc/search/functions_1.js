@@ -34,10 +34,12 @@ var searchData=
   ['buildcpuarchitecture_31',['buildCpuArchitecture',['https://doc.qt.io/qt-5/qsysinfo.html#buildCpuArchitecture',1,'QSysInfo']]],
   ['builddate_32',['buildDate',['https://doc.qt.io/qt-5/qlibraryinfo-obsolete.html#buildDate',1,'QLibraryInfo']]],
   ['bundlename_33',['bundleName',['https://doc.qt.io/qt-5/qfileinfo.html#bundleName',1,'QFileInfo']]],
-  ['byteorder_34',['byteOrder',['https://doc.qt.io/qt-5/qdatastream.html#byteOrder',1,'QDataStream']]],
-  ['bytesavailable_35',['bytesAvailable',['https://doc.qt.io/qt-5/qiodevice.html#bytesAvailable',1,'QIODevice::bytesAvailable()'],['https://doc.qt.io/qt-5/qprocess.html#bytesAvailable',1,'QProcess::bytesAvailable()'],['https://doc.qt.io/qt-5/qstorageinfo.html#bytesAvailable',1,'QStorageInfo::bytesAvailable()'],['https://doc.qt.io/qt-5/qbluetoothsocket.html#bytesAvailable',1,'QBluetoothSocket::bytesAvailable()']]],
-  ['bytesfree_36',['bytesFree',['https://doc.qt.io/qt-5/qstorageinfo.html#bytesFree',1,'QStorageInfo']]],
-  ['bytestotal_37',['bytesTotal',['https://doc.qt.io/qt-5/qstorageinfo.html#bytesTotal',1,'QStorageInfo']]],
-  ['bytestowrite_38',['bytesToWrite',['https://doc.qt.io/qt-5/qiodevice.html#bytesToWrite',1,'QIODevice::bytesToWrite()'],['https://doc.qt.io/qt-5/qprocess.html#bytesToWrite',1,'QProcess::bytesToWrite()'],['https://doc.qt.io/qt-5/qbluetoothsocket.html#bytesToWrite',1,'QBluetoothSocket::bytesToWrite()']]],
-  ['byteswritten_39',['bytesWritten',['https://doc.qt.io/qt-5/qiodevice.html#bytesWritten',1,'QIODevice']]]
+  ['buttonpress_34',['buttonPress',['../classStatusService.html#a658e493f2942afd66263a989e99ed633',1,'StatusService']]],
+  ['buttonpressread_35',['buttonPressRead',['../classStatusService.html#aa75d9a8bebf7a3372691bf8123fbce91',1,'StatusService']]],
+  ['byteorder_36',['byteOrder',['https://doc.qt.io/qt-5/qdatastream.html#byteOrder',1,'QDataStream']]],
+  ['bytesavailable_37',['bytesAvailable',['https://doc.qt.io/qt-5/qiodevice.html#bytesAvailable',1,'QIODevice::bytesAvailable()'],['https://doc.qt.io/qt-5/qprocess.html#bytesAvailable',1,'QProcess::bytesAvailable()'],['https://doc.qt.io/qt-5/qstorageinfo.html#bytesAvailable',1,'QStorageInfo::bytesAvailable()'],['https://doc.qt.io/qt-5/qbluetoothsocket.html#bytesAvailable',1,'QBluetoothSocket::bytesAvailable()']]],
+  ['bytesfree_38',['bytesFree',['https://doc.qt.io/qt-5/qstorageinfo.html#bytesFree',1,'QStorageInfo']]],
+  ['bytestotal_39',['bytesTotal',['https://doc.qt.io/qt-5/qstorageinfo.html#bytesTotal',1,'QStorageInfo']]],
+  ['bytestowrite_40',['bytesToWrite',['https://doc.qt.io/qt-5/qiodevice.html#bytesToWrite',1,'QIODevice::bytesToWrite()'],['https://doc.qt.io/qt-5/qprocess.html#bytesToWrite',1,'QProcess::bytesToWrite()'],['https://doc.qt.io/qt-5/qbluetoothsocket.html#bytesToWrite',1,'QBluetoothSocket::bytesToWrite()']]],
+  ['byteswritten_41',['bytesWritten',['https://doc.qt.io/qt-5/qiodevice.html#bytesWritten',1,'QIODevice']]]
 ];
