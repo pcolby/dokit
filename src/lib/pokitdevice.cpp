@@ -231,6 +231,8 @@ QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
 {
     static QHash<QBluetoothUuid, QString> hash{
         { CalibrationService::CharacteristicUuids::temperature, tr("Temperature") },
+        { CalibrationService::CharacteristicUuids::getParam,    tr("Get Param") },
+        { CalibrationService::CharacteristicUuids::setParam,    tr("Set Param") },
 
         { DataLoggerService::CharacteristicUuids::metadata, tr("Metadata") },
         { DataLoggerService::CharacteristicUuids::reading,  tr("Reading") },

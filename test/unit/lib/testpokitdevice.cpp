@@ -118,6 +118,15 @@ void TestPokitDevice::serviceToString_data()
         QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::DeviceInformation);
     QTest::addRow("GenericAccessService") << GenericAccessService::serviceUuid <<
         QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess);
+
+    /// \todo We might refactor this one a little if/when we update PokitProducts::isPokitProduct() to use
+    /// GenericAccess vs GenericAttribute for product detection a la the Android app.
+    QTest::addRow("GenericAttribute") << QBluetoothUuid(QBluetoothUuid::ServiceClassUuid::GenericAttribute)
+        << QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAttribute);
+
+    // Bonus, unsupported service (we're just aware of it).
+    QTest::addRow("OTA Service") << QBluetoothUuid(QStringLiteral("1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0"))
+        << QStringLiteral("OTA Firmware Update");
 }
 
 void TestPokitDevice::serviceToString()
@@ -136,6 +145,8 @@ void TestPokitDevice::charcteristicToString_data()
         QTest::addRow(#service "::" #characteristic) \
             << service::CharacteristicUuids::characteristic << QStringLiteral(expected)
     DOKIT_ADD_TEST_ROW(CalibrationService, temperature,           "Temperature");
+    DOKIT_ADD_TEST_ROW(CalibrationService, getParam,              "Get Param");
+    DOKIT_ADD_TEST_ROW(CalibrationService, setParam,              "Set Param");
     DOKIT_ADD_TEST_ROW(DataLoggerService,  metadata,              "Metadata");
     DOKIT_ADD_TEST_ROW(DataLoggerService,  reading,               "Reading");
     DOKIT_ADD_TEST_ROW(DataLoggerService,  settings,              "Settings");
@@ -161,6 +172,12 @@ void TestPokitDevice::charcteristicToString_data()
     DOKIT_ADD_TEST_ROW(DeviceInfoService,    softwareRevision, SoftwareRevisionString);
     DOKIT_ADD_TEST_ROW(GenericAccessService, appearance,       Appearance);
     DOKIT_ADD_TEST_ROW(GenericAccessService, deviceName,       DeviceName);
+    #undef DOKIT_ADD_TEST_ROW
+
+    #define DOKIT_ADD_TEST_ROW(uuid, expected) \
+        QTest::addRow(expected) << QBluetoothUuid(QStringLiteral(uuid)) << QStringLiteral(expected)
+    DOKIT_ADD_TEST_ROW("f7bf3564-fb6d-4e53-88a4-5e37e0326063", "OTA Control");
+    DOKIT_ADD_TEST_ROW("984227f3-34fc-4045-a5d0-2c581f81a153", "OTA Data Transfer");
     #undef DOKIT_ADD_TEST_ROW
 }
 
