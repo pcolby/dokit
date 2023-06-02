@@ -213,10 +213,10 @@ QString PokitDevice::serviceToString(const QBluetoothUuid &uuid)
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::DeviceInformation) },
         { GenericAccessService::serviceUuid,
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess) },
-        // The next two are not specifically supported, but strings provided for helpful debug output.
+        // The next two are not specifically supported by this library, but strings provided for nicer debug output.
         { QBluetoothUuid::ServiceClassUuid::GenericAttribute,
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAttribute) },
-        { QBluetoothUuid(QStringLiteral("1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0")), tr("V2 OTA Service") },
+        { QBluetoothUuid(QStringLiteral("1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0")), tr("OTA Firmware Update") },
     };
     return hash.value(uuid);
 }
@@ -267,6 +267,10 @@ QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::Appearance) },
         { GenericAccessService::CharacteristicUuids::deviceName,
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::DeviceName) },
+
+        // The next two are not specifically supported by this library, but strings provided for nicer debug output.
+        { QBluetoothUuid(QStringLiteral("f7bf3564-fb6d-4e53-88a4-5e37e0326063")), tr("OTA Control") },
+        { QBluetoothUuid(QStringLiteral("984227f3-34fc-4045-a5d0-2c581f81a153")), tr("OTA Data Transfer") },
     };
     return hash.value(uuid);
 }
