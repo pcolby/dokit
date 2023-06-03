@@ -31,6 +31,7 @@ var annotated_dup =
     [ "Ratio", "structRatio.html", "structRatio" ],
     [ "ScanCommand", "classScanCommand.html", "classScanCommand" ],
     [ "SetNameCommand", "classSetNameCommand.html", "classSetNameCommand" ],
+    [ "SetTorchCommand", "classSetTorchCommand.html", "classSetTorchCommand" ],
     [ "StatusCommand", "classStatusCommand.html", "classStatusCommand" ],
     [ "StatusService", "classStatusService.html", "classStatusService" ],
     [ "StatusServicePrivate", "classStatusServicePrivate.html", "classStatusServicePrivate" ]

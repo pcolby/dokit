@@ -25,6 +25,8 @@ var dir_34242b7d78ea4d816dc4ead22a0a72fb =
     [ "scancommand.h", "scancommand_8h_source.html", null ],
     [ "setnamecommand.cpp", "setnamecommand_8cpp_source.html", null ],
     [ "setnamecommand.h", "setnamecommand_8h_source.html", null ],
+    [ "settorchcommand.cpp", "settorchcommand_8cpp_source.html", null ],
+    [ "settorchcommand.h", "settorchcommand_8h_source.html", null ],
     [ "statuscommand.cpp", "statuscommand_8cpp_source.html", null ],
     [ "statuscommand.h", "statuscommand_8h_source.html", null ]
 ];

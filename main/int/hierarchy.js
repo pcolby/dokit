@@ -22,6 +22,7 @@ var hierarchy =
           [ "LoggerStopCommand", "classLoggerStopCommand.html", null ],
           [ "MeterCommand", "classMeterCommand.html", null ],
           [ "SetNameCommand", "classSetNameCommand.html", null ],
+          [ "SetTorchCommand", "classSetTorchCommand.html", null ],
           [ "StatusCommand", "classStatusCommand.html", null ]
         ] ],
         [ "ScanCommand", "classScanCommand.html", null ]
