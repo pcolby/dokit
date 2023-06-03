@@ -4,32 +4,32 @@
 <context>
     <name>AbstractCommand</name>
     <message>
-        <location filename="../abstractcommand.cpp" line="39"/>
+        <location filename="../abstractcommand.cpp" line="36"/>
         <source>Bluetooth controller error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="272"/>
+        <location filename="../abstractcommand.cpp" line="269"/>
         <source>Ignoring option: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="294"/>
+        <location filename="../abstractcommand.cpp" line="291"/>
         <source>Unknown output format: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="302"/>
+        <location filename="../abstractcommand.cpp" line="299"/>
         <source>Invalid timeout: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="305"/>
+        <location filename="../abstractcommand.cpp" line="302"/>
         <source>Set scan timeout to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="314"/>
+        <location filename="../abstractcommand.cpp" line="311"/>
         <source>Missing required option: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -63,67 +63,67 @@ success
 <context>
     <name>DeviceCommand</name>
     <message>
-        <location filename="../devicecommand.cpp" line="30"/>
+        <location filename="../devicecommand.cpp" line="32"/>
         <source>Looking for first available Pokit device...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="31"/>
+        <location filename="../devicecommand.cpp" line="33"/>
         <source>Looking for device &quot;%1&quot;...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="42"/>
+        <location filename="../devicecommand.cpp" line="44"/>
         <source>Disconnecting Pokit device...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="292"/>
+        <location filename="../devicecommand.cpp" line="294"/>
         <source>Bluetooth controller error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="305"/>
+        <location filename="../devicecommand.cpp" line="307"/>
         <source>Pokit device disconnected. Exiting with code %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="320"/>
+        <location filename="../devicecommand.cpp" line="322"/>
         <source>Bluetooth service error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="331"/>
+        <location filename="../devicecommand.cpp" line="333"/>
         <source>Service details discovered.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="343"/>
+        <location filename="../devicecommand.cpp" line="345"/>
         <source>Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="352"/>
+        <location filename="../devicecommand.cpp" line="354"/>
         <source>Found Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="376"/>
+        <location filename="../devicecommand.cpp" line="378"/>
         <source>Connecting to %1 device &quot;%2&quot; (%3) at (%4).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="382"/>
+        <location filename="../devicecommand.cpp" line="384"/>
         <source>Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="394"/>
+        <location filename="../devicecommand.cpp" line="396"/>
         <source>Failed to find any Pokit device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="395"/>
+        <location filename="../devicecommand.cpp" line="397"/>
         <source>Failed to find device &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -238,56 +238,62 @@ success
 <context>
     <name>InfoCommand</name>
     <message>
-        <location filename="../infocommand.cpp" line="84"/>
-        <source>device_name,device_address,device_uuid,manufacturer_name,model_number,hardware_revision,firmware_revision,software_revision
+        <location filename="../infocommand.cpp" line="85"/>
+        <source>device_name,device_address,device_uuid,manufacturer_name,model_number,hardware_revision,firmware_revision,software_revision,serial_number
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infocommand.cpp" line="115"/>
+        <location filename="../infocommand.cpp" line="119"/>
         <source>Device name:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infocommand.cpp" line="118"/>
+        <location filename="../infocommand.cpp" line="122"/>
         <source>Device addres:     %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infocommand.cpp" line="121"/>
+        <location filename="../infocommand.cpp" line="125"/>
         <source>Device UUID:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infocommand.cpp" line="123"/>
+        <location filename="../infocommand.cpp" line="127"/>
         <source>Manufacturer name: %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infocommand.cpp" line="124"/>
+        <location filename="../infocommand.cpp" line="128"/>
         <source>Model number:      %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infocommand.cpp" line="125"/>
+        <location filename="../infocommand.cpp" line="129"/>
         <source>Hardware revision: %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infocommand.cpp" line="126"/>
+        <location filename="../infocommand.cpp" line="130"/>
         <source>Firmware revision: %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infocommand.cpp" line="127"/>
+        <location filename="../infocommand.cpp" line="131"/>
         <source>Software revision: %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../infocommand.cpp" line="133"/>
+        <source>Serial number:     %1
 </source>
         <translation type="unfinished"></translation>
     </message>
@@ -580,6 +586,32 @@ success
     </message>
 </context>
 <context>
+    <name>SetTorchCommand</name>
+    <message>
+        <location filename="../settorchcommand.cpp" line="55"/>
+        <source>Invalid status value: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settorchcommand.cpp" line="84"/>
+        <source>Setting torch %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settorchcommand.cpp" line="97"/>
+        <source>set_torch_result
+success
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settorchcommand.cpp" line="103"/>
+        <source>Done.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StatusCommand</name>
     <message>
         <location filename="../statuscommand.cpp" line="79"/>
@@ -587,79 +619,79 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="98"/>
-        <source>device_name,device_status,firmware_version,maximum_voltage,maximum_current,maximum_resistance,maximum_sampling_rate,sampling_buffer_size,capability_mask,mac_address,battery_voltage,battery_status
+        <location filename="../statuscommand.cpp" line="102"/>
+        <source>device_name,device_status,firmware_version,maximum_voltage,maximum_current,maximum_resistance,maximum_sampling_rate,sampling_buffer_size,capability_mask,mac_address,battery_voltage,battery_status,torch_status,button_status
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="137"/>
+        <location filename="../statuscommand.cpp" line="154"/>
         <source>Device name:           %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="138"/>
+        <location filename="../statuscommand.cpp" line="155"/>
         <source>Firmware version:      %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="139"/>
+        <location filename="../statuscommand.cpp" line="156"/>
         <source>Maximum voltage:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="140"/>
+        <location filename="../statuscommand.cpp" line="157"/>
         <source>Maximum current:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="141"/>
+        <location filename="../statuscommand.cpp" line="158"/>
         <source>Maximum resistance:    %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="142"/>
+        <location filename="../statuscommand.cpp" line="159"/>
         <source>Maximum sampling rate: %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="143"/>
+        <location filename="../statuscommand.cpp" line="160"/>
         <source>Sampling buffer size:  %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="144"/>
+        <location filename="../statuscommand.cpp" line="161"/>
         <source>Capability mask:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="145"/>
+        <location filename="../statuscommand.cpp" line="162"/>
         <source>MAC address:           %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="146"/>
+        <location filename="../statuscommand.cpp" line="163"/>
         <source>Device status:         %1 (%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="148"/>
+        <location filename="../statuscommand.cpp" line="165"/>
         <source>Battery voltage:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="149"/>
+        <location filename="../statuscommand.cpp" line="166"/>
         <source>Battery status:        %1 (%2)
 </source>
         <translation type="unfinished"></translation>
@@ -668,12 +700,12 @@ success
 <context>
     <name>getCliCommand</name>
     <message>
-        <location filename="../main.cpp" line="100"/>
+        <location filename="../main.cpp" line="102"/>
         <source>More than one command: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="120"/>
+        <location filename="../main.cpp" line="123"/>
         <source>Unknown command: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -681,13 +713,13 @@ success
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="264"/>
+        <location filename="../main.cpp" line="271"/>
         <source>Missing argument: &lt;command&gt;
 See --help for usage information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="279"/>
+        <location filename="../main.cpp" line="287"/>
         <source>Unknown command (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -695,184 +727,189 @@ See --help for usage information.</source>
 <context>
     <name>parseCommandLine</name>
     <message>
-        <location filename="../main.cpp" line="131"/>
+        <location filename="../main.cpp" line="134"/>
         <source>Colors the console output. Valid options are: yes, no and auto. The default is auto.</source>
         <translation>Colours the console output. Valid options are: yes, no and auto. The default is auto.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="135"/>
+        <location filename="../main.cpp" line="138"/>
         <source>Enable debug output.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="137"/>
+        <location filename="../main.cpp" line="140"/>
         <source>Set the name, hardware address or macOS UUID of Pokit device to use. If not specified, the first discovered Pokit device will be used.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="140"/>
+        <location filename="../main.cpp" line="143"/>
         <source>device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="145"/>
+        <location filename="../main.cpp" line="148"/>
         <source>Set the update interval for DOS, meter and logger modes. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. If the option itself is not specified, a sensible default will be chosen according to the selected command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="150"/>
+        <location filename="../main.cpp" line="153"/>
         <source>interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="152"/>
-        <source>Set the desired operation mode for meter, dso and logger modes. Supported modes are: AC Voltage, DC Voltage, AC Current, DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. Only the first four options are available for dso and logger commands; the rest are available in meter mode only. Temperature is also available for logger commands, but requires firmware v1.5 or later for Pokit devices to support it.</source>
+        <location filename="../main.cpp" line="155"/>
+        <source>Set the desired operation mode. For meter, dso, and logger commands, the supported modes are: AC Voltage, DC Voltage, AC Current, DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. Only the first four options are available for dso and logger commands; the rest are available in meter mode only. Temperature is also available for logger commands, but requires firmware v1.5 or later for Pokit devices to support it. For the set-torch command supported modes are On and Off.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="158"/>
-        <location filename="../main.cpp" line="195"/>
+        <location filename="../main.cpp" line="162"/>
+        <location filename="../main.cpp" line="199"/>
         <source>mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="160"/>
+        <location filename="../main.cpp" line="164"/>
         <source>Give the desired new name for the set-name command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="161"/>
+        <location filename="../main.cpp" line="165"/>
         <source>name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="163"/>
+        <location filename="../main.cpp" line="167"/>
         <source>Set the format for output. Supported formats are: CSV, JSON and Text. All are case insenstitve. The default is Text.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="165"/>
+        <location filename="../main.cpp" line="169"/>
         <source>format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="166"/>
+        <location filename="../main.cpp" line="170"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="168"/>
+        <location filename="../main.cpp" line="172"/>
         <source>Set the desired measurement range. Pokit devices support specific ranges, such as 0 to 300mV. Specify the desired upper limit, and the best range will be selected, or use &apos;auto&apos; to enable the Pokit device&apos;s auto-range feature. The default is &apos;auto&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="172"/>
+        <location filename="../main.cpp" line="176"/>
         <source>range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="174"/>
+        <location filename="../main.cpp" line="178"/>
         <source>Set the number of samples to acquire.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="175"/>
+        <location filename="../main.cpp" line="179"/>
         <source>count</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="177"/>
+        <location filename="../main.cpp" line="181"/>
         <source>Set the current ambient temperature for the calibration command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="178"/>
+        <location filename="../main.cpp" line="182"/>
         <source>degrees</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="180"/>
+        <location filename="../main.cpp" line="184"/>
         <source>Set the device discovery scan timeout.Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. The default behaviour is no timeout.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="184"/>
         <location filename="../main.cpp" line="188"/>
+        <location filename="../main.cpp" line="192"/>
         <source>period</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="186"/>
+        <location filename="../main.cpp" line="190"/>
         <source>Set the optional starting timestamp for data logging. Default to &apos;now&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="190"/>
+        <location filename="../main.cpp" line="194"/>
         <source>Set the DSO trigger level.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="191"/>
+        <location filename="../main.cpp" line="195"/>
         <source>level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="193"/>
+        <location filename="../main.cpp" line="197"/>
         <source>Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="201"/>
+        <location filename="../main.cpp" line="205"/>
         <source>Get Pokit device information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="204"/>
+        <location filename="../main.cpp" line="208"/>
         <source>Get Pokit device status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="207"/>
+        <location filename="../main.cpp" line="211"/>
         <source>Access Pokit device&apos;s multimeter mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="210"/>
+        <location filename="../main.cpp" line="214"/>
         <source>Access Pokit device&apos;s DSO mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="213"/>
+        <location filename="../main.cpp" line="217"/>
         <source>Start Pokit device&apos;s data logger mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="216"/>
+        <location filename="../main.cpp" line="220"/>
         <source>Stop Pokit device&apos;s data logger mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="219"/>
+        <location filename="../main.cpp" line="223"/>
         <source>Fetch Pokit device&apos;s data logger samples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="222"/>
+        <location filename="../main.cpp" line="226"/>
         <source>Scan Bluetooth for Pokit devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="225"/>
+        <location filename="../main.cpp" line="229"/>
         <source>Set Pokit device&apos;s name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="228"/>
-        <source>Flash Pokit device&apos;s LED</source>
+        <location filename="../main.cpp" line="232"/>
+        <source>Set Pokit device&apos;s torch on or off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="231"/>
+        <location filename="../main.cpp" line="235"/>
+        <source>Flash Pokit device&apos;s LED (Pokit Meter only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="238"/>
         <source>Calibrate Pokit device temperature</source>
         <translation type="unfinished"></translation>
     </message>

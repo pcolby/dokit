@@ -85,8 +85,13 @@
             <numerusform>%1 has %n extraneous bytes: %2</numerusform>
         </translation>
     </message>
+    <message>
+        <location filename="../abstractpokitservice.cpp" line="537"/>
+        <source>Characteristic %1 &quot;%2&quot; supports %3.</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="542"/>
+        <location filename="../abstractpokitservice.cpp" line="565"/>
         <source>Characteristic %1 &quot;%2&quot; read %n byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; read %n byte: %3</numerusform>
@@ -94,7 +99,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="556"/>
+        <location filename="../abstractpokitservice.cpp" line="579"/>
         <source>Characteristic %1 &quot;%2&quot; written with %Ln byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; written with %Ln byte: %3</numerusform>
@@ -102,7 +107,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="571"/>
+        <location filename="../abstractpokitservice.cpp" line="594"/>
         <source>Characteristic %1 &quot;%2&quot; changed to %Ln byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; changed to %Ln byte: %3</numerusform>
@@ -150,7 +155,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="527"/>
+        <location filename="../abstractpokitservice.cpp" line="550"/>
         <source>Service details discovered.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -158,12 +163,12 @@
 <context>
     <name>CalibrationService</name>
     <message>
-        <location filename="../calibrationservice.cpp" line="69"/>
+        <location filename="../calibrationservice.cpp" line="59"/>
         <source>Ignoring read request; the Calibration service is write-only.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../calibrationservice.cpp" line="91"/>
+        <location filename="../calibrationservice.cpp" line="81"/>
         <source>Writing new temperature %1 (0x%2).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -171,7 +176,7 @@
 <context>
     <name>CalibrationServicePrivate</name>
     <message>
-        <location filename="../calibrationservice.cpp" line="150"/>
+        <location filename="../calibrationservice.cpp" line="140"/>
         <source>Unknown characteristic written for Calibration service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -179,13 +184,13 @@
 <context>
     <name>CapacitanceRange</name>
     <message>
-        <location filename="../pokitproducts.cpp" line="144"/>
+        <location filename="../pokitproducts.cpp" line="150"/>
         <source>Unknown PokitProduct value: %1</source>
         <comment>toString</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="167"/>
+        <location filename="../pokitproducts.cpp" line="173"/>
         <source>Unknown PokitProduct value: %1</source>
         <comment>maxValue</comment>
         <translation type="unfinished"></translation>
@@ -194,13 +199,13 @@
 <context>
     <name>CurrentRange</name>
     <message>
-        <location filename="../pokitproducts.cpp" line="190"/>
+        <location filename="../pokitproducts.cpp" line="197"/>
         <source>Unknown PokitProduct value: %1</source>
         <comment>toString</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="210"/>
+        <location filename="../pokitproducts.cpp" line="217"/>
         <source>Unknown PokitProduct value: %1</source>
         <comment>maxValue</comment>
         <translation type="unfinished"></translation>
@@ -209,37 +214,37 @@
 <context>
     <name>DataLoggerService</name>
     <message>
-        <location filename="../dataloggerservice.cpp" line="55"/>
+        <location filename="../dataloggerservice.cpp" line="30"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="56"/>
+        <location filename="../dataloggerservice.cpp" line="31"/>
         <source>DC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="57"/>
+        <location filename="../dataloggerservice.cpp" line="32"/>
         <source>AC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="58"/>
+        <location filename="../dataloggerservice.cpp" line="33"/>
         <source>DC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="59"/>
+        <location filename="../dataloggerservice.cpp" line="34"/>
         <source>AC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="60"/>
+        <location filename="../dataloggerservice.cpp" line="35"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="231"/>
+        <location filename="../dataloggerservice.cpp" line="197"/>
         <source>Settings command must be &apos;Start&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -247,12 +252,12 @@
 <context>
     <name>DataLoggerServicePrivate</name>
     <message>
-        <location filename="../dataloggerservice.cpp" line="474"/>
+        <location filename="../dataloggerservice.cpp" line="440"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dataloggerservice.cpp" line="461"/>
+        <location filename="../dataloggerservice.cpp" line="427"/>
         <source>Cannot decode metadata of %n byte/s: %1</source>
         <translation>
             <numerusform>Cannot decode metadata of %n byte: %1</numerusform>
@@ -260,7 +265,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dataloggerservice.cpp" line="481"/>
+        <location filename="../dataloggerservice.cpp" line="447"/>
         <source>Read %n sample/s from %1-bytes.</source>
         <translation>
             <numerusform>Read %n sample from %1-bytes.</numerusform>
@@ -268,42 +273,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="495"/>
+        <location filename="../dataloggerservice.cpp" line="461"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="507"/>
+        <location filename="../dataloggerservice.cpp" line="473"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="512"/>
+        <location filename="../dataloggerservice.cpp" line="478"/>
         <source>Unknown characteristic read for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="532"/>
+        <location filename="../dataloggerservice.cpp" line="498"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="538"/>
+        <location filename="../dataloggerservice.cpp" line="504"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="543"/>
+        <location filename="../dataloggerservice.cpp" line="509"/>
         <source>Unknown characteristic written for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="558"/>
+        <location filename="../dataloggerservice.cpp" line="524"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="573"/>
+        <location filename="../dataloggerservice.cpp" line="539"/>
         <source>Unknown characteristic notified for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -311,32 +316,37 @@
 <context>
     <name>DeviceInfoServicePrivate</name>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="311"/>
+        <location filename="../deviceinfoservice.cpp" line="332"/>
         <source>Manufacturer name: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="318"/>
+        <location filename="../deviceinfoservice.cpp" line="339"/>
         <source>Model number: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="325"/>
+        <location filename="../deviceinfoservice.cpp" line="346"/>
         <source>Hardware revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="332"/>
+        <location filename="../deviceinfoservice.cpp" line="353"/>
         <source>Firmware revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="339"/>
+        <location filename="../deviceinfoservice.cpp" line="360"/>
         <source>Software revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="344"/>
+        <location filename="../deviceinfoservice.cpp" line="367"/>
+        <source>Serial number: &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../deviceinfoservice.cpp" line="372"/>
         <source>Unknown characteristic read for Device Info service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -344,32 +354,32 @@
 <context>
     <name>DsoService</name>
     <message>
-        <location filename="../dsoservice.cpp" line="54"/>
+        <location filename="../dsoservice.cpp" line="29"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="55"/>
+        <location filename="../dsoservice.cpp" line="30"/>
         <source>DC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="56"/>
+        <location filename="../dsoservice.cpp" line="31"/>
         <source>AC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="57"/>
+        <location filename="../dsoservice.cpp" line="32"/>
         <source>DC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="58"/>
+        <location filename="../dsoservice.cpp" line="33"/>
         <source>AC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="222"/>
+        <location filename="../dsoservice.cpp" line="188"/>
         <source>Settings command must not be &apos;ResendData&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -377,12 +387,12 @@
 <context>
     <name>DsoServicePrivate</name>
     <message>
-        <location filename="../dsoservice.cpp" line="419"/>
+        <location filename="../dsoservice.cpp" line="385"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsoservice.cpp" line="426"/>
+        <location filename="../dsoservice.cpp" line="392"/>
         <source>Read %n sample/s from %1-bytes.</source>
         <translation>
             <numerusform>Read %n sample from %1-bytes.</numerusform>
@@ -390,42 +400,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="440"/>
+        <location filename="../dsoservice.cpp" line="406"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="452"/>
+        <location filename="../dsoservice.cpp" line="418"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="457"/>
+        <location filename="../dsoservice.cpp" line="423"/>
         <source>Unknown characteristic read for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="477"/>
+        <location filename="../dsoservice.cpp" line="443"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="483"/>
+        <location filename="../dsoservice.cpp" line="449"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="488"/>
+        <location filename="../dsoservice.cpp" line="454"/>
         <source>Unknown characteristic written for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="503"/>
+        <location filename="../dsoservice.cpp" line="469"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="518"/>
+        <location filename="../dsoservice.cpp" line="484"/>
         <source>Unknown characteristic notified for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -433,7 +443,7 @@
 <context>
     <name>GenericAccessService</name>
     <message>
-        <location filename="../genericaccessservice.cpp" line="160"/>
+        <location filename="../genericaccessservice.cpp" line="145"/>
         <source>Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x%3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -441,27 +451,27 @@
 <context>
     <name>GenericAccessServicePrivate</name>
     <message>
-        <location filename="../genericaccessservice.cpp" line="222"/>
+        <location filename="../genericaccessservice.cpp" line="207"/>
         <source>Appearance: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../genericaccessservice.cpp" line="243"/>
+        <location filename="../genericaccessservice.cpp" line="228"/>
         <source>Device name: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../genericaccessservice.cpp" line="248"/>
+        <location filename="../genericaccessservice.cpp" line="233"/>
         <source>Unknown characteristic read for Generic Access service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../genericaccessservice.cpp" line="263"/>
+        <location filename="../genericaccessservice.cpp" line="248"/>
         <source>Appearance haracteristic is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../genericaccessservice.cpp" line="273"/>
+        <location filename="../genericaccessservice.cpp" line="258"/>
         <source>Unknown characteristic written for Generic Access service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -469,57 +479,57 @@
 <context>
     <name>MultimeterService</name>
     <message>
-        <location filename="../multimeterservice.cpp" line="56"/>
+        <location filename="../multimeterservice.cpp" line="38"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="57"/>
+        <location filename="../multimeterservice.cpp" line="39"/>
         <source>DC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="58"/>
+        <location filename="../multimeterservice.cpp" line="40"/>
         <source>AC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="59"/>
+        <location filename="../multimeterservice.cpp" line="41"/>
         <source>DC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="60"/>
+        <location filename="../multimeterservice.cpp" line="42"/>
         <source>AC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="61"/>
+        <location filename="../multimeterservice.cpp" line="43"/>
         <source>Resistance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="62"/>
+        <location filename="../multimeterservice.cpp" line="44"/>
         <source>Diode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="63"/>
+        <location filename="../multimeterservice.cpp" line="45"/>
         <source>Continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="64"/>
+        <location filename="../multimeterservice.cpp" line="46"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="65"/>
+        <location filename="../multimeterservice.cpp" line="47"/>
         <source>Capacitance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="66"/>
+        <location filename="../multimeterservice.cpp" line="48"/>
         <source>External temperature</source>
         <translation type="unfinished"></translation>
     </message>
@@ -527,32 +537,32 @@
 <context>
     <name>MultimeterServicePrivate</name>
     <message>
-        <location filename="../multimeterservice.cpp" line="369"/>
+        <location filename="../multimeterservice.cpp" line="342"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="374"/>
+        <location filename="../multimeterservice.cpp" line="347"/>
         <source>Unknown characteristic read for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="394"/>
+        <location filename="../multimeterservice.cpp" line="367"/>
         <source>Reading characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="399"/>
+        <location filename="../multimeterservice.cpp" line="372"/>
         <source>Unknown characteristic written for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="414"/>
+        <location filename="../multimeterservice.cpp" line="387"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="424"/>
+        <location filename="../multimeterservice.cpp" line="397"/>
         <source>Unknown characteristic notified for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -590,110 +600,145 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="229"/>
-        <source>Temperature</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitdevice.cpp" line="231"/>
-        <location filename="../pokitdevice.cpp" line="235"/>
-        <source>Metadata</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitdevice.cpp" line="232"/>
-        <location filename="../pokitdevice.cpp" line="236"/>
-        <location filename="../pokitdevice.cpp" line="239"/>
-        <source>Reading</source>
+        <location filename="../pokitdevice.cpp" line="219"/>
+        <source>OTA Firmware Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitdevice.cpp" line="233"/>
+        <source>Temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="234"/>
+        <source>Get Param</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="235"/>
+        <source>Set Param</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../pokitdevice.cpp" line="237"/>
-        <location filename="../pokitdevice.cpp" line="240"/>
+        <location filename="../pokitdevice.cpp" line="241"/>
+        <source>Metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="238"/>
+        <location filename="../pokitdevice.cpp" line="242"/>
+        <location filename="../pokitdevice.cpp" line="245"/>
+        <source>Reading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="239"/>
+        <location filename="../pokitdevice.cpp" line="243"/>
+        <location filename="../pokitdevice.cpp" line="246"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="242"/>
+        <location filename="../pokitdevice.cpp" line="248"/>
         <source>Device Characteristics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="243"/>
+        <location filename="../pokitdevice.cpp" line="249"/>
         <source>Flash LED</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="244"/>
+        <location filename="../pokitdevice.cpp" line="250"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="245"/>
+        <location filename="../pokitdevice.cpp" line="251"/>
         <source>Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="252"/>
+        <source>Torch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="253"/>
+        <source>Button Press</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="274"/>
+        <source>OTA Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="275"/>
+        <source>OTA Data Transfer</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PokitDevicePrivate</name>
     <message>
-        <location filename="../pokitdevice.cpp" line="297"/>
+        <location filename="../pokitdevice.cpp" line="311"/>
         <source>Controller already set to:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="302"/>
+        <location filename="../pokitdevice.cpp" line="316"/>
         <source>Disconnecting signals from previous controller:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="307"/>
+        <location filename="../pokitdevice.cpp" line="321"/>
         <source>Setting new controller:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="313"/>
+        <location filename="../pokitdevice.cpp" line="327"/>
         <source>Set new controller &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="352"/>
+        <location filename="../pokitdevice.cpp" line="366"/>
         <source>PokitDevicePrivate::connected slot invoked without a controller.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="355"/>
+        <location filename="../pokitdevice.cpp" line="369"/>
         <source>Connected to &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="365"/>
+        <location filename="../pokitdevice.cpp" line="379"/>
         <source>Connection updated:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="375"/>
+        <location filename="../pokitdevice.cpp" line="389"/>
         <source>Device disconnected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="383"/>
+        <location filename="../pokitdevice.cpp" line="397"/>
         <source>Service discovery finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="391"/>
+        <location filename="../pokitdevice.cpp" line="405"/>
         <source>Controller error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="399"/>
+        <location filename="../pokitdevice.cpp" line="413"/>
         <source>Service discovered: %1 &quot;%2&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="408"/>
+        <location filename="../pokitdevice.cpp" line="422"/>
         <source>State changed to:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -738,151 +783,151 @@
 <context>
     <name>PokitMeter</name>
     <message>
-        <location filename="../pokitmeter.cpp" line="22"/>
+        <location filename="../pokitmeter.cpp" line="19"/>
         <source>Up to 10mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="23"/>
+        <location filename="../pokitmeter.cpp" line="20"/>
         <source>Up to 30mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="24"/>
+        <location filename="../pokitmeter.cpp" line="21"/>
         <source>Up to 150mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="25"/>
+        <location filename="../pokitmeter.cpp" line="22"/>
         <source>Up to 300mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="26"/>
+        <location filename="../pokitmeter.cpp" line="23"/>
         <source>Up to 2A</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="27"/>
+        <location filename="../pokitmeter.cpp" line="24"/>
         <source>Auto-range</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="44"/>
+        <location filename="../pokitmeter.cpp" line="41"/>
         <source>Auto</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="56"/>
+        <location filename="../pokitmeter.cpp" line="50"/>
         <source>Up to 160Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="57"/>
+        <location filename="../pokitmeter.cpp" line="51"/>
         <source>Up to 330Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="58"/>
+        <location filename="../pokitmeter.cpp" line="52"/>
         <source>Up to 890Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="59"/>
+        <location filename="../pokitmeter.cpp" line="53"/>
         <source>Up to 1.5KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="60"/>
+        <location filename="../pokitmeter.cpp" line="54"/>
         <source>Up to 10KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="61"/>
+        <location filename="../pokitmeter.cpp" line="55"/>
         <source>Up to 100KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="62"/>
+        <location filename="../pokitmeter.cpp" line="56"/>
         <source>Up to 470KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="63"/>
+        <location filename="../pokitmeter.cpp" line="57"/>
         <source>Up to 1MΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="64"/>
+        <location filename="../pokitmeter.cpp" line="58"/>
         <source>Auto-range</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="84"/>
+        <location filename="../pokitmeter.cpp" line="78"/>
         <source>Auto</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="96"/>
+        <location filename="../pokitmeter.cpp" line="87"/>
         <source>Up to 300mV</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="97"/>
+        <location filename="../pokitmeter.cpp" line="88"/>
         <source>Up to 2V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="98"/>
+        <location filename="../pokitmeter.cpp" line="89"/>
         <source>Up to 6V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="99"/>
+        <location filename="../pokitmeter.cpp" line="90"/>
         <source>Up to 12V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="100"/>
+        <location filename="../pokitmeter.cpp" line="91"/>
         <source>Up to 30V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="101"/>
+        <location filename="../pokitmeter.cpp" line="92"/>
         <source>Up to 60V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="102"/>
+        <location filename="../pokitmeter.cpp" line="93"/>
         <source>Auto-range</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="120"/>
+        <location filename="../pokitmeter.cpp" line="111"/>
         <source>Auto</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
@@ -891,223 +936,223 @@
 <context>
     <name>PokitPro</name>
     <message>
-        <location filename="../pokitpro.cpp" line="30"/>
+        <location filename="../pokitpro.cpp" line="28"/>
         <source>Up to 100nF</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="31"/>
+        <location filename="../pokitpro.cpp" line="29"/>
         <source>Up to 10μF</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="32"/>
+        <location filename="../pokitpro.cpp" line="30"/>
         <source>Up to 1mF</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="33"/>
+        <location filename="../pokitpro.cpp" line="31"/>
         <source>Auto-range</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="48"/>
+        <location filename="../pokitpro.cpp" line="46"/>
         <source>Auto</source>
         <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="68"/>
+        <location filename="../pokitpro.cpp" line="64"/>
         <source>Up to 500μA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="69"/>
+        <location filename="../pokitpro.cpp" line="65"/>
         <source>Up to 2mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="70"/>
+        <location filename="../pokitpro.cpp" line="66"/>
         <source>Up to 10mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="71"/>
+        <location filename="../pokitpro.cpp" line="67"/>
         <source>Up to 125mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="72"/>
+        <location filename="../pokitpro.cpp" line="68"/>
         <source>Up to 300mA</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="73"/>
+        <location filename="../pokitpro.cpp" line="69"/>
         <source>Up to 3A</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="74"/>
+        <location filename="../pokitpro.cpp" line="70"/>
         <source>Up to 10A</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="75"/>
+        <location filename="../pokitpro.cpp" line="71"/>
         <source>Auto-range</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="94"/>
+        <location filename="../pokitpro.cpp" line="90"/>
         <source>Auto</source>
         <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="114"/>
+        <location filename="../pokitpro.cpp" line="108"/>
         <source>Up to 30Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="115"/>
+        <location filename="../pokitpro.cpp" line="109"/>
         <source>Up to 75Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="116"/>
+        <location filename="../pokitpro.cpp" line="110"/>
         <source>Up to 400Ω</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="117"/>
+        <location filename="../pokitpro.cpp" line="111"/>
         <source>Up to 5KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="118"/>
+        <location filename="../pokitpro.cpp" line="112"/>
         <source>Up to 10KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="119"/>
+        <location filename="../pokitpro.cpp" line="113"/>
         <source>Up to 15KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="120"/>
+        <location filename="../pokitpro.cpp" line="114"/>
         <source>Up to 40KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="121"/>
+        <location filename="../pokitpro.cpp" line="115"/>
         <source>Up to 500KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="122"/>
+        <location filename="../pokitpro.cpp" line="116"/>
         <source>Up to 700KΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="123"/>
+        <location filename="../pokitpro.cpp" line="117"/>
         <source>Up to 1MΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="124"/>
+        <location filename="../pokitpro.cpp" line="118"/>
         <source>Up to 3MΩ</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="125"/>
+        <location filename="../pokitpro.cpp" line="119"/>
         <source>Auto-range</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="148"/>
+        <location filename="../pokitpro.cpp" line="142"/>
         <source>Auto</source>
         <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="168"/>
+        <location filename="../pokitpro.cpp" line="160"/>
         <source>Up to 250mV</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="169"/>
+        <location filename="../pokitpro.cpp" line="161"/>
         <source>Up to 2V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="170"/>
+        <location filename="../pokitpro.cpp" line="162"/>
         <source>Up to 10V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="171"/>
+        <location filename="../pokitpro.cpp" line="163"/>
         <source>Up to 30V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="172"/>
+        <location filename="../pokitpro.cpp" line="164"/>
         <source>Up to 60V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="173"/>
+        <location filename="../pokitpro.cpp" line="165"/>
         <source>Up to 125V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="174"/>
+        <location filename="../pokitpro.cpp" line="166"/>
         <source>Up to 400V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="175"/>
+        <location filename="../pokitpro.cpp" line="167"/>
         <source>Up to 600V</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="176"/>
+        <location filename="../pokitpro.cpp" line="168"/>
         <source>Auto-range</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="196"/>
+        <location filename="../pokitpro.cpp" line="188"/>
         <source>Auto</source>
         <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
@@ -1122,14 +1167,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="103"/>
+        <location filename="../pokitproducts.cpp" line="109"/>
         <source>Device is not a Pokit product</source>
         <comment>pokitProduct</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="139"/>
-        <location filename="../pokitproducts.cpp" line="162"/>
+        <location filename="../pokitproducts.cpp" line="145"/>
+        <location filename="../pokitproducts.cpp" line="168"/>
         <source>Pokit Meter has no capacitance support</source>
         <comment>toString</comment>
         <translation type="unfinished"></translation>
@@ -1138,13 +1183,13 @@
 <context>
     <name>ResistanceRange</name>
     <message>
-        <location filename="../pokitproducts.cpp" line="234"/>
+        <location filename="../pokitproducts.cpp" line="241"/>
         <source>Unknown PokitProduct value: %1</source>
         <comment>toString</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="254"/>
+        <location filename="../pokitproducts.cpp" line="261"/>
         <source>Unknown PokitProduct value: %1</source>
         <comment>maxValue</comment>
         <translation type="unfinished"></translation>
@@ -1153,7 +1198,7 @@
 <context>
     <name>StatusService</name>
     <message>
-        <location filename="../statusservice.cpp" line="275"/>
+        <location filename="../statusservice.cpp" line="351"/>
         <source>Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1161,97 +1206,127 @@
 <context>
     <name>StatusServicePrivate</name>
     <message>
-        <location filename="../statusservice.cpp" line="402"/>
+        <location filename="../statusservice.cpp" line="608"/>
         <source>Firmware version:     </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="403"/>
+        <location filename="../statusservice.cpp" line="609"/>
         <source>Maximum voltage:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="404"/>
+        <location filename="../statusservice.cpp" line="610"/>
         <source>Maximum current:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="405"/>
+        <location filename="../statusservice.cpp" line="611"/>
         <source>Maximum resistance:   </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="406"/>
+        <location filename="../statusservice.cpp" line="612"/>
         <source>Maximum sampling rate:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="407"/>
+        <location filename="../statusservice.cpp" line="613"/>
         <source>Sampling buffer size: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="408"/>
+        <location filename="../statusservice.cpp" line="614"/>
         <source>Capability mask:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="409"/>
+        <location filename="../statusservice.cpp" line="615"/>
         <source>MAC address:          </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="446"/>
+        <location filename="../statusservice.cpp" line="662"/>
         <source>Device status:   %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="448"/>
+        <location filename="../statusservice.cpp" line="664"/>
         <source>Battery voltage: %1 volts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="449"/>
+        <location filename="../statusservice.cpp" line="665"/>
         <source>Battery status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="463"/>
+        <location filename="../statusservice.cpp" line="668"/>
+        <source>Switch position: %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusservice.cpp" line="672"/>
+        <source>Charging status: %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusservice.cpp" line="688"/>
+        <source>Torch status: %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusservice.cpp" line="711"/>
+        <source>Button: %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusservice.cpp" line="724"/>
         <source>Found Status Service for a Pokit Meter device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="466"/>
+        <location filename="../statusservice.cpp" line="727"/>
         <source>Found Status Service for a Pokit Pro device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="494"/>
+        <location filename="../statusservice.cpp" line="755"/>
         <source>Device name: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="500"/>
+        <location filename="../statusservice.cpp" line="761"/>
         <source>Flash LED characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="505"/>
+        <location filename="../statusservice.cpp" line="771"/>
+        <source>Torch status:  %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusservice.cpp" line="781"/>
+        <source>Button status:  %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusservice.cpp" line="786"/>
         <source>Unknown characteristic read for Status service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="520"/>
+        <location filename="../statusservice.cpp" line="801"/>
         <source>Device Characteristics is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="526"/>
+        <location filename="../statusservice.cpp" line="807"/>
         <source>Status characteristic is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="541"/>
+        <location filename="../statusservice.cpp" line="827"/>
         <source>Unknown characteristic written for Status service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1259,13 +1334,13 @@
 <context>
     <name>VoltageRange</name>
     <message>
-        <location filename="../pokitproducts.cpp" line="278"/>
+        <location filename="../pokitproducts.cpp" line="285"/>
         <source>Unknown PokitProduct value: %1</source>
         <comment>toString</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="298"/>
+        <location filename="../pokitproducts.cpp" line="305"/>
         <source>Unknown PokitProduct value: %1</source>
         <comment>maxValue</comment>
         <translation type="unfinished"></translation>
