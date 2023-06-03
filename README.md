@@ -146,13 +146,16 @@ Options:
                            given interval. If the option itself is not
                            specified, a sensible default will be chosen
                            according to the selected command.
-  --mode <mode>            Set the desired operation mode for meter, dso and
-                           logger modes. Supported modes are: AC Voltage, DC
-                           Voltage, AC Current, DC Current, Resistance, Diode,
-                           Continuity, and Temperature. All are case
+  --mode <mode>            Set the desired operation mode. For meter, dso, and
+                           logger commands, the supported modes are: AC Voltage,
+                           DC Voltage, AC Current, DC Current, Resistance,
+                           Diode, Continuity, and Temperature. All are case
                            insensitive. Only the first four options are
                            available for dso and logger commands; the rest are
-                           available in meter mode only.
+                           available in meter mode only. Temperature is also
+                           available for logger commands, but requires firmware
+                           v1.5 or later for Pokit devices to support it. For
+                           the set-torch command supported modes are On and Off.
   --new-name <name>        Give the desired new name for the set-name command.
   --output <format>        Set the format for output. Supported formats are:
                            CSV, JSON and Text. All are case insenstitve. The
@@ -187,7 +190,8 @@ Command:
   logger-fetch             Fetch Pokit device's data logger samples
   scan                     Scan Bluetooth for Pokit devices
   set-name                 Set Pokit device's name
-  flash-led                Flash Pokit device's LED
+  set-torch                Set Pokit device's torch on or off
+  flash-led                Flash Pokit device's LED (Pokit Meter only)
   calibrate                Calibrate Pokit device temperature
 ```
 
@@ -196,7 +200,7 @@ Command:
 * Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]
 * a Qt-supported platform, such as Linux, macOS or Windows
 * a [Pokit][] device, such as a [Pokit Meter][] or [Pokit Pro][]
-* [CMake][] (for building Dokit itself) 3.0+
+* [CMake][] (for building Dokit itself) 3.8+
   * some unit tests won't be built unless using CMake 3.12 or later.
 
 ## Building from Source
