@@ -1,5 +1,7 @@
 # Changelog[^1]
 
+## [Unreleased][]
+
 ## [0.4.0][] (2023-06-03)
 
 ### Added
