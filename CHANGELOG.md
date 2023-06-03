@@ -1,10 +1,11 @@
 # Changelog[^1]
 
-## [Unreleased][]
+## [0.4.0][] (2023-06-03)
 
 ### Added
 
 - Support [Pokit Pro] charging status (not documented by Pokit).
+- Support [Pokit Pro] physical button(not documented by Pokit).
 - Support [Pokit Pro] physical mode switch position (not documented by Pokit).
 - Support [Pokit Pro] serial numbers (not documented by Pokit).
 - Support [Pokit Pro] torch (not documented by Pokit).
@@ -79,7 +80,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/pcolby/dokit/releases/tag/v0.4.0
 [0.3.0]: https://github.com/pcolby/dokit/releases/tag/v0.3.0
 [0.2.0]: https://github.com/pcolby/dokit/releases/tag/v0.2.0
 [0.1.2]: https://github.com/pcolby/dokit/releases/tag/v0.1.2
