@@ -241,7 +241,7 @@ These are regularly published to Github Pages via Github Actions:
 
 ## License
 
-QtPocket is freely available under the [LGPL].
+QtPokit is freely available under the [LGPL].
 
 [^minQt5]: The Qt BLE API was first [added in v5.4](https://doc.qt.io/qt-5/qtbluetooth-le-overview.html)
 [^minQt6]: The Qt Bluetooth module was [ported to Qt6 in v6.2](https://www.qt.io/blog/qt-6.2-lts-released)
