@@ -75,6 +75,11 @@ add_dokit_cli_unit_test(
   testsetnamecommand.h)
 
 add_dokit_cli_unit_test(
+  SetTorchCommand
+  testsettorchcommand.cpp
+  testsettorchcommand.h)
+
+add_dokit_cli_unit_test(
   StatusCommand
   teststatuscommand.cpp
   teststatuscommand.h)

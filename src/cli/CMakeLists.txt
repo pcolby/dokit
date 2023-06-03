@@ -28,6 +28,8 @@ set(DokitCliSources
   scancommand.h
   setnamecommand.cpp
   setnamecommand.h
+  settorchcommand.cpp
+  settorchcommand.h
   statuscommand.cpp
   statuscommand.h
 )

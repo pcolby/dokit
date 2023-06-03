@@ -11,6 +11,7 @@
 #include "metercommand.h"
 #include "scancommand.h"
 #include "setnamecommand.h"
+#include "settorchcommand.h"
 #include "statuscommand.h"
 
 #include <QCommandLineParser>
@@ -79,6 +80,7 @@ enum class Command {
     LoggerFetch,
     Scan,
     SetName,
+    SetTorch,
     FlashLed,
     Calibrate
 };
@@ -112,6 +114,7 @@ Command getCliCommand(const QStringList &posArguments)
         { QStringLiteral("logger-fetch"), Command::LoggerFetch },
         { QStringLiteral("scan"),         Command::Scan },
         { QStringLiteral("set-name"),     Command::SetName },
+        { QStringLiteral("set-torch"),    Command::SetTorch },
         { QStringLiteral("flash-led"),    Command::FlashLed },
         { QStringLiteral("calibrate"),    Command::Calibrate },
     };
@@ -224,8 +227,11 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     parser.addPositionalArgument(QStringLiteral("set-name"),
         QCoreApplication::translate("parseCommandLine", "Set Pokit device's name"),
         QStringLiteral(" "));
+    parser.addPositionalArgument(QStringLiteral("set-torch"),
+        QCoreApplication::translate("parseCommandLine", "Set Pokit device's torch on or off"),
+        QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("flash-led"),
-        QCoreApplication::translate("parseCommandLine", "Flash Pokit device's LED"),
+        QCoreApplication::translate("parseCommandLine", "Flash Pokit device's LED (Pokit Meter only)"),
         QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("calibrate"),
         QCoreApplication::translate("parseCommandLine", "Calibrate Pokit device temperature"),
@@ -275,6 +281,7 @@ AbstractCommand * getCommandObject(const Command command, QObject * const parent
     case Command::Scan:        return new ScanCommand(parent);
     case Command::Status:      return new StatusCommand(parent);
     case Command::SetName:     return new SetNameCommand(parent);
+    case Command::SetTorch:    return new SetTorchCommand(parent);
     }
     showCliError(QCoreApplication::translate("main", "Unknown command (%1)").arg((int)command));
     return nullptr;

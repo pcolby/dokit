@@ -7,6 +7,7 @@
 - Support [Pokit Pro] charging status (not documented by Pokit).
 - Support [Pokit Pro] physical mode switch position (not documented by Pokit).
 - Support [Pokit Pro] serial numbers (not documented by Pokit).
+- Support [Pokit Pro] torch (not documented by Pokit).
 - Additional debug logging to detecting undocumented BLE characteristics.
 
 ### Changed
