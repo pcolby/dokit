@@ -8,7 +8,7 @@
 - Support [Pokit Pro] physical mode switch position (not documented by Pokit).
 - Support [Pokit Pro] serial numbers (not documented by Pokit).
 - Support [Pokit Pro] torch (not documented by Pokit).
-- Additional debug logging to detecting undocumented BLE characteristics.
+- Additional debug logging to detect undocumented BLE characteristics.
 
 ### Changed
 
