@@ -25,8 +25,8 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    StatusService::TorchStatus newStatus; ///< New status to set on the Pokit device's torch to.
-    StatusService * service { nullptr }; ///< Bluetooth service this command interracts with.
+    StatusService::TorchStatus newStatus { }; ///< New status to set on the Pokit device's torch to.
+    StatusService * service { nullptr };      ///< Bluetooth service this command interracts with.
 
 private slots:
     void torchStatusWritten();

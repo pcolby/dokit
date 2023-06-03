@@ -13,6 +13,12 @@
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(StatusService::TorchStatus)
 
+// Serialiser for QCOMPARE to output optional TorchStatus values on test failures.
+char *toString(const StatusService::TorchStatus &status)
+{
+    return qstrdup(StatusService::toString(status).toLocal8Bit().constData());
+}
+
 class MockDeviceCommand : public DeviceCommand
 {
 public:
