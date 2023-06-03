@@ -152,12 +152,13 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           "according to the selected command."),
           QCoreApplication::translate("parseCommandLine", "interval")},
         {{QStringLiteral("mode")},
-          QCoreApplication::translate("parseCommandLine", "Set the desired operation mode for "
-          "meter, dso and logger modes. Supported modes are: AC Voltage, DC Voltage, AC Current, "
+          QCoreApplication::translate("parseCommandLine", "Set the desired operation mode. For "
+          "meter, dso, and logger commands, the supported modes are: AC Voltage, DC Voltage, AC Current, "
           "DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. "
           "Only the first four options are available for dso and logger commands; the rest are "
           "available in meter mode only. Temperature is also available for logger commands, but "
-          "requires firmware v1.5 or later for Pokit devices to support it."),
+          "requires firmware v1.5 or later for Pokit devices to support it. For the set-torch command "
+          "supported modes are On and Off."),
           QCoreApplication::translate("parseCommandLine", "mode")},
         {{QStringLiteral("new-name")},
           QCoreApplication::translate("parseCommandLine","Give the desired new name for the set-"
