@@ -401,7 +401,7 @@ std::optional<StatusService::TorchStatus> StatusService::torchStatus() const
 {
     Q_D(const StatusService);
     const QLowEnergyCharacteristic characteristic = d->getCharacteristic(CharacteristicUuids::torch);
-    return (characteristic.isValid()) ? d->parseTorchStatus(characteristic.value()) : std::nullopt;
+    return (characteristic.isValid()) ? StatusServicePrivate::parseTorchStatus(characteristic.value()) : std::nullopt;
 }
 
 /*!
@@ -493,7 +493,7 @@ std::optional<StatusService::ButtonStatus> StatusService::buttonPress() const
 {
     Q_D(const StatusService);
     const QLowEnergyCharacteristic characteristic = d->getCharacteristic(CharacteristicUuids::buttonPress);
-    return (characteristic.isValid()) ? d->parseButtonPress(characteristic.value()) : std::nullopt;
+    return (characteristic.isValid()) ? StatusServicePrivate::parseButtonPress(characteristic.value()) : std::nullopt;
 }
 
 /*!
