@@ -11,6 +11,15 @@
 
 #include <iostream>
 
+// Qt 6.5.0 added new QDateTime::fromSecsSinceEpoch() and fromMSecsSinceEpoch()
+// overloads, then Qt 6.6.0 deprectated some of of the older ones.
+#if (QT_VERSION < QT_VERSION_CHECK(6, 5, 0))
+    #define DOKIT_QT_UTC Qt::UTC
+#else
+    #include <QTimeZone>
+    #define DOKIT_QT_UTC QTimeZone::UTC
+#endif
+
 /*!
  * \class LoggerFetchCommand
  *
@@ -67,7 +76,7 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &data)
     qCDebug(lc) << "range:"           << service->toString(data.range, data.mode) << data.range;
     qCDebug(lc) << "updateInterval:"  << (int)data.updateInterval;
     qCDebug(lc) << "numberOfSamples:" << data.numberOfSamples;
-    qCDebug(lc) << "timestamp:"       << data.timestamp << QDateTime::fromSecsSinceEpoch(data.timestamp, Qt::UTC);
+    qCDebug(lc) << "timestamp:"       << data.timestamp << QDateTime::fromSecsSinceEpoch(data.timestamp, DOKIT_QT_UTC);
     this->metadata = data;
     this->samplesToGo = data.numberOfSamples;
     this->timestamp = (quint64)data.timestamp * (quint64)1000;
@@ -94,7 +103,7 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
 
     for (const qint16 &sample: samples) {
         const QString timeString = (metadata.timestamp == 0) ? QString::number(timestamp)
-            : QDateTime::fromMSecsSinceEpoch(timestamp, Qt::UTC).toString(Qt::ISODateWithMs);
+            : QDateTime::fromMSecsSinceEpoch(timestamp, DOKIT_QT_UTC).toString(Qt::ISODateWithMs);
         const float value = sample * metadata.scale;
         switch (format) {
         case OutputFormat::Csv:
