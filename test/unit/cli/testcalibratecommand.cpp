@@ -12,7 +12,7 @@ Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 class MockDeviceCommand : public DeviceCommand
 {
 public:
-    MockDeviceCommand(QObject * const parent = nullptr) : DeviceCommand(parent)
+    explicit MockDeviceCommand(QObject * const parent = nullptr) : DeviceCommand(parent)
     {
 
     }

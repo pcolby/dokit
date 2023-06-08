@@ -12,7 +12,7 @@ Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 class MockCommand : public AbstractCommand
 {
 public:
-    MockCommand(QObject * const parent = nullptr) : AbstractCommand(parent)
+    explicit MockCommand(QObject * const parent = nullptr) : AbstractCommand(parent)
     {
 
     }

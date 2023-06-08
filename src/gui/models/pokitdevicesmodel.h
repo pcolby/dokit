@@ -20,7 +20,7 @@ public:
         DeviceUuidRole,
     };
 
-    PokitDevicesModel(QObject * const parent = nullptr);
+    explicit PokitDevicesModel(QObject * const parent = nullptr);
     void setDiscoveryAgent(const PokitDiscoveryAgent * agent);
 
 protected:
