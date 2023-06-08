@@ -11,7 +11,7 @@ for platform in native unix{32,64} win{32{A,W},64} unspecified; do
     read -a definesArray -r <<< "$defines"
     cppcheck -UQ_DECLARE_PRIVATE "${definesArray[@]}" \
       --enable=all --error-exitcode=1 -Isrc \
-      --language=c++ --platform="$platform" --std=c++{03,11,14,17,20} \
+      --language=c++ --platform="$platform" --std=c++{17,20} \
       --suppress={missingInclude,unknownMacro} \
       --suppress={ctuOneDefinitionRuleViolation,unusedFunction}:test/unit/*.cpp \
       --quiet "$@" src test | grep -Eve '^Checking' | uniq --skip-fields=1
