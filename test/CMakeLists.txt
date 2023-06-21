@@ -16,13 +16,13 @@ if (ENABLE_COVERAGE)
       coverage
       COMMAND ${CODECOV_LCOV} --capture --directory . --gcov-tool ${CODECOV_GCOV} --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --list coverage.info
-      COMMAND ${CODECOV_LCOV} --remove coverage.info '/usr/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --remove coverage.info '*/.rcc/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --remove coverage.info '*/moc_*.cpp' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --remove coverage.info '*/mocs_compilation.cpp' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --remove coverage.info '*/qt/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --remove coverage.info '*/Qt/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --remove coverage.info '*/test/*' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '/usr/*' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/.rcc/*' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/moc_*.cpp' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/mocs_compilation.cpp' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/qt/*' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/Qt/*' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/test/*' --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --list coverage.info
       COMMENT "Collating coverage data"
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
