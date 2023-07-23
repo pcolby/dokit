@@ -215,7 +215,7 @@
 <a name="153"><span class="lineNum">     153 </span><span class="lineCov">         43 :                 .arg(value).arg(std::numeric_limits&lt;quint16&gt;::max()));</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :         } else {</a>
 <a name="155"><span class="lineNum">     155 </span><span class="lineCov">         38 :             if (samples &gt; 8192) {</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         43 :                 qCWarning(lc).noquote() &lt;&lt; tr(&quot;Pokit devices do not officially support great than 8192 samples&quot;);</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         44 :                 qCWarning(lc).noquote() &lt;&lt; tr(&quot;Pokit devices do not officially support great than 8192 samples&quot;);</span></a>
 <a name="157"><span class="lineNum">     157 </span>            :             }</a>
 <a name="158"><span class="lineNum">     158 </span><span class="lineCov">         38 :             settings.numberOfSamples = (quint16)samples;</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :         }</a>
@@ -288,13 +288,13 @@
 <a name="226"><span class="lineNum">     226 </span>            :  */</a>
 <a name="227"><span class="lineNum">     227 </span><span class="lineCov">       1159 : void DsoCommand::metadataRead(const DsoService::Metadata &amp;data)</span></a>
 <a name="228"><span class="lineNum">     228 </span>            : {</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       1159 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(data.status);</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       1159 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; data.scale;</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       1159 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DsoService::toString(data.mode);</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       1159 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; service-&gt;toString(data.range, data.mode);</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       1159 :     qCDebug(lc) &lt;&lt; &quot;samplingWindow:&quot; &lt;&lt; (int)data.samplingWindow;</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       1159 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       1159 :     qCDebug(lc) &lt;&lt; &quot;samplingRate:&quot; &lt;&lt; data.samplingRate &lt;&lt; &quot;Hz&quot;;</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">       1220 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(data.status);</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">       1220 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; data.scale;</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">       1220 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DsoService::toString(data.mode);</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">       1220 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; service-&gt;toString(data.range, data.mode);</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       1220 :     qCDebug(lc) &lt;&lt; &quot;samplingWindow:&quot; &lt;&lt; (int)data.samplingWindow;</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       1220 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       1220 :     qCDebug(lc) &lt;&lt; &quot;samplingRate:&quot; &lt;&lt; data.samplingRate &lt;&lt; &quot;Hz&quot;;</span></a>
 <a name="236"><span class="lineNum">     236 </span><span class="lineCov">       1159 :     this-&gt;metadata = data;</span></a>
 <a name="237"><span class="lineNum">     237 </span><span class="lineCov">       1159 :     this-&gt;samplesToGo = data.numberOfSamples;</span></a>
 <a name="238"><span class="lineNum">     238 </span><span class="lineCov">       1159 : }</span></a>
@@ -342,7 +342,7 @@
 <a name="280"><span class="lineNum">     280 </span><span class="lineCov">       6384 :         --samplesToGo;</span></a>
 <a name="281"><span class="lineNum">     281 </span>            :     }</a>
 <a name="282"><span class="lineNum">     282 </span><span class="lineCov">       1368 :     if (samplesToGo &lt;= 0) {</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">       3168 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %Ln sample/s (with %L2 to remaining).&quot;,</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">       3240 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %Ln sample/s (with %L2 to remaining).&quot;,</span></a>
 <a name="284"><span class="lineNum">     284 </span><span class="lineCov">       2160 :             nullptr, metadata.numberOfSamples).arg(samplesToGo);</span></a>
 <a name="285"><span class="lineNum">     285 </span><span class="lineCov">       1368 :         if (device) disconnect(); // Will exit the application once disconnected.</span></a>
 <a name="286"><span class="lineNum">     286 </span>            :     }</a>

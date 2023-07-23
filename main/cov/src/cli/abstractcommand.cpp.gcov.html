@@ -95,7 +95,7 @@
 <a name="33"><span class="lineNum">      33 </span>            :         &amp;PokitDiscoveryAgent::errorOccurred,</a>
 <a name="34"><span class="lineNum">      34 </span>            :         #endif</a>
 <a name="35"><span class="lineNum">      35 </span><span class="lineCov">         51 :     [](const PokitDiscoveryAgent::Error &amp;error) {</span></a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        102 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth controller error:&quot;) &lt;&lt; error;</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        105 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth controller error:&quot;) &lt;&lt; error;</span></a>
 <a name="37"><span class="lineNum">      37 </span><span class="lineCov">         51 :         QCoreApplication::exit(EXIT_FAILURE);</span></a>
 <a name="38"><span class="lineNum">      38 </span><span class="lineCov">         51 :     });</span></a>
 <a name="39"><span class="lineNum">      39 </span><span class="lineCov">       8827 : }</span></a>
@@ -328,7 +328,7 @@
 <a name="266"><span class="lineNum">     266 </span><span class="lineCov">       2385 :     const QStringList supportedOptionNames = supportedOptions(parser);</span></a>
 <a name="267"><span class="lineNum">     267 </span><span class="lineCov">       6889 :     for (const QString &amp;option: suppliedOptionNames) {</span></a>
 <a name="268"><span class="lineNum">     268 </span><span class="lineCov">       4504 :         if (!supportedOptionNames.contains(option)) {</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         43 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         44 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></a>
 <a name="270"><span class="lineNum">     270 </span>            :         }</a>
 <a name="271"><span class="lineNum">     271 </span>            :     }</a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineCov">        655 :     QStringList errors;</span></a>
@@ -361,7 +361,7 @@
 <a name="299"><span class="lineNum">     299 </span><span class="lineCov">        132 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(QLatin1String(&quot;timeout&quot;))));</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :         } else {</a>
 <a name="301"><span class="lineNum">     301 </span><span class="lineCov">         77 :             discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         77 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         84 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></a>
 <a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :                 discoveryAgent-&gt;lowEnergyDiscoveryTimeout());</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :         }</a>
 <a name="305"><span class="lineNum">     305 </span>            :     }</a>

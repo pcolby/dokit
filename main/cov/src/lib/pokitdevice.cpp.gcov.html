@@ -370,23 +370,23 @@
 <a name="308"><span class="lineNum">     308 </span><span class="lineCov">       1001 : void PokitDevicePrivate::setController(QLowEnergyController * newController)</span></a>
 <a name="309"><span class="lineNum">     309 </span>            : {</a>
 <a name="310"><span class="lineNum">     310 </span><span class="lineCov">       1001 :     if (newController == this-&gt;controller) {</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">        380 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Controller already set to:&quot;) &lt;&lt; newController;</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        380 :         return;</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">        400 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Controller already set to:&quot;) &lt;&lt; newController;</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        360 :         return;</span></a>
 <a name="313"><span class="lineNum">     313 </span>            :     }</a>
 <a name="314"><span class="lineNum">     314 </span>            : </a>
 <a name="315"><span class="lineNum">     315 </span><span class="lineCov">        621 :     if (this-&gt;controller) {</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         57 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disconnecting signals from previous controller:&quot;)</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         60 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disconnecting signals from previous controller:&quot;)</span></a>
 <a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :             &lt;&lt; controller;</span></a>
 <a name="318"><span class="lineNum">     318 </span><span class="lineCov">         57 :         disconnect(this-&gt;controller, nullptr, this, nullptr);</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :     }</a>
 <a name="320"><span class="lineNum">     320 </span>            : </a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        621 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Setting new controller:&quot;) &lt;&lt; newController;</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        660 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Setting new controller:&quot;) &lt;&lt; newController;</span></a>
 <a name="322"><span class="lineNum">     322 </span><span class="lineCov">        621 :     this-&gt;controller = newController;</span></a>
 <a name="323"><span class="lineNum">     323 </span><span class="lineCov">        621 :     if (!newController) {</span></a>
 <a name="324"><span class="lineNum">     324 </span>            :         return; // Don't bother continuing to connect if new controller is null.</a>
 <a name="325"><span class="lineNum">     325 </span>            :     }</a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">        583 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Set new controller &quot;%1&quot; (%2) at (%3).)&quot;).arg(</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">        620 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Set new controller &quot;%1&quot; (%2) at (%3).)&quot;).arg(</span></a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
 <a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
 <a name="330"><span class="lineNum">     330 </span>            : </a>
@@ -425,10 +425,10 @@
 <a name="363"><span class="lineNum">     363 </span><span class="lineCov">         57 : void PokitDevicePrivate::connected() const</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : {</a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineCov">         57 :     if (controller == nullptr) {</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         86 :         qCCritical(lc).noquote() &lt;&lt; tr(&quot;PokitDevicePrivate::connected slot invoked without a controller.&quot;);</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         38 :         return; // Just to avoid the nullptr dereference below.</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         88 :         qCCritical(lc).noquote() &lt;&lt; tr(&quot;PokitDevicePrivate::connected slot invoked without a controller.&quot;);</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         36 :         return; // Just to avoid the nullptr dereference below.</span></a>
 <a name="368"><span class="lineNum">     368 </span>            :     }</a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         19 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connected to &quot;%1&quot; (%2) at (%3).)&quot;).arg(</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         20 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connected to &quot;%1&quot; (%2) at (%3).)&quot;).arg(</span></a>
 <a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></a>
 <a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 :         controller-&gt;remoteAddress().toString());</span></a>
 <a name="372"><span class="lineNum">     372 </span>            : }</a>
@@ -438,7 +438,7 @@
 <a name="376"><span class="lineNum">     376 </span>            :  */</a>
 <a name="377"><span class="lineNum">     377 </span><span class="lineCov">         19 : void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters &amp;newParameters) const</span></a>
 <a name="378"><span class="lineNum">     378 </span>            : {</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         19 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connection updated:&quot;) &lt;&lt; newParameters.latency()</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         20 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connection updated:&quot;) &lt;&lt; newParameters.latency()</span></a>
 <a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :         &lt;&lt; newParameters.minimumInterval() &lt;&lt; newParameters.maximumInterval()</span></a>
 <a name="381"><span class="lineNum">     381 </span><span class="lineNoCov">          0 :         &lt;&lt; newParameters.supervisionTimeout();</span></a>
 <a name="382"><span class="lineNum">     382 </span><span class="lineCov">         19 : }</span></a>
@@ -448,7 +448,7 @@
 <a name="386"><span class="lineNum">     386 </span>            :  */</a>
 <a name="387"><span class="lineNum">     387 </span><span class="lineCov">         19 : void PokitDevicePrivate::disconnected() const</span></a>
 <a name="388"><span class="lineNum">     388 </span>            : {</a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">         19 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device disconnected.&quot;);</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">         20 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device disconnected.&quot;);</span></a>
 <a name="390"><span class="lineNum">     390 </span><span class="lineCov">         19 : }</span></a>
 <a name="391"><span class="lineNum">     391 </span>            : </a>
 <a name="392"><span class="lineNum">     392 </span>            : /*!</a>
@@ -456,7 +456,7 @@
 <a name="394"><span class="lineNum">     394 </span>            :  */</a>
 <a name="395"><span class="lineNum">     395 </span><span class="lineCov">         19 : void PokitDevicePrivate::discoveryFinished() const</span></a>
 <a name="396"><span class="lineNum">     396 </span>            : {</a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         19 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service discovery finished.&quot;);</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         20 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service discovery finished.&quot;);</span></a>
 <a name="398"><span class="lineNum">     398 </span><span class="lineCov">         19 : }</span></a>
 <a name="399"><span class="lineNum">     399 </span>            : </a>
 <a name="400"><span class="lineNum">     400 </span>            : /*!</a>
@@ -464,7 +464,7 @@
 <a name="402"><span class="lineNum">     402 </span>            :  */</a>
 <a name="403"><span class="lineNum">     403 </span><span class="lineCov">         19 : void PokitDevicePrivate::errorOccurred(QLowEnergyController::Error newError) const</span></a>
 <a name="404"><span class="lineNum">     404 </span>            : {</a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         19 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Controller error:&quot;) &lt;&lt; newError;</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         20 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Controller error:&quot;) &lt;&lt; newError;</span></a>
 <a name="406"><span class="lineNum">     406 </span><span class="lineCov">         19 : }</span></a>
 <a name="407"><span class="lineNum">     407 </span>            : </a>
 <a name="408"><span class="lineNum">     408 </span>            : /*!</a>
@@ -472,7 +472,7 @@
 <a name="410"><span class="lineNum">     410 </span>            :  */</a>
 <a name="411"><span class="lineNum">     411 </span><span class="lineCov">         19 : void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &amp;newService) const</span></a>
 <a name="412"><span class="lineNum">     412 </span>            : {</a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         19 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Service discovered: %1 &quot;%2&quot;)&quot;)</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         20 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Service discovered: %1 &quot;%2&quot;)&quot;)</span></a>
 <a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 :         .arg(newService.toString(), PokitDevice::serviceToString(newService));</span></a>
 <a name="415"><span class="lineNum">     415 </span><span class="lineCov">         19 : }</span></a>
 <a name="416"><span class="lineNum">     416 </span>            : </a>
@@ -481,7 +481,7 @@
 <a name="419"><span class="lineNum">     419 </span>            :  */</a>
 <a name="420"><span class="lineNum">     420 </span><span class="lineCov">         19 : void PokitDevicePrivate::stateChanged(QLowEnergyController::ControllerState state) const</span></a>
 <a name="421"><span class="lineNum">     421 </span>            : {</a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">         19 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;State changed to:&quot;) &lt;&lt; state;</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">         20 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;State changed to:&quot;) &lt;&lt; state;</span></a>
 <a name="423"><span class="lineNum">     423 </span><span class="lineCov">         19 : }</span></a>
 <a name="424"><span class="lineNum">     424 </span>            : </a>
 <a name="425"><span class="lineNum">     425 </span>            : /// \endcond</a>

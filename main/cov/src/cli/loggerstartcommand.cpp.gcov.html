@@ -153,7 +153,7 @@
 <a name="91"><span class="lineNum">      91 </span><span class="lineCov">         38 :             rangeOptionValue = parseNumber&lt;std::milli&gt;(value, QLatin1String(&quot;A&quot;), 5); // mA.</span></a>
 <a name="92"><span class="lineNum">      92 </span><span class="lineCov">         38 :             break;</span></a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineCov">         38 :         default:</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         86 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring range value: %1&quot;).arg(value);</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         88 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring range value: %1&quot;).arg(value);</span></a>
 <a name="95"><span class="lineNum">      95 </span>            :         }</a>
 <a name="96"><span class="lineNum">      96 </span><span class="lineCov">        323 :         if ((minRangeFunc != nullptr) &amp;&amp; (rangeOptionValue == 0)) {</span></a>
 <a name="97"><span class="lineNum">      97 </span><span class="lineCov">         24 :             errors.append(tr(&quot;Invalid range value: %1&quot;).arg(value));</span></a>
@@ -242,7 +242,7 @@
 <a name="180"><span class="lineNum">     180 </span>            :  */</a>
 <a name="181"><span class="lineNum">     181 </span><span class="lineCov">         57 : void LoggerStartCommand::settingsWritten()</span></a>
 <a name="182"><span class="lineNum">     182 </span>            : {</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">         57 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has started.&quot;);</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">         60 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has started.&quot;);</span></a>
 <a name="184"><span class="lineNum">     184 </span><span class="lineCov">         57 :     switch (format) {</span></a>
 <a name="185"><span class="lineNum">     185 </span><span class="lineCov">         19 :     case OutputFormat::Csv:</span></a>
 <a name="186"><span class="lineNum">     186 </span><span class="lineCov">         24 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_start_result\nsuccess\n&quot;));</span></a>
