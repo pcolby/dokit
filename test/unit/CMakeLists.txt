@@ -1,8 +1,6 @@
 # SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
-cmake_minimum_required(VERSION 3.0)
-
 find_package(Qt${QT_VERSION_MAJOR}Test REQUIRED)
 
 function(add_dokit_unit_test name)

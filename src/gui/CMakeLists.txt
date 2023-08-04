@@ -1,8 +1,6 @@
 # SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
-cmake_minimum_required(VERSION 3.0)
-
 # \todo Move this to the top-level CMakeLists.txt when the GUI app is ready.
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Charts Widgets)
 message(STATUS "Found Qt Charts ${Qt${QT_VERSION_MAJOR}Charts_VERSION}")
