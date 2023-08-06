@@ -33,7 +33,7 @@ set(DokitCliSources
 )
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  add_executable(cli main.cpp ${DokitCliSources})
+  add_executable(cli MACOSX_BUNDLE main.cpp ${DokitCliSources})
 else()
   # We put all but main.cpp into a shared 'object' library so
   # our app unit tests can link against the same binary objects.
@@ -45,7 +45,7 @@ else()
     PRIVATE Qt${QT_VERSION_MAJOR}::Core
     PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 
-  add_executable(cli main.cpp)
+  add_executable(cli MACOSX_BUNDLE main.cpp)
 
   target_link_libraries(cli PRIVATE cli-lib)
 endif()

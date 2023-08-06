@@ -22,7 +22,7 @@ else()
 endif()
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  add_executable(gui main.cpp ${DokitGuiSources})
+  add_executable(gui MACOSX_BUNDLE main.cpp ${DokitGuiSources})
 else()
   # We put all but main.cpp into a shared 'object' library so
   # our app unit tests can link against the same binary objects.
@@ -36,7 +36,7 @@ else()
     PRIVATE Qt${QT_VERSION_MAJOR}::Charts
     PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-  add_executable(gui main.cpp)
+  add_executable(gui MACOSX_BUNDLE main.cpp)
 
   target_link_libraries(gui PRIVATE gui-lib)
 endif()
