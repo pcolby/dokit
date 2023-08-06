@@ -54,6 +54,7 @@ set_target_properties(cli PROPERTIES OUTPUT_NAME dokit)
 
 # Add a custom Info.plist file to the app bundle.
 if(APPLE)
+  set(MACOSX_BUNDLE_BLUETOOTH "${PROJECT_NAME} requires Bluetooth access to communicate with Pokit devices.")
   set_target_properties(
     cli
     PROPERTIES
