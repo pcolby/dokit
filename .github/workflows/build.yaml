@@ -215,7 +215,8 @@ jobs:
         find "$RUNNER_TEMP"
         find "$RUNNER_TEMP" -name 'Info.plist'
         find "$RUNNER_TEMP" -name 'Info.plist' -execdir cat '{}' \;
-        "$RUNNER_TEMP/src/cli/dokit" --version
+        open -n "$RUNNER_TEMP/src/cli/dokit.app" --args --version || true
+        "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" --version || true
         "$RUNNER_TEMP/src/cli/dokit" scan --debug --timeout 100ms
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
