@@ -54,7 +54,13 @@ set_target_properties(cli PROPERTIES OUTPUT_NAME dokit)
 
 # Add a custom Info.plist file to the app bundle.
 if(APPLE)
-  set(MACOSX_BUNDLE_BLUETOOTH "${PROJECT_NAME} requires Bluetooth access to communicate with Pokit devices.")
+  set(MACOSX_BUNDLE_BUNDLE_NAME          "${PROJECT_NAME} CLI")
+  set(MACOSX_BUNDLE_GUI_IDENTIFIER       "au.id.colby.dokit.cli")
+  # \todo MACOSX_BUNDLE_ICON_FILE
+  set(MACOSX_BUNDLE_BUNDLE_VERSION       "${PROJECT_VERSION}")
+  set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}")
+  set(MACOSX_BUNDLE_BLUETOOTH            "${PROJECT_NAME} requires Bluetooth access to communicate with Pokit devices.")
+  set(MACOSX_BUNDLE_COPYRIGHT            "Copyright 2022-2023 Paul Colby <git@colby.id.au>")
   set_target_properties(
     cli
     PROPERTIES
