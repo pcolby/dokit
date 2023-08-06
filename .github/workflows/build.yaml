@@ -35,6 +35,7 @@ jobs:
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
+        "$RUNNER_TEMP/src/cli/dokit" --version
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
@@ -119,6 +120,7 @@ jobs:
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
+        "$RUNNER_TEMP/src/cli/dokit" --version
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
@@ -206,6 +208,7 @@ jobs:
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
+        "$RUNNER_TEMP/src/cli/dokit" --version
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
@@ -364,6 +367,7 @@ jobs:
         copy /v /b src\cli\dokit.exe /b portable
         cd portable
         windeployqt --compiler-runtime --release --verbose 2 dokit.exe ${{ matrix.dll }}
+        portable\dokit.exe --version
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
