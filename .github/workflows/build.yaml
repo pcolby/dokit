@@ -212,18 +212,10 @@ jobs:
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
-        find "$RUNNER_TEMP"
         find "$RUNNER_TEMP" -name 'Info.plist'
         find "$RUNNER_TEMP" -name 'Info.plist' -execdir cat '{}' \;
-        open -n "$RUNNER_TEMP/src/cli/dokit.app" --args scan --debug --timeout 100ms || true
-        echo open1
-        open -n "$RUNNER_TEMP/src/cli/dokit.app" --args --version || true
-        echo run1
-        "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" --version || true
-        echo open2
-        open -n "$RUNNER_TEMP/src/cli/dokit.app" --args scan --debug --timeout 100ms || true
-        echo run2
-        "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" scan --debug --timeout 100ms || true
+        "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" --version
+        "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" scan --debug --timeout 100ms
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
