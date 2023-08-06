@@ -33,7 +33,7 @@ set(DokitCliSources
 )
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  add_executable(cli MACOSX_BUNDLE main.cpp ${DokitCliSources})
+  add_executable(cli main.cpp ${DokitCliSources})
 else()
   # We put all but main.cpp into a shared 'object' library so
   # our app unit tests can link against the same binary objects.
@@ -45,12 +45,21 @@ else()
     PRIVATE Qt${QT_VERSION_MAJOR}::Core
     PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 
-  add_executable(cli MACOSX_BUNDLE main.cpp)
+  add_executable(cli main.cpp)
 
   target_link_libraries(cli PRIVATE cli-lib)
 endif()
 
 set_target_properties(cli PROPERTIES OUTPUT_NAME dokit)
+
+# Add a custom Info.plist file to the app bundle.
+if(APPLE)
+  set_target_properties(
+    cli
+    PROPERTIES
+      MACOSX_BUNDLE true
+      MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist.in)
+endif()
 
 # Only include localisation for Qt6+ for now. We could support Qt5
 # too, but we'd need to manually implement some of Qt6's CMake
