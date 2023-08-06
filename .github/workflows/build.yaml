@@ -215,9 +215,15 @@ jobs:
         find "$RUNNER_TEMP"
         find "$RUNNER_TEMP" -name 'Info.plist'
         find "$RUNNER_TEMP" -name 'Info.plist' -execdir cat '{}' \;
+        open -n "$RUNNER_TEMP/src/cli/dokit.app" --args scan --debug --timeout 100ms || true
+        echo open1
         open -n "$RUNNER_TEMP/src/cli/dokit.app" --args --version || true
+        echo run1
         "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" --version || true
-        "$RUNNER_TEMP/src/cli/dokit" scan --debug --timeout 100ms
+        echo open2
+        open -n "$RUNNER_TEMP/src/cli/dokit.app" --args scan --debug --timeout 100ms || true
+        echo run2
+        "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" scan --debug --timeout 100ms || true
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
