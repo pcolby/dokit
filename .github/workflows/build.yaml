@@ -367,7 +367,7 @@ jobs:
         copy /v /b src\cli\dokit.exe /b portable
         cd portable
         windeployqt --compiler-runtime --release --verbose 2 dokit.exe ${{ matrix.dll }}
-        portable\dokit.exe --version
+        dokit.exe --version
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
