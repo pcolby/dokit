@@ -212,6 +212,8 @@ jobs:
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
+        find "$RUNNER_TEMP" -name 'Info.plist'
+        find "$RUNNER_TEMP" -name 'Info.plist' -execdir cat '{}' \;
         "$RUNNER_TEMP/src/cli/dokit" --version
         "$RUNNER_TEMP/src/cli/dokit" scan --debug --timeout 100ms
     - name: Test
