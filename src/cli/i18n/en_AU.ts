@@ -24,12 +24,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="305"/>
+        <location filename="../abstractcommand.cpp" line="304"/>
+        <source>Platform does not support Bluetooth scan timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../abstractcommand.cpp" line="307"/>
         <source>Set scan timeout to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="314"/>
+        <location filename="../abstractcommand.cpp" line="316"/>
         <source>Missing required option: %1</source>
         <translation type="unfinished"></translation>
     </message>

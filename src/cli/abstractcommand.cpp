@@ -300,6 +300,8 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
         const quint32 timeout = parseNumber<std::milli>(parser.value(QLatin1String("timeout")), QLatin1String("s"), 500);
         if (timeout == 0) {
             errors.append(tr("Invalid timeout: %1").arg(parser.value(QLatin1String("timeout"))));
+        } else if (discoveryAgent->lowEnergyDiscoveryTimeout() == -1) {
+            qCWarning(lc).noquote() << tr("Platform does not support Bluetooth scan timeout");
         } else {
             discoveryAgent->setLowEnergyDiscoveryTimeout(timeout);
             qCDebug(lc).noquote() << tr("Set scan timeout to %1").arg(
