@@ -36,7 +36,6 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
         "$RUNNER_TEMP/src/cli/dokit" --version
-        #"$RUNNER_TEMP/src/cli/dokit" scan --debug --timeout 100ms
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
@@ -122,7 +121,6 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP"
         "$RUNNER_TEMP/src/cli/dokit" --version
-        #"$RUNNER_TEMP/src/cli/dokit" scan --debug --timeout 100ms
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
@@ -213,7 +211,6 @@ jobs:
         find "$RUNNER_TEMP" -name 'Info.plist'
         find "$RUNNER_TEMP" -name 'Info.plist' -execdir cat '{}' \;
         "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" --version
-        #"$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" scan --debug --timeout 100ms
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
@@ -369,7 +366,6 @@ jobs:
         cd portable
         windeployqt --compiler-runtime --release --verbose 2 dokit.exe ${{ matrix.dll }}
         dokit.exe --version
-        #dokit.exe scan --debug --timeout 100ms
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
       shell: bash
