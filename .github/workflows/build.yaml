@@ -250,7 +250,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: dokit-${{ env.dokitVersion }}
-        path: ${{ runner.temp }}/src/cli/
+        path: ${{ runner.temp }}/src/*/dokit.app
         if-no-files-found: error
 
   win:
