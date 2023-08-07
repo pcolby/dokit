@@ -250,9 +250,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: dokit-${{ env.dokitVersion }}
-        path: |
-          ${{ runner.temp }}/src/lib/libQtPokit.dylib
-          ${{ runner.temp }}/src/cli/dokit.app
+        path: ${{ runner.temp }}/src/cli/
         if-no-files-found: error
 
   win:
