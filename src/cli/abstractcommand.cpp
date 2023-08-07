@@ -7,6 +7,7 @@
 #include <qtpokit/pokitdiscoveryagent.h>
 
 #include <QLocale>
+#include <QTimer>
 
 #include <ratio>
 
@@ -33,8 +34,10 @@ AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
         &PokitDiscoveryAgent::errorOccurred,
         #endif
     [](const PokitDiscoveryAgent::Error &error) {
-        qCWarning(lc).noquote() << tr("Bluetooth controller error:") << error;
-        QCoreApplication::exit(EXIT_FAILURE);
+        qCWarning(lc).noquote() << tr("Bluetooth discovery error:") << error;
+        QTimer::singleShot(0, QCoreApplication::instance(), [](){
+            QCoreApplication::exit(EXIT_FAILURE);
+        });
     });
 }
 
