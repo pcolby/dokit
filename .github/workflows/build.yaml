@@ -242,10 +242,8 @@ jobs:
         path-to-lcov: ${{ runner.temp }}/coverage.info
         flag-name: mac-${{ matrix.env.cc }}-${{ matrix.qt }}
         parallel: true
-    #- name: Make app bundle
-    #  run: |
-    #    macdeployqt dokit -dmg -verbose=2
-    #  working-directory: ${{ runner.temp }}/src/cli
+    - name: Make app bundle
+      run: macdeployqt "$RUNNER_TEMP/src/cli/dokit.app" -dmg -verbose=2
     - name: Setup artifacts
       run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
@@ -254,7 +252,7 @@ jobs:
         name: dokit-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.dylib
-          ${{ runner.temp }}/src/cli/dokit
+          ${{ runner.temp }}/src/cli/dokit.app
         if-no-files-found: error
 
   win:
