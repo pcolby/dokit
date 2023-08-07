@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   linux0:
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -85,7 +84,6 @@ jobs:
         if-no-files-found: error
 
   linux:
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -254,7 +252,6 @@ jobs:
         if-no-files-found: error
 
   win:
-    if: false
     runs-on: windows-latest
     defaults: { run: { shell: cmd } }
     strategy:

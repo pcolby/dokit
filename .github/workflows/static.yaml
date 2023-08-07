@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   CodeQL:
-    if: false
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -26,7 +25,6 @@ jobs:
       uses: github/codeql-action/analyze@v2
 
   Cppcheck:
-    if: false
     runs-on: ubuntu-latest
     steps:
     - name: Install Cppcheck
