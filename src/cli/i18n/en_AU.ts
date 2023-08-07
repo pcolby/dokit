@@ -301,12 +301,12 @@ success
 <context>
     <name>LoggerFetchCommand</name>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="53"/>
+        <location filename="../loggerfetchcommand.cpp" line="62"/>
         <source>Fetching logger samples...</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../loggerfetchcommand.cpp" line="74"/>
+        <location filename="../loggerfetchcommand.cpp" line="83"/>
         <source>Fetching %Ln logger sample/s...</source>
         <translation>
             <numerusform>Fetching %Ln logger sample...</numerusform>
@@ -314,24 +314,24 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="90"/>
+        <location filename="../loggerfetchcommand.cpp" line="99"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="102"/>
+        <location filename="../loggerfetchcommand.cpp" line="111"/>
         <source>timestamp,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="120"/>
+        <location filename="../loggerfetchcommand.cpp" line="129"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../loggerfetchcommand.cpp" line="127"/>
+        <location filename="../loggerfetchcommand.cpp" line="136"/>
         <source>Finished fetching %Ln sample/s (with %L1 remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L1 remaining).</numerusform>
