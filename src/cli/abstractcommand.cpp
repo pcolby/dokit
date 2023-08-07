@@ -7,6 +7,7 @@
 #include <qtpokit/pokitdiscoveryagent.h>
 
 #include <QLocale>
+#include <QTimer>
 
 #include <ratio>
 
@@ -33,8 +34,10 @@ AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
         &PokitDiscoveryAgent::errorOccurred,
         #endif
     [](const PokitDiscoveryAgent::Error &error) {
-        qCWarning(lc).noquote() << tr("Bluetooth controller error:") << error;
-        QCoreApplication::exit(EXIT_FAILURE);
+        qCWarning(lc).noquote() << tr("Bluetooth discovery error:") << error;
+        QTimer::singleShot(0, QCoreApplication::instance(), [](){
+            QCoreApplication::exit(EXIT_FAILURE);
+        });
     });
 }
 
@@ -297,6 +300,8 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
         const quint32 timeout = parseNumber<std::milli>(parser.value(QLatin1String("timeout")), QLatin1String("s"), 500);
         if (timeout == 0) {
             errors.append(tr("Invalid timeout: %1").arg(parser.value(QLatin1String("timeout"))));
+        } else if (discoveryAgent->lowEnergyDiscoveryTimeout() == -1) {
+            qCWarning(lc).noquote() << tr("Platform does not support Bluetooth scan timeout");
         } else {
             discoveryAgent->setLowEnergyDiscoveryTimeout(timeout);
             qCDebug(lc).noquote() << tr("Set scan timeout to %1").arg(

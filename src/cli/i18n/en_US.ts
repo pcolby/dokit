@@ -4,32 +4,37 @@
 <context>
     <name>AbstractCommand</name>
     <message>
-        <location filename="../abstractcommand.cpp" line="36"/>
-        <source>Bluetooth controller error:</source>
+        <location filename="../abstractcommand.cpp" line="37"/>
+        <source>Bluetooth discovery error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="269"/>
+        <location filename="../abstractcommand.cpp" line="272"/>
         <source>Ignoring option: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="291"/>
+        <location filename="../abstractcommand.cpp" line="294"/>
         <source>Unknown output format: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="299"/>
+        <location filename="../abstractcommand.cpp" line="302"/>
         <source>Invalid timeout: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="302"/>
+        <location filename="../abstractcommand.cpp" line="304"/>
+        <source>Platform does not support Bluetooth scan timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../abstractcommand.cpp" line="307"/>
         <source>Set scan timeout to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="311"/>
+        <location filename="../abstractcommand.cpp" line="316"/>
         <source>Missing required option: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -301,12 +306,12 @@ success
 <context>
     <name>LoggerFetchCommand</name>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="53"/>
+        <location filename="../loggerfetchcommand.cpp" line="62"/>
         <source>Fetching logger samples...</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../loggerfetchcommand.cpp" line="74"/>
+        <location filename="../loggerfetchcommand.cpp" line="83"/>
         <source>Fetching %Ln logger sample/s...</source>
         <translation>
             <numerusform>Fetching %Ln logger sample...</numerusform>
@@ -314,24 +319,24 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="90"/>
+        <location filename="../loggerfetchcommand.cpp" line="99"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="102"/>
+        <location filename="../loggerfetchcommand.cpp" line="111"/>
         <source>timestamp,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="120"/>
+        <location filename="../loggerfetchcommand.cpp" line="129"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../loggerfetchcommand.cpp" line="127"/>
+        <location filename="../loggerfetchcommand.cpp" line="136"/>
         <source>Finished fetching %Ln sample/s (with %L1 remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L1 remaining).</numerusform>
