@@ -366,7 +366,7 @@ jobs:
         cd portable
         windeployqt --compiler-runtime --release --verbose 2 dokit.exe ${{ matrix.dll }}
         echo about to exec
-        dokit.exe --debug --version
+        dokit.exe --debug
         echo exec done
       working-directory: ${{ runner.temp }}
     - name: Setup artifacts
