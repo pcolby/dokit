@@ -2,6 +2,9 @@ name: Documentation
 
 on: [push, pull_request]
 
+env:
+  DOXYGEN_VERSION: 1.9.8
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -15,12 +18,12 @@ jobs:
         sudo apt update
         sudo apt upgrade
         sudo apt install graphviz qtbase5-dev qtbase5-doc-dev qtconnectivity5-dev qtconnectivity5-doc-html qttools5-dev qttools5-dev-tools
-        curl --location --silent 'https://github.com/doxygen/doxygen/releases/download/Release_1_9_8/doxygen-1.9.8.linux.bin.tar.gz' |
+        curl --location --silent "https://github.com/doxygen/doxygen/releases/download/Release_${DOXYGEN_VERSION//./_}/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz" |
           tar --extract --gzip --directory "$RUNNER_TEMP"
-        "$RUNNER_TEMP/doxygen-1.9.8/bin/doxygen" --version
+        "$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" --version
     - name: Build docs
       run: |
-        cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-1.9.8/bin/doxygen" -D "QT_TAGFILES_PATH=/usr/share/qt5/doc" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" -D "QT_TAGFILES_PATH=/usr/share/qt5/doc" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" --target doc doc-internal
     - name: Upload public docs
       uses: actions/upload-artifact@v3
