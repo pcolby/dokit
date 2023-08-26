@@ -6,7 +6,7 @@ var searchData=
   ['names_3',['names',['https://doc.qt.io/qt-5/qcommandlineoption.html#names',1,'QCommandLineOption']]],
   ['namespacedeclarations_4',['namespaceDeclarations',['https://doc.qt.io/qt-5/qxmlstreamreader.html#namespaceDeclarations',1,'QXmlStreamReader']]],
   ['namespaceprocessing_5',['namespaceProcessing',['https://doc.qt.io/qt-5/qxmlstreamreader.html#namespaceProcessing-prop',1,'QXmlStreamReader']]],
-  ['namespaceuri_6',['namespaceUri',['https://doc.qt.io/qt-5/qxmlstreamreader.html#namespaceUri',1,'QXmlStreamReader::namespaceUri()'],['https://doc.qt.io/qt-5/qxmlstreamattribute.html#namespaceUri',1,'QXmlStreamAttribute::namespaceUri()'],['https://doc.qt.io/qt-5/qxmlstreamnamespacedeclaration.html#namespaceUri',1,'QXmlStreamNamespaceDeclaration::namespaceUri()']]],
+  ['namespaceuri_6',['namespaceuri',['https://doc.qt.io/qt-5/qxmlstreamreader.html#namespaceUri',1,'QXmlStreamReader::namespaceUri()'],['https://doc.qt.io/qt-5/qxmlstreamattribute.html#namespaceUri',1,'QXmlStreamAttribute::namespaceUri()'],['https://doc.qt.io/qt-5/qxmlstreamnamespacedeclaration.html#namespaceUri',1,'QXmlStreamNamespaceDeclaration::namespaceUri()']]],
   ['nametotype_7',['nameToType',['https://doc.qt.io/qt-5/qvariant.html#nameToType',1,'QVariant']]],
   ['nativearguments_8',['nativeArguments',['https://doc.qt.io/qt-5/qprocess.html#nativeArguments',1,'QProcess']]],
   ['nativecountryname_9',['nativeCountryName',['https://doc.qt.io/qt-5/qlocale.html#nativeCountryName',1,'QLocale']]],

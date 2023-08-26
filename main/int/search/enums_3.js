@@ -10,7 +10,7 @@ var searchData=
   ['descriptortype_7',['DescriptorType',['https://doc.qt.io/qt-5/qbluetoothuuid.html#DescriptorType-enum',1,'QBluetoothUuid']]],
   ['devicestatus_8',['DeviceStatus',['../classStatusService.html#a50ae778be2cb8e49b85ef159be19af35',1,'StatusService']]],
   ['diagnosticnotationoption_9',['DiagnosticNotationOption',['https://doc.qt.io/qt-5/qcborvalue.html#DiagnosticNotationOption-enum',1,'QCborValue']]],
-  ['direction_10',['Direction',['https://doc.qt.io/qt-5/qchar.html#Direction-enum',1,'QChar::Direction'],['https://doc.qt.io/qt-5/qtimeline.html#Direction-enum',1,'QTimeLine::Direction'],['https://doc.qt.io/qt-5/qabstractanimation.html#Direction-enum',1,'QAbstractAnimation::Direction']]],
+  ['direction_10',['direction',['https://doc.qt.io/qt-5/qchar.html#Direction-enum',1,'QChar::Direction'],['https://doc.qt.io/qt-5/qtimeline.html#Direction-enum',1,'QTimeLine::Direction'],['https://doc.qt.io/qt-5/qabstractanimation.html#Direction-enum',1,'QAbstractAnimation::Direction']]],
   ['discoverability_11',['Discoverability',['https://doc.qt.io/qt-5/qlowenergyadvertisingdata.html#Discoverability-enum',1,'QLowEnergyAdvertisingData']]],
   ['discoverymethod_12',['DiscoveryMethod',['https://doc.qt.io/qt-5/qbluetoothdevicediscoveryagent.html#DiscoveryMethod-enum',1,'QBluetoothDeviceDiscoveryAgent']]],
   ['discoverymode_13',['DiscoveryMode',['https://doc.qt.io/qt-5/qbluetoothservicediscoveryagent.html#DiscoveryMode-enum',1,'QBluetoothServiceDiscoveryAgent']]],

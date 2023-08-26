@@ -21,7 +21,7 @@ var searchData=
   ['minorphoneclass_18',['MinorPhoneClass',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#MinorPhoneClass-enum',1,'QBluetoothDeviceInfo']]],
   ['minortoyclass_19',['MinorToyClass',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#MinorToyClass-enum',1,'QBluetoothDeviceInfo']]],
   ['minorwearableclass_20',['MinorWearableClass',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#MinorWearableClass-enum',1,'QBluetoothDeviceInfo']]],
-  ['mode_21',['Mode',['https://doc.qt.io/qt-5/qlowenergyadvertisingparameters.html#Mode-enum',1,'QLowEnergyAdvertisingParameters::Mode'],['../classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771',1,'DataLoggerService::Mode'],['../classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95',1,'DsoService::Mode'],['../classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea',1,'MultimeterService::Mode']]],
+  ['mode_21',['mode',['https://doc.qt.io/qt-5/qlowenergyadvertisingparameters.html#Mode-enum',1,'QLowEnergyAdvertisingParameters::Mode'],['../classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771',1,'DataLoggerService::Mode'],['../classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95',1,'DsoService::Mode'],['../classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaea',1,'MultimeterService::Mode']]],
   ['modifier_22',['Modifier',['https://doc.qt.io/qt-5/qt.html#Modifier-enum',1,'Qt']]],
   ['monthnametype_23',['MonthNameType',['https://doc.qt.io/qt-5/qdate.html#MonthNameType-enum',1,'QDate']]],
   ['mousebutton_24',['MouseButton',['https://doc.qt.io/qt-5/qt.html#MouseButton-enum',1,'Qt']]],

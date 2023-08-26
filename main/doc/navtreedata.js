@@ -62,12 +62,7 @@ var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
 "dir_6d05515408e4946c0bcad079cca6efc5.html",
-"qbluetooth.html#AttAccessConstraint-enum",
-"qt.html#FocusReason-enum",
-"qt.html#Key-enum",
-"qt.html#Key-enum",
-"qt.html#PenJoinStyle-enum",
-"qt.html#WidgetAttribute-enum"
+"statusservice_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

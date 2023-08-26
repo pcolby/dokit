@@ -13,7 +13,7 @@ var searchData=
   ['clipoperation_10',['ClipOperation',['https://doc.qt.io/qt-5/qt.html#ClipOperation-enum',1,'Qt']]],
   ['clocktype_11',['ClockType',['https://doc.qt.io/qt-5/qelapsedtimer.html#ClockType-enum',1,'QElapsedTimer']]],
   ['code_12',['Code',['https://doc.qt.io/qt-5/qcborerror.html#Code-enum',1,'QCborError']]],
-  ['command_13',['Command',['../classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cc',1,'DataLoggerService::Command'],['../classDsoService.html#af2baee0dc3fa5e308be06c691dece236',1,'DsoService::Command']]],
+  ['command_13',['command',['../classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cc',1,'DataLoggerService::Command'],['../classDsoService.html#af2baee0dc3fa5e308be06c691dece236',1,'DsoService::Command']]],
   ['componentformattingoption_14',['ComponentFormattingOption',['https://doc.qt.io/qt-5/qurl.html#ComponentFormattingOption-enum',1,'QUrl']]],
   ['compression_15',['Compression',['https://doc.qt.io/qt-5/qresource.html#Compression-enum',1,'QResource']]],
   ['connectiontype_16',['ConnectionType',['https://doc.qt.io/qt-5/qt.html#ConnectionType-enum',1,'Qt']]],
@@ -25,7 +25,7 @@ var searchData=
   ['corner_22',['Corner',['https://doc.qt.io/qt-5/qt.html#Corner-enum',1,'Qt']]],
   ['country_23',['Country',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
   ['currencysymbolformat_24',['CurrencySymbolFormat',['https://doc.qt.io/qt-5/qlocale.html#CurrencySymbolFormat-enum',1,'QLocale']]],
-  ['currentrange_25',['CurrentRange',['../namespacePokitMeter.html#a22b467360c970e645f6a111b34d50a92',1,'PokitMeter::CurrentRange'],['../namespacePokitPro.html#ac51059eb5a52fa362da01d4e2f44de21',1,'PokitPro::CurrentRange']]],
+  ['currentrange_25',['currentrange',['../namespacePokitMeter.html#a22b467360c970e645f6a111b34d50a92',1,'PokitMeter::CurrentRange'],['../namespacePokitPro.html#ac51059eb5a52fa362da01d4e2f44de21',1,'PokitPro::CurrentRange']]],
   ['cursormovestyle_26',['CursorMoveStyle',['https://doc.qt.io/qt-5/qt.html#CursorMoveStyle-enum',1,'Qt']]],
   ['cursorshape_27',['CursorShape',['https://doc.qt.io/qt-5/qt.html#CursorShape-enum',1,'Qt']]],
   ['curveshape_28',['CurveShape',['https://doc.qt.io/qt-5/qtimeline-obsolete.html#CurveShape-enum',1,'QTimeLine']]]

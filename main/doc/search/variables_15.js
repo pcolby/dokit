@@ -17,7 +17,7 @@ var searchData=
   ['venda_14',['Venda',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
   ['venezuela_15',['Venezuela',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
   ['verpattern_16',['VerPattern',['https://doc.qt.io/qt-5/qt.html#BrushStyle-enum',1,'Qt']]],
-  ['vertical_17',['Vertical',['https://doc.qt.io/qt-5/qchar.html#Decomposition-enum',1,'QChar::Vertical'],['https://doc.qt.io/qt-5/qt.html#Orientation-enum',1,'Qt::Vertical']]],
+  ['vertical_17',['vertical',['https://doc.qt.io/qt-5/qchar.html#Decomposition-enum',1,'QChar::Vertical'],['https://doc.qt.io/qt-5/qt.html#Orientation-enum',1,'Qt::Vertical']]],
   ['verticalsorthint_18',['VerticalSortHint',['https://doc.qt.io/qt-5/qabstractitemmodel.html#LayoutChangeHint-enum',1,'QAbstractItemModel']]],
   ['verunknown_19',['VerUnknown',['https://doc.qt.io/qt-5/quuid.html#Version-enum',1,'QUuid']]],
   ['verycoarsetimer_20',['VeryCoarseTimer',['https://doc.qt.io/qt-5/qt.html#TimerType-enum',1,'Qt']]],
