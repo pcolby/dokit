@@ -665,7 +665,7 @@
 <a name="603"><span class="lineNum">     603 </span><span class="lineCov">         48 :     characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.mid(10,2));</span></a>
 <a name="604"><span class="lineNum">     604 </span><span class="lineCov">         48 :     characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.mid(12,2));</span></a>
 <a name="605"><span class="lineNum">     605 </span><span class="lineCov">         66 :     characteristics.macAddress = QBluetoothAddress(qFromBigEndian&lt;quint64&gt;</span></a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">        114 :                                                    (QByteArray(2, '\0') + value.mid(14,6)));</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">        112 :                                                    (QByteArray(2, '\0') + value.mid(14,6)));</span></a>
 <a name="607"><span class="lineNum">     607 </span>            : </a>
 <a name="608"><span class="lineNum">     608 </span><span class="lineCov">         40 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Firmware version:     &quot;) &lt;&lt; characteristics.firmwareVersion;</span></a>
 <a name="609"><span class="lineNum">     609 </span><span class="lineCov">         40 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum voltage:      &quot;) &lt;&lt; characteristics.maximumVoltage;</span></a>
