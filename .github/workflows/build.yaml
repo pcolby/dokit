@@ -51,12 +51,12 @@ jobs:
           ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
-      if: matrix.env.coverage
+      if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -l CPP -r "${{ runner.temp }}/coverage.info"
     - name: Report parallel coverage to Coveralls
-      if: matrix.env.coverage
+      if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -135,12 +135,12 @@ jobs:
           ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
-      if: matrix.env.coverage
+      if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -l CPP -r "${{ runner.temp }}/coverage.info"
     - name: Report parallel coverage to Coveralls
-      if: matrix.env.coverage
+      if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -225,12 +225,12 @@ jobs:
           ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
-      if: matrix.env.coverage
+      if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -l CPP -r "${{ runner.temp }}/coverage.info"
     - name: Report parallel coverage to Coveralls
-      if: matrix.env.coverage
+      if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -424,10 +424,12 @@ jobs:
         path: "${{ runner.temp }}/coverage"
         if-no-files-found: error
     - name: Report partial-finished to Codacy
+      if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) final
     - name: Report parallel-finished to Coveralls
+      if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
