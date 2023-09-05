@@ -8,7 +8,7 @@
 #include <sstream>
 
 /*!
- * Implements a simply RAII capture of output streams.
+ * Implements a simple RAII capture of output streams.
  */
 class OutputStreamCapture
 {
