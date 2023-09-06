@@ -13,7 +13,7 @@ jobs:
         - { cc: gcc, cxx: g++, coverage: false }
         - { cc: gcc, cxx: g++, coverage: true }
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install Qt
       run: |
         sudo apt-mark hold grub-efi-amd64-signed
@@ -93,7 +93,7 @@ jobs:
         - { cc: gcc, cxx: g++, coverage: false }
         - { cc: gcc, cxx: g++, coverage: true }
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install Tools
       run: |
         sudo apt-mark hold grub-efi-amd64-signed
@@ -188,7 +188,7 @@ jobs:
           - { qt: '6.5.2', env: { cc: gcc-12 } }
           - { qt: '6.6.0', env: { cc: gcc-12 } }
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install lcov
       run: brew install lcov
     - name: Install Qt
@@ -311,7 +311,7 @@ jobs:
         - { generator: 'NMake Makefiles', tool: msvc,  dll:    QtPokit.dll }
         - { generator: 'MinGW Makefiles', tool: mingw, dll: libQtPokit.dll }
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install host Qt for cross-compilation
       if: matrix.arch == 'arm64'
       uses: jurplel/install-qt-action@v3
@@ -390,7 +390,7 @@ jobs:
     needs: [ linux0, linux, mac, win ]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install lcov
       run: |
         sudo apt-mark hold grub-efi-amd64-signed
@@ -440,7 +440,7 @@ jobs:
     if: success() && (github.ref == 'refs/heads/main')
     needs: collate-test-results
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with: { ref: doc }
     - name: Clear previous coverage report
       run: rm -rf main/cov
