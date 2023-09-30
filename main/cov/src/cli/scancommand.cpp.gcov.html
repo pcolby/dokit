@@ -120,7 +120,7 @@
 <a name="58"><span class="lineNum">      58 </span><span class="lineCov">         19 : bool ScanCommand::start()</span></a>
 <a name="59"><span class="lineNum">      59 </span>            : {</a>
 <a name="60"><span class="lineNum">      60 </span>            :     Q_ASSERT(discoveryAgent);</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         44 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Scanning for Pokit devices...&quot;);</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         45 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Scanning for Pokit devices...&quot;);</span></a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">         19 :     discoveryAgent-&gt;start();</span></a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">         19 :     return true;</span></a>
 <a name="64"><span class="lineNum">      64 </span>            : }</a>
@@ -167,7 +167,7 @@
 <a name="105"><span class="lineNum">     105 </span>            :  */</a>
 <a name="106"><span class="lineNum">     106 </span><span class="lineCov">         19 : void ScanCommand::deviceDiscoveryFinished()</span></a>
 <a name="107"><span class="lineNum">     107 </span>            : {</a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         20 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Finished scanning for Pokit devices.&quot;);</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         21 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Finished scanning for Pokit devices.&quot;);</span></a>
 <a name="109"><span class="lineNum">     109 </span><span class="lineCov">         19 :     QCoreApplication::quit();</span></a>
 <a name="110"><span class="lineNum">     110 </span><span class="lineCov">         19 : }</span></a>
 <a name="111"><span class="lineNum">     111 </span>            : </a>
@@ -335,7 +335,7 @@
 <a name="273"><span class="lineNum">     273 </span><span class="lineCov">         10 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);</span></a>
 <a name="274"><span class="lineNum">     274 </span><span class="lineCov">         55 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);</span></a>
 <a name="275"><span class="lineNum">     275 </span>            :     #undef DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN</a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">        120 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown major class %1.&quot;).arg(majorClass);</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">        126 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown major class %1.&quot;).arg(majorClass);</span></a>
 <a name="277"><span class="lineNum">     277 </span>            :     return QString(); // Null QString indicates unknown minor class.</a>
 <a name="278"><span class="lineNum">     278 </span>            : }</a>
 <a name="279"><span class="lineNum">     279 </span>            : </a>
@@ -455,7 +455,7 @@
 <a name="393"><span class="lineNum">     393 </span>            :         break;</a>
 <a name="394"><span class="lineNum">     394 </span>            :     }</a>
 <a name="395"><span class="lineNum">     395 </span>            :     #undef DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN</a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       1300 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown minor class %1 for major class %2.&quot;)</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       1369 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown minor class %1 for major class %2.&quot;)</span></a>
 <a name="397"><span class="lineNum">     397 </span><span class="lineNoCov">          0 :         .arg(minorClass).arg(majorClass);</span></a>
 <a name="398"><span class="lineNum">     398 </span>            :     return QString(); // Null QString indicates unknown minor class.</a>
 <a name="399"><span class="lineNum">     399 </span>            : }</a>

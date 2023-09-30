@@ -256,8 +256,8 @@
 <a name="194"><span class="lineNum">     194 </span>            :     Q_D(const DataLoggerService);</a>
 <a name="195"><span class="lineNum">     195 </span>            :     Q_ASSERT(settings.command == DataLoggerService::Command::Start);</a>
 <a name="196"><span class="lineNum">     196 </span><span class="lineCov">         57 :     if (settings.command != DataLoggerService::Command::Start) {</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">         88 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(&quot;Settings command must be 'Start'.&quot;);</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         36 :         return false;</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">         90 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(&quot;Settings command must be 'Start'.&quot;);</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         34 :         return false;</span></a>
 <a name="199"><span class="lineNum">     199 </span>            :     }</a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineCov">         19 :     return setSettings(settings);</span></a>
 <a name="201"><span class="lineNum">     201 </span>            : }</a>
@@ -464,7 +464,7 @@
 <a name="402"><span class="lineNum">     402 </span>            :         return metadata;</a>
 <a name="403"><span class="lineNum">     403 </span>            :     }</a>
 <a name="404"><span class="lineNum">     404 </span>            : </a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         60 :     qCDebug(lc) &lt;&lt; value.mid(7,12).toHex(',');</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         63 :     qCDebug(lc) &lt;&lt; value.mid(7,12).toHex(',');</span></a>
 <a name="406"><span class="lineNum">     406 </span><span class="lineCov">         57 :     metadata.status = static_cast&lt;DataLoggerService::LoggerStatus&gt;(value.at(0));</span></a>
 <a name="407"><span class="lineNum">     407 </span><span class="lineCov">         72 :     metadata.scale  = qFromLittleEndian&lt;float&gt;(value.mid(1,4));</span></a>
 <a name="408"><span class="lineNum">     408 </span><span class="lineCov">         57 :     metadata.mode   = static_cast&lt;DataLoggerService::Mode&gt;(value.at(5));</span></a>
@@ -486,7 +486,7 @@
 <a name="424"><span class="lineNum">     424 </span><span class="lineCov">         24 :         metadata.numberOfSamples = qFromLittleEndian&lt;quint16&gt;(value.mid(11,2));</span></a>
 <a name="425"><span class="lineNum">     425 </span><span class="lineCov">         24 :         metadata.timestamp       = qFromLittleEndian&lt;quint32&gt;(value.mid(19,4));</span></a>
 <a name="426"><span class="lineNum">     426 </span>            :     } else {</a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">         39 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Cannot decode metadata of %n byte/s: %1&quot;, nullptr, value.size())</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">         40 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Cannot decode metadata of %n byte/s: %1&quot;, nullptr, value.size())</span></a>
 <a name="428"><span class="lineNum">     428 </span><span class="lineCov">         24 :             .arg(toHexString(value));</span></a>
 <a name="429"><span class="lineNum">     429 </span>            :     }</a>
 <a name="430"><span class="lineNum">     430 </span>            :     return metadata;</a>
@@ -499,15 +499,15 @@
 <a name="437"><span class="lineNum">     437 </span>            : {</a>
 <a name="438"><span class="lineNum">     438 </span><span class="lineCov">         20 :     DataLoggerService::Samples samples;</span></a>
 <a name="439"><span class="lineNum">     439 </span><span class="lineCov">         76 :     if ((value.size()%2) != 0) {</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         45 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Samples value has odd size %1 (should be even): %2&quot;)</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         46 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Samples value has odd size %1 (should be even): %2&quot;)</span></a>
 <a name="441"><span class="lineNum">     441 </span><span class="lineCov">         30 :             .arg(value.size()).arg(toHexString(value));</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">          3 :         return samples;</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">          2 :         return samples;</span></a>
 <a name="443"><span class="lineNum">     443 </span>            :     }</a>
 <a name="444"><span class="lineNum">     444 </span><span class="lineCov">        228 :     while ((samples.size()*2) &lt; value.size()) {</span></a>
 <a name="445"><span class="lineNum">     445 </span><span class="lineCov">        216 :         samples.append(qFromLittleEndian&lt;qint16&gt;(value.mid(samples.size()*2,2)));</span></a>
 <a name="446"><span class="lineNum">     446 </span>            :     }</a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">         60 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Read %n sample/s from %1-bytes.&quot;, nullptr, samples.size()).arg(value.size());</span></a>
-<a name="448"><span class="lineNum">     448 </span><span class="lineCov">          9 :     return samples;</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">         63 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Read %n sample/s from %1-bytes.&quot;, nullptr, samples.size()).arg(value.size());</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">          6 :     return samples;</span></a>
 <a name="449"><span class="lineNum">     449 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="450"><span class="lineNum">     450 </span>            : </a>
 <a name="451"><span class="lineNum">     451 </span>            : /*!</a>
@@ -537,7 +537,7 @@
 <a name="475"><span class="lineNum">     475 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="476"><span class="lineNum">     476 </span>            :     }</a>
 <a name="477"><span class="lineNum">     477 </span>            : </a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">         58 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Data Logger service&quot;)</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">         59 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Data Logger service&quot;)</span></a>
 <a name="479"><span class="lineNum">     479 </span><span class="lineCov">         25 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="480"><span class="lineNum">     480 </span>            : }</a>
 <a name="481"><span class="lineNum">     481 </span>            : </a>
@@ -568,7 +568,7 @@
 <a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="507"><span class="lineNum">     507 </span>            :     }</a>
 <a name="508"><span class="lineNum">     508 </span>            : </a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineCov">         58 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Data Logger service&quot;)</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">         59 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Data Logger service&quot;)</span></a>
 <a name="510"><span class="lineNum">     510 </span><span class="lineCov">         25 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="511"><span class="lineNum">     511 </span>            : }</a>
 <a name="512"><span class="lineNum">     512 </span>            : </a>
@@ -598,7 +598,7 @@
 <a name="536"><span class="lineNum">     536 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="537"><span class="lineNum">     537 </span>            :     }</a>
 <a name="538"><span class="lineNum">     538 </span>            : </a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         58 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for Data Logger service&quot;)</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         59 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for Data Logger service&quot;)</span></a>
 <a name="540"><span class="lineNum">     540 </span><span class="lineCov">         25 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></a>
 <a name="541"><span class="lineNum">     541 </span>            : }</a>
 <a name="542"><span class="lineNum">     542 </span>            : </a>

@@ -132,17 +132,17 @@
 <a name="70"><span class="lineNum">      70 </span>            :  */</a>
 <a name="71"><span class="lineNum">      71 </span><span class="lineCov">       1444 : void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &amp;data)</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : {</a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">       1520 :     qCDebug(lc) &lt;&lt; &quot;status:&quot;          &lt;&lt; (int)(data.status);</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">       1520 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot;           &lt;&lt; data.scale;</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       1520 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot;            &lt;&lt; DataLoggerService::toString(data.mode) &lt;&lt; (quint8)data.mode;</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       1520 :     qCDebug(lc) &lt;&lt; &quot;range:&quot;           &lt;&lt; service-&gt;toString(data.range, data.mode) &lt;&lt; data.range;</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">       1520 :     qCDebug(lc) &lt;&lt; &quot;updateInterval:&quot;  &lt;&lt; (int)data.updateInterval;</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       1520 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       1520 :     qCDebug(lc) &lt;&lt; &quot;timestamp:&quot;       &lt;&lt; data.timestamp &lt;&lt; QDateTime::fromSecsSinceEpoch(data.timestamp, DOKIT_QT_UTC);</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">       1596 :     qCDebug(lc) &lt;&lt; &quot;status:&quot;          &lt;&lt; (int)(data.status);</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">       1596 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot;           &lt;&lt; data.scale;</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       1596 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot;            &lt;&lt; DataLoggerService::toString(data.mode) &lt;&lt; (quint8)data.mode;</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       1596 :     qCDebug(lc) &lt;&lt; &quot;range:&quot;           &lt;&lt; service-&gt;toString(data.range, data.mode) &lt;&lt; data.range;</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">       1596 :     qCDebug(lc) &lt;&lt; &quot;updateInterval:&quot;  &lt;&lt; (int)data.updateInterval;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       1596 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       1596 :     qCDebug(lc) &lt;&lt; &quot;timestamp:&quot;       &lt;&lt; data.timestamp &lt;&lt; QDateTime::fromSecsSinceEpoch(data.timestamp, DOKIT_QT_UTC);</span></a>
 <a name="80"><span class="lineNum">      80 </span><span class="lineCov">       1444 :     this-&gt;metadata = data;</span></a>
 <a name="81"><span class="lineNum">      81 </span><span class="lineCov">       1444 :     this-&gt;samplesToGo = data.numberOfSamples;</span></a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1444 :     this-&gt;timestamp = (quint64)data.timestamp * (quint64)1000;</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       2964 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Fetching %Ln logger sample/s...&quot;, nullptr, data.numberOfSamples);</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       3040 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Fetching %Ln logger sample/s...&quot;, nullptr, data.numberOfSamples);</span></a>
 <a name="84"><span class="lineNum">      84 </span><span class="lineCov">       1444 : }</span></a>
 <a name="85"><span class="lineNum">      85 </span>            : </a>
 <a name="86"><span class="lineNum">      86 </span>            : /*!</a>
@@ -195,7 +195,7 @@
 <a name="133"><span class="lineNum">     133 </span><span class="lineCov">       7980 :         --samplesToGo;</span></a>
 <a name="134"><span class="lineNum">     134 </span><span class="lineCov">       5880 :     }</span></a>
 <a name="135"><span class="lineNum">     135 </span><span class="lineCov">       1710 :     if (samplesToGo &lt;= 0) {</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       4050 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %Ln sample/s (with %L1 remaining).&quot;,</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       4140 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %Ln sample/s (with %L1 remaining).&quot;,</span></a>
 <a name="137"><span class="lineNum">     137 </span><span class="lineCov">       2700 :             nullptr, metadata.numberOfSamples).arg(samplesToGo);</span></a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineCov">       1710 :         if (device) disconnect(); // Will exit the application once disconnected.</span></a>
 <a name="139"><span class="lineNum">     139 </span>            :     }</a>
