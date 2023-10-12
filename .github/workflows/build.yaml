@@ -303,7 +303,7 @@ jobs:
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\lib
       working-directory: ${{ runner.temp }}
-    - run: "$RUNNER_TEMP/test/unit/lib/testAbstractPokitService.exe"
+    - run: gdb -ex=run -ex=bt "$RUNNER_TEMP/test/unit/lib/testAbstractPokitService.exe"
       shell: bash
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
       if: matrix.arch != 'arm64'
