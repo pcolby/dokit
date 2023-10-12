@@ -38,7 +38,7 @@ jobs:
         cmake --build "$RUNNER_TEMP"
         "$RUNNER_TEMP/src/cli/dokit" --version
     - name: Test
-      run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose --debug
+      run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
     - name: Collate test coverage
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
@@ -305,7 +305,7 @@ jobs:
       working-directory: ${{ runner.temp }}
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
       if: matrix.arch != 'arm64'
-      run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose
+      run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose --debug
     - name: Upload test results
       if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v3
