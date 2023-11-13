@@ -637,11 +637,8 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     /*!
      * \pokitApi Pokit API 0.02 says the `Status` characteristic is 5 bytes. API 1.00 then added an
      * additional byte for `Battery Status`, for 6 bytes in total. However, Pokit Pro devices return
-     * 8 bytes here. The purpose of those last 2 bytes are not currently known. Note also, Pokit
-     * Meter only uses the first 5 bytes - ie `Battery Status` is not present.
-     *
-     * Update: it appears that the first of those 2 extra bytes is used to indicate the phycical switch
-     * position.
+     * 8 bytes here. It appears that the first of those 2 extra bytes is used to indicate the physical
+     * switch position, while the other extra byte indicates the device's current charging status.
      */
 
     if (!checkSize(QLatin1String("Status"), value, 5, 6)) {
@@ -656,7 +653,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     if (value.size() >= 7) { // Switch Position - as yet, undocumented by Pokit Innovations.
         status.switchPosition = static_cast<StatusService::SwitchPosition>(value.at(6));
     }
-    if (value.size() >= 8) { // Switch Position - as yet, undocumented by Pokit Innovations.
+    if (value.size() >= 8) { // Charging Status - as yet, undocumented by Pokit Innovations.
         status.chargingStatus = static_cast<StatusService::ChargingStatus>(value.at(7));
     }
     qCDebug(lc).noquote() << tr("Device status:   %1 (%2)")
@@ -702,7 +699,7 @@ std::optional<StatusService::ButtonStatus> StatusServicePrivate::parseButtonPres
      * \pokitApi The button event is the second byte, but no idea what the first byte is. In all examples
      * I've see it's always `0x02`. It appears that the Pokit Android app only ever looks at `bytes[1]`.
      *
-     * \pokitApi Note, we can actually write to the Button Press characteristic too. If we do, the whatever
+     * \pokitApi Note, we can actually write to the Button Press characteristic too. If we do, then whatever
      * we set as the first byte persists, and (unsurprisingly) the second byte reverts to the current
      * button state. So still no idea what that first byte is for.
      */
