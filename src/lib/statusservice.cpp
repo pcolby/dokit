@@ -641,7 +641,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
      * switch position, while the other extra byte indicates the device's current charging status.
      */
 
-    if (!checkSize(QLatin1String("Status"), value, 5, 6)) {
+    if (!checkSize(QLatin1String("Status"), value, 5, 8)) {
         return status;
     }
 
