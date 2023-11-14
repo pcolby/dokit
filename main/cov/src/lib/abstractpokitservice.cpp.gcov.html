@@ -469,9 +469,9 @@
 <a name="407"><span class="lineNum">     407 </span><span class="lineCov">        255 :         return false;</span></a>
 <a name="408"><span class="lineNum">     408 </span>            :     }</a>
 <a name="409"><span class="lineNum">     409 </span><span class="lineCov">        665 :     if ((maxSize &gt;= 0) &amp;&amp; (data.size() &gt; maxSize)) {</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        864 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %n extraneous byte/s: %2&quot;, nullptr, data.size()-maxSize)</span></a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">        528 :             .arg(label, toHexString(data.mid(maxSize)));</span></a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">        304 :         return (!failOnMax);</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        324 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;%1 has %n extraneous byte/s: %2&quot;, nullptr, data.size()-maxSize)</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">        198 :             .arg(label, toHexString(data.mid(maxSize)));</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">        114 :         return (!failOnMax);</span></a>
 <a name="413"><span class="lineNum">     413 </span>            :     }</a>
 <a name="414"><span class="lineNum">     414 </span>            :     return true;</a>
 <a name="415"><span class="lineNum">     415 </span>            : }</a>
@@ -484,13 +484,13 @@
 <a name="422"><span class="lineNum">     422 </span>            :  * toHex(QBytArray(&quot;\x1\x2\x3\x4\x5\x6&quot;, 4); // &quot;0x01,02,...,05,06&quot;</a>
 <a name="423"><span class="lineNum">     423 </span>            :  * ```</a>
 <a name="424"><span class="lineNum">     424 </span>            :  */</a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">        741 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">        551 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></a>
 <a name="426"><span class="lineNum">     426 </span>            : {</a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        195 :     return (data.size() &lt;= maxSize)</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1926 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        145 :     return (data.size() &lt;= maxSize)</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1396 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></a>
 <a name="429"><span class="lineNum">     429 </span><span class="lineCov">         57 :         : QString::fromLatin1(&quot;0x%1,...,%2&quot;).arg(</span></a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        813 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">       3501 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        623 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">       2611 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></a>
 <a name="432"><span class="lineNum">     432 </span>            : }</a>
 <a name="433"><span class="lineNum">     433 </span>            : </a>
 <a name="434"><span class="lineNum">     434 </span>            : /*!</a>
