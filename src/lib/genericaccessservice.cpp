@@ -18,7 +18,7 @@
  *
  * \cond internal
  * \pokitApi Pokit API 1.00 (and 0.02) claims support for the `Generic Access` (`0x1800`) service,
- * however the neither the Pokit Meter, nor the Pokit Pro eport any support for this service, but
+ * however the neither the Pokit Meter, nor the Pokit Pro report any support for this service, but
  * both report support for an undocumented `Generic Attribute` (`0x1801`) service instead.
  * \endcond
  */

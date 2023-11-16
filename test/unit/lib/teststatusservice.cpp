@@ -534,7 +534,7 @@ void TestStatusService::parseStatus()
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
             R"(^Status requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
     }
-    if (value.size() > 6) {
+    if (value.size() > 8) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
             R"(^Status has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
     }
