@@ -303,8 +303,8 @@ jobs:
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\lib
       working-directory: ${{ runner.temp }}
-    - run: valgrind "$RUNNER_TEMP/test/unit/lib/testAbstractPokitService.exe"
-      shell: bash
+    #- run: valgrind "$RUNNER_TEMP/test/unit/lib/testAbstractPokitService.exe"
+    #  shell: bash
     - run: gdb -ex=run -ex=bt "$RUNNER_TEMP/test/unit/lib/testAbstractPokitService.exe"
       shell: bash
     - name: Test # We can't execute arm64 binaries on an x86-64 host.
