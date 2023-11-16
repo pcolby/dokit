@@ -326,7 +326,7 @@ jobs:
         cd portable
         windeployqt --compiler-runtime --release --verbose 2 dokit.exe ${{ matrix.dll }}
         :: dokit.exe --version # This would hang the job, because Qt will show a message box.
-        dumpbin /dependents dokit.exe
+        objdump.exe -p dokit.exe
       working-directory: ${{ runner.temp }}
     - run: gdb -ex=run -ex=bt "$RUNNER_TEMP/portable/dokit.exe"
       shell: bash
