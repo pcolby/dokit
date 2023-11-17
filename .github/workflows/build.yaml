@@ -296,8 +296,8 @@ jobs:
       env:
         PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
-        cmake --build "%RUNNER_TEMP%" --verbose
+        qt-cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
+        qt-cmake --build "%RUNNER_TEMP%" --verbose
     - name: Install DLL for tests
       run: |
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
