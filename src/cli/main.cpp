@@ -336,8 +336,7 @@ int main(int argc, char *argv[])
     for (const QString &error: cliErrors) {
         showCliError(error);
     }
-    if (!cliErrors.isEmpty()) {
-        return EXIT_FAILURE;
-    }
-    return (command->start()) ? QCoreApplication::exec() : EXIT_FAILURE;
+    const int result = ((cliErrors.isEmpty()) && (command->start())) ? QCoreApplication::exec() : EXIT_FAILURE;
+    delete command;
+    return result;
 }
