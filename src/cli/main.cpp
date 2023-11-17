@@ -312,9 +312,9 @@ int main(int argc, char *argv[])
     }
 
     // Parse the command line.
-    const QStringList appArguments = QCoreApplication::arguments();
+//    const QStringList appArguments = QCoreApplication::arguments();
     QCommandLineParser parser;
-    /*const Command commandType = */parseCommandLine(appArguments, parser);
+    const Command commandType = Command::Info; //parseCommandLine(appArguments, parser);
     qCDebug(lc).noquote() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion();
     qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.
@@ -327,19 +327,17 @@ int main(int argc, char *argv[])
     qCDebug(lc).noquote() << "Lib translations:" << (!libTranslator.isEmpty());
 #endif
 
-    return 0;
-
-//    // Handle the given command.
-//    AbstractCommand * const command = getCommandObject(commandType, &app);
-//    if (command == nullptr) {
-//        return EXIT_FAILURE; // getCommandObject will have logged the reason already.
-//    }
-//    const QStringList cliErrors = command->processOptions(parser);
-//    for (const QString &error: cliErrors) {
-//        showCliError(error);
-//    }
-//    if (!cliErrors.isEmpty()) {
-//        return EXIT_FAILURE;
-//    }
-//    return (command->start()) ? QCoreApplication::exec() : EXIT_FAILURE;
+    // Handle the given command.
+    AbstractCommand * const command = getCommandObject(commandType, &app);
+    if (command == nullptr) {
+        return EXIT_FAILURE; // getCommandObject will have logged the reason already.
+    }
+    const QStringList cliErrors = command->processOptions(parser);
+    for (const QString &error: cliErrors) {
+        showCliError(error);
+    }
+    if (!cliErrors.isEmpty()) {
+        return EXIT_FAILURE;
+    }
+    return (command->start()) ? QCoreApplication::exec() : EXIT_FAILURE;
 }
