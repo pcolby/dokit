@@ -298,6 +298,7 @@ jobs:
       run: |
         qt-cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         qt-cmake --build "%RUNNER_TEMP%" --verbose
+        dir /s /b "%RUNNER_TEMP%"
     - name: Install DLL for tests
       run: |
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
