@@ -28,7 +28,7 @@
 #include <Windows.h>
 #endif
 
-//static Q_LOGGING_CATEGORY(lc, "dokit.cli.main", QtInfoMsg);
+static Q_LOGGING_CATEGORY(lc, "dokit.cli.main", QtInfoMsg);
 
 inline bool haveConsole()
 {
@@ -311,23 +311,23 @@ int main(int argc, char *argv[])
         QCoreApplication::installTranslator(&libTranslator);
     }
 
-    return 0;
+    // Parse the command line.
+    const QStringList appArguments = QCoreApplication::arguments();
+    QCommandLineParser parser;
+    /*const Command commandType = */parseCommandLine(appArguments, parser);
+    qCDebug(lc).noquote() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion();
+    qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.
+    qCDebug(lc).noquote() << "App translations:" <<
+        (appTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : appTranslator.filePath());
+    qCDebug(lc).noquote() << "Library translations:" <<
+        (libTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : libTranslator.filePath());
+#else
+    qCDebug(lc).noquote() << "App translations:" << (!appTranslator.isEmpty());
+    qCDebug(lc).noquote() << "Lib translations:" << (!libTranslator.isEmpty());
+#endif
 
-//    // Parse the command line.
-//    const QStringList appArguments = QCoreApplication::arguments();
-//    QCommandLineParser parser;
-//    const Command commandType = parseCommandLine(appArguments, parser);
-//    qCDebug(lc).noquote() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion();
-//    qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
-//#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.
-//    qCDebug(lc).noquote() << "App translations:" <<
-//        (appTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : appTranslator.filePath());
-//    qCDebug(lc).noquote() << "Library translations:" <<
-//        (libTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : libTranslator.filePath());
-//#else
-//    qCDebug(lc).noquote() << "App translations:" << (!appTranslator.isEmpty());
-//    qCDebug(lc).noquote() << "Lib translations:" << (!libTranslator.isEmpty());
-//#endif
+    return 0;
 
 //    // Handle the given command.
 //    AbstractCommand * const command = getCommandObject(commandType, &app);
