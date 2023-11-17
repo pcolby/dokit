@@ -94,23 +94,23 @@ void InfoCommand::serviceDetailsDiscovered()
         break;
     case OutputFormat::Json: {
         QJsonObject jsonObject{
-            { QLatin1String("manufacturerName"), service->manufacturer() },
-            { QLatin1String("modelNumber"),      service->modelNumber() },
-            { QLatin1String("hardwareRevision"), service->hardwareRevision() },
-            { QLatin1String("firmwareRevision"), service->firmwareRevision() },
-            { QLatin1String("softwareRevision"), service->softwareRevision() },
+            { QStringLiteral("manufacturerName"), service->manufacturer() },
+            { QStringLiteral("modelNumber"),      service->modelNumber() },
+            { QStringLiteral("hardwareRevision"), service->hardwareRevision() },
+            { QStringLiteral("firmwareRevision"), service->firmwareRevision() },
+            { QStringLiteral("softwareRevision"), service->softwareRevision() },
         };
         if (!deviceName.isEmpty()) {
-            jsonObject.insert(QLatin1String("deviceName"), deviceName);
+            jsonObject.insert(QStringLiteral("deviceName"), deviceName);
         }
         if (!deviceAddress.isNull()) {
-            jsonObject.insert(QLatin1String("deviceAddress"), deviceAddress.toString());
+            jsonObject.insert(QStringLiteral("deviceAddress"), deviceAddress.toString());
         }
         if (!deviceUuid.isNull()) {
-            jsonObject.insert(QLatin1String("deviceUuid"), deviceUuid.toString());
+            jsonObject.insert(QStringLiteral("deviceUuid"), deviceUuid.toString());
         }
         if (!serialNumber.isNull()) {
-            jsonObject.insert(QLatin1String("serialNumber"), serialNumber);
+            jsonObject.insert(QStringLiteral("serialNumber"), serialNumber);
         }
         std::cout << QJsonDocument(jsonObject).toJson().toStdString();
     }   break;
