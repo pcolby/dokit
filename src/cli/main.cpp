@@ -337,6 +337,6 @@ int main(int argc, char *argv[])
         showCliError(error);
     }
     const int result = ((cliErrors.isEmpty()) && (command->start())) ? QCoreApplication::exec() : EXIT_FAILURE;
-    delete command;
+    delete command; // We don't strictly need to do this, but it does fix QTBUG-119063, and is probably good practice.
     return result;
 }
