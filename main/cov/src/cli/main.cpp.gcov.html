@@ -398,11 +398,10 @@
 <a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     for (const QString &amp;error: cliErrors) {</span></a>
 <a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :         showCliError(error);</span></a>
 <a name="338"><span class="lineNum">     338 </span>            :     }</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :     if (!cliErrors.isEmpty()) {</span></a>
-<a name="340"><span class="lineNum">     340 </span>            :         return EXIT_FAILURE;</a>
-<a name="341"><span class="lineNum">     341 </span>            :     }</a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :     return (command-&gt;start()) ? QCoreApplication::exec() : EXIT_FAILURE;</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :     const int result = ((cliErrors.isEmpty()) &amp;&amp; (command-&gt;start())) ? QCoreApplication::exec() : EXIT_FAILURE;</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :     delete command; // We don't strictly need to do this, but it does fix QTBUG-119063, and is probably good practice.</span></a>
+<a name="341"><span class="lineNum">     341 </span>            :     return result;</a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 : }</span></a>
 </pre>
       </td>
     </tr>
