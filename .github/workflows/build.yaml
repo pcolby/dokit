@@ -282,8 +282,8 @@ jobs:
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
         arch: ${{ matrix.qtArch }}
         aqtversion: ==3.1.*
-        #tools: tools_mingw90
-        #add-tools-to-path: true
+        tools: tools_mingw90
+        add-tools-to-path: true
     - name: Configure cross-compilation
       if: matrix.arch == 'arm64'
       shell: bash
