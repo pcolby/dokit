@@ -298,7 +298,7 @@ jobs:
         - { generator: 'MinGW Makefiles', qt: '6.3.2',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.4.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.5.3',   qtArch: win64_mingw   }
-        # { generator: 'MinGW Makefiles', qt: '6.6.0',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.6.0',   qtArch: win64_mingw   }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
@@ -327,6 +327,10 @@ jobs:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
         arch: ${{ matrix.qtArch }}
+        # Use Qt's shipped MinGW for Qt 6.6 for now, as the runner's MinGW version crashes with Qt 6.6.0.
+        # \todo Remove this if/when the runner's MinGW is updated to fix the incompatibility.
+        tools: ${{ startsWith(matrix.qt, '6.6') && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
+        #add-tools-to-path: true ///< \toto Use once released by install-qt-action.
     - name: Configure cross-compilation
       if: matrix.arch == 'arm64'
       shell: bash
@@ -342,6 +346,8 @@ jobs:
       env:
         PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
       run: |
+        # \todo Remove this when either the runner's MinGW is upgraded, or add-tools-to-path is released by install-qt-action.
+        if exist "%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64" set "PATH=%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64\bin\;%PATH%"
         cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
     - name: Install DLL for tests
