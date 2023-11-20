@@ -312,9 +312,9 @@ int main(int argc, char *argv[])
     }
 
     // Parse the command line.
-//    const QStringList appArguments = QCoreApplication::arguments();
+    const QStringList appArguments = QCoreApplication::arguments();
     QCommandLineParser parser;
-    const Command commandType = Command::Info; //parseCommandLine(appArguments, parser);
+    const Command commandType = parseCommandLine(appArguments, parser);
     qCDebug(lc).noquote() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion();
     qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.
