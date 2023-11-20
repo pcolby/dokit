@@ -257,11 +257,60 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '6.6.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.0' ]
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
-        arch: [ x86-64 ]
+        arch: [ x86, x86-64, arm64 ]
+        exclude:
+        # Exclude arm64 builds for Qt's earlier than 6.2, since Qt only added (Windows) arm64
+        # 'Technology Preview' support in 6.2.
+        - { arch: arm64, qt: '5.9.9'   }
+        - { arch: arm64, qt: '5.10.1'  }
+        - { arch: arm64, qt: '5.11.3'  }
+        - { arch: arm64, qt: '5.12.12' }
+        - { arch: arm64, qt: '5.13.2'  }
+        - { arch: arm64, qt: '5.14.2'  }
+        - { arch: arm64, qt: '5.15.2'  }
+        # Exclude MinGW builds for arm64, since MinGW has no arm64 support.
+        - { arch: arm64, generator: 'MinGW Makefiles' }
+        # Exclude MinGW builds for x86 (32-bit), since the GitHub Actions Windows runners only
+        # includes MinGW-w64, and not MinGW (32-bit).
+        - { arch: x86, generator: 'MinGW Makefiles' }
+        # Exclude x86 (32-bit) builds for Qt 5.10.1 with MSVC, for QTBUG-67259.
+        # See https://bugreports.qt.io/browse/QTBUG-67259
+        - { arch: x86, qt: '5.10.1', generator: 'NMake Makefiles' }
+        # Exclude x86 (32-bit) builds for Qt 6.x, since the Qt online installer doesn't provide
+        # those binaries for Qt6.
+        - { arch: x86, qt: '6.2.4' }
+        - { arch: x86, qt: '6.3.2' }
+        - { arch: x86, qt: '6.4.3' }
+        - { arch: x86, qt: '6.5.3' }
+        - { arch: x86, qt: '6.6.0' }
+        # Exclude MinGW builds for x86-64 with Qt's earlier than 5.12, since the Qt online
+        # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
+        - { arch: x86-64, qt: '5.9.9',  generator: 'MinGW Makefiles' }
+        - { arch: x86-64, qt: '5.10.1', generator: 'MinGW Makefiles' }
+        - { arch: x86-64, qt: '5.11.3', generator: 'MinGW Makefiles' }
+        # Exclude MinGW builds with Qt 6.6.0 for now; 6.6.0 is a pre-release, and crashing.
+        - { arch: x86-64, qt: '6.6.0', generator: 'MinGW Makefiles' }
         include: # Override default arch's for install-qt-action and msvc-dev-cmd.
+        - { generator: 'MinGW Makefiles', qt: '5.12.12', qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.14.2',  qtArch: win64_mingw73 }
+        - { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
+        - { generator: 'MinGW Makefiles', qt: '6.2.4',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.3.2',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.4.3',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.5.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.6.0',   qtArch: win64_mingw   }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.13.2',  qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.14.2',  qtArch: win32_msvc2017 }
+        - { generator: 'NMake Makefiles', arch: x86, qt: '5.15.2',  qtArch: win32_msvc2019 }
+        - { generator: 'NMake Makefiles', arch: arm64,  qtArch: win64_msvc2019_arm64 }
+        - { generator: 'NMake Makefiles', arch: arm64,  msvcArch: amd64_arm64 }
+        - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
         - { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
         # Define the toolchain and dll names per generator (for artifact naming mostly).
         - { generator: 'NMake Makefiles', tool: msvc,  dll:    QtPokit.dll }
