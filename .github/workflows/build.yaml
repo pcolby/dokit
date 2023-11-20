@@ -309,20 +309,18 @@ jobs:
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\lib
       working-directory: ${{ runner.temp }}
-    #- run: valgrind "$RUNNER_TEMP/test/unit/lib/testAbstractPokitService.exe"
-    #  shell: bash
     - run: gdb -ex=run -ex=bt "$RUNNER_TEMP/test/unit/lib/testAbstractPokitService.exe"
       shell: bash
-    #- name: Test # We can't execute arm64 binaries on an x86-64 host.
-    #  if: matrix.arch != 'arm64'
-    #  run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose --debug
-    #- name: Upload test results
-    #  if: matrix.arch != 'arm64'
-    #  uses: actions/upload-artifact@v3
-    #  with:
-    #    name: test-results-win-${{ matrix.arch }}-${{ matrix.tool }}-${{ matrix.qt }}
-    #    path: ${{ runner.temp }}/test/**/*.tap
-    #    if-no-files-found: ignore
+    - name: Test # We can't execute arm64 binaries on an x86-64 host.
+      if: matrix.arch != 'arm64'
+      run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose --debug
+    - name: Upload test results
+      if: matrix.arch != 'arm64'
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-win-${{ matrix.arch }}-${{ matrix.tool }}-${{ matrix.qt }}
+        path: ${{ runner.temp }}/test/**/*.tap
+        if-no-files-found: ignore
     - name: Make portable
       if: matrix.arch != 'arm64'
       run: |
