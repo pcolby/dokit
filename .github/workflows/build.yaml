@@ -57,7 +57,7 @@ jobs:
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -l CPP -r "${{ runner.temp }}/coverage.info"
     - name: Report parallel coverage to Coveralls
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ${{ runner.temp }}/coverage.info
@@ -141,7 +141,7 @@ jobs:
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -l CPP -r "${{ runner.temp }}/coverage.info"
     - name: Report parallel coverage to Coveralls
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ${{ runner.temp }}/coverage.info
@@ -231,7 +231,7 @@ jobs:
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -l CPP -r "${{ runner.temp }}/coverage.info"
     - name: Report parallel coverage to Coveralls
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ${{ runner.temp }}/coverage.info
@@ -442,7 +442,7 @@ jobs:
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh) final
     - name: Report parallel-finished to Coveralls
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel-finished: true
