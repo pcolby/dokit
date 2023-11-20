@@ -276,7 +276,7 @@ jobs:
         arch: win64_msvc2019_64
         set-env: false
     - name: Install Qt
-      uses: jurplel/install-qt-action@master
+      uses: jurplel/install-qt-action@v3
       with:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
@@ -302,6 +302,7 @@ jobs:
         call qt-cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%" --verbose
         dir /s /b "%RUNNER_TEMP%"
+        dir /s /b "%GITHUB_WORKSPACE%"
     - name: Install DLL for tests
       run: |
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
