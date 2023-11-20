@@ -299,6 +299,7 @@ jobs:
       env:
         PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
       run: |
+        set PATH=%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64\bin\;%PATH%
         call qt-cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%" --verbose
         dir /s /b "%RUNNER_TEMP%"
