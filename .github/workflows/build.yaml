@@ -287,8 +287,6 @@ jobs:
         - { arch: x86-64, qt: '5.9.9',  generator: 'MinGW Makefiles' }
         - { arch: x86-64, qt: '5.10.1', generator: 'MinGW Makefiles' }
         - { arch: x86-64, qt: '5.11.3', generator: 'MinGW Makefiles' }
-        # Exclude MinGW builds with Qt 6.6.0 for now; 6.6.0 is a pre-release, and crashing.
-        - { arch: x86-64, qt: '6.6.0', generator: 'MinGW Makefiles' }
         include: # Override default arch's for install-qt-action and msvc-dev-cmd.
         - { generator: 'MinGW Makefiles', qt: '5.12.12', qtArch: win64_mingw73 }
         - { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
