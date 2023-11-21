@@ -59,8 +59,8 @@ jobs:
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: coverallsapp/github-action@v2
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ${{ runner.temp }}/coverage.info
+        file: ${{ runner.temp }}/coverage.info
+        format: lcov
         flag-name: linux0-${{ matrix.env.cc }}
         parallel: true
     - name: Build AppImage
@@ -143,8 +143,8 @@ jobs:
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: coverallsapp/github-action@v2
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ${{ runner.temp }}/coverage.info
+        file: ${{ runner.temp }}/coverage.info
+        format: lcov
         flag-name: linux-${{ matrix.env.cc }}-${{ matrix.qt }}
         parallel: true
     - name: Build AppImage
@@ -233,8 +233,8 @@ jobs:
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: coverallsapp/github-action@v2
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ${{ runner.temp }}/coverage.info
+        file: ${{ runner.temp }}/coverage.info
+        format: lcov
         flag-name: mac-${{ matrix.env.cc }}-${{ matrix.qt }}
         parallel: true
     - name: Make app bundle
@@ -444,7 +444,6 @@ jobs:
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: coverallsapp/github-action@v2
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel-finished: true
 
   update-tests-on-doc-branch:
