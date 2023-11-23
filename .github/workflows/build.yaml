@@ -49,7 +49,6 @@ jobs:
         name: test-results-linux-${{ matrix.env.cc }}
         path: |
           ${{ runner.temp }}/coverage.info
-          ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Prep combined test results
@@ -151,7 +150,6 @@ jobs:
       run: |
         find "$RUNNER_TEMP" \( -name 'coverage.info' -or -name '*.tap' \) -printf '%P\0' |
           cpio -pmd0 -D "$RUNNER_TEMP" "$GITHUB_WORKSPACE/test-results/linux-${{ matrix.env.cc }}-${{ matrix.qt }}"
-        [[ ! -e "$RUNNER_TEMP/removeHtmlDates.sh" ]] || cp -av "$RUNNER_TEMP/removeHtmlDates.sh" "$GITHUB_WORKSPACE/test-results"
     - name: Upload combined test results
       uses: actions/upload-artifact@v3
       with:
@@ -253,7 +251,6 @@ jobs:
         cd "$RUNNER_TEMP" &&
           find "$RUNNER_TEMP" \( -name 'coverage.info' -or -name '*.tap' \) -print0 |
           cpio -pmd0 "$GITHUB_WORKSPACE/test-results/mac-${{ matrix.env.cc }}-${{ matrix.qt }}"
-        [[ ! -e "$RUNNER_TEMP/removeHtmlDates.sh" ]] || cp -av "$RUNNER_TEMP/removeHtmlDates.sh" "$GITHUB_WORKSPACE/test-results"
     - name: Upload combined test results
       uses: actions/upload-artifact@v3
       with:
