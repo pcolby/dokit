@@ -2,7 +2,9 @@
 
 ## [Unreleased][]
 
-Nothing yet.
+### Changed
+
+- Upgrade to Qt 6.6.1.
 
 ## [0.5.0][] (2023-11-25)
 

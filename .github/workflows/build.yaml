@@ -99,7 +99,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.1' ]
         env:
         - { cc: clang, cxx: clang++, coverage: false }
         - { cc: gcc, cxx: g++, coverage: false }
@@ -193,7 +193,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.1' ]
         env:
         - { cc: clang, cxx: clang++, coverage: false }
         - { cc: gcc-12, cxx: g++-12, coverage: false }
@@ -208,7 +208,7 @@ jobs:
           - { qt: '6.3.2', env: { cc: gcc-12 } }
           - { qt: '6.4.3', env: { cc: gcc-12 } }
           - { qt: '6.5.3', env: { cc: gcc-12 } }
-          - { qt: '6.6.0', env: { cc: gcc-12 } }
+          - { qt: '6.6.1', env: { cc: gcc-12 } }
     steps:
     - uses: actions/checkout@v4
     - name: Install lcov
@@ -287,7 +287,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.1' ]
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
         arch: [ x86, x86-64, arm64 ]
         exclude:
@@ -314,7 +314,7 @@ jobs:
         - { arch: x86, qt: '6.3.2' }
         - { arch: x86, qt: '6.4.3' }
         - { arch: x86, qt: '6.5.3' }
-        - { arch: x86, qt: '6.6.0' }
+        - { arch: x86, qt: '6.6.1' }
         # Exclude MinGW builds for x86-64 with Qt's earlier than 5.12, since the Qt online
         # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
         - { arch: x86-64, qt: '5.9.9',  generator: 'MinGW Makefiles' }
@@ -329,7 +329,7 @@ jobs:
         - { generator: 'MinGW Makefiles', qt: '6.3.2',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.4.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.5.3',   qtArch: win64_mingw   }
-        - { generator: 'MinGW Makefiles', qt: '6.6.0',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.6.1',   qtArch: win64_mingw   }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
