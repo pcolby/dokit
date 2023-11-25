@@ -12,6 +12,35 @@ private slots:
 
     void disconnect();
 
+    void minRange_meter_current_data();
+    void minRange_meter_current();
+
+    void minRange_meter_resistance_data();
+    void minRange_meter_resistance();
+
+    void minRange_meter_voltage_data();
+    void minRange_meter_voltage();
+
+    void minRange_pro_capacitance_data();
+    void minRange_pro_capacitance();
+
+    void minRange_pro_current_data();
+    void minRange_pro_current();
+
+    void minRange_pro_resistance_data();
+    void minRange_pro_resistance();
+
+    void minRange_pro_voltage_data();
+    void minRange_pro_voltage();
+
+    void minCapacitanceRange();
+
+    void minCurrentRange();
+
+    void minResistanceRange();
+
+    void minVoltageRange();
+
     void controllerError();
 
     void deviceDisconnected();

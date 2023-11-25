@@ -203,8 +203,8 @@ template<> PokitPro::VoltageRange DeviceCommand::minRange(const quint32 maxValue
 /// \endcond
 
 /*!
- * Returns the \a product's lowest capacitance range that can measure at least up to \a maxValue, or AutoRange if no
- * such range is available.
+ * Returns the \a product's lowest capacitance range that can measure at least up to \a maxValue (nF), or AutoRange if
+ * no such range is available.
  *
  * \note Since Pokit Meters do not support capacitance measurement, \a product should not be PokitProduct::PokitMeter.
  *
@@ -224,7 +224,7 @@ quint8 DeviceCommand::minCapacitanceRange(const PokitProduct product, const quin
 }
 
 /*!
- * Returns the \a product's lowest current range that can measure at least up to \a maxValue, or AutoRange if no
+ * Returns the \a product's lowest current range that can measure at least up to \a maxValue (µA), or AutoRange if no
  * such range is available.
  *
  * \see DeviceCommand::minRange<PokitMeter::CurrentRange>(const quint32 maxValue)
@@ -243,7 +243,7 @@ quint8 DeviceCommand::minCurrentRange(const PokitProduct product, const quint32 
 }
 
 /*!
- * Returns the \a product's lowest resistance range that can measure at least up to \a maxValue, or AutoRange if no
+ * Returns the \a product's lowest resistance range that can measure at least up to \a maxValue (Ω), or AutoRange if no
  * such range is available.
  *
  * \see DeviceCommand::minRange<PokitMeter::ResistanceRange>(const quint32 maxValue)
@@ -263,7 +263,7 @@ quint8 DeviceCommand::minResistanceRange(const PokitProduct product, const quint
 
 /*!
  t
-* Returns the \a product's lowest voltage range that can measure at least up to \a maxValue, or AutoRange if no
+* Returns the \a product's lowest voltage range that can measure at least up to \a maxValue (mV), or AutoRange if no
  * such range is available.
  *
  * \see DeviceCommand::minRange<PokitMeter::VoltageRange>(const quint32 maxValue)
