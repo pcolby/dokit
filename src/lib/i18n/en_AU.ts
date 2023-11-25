@@ -1246,87 +1246,87 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="662"/>
+        <location filename="../statusservice.cpp" line="659"/>
         <source>Device status:   %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="664"/>
+        <location filename="../statusservice.cpp" line="661"/>
         <source>Battery voltage: %1 volts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="665"/>
+        <location filename="../statusservice.cpp" line="662"/>
         <source>Battery status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="668"/>
+        <location filename="../statusservice.cpp" line="665"/>
         <source>Switch position: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="672"/>
+        <location filename="../statusservice.cpp" line="669"/>
         <source>Charging status: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="688"/>
+        <location filename="../statusservice.cpp" line="685"/>
         <source>Torch status: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="711"/>
+        <location filename="../statusservice.cpp" line="708"/>
         <source>Button: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="724"/>
+        <location filename="../statusservice.cpp" line="721"/>
         <source>Found Status Service for a Pokit Meter device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="727"/>
+        <location filename="../statusservice.cpp" line="724"/>
         <source>Found Status Service for a Pokit Pro device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="755"/>
+        <location filename="../statusservice.cpp" line="752"/>
         <source>Device name: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="761"/>
+        <location filename="../statusservice.cpp" line="758"/>
         <source>Flash LED characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="771"/>
+        <location filename="../statusservice.cpp" line="768"/>
         <source>Torch status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="781"/>
+        <location filename="../statusservice.cpp" line="778"/>
         <source>Button status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="786"/>
+        <location filename="../statusservice.cpp" line="783"/>
         <source>Unknown characteristic read for Status service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="801"/>
+        <location filename="../statusservice.cpp" line="798"/>
         <source>Device Characteristics is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="807"/>
+        <location filename="../statusservice.cpp" line="804"/>
         <source>Status characteristic is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="827"/>
+        <location filename="../statusservice.cpp" line="824"/>
         <source>Unknown characteristic written for Status service</source>
         <translation type="unfinished"></translation>
     </message>
