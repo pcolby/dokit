@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Include switch and charging status in CLI output ([073bce8][])
+
 ### Changed
 
 - Upgrade to Qt 6.6.1.
@@ -110,6 +114,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [0.1.1]: https://github.com/pcolby/dokit/releases/tag/v0.1.1
 [0.1.0]: https://github.com/pcolby/dokit/releases/tag/v0.1.0
 
+[073bce8]:     https://github.com/pcolby/dokit/commit/073bce82014a85e033639862fdb061c72b7971fd "Include switch and charging status in CLI output"
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
 [#9]:          https://github.com/pcolby/dokit/issues/9 "QBluetoothDeviceDiscoveryAgent::MissingPermissionsError when running on arm macos #9"
