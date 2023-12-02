@@ -94,6 +94,8 @@ void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristic
     const std::optional<StatusService::ButtonStatus> buttonStatus = service->buttonPress();
     const QString statusLabel = StatusService::toString(status.deviceStatus);
     const QString batteryLabel = StatusService::toString(status.batteryStatus);
+    const QString switchLabel = status.switchPosition ? StatusService::toString(*status.switchPosition) : QString();
+    const QString chargingLabel = status.chargingStatus ? StatusService::toString(*status.chargingStatus) : QString();
     const QString torchLabel = (torchStatus) ? StatusService::toString(*torchStatus) : QString();
     const QString buttonLabel = (buttonStatus) ? StatusService::toString(*buttonStatus) : QString();
 
@@ -102,13 +104,14 @@ void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristic
         std::cout << qUtf8Printable(tr("device_name,device_status,firmware_version,maximum_voltage,"
                             "maximum_current,maximum_resistance,maximum_sampling_rate,"
                             "sampling_buffer_size,capability_mask,mac_address,battery_voltage,"
-                            "battery_status,torch_status,button_status\n"));
-        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14\n")
+                            "battery_status,torch_status,button_status,switch_position,charging_status\n"));
+        std::cout << qUtf8Printable(QString::fromLatin1("%1,%2,%3,%4,%5,%6,%7,%8,%9,%10,%11,%12,%13,%14,%15,%16\n")
             .arg(escapeCsvField(deviceName),statusLabel.toLower(),chrs.firmwareVersion.toString())
             .arg(chrs.maximumVoltage).arg(chrs.maximumCurrent).arg(chrs.maximumResistance)
             .arg(chrs.maximumSamplingRate).arg(chrs.samplingBufferSize).arg(chrs.capabilityMask)
             .arg(chrs.macAddress.toString()).arg(status.batteryVoltage)
-            .arg(batteryLabel.toLower(), torchLabel.toLower(), buttonLabel.toLower()));
+            .arg(batteryLabel.toLower(), torchLabel.toLower(), buttonLabel.toLower(), switchLabel.toLower(),
+                 chargingLabel.toLower()));
         break;
     case OutputFormat::Json: {
         QJsonObject battery{
@@ -148,6 +151,18 @@ void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristic
                 { QLatin1String("label"), buttonLabel },
             });
         }
+        if (status.switchPosition) {
+            object.insert(QStringLiteral("switchStatus"), QJsonObject{
+                { QLatin1String("code"), (quint8)*status.switchPosition },
+                { QLatin1String("label"), switchLabel },
+            });
+        }
+        if (status.chargingStatus) {
+            object.insert(QStringLiteral("chargingStatus"), QJsonObject{
+                { QLatin1String("code"), (quint8)*status.chargingStatus },
+                { QLatin1String("label"), chargingLabel },
+            });
+        }
         std::cout << QJsonDocument(object).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
@@ -166,6 +181,14 @@ void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristic
         std::cout << qUtf8Printable(tr("Battery status:        %1 (%2)\n")
             .arg(batteryLabel.isNull() ? QString::fromLatin1("N/A") : batteryLabel)
             .arg((quint8)status.batteryStatus));
+        if (status.switchPosition) {
+            std::cout << qUtf8Printable(tr("Switch position:       %1 (%2)\n")
+                .arg(switchLabel).arg((quint8)*status.switchPosition));
+        }
+        if (status.chargingStatus) {
+            std::cout << qUtf8Printable(tr("Charging status:       %1 (%2)\n")
+                .arg(chargingLabel).arg((quint8)*status.chargingStatus));
+        }
         break;
     }
     if (device) disconnect(); // Will exit the application once disconnected.
