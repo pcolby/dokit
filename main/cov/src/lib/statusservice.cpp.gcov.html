@@ -656,16 +656,16 @@
 <a name="594"><span class="lineNum">     594 </span>            :     }</a>
 <a name="595"><span class="lineNum">     595 </span>            : </a>
 <a name="596"><span class="lineNum">     596 </span><span class="lineCov">         48 :     characteristics.firmwareVersion = QVersionNumber(</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineCov">         76 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(0,1)),</span></a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">         66 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(1,1)));</span></a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">         48 :     characteristics.maximumVoltage      = qFromLittleEndian&lt;quint16&gt;(value.mid(2,2));</span></a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineCov">         48 :     characteristics.maximumCurrent      = qFromLittleEndian&lt;quint16&gt;(value.mid(4,2));</span></a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineCov">         48 :     characteristics.maximumResistance   = qFromLittleEndian&lt;quint16&gt;(value.mid(6,2));</span></a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">         48 :     characteristics.maximumSamplingRate = qFromLittleEndian&lt;quint16&gt;(value.mid(8,2));</span></a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">         48 :     characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.mid(10,2));</span></a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">         48 :     characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.mid(12,2));</span></a>
+<a name="597"><span class="lineNum">     597 </span><span class="lineCov">         76 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(0,1).constData()),</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">         66 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(1,1).constData()));</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">         48 :     characteristics.maximumVoltage      = qFromLittleEndian&lt;quint16&gt;(value.mid(2,2).constData());</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">         48 :     characteristics.maximumCurrent      = qFromLittleEndian&lt;quint16&gt;(value.mid(4,2).constData());</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">         48 :     characteristics.maximumResistance   = qFromLittleEndian&lt;quint16&gt;(value.mid(6,2).constData());</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">         48 :     characteristics.maximumSamplingRate = qFromLittleEndian&lt;quint16&gt;(value.mid(8,2).constData());</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">         48 :     characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.mid(10,2).constData());</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">         48 :     characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.mid(12,2).constData());</span></a>
 <a name="605"><span class="lineNum">     605 </span><span class="lineCov">         66 :     characteristics.macAddress = QBluetoothAddress(qFromBigEndian&lt;quint64&gt;</span></a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">        112 :                                                    (QByteArray(2, '\0') + value.mid(14,6)));</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">        112 :                                                    ((QByteArray(2, '\0') + value.mid(14,6)).constData()));</span></a>
 <a name="607"><span class="lineNum">     607 </span>            : </a>
 <a name="608"><span class="lineNum">     608 </span><span class="lineCov">         42 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Firmware version:     &quot;) &lt;&lt; characteristics.firmwareVersion;</span></a>
 <a name="609"><span class="lineNum">     609 </span><span class="lineCov">         42 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum voltage:      &quot;) &lt;&lt; characteristics.maximumVoltage;</span></a>
@@ -708,7 +708,7 @@
 <a name="646"><span class="lineNum">     646 </span>            :     }</a>
 <a name="647"><span class="lineNum">     647 </span>            : </a>
 <a name="648"><span class="lineNum">     648 </span><span class="lineCov">        209 :     status.deviceStatus = static_cast&lt;StatusService::DeviceStatus&gt;(value.at(0));</span></a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineCov">        264 :     status.batteryVoltage = qFromLittleEndian&lt;float&gt;(value.mid(1,4));</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">        264 :     status.batteryVoltage = qFromLittleEndian&lt;float&gt;(value.mid(1,4).constData());</span></a>
 <a name="650"><span class="lineNum">     650 </span><span class="lineCov">        209 :     if (value.size() &gt;= 6) { // Battery Status added to Pokit API docs v1.00.</span></a>
 <a name="651"><span class="lineNum">     651 </span><span class="lineCov">        190 :         status.batteryStatus = static_cast&lt;StatusService::BatteryStatus&gt;(value.at(5));</span></a>
 <a name="652"><span class="lineNum">     652 </span>            :     }</a>
@@ -800,19 +800,19 @@
 <a name="738"><span class="lineNum">     738 </span>            : </a>
 <a name="739"><span class="lineNum">     739 </span>            :     Q_Q(StatusService);</a>
 <a name="740"><span class="lineNum">     740 </span><span class="lineCov">         19 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></a>
-<a name="741"><span class="lineNum">     741 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceCharacteristicsRead(parseDeviceCharacteristics(value));</span></a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;deviceCharacteristicsRead(parseDeviceCharacteristics(value));</span></a>
 <a name="742"><span class="lineNum">     742 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="743"><span class="lineNum">     743 </span>            :     }</a>
 <a name="744"><span class="lineNum">     744 </span>            : </a>
 <a name="745"><span class="lineNum">     745 </span><span class="lineCov">         19 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></a>
-<a name="746"><span class="lineNum">     746 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceStatusRead(parseStatus(value));</span></a>
+<a name="746"><span class="lineNum">     746 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;deviceStatusRead(parseStatus(value));</span></a>
 <a name="747"><span class="lineNum">     747 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="748"><span class="lineNum">     748 </span>            :     }</a>
 <a name="749"><span class="lineNum">     749 </span>            : </a>
 <a name="750"><span class="lineNum">     750 </span><span class="lineCov">         19 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
 <a name="751"><span class="lineNum">     751 </span><span class="lineNoCov">          0 :         const QString deviceName = QString::fromUtf8(value);</span></a>
 <a name="752"><span class="lineNum">     752 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Device name: &quot;%1&quot;)&quot;).arg(deviceName);</span></a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameRead(deviceName);</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;deviceNameRead(deviceName);</span></a>
 <a name="754"><span class="lineNum">     754 </span>            :         return;</a>
 <a name="755"><span class="lineNum">     755 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="756"><span class="lineNum">     756 </span>            : </a>
@@ -828,7 +828,7 @@
 <a name="766"><span class="lineNum">     766 </span>            :         }</a>
 <a name="767"><span class="lineNum">     767 </span><span class="lineNoCov">          0 :         const StatusService::TorchStatus status = static_cast&lt;StatusService::TorchStatus&gt;(value.at(0));</span></a>
 <a name="768"><span class="lineNum">     768 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Torch status:  %1 (%2)&quot;).arg((quint8)status).arg(StatusService::toString(status));</span></a>
-<a name="769"><span class="lineNum">     769 </span><span class="lineNoCov">          0 :         emit q-&gt;torchStatusRead(status);</span></a>
+<a name="769"><span class="lineNum">     769 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;torchStatusRead(status);</span></a>
 <a name="770"><span class="lineNum">     770 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="771"><span class="lineNum">     771 </span>            :     }</a>
 <a name="772"><span class="lineNum">     772 </span>            : </a>
@@ -838,7 +838,7 @@
 <a name="776"><span class="lineNum">     776 </span>            :         }</a>
 <a name="777"><span class="lineNum">     777 </span><span class="lineNoCov">          0 :         const StatusService::ButtonStatus status = static_cast&lt;StatusService::ButtonStatus&gt;(value.at(1));</span></a>
 <a name="778"><span class="lineNum">     778 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Button status:  %1 (%2)&quot;).arg((quint8)status).arg(StatusService::toString(status));</span></a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineNoCov">          0 :         emit q-&gt;buttonPressRead(value.at(0), status);</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;buttonPressRead(value.at(0), status);</span></a>
 <a name="780"><span class="lineNum">     780 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="781"><span class="lineNum">     781 </span>            :     }</a>
 <a name="782"><span class="lineNum">     782 </span>            : </a>
@@ -869,17 +869,17 @@
 <a name="807"><span class="lineNum">     807 </span>            :     }</a>
 <a name="808"><span class="lineNum">     808 </span>            : </a>
 <a name="809"><span class="lineNum">     809 </span><span class="lineCov">         19 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></a>
-<a name="810"><span class="lineNum">     810 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceNameWritten();</span></a>
+<a name="810"><span class="lineNum">     810 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;deviceNameWritten();</span></a>
 <a name="811"><span class="lineNum">     811 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="812"><span class="lineNum">     812 </span>            :     }</a>
 <a name="813"><span class="lineNum">     813 </span>            : </a>
 <a name="814"><span class="lineNum">     814 </span><span class="lineCov">         19 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></a>
-<a name="815"><span class="lineNum">     815 </span><span class="lineNoCov">          0 :         emit q-&gt;deviceLedFlashed();</span></a>
+<a name="815"><span class="lineNum">     815 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;deviceLedFlashed();</span></a>
 <a name="816"><span class="lineNum">     816 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="817"><span class="lineNum">     817 </span>            :     }</a>
 <a name="818"><span class="lineNum">     818 </span>            : </a>
 <a name="819"><span class="lineNum">     819 </span><span class="lineCov">         19 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {</span></a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineNoCov">          0 :         emit q-&gt;torchStatusWritten();</span></a>
+<a name="820"><span class="lineNum">     820 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;torchStatusWritten();</span></a>
 <a name="821"><span class="lineNum">     821 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="822"><span class="lineNum">     822 </span>            :     }</a>
 <a name="823"><span class="lineNum">     823 </span>            : </a>

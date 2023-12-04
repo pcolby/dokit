@@ -233,7 +233,7 @@
 <a name="171"><span class="lineNum">     171 </span><span class="lineCov">        114 :     if (!isPokitProduct(info)) return;</span></a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineCov">         84 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Discovered Pokit device &quot;%1&quot; at %2.)&quot;)</span></a>
 <a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :         .arg(info.name(), info.address().toString());</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         76 :     emit q-&gt;pokitDeviceDiscovered(info);</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         76 :     Q_EMIT q-&gt;pokitDeviceDiscovered(info);</span></a>
 <a name="175"><span class="lineNum">     175 </span>            : }</a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
 <a name="177"><span class="lineNum">     177 </span>            : #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.</a>
@@ -251,7 +251,7 @@
 <a name="189"><span class="lineNum">     189 </span><span class="lineCov">         84 :     if (!isPokitProduct(info)) return;</span></a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">         64 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Pokit device &quot;%1&quot; at %2 updated with RSSI %3.)&quot;)</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :         .arg(info.name(), info.address().toString()).arg(info.rssi());</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         56 :     emit q-&gt;pokitDeviceUpdated(info, updatedFields);</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         56 :     Q_EMIT q-&gt;pokitDeviceUpdated(info, updatedFields);</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : }</a>
 <a name="194"><span class="lineNum">     194 </span>            : #endif</a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>

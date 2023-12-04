@@ -379,7 +379,7 @@
 <a name="317"><span class="lineNum">     317 </span>            :     }</a>
 <a name="318"><span class="lineNum">     318 </span>            : </a>
 <a name="319"><span class="lineNum">     319 </span><span class="lineCov">         57 :     reading.status = MultimeterService::MeterStatus(value.at(0));</span></a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         72 :     reading.value  = qFromLittleEndian&lt;float&gt;(value.mid(1,4));</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         72 :     reading.value  = qFromLittleEndian&lt;float&gt;(value.mid(1,4).constData());</span></a>
 <a name="321"><span class="lineNum">     321 </span><span class="lineCov">         57 :     reading.mode   = static_cast&lt;MultimeterService::Mode&gt;(value.at(5));</span></a>
 <a name="322"><span class="lineNum">     322 </span><span class="lineCov">         57 :     reading.range  = static_cast&lt;quint8&gt;(value.at(6));</span></a>
 <a name="323"><span class="lineNum">     323 </span><span class="lineCov">         57 :     return reading;</span></a>
@@ -396,7 +396,7 @@
 <a name="334"><span class="lineNum">     334 </span>            : </a>
 <a name="335"><span class="lineNum">     335 </span>            :     Q_Q(MultimeterService);</a>
 <a name="336"><span class="lineNum">     336 </span><span class="lineCov">         19 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {</span></a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :         emit q-&gt;readingRead(parseReading(value));</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;readingRead(parseReading(value));</span></a>
 <a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="339"><span class="lineNum">     339 </span>            :     }</a>
 <a name="340"><span class="lineNum">     340 </span>            : </a>
@@ -421,7 +421,7 @@
 <a name="359"><span class="lineNum">     359 </span>            : </a>
 <a name="360"><span class="lineNum">     360 </span>            :     Q_Q(MultimeterService);</a>
 <a name="361"><span class="lineNum">     361 </span><span class="lineCov">         19 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineNoCov">          0 :         emit q-&gt;settingsWritten();</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;settingsWritten();</span></a>
 <a name="363"><span class="lineNum">     363 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="364"><span class="lineNum">     364 </span>            :     }</a>
 <a name="365"><span class="lineNum">     365 </span>            : </a>
@@ -452,7 +452,7 @@
 <a name="390"><span class="lineNum">     390 </span>            :     }</a>
 <a name="391"><span class="lineNum">     391 </span>            : </a>
 <a name="392"><span class="lineNum">     392 </span><span class="lineCov">         19 :     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 :         emit q-&gt;readingRead(parseReading(newValue));</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;readingRead(parseReading(newValue));</span></a>
 <a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="395"><span class="lineNum">     395 </span>            :     }</a>
 <a name="396"><span class="lineNum">     396 </span>            : </a>

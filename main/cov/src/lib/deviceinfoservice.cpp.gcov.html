@@ -392,42 +392,42 @@
 <a name="330"><span class="lineNum">     330 </span><span class="lineCov">         19 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {</span></a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :         const QString name = QString::fromUtf8(value);</span></a>
 <a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Manufacturer name: &quot;%1&quot;)&quot;).arg(name);</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         emit q-&gt;manufacturerRead(name);</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;manufacturerRead(name);</span></a>
 <a name="334"><span class="lineNum">     334 </span>            :         return;</a>
 <a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="336"><span class="lineNum">     336 </span>            : </a>
 <a name="337"><span class="lineNum">     337 </span><span class="lineCov">         19 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {</span></a>
 <a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :         const QString model = QString::fromUtf8(value);</span></a>
 <a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Model number: &quot;%1&quot;)&quot;).arg(model);</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :         emit q-&gt;modelNumberRead(model);</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;modelNumberRead(model);</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :         return;</a>
 <a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
 <a name="344"><span class="lineNum">     344 </span><span class="lineCov">         19 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {</span></a>
 <a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
 <a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Hardware revision: &quot;%1&quot;)&quot;).arg(revision);</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :         emit q-&gt;hardwareRevisionRead(revision);</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;hardwareRevisionRead(revision);</span></a>
 <a name="348"><span class="lineNum">     348 </span>            :         return;</a>
 <a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="350"><span class="lineNum">     350 </span>            : </a>
 <a name="351"><span class="lineNum">     351 </span><span class="lineCov">         19 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {</span></a>
 <a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
 <a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Firmware revision: &quot;%1&quot;)&quot;).arg(revision);</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :         emit q-&gt;firmwareRevisionRead(revision);</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;firmwareRevisionRead(revision);</span></a>
 <a name="355"><span class="lineNum">     355 </span>            :         return;</a>
 <a name="356"><span class="lineNum">     356 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="357"><span class="lineNum">     357 </span>            : </a>
 <a name="358"><span class="lineNum">     358 </span><span class="lineCov">         19 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {</span></a>
 <a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :         const QString revision = QString::fromUtf8(value);</span></a>
 <a name="360"><span class="lineNum">     360 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Software revision: &quot;%1&quot;)&quot;).arg(revision);</span></a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :         emit q-&gt;softwareRevisionRead(revision);</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;softwareRevisionRead(revision);</span></a>
 <a name="362"><span class="lineNum">     362 </span>            :         return;</a>
 <a name="363"><span class="lineNum">     363 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineCov">         19 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::serialNumber) {</span></a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :         const QString serialNumber = QString::fromUtf8(value);</span></a>
 <a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Serial number: &quot;%1&quot;)&quot;).arg(serialNumber);</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :         emit q-&gt;serialNumberRead(serialNumber);</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :         Q_EMIT q-&gt;serialNumberRead(serialNumber);</span></a>
 <a name="369"><span class="lineNum">     369 </span>            :         return;</a>
 <a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="371"><span class="lineNum">     371 </span>            : </a>
