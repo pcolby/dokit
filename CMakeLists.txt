@@ -2,6 +2,8 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
 cmake_minimum_required(VERSION 3.8...3.26 FATAL_ERROR)
+# \todo Replace all of the add_definitions calls with add_compile_definitions
+# if/when we ever set the minimum CMake version to 3.12+.
 message(STATUS "CMake version is ${CMAKE_VERSION}")
 if (DEFINED CMAKE_BUILD_TYPE)
   message(STATUS "CMake build type is ${CMAKE_BUILD_TYPE}")
@@ -31,8 +33,19 @@ add_definitions(
   -DPROJECT_NAME="${PROJECT_NAME}"
   -DPROJECT_VERSION="${PROJECT_VERSION}")
 
-# Disable automatic ASCII conversions.
-add_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII)
+# Enable Qt's strict mode.
+# \todo Use QT_ENABLE_STRICT_MODE when available (possibly in Qt 6.7).
+add_definitions(
+ #-DQT_NO_KEYWORDS
+  -DQT_NO_FOREACH
+  -DQT_NO_CAST_FROM_ASCII
+  -DQT_NO_CAST_TO_ASCII
+ #-DQT_NO_CAST_FROM_BYTEARRAY
+  -DQT_NO_URL_CAST_FROM_STRING
+  -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+  -DQT_NO_CONTEXTLESS_CONNECT
+  -DQT_NO_JAVA_STYLE_ITERATORS
+)
 
 # Enable most compiler warnings, and treat as errors.
 if (MSVC)
