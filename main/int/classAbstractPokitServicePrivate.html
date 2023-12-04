@@ -557,7 +557,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_a73d4b6cd1a53f997f78d1c266a1c1871_cgraph.svg" width="1494" height="1824"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_a73d4b6cd1a53f997f78d1c266a1c1871_cgraph.svg" width="1494" height="1831"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1014,7 +1014,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_a2b105802085225fe68254dfdb6754ad9_cgraph.svg" width="984" height="1976"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_a2b105802085225fe68254dfdb6754ad9_cgraph.svg" width="984" height="1935"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1129,18 +1129,19 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  473</span><span class="stringliteral">    </span><span class="keywordflow">if</span> (!<a class="code hl_function" href="classAbstractPokitServicePrivate.html#a2b105802085225fe68254dfdb6754ad9">createServiceObject</a>()) {</div>
 <div class="line"><span class="lineno">  474</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Discovery finished, but service not found.&quot;</span>);</div>
 <div class="line"><span class="lineno">  475</span>        Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
-<div class="line"><span class="lineno">  476</span>        emit q-&gt;serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);</div>
+<div class="line"><span class="lineno">  476</span>        <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#Q_EMIT">Q_EMIT</a> q-&gt;serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);</div>
 <div class="line"><span class="lineno">  477</span>    }</div>
 <div class="line"><span class="lineno">  478</span>}</div>
 <div class="ttc" id="aclassAbstractPokitService_html"><div class="ttname"><a href="classAbstractPokitService.html">AbstractPokitService</a></div><div class="ttdoc">The AbstractPokitService class provides a common base for Pokit services classes.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8h_source.html#l00026">abstractpokitservice.h:27</a></div></div>
+<div class="ttc" id="aqobject_html_Q_EMIT"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#Q_EMIT">QObject::Q_EMIT</a></div><div class="ttdeci">Q_EMITQ_EMIT</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00035">controller</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00193">createServiceObject()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#remoteAddress">QLowEnergyController::remoteAddress()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#remoteDeviceUuid">QLowEnergyController::remoteDeviceUuid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#remoteName">QLowEnergyController::remoteName()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">QObject::sender()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothaddress.html#toString">QBluetoothAddress::toString()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/quuid.html#toString">QUuid::toString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00035">controller</a>, <a class="el" href="abstractpokitservice_8cpp_source.html#l00193">createServiceObject()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#Q_EMIT">QObject::Q_EMIT()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#remoteAddress">QLowEnergyController::remoteAddress()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#remoteDeviceUuid">QLowEnergyController::remoteDeviceUuid()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#remoteName">QLowEnergyController::remoteName()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#sender">QObject::sender()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothaddress.html#toString">QBluetoothAddress::toString()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/quuid.html#toString">QUuid::toString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00168">AbstractPokitServicePrivate()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_a2cc16a897908f50e0f3cfc6b876b50ab_cgraph.svg" width="1235" height="1795"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_a2cc16a897908f50e0f3cfc6b876b50ab_cgraph.svg" width="1235" height="1823"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1239,16 +1240,16 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  486</span>{</div>
 <div class="line"><span class="lineno">  487</span>    Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
 <div class="line"><span class="lineno">  488</span>    qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Service error&quot;</span>) &lt;&lt; newError;</div>
-<div class="line"><span class="lineno">  489</span>    emit q-&gt;serviceErrorOccurred(newError);</div>
+<div class="line"><span class="lineno">  489</span>    <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#Q_EMIT">Q_EMIT</a> q-&gt;serviceErrorOccurred(newError);</div>
 <div class="line"><span class="lineno">  490</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#Q_EMIT">QObject::Q_EMIT()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00193">createServiceObject()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_ab086f2e2e5058bc7978a67e86d579325_cgraph.svg" width="354" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_ab086f2e2e5058bc7978a67e86d579325_cgraph.svg" width="392" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1428,7 +1429,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_a654255854b4aca7718ef30e10260d89b_cgraph.svg" width="1235" height="1508"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_a654255854b4aca7718ef30e10260d89b_cgraph.svg" width="1235" height="1606"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1502,19 +1503,19 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  548</span>        ) {</div>
 <div class="line"><span class="lineno">  549</span>        Q_Q(<a class="code hl_class" href="classAbstractPokitService.html">AbstractPokitService</a>);</div>
 <div class="line"><span class="lineno">  550</span>        qCDebug(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Service details discovered.&quot;</span>);</div>
-<div class="line"><span class="lineno">  551</span>        emit q-&gt;serviceDetailsDiscovered();</div>
+<div class="line"><span class="lineno">  551</span>        <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#Q_EMIT">Q_EMIT</a> q-&gt;serviceDetailsDiscovered();</div>
 <div class="line"><span class="lineno">  552</span>    }</div>
 <div class="line"><span class="lineno">  553</span>}</div>
 <div class="ttc" id="aqstringlist_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstringlist.html">QStringList</a></div></div>
 <div class="ttc" id="aqstringlist_html_join"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstringlist.html#join">QStringList::join</a></div><div class="ttdeci">QString join(const QString &amp;separator) const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristics">QLowEnergyService::characteristics()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00230">PokitDevice::charcteristicToString()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstringlist.html#join">QStringList::join()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00037">service</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristics">QLowEnergyService::characteristics()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00230">PokitDevice::charcteristicToString()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qstringlist.html#join">QStringList::join()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#Q_EMIT">QObject::Q_EMIT()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00037">service</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="abstractpokitservice_8cpp_source.html#l00193">createServiceObject()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_ad4cd6a5700b0b764b3a81f67603dc68f_cgraph.svg" width="719" height="266"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAbstractPokitServicePrivate_ad4cd6a5700b0b764b3a81f67603dc68f_cgraph.svg" width="719" height="315"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
