@@ -366,12 +366,12 @@ DsoService::Metadata DsoServicePrivate::parseMetadata(const QByteArray &value)
     }
 
     metadata.status          = static_cast<DsoService::DsoStatus>(value.at(0));
-    metadata.scale           = qFromLittleEndian<float>(value.mid(1,4));
+    metadata.scale           = qFromLittleEndian<float>(value.mid(1,4).constData());
     metadata.mode            = static_cast<DsoService::Mode>(value.at(5));
     metadata.range           = static_cast<quint8>(value.at(6));
-    metadata.samplingWindow  = qFromLittleEndian<quint32>(value.mid(7,4));
-    metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(11,2));
-    metadata.samplingRate    = qFromLittleEndian<quint32>(value.mid(13,4));
+    metadata.samplingWindow  = qFromLittleEndian<quint32>(value.mid(7,4).constData());
+    metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(11,2).constData());
+    metadata.samplingRate    = qFromLittleEndian<quint32>(value.mid(13,4).constData());
     return metadata;
 }
 
@@ -387,7 +387,7 @@ DsoService::Samples DsoServicePrivate::parseSamples(const QByteArray &value)
         return samples;
     }
     while ((samples.size()*2) < value.size()) {
-        samples.append(qFromLittleEndian<qint16>(value.mid(samples.size()*2,2)));
+        samples.append(qFromLittleEndian<qint16>(value.mid(samples.size()*2,2).constData()));
     }
     qCDebug(lc).noquote() << tr("Read %n sample/s from %1-bytes.", nullptr, samples.size()).arg(value.size());
     return samples;

@@ -594,16 +594,16 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
     }
 
     characteristics.firmwareVersion = QVersionNumber(
-                                          qFromLittleEndian<quint8 >(value.mid(0,1)),
-                                          qFromLittleEndian<quint8 >(value.mid(1,1)));
-    characteristics.maximumVoltage      = qFromLittleEndian<quint16>(value.mid(2,2));
-    characteristics.maximumCurrent      = qFromLittleEndian<quint16>(value.mid(4,2));
-    characteristics.maximumResistance   = qFromLittleEndian<quint16>(value.mid(6,2));
-    characteristics.maximumSamplingRate = qFromLittleEndian<quint16>(value.mid(8,2));
-    characteristics.samplingBufferSize  = qFromLittleEndian<quint16>(value.mid(10,2));
-    characteristics.capabilityMask      = qFromLittleEndian<quint16>(value.mid(12,2));
+                                          qFromLittleEndian<quint8 >(value.mid(0,1).constData()),
+                                          qFromLittleEndian<quint8 >(value.mid(1,1).constData()));
+    characteristics.maximumVoltage      = qFromLittleEndian<quint16>(value.mid(2,2).constData());
+    characteristics.maximumCurrent      = qFromLittleEndian<quint16>(value.mid(4,2).constData());
+    characteristics.maximumResistance   = qFromLittleEndian<quint16>(value.mid(6,2).constData());
+    characteristics.maximumSamplingRate = qFromLittleEndian<quint16>(value.mid(8,2).constData());
+    characteristics.samplingBufferSize  = qFromLittleEndian<quint16>(value.mid(10,2).constData());
+    characteristics.capabilityMask      = qFromLittleEndian<quint16>(value.mid(12,2).constData());
     characteristics.macAddress = QBluetoothAddress(qFromBigEndian<quint64>
-                                                   (QByteArray(2, '\0') + value.mid(14,6)));
+                                                   ((QByteArray(2, '\0') + value.mid(14,6)).constData()));
 
     qCDebug(lc).noquote() << tr("Firmware version:     ") << characteristics.firmwareVersion;
     qCDebug(lc).noquote() << tr("Maximum voltage:      ") << characteristics.maximumVoltage;
@@ -646,7 +646,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     }
 
     status.deviceStatus = static_cast<StatusService::DeviceStatus>(value.at(0));
-    status.batteryVoltage = qFromLittleEndian<float>(value.mid(1,4));
+    status.batteryVoltage = qFromLittleEndian<float>(value.mid(1,4).constData());
     if (value.size() >= 6) { // Battery Status added to Pokit API docs v1.00.
         status.batteryStatus = static_cast<StatusService::BatteryStatus>(value.at(5));
     }

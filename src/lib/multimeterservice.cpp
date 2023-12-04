@@ -317,7 +317,7 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
     }
 
     reading.status = MultimeterService::MeterStatus(value.at(0));
-    reading.value  = qFromLittleEndian<float>(value.mid(1,4));
+    reading.value  = qFromLittleEndian<float>(value.mid(1,4).constData());
     reading.mode   = static_cast<MultimeterService::Mode>(value.at(5));
     reading.range  = static_cast<quint8>(value.at(6));
     return reading;

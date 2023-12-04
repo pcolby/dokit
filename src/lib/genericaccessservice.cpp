@@ -203,7 +203,7 @@ quint16 GenericAccessServicePrivate::parseAppearance(const QByteArray &value)
     if (!checkSize(QLatin1String("Appearance"), value, 2, 2)) {
         return std::numeric_limits<quint16>::max();
     }
-    const quint16 appearance = qFromLittleEndian<quint16>(value);
+    const quint16 appearance = qFromLittleEndian<quint16>(value.constData());
     qCDebug(lc).noquote() << tr("Appearance: %1.").arg(appearance);
     return appearance;
 }

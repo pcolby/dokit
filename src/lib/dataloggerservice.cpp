@@ -404,7 +404,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
 
     qCDebug(lc) << value.mid(7,12).toHex(',');
     metadata.status = static_cast<DataLoggerService::LoggerStatus>(value.at(0));
-    metadata.scale  = qFromLittleEndian<float>(value.mid(1,4));
+    metadata.scale  = qFromLittleEndian<float>(value.mid(1,4).constData());
     metadata.mode   = static_cast<DataLoggerService::Mode>(value.at(5));
     metadata.range  = static_cast<quint8>(value.at(6));
 
@@ -416,13 +416,13 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
      */
 
     if (value.size() == 15) {
-        metadata.updateInterval  = qFromLittleEndian<quint16>(value.mid(7,2))*1000;
-        metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(9,2));
-        metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(11,4));
+        metadata.updateInterval  = qFromLittleEndian<quint16>(value.mid(7,2).constData())*1000;
+        metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(9,2).constData());
+        metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(11,4).constData());
     } else if (value.size() == 23) {
-        metadata.updateInterval  = qFromLittleEndian<quint32>(value.mid(7,4));
-        metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(11,2));
-        metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(19,4));
+        metadata.updateInterval  = qFromLittleEndian<quint32>(value.mid(7,4).constData());
+        metadata.numberOfSamples = qFromLittleEndian<quint16>(value.mid(11,2).constData());
+        metadata.timestamp       = qFromLittleEndian<quint32>(value.mid(19,4).constData());
     } else {
         qCWarning(lc).noquote() << tr("Cannot decode metadata of %n byte/s: %1", nullptr, value.size())
             .arg(toHexString(value));
@@ -442,7 +442,7 @@ DataLoggerService::Samples DataLoggerServicePrivate::parseSamples(const QByteArr
         return samples;
     }
     while ((samples.size()*2) < value.size()) {
-        samples.append(qFromLittleEndian<qint16>(value.mid(samples.size()*2,2)));
+        samples.append(qFromLittleEndian<qint16>(value.mid(samples.size()*2,2).constData()));
     }
     qCDebug(lc).noquote() << tr("Read %n sample/s from %1-bytes.", nullptr, samples.size()).arg(value.size());
     return samples;
