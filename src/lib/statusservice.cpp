@@ -738,19 +738,19 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
 
     Q_Q(StatusService);
     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {
-        emit q->deviceCharacteristicsRead(parseDeviceCharacteristics(value));
+        Q_EMIT q->deviceCharacteristicsRead(parseDeviceCharacteristics(value));
         return;
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {
-        emit q->deviceStatusRead(parseStatus(value));
+        Q_EMIT q->deviceStatusRead(parseStatus(value));
         return;
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {
         const QString deviceName = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Device name: "%1")").arg(deviceName);
-        emit q->deviceNameRead(deviceName);
+        Q_EMIT q->deviceNameRead(deviceName);
         return;
     }
 
@@ -766,7 +766,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
         }
         const StatusService::TorchStatus status = static_cast<StatusService::TorchStatus>(value.at(0));
         qCDebug(lc).noquote() << tr("Torch status:  %1 (%2)").arg((quint8)status).arg(StatusService::toString(status));
-        emit q->torchStatusRead(status);
+        Q_EMIT q->torchStatusRead(status);
         return;
     }
 
@@ -776,7 +776,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
         }
         const StatusService::ButtonStatus status = static_cast<StatusService::ButtonStatus>(value.at(1));
         qCDebug(lc).noquote() << tr("Button status:  %1 (%2)").arg((quint8)status).arg(StatusService::toString(status));
-        emit q->buttonPressRead(value.at(0), status);
+        Q_EMIT q->buttonPressRead(value.at(0), status);
         return;
     }
 
@@ -807,17 +807,17 @@ void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic 
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {
-        emit q->deviceNameWritten();
+        Q_EMIT q->deviceNameWritten();
         return;
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {
-        emit q->deviceLedFlashed();
+        Q_EMIT q->deviceLedFlashed();
         return;
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {
-        emit q->torchStatusWritten();
+        Q_EMIT q->torchStatusWritten();
         return;
     }
 

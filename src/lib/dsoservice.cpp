@@ -410,7 +410,7 @@ void DsoServicePrivate::characteristicRead(const QLowEnergyCharacteristic &chara
 
     Q_Q(DsoService);
     if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {
-        emit q->metadataRead(parseMetadata(value));
+        Q_EMIT q->metadataRead(parseMetadata(value));
         return;
     }
 
@@ -435,7 +435,7 @@ void DsoServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &ch
 
     Q_Q(DsoService);
     if (characteristic.uuid() == DsoService::CharacteristicUuids::settings) {
-        emit q->settingsWritten();
+        Q_EMIT q->settingsWritten();
         return;
     }
 
@@ -472,12 +472,12 @@ void DsoServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &ch
     }
 
     if (characteristic.uuid() == DsoService::CharacteristicUuids::metadata) {
-        emit q->metadataRead(parseMetadata(newValue));
+        Q_EMIT q->metadataRead(parseMetadata(newValue));
         return;
     }
 
     if (characteristic.uuid() == DsoService::CharacteristicUuids::reading) {
-        emit q->samplesRead(parseSamples(newValue));
+        Q_EMIT q->samplesRead(parseSamples(newValue));
         return;
     }
 

@@ -50,7 +50,7 @@ public:
     QString deviceName() const;
     bool setDeviceName(const QString &name);
 
-signals:
+Q_SIGNALS:
     void appearanceRead(const quint16 appearance);
     void deviceNameRead(const QString &deviceName);
     void deviceNameWritten();

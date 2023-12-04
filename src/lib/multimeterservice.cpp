@@ -334,7 +334,7 @@ void MultimeterServicePrivate::characteristicRead(const QLowEnergyCharacteristic
 
     Q_Q(MultimeterService);
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {
-        emit q->readingRead(parseReading(value));
+        Q_EMIT q->readingRead(parseReading(value));
         return;
     }
 
@@ -359,7 +359,7 @@ void MultimeterServicePrivate::characteristicWritten(const QLowEnergyCharacteris
 
     Q_Q(MultimeterService);
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::settings) {
-        emit q->settingsWritten();
+        Q_EMIT q->settingsWritten();
         return;
     }
 
@@ -390,7 +390,7 @@ void MultimeterServicePrivate::characteristicChanged(const QLowEnergyCharacteris
     }
 
     if (characteristic.uuid() == MultimeterService::CharacteristicUuids::reading) {
-        emit q->readingRead(parseReading(newValue));
+        Q_EMIT q->readingRead(parseReading(newValue));
         return;
     }
 

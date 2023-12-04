@@ -26,11 +26,11 @@ public:
     PokitDiscoveryAgent(QObject * parent = nullptr);
     virtual ~PokitDiscoveryAgent();
 
-public slots:
+public Q_SLOTS:
     void start(QBluetoothDeviceDiscoveryAgent::DiscoveryMethods methods);
     void start();
 
-signals:
+Q_SIGNALS:
     void pokitDeviceDiscovered(const QBluetoothDeviceInfo &info);
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     void pokitDeviceUpdated(const QBluetoothDeviceInfo &info, QBluetoothDeviceInfo::Fields updatedFields);

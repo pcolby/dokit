@@ -113,7 +113,7 @@ public:
     bool enableReadingNotifications();
     bool disableReadingNotifications();
 
-signals:
+Q_SIGNALS:
     void settingsWritten();
     void metadataRead(const DsoService::Metadata &meta);
     void samplesRead(const DsoService::Samples &samples);

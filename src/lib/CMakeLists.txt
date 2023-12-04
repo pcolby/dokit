@@ -63,4 +63,4 @@ target_link_libraries(
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 
-target_compile_definitions(QtPokit PRIVATE QTPOKIT_LIBRARY)
+target_compile_definitions(QtPokit PRIVATE QTPOKIT_LIBRARY QT_NO_KEYWORDS)

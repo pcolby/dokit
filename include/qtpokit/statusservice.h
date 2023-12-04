@@ -169,7 +169,7 @@ public:
     bool enableButtonPressedNotifications();
     bool disableButtonPressedNotifications();
 
-signals:
+Q_SIGNALS:
     void deviceCharacteristicsRead(const StatusService::DeviceCharacteristics &characteristics);
     void deviceNameRead(const QString &deviceName);
     void deviceNameWritten();

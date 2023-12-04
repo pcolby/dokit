@@ -465,7 +465,7 @@ void DataLoggerServicePrivate::characteristicRead(const QLowEnergyCharacteristic
 
     Q_Q(DataLoggerService);
     if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::metadata) {
-        emit q->metadataRead(parseMetadata(value));
+        Q_EMIT q->metadataRead(parseMetadata(value));
         return;
     }
 
@@ -490,7 +490,7 @@ void DataLoggerServicePrivate::characteristicWritten(const QLowEnergyCharacteris
 
     Q_Q(DataLoggerService);
     if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::settings) {
-        emit q->settingsWritten();
+        Q_EMIT q->settingsWritten();
         return;
     }
 
@@ -527,12 +527,12 @@ void DataLoggerServicePrivate::characteristicChanged(const QLowEnergyCharacteris
     }
 
     if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::metadata) {
-        emit q->metadataRead(parseMetadata(newValue));
+        Q_EMIT q->metadataRead(parseMetadata(newValue));
         return;
     }
 
     if (characteristic.uuid() == DataLoggerService::CharacteristicUuids::reading) {
-        emit q->samplesRead(parseSamples(newValue));
+        Q_EMIT q->samplesRead(parseSamples(newValue));
         return;
     }
 

@@ -54,7 +54,7 @@ public:
 protected:
     AbstractPokitService * q_ptr; ///< Internal q-pointer.
 
-protected slots:
+protected Q_SLOTS:
     void connected();
     void discoveryFinished();
     void errorOccurred(const QLowEnergyService::ServiceError newError);

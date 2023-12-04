@@ -28,7 +28,7 @@ public:
 
     explicit PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * const q);
 
-public slots:
+public Q_SLOTS:
     void canceled() const;
     void deviceDiscovered(const QBluetoothDeviceInfo &info);
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.

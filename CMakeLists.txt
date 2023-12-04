@@ -36,7 +36,7 @@ add_definitions(
 # Enable Qt's strict mode.
 # \todo Use QT_ENABLE_STRICT_MODE when available (possibly in Qt 6.7).
 add_definitions(
- #-DQT_NO_KEYWORDS
+ #-DQT_NO_KEYWORDS ///< Applicable to the lib sub-project only.
   -DQT_NO_FOREACH
   -DQT_NO_CAST_FROM_ASCII
   -DQT_NO_CAST_TO_ASCII

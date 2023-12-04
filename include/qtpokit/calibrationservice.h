@@ -47,7 +47,7 @@ public:
     // Temperature characteristic (BLE write only).
     bool calibrateTemperature(const float ambientTemperature);
 
-signals:
+Q_SIGNALS:
     void temperatureCalibrated();
 
 protected:

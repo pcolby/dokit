@@ -42,7 +42,7 @@ public:
     QLowEnergyService * service();
     const QLowEnergyService * service() const;
 
-signals:
+Q_SIGNALS:
     void serviceDetailsDiscovered();
     void serviceErrorOccurred(QLowEnergyService::ServiceError newError);
 

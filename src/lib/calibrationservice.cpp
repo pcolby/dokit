@@ -133,7 +133,7 @@ void CalibrationServicePrivate::characteristicWritten(const QLowEnergyCharacteri
 
     Q_Q(CalibrationService);
     if (characteristic.uuid() == CalibrationService::CharacteristicUuids::temperature) {
-        emit q->temperatureCalibrated();
+        Q_EMIT q->temperatureCalibrated();
         return;
     }
 

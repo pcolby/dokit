@@ -74,7 +74,7 @@ public:
     QString softwareRevision() const;
     QString serialNumber() const;
 
-signals:
+Q_SIGNALS:
     void manufacturerRead(const QString &name);
     void modelNumberRead(const QString &model);
     void hardwareRevisionRead(const QString &revision);

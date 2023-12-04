@@ -58,7 +58,7 @@ public:
 
     void setController(QLowEnergyController * newController);
 
-public slots:
+public Q_SLOTS:
     void connected() const;
     void connectionUpdated(const QLowEnergyConnectionParameters &newParameters) const;
     void disconnected() const;

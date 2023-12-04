@@ -51,9 +51,9 @@ public:
     static QString serviceToString(const QBluetoothUuid &uuid);
     static QString charcteristicToString(const QBluetoothUuid &uuid);
 
-public slots:
+public Q_SLOTS:
 
-signals:
+Q_SIGNALS:
 
 protected:
     /// \cond internal

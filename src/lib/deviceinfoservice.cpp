@@ -330,42 +330,42 @@ void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {
         const QString name = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Manufacturer name: "%1")").arg(name);
-        emit q->manufacturerRead(name);
+        Q_EMIT q->manufacturerRead(name);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {
         const QString model = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Model number: "%1")").arg(model);
-        emit q->modelNumberRead(model);
+        Q_EMIT q->modelNumberRead(model);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {
         const QString revision = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Hardware revision: "%1")").arg(revision);
-        emit q->hardwareRevisionRead(revision);
+        Q_EMIT q->hardwareRevisionRead(revision);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {
         const QString revision = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Firmware revision: "%1")").arg(revision);
-        emit q->firmwareRevisionRead(revision);
+        Q_EMIT q->firmwareRevisionRead(revision);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {
         const QString revision = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Software revision: "%1")").arg(revision);
-        emit q->softwareRevisionRead(revision);
+        Q_EMIT q->softwareRevisionRead(revision);
         return;
     }
 
     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::serialNumber) {
         const QString serialNumber = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Serial number: "%1")").arg(serialNumber);
-        emit q->serialNumberRead(serialNumber);
+        Q_EMIT q->serialNumberRead(serialNumber);
         return;
     }
 

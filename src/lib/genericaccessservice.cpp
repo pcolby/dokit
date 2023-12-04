@@ -219,14 +219,14 @@ void GenericAccessServicePrivate::characteristicRead(const QLowEnergyCharacteris
 
     Q_Q(GenericAccessService);
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::appearance) {
-        emit q->appearanceRead(parseAppearance(value));
+        Q_EMIT q->appearanceRead(parseAppearance(value));
         return;
     }
 
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::deviceName) {
         const QString deviceName = QString::fromUtf8(value);
         qCDebug(lc).noquote() << tr(R"(Device name: "%1")").arg(deviceName);
-        emit q->deviceNameRead(deviceName);
+        Q_EMIT q->deviceNameRead(deviceName);
         return;
     }
 
@@ -251,7 +251,7 @@ void GenericAccessServicePrivate::characteristicWritten(const QLowEnergyCharacte
     }
 
     if (characteristic.uuid() == GenericAccessService::CharacteristicUuids::deviceName) {
-        emit q->deviceNameWritten();
+        Q_EMIT q->deviceNameWritten();
         return;
     }
 

@@ -473,7 +473,7 @@ void AbstractPokitServicePrivate::discoveryFinished()
     if (!createServiceObject()) {
         qCWarning(lc).noquote() << tr("Discovery finished, but service not found.");
         Q_Q(AbstractPokitService);
-        emit q->serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);
+        Q_EMIT q->serviceErrorOccurred(QLowEnergyService::ServiceError::UnknownError);
     }
 }
 
@@ -486,7 +486,7 @@ void AbstractPokitServicePrivate::errorOccurred(const QLowEnergyService::Service
 {
     Q_Q(AbstractPokitService);
     qCDebug(lc).noquote() << tr("Service error") << newError;
-    emit q->serviceErrorOccurred(newError);
+    Q_EMIT q->serviceErrorOccurred(newError);
 }
 
 /*!
@@ -548,7 +548,7 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
         ) {
         Q_Q(AbstractPokitService);
         qCDebug(lc).noquote() << tr("Service details discovered.");
-        emit q->serviceDetailsDiscovered();
+        Q_EMIT q->serviceDetailsDiscovered();
     }
 }
 

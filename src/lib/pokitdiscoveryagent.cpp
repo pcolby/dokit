@@ -171,7 +171,7 @@ void PokitDiscoveryAgentPrivate::deviceDiscovered(const QBluetoothDeviceInfo &in
     if (!isPokitProduct(info)) return;
     qCDebug(lc).noquote() << tr(R"(Discovered Pokit device "%1" at %2.)")
         .arg(info.name(), info.address().toString());
-    emit q->pokitDeviceDiscovered(info);
+    Q_EMIT q->pokitDeviceDiscovered(info);
 }
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
@@ -189,7 +189,7 @@ void PokitDiscoveryAgentPrivate::deviceUpdated(
     if (!isPokitProduct(info)) return;
     qCDebug(lc).noquote() << tr(R"(Pokit device "%1" at %2 updated with RSSI %3.)")
         .arg(info.name(), info.address().toString()).arg(info.rssi());
-    emit q->pokitDeviceUpdated(info, updatedFields);
+    Q_EMIT q->pokitDeviceUpdated(info, updatedFields);
 }
 #endif
 

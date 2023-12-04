@@ -96,7 +96,7 @@ public:
     bool enableReadingNotifications();
     bool disableReadingNotifications();
 
-signals:
+Q_SIGNALS:
     void settingsWritten();
     void readingRead(const MultimeterService::Reading &reading);
 
