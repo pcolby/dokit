@@ -44,7 +44,7 @@ jobs:
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results-linux-${{ matrix.env.cc }}
         path: |
@@ -57,7 +57,7 @@ jobs:
           cpio -pmd0 -D "$RUNNER_TEMP" "$GITHUB_WORKSPACE/test-results/linux-${{ matrix.env.cc }}"
         [[ ! -e "$RUNNER_TEMP/removeHtmlDates.sh" ]] || cp -av "$RUNNER_TEMP/removeHtmlDates.sh" "$GITHUB_WORKSPACE/test-results"
     - name: Upload combined test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results-combined
         path: ${{ github.workspace }}/test-results
@@ -80,7 +80,7 @@ jobs:
     - name: Setup artifacts
       run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dokit-${{ env.dokitVersion }}
         path: |
@@ -88,7 +88,7 @@ jobs:
           ${{ runner.temp }}/src/cli/dokit
         if-no-files-found: error
     - name: Upload AppImage
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dokit-${{ env.dokitVersion }}.AppImage
         path: ${{ runner.temp }}/dokit-${{ env.dokitVersion }}.AppImage
@@ -139,7 +139,7 @@ jobs:
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results-linux-${{ matrix.env.cc }}-${{ matrix.qt }}
         path: |
@@ -174,7 +174,7 @@ jobs:
     - name: Setup artifacts
       run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dokit-${{ env.dokitVersion }}
         path: |
@@ -182,7 +182,7 @@ jobs:
           ${{ runner.temp }}/src/cli/dokit
         if-no-files-found: error
     - name: Upload AppImage
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dokit-${{ env.dokitVersion }}.AppImage
         path: ${{ runner.temp }}/dokit-${{ env.dokitVersion }}.AppImage
@@ -239,7 +239,7 @@ jobs:
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results-mac-${{ matrix.env.cc }}-${{ matrix.qt }}
         path: |
@@ -275,7 +275,7 @@ jobs:
     - name: Setup artifacts
       run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dokit-${{ env.dokitVersion }}
         path: ${{ runner.temp }}/src/cli/*.app
@@ -391,7 +391,7 @@ jobs:
       run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose
     - name: Upload test results
       if: matrix.arch != 'arm64'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results-win-${{ matrix.arch }}-${{ matrix.tool }}-${{ matrix.qt }}
         path: ${{ runner.temp }}/test/**/*.tap
@@ -414,7 +414,7 @@ jobs:
       shell: bash
       run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dokit-${{ env.dokitVersion }}
         path: |
@@ -423,7 +423,7 @@ jobs:
         if-no-files-found: error
     - name: Upload artifacts (portable)
       if: matrix.arch != 'arm64'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dokit-${{ env.dokitVersion }}.portable
         path: ${{ runner.temp }}/portable
@@ -462,7 +462,7 @@ jobs:
         /usr/bin/env bash ./artifacts/removeHtmlDates.sh
       working-directory: ${{ runner.temp }}
     - name: Upload HTML coverage report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: "${{ runner.temp }}/coverage"
@@ -488,7 +488,7 @@ jobs:
     - name: Clear previous coverage report
       run: rm -rf main/cov
     - name: Download HTML report
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: coverage-report
         path: main/cov
