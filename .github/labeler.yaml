@@ -1,12 +1,17 @@
 api:
-  - 'include/**/*'
+  - changed-files:
+    - any-glob-to-any-file: 'include/**'
 
 cmake:
-  - '**/CMakeLists.txt'
+  - changed-files:
+    - any-glob-to-any-file: '**/CMakeLists.txt'
 
 lib:
-  - 'include/**/*'
-  - 'src/lib'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'include/**'
+      - 'src/lib/**'
 
 tests:
-  - 'test/**/*'
+  - changed-files:
+    - any-glob-to-any-file: 'test/**'
