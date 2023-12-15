@@ -26,13 +26,13 @@ jobs:
         cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" -D "QT_TAGFILES_PATH=/usr/share/qt5/doc" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         cmake --build "$RUNNER_TEMP" --target doc doc-internal
     - name: Upload public docs
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: public-docs
         path: "${{ runner.temp }}/doc/public"
         if-no-files-found: error
     - name: Upload internal docs
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: internal-docs
         path: "${{ runner.temp }}/doc/internal"
