@@ -441,7 +441,7 @@ jobs:
         sudo apt upgrade
         sudo apt install lcov
     - name: Download test results
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: test-results-combined
         path: ${{ runner.temp }}/artifacts
@@ -488,7 +488,7 @@ jobs:
     - name: Clear previous coverage report
       run: rm -rf main/cov
     - name: Download HTML report
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: coverage-report
         path: main/cov
