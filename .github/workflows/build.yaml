@@ -2,8 +2,6 @@ name: Build and Test
 
 on: [push, pull_request]
 
-# \todo The test-related if-no-files-found settings could be ignore for pre-Qt 5.12 and error otherwise.
-
 jobs:
   linux0:
     runs-on: ubuntu-latest
@@ -38,6 +36,7 @@ jobs:
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
+        { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } | tee -a "$GITHUB_OUTPUT"
         cmake --build "$RUNNER_TEMP"
         "$RUNNER_TEMP/src/cli/dokit" --version
     - name: Test
@@ -46,6 +45,7 @@ jobs:
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
+      if: matrix.env.coverage || fromJSON(steps.build.outputs.tap)
       uses: actions/upload-artifact@v4
       with:
         name: test-results-${{ steps.build.outputs.dokitVersion }}
@@ -53,7 +53,7 @@ jobs:
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/**/*.tap
-        if-no-files-found: ignore
+        if-no-files-found: error
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       env:
@@ -123,6 +123,7 @@ jobs:
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
+        { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } | tee -a "$GITHUB_OUTPUT"
         cmake --build "$RUNNER_TEMP"
         "$RUNNER_TEMP/src/cli/dokit" --version
     - name: Test
@@ -131,6 +132,7 @@ jobs:
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
+      if: matrix.env.coverage || fromJSON(steps.build.outputs.tap)
       uses: actions/upload-artifact@v4
       with:
         name: test-results-${{ steps.build.outputs.dokitVersion }}
@@ -138,7 +140,7 @@ jobs:
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/**/*.tap
-        if-no-files-found: ignore
+        if-no-files-found: error
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       env:
@@ -212,6 +214,7 @@ jobs:
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
+        { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } | tee -a "$GITHUB_OUTPUT"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
         find "$RUNNER_TEMP" -name 'Info.plist'
         find "$RUNNER_TEMP" -name 'Info.plist' -execdir cat '{}' \;
@@ -222,6 +225,7 @@ jobs:
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
     - name: Upload test results
+      if: matrix.env.coverage || fromJSON(steps.build.outputs.tap)
       uses: actions/upload-artifact@v4
       with:
         name: test-results-${{ steps.build.outputs.dokitVersion }}
@@ -229,7 +233,7 @@ jobs:
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/**/*.tap
-        if-no-files-found: ignore
+        if-no-files-found: error
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
       env:
@@ -355,7 +359,9 @@ jobs:
     - name: Capture build-output variables
       id: post-build
       shell: bash
-      run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
+      run: |
+        echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
+        { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } | tee -a "$GITHUB_OUTPUT"
     - name: Install DLL for tests
       run: |
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
@@ -365,12 +371,12 @@ jobs:
       if: matrix.arch != 'arm64'
       run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose
     - name: Upload test results
-      if: matrix.arch != 'arm64'
+      if: matrix.arch != 'arm64' && fromJSON(steps.post-build.outputs.tap)
       uses: actions/upload-artifact@v4
       with:
         name: test-results-${{ steps.post-build.outputs.dokitVersion }}
         path: ${{ runner.temp }}/test/**/*.tap
-        if-no-files-found: ignore
+        if-no-files-found: error
     - name: Make portable
       if: matrix.arch != 'arm64'
       run: |
