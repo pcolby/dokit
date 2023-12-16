@@ -30,13 +30,14 @@ jobs:
           'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage'
         chmod a+x /home/runner/.local/bin/linuxdeploy{,-plugin-{appimage,qt}}-x86_64.AppImage
     - name: Build
+      id: build
       env:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
         PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-        echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
+        echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
         cmake --build "$RUNNER_TEMP"
         "$RUNNER_TEMP/src/cli/dokit" --version
     - name: Test
@@ -47,7 +48,7 @@ jobs:
     - name: Upload test results
       uses: actions/upload-artifact@v4
       with:
-        name: test-results-${{ env.dokitVersion }}
+        name: test-results-${{ steps.build.outputs.dokitVersion }}
         path: |
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/removeHtmlDates.sh
@@ -71,7 +72,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: dokit-${{ env.dokitVersion }}
+        name: dokit-${{ steps.build.outputs.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/cli/dokit
@@ -79,8 +80,8 @@ jobs:
     - name: Upload AppImage
       uses: actions/upload-artifact@v4
       with:
-        name: dokit-${{ env.dokitVersion }}.AppImage
-        path: ${{ runner.temp }}/dokit-${{ env.dokitVersion }}.AppImage
+        name: dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
+        path: ${{ runner.temp }}/dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
         if-no-files-found: error
 
   linux:
@@ -114,13 +115,14 @@ jobs:
           'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage'
         chmod a+x /home/runner/.local/bin/linuxdeploy{,-plugin-{appimage,qt}}-x86_64.AppImage
     - name: Build
+      id: build
       env:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
         PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-        echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
+        echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
         cmake --build "$RUNNER_TEMP"
         "$RUNNER_TEMP/src/cli/dokit" --version
     - name: Test
@@ -131,7 +133,7 @@ jobs:
     - name: Upload test results
       uses: actions/upload-artifact@v4
       with:
-        name: test-results-${{ env.dokitVersion }}
+        name: test-results-${{ steps.build.outputs.dokitVersion }}
         path: |
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/removeHtmlDates.sh
@@ -155,7 +157,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: dokit-${{ env.dokitVersion }}
+        name: dokit-${{ steps.build.outputs.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/libQtPokit.so
           ${{ runner.temp }}/src/cli/dokit
@@ -163,8 +165,8 @@ jobs:
     - name: Upload AppImage
       uses: actions/upload-artifact@v4
       with:
-        name: dokit-${{ env.dokitVersion }}.AppImage
-        path: ${{ runner.temp }}/dokit-${{ env.dokitVersion }}.AppImage
+        name: dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
+        path: ${{ runner.temp }}/dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
         if-no-files-found: error
 
   mac:
@@ -198,6 +200,7 @@ jobs:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
     - name: Build
+      id: build
       env:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
@@ -208,7 +211,7 @@ jobs:
               -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-12' || '/usr/bin/gcov'}} \
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-        echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
+        echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
         cmake --build "$RUNNER_TEMP" -- VERBOSE=1
         find "$RUNNER_TEMP" -name 'Info.plist'
         find "$RUNNER_TEMP" -name 'Info.plist' -execdir cat '{}' \;
@@ -221,7 +224,7 @@ jobs:
     - name: Upload test results
       uses: actions/upload-artifact@v4
       with:
-        name: test-results-${{ env.dokitVersion }}
+        name: test-results-${{ steps.build.outputs.dokitVersion }}
         path: |
           ${{ runner.temp }}/coverage.info
           ${{ runner.temp }}/removeHtmlDates.sh
@@ -245,7 +248,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: dokit-${{ env.dokitVersion }}
+        name: dokit-${{ steps.build.outputs.dokitVersion }}
         path: ${{ runner.temp }}/src/cli/*.app
         if-no-files-found: error
 
@@ -349,9 +352,10 @@ jobs:
         if exist "%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64" set "PATH=%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64\bin\;%PATH%"
         cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
-    - name: Setup dokitVersion env variable
+    - name: Capture build-output variables
+      id: post-build
       shell: bash
-      run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" >> $GITHUB_ENV
+      run: echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
     - name: Install DLL for tests
       run: |
         copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
@@ -364,7 +368,7 @@ jobs:
       if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v4
       with:
-        name: test-results-${{ env.dokitVersion }}
+        name: test-results-${{ steps.post-build.outputs.dokitVersion }}
         path: ${{ runner.temp }}/test/**/*.tap
         if-no-files-found: ignore
     - name: Make portable
@@ -384,7 +388,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: dokit-${{ env.dokitVersion }}
+        name: dokit-${{ steps.post-build.outputs.dokitVersion }}
         path: |
           ${{ runner.temp }}/src/lib/${{ matrix.dll }}
           ${{ runner.temp }}/src/cli/dokit.exe
@@ -393,7 +397,7 @@ jobs:
       if: matrix.arch != 'arm64'
       uses: actions/upload-artifact@v4
       with:
-        name: dokit-${{ env.dokitVersion }}.portable
+        name: dokit-${{ steps.post-build.outputs.dokitVersion }}.portable
         path: ${{ runner.temp }}/portable
         if-no-files-found: error
 
