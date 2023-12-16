@@ -428,6 +428,9 @@ jobs:
         genhtml --output-directory coverage coverage.info
         # Can use any of the removeHtmlDates.sh scripts here, so the linux0 job's version will do.
         /usr/bin/env bash ./artifacts/test-results-*-cov/removeHtmlDates.sh
+        # Remove build numbers from pre-releases, and remove extra build info (such as ".linux.x86-64.gcc-cov")
+        # from all releases, since this coverage report is an aggregation of many build hosts.
+        sed -i -Ee 's/(headerValue">([0-9]+\.){2}[0-9]+)(((-pre)\+[0-9]+)|(\+[0-9]+))\..*</\1\5\6</' coverage/**/*.html
       working-directory: ${{ runner.temp }}
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
@@ -460,12 +463,6 @@ jobs:
       with:
         name: coverage-report
         path: main/cov
-    - name: Cleanup coverage versions
-      run: |
-        shopt -s globstar
-        # Remove build numbers from pre-releases, and remove extra build info (such as ".linux.x86-64.gcc-cov")
-        # from all releases, since this coverage report is an aggregation of many build hosts.
-        sed -i -Ee 's/(headerValue">([0-9]+\.){2}[0-9]+)(((-pre)\+[0-9]+)|(\+[0-9]+))\..*</\1\5\6</' main/cov/**/*.html
     - name: Inspect changes # for diagnostics only.
       run: git status && git diff
     - name: Push updates
