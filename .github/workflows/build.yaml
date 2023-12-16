@@ -50,18 +50,8 @@ jobs:
         name: test-results-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/**/*.tap
-        if-no-files-found: ignore
-    - name: Prep combined test results
-      run: |
-        find "$RUNNER_TEMP" \( -name 'coverage.info' -or -name '*.tap' \) -printf '%P\0' |
-          cpio -pmd0 -D "$RUNNER_TEMP" "$GITHUB_WORKSPACE/test-results/linux-${{ matrix.env.cc }}"
-        [[ ! -e "$RUNNER_TEMP/removeHtmlDates.sh" ]] || cp -av "$RUNNER_TEMP/removeHtmlDates.sh" "$GITHUB_WORKSPACE/test-results"
-    - name: Upload combined test results
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results-combined
-        path: ${{ github.workspace }}/test-results
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
@@ -144,17 +134,8 @@ jobs:
         name: test-results-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/**/*.tap
-        if-no-files-found: ignore
-    - name: Prep combined test results
-      run: |
-        find "$RUNNER_TEMP" \( -name 'coverage.info' -or -name '*.tap' \) -printf '%P\0' |
-          cpio -pmd0 -D "$RUNNER_TEMP" "$GITHUB_WORKSPACE/test-results/linux-${{ matrix.env.cc }}-${{ matrix.qt }}"
-    - name: Upload combined test results
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results-combined
-        path: ${{ github.workspace }}/test-results
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
@@ -243,18 +224,8 @@ jobs:
         name: test-results-${{ env.dokitVersion }}
         path: |
           ${{ runner.temp }}/coverage.info
+          ${{ runner.temp }}/removeHtmlDates.sh
           ${{ runner.temp }}/test/**/*.tap
-        if-no-files-found: ignore
-    - name: Prep combined test results
-      run: |
-        cd "$RUNNER_TEMP" &&
-          find "$RUNNER_TEMP" \( -name 'coverage.info' -or -name '*.tap' \) -print0 |
-          cpio -pmd0 "$GITHUB_WORKSPACE/test-results/mac-${{ matrix.env.cc }}-${{ matrix.qt }}"
-    - name: Upload combined test results
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results-combined
-        path: ${{ github.workspace }}/test-results
         if-no-files-found: ignore
     - name: Report parallel coverage to Codacy
       if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
@@ -438,10 +409,9 @@ jobs:
         sudo apt upgrade
         sudo apt install lcov
     - name: Download test results
-      uses: actions/download-artifact@v3
-      with:
-        name: test-results-combined
-        path: ${{ runner.temp }}/artifacts
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: gh run download "$GITHUB_RUN_ID" --dir "$RUNNER_TEMP/artifacts" --pattern test-results-*
     - name: Generate test summary
       uses: pcolby/tap-summary@v1
       with:
@@ -456,7 +426,8 @@ jobs:
         # Generate the HTML report.
         echo 'genhtml_sort = 0' >> ~/.lcovrc
         genhtml --output-directory coverage coverage.info
-        /usr/bin/env bash ./artifacts/removeHtmlDates.sh
+        # Can use any of the removeHtmlDates.sh scripts here, so the linux0 job's version will do.
+        /usr/bin/env bash ./artifacts/test-results-*-cov/removeHtmlDates.sh
       working-directory: ${{ runner.temp }}
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
