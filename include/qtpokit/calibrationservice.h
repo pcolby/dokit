@@ -36,7 +36,7 @@ public:
         static inline const QBluetoothUuid getParam { QStringLiteral("b6728f91-409c-4d6c-864e-272a6a7a0204") };
 
         /// \todo UUID of the `Calibration` service's (undocumented) `Set Parameter` characterstic.
-        static inline const QBluetoothUuid setParam { QStringLiteral("5588e47b-cb81-4f7b-acc4-6029a3f39f724") };
+        static inline const QBluetoothUuid setParam { QStringLiteral("5588e47b-cb81-4f7b-acc4-6029a3f39f72") };
     };
 
     CalibrationService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);

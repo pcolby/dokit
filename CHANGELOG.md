@@ -10,6 +10,12 @@
 
 - Upgrade to Qt 6.6.1.
 
+### Fixed
+
+- Correct the Calibrate service's Set Parameter characteristic's UUID ([#17][])
+
+Thanks to [@NET-Code-Dev](https://github.com/NET-Code-Dev) for contributing to this release.
+
 ## [0.5.0][] (2023-11-25)
 
 ### Added
