@@ -1,5 +1,9 @@
 # Changelog[^1]
 
+## [Unreleased][]
+
+*Nothing yet...*
+
 ## [0.5.1][] (2023-12-28)
 
 ### Added
