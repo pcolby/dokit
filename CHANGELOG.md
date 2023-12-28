@@ -1,6 +1,6 @@
 # Changelog[^1]
 
-## [Unreleased][]
+## [0.5.1][] (2023-12-28)
 
 ### Added
 
@@ -8,6 +8,7 @@
 
 ### Changed
 
+- Upgrade to Doxygen 1.10.0.
 - Upgrade to Qt 6.6.1.
 
 ### Fixed
@@ -111,7 +112,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/pcolby/dokit/releases/tag/v0.5.1
 [0.5.0]: https://github.com/pcolby/dokit/releases/tag/v0.5.0
 [0.4.0]: https://github.com/pcolby/dokit/releases/tag/v0.4.0
 [0.3.0]: https://github.com/pcolby/dokit/releases/tag/v0.3.0
