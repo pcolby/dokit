@@ -1,7 +1,7 @@
 var searchData=
 [
   ['q_5fpid_0',['Q_PID',['https://doc.qt.io/qt-5/qprocess.html#Q_PID-typedef',1,'QProcess']]],
-  ['q_5fptr_1',['q_ptr',['../classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845',1,'AbstractPokitServicePrivate::q_ptr'],['../classPokitDiscoveryAgentPrivate.html#a82fa30e9b52381bff5c5c15ff351ac62',1,'PokitDiscoveryAgentPrivate::q_ptr'],['../classPokitDevicePrivate.html#abea5b943805d4fbb5cb778abd22d3f8c',1,'PokitDevicePrivate::q_ptr']]],
+  ['q_5fptr_1',['q_ptr',['../classAbstractPokitServicePrivate.html#a68f7ec9c0b34677eb1cf797221eb4845',1,'AbstractPokitServicePrivate::q_ptr'],['../classPokitDevicePrivate.html#abea5b943805d4fbb5cb778abd22d3f8c',1,'PokitDevicePrivate::q_ptr'],['../classPokitDiscoveryAgentPrivate.html#a82fa30e9b52381bff5c5c15ff351ac62',1,'PokitDiscoveryAgentPrivate::q_ptr']]],
   ['qatar_2',['Qatar',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
   ['qbitarray_3',['QBitArray',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['qbitmap_4',['QBitmap',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
@@ -107,9 +107,9 @@ var searchData=
   ['qurl_104',['QUrl',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['quuid_105',['QUuid',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['qvariant_106',['QVariant',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
-  ['qvarianthash_107',['qvarianthash',['https://doc.qt.io/qt-5/qvariant.html#QVariantHash-typedef',1,'QVariant::QVariantHash'],['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType::QVariantHash']]],
-  ['qvariantlist_108',['qvariantlist',['https://doc.qt.io/qt-5/qvariant.html#QVariantList-typedef',1,'QVariant::QVariantList'],['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType::QVariantList']]],
-  ['qvariantmap_109',['qvariantmap',['https://doc.qt.io/qt-5/qvariant.html#QVariantMap-typedef',1,'QVariant::QVariantMap'],['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType::QVariantMap']]],
+  ['qvarianthash_107',['QVariantHash',['https://doc.qt.io/qt-5/qvariant.html#QVariantHash-typedef',1,'QVariant::QVariantHash'],['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType::QVariantHash']]],
+  ['qvariantlist_108',['QVariantList',['https://doc.qt.io/qt-5/qvariant.html#QVariantList-typedef',1,'QVariant::QVariantList'],['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType::QVariantList']]],
+  ['qvariantmap_109',['QVariantMap',['https://doc.qt.io/qt-5/qvariant.html#QVariantMap-typedef',1,'QVariant::QVariantMap'],['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType::QVariantMap']]],
   ['qvector2d_110',['QVector2D',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['qvector3d_111',['QVector3D',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],
   ['qvector4d_112',['QVector4D',['https://doc.qt.io/qt-5/qmetatype.html#Type-enum',1,'QMetaType']]],

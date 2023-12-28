@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['easingcurve_0',['easingcurve',['https://doc.qt.io/qt-5/qtimeline.html#easingCurve-prop',1,'QTimeLine::easingCurve'],['https://doc.qt.io/qt-5/qvariantanimation.html#easingCurve-prop',1,'QVariantAnimation::easingCurve']]],
+  ['easingcurve_0',['easingCurve',['https://doc.qt.io/qt-5/qtimeline.html#easingCurve-prop',1,'QTimeLine::easingCurve'],['https://doc.qt.io/qt-5/qvariantanimation.html#easingCurve-prop',1,'QVariantAnimation::easingCurve']]],
   ['endvalue_1',['endValue',['https://doc.qt.io/qt-5/qvariantanimation.html#endValue-prop',1,'QVariantAnimation']]],
   ['errorstate_2',['errorState',['https://doc.qt.io/qt-5/qstate.html#errorState-prop',1,'QState']]],
   ['errorstring_3',['errorString',['https://doc.qt.io/qt-5/qstatemachine.html#errorString-prop',1,'QStateMachine']]],
