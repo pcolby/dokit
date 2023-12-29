@@ -10,8 +10,6 @@ var dir_4555509fca4bbfa75ca0f317af6821f2 =
     [ "deviceinfoservice_p.h", "deviceinfoservice__p_8h.html", "deviceinfoservice__p_8h" ],
     [ "dsoservice.cpp", "dsoservice_8cpp.html", null ],
     [ "dsoservice_p.h", "dsoservice__p_8h.html", "dsoservice__p_8h" ],
-    [ "genericaccessservice.cpp", "genericaccessservice_8cpp.html", null ],
-    [ "genericaccessservice_p.h", "genericaccessservice__p_8h.html", "genericaccessservice__p_8h" ],
     [ "multimeterservice.cpp", "multimeterservice_8cpp.html", null ],
     [ "multimeterservice_p.h", "multimeterservice__p_8h.html", "multimeterservice__p_8h" ],
     [ "pokitdevice.cpp", "pokitdevice_8cpp.html", null ],

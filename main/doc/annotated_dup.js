@@ -5,7 +5,6 @@ var annotated_dup =
     [ "DataLoggerService", "classDataLoggerService.html", "classDataLoggerService" ],
     [ "DeviceInfoService", "classDeviceInfoService.html", "classDeviceInfoService" ],
     [ "DsoService", "classDsoService.html", "classDsoService" ],
-    [ "GenericAccessService", "classGenericAccessService.html", "classGenericAccessService" ],
     [ "MultimeterService", "classMultimeterService.html", "classMultimeterService" ],
     [ "PokitDevice", "classPokitDevice.html", "classPokitDevice" ],
     [ "PokitDiscoveryAgent", "classPokitDiscoveryAgent.html", "classPokitDiscoveryAgent" ],

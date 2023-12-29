@@ -71,9 +71,9 @@ var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
 "classDsoServicePrivate.html#af35779b15db5c0e8c027104cc6ce014b",
-"classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68",
-"namespacePokitPro.html#ac6fedf42d1268613f25da2b7c82832a7a54b59f2d52a00ae74f1034e770e2859f",
-"structMultimeterService_1_1Settings.html#a02446f040ebf7aeeacb4d932d3ab2ea2"
+"classStatusService.html#a5d86bed23202402cade7fa8bb09f9c48",
+"pokitdevice_8h.html",
+"structStatusService_1_1Status.html#afd171243d9bcdfb3c2e354ffb28b3f88"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

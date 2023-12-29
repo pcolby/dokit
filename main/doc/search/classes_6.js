@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['key_5fiterator_0',['key_iterator',['https://doc.qt.io/qt-5/qhash-key-iterator.html',1,'QHash::key_iterator'],['https://doc.qt.io/qt-5/qmap-key-iterator.html',1,'QMap::key_iterator']]]
+  ['metadata_0',['Metadata',['../structDataLoggerService_1_1Metadata.html',1,'DataLoggerService::Metadata'],['../structDsoService_1_1Metadata.html',1,'DsoService::Metadata']]],
+  ['multimeterservice_1',['MultimeterService',['../classMultimeterService.html',1,'']]]
 ];

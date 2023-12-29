@@ -15,8 +15,6 @@ var annotated_dup =
     [ "DsoService", "classDsoService.html", "classDsoService" ],
     [ "DsoServicePrivate", "classDsoServicePrivate.html", "classDsoServicePrivate" ],
     [ "FlashLedCommand", "classFlashLedCommand.html", "classFlashLedCommand" ],
-    [ "GenericAccessService", "classGenericAccessService.html", "classGenericAccessService" ],
-    [ "GenericAccessServicePrivate", "classGenericAccessServicePrivate.html", "classGenericAccessServicePrivate" ],
     [ "InfoCommand", "classInfoCommand.html", "classInfoCommand" ],
     [ "LoggerFetchCommand", "classLoggerFetchCommand.html", "classLoggerFetchCommand" ],
     [ "LoggerStartCommand", "classLoggerStartCommand.html", "classLoggerStartCommand" ],

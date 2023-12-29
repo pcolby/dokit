@@ -19,8 +19,6 @@ var classPokitDevicePrivate =
     [ "deviceInfoMutex", "classPokitDevicePrivate.html#a1f928a00b63593a752f505288717ecf6", null ],
     [ "dso", "classPokitDevicePrivate.html#a3d56069c9b50e457a799a9c07637ecde", null ],
     [ "dsoMutex", "classPokitDevicePrivate.html#a49f5b08bf31644b4e1521f33e5c8578c", null ],
-    [ "genericAccess", "classPokitDevicePrivate.html#a9ee2bfe1547ebd2ab6b5929fed66e2e8", null ],
-    [ "genericAccessMutex", "classPokitDevicePrivate.html#abc74b961e879309c59bc715e4dde7b75", null ],
     [ "multimeter", "classPokitDevicePrivate.html#acd6c852a06623d75a0767333e984f6fa", null ],
     [ "multimeterMutex", "classPokitDevicePrivate.html#a3b4665ec68635e082e12768eaab33a1b", null ],
     [ "q_ptr", "classPokitDevicePrivate.html#abea5b943805d4fbb5cb778abd22d3f8c", null ],

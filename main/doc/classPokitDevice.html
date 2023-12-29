@@ -151,9 +151,6 @@ const <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html">Q
 <tr class="memitem:a3ded76591f3ec2b0620a2fbc617ed117" id="r_a3ded76591f3ec2b0620a2fbc617ed117"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classDsoService.html">DsoService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ded76591f3ec2b0620a2fbc617ed117">dso</a> ()</td></tr>
 <tr class="memdesc:a3ded76591f3ec2b0620a2fbc617ed117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classDsoService.html" title="The DsoService class accesses the DSO (Digital Storage Oscilloscope) service of Pokit devices.">DsoService</a> instance that uses this device's controller for access.  <br /></td></tr>
 <tr class="separator:a3ded76591f3ec2b0620a2fbc617ed117"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a226ebf9d65326afc3b2b8413c48412df" id="r_a226ebf9d65326afc3b2b8413c48412df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGenericAccessService.html">GenericAccessService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a226ebf9d65326afc3b2b8413c48412df">genericAccess</a> ()</td></tr>
-<tr class="memdesc:a226ebf9d65326afc3b2b8413c48412df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classGenericAccessService.html" title="The GenericAccessService class accesses the Generic Access service of Pokit devices.">GenericAccessService</a> instance that uses this device's controller for access.  <br /></td></tr>
-<tr class="separator:a226ebf9d65326afc3b2b8413c48412df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b4467f667ace65992a8fd152e9799ce" id="r_a7b4467f667ace65992a8fd152e9799ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMultimeterService.html">MultimeterService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b4467f667ace65992a8fd152e9799ce">multimeter</a> ()</td></tr>
 <tr class="memdesc:a7b4467f667ace65992a8fd152e9799ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to <a class="el" href="classMultimeterService.html" title="The MultimeterService class accesses the Multimeter service of Pokit devices.">MultimeterService</a> instance that uses this device's controller for access.  <br /></td></tr>
 <tr class="separator:a7b4467f667ace65992a8fd152e9799ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -454,7 +451,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> class simplifies Pokit device access. </p>
 <p>It does this by wrapping <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html">QLowEnergyController</a> to provide:</p><ul>
-<li>convenient Pokit service factory methods (<a class="el" href="#a77d94b8b0cf19bdbbd8f994e3c66c961" title="Returns a pointer to a DataLoggerService instance that uses this device&#39;s controller for access.">dataLogger()</a>, <a class="el" href="#a1e04571a74d06fcc4608e70437b5fa5d" title="Returns a pointer to DeviceInformationService instance that uses this device&#39;s controller for access.">deviceInformation()</a>, <a class="el" href="#a3ded76591f3ec2b0620a2fbc617ed117" title="Returns a pointer to DsoService instance that uses this device&#39;s controller for access.">dso()</a>, <a class="el" href="#a226ebf9d65326afc3b2b8413c48412df" title="Returns a pointer to GenericAccessService instance that uses this device&#39;s controller for access.">genericAccess()</a>, <a class="el" href="#a7b4467f667ace65992a8fd152e9799ce" title="Returns a pointer to MultimeterService instance that uses this device&#39;s controller for access.">multimeter()</a> and <a class="el" href="#adaaaedcb434b3dda9608ad58192e9142" title="Returns a pointer to StatusService instance that uses this device&#39;s controller for access.">status()</a>); and</li>
+<li>convenient Pokit service factory methods (<a class="el" href="#a77d94b8b0cf19bdbbd8f994e3c66c961" title="Returns a pointer to a DataLoggerService instance that uses this device&#39;s controller for access.">dataLogger()</a>, <a class="el" href="#a1e04571a74d06fcc4608e70437b5fa5d" title="Returns a pointer to DeviceInformationService instance that uses this device&#39;s controller for access.">deviceInformation()</a>, <a class="el" href="#a3ded76591f3ec2b0620a2fbc617ed117" title="Returns a pointer to DsoService instance that uses this device&#39;s controller for access.">dso()</a>, <a class="el" href="#a7b4467f667ace65992a8fd152e9799ce" title="Returns a pointer to MultimeterService instance that uses this device&#39;s controller for access.">multimeter()</a> and <a class="el" href="#adaaaedcb434b3dda9608ad58192e9142" title="Returns a pointer to StatusService instance that uses this device&#39;s controller for access.">status()</a>); and</li>
 <li>consistent debug logging of <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html">QLowEnergyController</a> events.</li>
 </ul>
 <p>But this class is entirely optional, in that all features of all other QtPokit classes can be used wihtout this class. It's just a (meaningful) convenience. </p>
@@ -637,36 +634,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a3ded76591f3ec2b0620a2fbc617ed117_icgraph.svg" width="142" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a226ebf9d65326afc3b2b8413c48412df" name="a226ebf9d65326afc3b2b8413c48412df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a226ebf9d65326afc3b2b8413c48412df">&#9670;&#160;</a></span>genericAccess()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classGenericAccessService.html">GenericAccessService</a> * PokitDevice::genericAccess </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns a pointer to <a class="el" href="classGenericAccessService.html" title="The GenericAccessService class accesses the Generic Access service of Pokit devices.">GenericAccessService</a> instance that uses this device's controller for access. </p>
-<p>This is a convenience function, that always returns the same pointer (for this <a class="el" href="classPokitDevice.html" title="The PokitDevice class simplifies Pokit device access.">PokitDevice</a> instance), but the service itself is lazily created (in a threadsafe manner) on the first invocation of this function. </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a226ebf9d65326afc3b2b8413c48412df_cgraph.svg" width="212" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classPokitDevice_a226ebf9d65326afc3b2b8413c48412df_icgraph.svg" width="212" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

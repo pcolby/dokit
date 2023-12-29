@@ -5,7 +5,6 @@ var dir_4555509fca4bbfa75ca0f317af6821f2 =
     [ "dataloggerservice.cpp", "dataloggerservice_8cpp.html", null ],
     [ "deviceinfoservice.cpp", "deviceinfoservice_8cpp.html", null ],
     [ "dsoservice.cpp", "dsoservice_8cpp.html", null ],
-    [ "genericaccessservice.cpp", "genericaccessservice_8cpp.html", null ],
     [ "multimeterservice.cpp", "multimeterservice_8cpp.html", null ],
     [ "pokitdevice.cpp", "pokitdevice_8cpp.html", null ],
     [ "pokitdiscoveryagent.cpp", "pokitdiscoveryagent_8cpp.html", null ],

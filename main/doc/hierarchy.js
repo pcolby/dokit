@@ -4,7 +4,6 @@ var hierarchy =
     [ "DataLoggerService::CharacteristicUuids", "structDataLoggerService_1_1CharacteristicUuids.html", null ],
     [ "DeviceInfoService::CharacteristicUuids", "structDeviceInfoService_1_1CharacteristicUuids.html", null ],
     [ "DsoService::CharacteristicUuids", "structDsoService_1_1CharacteristicUuids.html", null ],
-    [ "GenericAccessService::CharacteristicUuids", "structGenericAccessService_1_1CharacteristicUuids.html", null ],
     [ "MultimeterService::CharacteristicUuids", "structMultimeterService_1_1CharacteristicUuids.html", null ],
     [ "StatusService::CharacteristicUuids", "structStatusService_1_1CharacteristicUuids.html", null ],
     [ "StatusService::DeviceCharacteristics", "structStatusService_1_1DeviceCharacteristics.html", null ],
@@ -16,7 +15,6 @@ var hierarchy =
         [ "DataLoggerService", "classDataLoggerService.html", null ],
         [ "DeviceInfoService", "classDeviceInfoService.html", null ],
         [ "DsoService", "classDsoService.html", null ],
-        [ "GenericAccessService", "classGenericAccessService.html", null ],
         [ "MultimeterService", "classMultimeterService.html", null ],
         [ "StatusService", "classStatusService.html", null ]
       ] ],
