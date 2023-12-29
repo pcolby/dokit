@@ -637,8 +637,9 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
     /*!
      * \pokitApi Pokit API 0.02 says the `Status` characteristic is 5 bytes. API 1.00 then added an
      * additional byte for `Battery Status`, for 6 bytes in total. However, Pokit Pro devices return
-     * 8 bytes here. It appears that the first of those 2 extra bytes is used to indicate the physical
-     * switch position, while the other extra byte indicates the device's current charging status.
+     * 8 bytes here. It appears that the first of those 2 extra bytes (ie the 7th byte) is used to
+     * indicate the physical switch position, while the other extra byte (ie the 8th byte) indicates
+     * the device's current charging status.
      */
 
     if (!checkSize(QLatin1String("Status"), value, 5, 8)) {

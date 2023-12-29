@@ -27,11 +27,6 @@ add_dokit_unit_test(
   testdsoservice.h)
 
 add_dokit_unit_test(
-  GenericAccessService
-  testgenericaccessservice.cpp
-  testgenericaccessservice.h)
-
-add_dokit_unit_test(
   MultimeterService
   testmultimeterservice.cpp
   testmultimeterservice.h)

@@ -8,7 +8,6 @@ add_library(
   ${CMAKE_SOURCE_DIR}/include/qtpokit/dataloggerservice.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/deviceinfoservice.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/dsoservice.h
-  ${CMAKE_SOURCE_DIR}/include/qtpokit/genericaccessservice.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/multimeterservice.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdevice.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitdiscoveryagent.h
@@ -27,8 +26,6 @@ add_library(
   deviceinfoservice_p.h
   dsoservice.cpp
   dsoservice_p.h
-  genericaccessservice.cpp
-  genericaccessservice_p.h
   multimeterservice.cpp
   multimeterservice_p.h
   pokitdevice.cpp

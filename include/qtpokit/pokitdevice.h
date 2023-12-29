@@ -22,7 +22,6 @@ class CalibrationService;
 class DataLoggerService;
 class DeviceInfoService;
 class DsoService;
-class GenericAccessService;
 class MultimeterService;
 class StatusService;
 
@@ -44,7 +43,6 @@ public:
     DataLoggerService * dataLogger();
     DeviceInfoService * deviceInformation();
     DsoService * dso();
-    GenericAccessService * genericAccess();
     MultimeterService * multimeter();
     StatusService * status();
 

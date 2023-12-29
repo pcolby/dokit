@@ -6,9 +6,8 @@ See also: [Pokit API Errata](pokit.html)
 
 ### Undocumented Services
 
-Pokit Meter and Pokit Pro both include the following services with no official documentation to match:
+Pokit Meter and Pokit Pro both include the following service(s) with no official documentation to match:
 
-* `00001801-0000-1000-8000-00805f9b34fb` - aka Generic Attribute, or `0x1801`.
 * `1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0` - appears to be a Silicon Labs (formerly BlueGiga) OTA Service
   for updating firmware, which would make sense.
 

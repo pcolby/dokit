@@ -2,7 +2,9 @@
 
 ## [Unreleased][]
 
-*Nothing yet...*
+### Changed
+
+- Remove the `GenericAccessService` class ([#18][])
 
 ## [0.5.1][] (2023-12-28)
 

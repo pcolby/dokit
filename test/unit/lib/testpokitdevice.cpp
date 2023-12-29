@@ -10,7 +10,6 @@
 #include <qtpokit/dataloggerservice.h>
 #include <qtpokit/deviceinfoservice.h>
 #include <qtpokit/dsoservice.h>
-#include <qtpokit/genericaccessservice.h>
 #include <qtpokit/multimeterservice.h>
 #include <qtpokit/statusservice.h>
 
@@ -66,16 +65,6 @@ void TestPokitDevice::dso()
     QCOMPARE(device.dso(), service); // safe manner, too).
 }
 
-void TestPokitDevice::genericAccess()
-{
-    PokitDevice device(nullptr);
-    const GenericAccessService * service = device.genericAccess();
-    QVERIFY(service != nullptr);
-    QCOMPARE(device.genericAccess(), service); // Once created, the PokitDevice instance will always
-    QCOMPARE(device.genericAccess(), service); // return the same service class instances (in a thread
-    QCOMPARE(device.genericAccess(), service); // safe manner, too).
-}
-
 void TestPokitDevice::multimeter()
 {
     PokitDevice device(nullptr);
@@ -114,13 +103,12 @@ void TestPokitDevice::serviceToString_data()
     QTest::addRow("Status (Pokit Pro)")
         << StatusService::ServiceUuids::pokitPro << "Status (Pokit Pro)";
 
-    QTest::addRow("DeviceInfoService") << DeviceInfoService::serviceUuid <<
-        QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::DeviceInformation);
-    QTest::addRow("GenericAccessService") << GenericAccessService::serviceUuid <<
-        QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess);
+    QTest::addRow("DeviceInfoService") << DeviceInfoService::serviceUuid
+        << QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::DeviceInformation);
 
-    /// \todo We might refactor this one a little if/when we update PokitProducts::isPokitProduct() to use
-    /// GenericAccess vs GenericAttribute for product detection a la the Android app.
+    QTest::addRow("GenericAccessService") << QBluetoothUuid(QBluetoothUuid::ServiceClassUuid::GenericAccess)
+        << QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess);
+
     QTest::addRow("GenericAttribute") << QBluetoothUuid(QBluetoothUuid::ServiceClassUuid::GenericAttribute)
         << QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAttribute);
 
@@ -170,8 +158,6 @@ void TestPokitDevice::charcteristicToString_data()
     DOKIT_ADD_TEST_ROW(DeviceInfoService,    manufacturerName, ManufacturerNameString);
     DOKIT_ADD_TEST_ROW(DeviceInfoService,    modelNumber,      ModelNumberString);
     DOKIT_ADD_TEST_ROW(DeviceInfoService,    softwareRevision, SoftwareRevisionString);
-    DOKIT_ADD_TEST_ROW(GenericAccessService, appearance,       Appearance);
-    DOKIT_ADD_TEST_ROW(GenericAccessService, deviceName,       DeviceName);
     #undef DOKIT_ADD_TEST_ROW
 
     #define DOKIT_ADD_TEST_ROW(uuid, expected) \

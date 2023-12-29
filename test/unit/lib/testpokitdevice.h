@@ -15,7 +15,6 @@ private slots:
     void dataLogger();
     void deviceInformation();
     void dso();
-    void genericAccess();
     void multimeter();
     void status();
 

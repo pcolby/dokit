@@ -23,7 +23,6 @@ class CalibrationService;
 class DataLoggerService;
 class DeviceInfoService;
 class DsoService;
-class GenericAccessService;
 class MultimeterService;
 class StatusService;
 
@@ -42,7 +41,6 @@ public:
     DataLoggerService * dataLogger { nullptr };       ///< Data Logger service for this Pokit device.
     DeviceInfoService * deviceInfo { nullptr };       ///< Device Info service for this Pokit device.
     DsoService * dso { nullptr };                     ///< DSO service for this Pokit device.
-    GenericAccessService * genericAccess { nullptr }; ///< Generic Access service for this Pokit device.
     MultimeterService * multimeter { nullptr };       ///< Multimeter service for this Pokit device.
     StatusService * status { nullptr };               ///< Status service for this Pokit device.
 
@@ -50,7 +48,6 @@ public:
     QMutex dataLoggerMutex;    ///< Mutex for protecting access to #dataLogger.
     QMutex deviceInfoMutex;    ///< Mutex for protecting access to #deviceInfo.
     QMutex dsoMutex;           ///< Mutex for protecting access to #dso.
-    QMutex genericAccessMutex; ///< Mutex for protecting access to #genericAccess.
     QMutex multimeterMutex;    ///< Mutex for protecting access to #multimeter.
     QMutex statusMutex;        ///< Mutex for protecting access to #status.
 
