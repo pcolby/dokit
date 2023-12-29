@@ -12,7 +12,6 @@
 #include <qtpokit/dataloggerservice.h>
 #include <qtpokit/deviceinfoservice.h>
 #include <qtpokit/dsoservice.h>
-#include <qtpokit/genericaccessservice.h>
 #include <qtpokit/multimeterservice.h>
 #include <qtpokit/statusservice.h>
 
@@ -27,7 +26,7 @@
  *
  * It does this by wrapping QLowEnergyController to provide:
  * * convenient Pokit service factory methods (dataLogger(), deviceInformation(), dso(),
- *   genericAccess(), multimeter() and status()); and
+     multimeter() and status()); and
  * * consistent debug logging of QLowEnergyController events.
  *
  * But this class is entirely optional, in that all features of all other QtPokit classes can be
@@ -158,18 +157,6 @@ DsoService * PokitDevice::dso()
 }
 
 /*!
- * Returns a pointer to GenericAccessService instance that uses this device's controller for access.
- *
- * This is a convenience function, that always returns the same pointer (for this PokitDevice
- * instance), but the service itself is lazily created (in a threadsafe manner) on the first
- * invocation of this function.
- */
-GenericAccessService * PokitDevice::genericAccess()
-{
-    QTPOKIT_INTERNAL_GET_SERVICE(GenericAccessService, genericAccess);
-}
-
-/*!
  * Returns a pointer to MultimeterService instance that uses this device's controller for access.
  *
  * This is a convenience function, that always returns the same pointer (for this PokitDevice
@@ -202,7 +189,7 @@ StatusService * PokitDevice::status()
  */
 QString PokitDevice::serviceToString(const QBluetoothUuid &uuid)
 {
-    static QHash<QBluetoothUuid, QString> hash{
+    static const QHash<QBluetoothUuid, QString> hash{
         { CalibrationService::serviceUuid, tr("Calibration") },
         { DataLoggerService::serviceUuid,  tr("Data Logger") },
         { DsoService::serviceUuid,         tr("DSO") },
@@ -211,9 +198,10 @@ QString PokitDevice::serviceToString(const QBluetoothUuid &uuid)
         { StatusService::ServiceUuids::pokitPro,   tr("Status (Pokit Pro)") },
         { DeviceInfoService::serviceUuid,
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::DeviceInformation) },
-        { GenericAccessService::serviceUuid,
+
+        // The following are not specifically supported by this library, but strings provided for nicer debug output.
+        { QBluetoothUuid::ServiceClassUuid::GenericAccess,
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess) },
-        // The next two are not specifically supported by this library, but strings provided for nicer debug output.
         { QBluetoothUuid::ServiceClassUuid::GenericAttribute,
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAttribute) },
         { QBluetoothUuid(QStringLiteral("1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0")), tr("OTA Firmware Update") },
@@ -229,7 +217,7 @@ QString PokitDevice::serviceToString(const QBluetoothUuid &uuid)
  */
 QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
 {
-    static QHash<QBluetoothUuid, QString> hash{
+    static const QHash<QBluetoothUuid, QString> hash{
         { CalibrationService::CharacteristicUuids::temperature, tr("Temperature") },
         { CalibrationService::CharacteristicUuids::getParam,    tr("Get Param") },
         { CalibrationService::CharacteristicUuids::setParam,    tr("Set Param") },
@@ -264,11 +252,6 @@ QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::SoftwareRevisionString) },
         { DeviceInfoService::CharacteristicUuids::serialNumber,
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::SerialNumberString) },
-
-        { GenericAccessService::CharacteristicUuids::appearance,
-            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::Appearance) },
-        { GenericAccessService::CharacteristicUuids::deviceName,
-            QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::DeviceName) },
 
         // The next two are not specifically supported by this library, but strings provided for nicer debug output.
         { QBluetoothUuid(QStringLiteral("f7bf3564-fb6d-4e53-88a4-5e37e0326063")), tr("OTA Control") },

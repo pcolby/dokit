@@ -62,12 +62,6 @@ PokitProduct pokitProduct(const QBluetoothDeviceInfo &info)
 /*!
  * Returns \c true if \a serviceUuids contains a known Pokit Status service UUID.
  *
- * \todo The Pokit Android app does this by distinguishing between these two advertiserd services:
- * "00001800-0000-1000-8000-00805f9b34fb" Meter
- * "0000180a-0000-1000-8000-00805f9b34fb" Pro
- * Of course, these are the QBluetoothUuid::ServiceClassUuid::GenericAccess and
- * QBluetoothUuid::ServiceClassUuid::GenericAttribute services.
- *
  * Currently, this is the only known way to detect a Pokit device.
  */
 bool isPokitProduct(const QList<QBluetoothUuid> &serviceUuids)
