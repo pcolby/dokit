@@ -336,9 +336,9 @@ jobs:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
         arch: ${{ matrix.qtArch }}
-        # Use Qt's shipped MinGW for Qt 6.6 for now, as the runner's MinGW version crashes with Qt 6.6.0.
+        # Use Qt's shipped MinGW for Qt 6.6+ for now, as the runner's MinGW version crashes with Qt 6.6 and 6.7.
         # \todo Remove this if/when the runner's MinGW is updated to fix the incompatibility.
-        tools: ${{ startsWith(matrix.qt, '6.6') && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
+        tools: ${{ (startsWith(matrix.qt, '6.6') || startsWith(matrix.qt, '6.7') && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
         #add-tools-to-path: true ///< \toto Use once released by install-qt-action.
     - name: Configure cross-compilation
       if: matrix.arch == 'arm64'
