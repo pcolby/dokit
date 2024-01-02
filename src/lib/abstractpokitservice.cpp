@@ -221,14 +221,14 @@ bool AbstractPokitServicePrivate::createServiceObject()
     connect(service, &QLowEnergyService::characteristicChanged,
             this, &AbstractPokitServicePrivate::characteristicChanged);
 
-    connect(service, &QLowEnergyService::descriptorRead,
+    connect(service, &QLowEnergyService::descriptorRead, this,
         [](const QLowEnergyDescriptor &descriptor, const QByteArray &value){
             qCDebug(lc).noquote() << tr(R"(Descriptor "%1" (%2) read.)")
                 .arg(descriptor.name(), descriptor.uuid().toString());
             Q_UNUSED(value)
         });
 
-    connect(service, &QLowEnergyService::descriptorWritten,
+    connect(service, &QLowEnergyService::descriptorWritten, this,
         [](const QLowEnergyDescriptor &descriptor, const QByteArray &newValue){
             qCDebug(lc).noquote() << tr(R"(Descriptor "%1" (%2) written.)")
                 .arg(descriptor.name(), descriptor.uuid().toString());

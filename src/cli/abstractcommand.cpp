@@ -33,7 +33,7 @@ AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
         #else
         &PokitDiscoveryAgent::errorOccurred,
         #endif
-    [](const PokitDiscoveryAgent::Error &error) {
+        this, [](const PokitDiscoveryAgent::Error &error) {
         qCWarning(lc).noquote() << tr("Bluetooth discovery error:") << error;
         QTimer::singleShot(0, QCoreApplication::instance(), [](){
             QCoreApplication::exit(EXIT_FAILURE);
