@@ -283,14 +283,14 @@
 <a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::characteristicChanged,</span></a>
 <a name="222"><span class="lineNum">     222 </span><span class="lineNoCov">          0 :             this, &amp;AbstractPokitServicePrivate::characteristicChanged);</span></a>
 <a name="223"><span class="lineNum">     223 </span>            : </a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorRead,</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorRead, this,</span></a>
 <a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;value){</span></a>
 <a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Descriptor &quot;%1&quot; (%2) read.)&quot;)</span></a>
 <a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
 <a name="228"><span class="lineNum">     228 </span>            :             Q_UNUSED(value)</a>
 <a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :         });</span></a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorWritten,</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :     connect(service, &amp;QLowEnergyService::descriptorWritten, this,</span></a>
 <a name="232"><span class="lineNum">     232 </span><span class="lineNoCov">          0 :         [](const QLowEnergyDescriptor &amp;descriptor, const QByteArray &amp;newValue){</span></a>
 <a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :             qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Descriptor &quot;%1&quot; (%2) written.)&quot;)</span></a>
 <a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :                 .arg(descriptor.name(), descriptor.uuid().toString());</span></a>
