@@ -107,6 +107,7 @@ jobs:
       with:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
+        arch: ${{ startsWith(matrix.qt, '6.7') && 'linux_gcc_64' || 'gcc_64' }}
     - name: Install linuxdeploy
       run: |
         curl --create-dirs --location --output-dir /home/runner/.local/bin --remote-name-all \
