@@ -128,7 +128,7 @@ Command getCliCommand(const QStringList &posArguments)
 
 Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &parser)
 {
-    // Setupt the command line options.
+    // Setup the command line options.
     parser.addOptions({
         { QStringLiteral("color"),
           QCoreApplication::translate("parseCommandLine", "Colors the console output. Valid options "
