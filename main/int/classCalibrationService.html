@@ -153,7 +153,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aff98225f4e1c489aec22a5832661c7f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all characteristics.    <br /></td></tr>
 <tr class="separator:aff98225f4e1c489aec22a5832661c7f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a301f5b733cacbebbf24459639f04af52" id="r_a301f5b733cacbebbf24459639f04af52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a301f5b733cacbebbf24459639f04af52">calibrateTemperature</a> (const float ambientTemperature)</td></tr>
-<tr class="memdesc:a301f5b733cacbebbf24459639f04af52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set's the Pokit device's name to <em>name</em>.  <br /></td></tr>
+<tr class="memdesc:a301f5b733cacbebbf24459639f04af52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calibrates the Pokit device's temperature to <em>ambientTemperature</em>.  <br /></td></tr>
 <tr class="separator:a301f5b733cacbebbf24459639f04af52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAbstractPokitService"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classAbstractPokitService')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAbstractPokitService.html">AbstractPokitService</a></td></tr>
 <tr class="memitem:af0b962913c8be9b1d69ce1b68a5f9bdd inherit pub_methods_classAbstractPokitService" id="r_af0b962913c8be9b1d69ce1b68a5f9bdd"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractPokitService.html#af0b962913c8be9b1d69ce1b68a5f9bdd">~AbstractPokitService</a> ()</td></tr>
@@ -600,9 +600,9 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
       </table>
 </div><div class="memdoc">
 
-<p>Set's the Pokit device's name to <em>name</em>. </p>
+<p>Calibrates the Pokit device's temperature to <em>ambientTemperature</em>. </p>
 <p>Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
-<p>Emits deviceNameWritten() if/when the <em>name</em> has been set. </p>
+<p>Emits <a class="el" href="#a9d2d21992939b86c2dbf9ae65b52a59d" title="This signal is emitted when the Temperature characteristic has been written succesfully.">temperatureCalibrated()</a> if/when the <em>name</em> has been set. </p>
 
 <p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00070">70</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
@@ -715,7 +715,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>This signal is emitted when the <code>Temperature</code> characteristic has been written succesfully. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a301f5b733cacbebbf24459639f04af52" title="Set&#39;s the Pokit device&#39;s name to name.">calibrateTemperature</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a301f5b733cacbebbf24459639f04af52" title="Calibrates the Pokit device&#39;s temperature to ambientTemperature.">calibrateTemperature</a> </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="calibratecommand_8cpp_source.html#l00069">CalibrateCommand::getService()</a>.</p>
 <div class="dynheader">
