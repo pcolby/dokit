@@ -19,7 +19,7 @@ jobs:
         sudo apt-mark hold grub-efi-amd64-signed
         sudo apt update
         sudo apt upgrade
-        sudo apt install lcov libfuse2 qtbase5-dev qtconnectivity5-dev qttools5-dev qttools5-dev-tools
+        sudo apt install lcov libfuse2 qtbase5-dev qtbase5-doc-dev qtconnectivity5-dev qtconnectivity5-doc-html qttools5-dev qttools5-dev-tools
     - name: Install linuxdeploy
       run: |
         curl --create-dirs --location --output-dir /home/runner/.local/bin --remote-name-all \
@@ -107,6 +107,10 @@ jobs:
       with:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
+        documentation: true
+        doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
+        doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+        aqtversion: ==3.1.* # \todo https://github.com/jurplel/install-qt-action/issues/218
     - name: Install linuxdeploy
       run: |
         curl --create-dirs --location --output-dir /home/runner/.local/bin --remote-name-all \
@@ -121,7 +125,10 @@ jobs:
         CXX: ${{ matrix.env.cxx }}
         PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}
       run: |
-        cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ matrix.env.coverage }} -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+        cmake -D CMAKE_BUILD_TYPE=Release \
+              -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
+              -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
+              -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
         { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } | tee -a "$GITHUB_OUTPUT"
         cmake --build "$RUNNER_TEMP"
@@ -201,6 +208,10 @@ jobs:
       with:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
+        documentation: true
+        doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
+        doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+        aqtversion: ==3.1.* # \todo https://github.com/jurplel/install-qt-action/issues/218
     - name: Build
       id: build
       env:
@@ -212,6 +223,7 @@ jobs:
         cmake -D CMAKE_BUILD_TYPE=Release \
               -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-12' || '/usr/bin/gcov'}} \
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
+              -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
         echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
         { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } | tee -a "$GITHUB_OUTPUT"
@@ -327,6 +339,7 @@ jobs:
         version: ${{ matrix.qt }}
         arch: win64_msvc2019_64
         set-env: false
+        aqtversion: ==3.1.* # \todo https://github.com/jurplel/install-qt-action/issues/218
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
@@ -337,6 +350,10 @@ jobs:
         # \todo Remove this if/when the runner's MinGW is updated to fix the incompatibility.
         tools: ${{ startsWith(matrix.qt, '6.6') && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
         #add-tools-to-path: true ///< \toto Use once released by install-qt-action.
+        documentation: true
+        doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
+        doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+        aqtversion: ==3.1.* # \todo https://github.com/jurplel/install-qt-action/issues/218
     - name: Configure cross-compilation
       if: matrix.arch == 'arm64'
       shell: bash
@@ -354,7 +371,10 @@ jobs:
       run: |
         # \todo Remove this when either the runner's MinGW is upgraded, or add-tools-to-path is released by install-qt-action.
         if exist "%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64" set "PATH=%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64\bin\;%PATH%"
-        cmake -D CMAKE_BUILD_TYPE=Release -D QT_HOST_PATH=%qtHostPath% -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
+        cmake -D CMAKE_BUILD_TYPE=Release ^
+              -D QT_HOST_PATH=%qtHostPath% ^
+              -D QT_INSTALL_DOCS=%RUNNER_WORKSPACE%\Qt\Docs\Qt-${{ matrix.qt }} ^
+              -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
         cmake --build "%RUNNER_TEMP%"
     - name: Capture build-output variables
       id: post-build

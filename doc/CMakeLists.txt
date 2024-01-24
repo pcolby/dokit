@@ -1,14 +1,18 @@
 # SPDX-FileCopyrightText: 2022-2024 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
-# Include Qt doc tagfiles, if provided.
-if (QT_TAGFILES_PATH)
-  set(QT_DOCS_BASEURL "https://doc.qt.io/qt-${QT_VERSION_MAJOR}/")
-  message(STATUS "Using Qt doc tagfiles ${QT_TAGFILES_PATH} (${QT_DOCS_BASEURL})")
-  set(DOX_TAGFILES "\\
-  \"${QT_TAGFILES_PATH}/qtcore/qtcore.tags=${QT_DOCS_BASEURL}\" \\
-  \"${QT_TAGFILES_PATH}/qtbluetooth/qtbluetooth.tags=${QT_DOCS_BASEURL}\" \\")
-endif()
+include(FetchContent)
+FetchContent_Declare(FindQtDocs GIT_REPOSITORY "https://github.com/pcolby/cmake-modules" GIT_TAG "v1")
+FetchContent_MakeAvailable(FindQtDocs)
+list(PREPEND CMAKE_MODULE_PATH "${findqtdocs_SOURCE_DIR}")
+find_package(QtDocs REQUIRED COMPONENTS Core Bluetooth)
+
+# Include Qt doc tagfiles, if available.
+set(QT_DOCS_BASEURL "https://doc.qt.io/qt-${QT_VERSION_MAJOR}/")
+message(STATUS "Using Qt doc tagfiles ${QT_INSTALL_DOCS} => ${QT_DOCS_BASEURL}")
+set(DOX_TAGFILES "\\
+  \"${QtDocs_Core_TAGS}=${QT_DOCS_BASEURL}\" \\
+  \"${QtDocs_Bluetooth_TAGS}=${QT_DOCS_BASEURL}\" \\")
 
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
