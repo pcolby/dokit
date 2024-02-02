@@ -61,11 +61,11 @@ bool CalibrationService::readCharacteristics()
 }
 
 /*!
- * Set's the Pokit device's name to \a name.
+ * Calibrates the Pokit device's temperature to \a ambientTemperature.
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
- * Emits deviceNameWritten() if/when the \a name has been set.
+ * Emits temperatureCalibrated() if/when the \a name has been set.
  */
 bool CalibrationService::calibrateTemperature(const float ambientTemperature)
 {
