@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Remove the `GenericAccessService` class ([#18][])
+- Remove the `GenericAccessService` class ([#18]())
 
 ## [0.5.1][] (2023-12-28)
 
@@ -19,7 +19,7 @@
 
 ### Fixed
 
-- Correct the Calibrate service's Set Parameter characteristic's UUID ([#17][])
+- Correct the Calibrate service's Set Parameter characteristic's UUID ([#17]())
 
 Thanks to [@NET-Code-Dev](https://github.com/NET-Code-Dev) for contributing to this release.
 
@@ -31,7 +31,7 @@ Thanks to [@NET-Code-Dev](https://github.com/NET-Code-Dev) for contributing to t
 
 ### Changed
 
-- Switch macOS CLI to Application Bundle ([#9][])
+- Switch macOS CLI to Application Bundle ([#9]())
 - Upgrade to Qt 6.6.0.
 
 ### Fixed
