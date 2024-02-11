@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Remove the `GenericAccessService` class ([#18]())
+- Remove the `GenericAccessService` class ([#18])
 
 ## [0.5.1][] (2023-12-28)
 
@@ -19,7 +19,7 @@
 
 ### Fixed
 
-- Correct the Calibrate service's Set Parameter characteristic's UUID ([#17]())
+- Correct the Calibrate service's Set Parameter characteristic's UUID ([#17])
 
 Thanks to [@NET-Code-Dev](https://github.com/NET-Code-Dev) for contributing to this release.
 
@@ -31,7 +31,7 @@ Thanks to [@NET-Code-Dev](https://github.com/NET-Code-Dev) for contributing to t
 
 ### Changed
 
-- Switch macOS CLI to Application Bundle ([#9]())
+- Switch macOS CLI to Application Bundle ([#9])
 - Upgrade to Qt 6.6.0.
 
 ### Fixed
@@ -131,7 +131,9 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [073bce8]:     https://github.com/pcolby/dokit/commit/073bce82014a85e033639862fdb061c72b7971fd "Include switch and charging status in CLI output"
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
-[#9]:          https://github.com/pcolby/dokit/issues/9 "QBluetoothDeviceDiscoveryAgent::MissingPermissionsError when running on arm macos #9"
+[#9]:          https://github.com/pcolby/dokit/issues/9
+[#17]:         https://github.com/pcolby/dokit/issues/17
+[#18]:         https://github.com/pcolby/dokit/issues/18
 [Pokit Meter]: https://www.pokitinnovations.com/pokit-meter/
 [Pokit Pro]:   https://www.pokitinnovations.com/pokit-pro/
 [Qt]:          https://www.qt.io/
