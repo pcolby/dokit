@@ -1,6 +1,6 @@
 
 #!/usr/bin/env bash
-# SPDX-FileCopyrightText: 2022-2023 Paul Colby <git@colby.id.au>
+# SPDX-FileCopyrightText: 2022-2024 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
 cppcheck --version
