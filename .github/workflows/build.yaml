@@ -369,7 +369,7 @@ jobs:
       env:
         PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
       run: |
-        # \todo Remove this when either the runner's MinGW is upgraded, or add-tools-to-path is released by install-qt-action.
+        :: \todo Remove this when either the runner's MinGW is upgraded, or add-tools-to-path is released by install-qt-action.
         if exist "%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64" set "PATH=%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64\bin\;%PATH%"
         cmake -D CMAKE_BUILD_TYPE=Release ^
               -D QT_HOST_PATH=%qtHostPath% ^
