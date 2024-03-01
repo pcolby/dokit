@@ -365,7 +365,7 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
       with:
         arch: ${{ matrix.msvcArch }}
-        toolset: ${{ startsWith(matrix.qt, '5' && '14.37' }} # MSVC 14.38+ has many deprecation issues with Qt5.
+        toolset: ${{ startsWith(matrix.qt, '5') && '14.37' }} # MSVC 14.38+ has many deprecation issues with Qt5.
     - name: Build
       env:
         PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
