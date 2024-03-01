@@ -89,7 +89,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.1', '6.7.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.2', '6.7.0' ]
         env:
         - { cc: clang, cxx: clang++, coverage: false }
         - { cc: gcc, cxx: g++, coverage: false }
@@ -188,7 +188,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.1', '6.7.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.2', '6.7.0' ]
         env:
         - { cc: clang, cxx: clang++, coverage: false }
         - { cc: gcc-12, cxx: g++-12, coverage: false }
@@ -203,7 +203,7 @@ jobs:
           - { qt: '6.3.2', env: { cc: gcc-12 } }
           - { qt: '6.4.3', env: { cc: gcc-12 } }
           - { qt: '6.5.3', env: { cc: gcc-12 } }
-          - { qt: '6.6.1', env: { cc: gcc-12 } }
+          - { qt: '6.6.2', env: { cc: gcc-12 } }
     steps:
     - uses: actions/checkout@v4
     - name: Install lcov
@@ -279,7 +279,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.1', '6.7.0' ]
+        qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.2', '6.7.0' ]
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
         arch: [ x86, x86-64, arm64 ]
         exclude:
@@ -306,7 +306,7 @@ jobs:
         - { arch: x86, qt: '6.3.2' }
         - { arch: x86, qt: '6.4.3' }
         - { arch: x86, qt: '6.5.3' }
-        - { arch: x86, qt: '6.6.1' }
+        - { arch: x86, qt: '6.6.2' }
         - { arch: x86, qt: '6.7.0' }
         # Exclude MinGW builds for x86-64 with Qt's earlier than 5.12, since the Qt online
         # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
@@ -322,7 +322,7 @@ jobs:
         - { generator: 'MinGW Makefiles', qt: '6.3.2',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.4.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.5.3',   qtArch: win64_mingw   }
-        - { generator: 'MinGW Makefiles', qt: '6.6.1',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.6.2',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.7.0',   qtArch: win64_mingw   }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
@@ -372,11 +372,12 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
       with:
         arch: ${{ matrix.msvcArch }}
+        toolset: ${{ startsWith(matrix.qt, '5') && '14.37' || '' }} # MSVC 14.38+ has many deprecation issues with Qt5.
     - name: Build
       env:
         PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
       run: |
-        # \todo Remove this when either the runner's MinGW is upgraded, or add-tools-to-path is released by install-qt-action.
+        :: \todo Remove this when either the runner's MinGW is upgraded, or add-tools-to-path is released by install-qt-action.
         if exist "%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64" set "PATH=%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64\bin\;%PATH%"
         cmake -D CMAKE_BUILD_TYPE=Release ^
               -D QT_HOST_PATH=%qtHostPath% ^
