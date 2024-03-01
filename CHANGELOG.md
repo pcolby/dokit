@@ -11,6 +11,7 @@
 ### Added
 
 - Include switch and charging status in CLI output ([073bce8][])
+- Upgrade to Qt 6.6.2.
 
 ### Changed
 
