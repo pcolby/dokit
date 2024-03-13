@@ -109,7 +109,6 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
         version: ${{ matrix.qt }}
-        arch: ${{ startsWith(matrix.qt, '6.7') && 'linux_gcc_64' || 'gcc_64' }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
         setup-python: false
         documentation: true
