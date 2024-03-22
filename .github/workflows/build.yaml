@@ -115,8 +115,8 @@ jobs:
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
         aqtversion: ==3.1.*
-    - name: Upload aqtinstall logfile
-      #if: failure()
+    - name: Upload aqtinstall log file
+      if: failure()
       uses: actions/upload-artifact@v4
       with:
         name: aqtinstall-log-linux-${{ matrix.env.cc }}-${{ matrix.qt }}${{ matrix.env.coverage && '-cov' || ''}}
@@ -223,8 +223,8 @@ jobs:
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
         aqtversion: ==3.1.*
-    - name: Upload aqtinstall logfile
-      #if: failure()
+    - name: Upload aqtinstall log file
+      if: failure()
       uses: actions/upload-artifact@v4
       with:
         name: aqtinstall-log-mac-${{ matrix.env.cc }}-${{ matrix.qt }}${{ matrix.env.coverage && '-cov' || ''}}
@@ -360,9 +360,8 @@ jobs:
         arch: win64_msvc2019_64
         set-env: false
         aqtversion: ==3.1.*
-    - name: Upload aqtinstall logfile
-      if: matrix.arch == 'arm64'
-      #if: matrix.arch == 'arm64' && failure()
+    - name: Upload aqtinstall log file
+      if: matrix.arch == 'arm64' && failure()
       uses: actions/upload-artifact@v4
       with:
         name: aqtinstall-log-win-${{ matrix.arch }}-${{ startsWith(matrix.generator, 'MinGW') && 'mingw' || 'msvc' }}-${{ matrix.qt }}-cross
@@ -382,8 +381,8 @@ jobs:
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
         aqtversion: ==3.1.*
-    - name: Upload aqtinstall logfile
-      #if: failure()
+    - name: Upload aqtinstall log file
+      if: failure()
       uses: actions/upload-artifact@v4
       with:
         name: aqtinstall-log-win-${{ matrix.arch }}-${{ startsWith(matrix.generator, 'MinGW') && 'mingw' || 'msvc' }}-${{ matrix.qt }}
