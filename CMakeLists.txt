@@ -34,17 +34,22 @@ add_definitions(
   -DPROJECT_VERSION="${PROJECT_VERSION}")
 
 # Enable Qt's strict mode.
-# \todo Use QT_ENABLE_STRICT_MODE when available (possibly in Qt 6.7).
+# \todo Use QT_ENABLE_STRICT_MODE_UP_TO when available (possibly in Qt 6.8; see qtconfigmacros.h).
 add_definitions(
- #-DQT_NO_KEYWORDS ///< Applicable to the lib sub-project only.
+  # Qt 6.0.0
   -DQT_NO_FOREACH
   -DQT_NO_CAST_FROM_ASCII
   -DQT_NO_CAST_TO_ASCII
   -DQT_NO_CAST_FROM_BYTEARRAY
   -DQT_NO_URL_CAST_FROM_STRING
   -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT
-  -DQT_NO_CONTEXTLESS_CONNECT
   -DQT_NO_JAVA_STYLE_ITERATORS
+  # Qt 6.6.0
+  -DQT_NO_QEXCHANGE
+  # Qt 6.7.0
+  -DQT_NO_CONTEXTLESS_CONNECT
+  # Qt 6.8.0
+  -DQT_NO_QASCONST
 )
 
 # Enable most compiler warnings, and treat as errors.
