@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2022-2024 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
-cmake_minimum_required(VERSION 3.8...3.26 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.8...3.29 FATAL_ERROR)
 # \todo Replace all of the add_definitions calls with add_compile_definitions
 # if/when we ever set the minimum CMake version to 3.12+.
 message(STATUS "CMake version is ${CMAKE_VERSION}")
