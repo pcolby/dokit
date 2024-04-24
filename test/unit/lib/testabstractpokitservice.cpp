@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testabstractpokitservice.h"
+#include "../github.h"
 
 #include <qtpokit/abstractpokitservice.h>
 #include "abstractpokitservice_p.h"
@@ -63,6 +64,10 @@ void TestAbstractPokitService::service_()
 
 void TestAbstractPokitService::createServiceObject()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     // Verify that creation will fail without a Bluetooth device controller
     MockPokitService service(nullptr);
     QCOMPARE(service.service(), nullptr);
@@ -88,6 +93,10 @@ void TestAbstractPokitService::createServiceObject()
 
 void TestAbstractPokitService::getCharacteristic()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     {   // Verify an invalid characteristic is returned safely, when no controller is set.
         MockPokitService service(nullptr);
         const QLowEnergyCharacteristic characteristic = service.d_ptr->getCharacteristic(QUuid::createUuid());
@@ -198,6 +207,10 @@ void TestAbstractPokitService::toHexString()
 
 void TestAbstractPokitService::connected()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     // Verify safe error handling.
     {
         MockPokitService service(nullptr);
@@ -211,6 +224,10 @@ void TestAbstractPokitService::connected()
 
 void TestAbstractPokitService::discoveryFinished()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     // Verify safe error handling.
     {
         MockPokitService service(nullptr);

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testdevicecommand.h"
+#include "../github.h"
 
 #include "devicecommand.h"
 
@@ -32,7 +33,7 @@ public:
 };
 
 // Mock device command class that does nothing (but log) if real devices are actually discovered. That is, if testing
-// while real (physical) Pokit devices are withing BLE range. This never happes in CI environments of course.
+// while real (physical) Pokit devices are within BLE range. This never happes in CI environments of course.
 class StartableDeviceCommand : public MockDeviceCommand
 {
 protected slots:
@@ -44,6 +45,10 @@ protected slots:
 
 void TestDeviceCommand::start()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     StartableDeviceCommand command;
 
     QVERIFY(command.deviceToScanFor.isNull());

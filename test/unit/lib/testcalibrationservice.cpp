@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testcalibrationservice.h"
+#include "../github.h"
 
 #include <qtpokit/calibrationservice.h>
 #include "calibrationservice_p.h"
@@ -11,6 +12,10 @@
 
 void TestCalibrationService::readCharacteristics()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     // readCharacteristics always returns true, since the service has no readable characterstics.
     CalibrationService service(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
     QVERIFY(service.readCharacteristics());

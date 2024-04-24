@@ -179,16 +179,35 @@ jobs:
         if-no-files-found: error
 
   mac:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         qt: [ '5.9.9', '5.10.1', '5.11.3', '5.12.12', '5.13.2', '5.14.2', '5.15.2', '6.2.4', '6.3.2', '6.4.3', '6.5.3', '6.6.3' ]
+        os: [ 'macos-12', 'macos-13', 'macos-14' ]
         env:
         - { cc: clang, cxx: clang++, coverage: false }
         - { cc: gcc-12, cxx: g++-12, coverage: false }
         - { cc: gcc-12, cxx: g++-12, coverage: true }
         exclude:
+          # Exclude Qt 5.x with GCC on macOS 13 (Qt5 only officially supports up to macOS 12).
+          - { qt: '5.9.9',   os: 'macos-13', env: { cc: gcc-12 } }
+          - { qt: '5.10.1',  os: 'macos-13', env: { cc: gcc-12 } }
+          - { qt: '5.11.3',  os: 'macos-13', env: { cc: gcc-12 } }
+          - { qt: '5.12.12', os: 'macos-13', env: { cc: gcc-12 } }
+          - { qt: '5.13.2',  os: 'macos-13', env: { cc: gcc-12 } }
+          - { qt: '5.14.2',  os: 'macos-13', env: { cc: gcc-12 } }
+          - { qt: '5.15.2',  os: 'macos-13', env: { cc: gcc-12 } }
+          # Exclude Qt 5.x on macOS 14+ (Qt5 only officially supports up to macOS 12).
+          - { qt: '5.9.9',   os: 'macos-14' }
+          - { qt: '5.10.1',  os: 'macos-14' }
+          - { qt: '5.11.3',  os: 'macos-14' }
+          - { qt: '5.12.12', os: 'macos-14' }
+          - { qt: '5.13.2',  os: 'macos-14' }
+          - { qt: '5.14.2',  os: 'macos-14' }
+          - { qt: '5.15.2',  os: 'macos-14' }
+          # Exclude Qt 6.2 on macOS 14+ (Qt6 only officially supports macOS 14 from Qt 6.4+, and some 6.2.n LTS update).
+          - { qt: '6.2.4',   os: 'macos-14' }
           # Exclude Qt 5.10 with GCC on macOS. See https://bugreports.qt.io/browse/QTBUG-66585
           - { qt: '5.10.1', env: { cc: gcc-12 } }
           # Exclude Qt6 with GCC on macOS for now, as GCC (only) has lots of false compiler
@@ -218,7 +237,7 @@ jobs:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
         CMAKE_OSX_ARCHITECTURES: ${{ startsWith(matrix.qt, '6') && 'arm64;' || '' }}x86_64
-        PROJECT_BUILD_ID: ${{ github.run_number }}.mac.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}
+        PROJECT_BUILD_ID: ${{ github.run_number }}.${{ matrix.os }}.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release \
               -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-12' || '/usr/bin/gcov'}} \

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testpokitdevice.h"
+#include "../github.h"
 
 #include <qtpokit/pokitdevice.h>
 #include "pokitdevice_p.h"
@@ -176,6 +177,10 @@ void TestPokitDevice::charcteristicToString()
 
 void TestPokitDevice::setController()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     // Verify safe error handling (can't do much else without a Bluetooth device).
     PokitDevice device(nullptr);
     QCOMPARE(device.controller(), nullptr);
@@ -207,6 +212,10 @@ void TestPokitDevice::setController()
 
 void TestPokitDevice::connected()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     // Verify safe error handling (can't do much else without a Bluetooth device).
     PokitDevice device(nullptr);
     QTest::ignoreMessage(QtCriticalMsg,

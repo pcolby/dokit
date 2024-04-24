@@ -4,6 +4,7 @@
 #include "testdsocommand.h"
 #include "outputstreamcapture.h"
 #include "testdata.h"
+#include "../github.h"
 
 #include "dsocommand.h"
 
@@ -367,6 +368,10 @@ void TestDsoCommand::processOptions_data()
 
 void TestDsoCommand::processOptions()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QFETCH(QStringList, arguments);
     QFETCH(DsoService::Settings, expectedSettings);
     QFETCH(minRangeFunc, expectedMinRangeFunc);
@@ -487,6 +492,10 @@ void TestDsoCommand::outputSamples_data()
 
 void TestDsoCommand::outputSamples()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QFETCH(DsoService::Metadata, metadata);
     QFETCH(QList<DsoService::Samples>, samplesList);
     QFETCH(AbstractCommand::OutputFormat, format);

@@ -4,6 +4,7 @@
 #include "testscancommand.h"
 #include "outputstreamcapture.h"
 #include "testdata.h"
+#include "../github.h"
 
 #include "scancommand.h"
 
@@ -70,6 +71,10 @@ void TestScanCommand::processOptions()
 
 void TestScanCommand::start()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     ScanCommand command(this);
     QTest::ignoreMessage(QtInfoMsg, "Scanning for Pokit devices...");
     command.start();

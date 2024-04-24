@@ -4,6 +4,7 @@
 #include "testmetercommand.h"
 #include "outputstreamcapture.h"
 #include "testdata.h"
+#include "../github.h"
 
 #include "metercommand.h"
 
@@ -406,6 +407,10 @@ void TestMeterCommand::outputReading_data()
 
 void TestMeterCommand::outputReading()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QFETCH(QList<MultimeterService::Reading>, readings);
     QFETCH(AbstractCommand::OutputFormat, format);
     LOADTESTDATA(expected);

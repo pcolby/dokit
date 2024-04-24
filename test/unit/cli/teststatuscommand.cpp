@@ -4,6 +4,7 @@
 #include "teststatuscommand.h"
 #include "outputstreamcapture.h"
 #include "testdata.h"
+#include "../github.h"
 
 #include "statuscommand.h"
 
@@ -58,6 +59,10 @@ void TestStatusCommand::getService()
 
 void TestStatusCommand::serviceDetailsDiscovered()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     StatusCommand command(this);
     command.device = new PokitDevice(QBluetoothDeviceInfo(), &command);
     command.service = command.device->status();
@@ -98,6 +103,10 @@ void TestStatusCommand::outputDeviceStatus_data()
 
 void TestStatusCommand::outputDeviceStatus()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QFETCH(StatusService::DeviceCharacteristics, chrs);
     QFETCH(AbstractCommand::OutputFormat, format);
     LOADTESTDATA(expected);

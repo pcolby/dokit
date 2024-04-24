@@ -4,6 +4,7 @@
 #include "testinfocommand.h"
 #include "outputstreamcapture.h"
 #include "testdata.h"
+#include "../github.h"
 
 #include "infocommand.h"
 
@@ -87,6 +88,10 @@ void TestInfoCommand::serviceDetailsDiscovered_data()
 
 void TestInfoCommand::serviceDetailsDiscovered()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QFETCH(QBluetoothDeviceInfo, info);
     QFETCH(AbstractCommand::OutputFormat, format);
     LOADTESTDATA(expected);
