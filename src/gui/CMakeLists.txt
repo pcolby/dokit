@@ -21,25 +21,21 @@ else()
   qt_add_resources(DokitGuiSources qrc/icons.qrc)
 endif()
 
-if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  add_executable(gui MACOSX_BUNDLE main.cpp ${DokitGuiSources})
-else()
-  # We put all but main.cpp into a shared 'object' library so
-  # our app unit tests can link against the same binary objects.
-  add_library(gui-lib OBJECT ${DokitGuiSources})
+# We put all but main.cpp into a shared 'object' library so
+# our app unit tests can link against the same binary objects.
+add_library(gui-lib OBJECT ${DokitGuiSources})
 
-  target_link_libraries(
-    gui-lib
-    PRIVATE QtPokit
-    PRIVATE Qt${QT_VERSION_MAJOR}::Core
-    PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth
-    PRIVATE Qt${QT_VERSION_MAJOR}::Charts
-    PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(
+  gui-lib
+  PRIVATE QtPokit
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core
+  PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth
+  PRIVATE Qt${QT_VERSION_MAJOR}::Charts
+  PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-  add_executable(gui MACOSX_BUNDLE main.cpp)
+add_executable(gui MACOSX_BUNDLE main.cpp)
 
-  target_link_libraries(gui PRIVATE gui-lib)
-endif()
+target_link_libraries(gui PRIVATE gui-lib)
 
 set_target_properties(gui PROPERTIES OUTPUT_NAME Dokit)
 

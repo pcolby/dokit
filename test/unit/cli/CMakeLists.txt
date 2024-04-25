@@ -2,14 +2,10 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
 function(add_dokit_cli_unit_test name)
-if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  message(STATUS "Skipping test${name} (needs CMake 3.12+)")
-else()
   add_dokit_unit_test(${name} ${ARGN} outputstreamcapture.h testdata.h)
   set_tests_properties(${name} PROPERTIES LABELS "cli;unit")
   target_include_directories(test${name} PRIVATE ${CMAKE_SOURCE_DIR}/src/cli)
   target_link_libraries(test${name} PRIVATE cli-lib)
-endif()
 endfunction()
 
 add_dokit_cli_unit_test(

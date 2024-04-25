@@ -32,23 +32,19 @@ set(DokitCliSources
   statuscommand.h
 )
 
-if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-  add_executable(cli main.cpp ${DokitCliSources})
-else()
-  # We put all but main.cpp into a shared 'object' library so
-  # our app unit tests can link against the same binary objects.
-  add_library(cli-lib OBJECT ${DokitCliSources})
+# We put all but main.cpp into a shared 'object' library so
+# our app unit tests can link against the same binary objects.
+add_library(cli-lib OBJECT ${DokitCliSources})
 
-  target_link_libraries(
-    cli-lib
-    PRIVATE QtPokit
-    PRIVATE Qt${QT_VERSION_MAJOR}::Core
-    PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
+target_link_libraries(
+  cli-lib
+  PRIVATE QtPokit
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core
+  PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 
-  add_executable(cli main.cpp)
+add_executable(cli main.cpp)
 
-  target_link_libraries(cli PRIVATE cli-lib)
-endif()
+target_link_libraries(cli PRIVATE cli-lib)
 
 set_target_properties(cli PROPERTIES OUTPUT_NAME dokit)
 
