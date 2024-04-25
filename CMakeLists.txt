@@ -51,6 +51,7 @@ add_compile_definitions(
 )
 
 # Enable most compiler warnings, and treat as errors.
+# \todo Consider using CMAKE_COMPILE_WARNING_AS_ERROR on CMake 3.24+
 if (MSVC)
   add_compile_options(/W3 /WX)
 else()
