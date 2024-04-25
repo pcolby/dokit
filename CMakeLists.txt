@@ -2,8 +2,6 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
 cmake_minimum_required(VERSION 3.15...3.29 FATAL_ERROR)
-# \todo Replace all of the add_definitions calls with add_compile_definitions
-# if/when we ever set the minimum CMake version to 3.12+.
 message(STATUS "CMake version is ${CMAKE_VERSION}")
 if (DEFINED CMAKE_BUILD_TYPE)
   message(STATUS "CMake build type is ${CMAKE_BUILD_TYPE}")
@@ -19,37 +17,37 @@ set(PROJECT_PRE_RELEASE pre)
 #set(PROJECT_PRE_RELEASE rc1)
 #unset(PROJECT_PRE_RELEASE)
 if (PROJECT_PRE_RELEASE)
-  add_definitions(-DPROJECT_PRE_RELEASE="${PROJECT_PRE_RELEASE}")
+  add_compile_definitions(PROJECT_PRE_RELEASE="${PROJECT_PRE_RELEASE}")
   set(PROJECT_VERSION_SUFFIX "-${PROJECT_PRE_RELEASE}")
 endif()
 if (DEFINED ENV{PROJECT_BUILD_ID})
-  add_definitions(-DPROJECT_BUILD_ID="$ENV{PROJECT_BUILD_ID}")
+  add_compile_definitions(PROJECT_BUILD_ID="$ENV{PROJECT_BUILD_ID}")
   string(APPEND PROJECT_VERSION_SUFFIX "+$ENV{PROJECT_BUILD_ID}")
 endif()
 message(STATUS "${PROJECT_NAME} ${PROJECT_VERSION}${PROJECT_VERSION_SUFFIX}")
 file(WRITE "${PROJECT_BINARY_DIR}/version.txt" "${PROJECT_VERSION}${PROJECT_VERSION_SUFFIX}\n")
 
-add_definitions(
-  -DPROJECT_NAME="${PROJECT_NAME}"
-  -DPROJECT_VERSION="${PROJECT_VERSION}")
+add_compile_definitions(
+  PROJECT_NAME="${PROJECT_NAME}"
+  PROJECT_VERSION="${PROJECT_VERSION}")
 
 # Enable Qt's strict mode.
 # \todo Use QT_ENABLE_STRICT_MODE_UP_TO when available (possibly in Qt 6.8; see qtconfigmacros.h).
-add_definitions(
+add_compile_definitions(
   # Qt 6.0.0
-  -DQT_NO_FOREACH
-  -DQT_NO_CAST_FROM_ASCII
-  -DQT_NO_CAST_TO_ASCII
-  -DQT_NO_CAST_FROM_BYTEARRAY
-  -DQT_NO_URL_CAST_FROM_STRING
-  -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT
-  -DQT_NO_JAVA_STYLE_ITERATORS
+  QT_NO_FOREACH
+  QT_NO_CAST_FROM_ASCII
+  QT_NO_CAST_TO_ASCII
+  QT_NO_CAST_FROM_BYTEARRAY
+  QT_NO_URL_CAST_FROM_STRING
+  QT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+  QT_NO_JAVA_STYLE_ITERATORS
   # Qt 6.6.0
-  -DQT_NO_QEXCHANGE
+  QT_NO_QEXCHANGE
   # Qt 6.7.0
-  -DQT_NO_CONTEXTLESS_CONNECT
+  QT_NO_CONTEXTLESS_CONNECT
   # Qt 6.8.0
-  -DQT_NO_QASCONST
+  QT_NO_QASCONST
 )
 
 # Enable most compiler warnings, and treat as errors.
