@@ -624,80 +624,92 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="102"/>
-        <source>device_name,device_status,firmware_version,maximum_voltage,maximum_current,maximum_resistance,maximum_sampling_rate,sampling_buffer_size,capability_mask,mac_address,battery_voltage,battery_status,torch_status,button_status
+        <location filename="../statuscommand.cpp" line="104"/>
+        <source>device_name,device_status,firmware_version,maximum_voltage,maximum_current,maximum_resistance,maximum_sampling_rate,sampling_buffer_size,capability_mask,mac_address,battery_voltage,battery_status,torch_status,button_status,switch_position,charging_status
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="154"/>
+        <location filename="../statuscommand.cpp" line="169"/>
         <source>Device name:           %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="155"/>
+        <location filename="../statuscommand.cpp" line="170"/>
         <source>Firmware version:      %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="156"/>
+        <location filename="../statuscommand.cpp" line="171"/>
         <source>Maximum voltage:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="157"/>
+        <location filename="../statuscommand.cpp" line="172"/>
         <source>Maximum current:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="158"/>
+        <location filename="../statuscommand.cpp" line="173"/>
         <source>Maximum resistance:    %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="159"/>
+        <location filename="../statuscommand.cpp" line="174"/>
         <source>Maximum sampling rate: %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="160"/>
+        <location filename="../statuscommand.cpp" line="175"/>
         <source>Sampling buffer size:  %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="161"/>
+        <location filename="../statuscommand.cpp" line="176"/>
         <source>Capability mask:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="162"/>
+        <location filename="../statuscommand.cpp" line="177"/>
         <source>MAC address:           %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="163"/>
+        <location filename="../statuscommand.cpp" line="178"/>
         <source>Device status:         %1 (%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="165"/>
+        <location filename="../statuscommand.cpp" line="180"/>
         <source>Battery voltage:       %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statuscommand.cpp" line="166"/>
+        <location filename="../statuscommand.cpp" line="181"/>
         <source>Battery status:        %1 (%2)
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statuscommand.cpp" line="185"/>
+        <source>Switch position:       %1 (%2)
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statuscommand.cpp" line="189"/>
+        <source>Charging status:       %1 (%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
