@@ -589,7 +589,7 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
     };
     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.
 
-    if (!checkSize(QLatin1String("Device Characterisitcs"), value, 20, 20)) {
+    if (!checkSize(QLatin1String("Device Characteristics"), value, 20, 20)) {
         return characteristics;
     }
 

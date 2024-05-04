@@ -29,23 +29,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="268"/>
-        <source>Characterisitc %1 &quot;%2&quot; requested before service assigned.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../abstractpokitservice.cpp" line="285"/>
-        <source>Characterisitc %1 &quot;%2&quot; requested before service %3 &quot;%4&quot; discovered.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../abstractpokitservice.cpp" line="288"/>
         <source>Current service state:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../abstractpokitservice.cpp" line="292"/>
-        <source>Characterisitc %1 &quot;%2&quot; not found in service %3 &quot;%4&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -56,12 +41,6 @@
     <message>
         <location filename="../abstractpokitservice.cpp" line="332"/>
         <source>Enabling CCCD for characteristic %1 &quot;%2&quot;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../abstractpokitservice.cpp" line="342"/>
-        <location filename="../abstractpokitservice.cpp" line="377"/>
-        <source>Characterisitc %1 &quot;%2&quot; has no client configuration descriptor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -117,6 +96,27 @@
     <message>
         <location filename="../abstractpokitservice.cpp" line="444"/>
         <source>Connected with no controller set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../abstractpokitservice.cpp" line="268"/>
+        <source>Characteristic %1 &quot;%2&quot; requested before service assigned.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../abstractpokitservice.cpp" line="285"/>
+        <source>Characteristic %1 &quot;%2&quot; requested before service %3 &quot;%4&quot; discovered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../abstractpokitservice.cpp" line="292"/>
+        <source>Characteristic %1 &quot;%2&quot; not found in service %3 &quot;%4&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../abstractpokitservice.cpp" line="342"/>
+        <location filename="../abstractpokitservice.cpp" line="377"/>
+        <source>Characteristic %1 &quot;%2&quot; has no client configuration descriptor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
