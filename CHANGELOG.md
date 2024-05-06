@@ -1,17 +1,18 @@
 # Changelog[^1]
 
-## [Unreleased][]
+## [0.5.2][2024-05-06]
 
 ### Changed
 
 - Remove the `GenericAccessService` class ([#18])
+- Upgrade to Qt 6.6.3.
+- Raise CMake minimum to 3.15.
 
 ## [0.5.1][] (2023-12-28)
 
 ### Added
 
 - Include switch and charging status in CLI output ([073bce8][])
-- Upgrade to Qt 6.6.2.
 
 ### Changed
 
