@@ -241,6 +241,9 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     // Do the initial parse, the see if we have a command specified yet.
     parser.parse(appArguments);
     configureLogging(parser);
+    qCDebug(lc).noquote() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion();
+    qCDebug(lc).noquote() << "Qt " QT_VERSION_STR " compile-time";
+    qCDebug(lc).noquote() << "Qt" << qVersion() << "runtime";
     const Command command = getCliCommand(parser.positionalArguments());
 
     // If we have a (single, valid) command, then remove the commands list from the help text.
@@ -315,8 +318,6 @@ int main(int argc, char *argv[])
     const QStringList appArguments = QCoreApplication::arguments();
     QCommandLineParser parser;
     const Command commandType = parseCommandLine(appArguments, parser);
-    qCDebug(lc).noquote() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion();
-    qCDebug(lc).noquote() << "Qt" << qVersion() << "(runtime) [" QT_VERSION_STR " compile-time]";
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.
     qCDebug(lc).noquote() << "App translations:" <<
         (appTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : appTranslator.filePath());
