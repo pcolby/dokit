@@ -730,13 +730,13 @@ success
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="271"/>
+        <location filename="../main.cpp" line="274"/>
         <source>Missing argument: &lt;command&gt;
 See --help for usage information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="287"/>
+        <location filename="../main.cpp" line="290"/>
         <source>Unknown command (%1)</source>
         <translation type="unfinished"></translation>
     </message>
