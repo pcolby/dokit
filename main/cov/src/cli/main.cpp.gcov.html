@@ -31,18 +31,18 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">110</td>
-            <td class="headerCovTableEntry">186</td>
-            <td class="headerCovTableEntryLo">59.1 %</td>
+            <td class="headerCovTableEntry">114</td>
+            <td class="headerCovTableEntry">187</td>
+            <td class="headerCovTableEntryLo">61.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
             <td class="headerValue">0.5.3-pre</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">7</td>
             <td class="headerCovTableEntry">16</td>
-            <td class="headerCovTableEntryLo">37.5 %</td>
+            <td class="headerCovTableEntryLo">43.8 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -90,7 +90,7 @@
 <a name="28"><span class="lineNum">      28 </span>            : #include &lt;Windows.h&gt;</a>
 <a name="29"><span class="lineNum">      29 </span>            : #endif</a>
 <a name="30"><span class="lineNum">      30 </span>            : </a>
-<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 : static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.main&quot;, QtInfoMsg);</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">         60 : static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.main&quot;, QtInfoMsg);</span></a>
 <a name="32"><span class="lineNum">      32 </span>            : </a>
 <a name="33"><span class="lineNum">      33 </span>            : inline bool haveConsole()</a>
 <a name="34"><span class="lineNum">      34 </span>            : {</a>
@@ -303,105 +303,106 @@
 <a name="241"><span class="lineNum">     241 </span>            :     // Do the initial parse, the see if we have a command specified yet.</a>
 <a name="242"><span class="lineNum">     242 </span><span class="lineCov">         20 :     parser.parse(appArguments);</span></a>
 <a name="243"><span class="lineNum">     243 </span><span class="lineCov">         20 :     configureLogging(parser);</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">         20 :     const Command command = getCliCommand(parser.positionalArguments());</span></a>
-<a name="245"><span class="lineNum">     245 </span>            : </a>
-<a name="246"><span class="lineNum">     246 </span>            :     // If we have a (single, valid) command, then remove the commands list from the help text.</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">         20 :     if (command != Command::None) {</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :         parser.clearPositionalArguments();</span></a>
-<a name="249"><span class="lineNum">     249 </span>            :     }</a>
-<a name="250"><span class="lineNum">     250 </span>            : </a>
-<a name="251"><span class="lineNum">     251 </span>            :     // Handle -h|--help explicitly, so we can tweak the output to include the &lt;command&gt; info.</a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         26 :     if (parser.isSet(QStringLiteral(&quot;help&quot;))) {</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :         const QString commandString = (command == Command::None) ? QStringLiteral(&quot;&lt;command&gt;&quot;)</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :                 : parser.positionalArguments().constFirst();</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :         std::cout &lt;&lt; qUtf8Printable(parser.helpText()</span></a>
-<a name="256"><span class="lineNum">     256 </span>            :             .replace(QStringLiteral(&quot;[options]&quot;), commandString + QStringLiteral(&quot; [options]&quot;))</a>
-<a name="257"><span class="lineNum">     257 </span>            :             .replace(QStringLiteral(&quot;Arguments:&quot;),  QStringLiteral(&quot;Command:&quot;))</a>
-<a name="258"><span class="lineNum">     258 </span>            :         );</a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :         ::exit(EXIT_SUCCESS);</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :     }</span></a>
-<a name="261"><span class="lineNum">     261 </span>            : </a>
-<a name="262"><span class="lineNum">     262 </span>            :     // Process the command for real (ie throw errors for unknown options, etc).</a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         20 :     parser.process(appArguments);</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :     return command;</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">        160 : }</span></a>
-<a name="266"><span class="lineNum">     266 </span>            : </a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 : AbstractCommand * getCommandObject(const Command command, QObject * const parent)</span></a>
-<a name="268"><span class="lineNum">     268 </span>            : {</a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :     switch (command) {</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :     case Command::None:</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :         showCliError(QCoreApplication::translate(&quot;main&quot;,</span></a>
-<a name="272"><span class="lineNum">     272 </span>            :             &quot;Missing argument: &lt;command&gt;\nSee --help for usage information.&quot;));</a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :         return nullptr;</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :     case Command::Calibrate:   return new CalibrateCommand(parent);</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :     case Command::DSO:         return new DsoCommand(parent);</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :     case Command::FlashLed:    return new FlashLedCommand(parent);</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :     case Command::Info:        return new InfoCommand(parent);</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :     case Command::LoggerStart: return new LoggerStartCommand(parent);</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :     case Command::LoggerStop:  return new LoggerStopCommand(parent);</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :     case Command::LoggerFetch: return new LoggerFetchCommand(parent);</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :     case Command::Meter:       return new MeterCommand(parent);</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :     case Command::Scan:        return new ScanCommand(parent);</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :     case Command::Status:      return new StatusCommand(parent);</span></a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :     case Command::SetName:     return new SetNameCommand(parent);</span></a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :     case Command::SetTorch:    return new SetTorchCommand(parent);</span></a>
-<a name="286"><span class="lineNum">     286 </span>            :     }</a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :     showCliError(QCoreApplication::translate(&quot;main&quot;, &quot;Unknown command (%1)&quot;).arg((int)command));</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :     return nullptr;</span></a>
-<a name="289"><span class="lineNum">     289 </span>            : }</a>
-<a name="290"><span class="lineNum">     290 </span>            : </a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         20 : int main(int argc, char *argv[])</span></a>
-<a name="292"><span class="lineNum">     292 </span>            : {</a>
-<a name="293"><span class="lineNum">     293 </span>            :     // Setup the core application.</a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">         20 :     QCoreApplication app(argc, argv);</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         26 :     QCoreApplication::setApplicationName(QStringLiteral(PROJECT_NAME));</span></a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         20 :     QCoreApplication::setApplicationVersion(QString::fromLatin1(PROJECT_VERSION</span></a>
-<a name="297"><span class="lineNum">     297 </span>            :         #ifdef PROJECT_PRE_RELEASE</a>
-<a name="298"><span class="lineNum">     298 </span>            :         &quot;-&quot; PROJECT_PRE_RELEASE</a>
-<a name="299"><span class="lineNum">     299 </span>            :         #endif</a>
-<a name="300"><span class="lineNum">     300 </span>            :         #ifdef PROJECT_BUILD_ID</a>
-<a name="301"><span class="lineNum">     301 </span>            :         &quot;+&quot; PROJECT_BUILD_ID</a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">         22 :     qCDebug(lc).noquote() &lt;&lt; QCoreApplication::applicationName() &lt;&lt; QCoreApplication::applicationVersion();</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">         22 :     qCDebug(lc).noquote() &lt;&lt; &quot;Qt &quot; QT_VERSION_STR &quot; compile-time&quot;;</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">         22 :     qCDebug(lc).noquote() &lt;&lt; &quot;Qt&quot; &lt;&lt; qVersion() &lt;&lt; &quot;runtime&quot;;</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">         20 :     const Command command = getCliCommand(parser.positionalArguments());</span></a>
+<a name="248"><span class="lineNum">     248 </span>            : </a>
+<a name="249"><span class="lineNum">     249 </span>            :     // If we have a (single, valid) command, then remove the commands list from the help text.</a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         20 :     if (command != Command::None) {</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :         parser.clearPositionalArguments();</span></a>
+<a name="252"><span class="lineNum">     252 </span>            :     }</a>
+<a name="253"><span class="lineNum">     253 </span>            : </a>
+<a name="254"><span class="lineNum">     254 </span>            :     // Handle -h|--help explicitly, so we can tweak the output to include the &lt;command&gt; info.</a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         26 :     if (parser.isSet(QStringLiteral(&quot;help&quot;))) {</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :         const QString commandString = (command == Command::None) ? QStringLiteral(&quot;&lt;command&gt;&quot;)</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :                 : parser.positionalArguments().constFirst();</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :         std::cout &lt;&lt; qUtf8Printable(parser.helpText()</span></a>
+<a name="259"><span class="lineNum">     259 </span>            :             .replace(QStringLiteral(&quot;[options]&quot;), commandString + QStringLiteral(&quot; [options]&quot;))</a>
+<a name="260"><span class="lineNum">     260 </span>            :             .replace(QStringLiteral(&quot;Arguments:&quot;),  QStringLiteral(&quot;Command:&quot;))</a>
+<a name="261"><span class="lineNum">     261 </span>            :         );</a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :         ::exit(EXIT_SUCCESS);</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :     }</span></a>
+<a name="264"><span class="lineNum">     264 </span>            : </a>
+<a name="265"><span class="lineNum">     265 </span>            :     // Process the command for real (ie throw errors for unknown options, etc).</a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">         20 :     parser.process(appArguments);</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :     return command;</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">        160 : }</span></a>
+<a name="269"><span class="lineNum">     269 </span>            : </a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 : AbstractCommand * getCommandObject(const Command command, QObject * const parent)</span></a>
+<a name="271"><span class="lineNum">     271 </span>            : {</a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :     switch (command) {</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :     case Command::None:</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :         showCliError(QCoreApplication::translate(&quot;main&quot;,</span></a>
+<a name="275"><span class="lineNum">     275 </span>            :             &quot;Missing argument: &lt;command&gt;\nSee --help for usage information.&quot;));</a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :         return nullptr;</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :     case Command::Calibrate:   return new CalibrateCommand(parent);</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :     case Command::DSO:         return new DsoCommand(parent);</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :     case Command::FlashLed:    return new FlashLedCommand(parent);</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :     case Command::Info:        return new InfoCommand(parent);</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :     case Command::LoggerStart: return new LoggerStartCommand(parent);</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :     case Command::LoggerStop:  return new LoggerStopCommand(parent);</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :     case Command::LoggerFetch: return new LoggerFetchCommand(parent);</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :     case Command::Meter:       return new MeterCommand(parent);</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :     case Command::Scan:        return new ScanCommand(parent);</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :     case Command::Status:      return new StatusCommand(parent);</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :     case Command::SetName:     return new SetNameCommand(parent);</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :     case Command::SetTorch:    return new SetTorchCommand(parent);</span></a>
+<a name="289"><span class="lineNum">     289 </span>            :     }</a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :     showCliError(QCoreApplication::translate(&quot;main&quot;, &quot;Unknown command (%1)&quot;).arg((int)command));</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :     return nullptr;</span></a>
+<a name="292"><span class="lineNum">     292 </span>            : }</a>
+<a name="293"><span class="lineNum">     293 </span>            : </a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">         20 : int main(int argc, char *argv[])</span></a>
+<a name="295"><span class="lineNum">     295 </span>            : {</a>
+<a name="296"><span class="lineNum">     296 </span>            :     // Setup the core application.</a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         20 :     QCoreApplication app(argc, argv);</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">         26 :     QCoreApplication::setApplicationName(QStringLiteral(PROJECT_NAME));</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         20 :     QCoreApplication::setApplicationVersion(QString::fromLatin1(PROJECT_VERSION</span></a>
+<a name="300"><span class="lineNum">     300 </span>            :         #ifdef PROJECT_PRE_RELEASE</a>
+<a name="301"><span class="lineNum">     301 </span>            :         &quot;-&quot; PROJECT_PRE_RELEASE</a>
 <a name="302"><span class="lineNum">     302 </span>            :         #endif</a>
-<a name="303"><span class="lineNum">     303 </span>            :     ));</a>
-<a name="304"><span class="lineNum">     304 </span>            : </a>
-<a name="305"><span class="lineNum">     305 </span>            :     // Install localised translators, if we have translations for the current locale.</a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         20 :     QTranslator appTranslator, libTranslator;</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         20 :     if (appTranslator.load(QLocale(), QStringLiteral(&quot;cli&quot;), QStringLiteral(&quot;/&quot;), QStringLiteral(&quot;:/i18n&quot;))) {</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :         QCoreApplication::installTranslator(&amp;appTranslator);</span></a>
-<a name="309"><span class="lineNum">     309 </span>            :     }</a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">         20 :     if (libTranslator.load(QLocale(), QStringLiteral(&quot;lib&quot;), QStringLiteral(&quot;/&quot;), QStringLiteral(&quot;:/i18n&quot;))) {</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :         QCoreApplication::installTranslator(&amp;libTranslator);</span></a>
+<a name="303"><span class="lineNum">     303 </span>            :         #ifdef PROJECT_BUILD_ID</a>
+<a name="304"><span class="lineNum">     304 </span>            :         &quot;+&quot; PROJECT_BUILD_ID</a>
+<a name="305"><span class="lineNum">     305 </span>            :         #endif</a>
+<a name="306"><span class="lineNum">     306 </span>            :     ));</a>
+<a name="307"><span class="lineNum">     307 </span>            : </a>
+<a name="308"><span class="lineNum">     308 </span>            :     // Install localised translators, if we have translations for the current locale.</a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">         20 :     QTranslator appTranslator, libTranslator;</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">         20 :     if (appTranslator.load(QLocale(), QStringLiteral(&quot;cli&quot;), QStringLiteral(&quot;/&quot;), QStringLiteral(&quot;:/i18n&quot;))) {</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :         QCoreApplication::installTranslator(&amp;appTranslator);</span></a>
 <a name="312"><span class="lineNum">     312 </span>            :     }</a>
-<a name="313"><span class="lineNum">     313 </span>            : </a>
-<a name="314"><span class="lineNum">     314 </span>            :     // Parse the command line.</a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         20 :     const QStringList appArguments = QCoreApplication::arguments();</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         20 :     QCommandLineParser parser;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         20 :     const Command commandType = parseCommandLine(appArguments, parser);</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; QCoreApplication::applicationName() &lt;&lt; QCoreApplication::applicationVersion();</span></a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Qt&quot; &lt;&lt; qVersion() &lt;&lt; &quot;(runtime) [&quot; QT_VERSION_STR &quot; compile-time]&quot;;</span></a>
-<a name="320"><span class="lineNum">     320 </span>            : #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.</a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;App translations:&quot; &lt;&lt;</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :         (appTranslator.filePath().isEmpty() ? QStringLiteral(&quot;&lt;none&gt;&quot;) : appTranslator.filePath());</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Library translations:&quot; &lt;&lt;</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :         (libTranslator.filePath().isEmpty() ? QStringLiteral(&quot;&lt;none&gt;&quot;) : libTranslator.filePath());</span></a>
-<a name="325"><span class="lineNum">     325 </span>            : #else</a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;App translations:&quot; &lt;&lt; (!appTranslator.isEmpty());</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Lib translations:&quot; &lt;&lt; (!libTranslator.isEmpty());</span></a>
-<a name="328"><span class="lineNum">     328 </span>            : #endif</a>
-<a name="329"><span class="lineNum">     329 </span>            : </a>
-<a name="330"><span class="lineNum">     330 </span>            :     // Handle the given command.</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :     AbstractCommand * const command = getCommandObject(commandType, &amp;app);</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :     if (command == nullptr) {</span></a>
-<a name="333"><span class="lineNum">     333 </span>            :         return EXIT_FAILURE; // getCommandObject will have logged the reason already.</a>
-<a name="334"><span class="lineNum">     334 </span>            :     }</a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :     const QStringList cliErrors = command-&gt;processOptions(parser);</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     for (const QString &amp;error: cliErrors) {</span></a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :         showCliError(error);</span></a>
-<a name="338"><span class="lineNum">     338 </span>            :     }</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :     const int result = ((cliErrors.isEmpty()) &amp;&amp; (command-&gt;start())) ? QCoreApplication::exec() : EXIT_FAILURE;</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :     delete command; // We don't strictly need to do this, but it does fix QTBUG-119063, and is probably good practice.</span></a>
-<a name="341"><span class="lineNum">     341 </span>            :     return result;</a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         20 :     if (libTranslator.load(QLocale(), QStringLiteral(&quot;lib&quot;), QStringLiteral(&quot;/&quot;), QStringLiteral(&quot;:/i18n&quot;))) {</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :         QCoreApplication::installTranslator(&amp;libTranslator);</span></a>
+<a name="315"><span class="lineNum">     315 </span>            :     }</a>
+<a name="316"><span class="lineNum">     316 </span>            : </a>
+<a name="317"><span class="lineNum">     317 </span>            :     // Parse the command line.</a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         20 :     const QStringList appArguments = QCoreApplication::arguments();</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">         20 :     QCommandLineParser parser;</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         20 :     const Command commandType = parseCommandLine(appArguments, parser);</span></a>
+<a name="321"><span class="lineNum">     321 </span>            : #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.</a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;App translations:&quot; &lt;&lt;</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :         (appTranslator.filePath().isEmpty() ? QStringLiteral(&quot;&lt;none&gt;&quot;) : appTranslator.filePath());</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Library translations:&quot; &lt;&lt;</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :         (libTranslator.filePath().isEmpty() ? QStringLiteral(&quot;&lt;none&gt;&quot;) : libTranslator.filePath());</span></a>
+<a name="326"><span class="lineNum">     326 </span>            : #else</a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;App translations:&quot; &lt;&lt; (!appTranslator.isEmpty());</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Lib translations:&quot; &lt;&lt; (!libTranslator.isEmpty());</span></a>
+<a name="329"><span class="lineNum">     329 </span>            : #endif</a>
+<a name="330"><span class="lineNum">     330 </span>            : </a>
+<a name="331"><span class="lineNum">     331 </span>            :     // Handle the given command.</a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :     AbstractCommand * const command = getCommandObject(commandType, &amp;app);</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :     if (command == nullptr) {</span></a>
+<a name="334"><span class="lineNum">     334 </span>            :         return EXIT_FAILURE; // getCommandObject will have logged the reason already.</a>
+<a name="335"><span class="lineNum">     335 </span>            :     }</a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     const QStringList cliErrors = command-&gt;processOptions(parser);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :     for (const QString &amp;error: cliErrors) {</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :         showCliError(error);</span></a>
+<a name="339"><span class="lineNum">     339 </span>            :     }</a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :     const int result = ((cliErrors.isEmpty()) &amp;&amp; (command-&gt;start())) ? QCoreApplication::exec() : EXIT_FAILURE;</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :     delete command; // We don't strictly need to do this, but it does fix QTBUG-119063, and is probably good practice.</span></a>
+<a name="342"><span class="lineNum">     342 </span>            :     return result;</a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 : }</span></a>
 </pre>
       </td>
     </tr>
