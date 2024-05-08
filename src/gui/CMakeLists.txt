@@ -35,8 +35,6 @@ target_link_libraries(
 
 add_executable(gui MACOSX_BUNDLE main.cpp)
 
-target_link_libraries(gui PRIVATE gui-lib)
-
 set_target_properties(gui PROPERTIES OUTPUT_NAME Dokit)
 
 # Only include localisation for Qt6+ for now. We could support Qt5
@@ -54,6 +52,7 @@ endif()
 
 target_link_libraries(
   gui
+  PRIVATE gui-lib
   PRIVATE QtPokit
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth

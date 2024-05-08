@@ -44,8 +44,6 @@ target_link_libraries(
 
 add_executable(cli main.cpp)
 
-target_link_libraries(cli PRIVATE cli-lib)
-
 set_target_properties(cli PROPERTIES OUTPUT_NAME dokit)
 
 # Add a custom Info.plist file to the app bundle.
@@ -79,6 +77,7 @@ endif()
 
 target_link_libraries(
   cli
+  PRIVATE cli-lib
   PRIVATE QtPokit
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
