@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/pcolby/dokit/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/pcolby/dokit/actions/workflows/build.yaml?query=branch%3Amain)
 [![Static Analysis](https://github.com/pcolby/dokit/actions/workflows/static.yaml/badge.svg?branch=main)](https://github.com/pcolby/dokit/actions/workflows/static.yaml?query=branch%3Amain)
 [![Documentation](https://github.com/pcolby/dokit/actions/workflows/docs.yaml/badge.svg?branch=main)](https://github.com/pcolby/dokit/actions/workflows/docs.yaml?query=branch%3Amain)
-[![Codacy Grade](https://img.shields.io/codacy/grade/50f86ac1809f438eae51d294ad11f36f?label=Code%20Quality&logo=codacy)](https://www.codacy.com/gh/pcolby/dokit/dashboard)
+[![Codacy Grade](https://img.shields.io/codacy/grade/50f86ac1809f438eae51d294ad11f36f?label=Code%20Quality&logo=codacy)](https://app.codacy.com/gh/pcolby/dokit/dashboard)
 [![Coverage Status](https://img.shields.io/coveralls/github/pcolby/dokit/main?label=Coverage&logo=coveralls)](https://coveralls.io/github/pcolby/dokit?branch=main)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
