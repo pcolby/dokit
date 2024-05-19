@@ -63,7 +63,6 @@ jobs:
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-        aqtversion: ==3.1.*
     - name: Install linuxdeploy
       run: |
         curl --create-dirs --location --output-dir /home/runner/.local/bin --remote-name-all \
@@ -197,7 +196,6 @@ jobs:
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-        aqtversion: ==3.1.*
     - name: Build
       id: build
       env:
@@ -337,7 +335,6 @@ jobs:
         version: ${{ matrix.qt }}
         arch: win64_msvc2019_64
         set-env: false
-        aqtversion: ==3.1.*
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
@@ -351,7 +348,6 @@ jobs:
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-        aqtversion: ==3.1.*
     - name: Configure cross-compilation
       if: matrix.arch == 'arm64'
       shell: bash
