@@ -11,9 +11,9 @@ var pokitproducts_8cpp =
     [ "pokitProduct", "pokitproducts_8cpp.html#a98f11fa57086c8c720a0d31c82169477", null ],
     [ "pokitProduct", "pokitproducts_8cpp.html#a9eed245788cc9e68dd314dc5153912b9", null ],
     [ "Q_LOGGING_CATEGORY", "pokitproducts_8cpp.html#ae34719c67920c33413ec5a0789f048a5", null ],
-    [ "toString", "pokitproducts_8cpp.html#a51231fc0f3ca18f89fca6f00c4bb6df8", null ],
     [ "toString", "pokitproducts_8cpp.html#a14203d0e3a636e5142dccade0c4b5c91", null ],
     [ "toString", "pokitproducts_8cpp.html#a683a82fdd02371d1d6acb4bbbd91e844", null ],
     [ "toString", "pokitproducts_8cpp.html#a6f542c3fe27b9c58c03edc92ceab40ef", null ],
+    [ "toString", "pokitproducts_8cpp.html#a51231fc0f3ca18f89fca6f00c4bb6df8", null ],
     [ "toString", "pokitproducts_8cpp.html#a843ef4bfc3538988c695fa643adcd4d0", null ]
 ];

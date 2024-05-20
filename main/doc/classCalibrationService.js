@@ -5,5 +5,5 @@ var classCalibrationService =
     [ "~CalibrationService", "classCalibrationService.html#a6d4d45a1c89fef65090002f3ec26a68e", null ],
     [ "calibrateTemperature", "classCalibrationService.html#a301f5b733cacbebbf24459639f04af52", null ],
     [ "readCharacteristics", "classCalibrationService.html#aff98225f4e1c489aec22a5832661c7f7", null ],
-    [ "temperatureCalibrated", "classCalibrationService.html#a9d2d21992939b86c2dbf9ae65b52a59d", null ]
+    [ "temperatureCalibrated", "classCalibrationService.html#a8a609fb2baf963bd2229ba71d3fceb7e", null ]
 ];

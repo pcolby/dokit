@@ -8,7 +8,7 @@ var classMeterCommand =
     [ "serviceDetailsDiscovered", "classMeterCommand.html#aca51a018963bc384a24154cdb112a49b", null ],
     [ "settingsWritten", "classMeterCommand.html#a994e13d73c26eac303fa34b14082c9a4", null ],
     [ "supportedOptions", "classMeterCommand.html#aa32c65d3e27b6193af5a3bf802d7cccf", null ],
-    [ "minRangeFunc", "classMeterCommand.html#aad62fb1187f6a7c04728b8efeabbc030", null ],
+    [ "minRangeFunc", "classMeterCommand.html#aed2c787884f9f1c0359010036e637829", null ],
     [ "rangeOptionValue", "classMeterCommand.html#a0d86f89709a97b7ab1d8667970ef2ece", null ],
     [ "samplesToGo", "classMeterCommand.html#adf371ab0a3848960f9177d80853863b1", null ],
     [ "service", "classMeterCommand.html#afbd91fbc89c6d6d8891dcbeb1fcc3280", null ],

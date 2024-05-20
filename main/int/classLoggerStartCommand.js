@@ -7,7 +7,7 @@ var classLoggerStartCommand =
     [ "serviceDetailsDiscovered", "classLoggerStartCommand.html#ab1b0364c6a26ff893d5b58dea381e4d5", null ],
     [ "settingsWritten", "classLoggerStartCommand.html#a6b0922cf2e55e23c2df85cddf35e0b12", null ],
     [ "supportedOptions", "classLoggerStartCommand.html#ae36a761e489d15f3add5c661bc948a0a", null ],
-    [ "minRangeFunc", "classLoggerStartCommand.html#a19d3404e68caa4d0e3e04301debf59c4", null ],
+    [ "minRangeFunc", "classLoggerStartCommand.html#abde1ca7823faf7bb3459f0706756ea44", null ],
     [ "rangeOptionValue", "classLoggerStartCommand.html#a3442663070f4b08b8f0531f6221ba6ed", null ],
     [ "service", "classLoggerStartCommand.html#afd9f1f2efae6f012266266d977710efd", null ],
     [ "settings", "classLoggerStartCommand.html#a339d96ac27f9f797281163ce4f0a46db", null ]

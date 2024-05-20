@@ -35,7 +35,7 @@ var searchData=
   ['builddate_32',['buildDate',['https://doc.qt.io/qt-5/qlibraryinfo-obsolete.html#buildDate',1,'QLibraryInfo']]],
   ['bundlename_33',['bundleName',['https://doc.qt.io/qt-5/qfileinfo.html#bundleName',1,'QFileInfo']]],
   ['buttonpress_34',['buttonPress',['../classStatusService.html#a658e493f2942afd66263a989e99ed633',1,'StatusService']]],
-  ['buttonpressread_35',['buttonPressRead',['../classStatusService.html#aa75d9a8bebf7a3372691bf8123fbce91',1,'StatusService']]],
+  ['buttonpressread_35',['buttonPressRead',['../classStatusService.html#a2084a26b33dd947723c40839d36b7b94',1,'StatusService']]],
   ['byteorder_36',['byteOrder',['https://doc.qt.io/qt-5/qdatastream.html#byteOrder',1,'QDataStream']]],
   ['bytesavailable_37',['bytesAvailable',['https://doc.qt.io/qt-5/qiodevice.html#bytesAvailable',1,'QIODevice::bytesAvailable()'],['https://doc.qt.io/qt-5/qprocess.html#bytesAvailable',1,'QProcess::bytesAvailable()'],['https://doc.qt.io/qt-5/qstorageinfo.html#bytesAvailable',1,'QStorageInfo::bytesAvailable()'],['https://doc.qt.io/qt-5/qbluetoothsocket.html#bytesAvailable',1,'QBluetoothSocket::bytesAvailable()']]],
   ['bytesfree_38',['bytesFree',['https://doc.qt.io/qt-5/qstorageinfo.html#bytesFree',1,'QStorageInfo']]],

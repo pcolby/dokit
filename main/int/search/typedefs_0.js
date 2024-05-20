@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['samples_0',['Samples',['../classDataLoggerService.html#a24111305ff4f8f8b41c5ebf5dfe10b62',1,'DataLoggerService::Samples'],['../classDsoService.html#a72ff7eb3da52fb5e41e9aecb8fb6dc65',1,'DsoService::Samples']]]
+  ['samples_0',['Samples',['../classDataLoggerService.html#a4b0bdeebb95d622831a2c0690450e613',1,'DataLoggerService::Samples'],['../classDsoService.html#a3aebaedb7bf4c20d4ea205b984ef534e',1,'DsoService::Samples']]]
 ];
