@@ -2,6 +2,9 @@ name: Build and Test
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   linux:
     runs-on: ubuntu-latest
@@ -475,6 +478,8 @@ jobs:
         parallel-finished: true
 
   update-tests-on-doc-branch:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     if: success() && (github.ref == 'refs/heads/main')
     needs: collate-test-results
