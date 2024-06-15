@@ -66,6 +66,13 @@ jobs:
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+    - name: Upload aqtinstall log file
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: aqtinstall-log-linux-${{ matrix.env.cc }}-${{ matrix.qt }}${{ matrix.env.coverage && '-cov' || ''}}
+        path: aqtinstall.log
+        if-no-files-found: error
     - name: Install linuxdeploy
       run: |
         curl --create-dirs --location --output-dir /home/runner/.local/bin --remote-name-all \
@@ -199,6 +206,13 @@ jobs:
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+    - name: Upload aqtinstall log file
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: aqtinstall-log-${{ matrix.os }}-${{ matrix.env.cc }}-${{ matrix.qt }}${{ matrix.env.coverage && '-cov' || ''}}
+        path: aqtinstall.log
+        if-no-files-found: error
     - name: Build
       id: build
       env:
@@ -338,6 +352,13 @@ jobs:
         version: ${{ matrix.qt }}
         arch: win64_msvc2019_64
         set-env: false
+    - name: Upload aqtinstall log file
+      if: matrix.arch == 'arm64' && failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: aqtinstall-log-win-${{ matrix.arch }}-${{ startsWith(matrix.generator, 'MinGW') && 'mingw' || 'msvc' }}-${{ matrix.qt }}-cross
+        path: aqtinstall.log
+        if-no-files-found: error
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
@@ -351,6 +372,13 @@ jobs:
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+    - name: Upload aqtinstall log file
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: aqtinstall-log-win-${{ matrix.arch }}-${{ startsWith(matrix.generator, 'MinGW') && 'mingw' || 'msvc' }}-${{ matrix.qt }}
+        path: aqtinstall.log
+        if-no-files-found: error
     - name: Configure cross-compilation
       if: matrix.arch == 'arm64'
       shell: bash
