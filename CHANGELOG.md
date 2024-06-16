@@ -2,7 +2,10 @@
 
 ## [Unreleased][]
 
-_Coming soon..._
+### Changed
+
+- Upgrade to Doxygen 1.11.0.
+- Upgrade to Qt 6.7.1.
 
 ## [0.5.2][] (2024-05-06)
 
