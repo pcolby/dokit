@@ -26,6 +26,7 @@ jobs:
         - 6.4.3
         - 6.5.3
         - 6.6.3
+        - 6.7.1
         env:
         - { cc: clang, cxx: clang++, coverage: false }
         - { cc: gcc, cxx: g++, coverage: false }
@@ -36,6 +37,9 @@ jobs:
         sudo apt-mark hold grub-efi-amd64-signed
         sudo apt update && sudo apt upgrade
         sudo apt install lcov libfuse2
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '>=3.9'
     - name: Install Ubuntu's Qt5
       if: matrix.qt == 5
       run: sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
@@ -63,6 +67,7 @@ jobs:
       with:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
+        setup-python: false
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
@@ -160,6 +165,7 @@ jobs:
         - 6.4.3
         - 6.5.3
         - 6.6.3
+        - 6.7.1
         os: [ 'macos-12', 'macos-13', 'macos-14' ]
         env:
         - { cc: clang, cxx: clang++, coverage: false }
@@ -194,6 +200,7 @@ jobs:
           - { qt: '6.4.3', env: { cc: gcc-12 } }
           - { qt: '6.5.3', env: { cc: gcc-12 } }
           - { qt: '6.6.3', env: { cc: gcc-12 } }
+          - { qt: '6.7.1', env: { cc: gcc-12 } }
     steps:
     - uses: actions/checkout@v4
     - name: Install lcov
@@ -288,6 +295,7 @@ jobs:
         - 6.4.3
         - 6.5.3
         - 6.6.3
+        - 6.7.1
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
         arch: [ x86, x86-64, arm64 ]
         exclude:
@@ -315,6 +323,7 @@ jobs:
         - { arch: x86, qt: '6.4.3' }
         - { arch: x86, qt: '6.5.3' }
         - { arch: x86, qt: '6.6.3' }
+        - { arch: x86, qt: '6.7.1' }
         # Exclude MinGW builds for x86-64 with Qt's earlier than 5.12, since the Qt online
         # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
         - { arch: x86-64, qt: '5.9.9',  generator: 'MinGW Makefiles' }
@@ -330,6 +339,7 @@ jobs:
         - { generator: 'MinGW Makefiles', qt: '6.4.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.5.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.6.3',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.7.1',   qtArch: win64_mingw   }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
@@ -365,9 +375,9 @@ jobs:
         version: ${{ matrix.qt }}
         modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
         arch: ${{ matrix.qtArch }}
-        # Use Qt's shipped MinGW for Qt 6.6 for now, as the runner's MinGW version crashes with Qt 6.6.0.
+        # Use Qt's shipped MinGW for Qt 6.6+ for now, as the runner's MinGW version crashes with Qt 6.6 and 6.7.
         # \todo Remove this if/when the runner's MinGW is updated to fix the incompatibility.
-        tools: ${{ startsWith(matrix.qt, '6.6') && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
+        tools: ${{ (startsWith(matrix.qt, '6.6') || startsWith(matrix.qt, '6.7')) && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
         #add-tools-to-path: true ///< \toto Use once released by install-qt-action.
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
