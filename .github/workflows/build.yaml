@@ -378,7 +378,7 @@ jobs:
         # Use Qt's shipped MinGW for Qt 6.6+ for now, as the runner's MinGW version crashes with Qt 6.6 and 6.7.
         # \todo Remove this if/when the runner's MinGW is updated to fix the incompatibility.
         tools: ${{ (startsWith(matrix.qt, '6.6') || startsWith(matrix.qt, '6.7')) && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
-        #add-tools-to-path: true ///< \toto Use once released by install-qt-action.
+        add-tools-to-path: true
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
         doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
@@ -405,8 +405,6 @@ jobs:
       env:
         PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
       run: |
-        :: \todo Remove this when either the runner's MinGW is upgraded, or add-tools-to-path is released by install-qt-action.
-        if exist "%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64" set "PATH=%GITHUB_WORKSPACE%\..\Qt\Tools\mingw1120_64\bin\;%PATH%"
         cmake -D CMAKE_BUILD_TYPE=Release ^
               -D QT_HOST_PATH=%qtHostPath% ^
               -D QT_INSTALL_DOCS=%RUNNER_WORKSPACE%\Qt\Docs\Qt-${{ matrix.qt }} ^
