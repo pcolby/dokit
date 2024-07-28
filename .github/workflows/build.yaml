@@ -383,7 +383,7 @@ jobs:
         arch: ${{ matrix.qtArch }}
         # Use Qt's shipped MinGW for Qt 6.6+ for now, as the runner's MinGW version crashes with Qt 6.6 and 6.7.
         # \todo Remove this if/when the runner's MinGW is updated to fix the incompatibility.
-        tools: ${{ (startsWith(matrix.qt, '6.6') || startsWith(matrix.qt, '6.7' || startsWith(matrix.qt, '6.8' )) && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
+        tools: ${{ (startsWith(matrix.qt, '6.6') || startsWith(matrix.qt, '6.7') || startsWith(matrix.qt, '6.8' )) && startsWith(matrix.generator, 'MinGW') && 'tools_mingw90' || '' }}
         add-tools-to-path: true
         documentation: true
         doc-archives: ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' || (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
