@@ -312,6 +312,7 @@ jobs:
         - { arch: arm64, qt: '5.13.2'  }
         - { arch: arm64, qt: '5.14.2'  }
         - { arch: arm64, qt: '5.15.2'  }
+        - { arch: arm64, qt: '6.8.0'   } # \todo 6.8.0 Beta1 removes cross-compiling to ARM support.
         # Exclude MinGW builds for arm64, since MinGW has no arm64 support.
         - { arch: arm64, generator: 'MinGW Makefiles' }
         # Exclude MinGW builds for x86 (32-bit), since the GitHub Actions Windows runners only
@@ -356,6 +357,8 @@ jobs:
         - { generator: 'NMake Makefiles', arch: arm64,  msvcArch: amd64_arm64 }
         - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
         - { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
+        # \todo Remove this one when https://github.com/jurplel/install-qt-action/issues/250 is resovled.
+        - { generator: 'NMake Makefiles', arch: x86-64, qt: '6.8.0', qtArch: win64_msvc2022_64 }
         # Define the toolchain and dll names per generator (for artifact naming mostly).
         - { generator: 'NMake Makefiles', tool: msvc,  dll:    QtPokit.dll }
         - { generator: 'MinGW Makefiles', tool: mingw, dll: libQtPokit.dll }
