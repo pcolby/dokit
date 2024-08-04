@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+- Upgrade to Qt 6.8.0, and 6.7.2.
+
 ### Changed
 
 - Upgrade to Doxygen 1.11.0.
