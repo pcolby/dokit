@@ -81,10 +81,10 @@
 <a name="19"><span class="lineNum">      19 </span>            : /*!</a>
 <a name="20"><span class="lineNum">      20 </span>            :  * Construct a new LoggerStopCommand object with \a parent.</a>
 <a name="21"><span class="lineNum">      21 </span>            :  */</a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         84 : LoggerStopCommand::LoggerStopCommand(QObject * const parent) : DeviceCommand(parent)</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         88 : LoggerStopCommand::LoggerStopCommand(QObject * const parent) : DeviceCommand(parent)</span></a>
 <a name="23"><span class="lineNum">      23 </span>            : {</a>
 <a name="24"><span class="lineNum">      24 </span>            : </a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">         84 : }</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">         88 : }</span></a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
 <a name="27"><span class="lineNum">      27 </span>            : /*!</a>
 <a name="28"><span class="lineNum">      28 </span>            :  * \copybrief DeviceCommand::getService</a>
@@ -118,22 +118,22 @@
 <a name="56"><span class="lineNum">      56 </span>            : /*!</a>
 <a name="57"><span class="lineNum">      57 </span>            :  * Invoked when the data logger settings have been written.</a>
 <a name="58"><span class="lineNum">      58 </span>            :  */</a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">         63 : void LoggerStopCommand::settingsWritten()</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">         66 : void LoggerStopCommand::settingsWritten()</span></a>
 <a name="60"><span class="lineNum">      60 </span>            : {</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         72 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has stopped.&quot;);</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         63 :     switch (format) {</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         21 :     case OutputFormat::Csv:</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         28 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_stop_result\nsuccess\n&quot;));</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">         21 :         break;</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         78 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has stopped.&quot;);</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         66 :     switch (format) {</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         22 :     case OutputFormat::Csv:</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         30 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_stop_result\nsuccess\n&quot;));</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">         22 :         break;</span></a>
 <a name="66"><span class="lineNum">      66 </span>            :     case OutputFormat::Json:</a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">         35 :         std::cout &lt;&lt; qUtf8Printable(QLatin1String(&quot;true\n&quot;));</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         21 :         break;</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         21 :     case OutputFormat::Text:</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         28 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         21 :         break;</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">         38 :         std::cout &lt;&lt; qUtf8Printable(QLatin1String(&quot;true\n&quot;));</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         22 :         break;</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         22 :     case OutputFormat::Text:</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         30 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         22 :         break;</span></a>
 <a name="72"><span class="lineNum">      72 </span>            :     }</a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         63 :     if (device) disconnect(); // Will exit the application once disconnected.</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         63 : }</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         66 :     if (device) disconnect(); // Will exit the application once disconnected.</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         66 : }</span></a>
 </pre>
       </td>
     </tr>
