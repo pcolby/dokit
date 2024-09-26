@@ -1,5 +1,5 @@
     <select id="version">
-     <option value="main">HEAD</option>
+     <option value="main">dev</option>
      <option value="0.5.2">v0.5.2</option>
      <option value="0.5.1">v0.5.1</option>
      <option value="0.5.0">v0.5.0</option>
