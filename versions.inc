@@ -1,4 +1,12 @@
-    <select id="version">
+    <script>
+      function changeVersion(event) {
+        console.log(event);
+        newUrl = `../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
+        console.log(`Navigating to ${newUrl}`);
+        window.location.assign(newUrl);
+      }
+    </script>
+    <select id="version" autocomplete="off" onchange="changeVersion(event)">
      <option value="main">dev</option>
      <option value="0.5.2">v0.5.2</option>
      <option value="0.5.1">v0.5.1</option>
@@ -10,7 +18,7 @@
      <option value="0.1.1">v0.1.1</option>
      <option value="0.1.0">v0.1.0</option>
     </select>
-    <select id="visibility">
+    <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
      <option value="doc">User docs</option>
      <option value="int">Internal</option>
      <option value="cov">Coverage</option>
