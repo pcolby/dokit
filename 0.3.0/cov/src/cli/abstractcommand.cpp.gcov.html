@@ -37,7 +37,33 @@
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
-            <td class="headerValue">0.3.0+670</td>
+            <td class="headerValue">
+    <script>
+      function changeVersion(event) {
+        console.log(event);
+        newUrl = `../../../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
+        console.log(`Navigating to ${newUrl}`);
+        window.location.assign(newUrl);
+      }
+    </script>
+    <select id="version" autocomplete="off" onchange="changeVersion(event)">
+     <option value="main">dev</option>
+     <option value="0.5.2">v0.5.2</option>
+     <option value="0.5.1">v0.5.1</option>
+     <option value="0.5.0">v0.5.0</option>
+     <option value="0.4.0">v0.4.0</option>
+     <option value="0.3.0" selected>v0.3.0</option>
+     <option value="0.2.0">v0.2.0</option>
+     <option value="0.1.2">v0.1.2</option>
+     <option value="0.1.1">v0.1.1</option>
+     <option value="0.1.0">v0.1.0</option>
+    </select>
+    <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
+     <option value="doc">User docs</option>
+     <option value="int">Internal</option>
+     <option value="cov" selected>Coverage</option>
+    </select>
+   </td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
