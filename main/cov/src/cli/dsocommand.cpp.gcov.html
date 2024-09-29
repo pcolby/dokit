@@ -145,13 +145,13 @@
 <a name="57"><span class="lineNum">      57 </span>            : </a>
 <a name="58"><span class="lineNum">      58 </span>            :     // Parse the (required) mode option.</a>
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">       1100 :     const QString mode = parser.value(QLatin1String(&quot;mode&quot;)).trimmed().toLower();</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        575 :     if (mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        600 :     if (mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></a>
 <a name="61"><span class="lineNum">      61 </span><span class="lineCov">         22 :         settings.mode = DsoService::Mode::AcVoltage;</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        552 :     } else if (mode.startsWith(QLatin1String(&quot;dc v&quot;)) || mode.startsWith(QLatin1String(&quot;vdc&quot;))) {</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        576 :     } else if (mode.startsWith(QLatin1String(&quot;dc v&quot;)) || mode.startsWith(QLatin1String(&quot;vdc&quot;))) {</span></a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">        462 :         settings.mode = DsoService::Mode::DcVoltage;</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         69 :     } else if (mode.startsWith(QLatin1String(&quot;ac c&quot;)) || mode.startsWith(QLatin1String(&quot;aac&quot;))) {</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         72 :     } else if (mode.startsWith(QLatin1String(&quot;ac c&quot;)) || mode.startsWith(QLatin1String(&quot;aac&quot;))) {</span></a>
 <a name="65"><span class="lineNum">      65 </span><span class="lineCov">         22 :         settings.mode = DsoService::Mode::AcCurrent;</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">         46 :     } else if (mode.startsWith(QLatin1String(&quot;dc c&quot;)) || mode.startsWith(QLatin1String(&quot;adc&quot;))) {</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">         48 :     } else if (mode.startsWith(QLatin1String(&quot;dc c&quot;)) || mode.startsWith(QLatin1String(&quot;adc&quot;))) {</span></a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineCov">         22 :         settings.mode = DsoService::Mode::DcCurrent;</span></a>
 <a name="68"><span class="lineNum">      68 </span>            :     } else {</a>
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">         44 :         errors.append(tr(&quot;Unknown DSO mode: %1&quot;).arg(parser.value(QLatin1String(&quot;mode&quot;))));</span></a>
@@ -354,7 +354,7 @@
 <a name="266"><span class="lineNum">     266 </span>            :                 .arg(sampleNumber).arg(value).arg(unit, range));</a>
 <a name="267"><span class="lineNum">     267 </span><span class="lineCov">       2464 :             break;</span></a>
 <a name="268"><span class="lineNum">     268 </span><span class="lineCov">        672 :         case OutputFormat::Json:</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">      19488 :             std::cout &lt;&lt; QJsonDocument(QJsonObject{</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">      19712 :             std::cout &lt;&lt; QJsonDocument(QJsonObject{</span></a>
 <a name="270"><span class="lineNum">     270 </span><span class="lineCov">        896 :                     { QLatin1String(&quot;value&quot;),  value },</span></a>
 <a name="271"><span class="lineNum">     271 </span><span class="lineCov">        896 :                     { QLatin1String(&quot;unit&quot;),   unit },</span></a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineCov">        896 :                     { QLatin1String(&quot;range&quot;),  range },</span></a>

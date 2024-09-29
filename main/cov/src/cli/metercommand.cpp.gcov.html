@@ -143,16 +143,16 @@
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <a name="56"><span class="lineNum">      56 </span>            :     // Parse the (required) mode option.</a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">       1056 :     const QString mode = parser.value(QLatin1String(&quot;mode&quot;)).trimmed().toLower();</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        552 :     if (mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        576 :     if (mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></a>
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">         22 :         settings.mode = MultimeterService::Mode::AcVoltage;</span></a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">         22 :         minRangeFunc = minVoltageRange;</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        529 :     } else if (mode.startsWith(QLatin1String(&quot;dc v&quot;)) || mode.startsWith(QLatin1String(&quot;vdc&quot;))) {</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        552 :     } else if (mode.startsWith(QLatin1String(&quot;dc v&quot;)) || mode.startsWith(QLatin1String(&quot;vdc&quot;))) {</span></a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">        242 :         settings.mode = MultimeterService::Mode::DcVoltage;</span></a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">        242 :         minRangeFunc = minVoltageRange;</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        276 :     } else if (mode.startsWith(QLatin1String(&quot;ac c&quot;)) || mode.startsWith(QLatin1String(&quot;aac&quot;))) {</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        288 :     } else if (mode.startsWith(QLatin1String(&quot;ac c&quot;)) || mode.startsWith(QLatin1String(&quot;aac&quot;))) {</span></a>
 <a name="65"><span class="lineNum">      65 </span><span class="lineCov">         22 :         settings.mode = MultimeterService::Mode::AcCurrent;</span></a>
 <a name="66"><span class="lineNum">      66 </span><span class="lineCov">         22 :         minRangeFunc = minCurrentRange;</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        253 :     } else if (mode.startsWith(QLatin1String(&quot;dc c&quot;)) || mode.startsWith(QLatin1String(&quot;adc&quot;))) {</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">        264 :     } else if (mode.startsWith(QLatin1String(&quot;dc c&quot;)) || mode.startsWith(QLatin1String(&quot;adc&quot;))) {</span></a>
 <a name="68"><span class="lineNum">      68 </span><span class="lineCov">         44 :         settings.mode = MultimeterService::Mode::DcCurrent;</span></a>
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">         44 :         minRangeFunc = minCurrentRange;</span></a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">        198 :     } else if (mode.startsWith(QLatin1String(&quot;res&quot;))) {</span></a>
@@ -350,12 +350,12 @@
 <a name="262"><span class="lineNum">     262 </span><span class="lineCov">        550 :             { QLatin1String(&quot;value&quot;), qIsInf(reading.value) ?</span></a>
 <a name="263"><span class="lineNum">     263 </span><span class="lineCov">        600 :                 QJsonValue(tr(&quot;Infinity&quot;)) : QJsonValue(reading.value) },</span></a>
 <a name="264"><span class="lineNum">     264 </span><span class="lineCov">       1100 :             { QLatin1String(&quot;mode&quot;),   MultimeterService::toString(reading.mode) },</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       3650 :         };</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">       3675 :         };</span></a>
 <a name="266"><span class="lineNum">     266 </span><span class="lineCov">        550 :         if (!unit.isNull()) {</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        448 :             object.insert(QLatin1String(&quot;unit&quot;), unit);</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        462 :             object.insert(QLatin1String(&quot;unit&quot;), unit);</span></a>
 <a name="268"><span class="lineNum">     268 </span>            :         }</a>
 <a name="269"><span class="lineNum">     269 </span><span class="lineCov">        550 :         if (!range.isNull()) {</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">        352 :             object.insert(QLatin1String(&quot;range&quot;), range);</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">        363 :             object.insert(QLatin1String(&quot;range&quot;), range);</span></a>
 <a name="271"><span class="lineNum">     271 </span>            :         }</a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineCov">       1100 :         std::cout &lt;&lt; QJsonDocument(object).toJson().toStdString();</span></a>
 <a name="273"><span class="lineNum">     273 </span><span class="lineCov">        550 :     }   break;</span></a>

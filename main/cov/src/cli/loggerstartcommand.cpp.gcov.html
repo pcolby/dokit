@@ -144,16 +144,16 @@
 <a name="56"><span class="lineNum">      56 </span>            : </a>
 <a name="57"><span class="lineNum">      57 </span>            :     // Parse the (required) mode option.</a>
 <a name="58"><span class="lineNum">      58 </span><span class="lineCov">        836 :     const QString mode = parser.value(QLatin1String(&quot;mode&quot;)).trimmed().toLower();</span></a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        437 :     if (mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        456 :     if (mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">         22 :         settings.mode = DataLoggerService::Mode::AcVoltage;</span></a>
 <a name="61"><span class="lineNum">      61 </span><span class="lineCov">         22 :         minRangeFunc = minVoltageRange;</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        414 :     } else if (mode.startsWith(QLatin1String(&quot;dc v&quot;)) || mode.startsWith(QLatin1String(&quot;vdc&quot;))) {</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">        432 :     } else if (mode.startsWith(QLatin1String(&quot;dc v&quot;)) || mode.startsWith(QLatin1String(&quot;vdc&quot;))) {</span></a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">        286 :         settings.mode = DataLoggerService::Mode::DcVoltage;</span></a>
 <a name="64"><span class="lineNum">      64 </span><span class="lineCov">        286 :         minRangeFunc = minVoltageRange;</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        115 :     } else if (mode.startsWith(QLatin1String(&quot;ac c&quot;)) || mode.startsWith(QLatin1String(&quot;aac&quot;))) {</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        120 :     } else if (mode.startsWith(QLatin1String(&quot;ac c&quot;)) || mode.startsWith(QLatin1String(&quot;aac&quot;))) {</span></a>
 <a name="66"><span class="lineNum">      66 </span><span class="lineCov">         22 :         settings.mode = DataLoggerService::Mode::AcCurrent;</span></a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineCov">         22 :         minRangeFunc = minCurrentRange;</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         92 :     } else if (mode.startsWith(QLatin1String(&quot;dc c&quot;)) || mode.startsWith(QLatin1String(&quot;adc&quot;))) {</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         96 :     } else if (mode.startsWith(QLatin1String(&quot;dc c&quot;)) || mode.startsWith(QLatin1String(&quot;adc&quot;))) {</span></a>
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">         22 :         settings.mode = DataLoggerService::Mode::DcCurrent;</span></a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">         22 :         minRangeFunc = minCurrentRange;</span></a>
 <a name="71"><span class="lineNum">      71 </span><span class="lineCov">         66 :     } else if (mode.startsWith(QLatin1String(&quot;temp&quot;))) {</span></a>
@@ -274,7 +274,7 @@
 <a name="186"><span class="lineNum">     186 </span><span class="lineCov">         30 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_start_result\nsuccess\n&quot;));</span></a>
 <a name="187"><span class="lineNum">     187 </span><span class="lineCov">         22 :         break;</span></a>
 <a name="188"><span class="lineNum">     188 </span>            :     case OutputFormat::Json:</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">         37 :         std::cout &lt;&lt; qUtf8Printable(QLatin1String(&quot;true\n&quot;));</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">         36 :         std::cout &lt;&lt; qUtf8Printable(QLatin1String(&quot;true\n&quot;));</span></a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">         22 :         break;</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineCov">         22 :     case OutputFormat::Text:</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineCov">         30 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></a>

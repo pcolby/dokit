@@ -120,17 +120,17 @@
 <a name="32"><span class="lineNum">      32 </span><span class="lineCov">        484 : QString StatusService::toString(const StatusService::DeviceStatus &amp;status)</span></a>
 <a name="33"><span class="lineNum">      33 </span>            : {</a>
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">        484 :     switch (status) {</span></a>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">         70 :     case DeviceStatus::Idle:                 return  QLatin1String(&quot;Idle&quot;);</span></a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          7 :     case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String(&quot;MultimeterDcVoltage&quot;);</span></a>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          7 :     case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String(&quot;MultimeterAcVoltage&quot;);</span></a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          7 :     case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String(&quot;MultimeterDcCurrent&quot;);</span></a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          7 :     case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String(&quot;MultimeterAcCurrent&quot;);</span></a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          7 :     case DeviceStatus::MultimeterResistance: return  QLatin1String(&quot;MultimeterResistance&quot;);</span></a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          7 :     case DeviceStatus::MultimeterDiode:      return  QLatin1String(&quot;MultimeterDiode&quot;);</span></a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          7 :     case DeviceStatus::MultimeterContinuity: return  QLatin1String(&quot;MultimeterContinuity&quot;);</span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          7 :     case DeviceStatus::MultimeterTemperature:return  QLatin1String(&quot;MultimeterTemperature&quot;);</span></a>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          7 :     case DeviceStatus::DsoModeSampling:      return  QLatin1String(&quot;DsoModeSampling&quot;);</span></a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          7 :     case DeviceStatus::LoggerModeSampling:   return  QLatin1String(&quot;LoggerModeSampling&quot;);</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">         60 :     case DeviceStatus::Idle:                 return  QLatin1String(&quot;Idle&quot;);</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          6 :     case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String(&quot;MultimeterDcVoltage&quot;);</span></a>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          6 :     case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String(&quot;MultimeterAcVoltage&quot;);</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          6 :     case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String(&quot;MultimeterDcCurrent&quot;);</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          6 :     case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String(&quot;MultimeterAcCurrent&quot;);</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          6 :     case DeviceStatus::MultimeterResistance: return  QLatin1String(&quot;MultimeterResistance&quot;);</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          6 :     case DeviceStatus::MultimeterDiode:      return  QLatin1String(&quot;MultimeterDiode&quot;);</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          6 :     case DeviceStatus::MultimeterContinuity: return  QLatin1String(&quot;MultimeterContinuity&quot;);</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          6 :     case DeviceStatus::MultimeterTemperature:return  QLatin1String(&quot;MultimeterTemperature&quot;);</span></a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          6 :     case DeviceStatus::DsoModeSampling:      return  QLatin1String(&quot;DsoModeSampling&quot;);</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          6 :     case DeviceStatus::LoggerModeSampling:   return  QLatin1String(&quot;LoggerModeSampling&quot;);</span></a>
 <a name="46"><span class="lineNum">      46 </span>            :     }</a>
 <a name="47"><span class="lineNum">      47 </span>            :     return QString();</a>
 <a name="48"><span class="lineNum">      48 </span>            : }</a>
@@ -141,8 +141,8 @@
 <a name="53"><span class="lineNum">      53 </span><span class="lineCov">        286 : QString StatusService::toString(const StatusService::BatteryStatus &amp;status)</span></a>
 <a name="54"><span class="lineNum">      54 </span>            : {</a>
 <a name="55"><span class="lineNum">      55 </span><span class="lineCov">        286 :     switch (status) {</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         70 :     case BatteryStatus::Low:  return QLatin1String(&quot;Low&quot;);</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          7 :     case BatteryStatus::Good: return QLatin1String(&quot;Good&quot;);</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         60 :     case BatteryStatus::Low:  return QLatin1String(&quot;Low&quot;);</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          6 :     case BatteryStatus::Good: return QLatin1String(&quot;Good&quot;);</span></a>
 <a name="58"><span class="lineNum">      58 </span>            :     }</a>
 <a name="59"><span class="lineNum">      59 </span>            :     return QString();</a>
 <a name="60"><span class="lineNum">      60 </span>            : }</a>
@@ -161,9 +161,9 @@
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">        450 : QString StatusService::toString(const StatusService::SwitchPosition &amp;position)</span></a>
 <a name="74"><span class="lineNum">      74 </span>            : {</a>
 <a name="75"><span class="lineNum">      75 </span><span class="lineCov">        450 :     switch (position) {</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         19 :     case SwitchPosition::Voltage:     return QLatin1String(&quot;Voltage&quot;);</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         49 :     case SwitchPosition::MultiMode:   return QLatin1String(&quot;MultiMode&quot;);</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         13 :     case SwitchPosition::HighCurrent: return QLatin1String(&quot;HighCurrent&quot;);</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         18 :     case SwitchPosition::Voltage:     return QLatin1String(&quot;Voltage&quot;);</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         48 :     case SwitchPosition::MultiMode:   return QLatin1String(&quot;MultiMode&quot;);</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         12 :     case SwitchPosition::HighCurrent: return QLatin1String(&quot;HighCurrent&quot;);</span></a>
 <a name="79"><span class="lineNum">      79 </span>            :     }</a>
 <a name="80"><span class="lineNum">      80 </span>            :     return QString();</a>
 <a name="81"><span class="lineNum">      81 </span>            : }</a>
@@ -174,9 +174,9 @@
 <a name="86"><span class="lineNum">      86 </span><span class="lineCov">        110 : QString StatusService::toString(const StatusService::ChargingStatus &amp;status)</span></a>
 <a name="87"><span class="lineNum">      87 </span>            : {</a>
 <a name="88"><span class="lineNum">      88 </span><span class="lineCov">        110 :     switch (status) {</span></a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          7 :     case ChargingStatus::Discharging: return QLatin1String(&quot;Discharging&quot;);</span></a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          7 :     case ChargingStatus::Charging:    return QLatin1String(&quot;Charging&quot;);</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          7 :     case ChargingStatus::Charged:     return QLatin1String(&quot;Charged&quot;);</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          6 :     case ChargingStatus::Discharging: return QLatin1String(&quot;Discharging&quot;);</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          6 :     case ChargingStatus::Charging:    return QLatin1String(&quot;Charging&quot;);</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          6 :     case ChargingStatus::Charged:     return QLatin1String(&quot;Charged&quot;);</span></a>
 <a name="92"><span class="lineNum">      92 </span>            :     }</a>
 <a name="93"><span class="lineNum">      93 </span>            :     return QString();</a>
 <a name="94"><span class="lineNum">      94 </span>            : }</a>
@@ -187,8 +187,8 @@
 <a name="99"><span class="lineNum">      99 </span><span class="lineCov">        326 : QString StatusService::toString(const StatusService::TorchStatus &amp;status)</span></a>
 <a name="100"><span class="lineNum">     100 </span>            : {</a>
 <a name="101"><span class="lineNum">     101 </span><span class="lineCov">        326 :     switch (status) {</span></a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">         37 :     case TorchStatus::Off: return QLatin1String(&quot;Off&quot;);</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">         19 :     case TorchStatus::On:  return QLatin1String(&quot;On&quot;);</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">         36 :     case TorchStatus::Off: return QLatin1String(&quot;Off&quot;);</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">         18 :     case TorchStatus::On:  return QLatin1String(&quot;On&quot;);</span></a>
 <a name="104"><span class="lineNum">     104 </span>            :     }</a>
 <a name="105"><span class="lineNum">     105 </span>            :     return QString();</a>
 <a name="106"><span class="lineNum">     106 </span>            : }</a>
@@ -199,9 +199,9 @@
 <a name="111"><span class="lineNum">     111 </span><span class="lineCov">        212 : QString StatusService::toString(const StatusService::ButtonStatus &amp;status)</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : {</a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">        212 :     switch (status) {</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         13 :     case ButtonStatus::Released: return QLatin1String(&quot;Released&quot;);</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">         13 :     case ButtonStatus::Pressed:  return QLatin1String(&quot;Pressed&quot;);</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         13 :     case ButtonStatus::Held:     return QLatin1String(&quot;Held&quot;);</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         12 :     case ButtonStatus::Released: return QLatin1String(&quot;Released&quot;);</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">         12 :     case ButtonStatus::Pressed:  return QLatin1String(&quot;Pressed&quot;);</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         12 :     case ButtonStatus::Held:     return QLatin1String(&quot;Held&quot;);</span></a>
 <a name="117"><span class="lineNum">     117 </span>            :     }</a>
 <a name="118"><span class="lineNum">     118 </span>            :     return QString();</a>
 <a name="119"><span class="lineNum">     119 </span>            : }</a>

@@ -206,7 +206,7 @@
 <a name="118"><span class="lineNum">     118 </span><span class="lineCov">         66 :             { QLatin1String(&quot;level&quot;),  status.batteryVoltage },</span></a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineCov">        198 :         };</span></a>
 <a name="120"><span class="lineNum">     120 </span><span class="lineCov">         66 :         if (!batteryLabel.isNull()) {</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         96 :             battery.insert(QLatin1String(&quot;status&quot;), batteryLabel);</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         99 :             battery.insert(QLatin1String(&quot;status&quot;), batteryLabel);</span></a>
 <a name="122"><span class="lineNum">     122 </span>            :         }</a>
 <a name="123"><span class="lineNum">     123 </span>            :         QJsonObject object{</a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineCov">         24 :                 { QLatin1String(&quot;deviceName&quot;),   deviceName },</span></a>
@@ -226,7 +226,7 @@
 <a name="138"><span class="lineNum">     138 </span><span class="lineCov">         24 :                       { QLatin1String(&quot;label&quot;), statusLabel },</span></a>
 <a name="139"><span class="lineNum">     139 </span><span class="lineCov">        132 :                 }},</span></a>
 <a name="140"><span class="lineNum">     140 </span><span class="lineCov">         24 :                 { QLatin1String(&quot;battery&quot;), battery },</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1263 :             };</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1284 :             };</span></a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">         66 :         if (torchStatus) {</span></a>
 <a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :             object.insert(QStringLiteral(&quot;torchStatus&quot;), QJsonObject{</span></a>
 <a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :                 { QLatin1String(&quot;code&quot;), (quint8)*torchStatus },</span></a>
