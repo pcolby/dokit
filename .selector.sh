@@ -6,4 +6,4 @@ set -o errexit -o noclobber -o nounset -o pipefail
 
 : "${AWKPATH:=/usr/share/awk}"
 
-find . -mindepth 2 -name '*.html' | xargs -n 1000 -P 8 awk -f 'versions' -i 'inplace' --
+find . -mindepth 2 -name '*.html' | xargs -n 1000 -P 8 awk -f '.selector' -i 'inplace' --
