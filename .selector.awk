@@ -30,7 +30,7 @@ match(prev, /<td class="headerItem">Version:<\/td>/) {
     print "Failed to recognise version header:" $0 > "/dev/stderr"
     exit 3
   }
-  printf "%s\n%s   </td>\n", parts[0], getSelector()
+  printf "%s\n%s            </td>\n", parts[0], getSelector()
   skip = 1 # Begin skipping (until the next <td></td>).
 }
 
@@ -42,6 +42,10 @@ function getSelector() {
   for (i = length(parts); i > 2; --i)
     ancestors = ancestors"../"
   thisSelector = gensub("\\.\\./\\.\\./", ancestors, "g", selector)
+
+  # Increase the indentation in LCOV files (purely for aesthetics).
+  if (visibility == "cov")
+    thisSelector = gensub(" {4}", "&&& ", "g", thisSelector)
 
   # Select the current version.
   pattern = "value=\"("gensub(/\./, "\\\\.", "g", version)"|"visibility")\""
