@@ -170,7 +170,7 @@
 <a name="82"><span class="lineNum">      82 </span>            :  */</a>
 <a name="83"><span class="lineNum">      83 </span><span class="lineCov">       3240 : QStringList AbstractCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></a>
 <a name="84"><span class="lineNum">      84 </span>            : {</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">      24200 :     return requiredOptions(parser) + QStringList{</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">      23592 :     return requiredOptions(parser) + QStringList{</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :         QLatin1String(&quot;debug&quot;),</a>
 <a name="87"><span class="lineNum">      87 </span>            :         QLatin1String(&quot;device&quot;), QLatin1String(&quot;d&quot;),</a>
 <a name="88"><span class="lineNum">      88 </span>            :         QLatin1String(&quot;output&quot;),</a>
@@ -385,7 +385,7 @@
 <a name="297"><span class="lineNum">     297 </span>            : </a>
 <a name="298"><span class="lineNum">     298 </span>            :     // Parse the device scan timeout option.</a>
 <a name="299"><span class="lineNum">     299 </span><span class="lineCov">       3826 :     if (parser.isSet(QLatin1String(&quot;timeout&quot;))) {</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">        299 :         const quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(QLatin1String(&quot;timeout&quot;)), QLatin1String(&quot;s&quot;), 500);</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">        286 :         const quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(QLatin1String(&quot;timeout&quot;)), QLatin1String(&quot;s&quot;), 500);</span></a>
 <a name="301"><span class="lineNum">     301 </span><span class="lineCov">        182 :         if (timeout == 0) {</span></a>
 <a name="302"><span class="lineNum">     302 </span><span class="lineCov">        168 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(QLatin1String(&quot;timeout&quot;))));</span></a>
 <a name="303"><span class="lineNum">     303 </span><span class="lineCov">         98 :         } else if (discoveryAgent-&gt;lowEnergyDiscoveryTimeout() == -1) {</span></a>
