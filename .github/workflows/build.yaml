@@ -26,7 +26,7 @@ jobs:
         - 6.4.3
         - 6.5.3
         - 6.6.3
-        - 6.7.2
+        - 6.7.3
         - 6.8.0
         env:
         - { cc: clang, cxx: clang++, coverage: false }
@@ -166,7 +166,7 @@ jobs:
         - 6.4.3
         - 6.5.3
         - 6.6.3
-        - 6.7.2
+        - 6.7.3
         - 6.8.0
         os: [ 'macos-12', 'macos-13', 'macos-14' ]
         env:
@@ -202,7 +202,7 @@ jobs:
           - { qt: '6.4.3', env: { cc: gcc-12 } }
           - { qt: '6.5.3', env: { cc: gcc-12 } }
           - { qt: '6.6.3', env: { cc: gcc-12 } }
-          - { qt: '6.7.2', env: { cc: gcc-12 } }
+          - { qt: '6.7.3', env: { cc: gcc-12 } }
           - { qt: '6.8.0', env: { cc: gcc-12 } }
     steps:
     - uses: actions/checkout@v4
@@ -298,7 +298,7 @@ jobs:
         - 6.4.3
         - 6.5.3
         - 6.6.3
-        - 6.7.2
+        - 6.7.3
         - 6.8.0
         generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
         arch: [ x86, x86-64, arm64 ]
@@ -328,7 +328,7 @@ jobs:
         - { arch: x86, qt: '6.4.3' }
         - { arch: x86, qt: '6.5.3' }
         - { arch: x86, qt: '6.6.3' }
-        - { arch: x86, qt: '6.7.2' }
+        - { arch: x86, qt: '6.7.3' }
         - { arch: x86, qt: '6.8.0' }
         # Exclude MinGW builds for x86-64 with Qt's earlier than 5.12, since the Qt online
         # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
@@ -345,7 +345,7 @@ jobs:
         - { generator: 'MinGW Makefiles', qt: '6.4.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.5.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.6.3',   qtArch: win64_mingw   }
-        - { generator: 'MinGW Makefiles', qt: '6.7.2',   qtArch: win64_mingw   }
+        - { generator: 'MinGW Makefiles', qt: '6.7.3',   qtArch: win64_mingw   }
         - { generator: 'MinGW Makefiles', qt: '6.8.0',   qtArch: win64_mingw   }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
         - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
