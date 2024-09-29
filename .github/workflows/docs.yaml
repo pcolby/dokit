@@ -62,6 +62,8 @@ jobs:
       with:
         name: internal-docs
         path: main/int
+    - name: Inject version selectors
+      run: ./.selectors.sh
     - name: Inspect changes # for diagnostics only.
       run: |
         git status
