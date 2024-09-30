@@ -2,7 +2,7 @@
 
 ## [Unreleased][]
 
-- Upgrade to Qt 6.8.0, and 6.7.2.
+- Upgrade to Qt 6.8.0, and 6.7.3.
 
 ### Changed
 
