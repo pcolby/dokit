@@ -79,7 +79,7 @@ jobs:
         CXX: ${{ matrix.env.cxx }}
         PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}
       run: |
-        [[ '${{ matrix.qt }}' == '5' ]] || qtInstallDocs="$RUNNER_WORKSPACE/Qt/Docs/Qt-${QT_VERSION:-${{ matrix.qt }}}"
+        [[ '${{ matrix.qt }}' =~ ^[56]$ ]] || qtInstallDocs="$RUNNER_WORKSPACE/Qt/Docs/Qt-${QT_VERSION:-${{ matrix.qt }}}"
         cmake -D CMAKE_BUILD_TYPE=Release \
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
               ${qtInstallDocs:+-D "QT_INSTALL_DOCS=$qtInstallDocs"} \
