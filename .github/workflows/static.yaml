@@ -11,7 +11,7 @@ jobs:
       contents: read
       security-events: write
     if: github.actor != 'dependabot[bot]'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
     - name: Install Qt
@@ -32,7 +32,7 @@ jobs:
       uses: github/codeql-action/analyze@v3
 
   Cppcheck:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Install Cppcheck
       run: |

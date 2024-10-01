@@ -10,7 +10,7 @@ env:
 
 jobs:
   generate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
       with:
@@ -44,7 +44,7 @@ jobs:
   publish:
     permissions:
       contents: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: success() && (github.ref == 'refs/heads/main')
     needs: generate
     steps:

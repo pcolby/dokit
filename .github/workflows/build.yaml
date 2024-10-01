@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -46,22 +46,7 @@ jobs:
       run: sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
     - name: Install Ubuntu's Qt6
       if: matrix.qt == 6
-      run: |
-        # \todo Add the Qt6 doc packages here when GitHub ugrades to Ubuntu 23.x+
-        sudo apt install qt6-{base-dev{,-tools},connectivity-dev,l10n-tools,tools-dev{,-tools}}
-        # \todo Remove this QT_VERSION env var when GitHub ugrades to Ubuntu 23.x+
-        echo "QT_VERSION=$(/usr/lib/qt6/bin/qtpaths6 --qt-query QT_VERSION)" | tee "$GITHUB_ENV"
-    - name: Install Qt docs
-      # \todo Remove this step when GitHub updates their Ubuntu image. This is only required for Ubuntu 22.04, since
-      # that release is missing the Qt6 documentation packages. Can also remove the above QT_VERSION env var then too.
-      if: matrix.qt == 6
-      uses: jurplel/install-qt-action@v4
-      with:
-        version: ${{ env.QT_VERSION }}
-        no-qt-binaries: true
-        documentation: true
-        doc-archives: 'qtcore'
-        doc-modules: 'qtbluetooth'
+      run: sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}
     - name: Install online Qt version
       if: contains(matrix.qt, '.') # ie if not using Ubuntu's Qt5/Qt6.
       uses: jurplel/install-qt-action@v4
@@ -472,7 +457,7 @@ jobs:
 
   collate-test-results:
     needs: [ linux, mac, win ]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
     - name: Install lcov
@@ -525,7 +510,7 @@ jobs:
   update-tests-on-doc-branch:
     permissions:
       contents: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: success() && (github.ref == 'refs/heads/main')
     needs: collate-test-results
     steps:
