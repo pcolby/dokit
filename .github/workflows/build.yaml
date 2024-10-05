@@ -135,6 +135,7 @@ jobs:
 
   mac:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -153,42 +154,55 @@ jobs:
         - 6.6.3
         - 6.7.3
         - 6.8.0
-        os: [ 'macos-12', 'macos-13', 'macos-14' ]
+        os: [ 'macos-13', 'macos-14', 'macos-15' ]
         env:
         - { cc: clang, cxx: clang++, coverage: false }
-        - { cc: gcc-12, cxx: g++-12, coverage: false }
-        - { cc: gcc-12, cxx: g++-12, coverage: true }
+        - { cc: gcc-14, cxx: g++-14, coverage: false }
+        - { cc: gcc-14, cxx: g++-14, coverage: true }
         exclude:
-          # Exclude Qt 5.x with GCC on macOS 13 (Qt5 only officially supports up to macOS 12).
-          - { qt: '5.9.9',   os: 'macos-13', env: { cc: gcc-12 } }
-          - { qt: '5.10.1',  os: 'macos-13', env: { cc: gcc-12 } }
-          - { qt: '5.11.3',  os: 'macos-13', env: { cc: gcc-12 } }
-          - { qt: '5.12.12', os: 'macos-13', env: { cc: gcc-12 } }
-          - { qt: '5.13.2',  os: 'macos-13', env: { cc: gcc-12 } }
-          - { qt: '5.14.2',  os: 'macos-13', env: { cc: gcc-12 } }
-          - { qt: '5.15.2',  os: 'macos-13', env: { cc: gcc-12 } }
-          # Exclude Qt 5.x on macOS 14+ (Qt5 only officially supports up to macOS 12).
-          - { qt: '5.9.9',   os: 'macos-14' }
-          - { qt: '5.10.1',  os: 'macos-14' }
-          - { qt: '5.11.3',  os: 'macos-14' }
-          - { qt: '5.12.12', os: 'macos-14' }
-          - { qt: '5.13.2',  os: 'macos-14' }
-          - { qt: '5.14.2',  os: 'macos-14' }
-          - { qt: '5.15.2',  os: 'macos-14' }
-          # Exclude Qt 6.2 on macOS 14+ (Qt6 only officially supports macOS 14 from Qt 6.4+, and some 6.2.n LTS update).
-          - { qt: '6.2.4',   os: 'macos-14' }
+          # GitHub's macOS 14+ gcc can only target arm64, but Qt didn't add Apple arm64 support until Qt 6.2, so:
+          # Exclude Qt 5.x (and 6.0, 6.1) with GCC on macOS 14+. Also see the `arch` step below for more details.
+          - { qt: '5.9.9',   os: macos-14, env: { cc: gcc-14 } }
+          - { qt: '5.9.9',   os: macos-15, env: { cc: gcc-14 } }
+          - { qt: '5.10.1',  os: macos-14, env: { cc: gcc-14 } }
+          - { qt: '5.10.1',  os: macos-15, env: { cc: gcc-14 } }
+          - { qt: '5.11.3',  os: macos-14, env: { cc: gcc-14 } }
+          - { qt: '5.11.3',  os: macos-15, env: { cc: gcc-14 } }
+          - { qt: '5.12.12', os: macos-14, env: { cc: gcc-14 } }
+          - { qt: '5.12.12', os: macos-15, env: { cc: gcc-14 } }
+          - { qt: '5.13.2',  os: macos-14, env: { cc: gcc-14 } }
+          - { qt: '5.13.2',  os: macos-15, env: { cc: gcc-14 } }
+          - { qt: '5.14.2',  os: macos-14, env: { cc: gcc-14 } }
+          - { qt: '5.14.2',  os: macos-15, env: { cc: gcc-14 } }
+          - { qt: '5.15.2',  os: macos-14, env: { cc: gcc-14 } }
+          - { qt: '5.15.2',  os: macos-15, env: { cc: gcc-14 } }
+          # Exclude Qt 5.x and 6.2 with Clang on macOS 14+, since these have unit tests that hang on GitHub's runners.
+          - { qt: '5.9.9',   os: macos-14, env: { cc: clang } } # \todo Explore these hangs on a local macOS host,
+          - { qt: '5.9.9',   os: macos-15, env: { cc: clang } } # \todo because they might not be specific to GitHub.
+          - { qt: '5.10.1',  os: macos-14, env: { cc: clang } }
+          - { qt: '5.10.1',  os: macos-15, env: { cc: clang } }
+          - { qt: '5.11.3',  os: macos-14, env: { cc: clang } }
+          - { qt: '5.11.3',  os: macos-15, env: { cc: clang } }
+          - { qt: '5.12.12', os: macos-14, env: { cc: clang } }
+          - { qt: '5.12.12', os: macos-15, env: { cc: clang } }
+          - { qt: '5.13.2',  os: macos-14, env: { cc: clang } }
+          - { qt: '5.13.2',  os: macos-15, env: { cc: clang } }
+          - { qt: '5.14.2',  os: macos-14, env: { cc: clang } }
+          - { qt: '5.14.2',  os: macos-15, env: { cc: clang } }
+          - { qt: '5.15.2',  os: macos-14, env: { cc: clang } }
+          - { qt: '5.15.2',  os: macos-15, env: { cc: clang } }
+          - { qt: '6.2.4',   os: macos-14, env: { cc: clang } }
+          - { qt: '6.2.4',   os: macos-15, env: { cc: clang } }
           # Exclude Qt 5.10 with GCC on macOS. See https://bugreports.qt.io/browse/QTBUG-66585
-          - { qt: '5.10.1', env: { cc: gcc-12 } }
-          # Exclude Qt6 with GCC on macOS for now, as GCC (only) has lots of false compiler
-          # errors, that even if worked-around result in SIGBUS errors in unit tests. See
-          # https://bugreports.qt.io/browse/QTBUG-107050 (non-exhaustive).
-          - { qt: '6.2.4', env: { cc: gcc-12 } }
-          - { qt: '6.3.2', env: { cc: gcc-12 } }
-          - { qt: '6.4.3', env: { cc: gcc-12 } }
-          - { qt: '6.5.3', env: { cc: gcc-12 } }
-          - { qt: '6.6.3', env: { cc: gcc-12 } }
-          - { qt: '6.7.3', env: { cc: gcc-12 } }
-          - { qt: '6.8.0', env: { cc: gcc-12 } }
+          - { qt: '5.10.1', env: { cc: gcc-14 } }
+          # Exclude Qt 6.x with GCC on macOS for now. See https://bugreports.qt.io/browse/QTBUG-107050
+          - { qt: '6.2.4', env: { cc: gcc-14 } }
+          - { qt: '6.3.2', env: { cc: gcc-14 } }
+          - { qt: '6.4.3', env: { cc: gcc-14 } }
+          - { qt: '6.5.3', env: { cc: gcc-14 } }
+          - { qt: '6.6.3', env: { cc: gcc-14 } }
+          - { qt: '6.7.3', env: { cc: gcc-14 } }
+          - { qt: '6.8.0', env: { cc: gcc-14 } }
     steps:
     - uses: actions/checkout@v4
     - name: Install lcov
@@ -208,16 +222,28 @@ jobs:
         name: aqtinstall-log-${{ matrix.os }}-${{ matrix.env.cc }}-${{ matrix.qt }}${{ matrix.env.coverage && '-cov' || ''}}
         path: aqtinstall.log
         if-no-files-found: error
+    - name: Choose target architectures
+      id: arch
+      run: |
+        # Qt only supports x86-64 (not arm64) on macOS prior to Qt 6.2.0. See https://www.qt.io/blog/qt-on-apple-silicon
+        if [[ '${{ matrix.qt }}' =~ ^(5|6\.[01])\. ]]; then arch=x86_64
+        # GitHub runners' (homebrew'd) gcc's only support support x86-64 prior to macos-14, and only arm64 after.
+        # Note: if we attempt to use multiple archs, gcc will warn, but continue, resulting in later failures.
+        elif [[ '${{ matrix.env.cc }}' == gcc-* ]]; then
+          if [[ '${{ matrix.os }}' == 'macos-13' ]]; then arch='x86_64'; else arch='arm64'; fi
+        # Otherwise, default to universal binaries, where possible.
+        else arch='arm64;x86_64'; fi
+        tee -a "$GITHUB_ENV" <<< "CMAKE_OSX_ARCHITECTURES=${arch}"
+        tee -a "$GITHUB_OUTPUT" <<< "buildId=${arch//;/-}"
     - name: Build
       id: build
       env:
         CC:  ${{ matrix.env.cc }}
         CXX: ${{ matrix.env.cxx }}
-        CMAKE_OSX_ARCHITECTURES: ${{ startsWith(matrix.qt, '6') && 'arm64;' || '' }}x86_64
-        PROJECT_BUILD_ID: ${{ github.run_number }}.${{ matrix.os }}.${{ startsWith(matrix.qt, '6') && 'arm64-' || '' }}x86_64.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}
+        PROJECT_BUILD_ID: ${{ github.run_number }}.${{ matrix.os }}.${{ steps.arch.outputs.buildId }}.${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}
       run: |
         cmake -D CMAKE_BUILD_TYPE=Release \
-              -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-12' || '/usr/bin/gcov'}} \
+              -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-14' || '/usr/bin/gcov'}} \
               -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
               -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
               -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
@@ -229,6 +255,7 @@ jobs:
         "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" --version
     - name: Test
       run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
+      timeout-minutes: 1
     - name: Collate test coverage
       if: matrix.env.coverage
       run: cmake --build "$RUNNER_TEMP" --target coverage
