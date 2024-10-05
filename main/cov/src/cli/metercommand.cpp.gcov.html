@@ -114,14 +114,14 @@
 <span id="L26"><span class="lineNum">      26</span>              : </span>
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">        1166 : QStringList MeterCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
 <span id="L28"><span class="lineNum">      28</span>              : {</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">        4664 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">        3816 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
 <span id="L30"><span class="lineNum">      30</span>              :         QLatin1String(&quot;mode&quot;),</span>
 <span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        2968 :     };</span></span>
 <span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         636 : }</span></span>
 <span id="L33"><span class="lineNum">      33</span>              : </span>
 <span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         572 : QStringList MeterCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
 <span id="L35"><span class="lineNum">      35</span>              : {</span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        3432 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        2704 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></span>
 <span id="L37"><span class="lineNum">      37</span>              :         QLatin1String(&quot;interval&quot;),</span>
 <span id="L38"><span class="lineNum">      38</span>              :         QLatin1String(&quot;range&quot;),</span>
 <span id="L39"><span class="lineNum">      39</span>              :         QLatin1String(&quot;samples&quot;),</span>
@@ -308,7 +308,7 @@
 <span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         792 :         break;</span></span>
 <span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         264 :     case MultimeterService::Mode::Continuity:</span></span>
 <span id="L222"><span class="lineNum">     222</span>              :         status = (reading.status == MultimeterService::MeterStatus::Continuity)</span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         432 :             ? tr(&quot;Continuity&quot;) : tr(&quot;No continuity&quot;);</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         360 :             ? tr(&quot;Continuity&quot;) : tr(&quot;No continuity&quot;);</span></span>
 <span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">         264 :         break;</span></span>
 <span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">         264 :     case MultimeterService::Mode::Temperature:</span></span>
 <span id="L226"><span class="lineNum">     226</span>              :     case MultimeterService::Mode::ExternalTemperature:</span>
@@ -350,7 +350,7 @@
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">         550 :             { QLatin1String(&quot;value&quot;), qIsInf(reading.value) ?</span></span>
 <span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">         600 :                 QJsonValue(tr(&quot;Infinity&quot;)) : QJsonValue(reading.value) },</span></span>
 <span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        1100 :             { QLatin1String(&quot;mode&quot;),   MultimeterService::toString(reading.mode) },</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        2450 :         };</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3050 :         };</span></span>
 <span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">         550 :         if (!unit.isNull()) {</span></span>
 <span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">         462 :             object.insert(QLatin1String(&quot;unit&quot;), unit);</span></span>
 <span id="L268"><span class="lineNum">     268</span>              :         }</span>
@@ -373,7 +373,7 @@
 <span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        1650 :     if ((samplesToGo &gt; 0) &amp;&amp; (--samplesToGo == 0)) {</span></span>
 <span id="L286"><span class="lineNum">     286</span> <span class="tlaUNC tlaBgUNC">           0 :         if (device) disconnect(); // Will exit the application once disconnected.</span></span>
 <span id="L287"><span class="lineNum">     287</span>              :     }</span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC tlaBgGNC">        4200 : }</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC tlaBgGNC">        3750 : }</span></span>
         </pre>
               </td>
             </tr>

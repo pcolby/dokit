@@ -116,7 +116,7 @@
 <span id="L28"><span class="lineNum">      28</span>              : #include &lt;Windows.h&gt;</span>
 <span id="L29"><span class="lineNum">      29</span>              : #endif</span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC tlaBgGNC">          66 : static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.main&quot;, QtInfoMsg);</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC tlaBgGNC">          72 : static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.main&quot;, QtInfoMsg);</span></span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
 <span id="L33"><span class="lineNum">      33</span>              : inline bool haveConsole()</span>
 <span id="L34"><span class="lineNum">      34</span>              : {</span>
@@ -217,7 +217,7 @@
 <span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC tlaBgGNC">          22 : Command parseCommandLine(const QStringList &amp;appArguments, QCommandLineParser &amp;parser)</span></span>
 <span id="L130"><span class="lineNum">     130</span>              : {</span>
 <span id="L131"><span class="lineNum">     131</span>              :     // Setup the command line options.</span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">         140 :     parser.addOptions({</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">         146 :     parser.addOptions({</span></span>
 <span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          36 :         { QStringLiteral(&quot;color&quot;),</span></span>
 <span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;Colors the console output. Valid options &quot;</span></span>
 <span id="L135"><span class="lineNum">     135</span>              :           &quot;are: yes, no and auto. The default is auto.&quot;),</span>
@@ -225,7 +225,7 @@
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          22 :         {{QStringLiteral(&quot;debug&quot;)},</span></span>
 <span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;Enable debug output.&quot;)},</span></span>
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">           8 :         {{QStringLiteral(&quot;d&quot;), QStringLiteral(&quot;device&quot;)},</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          35 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          39 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,</span></span>
 <span id="L141"><span class="lineNum">     141</span>              :           &quot;Set the name, hardware address or macOS UUID of Pokit device to use. If not specified, &quot;</span>
 <span id="L142"><span class="lineNum">     142</span>              :           &quot;the first discovered Pokit device will be used.&quot;),</span>
 <span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;device&quot;)},</span></span>
@@ -239,7 +239,7 @@
 <span id="L151"><span class="lineNum">     151</span>              :           &quot;interval. If the option itself is not specified, a sensible default will be chosen &quot;</span>
 <span id="L152"><span class="lineNum">     152</span>              :           &quot;according to the selected command.&quot;),</span>
 <span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;interval&quot;)},</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">          36 :         {{QStringLiteral(&quot;mode&quot;)},</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">          30 :         {{QStringLiteral(&quot;mode&quot;)},</span></span>
 <span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;Set the desired operation mode. For &quot;</span></span>
 <span id="L156"><span class="lineNum">     156</span>              :           &quot;meter, dso, and logger commands, the supported modes are: AC Voltage, DC Voltage, AC Current, &quot;</span>
 <span id="L157"><span class="lineNum">     157</span>              :           &quot;DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. &quot;</span>
@@ -248,10 +248,10 @@
 <span id="L160"><span class="lineNum">     160</span>              :           &quot;requires firmware v1.5 or later for Pokit devices to support it. For the set-torch command &quot;</span>
 <span id="L161"><span class="lineNum">     161</span>              :           &quot;supported modes are On and Off.&quot;),</span>
 <span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;mode&quot;)},</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          36 :         {{QStringLiteral(&quot;new-name&quot;)},</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          30 :         {{QStringLiteral(&quot;new-name&quot;)},</span></span>
 <span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;Give the desired new name for the set-&quot;</span></span>
 <span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">          44 :           &quot;name command.&quot;), QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;name&quot;)},</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          36 :         {{QStringLiteral(&quot;output&quot;)},</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          30 :         {{QStringLiteral(&quot;output&quot;)},</span></span>
 <span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;Set the format for output. Supported &quot;</span></span>
 <span id="L168"><span class="lineNum">     168</span>              :           &quot;formats are: CSV, JSON and Text. All are case insenstitve. The default is Text.&quot;),</span>
 <span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;format&quot;),</span></span>
@@ -265,23 +265,23 @@
 <span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">          22 :         {{QStringLiteral(&quot;samples&quot;)},</span></span>
 <span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;Set the number of samples to acquire.&quot;),</span></span>
 <span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;count&quot;)},</span></span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          36 :         {{QStringLiteral(&quot;temperature&quot;)},</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          30 :         {{QStringLiteral(&quot;temperature&quot;)},</span></span>
 <span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;Set the current ambient temperature for &quot;</span></span>
 <span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          44 :           &quot;the calibration command.&quot;), QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;degrees&quot;)},</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          36 :         {{QStringLiteral(&quot;timeout&quot;)},</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          30 :         {{QStringLiteral(&quot;timeout&quot;)},</span></span>
 <span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;Set the device discovery scan timeout.&quot;</span></span>
 <span id="L185"><span class="lineNum">     185</span>              :           &quot;Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. &quot;</span>
 <span id="L186"><span class="lineNum">     186</span>              :           &quot;If no suffix is present, the units will be inferred from the magnitide of the given &quot;</span>
 <span id="L187"><span class="lineNum">     187</span>              :           &quot;interval. The default behaviour is no timeout.&quot;),</span>
 <span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;period&quot;)},</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          36 :         {{QStringLiteral(&quot;timestamp&quot;)},</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          30 :         {{QStringLiteral(&quot;timestamp&quot;)},</span></span>
 <span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;Set the optional starting timestamp for &quot;</span></span>
 <span id="L191"><span class="lineNum">     191</span>              :           &quot;data logging. Default to 'now'.&quot;),</span>
 <span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          44 :         QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;period&quot;)},</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          36 :         {{QStringLiteral(&quot;trigger-level&quot;)},</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          30 :         {{QStringLiteral(&quot;trigger-level&quot;)},</span></span>
 <span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;Set the DSO trigger level.&quot;),</span></span>
 <span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;level&quot;)},</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          36 :         {{QStringLiteral(&quot;trigger-mode&quot;)},</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          30 :         {{QStringLiteral(&quot;trigger-mode&quot;)},</span></span>
 <span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;,&quot;Set the DSO trigger mode. Supported &quot;</span></span>
 <span id="L198"><span class="lineNum">     198</span>              :           &quot;modes are: free, rising and falling. The default is free.&quot;),</span>
 <span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">          44 :           QCoreApplication::translate(&quot;parseCommandLine&quot;, &quot;mode&quot;), QStringLiteral(&quot;free&quot;)},</span></span>
@@ -353,7 +353,7 @@
 <span id="L265"><span class="lineNum">     265</span>              :     // Process the command for real (ie throw errors for unknown options, etc).</span>
 <span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC tlaBgGNC">          22 :     parser.process(appArguments);</span></span>
 <span id="L267"><span class="lineNum">     267</span> <span class="tlaUNC tlaBgUNC">           0 :     return command;</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC tlaBgGNC">         589 : }</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC tlaBgGNC">         513 : }</span></span>
 <span id="L269"><span class="lineNum">     269</span>              : </span>
 <span id="L270"><span class="lineNum">     270</span> <span class="tlaUNC tlaBgUNC">           0 : AbstractCommand * getCommandObject(const Command command, QObject * const parent)</span></span>
 <span id="L271"><span class="lineNum">     271</span>              : {</span>

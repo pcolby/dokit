@@ -204,16 +204,16 @@
 <span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">          66 :     case OutputFormat::Json: {</span></span>
 <span id="L117"><span class="lineNum">     117</span>              :         QJsonObject battery{</span>
 <span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">          66 :             { QLatin1String(&quot;level&quot;),  status.batteryVoltage },</span></span>
-<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">         198 :         };</span></span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">         216 :         };</span></span>
 <span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">          66 :         if (!batteryLabel.isNull()) {</span></span>
 <span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">          99 :             battery.insert(QLatin1String(&quot;status&quot;), batteryLabel);</span></span>
 <span id="L122"><span class="lineNum">     122</span>              :         }</span>
 <span id="L123"><span class="lineNum">     123</span>              :         QJsonObject object{</span>
 <span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">          24 :                 { QLatin1String(&quot;deviceName&quot;),   deviceName },</span></span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">         264 :                 { QLatin1String(&quot;firmwareVersion&quot;), QJsonObject{</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">         210 :                 { QLatin1String(&quot;firmwareVersion&quot;), QJsonObject{</span></span>
 <span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">          48 :                       { QLatin1String(&quot;major&quot;), chrs.firmwareVersion.majorVersion() },</span></span>
 <span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">          48 :                       { QLatin1String(&quot;minor&quot;), chrs.firmwareVersion.minorVersion() },</span></span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">         132 :                 }},</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">         204 :                 }},</span></span>
 <span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">          90 :                 { QLatin1String(&quot;maximumVoltage&quot;),      chrs.maximumVoltage },</span></span>
 <span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">          90 :                 { QLatin1String(&quot;maximumCurrent&quot;),      chrs.maximumCurrent },</span></span>
 <span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">          90 :                 { QLatin1String(&quot;maximumResistance&quot;),   chrs.maximumResistance },</span></span>
@@ -221,12 +221,12 @@
 <span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">          90 :                 { QLatin1String(&quot;samplingBufferSize&quot;),  chrs.samplingBufferSize },</span></span>
 <span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">          90 :                 { QLatin1String(&quot;capabilityMask&quot;),      chrs.capabilityMask },</span></span>
 <span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">         132 :                 { QLatin1String(&quot;macAddress&quot;),          chrs.macAddress.toString() },</span></span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         264 :                 { QLatin1String(&quot;deviceStatus&quot;), QJsonObject{</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         210 :                 { QLatin1String(&quot;deviceStatus&quot;), QJsonObject{</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">          90 :                       { QLatin1String(&quot;code&quot;), (quint8)status.deviceStatus },</span></span>
 <span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">          24 :                       { QLatin1String(&quot;label&quot;), statusLabel },</span></span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         132 :                 }},</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         204 :                 }},</span></span>
 <span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          24 :                 { QLatin1String(&quot;battery&quot;), battery },</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         882 :             };</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">        1134 :             };</span></span>
 <span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">          66 :         if (torchStatus) {</span></span>
 <span id="L143"><span class="lineNum">     143</span> <span class="tlaUNC tlaBgUNC">           0 :             object.insert(QStringLiteral(&quot;torchStatus&quot;), QJsonObject{</span></span>
 <span id="L144"><span class="lineNum">     144</span> <span class="tlaUNC">           0 :                 { QLatin1String(&quot;code&quot;), (quint8)*torchStatus },</span></span>
@@ -280,7 +280,7 @@
 <span id="L192"><span class="lineNum">     192</span>              :         break;</span>
 <span id="L193"><span class="lineNum">     193</span>              :     }</span>
 <span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC tlaBgGNC">         198 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">        1302 : }</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">        1212 : }</span></span>
         </pre>
               </td>
             </tr>

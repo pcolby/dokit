@@ -31,8 +31,8 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">59.5&nbsp;%</td>
-            <td class="headerCovTableEntry">195</td>
+            <td class="headerCovTableEntryLo">58.9&nbsp;%</td>
+            <td class="headerCovTableEntry">197</td>
             <td class="headerCovTableEntry">116</td>
           </tr>
           <tr>
@@ -424,8 +424,8 @@
 <span id="L336"><span class="lineNum">     336</span>              :         return false;</span>
 <span id="L337"><span class="lineNum">     337</span>              :     }</span>
 <span id="L338"><span class="lineNum">     338</span>              : </span>
-<span id="L339"><span class="lineNum">     339</span>              :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC tlaBgUNC">           0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC tlaBgUNC">           0 :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></span>
 <span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :     if (!descriptor.isValid()) {</span></span>
 <span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; has no client configuration descriptor.)&quot;)</span></span>
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></span>
@@ -459,8 +459,8 @@
 <span id="L371"><span class="lineNum">     371</span>              :         return false;</span>
 <span id="L372"><span class="lineNum">     372</span>              :     }</span>
 <span id="L373"><span class="lineNum">     373</span>              : </span>
-<span id="L374"><span class="lineNum">     374</span>              :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC tlaBgUNC">           0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaUNC tlaBgUNC">           0 :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</span></span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC">           0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></span>
 <span id="L376"><span class="lineNum">     376</span> <span class="tlaUNC">           0 :     if (!descriptor.isValid()) {</span></span>
 <span id="L377"><span class="lineNum">     377</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; has no client configuration descriptor.)&quot;)</span></span>
 <span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></span>
@@ -513,10 +513,10 @@
 <span id="L425"><span class="lineNum">     425</span> <span class="tlaGNC">         572 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></span>
 <span id="L426"><span class="lineNum">     426</span>              : {</span>
 <span id="L427"><span class="lineNum">     427</span> <span class="tlaGNC">         208 :     return (data.size() &lt;= maxSize)</span></span>
-<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">        1722 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></span>
-<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">          66 :         : QString::fromLatin1(&quot;0x%1,...,%2&quot;).arg(</span></span>
+<span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">        1725 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></span>
+<span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">         113 :         : QString::fromLatin1(&quot;0x%1,...,%2&quot;).arg(</span></span>
 <span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">         662 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></span>
-<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">        2336 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></span>
+<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">        2324 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></span>
 <span id="L432"><span class="lineNum">     432</span>              : }</span>
 <span id="L433"><span class="lineNum">     433</span>              : </span>
 <span id="L434"><span class="lineNum">     434</span>              : /*!</span>
