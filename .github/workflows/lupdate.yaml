@@ -1,6 +1,6 @@
 name: Translations
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 permissions:
   contents: read
@@ -9,15 +9,15 @@ jobs:
   lupdate:
     runs-on: ubuntu-24.04
     steps:
-    - name: Install Qt
-      run: |
-        sudo apt-mark hold grub-efi-amd64-signed
-        sudo apt update
-        sudo apt upgrade
-        sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}
-    - uses: actions/checkout@v4
-    - name: Check translation files
-      run: |
-        cmake -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-        cmake --build "$RUNNER_TEMP" --target {cli,QtPokit}_lupdate # \todo Include gui too, when relevant.
-        [[ -z $(git status --porcelain | tee /dev/stderr) ]]
+      - name: Install Qt
+        run: |
+          sudo apt-mark hold grub-efi-amd64-signed
+          sudo apt update
+          sudo apt upgrade
+          sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}
+      - uses: actions/checkout@v4
+      - name: Check translation files
+        run: |
+          cmake -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+          cmake --build "$RUNNER_TEMP" --target {cli,QtPokit}_lupdate # \todo Include gui too, when relevant.
+          [[ -z $(git status --porcelain | tee /dev/stderr) ]]

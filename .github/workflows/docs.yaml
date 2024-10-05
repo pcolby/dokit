@@ -1,6 +1,6 @@
 name: Documentation
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 permissions:
   contents: read
@@ -12,34 +12,37 @@ jobs:
   generate:
     runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: true
-    - name: Install Doxygen
-      run: |
-        sudo apt-mark hold grub-efi-amd64-signed
-        sudo apt update
-        sudo apt upgrade
-        sudo apt install graphviz qtbase5-dev qtbase5-doc-dev qtconnectivity5-dev qtconnectivity5-doc-html qttools5-dev qttools5-dev-tools
-        curl --location --silent "https://github.com/doxygen/doxygen/releases/download/Release_${DOXYGEN_VERSION//./_}/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz" |
-          tar --extract --gzip --directory "$RUNNER_TEMP"
-        "$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" --version
-    - name: Build docs
-      run: |
-        cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-        cmake --build "$RUNNER_TEMP" --target doc doc-internal
-    - name: Upload public docs
-      uses: actions/upload-artifact@v4
-      with:
-        name: public-docs
-        path: "${{ runner.temp }}/doc/public"
-        if-no-files-found: error
-    - name: Upload internal docs
-      uses: actions/upload-artifact@v4
-      with:
-        name: internal-docs
-        path: "${{ runner.temp }}/doc/internal"
-        if-no-files-found: error
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Install Doxygen
+        env:
+          BASE_URL: https://github.com/doxygen/doxygen/releases/download/Release_
+        run: |
+          sudo apt-mark hold grub-efi-amd64-signed
+          sudo apt update
+          sudo apt upgrade
+          sudo apt install graphviz qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
+          curl --location --silent "${BASE_URL}${DOXYGEN_VERSION//./_}/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz" |
+            tar --extract --gzip --directory "$RUNNER_TEMP"
+          "$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" --version
+      - name: Build docs
+        run: |
+          cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" \
+            -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+          cmake --build "$RUNNER_TEMP" --target doc doc-internal
+      - name: Upload public docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-docs
+          path: "${{ runner.temp }}/doc/public"
+          if-no-files-found: error
+      - name: Upload internal docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: internal-docs
+          path: "${{ runner.temp }}/doc/internal"
+          if-no-files-found: error
 
   publish:
     permissions:
@@ -48,33 +51,33 @@ jobs:
     if: success() && (github.ref == 'refs/heads/main')
     needs: generate
     steps:
-    - uses: actions/checkout@v4
-      with: { ref: doc }
-    - name: Clear previous docs
-      run: rm -rf main/{doc,int}
-    - name: Download public docs
-      uses: actions/download-artifact@v4
-      with:
-        name: public-docs
-        path: main/doc
-    - name: Download internal docs
-      uses: actions/download-artifact@v4
-      with:
-        name: internal-docs
-        path: main/int
-    - name: Inject version selectors
-      run: ./.selector.sh
-    - name: Inspect changes # for diagnostics only.
-      run: |
-        git status
-        git diff
-    - name: Push updates
-      run: |
-        [[ -z $(git status --porcelain) ]] || {
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git pull
-          git add .
-          git commit -m "Update generated docs for ${GITHUB_SHA}"
-          git push
-        }
+      - uses: actions/checkout@v4
+        with: { ref: doc }
+      - name: Clear previous docs
+        run: rm -rf main/{doc,int}
+      - name: Download public docs
+        uses: actions/download-artifact@v4
+        with:
+          name: public-docs
+          path: main/doc
+      - name: Download internal docs
+        uses: actions/download-artifact@v4
+        with:
+          name: internal-docs
+          path: main/int
+      - name: Inject version selectors
+        run: ./.selector.sh
+      - name: Inspect changes # for diagnostics only.
+        run: |
+          git status
+          git diff
+      - name: Push updates
+        run: |
+          [[ -z $(git status --porcelain) ]] || {
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git pull
+            git add .
+            git commit -m "Update generated docs for ${GITHUB_SHA}"
+            git push
+          }
