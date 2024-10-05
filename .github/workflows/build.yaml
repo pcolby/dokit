@@ -329,8 +329,8 @@ jobs:
           - 6.6.3
           - 6.7.3
           - 6.8.0
-        generator: [ 'MinGW Makefiles', 'NMake Makefiles' ]
         arch: [ x86, x86-64, arm64 ]
+        toolchain: [ llvm, mingw, msvc ]
         exclude:
           # Exclude arm64 builds for Qt's earlier than 6.2, since Qt only added (Windows) arm64
           # 'Technology Preview' support in 6.2.
@@ -341,17 +341,18 @@ jobs:
           - { arch: arm64, qt: '5.13.2' }
           - { arch: arm64, qt: '5.14.2' }
           - { arch: arm64, qt: '5.15.2' }
-          - { arch: arm64, qt: '6.8.0' } # \todo 6.8.0 Beta1 removes cross-compiling to ARM support.
-          # Exclude MinGW builds for arm64, since MinGW has no arm64 support.
-          - { arch: arm64, generator: 'MinGW Makefiles' }
-          # Exclude MinGW builds for x86 (32-bit), since the GitHub Actions Windows runners only
-          # includes MinGW-w64, and not MinGW (32-bit).
-          - { arch: x86, generator: 'MinGW Makefiles' }
-          # Exclude x86 (32-bit) builds for Qt 5.10.1 with MSVC, for QTBUG-67259.
-          # See https://bugreports.qt.io/browse/QTBUG-67259
-          - { arch: x86, qt: '5.10.1', generator: 'NMake Makefiles' }
-          # Exclude x86 (32-bit) builds for Qt 6.x, since the Qt online installer doesn't provide
-          # those binaries for Qt6.
+          # Also exclude arm64 for Qt 6.8 for now, as Qt 6.8 is moving to native-only (not cross-compiling) arm64 on
+          # Windows (https://www.qt.io/blog/qt-for-windows-on-arm-may21-update) and there are not compatible runners.
+          - { arch: arm64, qt: '6.8.0' }
+          # Exclude MinGW (including LLVM) builds for arm64, since Qt does not provide those binaries yet.
+          - { arch: arm64, toolchain: llvm }
+          - { arch: arm64, toolchain: mingw }
+          # Exclude MinGW (includeing LLVM) builds for x86, since the GitHub hosted runners only includes MinGW-w64.
+          - { arch: x86, toolchain: llvm }
+          - { arch: x86, toolchain: mingw }
+          # Exclude x86 (32-bit) builds for Qt 5.10.1 with MSVC. See https://bugreports.qt.io/browse/QTBUG-67259
+          - { arch: x86, qt: '5.10.1', toolchain: msvc }
+          # Exclude x86 (32-bit) builds for Qt 6.x, since the Qt online installer dropped those.
           - { arch: x86, qt: '6.2.4' }
           - { arch: x86, qt: '6.3.2' }
           - { arch: x86, qt: '6.4.3' }
@@ -359,38 +360,89 @@ jobs:
           - { arch: x86, qt: '6.6.3' }
           - { arch: x86, qt: '6.7.3' }
           - { arch: x86, qt: '6.8.0' }
-          # Exclude MinGW builds for x86-64 with Qt's earlier than 5.12, since the Qt online
+          # Exclude MinGW (including LLVM) builds for x86-64 with Qt's earlier than 5.12, since the Qt online
           # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
-          - { arch: x86-64, qt: '5.9.9',  generator: 'MinGW Makefiles' }
-          - { arch: x86-64, qt: '5.10.1', generator: 'MinGW Makefiles' }
-          - { arch: x86-64, qt: '5.11.3', generator: 'MinGW Makefiles' }
-        include: # Override default arch's for install-qt-action and msvc-dev-cmd.
-          - { generator: 'MinGW Makefiles', qt: '5.12.12', qtArch: win64_mingw73 }
-          - { generator: 'MinGW Makefiles', qt: '5.13.2',  qtArch: win64_mingw73 }
-          - { generator: 'MinGW Makefiles', qt: '5.14.2',  qtArch: win64_mingw73 }
-          - { generator: 'MinGW Makefiles', qt: '5.15.2',  qtArch: win64_mingw81 }
-          - { generator: 'MinGW Makefiles', qt: '6.2.4',   qtArch: win64_mingw }
-          - { generator: 'MinGW Makefiles', qt: '6.3.2',   qtArch: win64_mingw }
-          - { generator: 'MinGW Makefiles', qt: '6.4.3',   qtArch: win64_mingw }
-          - { generator: 'MinGW Makefiles', qt: '6.5.3',   qtArch: win64_mingw }
-          - { generator: 'MinGW Makefiles', qt: '6.6.3',   qtArch: win64_mingw }
-          - { generator: 'MinGW Makefiles', qt: '6.7.3',   qtArch: win64_mingw }
-          - { generator: 'MinGW Makefiles', qt: '6.8.0',   qtArch: win64_mingw }
-          - { generator: 'NMake Makefiles', arch: x86, qt: '5.9.9',   qtArch: win32_msvc2015 }
-          - { generator: 'NMake Makefiles', arch: x86, qt: '5.11.3',  qtArch: win32_msvc2015 }
-          - { generator: 'NMake Makefiles', arch: x86, qt: '5.12.12', qtArch: win32_msvc2017 }
-          - { generator: 'NMake Makefiles', arch: x86, qt: '5.13.2',  qtArch: win32_msvc2017 }
-          - { generator: 'NMake Makefiles', arch: x86, qt: '5.14.2',  qtArch: win32_msvc2017 }
-          - { generator: 'NMake Makefiles', arch: x86, qt: '5.15.2',  qtArch: win32_msvc2019 }
-          - { generator: 'NMake Makefiles', arch: arm64,  qtArch: win64_msvc2019_arm64 }
-          - { generator: 'NMake Makefiles', arch: arm64,  msvcArch: amd64_arm64 }
-          - { generator: 'NMake Makefiles', arch: x86,    msvcArch: amd64_x86 }
-          - { generator: 'NMake Makefiles', arch: x86-64, msvcArch: amd64 }
-          # \todo Remove this one when https://github.com/jurplel/install-qt-action/issues/250 is resovled.
-          - { generator: 'NMake Makefiles', arch: x86-64, qt: '6.8.0', qtArch: win64_msvc2022_64 }
-          # Define the toolchain and dll names per generator (for artifact naming mostly).
-          - { generator: 'NMake Makefiles', tool: msvc,  dll: QtPokit.dll }
-          - { generator: 'MinGW Makefiles', tool: mingw, dll: libQtPokit.dll }
+          - { arch: x86-64, qt: '5.9.9',  toolchain: llvm }
+          - { arch: x86-64, qt: '5.9.9',  toolchain: mingw }
+          - { arch: x86-64, qt: '5.10.1', toolchain: llvm }
+          - { arch: x86-64, qt: '5.10.1', toolchain: mingw }
+          - { arch: x86-64, qt: '5.11.3', toolchain: llvm }
+          - { arch: x86-64, qt: '5.11.3', toolchain: mingw }
+          # Exclude LLVM builds before Qt 6.7, since Qt didn't begin shipping llvm-mingw support until then.
+          - { toolchain: llvm, qt: '5.9.9' }
+          - { toolchain: llvm, qt: '5.10.1' }
+          - { toolchain: llvm, qt: '5.11.3' }
+          - { toolchain: llvm, qt: '5.12.12' }
+          - { toolchain: llvm, qt: '5.13.2' }
+          - { toolchain: llvm, qt: '5.14.2' }
+          - { toolchain: llvm, qt: '5.15.2' }
+          - { toolchain: llvm, qt: '6.2.4' }
+          - { toolchain: llvm, qt: '6.3.2' }
+          - { toolchain: llvm, qt: '6.4.3' }
+          - { toolchain: llvm, qt: '6.5.3' }
+          - { toolchain: llvm, qt: '6.6.3' }
+          # \todo Temporarily exclude LLVM builds for Qt 6.7 and 6.8: https://github.com/miurahr/aqtinstall/issues/825
+          - { toolchain: llvm, qt: '6.7.3' }
+          - { toolchain: llvm, qt: '6.8.0' }
+        include:
+          # Map the aqtinstall (aqt) architectures.
+          - { qt: '5.9.9',   toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2015 }
+          - { qt: '5.9.9',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2013_64 }
+          - { qt: '5.9.9',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.9.9',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
+          # { qt: '5.10.1',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2015 } # Excluded above (QTBUG-67259).
+          - { qt: '5.10.1',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2013_64 }
+          - { qt: '5.10.1',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.10.1',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
+          - { qt: '5.11.3',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2015 }
+          - { qt: '5.11.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.11.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
+          - { qt: '5.12.12', toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          - { qt: '5.12.12', toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
+          - { qt: '5.12.12', toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.12.12', toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
+          - { qt: '5.13.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          - { qt: '5.13.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
+          - { qt: '5.13.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.13.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
+          - { qt: '5.14.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          - { qt: '5.14.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
+          - { qt: '5.14.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.14.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
+          - { qt: '5.15.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw81 }
+          - { qt: '5.15.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2019 }
+          - { qt: '5.15.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.15.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.2.4',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.2.4',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.2.4',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.3.2',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.3.2',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.3.2',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.4.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.4.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.4.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.5.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.5.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.5.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.6.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.6.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.6.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          # { qt: '6.7.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.7.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.7.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.7.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          # { qt: '6.8.0',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.8.0',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.8.0',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
+          # Map the MSVC architecture.
+          - { toolchain: msvc, arch: arm64,  msvcArch: amd64_arm64 }
+          - { toolchain: msvc, arch: x86,    msvcArch: amd64_x86 }
+          - { toolchain: msvc, arch: x86-64, msvcArch: amd64 }
+          # Define the generator and dll names per toolchain.
+          # { toolchain: 'llvm',  generator: 'MinGW Makefiles', dll: libQtPokit.dll } \todo See temp exclusion above.
+          - { toolchain: 'mingw', generator: 'MinGW Makefiles', dll: libQtPokit.dll }
+          - { toolchain: 'msvc',  generator: 'NMake Makefiles', dll: QtPokit.dll }
     steps:
       - uses: actions/checkout@v4
       - name: Install host Qt for cross-compilation
@@ -404,8 +456,7 @@ jobs:
         if: matrix.arch == 'arm64' && failure()
         uses: actions/upload-artifact@v4
         with:
-          name: "aqtinstall-log-win-${{ matrix.arch }}-\
-            ${{ startsWith(matrix.generator, 'MinGW') && 'mingw' || 'msvc' }}-${{ matrix.qt }}-cross"
+          name: aqtinstall-log-win-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}-cross
           path: aqtinstall.log
           if-no-files-found: error
       - name: Install Qt
@@ -413,7 +464,7 @@ jobs:
         with:
           version: ${{ matrix.qt }}
           modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
-          arch: ${{ matrix.qtArch }}
+          arch: ${{ matrix.aqtArch }}
           # Use Qt's shipped MinGW for Qt 6.6+ for now, as the runner's MinGW version crashes with Qt 6.6 and 6.7.
           # \todo Remove this if/when the runner's MinGW is updated to fix the incompatibility.
           tools: >-
@@ -429,8 +480,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: "aqtinstall-log-win-${{ matrix.arch }}-\
-            ${{ startsWith(matrix.generator, 'MinGW') && 'mingw' || 'msvc' }}-${{ matrix.qt }}"
+          name: aqtinstall-log-win-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}
           path: aqtinstall.log
           if-no-files-found: error
       - name: Configure cross-compilation
@@ -440,14 +490,14 @@ jobs:
           echo "CMAKE_TOOLCHAIN_FILE=${QT_ROOT_DIR/_64/_arm64/}\lib\cmake\Qt6\qt.toolchain.cmake" >> $GITHUB_ENV
           echo "qtHostPath=${QT_ROOT_DIR/_arm64/_64}" >> $GITHUB_ENV
       - name: Configure MSVC
-        if: ${{ contains(matrix.generator, 'nmake') }}
+        if: matrix.toolchain == 'msvc'
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: ${{ matrix.msvcArch }}
           toolset: ${{ startsWith(matrix.qt, '5') && '14.29' || '' }} # MSVC 14.38+ has many deprecation issues w/ Qt5.
       - name: Build
         env:
-          PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.tool }}.qt-${{ matrix.qt }}
+          PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
         run: |
           cmake -D CMAKE_BUILD_TYPE=Release ^
                 -D QT_HOST_PATH=%qtHostPath% ^
