@@ -5,7 +5,20 @@ if(BUILD_TESTING)
 add_subdirectory(unit)
 endif()
 
-if (ENABLE_COVERAGE)
+if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
+  find_program(LLVM_PROFDATA llvm-profdata)
+  find_program(LLVM_COV llvm-cov)
+  if (LLVM_PROFDATA AND LLVM_COV)
+    message(STATUS "Found llvm-profdata ${LLVM_PROFDATA}")
+    add_custom_target(
+      coverage
+      COMMAND ${LLVM_PROFDATA} --version # \todo
+      COMMENT "Collating coverage data"
+      WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
+  endif()
+endif()
+
+if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   find_program(CODECOV_GCOV gcov)
   find_program(CODECOV_LCOV lcov)
   find_program(CODECOV_GENHTML genhtml)
