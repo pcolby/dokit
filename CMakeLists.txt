@@ -18,6 +18,11 @@ project(
   HOMEPAGE_URL "https://github.com/pcolby/dokit"
   LANGUAGES CXX)
 
+# Allow setting the log level via the environment (if not already set some other way).
+if (NOT DEFINED CMAKE_MESSAGE_LOG_LEVEL AND DEFINED ENV{CMAKE_MESSAGE_LOG_LEVEL})
+  set(CMAKE_MESSAGE_LOG_LEVEL "$ENV{CMAKE_MESSAGE_LOG_LEVEL}")
+endif()
+
 set(PROJECT_PRE_RELEASE pre)
 #set(PROJECT_PRE_RELEASE rc1)
 #unset(PROJECT_PRE_RELEASE)
@@ -63,16 +68,26 @@ else()
   add_compile_options(-Wall -Wextra -Werror)
 endif()
 
-# Optional test coverage reporting (off by default, and gcc only for now).
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+# Optional test coverage reporting (off by default, and only supported for some compilers).
+set(SUPPORTED_COVERAGE_COMPILER_IDS "AppleClang" "Clang" "GNU")
+if (CMAKE_CXX_COMPILER_ID IN_LIST SUPPORTED_COVERAGE_COMPILER_IDS)
+  message(VERBOSE "Coverage reporting suported for compiler ${CMAKE_CXX_COMPILER_ID}")
   option(ENABLE_COVERAGE "Enable test coverage reporting" OFF)
 else()
+  message(VERBOSE "Coverage reporting not suported for compiler: ${CMAKE_CXX_COMPILER_ID}")
   set(ENABLE_COVERAGE OFF)
 endif()
 if (ENABLE_COVERAGE)
   message(STATUS "Enabling test coverage reporting")
-  add_compile_options(-coverage)
-  add_link_options(--coverage)
+  if (CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
+    add_compile_options(-fprofile-instr-generate -fcoverage-mapping)
+    add_link_options(-fprofile-instr-generate -fcoverage-mapping)
+  elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    add_compile_options(-coverage)
+    add_link_options(--coverage)
+  else()
+    message(SEND_ERROR "Do not know how to enable coverage reports for ${CMAKE_CXX_COMPILER_ID} compiler")
+  endif()
 endif()
 
 # Default to Qt6 where available, otherwise Qt5.
