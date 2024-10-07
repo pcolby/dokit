@@ -12,7 +12,7 @@ if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
     message(STATUS "Found llvm-profdata ${LLVM_PROFDATA}")
     add_custom_target(
       coverage
-      COMMAND ${LLVM_PROFDATA} --version # \todo
+      COMMAND ${LLVM_PROFDATA} merge --output coverage.profdata */*/*/*.profraw
       COMMENT "Collating coverage data"
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
   endif()
