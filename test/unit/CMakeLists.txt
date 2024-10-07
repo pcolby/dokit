@@ -22,7 +22,12 @@ endif()
   set_tests_properties(${name} PROPERTIES LABELS "lib;unit")
 
   if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
+    # Tell LLVM's instrumentation hook where to write the profile data when the test is executed.
     set_tests_properties(${name} PROPERTIES ENVIRONMENT "LLVM_PROFILE_FILE=${name}.profraw")
+    # Add the full path to the profile data files list for the llvm-profdata tool to merge in the 'coverage' target.
+    file(REAL_PATH "${name}.profraw" LLVM_PROFILE_FILE BASE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    list(APPEND LLVM_PROFILE_FILES "${LLVM_PROFILE_FILE}")
+    set(LLVM_PROFILE_FILES "${LLVM_PROFILE_FILES}" CACHE INTERNAL "Internal")
   endif()
 endfunction()
 
