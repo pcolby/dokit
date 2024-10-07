@@ -20,6 +20,10 @@ else() # Support for TAP format added to Qt Test in 5.12.
   add_test(NAME ${name} COMMAND test${name} -o ${name}.tap,tap -o -,txt)
 endif()
   set_tests_properties(${name} PROPERTIES LABELS "lib;unit")
+
+  if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
+    set_tests_properties(${name} PROPERTIES ENVIRONMENT "LLVM_PROFILE_FILE=${name}.profraw")
+  endif()
 endfunction()
 
 add_subdirectory(cli)
