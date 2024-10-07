@@ -25,11 +25,10 @@ if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
       coverage
       COMMAND ${LLVM_PROFDATA} merge --output coverage.profdata "${LLVM_PROFILE_FILES}"
       COMMAND ${LLVM_PROFDATA} show coverage.profdata
-      COMMAND ${LLVM_COV} report --instr-profile coverage.profdata
+      COMMAND ${LLVM_COV} export --format lcov --instr-profile coverage.profdata
         "--object;$<JOIN:$<TARGET_OBJECTS:QtPokit>,;--object;>"
         "$<$<TARGET_EXISTS:cli-lib>:--object;$<JOIN:$<TARGET_OBJECTS:cli-lib>,;--object;>>"
-        "$<$<TARGET_EXISTS:gui-lib>:--object;$<JOIN:$<TARGET_OBJECTS:gui-lib>,;--object;>>"
-        --sources "${LLVM_COV_SOURCES}"
+        --sources "${LLVM_COV_SOURCES}" > coverage.info
       COMMAND_EXPAND_LISTS
       COMMENT "Collating coverage data"
       VERBATIM
@@ -40,7 +39,6 @@ endif()
 if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   find_program(CODECOV_GCOV gcov)
   find_program(CODECOV_LCOV lcov)
-  find_program(CODECOV_GENHTML genhtml)
   if (CODECOV_LCOV)
     message(STATUS "Found gcov ${CODECOV_GCOV}")
     message(STATUS "Found lcov ${CODECOV_LCOV}")
@@ -48,24 +46,28 @@ if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
       coverage
       COMMAND ${CODECOV_LCOV} --capture --directory . --gcov-tool ${CODECOV_GCOV} --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --list coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '/usr/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/.qt/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/.rcc/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/moc_*.cpp' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/mocs_compilation.cpp' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/qt/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/Qt/*' --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info '*/test/*' --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info /usr/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */.qt/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */.rcc/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */moc_*.cpp --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */mocs_compilation.cpp --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */qt/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */Qt/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */test/* --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --list coverage.info
       COMMENT "Collating coverage data"
       VERBATIM
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
   endif()
+endif()
+
+if (ENABLE_COVERAGE)
+  find_program(CODECOV_GENHTML genhtml)
   if (CODECOV_GENHTML)
     message(STATUS "Found genhtml ${CODECOV_GENHTML}")
     add_custom_target(
       coverage-html
-      COMMAND ${CODECOV_GENHTML} --output-directory coverage coverage.info
+      COMMAND ${CODECOV_GENHTML} --output-directory coverage --prefix ${PROJECT_SOURCE_DIR} coverage.info
       COMMENT "Generating HTML coverage report"
       VERBATIM
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
