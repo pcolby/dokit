@@ -608,7 +608,7 @@ jobs:
           lcov $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
           # Generate the HTML report.
           echo 'genhtml_sort = 0' >> ~/.lcovrc
-          genhtml --output-directory coverage coverage.info
+          genhtml --output-directory coverage/coverage coverage.info
           # Can use any of the removeHtmlDates.sh scripts here, so the Ubuntu GCC Qt6 job's version will do.
           /usr/bin/env bash ./artifacts/test-results-*.gcc.qt-6/coverage/removeHtmlDates.sh
           # Remove build numbers from pre-releases, and remove extra build info (such as ".linux.x86-64.gcc.qt-6")
@@ -620,7 +620,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: "${{ runner.temp }}/coverage"
+          path: "${{ runner.temp }}/coverage/coverage"
           if-no-files-found: error
       - name: Report partial-finished to Codacy
         if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
