@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - include/qtpokit/pokitmeter.h</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">include/qtpokit</a> - pokitmeter.h<span style="font-size: 80%;"> (source / <a href="pokitmeter.h.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Project:</td>
+            <td class="headerValue">Dokit</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Version:</td>
+            <td class="headerValue">
+             <script>
+               function changeVersion(event) {
+                          console.log(event);
+                          newUrl = `../../../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
+                          console.log(`Navigating to ${newUrl}`);
+                          window.location.assign(newUrl);
+               }
+             </script>
+             <select id="version" autocomplete="off" onchange="changeVersion(event)">
+              <option value="main" selected>dev</option>
+              <option value="0.5.2">v0.5.2</option>
+              <option value="0.5.1">v0.5.1</option>
+              <option value="0.5.0">v0.5.0</option>
+              <option value="0.4.0">v0.4.0</option>
+              <option value="0.3.0">v0.3.0</option>
+              <option value="0.2.0">v0.2.0</option>
+              <option value="0.1.2">v0.1.2</option>
+              <option value="0.1.1">v0.1.1</option>
+              <option value="0.1.0">v0.1.0</option>
+             </select>
+             <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
+              <option value="doc">User docs</option>
+              <option value="int">Internal</option>
+              <option value="cov" selected>Coverage</option>
+             </select>
+            </td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+          </tr>
+                  <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // SPDX-FileCopyrightText: 2022-2024 Paul Colby &lt;git@colby.id.au&gt;</span>
+<span id="L2"><span class="lineNum">       2</span>              : // SPDX-License-Identifier: LGPL-3.0-or-later</span>
+<span id="L3"><span class="lineNum">       3</span>              : </span>
+<span id="L4"><span class="lineNum">       4</span>              : /*!</span>
+<span id="L5"><span class="lineNum">       5</span>              :  * \file</span>
+<span id="L6"><span class="lineNum">       6</span>              :  * Declares the PokitMeter namespace.</span>
+<span id="L7"><span class="lineNum">       7</span>              :  */</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span>              : #ifndef QTPOKIT_POKITMETER_H</span>
+<span id="L10"><span class="lineNum">      10</span>              : #define QTPOKIT_POKITMETER_H</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : #include &quot;qtpokit_global.h&quot;</span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span>              : #include &lt;QVariant&gt;</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span>              : QTPOKIT_BEGIN_NAMESPACE</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              : /// Encapsulates details specific to Pokit Meter devices.</span>
+<span id="L19"><span class="lineNum">      19</span>              : namespace PokitMeter {</span>
+<span id="L20"><span class="lineNum">      20</span>              : </span>
+<span id="L21"><span class="lineNum">      21</span>              :     /// Values supported by the Pokit Meter's `Range` attributes in `*Current` modes.</span>
+<span id="L22"><span class="lineNum">      22</span>              :     enum class CurrentRange : quint8 {</span>
+<span id="L23"><span class="lineNum">      23</span>              :         _10mA     = 0,  ///&lt; Up to 10mA.</span>
+<span id="L24"><span class="lineNum">      24</span>              :         _30mA     = 1,  ///&lt; Up to 30mA.</span>
+<span id="L25"><span class="lineNum">      25</span>              :         _150mA    = 2,  ///&lt; Up to 150mA.</span>
+<span id="L26"><span class="lineNum">      26</span>              :         _300mA    = 3,  ///&lt; Up to 300mA.</span>
+<span id="L27"><span class="lineNum">      27</span>              :         _2A       = 4,  ///&lt; Up to 2A.</span>
+<span id="L28"><span class="lineNum">      28</span>              :         AutoRange = 255 ///&lt; Auto-range.</span>
+<span id="L29"><span class="lineNum">      29</span>              :     };</span>
+<span id="L30"><span class="lineNum">      30</span>              :     QTPOKIT_EXPORT QString toString(const CurrentRange &amp;range);</span>
+<span id="L31"><span class="lineNum">      31</span>              :     QTPOKIT_EXPORT QVariant maxValue(const CurrentRange &amp;range);</span>
+<span id="L32"><span class="lineNum">      32</span>              : </span>
+<span id="L33"><span class="lineNum">      33</span>              :     /// Values supported by the Pokit Meter's `Range` attributes in `Resistance` mode.</span>
+<span id="L34"><span class="lineNum">      34</span>              :     enum class ResistanceRange : quint8 {</span>
+<span id="L35"><span class="lineNum">      35</span>              :         _160      = 0,  ///&lt; Up to 160Ω.</span>
+<span id="L36"><span class="lineNum">      36</span>              :         _330      = 1,  ///&lt; Up to 330Ω.</span>
+<span id="L37"><span class="lineNum">      37</span>              :         _890      = 2,  ///&lt; Up to 890Ω.</span>
+<span id="L38"><span class="lineNum">      38</span>              :         _1K5      = 3,  ///&lt; Up to 1.5KΩ.</span>
+<span id="L39"><span class="lineNum">      39</span>              :         _10K      = 4,  ///&lt; Up to 10KΩ.</span>
+<span id="L40"><span class="lineNum">      40</span>              :         _100K     = 5,  ///&lt; Up to 100KΩ.</span>
+<span id="L41"><span class="lineNum">      41</span>              :         _470K     = 6,  ///&lt; Up to 470KΩ.</span>
+<span id="L42"><span class="lineNum">      42</span>              :         _1M       = 7,  ///&lt; Up to 1MΩ.</span>
+<span id="L43"><span class="lineNum">      43</span>              :         AutoRange = 255 ///&lt; Auto-range.</span>
+<span id="L44"><span class="lineNum">      44</span>              :     };</span>
+<span id="L45"><span class="lineNum">      45</span>              :     QTPOKIT_EXPORT QString toString(const ResistanceRange &amp;range);</span>
+<span id="L46"><span class="lineNum">      46</span>              :     QTPOKIT_EXPORT QVariant maxValue(const ResistanceRange &amp;range);</span>
+<span id="L47"><span class="lineNum">      47</span>              : </span>
+<span id="L48"><span class="lineNum">      48</span>              :     /// Values supported by the Pokit Meter's `Range` attributes in `*Voltage` modes.</span>
+<span id="L49"><span class="lineNum">      49</span>              :     enum class VoltageRange : quint8 {</span>
+<span id="L50"><span class="lineNum">      50</span>              :         _300mV    = 0,  ///&lt; Up to 300mV.</span>
+<span id="L51"><span class="lineNum">      51</span>              :         _2V       = 1,  ///&lt; Up to 2V.</span>
+<span id="L52"><span class="lineNum">      52</span>              :         _6V       = 2,  ///&lt; Up to 6V.</span>
+<span id="L53"><span class="lineNum">      53</span>              :         _12V      = 3,  ///&lt; Up to 12V.</span>
+<span id="L54"><span class="lineNum">      54</span>              :         _30V      = 4,  ///&lt; Up to 30V.</span>
+<span id="L55"><span class="lineNum">      55</span>              :         _60V      = 5,  ///&lt; Up to 60V DC (42V AC).</span>
+<span id="L56"><span class="lineNum">      56</span>              :         AutoRange = 255 ///&lt; Auto-range.</span>
+<span id="L57"><span class="lineNum">      57</span>              :     };</span>
+<span id="L58"><span class="lineNum">      58</span>              :     QTPOKIT_EXPORT QString toString(const VoltageRange &amp;range);</span>
+<span id="L59"><span class="lineNum">      59</span>              :     QTPOKIT_EXPORT QVariant maxValue(const VoltageRange &amp;range);</span>
+<span id="L60"><span class="lineNum">      60</span>              : </span>
+<span id="L61"><span class="lineNum">      61</span>              : }</span>
+<span id="L62"><span class="lineNum">      62</span>              : </span>
+<span id="L63"><span class="lineNum">      63</span>              : /// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.</span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC tlaBgGNC">         980 : constexpr quint8 operator+(PokitMeter::CurrentRange range) noexcept { return static_cast&lt;quint8&gt;(range); }</span></span>
+<span id="L65"><span class="lineNum">      65</span>              : </span>
+<span id="L66"><span class="lineNum">      66</span>              : /// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.</span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">         420 : constexpr quint8 operator+(PokitMeter::ResistanceRange range) noexcept { return static_cast&lt;quint8&gt;(range); }</span></span>
+<span id="L68"><span class="lineNum">      68</span>              : </span>
+<span id="L69"><span class="lineNum">      69</span>              : /// Returns \a range as a `quint8` as a convenience for assigning to services' `settings.range` members.</span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">        6224 : constexpr quint8 operator+(PokitMeter::VoltageRange range) noexcept { return static_cast&lt;quint8&gt;(range); }</span></span>
+<span id="L71"><span class="lineNum">      71</span>              : </span>
+<span id="L72"><span class="lineNum">      72</span>              : QTPOKIT_END_NAMESPACE</span>
+<span id="L73"><span class="lineNum">      73</span>              : </span>
+<span id="L74"><span class="lineNum">      74</span>              : #endif // QTPOKIT_POKITMETER_H</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
