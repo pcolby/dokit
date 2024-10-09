@@ -30,6 +30,7 @@ jobs:
           - 6.8.0
         env:
           - { cc: clang, cxx: clang++, coverage: false }
+          - { cc: clang, cxx: clang++, coverage: true }
           - { cc: gcc, cxx: g++, coverage: false }
           - { cc: gcc, cxx: g++, coverage: true }
     steps:
@@ -37,7 +38,7 @@ jobs:
         run: |
           sudo apt-mark hold grub-efi-amd64-signed
           sudo apt update && sudo apt upgrade
-          sudo apt install lcov libfuse2
+          sudo apt install lcov libfuse2 llvm
       - uses: actions/setup-python@v5
         with:
           python-version: '>=3.9'
@@ -167,6 +168,7 @@ jobs:
         os: [ 'macos-13', 'macos-14', 'macos-15' ]
         env:
           - { cc: clang, cxx: clang++, coverage: false }
+          - { cc: clang, cxx: clang++, coverage: true }
           - { cc: gcc-14, cxx: g++-14, coverage: false }
           - { cc: gcc-14, cxx: g++-14, coverage: true }
         exclude:
@@ -213,6 +215,8 @@ jobs:
           - { qt: '6.6.3', env: { cc: gcc-14 } }
           - { qt: '6.7.3', env: { cc: gcc-14 } }
           - { qt: '6.8.0', env: { cc: gcc-14 } }
+          # Exclude code coverage builds with Clang on macOS 13, since the runner's llvm-cov does not support --source.
+          - { os: macos-13, env: { cc: clang, coverage: true } }
     steps:
       - uses: actions/checkout@v4
       - name: Install lcov
@@ -259,6 +263,8 @@ jobs:
           cmake -D CMAKE_BUILD_TYPE=Release \
                 -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-14' || '/usr/bin/gcov'}} \
                 -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
+                -D LLVM_COV=/Library/Developer/CommandLineTools/usr/bin/llvm-cov \
+                -D LLVM_PROFDATA=/Library/Developer/CommandLineTools/usr/bin/llvm-profdata \
                 -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
                 -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
           echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"

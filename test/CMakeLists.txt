@@ -21,11 +21,16 @@ if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
       "${PROJECT_SOURCE_DIR}/include/*.h"
       "${PROJECT_SOURCE_DIR}/src/*.cpp"
       "${PROJECT_SOURCE_DIR}/src/*.h")
+    if (APPLE AND CMAKE_OSX_ARCHITECTURES MATCHES ".*;.*")
+      list(GET CMAKE_OSX_ARCHITECTURES 0 LLVM_COV_ARCH)
+    endif()
     add_custom_target(
       coverage
       COMMAND ${LLVM_PROFDATA} merge --output coverage.profdata "${LLVM_PROFILE_FILES}"
       COMMAND ${LLVM_PROFDATA} show coverage.profdata
-      COMMAND ${LLVM_COV} export --format lcov --instr-profile coverage.profdata
+      COMMAND ${LLVM_COV} export
+        "$<$<BOOL:${LLVM_COV_ARCH}>:--arch;${LLVM_COV_ARCH}>"
+        --format lcov --instr-profile coverage.profdata
         "--object;$<JOIN:$<TARGET_OBJECTS:QtPokit>,;--object;>"
         "$<$<TARGET_EXISTS:cli-lib>:--object;$<JOIN:$<TARGET_OBJECTS:cli-lib>,;--object;>>"
         --sources "${LLVM_COV_SOURCES}" > coverage.info
