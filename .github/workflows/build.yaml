@@ -262,7 +262,7 @@ jobs:
             ${{ matrix.cc }}.qt-${{ matrix.qt }}"
         run: |
           # With coverage instrumentation.
-          [[ '${{ matrix.os }}' == 'macos-13' ]] ||
+          [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
           cmake -D CMAKE_BUILD_TYPE=Release \
                 -D CODECOV_GCOV=/usr/local/bin/gcov-14 \
                 -D ENABLE_COVERAGE=true \
@@ -278,14 +278,16 @@ jobs:
           tee -a "$GITHUB_OUTPUT" <<< "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")"
           { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
             tee -a "$GITHUB_OUTPUT"
-          [[ '${{ matrix.os }}' == 'macos-13' ]] || cmake --build "$RUNNER_TEMP/coverage" -- VERBOSE=1
+          [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
+            cmake --build "$RUNNER_TEMP/coverage" -- VERBOSE=1
           cmake --build "$RUNNER_TEMP/release" -- VERBOSE=1
           "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
-          [[ '${{ matrix.os }}' == 'macos-13' ]] ||
+          [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
             "$RUNNER_TEMP/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
       - name: Test
         run: |
-          ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
+          [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
+            ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
           ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
         timeout-minutes: 1
       - name: Collate test coverage
