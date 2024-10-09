@@ -28,11 +28,9 @@ jobs:
           - 6.6.3
           - 6.7.3
           - 6.8.0
-        env:
-          - { cc: clang, cxx: clang++, coverage: false }
-          - { cc: clang, cxx: clang++, coverage: true }
-          - { cc: gcc, cxx: g++, coverage: false }
-          - { cc: gcc, cxx: g++, coverage: true }
+        cc:
+          - clang
+          - gcc
     steps:
       - name: Upgrade OS
         run: |
@@ -65,7 +63,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: aqtinstall-log-linux-${{ matrix.env.cc }}-${{ matrix.qt }}${{ matrix.env.coverage && '-cov' || ''}}
+          name: aqtinstall-log-linux-${{ matrix.cc }}-${{ matrix.qt }}
           path: aqtinstall.log
           if-no-files-found: error
       - name: Install linuxdeploy
@@ -81,67 +79,72 @@ jobs:
       - name: Build
         id: build
         env:
-          CC: ${{ matrix.env.cc }}
-          CXX: ${{ matrix.env.cxx }}
-          PROJECT_BUILD_ID: "${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}\
-            ${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}"
+          CC: ${{ matrix.cc }}
+          CXX: ${{ matrix.cc == 'gcc' && 'g++' || 'clang++' }}
+          PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.cc }}.qt-${{ matrix.qt }}
         run: |
           [[ '${{ matrix.qt }}' =~ ^[56]$ ]] ||
             qtInstallDocs="$RUNNER_WORKSPACE/Qt/Docs/Qt-${QT_VERSION:-${{ matrix.qt }}}"
+          # With coverage instrumentation.
           cmake -D CMAKE_BUILD_TYPE=Release \
-                -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
+                -D ENABLE_COVERAGE=true \
                 ${qtInstallDocs:+-D "QT_INSTALL_DOCS=$qtInstallDocs"} \
-                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-          echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
-          { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
-            tee -a "$GITHUB_OUTPUT"
-          cmake --build "$RUNNER_TEMP"
-          "$RUNNER_TEMP/src/cli/dokit" --version
+                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/coverage"
+          # Without coverage instrumentation.
+          cmake -D CMAKE_BUILD_TYPE=Release \
+                -D ENABLE_COVERAGE=false \
+                ${qtInstallDocs:+-D "QT_INSTALL_DOCS=$qtInstallDocs"} \
+                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/release"
+          tee -a "$GITHUB_OUTPUT" <<< "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")"
+          cmake --build "$RUNNER_TEMP/coverage"
+          cmake --build "$RUNNER_TEMP/release"
+          "$RUNNER_TEMP/coverage/src/cli/dokit" --version
+          "$RUNNER_TEMP/release/src/cli/dokit" --version
       - name: Test
-        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
-      - name: Collate test coverage
-        if: matrix.env.coverage
-        run: cmake --build "$RUNNER_TEMP" --target coverage
+        run: |
+          ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
+          ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
+          cmake --build "$RUNNER_TEMP/coverage" --target coverage
       - name: Upload test results
-        if: matrix.env.coverage || fromJSON(steps.build.outputs.tap)
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ steps.build.outputs.dokitVersion }}
           path: |
-            ${{ runner.temp }}/coverage.info
-            ${{ runner.temp }}/removeHtmlDates.sh
-            ${{ runner.temp }}/test/**/*.tap
+            ${{ runner.temp }}/coverage/coverage.info
+            ${{ runner.temp }}/coverage/removeHtmlDates.sh
+            ${{ runner.temp }}/coverage/test/**/*.tap
+            ${{ runner.temp }}/release/test/**/*.tap
           if-no-files-found: error
       - name: Report parallel coverage to Codacy
-        if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
+        if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: >
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial \
-            -l CPP -r "${{ runner.temp }}/coverage.info"
+            -l CPP -r "${{ runner.temp }}/coverage/coverage.info"
       - name: Report parallel coverage to Coveralls
-        if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
+        if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
         uses: coverallsapp/github-action@v2
         with:
-          file: ${{ runner.temp }}/coverage.info
+          file: ${{ runner.temp }}/coverage/coverage.info
           format: lcov
-          flag-name: linux-${{ matrix.env.cc }}-${{ matrix.qt }}
+          flag-name: linux-${{ matrix.cc }}-${{ matrix.qt }}
           parallel: true
       - name: Build AppImage
-        run: cmake --build "$RUNNER_TEMP" --target cli-appimage
+        run: cmake --build "$RUNNER_TEMP/release" --target cli-appimage
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}
           path: |
-            ${{ runner.temp }}/src/lib/libQtPokit.so
-            ${{ runner.temp }}/src/cli/dokit
+            ${{ runner.temp }}/release/src/lib/libQtPokit.so
+            ${{ runner.temp }}/release/src/cli/dokit
           if-no-files-found: error
       - name: Upload AppImage
         uses: actions/upload-artifact@v4
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
-          path: ${{ runner.temp }}/dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
+          path: ${{ runner.temp }}/release/dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
           if-no-files-found: error
 
   mac:
@@ -165,58 +168,57 @@ jobs:
           - 6.6.3
           - 6.7.3
           - 6.8.0
-        os: [ 'macos-13', 'macos-14', 'macos-15' ]
-        env:
-          - { cc: clang, cxx: clang++, coverage: false }
-          - { cc: clang, cxx: clang++, coverage: true }
-          - { cc: gcc-14, cxx: g++-14, coverage: false }
-          - { cc: gcc-14, cxx: g++-14, coverage: true }
+        os:
+          - macos-13
+          - macos-14
+          - macos-15
+        cc:
+          - clang
+          - gcc
         exclude:
           # GitHub's macOS 14+ gcc can only target arm64, but Qt didn't add Apple arm64 support until Qt 6.2, so:
           # Exclude Qt 5.x (and 6.0, 6.1) with GCC on macOS 14+. Also see the `arch` step below for more details.
-          - { qt: '5.9.9',   os: macos-14, env: { cc: gcc-14 } }
-          - { qt: '5.9.9',   os: macos-15, env: { cc: gcc-14 } }
-          - { qt: '5.10.1',  os: macos-14, env: { cc: gcc-14 } }
-          - { qt: '5.10.1',  os: macos-15, env: { cc: gcc-14 } }
-          - { qt: '5.11.3',  os: macos-14, env: { cc: gcc-14 } }
-          - { qt: '5.11.3',  os: macos-15, env: { cc: gcc-14 } }
-          - { qt: '5.12.12', os: macos-14, env: { cc: gcc-14 } }
-          - { qt: '5.12.12', os: macos-15, env: { cc: gcc-14 } }
-          - { qt: '5.13.2',  os: macos-14, env: { cc: gcc-14 } }
-          - { qt: '5.13.2',  os: macos-15, env: { cc: gcc-14 } }
-          - { qt: '5.14.2',  os: macos-14, env: { cc: gcc-14 } }
-          - { qt: '5.14.2',  os: macos-15, env: { cc: gcc-14 } }
-          - { qt: '5.15.2',  os: macos-14, env: { cc: gcc-14 } }
-          - { qt: '5.15.2',  os: macos-15, env: { cc: gcc-14 } }
+          - { qt: '5.9.9',   os: macos-14, cc: gcc }
+          - { qt: '5.9.9',   os: macos-15, cc: gcc }
+          - { qt: '5.10.1',  os: macos-14, cc: gcc }
+          - { qt: '5.10.1',  os: macos-15, cc: gcc }
+          - { qt: '5.11.3',  os: macos-14, cc: gcc }
+          - { qt: '5.11.3',  os: macos-15, cc: gcc }
+          - { qt: '5.12.12', os: macos-14, cc: gcc }
+          - { qt: '5.12.12', os: macos-15, cc: gcc }
+          - { qt: '5.13.2',  os: macos-14, cc: gcc }
+          - { qt: '5.13.2',  os: macos-15, cc: gcc }
+          - { qt: '5.14.2',  os: macos-14, cc: gcc }
+          - { qt: '5.14.2',  os: macos-15, cc: gcc }
+          - { qt: '5.15.2',  os: macos-14, cc: gcc }
+          - { qt: '5.15.2',  os: macos-15, cc: gcc }
           # Exclude Qt 5.x and 6.2 with Clang on macOS 14+, since these have unit tests that hang on GitHub's runners.
-          - { qt: '5.9.9',   os: macos-14, env: { cc: clang } } # \todo Explore these hangs on a local macOS host,
-          - { qt: '5.9.9',   os: macos-15, env: { cc: clang } } # \todo because they might not be specific to GitHub.
-          - { qt: '5.10.1',  os: macos-14, env: { cc: clang } }
-          - { qt: '5.10.1',  os: macos-15, env: { cc: clang } }
-          - { qt: '5.11.3',  os: macos-14, env: { cc: clang } }
-          - { qt: '5.11.3',  os: macos-15, env: { cc: clang } }
-          - { qt: '5.12.12', os: macos-14, env: { cc: clang } }
-          - { qt: '5.12.12', os: macos-15, env: { cc: clang } }
-          - { qt: '5.13.2',  os: macos-14, env: { cc: clang } }
-          - { qt: '5.13.2',  os: macos-15, env: { cc: clang } }
-          - { qt: '5.14.2',  os: macos-14, env: { cc: clang } }
-          - { qt: '5.14.2',  os: macos-15, env: { cc: clang } }
-          - { qt: '5.15.2',  os: macos-14, env: { cc: clang } }
-          - { qt: '5.15.2',  os: macos-15, env: { cc: clang } }
-          - { qt: '6.2.4',   os: macos-14, env: { cc: clang } }
-          - { qt: '6.2.4',   os: macos-15, env: { cc: clang } }
+          - { qt: '5.9.9',   os: macos-14, cc: clang } # \todo Explore these hangs on a local macOS host,
+          - { qt: '5.9.9',   os: macos-15, cc: clang } # \todo because they might not be specific to GitHub.
+          - { qt: '5.10.1',  os: macos-14, cc: clang }
+          - { qt: '5.10.1',  os: macos-15, cc: clang }
+          - { qt: '5.11.3',  os: macos-14, cc: clang }
+          - { qt: '5.11.3',  os: macos-15, cc: clang }
+          - { qt: '5.12.12', os: macos-14, cc: clang }
+          - { qt: '5.12.12', os: macos-15, cc: clang }
+          - { qt: '5.13.2',  os: macos-14, cc: clang }
+          - { qt: '5.13.2',  os: macos-15, cc: clang }
+          - { qt: '5.14.2',  os: macos-14, cc: clang }
+          - { qt: '5.14.2',  os: macos-15, cc: clang }
+          - { qt: '5.15.2',  os: macos-14, cc: clang }
+          - { qt: '5.15.2',  os: macos-15, cc: clang }
+          - { qt: '6.2.4',   os: macos-14, cc: clang }
+          - { qt: '6.2.4',   os: macos-15, cc: clang }
           # Exclude Qt 5.10 with GCC on macOS. See https://bugreports.qt.io/browse/QTBUG-66585
-          - { qt: '5.10.1', env: { cc: gcc-14 } }
+          - { qt: '5.10.1', cc: gcc }
           # Exclude Qt 6.x with GCC on macOS for now. See https://bugreports.qt.io/browse/QTBUG-107050
-          - { qt: '6.2.4', env: { cc: gcc-14 } }
-          - { qt: '6.3.2', env: { cc: gcc-14 } }
-          - { qt: '6.4.3', env: { cc: gcc-14 } }
-          - { qt: '6.5.3', env: { cc: gcc-14 } }
-          - { qt: '6.6.3', env: { cc: gcc-14 } }
-          - { qt: '6.7.3', env: { cc: gcc-14 } }
-          - { qt: '6.8.0', env: { cc: gcc-14 } }
-          # Exclude code coverage builds with Clang on macOS 13, since the runner's llvm-cov does not support --source.
-          - { os: macos-13, env: { cc: clang, coverage: true } }
+          - { qt: '6.2.4', cc: gcc }
+          - { qt: '6.3.2', cc: gcc }
+          - { qt: '6.4.3', cc: gcc }
+          - { qt: '6.5.3', cc: gcc }
+          - { qt: '6.6.3', cc: gcc }
+          - { qt: '6.7.3', cc: gcc }
+          - { qt: '6.8.0', cc: gcc }
     steps:
       - uses: actions/checkout@v4
       - name: Install lcov
@@ -235,8 +237,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: "aqtinstall-log-\
-            ${{ matrix.os }}-${{ matrix.env.cc }}-${{ matrix.qt }}${{ matrix.env.coverage && '-cov' || ''}}"
+          name: aqtinstall-log-${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.qt }}
           path: aqtinstall.log
           if-no-files-found: error
       - name: Choose target architectures
@@ -246,7 +247,7 @@ jobs:
           if [[ '${{ matrix.qt }}' =~ ^(5|6\.[01])\. ]]; then arch=x86_64
           # GitHub runners' (homebrew'd) gcc's only support support x86-64 prior to macos-14, and only arm64 after.
           # Note: if we attempt to use multiple archs, gcc will warn, but continue, resulting in later failures.
-          elif [[ '${{ matrix.env.cc }}' == gcc-* ]]; then
+          elif [[ '${{ matrix.cc }}' == 'gcc' ]]; then
             if [[ '${{ matrix.os }}' == 'macos-13' ]]; then arch='x86_64'; else arch='arm64'; fi
           # Otherwise, default to universal binaries, where possible.
           else arch='arm64;x86_64'; fi
@@ -255,63 +256,78 @@ jobs:
       - name: Build
         id: build
         env:
-          CC: ${{ matrix.env.cc }}
-          CXX: ${{ matrix.env.cxx }}
+          CC: ${{ matrix.cc == 'gcc' && 'gcc-14' || 'clang' }}
+          CXX: ${{ matrix.cc == 'gcc' && 'g++-14' || 'clang++' }}
           PROJECT_BUILD_ID: "${{ github.run_number }}.${{ matrix.os }}.${{ steps.arch.outputs.buildId }}.\
-            ${{ matrix.env.cc }}${{ matrix.env.coverage && '-cov' || '' }}.qt-${{ matrix.qt }}"
+            ${{ matrix.cc }}.qt-${{ matrix.qt }}"
         run: |
+          # With coverage instrumentation.
+          [[ '${{ matrix.os }}' == 'macos-13' ]] ||
           cmake -D CMAKE_BUILD_TYPE=Release \
-                -D CODECOV_GCOV=${{ startsWith(matrix.env.cc, 'gcc') && '/usr/local/bin/gcov-14' || '/usr/bin/gcov'}} \
-                -D ENABLE_COVERAGE=${{ matrix.env.coverage }} \
+                -D CODECOV_GCOV=/usr/local/bin/gcov-14 \
+                -D ENABLE_COVERAGE=true \
                 -D LLVM_COV=/Library/Developer/CommandLineTools/usr/bin/llvm-cov \
                 -D LLVM_PROFDATA=/Library/Developer/CommandLineTools/usr/bin/llvm-profdata \
                 -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
-                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-          echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
+                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/coverage"
+          # Without coverage instrumentation.
+          cmake -D CMAKE_BUILD_TYPE=Release \
+                -D ENABLE_COVERAGE=false \
+                -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
+                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/release"
+          tee -a "$GITHUB_OUTPUT" <<< "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")"
           { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
             tee -a "$GITHUB_OUTPUT"
-          cmake --build "$RUNNER_TEMP" -- VERBOSE=1
-          find "$RUNNER_TEMP" -name 'Info.plist'
-          find "$RUNNER_TEMP" -name 'Info.plist' -execdir cat '{}' \;
-          "$RUNNER_TEMP/src/cli/dokit.app/Contents/MacOS/dokit" --version
+          [[ '${{ matrix.os }}' == 'macos-13' ]] || cmake --build "$RUNNER_TEMP/coverage" -- VERBOSE=1
+          cmake --build "$RUNNER_TEMP/release" -- VERBOSE=1
+          "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
+          [[ '${{ matrix.os }}' == 'macos-13' ]] ||
+            "$RUNNER_TEMP/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
       - name: Test
-        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP" --verbose
+        run: |
+          ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
+          ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
         timeout-minutes: 1
       - name: Collate test coverage
-        if: matrix.env.coverage
-        run: cmake --build "$RUNNER_TEMP" --target coverage
+        if: matrix.os != 'macos-13' || matrix.cc == 'gcc'
+        run: cmake --build "$RUNNER_TEMP/coverage" --target coverage
       - name: Upload test results
-        if: matrix.env.coverage || fromJSON(steps.build.outputs.tap)
+        if: matrix.os != 'macos-13' || fromJSON(steps.build.outputs.tap)
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ steps.build.outputs.dokitVersion }}
           path: |
-            ${{ runner.temp }}/coverage.info
-            ${{ runner.temp }}/removeHtmlDates.sh
-            ${{ runner.temp }}/test/**/*.tap
+            ${{ runner.temp }}/coverage/coverage.info
+            ${{ runner.temp }}/coverage/removeHtmlDates.sh
+            ${{ runner.temp }}/coverage/test/**/*.tap
+            ${{ runner.temp }}/release/test/**/*.tap
           if-no-files-found: error
       - name: Report parallel coverage to Codacy
-        if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
+        if: >-
+          ( matrix.os != 'macos-13' || matrix.cc == 'gcc' )
+          && github.event_name == 'push' && github.actor != 'dependabot[bot]'
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: >
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial \
-            -l CPP -r "${{ runner.temp }}/coverage.info"
+            -l CPP -r "${{ runner.temp }}/coverage/coverage.info"
       - name: Report parallel coverage to Coveralls
-        if: matrix.env.coverage && github.event_name == 'push' && github.actor != 'dependabot[bot]'
+        if: >-
+          ( matrix.os != 'macos-13' || matrix.cc == 'gcc' )
+          && github.event_name == 'push' && github.actor != 'dependabot[bot]'
         uses: coverallsapp/github-action@v2
         with:
-          file: ${{ runner.temp }}/coverage.info
+          file: ${{ runner.temp }}/coverage/coverage.info
           format: lcov
-          flag-name: mac-${{ matrix.env.cc }}-${{ matrix.qt }}
+          flag-name: mac-${{ matrix.cc }}-${{ matrix.qt }}
           parallel: true
       - name: Make app bundle
-        run: macdeployqt "$RUNNER_TEMP/src/cli/dokit.app" -dmg -verbose=2
+        run: macdeployqt "$RUNNER_TEMP/release/src/cli/dokit.app" -dmg -verbose=2
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}
-          path: ${{ runner.temp }}/src/cli/*.app
+          path: ${{ runner.temp }}/release/src/cli/*.app
           if-no-files-found: error
 
   win:
