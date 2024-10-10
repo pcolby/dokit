@@ -62,12 +62,31 @@ add_compile_definitions(
   QT_USE_NODISCARD_FILE_OPEN
 )
 
-# Enable most compiler warnings, and treat as errors.
-# \todo Consider using CMAKE_COMPILE_WARNING_AS_ERROR on CMake 3.24+
-if (MSVC)
-  add_compile_options(/W3 /WX)
-else()
-  add_compile_options(-Wall -Wextra -Werror)
+# Enable most compiler warnings, by default.
+option(EXTRA_COMPILE_WARNINGS "Enable additional compile warnings" ON)
+if (EXTRA_COMPILE_WARNINGS)
+  message(STATUS "Enabling additional compile warnings")
+  if (MSVC)
+    add_compile_options(/W3)
+  else()
+    add_compile_options(-Wall -Wextra)
+  endif()
+endif()
+
+# Treat warnings as errors, by default.
+if (CMAKE_VERSION VERSION_LESS 3.24)
+  option(COMPILE_WARNING_AS_ERROR "Treat compile compiler warnings as errors" ON)
+  if (CMAKE_COMPILE_WARNING_AS_ERROR)
+    message(STATUS "Treating compile warnings as errors")
+    if (MSVC)
+      add_compile_options(/WX)
+    else()
+      add_compile_options(-Werror)
+    endif()
+  endif()
+elseif (NOT DEFINED CMAKE_COMPILE_WARNING_AS_ERROR)
+  message(STATUS "Treating compile warnings as errors")
+  set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 endif()
 
 # Optional test coverage reporting (off by default, and only supported for some compilers).
