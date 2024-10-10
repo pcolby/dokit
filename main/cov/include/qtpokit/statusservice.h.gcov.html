@@ -27,8 +27,8 @@
             <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
           </tr>
           <tr>
-            <td class="headerItem">Project:</td>
-            <td class="headerValue">Dokit</td>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -36,34 +36,8 @@
             <td class="headerCovTableEntry">3</td>
           </tr>
           <tr>
-            <td class="headerItem">Version:</td>
-            <td class="headerValue">
-             <script>
-               function changeVersion(event) {
-                          console.log(event);
-                          newUrl = `../../../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
-                          console.log(`Navigating to ${newUrl}`);
-                          window.location.assign(newUrl);
-               }
-             </script>
-             <select id="version" autocomplete="off" onchange="changeVersion(event)">
-              <option value="main" selected>dev</option>
-              <option value="0.5.2">v0.5.2</option>
-              <option value="0.5.1">v0.5.1</option>
-              <option value="0.5.0">v0.5.0</option>
-              <option value="0.4.0">v0.4.0</option>
-              <option value="0.3.0">v0.3.0</option>
-              <option value="0.2.0">v0.2.0</option>
-              <option value="0.1.2">v0.1.2</option>
-              <option value="0.1.1">v0.1.1</option>
-              <option value="0.1.0">v0.1.0</option>
-             </select>
-             <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
-              <option value="doc">User docs</option>
-              <option value="int">Internal</option>
-              <option value="cov" selected>Coverage</option>
-             </select>
-            </td>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-10-10 02:32:25</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -111,7 +85,7 @@
 <span id="L23"><span class="lineNum">      23</span>              : </span>
 <span id="L24"><span class="lineNum">      24</span>              : class QTPOKIT_EXPORT StatusService : public AbstractPokitService</span>
 <span id="L25"><span class="lineNum">      25</span>              : {</span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC tlaBgGNC">          22 :     Q_OBJECT</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC tlaBgGNC">          20 :     Q_OBJECT</span></span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
 <span id="L28"><span class="lineNum">      28</span>              : public:</span>
 <span id="L29"><span class="lineNum">      29</span>              :     /// UUIDs of the `Pokit Status` service.</span>
@@ -147,7 +121,7 @@
 <span id="L59"><span class="lineNum">      59</span>              :     };</span>
 <span id="L60"><span class="lineNum">      60</span>              : </span>
 <span id="L61"><span class="lineNum">      61</span>              :     /// Attributes included in the `Device Characteristics` characterstic.</span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        1406 :     struct DeviceCharacteristics {</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        1260 :     struct DeviceCharacteristics {</span></span>
 <span id="L63"><span class="lineNum">      63</span>              :         QVersionNumber firmwareVersion; ///&lt; Device's major and minor firmware version.</span>
 <span id="L64"><span class="lineNum">      64</span>              :         quint16 maximumVoltage;         ///&lt; Device's maximum input voltage.</span>
 <span id="L65"><span class="lineNum">      65</span>              :         quint16 maximumCurrent;         ///&lt; Device's maximum input current.</span>
@@ -273,7 +247,7 @@
 <span id="L185"><span class="lineNum">     185</span>              :     /// \endcond</span>
 <span id="L186"><span class="lineNum">     186</span>              : </span>
 <span id="L187"><span class="lineNum">     187</span>              : private:</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">        1484 :     Q_DECLARE_PRIVATE(StatusService)</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">        1352 :     Q_DECLARE_PRIVATE(StatusService)</span></span>
 <span id="L189"><span class="lineNum">     189</span>              :     Q_DISABLE_COPY(StatusService)</span>
 <span id="L190"><span class="lineNum">     190</span>              :     friend class TestStatusService;</span>
 <span id="L191"><span class="lineNum">     191</span>              : };</span>

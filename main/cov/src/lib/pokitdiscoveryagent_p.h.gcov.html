@@ -27,8 +27,8 @@
             <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
           </tr>
           <tr>
-            <td class="headerItem">Project:</td>
-            <td class="headerValue">Dokit</td>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -36,34 +36,8 @@
             <td class="headerCovTableEntry">3</td>
           </tr>
           <tr>
-            <td class="headerItem">Version:</td>
-            <td class="headerValue">
-             <script>
-               function changeVersion(event) {
-                          console.log(event);
-                          newUrl = `../../../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
-                          console.log(`Navigating to ${newUrl}`);
-                          window.location.assign(newUrl);
-               }
-             </script>
-             <select id="version" autocomplete="off" onchange="changeVersion(event)">
-              <option value="main" selected>dev</option>
-              <option value="0.5.2">v0.5.2</option>
-              <option value="0.5.1">v0.5.1</option>
-              <option value="0.5.0">v0.5.0</option>
-              <option value="0.4.0">v0.4.0</option>
-              <option value="0.3.0">v0.3.0</option>
-              <option value="0.2.0">v0.2.0</option>
-              <option value="0.1.2">v0.1.2</option>
-              <option value="0.1.1">v0.1.1</option>
-              <option value="0.1.0">v0.1.0</option>
-             </select>
-             <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
-              <option value="doc">User docs</option>
-              <option value="int">Internal</option>
-              <option value="cov" selected>Coverage</option>
-             </select>
-            </td>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-10-10 02:32:25</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -109,10 +83,10 @@
 <span id="L21"><span class="lineNum">      21</span>              : </span>
 <span id="L22"><span class="lineNum">      22</span>              : class QTPOKIT_EXPORT PokitDiscoveryAgentPrivate : public QObject</span>
 <span id="L23"><span class="lineNum">      23</span>              : {</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC tlaBgGNC">          82 :     Q_OBJECT</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC tlaBgGNC">          76 :     Q_OBJECT</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : </span>
 <span id="L26"><span class="lineNum">      26</span>              : public:</span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         402 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ble.discovery&quot;, QtInfoMsg); ///&lt; Logging category.</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         372 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ble.discovery&quot;, QtInfoMsg); ///&lt; Logging category.</span></span>
 <span id="L28"><span class="lineNum">      28</span>              : </span>
 <span id="L29"><span class="lineNum">      29</span>              :     explicit PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * const q);</span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
@@ -129,7 +103,7 @@
 <span id="L41"><span class="lineNum">      41</span>              :     PokitDiscoveryAgent * q_ptr; ///&lt; Internal q-pointer.</span>
 <span id="L42"><span class="lineNum">      42</span>              : </span>
 <span id="L43"><span class="lineNum">      43</span>              : private:</span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         234 :     Q_DECLARE_PUBLIC(PokitDiscoveryAgent)</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         222 :     Q_DECLARE_PUBLIC(PokitDiscoveryAgent)</span></span>
 <span id="L45"><span class="lineNum">      45</span>              :     Q_DISABLE_COPY(PokitDiscoveryAgentPrivate)</span>
 <span id="L46"><span class="lineNum">      46</span>              :     friend class TestPokitDiscoveryAgent;</span>
 <span id="L47"><span class="lineNum">      47</span>              : };</span>

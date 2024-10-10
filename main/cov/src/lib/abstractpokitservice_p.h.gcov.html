@@ -27,8 +27,8 @@
             <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
           </tr>
           <tr>
-            <td class="headerItem">Project:</td>
-            <td class="headerValue">Dokit</td>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -36,34 +36,8 @@
             <td class="headerCovTableEntry">3</td>
           </tr>
           <tr>
-            <td class="headerItem">Version:</td>
-            <td class="headerValue">
-             <script>
-               function changeVersion(event) {
-                          console.log(event);
-                          newUrl = `../../../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
-                          console.log(`Navigating to ${newUrl}`);
-                          window.location.assign(newUrl);
-               }
-             </script>
-             <select id="version" autocomplete="off" onchange="changeVersion(event)">
-              <option value="main" selected>dev</option>
-              <option value="0.5.2">v0.5.2</option>
-              <option value="0.5.1">v0.5.1</option>
-              <option value="0.5.0">v0.5.0</option>
-              <option value="0.4.0">v0.4.0</option>
-              <option value="0.3.0">v0.3.0</option>
-              <option value="0.2.0">v0.2.0</option>
-              <option value="0.1.2">v0.1.2</option>
-              <option value="0.1.1">v0.1.1</option>
-              <option value="0.1.0">v0.1.0</option>
-             </select>
-             <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
-              <option value="doc">User docs</option>
-              <option value="int">Internal</option>
-              <option value="cov" selected>Coverage</option>
-             </select>
-            </td>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-10-10 02:32:25</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -114,10 +88,10 @@
 <span id="L26"><span class="lineNum">      26</span>              : </span>
 <span id="L27"><span class="lineNum">      27</span>              : class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject</span>
 <span id="L28"><span class="lineNum">      28</span>              : {</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC tlaBgGNC">         462 :     Q_OBJECT</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC tlaBgGNC">         420 :     Q_OBJECT</span></span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
 <span id="L31"><span class="lineNum">      31</span>              : public:</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">        9638 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ble.service&quot;, QtInfoMsg); ///&lt; Logging category.</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">        8848 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ble.service&quot;, QtInfoMsg); ///&lt; Logging category.</span></span>
 <span id="L33"><span class="lineNum">      33</span>              : </span>
 <span id="L34"><span class="lineNum">      34</span>              :     bool autoDiscover { true };                    ///&lt; Whether autodiscovery is enabled or not.</span>
 <span id="L35"><span class="lineNum">      35</span>              :     QLowEnergyController * controller { nullptr }; ///&lt; BLE controller to fetch the service from.</span>
@@ -157,7 +131,7 @@
 <span id="L69"><span class="lineNum">      69</span>              :                                        const QByteArray &amp;newValue);</span>
 <span id="L70"><span class="lineNum">      70</span>              : </span>
 <span id="L71"><span class="lineNum">      71</span>              : private:</span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">          66 :     Q_DECLARE_PUBLIC(AbstractPokitService)</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">          60 :     Q_DECLARE_PUBLIC(AbstractPokitService)</span></span>
 <span id="L73"><span class="lineNum">      73</span>              :     Q_DISABLE_COPY(AbstractPokitServicePrivate)</span>
 <span id="L74"><span class="lineNum">      74</span>              :     friend class TestAbstractPokitService;</span>
 <span id="L75"><span class="lineNum">      75</span>              : };</span>

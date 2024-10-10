@@ -27,8 +27,8 @@
             <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
           </tr>
           <tr>
-            <td class="headerItem">Project:</td>
-            <td class="headerValue">Dokit</td>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">99.0&nbsp;%</td>
@@ -36,34 +36,8 @@
             <td class="headerCovTableEntry">288</td>
           </tr>
           <tr>
-            <td class="headerItem">Version:</td>
-            <td class="headerValue">
-             <script>
-               function changeVersion(event) {
-                          console.log(event);
-                          newUrl = `../../../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
-                          console.log(`Navigating to ${newUrl}`);
-                          window.location.assign(newUrl);
-               }
-             </script>
-             <select id="version" autocomplete="off" onchange="changeVersion(event)">
-              <option value="main" selected>dev</option>
-              <option value="0.5.2">v0.5.2</option>
-              <option value="0.5.1">v0.5.1</option>
-              <option value="0.5.0">v0.5.0</option>
-              <option value="0.4.0">v0.4.0</option>
-              <option value="0.3.0">v0.3.0</option>
-              <option value="0.2.0">v0.2.0</option>
-              <option value="0.1.2">v0.1.2</option>
-              <option value="0.1.1">v0.1.1</option>
-              <option value="0.1.0">v0.1.0</option>
-             </select>
-             <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
-              <option value="doc">User docs</option>
-              <option value="int">Internal</option>
-              <option value="cov" selected>Coverage</option>
-             </select>
-            </td>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-10-10 02:32:25</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -110,29 +84,29 @@
 <span id="L22"><span class="lineNum">      22</span>              : /*!</span>
 <span id="L23"><span class="lineNum">      23</span>              :  * Construct a new ScanCommand object with \a parent.</span>
 <span id="L24"><span class="lineNum">      24</span>              :  */</span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC tlaBgGNC">        2064 : ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC tlaBgGNC">        1998 : ScanCommand::ScanCommand(QObject * const parent) : AbstractCommand(parent)</span></span>
 <span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        1587 : {</span></span>
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">        1488 :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.</span></span>
 <span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">        2508 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::pokitDeviceUpdated,</span></span>
 <span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">        1668 :             this, &amp;ScanCommand::deviceUpdated);</span></span>
 <span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">        1488 :     #endif</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        2772 : }</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        2706 : }</span></span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          88 : QStringList ScanCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          80 : QStringList ScanCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
 <span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         112 : {</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         200 :     return AbstractCommand::requiredOptions(parser);</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         192 :     return AbstractCommand::requiredOptions(parser);</span></span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         112 : }</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">          44 : QStringList ScanCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">          40 : QStringList ScanCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          56 : {</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">         144 :     return AbstractCommand::supportedOptions(parser) + QStringList{</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         136 :     };</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">         136 :     return AbstractCommand::supportedOptions(parser) + QStringList{</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         128 :     };</span></span>
 <span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          56 : }</span></span>
 <span id="L43"><span class="lineNum">      43</span>              : </span>
 <span id="L44"><span class="lineNum">      44</span>              : /// \copydoc AbstractCommand::processOptions</span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          22 : QStringList ScanCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          20 : QStringList ScanCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
 <span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          28 : {</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          50 :     QStringList errors = AbstractCommand::processOptions(parser);</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          48 :     QStringList errors = AbstractCommand::processOptions(parser);</span></span>
 <span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">          28 :     if (!errors.isEmpty()) {</span></span>
 <span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC tlaBgUNC">           0 :         return errors;</span></span>
 <span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :     }</span></span>
@@ -143,37 +117,37 @@
 <span id="L55"><span class="lineNum">      55</span>              : /*!</span>
 <span id="L56"><span class="lineNum">      56</span>              :  * Begins scanning for Pokit devices.</span>
 <span id="L57"><span class="lineNum">      57</span>              :  */</span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">          22 : bool ScanCommand::start()</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">          20 : bool ScanCommand::start()</span></span>
 <span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">          16 : {</span></span>
 <span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">          16 :     Q_ASSERT(discoveryAgent);</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">          72 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Scanning for Pokit devices...&quot;);</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">          38 :     discoveryAgent-&gt;start();</span></span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">          38 :     return true;</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">          68 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Scanning for Pokit devices...&quot;);</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">          36 :     discoveryAgent-&gt;start();</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">          36 :     return true;</span></span>
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">          16 : }</span></span>
 <span id="L65"><span class="lineNum">      65</span>              : </span>
 <span id="L66"><span class="lineNum">      66</span>              : /*!</span>
 <span id="L67"><span class="lineNum">      67</span>              :  * Handles discovered Pokit devices, writing \a info to stdout.</span>
 <span id="L68"><span class="lineNum">      68</span>              :  */</span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">        1755 : void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">        1665 : void ScanCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</span></span>
 <span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">        2385 : {</span></span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        4140 :     switch (format) {</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        4050 :     switch (format) {</span></span>
 <span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         795 :     case OutputFormat::Csv:</span></span>
-<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        2208 :         for (; showCsvHeader; showCsvHeader = false) {</span></span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         972 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;));</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        2160 :         for (; showCsvHeader; showCsvHeader = false) {</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         954 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;));</span></span>
 <span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">         477 :         }</span></span>
-<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        2880 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5,%6\n&quot;).arg(info.deviceUuid().toString(),</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        2790 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5,%6\n&quot;).arg(info.deviceUuid().toString(),</span></span>
 <span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         795 :             info.address().toString(), escapeCsvField(info.name()), toString(info.majorDeviceClass()),</span></span>
 <span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         795 :             toString(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi()));</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        1380 :         break;</span></span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">        1380 :     case OutputFormat::Json:</span></span>
-<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">        1965 :         std::cout &lt;&lt; QJsonDocument(toJson(info)).toJson().toStdString();</span></span>
-<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        1380 :         break;</span></span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">        1380 :     case OutputFormat::Text:</span></span>
-<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">        2640 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;%1 %2 %3 %4\n&quot;).arg(info.deviceUuid().toString(),</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        1350 :         break;</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">        1350 :     case OutputFormat::Json:</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">        1905 :         std::cout &lt;&lt; QJsonDocument(toJson(info)).toJson().toStdString();</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        1350 :         break;</span></span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">        1350 :     case OutputFormat::Text:</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">        2550 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;%1 %2 %3 %4\n&quot;).arg(info.deviceUuid().toString(),</span></span>
 <span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">         795 :             info.address().toString(), info.name()).arg(info.rssi()));</span></span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">        1380 :         break;</span></span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">        1350 :         break;</span></span>
 <span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">        2385 :     }</span></span>
-<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">        4140 : }</span></span>
+<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">        4050 : }</span></span>
 <span id="L89"><span class="lineNum">      89</span>              : </span>
 <span id="L90"><span class="lineNum">      90</span>              : /*!</span>
 <span id="L91"><span class="lineNum">      91</span>              :  * Handles updated Pokit devices, writing \a info to stdout. Currently \a updatedFields us unused.</span>
@@ -191,64 +165,64 @@
 <span id="L103"><span class="lineNum">     103</span>              :  * Handles the completion of device discovery. In this override we simply exit, as the scan command</span>
 <span id="L104"><span class="lineNum">     104</span>              :  * is nothing more than logging of discovered devices.</span>
 <span id="L105"><span class="lineNum">     105</span>              :  */</span>
-<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">          22 : void ScanCommand::deviceDiscoveryFinished()</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">          20 : void ScanCommand::deviceDiscoveryFinished()</span></span>
 <span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">          28 : {</span></span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">          54 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Finished scanning for Pokit devices.&quot;);</span></span>
-<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">          50 :     QCoreApplication::quit();</span></span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">          50 : }</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">          52 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Finished scanning for Pokit devices.&quot;);</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">          48 :     QCoreApplication::quit();</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">          48 : }</span></span>
 <span id="L111"><span class="lineNum">     111</span>              : </span>
 <span id="L112"><span class="lineNum">     112</span>              : /*!</span>
 <span id="L113"><span class="lineNum">     113</span>              :  * Returns \a info as a JSON object.</span>
 <span id="L114"><span class="lineNum">     114</span>              :  */</span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">         756 : QJsonObject ScanCommand::toJson(const QBluetoothDeviceInfo &amp;info)</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">         712 : QJsonObject ScanCommand::toJson(const QBluetoothDeviceInfo &amp;info)</span></span>
 <span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">        1016 : {</span></span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">        1772 :     if (!info.isValid()) {</span></span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">         142 :         return QJsonObject();</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">        1728 :     if (!info.isValid()) {</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">         138 :         return QJsonObject();</span></span>
 <span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">          81 :     }</span></span>
 <span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">         935 :     QJsonObject json{</span></span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">        2220 :         { QLatin1String(&quot;address&quot;), info.address().toString() },</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">        2325 :         { QLatin1String(&quot;name&quot;), info.name() },</span></span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">        1630 :         { QLatin1String(&quot;isCached&quot;), info.isCached() },</span></span>
-<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">        1630 :         { QLatin1String(&quot;majorDeviceClass&quot;), info.majorDeviceClass() },</span></span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">        1910 :         { QLatin1String(&quot;majorDeviceClass&quot;), toJson(info.majorDeviceClass()) },</span></span>
-<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">        1910 :         { QLatin1String(&quot;minorDeviceClass&quot;), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },</span></span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        1910 :         { QLatin1String(&quot;signalStrength&quot;), info.rssi() },</span></span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">        8450 :     };</span></span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">        1630 :     if (info.coreConfigurations() != QBluetoothDeviceInfo::UnknownCoreConfiguration) {</span></span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">         231 :         json.insert(QLatin1String(&quot;coreConfiguration&quot;), toJson(info.coreConfigurations()));</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">        2140 :         { QLatin1String(&quot;address&quot;), info.address().toString() },</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">        2245 :         { QLatin1String(&quot;name&quot;), info.name() },</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">        1590 :         { QLatin1String(&quot;isCached&quot;), info.isCached() },</span></span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">        1590 :         { QLatin1String(&quot;majorDeviceClass&quot;), info.majorDeviceClass() },</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">        1870 :         { QLatin1String(&quot;majorDeviceClass&quot;), toJson(info.majorDeviceClass()) },</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">        1870 :         { QLatin1String(&quot;minorDeviceClass&quot;), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        1870 :         { QLatin1String(&quot;signalStrength&quot;), info.rssi() },</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">        7810 :     };</span></span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">        1590 :     if (info.coreConfigurations() != QBluetoothDeviceInfo::UnknownCoreConfiguration) {</span></span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">         219 :         json.insert(QLatin1String(&quot;coreConfiguration&quot;), toJson(info.coreConfigurations()));</span></span>
 <span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">         109 :     }</span></span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">        1630 :     if (!info.deviceUuid().isNull()) {</span></span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">        1401 :         json.insert(QLatin1String(&quot;deviceUuid&quot;), info.deviceUuid().toString());</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">        1590 :     if (!info.deviceUuid().isNull()) {</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">        1349 :         json.insert(QLatin1String(&quot;deviceUuid&quot;), info.deviceUuid().toString());</span></span>
 <span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">         589 :     }</span></span>
 <span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">         875 :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Added in Qt 5.12.</span></span>
 <span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">        1470 :     if (!info.manufacturerData().isEmpty()) {</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         171 :         json.insert(QLatin1String(&quot;manufacturerData&quot;), toJson(info.manufacturerData()));</span></span>
 <span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">          75 :     }</span></span>
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         875 :     #endif</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">        1630 :     if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         279 :         json.insert(QLatin1String(&quot;serviceClasses&quot;), toJson(info.serviceClasses()));</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">        1590 :     if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         267 :         json.insert(QLatin1String(&quot;serviceClasses&quot;), toJson(info.serviceClasses()));</span></span>
 <span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">         134 :     }</span></span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">        1910 :     if (!info.serviceUuids().isEmpty()) {</span></span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          69 :         json.insert(QLatin1String(&quot;serviceUuids&quot;), toJson(info.serviceUuids()));</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">        1870 :     if (!info.serviceUuids().isEmpty()) {</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          65 :         json.insert(QLatin1String(&quot;serviceUuids&quot;), toJson(info.serviceUuids()));</span></span>
 <span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">          28 :     }</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">        1360 :     return json;</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">        6861 : }</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">        1340 :     return json;</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">        6541 : }</span></span>
 <span id="L148"><span class="lineNum">     148</span>              : </span>
 <span id="L149"><span class="lineNum">     149</span>              : /*!</span>
 <span id="L150"><span class="lineNum">     150</span>              :  * Returns \a configuration as a JSON array of strings.</span>
 <span id="L151"><span class="lineNum">     151</span>              :  */</span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         171 : QJsonArray ScanCommand::toJson(const QBluetoothDeviceInfo::CoreConfigurations &amp;configurations)</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         157 : QJsonArray ScanCommand::toJson(const QBluetoothDeviceInfo::CoreConfigurations &amp;configurations)</span></span>
 <span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">         221 : {</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">         392 :     QJsonArray array;</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">         378 :     QJsonArray array;</span></span>
 <span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         221 :     #define DOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \</span></span>
 <span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">         663 :         if (configurations.testFlag(QBluetoothDeviceInfo::flag)) \</span></span>
 <span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         663 :             array.append(QLatin1String(#flag))</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         301 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(UnknownCoreConfiguration);</span></span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">         376 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(LowEnergyCoreConfiguration);</span></span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         317 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateCoreConfiguration);</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         299 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(UnknownCoreConfiguration);</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">         366 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(LowEnergyCoreConfiguration);</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         313 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateCoreConfiguration);</span></span>
 <span id="L161"><span class="lineNum">     161</span>              :   //DOKIT_INTERNAL_IF_SET_THEN_APPEND(BaseRateAndLowEnergyCoreConfiguration); // Combination flag.</span>
 <span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         221 :     #undef DOKIT_INTERNAL_IF_SET_THEN_APPEND</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         392 :     return array;</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         378 :     return array;</span></span>
 <span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">         221 : }</span></span>
 <span id="L165"><span class="lineNum">     165</span>              : </span>
 <span id="L166"><span class="lineNum">     166</span>              : /*!</span>
@@ -257,11 +231,11 @@
 <span id="L169"><span class="lineNum">     169</span>              :  *</span>
 <span id="L170"><span class="lineNum">     170</span>              :  * \see toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</span>
 <span id="L171"><span class="lineNum">     171</span>              :  */</span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">        1003 : QJsonValue ScanCommand::toJson(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">         935 : QJsonValue ScanCommand::toJson(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</span></span>
 <span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">        1327 : {</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">        2330 :     const QString string = toString(majorClass);</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">        3333 :     return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">        1938 : }</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">        2262 :     const QString string = toString(majorClass);</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">        3197 :     return (string.isNull() ? QJsonValue(majorClass) : QJsonValue(string));</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">        1870 : }</span></span>
 <span id="L177"><span class="lineNum">     177</span>              : </span>
 <span id="L178"><span class="lineNum">     178</span>              : /*!</span>
 <span id="L179"><span class="lineNum">     179</span>              :  * Returns \a minorClass as a JSON value. This is equivalent to toString, except that if toString</span>
@@ -270,43 +244,43 @@
 <span id="L182"><span class="lineNum">     182</span>              :  *</span>
 <span id="L183"><span class="lineNum">     183</span>              :  * \see toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</span>
 <span id="L184"><span class="lineNum">     184</span>              :  */</span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">        2719 : QJsonValue ScanCommand::toJson(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">        2495 : QJsonValue ScanCommand::toJson(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</span></span>
 <span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">        3511 : {</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">        6230 :     const QString string = toString(majorClass, minorClass);</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">        8949 :     return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">        5214 : }</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">        6006 :     const QString string = toString(majorClass, minorClass);</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">        8501 :     return (string.isNull() ? QJsonValue(minorClass) : QJsonValue(string));</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">        4990 : }</span></span>
 <span id="L190"><span class="lineNum">     190</span>              : </span>
 <span id="L191"><span class="lineNum">     191</span>              : /*!</span>
 <span id="L192"><span class="lineNum">     192</span>              :  * Returns \a classes as a JSON array of strings.</span>
 <span id="L193"><span class="lineNum">     193</span>              :  */</span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         320 : QJsonArray ScanCommand::toJson(const QBluetoothDeviceInfo::ServiceClasses &amp;classes)</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         294 : QJsonArray ScanCommand::toJson(const QBluetoothDeviceInfo::ServiceClasses &amp;classes)</span></span>
 <span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">         414 : {</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         734 :     QJsonArray array;</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         708 :     QJsonArray array;</span></span>
 <span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         414 :     #define DOKIT_INTERNAL_IF_SET_THEN_APPEND(flag) \</span></span>
 <span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">        3312 :         if (classes.testFlag(QBluetoothDeviceInfo::flag)) \</span></span>
 <span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">        3312 :             array.append(QLatin1String(#flag))</span></span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">         636 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);</span></span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">         636 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);</span></span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">         636 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);</span></span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">         620 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);</span></span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">         620 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);</span></span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         620 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">         620 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);</span></span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">         620 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">         626 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(PositioningService);</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">         626 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(NetworkingService);</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">         626 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(RenderingService);</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">         612 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(CapturingService);</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">         612 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(ObjectTransferService);</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         612 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(AudioService);</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">         612 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(TelephonyService);</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">         612 :     DOKIT_INTERNAL_IF_SET_THEN_APPEND(InformationService);</span></span>
 <span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">         414 :     #undef DOKIT_INTERNAL_IF_SET_THEN_APPEND</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">         734 :     return array;</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">         708 :     return array;</span></span>
 <span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">         414 : }</span></span>
 <span id="L211"><span class="lineNum">     211</span>              : </span>
 <span id="L212"><span class="lineNum">     212</span>              : /*!</span>
 <span id="L213"><span class="lineNum">     213</span>              :  * Returns \a uuids as a JSON array.</span>
 <span id="L214"><span class="lineNum">     214</span>              :  */</span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         132 : QJsonArray ScanCommand::toJson(const QList&lt;QBluetoothUuid&gt; &amp;uuids)</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         120 : QJsonArray ScanCommand::toJson(const QList&lt;QBluetoothUuid&gt; &amp;uuids)</span></span>
 <span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         168 : {</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         300 :     QJsonArray array;</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         732 :     for (const QBluetoothUuid &amp;uuid: uuids) {</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">         720 :         array.append(uuid.toString());</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         288 :     QJsonArray array;</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         696 :     for (const QBluetoothUuid &amp;uuid: uuids) {</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">         696 :         array.append(uuid.toString());</span></span>
 <span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         336 :     }</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         300 :     return array;</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         288 :     return array;</span></span>
 <span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">         168 : }</span></span>
 <span id="L223"><span class="lineNum">     223</span>              : </span>
 <span id="L224"><span class="lineNum">     224</span>              : /*!</span>
@@ -340,12 +314,12 @@
 <span id="L252"><span class="lineNum">     252</span>              :  * For example, if \a majorClass is \c QBluetoothDeviceInfo::ToyDevice, then the string `ToyDevice`</span>
 <span id="L253"><span class="lineNum">     253</span>              :  * is returned.</span>
 <span id="L254"><span class="lineNum">     254</span>              :  */</span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">        1896 : QString ScanCommand::toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">        1770 : QString ScanCommand::toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass)</span></span>
 <span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">        2514 : {</span></span>
 <span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">        2514 :     #define DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \</span></span>
 <span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">       10310 :         if (majorClass == QBluetoothDeviceInfo::value) \</span></span>
 <span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">       10310 :             return QLatin1String(#value)</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">        4410 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(MiscellaneousDevice);</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">        4284 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(MiscellaneousDevice);</span></span>
 <span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">        1452 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ComputerDevice);</span></span>
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">        1184 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PhoneDevice);</span></span>
 <span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">         112 :     #if (QT_VERSION &lt; QT_VERSION_CHECK(5, 13, 0))</span></span>
@@ -361,7 +335,7 @@
 <span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         532 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);</span></span>
 <span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">         530 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);</span></span>
 <span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">         168 :     #undef DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         324 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown major class %1.&quot;).arg(majorClass);</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         312 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown major class %1.&quot;).arg(majorClass);</span></span>
 <span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">         168 :     return QString(); // Null QString indicates unknown minor class.</span></span>
 <span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         464 : }</span></span>
 <span id="L279"><span class="lineNum">     279</span>              : </span>
@@ -372,16 +346,16 @@
 <span id="L284"><span class="lineNum">     284</span>              :  * For example, if \a majorClass is \c QBluetoothDeviceInfo::ToyDevice, and \a minorClass is</span>
 <span id="L285"><span class="lineNum">     285</span>              :  * \c QBluetoothDeviceInfo::ToyRobot, then the string `ToyRobot` is returned.</span>
 <span id="L286"><span class="lineNum">     286</span>              :  */</span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        5328 : QString ScanCommand::toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        4890 : QString ScanCommand::toString(const QBluetoothDeviceInfo::MajorDeviceClass &amp;majorClass, const quint8 minorClass)</span></span>
 <span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        6882 : {</span></span>
 <span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        6882 :     #define DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(value) \</span></span>
 <span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">       30310 :         if (minorClass == QBluetoothDeviceInfo::value) \</span></span>
 <span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">       30310 :             return QLatin1String(#value)</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">       12210 :     switch (majorClass) {</span></span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        2056 :     case QBluetoothDeviceInfo::MiscellaneousDevice:</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">        2056 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedMiscellaneous);</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">       11772 :     switch (majorClass) {</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        2004 :     case QBluetoothDeviceInfo::MiscellaneousDevice:</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">        2004 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedMiscellaneous);</span></span>
 <span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         268 :         break;</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">        1168 :     case QBluetoothDeviceInfo::ComputerDevice:</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">        1128 :     case QBluetoothDeviceInfo::ComputerDevice:</span></span>
 <span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">         672 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedComputer);</span></span>
 <span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">         616 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DesktopComputer);</span></span>
 <span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">         560 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ServerComputer);</span></span>
@@ -390,7 +364,7 @@
 <span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         392 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandheldComputer);</span></span>
 <span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">         336 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableComputer);</span></span>
 <span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">         268 :         break;</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">        1068 :     case QBluetoothDeviceInfo::PhoneDevice:</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">        1032 :     case QBluetoothDeviceInfo::PhoneDevice:</span></span>
 <span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         616 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPhone);</span></span>
 <span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         560 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CellularPhone);</span></span>
 <span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">         504 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CordlessPhone);</span></span>
@@ -399,7 +373,7 @@
 <span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">         336 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CommonIsdnAccessPhone);</span></span>
 <span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         268 :         break;</span></span>
 <span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">          28 :     #if (QT_VERSION &lt; QT_VERSION_CHECK(5, 13, 0))</span></span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">         198 :     case QBluetoothDeviceInfo::LANAccessDevice: // Deprecated since Qt 5.13.</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">         162 :     case QBluetoothDeviceInfo::LANAccessDevice: // Deprecated since Qt 5.13.</span></span>
 <span id="L315"><span class="lineNum">     315</span>              :     #else</span>
 <span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         702 :     case QBluetoothDeviceInfo::NetworkDevice: // Added in Qt 5.13.</span></span>
 <span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         432 :     #endif</span></span>
@@ -412,7 +386,7 @@
 <span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         180 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkLoadFactorSix);</span></span>
 <span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">         124 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkNoService);</span></span>
 <span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">          56 :         break;</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">        1800 :     case QBluetoothDeviceInfo::AudioVideoDevice:</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">        1728 :     case QBluetoothDeviceInfo::AudioVideoDevice:</span></span>
 <span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">        1020 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedAudioVideoDevice);</span></span>
 <span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">         964 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHeadsetDevice);</span></span>
 <span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         908 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandsFreeDevice);</span></span>
@@ -431,7 +405,7 @@
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         180 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoConferencing);</span></span>
 <span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         124 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamingDevice);</span></span>
 <span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">          56 :         break;</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">        1100 :     case QBluetoothDeviceInfo::PeripheralDevice:</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">        1056 :     case QBluetoothDeviceInfo::PeripheralDevice:</span></span>
 <span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         628 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPeripheral);</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">         572 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(KeyboardPeripheral);</span></span>
 <span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         516 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PointingDevicePeripheral);</span></span>
@@ -443,14 +417,14 @@
 <span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">         180 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(DigitizerTabletPeripheral);</span></span>
 <span id="L356"><span class="lineNum">     356</span> <span class="tlaGNC">         124 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CardReaderPeripheral);</span></span>
 <span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">          56 :         break;</span></span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">         600 :     case QBluetoothDeviceInfo::ImagingDevice:</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaGNC">         576 :     case QBluetoothDeviceInfo::ImagingDevice:</span></span>
 <span id="L359"><span class="lineNum">     359</span> <span class="tlaGNC">         348 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedImagingDevice);</span></span>
 <span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">         292 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageDisplay);</span></span>
 <span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">         236 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageCamera);</span></span>
 <span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">         180 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImageScanner);</span></span>
 <span id="L363"><span class="lineNum">     363</span> <span class="tlaGNC">         124 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagePrinter);</span></span>
 <span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">          56 :         break;</span></span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">         700 :     case QBluetoothDeviceInfo::WearableDevice:</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">         672 :     case QBluetoothDeviceInfo::WearableDevice:</span></span>
 <span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">         404 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedWearableDevice);</span></span>
 <span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">         348 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableWristWatch);</span></span>
 <span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">         292 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearablePager);</span></span>
@@ -458,7 +432,7 @@
 <span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">         180 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHelmet);</span></span>
 <span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">         124 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableGlasses);</span></span>
 <span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          56 :         break;</span></span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">         900 :     case QBluetoothDeviceInfo::ToyDevice:</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">         864 :     case QBluetoothDeviceInfo::ToyDevice:</span></span>
 <span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">         516 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedToy);</span></span>
 <span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">         460 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyRobot);</span></span>
 <span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         404 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyVehicle);</span></span>
@@ -466,7 +440,7 @@
 <span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">         292 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyController);</span></span>
 <span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">         236 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyGame);</span></span>
 <span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">         168 :         break;</span></span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         900 :     case QBluetoothDeviceInfo::HealthDevice:</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">         864 :     case QBluetoothDeviceInfo::HealthDevice:</span></span>
 <span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">         516 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedHealthDevice);</span></span>
 <span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         460 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthBloodPressureMonitor);</span></span>
 <span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         404 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthThermometer);</span></span>
@@ -481,7 +455,7 @@
 <span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         408 :         break;</span></span>
 <span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">        6882 :     }</span></span>
 <span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">        1884 :     #undef DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN</span></span>
-<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">        3598 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown minor class %1 for major class %2.&quot;)</span></span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">        3492 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown minor class %1 for major class %2.&quot;)</span></span>
 <span id="L397"><span class="lineNum">     397</span> <span class="tlaUNC tlaBgUNC">           0 :         .arg(minorClass).arg(majorClass);</span></span>
 <span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC tlaBgGNC">        1884 :     return QString(); // Null QString indicates unknown minor class.</span></span>
 <span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">        6882 : }</span></span>
