@@ -7,7 +7,6 @@ permissions:
 
 jobs:
   linux:
-    if: false
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
@@ -149,7 +148,6 @@ jobs:
           if-no-files-found: error
 
   mac:
-    if: false
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     strategy:
@@ -348,21 +346,143 @@ jobs:
           - 5.13.2
           - 5.14.2
           - 5.15.2
-        arch: [ x86 ]
-        toolchain: [ mingw ]
+          - 6.2.4
+          - 6.3.2
+          - 6.4.3
+          - 6.5.3
+          - 6.6.3
+          - 6.7.3
+          - 6.8.0
+        arch: [ x86, x86-64, arm64 ]
+        toolchain: [ llvm, mingw, msvc ]
+        exclude:
+          # Exclude arm64 builds for Qt's earlier than 6.2, since Qt only added (Windows) arm64
+          # 'Technology Preview' support in 6.2.
+          - { arch: arm64, qt: '5.9.9' }
+          - { arch: arm64, qt: '5.10.1' }
+          - { arch: arm64, qt: '5.11.3' }
+          - { arch: arm64, qt: '5.12.12' }
+          - { arch: arm64, qt: '5.13.2' }
+          - { arch: arm64, qt: '5.14.2' }
+          - { arch: arm64, qt: '5.15.2' }
+          # Also exclude arm64 for Qt 6.8 for now, as Qt 6.8 is moving to native-only (not cross-compiling) arm64 on
+          # Windows (https://www.qt.io/blog/qt-for-windows-on-arm-may21-update) and there are not compatible runners.
+          - { arch: arm64, qt: '6.8.0' }
+          # Exclude MinGW (including LLVM) builds for arm64, since Qt does not provide those binaries yet.
+          - { arch: arm64, toolchain: llvm }
+          - { arch: arm64, toolchain: mingw }
+          # Exclude LLVM builds for x86, since neither Qt nor GitHub runners provide 32-bit LLVM MinGW binaries.
+          - { arch: x86, toolchain: llvm }
+          # Exclude x86 (32-bit) builds for Qt 5.10.1 with MSVC. See https://bugreports.qt.io/browse/QTBUG-67259
+          - { arch: x86, qt: '5.10.1', toolchain: msvc }
+          # Exclude x86 (32-bit) builds for Qt 6.x, since the Qt online installer dropped those.
+          - { arch: x86, qt: '6.2.4' }
+          - { arch: x86, qt: '6.3.2' }
+          - { arch: x86, qt: '6.4.3' }
+          - { arch: x86, qt: '6.5.3' }
+          - { arch: x86, qt: '6.6.3' }
+          - { arch: x86, qt: '6.7.3' }
+          - { arch: x86, qt: '6.8.0' }
+          # Exclude MinGW (including LLVM) builds for x86-64 with Qt's earlier than 5.12, since the Qt online
+          # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
+          - { arch: x86-64, qt: '5.9.9',  toolchain: llvm }
+          - { arch: x86-64, qt: '5.9.9',  toolchain: mingw }
+          - { arch: x86-64, qt: '5.10.1', toolchain: llvm }
+          - { arch: x86-64, qt: '5.10.1', toolchain: mingw }
+          - { arch: x86-64, qt: '5.11.3', toolchain: llvm }
+          - { arch: x86-64, qt: '5.11.3', toolchain: mingw }
+          # Exclude LLVM builds before Qt 6.7, since Qt didn't begin shipping llvm-mingw support until then.
+          - { toolchain: llvm, qt: '5.9.9' }
+          - { toolchain: llvm, qt: '5.10.1' }
+          - { toolchain: llvm, qt: '5.11.3' }
+          - { toolchain: llvm, qt: '5.12.12' }
+          - { toolchain: llvm, qt: '5.13.2' }
+          - { toolchain: llvm, qt: '5.14.2' }
+          - { toolchain: llvm, qt: '5.15.2' }
+          - { toolchain: llvm, qt: '6.2.4' }
+          - { toolchain: llvm, qt: '6.3.2' }
+          - { toolchain: llvm, qt: '6.4.3' }
+          - { toolchain: llvm, qt: '6.5.3' }
+          - { toolchain: llvm, qt: '6.6.3' }
+          # \todo Temporarily exclude LLVM builds for Qt 6.7 and 6.8: https://github.com/miurahr/aqtinstall/issues/825
+          - { toolchain: llvm, qt: '6.7.3' }
+          - { toolchain: llvm, qt: '6.8.0' }
         include:
           # Map the aqtinstall (aqt) architectures.
           - { qt: '5.9.9',   toolchain: mingw, arch: x86,    aqtArch: win32_mingw53 }
+          - { qt: '5.9.9',   toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2015 }
+          - { qt: '5.9.9',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2013_64 }
+          - { qt: '5.9.9',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.9.9',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.10.1',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw53 }
+          # { qt: '5.10.1',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2015 } # Excluded above (QTBUG-67259).
+          - { qt: '5.10.1',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2013_64 }
+          - { qt: '5.10.1',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.10.1',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.11.3',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw53 }
+          - { qt: '5.11.3',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2015 }
+          - { qt: '5.11.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.11.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.12.12', toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
+          - { qt: '5.12.12', toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          - { qt: '5.12.12', toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
+          - { qt: '5.12.12', toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.12.12', toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.13.2',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
+          - { qt: '5.13.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          - { qt: '5.13.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
+          - { qt: '5.13.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.13.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.14.2',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
+          - { qt: '5.14.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          - { qt: '5.14.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
+          - { qt: '5.14.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.14.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.15.2',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw81 }
+          - { qt: '5.15.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw81 }
+          - { qt: '5.15.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2019 }
+          - { qt: '5.15.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
+          - { qt: '5.15.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.2.4',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.2.4',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.2.4',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.3.2',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.3.2',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.3.2',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.4.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.4.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.4.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.5.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.5.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.5.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          - { qt: '6.6.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.6.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.6.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          # { qt: '6.7.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.7.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.7.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          - { qt: '6.7.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
+          # { qt: '6.8.0',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.8.0',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.8.0',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
+          # Map the MSVC architecture.
+          - { toolchain: msvc, arch: arm64,  msvcArch: amd64_arm64 }
+          - { toolchain: msvc, arch: x86,    msvcArch: amd64_x86 }
+          - { toolchain: msvc, arch: x86-64, msvcArch: amd64 }
           # Define the generator and dll names per toolchain.
+          # { toolchain: 'llvm',  generator: 'MinGW Makefiles', dll: libQtPokit.dll } \todo See temp exclusion above.
           - { toolchain: 'mingw', generator: 'MinGW Makefiles', dll: libQtPokit.dll }
+          - { toolchain: 'msvc',  generator: 'NMake Makefiles', dll: QtPokit.dll }
           # Optional additional tools to be installed by aqtinstall (via install-qt-action).
           - { toolchain: 'mingw', arch: x86, aqtTools: 'tools_mingw,qt.tools.win32_mingw810' }
+          # Use Qt-provided 64-bit MinGW for recent Qt's (defaulting to GitHub's 12.2.0 version for older Qt versions).
+          - { toolchain: 'mingw', arch: x86-64, qt: '5.14.2', aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '5.15.2', aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.4.3',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.5.3',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.6.3',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.7.3',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.8.0',  aqtTools: 'tools_mingw1310' }
     steps:
       - uses: actions/checkout@v4
       - name: Install host Qt for cross-compilation
@@ -434,7 +554,7 @@ jobs:
         working-directory: ${{ runner.temp }}
       - name: Test # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64'
-        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --tests-regex AbstractCommand --verbose
+        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose
       - name: Upload test results
         if: matrix.arch != 'arm64' && fromJSON(steps.post-build.outputs.tap)
         uses: actions/upload-artifact@v4
