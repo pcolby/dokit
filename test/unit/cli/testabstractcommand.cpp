@@ -89,14 +89,9 @@ void TestAbstractCommand::parseMicroValue_data()
 
     // Floats work the same.
     QTest::addRow("123.0")  << QStringLiteral("123.0")  << QString() << (quint32)100 << (quint32)123;
-    QTest::addRow("123.0s") << QStringLiteral("123.0s") << QStringLiteral("s") << (quint32)100 << (quint32)123000000;
-    #if defined(Q_CC_MINGW) && !defined(__MINGW64__) // 32-bit MinGW has a persistent rounding error.
-    QTest::addRow("1.230")  << QStringLiteral("1.230")  << QString() << (quint32)100 << (quint32)1229;
-    QTest::addRow("1.230s") << QStringLiteral("1.230s") << QStringLiteral("s") << (quint32)100 << (quint32)1229999;
-    #else
     QTest::addRow("1.230")  << QStringLiteral("1.230")  << QString() << (quint32)100 << (quint32)1230;
+    QTest::addRow("123.0s") << QStringLiteral("123.0s") << QStringLiteral("s") << (quint32)100 << (quint32)123000000;
     QTest::addRow("1.230s") << QStringLiteral("1.230s") << QStringLiteral("s") << (quint32)100 << (quint32)1230000;
-    #endif
 
     // Invalid numbers return 0.
     QTest::addRow("xxx") << QStringLiteral("xxx") << QString() << (quint32)100 << (quint32)0;
@@ -134,14 +129,9 @@ void TestAbstractCommand::parseMilliValue_data()
 
     // Floats work the same.
     QTest::addRow("123.0")  << QStringLiteral("123.0")  << QString() << (quint32)100 << (quint32)123;
-    QTest::addRow("123.0s") << QStringLiteral("123.0s") << QStringLiteral("s") << (quint32)100 << (quint32)123000;
-    #if defined(Q_CC_MINGW) && !defined(__MINGW64__) // 32-bit MinGW has a persistent rounding error.
-    QTest::addRow("1.230")  << QStringLiteral("1.230")  << QString() << (quint32)100 << (quint32)1229;
-    QTest::addRow("1.230s") << QStringLiteral("1.230s") << QStringLiteral("s") << (quint32)100 << (quint32)1229;
-    #else
     QTest::addRow("1.230")  << QStringLiteral("1.230")  << QString() << (quint32)100 << (quint32)1230;
+    QTest::addRow("123.0s") << QStringLiteral("123.0s") << QStringLiteral("s") << (quint32)100 << (quint32)123000;
     QTest::addRow("1.230s") << QStringLiteral("1.230s") << QStringLiteral("s") << (quint32)100 << (quint32)1230;
-    #endif
 
     // Invalid numbers return 0.
     QTest::addRow("xxx") << QStringLiteral("xxx") << QString() << (quint32)100 << (quint32)0;
@@ -179,13 +169,8 @@ void TestAbstractCommand::parseWholeValue_data()
 
     // Floats work the same.
     QTest::addRow("123.0") << QStringLiteral("123.0") << QString() << (quint32)123;
-    #if defined(Q_CC_MINGW) && !defined(__MINGW64__) // 32-bit MinGW has a persistent rounding error.
-    QTest::addRow("1.23K") << QStringLiteral("1.23K") << QString() << (quint32)1229;
-    QTest::addRow("1.23M") << QStringLiteral("1.23M") << QString() << (quint32)1229999;
-    #else
     QTest::addRow("1.23K") << QStringLiteral("1.23K") << QString() << (quint32)1230;
     QTest::addRow("1.23M") << QStringLiteral("1.23M") << QString() << (quint32)1230000;
-    #endif
 
     // Invalid numbers return 0.
     QTest::addRow("xxx") << QStringLiteral("xxx") << QString() << (quint32)0;

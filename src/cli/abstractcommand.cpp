@@ -9,6 +9,7 @@
 #include <QLocale>
 #include <QTimer>
 
+#include <cmath>
 #include <ratio>
 
 /*!
@@ -211,7 +212,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(dbl) < sensibleMinimum; ratio.num *= 1000);
         }
-        return (quint32)DOKIT_RESULT(dbl);
+        return std::llround(DOKIT_RESULT(dbl));
     }
     #undef DOKIT_RESULT
     return 0; // Failed to parse as either integer, or float.
