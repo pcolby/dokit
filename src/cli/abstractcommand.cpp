@@ -9,6 +9,7 @@
 #include <QLocale>
 #include <QTimer>
 
+#include <cmath>
 #include <ratio>
 
 /*!
@@ -219,7 +220,8 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         }
         qDebug() << "G" << dbl << ratio.isValid() << ratio.num << '/' << ratio.den << (quint32)DOKIT_RESULT(dbl);
         qDebug() << "I" << dbl << '*' << ratio.num << '*' << R::den << '/' << ratio.den << '/' << ratio.num
-                 << qSetRealNumberPrecision(10) << '=' << DOKIT_RESULT(dbl) << (quint32)DOKIT_RESULT(dbl);
+                 << qSetRealNumberPrecision(10) << '=' << DOKIT_RESULT(dbl) << '=' << (quint32)DOKIT_RESULT(dbl)
+                 << '=' << std::llround(DOKIT_RESULT(dbl));
         return (quint32)DOKIT_RESULT(dbl);
     }
     #undef DOKIT_RESULT
