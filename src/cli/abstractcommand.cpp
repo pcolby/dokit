@@ -218,6 +218,8 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
             for (ratio = makeRatio<R>(); DOKIT_RESULT(dbl) < sensibleMinimum; ratio.num *= 1000);
         }
         qDebug() << "G" << dbl << ratio.isValid() << ratio.num << '/' << ratio.den << (quint32)DOKIT_RESULT(dbl);
+        qDebug() << "I" << dbl << '*' << ratio.num << '*' << R::den << '/' << ratio.den << '/' << ratio.num
+                 << qSetRealNumberPrecision(10) << '=' << DOKIT_RESULT(dbl) << (quint32)DOKIT_RESULT(dbl);
         return (quint32)DOKIT_RESULT(dbl);
     }
     #undef DOKIT_RESULT
