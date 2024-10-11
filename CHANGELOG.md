@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+- Correctly round CLI arguments ([899b007][])
+- Support for LLVM-based coverage reporting with Clang.
 - Upgrade to Qt 6.8.0, and 6.7.3.
 
 ### Changed
@@ -143,6 +145,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [073bce8]:     https://github.com/pcolby/dokit/commit/073bce82014a85e033639862fdb061c72b7971fd "Include switch and charging status in CLI output"
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
+[899b007]:     https://github.com/pcolby/dokit/commit/899b007e73e64e724f2785acafddd2d3fc6f893e "Round command line options correctly"
 [#9]:          https://github.com/pcolby/dokit/issues/9
 [#17]:         https://github.com/pcolby/dokit/issues/17
 [#18]:         https://github.com/pcolby/dokit/issues/18
