@@ -171,10 +171,12 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
     // Remove the optional (whole) unit suffix.
     Ratio ratio;
     QString number = value.trimmed();
+    qDebug() << "A" << number;
     if ((!unit.isEmpty()) && (number.endsWith(unit, Qt::CaseInsensitive))) {
         number.chop(unit.length());
         ratio = makeRatio<std::ratio<1>>();
     }
+    qDebug() << "B" << number << ratio.den << '/' << ratio.num;
 
     // Parse, and remove, the optional SI unit prefix.
     if (!number.isEmpty()) {
@@ -190,30 +192,36 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
             number.chop(1);
         }
     }
+    qDebug() << "C" << number << ratio.den << '/' << ratio.num;
 
     #define DOKIT_RESULT(var) (var * ratio.num * R::den / ratio.den / R::num)
     // Parse the number as an (unsigned) integer.
     QLocale locale; bool ok;
     qulonglong integer = locale.toULongLong(number, &ok);
     if (ok) {
+        qDebug() << "D" << integer;
         if (integer == 0) {
             return 0;
         }
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(integer) < sensibleMinimum; ratio.num *= 1000);
         }
+        qDebug() << "E" << integer << (quint32)DOKIT_RESULT(integer);
         return (integer == 0) ? 0u : (quint32)DOKIT_RESULT(integer);
     }
 
     // Parse the number as a (double) floating point number, and check that it is positive.
     const double dbl = locale.toDouble(number, &ok);
     if ((ok) && (dbl > 0.0)) {
+        qDebug() << "F" << dbl;
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(dbl) < sensibleMinimum; ratio.num *= 1000);
         }
+        qDebug() << "G" << dbl << (quint32)DOKIT_RESULT(dbl);
         return (quint32)DOKIT_RESULT(dbl);
     }
     #undef DOKIT_RESULT
+    qDebug() << "H" << 0;
     return 0; // Failed to parse as either integer, or float.
 }
 

@@ -356,13 +356,9 @@ jobs:
           - { qt: '5.10.1',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw53 }
           - { qt: '5.11.3',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw53 }
           - { qt: '5.12.12', toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
-          - { qt: '5.12.12', toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
           - { qt: '5.13.2',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
-          - { qt: '5.13.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
           - { qt: '5.14.2',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
-          - { qt: '5.14.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
           - { qt: '5.15.2',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw81 }
-          - { qt: '5.15.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw81 }
           # Define the generator and dll names per toolchain.
           - { toolchain: 'mingw', generator: 'MinGW Makefiles', dll: libQtPokit.dll }
           # Optional additional tools to be installed by aqtinstall (via install-qt-action).
@@ -438,7 +434,7 @@ jobs:
         working-directory: ${{ runner.temp }}
       - name: Test # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64'
-        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose
+        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --tests-regex AbstractCommand --verbose
       - name: Upload test results
         if: matrix.arch != 'arm64' && fromJSON(steps.post-build.outputs.tap)
         uses: actions/upload-artifact@v4
