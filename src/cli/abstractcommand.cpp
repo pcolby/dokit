@@ -176,7 +176,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         number.chop(unit.length());
         ratio = makeRatio<std::ratio<1>>();
     }
-    qDebug() << "B" << number << ratio.den << '/' << ratio.num;
+    qDebug() << "B" << number << ratio.isValid() << ratio.den << '/' << ratio.num;
 
     // Parse, and remove, the optional SI unit prefix.
     if (!number.isEmpty()) {
@@ -192,7 +192,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
             number.chop(1);
         }
     }
-    qDebug() << "C" << number << ratio.den << '/' << ratio.num;
+    qDebug() << "C" << number << ratio.isValid() << ratio.den << '/' << ratio.num;
 
     #define DOKIT_RESULT(var) (var * ratio.num * R::den / ratio.den / R::num)
     // Parse the number as an (unsigned) integer.
@@ -217,7 +217,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(dbl) < sensibleMinimum; ratio.num *= 1000);
         }
-        qDebug() << "G" << dbl << (quint32)DOKIT_RESULT(dbl);
+        qDebug() << "G" << dbl << ratio.isValid() << ratio.num << '/' << ratio.den << (quint32)DOKIT_RESULT(dbl);
         return (quint32)DOKIT_RESULT(dbl);
     }
     #undef DOKIT_RESULT
