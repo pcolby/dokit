@@ -552,14 +552,7 @@ jobs:
           if-no-files-found: error
       - name: Make portable
         if: matrix.arch != 'arm64'
-        run: |
-          mkdir portable
-          copy /v /b src\lib\${{ matrix.dll }} /b portable
-          copy /v /b src\cli\dokit.exe /b portable
-          cd portable
-          windeployqt --compiler-runtime --release --verbose 2 dokit.exe ${{ matrix.dll }}
-          :: dokit.exe --version # This would hang the job, because Qt will show a message box.
-        working-directory: ${{ runner.temp }}
+        run: cmake --build "%RUNNER_TEMP%" --target cli-portable
       - name: Check portable version
         if: matrix.arch != 'arm64'
         shell: bash

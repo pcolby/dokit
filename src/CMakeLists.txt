@@ -10,5 +10,3 @@ if (ENABLE_GUI)
   message(STATUS "Enabling experimental GUI app")
   add_subdirectory(gui)
 endif()
-
-# \todo Add windeployqt target (w/ both CLI and GUI).

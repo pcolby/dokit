@@ -86,7 +86,8 @@ find_program(LINUXDEPLOY NAMES linuxdeploy linuxdeploy-x86_64.AppImage)
 if (LINUXDEPLOY)
   message(STATUS "Found linuxdeploy: ${LINUXDEPLOY}")
   configure_file(desktop.in dokit.desktop)
-  add_custom_target(cli-appimage
+  add_custom_target(
+    cli-appimage
     COMMAND ${CMAKE_COMMAND} -E env
       OUTPUT=${CMAKE_BINARY_DIR}/dokit-${PROJECT_VERSION}${PROJECT_VERSION_SUFFIX}.AppImage
       QMAKE=$<TARGET_FILE:Qt${QT_VERSION_MAJOR}::qmake>
@@ -98,6 +99,25 @@ if (LINUXDEPLOY)
       --icon-file "${CMAKE_CURRENT_SOURCE_DIR}/dokit.png"
       --output appimage
       --plugin qt
-    DEPENDS dokit QtPokit
+    COMMENT "Bundling AppImage"
+    DEPENDS cli QtPokit
+    VERBATIM
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+find_program(WINDEPLOYQT NAMES windeployqt windeployqt.exe)
+if (WINDEPLOYQT)
+  message(STATUS "Found windeployqt: ${WINDEPLOYQT}")
+  file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/portable)
+  add_custom_target(
+    cli-portable
+    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:cli>" "${PROJECT_BINARY_DIR}/portable"
+    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:QtPokit>" "${PROJECT_BINARY_DIR}/portable"
+    COMMAND ${WINDEPLOYQT} --compiler-runtime --release --verbose 2
+      "$<TARGET_FILE_NAME:cli>"
+      "$<TARGET_FILE_NAME:QtPokit>"
+    COMMENT "Bundling portable version"
+    DEPENDS cli QtPokit
+    VERBATIM
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/portable)
 endif()
