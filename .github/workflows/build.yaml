@@ -192,23 +192,6 @@ jobs:
           - { qt: '5.14.2',  os: macos-15, cc: gcc }
           - { qt: '5.15.2',  os: macos-14, cc: gcc }
           - { qt: '5.15.2',  os: macos-15, cc: gcc }
-          # Exclude Qt 5.x and 6.2 with Clang on macOS 14+, since these have unit tests that hang on GitHub's runners.
-          - { qt: '5.9.9',   os: macos-14, cc: clang } # \todo Explore these hangs on a local macOS host,
-          - { qt: '5.9.9',   os: macos-15, cc: clang } # \todo because they might not be specific to GitHub.
-          - { qt: '5.10.1',  os: macos-14, cc: clang }
-          - { qt: '5.10.1',  os: macos-15, cc: clang }
-          - { qt: '5.11.3',  os: macos-14, cc: clang }
-          - { qt: '5.11.3',  os: macos-15, cc: clang }
-          - { qt: '5.12.12', os: macos-14, cc: clang }
-          - { qt: '5.12.12', os: macos-15, cc: clang }
-          - { qt: '5.13.2',  os: macos-14, cc: clang }
-          - { qt: '5.13.2',  os: macos-15, cc: clang }
-          - { qt: '5.14.2',  os: macos-14, cc: clang }
-          - { qt: '5.14.2',  os: macos-15, cc: clang }
-          - { qt: '5.15.2',  os: macos-14, cc: clang }
-          - { qt: '5.15.2',  os: macos-15, cc: clang }
-          - { qt: '6.2.4',   os: macos-14, cc: clang }
-          - { qt: '6.2.4',   os: macos-15, cc: clang }
           # Exclude Qt 5.10 with GCC on macOS. See https://bugreports.qt.io/browse/QTBUG-66585
           - { qt: '5.10.1', cc: gcc }
           # Exclude Qt 6.x with GCC on macOS for now. See https://bugreports.qt.io/browse/QTBUG-107050
@@ -284,6 +267,12 @@ jobs:
           "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
           [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
             "$RUNNER_TEMP/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
+      - name: Grant Bluetooth access # Only needed for unit tests with older Qt's on newer runners.
+        if: matrix.os != 'macos-13' && ( startsWith(matrix.qt, '5') || startsWith(matrix.qt, '6.2.') )
+        run: >
+          sudo sqlite3 "$HOME/Library/Application Support/com.apple.TCC/TCC.db" "INSERT or REPLACE INTO access
+            ( service, client, client_type, auth_value, auth_reason, auth_version, flags ) VALUES
+            ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, 3, 1, 0 )"
       - name: Test
         run: |
           [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
