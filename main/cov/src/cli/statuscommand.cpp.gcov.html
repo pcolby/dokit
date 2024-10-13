@@ -108,20 +108,20 @@
 <span id="L20"><span class="lineNum">      20</span>              :  * Construct a new StatusCommand object with \a parent.</span>
 <span id="L21"><span class="lineNum">      21</span>              :  */</span>
 <span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC tlaBgGNC">         504 : StatusCommand::StatusCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">         272 : {</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">         336 : {</span></span>
 <span id="L24"><span class="lineNum">      24</span>              : </span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         552 : }</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         616 : }</span></span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         100 : QStringList StatusCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">         140 : {</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         340 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">         320 :     };</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         140 : }</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">         220 : {</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         420 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">         400 :     };</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         220 : }</span></span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
 <span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          40 : QStringList StatusCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          56 : {</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">          96 :     return DeviceCommand::supportedOptions(parser);</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          56 : }</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          88 : {</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         128 :     return DeviceCommand::supportedOptions(parser);</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          88 : }</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
 <span id="L38"><span class="lineNum">      38</span>              : /*!</span>
 <span id="L39"><span class="lineNum">      39</span>              :  * \copybrief DeviceCommand::processOptions</span>
@@ -130,14 +130,14 @@
 <span id="L42"><span class="lineNum">      42</span>              :  * supported (or required) by this command.</span>
 <span id="L43"><span class="lineNum">      43</span>              :  */</span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">          20 : QStringList StatusCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          28 : {</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          48 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          28 :     if (!errors.isEmpty()) {</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          44 : {</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          64 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          44 :     if (!errors.isEmpty()) {</span></span>
 <span id="L48"><span class="lineNum">      48</span> <span class="tlaUNC tlaBgUNC">           0 :         return errors;</span></span>
 <span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L50"><span class="lineNum">      50</span>              : </span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC tlaBgGNC">          28 :     return errors;</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">          28 : }</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC tlaBgGNC">          44 :     return errors;</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L53"><span class="lineNum">      53</span>              : </span>
 <span id="L54"><span class="lineNum">      54</span>              : /*!</span>
 <span id="L55"><span class="lineNum">      55</span>              :  * \copybrief DeviceCommand::getService</span>
