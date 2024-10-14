@@ -462,8 +462,6 @@ jobs:
           # { toolchain: 'llvm',  generator: 'MinGW Makefiles', dll: libQtPokit.dll } \todo See temp exclusion above.
           - { toolchain: 'mingw', generator: 'MinGW Makefiles', dll: libQtPokit.dll }
           - { toolchain: 'msvc',  generator: 'NMake Makefiles', dll: QtPokit.dll }
-          # Optional additional tools to be installed by aqtinstall (via install-qt-action).
-          - { toolchain: 'mingw', arch: x86, aqtTools: 'tools_mingw,qt.tools.win32_mingw810' }
           # Use Qt-provided 64-bit MinGW for recent Qt's (defaulting to GitHub's 12.2.0 version for older Qt versions).
           - { toolchain: 'mingw', arch: x86-64, qt: '5.14.2', aqtTools: 'tools_mingw1310' }
           - { toolchain: 'mingw', arch: x86-64, qt: '5.15.2', aqtTools: 'tools_mingw1310' }
@@ -473,6 +471,21 @@ jobs:
           - { toolchain: 'mingw', arch: x86-64, qt: '6.7.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.8.0',  aqtTools: 'tools_mingw1310' }
     steps:
+      - name: Configure path
+        if: matrix.toolchain != 'msvc'
+        shell: bash
+        run: |
+          # Paths needed for MSYS2's LCOV to function properly. Note, its important that we add the mingw64 one here
+          # before any later mingw installs (including those from install-qt-action) or this would interfere with those.
+          tee -a "$GITHUB_PATH" <<< 'C:\msys64\usr\bin'     # Else geninfo will fail to find .gcda files (not sure why).
+          tee -a "$GITHUB_PATH" <<< 'C:\msys64\mingw64\bin' # Else lcov will fail to find its own geninfo command.
+          # For 32-bit (x86) MinGW builds, place GitHub's mingw32 at the head of the path (install-qt-actions would
+          # supersede this below, but we never install (32-bit) mingw32 via install-qt-actions, so not an issue).
+          [[ '${{ matrix.toolchain }}' != 'mingw' || '${{ matrix.arch }}' != 'x86' ]] ||
+            tee -a "$GITHUB_PATH" <<< 'C:\mingw32\bin'
+      - name: Install LCOV
+        if: matrix.toolchain != 'msvc'
+        run: pacman --sync --noconfirm --verbose mingw-w64-x86_64-lcov
       - uses: actions/checkout@v4
       - name: Install host Qt for cross-compilation
         if: matrix.arch == 'arm64'
@@ -520,58 +533,88 @@ jobs:
         with:
           arch: ${{ matrix.msvcArch }}
           toolset: ${{ startsWith(matrix.qt, '5') && '14.29' || '' }} # MSVC 14.38+ has many deprecation issues w/ Qt5.
-      - name: Build
+      - name: Build w/ coverage instrumentation
+        if: matrix.toolchain != 'msvc'
         env:
+          CMAKE_MESSAGE_LOG_LEVEL: VERBOSE
           PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
         run: |
           cmake -D CMAKE_BUILD_TYPE=Release ^
+                -D ENABLE_COVERAGE=true ^
                 -D QT_HOST_PATH=%qtHostPath% ^
                 -D QT_INSTALL_DOCS=%RUNNER_WORKSPACE%\Qt\Docs\Qt-${{ matrix.qt }} ^
-                -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%"
-          cmake --build "%RUNNER_TEMP%" --verbose
+                -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%/coverage"
+          cmake --build "%RUNNER_TEMP%/coverage" --verbose
+      - name: Build w/o coverage instrumentation
+        env:
+          CMAKE_MESSAGE_LOG_LEVEL: VERBOSE
+          PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
+        run: |
+          cmake -D CMAKE_BUILD_TYPE=Release ^
+                -D ENABLE_COVERAGE=false ^
+                -D QT_HOST_PATH=%qtHostPath% ^
+                -D QT_INSTALL_DOCS=%RUNNER_WORKSPACE%\Qt\Docs\Qt-${{ matrix.qt }} ^
+                -G "${{ matrix.generator }}" -S "%GITHUB_WORKSPACE%" -B "%RUNNER_TEMP%/release"
+          cmake --build "%RUNNER_TEMP%/release" --verbose
       - name: Capture build-output variables
         id: post-build
         shell: bash
         run: |
-          echo "dokitVersion=$(cat "$RUNNER_TEMP/version.txt")" | tee -a "$GITHUB_OUTPUT"
+          echo "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")" | tee -a "$GITHUB_OUTPUT"
           { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
             tee -a "$GITHUB_OUTPUT"
-      - name: Install DLL for tests
+      - name: Install DLL for tests w/ coverage
+        if: matrix.toolchain != 'msvc'
         run: |
           copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
           copy /v /b src\lib\${{ matrix.dll }} /b test\unit\lib
-        working-directory: ${{ runner.temp }}
-      - name: Test # We can't execute arm64 binaries on an x86-64 host.
+        working-directory: ${{ runner.temp }}/coverage
+      - name: Install DLL for tests w/o coverage
+        run: |
+          copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
+          copy /v /b src\lib\${{ matrix.dll }} /b test\unit\lib
+        working-directory: ${{ runner.temp }}/release
+      - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
+        if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
+        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --verbose
+      - name: Test w/o coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64'
-        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%" --verbose
+        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/release" --verbose
+      - name: Collate test coverage
+        if: matrix.toolchain != 'msvc'
+        run: cmake --build "%RUNNER_TEMP%/coverage" --target coverage --verbose
       - name: Upload test results
-        if: matrix.arch != 'arm64' && fromJSON(steps.post-build.outputs.tap)
+        if: matrix.arch != 'arm64' && ( matrix.toolchain != 'msvc' || fromJSON(steps.post-build.outputs.tap) )
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ steps.post-build.outputs.dokitVersion }}
-          path: ${{ runner.temp }}/test/**/*.tap
+          path: |
+            ${{ runner.temp }}/coverage/coverage.info
+            ${{ runner.temp }}/coverage/removeHtmlDates.sh
+            ${{ runner.temp }}/coverage/test/**/*.tap
+            ${{ runner.temp }}/release/test/**/*.tap
           if-no-files-found: error
       - name: Make portable
         if: matrix.arch != 'arm64'
-        run: cmake --build "%RUNNER_TEMP%" --target cli-portable
+        run: cmake --build "%RUNNER_TEMP%/release" --target cli-portable
       - name: Check portable version
         if: matrix.arch != 'arm64'
         shell: bash
-        run: '"$RUNNER_TEMP/portable/dokit.exe" --version'
+        run: '"$RUNNER_TEMP/release/portable/dokit.exe" --version'
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dokit-${{ steps.post-build.outputs.dokitVersion }}
           path: |
-            ${{ runner.temp }}/src/lib/${{ matrix.dll }}
-            ${{ runner.temp }}/src/cli/dokit.exe
+            ${{ runner.temp }}/release/src/lib/${{ matrix.dll }}
+            ${{ runner.temp }}/release/src/cli/dokit.exe
           if-no-files-found: error
       - name: Upload artifacts (portable)
         if: matrix.arch != 'arm64'
         uses: actions/upload-artifact@v4
         with:
           name: dokit-${{ steps.post-build.outputs.dokitVersion }}.portable
-          path: ${{ runner.temp }}/portable
+          path: ${{ runner.temp }}/release/portable
           if-no-files-found: error
 
   collate-test-results:
@@ -597,7 +640,9 @@ jobs:
         run: |
           shopt -s globstar
           # Update source code paths from macOS tracefiles to match Linux.
-          sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/**/coverage.info
+          sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/*.macos-*/**/coverage.info
+          # Update source code paths from Windows tracefiles to match Linux, and remove all \r chars from line endings.
+          sed -i -Ee 's|\r$||' -e 's|\\|/|g' -e 's|^SF:D:/a|SF:/home/runner/work|' artifacts/*.win.*/**/coverage.info
           # Combine all tracefiles into one.
           lcov $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
           # Generate the HTML report.

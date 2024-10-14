@@ -51,6 +51,7 @@ if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
       coverage
       COMMAND ${CODECOV_LCOV} --capture --directory . --gcov-tool ${CODECOV_GCOV} --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --list coverage.info
+      # Linux/macOS
       COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info /usr/* --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */.qt/* --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */.rcc/* --output-file coverage.info
@@ -59,6 +60,14 @@ if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
       COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */qt/* --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */Qt/* --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */test/* --output-file coverage.info
+      # Windows
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *:\\mingw32\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *:\\mingw64\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\.qt\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\.rcc\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\moc_*.cpp --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\Qt\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\test\\* --output-file coverage.info
       COMMAND ${CODECOV_LCOV} --list coverage.info
       COMMENT "Collating coverage data"
       VERBATIM
