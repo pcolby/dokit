@@ -200,8 +200,15 @@ Command:
 * Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]
 * a Qt-supported platform, such as Linux, macOS or Windows
 * a [Pokit][] device, such as a [Pokit Meter][] or [Pokit Pro][]
-* [CMake][] (for building Dokit itself) 3.8+
-  * some unit tests won't be built unless using CMake 3.12 or later.
+* [CMake][] (for building Dokit itself) 3.15+
+
+> [!TIP]
+> To install all dependencies on modern Ubuntu releases:
+> * `sudo apt install cmake doxygen lcov`
+>
+> and then either:
+> * Qt5: `sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}`
+> * Qt6: `sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}`
 
 ## Building from Source
 
