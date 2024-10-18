@@ -2,14 +2,18 @@
 
 ## [Unreleased][]
 
-- Correctly round CLI arguments ([899b007][])
+### Added
+
 - Support for LLVM-based coverage reporting with Clang.
-- Upgrade to Qt 6.8.0, and 6.7.3.
 
 ### Changed
 
 - Upgrade to Doxygen 1.11.0.
-- Upgrade to Qt 6.7.1.
+- Upgrade to Qt 6.8.0, and 6.7.3.
+
+### Fixed
+
+- Correctly round CLI arguments ([899b007][])
 
 ## [0.5.2][] (2024-05-06)
 
