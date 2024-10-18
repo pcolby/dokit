@@ -15,6 +15,16 @@ Additionally, the Pokit Meter includes the following undocumented service:
 
 * `831d0001-e98e-1fed-e73e-4bb7596f776e` - no idea.
 
+Also, the Pokit app contains references to the following UUIDs; these may or may not be BLE services.
+
+* `581a9e6a-d2f6-4d7b-b0d0-5bc3ed9b842e`
+* `5f330a08-8e76-4d5a-97fb-22e1807b1888`
+* `6e7a7953-3b41-4be5-8052-c93129fa1f35`
+* `b4a19bce-96cf-4915-9ba4-a19f4a042c8e`
+* `c999d155-c00a-4e8f-a056-cd9523ce39de`
+* `ef1b0821-b107-4cae-b17c-df1e99b1667a`
+* `f2259466-ac2a-40a9-bf23-f47666ae2b15`
+
 ## Qt Versions
 
 QtPokit requires Qt's support Bluetooth Low Energy, in Central mode.

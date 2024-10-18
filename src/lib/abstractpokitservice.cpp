@@ -337,7 +337,7 @@ bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBlueto
     }
 
     QLowEnergyDescriptor descriptor = characteristic.descriptor(
-        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);
+        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration); // 0x2902
     if (!descriptor.isValid()) {
         qCWarning(lc).noquote() << tr(R"(Characteristic %1 "%2" has no client configuration descriptor.)")
             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
@@ -372,7 +372,7 @@ bool AbstractPokitServicePrivate::disableCharacteristicNotificatons(const QBluet
     }
 
     QLowEnergyDescriptor descriptor = characteristic.descriptor(
-        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);
+        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration); // 0x2902
     if (!descriptor.isValid()) {
         qCWarning(lc).noquote() << tr(R"(Characteristic %1 "%2" has no client configuration descriptor.)")
             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));
