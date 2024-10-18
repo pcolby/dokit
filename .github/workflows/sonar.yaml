@@ -26,7 +26,7 @@ jobs:
           fetch-depth: 0
       - name: Install Qt
         run: |
-          sudo apt-mark hold grub-efi-amd64-signed
+          sudo apt-mark hold firefox grub-efi-amd64-signed
           sudo apt update
           sudo apt upgrade
           sudo apt install lcov qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}

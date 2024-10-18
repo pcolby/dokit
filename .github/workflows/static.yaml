@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install Qt
         run: |
-          sudo apt-mark hold grub-efi-amd64-signed
+          sudo apt-mark hold firefox grub-efi-amd64-signed
           sudo apt update
           sudo apt upgrade
           sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Install Cppcheck
         run: |
-          sudo apt-mark hold grub-efi-amd64-signed
+          sudo apt-mark hold firefox grub-efi-amd64-signed
           sudo apt update
           sudo apt upgrade
           sudo apt install cppcheck
