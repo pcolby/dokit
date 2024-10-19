@@ -809,7 +809,7 @@ Here is the call graph for this function:</div>
 
 <p>Returns <em>settings</em> in the format Pokit devices expect. </p>
 <p>If <em>updateIntervalIs32bit</em> is <code>true</code> then the <code>Update Interval</code> field will be encoded in 32-bit instead of 16. </p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000001">Pokit Bluetooth API errata</a></b></dt><dd>For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> seconds (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code> milliseconds, even though that's not officially documented anywhere. </dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000002">Pokit Bluetooth API errata</a></b></dt><dd>For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> seconds (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code> milliseconds, even though that's not officially documented anywhere. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00358">358</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  360</span>{</div>
@@ -894,7 +894,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Parses the <code>Metadata</code> <em>value</em> into a DataLoggerService::Metatdata struct. </p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000002">Pokit Bluetooth API errata</a></b></dt><dd>For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code>, even though that's not officially documented anywhere. Also note, the doc claims 'microseconds' (ie 10^-6), but clearly the value is 'milliseconds' (ie 10^-3) for Pokit Pro, and whole seconds for Pokit Meter. </dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000003">Pokit Bluetooth API errata</a></b></dt><dd>For Pokit Meter, <code>updateInterval</code> is <code>uint16</code> (as per the Pokit API 1.00), however for Pokit Pro it's <code>uint32</code>, even though that's not officially documented anywhere. Also note, the doc claims 'microseconds' (ie 10^-6), but clearly the value is 'milliseconds' (ie 10^-3) for Pokit Pro, and whole seconds for Pokit Meter. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00393">393</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  394</span>{</div>

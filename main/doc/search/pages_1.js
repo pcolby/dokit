@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qtpokit_0',['QtPokit',['../index.html',1,'']]]
+  ['errata_0',['Pokit API Errata',['../pokit.html',1,'']]]
 ];

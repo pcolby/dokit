@@ -1255,7 +1255,7 @@ Here is the caller graph for this function:</div>
 
 <p>Returns the most recent value of the <code>Device Info</code> service's (undocumented) <code>Serial Number</code> characteristic. </p>
 <p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> is returned. </p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000003">Pokit Bluetooth API errata</a></b></dt><dd>Unlike other string characteristics, Pokit (Pro) devices always appear to add a trailing <code>null</code> byte to serial number strings. So here we strip any that are present.</dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000004">Pokit Bluetooth API errata</a></b></dt><dd>Unlike other string characteristics, Pokit (Pro) devices always appear to add a trailing <code>null</code> byte to serial number strings. So here we strip any that are present.</dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00234">234</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  235</span>{</div>
@@ -1440,7 +1440,7 @@ Here is the caller graph for this function:</div>
 <p>UUID of the "Device Info" service. </p>
 
 <p class="definition">Definition at line <a class="el" href="deviceinfoservice_8h_source.html#l00028">28</a> of file <a class="el" href="deviceinfoservice_8h_source.html">deviceinfoservice.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{ QBluetoothUuid::ServiceClassUuid::DeviceInformation };</div>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>{ QBluetoothUuid::ServiceClassUuid::DeviceInformation }; <span class="comment">// 0x180a</span></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00190">PokitDevice::serviceToString()</a>.</p>
 

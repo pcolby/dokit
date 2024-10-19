@@ -1049,7 +1049,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  372</span>    }</div>
 <div class="line"><span class="lineno">  373</span> </div>
 <div class="line"><span class="lineno">  374</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergydescriptor.html">QLowEnergyDescriptor</a> descriptor = characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#descriptor">descriptor</a>(</div>
-<div class="line"><span class="lineno">  375</span>        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</div>
+<div class="line"><span class="lineno">  375</span>        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration); <span class="comment">// 0x2902</span></div>
 <div class="line"><span class="lineno">  376</span>    <span class="keywordflow">if</span> (!descriptor.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergydescriptor.html#isValid">isValid</a>()) {</div>
 <div class="line"><span class="lineno">  377</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(R<span class="stringliteral">&quot;(Characteristic %1 &quot;%2&quot; has no client configuration descriptor.)&quot;)</span></div>
 <div class="line"><span class="lineno">  378</span><span class="stringliteral">            .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(uuid.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/quuid.html#toString">toString</a>(), <a class="code hl_function" href="classPokitDevice.html#a0a3e6078ce0a7c2d93171ef0f4183d61">PokitDevice::charcteristicToString</a>(uuid));</span></div>
@@ -1175,7 +1175,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  337</span>    }</div>
 <div class="line"><span class="lineno">  338</span> </div>
 <div class="line"><span class="lineno">  339</span>    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergydescriptor.html">QLowEnergyDescriptor</a> descriptor = characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#descriptor">descriptor</a>(</div>
-<div class="line"><span class="lineno">  340</span>        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</div>
+<div class="line"><span class="lineno">  340</span>        QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration); <span class="comment">// 0x2902</span></div>
 <div class="line"><span class="lineno">  341</span>    <span class="keywordflow">if</span> (!descriptor.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergydescriptor.html#isValid">isValid</a>()) {</div>
 <div class="line"><span class="lineno">  342</span>        qCWarning(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(R<span class="stringliteral">&quot;(Characteristic %1 &quot;%2&quot; has no client configuration descriptor.)&quot;)</span></div>
 <div class="line"><span class="lineno">  343</span><span class="stringliteral">            .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(uuid.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/quuid.html#toString">toString</a>(), <a class="code hl_function" href="classPokitDevice.html#a0a3e6078ce0a7c2d93171ef0f4183d61">PokitDevice::charcteristicToString</a>(uuid));</span></div>

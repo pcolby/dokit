@@ -27,6 +27,7 @@ var NAVTREE =
   [ "Dokit", "index.html", [
     [ "QtPokit", "index.html", null ],
     [ "Todo List", "todo.html", null ],
+    [ "Pokit API Errata", "pokit.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -62,7 +63,7 @@ var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
 "functions_d.html",
-"structDataLoggerService_1_1Settings.html#a71c4c7e8417ee7a187c09a89057c5ab7"
+"structDataLoggerService_1_1Settings.html#a5a55213ca7361364642dffa9f8b77ec7"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
