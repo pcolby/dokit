@@ -15,6 +15,12 @@ Additionally, the Pokit Meter includes the following undocumented service:
 
 * `831d0001-e98e-1fed-e73e-4bb7596f776e` - no idea.
 
+Additionally, the Pokit Pro includes the following undocumented services (added somewhere between firmware v1.8.1 and
+v2.0.2):
+
+* `3852ae6e-a1e6-4132-87f7-8929f6117338` - no idea.
+* `ae97e4b0-9c1c-4507-bf7b-eff703c6a85c` - no idea.
+
 Also, the Pokit app contains references to the following UUIDs; these may or may not be BLE services.
 
 * `581a9e6a-d2f6-4d7b-b0d0-5bc3ed9b842e`
