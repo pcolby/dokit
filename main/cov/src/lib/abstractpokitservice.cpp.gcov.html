@@ -425,7 +425,7 @@
 <span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">         396 :     }</span></span>
 <span id="L338"><span class="lineNum">     338</span>              : </span>
 <span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC tlaBgUNC">           0 :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration); // 0x2902</span></span>
 <span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :     if (!descriptor.isValid()) {</span></span>
 <span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; has no client configuration descriptor.)&quot;)</span></span>
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></span>
@@ -460,7 +460,7 @@
 <span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">         396 :     }</span></span>
 <span id="L373"><span class="lineNum">     373</span>              : </span>
 <span id="L374"><span class="lineNum">     374</span> <span class="tlaUNC tlaBgUNC">           0 :     QLowEnergyDescriptor descriptor = characteristic.descriptor(</span></span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC">           0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration);</span></span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC">           0 :         QBluetoothUuid::DescriptorType::ClientCharacteristicConfiguration); // 0x2902</span></span>
 <span id="L376"><span class="lineNum">     376</span> <span class="tlaUNC">           0 :     if (!descriptor.isValid()) {</span></span>
 <span id="L377"><span class="lineNum">     377</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; has no client configuration descriptor.)&quot;)</span></span>
 <span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></span>
