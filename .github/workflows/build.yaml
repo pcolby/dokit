@@ -36,7 +36,7 @@ jobs:
         run: |
           sudo apt-mark hold firefox grub-efi-amd64-signed
           sudo apt update && sudo apt upgrade
-          sudo apt install lcov libfuse2 llvm
+          sudo apt install lcov llvm
       - uses: actions/setup-python@v5
         with:
           python-version: '>=3.9'
