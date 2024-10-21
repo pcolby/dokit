@@ -56,10 +56,12 @@ public:
         static inline const QBluetoothUuid buttonPress { QStringLiteral("8fe5b5a9-b5b4-4a7b-8ff2-87224b970f89") };
 
         /*!
+         * \cond internal
          * \struct StatusService::CharacteristicUuids
          * \pokitApi Pokit Pro also reports the following unknown characteristics for the StatusService:
          * * `a59f052e-c2a1-46b6-8025-64e485c00162` - read/write
          * * `f89e4130-4347-45ef-b092-4f29e6f3a608` - write only
+         * \endcond
          */
     };
 
