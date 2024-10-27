@@ -38,8 +38,7 @@ jobs:
           CXX: ${{ matrix.env.cxx }}
           PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}
         run: |
-          cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_COVERAGE=${{ startsWith(matrix.env.cc, 'gcc') && 'ON' || 'OFF'}} \
-            -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
+          cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
           build-wrapper-linux-x86-64 --out-dir "$RUNNER_TEMP/sonar" cmake --build "$RUNNER_TEMP" --config Release
       - name: Run sonar-scanner
         # Generate only one report for now, since Sonar can only deal with one (could just as easily be clang).
