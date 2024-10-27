@@ -48,4 +48,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner --define project.settings=.sonar.properties \
-            --define sonar.cfamily.build-wrapper-output="$RUNNER_TEMP/sonar"
+            --define sonar.cfamily.compile-commands="$RUNNER_TEMP/sonar/compile_commands.json"
