@@ -29,27 +29,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="288"/>
+        <location filename="../abstractpokitservice.cpp" line="287"/>
         <source>Current service state:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="316"/>
+        <location filename="../abstractpokitservice.cpp" line="315"/>
         <source>Reading characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="332"/>
+        <location filename="../abstractpokitservice.cpp" line="331"/>
         <source>Enabling CCCD for characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="367"/>
+        <location filename="../abstractpokitservice.cpp" line="366"/>
         <source>Disabling CCCD for characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="405"/>
+        <location filename="../abstractpokitservice.cpp" line="404"/>
         <source>%1 requires %n byte/s, but only %2 present: %3</source>
         <translation>
             <numerusform>%1 requires %n byte, but only %2 present: %3</numerusform>
@@ -57,7 +57,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="410"/>
+        <location filename="../abstractpokitservice.cpp" line="409"/>
         <source>%1 has %n extraneous byte/s: %2</source>
         <translation>
             <numerusform>%1 has %n extraneous byte: %2</numerusform>
@@ -65,12 +65,12 @@
         </translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="537"/>
+        <location filename="../abstractpokitservice.cpp" line="536"/>
         <source>Characteristic %1 &quot;%2&quot; supports %3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="565"/>
+        <location filename="../abstractpokitservice.cpp" line="564"/>
         <source>Characteristic %1 &quot;%2&quot; read %n byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; read %n byte: %3</numerusform>
@@ -78,7 +78,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="579"/>
+        <location filename="../abstractpokitservice.cpp" line="578"/>
         <source>Characteristic %1 &quot;%2&quot; written with %Ln byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; written with %Ln byte: %3</numerusform>
@@ -86,7 +86,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="594"/>
+        <location filename="../abstractpokitservice.cpp" line="593"/>
         <source>Characteristic %1 &quot;%2&quot; changed to %Ln byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; changed to %Ln byte: %3</numerusform>
@@ -94,7 +94,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="444"/>
+        <location filename="../abstractpokitservice.cpp" line="443"/>
         <source>Connected with no controller set</source>
         <translation type="unfinished"></translation>
     </message>
@@ -104,58 +104,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="285"/>
+        <location filename="../abstractpokitservice.cpp" line="284"/>
         <source>Characteristic %1 &quot;%2&quot; requested before service %3 &quot;%4&quot; discovered.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="292"/>
+        <location filename="../abstractpokitservice.cpp" line="291"/>
         <source>Characteristic %1 &quot;%2&quot; not found in service %3 &quot;%4&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="342"/>
-        <location filename="../abstractpokitservice.cpp" line="377"/>
+        <location filename="../abstractpokitservice.cpp" line="341"/>
+        <location filename="../abstractpokitservice.cpp" line="376"/>
         <source>Characteristic %1 &quot;%2&quot; has no client configuration descriptor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="448"/>
+        <location filename="../abstractpokitservice.cpp" line="447"/>
         <source>Connected to &quot;%1&quot; (%2) at %3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="465"/>
+        <location filename="../abstractpokitservice.cpp" line="464"/>
         <source>Discovery finished with no controller set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="469"/>
+        <location filename="../abstractpokitservice.cpp" line="468"/>
         <source>Discovery finished for &quot;%1&quot; (%2) at %3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="474"/>
+        <location filename="../abstractpokitservice.cpp" line="473"/>
         <source>Discovery finished, but service not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="488"/>
+        <location filename="../abstractpokitservice.cpp" line="487"/>
         <source>Service error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="502"/>
+        <location filename="../abstractpokitservice.cpp" line="501"/>
         <source>Service discovered</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="517"/>
+        <location filename="../abstractpokitservice.cpp" line="516"/>
         <source>State changed to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="550"/>
+        <location filename="../abstractpokitservice.cpp" line="549"/>
         <source>Service details discovered.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -163,12 +163,12 @@
 <context>
     <name>CalibrationService</name>
     <message>
-        <location filename="../calibrationservice.cpp" line="59"/>
+        <location filename="../calibrationservice.cpp" line="51"/>
         <source>Ignoring read request; the Calibration service is write-only.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../calibrationservice.cpp" line="81"/>
+        <location filename="../calibrationservice.cpp" line="73"/>
         <source>Writing new temperature %1 (0x%2).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -176,7 +176,7 @@
 <context>
     <name>CalibrationServicePrivate</name>
     <message>
-        <location filename="../calibrationservice.cpp" line="140"/>
+        <location filename="../calibrationservice.cpp" line="132"/>
         <source>Unknown characteristic written for Calibration service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -244,7 +244,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="197"/>
+        <location filename="../dataloggerservice.cpp" line="189"/>
         <source>Settings command must be &apos;Start&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -252,12 +252,12 @@
 <context>
     <name>DataLoggerServicePrivate</name>
     <message>
-        <location filename="../dataloggerservice.cpp" line="440"/>
+        <location filename="../dataloggerservice.cpp" line="432"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dataloggerservice.cpp" line="427"/>
+        <location filename="../dataloggerservice.cpp" line="419"/>
         <source>Cannot decode metadata of %n byte/s: %1</source>
         <translation>
             <numerusform>Cannot decode metadata of %n byte: %1</numerusform>
@@ -265,7 +265,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dataloggerservice.cpp" line="447"/>
+        <location filename="../dataloggerservice.cpp" line="439"/>
         <source>Read %n sample/s from %1-bytes.</source>
         <translation>
             <numerusform>Read %n sample from %1-bytes.</numerusform>
@@ -273,42 +273,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="461"/>
+        <location filename="../dataloggerservice.cpp" line="453"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="473"/>
+        <location filename="../dataloggerservice.cpp" line="465"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="478"/>
+        <location filename="../dataloggerservice.cpp" line="470"/>
         <source>Unknown characteristic read for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="498"/>
+        <location filename="../dataloggerservice.cpp" line="490"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="504"/>
+        <location filename="../dataloggerservice.cpp" line="496"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="509"/>
+        <location filename="../dataloggerservice.cpp" line="501"/>
         <source>Unknown characteristic written for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="524"/>
+        <location filename="../dataloggerservice.cpp" line="516"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="539"/>
+        <location filename="../dataloggerservice.cpp" line="531"/>
         <source>Unknown characteristic notified for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -316,37 +316,37 @@
 <context>
     <name>DeviceInfoServicePrivate</name>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="332"/>
+        <location filename="../deviceinfoservice.cpp" line="324"/>
         <source>Manufacturer name: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="339"/>
+        <location filename="../deviceinfoservice.cpp" line="331"/>
         <source>Model number: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="346"/>
+        <location filename="../deviceinfoservice.cpp" line="338"/>
         <source>Hardware revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="353"/>
+        <location filename="../deviceinfoservice.cpp" line="345"/>
         <source>Firmware revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="360"/>
+        <location filename="../deviceinfoservice.cpp" line="352"/>
         <source>Software revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="367"/>
+        <location filename="../deviceinfoservice.cpp" line="359"/>
         <source>Serial number: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="372"/>
+        <location filename="../deviceinfoservice.cpp" line="364"/>
         <source>Unknown characteristic read for Device Info service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -379,7 +379,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="188"/>
+        <location filename="../dsoservice.cpp" line="180"/>
         <source>Settings command must not be &apos;ResendData&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -387,12 +387,12 @@
 <context>
     <name>DsoServicePrivate</name>
     <message>
-        <location filename="../dsoservice.cpp" line="385"/>
+        <location filename="../dsoservice.cpp" line="377"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsoservice.cpp" line="392"/>
+        <location filename="../dsoservice.cpp" line="384"/>
         <source>Read %n sample/s from %1-bytes.</source>
         <translation>
             <numerusform>Read %n sample from %1-bytes.</numerusform>
@@ -400,42 +400,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="406"/>
+        <location filename="../dsoservice.cpp" line="398"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="418"/>
+        <location filename="../dsoservice.cpp" line="410"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="423"/>
+        <location filename="../dsoservice.cpp" line="415"/>
         <source>Unknown characteristic read for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="443"/>
+        <location filename="../dsoservice.cpp" line="435"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="449"/>
+        <location filename="../dsoservice.cpp" line="441"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="454"/>
+        <location filename="../dsoservice.cpp" line="446"/>
         <source>Unknown characteristic written for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="469"/>
+        <location filename="../dsoservice.cpp" line="461"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="484"/>
+        <location filename="../dsoservice.cpp" line="476"/>
         <source>Unknown characteristic notified for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -501,32 +501,32 @@
 <context>
     <name>MultimeterServicePrivate</name>
     <message>
-        <location filename="../multimeterservice.cpp" line="342"/>
+        <location filename="../multimeterservice.cpp" line="334"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="347"/>
+        <location filename="../multimeterservice.cpp" line="339"/>
         <source>Unknown characteristic read for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="367"/>
+        <location filename="../multimeterservice.cpp" line="359"/>
         <source>Reading characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="372"/>
+        <location filename="../multimeterservice.cpp" line="364"/>
         <source>Unknown characteristic written for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="387"/>
+        <location filename="../multimeterservice.cpp" line="379"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="397"/>
+        <location filename="../multimeterservice.cpp" line="389"/>
         <source>Unknown characteristic notified for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
