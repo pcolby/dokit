@@ -299,7 +299,7 @@
 <span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">         484 :         if (!ratio.isValid()) {</span></span>
 <span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         574 :             for (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(dbl) &lt; sensibleMinimum; ratio.num *= 1000);</span></span>
 <span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         220 :         }</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">         902 :         return std::llround(DOKIT_RESULT(dbl));</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">         902 :         return static_cast&lt;quint32&gt;(std::llround(DOKIT_RESULT(dbl)));</span></span>
 <span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         484 :     }</span></span>
 <span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">        1156 :     #undef DOKIT_RESULT</span></span>
 <span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">        1156 :     return 0; // Failed to parse as either integer, or float.</span></span>
