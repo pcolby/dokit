@@ -211,7 +211,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(dbl) < sensibleMinimum; ratio.num *= 1000);
         }
-        return std::llround(DOKIT_RESULT(dbl));
+        return static_cast<quint32>(std::llround(DOKIT_RESULT(dbl)));
     }
     #undef DOKIT_RESULT
     return 0; // Failed to parse as either integer, or float.
