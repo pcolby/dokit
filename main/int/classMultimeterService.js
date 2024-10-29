@@ -25,7 +25,6 @@ var classMultimeterService =
       [ "ExternalTemperature", "classMultimeterService.html#a51f66d0b81dace3115c5c68bc931eaeaa8d6937c3adb213bd7b7beb575aa17687", null ]
     ] ],
     [ "MultimeterService", "classMultimeterService.html#a8121655f13ddf00fc2a65921b5ebc67b", null ],
-    [ "~MultimeterService", "classMultimeterService.html#a2bc53e1189ae9ff23d6a557d2a0576b0", null ],
     [ "MultimeterService", "classMultimeterService.html#a244b45bb3b82e37ebfab531dcb2bc55d", null ],
     [ "disableReadingNotifications", "classMultimeterService.html#ae51553919b7d659cf6d0ce1210503555", null ],
     [ "enableReadingNotifications", "classMultimeterService.html#a321c4fdade8d934ac2e1daec3be174fb", null ],

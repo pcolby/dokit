@@ -61,8 +61,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
-"functions_d.html",
-"structDataLoggerService_1_1Settings.html#a71c4c7e8417ee7a187c09a89057c5ab7"
+"functions_g.html",
+"structDsoService_1_1CharacteristicUuids.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -24,7 +24,6 @@ var classDataLoggerService =
       [ "Temperature", "classDataLoggerService.html#ab7fc5073f8ab9d5e93ba7006df685771aee7a8e262285ed49ea1b4e4ae11525bd", null ]
     ] ],
     [ "DataLoggerService", "classDataLoggerService.html#a1c2155abba340d49fc39bfa49ed59a6c", null ],
-    [ "~DataLoggerService", "classDataLoggerService.html#ab0b747cc7f0ec24ac2611b9d70877ffc", null ],
     [ "disableMetadataNotifications", "classDataLoggerService.html#a1e007dc2f934757d8b28cdd9939bcaa5", null ],
     [ "disableReadingNotifications", "classDataLoggerService.html#a8b144b31de4aa3d33c6e9fcb7e606bae", null ],
     [ "enableMetadataNotifications", "classDataLoggerService.html#a0c63e3cdbc6b39ab68b8442b77938049", null ],

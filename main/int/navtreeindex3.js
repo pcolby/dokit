@@ -1,10 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"pokitdevice_8h.html":[6,0,0,0,0,0,6],
-"pokitdevice_8h_source.html":[6,0,0,0,0,0,6],
-"pokitdevice__p_8h.html":[6,0,0,0,1,1,13],
-"pokitdevice__p_8h_source.html":[6,0,0,0,1,1,13],
-"pokitdiscoveryagent_8cpp.html":[6,0,0,0,1,1,14],
 "pokitdiscoveryagent_8cpp_source.html":[6,0,0,0,1,1,14],
 "pokitdiscoveryagent_8h.html":[6,0,0,0,0,0,7],
 "pokitdiscoveryagent_8h_source.html":[6,0,0,0,0,0,7],
@@ -249,5 +244,7 @@ var NAVTREEINDEX3 =
 "structStatusService_1_1Status.html#a34d5f71da1e356a5f8da381f4b715b46":[5,0,31,3,1],
 "structStatusService_1_1Status.html#a4c4c144b60207c7e092b83eaf33c3e51":[5,0,31,3,2],
 "structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11":[5,0,31,3,3],
-"structStatusService_1_1Status.html#af2a1fab33ca1e643988bc9976a44940d":[5,0,31,3,0]
+"structStatusService_1_1Status.html#af2a1fab33ca1e643988bc9976a44940d":[5,0,31,3,0],
+"structStatusService_1_1Status.html#afd171243d9bcdfb3c2e354ffb28b3f88":[5,0,31,3,4],
+"todo.html":[2]
 };

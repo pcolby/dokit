@@ -860,7 +860,7 @@ template&lt;typename R &gt; </div>
 <div class="line"><span class="lineno">  211</span>        <span class="keywordflow">if</span> (!ratio.<a class="code hl_function" href="structRatio.html#abbfb48e8ebeec5666385f38b31f94215">isValid</a>()) {</div>
 <div class="line"><span class="lineno">  212</span>            <span class="keywordflow">for</span> (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(dbl) &lt; sensibleMinimum; ratio.<a class="code hl_variable" href="structRatio.html#a8e07dbd09bf3610c9e3f2d7ddf3f4691">num</a> *= 1000);</div>
 <div class="line"><span class="lineno">  213</span>        }</div>
-<div class="line"><span class="lineno">  214</span>        <span class="keywordflow">return</span> std::llround(DOKIT_RESULT(dbl));</div>
+<div class="line"><span class="lineno">  214</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>quint32<span class="keyword">&gt;</span>(std::llround(DOKIT_RESULT(dbl)));</div>
 <div class="line"><span class="lineno">  215</span>    }</div>
 <div class="line"><span class="lineno">  216</span><span class="preprocessor">    #undef DOKIT_RESULT</span></div>
 <div class="line"><span class="lineno">  217</span>    <span class="keywordflow">return</span> 0; <span class="comment">// Failed to parse as either integer, or float.</span></div>

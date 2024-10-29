@@ -23,7 +23,6 @@ var classDsoService =
       [ "AcCurrent", "classDsoService.html#ae1414a11556e06b49cea9fadcd6f5b95a7b39f260051ef745ddba9fc57ac23ff9", null ]
     ] ],
     [ "DsoService", "classDsoService.html#a1dd2b779c611f5d255bedf8f142806b7", null ],
-    [ "~DsoService", "classDsoService.html#ab25812c6409b874e4f61026ab1ac7e40", null ],
     [ "disableMetadataNotifications", "classDsoService.html#a2c5e40248d6dfe341251093d75ecd60f", null ],
     [ "disableReadingNotifications", "classDsoService.html#af55d3574002bee3413f28ab48f007f8c", null ],
     [ "enableMetadataNotifications", "classDsoService.html#a67ca97370da5420c62591c3d8614a26d", null ],

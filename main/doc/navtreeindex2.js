@@ -1,10 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"structDataLoggerService_1_1Settings.html#a71c4c7e8417ee7a187c09a89057c5ab7":[3,0,2,2,1],
-"structDataLoggerService_1_1Settings.html#a823e19d448e6540ea0bfc6844ffc96f1":[3,0,2,2,3],
-"structDataLoggerService_1_1Settings.html#ac72c18db4e38d95664c456c527e352f4":[3,0,2,2,2],
-"structDataLoggerService_1_1Settings.html#afdd04830ac70e2435cfce3d7be601e9c":[3,0,2,2,5],
-"structDeviceInfoService_1_1CharacteristicUuids.html":[3,0,3,0],
 "structDsoService_1_1CharacteristicUuids.html":[3,0,4,0],
 "structDsoService_1_1Metadata.html":[3,0,4,1],
 "structDsoService_1_1Metadata.html#a1ee78a173e219e8224f4db3d4bc5ee97":[3,0,4,1,3],

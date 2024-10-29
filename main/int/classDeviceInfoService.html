@@ -192,9 +192,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:affdc7eeab6ca48cc3dc118a1c3953a88" id="r_affdc7eeab6ca48cc3dc118a1c3953a88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affdc7eeab6ca48cc3dc118a1c3953a88">DeviceInfoService</a> (<a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html">QLowEnergyController</a> *const pokitDevice, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>=nullptr)</td></tr>
 <tr class="memdesc:affdc7eeab6ca48cc3dc118a1c3953a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new Pokit service with <em>parent</em>.  <br /></td></tr>
 <tr class="separator:affdc7eeab6ca48cc3dc118a1c3953a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfc4dcc0af86b50abadebd7c6e00f4e1" id="r_adfc4dcc0af86b50abadebd7c6e00f4e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfc4dcc0af86b50abadebd7c6e00f4e1">~DeviceInfoService</a> () override</td></tr>
-<tr class="memdesc:adfc4dcc0af86b50abadebd7c6e00f4e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys this <a class="el" href="classDeviceInfoService.html" title="The DeviceInfoService class accesses the Device Info service of Pokit devices.">DeviceInfoService</a> object.  <br /></td></tr>
-<tr class="separator:adfc4dcc0af86b50abadebd7c6e00f4e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa10d77cc1df3cf923740332d9a8b97cb" id="r_aa10d77cc1df3cf923740332d9a8b97cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa10d77cc1df3cf923740332d9a8b97cb">readCharacteristics</a> () override</td></tr>
 <tr class="memdesc:aa10d77cc1df3cf923740332d9a8b97cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all characteristics.  <br /></td></tr>
 <tr class="separator:aa10d77cc1df3cf923740332d9a8b97cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -594,38 +591,6 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 </div><!-- fragment -->
 </div>
 </div>
-<a id="adfc4dcc0af86b50abadebd7c6e00f4e1" name="adfc4dcc0af86b50abadebd7c6e00f4e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfc4dcc0af86b50abadebd7c6e00f4e1">&#9670;&#160;</a></span>~DeviceInfoService()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">DeviceInfoService::~DeviceInfoService </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Destroys this <a class="el" href="classDeviceInfoService.html" title="The DeviceInfoService class accesses the Device Info service of Pokit devices.">DeviceInfoService</a> object. </p>
-
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00044">44</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ab6b5dcfd253161f37c780b8ea9297d7b" name="ab6b5dcfd253161f37c780b8ea9297d7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6b5dcfd253161f37c780b8ea9297d7b">&#9670;&#160;</a></span>DeviceInfoService() <span class="overload">[2/2]</span></h2>
 
@@ -682,13 +647,13 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>Returns the most recent value of the <code>Device Info</code> service's <code>Firmware Revision</code> characteristic. </p>
 <p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00203">203</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  204</span>{</div>
-<div class="line"><span class="lineno">  205</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  206</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  207</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a">CharacteristicUuids::firmwareRevision</a>);</div>
-<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  209</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00195">195</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  196</span>{</div>
+<div class="line"><span class="lineno">  197</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  198</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  199</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a">CharacteristicUuids::firmwareRevision</a>);</div>
+<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  201</span>}</div>
 <div class="ttc" id="aclassDeviceInfoService_html"><div class="ttname"><a href="classDeviceInfoService.html">DeviceInfoService</a></div><div class="ttdoc">The DeviceInfoService class accesses the Device Info service of Pokit devices.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8h_source.html#l00022">deviceinfoservice.h:23</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
@@ -761,13 +726,13 @@ Here is the caller graph for this function:</div>
 <p>Returns the most recent value of the <code>Device Info</code> service's <code>Hardware Revision</code> characteristic. </p>
 <p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00188">188</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  189</span>{</div>
-<div class="line"><span class="lineno">  190</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  191</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  192</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">CharacteristicUuids::hardwareRevision</a>);</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  194</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00180">180</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  181</span>{</div>
+<div class="line"><span class="lineno">  182</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  183</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  184</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">CharacteristicUuids::hardwareRevision</a>);</div>
+<div class="line"><span class="lineno">  185</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  186</span>}</div>
 <div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a2e9f6731a3d49d4e08facc0e4811c91b"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">DeviceInfoService::CharacteristicUuids::hardwareRevision</a></div><div class="ttdeci">static const QBluetoothUuid hardwareRevision</div><div class="ttdoc">UUID of the Device Info service's Hardware Revision String characterstic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8h_source.html#l00046">deviceinfoservice.h:47</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8()</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00047">DeviceInfoService::CharacteristicUuids::hardwareRevision</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
@@ -834,13 +799,13 @@ Here is the caller graph for this function:</div>
 <p>Returns the most recent value of the <code>Device Info</code> service's <code>Manufacturer Name</code> characteristic. </p>
 <p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00158">158</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  159</span>{</div>
-<div class="line"><span class="lineno">  160</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  161</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  162</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">CharacteristicUuids::manufacturerName</a>);</div>
-<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  164</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00150">150</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  151</span>{</div>
+<div class="line"><span class="lineno">  152</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  154</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">CharacteristicUuids::manufacturerName</a>);</div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  156</span>}</div>
 <div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a0455d683833dae7fa93ddf08b754136d"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">DeviceInfoService::CharacteristicUuids::manufacturerName</a></div><div class="ttdeci">static const QBluetoothUuid manufacturerName</div><div class="ttdoc">UUID of the Device Info service's Manufacturer Name String characterstic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8h_source.html#l00034">deviceinfoservice.h:35</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00035">DeviceInfoService::CharacteristicUuids::manufacturerName</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
@@ -907,13 +872,13 @@ Here is the caller graph for this function:</div>
 <p>Returns the most recent value of the <code>Device Info</code> service's <code>Model Number</code> characteristic. </p>
 <p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00173">173</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  174</span>{</div>
-<div class="line"><span class="lineno">  175</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  176</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  177</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">CharacteristicUuids::modelNumber</a>);</div>
-<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  179</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00165">165</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  166</span>{</div>
+<div class="line"><span class="lineno">  167</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  169</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">CharacteristicUuids::modelNumber</a>);</div>
+<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  171</span>}</div>
 <div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_af5c3bd888ca0d9133ff6d844992a7e34"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">DeviceInfoService::CharacteristicUuids::modelNumber</a></div><div class="ttdeci">static const QBluetoothUuid modelNumber</div><div class="ttdoc">UUID of the Device Info service's Model Number String characterstic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8h_source.html#l00038">deviceinfoservice.h:39</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00039">DeviceInfoService::CharacteristicUuids::modelNumber</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
@@ -991,28 +956,28 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractPokitService.html#ab1de532f20d46803d6e8b8ffea835b48">AbstractPokitService</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00049">49</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r1 = <a class="code hl_function" href="#a3a77c71bed9398ca507aa0657b41fd9a">readFirmwareRevisionCharacteristic</a>();</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r2 = <a class="code hl_function" href="#a0be29e195fea415073d07907e7cf65a6">readHardwareRevisionCharacteristic</a>();</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r3 = <a class="code hl_function" href="#a1e08a98402611a2a8301012fd33b069c">readSoftwareRevisionCharacteristic</a>();</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r4 = <a class="code hl_function" href="#a5e8128c7432c3ffe4d2ff045e117ab1e">readManufacturerCharacteristics</a>();</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r5 = <a class="code hl_function" href="#a826dda294fcd640e43509bad3db71b10">readModelNumberCharacteristic</a>();</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r6 = ((<a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>() != <span class="keyword">nullptr</span>) &amp;&amp; (<a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>()-&gt;<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristic">characteristic</a>(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a410471249dd69e69f7931e245b302612">CharacteristicUuids::serialNumber</a>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()))</div>
-<div class="line"><span class="lineno">   57</span>        ? <a class="code hl_function" href="#a0b2e0b299e03d9c06a45646d042f7843">readSerialNumberCharacteristic</a>() : true;</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">return</span> (r1 &amp;&amp; r2 &amp;&amp; r3 &amp;&amp; r4 &amp;&amp; r5 &amp;&amp; r6);</div>
-<div class="line"><span class="lineno">   59</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00041">41</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r1 = <a class="code hl_function" href="#a3a77c71bed9398ca507aa0657b41fd9a">readFirmwareRevisionCharacteristic</a>();</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r2 = <a class="code hl_function" href="#a0be29e195fea415073d07907e7cf65a6">readHardwareRevisionCharacteristic</a>();</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r3 = <a class="code hl_function" href="#a1e08a98402611a2a8301012fd33b069c">readSoftwareRevisionCharacteristic</a>();</div>
+<div class="line"><span class="lineno">   46</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r4 = <a class="code hl_function" href="#a5e8128c7432c3ffe4d2ff045e117ab1e">readManufacturerCharacteristics</a>();</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r5 = <a class="code hl_function" href="#a826dda294fcd640e43509bad3db71b10">readModelNumberCharacteristic</a>();</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> r6 = ((<a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>() != <span class="keyword">nullptr</span>) &amp;&amp; (<a class="code hl_function" href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">service</a>()-&gt;<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristic">characteristic</a>(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a410471249dd69e69f7931e245b302612">CharacteristicUuids::serialNumber</a>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()))</div>
+<div class="line"><span class="lineno">   49</span>        ? <a class="code hl_function" href="#a0b2e0b299e03d9c06a45646d042f7843">readSerialNumberCharacteristic</a>() : true;</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> (r1 &amp;&amp; r2 &amp;&amp; r3 &amp;&amp; r4 &amp;&amp; r5 &amp;&amp; r6);</div>
+<div class="line"><span class="lineno">   51</span>}</div>
 <div class="ttc" id="aclassAbstractPokitService_html_a7a4ff74f51ba6ea6c01cbeb9eda15b9b"><div class="ttname"><a href="classAbstractPokitService.html#a7a4ff74f51ba6ea6c01cbeb9eda15b9b">AbstractPokitService::service</a></div><div class="ttdeci">QLowEnergyService * service()</div><div class="ttdoc">Returns a non-const pointer to the internal service object, if any.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00119">abstractpokitservice.cpp:119</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a0b2e0b299e03d9c06a45646d042f7843"><div class="ttname"><a href="#a0b2e0b299e03d9c06a45646d042f7843">DeviceInfoService::readSerialNumberCharacteristic</a></div><div class="ttdeci">bool readSerialNumberCharacteristic()</div><div class="ttdoc">Read the Device Info service's (undocumented) Serial Number characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00145">deviceinfoservice.cpp:145</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a0be29e195fea415073d07907e7cf65a6"><div class="ttname"><a href="#a0be29e195fea415073d07907e7cf65a6">DeviceInfoService::readHardwareRevisionCharacteristic</a></div><div class="ttdeci">bool readHardwareRevisionCharacteristic()</div><div class="ttdoc">Read the Device Info service's Hardware Revision characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00085">deviceinfoservice.cpp:85</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a1e08a98402611a2a8301012fd33b069c"><div class="ttname"><a href="#a1e08a98402611a2a8301012fd33b069c">DeviceInfoService::readSoftwareRevisionCharacteristic</a></div><div class="ttdeci">bool readSoftwareRevisionCharacteristic()</div><div class="ttdoc">Read the Device Info service's Software Revision characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00130">deviceinfoservice.cpp:130</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a3a77c71bed9398ca507aa0657b41fd9a"><div class="ttname"><a href="#a3a77c71bed9398ca507aa0657b41fd9a">DeviceInfoService::readFirmwareRevisionCharacteristic</a></div><div class="ttdeci">bool readFirmwareRevisionCharacteristic()</div><div class="ttdoc">Read the Device Info service's Firmware Revision characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00070">deviceinfoservice.cpp:70</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a5e8128c7432c3ffe4d2ff045e117ab1e"><div class="ttname"><a href="#a5e8128c7432c3ffe4d2ff045e117ab1e">DeviceInfoService::readManufacturerCharacteristics</a></div><div class="ttdeci">bool readManufacturerCharacteristics()</div><div class="ttdoc">Read the Device Info service's Manufacturer Name characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00100">deviceinfoservice.cpp:100</a></div></div>
-<div class="ttc" id="aclassDeviceInfoService_html_a826dda294fcd640e43509bad3db71b10"><div class="ttname"><a href="#a826dda294fcd640e43509bad3db71b10">DeviceInfoService::readModelNumberCharacteristic</a></div><div class="ttdeci">bool readModelNumberCharacteristic()</div><div class="ttdoc">Read the Device Info service's Model Number characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00115">deviceinfoservice.cpp:115</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a0b2e0b299e03d9c06a45646d042f7843"><div class="ttname"><a href="#a0b2e0b299e03d9c06a45646d042f7843">DeviceInfoService::readSerialNumberCharacteristic</a></div><div class="ttdeci">bool readSerialNumberCharacteristic()</div><div class="ttdoc">Read the Device Info service's (undocumented) Serial Number characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00137">deviceinfoservice.cpp:137</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a0be29e195fea415073d07907e7cf65a6"><div class="ttname"><a href="#a0be29e195fea415073d07907e7cf65a6">DeviceInfoService::readHardwareRevisionCharacteristic</a></div><div class="ttdeci">bool readHardwareRevisionCharacteristic()</div><div class="ttdoc">Read the Device Info service's Hardware Revision characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00077">deviceinfoservice.cpp:77</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a1e08a98402611a2a8301012fd33b069c"><div class="ttname"><a href="#a1e08a98402611a2a8301012fd33b069c">DeviceInfoService::readSoftwareRevisionCharacteristic</a></div><div class="ttdeci">bool readSoftwareRevisionCharacteristic()</div><div class="ttdoc">Read the Device Info service's Software Revision characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00122">deviceinfoservice.cpp:122</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a3a77c71bed9398ca507aa0657b41fd9a"><div class="ttname"><a href="#a3a77c71bed9398ca507aa0657b41fd9a">DeviceInfoService::readFirmwareRevisionCharacteristic</a></div><div class="ttdeci">bool readFirmwareRevisionCharacteristic()</div><div class="ttdoc">Read the Device Info service's Firmware Revision characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00062">deviceinfoservice.cpp:62</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a5e8128c7432c3ffe4d2ff045e117ab1e"><div class="ttname"><a href="#a5e8128c7432c3ffe4d2ff045e117ab1e">DeviceInfoService::readManufacturerCharacteristics</a></div><div class="ttdeci">bool readManufacturerCharacteristics()</div><div class="ttdoc">Read the Device Info service's Manufacturer Name characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00092">deviceinfoservice.cpp:92</a></div></div>
+<div class="ttc" id="aclassDeviceInfoService_html_a826dda294fcd640e43509bad3db71b10"><div class="ttname"><a href="#a826dda294fcd640e43509bad3db71b10">DeviceInfoService::readModelNumberCharacteristic</a></div><div class="ttdeci">bool readModelNumberCharacteristic()</div><div class="ttdoc">Read the Device Info service's Model Number characteristic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8cpp_source.html#l00107">deviceinfoservice.cpp:107</a></div></div>
 <div class="ttc" id="aqlowenergyservice_html_characteristic"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristic">QLowEnergyService::characteristic</a></div><div class="ttdeci">QLowEnergyCharacteristic characteristic(const QBluetoothUuid &amp;uuid) const const</div></div>
 <div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a410471249dd69e69f7931e245b302612"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a410471249dd69e69f7931e245b302612">DeviceInfoService::CharacteristicUuids::serialNumber</a></div><div class="ttdeci">static const QBluetoothUuid serialNumber</div><div class="ttdoc">UUID of the Device Info service's Serial Number String characterstic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8h_source.html#l00054">deviceinfoservice.h:55</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristic">QLowEnergyService::characteristic()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00070">readFirmwareRevisionCharacteristic()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00085">readHardwareRevisionCharacteristic()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00100">readManufacturerCharacteristics()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00115">readModelNumberCharacteristic()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00145">readSerialNumberCharacteristic()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00130">readSoftwareRevisionCharacteristic()</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00055">DeviceInfoService::CharacteristicUuids::serialNumber</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00119">AbstractPokitService::service()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristic">QLowEnergyService::characteristic()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00062">readFirmwareRevisionCharacteristic()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00077">readHardwareRevisionCharacteristic()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00092">readManufacturerCharacteristics()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00107">readModelNumberCharacteristic()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00137">readSerialNumberCharacteristic()</a>, <a class="el" href="deviceinfoservice_8cpp_source.html#l00122">readSoftwareRevisionCharacteristic()</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00055">DeviceInfoService::CharacteristicUuids::serialNumber</a>, and <a class="el" href="abstractpokitservice_8cpp_source.html#l00119">AbstractPokitService::service()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1040,15 +1005,15 @@ Here is the call graph for this function:</div>
 <p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="#ab95bd80046937f0473f9bb8aeb3bd07f" title="This signal is emitted when the Firmware Revision characteristic has been read successfully.">firmwareRevisionRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00070">70</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a">CharacteristicUuids::firmwareRevision</a>);</div>
-<div class="line"><span class="lineno">   74</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00062">62</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
+<div class="line"><span class="lineno">   64</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a7959177f8c990b2240476746061a236a">CharacteristicUuids::firmwareRevision</a>);</div>
+<div class="line"><span class="lineno">   66</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="deviceinfoservice_8h_source.html#l00043">DeviceInfoService::CharacteristicUuids::firmwareRevision</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00049">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00041">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1076,15 +1041,15 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="#a240cee1fe8db2e7e03e09619ef4173c9" title="This signal is emitted when the Hardware Revision characteristic has been read successfully.">hardwareRevisionRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00085">85</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
-<div class="line"><span class="lineno">   87</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">CharacteristicUuids::hardwareRevision</a>);</div>
-<div class="line"><span class="lineno">   89</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00077">77</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a2e9f6731a3d49d4e08facc0e4811c91b">CharacteristicUuids::hardwareRevision</a>);</div>
+<div class="line"><span class="lineno">   81</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="deviceinfoservice_8h_source.html#l00047">DeviceInfoService::CharacteristicUuids::hardwareRevision</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00049">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00041">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1112,15 +1077,15 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits manufacturerNameRead() if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00100">100</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
-<div class="line"><span class="lineno">  102</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">CharacteristicUuids::manufacturerName</a>);</div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00092">92</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a0455d683833dae7fa93ddf08b754136d">CharacteristicUuids::manufacturerName</a>);</div>
+<div class="line"><span class="lineno">   96</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="deviceinfoservice_8h_source.html#l00035">DeviceInfoService::CharacteristicUuids::manufacturerName</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00049">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00041">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1148,15 +1113,15 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="#a23fb6c8ccb4bdf249d9db52b79fe04b4" title="This signal is emitted when the Model Number characteristic has been read successfully.">modelNumberRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00115">115</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  116</span>{</div>
-<div class="line"><span class="lineno">  117</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">CharacteristicUuids::modelNumber</a>);</div>
-<div class="line"><span class="lineno">  119</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00107">107</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>{</div>
+<div class="line"><span class="lineno">  109</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#af5c3bd888ca0d9133ff6d844992a7e34">CharacteristicUuids::modelNumber</a>);</div>
+<div class="line"><span class="lineno">  111</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="deviceinfoservice_8h_source.html#l00039">DeviceInfoService::CharacteristicUuids::modelNumber</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00049">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00041">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1184,15 +1149,15 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="#ae5e115003fd8221b86aeacad8a771d3b" title="This signal is emitted when the Serial Number characteristic has been read successfully.">serialNumberRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00145">145</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
-<div class="line"><span class="lineno">  147</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a410471249dd69e69f7931e245b302612">CharacteristicUuids::serialNumber</a>);</div>
-<div class="line"><span class="lineno">  149</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00137">137</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>{</div>
+<div class="line"><span class="lineno">  139</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a410471249dd69e69f7931e245b302612">CharacteristicUuids::serialNumber</a>);</div>
+<div class="line"><span class="lineno">  141</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="deviceinfoservice_8h_source.html#l00055">DeviceInfoService::CharacteristicUuids::serialNumber</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00049">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00041">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1220,16 +1185,16 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="#a3d45d60809c53ad441b25f41f7dc2342" title="This signal is emitted when the Software Revision characteristic has been read successfully.">softwareRevisionRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00130">130</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  131</span>{</div>
-<div class="line"><span class="lineno">  132</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">CharacteristicUuids::softwareRevision</a>);</div>
-<div class="line"><span class="lineno">  134</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00122">122</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>{</div>
+<div class="line"><span class="lineno">  124</span>    Q_D(<a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">CharacteristicUuids::softwareRevision</a>);</div>
+<div class="line"><span class="lineno">  126</span>}</div>
 <div class="ttc" id="astructDeviceInfoService_1_1CharacteristicUuids_html_a3dcd8fc5858990ac38640acf15ccff69"><div class="ttname"><a href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">DeviceInfoService::CharacteristicUuids::softwareRevision</a></div><div class="ttdeci">static const QBluetoothUuid softwareRevision</div><div class="ttdoc">UUID of the Device Info service's Software Revision String characterstic.</div><div class="ttdef"><b>Definition</b> <a href="deviceinfoservice_8h_source.html#l00050">deviceinfoservice.h:51</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="deviceinfoservice_8h_source.html#l00051">DeviceInfoService::CharacteristicUuids::softwareRevision</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00049">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="deviceinfoservice_8cpp_source.html#l00041">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1257,19 +1222,19 @@ Here is the caller graph for this function:</div>
 <p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> is returned. </p>
 <dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000004">Pokit Bluetooth API errata</a></b></dt><dd>Unlike other string characteristics, Pokit (Pro) devices always appear to add a trailing <code>null</code> byte to serial number strings. So here we strip any that are present.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00234">234</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  235</span>{</div>
-<div class="line"><span class="lineno">  236</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  237</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  238</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a410471249dd69e69f7931e245b302612">CharacteristicUuids::serialNumber</a>);<span class="comment"></span></div>
-<div class="line"><span class="lineno">  239</span><span class="comment">    /*!</span></div>
-<div class="line"><span class="lineno">  240</span><span class="comment">     * \cond internal</span></div>
-<div class="line"><span class="lineno">  241</span><span class="comment">     * \pokitApi Unlike other string characteristics, Pokit (Pro) devices always appear to add a trailing</span></div>
-<div class="line"><span class="lineno">  242</span><span class="comment">     * `null` byte to serial number strings. So here we strip any that are present.</span></div>
-<div class="line"><span class="lineno">  243</span><span class="comment">     * \endcond</span></div>
-<div class="line"><span class="lineno">  244</span><span class="comment">     */</span></div>
-<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#remove">remove</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1char.html">QLatin1Char</a>(<span class="charliteral">&#39;\0&#39;</span>)) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  246</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00226">226</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  227</span>{</div>
+<div class="line"><span class="lineno">  228</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  229</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  230</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a410471249dd69e69f7931e245b302612">CharacteristicUuids::serialNumber</a>);<span class="comment"></span></div>
+<div class="line"><span class="lineno">  231</span><span class="comment">    /*!</span></div>
+<div class="line"><span class="lineno">  232</span><span class="comment">     * \cond internal</span></div>
+<div class="line"><span class="lineno">  233</span><span class="comment">     * \pokitApi Unlike other string characteristics, Pokit (Pro) devices always appear to add a trailing</span></div>
+<div class="line"><span class="lineno">  234</span><span class="comment">     * `null` byte to serial number strings. So here we strip any that are present.</span></div>
+<div class="line"><span class="lineno">  235</span><span class="comment">     * \endcond</span></div>
+<div class="line"><span class="lineno">  236</span><span class="comment">     */</span></div>
+<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#remove">remove</a>(<a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlatin1char.html">QLatin1Char</a>(<span class="charliteral">&#39;\0&#39;</span>)) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  238</span>}</div>
 <div class="ttc" id="aqlatin1char_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlatin1char.html">QLatin1Char</a></div></div>
 <div class="ttc" id="aqstring_html_remove"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#remove">QString::remove</a></div><div class="ttdeci">QString &amp; remove(int position, int n)</div></div>
 </div><!-- fragment -->
@@ -1337,13 +1302,13 @@ Here is the caller graph for this function:</div>
 <p>Returns the most recent value of the <code>Device Info</code> service's <code>Software Revision</code> characteristic. </p>
 <p>The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a null <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> is returned. </p>
 
-<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00218">218</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  219</span>{</div>
-<div class="line"><span class="lineno">  220</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
-<div class="line"><span class="lineno">  221</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  222</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">CharacteristicUuids::softwareRevision</a>);</div>
-<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  224</span>}</div>
+<p class="definition">Definition at line <a class="el" href="deviceinfoservice_8cpp_source.html#l00210">210</a> of file <a class="el" href="deviceinfoservice_8cpp_source.html">deviceinfoservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>{</div>
+<div class="line"><span class="lineno">  212</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDeviceInfoService.html">DeviceInfoService</a>);</div>
+<div class="line"><span class="lineno">  213</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  214</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDeviceInfoService_1_1CharacteristicUuids.html#a3dcd8fc5858990ac38640acf15ccff69">CharacteristicUuids::softwareRevision</a>);</div>
+<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>()) : <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  216</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#fromUtf8">QString::fromUtf8()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="deviceinfoservice_8h_source.html#l00051">DeviceInfoService::CharacteristicUuids::softwareRevision</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
 

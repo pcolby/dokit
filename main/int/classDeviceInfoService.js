@@ -2,7 +2,6 @@ var classDeviceInfoService =
 [
     [ "CharacteristicUuids", "structDeviceInfoService_1_1CharacteristicUuids.html", "structDeviceInfoService_1_1CharacteristicUuids" ],
     [ "DeviceInfoService", "classDeviceInfoService.html#affdc7eeab6ca48cc3dc118a1c3953a88", null ],
-    [ "~DeviceInfoService", "classDeviceInfoService.html#adfc4dcc0af86b50abadebd7c6e00f4e1", null ],
     [ "DeviceInfoService", "classDeviceInfoService.html#ab6b5dcfd253161f37c780b8ea9297d7b", null ],
     [ "firmwareRevision", "classDeviceInfoService.html#ac896b483c3b54e46658fd04ab4bb864b", null ],
     [ "firmwareRevisionRead", "classDeviceInfoService.html#ab95bd80046937f0473f9bb8aeb3bd07f", null ],

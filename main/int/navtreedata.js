@@ -70,10 +70,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"classDsoServicePrivate.html#af35779b15db5c0e8c027104cc6ce014b",
-"classStatusService.html#a5d86bed23202402cade7fa8bb09f9c48",
-"pokitdevice_8h.html",
-"structStatusService_1_1Status.html#afd171243d9bcdfb3c2e354ffb28b3f88"
+"classFlashLedCommand.html#a24e230231849718572cad0d15ce1b0fb",
+"classStatusService.html#a681701df043e0490ed38d127a86f9afb",
+"pokitdiscoveryagent_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

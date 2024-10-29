@@ -1,10 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"functions_d.html":[3,3,0,3],
-"functions_e.html":[3,3,0,4],
-"functions_enum.html":[3,3,4],
-"functions_f.html":[3,3,0,5],
-"functions_func.html":[3,3,1],
 "functions_g.html":[3,3,0,6],
 "functions_h.html":[3,3,0,7],
 "functions_l.html":[3,3,0,8],
@@ -249,5 +244,10 @@ var NAVTREEINDEX1 =
 "structDataLoggerService_1_1Metadata.html#ac976c83a69d67fbd287d9ae406582d81":[3,0,2,1,0],
 "structDataLoggerService_1_1Settings.html":[3,0,2,2],
 "structDataLoggerService_1_1Settings.html#a4bde857f31f27e5574b9d204c7a5aa48":[3,0,2,2,4],
-"structDataLoggerService_1_1Settings.html#a5a55213ca7361364642dffa9f8b77ec7":[3,0,2,2,0]
+"structDataLoggerService_1_1Settings.html#a5a55213ca7361364642dffa9f8b77ec7":[3,0,2,2,0],
+"structDataLoggerService_1_1Settings.html#a71c4c7e8417ee7a187c09a89057c5ab7":[3,0,2,2,1],
+"structDataLoggerService_1_1Settings.html#a823e19d448e6540ea0bfc6844ffc96f1":[3,0,2,2,3],
+"structDataLoggerService_1_1Settings.html#ac72c18db4e38d95664c456c527e352f4":[3,0,2,2,2],
+"structDataLoggerService_1_1Settings.html#afdd04830ac70e2435cfce3d7be601e9c":[3,0,2,2,5],
+"structDeviceInfoService_1_1CharacteristicUuids.html":[3,0,3,0]
 };

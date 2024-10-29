@@ -228,9 +228,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c2155abba340d49fc39bfa49ed59a6c" id="r_a1c2155abba340d49fc39bfa49ed59a6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c2155abba340d49fc39bfa49ed59a6c">DataLoggerService</a> (<a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html">QLowEnergyController</a> *const pokitDevice, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html">QObject</a> *<a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>=nullptr)</td></tr>
 <tr class="memdesc:a1c2155abba340d49fc39bfa49ed59a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new Pokit service with <em>parent</em>.  <br /></td></tr>
 <tr class="separator:a1c2155abba340d49fc39bfa49ed59a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0b747cc7f0ec24ac2611b9d70877ffc" id="r_ab0b747cc7f0ec24ac2611b9d70877ffc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0b747cc7f0ec24ac2611b9d70877ffc">~DataLoggerService</a> () override</td></tr>
-<tr class="memdesc:ab0b747cc7f0ec24ac2611b9d70877ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys this <a class="el" href="classDataLoggerService.html" title="The DataLoggerService class accesses the Data Logger service of Pokit devices.">DataLoggerService</a> object.  <br /></td></tr>
-<tr class="separator:ab0b747cc7f0ec24ac2611b9d70877ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a661ebfee183fa2f9c90f71696d66a8bf" id="r_a661ebfee183fa2f9c90f71696d66a8bf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a661ebfee183fa2f9c90f71696d66a8bf">readCharacteristics</a> () override</td></tr>
 <tr class="memdesc:a661ebfee183fa2f9c90f71696d66a8bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all characteristics.  <br /></td></tr>
 <tr class="separator:a661ebfee183fa2f9c90f71696d66a8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -800,38 +797,6 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab0b747cc7f0ec24ac2611b9d70877ffc" name="ab0b747cc7f0ec24ac2611b9d70877ffc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0b747cc7f0ec24ac2611b9d70877ffc">&#9670;&#160;</a></span>~DataLoggerService()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">DataLoggerService::~DataLoggerService </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Destroys this <a class="el" href="classDataLoggerService.html" title="The DataLoggerService class accesses the Data Logger service of Pokit devices.">DataLoggerService</a> object. </p>
-
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00134">134</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  135</span>{</div>
-<div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ad3ecbfc9b9f40ff3b1f0c8941d4c0a96" name="ad3ecbfc9b9f40ff3b1f0c8941d4c0a96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad3ecbfc9b9f40ff3b1f0c8941d4c0a96">&#9670;&#160;</a></span>DataLoggerService() <span class="overload">[2/2]</span></h2>
 
@@ -889,11 +854,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>Instantaneous reads can still be fetched by <a class="el" href="#a03ef6028ed40b095540dd45ba744c0f5" title="Reads the DataLogger service&#39;s Metadata characteristic.">readMetadataCharacteristic()</a>.</p>
 <p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00280">280</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  281</span>{</div>
-<div class="line"><span class="lineno">  282</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  283</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  284</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00272">272</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  273</span>{</div>
+<div class="line"><span class="lineno">  274</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  275</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  276</span>}</div>
 <div class="ttc" id="aclassDataLoggerService_html"><div class="ttname"><a href="classDataLoggerService.html">DataLoggerService</a></div><div class="ttdoc">The DataLoggerService class accesses the Data Logger service of Pokit devices.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8h_source.html#l00022">dataloggerservice.h:23</a></div></div>
 <div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_a360ad74780e776a1233d73e5416db0e9"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">DataLoggerService::CharacteristicUuids::metadata</a></div><div class="ttdeci">static const QBluetoothUuid metadata</div><div class="ttdoc">UUID of the DataLogger service's Metadata characterstic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8h_source.html#l00036">dataloggerservice.h:36</a></div></div>
 </div><!-- fragment -->
@@ -919,11 +884,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>Disables client-side notifications of Data Logger readings. </p>
 <p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00304">304</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  305</span>{</div>
-<div class="line"><span class="lineno">  306</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  307</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  308</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00296">296</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  297</span>{</div>
+<div class="line"><span class="lineno">  298</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  299</span>    <span class="keywordflow">return</span> d-&gt;disableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  300</span>}</div>
 <div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_ae49f85e600ca4eb2753818bb2ef32d65"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">DataLoggerService::CharacteristicUuids::reading</a></div><div class="ttdeci">static const QBluetoothUuid reading</div><div class="ttdoc">UUID of the DataLogger service's Reading characterstic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8h_source.html#l00039">dataloggerservice.h:39</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00039">DataLoggerService::CharacteristicUuids::reading</a>.</p>
@@ -950,11 +915,11 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 <p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
 <p>Successfully read values (if any) will be emitted via the <a class="el" href="#a637460cb26b0d448760544ecba6de468" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> signal. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00267">267</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  268</span>{</div>
-<div class="line"><span class="lineno">  269</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  271</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00259">259</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  260</span>{</div>
+<div class="line"><span class="lineno">  261</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  263</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00036">DataLoggerService::CharacteristicUuids::metadata</a>.</p>
 
@@ -986,11 +951,11 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
 <p>Successfully read samples (if any) will be emitted via the <a class="el" href="#a4f3e86b3300ebd0f0b212cabf8da90a0" title="This signal is emitted when the Reading characteristic has been notified.">samplesRead()</a> signal. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00293">293</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  294</span>{</div>
-<div class="line"><span class="lineno">  295</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  296</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">CharacteristicUuids::reading</a>);</div>
-<div class="line"><span class="lineno">  297</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00285">285</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  286</span>{</div>
+<div class="line"><span class="lineno">  287</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  288</span>    <span class="keywordflow">return</span> d-&gt;enableCharacteristicNotificatons(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ae49f85e600ca4eb2753818bb2ef32d65">CharacteristicUuids::reading</a>);</div>
+<div class="line"><span class="lineno">  289</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00039">DataLoggerService::CharacteristicUuids::reading</a>.</p>
 
@@ -1022,16 +987,16 @@ Here is the caller graph for this function:</div>
 <p>This is just a convenience function equivalent to calling <a class="el" href="#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> with the command set to <a class="el" href="#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6" title="Refresh the Data Logger.">DataLoggerService::Command::Refresh</a>.</p>
 <p>Once the Pokit device has processed this request succesffully, the device will begin notifying the <code><a class="el" href="structDataLoggerService_1_1Metadata.html" title="Attributes included in the Metadata characterstic.">Metadata</a></code> and <code>Reading</code> characteristic, resulting in emits of metadataRead and samplesRead respectively. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00227">227</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  228</span>{</div>
-<div class="line"><span class="lineno">  229</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
-<div class="line"><span class="lineno">  230</span>    <span class="comment">// Pokit device when the command is Refresh. However, we still explicitly initialise all other</span></div>
-<div class="line"><span class="lineno">  231</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
-<div class="line"><span class="lineno">  232</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a3b933a1a161a390eb08e5019685f449c">setSettings</a>({ <a class="code hl_enumvalue" href="#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6">DataLoggerService::Command::Refresh</a>, 0, <a class="code hl_enumvalue" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a>, 0, 0, 0 });</div>
-<div class="line"><span class="lineno">  233</span>}</div>
-<div class="ttc" id="aclassDataLoggerService_html_a3b933a1a161a390eb08e5019685f449c"><div class="ttname"><a href="#a3b933a1a161a390eb08e5019685f449c">DataLoggerService::setSettings</a></div><div class="ttdeci">bool setSettings(const Settings &amp;settings)</div><div class="ttdoc">Configures the Pokit device's data logger mode.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00166">dataloggerservice.cpp:166</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00219">219</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  220</span>{</div>
+<div class="line"><span class="lineno">  221</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
+<div class="line"><span class="lineno">  222</span>    <span class="comment">// Pokit device when the command is Refresh. However, we still explicitly initialise all other</span></div>
+<div class="line"><span class="lineno">  223</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a3b933a1a161a390eb08e5019685f449c">setSettings</a>({ <a class="code hl_enumvalue" href="#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6">DataLoggerService::Command::Refresh</a>, 0, <a class="code hl_enumvalue" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a>, 0, 0, 0 });</div>
+<div class="line"><span class="lineno">  225</span>}</div>
+<div class="ttc" id="aclassDataLoggerService_html_a3b933a1a161a390eb08e5019685f449c"><div class="ttname"><a href="#a3b933a1a161a390eb08e5019685f449c">DataLoggerService::setSettings</a></div><div class="ttdeci">bool setSettings(const Settings &amp;settings)</div><div class="ttdoc">Configures the Pokit device's data logger mode.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00158">dataloggerservice.cpp:158</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6">Refresh</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00166">setSettings()</a>.</p>
+<p class="reference">References <a class="el" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="#a8662772916319f96aa7aeb16c87665cca63a6a88c066880c5ac42394a22803ca6">Refresh</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00158">setSettings()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="loggerfetchcommand_8cpp_source.html#l00059">LoggerFetchCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
@@ -1177,26 +1142,26 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="#aa94364928c317c1769e66eaf8635db92">metadata</a>.<a class="code hl_variable" href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">scale</a>)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00249">dataloggerservice.cpp:249</a></div></div>
+<div class="ttc" id="aclassDataLoggerService_html_aa94364928c317c1769e66eaf8635db92"><div class="ttname"><a href="#aa94364928c317c1769e66eaf8635db92">DataLoggerService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00241">dataloggerservice.cpp:241</a></div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html">DataLoggerService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characterstic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8h_source.html#l00084">dataloggerservice.h:84</a></div></div>
 <div class="ttc" id="astructDataLoggerService_1_1Metadata_html_a824ce9f37293e435d41af31788145571"><div class="ttname"><a href="structDataLoggerService_1_1Metadata.html#a824ce9f37293e435d41af31788145571">DataLoggerService::Metadata::scale</a></div><div class="ttdeci">float scale</div><div class="ttdoc">Scale to apply to read samples.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8h_source.html#l00086">dataloggerservice.h:86</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00249">249</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  250</span>{</div>
-<div class="line"><span class="lineno">  251</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  252</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  253</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  254</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
-<div class="line"><span class="lineno">  255</span>        : Metadata{ <a class="code hl_enumeration" href="#a1a3a38ca8befc3de8121d795879140f6">LoggerStatus</a>::<a class="code hl_enumvalue" href="#a1a3a38ca8befc3de8121d795879140f6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, std::numeric_limits&lt;float&gt;::quiet_NaN(), <a class="code hl_enumeration" href="#ab7fc5073f8ab9d5e93ba7006df685771">Mode</a>::<a class="code hl_enumvalue" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, 0, 0, 0, 0 };</div>
-<div class="line"><span class="lineno">  256</span>}</div>
-<div class="ttc" id="aclassDataLoggerServicePrivate_html_aed59b28db53cea0757289a0960bed3fd"><div class="ttname"><a href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a></div><div class="ttdeci">static DataLoggerService::Metadata parseMetadata(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Metadata value into a DataLoggerService::Metatdata struct.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00393">dataloggerservice.cpp:393</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00241">241</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  242</span>{</div>
+<div class="line"><span class="lineno">  243</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  244</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  245</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">return</span> (characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) ? <a class="code hl_function" href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a>(characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">value</a>())</div>
+<div class="line"><span class="lineno">  247</span>        : Metadata{ <a class="code hl_enumeration" href="#a1a3a38ca8befc3de8121d795879140f6">LoggerStatus</a>::<a class="code hl_enumvalue" href="#a1a3a38ca8befc3de8121d795879140f6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, std::numeric_limits&lt;float&gt;::quiet_NaN(), <a class="code hl_enumeration" href="#ab7fc5073f8ab9d5e93ba7006df685771">Mode</a>::<a class="code hl_enumvalue" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, 0, 0, 0, 0 };</div>
+<div class="line"><span class="lineno">  248</span>}</div>
+<div class="ttc" id="aclassDataLoggerServicePrivate_html_aed59b28db53cea0757289a0960bed3fd"><div class="ttname"><a href="classDataLoggerServicePrivate.html#aed59b28db53cea0757289a0960bed3fd">DataLoggerServicePrivate::parseMetadata</a></div><div class="ttdeci">static DataLoggerService::Metadata parseMetadata(const QByteArray &amp;value)</div><div class="ttdoc">Parses the Metadata value into a DataLoggerService::Metatdata struct.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00385">dataloggerservice.cpp:385</a></div></div>
 <div class="ttc" id="aclassDataLoggerService_html_a1a3a38ca8befc3de8121d795879140f6"><div class="ttname"><a href="#a1a3a38ca8befc3de8121d795879140f6">DataLoggerService::LoggerStatus</a></div><div class="ttdeci">LoggerStatus</div><div class="ttdoc">Values supported by the Status attribute of the Metadata characteristic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8h_source.html#l00076">dataloggerservice.h:76</a></div></div>
 <div class="ttc" id="aclassDataLoggerService_html_ab7fc5073f8ab9d5e93ba7006df685771"><div class="ttname"><a href="#ab7fc5073f8ab9d5e93ba7006df685771">DataLoggerService::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">Values supported by the Mode attribute of the Settings and Metadata characteristics.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8h_source.html#l00050">dataloggerservice.h:50</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a></div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_value"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value</a></div><div class="ttdeci">QByteArray value() const const</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="#a1a3a38ca8befc3de8121d795879140f6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, <a class="el" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dataloggerservice_8h_source.html#l00036">DataLoggerService::CharacteristicUuids::metadata</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00393">DataLoggerServicePrivate::parseMetadata()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
+<p class="reference">References <a class="el" href="#a1a3a38ca8befc3de8121d795879140f6a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>, <a class="el" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dataloggerservice_8h_source.html#l00036">DataLoggerService::CharacteristicUuids::metadata</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00385">DataLoggerServicePrivate::parseMetadata()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#value">QLowEnergyCharacteristic::value()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1269,13 +1234,13 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractPokitService.html#ab1de532f20d46803d6e8b8ffea835b48">AbstractPokitService</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00139">139</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>{</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a03ef6028ed40b095540dd45ba744c0f5">readMetadataCharacteristic</a>();</div>
-<div class="line"><span class="lineno">  142</span>}</div>
-<div class="ttc" id="aclassDataLoggerService_html_a03ef6028ed40b095540dd45ba744c0f5"><div class="ttname"><a href="#a03ef6028ed40b095540dd45ba744c0f5">DataLoggerService::readMetadataCharacteristic</a></div><div class="ttdeci">bool readMetadataCharacteristic()</div><div class="ttdoc">Reads the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00153">dataloggerservice.cpp:153</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00131">131</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  132</span>{</div>
+<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a03ef6028ed40b095540dd45ba744c0f5">readMetadataCharacteristic</a>();</div>
+<div class="line"><span class="lineno">  134</span>}</div>
+<div class="ttc" id="aclassDataLoggerService_html_a03ef6028ed40b095540dd45ba744c0f5"><div class="ttname"><a href="#a03ef6028ed40b095540dd45ba744c0f5">DataLoggerService::readMetadataCharacteristic</a></div><div class="ttdeci">bool readMetadataCharacteristic()</div><div class="ttdoc">Reads the DataLogger service's Metadata characteristic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00145">dataloggerservice.cpp:145</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00153">readMetadataCharacteristic()</a>.</p>
+<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00145">readMetadataCharacteristic()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1303,15 +1268,15 @@ Here is the call graph for this function:</div>
 <p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="#a637460cb26b0d448760544ecba6de468" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> if/when the characteristic has been read successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00153">153</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  154</span>{</div>
-<div class="line"><span class="lineno">  155</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
-<div class="line"><span class="lineno">  157</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00145">145</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
+<div class="line"><span class="lineno">  147</span>    Q_D(<a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">return</span> d-&gt;readCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>);</div>
+<div class="line"><span class="lineno">  149</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00036">DataLoggerService::CharacteristicUuids::metadata</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00139">readCharacteristics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00131">readCharacteristics()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1376,33 +1341,33 @@ Here is the caller graph for this function:</div>
 <p>Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p>Emits <a class="el" href="#ad4588cca08c3eeee40b3f02f16a3998f" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em>settings</em> have been writtem successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00166">166</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>{</div>
-<div class="line"><span class="lineno">  168</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  169</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
-<div class="line"><span class="lineno">  170</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ab5fa52ba8b4cacf839abe6d3f8e8a929">CharacteristicUuids::settings</a>);</div>
-<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
-<div class="line"><span class="lineno">  172</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  173</span>    }</div>
-<div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> updateIntervalIs32bit =</div>
-<div class="line"><span class="lineno">  176</span>        (d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>).value().size() &gt;= 23);</div>
-<div class="line"><span class="lineno">  177</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = <a class="code hl_function" href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">DataLoggerServicePrivate::encodeSettings</a>(settings, updateIntervalIs32bit);</div>
-<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">isNull</a>()) {</div>
-<div class="line"><span class="lineno">  179</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  180</span>    }</div>
-<div class="line"><span class="lineno">  181</span> </div>
-<div class="line"><span class="lineno">  182</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
-<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">  184</span>}</div>
-<div class="ttc" id="aclassDataLoggerServicePrivate_html_a774d21863bf83168171143ec8492a736"><div class="ttname"><a href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">DataLoggerServicePrivate::encodeSettings</a></div><div class="ttdeci">static QByteArray encodeSettings(const DataLoggerService::Settings &amp;settings, const bool updateIntervalIs32bit)</div><div class="ttdoc">Returns settings in the format Pokit devices expect.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00358">dataloggerservice.cpp:358</a></div></div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00158">158</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  159</span>{</div>
+<div class="line"><span class="lineno">  160</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  161</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a> characteristic =</div>
+<div class="line"><span class="lineno">  162</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#ab5fa52ba8b4cacf839abe6d3f8e8a929">CharacteristicUuids::settings</a>);</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
+<div class="line"><span class="lineno">  164</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  165</span>    }</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> updateIntervalIs32bit =</div>
+<div class="line"><span class="lineno">  168</span>        (d-&gt;getCharacteristic(<a class="code hl_variable" href="structDataLoggerService_1_1CharacteristicUuids.html#a360ad74780e776a1233d73e5416db0e9">CharacteristicUuids::metadata</a>).value().size() &gt;= 23);</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a> value = <a class="code hl_function" href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">DataLoggerServicePrivate::encodeSettings</a>(settings, updateIntervalIs32bit);</div>
+<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">if</span> (value.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">isNull</a>()) {</div>
+<div class="line"><span class="lineno">  171</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  172</span>    }</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, value);</div>
+<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">  176</span>}</div>
+<div class="ttc" id="aclassDataLoggerServicePrivate_html_a774d21863bf83168171143ec8492a736"><div class="ttname"><a href="classDataLoggerServicePrivate.html#a774d21863bf83168171143ec8492a736">DataLoggerServicePrivate::encodeSettings</a></div><div class="ttdeci">static QByteArray encodeSettings(const DataLoggerService::Settings &amp;settings, const bool updateIntervalIs32bit)</div><div class="ttdoc">Returns settings in the format Pokit devices expect.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8cpp_source.html#l00350">dataloggerservice.cpp:350</a></div></div>
 <div class="ttc" id="aqbytearray_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html">QByteArray</a></div></div>
 <div class="ttc" id="aqbytearray_html_isNull"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull</a></div><div class="ttdeci">bool isNull() const const</div></div>
 <div class="ttc" id="astructDataLoggerService_1_1CharacteristicUuids_html_ab5fa52ba8b4cacf839abe6d3f8e8a929"><div class="ttname"><a href="structDataLoggerService_1_1CharacteristicUuids.html#ab5fa52ba8b4cacf839abe6d3f8e8a929">DataLoggerService::CharacteristicUuids::settings</a></div><div class="ttdeci">static const QBluetoothUuid settings</div><div class="ttdoc">UUID of the DataLogger service's Settings characterstic.</div><div class="ttdef"><b>Definition</b> <a href="dataloggerservice_8h_source.html#l00033">dataloggerservice.h:33</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00358">DataLoggerServicePrivate::encodeSettings()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dataloggerservice_8h_source.html#l00036">DataLoggerService::CharacteristicUuids::metadata</a>, and <a class="el" href="dataloggerservice_8h_source.html#l00033">DataLoggerService::CharacteristicUuids::settings</a>.</p>
+<p class="reference">References <a class="el" href="dataloggerservice_8cpp_source.html#l00350">DataLoggerServicePrivate::encodeSettings()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#isNull">QByteArray::isNull()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="dataloggerservice_8h_source.html#l00036">DataLoggerService::CharacteristicUuids::metadata</a>, and <a class="el" href="dataloggerservice_8h_source.html#l00033">DataLoggerService::CharacteristicUuids::settings</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00227">fetchSamples()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00153">LoggerStartCommand::serviceDetailsDiscovered()</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00192">startLogger()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00209">stopLogger()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dataloggerservice_8cpp_source.html#l00219">fetchSamples()</a>, <a class="el" href="loggerstartcommand_8cpp_source.html#l00153">LoggerStartCommand::serviceDetailsDiscovered()</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00184">startLogger()</a>, and <a class="el" href="dataloggerservice_8cpp_source.html#l00201">stopLogger()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1469,19 +1434,19 @@ Here is the caller graph for this function:</div>
 <p>Start the data logger with <em>settings</em>. </p>
 <p>This is just a synonym for <a class="el" href="#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> except makes the caller's intention more explicit, and sanity-checks that the settings's command is <a class="el" href="#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37" title="Start the Data Logger.">DataLoggerService::Command::Start</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00192">192</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  193</span>{</div>
-<div class="line"><span class="lineno">  194</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
-<div class="line"><span class="lineno">  195</span>    Q_ASSERT(settings.command == <a class="code hl_enumvalue" href="#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">DataLoggerService::Command::Start</a>);</div>
-<div class="line"><span class="lineno">  196</span>    <span class="keywordflow">if</span> (settings.command != <a class="code hl_enumvalue" href="#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">DataLoggerService::Command::Start</a>) {</div>
-<div class="line"><span class="lineno">  197</span>        qCWarning(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings command must be &#39;Start&#39;.&quot;</span>);</div>
-<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  199</span>    }</div>
-<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a3b933a1a161a390eb08e5019685f449c">setSettings</a>(settings);</div>
-<div class="line"><span class="lineno">  201</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00184">184</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  185</span>{</div>
+<div class="line"><span class="lineno">  186</span>    Q_D(<span class="keyword">const</span> <a class="code hl_class" href="classDataLoggerService.html">DataLoggerService</a>);</div>
+<div class="line"><span class="lineno">  187</span>    Q_ASSERT(settings.command == <a class="code hl_enumvalue" href="#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">DataLoggerService::Command::Start</a>);</div>
+<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">if</span> (settings.command != <a class="code hl_enumvalue" href="#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">DataLoggerService::Command::Start</a>) {</div>
+<div class="line"><span class="lineno">  189</span>        qCWarning(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Settings command must be &#39;Start&#39;.&quot;</span>);</div>
+<div class="line"><span class="lineno">  190</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  191</span>    }</div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a3b933a1a161a390eb08e5019685f449c">setSettings</a>(settings);</div>
+<div class="line"><span class="lineno">  193</span>}</div>
 <div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00067">DataLoggerService::Settings::command</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00166">setSettings()</a>, <a class="el" href="#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">Start</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="el" href="dataloggerservice_8h_source.html#l00067">DataLoggerService::Settings::command</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00158">setSettings()</a>, <a class="el" href="#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37">Start</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1508,15 +1473,15 @@ Here is the call graph for this function:</div>
 <p>Stop the data logger. </p>
 <p>This is just a convenience function equivalent to calling <a class="el" href="#a3b933a1a161a390eb08e5019685f449c" title="Configures the Pokit device&#39;s data logger mode.">setSettings()</a> with the command set to <a class="el" href="#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481" title="Stop the Data Logger.">DataLoggerService::Command::Stop</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00209">209</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  210</span>{</div>
-<div class="line"><span class="lineno">  211</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
-<div class="line"><span class="lineno">  212</span>    <span class="comment">// Pokit device when the command is Stop. However, we still explicitly initialise all other</span></div>
-<div class="line"><span class="lineno">  213</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
-<div class="line"><span class="lineno">  214</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a3b933a1a161a390eb08e5019685f449c">setSettings</a>({ <a class="code hl_enumvalue" href="#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481">DataLoggerService::Command::Stop</a>,  0, <a class="code hl_enumvalue" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a>, 0, 0, 0 });</div>
-<div class="line"><span class="lineno">  215</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dataloggerservice_8cpp_source.html#l00201">201</a> of file <a class="el" href="dataloggerservice_8cpp_source.html">dataloggerservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>{</div>
+<div class="line"><span class="lineno">  203</span>    <span class="comment">// Note, only the Settings::command member need be set, since the others are all ignored by the</span></div>
+<div class="line"><span class="lineno">  204</span>    <span class="comment">// Pokit device when the command is Stop. However, we still explicitly initialise all other</span></div>
+<div class="line"><span class="lineno">  205</span>    <span class="comment">// members just to ensure we&#39;re never exposing uninitialised RAM to an external device.</span></div>
+<div class="line"><span class="lineno">  206</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a3b933a1a161a390eb08e5019685f449c">setSettings</a>({ <a class="code hl_enumvalue" href="#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481">DataLoggerService::Command::Stop</a>,  0, <a class="code hl_enumvalue" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">DataLoggerService::Mode::Idle</a>, 0, 0, 0 });</div>
+<div class="line"><span class="lineno">  207</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00166">setSettings()</a>, and <a class="el" href="#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481">Stop</a>.</p>
+<p class="reference">References <a class="el" href="#ab7fc5073f8ab9d5e93ba7006df685771ae599161956d626eda4cb0a5ffb85271c">Idle</a>, <a class="el" href="dataloggerservice_8cpp_source.html#l00158">setSettings()</a>, and <a class="el" href="#a8662772916319f96aa7aeb16c87665cca11a755d598c0c417f9a36758c3da7481">Stop</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="loggerstopcommand_8cpp_source.html#l00049">LoggerStopCommand::serviceDetailsDiscovered()</a>.</p>
 <div class="dynheader">
