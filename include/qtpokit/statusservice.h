@@ -141,7 +141,7 @@ public:
     static QString toString(const StatusService::ButtonStatus &status);
 
     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    ~StatusService() override;
+    ~StatusService() = default;
 
     bool readCharacteristics() override;
     bool readDeviceCharacteristics();

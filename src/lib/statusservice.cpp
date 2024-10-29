@@ -139,14 +139,6 @@ StatusService::StatusService(
 }
 /// \endcond
 
-/*!
- * Destroys this StatusService object.
- */
-StatusService::~StatusService()
-{
-
-}
-
 bool StatusService::readCharacteristics()
 {
     const bool r1 = readDeviceCharacteristics();

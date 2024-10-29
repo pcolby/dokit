@@ -1162,7 +1162,7 @@
 <context>
     <name>StatusService</name>
     <message>
-        <location filename="../statusservice.cpp" line="351"/>
+        <location filename="../statusservice.cpp" line="343"/>
         <source>Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1170,127 +1170,127 @@
 <context>
     <name>StatusServicePrivate</name>
     <message>
-        <location filename="../statusservice.cpp" line="608"/>
+        <location filename="../statusservice.cpp" line="600"/>
         <source>Firmware version:     </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="609"/>
+        <location filename="../statusservice.cpp" line="601"/>
         <source>Maximum voltage:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="610"/>
+        <location filename="../statusservice.cpp" line="602"/>
         <source>Maximum current:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="611"/>
+        <location filename="../statusservice.cpp" line="603"/>
         <source>Maximum resistance:   </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="612"/>
+        <location filename="../statusservice.cpp" line="604"/>
         <source>Maximum sampling rate:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="613"/>
+        <location filename="../statusservice.cpp" line="605"/>
         <source>Sampling buffer size: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="614"/>
+        <location filename="../statusservice.cpp" line="606"/>
         <source>Capability mask:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="615"/>
+        <location filename="../statusservice.cpp" line="607"/>
         <source>MAC address:          </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="660"/>
+        <location filename="../statusservice.cpp" line="652"/>
         <source>Device status:   %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="662"/>
+        <location filename="../statusservice.cpp" line="654"/>
         <source>Battery voltage: %1 volts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="663"/>
+        <location filename="../statusservice.cpp" line="655"/>
         <source>Battery status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="666"/>
+        <location filename="../statusservice.cpp" line="658"/>
         <source>Switch position: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="670"/>
+        <location filename="../statusservice.cpp" line="662"/>
         <source>Charging status: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="686"/>
+        <location filename="../statusservice.cpp" line="678"/>
         <source>Torch status: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="709"/>
+        <location filename="../statusservice.cpp" line="701"/>
         <source>Button: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="722"/>
+        <location filename="../statusservice.cpp" line="714"/>
         <source>Found Status Service for a Pokit Meter device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="725"/>
+        <location filename="../statusservice.cpp" line="717"/>
         <source>Found Status Service for a Pokit Pro device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="753"/>
+        <location filename="../statusservice.cpp" line="745"/>
         <source>Device name: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="759"/>
+        <location filename="../statusservice.cpp" line="751"/>
         <source>Flash LED characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="769"/>
+        <location filename="../statusservice.cpp" line="761"/>
         <source>Torch status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="779"/>
+        <location filename="../statusservice.cpp" line="771"/>
         <source>Button status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="784"/>
+        <location filename="../statusservice.cpp" line="776"/>
         <source>Unknown characteristic read for Status service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="799"/>
+        <location filename="../statusservice.cpp" line="791"/>
         <source>Device Characteristics is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="805"/>
+        <location filename="../statusservice.cpp" line="797"/>
         <source>Status characteristic is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="825"/>
+        <location filename="../statusservice.cpp" line="817"/>
         <source>Unknown characteristic written for Status service</source>
         <translation type="unfinished"></translation>
     </message>
