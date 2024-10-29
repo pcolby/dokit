@@ -83,7 +83,7 @@ public:
     };
 
     MultimeterService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    ~MultimeterService() override;
+    ~MultimeterService() = default;
 
     bool readCharacteristics() override;
     bool readReadingCharacteristic();

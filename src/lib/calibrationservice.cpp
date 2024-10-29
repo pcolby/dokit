@@ -40,14 +40,6 @@ CalibrationService::CalibrationService(
 /// \endcond
 
 /*!
- * Destroys this CalibrationService object.
- */
-CalibrationService::~CalibrationService()
-{
-
-}
-
-/*!
  * \copybrief AbstractPokitService::readCharacteristics
  *
  * This implementation always returns `true`, since the Calibration service provides no *readable*

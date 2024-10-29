@@ -40,7 +40,7 @@ public:
     };
 
     CalibrationService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    ~CalibrationService() override;
+    ~CalibrationService() = default;
 
     bool readCharacteristics() override;
 

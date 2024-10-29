@@ -144,14 +144,6 @@ MultimeterService::MultimeterService(
 }
 /// \endcond
 
-/*!
- * Destroys this MultimeterService object.
- */
-MultimeterService::~MultimeterService()
-{
-
-}
-
 bool MultimeterService::readCharacteristics()
 {
     return readReadingCharacteristic();

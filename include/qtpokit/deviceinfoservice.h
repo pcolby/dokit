@@ -56,7 +56,7 @@ public:
     };
 
     DeviceInfoService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    ~DeviceInfoService() override;
+    ~DeviceInfoService() = default;
 
     bool readCharacteristics() override;
     bool readFirmwareRevisionCharacteristic();

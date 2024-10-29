@@ -38,14 +38,6 @@ DeviceInfoService::DeviceInfoService(
 }
 /// \endcond
 
-/*!
- * Destroys this DeviceInfoService object.
- */
-DeviceInfoService::~DeviceInfoService()
-{
-
-}
-
 bool DeviceInfoService::readCharacteristics()
 {
     const bool r1 = readFirmwareRevisionCharacteristic();

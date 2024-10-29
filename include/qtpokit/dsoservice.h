@@ -94,7 +94,7 @@ public:
     typedef QVector<qint16> Samples;
 
     DsoService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    ~DsoService() override;
+    ~DsoService() = default;
 
     bool readCharacteristics() override;
     bool readMetadataCharacteristic();

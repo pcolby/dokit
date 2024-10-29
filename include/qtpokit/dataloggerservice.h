@@ -94,7 +94,7 @@ public:
     typedef QVector<qint16> Samples;
 
     DataLoggerService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);
-    ~DataLoggerService() override;
+    ~DataLoggerService() = default;
 
     bool readCharacteristics() override;
     bool readMetadataCharacteristic();

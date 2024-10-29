@@ -121,14 +121,6 @@ DsoService::DsoService(
 }
 /// \endcond
 
-/*!
- * Destroys this DsoService object.
- */
-DsoService::~DsoService()
-{
-
-}
-
 bool DsoService::readCharacteristics()
 {
     return readMetadataCharacteristic();

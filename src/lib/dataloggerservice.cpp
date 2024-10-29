@@ -128,14 +128,6 @@ DataLoggerService::DataLoggerService(
 }
 /// \endcond
 
-/*!
- * Destroys this DataLoggerService object.
- */
-DataLoggerService::~DataLoggerService()
-{
-
-}
-
 bool DataLoggerService::readCharacteristics()
 {
     return readMetadataCharacteristic();
