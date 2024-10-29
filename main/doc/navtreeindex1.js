@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"functions_g.html":[3,3,0,6],
 "functions_h.html":[3,3,0,7],
 "functions_l.html":[3,3,0,8],
 "functions_m.html":[3,3,0,9],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "structDataLoggerService_1_1Settings.html#a823e19d448e6540ea0bfc6844ffc96f1":[3,0,2,2,3],
 "structDataLoggerService_1_1Settings.html#ac72c18db4e38d95664c456c527e352f4":[3,0,2,2,2],
 "structDataLoggerService_1_1Settings.html#afdd04830ac70e2435cfce3d7be601e9c":[3,0,2,2,5],
-"structDeviceInfoService_1_1CharacteristicUuids.html":[3,0,3,0]
+"structDeviceInfoService_1_1CharacteristicUuids.html":[3,0,3,0],
+"structDsoService_1_1CharacteristicUuids.html":[3,0,4,0]
 };

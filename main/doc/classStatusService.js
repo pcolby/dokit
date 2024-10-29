@@ -41,7 +41,6 @@ var classStatusService =
       [ "On", "classStatusService.html#ab219dd54284c7299cce14b36ee59e08ba521c36a31c2762741cf0f8890cbe05e3", null ]
     ] ],
     [ "StatusService", "classStatusService.html#a095254046689e5115ba053c029a2e1b8", null ],
-    [ "~StatusService", "classStatusService.html#a6140c2723538587220452d6d4a51f001", null ],
     [ "buttonPress", "classStatusService.html#a658e493f2942afd66263a989e99ed633", null ],
     [ "buttonPressRead", "classStatusService.html#a2084a26b33dd947723c40839d36b7b94", null ],
     [ "deviceCharacteristics", "classStatusService.html#a008d41a33eedd90e68ccf7a94ed5b65f", null ],

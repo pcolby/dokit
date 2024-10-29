@@ -174,6 +174,5 @@ var searchData=
   ['_7eqxmlstreamreader_171',['~QXmlStreamReader',['https://doc.qt.io/qt-5/qxmlstreamreader.html#dtor.QXmlStreamReader',1,'QXmlStreamReader']]],
   ['_7eqxmlstreamwriter_172',['~QXmlStreamWriter',['https://doc.qt.io/qt-5/qxmlstreamwriter.html#dtor.QXmlStreamWriter',1,'QXmlStreamWriter']]],
   ['_7esignalevent_173',['~SignalEvent',['https://doc.qt.io/qt-5/qstatemachine-signalevent.html#dtor.SignalEvent',1,'QStateMachine::SignalEvent']]],
-  ['_7estatusservice_174',['~StatusService',['../classStatusService.html#a6140c2723538587220452d6d4a51f001',1,'StatusService']]],
-  ['_7ewrappedevent_175',['~WrappedEvent',['https://doc.qt.io/qt-5/qstatemachine-wrappedevent.html#dtor.WrappedEvent',1,'QStateMachine::WrappedEvent']]]
+  ['_7ewrappedevent_174',['~WrappedEvent',['https://doc.qt.io/qt-5/qstatemachine-wrappedevent.html#dtor.WrappedEvent',1,'QStateMachine::WrappedEvent']]]
 ];

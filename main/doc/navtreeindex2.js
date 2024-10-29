@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"structDsoService_1_1CharacteristicUuids.html":[3,0,4,0],
 "structDsoService_1_1Metadata.html":[3,0,4,1],
 "structDsoService_1_1Metadata.html#a1ee78a173e219e8224f4db3d4bc5ee97":[3,0,4,1,3],
 "structDsoService_1_1Metadata.html#a49968d71997c4a744061b547e9c4778e":[3,0,4,1,6],
