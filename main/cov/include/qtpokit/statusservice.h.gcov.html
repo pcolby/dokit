@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">-</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryLo">33.3&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">1</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -229,7 +229,7 @@
 <span id="L141"><span class="lineNum">     141</span>              :     static QString toString(const StatusService::ButtonStatus &amp;status);</span>
 <span id="L142"><span class="lineNum">     142</span>              : </span>
 <span id="L143"><span class="lineNum">     143</span>              :     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</span>
-<span id="L144"><span class="lineNum">     144</span>              :     ~StatusService() override;</span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">        1584 :     ~StatusService() = default;</span></span>
 <span id="L145"><span class="lineNum">     145</span>              : </span>
 <span id="L146"><span class="lineNum">     146</span>              :     bool readCharacteristics() override;</span>
 <span id="L147"><span class="lineNum">     147</span>              :     bool readDeviceCharacteristics();</span>
