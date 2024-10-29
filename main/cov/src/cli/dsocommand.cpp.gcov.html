@@ -144,8 +144,8 @@
 <span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          48 :     }</span></span>
 <span id="L57"><span class="lineNum">      57</span>              : </span>
 <span id="L58"><span class="lineNum">      58</span>              :     // Parse the (required) mode option.</span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">        2300 :     const QString mode = parser.value(QLatin1String(&quot;mode&quot;)).trimmed().toLower();</span></span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">        1450 :     if (mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">        2300 :     if (const QString mode = parser.value(QLatin1String(&quot;mode&quot;)).trimmed().toLower();</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">        1450 :         mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></span>
 <span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">          54 :         settings.mode = DsoService::Mode::AcVoltage;</span></span>
 <span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        1392 :     } else if (mode.startsWith(QLatin1String(&quot;dc v&quot;)) || mode.startsWith(QLatin1String(&quot;vdc&quot;))) {</span></span>
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">        1134 :         settings.mode = DsoService::Mode::DcVoltage;</span></span>
@@ -155,8 +155,8 @@
 <span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">          54 :         settings.mode = DsoService::Mode::DcCurrent;</span></span>
 <span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">          16 :     } else {</span></span>
 <span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">          92 :         errors.append(tr(&quot;Unknown DSO mode: %1&quot;).arg(parser.value(QLatin1String(&quot;mode&quot;))));</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">          54 :         return errors;</span></span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">          16 :     }</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">          16 :         return errors;</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         591 :     }</span></span>
 <span id="L72"><span class="lineNum">      72</span>              : </span>
 <span id="L73"><span class="lineNum">      73</span>              :     // Parse the (required) range option.</span>
 <span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         744 :     QString unit;</span></span>
@@ -247,7 +247,7 @@
 <span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          32 :         }</span></span>
 <span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         195 :     }</span></span>
 <span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">         384 :     return errors;</span></span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         959 : }</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         936 : }</span></span>
 <span id="L163"><span class="lineNum">     163</span>              : </span>
 <span id="L164"><span class="lineNum">     164</span>              : /*!</span>
 <span id="L165"><span class="lineNum">     165</span>              :  * \copybrief DeviceCommand::getService</span>

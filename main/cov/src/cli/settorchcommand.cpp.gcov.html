@@ -134,16 +134,16 @@
 <span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          44 :         return errors;</span></span>
 <span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          44 :     }</span></span>
 <span id="L48"><span class="lineNum">      48</span>              : </span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">         388 :     const QString value = parser.value(QLatin1String(&quot;mode&quot;));</span></span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         328 :     if (value.trimmed().compare(QLatin1String(&quot;on&quot;), Qt::CaseInsensitive) == 0) {</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">         388 :     if (const QString value = parser.value(QLatin1String(&quot;mode&quot;));</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         328 :         value.trimmed().compare(QLatin1String(&quot;on&quot;), Qt::CaseInsensitive) == 0) {</span></span>
 <span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">          82 :         newStatus = StatusService::TorchStatus::On;</span></span>
 <span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         246 :     } else if (value.trimmed().compare(QLatin1String(&quot;off&quot;), Qt::CaseInsensitive) == 0) {</span></span>
 <span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">          82 :         newStatus = StatusService::TorchStatus::Off;</span></span>
 <span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          88 :     } else {</span></span>
 <span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">         194 :         errors.append(tr(&quot;Invalid status value: %1&quot;).arg(value));</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          88 :     }</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">         176 :     return errors;</span></span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">         312 : }</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         180 :     }</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">         328 :     return errors;</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">         220 : }</span></span>
 <span id="L59"><span class="lineNum">      59</span>              : </span>
 <span id="L60"><span class="lineNum">      60</span>              : /*!</span>
 <span id="L61"><span class="lineNum">      61</span>              :  * \copybrief DeviceCommand::getService</span>

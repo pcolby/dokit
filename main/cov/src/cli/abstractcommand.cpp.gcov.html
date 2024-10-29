@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryHi">97.4&nbsp;%</td>
-            <td class="headerCovTableEntry">152</td>
-            <td class="headerCovTableEntry">148</td>
+            <td class="headerCovTableEntry">151</td>
+            <td class="headerCovTableEntry">147</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -295,143 +295,142 @@
 <span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">        2756 :     }</span></span>
 <span id="L208"><span class="lineNum">     208</span>              : </span>
 <span id="L209"><span class="lineNum">     209</span>              :     // Parse the number as a (double) floating point number, and check that it is positive.</span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">        2511 :     const double dbl = locale.toDouble(number, &amp;ok);</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">        3106 :     if ((ok) &amp;&amp; (dbl &gt; 0.0)) {</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         484 :         if (!ratio.isValid()) {</span></span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         574 :             for (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(dbl) &lt; sensibleMinimum; ratio.num *= 1000);</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">         220 :         }</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         902 :         return std::llround(DOKIT_RESULT(dbl));</span></span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">         484 :     }</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">        1156 :     #undef DOKIT_RESULT</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">        1156 :     return 0; // Failed to parse as either integer, or float.</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">        6204 : }</span></span>
-<span id="L220"><span class="lineNum">     220</span>              : </span>
-<span id="L221"><span class="lineNum">     221</span>              : #define DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(type) template \</span>
-<span id="L222"><span class="lineNum">     222</span>              : quint32 AbstractCommand::parseNumber&lt;type&gt;(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum)</span>
-<span id="L223"><span class="lineNum">     223</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::exa);</span>
-<span id="L224"><span class="lineNum">     224</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::peta);</span>
-<span id="L225"><span class="lineNum">     225</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::tera);</span>
-<span id="L226"><span class="lineNum">     226</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::giga);</span>
-<span id="L227"><span class="lineNum">     227</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::mega);</span>
-<span id="L228"><span class="lineNum">     228</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::kilo);</span>
-<span id="L229"><span class="lineNum">     229</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::hecto);</span>
-<span id="L230"><span class="lineNum">     230</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deca);</span>
-<span id="L231"><span class="lineNum">     231</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::ratio&lt;1&gt;);</span>
-<span id="L232"><span class="lineNum">     232</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deci);</span>
-<span id="L233"><span class="lineNum">     233</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::centi);</span>
-<span id="L234"><span class="lineNum">     234</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::milli);</span>
-<span id="L235"><span class="lineNum">     235</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::micro);</span>
-<span id="L236"><span class="lineNum">     236</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::nano);</span>
-<span id="L237"><span class="lineNum">     237</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::pico);</span>
-<span id="L238"><span class="lineNum">     238</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::femto);</span>
-<span id="L239"><span class="lineNum">     239</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::atto);</span>
-<span id="L240"><span class="lineNum">     240</span>              : #undef DOKIT_INSTANTIATE_TEMPLATE_FUNCTION</span>
-<span id="L241"><span class="lineNum">     241</span>              : </span>
-<span id="L242"><span class="lineNum">     242</span>              : /*!</span>
-<span id="L243"><span class="lineNum">     243</span>              :  * Processes the relevant options from the command line \a parser.</span>
-<span id="L244"><span class="lineNum">     244</span>              :  *</span>
-<span id="L245"><span class="lineNum">     245</span>              :  * On success, returns an empty QStringList, otherwise returns a list of CLI errors that the caller</span>
-<span id="L246"><span class="lineNum">     246</span>              :  * should report appropriately before exiting.</span>
-<span id="L247"><span class="lineNum">     247</span>              :  *</span>
-<span id="L248"><span class="lineNum">     248</span>              :  * This base implementations performs some common checks, such as ensuring that required options are</span>
-<span id="L249"><span class="lineNum">     249</span>              :  * present. Derived classes should override this function to perform further processing, typically</span>
-<span id="L250"><span class="lineNum">     250</span>              :  * inovking this base implementation as a first step, such as:</span>
-<span id="L251"><span class="lineNum">     251</span>              :  *</span>
-<span id="L252"><span class="lineNum">     252</span>              :  * ```</span>
-<span id="L253"><span class="lineNum">     253</span>              :  * QStringList CustomCommand::processOptions(const QCommandLineParser &amp;parser)</span>
-<span id="L254"><span class="lineNum">     254</span>              :  * {</span>
-<span id="L255"><span class="lineNum">     255</span>              :  *     QStringList errors = AbstractCommand::processOptions(parser);</span>
-<span id="L256"><span class="lineNum">     256</span>              :  *     if (!errors.isEmpty()) {</span>
-<span id="L257"><span class="lineNum">     257</span>              :  *         return errors;</span>
-<span id="L258"><span class="lineNum">     258</span>              :  *     }</span>
-<span id="L259"><span class="lineNum">     259</span>              :  *</span>
-<span id="L260"><span class="lineNum">     260</span>              :  *     // Do further procession of options.</span>
-<span id="L261"><span class="lineNum">     261</span>              :  *</span>
-<span id="L262"><span class="lineNum">     262</span>              :  *     return errors;</span>
-<span id="L263"><span class="lineNum">     263</span>              :  * }</span>
-<span id="L264"><span class="lineNum">     264</span>              :  * ```</span>
-<span id="L265"><span class="lineNum">     265</span>              :  */</span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        4640 : QStringList AbstractCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">        4876 : {</span></span>
-<span id="L268"><span class="lineNum">     268</span>              :     // Report any supplied options that are not supported by this command.</span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        9516 :     const QStringList suppliedOptionNames = parser.optionNames();</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">        9516 :     const QStringList supportedOptionNames = supportedOptions(parser);</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">       21908 :     for (const QString &amp;option: suppliedOptionNames) {</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">       17268 :         if (!supportedOptionNames.contains(option)) {</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         143 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          44 :         }</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        8520 :     }</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">        6750 :     QStringList errors;</span></span>
-<span id="L277"><span class="lineNum">     277</span>              : </span>
-<span id="L278"><span class="lineNum">     278</span>              :     // Parse the device (name/addr/uuid) option.</span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">       11390 :     if (parser.isSet(QLatin1String(&quot;device&quot;))) {</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         194 :         deviceToScanFor = parser.value(QLatin1String(&quot;device&quot;));</span></span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">          88 :     }</span></span>
-<span id="L282"><span class="lineNum">     282</span>              : </span>
-<span id="L283"><span class="lineNum">     283</span>              :     // Parse the output format options (if supported, and supplied).</span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">        9752 :     if ((supportedOptionNames.contains(QLatin1String(&quot;output&quot;))) &amp;&amp; // Derived classes may have removed.</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">       11390 :         (parser.isSet(QLatin1String(&quot;output&quot;))))</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">         572 :     {</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1560 :         const QString output = parser.value(QLatin1String(&quot;output&quot;)).toLower();</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        1057 :         if (output == QLatin1String(&quot;csv&quot;)) {</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">         246 :             format = OutputFormat::Csv;</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">         811 :         } else if (output == QLatin1String(&quot;json&quot;)) {</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         246 :             format = OutputFormat::Json;</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         565 :         } else if (output == QLatin1String(&quot;text&quot;)) {</span></span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">         246 :             format = OutputFormat::Text;</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         176 :         } else {</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         388 :             errors.append(tr(&quot;Unknown output format: %1&quot;).arg(output));</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">         176 :         }</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">         871 :     }</span></span>
-<span id="L298"><span class="lineNum">     298</span>              : </span>
-<span id="L299"><span class="lineNum">     299</span>              :     // Parse the device scan timeout option.</span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">       11390 :     if (parser.isSet(QLatin1String(&quot;timeout&quot;))) {</span></span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">         728 :         const quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(QLatin1String(&quot;timeout&quot;)), QLatin1String(&quot;s&quot;), 500);</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         624 :         if (timeout == 0) {</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">         360 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(QLatin1String(&quot;timeout&quot;))));</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">         336 :         } else if (discoveryAgent-&gt;lowEnergyDiscoveryTimeout() == -1) {</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC tlaBgUNC">           0 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Platform does not support Bluetooth scan timeout&quot;);</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC tlaBgGNC">         252 :         } else {</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         336 :             discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">         364 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC tlaBgUNC">           0 :                 discoveryAgent-&gt;lowEnergyDiscoveryTimeout());</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC tlaBgGNC">         252 :         }</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">         468 :     }</span></span>
-<span id="L312"><span class="lineNum">     312</span>              : </span>
-<span id="L313"><span class="lineNum">     313</span>              :     // Return errors for any required options that are absent.</span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">        9516 :     const QStringList requiredOptionNames = this-&gt;requiredOptions(parser);</span></span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">       15452 :     for (const QString &amp;option: requiredOptionNames) {</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">       10700 :         if (!parser.isSet(option)) {</span></span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         955 :             errors.append(tr(&quot;Missing required option: %1&quot;).arg(option));</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">         372 :         }</span></span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">        5148 :     }</span></span>
-<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">        9516 :     return errors;</span></span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">        4876 : }</span></span>
-<span id="L322"><span class="lineNum">     322</span>              : </span>
-<span id="L323"><span class="lineNum">     323</span>              : /*!</span>
-<span id="L324"><span class="lineNum">     324</span>              :  * \fn virtual bool AbstractCommand::start()</span>
-<span id="L325"><span class="lineNum">     325</span>              :  *</span>
-<span id="L326"><span class="lineNum">     326</span>              :  * Begins the functionality of this command, and returns `true` if begun successfully, `false`</span>
-<span id="L327"><span class="lineNum">     327</span>              :  * otherwise.</span>
-<span id="L328"><span class="lineNum">     328</span>              :  */</span>
-<span id="L329"><span class="lineNum">     329</span>              : </span>
-<span id="L330"><span class="lineNum">     330</span>              : /*!</span>
-<span id="L331"><span class="lineNum">     331</span>              :  * \fn virtual void AbstractCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info) = 0</span>
-<span id="L332"><span class="lineNum">     332</span>              :  *</span>
-<span id="L333"><span class="lineNum">     333</span>              :  * Handles PokitDiscoveryAgent::pokitDeviceDiscovered signal. Derived classes must</span>
-<span id="L334"><span class="lineNum">     334</span>              :  * implement this slot to begin whatever actions are relevant when a Pokit device has been</span>
-<span id="L335"><span class="lineNum">     335</span>              :  * discovered. For example, the 'scan' command would simply output the \a info details, whereas</span>
-<span id="L336"><span class="lineNum">     336</span>              :  * most other commands would begin connecting if \a info is the device they're after.</span>
-<span id="L337"><span class="lineNum">     337</span>              :  */</span>
-<span id="L338"><span class="lineNum">     338</span>              : </span>
-<span id="L339"><span class="lineNum">     339</span>              : /*!</span>
-<span id="L340"><span class="lineNum">     340</span>              :  * \fn virtual void AbstractCommand::deviceDiscoveryFinished() = 0</span>
-<span id="L341"><span class="lineNum">     341</span>              :  *</span>
-<span id="L342"><span class="lineNum">     342</span>              :  * Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must</span>
-<span id="L343"><span class="lineNum">     343</span>              :  * implement this slot to perform whatever actions are appropraite when discovery is finished.</span>
-<span id="L344"><span class="lineNum">     344</span>              :  * For example, the 'scan' command would simply exit, whereas most other commands would verify that</span>
-<span id="L345"><span class="lineNum">     345</span>              :  * an appropriate device was found.</span>
-<span id="L346"><span class="lineNum">     346</span>              :  */</span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">        3106 :     if (const double dbl = locale.toDouble(number, &amp;ok); (ok) &amp;&amp; (dbl &gt; 0.0)) {</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">         484 :         if (!ratio.isValid()) {</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         574 :             for (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(dbl) &lt; sensibleMinimum; ratio.num *= 1000);</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         220 :         }</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">         902 :         return std::llround(DOKIT_RESULT(dbl));</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         484 :     }</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">        1156 :     #undef DOKIT_RESULT</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">        1156 :     return 0; // Failed to parse as either integer, or float.</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">        6204 : }</span></span>
+<span id="L219"><span class="lineNum">     219</span>              : </span>
+<span id="L220"><span class="lineNum">     220</span>              : #define DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(type) template \</span>
+<span id="L221"><span class="lineNum">     221</span>              : quint32 AbstractCommand::parseNumber&lt;type&gt;(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum)</span>
+<span id="L222"><span class="lineNum">     222</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::exa);</span>
+<span id="L223"><span class="lineNum">     223</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::peta);</span>
+<span id="L224"><span class="lineNum">     224</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::tera);</span>
+<span id="L225"><span class="lineNum">     225</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::giga);</span>
+<span id="L226"><span class="lineNum">     226</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::mega);</span>
+<span id="L227"><span class="lineNum">     227</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::kilo);</span>
+<span id="L228"><span class="lineNum">     228</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::hecto);</span>
+<span id="L229"><span class="lineNum">     229</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deca);</span>
+<span id="L230"><span class="lineNum">     230</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::ratio&lt;1&gt;);</span>
+<span id="L231"><span class="lineNum">     231</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deci);</span>
+<span id="L232"><span class="lineNum">     232</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::centi);</span>
+<span id="L233"><span class="lineNum">     233</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::milli);</span>
+<span id="L234"><span class="lineNum">     234</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::micro);</span>
+<span id="L235"><span class="lineNum">     235</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::nano);</span>
+<span id="L236"><span class="lineNum">     236</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::pico);</span>
+<span id="L237"><span class="lineNum">     237</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::femto);</span>
+<span id="L238"><span class="lineNum">     238</span>              : DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::atto);</span>
+<span id="L239"><span class="lineNum">     239</span>              : #undef DOKIT_INSTANTIATE_TEMPLATE_FUNCTION</span>
+<span id="L240"><span class="lineNum">     240</span>              : </span>
+<span id="L241"><span class="lineNum">     241</span>              : /*!</span>
+<span id="L242"><span class="lineNum">     242</span>              :  * Processes the relevant options from the command line \a parser.</span>
+<span id="L243"><span class="lineNum">     243</span>              :  *</span>
+<span id="L244"><span class="lineNum">     244</span>              :  * On success, returns an empty QStringList, otherwise returns a list of CLI errors that the caller</span>
+<span id="L245"><span class="lineNum">     245</span>              :  * should report appropriately before exiting.</span>
+<span id="L246"><span class="lineNum">     246</span>              :  *</span>
+<span id="L247"><span class="lineNum">     247</span>              :  * This base implementations performs some common checks, such as ensuring that required options are</span>
+<span id="L248"><span class="lineNum">     248</span>              :  * present. Derived classes should override this function to perform further processing, typically</span>
+<span id="L249"><span class="lineNum">     249</span>              :  * inovking this base implementation as a first step, such as:</span>
+<span id="L250"><span class="lineNum">     250</span>              :  *</span>
+<span id="L251"><span class="lineNum">     251</span>              :  * ```</span>
+<span id="L252"><span class="lineNum">     252</span>              :  * QStringList CustomCommand::processOptions(const QCommandLineParser &amp;parser)</span>
+<span id="L253"><span class="lineNum">     253</span>              :  * {</span>
+<span id="L254"><span class="lineNum">     254</span>              :  *     QStringList errors = AbstractCommand::processOptions(parser);</span>
+<span id="L255"><span class="lineNum">     255</span>              :  *     if (!errors.isEmpty()) {</span>
+<span id="L256"><span class="lineNum">     256</span>              :  *         return errors;</span>
+<span id="L257"><span class="lineNum">     257</span>              :  *     }</span>
+<span id="L258"><span class="lineNum">     258</span>              :  *</span>
+<span id="L259"><span class="lineNum">     259</span>              :  *     // Do further procession of options.</span>
+<span id="L260"><span class="lineNum">     260</span>              :  *</span>
+<span id="L261"><span class="lineNum">     261</span>              :  *     return errors;</span>
+<span id="L262"><span class="lineNum">     262</span>              :  * }</span>
+<span id="L263"><span class="lineNum">     263</span>              :  * ```</span>
+<span id="L264"><span class="lineNum">     264</span>              :  */</span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        4640 : QStringList AbstractCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        4876 : {</span></span>
+<span id="L267"><span class="lineNum">     267</span>              :     // Report any supplied options that are not supported by this command.</span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">        9516 :     const QStringList suppliedOptionNames = parser.optionNames();</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        9516 :     const QStringList supportedOptionNames = supportedOptions(parser);</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">       21908 :     for (const QString &amp;option: suppliedOptionNames) {</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">       17268 :         if (!supportedOptionNames.contains(option)) {</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         143 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">          44 :         }</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">        8520 :     }</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        6750 :     QStringList errors;</span></span>
+<span id="L276"><span class="lineNum">     276</span>              : </span>
+<span id="L277"><span class="lineNum">     277</span>              :     // Parse the device (name/addr/uuid) option.</span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">       11390 :     if (parser.isSet(QLatin1String(&quot;device&quot;))) {</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         194 :         deviceToScanFor = parser.value(QLatin1String(&quot;device&quot;));</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">          88 :     }</span></span>
+<span id="L281"><span class="lineNum">     281</span>              : </span>
+<span id="L282"><span class="lineNum">     282</span>              :     // Parse the output format options (if supported, and supplied).</span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">        9752 :     if ((supportedOptionNames.contains(QLatin1String(&quot;output&quot;))) &amp;&amp; // Derived classes may have removed.</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">       11390 :         (parser.isSet(QLatin1String(&quot;output&quot;))))</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">         572 :     {</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1560 :         const QString output = parser.value(QLatin1String(&quot;output&quot;)).toLower();</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1057 :         if (output == QLatin1String(&quot;csv&quot;)) {</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">         246 :             format = OutputFormat::Csv;</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">         811 :         } else if (output == QLatin1String(&quot;json&quot;)) {</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">         246 :             format = OutputFormat::Json;</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         565 :         } else if (output == QLatin1String(&quot;text&quot;)) {</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         246 :             format = OutputFormat::Text;</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">         176 :         } else {</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         388 :             errors.append(tr(&quot;Unknown output format: %1&quot;).arg(output));</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         176 :         }</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">         871 :     }</span></span>
+<span id="L297"><span class="lineNum">     297</span>              : </span>
+<span id="L298"><span class="lineNum">     298</span>              :     // Parse the device scan timeout option.</span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">       11390 :     if (parser.isSet(QLatin1String(&quot;timeout&quot;))) {</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">         728 :         const quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(QLatin1String(&quot;timeout&quot;)), QLatin1String(&quot;s&quot;), 500);</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">         624 :         if (timeout == 0) {</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         360 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(QLatin1String(&quot;timeout&quot;))));</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">         336 :         } else if (discoveryAgent-&gt;lowEnergyDiscoveryTimeout() == -1) {</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC tlaBgUNC">           0 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Platform does not support Bluetooth scan timeout&quot;);</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC tlaBgGNC">         252 :         } else {</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         336 :             discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         364 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC tlaBgUNC">           0 :                 discoveryAgent-&gt;lowEnergyDiscoveryTimeout());</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC tlaBgGNC">         252 :         }</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         468 :     }</span></span>
+<span id="L311"><span class="lineNum">     311</span>              : </span>
+<span id="L312"><span class="lineNum">     312</span>              :     // Return errors for any required options that are absent.</span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">        9516 :     const QStringList requiredOptionNames = this-&gt;requiredOptions(parser);</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">       15452 :     for (const QString &amp;option: requiredOptionNames) {</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">       10700 :         if (!parser.isSet(option)) {</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         955 :             errors.append(tr(&quot;Missing required option: %1&quot;).arg(option));</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         372 :         }</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">        5148 :     }</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">        9516 :     return errors;</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">        4876 : }</span></span>
+<span id="L321"><span class="lineNum">     321</span>              : </span>
+<span id="L322"><span class="lineNum">     322</span>              : /*!</span>
+<span id="L323"><span class="lineNum">     323</span>              :  * \fn virtual bool AbstractCommand::start()</span>
+<span id="L324"><span class="lineNum">     324</span>              :  *</span>
+<span id="L325"><span class="lineNum">     325</span>              :  * Begins the functionality of this command, and returns `true` if begun successfully, `false`</span>
+<span id="L326"><span class="lineNum">     326</span>              :  * otherwise.</span>
+<span id="L327"><span class="lineNum">     327</span>              :  */</span>
+<span id="L328"><span class="lineNum">     328</span>              : </span>
+<span id="L329"><span class="lineNum">     329</span>              : /*!</span>
+<span id="L330"><span class="lineNum">     330</span>              :  * \fn virtual void AbstractCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info) = 0</span>
+<span id="L331"><span class="lineNum">     331</span>              :  *</span>
+<span id="L332"><span class="lineNum">     332</span>              :  * Handles PokitDiscoveryAgent::pokitDeviceDiscovered signal. Derived classes must</span>
+<span id="L333"><span class="lineNum">     333</span>              :  * implement this slot to begin whatever actions are relevant when a Pokit device has been</span>
+<span id="L334"><span class="lineNum">     334</span>              :  * discovered. For example, the 'scan' command would simply output the \a info details, whereas</span>
+<span id="L335"><span class="lineNum">     335</span>              :  * most other commands would begin connecting if \a info is the device they're after.</span>
+<span id="L336"><span class="lineNum">     336</span>              :  */</span>
+<span id="L337"><span class="lineNum">     337</span>              : </span>
+<span id="L338"><span class="lineNum">     338</span>              : /*!</span>
+<span id="L339"><span class="lineNum">     339</span>              :  * \fn virtual void AbstractCommand::deviceDiscoveryFinished() = 0</span>
+<span id="L340"><span class="lineNum">     340</span>              :  *</span>
+<span id="L341"><span class="lineNum">     341</span>              :  * Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must</span>
+<span id="L342"><span class="lineNum">     342</span>              :  * implement this slot to perform whatever actions are appropraite when discovery is finished.</span>
+<span id="L343"><span class="lineNum">     343</span>              :  * For example, the 'scan' command would simply exit, whereas most other commands would verify that</span>
+<span id="L344"><span class="lineNum">     344</span>              :  * an appropriate device was found.</span>
+<span id="L345"><span class="lineNum">     345</span>              :  */</span>
         </pre>
               </td>
             </tr>

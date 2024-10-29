@@ -143,8 +143,8 @@
 <span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          88 :     }</span></span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
 <span id="L57"><span class="lineNum">      57</span>              :     // Parse the (required) mode option.</span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">        2280 :     const QString mode = parser.value(QLatin1String(&quot;mode&quot;)).trimmed().toLower();</span></span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">        1634 :     if (mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">        2280 :     if (const QString mode = parser.value(QLatin1String(&quot;mode&quot;)).trimmed().toLower();</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">        1634 :         mode.startsWith(QLatin1String(&quot;ac v&quot;)) || mode.startsWith(QLatin1String(&quot;vac&quot;))) {</span></span>
 <span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">          82 :         settings.mode = DataLoggerService::Mode::AcVoltage;</span></span>
 <span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">          82 :         minRangeFunc = minVoltageRange;</span></span>
 <span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        1548 :     } else if (mode.startsWith(QLatin1String(&quot;dc v&quot;)) || mode.startsWith(QLatin1String(&quot;vdc&quot;))) {</span></span>
@@ -162,8 +162,8 @@
 <span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">          88 :     } else {</span></span>
 <span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">          82 :         minRangeFunc = nullptr;</span></span>
 <span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">         120 :         errors.append(tr(&quot;Unknown logger mode: %1&quot;).arg(parser.value(QLatin1String(&quot;mode&quot;))));</span></span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">          82 :         return errors;</span></span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">          44 :     }</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">          44 :         return errors;</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         481 :     }</span></span>
 <span id="L79"><span class="lineNum">      79</span>              : </span>
 <span id="L80"><span class="lineNum">      80</span>              :     // Parse the range option.</span>
 <span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">        1476 :     rangeOptionValue = 0;</span></span>
@@ -214,7 +214,7 @@
 <span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">         132 :         }</span></span>
 <span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">         410 :     }</span></span>
 <span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">         792 :     return errors;</span></span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">        1229 : }</span></span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">         792 : }</span></span>
 <span id="L130"><span class="lineNum">     130</span>              : </span>
 <span id="L131"><span class="lineNum">     131</span>              : /*!</span>
 <span id="L132"><span class="lineNum">     132</span>              :  * \copybrief DeviceCommand::getService</span>
