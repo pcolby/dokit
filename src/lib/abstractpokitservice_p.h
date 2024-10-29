@@ -40,6 +40,8 @@ public:
     AbstractPokitServicePrivate(const QBluetoothUuid &serviceUuid,
         QLowEnergyController * controller, AbstractPokitService * const q);
 
+    virtual ~AbstractPokitServicePrivate() = default;
+
     bool createServiceObject();
     QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &uuid) const;
     bool readCharacteristic(const QBluetoothUuid &uuid);
