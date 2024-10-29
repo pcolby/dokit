@@ -46,8 +46,8 @@ QStringList SetTorchCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    const QString value = parser.value(QLatin1String("mode"));
-    if (value.trimmed().compare(QLatin1String("on"), Qt::CaseInsensitive) == 0) {
+    if (const QString value = parser.value(QLatin1String("mode"));
+        value.trimmed().compare(QLatin1String("on"), Qt::CaseInsensitive) == 0) {
         newStatus = StatusService::TorchStatus::On;
     } else if (value.trimmed().compare(QLatin1String("off"), Qt::CaseInsensitive) == 0) {
         newStatus = StatusService::TorchStatus::Off;

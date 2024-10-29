@@ -207,8 +207,7 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
     }
 
     // Parse the number as a (double) floating point number, and check that it is positive.
-    const double dbl = locale.toDouble(number, &ok);
-    if ((ok) && (dbl > 0.0)) {
+    if (const double dbl = locale.toDouble(number, &ok); (ok) && (dbl > 0.0)) {
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(dbl) < sensibleMinimum; ratio.num *= 1000);
         }

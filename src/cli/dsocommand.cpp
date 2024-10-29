@@ -56,8 +56,8 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the (required) mode option.
-    const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
-    if (mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
+    if (const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
+        mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
         settings.mode = DsoService::Mode::AcVoltage;
     } else if (mode.startsWith(QLatin1String("dc v")) || mode.startsWith(QLatin1String("vdc"))) {
         settings.mode = DsoService::Mode::DcVoltage;

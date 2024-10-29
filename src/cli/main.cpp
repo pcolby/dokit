@@ -55,8 +55,8 @@ void configureLogging(const QCommandLineParser &parser)
         QLoggingCategory::setFilterRules(QStringLiteral("dokit.*.debug=true\npokit.*.debug=true"));
     }
 
-    const QString color = parser.value(QStringLiteral("color"));
-    if ((color == QStringLiteral("yes")) || (color == QStringLiteral("auto") && haveConsole())) {
+    if (const QString color = parser.value(QStringLiteral("color"));
+        (color == QStringLiteral("yes")) || (color == QStringLiteral("auto") && haveConsole())) {
         messagePattern.prepend(QStringLiteral(
         "%{if-debug}\x1b[37m%{endif}"      // White
         "%{if-info}\x1b[32m%{endif}"       // Green

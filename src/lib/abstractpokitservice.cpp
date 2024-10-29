@@ -270,8 +270,7 @@ QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QB
         return QLowEnergyCharacteristic();
     }
 
-    const QLowEnergyCharacteristic characteristic = service->characteristic(uuid);
-    if (characteristic.isValid()) {
+    if (const QLowEnergyCharacteristic characteristic = service->characteristic(uuid); characteristic.isValid()) {
         return characteristic;
     }
 
