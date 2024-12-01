@@ -570,10 +570,10 @@ jobs:
         working-directory: ${{ runner.temp }}/release
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --verbose
+        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --extra-verbose
       - name: Test w/o coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64'
-        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/release" --verbose
+        run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/release" --extra-verbose
       - name: Collate test coverage
         if: matrix.toolchain != 'msvc'
         run: cmake --build "%RUNNER_TEMP%/coverage" --target coverage --verbose
