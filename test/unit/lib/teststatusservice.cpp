@@ -605,14 +605,27 @@ void TestStatusService::serviceDiscovered()
 
     // Pokit Meter's Status service UUId will be assigned.
     service.d_func()->serviceDiscovered(StatusService::ServiceUuids::pokitMeter);
-    qInfo() << service.d_func()->serviceUuid;
-    qInfo() << StatusService::ServiceUuids::pokitMeter;
-    qInfo() << (service.d_func()->serviceUuid == StatusService::ServiceUuids::pokitMeter);
-    qInfo() << sizeof(service.d_func()->serviceUuid) << sizeof(StatusService::ServiceUuids::pokitMeter);
-    qInfo() << QByteArray((const char *)(&service.d_func()->serviceUuid), sizeof(service.d_func()->serviceUuid));
-    qInfo() << QByteArray((const char *)(&StatusService::ServiceUuids::pokitMeter), sizeof(StatusService::ServiceUuids::pokitMeter));
-    qInfo() << QTest::qCompare(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitMeter, "a", "e", "foo", 0);
-    QCOMPARE(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitMeter);
+
+    const QBluetoothUuid a = service.d_func()->serviceUuid;
+    const QBluetoothUuid b = StatusService::ServiceUuids::pokitMeter;
+    const QUuid c = static_cast<QUuid>(a);
+    const QUuid d = static_cast<QUuid>(b);
+    qInfo() << a;
+    qInfo() << b;
+    qInfo() << c;
+    qInfo() << d;
+    qInfo() << (a == b);
+    qInfo() << (c == d);
+    qInfo() << sizeof(a);
+    qInfo() << sizeof(b);
+    qInfo() << sizeof(c);
+    qInfo() << sizeof(d);
+    qInfo() << QByteArray((const char *)(&a), sizeof(a));
+    qInfo() << QByteArray((const char *)(&b), sizeof(b));
+    qInfo() << QByteArray((const char *)(&c), sizeof(c));
+    qInfo() << QByteArray((const char *)(&d), sizeof(d));
+    qInfo() << QTest::qCompare(a, b, "a", "b", "foo", 1);
+    qInfo() << QTest::qCompare(c, d, "c", "d", "foo", 2);
 
     // Pokit Pro's Status service UUId will be assigned.
     service.d_func()->serviceDiscovered(StatusService::ServiceUuids::pokitPro);
