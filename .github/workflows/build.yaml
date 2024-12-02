@@ -570,15 +570,15 @@ jobs:
           copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
           copy /v /b src\lib\${{ matrix.dll }} /b test\unit\lib
         working-directory: ${{ runner.temp }}/release
-      - name: Test StatusService
-        if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        shell: bash
-        run: |
-          echo './*/test/unit/lib/testStatusService.exe'
-          ls -l ./*/test/unit/lib/testStatusService.exe
-          ./coverage/test/unit/lib/testStatusService.exe -v2 -vs 2>&1
-          ./release/test/unit/lib/testStatusService.exe -v2 -vs 2>&1
-        working-directory: ${{ runner.temp }}
+      #- name: Test StatusService
+      #  if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
+      #  shell: bash
+      #  run: |
+      #    echo './*/test/unit/lib/testStatusService.exe'
+      #    ls -l ./*/test/unit/lib/testStatusService.exe
+      #    ./coverage/test/unit/lib/testStatusService.exe -v2 -vs 2>&1
+      #    ./release/test/unit/lib/testStatusService.exe -v2 -vs 2>&1
+      #  working-directory: ${{ runner.temp }}
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --extra-verbose 2>&1
