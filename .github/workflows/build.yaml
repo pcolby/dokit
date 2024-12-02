@@ -572,7 +572,7 @@ jobs:
         working-directory: ${{ runner.temp }}/release
       - name: Test StatusService
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        run: %RUNNER_TEMP%\coverage\test\unit\lib\testStatusService.exe -v2 -vs
+        run: '%RUNNER_TEMP%\coverage\test\unit\lib\testStatusService.exe -v2 -vs'
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --extra-verbose
