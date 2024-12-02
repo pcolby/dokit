@@ -449,7 +449,7 @@ jobs:
           - { qt: '6.8.0',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.8.0',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           # Map the MSVC architecture.
-          - { toolchain: msvc, arch: arm64,  msvcArch: amd64_arm64 }
+          #- { toolchain: msvc, arch: arm64,  msvcArch: amd64_arm64 }
           - { toolchain: msvc, arch: x86,    msvcArch: amd64_x86 }
           - { toolchain: msvc, arch: x86-64, msvcArch: amd64 }
           # Define the generator and dll names per toolchain.
@@ -572,7 +572,9 @@ jobs:
         working-directory: ${{ runner.temp }}/release
       - name: Test StatusService
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        run: '%RUNNER_TEMP%\coverage\test\unit\lib\testStatusService.exe -v2 -vs'
+        run: |
+          %RUNNER_TEMP%\coverage\test\unit\lib\testStatusService.exe -v2 -vs
+          %RUNNER_TEMP%\release\test\unit\lib\testStatusService.exe -v2 -vs
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --extra-verbose
