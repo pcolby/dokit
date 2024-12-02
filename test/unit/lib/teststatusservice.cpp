@@ -607,10 +607,13 @@ void TestStatusService::serviceDiscovered()
     service.d_func()->serviceDiscovered(StatusService::ServiceUuids::pokitMeter);
 
     const QBluetoothUuid a = service.d_func()->serviceUuid;
-    const QBluetoothUuid b = StatusService::ServiceUuids::pokitMeter;
+    QBluetoothUuid b = StatusService::ServiceUuids::pokitMeter;
     const QUuid c = static_cast<QUuid>(a);
     const QUuid d = static_cast<QUuid>(b);
     qInfo() << a;
+    qInfo() << b;
+    qInfo() << StatusService::ServiceUuids::pokitMeter;
+    b = StatusService::ServiceUuids::pokitMeter;
     qInfo() << b;
     qInfo() << c;
     qInfo() << d;
