@@ -577,10 +577,15 @@ jobs:
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         shell: bash
         run: |
+          echo A
           /d/a/_temp/coverage/test/unit/lib/testStatusService.exe || true
+          echo B
           /d/a/_temp/coverage/test/unit/lib/testStatusService.exe >&2 || true
+          echo C
           /d/a/_temp/coverage/test/unit/lib/testStatusService.exe 2>&1 || true
+          echo D
           /d/a/_temp/coverage/test/unit/lib/testStatusService.exe -o foo,txt || true
+          echo E
           cat foo
       - name: Test StatusService 3
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
