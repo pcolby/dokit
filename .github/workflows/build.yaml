@@ -574,10 +574,11 @@ jobs:
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         shell: bash
         run: |
-          echo $RUNNER_TEMP/*/test/unit/lib/testStatusService.exe
-          ls -l $RUNNER_TEMP/*/test/unit/lib/testStatusService.exe
-          $RUNNER_TEMP/coverage/test/unit/lib/testStatusService.exe -v2 -vs
-          $RUNNER_TEMP/release/test/unit.lib/testStatusService.exe -v2 -vs
+          echo './*/test/unit/lib/testStatusService.exe'
+          ls -l ./*/test/unit/lib/testStatusService.exe
+          ./coverage/test/unit/lib/testStatusService.exe -v2 -vs
+          ./release/test/unit/lib/testStatusService.exe -v2 -vs
+        working-directory: ${{ runner.temp }}
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --extra-verbose
