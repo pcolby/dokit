@@ -605,6 +605,13 @@ void TestStatusService::serviceDiscovered()
 
     // Pokit Meter's Status service UUId will be assigned.
     service.d_func()->serviceDiscovered(StatusService::ServiceUuids::pokitMeter);
+    qInfo() << service.d_func()->serviceUuid;
+    qInfo() << StatusService::ServiceUuids::pokitMeter;
+    qInfo() << (service.d_func()->serviceUuid == StatusService::ServiceUuids::pokitMeter);
+    qInfo() << sizeof(service.d_func()->serviceUuid) << sizeof(StatusService::ServiceUuids::pokitMeter);
+    qInfo() << QByteArray((const char *)(&service.d_func()->serviceUuid), sizeof(service.d_func()->serviceUuid));
+    qInfo() << QByteArray((const char *)(&StatusService::ServiceUuids::pokitMeter), sizeof(StatusService::ServiceUuids::pokitMeter));
+    qInfo() << QTest::qCompare(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitMeter, "a", "e", "foo", 0);
     QCOMPARE(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitMeter);
 
     // Pokit Pro's Status service UUId will be assigned.
