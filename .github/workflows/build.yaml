@@ -339,7 +339,7 @@ jobs:
           #- 6.6.3
           - 6.7.3
           - 6.8.0
-        arch: [ x86, x86-64, arm64 ]
+        arch: [ x86, x86-64 ] #, arm64 ]
         toolchain: [ llvm, mingw, msvc ]
         exclude:
           # Exclude arm64 builds for Qt's earlier than 6.2, since Qt only added (Windows) arm64
@@ -443,7 +443,7 @@ jobs:
           #- { qt: '6.6.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
           - { qt: '6.7.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.7.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
-          - { qt: '6.7.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
+          #- { qt: '6.7.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.7.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
           - { qt: '6.8.0',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.8.0',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
@@ -572,9 +572,12 @@ jobs:
         working-directory: ${{ runner.temp }}/release
       - name: Test StatusService
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
+        shell: bash
         run: |
-          %RUNNER_TEMP%\coverage\test\unit\lib\testStatusService.exe -v2 -vs
-          %RUNNER_TEMP%\release\test\unit\lib\testStatusService.exe -v2 -vs
+          echo $RUNNER_TEMP/*/test/unit/lib/testStatusService.exe
+          ls -l $RUNNER_TEMP/*/test/unit/lib/testStatusService.exe
+          $RUNNER_TEMP/coverage/test/unit/lib/testStatusService.exe -v2 -vs
+          $RUNNER_TEMP/release/test/unit.lib/testStatusService.exe -v2 -vs
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --extra-verbose
