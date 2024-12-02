@@ -572,19 +572,19 @@ jobs:
         working-directory: ${{ runner.temp }}/release
       - name: Test StatusService 0
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        run: 'D:\a\_temp\coverage\test\unit\lib\testAbstractPokitService 2>&1'
+        run: 'D:\a\_temp\coverage\test\unit\lib\testAbstractPokitService 1>&2'
       - name: Test StatusService 3
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        run: 'D:\a\_temp\coverage\test\unit\lib\testStatusService.exe 2>&1'
+        run: 'D:\a\_temp\coverage\test\unit\lib\testStatusService.exe 1>&2'
       - name: Test StatusService 4
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        run: 'D:\a\_temp\release\test\unit\lib\testStatusService.exe 2>&1'
+        run: 'D:\a\_temp\release\test\unit\lib\testStatusService.exe 1>&2'
       - name: Test StatusService 1
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        run: 'D:\a\_temp\coverage\test\unit\lib\testStatusService.exe -o StatusService.tap,tap -o -,txt 2>&1'
+        run: 'D:\a\_temp\coverage\test\unit\lib\testStatusService.exe -o StatusService.tap,tap -o -,txt 1>&2'
       - name: Test StatusService 2
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
-        run: 'D:\a\_temp\release\test\unit\lib\testStatusService.exe -o StatusService.tap,tap -o -,txt 2>&1'
+        run: 'D:\a\_temp\release\test\unit\lib\testStatusService.exe -o StatusService.tap,tap -o -,txt 1>&2'
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --extra-verbose 2>&1
