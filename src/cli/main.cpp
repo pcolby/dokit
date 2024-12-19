@@ -135,14 +135,12 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     // Setup the command line options.
     parser.addOptions({
         { QStringLiteral("color"),
-          Private::tr("Colors the console output. Valid options "
-          "are: yes, no and auto. The default is auto."),
+          Private::tr("Colors the console output. Valid options are: yes, no and auto. The default is auto."),
           QStringLiteral("yes|no|auto"), QStringLiteral("auto")},
         {{QStringLiteral("debug")},
           Private::tr("Enable debug output.")},
         {{QStringLiteral("d"), QStringLiteral("device")},
-          Private::tr(
-          "Set the name, hardware address or macOS UUID of Pokit device to use. If not specified, "
+          Private::tr("Set the name, hardware address or macOS UUID of Pokit device to use. If not specified, "
           "the first discovered Pokit device will be used."),
           Private::tr("device")},
     });
@@ -165,8 +163,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           "supported modes are On and Off."),
           Private::tr("mode")},
         {{QStringLiteral("new-name")},
-          Private::tr("Give the desired new name for the set-"
-          "name command."), Private::tr("name")},
+          Private::tr("Give the desired new name for the set-name command."), Private::tr("name")},
         {{QStringLiteral("output")},
           Private::tr("Set the format for output. Supported "
           "formats are: CSV, JSON and Text. All are case insenstitve. The default is Text."),
@@ -182,65 +179,50 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           Private::tr("Set the number of samples to acquire."),
           Private::tr("count")},
         {{QStringLiteral("temperature")},
-          Private::tr("Set the current ambient temperature for "
-          "the calibration command."), Private::tr("degrees")},
+          Private::tr("Set the current ambient temperature for the calibration command."), Private::tr("degrees")},
         {{QStringLiteral("timeout")},
-          Private::tr("Set the device discovery scan timeout."
+          Private::tr("Set the device discovery scan timeout. "
           "Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. "
           "If no suffix is present, the units will be inferred from the magnitide of the given "
           "interval. The default behaviour is no timeout."),
           Private::tr("period")},
         {{QStringLiteral("timestamp")},
-          Private::tr("Set the optional starting timestamp for "
-          "data logging. Default to 'now'."),
+          Private::tr("Set the optional starting timestamp for data logging. Default to 'now'."),
         Private::tr("period")},
         {{QStringLiteral("trigger-level")},
           Private::tr("Set the DSO trigger level."),
           Private::tr("level")},
         {{QStringLiteral("trigger-mode")},
-          Private::tr("Set the DSO trigger mode. Supported "
-          "modes are: free, rising and falling. The default is free."),
+          Private::tr("Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free."),
           Private::tr("mode"), QStringLiteral("free")},
     });
     parser.addVersionOption();
 
     // Add supported 'commands' (as positional arguments, so they'll appear in the help text).
     parser.addPositionalArgument(QStringLiteral("info"),
-        Private::tr("Get Pokit device information"),
-        QStringLiteral(" "));
+        Private::tr("Get Pokit device information"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("status"),
-        Private::tr("Get Pokit device status"),
-        QStringLiteral(" "));
+        Private::tr("Get Pokit device status"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("meter"),
-        Private::tr("Access Pokit device's multimeter mode"),
-        QStringLiteral(" "));
+        Private::tr("Access Pokit device's multimeter mode"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("dso"),
-        Private::tr("Access Pokit device's DSO mode"),
-        QStringLiteral(" "));
+        Private::tr("Access Pokit device's DSO mode"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("logger-start"),
-        Private::tr("Start Pokit device's data logger mode"),
-        QStringLiteral(" "));
+        Private::tr("Start Pokit device's data logger mode"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("logger-stop"),
-        Private::tr("Stop Pokit device's data logger mode"),
-        QStringLiteral(" "));
+        Private::tr("Stop Pokit device's data logger mode"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("logger-fetch"),
-        Private::tr("Fetch Pokit device's data logger samples"),
-        QStringLiteral(" "));
+        Private::tr("Fetch Pokit device's data logger samples"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("scan"),
-        Private::tr("Scan Bluetooth for Pokit devices"),
-        QStringLiteral(" "));
+        Private::tr("Scan Bluetooth for Pokit devices"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("set-name"),
-        Private::tr("Set Pokit device's name"),
-        QStringLiteral(" "));
+        Private::tr("Set Pokit device's name"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("set-torch"),
-        Private::tr("Set Pokit device's torch on or off"),
-        QStringLiteral(" "));
+        Private::tr("Set Pokit device's torch on or off"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("flash-led"),
-        Private::tr("Flash Pokit device's LED (Pokit Meter only)"),
-        QStringLiteral(" "));
+        Private::tr("Flash Pokit device's LED (Pokit Meter only)"), QStringLiteral(" "));
     parser.addPositionalArgument(QStringLiteral("calibrate"),
-        Private::tr("Calibrate Pokit device temperature"),
-        QStringLiteral(" "));
+        Private::tr("Calibrate Pokit device temperature"), QStringLiteral(" "));
 
     // Do the initial parse, the see if we have a command specified yet.
     parser.parse(appArguments);
@@ -275,8 +257,7 @@ AbstractCommand * getCommandObject(const Command command, QObject * const parent
 {
     switch (command) {
     case Command::None:
-        showCliError(Private::tr(
-            "Missing argument: <command>\nSee --help for usage information."));
+        showCliError(Private::tr("Missing argument: <command>\nSee --help for usage information."));
         return nullptr;
     case Command::Calibrate:   return new CalibrateCommand(parent);
     case Command::DSO:         return new DsoCommand(parent);
