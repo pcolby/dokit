@@ -12,10 +12,12 @@
 
 namespace PokitPro {
 
-class Private
-{
-    Q_DECLARE_TR_FUNCTIONS(PokitPro)
-};
+namespace {
+    class Private
+    {
+        Q_DECLARE_TR_FUNCTIONS(PokitPro)
+    };
+}
 
 /*!
  * \cond internal

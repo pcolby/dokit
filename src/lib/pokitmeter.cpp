@@ -12,10 +12,12 @@
 
 namespace PokitMeter {
 
-class Private
-{
-    Q_DECLARE_TR_FUNCTIONS(PokitMeter)
-};
+namespace {
+    class Private
+    {
+        Q_DECLARE_TR_FUNCTIONS(PokitMeter)
+    };
+}
 
 /// Returns \a range as a user-friendly string.
 QString toString(const CurrentRange &range)

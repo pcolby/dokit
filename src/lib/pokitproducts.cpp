@@ -20,10 +20,12 @@ static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products", QtInfoMsg); ///< Logging c
 
 QTPOKIT_BEGIN_NAMESPACE
 
-class Private
-{
-    Q_DECLARE_TR_FUNCTIONS(PokitProducts)
-};
+namespace {
+    class Private
+    {
+        Q_DECLARE_TR_FUNCTIONS(PokitProducts)
+    };
+}
 
 /*!
  * Returns \c product as user-friendly string.
