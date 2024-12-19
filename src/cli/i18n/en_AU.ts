@@ -715,28 +715,212 @@ success
     </message>
 </context>
 <context>
-    <name>getCliCommand</name>
+    <name>cli_main</name>
     <message>
-        <location filename="../main.cpp" line="102"/>
+        <location filename="../main.cpp" line="107"/>
         <source>More than one command: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="123"/>
+        <location filename="../main.cpp" line="127"/>
         <source>Unknown command: %1</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>main</name>
     <message>
-        <location filename="../main.cpp" line="274"/>
+        <location filename="../main.cpp" line="138"/>
+        <source>Colors the console output. Valid options are: yes, no and auto. The default is auto.</source>
+        <translation type="unfinished">Colours the console output. Valid options are: yes, no and auto. The default is auto.</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="142"/>
+        <source>Enable debug output.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="144"/>
+        <source>Set the name, hardware address or macOS UUID of Pokit device to use. If not specified, the first discovered Pokit device will be used.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="147"/>
+        <source>device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="152"/>
+        <source>Set the update interval for DOS, meter and logger modes. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. If the option itself is not specified, a sensible default will be chosen according to the selected command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="157"/>
+        <source>interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="159"/>
+        <source>Set the desired operation mode. For meter, dso, and logger commands, the supported modes are: AC Voltage, DC Voltage, AC Current, DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. Only the first four options are available for dso and logger commands; the rest are available in meter mode only. Temperature is also available for logger commands, but requires firmware v1.5 or later for Pokit devices to support it. For the set-torch command supported modes are On and Off.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="166"/>
+        <location filename="../main.cpp" line="203"/>
+        <source>mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="168"/>
+        <source>Give the desired new name for the set-name command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="169"/>
+        <source>name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="171"/>
+        <source>Set the format for output. Supported formats are: CSV, JSON and Text. All are case insenstitve. The default is Text.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="173"/>
+        <source>format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="174"/>
+        <source>text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="176"/>
+        <source>Set the desired measurement range. Pokit devices support specific ranges, such as 0 to 300mV. Specify the desired upper limit, and the best range will be selected, or use &apos;auto&apos; to enable the Pokit device&apos;s auto-range feature. The default is &apos;auto&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="180"/>
+        <source>range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="182"/>
+        <source>Set the number of samples to acquire.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="183"/>
+        <source>count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="185"/>
+        <source>Set the current ambient temperature for the calibration command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="186"/>
+        <source>degrees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="188"/>
+        <source>Set the device discovery scan timeout.Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. The default behaviour is no timeout.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="192"/>
+        <location filename="../main.cpp" line="196"/>
+        <source>period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="194"/>
+        <source>Set the optional starting timestamp for data logging. Default to &apos;now&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="198"/>
+        <source>Set the DSO trigger level.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="199"/>
+        <source>level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="201"/>
+        <source>Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="209"/>
+        <source>Get Pokit device information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="212"/>
+        <source>Get Pokit device status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="215"/>
+        <source>Access Pokit device&apos;s multimeter mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="218"/>
+        <source>Access Pokit device&apos;s DSO mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="221"/>
+        <source>Start Pokit device&apos;s data logger mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="224"/>
+        <source>Stop Pokit device&apos;s data logger mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="227"/>
+        <source>Fetch Pokit device&apos;s data logger samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="230"/>
+        <source>Scan Bluetooth for Pokit devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="233"/>
+        <source>Set Pokit device&apos;s name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="236"/>
+        <source>Set Pokit device&apos;s torch on or off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="239"/>
+        <source>Flash Pokit device&apos;s LED (Pokit Meter only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="242"/>
+        <source>Calibrate Pokit device temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="278"/>
         <source>Missing argument: &lt;command&gt;
 See --help for usage information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="290"/>
+        <location filename="../main.cpp" line="294"/>
         <source>Unknown command (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -744,191 +928,8 @@ See --help for usage information.</source>
 <context>
     <name>parseCommandLine</name>
     <message>
-        <location filename="../main.cpp" line="134"/>
         <source>Colors the console output. Valid options are: yes, no and auto. The default is auto.</source>
-        <translation>Colours the console output. Valid options are: yes, no and auto. The default is auto.</translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="138"/>
-        <source>Enable debug output.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="140"/>
-        <source>Set the name, hardware address or macOS UUID of Pokit device to use. If not specified, the first discovered Pokit device will be used.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="143"/>
-        <source>device</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="148"/>
-        <source>Set the update interval for DOS, meter and logger modes. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. If the option itself is not specified, a sensible default will be chosen according to the selected command.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="153"/>
-        <source>interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="155"/>
-        <source>Set the desired operation mode. For meter, dso, and logger commands, the supported modes are: AC Voltage, DC Voltage, AC Current, DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. Only the first four options are available for dso and logger commands; the rest are available in meter mode only. Temperature is also available for logger commands, but requires firmware v1.5 or later for Pokit devices to support it. For the set-torch command supported modes are On and Off.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="162"/>
-        <location filename="../main.cpp" line="199"/>
-        <source>mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="164"/>
-        <source>Give the desired new name for the set-name command.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="165"/>
-        <source>name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="167"/>
-        <source>Set the format for output. Supported formats are: CSV, JSON and Text. All are case insenstitve. The default is Text.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="169"/>
-        <source>format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="170"/>
-        <source>text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="172"/>
-        <source>Set the desired measurement range. Pokit devices support specific ranges, such as 0 to 300mV. Specify the desired upper limit, and the best range will be selected, or use &apos;auto&apos; to enable the Pokit device&apos;s auto-range feature. The default is &apos;auto&apos;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="176"/>
-        <source>range</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="178"/>
-        <source>Set the number of samples to acquire.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="179"/>
-        <source>count</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="181"/>
-        <source>Set the current ambient temperature for the calibration command.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="182"/>
-        <source>degrees</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="184"/>
-        <source>Set the device discovery scan timeout.Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. The default behaviour is no timeout.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="188"/>
-        <location filename="../main.cpp" line="192"/>
-        <source>period</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="190"/>
-        <source>Set the optional starting timestamp for data logging. Default to &apos;now&apos;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="194"/>
-        <source>Set the DSO trigger level.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="195"/>
-        <source>level</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="197"/>
-        <source>Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="205"/>
-        <source>Get Pokit device information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="208"/>
-        <source>Get Pokit device status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="211"/>
-        <source>Access Pokit device&apos;s multimeter mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="214"/>
-        <source>Access Pokit device&apos;s DSO mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="217"/>
-        <source>Start Pokit device&apos;s data logger mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="220"/>
-        <source>Stop Pokit device&apos;s data logger mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="223"/>
-        <source>Fetch Pokit device&apos;s data logger samples</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="226"/>
-        <source>Scan Bluetooth for Pokit devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="229"/>
-        <source>Set Pokit device&apos;s name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="232"/>
-        <source>Set Pokit device&apos;s torch on or off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="235"/>
-        <source>Flash Pokit device&apos;s LED (Pokit Meter only)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="238"/>
-        <source>Calibrate Pokit device temperature</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Colours the console output. Valid options are: yes, no and auto. The default is auto.</translation>
     </message>
 </context>
 </TS>
