@@ -23,12 +23,12 @@ namespace {
 QString toString(const CurrentRange &range)
 {
     switch (range) {
-    case CurrentRange::_10mA:     return Private::tr("Up to 10mA",  "CurrentRange");
-    case CurrentRange::_30mA:     return Private::tr("Up to 30mA",  "CurrentRange");
-    case CurrentRange::_150mA:    return Private::tr("Up to 150mA", "CurrentRange");
-    case CurrentRange::_300mA:    return Private::tr("Up to 300mA", "CurrentRange");
-    case CurrentRange::_2A:       return Private::tr("Up to 2A",    "CurrentRange");
-    case CurrentRange::AutoRange: return Private::tr("Auto-range",  "CurrentRange");
+    case CurrentRange::_10mA:     return Private::tr("Up to 10mA");
+    case CurrentRange::_30mA:     return Private::tr("Up to 30mA");
+    case CurrentRange::_150mA:    return Private::tr("Up to 150mA");
+    case CurrentRange::_300mA:    return Private::tr("Up to 300mA");
+    case CurrentRange::_2A:       return Private::tr("Up to 2A");
+    case CurrentRange::AutoRange: return Private::tr("Auto-range");
     default:                      return QString();
     }
 }
@@ -45,7 +45,7 @@ QVariant maxValue(const CurrentRange &range)
     case CurrentRange::_150mA:    return   150'000;
     case CurrentRange::_300mA:    return   300'000;
     case CurrentRange::_2A:       return 2'000'000;
-    case CurrentRange::AutoRange: return Private::tr("Auto", "CurrentRange");
+    case CurrentRange::AutoRange: return Private::tr("Auto");
     default:                      return QVariant();
     }
 }
@@ -54,15 +54,15 @@ QVariant maxValue(const CurrentRange &range)
 QString toString(const ResistanceRange &range)
 {
     switch (range) {
-    case ResistanceRange::_160:      return Private::tr("Up to 160Ω",  "ResistanceRange");
-    case ResistanceRange::_330:      return Private::tr("Up to 330Ω",  "ResistanceRange");
-    case ResistanceRange::_890:      return Private::tr("Up to 890Ω",  "ResistanceRange");
-    case ResistanceRange::_1K5:      return Private::tr("Up to 1.5KΩ", "ResistanceRange");
-    case ResistanceRange::_10K:      return Private::tr("Up to 10KΩ",  "ResistanceRange");
-    case ResistanceRange::_100K:     return Private::tr("Up to 100KΩ", "ResistanceRange");
-    case ResistanceRange::_470K:     return Private::tr("Up to 470KΩ", "ResistanceRange");
-    case ResistanceRange::_1M:       return Private::tr("Up to 1MΩ",   "ResistanceRange");
-    case ResistanceRange::AutoRange: return Private::tr("Auto-range",  "ResistanceRange");
+    case ResistanceRange::_160:      return Private::tr("Up to 160Ω");
+    case ResistanceRange::_330:      return Private::tr("Up to 330Ω");
+    case ResistanceRange::_890:      return Private::tr("Up to 890Ω");
+    case ResistanceRange::_1K5:      return Private::tr("Up to 1.5KΩ");
+    case ResistanceRange::_10K:      return Private::tr("Up to 10KΩ");
+    case ResistanceRange::_100K:     return Private::tr("Up to 100KΩ");
+    case ResistanceRange::_470K:     return Private::tr("Up to 470KΩ");
+    case ResistanceRange::_1M:       return Private::tr("Up to 1MΩ");
+    case ResistanceRange::AutoRange: return Private::tr("Auto-range");
     default:                         return QString();
     }
 }
@@ -82,7 +82,7 @@ QVariant maxValue(const ResistanceRange &range)
     case ResistanceRange::_100K:     return   100'000;
     case ResistanceRange::_470K:     return   470'000;
     case ResistanceRange::_1M:       return 1'000'000;
-    case ResistanceRange::AutoRange: return Private::tr("Auto", "ResistanceRange");
+    case ResistanceRange::AutoRange: return Private::tr("Auto");
     default:                         return QVariant();
     }
 }
@@ -91,13 +91,13 @@ QVariant maxValue(const ResistanceRange &range)
 QString toString(const VoltageRange &range)
 {
     switch (range) {
-    case VoltageRange::_300mV:    return Private::tr("Up to 300mV", "VoltageRange");
-    case VoltageRange::_2V:       return Private::tr("Up to 2V",    "VoltageRange");
-    case VoltageRange::_6V:       return Private::tr("Up to 6V",    "VoltageRange");
-    case VoltageRange::_12V:      return Private::tr("Up to 12V",   "VoltageRange");
-    case VoltageRange::_30V:      return Private::tr("Up to 30V",   "VoltageRange");
-    case VoltageRange::_60V:      return Private::tr("Up to 60V",   "VoltageRange");
-    case VoltageRange::AutoRange: return Private::tr("Auto-range",  "VoltageRange");
+    case VoltageRange::_300mV:    return Private::tr("Up to 300mV");
+    case VoltageRange::_2V:       return Private::tr("Up to 2V");
+    case VoltageRange::_6V:       return Private::tr("Up to 6V");
+    case VoltageRange::_12V:      return Private::tr("Up to 12V");
+    case VoltageRange::_30V:      return Private::tr("Up to 30V");
+    case VoltageRange::_60V:      return Private::tr("Up to 60V");
+    case VoltageRange::AutoRange: return Private::tr("Auto-range");
     default:                      return QString();
     }
 }
@@ -115,7 +115,7 @@ QVariant maxValue(const VoltageRange &range)
     case VoltageRange::_12V:      return 12'000;
     case VoltageRange::_30V:      return 30'000;
     case VoltageRange::_60V:      return 60'000;
-    case VoltageRange::AutoRange: return Private::tr("Auto", "VoltageRange");
+    case VoltageRange::AutoRange: return Private::tr("Auto");
     default:                      return QVariant();
     }
 }

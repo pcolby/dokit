@@ -105,8 +105,7 @@ PokitProduct pokitProduct(const QList<QBluetoothUuid> &serviceUuids)
     } else if (serviceUuids.contains(StatusService::ServiceUuids::pokitPro)) {
         return PokitProduct::PokitPro;
     } else {
-        qCWarning(lc).noquote()
-            << Private::tr("Device is not a Pokit product", "pokitProduct");
+        qCWarning(lc).noquote() << Private::tr("Device is not a Pokit product");
         qCDebug(lc).noquote() << "Service UUIDs:" << serviceUuids;
         return PokitProduct::PokitMeter; // Need to fallback to something; Pokit Meter is just the lowest product.
     }
