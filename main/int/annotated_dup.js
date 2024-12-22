@@ -1,5 +1,18 @@
 var annotated_dup =
 [
+    [ "PokitMeter", "namespacePokitMeter.html", [
+      [ "anonymous_namespace{pokitmeter.cpp}", "namespacePokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03.html", [
+        [ "Private", "classPokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03_1_1Private.html", null ]
+      ] ]
+    ] ],
+    [ "PokitPro", "namespacePokitPro.html", [
+      [ "anonymous_namespace{pokitpro.cpp}", "namespacePokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03.html", [
+        [ "Private", "classPokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03_1_1Private.html", null ]
+      ] ]
+    ] ],
+    [ "QTPOKIT_BEGIN_NAMESPACE", null, [
+      [ "Private", "classQTPOKIT__BEGIN__NAMESPACE_1_1Private.html", null ]
+    ] ],
     [ "AbstractCommand", "classAbstractCommand.html", "classAbstractCommand" ],
     [ "AbstractPokitService", "classAbstractPokitService.html", "classAbstractPokitService" ],
     [ "AbstractPokitServicePrivate", "classAbstractPokitServicePrivate.html", "classAbstractPokitServicePrivate" ],
@@ -26,6 +39,7 @@ var annotated_dup =
     [ "PokitDevicePrivate", "classPokitDevicePrivate.html", "classPokitDevicePrivate" ],
     [ "PokitDiscoveryAgent", "classPokitDiscoveryAgent.html", "classPokitDiscoveryAgent" ],
     [ "PokitDiscoveryAgentPrivate", "classPokitDiscoveryAgentPrivate.html", "classPokitDiscoveryAgentPrivate" ],
+    [ "Private", "classPrivate.html", null ],
     [ "Ratio", "structRatio.html", "structRatio" ],
     [ "ScanCommand", "classScanCommand.html", "classScanCommand" ],
     [ "SetNameCommand", "classSetNameCommand.html", "classSetNameCommand" ],

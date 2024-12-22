@@ -1,5 +1,6 @@
 var pokitproducts_8cpp =
 [
+    [ "QTPOKIT_BEGIN_NAMESPACE::Private", "classQTPOKIT__BEGIN__NAMESPACE_1_1Private.html", null ],
     [ "isPokitProduct", "pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb", null ],
     [ "isPokitProduct", "pokitproducts_8cpp.html#ae0f44a17c5df57e31ee3742b1794fac4", null ],
     [ "isPokitProduct", "pokitproducts_8cpp.html#a1e8475fe32ea6fbcbb0bd795448d43c8", null ],
@@ -14,6 +15,6 @@ var pokitproducts_8cpp =
     [ "toString", "pokitproducts_8cpp.html#a14203d0e3a636e5142dccade0c4b5c91", null ],
     [ "toString", "pokitproducts_8cpp.html#a683a82fdd02371d1d6acb4bbbd91e844", null ],
     [ "toString", "pokitproducts_8cpp.html#a6f542c3fe27b9c58c03edc92ceab40ef", null ],
-    [ "toString", "pokitproducts_8cpp.html#a51231fc0f3ca18f89fca6f00c4bb6df8", null ],
+    [ "toString", "pokitproducts_8cpp.html#a27b6a39a537aec911e9b4251aefdf000", null ],
     [ "toString", "pokitproducts_8cpp.html#a843ef4bfc3538988c695fa643adcd4d0", null ]
 ];

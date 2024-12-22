@@ -71,8 +71,9 @@ var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
 "classFlashLedCommand.html#a24e230231849718572cad0d15ce1b0fb",
-"classStatusService.html#a698e0ba79ea0e7d489e4acdb58830884",
-"pokitdiscoveryagent_8h.html"
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c",
+"pokitdevice_8cpp.html",
+"structStatusService_1_1Status.html#aa5d6fe4e5286126d7604c6ceb4da6d11"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
