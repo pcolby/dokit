@@ -20,6 +20,13 @@ static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products", QtInfoMsg); ///< Logging c
 
 QTPOKIT_BEGIN_NAMESPACE
 
+namespace {
+    class Private
+    {
+        Q_DECLARE_TR_FUNCTIONS(PokitProducts)
+    };
+}
+
 /*!
  * Returns \c product as user-friendly string.
  */
@@ -29,8 +36,7 @@ QString toString(const PokitProduct product)
     case PokitProduct::PokitMeter: return QStringLiteral("Pokit Meter");
     case PokitProduct::PokitPro:   return QStringLiteral("Pokit Pro");
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("PokitProducts",
-        "Unknown PokitProduct value: %1", "toString").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QString();
 }
 
@@ -99,8 +105,7 @@ PokitProduct pokitProduct(const QList<QBluetoothUuid> &serviceUuids)
     } else if (serviceUuids.contains(StatusService::ServiceUuids::pokitPro)) {
         return PokitProduct::PokitPro;
     } else {
-        qCWarning(lc).noquote()
-            << QCoreApplication::translate("PokitProducts", "Device is not a Pokit product", "pokitProduct");
+        qCWarning(lc).noquote() << Private::tr("Device is not a Pokit product");
         qCDebug(lc).noquote() << "Service UUIDs:" << serviceUuids;
         return PokitProduct::PokitMeter; // Need to fallback to something; Pokit Meter is just the lowest product.
     }
@@ -135,14 +140,12 @@ QString toString(const PokitProduct product, const quint8 range)
 {
     switch (product) {
     case PokitProduct::PokitMeter:
-        qCWarning(lc).noquote()
-            << QCoreApplication::translate("PokitProducts", "Pokit Meter has no capacitance support", "toString");
+        qCWarning(lc).noquote() << Private::tr("Pokit Meter has no capacitance support");
         return QString();
     case PokitProduct::PokitPro:
         return PokitPro::toString(static_cast<PokitPro::CapacitanceRange>(range));
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("CapacitanceRange",
-        "Unknown PokitProduct value: %1", "toString").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QString();
 }
 
@@ -158,14 +161,12 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
 {
     switch (product) {
     case PokitProduct::PokitMeter:
-        qCWarning(lc).noquote()
-            << QCoreApplication::translate("PokitProducts", "Pokit Meter has no capacitance support", "toString");
+        qCWarning(lc).noquote() << Private::tr("Pokit Meter has no capacitance support");
         return QVariant();
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::CapacitanceRange>(range));
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("CapacitanceRange",
-        "Unknown PokitProduct value: %1", "maxValue").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QVariant();
 }
 
@@ -188,8 +189,7 @@ QString toString(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::toString(static_cast<PokitPro::CurrentRange>(range));
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("CurrentRange",
-        "Unknown PokitProduct value: %1", "toString").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QString();
 }
 
@@ -208,8 +208,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::CurrentRange>(range));
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("CurrentRange",
-        "Unknown PokitProduct value: %1", "maxValue").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QVariant();
 }
 
@@ -232,8 +231,7 @@ QString toString(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::toString(static_cast<PokitPro::ResistanceRange>(range));
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("ResistanceRange",
-        "Unknown PokitProduct value: %1", "toString").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QString();
 }
 
@@ -252,8 +250,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::ResistanceRange>(range));
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("ResistanceRange",
-        "Unknown PokitProduct value: %1", "maxValue").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QVariant();
 }
 
@@ -276,8 +273,7 @@ QString toString(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::toString(static_cast<PokitPro::VoltageRange>(range));
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("VoltageRange",
-        "Unknown PokitProduct value: %1", "toString").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QString();
 }
 
@@ -296,8 +292,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::VoltageRange>(range));
     }
-    qCWarning(lc).noquote() << QCoreApplication::translate("VoltageRange",
-        "Unknown PokitProduct value: %1", "maxValue").arg((int)product);
+    qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QVariant();
 }
 

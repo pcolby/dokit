@@ -182,36 +182,6 @@
     </message>
 </context>
 <context>
-    <name>CapacitanceRange</name>
-    <message>
-        <location filename="../pokitproducts.cpp" line="144"/>
-        <source>Unknown PokitProduct value: %1</source>
-        <comment>toString</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitproducts.cpp" line="167"/>
-        <source>Unknown PokitProduct value: %1</source>
-        <comment>maxValue</comment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CurrentRange</name>
-    <message>
-        <location filename="../pokitproducts.cpp" line="191"/>
-        <source>Unknown PokitProduct value: %1</source>
-        <comment>toString</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitproducts.cpp" line="211"/>
-        <source>Unknown PokitProduct value: %1</source>
-        <comment>maxValue</comment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DataLoggerService</name>
     <message>
         <location filename="../dataloggerservice.cpp" line="30"/>
@@ -747,415 +717,303 @@
 <context>
     <name>PokitMeter</name>
     <message>
-        <location filename="../pokitmeter.cpp" line="19"/>
+        <location filename="../pokitmeter.cpp" line="26"/>
         <source>Up to 10mA</source>
-        <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="20"/>
+        <location filename="../pokitmeter.cpp" line="27"/>
         <source>Up to 30mA</source>
-        <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="21"/>
+        <location filename="../pokitmeter.cpp" line="28"/>
         <source>Up to 150mA</source>
-        <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="22"/>
+        <location filename="../pokitmeter.cpp" line="29"/>
         <source>Up to 300mA</source>
-        <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="23"/>
+        <location filename="../pokitmeter.cpp" line="30"/>
         <source>Up to 2A</source>
-        <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="24"/>
+        <location filename="../pokitmeter.cpp" line="31"/>
+        <location filename="../pokitmeter.cpp" line="65"/>
+        <location filename="../pokitmeter.cpp" line="100"/>
         <source>Auto-range</source>
-        <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="41"/>
+        <location filename="../pokitmeter.cpp" line="48"/>
+        <location filename="../pokitmeter.cpp" line="85"/>
+        <location filename="../pokitmeter.cpp" line="118"/>
         <source>Auto</source>
-        <comment>CurrentRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="50"/>
-        <source>Up to 160Ω</source>
-        <comment>ResistanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="51"/>
-        <source>Up to 330Ω</source>
-        <comment>ResistanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="52"/>
-        <source>Up to 890Ω</source>
-        <comment>ResistanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="53"/>
-        <source>Up to 1.5KΩ</source>
-        <comment>ResistanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="54"/>
-        <source>Up to 10KΩ</source>
-        <comment>ResistanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="55"/>
-        <source>Up to 100KΩ</source>
-        <comment>ResistanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="56"/>
-        <source>Up to 470KΩ</source>
-        <comment>ResistanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitmeter.cpp" line="57"/>
-        <source>Up to 1MΩ</source>
-        <comment>ResistanceRange</comment>
+        <source>Up to 160Ω</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitmeter.cpp" line="58"/>
-        <source>Auto-range</source>
-        <comment>ResistanceRange</comment>
+        <source>Up to 330Ω</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="78"/>
-        <source>Auto</source>
-        <comment>ResistanceRange</comment>
+        <location filename="../pokitmeter.cpp" line="59"/>
+        <source>Up to 890Ω</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="87"/>
+        <location filename="../pokitmeter.cpp" line="60"/>
+        <source>Up to 1.5KΩ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitmeter.cpp" line="61"/>
+        <source>Up to 10KΩ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitmeter.cpp" line="62"/>
+        <source>Up to 100KΩ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitmeter.cpp" line="63"/>
+        <source>Up to 470KΩ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitmeter.cpp" line="64"/>
+        <source>Up to 1MΩ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitmeter.cpp" line="94"/>
         <source>Up to 300mV</source>
-        <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="88"/>
+        <location filename="../pokitmeter.cpp" line="95"/>
         <source>Up to 2V</source>
-        <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="89"/>
+        <location filename="../pokitmeter.cpp" line="96"/>
         <source>Up to 6V</source>
-        <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="90"/>
+        <location filename="../pokitmeter.cpp" line="97"/>
         <source>Up to 12V</source>
-        <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="91"/>
+        <location filename="../pokitmeter.cpp" line="98"/>
         <source>Up to 30V</source>
-        <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitmeter.cpp" line="92"/>
+        <location filename="../pokitmeter.cpp" line="99"/>
         <source>Up to 60V</source>
-        <comment>VoltageRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="93"/>
-        <source>Auto-range</source>
-        <comment>VoltageRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitmeter.cpp" line="111"/>
-        <source>Auto</source>
-        <comment>VoltageRange</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PokitPro</name>
     <message>
-        <location filename="../pokitpro.cpp" line="28"/>
+        <location filename="../pokitpro.cpp" line="35"/>
         <source>Up to 100nF</source>
-        <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="29"/>
+        <location filename="../pokitpro.cpp" line="36"/>
         <source>Up to 10μF</source>
-        <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="30"/>
+        <location filename="../pokitpro.cpp" line="37"/>
         <source>Up to 1mF</source>
-        <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="31"/>
+        <location filename="../pokitpro.cpp" line="38"/>
+        <location filename="../pokitpro.cpp" line="78"/>
+        <location filename="../pokitpro.cpp" line="126"/>
+        <location filename="../pokitpro.cpp" line="175"/>
         <source>Auto-range</source>
-        <comment>CapacitanceRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="46"/>
+        <location filename="../pokitpro.cpp" line="53"/>
+        <location filename="../pokitpro.cpp" line="97"/>
+        <location filename="../pokitpro.cpp" line="149"/>
+        <location filename="../pokitpro.cpp" line="195"/>
         <source>Auto</source>
-        <comment>CapacitanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="64"/>
-        <source>Up to 500μA</source>
-        <comment>CurrentRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="65"/>
-        <source>Up to 2mA</source>
-        <comment>CurrentRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="66"/>
-        <source>Up to 10mA</source>
-        <comment>CurrentRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="67"/>
-        <source>Up to 125mA</source>
-        <comment>CurrentRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="68"/>
-        <source>Up to 300mA</source>
-        <comment>CurrentRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="69"/>
-        <source>Up to 3A</source>
-        <comment>CurrentRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="70"/>
-        <source>Up to 10A</source>
-        <comment>CurrentRange</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitpro.cpp" line="71"/>
-        <source>Auto-range</source>
-        <comment>CurrentRange</comment>
+        <source>Up to 500μA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="90"/>
-        <source>Auto</source>
-        <comment>CurrentRange</comment>
+        <location filename="../pokitpro.cpp" line="72"/>
+        <source>Up to 2mA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="108"/>
-        <source>Up to 30Ω</source>
-        <comment>ResistanceRange</comment>
+        <location filename="../pokitpro.cpp" line="73"/>
+        <source>Up to 10mA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="109"/>
-        <source>Up to 75Ω</source>
-        <comment>ResistanceRange</comment>
+        <location filename="../pokitpro.cpp" line="74"/>
+        <source>Up to 125mA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="110"/>
-        <source>Up to 400Ω</source>
-        <comment>ResistanceRange</comment>
+        <location filename="../pokitpro.cpp" line="75"/>
+        <source>Up to 300mA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="111"/>
-        <source>Up to 5KΩ</source>
-        <comment>ResistanceRange</comment>
+        <location filename="../pokitpro.cpp" line="76"/>
+        <source>Up to 3A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="112"/>
-        <source>Up to 10KΩ</source>
-        <comment>ResistanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="113"/>
-        <source>Up to 15KΩ</source>
-        <comment>ResistanceRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="114"/>
-        <source>Up to 40KΩ</source>
-        <comment>ResistanceRange</comment>
+        <location filename="../pokitpro.cpp" line="77"/>
+        <source>Up to 10A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitpro.cpp" line="115"/>
-        <source>Up to 500KΩ</source>
-        <comment>ResistanceRange</comment>
+        <source>Up to 30Ω</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitpro.cpp" line="116"/>
-        <source>Up to 700KΩ</source>
-        <comment>ResistanceRange</comment>
+        <source>Up to 75Ω</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitpro.cpp" line="117"/>
-        <source>Up to 1MΩ</source>
-        <comment>ResistanceRange</comment>
+        <source>Up to 400Ω</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitpro.cpp" line="118"/>
-        <source>Up to 3MΩ</source>
-        <comment>ResistanceRange</comment>
+        <source>Up to 5KΩ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitpro.cpp" line="119"/>
-        <source>Auto-range</source>
-        <comment>ResistanceRange</comment>
+        <source>Up to 10KΩ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="142"/>
-        <source>Auto</source>
-        <comment>ResistanceRange</comment>
+        <location filename="../pokitpro.cpp" line="120"/>
+        <source>Up to 15KΩ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="160"/>
-        <source>Up to 250mV</source>
-        <comment>VoltageRange</comment>
+        <location filename="../pokitpro.cpp" line="121"/>
+        <source>Up to 40KΩ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="161"/>
-        <source>Up to 2V</source>
-        <comment>VoltageRange</comment>
+        <location filename="../pokitpro.cpp" line="122"/>
+        <source>Up to 500KΩ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="162"/>
-        <source>Up to 10V</source>
-        <comment>VoltageRange</comment>
+        <location filename="../pokitpro.cpp" line="123"/>
+        <source>Up to 700KΩ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="163"/>
-        <source>Up to 30V</source>
-        <comment>VoltageRange</comment>
+        <location filename="../pokitpro.cpp" line="124"/>
+        <source>Up to 1MΩ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="164"/>
-        <source>Up to 60V</source>
-        <comment>VoltageRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="165"/>
-        <source>Up to 125V</source>
-        <comment>VoltageRange</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitpro.cpp" line="166"/>
-        <source>Up to 400V</source>
-        <comment>VoltageRange</comment>
+        <location filename="../pokitpro.cpp" line="125"/>
+        <source>Up to 3MΩ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitpro.cpp" line="167"/>
-        <source>Up to 600V</source>
-        <comment>VoltageRange</comment>
+        <source>Up to 250mV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitpro.cpp" line="168"/>
-        <source>Auto-range</source>
-        <comment>VoltageRange</comment>
+        <source>Up to 2V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitpro.cpp" line="188"/>
-        <source>Auto</source>
-        <comment>VoltageRange</comment>
+        <location filename="../pokitpro.cpp" line="169"/>
+        <source>Up to 10V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitpro.cpp" line="170"/>
+        <source>Up to 30V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitpro.cpp" line="171"/>
+        <source>Up to 60V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitpro.cpp" line="172"/>
+        <source>Up to 125V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitpro.cpp" line="173"/>
+        <source>Up to 400V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitpro.cpp" line="174"/>
+        <source>Up to 600V</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PokitProducts</name>
     <message>
-        <location filename="../pokitproducts.cpp" line="32"/>
-        <source>Unknown PokitProduct value: %1</source>
-        <comment>toString</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitproducts.cpp" line="103"/>
+        <location filename="../pokitproducts.cpp" line="108"/>
         <source>Device is not a Pokit product</source>
-        <comment>pokitProduct</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="139"/>
-        <location filename="../pokitproducts.cpp" line="162"/>
+        <location filename="../pokitproducts.cpp" line="143"/>
+        <location filename="../pokitproducts.cpp" line="164"/>
         <source>Pokit Meter has no capacitance support</source>
-        <comment>toString</comment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ResistanceRange</name>
-    <message>
-        <location filename="../pokitproducts.cpp" line="235"/>
-        <source>Unknown PokitProduct value: %1</source>
-        <comment>toString</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="255"/>
+        <location filename="../pokitproducts.cpp" line="39"/>
+        <location filename="../pokitproducts.cpp" line="148"/>
+        <location filename="../pokitproducts.cpp" line="169"/>
+        <location filename="../pokitproducts.cpp" line="192"/>
+        <location filename="../pokitproducts.cpp" line="211"/>
+        <location filename="../pokitproducts.cpp" line="234"/>
+        <location filename="../pokitproducts.cpp" line="253"/>
+        <location filename="../pokitproducts.cpp" line="276"/>
+        <location filename="../pokitproducts.cpp" line="295"/>
         <source>Unknown PokitProduct value: %1</source>
-        <comment>maxValue</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1292,21 +1150,6 @@
     <message>
         <location filename="../statusservice.cpp" line="817"/>
         <source>Unknown characteristic written for Status service</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>VoltageRange</name>
-    <message>
-        <location filename="../pokitproducts.cpp" line="279"/>
-        <source>Unknown PokitProduct value: %1</source>
-        <comment>toString</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitproducts.cpp" line="299"/>
-        <source>Unknown PokitProduct value: %1</source>
-        <comment>maxValue</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
