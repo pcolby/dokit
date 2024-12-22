@@ -240,7 +240,7 @@ jobs:
           PROJECT_BUILD_ID: "${{ github.run_number }}.${{ matrix.os }}.${{ steps.arch.outputs.buildId }}.\
             ${{ matrix.cc }}.qt-${{ matrix.qt }}"
         run: |
-          # With coverage instrumentation.
+          # With coverage instrumentation (except macOS 13's llvm-lcov version does not support the --sources option)
           [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
           cmake -D CMAKE_BUILD_TYPE=Release \
                 -D CODECOV_GCOV=/usr/local/bin/gcov-14 \
@@ -619,6 +619,8 @@ jobs:
   collate-test-results:
     needs: [ linux, mac, win ]
     runs-on: ubuntu-24.04
+    env:
+      LCOV_VERSION: 2.2 # Should stay in-step, or ahead of, the Ubuntu, macOS and Windows versions.
     steps:
       - uses: actions/checkout@v4
       - name: Install lcov
@@ -626,7 +628,12 @@ jobs:
           sudo apt-mark hold firefox grub-efi-amd64-signed
           sudo apt update
           sudo apt upgrade
-          sudo apt install lcov
+          sudo apt install libcapture-tiny-perl libdatetime-perl libtimedate-perl libjson-perl libperlio-gzip-perl
+          curl --location --silent \
+            "https://github.com/linux-test-project/lcov/releases/download/v${LCOV_VERSION}/lcov-${LCOV_VERSION}.tar.gz"|
+            tar --extract --gzip --directory "${RUNNER_TEMP}"
+          "${RUNNER_TEMP}/lcov-${LCOV_VERSION}/bin/lcov" --version
+          tee -a "${GITHUB_PATH}" <<< "${RUNNER_TEMP}/lcov-${LCOV_VERSION}/bin"
       - name: Download test results
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -643,9 +650,10 @@ jobs:
           # Update source code paths from Windows tracefiles to match Linux, and remove all \r chars from line endings.
           sed -i -Ee 's|\r$||' -e 's|\\|/|g' -e 's|^SF:D:/a|SF:/home/runner/work|' artifacts/*.win.*/**/coverage.info
           # Combine all tracefiles into one.
+          tee -a "$HOME/.lcovrc" <<< 'check_data_consistency = 0'
           lcov $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
           # Generate the HTML report.
-          echo 'genhtml_sort = 0' >> ~/.lcovrc
+          tee -a "$HOME/.lcovrc" <<< 'genhtml_sort = 0'
           genhtml --output-directory coverage/coverage coverage.info
           # Can use any of the removeHtmlDates.sh scripts here, so the Ubuntu GCC Qt6 job's version will do.
           /usr/bin/env bash ./artifacts/test-results-*.gcc.qt-6/coverage/removeHtmlDates.sh
