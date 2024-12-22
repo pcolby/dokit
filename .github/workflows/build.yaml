@@ -200,7 +200,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install lcov
-        run: brew install lcov
+        run: brew install lcov --head # \todo Remove when lcov commit b34c844 is released.
+        # \todo See https://github.com/linux-test-project/lcov/commit/b34c84431a97b49e55785286fa05e9a95b873920
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
