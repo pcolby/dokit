@@ -275,6 +275,9 @@ jobs:
             ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
           ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
         timeout-minutes: 1
+      - name: Disable lcov consistency checks for gcc
+        if: matrix.cc == 'gcc'
+        run: echo 'check_data_consistency = 0' >> "$HOME/.lcovrc"
       - name: Collate test coverage
         if: matrix.os != 'macos-13' || matrix.cc == 'gcc'
         run: cmake --build "$RUNNER_TEMP/coverage" --target coverage
