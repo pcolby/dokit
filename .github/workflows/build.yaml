@@ -202,7 +202,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install lcov
-        run: brew install lcov
+        run: brew install lcov --head # \todo Remove when lcov commit b34c844 is released.
+        # \todo See https://github.com/linux-test-project/lcov/commit/b34c84431a97b49e55785286fa05e9a95b873920
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
@@ -276,6 +277,9 @@ jobs:
             ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
           ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
         timeout-minutes: 1
+      - name: Disable lcov consistency checks for gcc
+        if: matrix.cc == 'gcc'
+        run: echo 'check_data_consistency = 0' >> "$HOME/.lcovrc"
       - name: Collate test coverage
         if: matrix.os != 'macos-13' || matrix.cc == 'gcc'
         run: cmake --build "$RUNNER_TEMP/coverage" --target coverage
