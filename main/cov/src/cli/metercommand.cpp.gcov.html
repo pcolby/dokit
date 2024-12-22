@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/cli</a> - metercommand.cpp<span style="font-size: 80%;"> (source / <a href="metercommand.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cli">src/cli</a> - metercommand.cpp<span style="font-size: 80%;"> (source / <a href="metercommand.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">66.7&nbsp;%</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">64.7&nbsp;%</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">11</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -107,7 +107,7 @@
 <span id="L19"><span class="lineNum">      19</span>              : /*!</span>
 <span id="L20"><span class="lineNum">      20</span>              :  * Construct a new MeterCommand object with \a parent.</span>
 <span id="L21"><span class="lineNum">      21</span>              :  */</span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC tlaBgGNC">        3780 : MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">        3780 : MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        1904 : {</span></span>
 <span id="L24"><span class="lineNum">      24</span>              : </span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        4564 : }</span></span>
@@ -200,10 +200,10 @@
 <span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">          88 :             case MultimeterService::Mode::AcCurrent:</span></span>
 <span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">         164 :                 rangeOptionValue = parseNumber&lt;std::milli&gt;(value, QLatin1String(&quot;A&quot;), 5); // mA.</span></span>
 <span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">         164 :                 break;</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaUNC tlaBgUNC">           0 :             case MultimeterService::Mode::Resistance:</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaUNC">           0 :             case MultimeterService::Mode::Resistance:</span></span>
 <span id="L116"><span class="lineNum">     116</span> <span class="tlaUNC">           0 :                 rangeOptionValue = parseNumber&lt;std::ratio&lt;1&gt;&gt;(value, QLatin1String(&quot;ohms&quot;));</span></span>
 <span id="L117"><span class="lineNum">     117</span> <span class="tlaUNC">           0 :                 break;</span></span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC tlaBgGNC">          44 :             case MultimeterService::Mode::Capacitance:</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">          44 :             case MultimeterService::Mode::Capacitance:</span></span>
 <span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">          82 :                 rangeOptionValue = parseNumber&lt;std::nano&gt;(value, QLatin1String(&quot;F&quot;), 500); // pF.</span></span>
 <span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">          82 :                 break;</span></span>
 <span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">          82 :             default:</span></span>
@@ -233,7 +233,7 @@
 <span id="L145"><span class="lineNum">     145</span>              :  *</span>
 <span id="L146"><span class="lineNum">     146</span>              :  * This override returns a pointer to a MultimeterService object.</span>
 <span id="L147"><span class="lineNum">     147</span>              :  */</span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaUNC tlaBgUNC">           0 : AbstractPokitService * MeterCommand::getService()</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaUNC">           0 : AbstractPokitService * MeterCommand::getService()</span></span>
 <span id="L149"><span class="lineNum">     149</span> <span class="tlaUNC">           0 : {</span></span>
 <span id="L150"><span class="lineNum">     150</span> <span class="tlaUNC">           0 :     Q_ASSERT(device);</span></span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaUNC">           0 :     if (!service) {</span></span>
@@ -289,7 +289,7 @@
 <span id="L201"><span class="lineNum">     201</span>              : /*!</span>
 <span id="L202"><span class="lineNum">     202</span>              :  * Outputs meter \a reading in the selected ouput format.</span>
 <span id="L203"><span class="lineNum">     203</span>              :  */</span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC tlaBgGNC">        2850 : void MeterCommand::outputReading(const MultimeterService::Reading &amp;reading)</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">        2850 : void MeterCommand::outputReading(const MultimeterService::Reading &amp;reading)</span></span>
 <span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">        1200 : {</span></span>
 <span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">        2325 :     QString status;</span></span>
 <span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">        4050 :     if (reading.status == MultimeterService::MeterStatus::Error) {</span></span>
@@ -329,8 +329,8 @@
 <span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">         192 :     case MultimeterService::Mode::Continuity:  break;</span></span>
 <span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">         414 :     case MultimeterService::Mode::Temperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
 <span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">         414 :     case MultimeterService::Mode::Capacitance: unit = QString::fromUtf8(&quot;F&quot;);  break;</span></span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC tlaBgUNC">           0 :     case MultimeterService::Mode::ExternalTemperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC tlaBgGNC">        1200 :     }</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC">           0 :     case MultimeterService::Mode::ExternalTemperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">        1200 :     }</span></span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
 <span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">        5775 :     const QString range = service-&gt;toString(reading.range, reading.mode);</span></span>
 <span id="L248"><span class="lineNum">     248</span>              : </span>
@@ -371,9 +371,9 @@
 <span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">        1200 :     }</span></span>
 <span id="L284"><span class="lineNum">     284</span>              : </span>
 <span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        4050 :     if ((samplesToGo &gt; 0) &amp;&amp; (--samplesToGo == 0)) {</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaUNC tlaBgUNC">           0 :         if (device) disconnect(); // Will exit the application once disconnected.</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaUNC">           0 :         if (device) disconnect(); // Will exit the application once disconnected.</span></span>
 <span id="L287"><span class="lineNum">     287</span> <span class="tlaUNC">           0 :     }</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC tlaBgGNC">        8050 : }</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        8050 : }</span></span>
         </pre>
               </td>
             </tr>
@@ -382,7 +382,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

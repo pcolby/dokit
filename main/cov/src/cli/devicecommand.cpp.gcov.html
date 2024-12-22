@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/cli</a> - devicecommand.cpp<span style="font-size: 80%;"> (source / <a href="devicecommand.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cli">src/cli</a> - devicecommand.cpp<span style="font-size: 80%;"> (source / <a href="devicecommand.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">95.2&nbsp;%</td>
-            <td class="headerCovTableEntry">21</td>
-            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntryHi">97.6&nbsp;%</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">40</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -106,7 +106,7 @@
 <span id="L18"><span class="lineNum">      18</span>              : /*!</span>
 <span id="L19"><span class="lineNum">      19</span>              :  * Construct a new DeviceCommand object with \a parent.</span>
 <span id="L20"><span class="lineNum">      20</span>              :  */</span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC tlaBgGNC">       20556 : DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent)</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">       20556 : DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent)</span></span>
 <span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">       10160 : {</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">       24616 : }</span></span>
@@ -301,15 +301,15 @@
 <span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">          38 : quint8 DeviceCommand::minCapacitanceRange(const PokitProduct product, const quint32 maxValue)</span></span>
 <span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          44 : {</span></span>
 <span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">          82 :     switch (product) {</span></span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaUNC tlaBgUNC">           0 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaUNC">           0 :     case PokitProduct::PokitMeter:</span></span>
 <span id="L217"><span class="lineNum">     217</span> <span class="tlaUNC">           0 :         Q_ASSERT_X(false, &quot;DeviceCommand::minCapacitanceRange&quot;, &quot;Pokit Meter has no capacitance support.&quot;);</span></span>
 <span id="L218"><span class="lineNum">     218</span> <span class="tlaUNC">           0 :         return 255;</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC tlaBgGNC">          82 :     case PokitProduct::PokitPro:</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">          82 :     case PokitProduct::PokitPro:</span></span>
 <span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">          82 :         return +minRange&lt;PokitPro::CapacitanceRange&gt;(maxValue);</span></span>
 <span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          44 :     }</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaUNC tlaBgUNC">           0 :     Q_ASSERT_X(false, &quot;DeviceCommand::minCapacitanceRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaUNC">           0 :     Q_ASSERT_X(false, &quot;DeviceCommand::minCapacitanceRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
 <span id="L223"><span class="lineNum">     223</span> <span class="tlaUNC">           0 :     return 255;</span></span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC tlaBgGNC">          44 : }</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L225"><span class="lineNum">     225</span>              : </span>
 <span id="L226"><span class="lineNum">     226</span>              : /*!</span>
 <span id="L227"><span class="lineNum">     227</span>              :  * Returns the \a product's lowest current range that can measure at least up to \a maxValue (µA), or AutoRange if no</span>
@@ -326,9 +326,9 @@
 <span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          82 :     case PokitProduct::PokitPro:</span></span>
 <span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">          82 :         return +minRange&lt;PokitPro::CurrentRange&gt;(maxValue);</span></span>
 <span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">          88 :     }</span></span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC tlaBgUNC">           0 :     Q_ASSERT_X(false, &quot;DeviceCommand::minCurrentRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC">           0 :     Q_ASSERT_X(false, &quot;DeviceCommand::minCurrentRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
 <span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC">           0 :     return 255;</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC tlaBgGNC">          88 : }</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">          88 : }</span></span>
 <span id="L244"><span class="lineNum">     244</span>              : </span>
 <span id="L245"><span class="lineNum">     245</span>              : /*!</span>
 <span id="L246"><span class="lineNum">     246</span>              :  * Returns the \a product's lowest resistance range that can measure at least up to \a maxValue (Ω), or AutoRange if no</span>
@@ -345,9 +345,9 @@
 <span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">          82 :     case PokitProduct::PokitPro:</span></span>
 <span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">          82 :         return +minRange&lt;PokitPro::ResistanceRange&gt;(maxValue);</span></span>
 <span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">          88 :     }</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC tlaBgUNC">           0 :     Q_ASSERT_X(false, &quot;DeviceCommand::minResistanceRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC">           0 :     Q_ASSERT_X(false, &quot;DeviceCommand::minResistanceRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
 <span id="L261"><span class="lineNum">     261</span> <span class="tlaUNC">           0 :     return 255;</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC tlaBgGNC">          88 : }</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">          88 : }</span></span>
 <span id="L263"><span class="lineNum">     263</span>              : </span>
 <span id="L264"><span class="lineNum">     264</span>              : /*!</span>
 <span id="L265"><span class="lineNum">     265</span>              :  t</span>
@@ -365,9 +365,9 @@
 <span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">          82 :     case PokitProduct::PokitPro:</span></span>
 <span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">          82 :         return +minRange&lt;PokitPro::VoltageRange&gt;(maxValue);</span></span>
 <span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">          88 :     }</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaUNC tlaBgUNC">           0 :     Q_ASSERT_X(false, &quot;DeviceCommand::minVoltageRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaUNC">           0 :     Q_ASSERT_X(false, &quot;DeviceCommand::minVoltageRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
 <span id="L281"><span class="lineNum">     281</span> <span class="tlaUNC">           0 :     return 255;</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC tlaBgGNC">          88 : }</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">          88 : }</span></span>
 <span id="L283"><span class="lineNum">     283</span>              : </span>
 <span id="L284"><span class="lineNum">     284</span>              : #undef DOKIT_CLI_IF_LESS_THAN_RETURN</span>
 <span id="L285"><span class="lineNum">     285</span>              : </span>
@@ -393,8 +393,8 @@
 <span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          38 : void DeviceCommand::deviceDisconnected()</span></span>
 <span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          44 : {</span></span>
 <span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          90 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Pokit device disconnected. Exiting with code %1.&quot;)</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC tlaBgUNC">           0 :         .arg(exitCodeOnDisconnect);</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC tlaBgGNC">          82 :     QCoreApplication::exit(exitCodeOnDisconnect);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :         .arg(exitCodeOnDisconnect);</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">          82 :     QCoreApplication::exit(exitCodeOnDisconnect);</span></span>
 <span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          82 : }</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
 <span id="L312"><span class="lineNum">     312</span>              : /*!</span>
@@ -430,15 +430,15 @@
 <span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">          44 :     Q_ASSERT(isPokitProduct(info));</span></span>
 <span id="L343"><span class="lineNum">     343</span>              : </span>
 <span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">          82 :     if (device) {</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC tlaBgUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
 <span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
 <span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC tlaBgGNC">         158 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         158 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></span>
 <span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         202 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></span>
 <span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         120 :         ((!info.deviceUuid().isNull()) &amp;&amp; (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC tlaBgUNC">           0 :     {</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :     {</span></span>
 <span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Found Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
 <span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
 <span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC">           0 :         discoveryAgent-&gt;stop();</span></span>
@@ -469,9 +469,9 @@
 <span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L382"><span class="lineNum">     382</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L383"><span class="lineNum">     383</span>              : </span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC tlaBgGNC">          90 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaUNC tlaBgUNC">           0 :         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC tlaBgGNC">          49 :     return;</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">          90 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaUNC">           0 :         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          49 :     return;</span></span>
 <span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L388"><span class="lineNum">     388</span>              : </span>
 <span id="L389"><span class="lineNum">     389</span>              : /*!</span>
@@ -494,7 +494,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

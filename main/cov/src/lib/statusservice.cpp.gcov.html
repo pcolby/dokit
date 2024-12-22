@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/lib</a> - statusservice.cpp<span style="font-size: 80%;"> (source / <a href="statusservice.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/lib">src/lib</a> - statusservice.cpp<span style="font-size: 80%;"> (source / <a href="statusservice.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -67,8 +67,8 @@
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">94.9&nbsp;%</td>
-            <td class="headerCovTableEntry">39</td>
-            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntry">78</td>
+            <td class="headerCovTableEntry">74</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -117,7 +117,7 @@
 <span id="L29"><span class="lineNum">      29</span>              : /*!</span>
 <span id="L30"><span class="lineNum">      30</span>              :  * Returns a string version of the \a status enum label.</span>
 <span id="L31"><span class="lineNum">      31</span>              :  */</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC tlaBgGNC">         836 : QString StatusService::toString(const StatusService::DeviceStatus &amp;status)</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         836 : QString StatusService::toString(const StatusService::DeviceStatus &amp;status)</span></span>
 <span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         716 : {</span></span>
 <span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">        1552 :     switch (status) {</span></span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         298 :     case DeviceStatus::Idle:                 return  QLatin1String(&quot;Idle&quot;);</span></span>
@@ -219,7 +219,7 @@
 <span id="L131"><span class="lineNum">     131</span>              :  * \cond internal</span>
 <span id="L132"><span class="lineNum">     132</span>              :  * Constructs a new Pokit service with \a parent, and private implementation \a d.</span>
 <span id="L133"><span class="lineNum">     133</span>              :  */</span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC tlaBgUNC">           0 : StatusService::StatusService(</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC">           0 : StatusService::StatusService(</span></span>
 <span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC">           0 :     StatusServicePrivate * const d, QObject * const parent)</span></span>
 <span id="L136"><span class="lineNum">     136</span> <span class="tlaUNC">           0 :     : AbstractPokitService(d, parent)</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaUNC">           0 : {</span></span>
@@ -227,7 +227,7 @@
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 : }</span></span>
 <span id="L140"><span class="lineNum">     140</span>              : /// \endcond</span>
 <span id="L141"><span class="lineNum">     141</span>              : </span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC tlaBgGNC">          38 : bool StatusService::readCharacteristics()</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">          38 : bool StatusService::readCharacteristics()</span></span>
 <span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">          44 : {</span></span>
 <span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          60 :     const bool r1 = readDeviceCharacteristics();</span></span>
 <span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">          60 :     const bool r2 = readStatusCharacteristic();</span></span>
@@ -426,7 +426,7 @@
 <span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          44 :         return false;</span></span>
 <span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">          44 :     }</span></span>
 <span id="L340"><span class="lineNum">     340</span>              : </span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC tlaBgUNC">           0 :     const QByteArray value = name.toUtf8();</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :     const QByteArray value = name.toUtf8();</span></span>
 <span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :     if (value.length() &gt; 11) {</span></span>
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(R&quot;(Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x3)&quot;)</span></span>
 <span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :             .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));</span></span>
@@ -435,7 +435,7 @@
 <span id="L347"><span class="lineNum">     347</span>              : </span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></span>
 <span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC tlaBgGNC">          38 : }</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          38 : }</span></span>
 <span id="L351"><span class="lineNum">     351</span>              : </span>
 <span id="L352"><span class="lineNum">     352</span>              : /*!</span>
 <span id="L353"><span class="lineNum">     353</span>              :  * Flash the Pokit device's LED.</span>
@@ -465,10 +465,10 @@
 <span id="L377"><span class="lineNum">     377</span>              :     // must always be 1. Presumably this is an index for which LED to flash, but the Pokit API docs</span>
 <span id="L378"><span class="lineNum">     378</span>              :     // say that &quot;any value other than 1 will be ignored&quot;, which makes sense given that all current</span>
 <span id="L379"><span class="lineNum">     379</span>              :     // Pokit devices have only one LED.</span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC tlaBgUNC">           0 :     const QByteArray value(1, '\x01');</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC">           0 :     const QByteArray value(1, '\x01');</span></span>
 <span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></span>
 <span id="L382"><span class="lineNum">     382</span> <span class="tlaUNC">           0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></span>
-<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC tlaBgGNC">          82 : }</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          82 : }</span></span>
 <span id="L384"><span class="lineNum">     384</span>              : </span>
 <span id="L385"><span class="lineNum">     385</span>              : /*!</span>
 <span id="L386"><span class="lineNum">     386</span>              :  * Returns the most recent value of the `Status` services's `Torch` characteristic.</span>
@@ -501,10 +501,10 @@
 <span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          44 :         return false;</span></span>
 <span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">          44 :     }</span></span>
 <span id="L415"><span class="lineNum">     415</span>              : </span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaUNC tlaBgUNC">           0 :     const QByteArray value(1, static_cast&lt;char&gt;(status));</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaUNC">           0 :     const QByteArray value(1, static_cast&lt;char&gt;(status));</span></span>
 <span id="L417"><span class="lineNum">     417</span> <span class="tlaUNC">           0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></span>
 <span id="L418"><span class="lineNum">     418</span> <span class="tlaUNC">           0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></span>
-<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC tlaBgGNC">          82 : }</span></span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">          82 : }</span></span>
 <span id="L420"><span class="lineNum">     420</span>              : </span>
 <span id="L421"><span class="lineNum">     421</span>              : /*!</span>
 <span id="L422"><span class="lineNum">     422</span>              :  * Enables client-side notifications of torch status changes.</span>
@@ -738,18 +738,18 @@
 <span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">         820 :         status.chargingStatus = static_cast&lt;StatusService::ChargingStatus&gt;(value.at(7));</span></span>
 <span id="L651"><span class="lineNum">     651</span> <span class="tlaGNC">         440 :     }</span></span>
 <span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">         990 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device status:   %1 (%2)&quot;)</span></span>
-<span id="L653"><span class="lineNum">     653</span> <span class="tlaUNC tlaBgUNC">           0 :         .arg((quint8)status.deviceStatus).arg(StatusService::toString(status.deviceStatus));</span></span>
-<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC tlaBgGNC">         990 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery voltage: %1 volts&quot;).arg(status.batteryVoltage);</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaUNC">           0 :         .arg((quint8)status.deviceStatus).arg(StatusService::toString(status.deviceStatus));</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">         990 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery voltage: %1 volts&quot;).arg(status.batteryVoltage);</span></span>
 <span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">         990 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery status:  %1 (%2)&quot;)</span></span>
-<span id="L656"><span class="lineNum">     656</span> <span class="tlaUNC tlaBgUNC">           0 :         .arg((quint8)status.batteryStatus).arg(StatusService::toString(status.batteryStatus));</span></span>
-<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC tlaBgGNC">         902 :     if (status.switchPosition) {</span></span>
+<span id="L656"><span class="lineNum">     656</span> <span class="tlaUNC">           0 :         .arg((quint8)status.batteryStatus).arg(StatusService::toString(status.batteryStatus));</span></span>
+<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">         902 :     if (status.switchPosition) {</span></span>
 <span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">         900 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Switch position: %1 (%2)&quot;)</span></span>
-<span id="L659"><span class="lineNum">     659</span> <span class="tlaUNC tlaBgUNC">           0 :             .arg((quint8)*status.switchPosition).arg(StatusService::toString(*status.switchPosition));</span></span>
-<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC tlaBgGNC">         440 :     }</span></span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaUNC">           0 :             .arg((quint8)*status.switchPosition).arg(StatusService::toString(*status.switchPosition));</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">         440 :     }</span></span>
 <span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">         902 :     if (status.chargingStatus) {</span></span>
 <span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">         900 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Charging status: %1 (%2)&quot;)</span></span>
-<span id="L663"><span class="lineNum">     663</span> <span class="tlaUNC tlaBgUNC">           0 :         .arg((quint8)*status.chargingStatus).arg(StatusService::toString(*status.chargingStatus));</span></span>
-<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC tlaBgGNC">         440 :     }</span></span>
+<span id="L663"><span class="lineNum">     663</span> <span class="tlaUNC">           0 :         .arg((quint8)*status.chargingStatus).arg(StatusService::toString(*status.chargingStatus));</span></span>
+<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">         440 :     }</span></span>
 <span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">         704 :     return status;</span></span>
 <span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">         572 : }</span></span>
 <span id="L667"><span class="lineNum">     667</span>              : </span>
@@ -819,30 +819,30 @@
 <span id="L731"><span class="lineNum">     731</span>              : </span>
 <span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          44 :     Q_Q(StatusService);</span></span>
 <span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaUNC tlaBgUNC">           0 :         Q_EMIT q-&gt;deviceCharacteristicsRead(parseDeviceCharacteristics(value));</span></span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceCharacteristicsRead(parseDeviceCharacteristics(value));</span></span>
 <span id="L735"><span class="lineNum">     735</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L736"><span class="lineNum">     736</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L737"><span class="lineNum">     737</span>              : </span>
-<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></span>
-<span id="L739"><span class="lineNum">     739</span> <span class="tlaUNC tlaBgUNC">           0 :         Q_EMIT q-&gt;deviceStatusRead(parseStatus(value));</span></span>
+<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></span>
+<span id="L739"><span class="lineNum">     739</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceStatusRead(parseStatus(value));</span></span>
 <span id="L740"><span class="lineNum">     740</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L741"><span class="lineNum">     741</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L742"><span class="lineNum">     742</span>              : </span>
-<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></span>
-<span id="L744"><span class="lineNum">     744</span> <span class="tlaUNC tlaBgUNC">           0 :         const QString deviceName = QString::fromUtf8(value);</span></span>
+<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></span>
+<span id="L744"><span class="lineNum">     744</span> <span class="tlaUNC">           0 :         const QString deviceName = QString::fromUtf8(value);</span></span>
 <span id="L745"><span class="lineNum">     745</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Device name: &quot;%1&quot;)&quot;).arg(deviceName);</span></span>
 <span id="L746"><span class="lineNum">     746</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceNameRead(deviceName);</span></span>
 <span id="L747"><span class="lineNum">     747</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L748"><span class="lineNum">     748</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L749"><span class="lineNum">     749</span>              : </span>
-<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></span>
-<span id="L751"><span class="lineNum">     751</span> <span class="tlaUNC tlaBgUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Flash LED characteristic is write-only, but somehow read&quot;)</span></span>
+<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></span>
+<span id="L751"><span class="lineNum">     751</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Flash LED characteristic is write-only, but somehow read&quot;)</span></span>
 <span id="L752"><span class="lineNum">     752</span> <span class="tlaUNC">           0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L753"><span class="lineNum">     753</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L754"><span class="lineNum">     754</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L755"><span class="lineNum">     755</span>              : </span>
-<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {</span></span>
-<span id="L757"><span class="lineNum">     757</span> <span class="tlaUNC tlaBgUNC">           0 :         if (!checkSize(QLatin1String(&quot;Torch&quot;), value, 1, 1)) {</span></span>
+<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaUNC">           0 :         if (!checkSize(QLatin1String(&quot;Torch&quot;), value, 1, 1)) {</span></span>
 <span id="L758"><span class="lineNum">     758</span> <span class="tlaUNC">           0 :             return;</span></span>
 <span id="L759"><span class="lineNum">     759</span> <span class="tlaUNC">           0 :         }</span></span>
 <span id="L760"><span class="lineNum">     760</span> <span class="tlaUNC">           0 :         const StatusService::TorchStatus status = static_cast&lt;StatusService::TorchStatus&gt;(value.at(0));</span></span>
@@ -851,8 +851,8 @@
 <span id="L763"><span class="lineNum">     763</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L764"><span class="lineNum">     764</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L765"><span class="lineNum">     765</span>              : </span>
-<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::buttonPress) {</span></span>
-<span id="L767"><span class="lineNum">     767</span> <span class="tlaUNC tlaBgUNC">           0 :         if (!checkSize(QLatin1String(&quot;Torch&quot;), value, 2, 2)) {</span></span>
+<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::buttonPress) {</span></span>
+<span id="L767"><span class="lineNum">     767</span> <span class="tlaUNC">           0 :         if (!checkSize(QLatin1String(&quot;Torch&quot;), value, 2, 2)) {</span></span>
 <span id="L768"><span class="lineNum">     768</span> <span class="tlaUNC">           0 :             return;</span></span>
 <span id="L769"><span class="lineNum">     769</span> <span class="tlaUNC">           0 :         }</span></span>
 <span id="L770"><span class="lineNum">     770</span> <span class="tlaUNC">           0 :         const StatusService::ButtonStatus status = static_cast&lt;StatusService::ButtonStatus&gt;(value.at(1));</span></span>
@@ -861,7 +861,7 @@
 <span id="L773"><span class="lineNum">     773</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L774"><span class="lineNum">     774</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L775"><span class="lineNum">     775</span>              : </span>
-<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC tlaBgGNC">         179 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status service&quot;)</span></span>
+<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC">         179 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status service&quot;)</span></span>
 <span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">         135 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L779"><span class="lineNum">     779</span>              : </span>
@@ -876,33 +876,33 @@
 <span id="L788"><span class="lineNum">     788</span>              : </span>
 <span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          44 :     Q_Q(StatusService);</span></span>
 <span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></span>
-<span id="L791"><span class="lineNum">     791</span> <span class="tlaUNC tlaBgUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Device Characteristics is read-only, but somehow written&quot;)</span></span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Device Characteristics is read-only, but somehow written&quot;)</span></span>
 <span id="L792"><span class="lineNum">     792</span> <span class="tlaUNC">           0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L793"><span class="lineNum">     793</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L794"><span class="lineNum">     794</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L795"><span class="lineNum">     795</span>              : </span>
-<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></span>
-<span id="L797"><span class="lineNum">     797</span> <span class="tlaUNC tlaBgUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Status characteristic is read-only, but somehow written&quot;)</span></span>
+<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></span>
+<span id="L797"><span class="lineNum">     797</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Status characteristic is read-only, but somehow written&quot;)</span></span>
 <span id="L798"><span class="lineNum">     798</span> <span class="tlaUNC">           0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L799"><span class="lineNum">     799</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L800"><span class="lineNum">     800</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L801"><span class="lineNum">     801</span>              : </span>
-<span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></span>
-<span id="L803"><span class="lineNum">     803</span> <span class="tlaUNC tlaBgUNC">           0 :         Q_EMIT q-&gt;deviceNameWritten();</span></span>
+<span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></span>
+<span id="L803"><span class="lineNum">     803</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceNameWritten();</span></span>
 <span id="L804"><span class="lineNum">     804</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L805"><span class="lineNum">     805</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L806"><span class="lineNum">     806</span>              : </span>
-<span id="L807"><span class="lineNum">     807</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></span>
-<span id="L808"><span class="lineNum">     808</span> <span class="tlaUNC tlaBgUNC">           0 :         Q_EMIT q-&gt;deviceLedFlashed();</span></span>
+<span id="L807"><span class="lineNum">     807</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></span>
+<span id="L808"><span class="lineNum">     808</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceLedFlashed();</span></span>
 <span id="L809"><span class="lineNum">     809</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L810"><span class="lineNum">     810</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L811"><span class="lineNum">     811</span>              : </span>
-<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {</span></span>
-<span id="L813"><span class="lineNum">     813</span> <span class="tlaUNC tlaBgUNC">           0 :         Q_EMIT q-&gt;torchStatusWritten();</span></span>
+<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {</span></span>
+<span id="L813"><span class="lineNum">     813</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;torchStatusWritten();</span></span>
 <span id="L814"><span class="lineNum">     814</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L815"><span class="lineNum">     815</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L816"><span class="lineNum">     816</span>              : </span>
-<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC tlaBgGNC">         179 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status service&quot;)</span></span>
+<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC">         179 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status service&quot;)</span></span>
 <span id="L818"><span class="lineNum">     818</span> <span class="tlaGNC">         135 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L819"><span class="lineNum">     819</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L820"><span class="lineNum">     820</span>              : </span>
@@ -915,7 +915,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

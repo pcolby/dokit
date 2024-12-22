@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/lib</a> - deviceinfoservice.cpp<span style="font-size: 80%;"> (source / <a href="deviceinfoservice.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/lib">src/lib</a> - deviceinfoservice.cpp<span style="font-size: 80%;"> (source / <a href="deviceinfoservice.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryMed">85.0&nbsp;%</td>
-            <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntryMed">87.5&nbsp;%</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntry">35</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -108,7 +108,7 @@
 <span id="L20"><span class="lineNum">      20</span>              : /*!</span>
 <span id="L21"><span class="lineNum">      21</span>              :  * Constructs a new Pokit service with \a parent.</span>
 <span id="L22"><span class="lineNum">      22</span>              :  */</span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC tlaBgGNC">        1346 : DeviceInfoService::DeviceInfoService(QLowEnergyController * const controller, QObject * parent)</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        1346 : DeviceInfoService::DeviceInfoService(QLowEnergyController * const controller, QObject * parent)</span></span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">        1926 :     : AbstractPokitService(new DeviceInfoServicePrivate(controller, this), parent)</span></span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        1028 : {</span></span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
@@ -118,7 +118,7 @@
 <span id="L30"><span class="lineNum">      30</span>              :  * \cond internal</span>
 <span id="L31"><span class="lineNum">      31</span>              :  * Constructs a new Pokit service with \a parent, and private implementation \a d.</span>
 <span id="L32"><span class="lineNum">      32</span>              :  */</span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC tlaBgUNC">           0 : DeviceInfoService::DeviceInfoService(</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 : DeviceInfoService::DeviceInfoService(</span></span>
 <span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :     DeviceInfoServicePrivate * const d, QObject * const parent)</span></span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :     : AbstractPokitService(d, parent)</span></span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 : {</span></span>
@@ -126,7 +126,7 @@
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 : }</span></span>
 <span id="L39"><span class="lineNum">      39</span>              : /// \endcond</span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC tlaBgGNC">          38 : bool DeviceInfoService::readCharacteristics()</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          38 : bool DeviceInfoService::readCharacteristics()</span></span>
 <span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          44 : {</span></span>
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          60 :     const bool r1 = readFirmwareRevisionCharacteristic();</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">          60 :     const bool r2 = readHardwareRevisionCharacteristic();</span></span>
@@ -408,48 +408,48 @@
 <span id="L320"><span class="lineNum">     320</span>              : </span>
 <span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">          44 :     Q_Q(DeviceInfoService);</span></span>
 <span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::manufacturerName) {</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaUNC tlaBgUNC">           0 :         const QString name = QString::fromUtf8(value);</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaUNC">           0 :         const QString name = QString::fromUtf8(value);</span></span>
 <span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Manufacturer name: &quot;%1&quot;)&quot;).arg(name);</span></span>
 <span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;manufacturerRead(name);</span></span>
 <span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L327"><span class="lineNum">     327</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L328"><span class="lineNum">     328</span>              : </span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC tlaBgUNC">           0 :         const QString model = QString::fromUtf8(value);</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::modelNumber) {</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC">           0 :         const QString model = QString::fromUtf8(value);</span></span>
 <span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Model number: &quot;%1&quot;)&quot;).arg(model);</span></span>
 <span id="L332"><span class="lineNum">     332</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;modelNumberRead(model);</span></span>
 <span id="L333"><span class="lineNum">     333</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L335"><span class="lineNum">     335</span>              : </span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaUNC tlaBgUNC">           0 :         const QString revision = QString::fromUtf8(value);</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::hardwareRevision) {</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaUNC">           0 :         const QString revision = QString::fromUtf8(value);</span></span>
 <span id="L338"><span class="lineNum">     338</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Hardware revision: &quot;%1&quot;)&quot;).arg(revision);</span></span>
 <span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;hardwareRevisionRead(revision);</span></span>
 <span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L342"><span class="lineNum">     342</span>              : </span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC tlaBgUNC">           0 :         const QString revision = QString::fromUtf8(value);</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::firmwareRevision) {</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :         const QString revision = QString::fromUtf8(value);</span></span>
 <span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Firmware revision: &quot;%1&quot;)&quot;).arg(revision);</span></span>
 <span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;firmwareRevisionRead(revision);</span></span>
 <span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaUNC tlaBgUNC">           0 :         const QString revision = QString::fromUtf8(value);</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::softwareRevision) {</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaUNC">           0 :         const QString revision = QString::fromUtf8(value);</span></span>
 <span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Software revision: &quot;%1&quot;)&quot;).arg(revision);</span></span>
 <span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;softwareRevisionRead(revision);</span></span>
 <span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L356"><span class="lineNum">     356</span>              : </span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC tlaBgGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::serialNumber) {</span></span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC tlaBgUNC">           0 :         const QString serialNumber = QString::fromUtf8(value);</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaGNC">          82 :     if (characteristic.uuid() == DeviceInfoService::CharacteristicUuids::serialNumber) {</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :         const QString serialNumber = QString::fromUtf8(value);</span></span>
 <span id="L359"><span class="lineNum">     359</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Serial number: &quot;%1&quot;)&quot;).arg(serialNumber);</span></span>
 <span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;serialNumberRead(serialNumber);</span></span>
 <span id="L361"><span class="lineNum">     361</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L363"><span class="lineNum">     363</span>              : </span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC tlaBgGNC">         179 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Device Info service&quot;)</span></span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaGNC">         179 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Device Info service&quot;)</span></span>
 <span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">         135 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L366"><span class="lineNum">     366</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L367"><span class="lineNum">     367</span>              : </span>
@@ -462,7 +462,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

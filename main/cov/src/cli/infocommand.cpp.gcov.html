@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/cli</a> - infocommand.cpp<span style="font-size: 80%;"> (source / <a href="infocommand.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cli">src/cli</a> - infocommand.cpp<span style="font-size: 80%;"> (source / <a href="infocommand.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryMed">85.7&nbsp;%</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryMed">84.6&nbsp;%</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">11</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -108,7 +108,7 @@
 <span id="L20"><span class="lineNum">      20</span>              : /*!</span>
 <span id="L21"><span class="lineNum">      21</span>              :  * Construct a new InfoCommand object with \a parent.</span>
 <span id="L22"><span class="lineNum">      22</span>              :  */</span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC tlaBgGNC">        1278 : InfoCommand::InfoCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        1278 : InfoCommand::InfoCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         500 : {</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : </span>
 <span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        1390 : }</span></span>
@@ -134,10 +134,10 @@
 <span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          44 : {</span></span>
 <span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          82 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
 <span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">          44 :     if (!errors.isEmpty()) {</span></span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC tlaBgUNC">           0 :         return errors;</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :         return errors;</span></span>
 <span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L51"><span class="lineNum">      51</span>              : </span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC tlaBgGNC">          44 :     return errors;</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">          44 :     return errors;</span></span>
 <span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L54"><span class="lineNum">      54</span>              : </span>
 <span id="L55"><span class="lineNum">      55</span>              : /*!</span>
@@ -145,7 +145,7 @@
 <span id="L57"><span class="lineNum">      57</span>              :  *</span>
 <span id="L58"><span class="lineNum">      58</span>              :  * This override returns a pointer to a DeviceInfoService object.</span>
 <span id="L59"><span class="lineNum">      59</span>              :  */</span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC tlaBgUNC">           0 : AbstractPokitService * InfoCommand::getService()</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 : AbstractPokitService * InfoCommand::getService()</span></span>
 <span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 : {</span></span>
 <span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :     Q_ASSERT(device);</span></span>
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :     if (!service) {</span></span>
@@ -160,7 +160,7 @@
 <span id="L72"><span class="lineNum">      72</span>              :  *</span>
 <span id="L73"><span class="lineNum">      73</span>              :  * This override fetches the current device's information, and outputs it in the selected format.</span>
 <span id="L74"><span class="lineNum">      74</span>              :  */</span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC tlaBgGNC">         738 : void InfoCommand::serviceDetailsDiscovered()</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">         738 : void InfoCommand::serviceDetailsDiscovered()</span></span>
 <span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">         324 : {</span></span>
 <span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">        1062 :     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.</span></span>
 <span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">        1062 :     const QLowEnergyController * const controller = (device) ? device-&gt;controller() : nullptr;</span></span>
@@ -198,9 +198,9 @@
 <span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">         216 :             jsonObject.insert(QLatin1String(&quot;deviceUuid&quot;), deviceUuid.toString());</span></span>
 <span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">          44 :         }</span></span>
 <span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         354 :         if (!serialNumber.isNull()) {</span></span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaUNC tlaBgUNC">           0 :             jsonObject.insert(QLatin1String(&quot;serialNumber&quot;), serialNumber);</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaUNC">           0 :             jsonObject.insert(QLatin1String(&quot;serialNumber&quot;), serialNumber);</span></span>
 <span id="L114"><span class="lineNum">     114</span> <span class="tlaUNC">           0 :         }</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC tlaBgGNC">         600 :         std::cout &lt;&lt; QJsonDocument(jsonObject).toJson().toStdString();</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">         600 :         std::cout &lt;&lt; QJsonDocument(jsonObject).toJson().toStdString();</span></span>
 <span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">         354 :     }   break;</span></span>
 <span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">         108 :     case OutputFormat::Text:</span></span>
 <span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">         354 :         if (!deviceName.isEmpty()) {</span></span>
@@ -218,9 +218,9 @@
 <span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">         720 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Firmware revision: %1\n&quot;).arg(service-&gt;firmwareRevision()));</span></span>
 <span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">         720 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Software revision: %1\n&quot;).arg(service-&gt;softwareRevision()));</span></span>
 <span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">         354 :         if (!serialNumber.isNull()) {</span></span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC tlaBgUNC">           0 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;Serial number:     %1\n&quot;).arg(serialNumber));</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;Serial number:     %1\n&quot;).arg(serialNumber));</span></span>
 <span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC">           0 :         }</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC tlaBgGNC">         108 :         break;</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">         108 :         break;</span></span>
 <span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         324 :     }</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">        1062 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>
 <span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">        3132 : }</span></span>
@@ -232,7 +232,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

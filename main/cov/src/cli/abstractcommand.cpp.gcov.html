@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/cli</a> - abstractcommand.cpp<span style="font-size: 80%;"> (source / <a href="abstractcommand.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cli">src/cli</a> - abstractcommand.cpp<span style="font-size: 80%;"> (source / <a href="abstractcommand.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">54.7&nbsp;%</td>
-            <td class="headerCovTableEntry">95</td>
-            <td class="headerCovTableEntry">52</td>
+            <td class="headerCovTableEntryLo">52.1&nbsp;%</td>
+            <td class="headerCovTableEntry">117</td>
+            <td class="headerCovTableEntry">61</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -109,7 +109,7 @@
 <span id="L21"><span class="lineNum">      21</span>              : /*!</span>
 <span id="L22"><span class="lineNum">      22</span>              :  * Constructs a new command with \a parent.</span>
 <span id="L23"><span class="lineNum">      23</span>              :  */</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC tlaBgGNC">       25335 : AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">       25335 : AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),</span></span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">       25335 :     discoveryAgent(new PokitDiscoveryAgent(this))</span></span>
 <span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">       13981 : {</span></span>
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">       31809 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::pokitDeviceDiscovered,</span></span>
@@ -125,9 +125,9 @@
 <span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">       14073 :         this, [](const PokitDiscoveryAgent::Error &amp;error) {</span></span>
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">         337 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth discovery error:&quot;) &lt;&lt; error;</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          66 :         QTimer::singleShot(0, QCoreApplication::instance(), [](){</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC tlaBgUNC">           0 :             QCoreApplication::exit(EXIT_FAILURE);</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :             QCoreApplication::exit(EXIT_FAILURE);</span></span>
 <span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :         });</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC tlaBgGNC">         158 :     });</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         158 :     });</span></span>
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">       31809 : }</span></span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
 <span id="L45"><span class="lineNum">      45</span>              : /*!</span>
@@ -389,12 +389,12 @@
 <span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">         624 :         if (timeout == 0) {</span></span>
 <span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         360 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(QLatin1String(&quot;timeout&quot;))));</span></span>
 <span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">         336 :         } else if (discoveryAgent-&gt;lowEnergyDiscoveryTimeout() == -1) {</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC tlaBgUNC">           0 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Platform does not support Bluetooth scan timeout&quot;);</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC tlaBgGNC">         252 :         } else {</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC">           0 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Platform does not support Bluetooth scan timeout&quot;);</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         252 :         } else {</span></span>
 <span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         336 :             discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</span></span>
 <span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         364 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC tlaBgUNC">           0 :                 discoveryAgent-&gt;lowEnergyDiscoveryTimeout());</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC tlaBgGNC">         252 :         }</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :                 discoveryAgent-&gt;lowEnergyDiscoveryTimeout());</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         252 :         }</span></span>
 <span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         468 :     }</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
 <span id="L312"><span class="lineNum">     312</span>              :     // Return errors for any required options that are absent.</span>
@@ -439,7 +439,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

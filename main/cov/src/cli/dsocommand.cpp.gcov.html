@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/cli</a> - dsocommand.cpp<span style="font-size: 80%;"> (source / <a href="dsocommand.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cli">src/cli</a> - dsocommand.cpp<span style="font-size: 80%;"> (source / <a href="dsocommand.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">72.7&nbsp;%</td>
-            <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryLo">71.4&nbsp;%</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntry">15</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -107,7 +107,7 @@
 <span id="L19"><span class="lineNum">      19</span>              : /*!</span>
 <span id="L20"><span class="lineNum">      20</span>              :  * Construct a new DsoCommand object with \a parent.</span>
 <span id="L21"><span class="lineNum">      21</span>              :  */</span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC tlaBgGNC">        4968 : DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">        4968 : DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        1584 : {</span></span>
 <span id="L24"><span class="lineNum">      24</span>              : </span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        5080 : }</span></span>
@@ -164,10 +164,10 @@
 <span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        1296 :         const QString value = parser.value(QLatin1String(&quot;range&quot;));</span></span>
 <span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         384 :         quint32 sensibleMinimum = 0;</span></span>
 <span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">        1296 :         switch (settings.mode) {</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaUNC tlaBgUNC">           0 :         case DsoService::Mode::Idle:</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaUNC">           0 :         case DsoService::Mode::Idle:</span></span>
 <span id="L80"><span class="lineNum">      80</span> <span class="tlaUNC">           0 :             Q_ASSERT(false); // Not possible, since the mode parsing above never allows Idle.</span></span>
 <span id="L81"><span class="lineNum">      81</span> <span class="tlaUNC">           0 :             break;</span></span>
-<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC tlaBgGNC">        1172 :         case DsoService::Mode::DcVoltage:</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        1172 :         case DsoService::Mode::DcVoltage:</span></span>
 <span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         352 :         case DsoService::Mode::AcVoltage:</span></span>
 <span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">        1188 :             minRangeFunc = minVoltageRange;</span></span>
 <span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">        1188 :             unit = QLatin1String(&quot;V&quot;);</span></span>
@@ -254,7 +254,7 @@
 <span id="L166"><span class="lineNum">     166</span>              :  *</span>
 <span id="L167"><span class="lineNum">     167</span>              :  * This override returns a pointer to a DsoService object.</span>
 <span id="L168"><span class="lineNum">     168</span>              :  */</span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaUNC tlaBgUNC">           0 : AbstractPokitService * DsoCommand::getService()</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaUNC">           0 : AbstractPokitService * DsoCommand::getService()</span></span>
 <span id="L170"><span class="lineNum">     170</span> <span class="tlaUNC">           0 : {</span></span>
 <span id="L171"><span class="lineNum">     171</span> <span class="tlaUNC">           0 :     Q_ASSERT(device);</span></span>
 <span id="L172"><span class="lineNum">     172</span> <span class="tlaUNC">           0 :     if (!service) {</span></span>
@@ -312,7 +312,7 @@
 <span id="L224"><span class="lineNum">     224</span>              : /*!</span>
 <span id="L225"><span class="lineNum">     225</span>              :  * Invoked when \a metadata has been received from the DSO.</span>
 <span id="L226"><span class="lineNum">     226</span>              :  */</span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC tlaBgGNC">        2318 : void DsoCommand::metadataRead(const DsoService::Metadata &amp;data)</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">        2318 : void DsoCommand::metadataRead(const DsoService::Metadata &amp;data)</span></span>
 <span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">        1004 : {</span></span>
 <span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">        3810 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(data.status);</span></span>
 <span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">        3810 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; data.scale;</span></span>
@@ -336,10 +336,10 @@
 <span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         972 :     case DsoService::Mode::AcVoltage: unit = QLatin1String(&quot;Vac&quot;); break;</span></span>
 <span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">         972 :     case DsoService::Mode::DcCurrent: unit = QLatin1String(&quot;Adc&quot;); break;</span></span>
 <span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         972 :     case DsoService::Mode::AcCurrent: unit = QLatin1String(&quot;Aac&quot;); break;</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC">           0 :     default:</span></span>
 <span id="L252"><span class="lineNum">     252</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(No known unit for mode %1 &quot;%2&quot;.)&quot;).arg((int)metadata.mode)</span></span>
 <span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC">           0 :             .arg(DsoService::toString(metadata.mode));</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC tlaBgGNC">        1152 :     }</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">        1152 :     }</span></span>
 <span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">        5544 :     const QString range = service-&gt;toString(metadata.range, metadata.mode);</span></span>
 <span id="L256"><span class="lineNum">     256</span>              : </span>
 <span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">       20880 :     for (const qint16 &amp;sample: samples) {</span></span>
@@ -381,7 +381,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

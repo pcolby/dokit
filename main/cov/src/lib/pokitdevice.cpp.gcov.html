@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/lib</a> - pokitdevice.cpp<span style="font-size: 80%;"> (source / <a href="pokitdevice.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/lib">src/lib</a> - pokitdevice.cpp<span style="font-size: 80%;"> (source / <a href="pokitdevice.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">93.1&nbsp;%</td>
-            <td class="headerCovTableEntry">29</td>
-            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntryHi">90.9&nbsp;%</td>
+            <td class="headerCovTableEntry">55</td>
+            <td class="headerCovTableEntry">50</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -128,7 +128,7 @@
 <span id="L40"><span class="lineNum">      40</span>              :  * PokitDiscoveryAgent instance (or a QBluetoothDeviceDiscoveryAgent), otherwise connection</span>
 <span id="L41"><span class="lineNum">      41</span>              :  * is likely to fail with QLowEnergyController::UnknownRemoteDeviceError.</span>
 <span id="L42"><span class="lineNum">      42</span>              :  */</span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC tlaBgGNC">        1118 : PokitDevice::PokitDevice(const QBluetoothDeviceInfo &amp;deviceInfo, QObject *parent)</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">        1118 : PokitDevice::PokitDevice(const QBluetoothDeviceInfo &amp;deviceInfo, QObject *parent)</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">        1602 :     : QObject(parent), d_ptr(new PokitDevicePrivate(this))</span></span>
 <span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         484 : {</span></span>
 <span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         484 :     Q_D(PokitDevice);</span></span>
@@ -152,7 +152,7 @@
 <span id="L64"><span class="lineNum">      64</span>              :  * Derived classes using this constructor should use PokitDevicePrivate::setController to assign</span>
 <span id="L65"><span class="lineNum">      65</span>              :  * the BLE controller as some point.</span>
 <span id="L66"><span class="lineNum">      66</span>              :  */</span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaUNC tlaBgUNC">           0 : PokitDevice::PokitDevice(PokitDevicePrivate * const d, QObject * const parent)</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaUNC">           0 : PokitDevice::PokitDevice(PokitDevicePrivate * const d, QObject * const parent)</span></span>
 <span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :     : QObject(parent), d_ptr(d)</span></span>
 <span id="L69"><span class="lineNum">      69</span> <span class="tlaUNC">           0 : {</span></span>
 <span id="L70"><span class="lineNum">      70</span>              : </span>
@@ -162,7 +162,7 @@
 <span id="L74"><span class="lineNum">      74</span>              : /*!</span>
 <span id="L75"><span class="lineNum">      75</span>              :  * Destroys this PokitDevice object.</span>
 <span id="L76"><span class="lineNum">      76</span>              :  */</span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC tlaBgGNC">        2882 : PokitDevice::~PokitDevice()</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">        2882 : PokitDevice::~PokitDevice()</span></span>
 <span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">        1176 : {</span></span>
 <span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        2940 :     delete d_ptr;</span></span>
 <span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">        4058 : }</span></span>
@@ -385,8 +385,8 @@
 <span id="L297"><span class="lineNum">     297</span>              : </span>
 <span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">        1872 :     if (this-&gt;controller) {</span></span>
 <span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">         186 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disconnecting signals from previous controller:&quot;)</span></span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaUNC tlaBgUNC">           0 :             &lt;&lt; controller;</span></span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC tlaBgGNC">         162 :         disconnect(this-&gt;controller, nullptr, this, nullptr);</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaUNC">           0 :             &lt;&lt; controller;</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">         162 :         disconnect(this-&gt;controller, nullptr, this, nullptr);</span></span>
 <span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          48 :     }</span></span>
 <span id="L303"><span class="lineNum">     303</span>              : </span>
 <span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">        2184 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Setting new controller:&quot;) &lt;&lt; newController;</span></span>
@@ -396,10 +396,10 @@
 <span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          32 :     }</span></span>
 <span id="L309"><span class="lineNum">     309</span>              : </span>
 <span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">        2060 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Set new controller &quot;%1&quot; (%2) at (%3).)&quot;).arg(</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC tlaBgUNC">           0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></span>
 <span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC">           0 :         controller-&gt;remoteAddress().toString());</span></span>
 <span id="L313"><span class="lineNum">     313</span>              : </span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">        1764 :     connect(controller, &amp;QLowEnergyController::connected,</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">        1764 :     connect(controller, &amp;QLowEnergyController::connected,</span></span>
 <span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">         754 :             this, &amp;PokitDevicePrivate::connected);</span></span>
 <span id="L316"><span class="lineNum">     316</span>              : </span>
 <span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">        1764 :     connect(controller, &amp;QLowEnergyController::connectionUpdated,</span></span>
@@ -438,9 +438,9 @@
 <span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          92 :         return; // Just to avoid the nullptr dereference below.</span></span>
 <span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">          32 :     }</span></span>
 <span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">          62 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connected to &quot;%1&quot; (%2) at (%3).)&quot;).arg(</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC tlaBgUNC">           0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :         controller-&gt;remoteName(), controller-&gt;remoteDeviceUuid().toString(),</span></span>
 <span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :         controller-&gt;remoteAddress().toString());</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC tlaBgGNC">          16 : }</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaGNC">          16 : }</span></span>
 <span id="L356"><span class="lineNum">     356</span>              : </span>
 <span id="L357"><span class="lineNum">     357</span>              : /*!</span>
 <span id="L358"><span class="lineNum">     358</span>              :  * Handle connectionUpdated signals.</span>
@@ -448,9 +448,9 @@
 <span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC">          38 : void PokitDevicePrivate::connectionUpdated(const QLowEnergyConnectionParameters &amp;newParameters) const</span></span>
 <span id="L361"><span class="lineNum">     361</span> <span class="tlaGNC">          44 : {</span></span>
 <span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">          90 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Connection updated:&quot;) &lt;&lt; newParameters.latency()</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC tlaBgUNC">           0 :         &lt;&lt; newParameters.minimumInterval() &lt;&lt; newParameters.maximumInterval()</span></span>
+<span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC">           0 :         &lt;&lt; newParameters.minimumInterval() &lt;&lt; newParameters.maximumInterval()</span></span>
 <span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC">           0 :         &lt;&lt; newParameters.supervisionTimeout();</span></span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC tlaBgGNC">          82 : }</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaGNC">          82 : }</span></span>
 <span id="L366"><span class="lineNum">     366</span>              : </span>
 <span id="L367"><span class="lineNum">     367</span>              : /*!</span>
 <span id="L368"><span class="lineNum">     368</span>              :  * Handle disconnected signals.</span>
@@ -482,8 +482,8 @@
 <span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">          38 : void PokitDevicePrivate::serviceDiscovered(const QBluetoothUuid &amp;newService) const</span></span>
 <span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">          44 : {</span></span>
 <span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">          90 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Service discovered: %1 &quot;%2&quot;)&quot;)</span></span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaUNC tlaBgUNC">           0 :         .arg(newService.toString(), PokitDevice::serviceToString(newService));</span></span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC tlaBgGNC">          82 : }</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaUNC">           0 :         .arg(newService.toString(), PokitDevice::serviceToString(newService));</span></span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">          82 : }</span></span>
 <span id="L399"><span class="lineNum">     399</span>              : </span>
 <span id="L400"><span class="lineNum">     400</span>              : /*!</span>
 <span id="L401"><span class="lineNum">     401</span>              :  * Handle stateChanged signals.</span>
@@ -502,7 +502,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

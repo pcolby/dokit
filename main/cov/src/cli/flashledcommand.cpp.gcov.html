@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/cli</a> - flashledcommand.cpp<span style="font-size: 80%;"> (source / <a href="flashledcommand.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cli">src/cli</a> - flashledcommand.cpp<span style="font-size: 80%;"> (source / <a href="flashledcommand.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryMed">75.0&nbsp;%</td>
-            <td class="headerCovTableEntry">8</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">73.3&nbsp;%</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">11</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -105,7 +105,7 @@
 <span id="L17"><span class="lineNum">      17</span>              : /*!</span>
 <span id="L18"><span class="lineNum">      18</span>              :  * Construct a new FlashLedCommand object with \a parent.</span>
 <span id="L19"><span class="lineNum">      19</span>              :  */</span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC tlaBgGNC">         378 : FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         378 : FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
 <span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">         308 : {</span></span>
 <span id="L22"><span class="lineNum">      22</span>              : </span>
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">         574 : }</span></span>
@@ -131,10 +131,10 @@
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          44 : {</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">          82 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
 <span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          44 :     if (!errors.isEmpty()) {</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC tlaBgUNC">           0 :         return errors;</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 :         return errors;</span></span>
 <span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L48"><span class="lineNum">      48</span>              : </span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC tlaBgGNC">          44 :     return errors;</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">          44 :     return errors;</span></span>
 <span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">          44 : }</span></span>
 <span id="L51"><span class="lineNum">      51</span>              : </span>
 <span id="L52"><span class="lineNum">      52</span>              : /*!</span>
@@ -142,7 +142,7 @@
 <span id="L54"><span class="lineNum">      54</span>              :  *</span>
 <span id="L55"><span class="lineNum">      55</span>              :  * This override returns a pointer to a StatusService object.</span>
 <span id="L56"><span class="lineNum">      56</span>              :  */</span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC tlaBgUNC">           0 : AbstractPokitService * FlashLedCommand::getService()</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC">           0 : AbstractPokitService * FlashLedCommand::getService()</span></span>
 <span id="L58"><span class="lineNum">      58</span> <span class="tlaUNC">           0 : {</span></span>
 <span id="L59"><span class="lineNum">      59</span> <span class="tlaUNC">           0 :     Q_ASSERT(device);</span></span>
 <span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :     if (!service) {</span></span>
@@ -171,7 +171,7 @@
 <span id="L83"><span class="lineNum">      83</span>              : /*!</span>
 <span id="L84"><span class="lineNum">      84</span>              :  * Handles StatusService::deviceLedFlashed events, by outputting the result and exiting.</span>
 <span id="L85"><span class="lineNum">      85</span>              :  */</span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC tlaBgGNC">         114 : void FlashLedCommand::deviceLedFlashed()</span></span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">         114 : void FlashLedCommand::deviceLedFlashed()</span></span>
 <span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">         132 : {</span></span>
 <span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">         246 :     switch (format) {</span></span>
 <span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">          82 :     case OutputFormat::Csv:</span></span>
@@ -194,7 +194,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 

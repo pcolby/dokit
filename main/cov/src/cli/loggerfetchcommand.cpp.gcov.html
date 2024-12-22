@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/cli</a> - loggerfetchcommand.cpp<span style="font-size: 80%;"> (source / <a href="loggerfetchcommand.cpp.func.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cli">src/cli</a> - loggerfetchcommand.cpp<span style="font-size: 80%;"> (source / <a href="loggerfetchcommand.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -66,9 +66,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">71.4&nbsp;%</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryLo">69.2&nbsp;%</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">9</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -102,7 +102,7 @@
 <span id="L14"><span class="lineNum">      14</span>              : // Qt 6.5.0 added new QDateTime::fromSecsSinceEpoch() and fromMSecsSinceEpoch()</span>
 <span id="L15"><span class="lineNum">      15</span>              : // overloads, then Qt 6.6.0 deprectated some of of the older ones.</span>
 <span id="L16"><span class="lineNum">      16</span>              : #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 5, 0))</span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC tlaBgGNC">        4032 :     #define DOKIT_QT_UTC Qt::UTC</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">        4032 :     #define DOKIT_QT_UTC Qt::UTC</span></span>
 <span id="L18"><span class="lineNum">      18</span>              : #else</span>
 <span id="L19"><span class="lineNum">      19</span>              :     #include &lt;QTimeZone&gt;</span>
 <span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">        1344 :     #define DOKIT_QT_UTC QTimeZone::UTC</span></span>
@@ -127,7 +127,7 @@
 <span id="L39"><span class="lineNum">      39</span>              :  *</span>
 <span id="L40"><span class="lineNum">      40</span>              :  * This override returns a pointer to a DataLoggerService object.</span>
 <span id="L41"><span class="lineNum">      41</span>              :  */</span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC tlaBgUNC">           0 : AbstractPokitService * LoggerFetchCommand::getService()</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 : AbstractPokitService * LoggerFetchCommand::getService()</span></span>
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 : {</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :     Q_ASSERT(device);</span></span>
 <span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :     if (!service) {</span></span>
@@ -156,7 +156,7 @@
 <span id="L68"><span class="lineNum">      68</span>              : /*!</span>
 <span id="L69"><span class="lineNum">      69</span>              :  * Invoked when \a metadata has been received from the data logger.</span>
 <span id="L70"><span class="lineNum">      70</span>              :  */</span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC tlaBgGNC">        2888 : void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &amp;data)</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        2888 : void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &amp;data)</span></span>
 <span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">        1244 : {</span></span>
 <span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        4740 :     qCDebug(lc) &lt;&lt; &quot;status:&quot;          &lt;&lt; (int)(data.status);</span></span>
 <span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">        4740 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot;           &lt;&lt; data.scale;</span></span>
@@ -183,10 +183,10 @@
 <span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">         972 :     case DataLoggerService::Mode::DcCurrent: unit = QLatin1String(&quot;Adc&quot;); break;</span></span>
 <span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">         972 :     case DataLoggerService::Mode::AcCurrent: unit = QLatin1String(&quot;Aac&quot;); break;</span></span>
 <span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">        1242 :     case DataLoggerService::Mode::Temperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
-<span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC">           0 :     default:</span></span>
 <span id="L99"><span class="lineNum">      99</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(No known unit for mode %1 &quot;%2&quot;.)&quot;).arg((int)metadata.mode)</span></span>
 <span id="L100"><span class="lineNum">     100</span> <span class="tlaUNC">           0 :             .arg(DataLoggerService::toString(metadata.mode));</span></span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC tlaBgGNC">        1440 :     }</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">        1440 :     }</span></span>
 <span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">        6930 :     const QString range = service-&gt;toString(metadata.range, metadata.mode);</span></span>
 <span id="L103"><span class="lineNum">     103</span>              : </span>
 <span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">       26100 :     for (const qint16 &amp;sample: samples) {</span></span>
@@ -234,7 +234,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
           </table>
           <br>
 
