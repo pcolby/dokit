@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - src/cli/abstractcommand.h</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/cli">src/cli</a> - abstractcommand.h<span style="font-size: 80%;"> (source / <a href="abstractcommand.h.func.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Project:</td>
+            <td class="headerValue">Dokit</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Version:</td>
+            <td class="headerValue">
+             <script>
+               function changeVersion(event) {
+                          console.log(event);
+                          newUrl = `../../../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
+                          console.log(`Navigating to ${newUrl}`);
+                          window.location.assign(newUrl);
+               }
+             </script>
+             <select id="version" autocomplete="off" onchange="changeVersion(event)">
+              <option value="main">dev</option>
+              <option value="0.5.3" selected>v0.5.3</option>
+              <option value="0.5.2">v0.5.2</option>
+              <option value="0.5.1">v0.5.1</option>
+              <option value="0.5.0">v0.5.0</option>
+              <option value="0.4.0">v0.4.0</option>
+              <option value="0.3.0">v0.3.0</option>
+              <option value="0.2.0">v0.2.0</option>
+              <option value="0.1.2">v0.1.2</option>
+              <option value="0.1.1">v0.1.1</option>
+              <option value="0.1.0">v0.1.0</option>
+             </select>
+             <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
+              <option value="doc">User docs</option>
+              <option value="int">Internal</option>
+              <option value="cov" selected>Coverage</option>
+             </select>
+            </td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+                  <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // SPDX-FileCopyrightText: 2022-2024 Paul Colby &lt;git@colby.id.au&gt;</span>
+<span id="L2"><span class="lineNum">       2</span>              : // SPDX-License-Identifier: LGPL-3.0-or-later</span>
+<span id="L3"><span class="lineNum">       3</span>              : </span>
+<span id="L4"><span class="lineNum">       4</span>              : #ifndef DOKIT_ABSTRACTCOMMAND_H</span>
+<span id="L5"><span class="lineNum">       5</span>              : #define DOKIT_ABSTRACTCOMMAND_H</span>
+<span id="L6"><span class="lineNum">       6</span>              : </span>
+<span id="L7"><span class="lineNum">       7</span>              : #include &lt;QBluetoothDeviceInfo&gt;</span>
+<span id="L8"><span class="lineNum">       8</span>              : #include &lt;QCommandLineParser&gt;</span>
+<span id="L9"><span class="lineNum">       9</span>              : #include &lt;QLoggingCategory&gt;</span>
+<span id="L10"><span class="lineNum">      10</span>              : #include &lt;QObject&gt;</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : class PokitDiscoveryAgent;</span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">       16764 : class AbstractCommand : public QObject</span></span>
+<span id="L15"><span class="lineNum">      15</span>              : {</span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">         828 :     Q_OBJECT</span></span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              : public:</span>
+<span id="L19"><span class="lineNum">      19</span>              :     /// Supported output formats.</span>
+<span id="L20"><span class="lineNum">      20</span>              :     enum class OutputFormat {</span>
+<span id="L21"><span class="lineNum">      21</span>              :         Csv,  ///&lt; RFC 4180 compliant CSV text.</span>
+<span id="L22"><span class="lineNum">      22</span>              :         Json, ///&lt; RFC 8259 compliant JSON text.</span>
+<span id="L23"><span class="lineNum">      23</span>              :         Text, ///&lt; Plain unstructured text.</span>
+<span id="L24"><span class="lineNum">      24</span>              :     };</span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span>              :     explicit AbstractCommand(QObject * const parent = nullptr);</span>
+<span id="L27"><span class="lineNum">      27</span>              : </span>
+<span id="L28"><span class="lineNum">      28</span>              :     virtual QStringList requiredOptions(const QCommandLineParser &amp;parser) const;</span>
+<span id="L29"><span class="lineNum">      29</span>              :     virtual QStringList supportedOptions(const QCommandLineParser &amp;parser) const;</span>
+<span id="L30"><span class="lineNum">      30</span>              : </span>
+<span id="L31"><span class="lineNum">      31</span>              :     static QString escapeCsvField(const QString &amp;field);</span>
+<span id="L32"><span class="lineNum">      32</span>              : </span>
+<span id="L33"><span class="lineNum">      33</span>              :     template&lt;typename R&gt;</span>
+<span id="L34"><span class="lineNum">      34</span>              :     static quint32 parseNumber(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum = 0);</span>
+<span id="L35"><span class="lineNum">      35</span>              : </span>
+<span id="L36"><span class="lineNum">      36</span>              : public slots:</span>
+<span id="L37"><span class="lineNum">      37</span>              :     virtual QStringList processOptions(const QCommandLineParser &amp;parser);</span>
+<span id="L38"><span class="lineNum">      38</span>              :     virtual bool start() = 0;</span>
+<span id="L39"><span class="lineNum">      39</span>              : </span>
+<span id="L40"><span class="lineNum">      40</span>              : protected:</span>
+<span id="L41"><span class="lineNum">      41</span>              :     QString deviceToScanFor; ///&lt; Device (if any) that were passed to processOptions().</span>
+<span id="L42"><span class="lineNum">      42</span>              :     PokitDiscoveryAgent * discoveryAgent; ///&lt; Agent for Pokit device descovery.</span>
+<span id="L43"><span class="lineNum">      43</span>              :     OutputFormat format { OutputFormat::Text }; ///&lt; Selected output format.</span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">       57708 :     static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></span>
+<span id="L45"><span class="lineNum">      45</span>              : </span>
+<span id="L46"><span class="lineNum">      46</span>              : protected slots:</span>
+<span id="L47"><span class="lineNum">      47</span>              :     virtual void deviceDiscovered(const QBluetoothDeviceInfo &amp;info) = 0;</span>
+<span id="L48"><span class="lineNum">      48</span>              :     virtual void deviceDiscoveryFinished() = 0;</span>
+<span id="L49"><span class="lineNum">      49</span>              : </span>
+<span id="L50"><span class="lineNum">      50</span>              :     friend class TestAbstractCommand;</span>
+<span id="L51"><span class="lineNum">      51</span>              : };</span>
+<span id="L52"><span class="lineNum">      52</span>              : </span>
+<span id="L53"><span class="lineNum">      53</span>              : #endif // DOKIT_ABSTRACTCOMMAND_H</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.2-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
