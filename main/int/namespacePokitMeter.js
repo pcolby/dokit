@@ -29,9 +29,10 @@ var namespacePokitMeter =
       [ "_60V", "namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea4c8cbd97f19afa487f3b6c98342fd09d", null ],
       [ "AutoRange", "namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea5c8523b038abf04d86fcc5358cd893cf", null ]
     ] ],
-    [ "maxValue", "namespacePokitMeter.html#a86a4eb262b1a9fde417acdee8eea00b7", null ],
-    [ "maxValue", "namespacePokitMeter.html#afdc7a546b276b7533a115aacecc82ff8", null ],
-    [ "maxValue", "namespacePokitMeter.html#a91cdd2d4576e4278be157c6ca12249d3", null ],
+    [ "maxValue", "namespacePokitMeter.html#adebf441800fe17506c357ebf019310bf", null ],
+    [ "maxValue", "namespacePokitMeter.html#a552a46fc8c4f5a64badc41f262b85ac5", null ],
+    [ "maxValue", "namespacePokitMeter.html#a85b0b37b062e8fbb0fd55405699f57fb", null ],
+    [ "Q_LOGGING_CATEGORY", "namespacePokitMeter.html#ad74c49335630887bd7d854b0a9cdab67", null ],
     [ "toString", "namespacePokitMeter.html#a3c3db7b94b6f44af24f4a23e87a3569e", null ],
     [ "toString", "namespacePokitMeter.html#adf4c2051d0ce0fe5a53fd682cf97f8a8", null ],
     [ "toString", "namespacePokitMeter.html#a3038daa52676f52266163577f07954e5", null ]

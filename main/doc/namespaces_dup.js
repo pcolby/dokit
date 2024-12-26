@@ -29,9 +29,9 @@ var namespaces_dup =
         [ "_60V", "namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea4c8cbd97f19afa487f3b6c98342fd09d", null ],
         [ "AutoRange", "namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea5c8523b038abf04d86fcc5358cd893cf", null ]
       ] ],
-      [ "maxValue", "namespacePokitMeter.html#a86a4eb262b1a9fde417acdee8eea00b7", null ],
-      [ "maxValue", "namespacePokitMeter.html#afdc7a546b276b7533a115aacecc82ff8", null ],
-      [ "maxValue", "namespacePokitMeter.html#a91cdd2d4576e4278be157c6ca12249d3", null ],
+      [ "maxValue", "namespacePokitMeter.html#adebf441800fe17506c357ebf019310bf", null ],
+      [ "maxValue", "namespacePokitMeter.html#a552a46fc8c4f5a64badc41f262b85ac5", null ],
+      [ "maxValue", "namespacePokitMeter.html#a85b0b37b062e8fbb0fd55405699f57fb", null ],
       [ "toString", "namespacePokitMeter.html#a3c3db7b94b6f44af24f4a23e87a3569e", null ],
       [ "toString", "namespacePokitMeter.html#adf4c2051d0ce0fe5a53fd682cf97f8a8", null ],
       [ "toString", "namespacePokitMeter.html#a3038daa52676f52266163577f07954e5", null ]
@@ -78,10 +78,10 @@ var namespaces_dup =
         [ "_600V", "namespacePokitPro.html#a68ddba45fec73a3391f241f2da38e78aad442483cf36c44fc3e34a968be25cbb0", null ],
         [ "AutoRange", "namespacePokitPro.html#a68ddba45fec73a3391f241f2da38e78aa5c8523b038abf04d86fcc5358cd893cf", null ]
       ] ],
-      [ "maxValue", "namespacePokitPro.html#a377d083e0bc3e7972ba1476914dda1b5", null ],
-      [ "maxValue", "namespacePokitPro.html#a4e9682c1346c8ee45c1cfc810cb7e4b6", null ],
-      [ "maxValue", "namespacePokitPro.html#a78ce6ea577673c1a17e0ee773ebd7ebe", null ],
-      [ "maxValue", "namespacePokitPro.html#a96fabdab4ab96dc695135b61d2dff175", null ],
+      [ "maxValue", "namespacePokitPro.html#ae2ab8138755e0f9a6876f3bbc61fad60", null ],
+      [ "maxValue", "namespacePokitPro.html#a6e838cc9f950ff847384f5515607ddda", null ],
+      [ "maxValue", "namespacePokitPro.html#a05e5f6a0b19a7f9040e0dfac636fe081", null ],
+      [ "maxValue", "namespacePokitPro.html#ab138b9ef321341c89db0b187dda247e1", null ],
       [ "toString", "namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4", null ],
       [ "toString", "namespacePokitPro.html#afd55d7ea5f6a6781dd8416cd8a8c74a3", null ],
       [ "toString", "namespacePokitPro.html#ae6547e17145d57e3b18aa134e090d400", null ],

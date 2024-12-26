@@ -139,10 +139,11 @@ $(function(){initNavTree('pokitmeter_8cpp.html',''); initResizable(true); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="pokitmeter_8h_source.html">qtpokit/pokitmeter.h</a>&quot;</code><br />
 <code>#include &lt;QCoreApplication&gt;</code><br />
+<code>#include &lt;QLoggingCategory&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pokitmeter.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="pokitmeter_8cpp__incl.svg" width="374" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="pokitmeter_8cpp__incl.svg" width="492" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -157,23 +158,26 @@ Functions</h2></td></tr>
 QTPOKIT_EXPORT <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PokitMeter::toString</b> (const <a class="el" href="namespacePokitMeter.html#a22b467360c970e645f6a111b34d50a92">CurrentRange</a> &amp;range)</td></tr>
 <tr class="memdesc:a3c3db7b94b6f44af24f4a23e87a3569e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string. <br /></td></tr>
 <tr class="separator:a3c3db7b94b6f44af24f4a23e87a3569e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86a4eb262b1a9fde417acdee8eea00b7" id="r_a86a4eb262b1a9fde417acdee8eea00b7"><td class="memItemLeft" align="right" valign="top">QTPOKIT_EXPORT <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePokitMeter.html#a86a4eb262b1a9fde417acdee8eea00b7">PokitMeter::maxValue</a> (const <a class="el" href="namespacePokitMeter.html#a22b467360c970e645f6a111b34d50a92">CurrentRange</a> &amp;range)</td></tr>
-<tr class="memdesc:a86a4eb262b1a9fde417acdee8eea00b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in (integer) microamps, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a86a4eb262b1a9fde417acdee8eea00b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adebf441800fe17506c357ebf019310bf" id="r_adebf441800fe17506c357ebf019310bf"><td class="memItemLeft" align="right" valign="top"><a id="adebf441800fe17506c357ebf019310bf" name="adebf441800fe17506c357ebf019310bf"></a>
+QTPOKIT_EXPORT quint32&#160;</td><td class="memItemRight" valign="bottom"><b>PokitMeter::maxValue</b> (const <a class="el" href="namespacePokitMeter.html#a22b467360c970e645f6a111b34d50a92">CurrentRange</a> &amp;range)</td></tr>
+<tr class="memdesc:adebf441800fe17506c357ebf019310bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in microamps, or 0 if <em>range</em> is not a known value for Pokit Meter devices. <br /></td></tr>
+<tr class="separator:adebf441800fe17506c357ebf019310bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf4c2051d0ce0fe5a53fd682cf97f8a8" id="r_adf4c2051d0ce0fe5a53fd682cf97f8a8"><td class="memItemLeft" align="right" valign="top"><a id="adf4c2051d0ce0fe5a53fd682cf97f8a8" name="adf4c2051d0ce0fe5a53fd682cf97f8a8"></a>
 QTPOKIT_EXPORT <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PokitMeter::toString</b> (const <a class="el" href="namespacePokitMeter.html#aacf3005969c4417f7eaeeeaf83d5e047">ResistanceRange</a> &amp;range)</td></tr>
 <tr class="memdesc:adf4c2051d0ce0fe5a53fd682cf97f8a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string. <br /></td></tr>
 <tr class="separator:adf4c2051d0ce0fe5a53fd682cf97f8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdc7a546b276b7533a115aacecc82ff8" id="r_afdc7a546b276b7533a115aacecc82ff8"><td class="memItemLeft" align="right" valign="top">QTPOKIT_EXPORT <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePokitMeter.html#afdc7a546b276b7533a115aacecc82ff8">PokitMeter::maxValue</a> (const <a class="el" href="namespacePokitMeter.html#aacf3005969c4417f7eaeeeaf83d5e047">ResistanceRange</a> &amp;range)</td></tr>
-<tr class="memdesc:afdc7a546b276b7533a115aacecc82ff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in (integer) ohms, or the string "Auto".  <br /></td></tr>
-<tr class="separator:afdc7a546b276b7533a115aacecc82ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a552a46fc8c4f5a64badc41f262b85ac5" id="r_a552a46fc8c4f5a64badc41f262b85ac5"><td class="memItemLeft" align="right" valign="top"><a id="a552a46fc8c4f5a64badc41f262b85ac5" name="a552a46fc8c4f5a64badc41f262b85ac5"></a>
+QTPOKIT_EXPORT quint32&#160;</td><td class="memItemRight" valign="bottom"><b>PokitMeter::maxValue</b> (const <a class="el" href="namespacePokitMeter.html#aacf3005969c4417f7eaeeeaf83d5e047">ResistanceRange</a> &amp;range)</td></tr>
+<tr class="memdesc:a552a46fc8c4f5a64badc41f262b85ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in ohms, or 0 if <em>range</em> is not a known value for Pokit Meter devices. <br /></td></tr>
+<tr class="separator:a552a46fc8c4f5a64badc41f262b85ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3038daa52676f52266163577f07954e5" id="r_a3038daa52676f52266163577f07954e5"><td class="memItemLeft" align="right" valign="top"><a id="a3038daa52676f52266163577f07954e5" name="a3038daa52676f52266163577f07954e5"></a>
 QTPOKIT_EXPORT <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PokitMeter::toString</b> (const <a class="el" href="namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfee">VoltageRange</a> &amp;range)</td></tr>
 <tr class="memdesc:a3038daa52676f52266163577f07954e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>range</em> as a user-friendly string. <br /></td></tr>
 <tr class="separator:a3038daa52676f52266163577f07954e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91cdd2d4576e4278be157c6ca12249d3" id="r_a91cdd2d4576e4278be157c6ca12249d3"><td class="memItemLeft" align="right" valign="top">QTPOKIT_EXPORT <a class="elRef" href="https://doc.qt.io/qt-5/qvariant.html">QVariant</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePokitMeter.html#a91cdd2d4576e4278be157c6ca12249d3">PokitMeter::maxValue</a> (const <a class="el" href="namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfee">VoltageRange</a> &amp;range)</td></tr>
-<tr class="memdesc:a91cdd2d4576e4278be157c6ca12249d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in (integer) millivolts, or the string "Auto".  <br /></td></tr>
-<tr class="separator:a91cdd2d4576e4278be157c6ca12249d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85b0b37b062e8fbb0fd55405699f57fb" id="r_a85b0b37b062e8fbb0fd55405699f57fb"><td class="memItemLeft" align="right" valign="top"><a id="a85b0b37b062e8fbb0fd55405699f57fb" name="a85b0b37b062e8fbb0fd55405699f57fb"></a>
+QTPOKIT_EXPORT quint32&#160;</td><td class="memItemRight" valign="bottom"><b>PokitMeter::maxValue</b> (const <a class="el" href="namespacePokitMeter.html#ab9abf7a50f13c9cfb1e1b4c49c16dfee">VoltageRange</a> &amp;range)</td></tr>
+<tr class="memdesc:a85b0b37b062e8fbb0fd55405699f57fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the maximum value for <em>range</em> in millivolts, or 0 if <em>range</em> is not a known value for Pokit Meter devices. <br /></td></tr>
+<tr class="separator:a85b0b37b062e8fbb0fd55405699f57fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Declares the <a class="el" href="namespacePokitMeter.html" title="Encapsulates details specific to Pokit Meter devices.">PokitMeter</a> namespace. </p>

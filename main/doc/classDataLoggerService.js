@@ -29,7 +29,7 @@ var classDataLoggerService =
     [ "enableMetadataNotifications", "classDataLoggerService.html#a0c63e3cdbc6b39ab68b8442b77938049", null ],
     [ "enableReadingNotifications", "classDataLoggerService.html#a2b9d2cad9b7b937a2fd20517c5ba825e", null ],
     [ "fetchSamples", "classDataLoggerService.html#a4c9e68b94b0fba82a979bb7e0b0adab4", null ],
-    [ "maxValue", "classDataLoggerService.html#ab2fb8703f5724589cdace781b47bb96d", null ],
+    [ "maxValue", "classDataLoggerService.html#a975b86a17e910d91a60461032b096d4d", null ],
     [ "metadata", "classDataLoggerService.html#aa94364928c317c1769e66eaf8635db92", null ],
     [ "metadataRead", "classDataLoggerService.html#a637460cb26b0d448760544ecba6de468", null ],
     [ "readCharacteristics", "classDataLoggerService.html#a661ebfee183fa2f9c90f71696d66a8bf", null ],

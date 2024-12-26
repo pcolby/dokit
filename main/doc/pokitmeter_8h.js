@@ -28,9 +28,9 @@ var pokitmeter_8h =
       [ "_60V", "pokitmeter_8h.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea4c8cbd97f19afa487f3b6c98342fd09d", null ],
       [ "AutoRange", "pokitmeter_8h.html#ab9abf7a50f13c9cfb1e1b4c49c16dfeea5c8523b038abf04d86fcc5358cd893cf", null ]
     ] ],
-    [ "maxValue", "pokitmeter_8h.html#a86a4eb262b1a9fde417acdee8eea00b7", null ],
-    [ "maxValue", "pokitmeter_8h.html#afdc7a546b276b7533a115aacecc82ff8", null ],
-    [ "maxValue", "pokitmeter_8h.html#a91cdd2d4576e4278be157c6ca12249d3", null ],
+    [ "maxValue", "pokitmeter_8h.html#adebf441800fe17506c357ebf019310bf", null ],
+    [ "maxValue", "pokitmeter_8h.html#a552a46fc8c4f5a64badc41f262b85ac5", null ],
+    [ "maxValue", "pokitmeter_8h.html#a85b0b37b062e8fbb0fd55405699f57fb", null ],
     [ "operator+", "pokitmeter_8h.html#ae19f1ec82fb666136d0861742110211c", null ],
     [ "operator+", "pokitmeter_8h.html#aad3e78653e7dcfdaebe934865a9d44c4", null ],
     [ "operator+", "pokitmeter_8h.html#af783364356175e31c47e2f83c73440a7", null ],

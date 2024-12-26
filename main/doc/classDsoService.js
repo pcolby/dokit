@@ -28,7 +28,7 @@ var classDsoService =
     [ "enableMetadataNotifications", "classDsoService.html#a67ca97370da5420c62591c3d8614a26d", null ],
     [ "enableReadingNotifications", "classDsoService.html#ab0d0c4d4b41617bc23556b800dbafe29", null ],
     [ "fetchSamples", "classDsoService.html#a5da2f9ae60f06d3b904d6d239bacd09e", null ],
-    [ "maxValue", "classDsoService.html#abd84505a298a555e421d9a80d59c6216", null ],
+    [ "maxValue", "classDsoService.html#a89dd8027581790c3e65c13ced786d2ee", null ],
     [ "metadata", "classDsoService.html#afda4aa4a55ff0af205f10ccf8c77cbf5", null ],
     [ "metadataRead", "classDsoService.html#a19e4f10c45794762aa5b692aceee9e6c", null ],
     [ "readCharacteristics", "classDsoService.html#aad086e99bfe4fe2e8d35d49c1e4d340b", null ],

@@ -27,7 +27,7 @@ var classMultimeterService =
     [ "MultimeterService", "classMultimeterService.html#a8121655f13ddf00fc2a65921b5ebc67b", null ],
     [ "disableReadingNotifications", "classMultimeterService.html#ae51553919b7d659cf6d0ce1210503555", null ],
     [ "enableReadingNotifications", "classMultimeterService.html#a321c4fdade8d934ac2e1daec3be174fb", null ],
-    [ "maxValue", "classMultimeterService.html#a80dd2c9eed94973bbc532ee42daee1fb", null ],
+    [ "maxValue", "classMultimeterService.html#afb8e02e67d3adfc010796904052689e0", null ],
     [ "readCharacteristics", "classMultimeterService.html#a58831d3ca3e6df355fcd6fd1bb8d5e68", null ],
     [ "reading", "classMultimeterService.html#ad7623c59f41fc099bebd3447637a904e", null ],
     [ "readingRead", "classMultimeterService.html#a713bc310057b845399ed495ad5df2663", null ],
