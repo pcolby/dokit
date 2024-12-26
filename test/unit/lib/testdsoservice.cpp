@@ -80,20 +80,20 @@ void TestDsoService::maxValue_data()
     QTest::addColumn<PokitProduct>("product");
     QTest::addColumn<quint8>("range");
     QTest::addColumn<DsoService::Mode>("mode");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
     // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::maxValue* functions).
     // So here we just need to test that the right product's range is selected.
     QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                          << DsoService::Mode::Idle << QVariant();
+                          << DsoService::Mode::Idle << (quint32)0;
     QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
-                                   << DsoService::Mode::AcVoltage << QVariant(300);
+                                   << DsoService::Mode::AcVoltage << (quint32)300;
     QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
-                                 << DsoService::Mode::AcVoltage<< QVariant(600000);
+                                 << DsoService::Mode::AcVoltage<< (quint32)600000;
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                 << DsoService::Mode::DcCurrent << QVariant(150000);
+                                 << DsoService::Mode::DcCurrent << (quint32)150000;
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
-                               << DsoService::Mode::DcCurrent << QVariant(500);
+                               << DsoService::Mode::DcCurrent << (quint32)500;
 }
 
 void TestDsoService::maxValue()
@@ -101,7 +101,7 @@ void TestDsoService::maxValue()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(DsoService::Mode, mode);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
 
     // Test the static version.
     QCOMPARE(DsoService::maxValue(product, range, mode), expected);

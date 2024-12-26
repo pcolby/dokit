@@ -15,7 +15,7 @@ inline bool isGitHubActionsRunner()
 }
 
 /*!
- * Returns the host operating system's version information if executing on a GitHub Actions runners, otherwise
+ * Returns the host operating system's version information if executing on a GitHub Actions runner, otherwise
  * a QOperatingSystemVersion::Unknown version.
  */
 inline QOperatingSystemVersion gitHubActionsRunnerOsVersion()

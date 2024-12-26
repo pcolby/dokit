@@ -96,30 +96,30 @@ void TestMultimeterService::maxValue_data()
     QTest::addColumn<PokitProduct>("product");
     QTest::addColumn<quint8>("range");
     QTest::addColumn<MultimeterService::Mode>("mode");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
     // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::maxValue* functions).
     // So here we just need to test that the right product's range is selected.
     QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                          << MultimeterService::Mode::Idle << QVariant();
+                          << MultimeterService::Mode::Idle << (quint32)0;
     QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
-                                   << MultimeterService::Mode::AcVoltage << QVariant(300);
+                                   << MultimeterService::Mode::AcVoltage << (quint32)300;
     QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
-                                 << MultimeterService::Mode::AcVoltage<< QVariant(600000);
+                                 << MultimeterService::Mode::AcVoltage<< (quint32)600000;
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                 << MultimeterService::Mode::DcCurrent << QVariant(150000);
+                                 << MultimeterService::Mode::DcCurrent << (quint32)150000;
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
-                               << MultimeterService::Mode::DcCurrent << QVariant(500);
+                               << MultimeterService::Mode::DcCurrent << (quint32)500;
     QTest::addRow("Resistance:Meter") << PokitProduct::PokitMeter << +PokitMeter::ResistanceRange::_470K
-                                      << MultimeterService::Mode::Resistance << QVariant(470000);
+                                      << MultimeterService::Mode::Resistance << (quint32)470000;
     QTest::addRow("Resistance:Pro") << PokitProduct::PokitPro << +PokitPro::ResistanceRange::_3M
-                                    << MultimeterService::Mode::Resistance << QVariant(3000000);
+                                    << MultimeterService::Mode::Resistance << (quint32)3000000;
     QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                 << MultimeterService::Mode::Temperature << QVariant();
+                                 << MultimeterService::Mode::Temperature << (quint32)0;
     QTest::addRow("Capacitance") << PokitProduct::PokitPro << +PokitPro::CapacitanceRange::_1mF
-                                 << MultimeterService::Mode::Capacitance << QVariant(1000000);
+                                 << MultimeterService::Mode::Capacitance << (quint32)1000000;
     QTest::addRow("ExtTemperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                    << MultimeterService::Mode::ExternalTemperature << QVariant();
+                                    << MultimeterService::Mode::ExternalTemperature << (quint32)0;
 }
 
 void TestMultimeterService::maxValue()
@@ -127,7 +127,7 @@ void TestMultimeterService::maxValue()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(MultimeterService::Mode, mode);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
 
     // Test the static version.
     QCOMPARE(MultimeterService::maxValue(product, range, mode), expected);
@@ -255,7 +255,7 @@ void TestMultimeterService::parseReading_data()
         };
 
     // Made-up sample *extended* from a real Pokit Pro device (by appending 3 erroneous bytes).
-    QTest::addRow("PokitPro")
+    QTest::addRow("PokitProExtra")
         << QByteArray("\x00\x94\x89\xfa\x3b\x02\x00\x01\x02\x03", 10)
         << MultimeterService::Reading{
            MultimeterService::MeterStatus::AutoRangeOff, 0.007645795122f,

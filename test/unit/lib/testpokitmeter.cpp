@@ -32,20 +32,20 @@ void TestPokitMeter::toString_Current()
 void TestPokitMeter::maxValue_Current_data()
 {
     QTest::addColumn<PokitMeter::CurrentRange>("range");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
-    QTest::addRow("10mA")  << PokitMeter::CurrentRange::_10mA     << QVariant(  10000);
-    QTest::addRow("30mA")  << PokitMeter::CurrentRange::_30mA     << QVariant(  30000);
-    QTest::addRow("150mA") << PokitMeter::CurrentRange::_150mA    << QVariant( 150000);
-    QTest::addRow("300ma") << PokitMeter::CurrentRange::_300mA    << QVariant( 300000);
-    QTest::addRow("2A")    << PokitMeter::CurrentRange::_2A       << QVariant(2000000);
-    QTest::addRow("auto")  << PokitMeter::CurrentRange::AutoRange << QVariant(QStringLiteral("Auto"));
+    QTest::addRow("10mA")  << PokitMeter::CurrentRange::_10mA     << (quint32)   10'000;
+    QTest::addRow("30mA")  << PokitMeter::CurrentRange::_30mA     << (quint32)   30'000;
+    QTest::addRow("150mA") << PokitMeter::CurrentRange::_150mA    << (quint32)  150'000;
+    QTest::addRow("300ma") << PokitMeter::CurrentRange::_300mA    << (quint32)  300'000;
+    QTest::addRow("2A")    << PokitMeter::CurrentRange::_2A       << (quint32)2'000'000;
+    QTest::addRow("auto")  << PokitMeter::CurrentRange::AutoRange << (quint32)2'000'000;
 }
 
 void TestPokitMeter::maxValue_Current()
 {
     QFETCH(PokitMeter::CurrentRange, range);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
     QCOMPARE(maxValue(range), expected);
 }
 
@@ -75,23 +75,23 @@ void TestPokitMeter::toString_Resistance()
 void TestPokitMeter::maxValue_Resistance_data()
 {
     QTest::addColumn<PokitMeter::ResistanceRange>("range");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
-    QTest::addRow("160Ω")  << PokitMeter::ResistanceRange::_160      << QVariant(    160);
-    QTest::addRow("330Ω")  << PokitMeter::ResistanceRange::_330      << QVariant(    330);
-    QTest::addRow("890Ω")  << PokitMeter::ResistanceRange::_890      << QVariant(    890);
-    QTest::addRow("1.5KΩ") << PokitMeter::ResistanceRange::_1K5      << QVariant(   1500);
-    QTest::addRow("10KΩ")  << PokitMeter::ResistanceRange::_10K      << QVariant(  10000);
-    QTest::addRow("100KΩ") << PokitMeter::ResistanceRange::_100K     << QVariant( 100000);
-    QTest::addRow("470KΩ") << PokitMeter::ResistanceRange::_470K     << QVariant( 470000);
-    QTest::addRow("1MΩ")   << PokitMeter::ResistanceRange::_1M       << QVariant(1000000);
-    QTest::addRow("auto")  << PokitMeter::ResistanceRange::AutoRange << QVariant(QStringLiteral("Auto"));
+    QTest::addRow("160Ω")  << PokitMeter::ResistanceRange::_160      << (quint32)      160;
+    QTest::addRow("330Ω")  << PokitMeter::ResistanceRange::_330      << (quint32)      330;
+    QTest::addRow("890Ω")  << PokitMeter::ResistanceRange::_890      << (quint32)      890;
+    QTest::addRow("1.5KΩ") << PokitMeter::ResistanceRange::_1K5      << (quint32)    1'500;
+    QTest::addRow("10KΩ")  << PokitMeter::ResistanceRange::_10K      << (quint32)   10'000;
+    QTest::addRow("100KΩ") << PokitMeter::ResistanceRange::_100K     << (quint32)  100'000;
+    QTest::addRow("470KΩ") << PokitMeter::ResistanceRange::_470K     << (quint32)  470'000;
+    QTest::addRow("1MΩ")   << PokitMeter::ResistanceRange::_1M       << (quint32)1'000'000;
+    QTest::addRow("auto")  << PokitMeter::ResistanceRange::AutoRange << (quint32)1'000'000;
 }
 
 void TestPokitMeter::maxValue_Resistance()
 {
     QFETCH(PokitMeter::ResistanceRange, range);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
     QCOMPARE(maxValue(range), expected);
 }
 
@@ -119,21 +119,21 @@ void TestPokitMeter::toString_Voltage()
 void TestPokitMeter::maxValue_Voltage_data()
 {
     QTest::addColumn<PokitMeter::VoltageRange>("range");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
-    QTest::addRow("300mV") << PokitMeter::VoltageRange::_300mV    << QVariant(  300);
-    QTest::addRow("2V")    << PokitMeter::VoltageRange::_2V       << QVariant( 2000);
-    QTest::addRow("6V")    << PokitMeter::VoltageRange::_6V       << QVariant( 6000);
-    QTest::addRow("12V")   << PokitMeter::VoltageRange::_12V      << QVariant(12000);
-    QTest::addRow("30V")   << PokitMeter::VoltageRange::_30V      << QVariant(30000);
-    QTest::addRow("60V")   << PokitMeter::VoltageRange::_60V      << QVariant(60000);
-    QTest::addRow("auto")  << PokitMeter::VoltageRange::AutoRange << QVariant(QStringLiteral("Auto"));
+    QTest::addRow("300mV") << PokitMeter::VoltageRange::_300mV    << (quint32)   300;
+    QTest::addRow("2V")    << PokitMeter::VoltageRange::_2V       << (quint32) 2'000;
+    QTest::addRow("6V")    << PokitMeter::VoltageRange::_6V       << (quint32) 6'000;
+    QTest::addRow("12V")   << PokitMeter::VoltageRange::_12V      << (quint32)12'000;
+    QTest::addRow("30V")   << PokitMeter::VoltageRange::_30V      << (quint32)30'000;
+    QTest::addRow("60V")   << PokitMeter::VoltageRange::_60V      << (quint32)60'000;
+    QTest::addRow("auto")  << PokitMeter::VoltageRange::AutoRange << (quint32)60'000;
 }
 
 void TestPokitMeter::maxValue_Voltage()
 {
     QFETCH(PokitMeter::VoltageRange, range);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
     QCOMPARE(maxValue(range), expected);
 }
 

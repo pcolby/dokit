@@ -58,8 +58,8 @@ void DeviceCommand::disconnect(int exitCode)
  */
 
 #define DOKIT_CLI_IF_LESS_THAN_RETURN(value, ns, label) \
-if (value <= ns::maxValue(label).toUInt()) { \
-        return label; \
+if (value <= ns::maxValue(label)) { \
+    return label; \
 }
 
 /**

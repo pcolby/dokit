@@ -13,8 +13,6 @@
 
 #include "abstractpokitservice_p.h"
 
-#include <optional>
-
 QTPOKIT_BEGIN_NAMESPACE
 
 class QTPOKIT_EXPORT StatusServicePrivate : public AbstractPokitServicePrivate

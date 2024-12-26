@@ -2,7 +2,9 @@
 
 ## [Unreleased][]
 
-_Coming soon..._
+### Changed
+
+- `maxValue` methods now return `quint32` instead of `QVariant`.
 
 ## [0.5.3][] (2024-12-23)
 

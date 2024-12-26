@@ -18,22 +18,22 @@ QTPOKIT_EXPORT PokitProduct pokitProduct(const QLowEnergyController &controller)
 
 namespace CapacitanceRange {
     QTPOKIT_EXPORT QString toString(const PokitProduct product, const quint8 range);
-    QTPOKIT_EXPORT QVariant maxValue(const PokitProduct product, const quint8 range);
+    QTPOKIT_EXPORT quint32 maxValue(const PokitProduct product, const quint8 range);
 }
 
 namespace CurrentRange {
     QTPOKIT_EXPORT QString toString(const PokitProduct product, const quint8 range);
-    QTPOKIT_EXPORT QVariant maxValue(const PokitProduct product, const quint8 range);
+    QTPOKIT_EXPORT quint32 maxValue(const PokitProduct product, const quint8 range);
 }
 
 namespace ResistanceRange {
     QTPOKIT_EXPORT QString toString(const PokitProduct product, const quint8 range);
-    QTPOKIT_EXPORT QVariant maxValue(const PokitProduct product, const quint8 range);
+    QTPOKIT_EXPORT quint32 maxValue(const PokitProduct product, const quint8 range);
 }
 
 namespace VoltageRange {
     QTPOKIT_EXPORT QString toString(const PokitProduct product, const quint8 range);
-    QTPOKIT_EXPORT QVariant maxValue(const PokitProduct product, const quint8 range);
+    QTPOKIT_EXPORT quint32 maxValue(const PokitProduct product, const quint8 range);
 }
 
 QTPOKIT_END_NAMESPACE

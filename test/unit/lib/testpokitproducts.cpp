@@ -222,24 +222,24 @@ void TestPokitProducts::maxValue_Capacitance_data()
 {
     QTest::addColumn<PokitProduct>("product");
     QTest::addColumn<quint8>("range");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
     // We don't need to test exhaustively here - that's done by TestPokitPro::maxValue_* functions).
     // So here we just need to test that the right product's range is selected.
-    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << (quint8)0 << QVariant();
-    QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CapacitanceRange::_100nF << QVariant(100);
-    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QVariant();
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << (quint8)0 << (quint32)0;
+    QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CapacitanceRange::_100nF << quint32(100);
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << (quint32)0;
 }
 
 void TestPokitProducts::maxValue_Capacitance()
 {
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
 
     if (product == PokitProduct::PokitMeter) {
         QTest::ignoreMessage(QtWarningMsg, "Pokit Meter has no capacitance support");
-    } else if (expected.isNull()) {
+    } else if (!expected) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
@@ -278,22 +278,22 @@ void TestPokitProducts::maxValue_Current_data()
 {
     QTest::addColumn<PokitProduct>("product");
     QTest::addColumn<quint8>("range");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
     // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::maxValue* functions).
     // So here we just need to test that the right product's range is selected.
-    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA << QVariant(150000);
-    QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA << QVariant(500);
-    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QVariant();
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA << quint32(150000);
+    QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA << quint32(500);
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << (quint32)0;
 }
 
 void TestPokitProducts::maxValue_Current()
 {
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
 
-    if (expected.isNull()) {
+    if (!expected) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
@@ -332,22 +332,22 @@ void TestPokitProducts::maxValue_Resistance_data()
 {
     QTest::addColumn<PokitProduct>("product");
     QTest::addColumn<quint8>("range");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
     // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::maxValue_* functions).
     // So here we just need to test that the right product's range is selected.
-    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::ResistanceRange::_470K << QVariant(470000);
-    QTest::addRow("Pokit Pro")   << PokitProduct::PokitPro << +PokitPro::ResistanceRange::_3M << QVariant(3000000);
-    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QVariant();
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::ResistanceRange::_470K << quint32(470000);
+    QTest::addRow("Pokit Pro")   << PokitProduct::PokitPro << +PokitPro::ResistanceRange::_3M << quint32(3000000);
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << (quint32)0;
 }
 
 void TestPokitProducts::maxValue_Resistance()
 {
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
 
-    if (expected.isNull()) {
+    if (!expected) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 
@@ -386,22 +386,22 @@ void TestPokitProducts::maxValue_Voltage_data()
 {
     QTest::addColumn<PokitProduct>("product");
     QTest::addColumn<quint8>("range");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
     // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::maxValue_* functions).
     // So here we just need to test that the right product's range is selected.
-    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV << QVariant(300);
-    QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V << QVariant(600000);
-    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << QVariant();
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV << quint32(300);
+    QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V << quint32(600000);
+    QTest::addRow("invalid") << static_cast<PokitProduct>(200) << (quint8)0 << (quint32)0;
 }
 
 void TestPokitProducts::maxValue_Voltage()
 {
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
 
-    if (expected.isNull()) {
+    if (!expected) {
         QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(R"(^Unknown PokitProduct value: \d+$)")));
     }
 

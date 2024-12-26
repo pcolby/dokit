@@ -15,8 +15,6 @@
 #include <QBluetoothUuid>
 #include <QVersionNumber>
 
-#include <optional>
-
 QTPOKIT_BEGIN_NAMESPACE
 
 class StatusServicePrivate;

@@ -62,11 +62,9 @@ QString DataLoggerService::toString(const quint8 range, const Mode mode) const
 }
 
 /*!
- *  Returns the maximum value for \a range, or the string "Auto".
- *
- *  If \a range is not a known valid enumeration value for \a product's \a mode, then a null QVariant is returned.
+ * Returns the maximum value for \a range, or 0 if \a range is not a known value for \a product's \a mode.
  */
-QVariant DataLoggerService::maxValue(const PokitProduct product, const quint8 range, const Mode mode)
+quint32 DataLoggerService::maxValue(const PokitProduct product, const quint8 range, const Mode mode)
 {
     switch (mode) {
     case Mode::Idle:
@@ -80,16 +78,13 @@ QVariant DataLoggerService::maxValue(const PokitProduct product, const quint8 ra
     case Mode::Temperature:
         break;
     }
-    return QVariant();
+    return 0;
 }
 
 /*!
- *  Returns the maximum value for \a range, or the string "Auto".
- *
- *  If \a range is not a known valid enumeration value for the current \a product's \a mode,
- *  then a null QVariant is returned.
+ * Returns the maximum value for \a range, or 0 \a range is not a known value for the current \a product's \a mode.
  */
-QVariant DataLoggerService::maxValue(const quint8 range, const Mode mode) const
+quint32 DataLoggerService::maxValue(const quint8 range, const Mode mode) const
 {
     return maxValue(*pokitProduct(), range, mode);
 }
