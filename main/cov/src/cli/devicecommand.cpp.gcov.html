@@ -147,8 +147,8 @@
 <span id="L58"><span class="lineNum">      58</span>              :  */</span>
 <span id="L59"><span class="lineNum">      59</span>              : </span>
 <span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">       22000 : #define DOKIT_CLI_IF_LESS_THAN_RETURN(value, ns, label) \</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">       22000 : if (value &lt;= ns::maxValue(label).toUInt()) { \</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        4532 :         return label; \</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">       22000 : if (value &lt;= ns::maxValue(label)) { \</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">        4532 :     return label; \</span></span>
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">        4532 : }</span></span>
 <span id="L64"><span class="lineNum">      64</span>              : </span>
 <span id="L65"><span class="lineNum">      65</span>              : /**</span>
