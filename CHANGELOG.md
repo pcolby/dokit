@@ -4,7 +4,7 @@
 
 ### Changed
 
-- `maxValue` methods now return `quint32` instead of `QVariant`.
+- Return `quint32` from all `maxValue` methods, instead of `QVariant` ([db8b841][])
 
 ## [0.5.3][] (2024-12-23)
 
@@ -158,6 +158,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
 [899b007]:     https://github.com/pcolby/dokit/commit/899b007e73e64e724f2785acafddd2d3fc6f893e "Round command line options correctly"
+[db8b841]:     https://github.com/pcolby/dokit/commit/db8b84197d00b5a357974043f2dc0f3c0b7dfeff "Return quint32 from all maxValue methods"
 [#9]:          https://github.com/pcolby/dokit/issues/9
 [#17]:         https://github.com/pcolby/dokit/issues/17
 [#18]:         https://github.com/pcolby/dokit/issues/18
