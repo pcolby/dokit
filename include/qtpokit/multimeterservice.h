@@ -108,7 +108,7 @@ protected:
 private:
     Q_DECLARE_PRIVATE(MultimeterService)
     Q_DISABLE_COPY(MultimeterService)
-    friend class TestMultimeterService;
+    QTPOKIT_BEFRIEND_TEST(MultimeterService)
 };
 
 QTPOKIT_END_NAMESPACE

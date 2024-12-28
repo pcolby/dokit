@@ -126,7 +126,7 @@ protected:
 private:
     Q_DECLARE_PRIVATE(DsoService)
     Q_DISABLE_COPY(DsoService)
-    friend class TestDsoService;
+    QTPOKIT_BEFRIEND_TEST(DsoService)
 };
 
 QTPOKIT_END_NAMESPACE

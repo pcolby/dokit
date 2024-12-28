@@ -39,5 +39,5 @@ private slots:
     void settingsWritten();
     void outputReading(const MultimeterService::Reading &reading);
 
-    friend class TestMeterCommand;
+    QTPOKIT_BEFRIEND_TEST(MeterCommand)
 };

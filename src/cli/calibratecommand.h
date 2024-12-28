@@ -31,5 +31,5 @@ private:
 private slots:
     void temperatureCalibrated();
 
-    friend class TestCalibrateCommand;
+    QTPOKIT_BEFRIEND_TEST(CalibrateCommand)
 };

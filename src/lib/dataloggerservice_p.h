@@ -39,7 +39,7 @@ protected:
 private:
     Q_DECLARE_PUBLIC(DataLoggerService)
     Q_DISABLE_COPY(DataLoggerServicePrivate)
-    friend class TestDataLoggerService;
+    QTPOKIT_BEFRIEND_TEST(DataLoggerService)
 };
 
 QTPOKIT_END_NAMESPACE

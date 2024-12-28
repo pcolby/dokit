@@ -47,7 +47,7 @@ protected:
 private:
     Q_DECLARE_PRIVATE(PokitDiscoveryAgent)
     Q_DISABLE_COPY(PokitDiscoveryAgent)
-    friend class TestPokitDiscoveryAgent;
+    QTPOKIT_BEFRIEND_TEST(PokitDiscoveryAgent)
 };
 
 QTPOKIT_END_NAMESPACE

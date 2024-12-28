@@ -38,7 +38,7 @@ protected:
 private:
     Q_DECLARE_PUBLIC(StatusService)
     Q_DISABLE_COPY(StatusServicePrivate)
-    friend class TestStatusService;
+    QTPOKIT_BEFRIEND_TEST(StatusService)
 };
 
 QTPOKIT_END_NAMESPACE

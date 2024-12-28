@@ -31,5 +31,5 @@ private:
 private slots:
     void deviceNameWritten();
 
-    friend class TestSetNameCommand;
+    QTPOKIT_BEFRIEND_TEST(SetNameCommand)
 };

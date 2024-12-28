@@ -29,5 +29,5 @@ private:
 
     void outputDeviceStatus(const StatusService::DeviceCharacteristics &chrs);
 
-    friend class TestStatusCommand;
+    QTPOKIT_BEFRIEND_TEST(StatusCommand)
 };

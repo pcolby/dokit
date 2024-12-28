@@ -30,5 +30,5 @@ private:
 private slots:
     void deviceLedFlashed();
 
-    friend class TestFlashLedCommand;
+    QTPOKIT_BEFRIEND_TEST(FlashLedCommand)
 };
