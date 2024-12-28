@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf":[5,0,35,2,1],
 "structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de":[5,0,35,2,0],
 "structStatusService_1_1Status.html":[5,0,35,3],
 "structStatusService_1_1Status.html#a34d5f71da1e356a5f8da381f4b715b46":[5,0,35,3,1],

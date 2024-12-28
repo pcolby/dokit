@@ -149,9 +149,10 @@ var NAVTREEINDEX3 =
 "pokitproducts_8h_source.html":[6,0,0,0,0,0,10],
 "pokitproducts__p_8h_source.html":[6,0,0,0,1,1,19],
 "qtpokit__global_8h.html":[6,0,0,0,0,0,11],
-"qtpokit__global_8h.html#ac5aca53b48a017f8db467922deee7983":[6,0,0,0,0,0,11,0],
-"qtpokit__global_8h.html#aeba02234b4a21ddf98bb8127b8d41759":[6,0,0,0,0,0,11,2],
-"qtpokit__global_8h.html#af2a5fcdf5ad6da4ea4f238aad0d29d65":[6,0,0,0,0,0,11,1],
+"qtpokit__global_8h.html#a7eb16b3cbe181946fc94eaebc7fba142":[6,0,0,0,0,0,11,0],
+"qtpokit__global_8h.html#ac5aca53b48a017f8db467922deee7983":[6,0,0,0,0,0,11,1],
+"qtpokit__global_8h.html#aeba02234b4a21ddf98bb8127b8d41759":[6,0,0,0,0,0,11,3],
+"qtpokit__global_8h.html#af2a5fcdf5ad6da4ea4f238aad0d29d65":[6,0,0,0,0,0,11,2],
 "qtpokit__global_8h_source.html":[6,0,0,0,0,0,11],
 "scancommand_8cpp_source.html":[6,0,0,0,1,0,21],
 "scancommand_8h_source.html":[6,0,0,0,1,0,22],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "structStatusService_1_1DeviceCharacteristics.html#ac3e0c7d70d55307a49907db75e742348":[5,0,35,1,2],
 "structStatusService_1_1DeviceCharacteristics.html#ae9154c26eb128b26c0fccb9f653f1420":[5,0,35,1,4],
 "structStatusService_1_1DeviceCharacteristics.html#afdc814d092204ef6f0628253298ae319":[5,0,35,1,1],
-"structStatusService_1_1ServiceUuids.html":[5,0,35,2],
-"structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf":[5,0,35,2,1]
+"structStatusService_1_1ServiceUuids.html":[5,0,35,2]
 };
