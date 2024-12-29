@@ -5,6 +5,7 @@
 ### Changed
 
 - Return `quint32` from all `maxValue` methods, instead of `QVariant` ([db8b841][])
+- Upgrade to Doxygen 1.13.0.
 
 ## [0.5.3][] (2024-12-23)
 
