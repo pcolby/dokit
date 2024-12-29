@@ -73,8 +73,13 @@ var NAVTREEINDEX =
 "classFlashLedCommand.html#a24e230231849718572cad0d15ce1b0fb",
 "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c",
 "pages.html",
-"structStatusService_1_1ServiceUuids.html#a0a9ca0f9377093ff60b282d4bfe3b0cf"
+"qt.html#DockWidgetArea-enum",
+"qt.html#Key-enum",
+"qt.html#Key-enum",
+"qt.html#MouseButton-enum",
+"qt.html#WidgetAttribute-enum",
+"structStatusService_1_1ServiceUuids.html#a8fa373d36e9332df30f38411ab3446de"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';

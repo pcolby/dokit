@@ -62,8 +62,13 @@ var NAVTREEINDEX =
 [
 "abstractpokitservice_8cpp.html",
 "functions_h.html",
-"structDsoService_1_1Metadata.html"
+"qt.html#BrushStyle-enum",
+"qt.html#InputMethodQuery-enum",
+"qt.html#Key-enum",
+"qt.html#Key-enum",
+"qt.html#ToolBarArea-enum",
+"structDataLoggerService_1_1Settings.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
