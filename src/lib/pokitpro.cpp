@@ -9,8 +9,11 @@
 #include "qtpokit/pokitpro.h"
 
 #include <QCoreApplication>
+#include <QLoggingCategory>
 
 namespace PokitPro {
+
+static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products.pro", QtInfoMsg); ///< Logging category for this file.
 
 namespace {
     class Private
@@ -41,17 +44,18 @@ QString toString(const CapacitanceRange &range)
 }
 
 /*!
- *  Returns the maximum value for \a range in (integer) nanofarads, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in nanofarads, or 0 if \a range is not a known value for Pokit Pro devices.
  */
-QVariant maxValue(const CapacitanceRange &range)
+quint32 maxValue(const CapacitanceRange &range)
 {
     switch (range) {
     case CapacitanceRange::_100nF:    return       100;
     case CapacitanceRange::_10uF:     return    10'000;
     case CapacitanceRange::_1mF:      return 1'000'000;
-    case CapacitanceRange::AutoRange: return Private::tr("Auto");
-    default:                          return QVariant();
+    case CapacitanceRange::AutoRange: return 1'000'000;
+    default:
+        qCWarning(lc).noquote() << Private::tr("Unknown CapacitanceRange value: %1").arg((int)range);
+        return 0;
     }
 }
 
@@ -81,10 +85,9 @@ QString toString(const CurrentRange &range)
 }
 
 /*!
- *  Returns the maximum value for \a range in (integer) microamps, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in microamps, or 0 if \a range is not a known value for Pokit Pro devices.
  */
-QVariant maxValue(const CurrentRange &range)
+quint32 maxValue(const CurrentRange &range)
 {
     switch (range) {
     case CurrentRange::_500uA:    return        500;
@@ -94,8 +97,10 @@ QVariant maxValue(const CurrentRange &range)
     case CurrentRange::_300mA:    return    300'000;
     case CurrentRange::_3A:       return  3'000'000;
     case CurrentRange::_10A:      return 10'000'000;
-    case CurrentRange::AutoRange: return Private::tr("Auto");
-    default:                      return QVariant();
+    case CurrentRange::AutoRange: return 10'000'000;
+    default:
+        qCWarning(lc).noquote() << Private::tr("Unknown CurrentRange value: %1").arg((int)range);
+        return 0;
     }
 }
 
@@ -129,10 +134,9 @@ QString toString(const ResistanceRange &range)
 }
 
 /*!
- *  Returns the maximum value for \a range in (integer) ohms, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in ohms, or 0 if \a range is not a known value for Pokit Pro devices.
  */
-QVariant maxValue(const ResistanceRange &range)
+quint32 maxValue(const ResistanceRange &range)
 {
     switch (range) {
     case ResistanceRange::_30:       return        30;
@@ -146,8 +150,10 @@ QVariant maxValue(const ResistanceRange &range)
     case ResistanceRange::_700K:     return   700'000;
     case ResistanceRange::_1M:       return 1'000'000;
     case ResistanceRange::_3M:       return 3'000'000;
-    case ResistanceRange::AutoRange: return Private::tr("Auto");
-    default:                         return QVariant();
+    case ResistanceRange::AutoRange: return 3'000'000;
+    default:
+        qCWarning(lc).noquote() << Private::tr("Unknown ResistanceRange value: %1").arg((int)range);
+        return 0;
     }
 }
 
@@ -178,10 +184,9 @@ QString toString(const VoltageRange &range)
 }
 
 /*!
- *  Returns the maximum value for \a range in (integer) millivolts, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in millivolts, or 0 if \a range is not a known value for Pokit Pro devices.
  */
-QVariant maxValue(const VoltageRange &range)
+quint32 maxValue(const VoltageRange &range)
 {
     switch (range) {
     case VoltageRange::_250mV:    return     250;
@@ -192,8 +197,10 @@ QVariant maxValue(const VoltageRange &range)
     case VoltageRange::_125V:     return 125'000;
     case VoltageRange::_400V:     return 400'000;
     case VoltageRange::_600V:     return 600'000;
-    case VoltageRange::AutoRange: return Private::tr("Auto");
-    default:                      return QVariant();
+    case VoltageRange::AutoRange: return 600'000;
+    default:
+        qCWarning(lc).noquote() << Private::tr("Unknown VoltageRange value: %1").arg((int)range);
+        return 0;
     }
 }
 

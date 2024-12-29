@@ -11,8 +11,6 @@
 
 #include "qtpokit_global.h"
 
-#include <QVariant>
-
 QTPOKIT_BEGIN_NAMESPACE
 
 /// Encapsulates details specific to Pokit Meter devices.
@@ -28,7 +26,7 @@ namespace PokitMeter {
         AutoRange = 255 ///< Auto-range.
     };
     QTPOKIT_EXPORT QString toString(const CurrentRange &range);
-    QTPOKIT_EXPORT QVariant maxValue(const CurrentRange &range);
+    QTPOKIT_EXPORT quint32 maxValue(const CurrentRange &range);
 
     /// Values supported by the Pokit Meter's `Range` attributes in `Resistance` mode.
     enum class ResistanceRange : quint8 {
@@ -43,7 +41,7 @@ namespace PokitMeter {
         AutoRange = 255 ///< Auto-range.
     };
     QTPOKIT_EXPORT QString toString(const ResistanceRange &range);
-    QTPOKIT_EXPORT QVariant maxValue(const ResistanceRange &range);
+    QTPOKIT_EXPORT quint32 maxValue(const ResistanceRange &range);
 
     /// Values supported by the Pokit Meter's `Range` attributes in `*Voltage` modes.
     enum class VoltageRange : quint8 {
@@ -56,7 +54,7 @@ namespace PokitMeter {
         AutoRange = 255 ///< Auto-range.
     };
     QTPOKIT_EXPORT QString toString(const VoltageRange &range);
-    QTPOKIT_EXPORT QVariant maxValue(const VoltageRange &range);
+    QTPOKIT_EXPORT quint32 maxValue(const VoltageRange &range);
 
 }
 

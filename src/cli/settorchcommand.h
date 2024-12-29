@@ -31,5 +31,5 @@ private:
 private slots:
     void torchStatusWritten();
 
-    friend class TestSetTorchCommand;
+    QTPOKIT_BEFRIEND_TEST(SetTorchCommand)
 };

@@ -9,8 +9,11 @@
 #include "qtpokit/pokitmeter.h"
 
 #include <QCoreApplication>
+#include <QLoggingCategory>
 
 namespace PokitMeter {
+
+static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products.meter", QtInfoMsg); ///< Logging category for this file.
 
 namespace {
     class Private
@@ -34,10 +37,9 @@ QString toString(const CurrentRange &range)
 }
 
 /*!
- *  Returns the maximum value for \a range in (integer) microamps, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in microamps, or 0 if \a range is not a known value for Pokit Meter devices.
  */
-QVariant maxValue(const CurrentRange &range)
+quint32 maxValue(const CurrentRange &range)
 {
     switch (range) {
     case CurrentRange::_10mA:     return    10'000;
@@ -45,8 +47,10 @@ QVariant maxValue(const CurrentRange &range)
     case CurrentRange::_150mA:    return   150'000;
     case CurrentRange::_300mA:    return   300'000;
     case CurrentRange::_2A:       return 2'000'000;
-    case CurrentRange::AutoRange: return Private::tr("Auto");
-    default:                      return QVariant();
+    case CurrentRange::AutoRange: return 2'000'000;
+    default:
+        qCWarning(lc).noquote() << Private::tr("Unknown CurrentRange value: %1").arg((int)range);
+        return 0;
     }
 }
 
@@ -68,10 +72,9 @@ QString toString(const ResistanceRange &range)
 }
 
 /*!
- *  Returns the maximum value for \a range in (integer) ohms, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in ohms, or 0 if \a range is not a known value for Pokit Meter devices.
  */
-QVariant maxValue(const ResistanceRange &range)
+quint32 maxValue(const ResistanceRange &range)
 {
     switch (range) {
     case ResistanceRange::_160:      return       160;
@@ -82,8 +85,10 @@ QVariant maxValue(const ResistanceRange &range)
     case ResistanceRange::_100K:     return   100'000;
     case ResistanceRange::_470K:     return   470'000;
     case ResistanceRange::_1M:       return 1'000'000;
-    case ResistanceRange::AutoRange: return Private::tr("Auto");
-    default:                         return QVariant();
+    case ResistanceRange::AutoRange: return 1'000'000;
+    default:
+        qCWarning(lc).noquote() << Private::tr("Unknown ResistanceRange value: %1").arg((int)range);
+        return 0;
     }
 }
 
@@ -103,10 +108,9 @@ QString toString(const VoltageRange &range)
 }
 
 /*!
- *  Returns the maximum value for \a range in (integer) millivolts, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in millivolts, or 0 if \a range is not a known value for Pokit Meter devices.
  */
-QVariant maxValue(const VoltageRange &range)
+quint32 maxValue(const VoltageRange &range)
 {
     switch (range) {
     case VoltageRange::_300mV:    return    300;
@@ -115,8 +119,10 @@ QVariant maxValue(const VoltageRange &range)
     case VoltageRange::_12V:      return 12'000;
     case VoltageRange::_30V:      return 30'000;
     case VoltageRange::_60V:      return 60'000;
-    case VoltageRange::AutoRange: return Private::tr("Auto");
-    default:                      return QVariant();
+    case VoltageRange::AutoRange: return 60'000;
+    default:
+        qCWarning(lc).noquote() << Private::tr("Unknown VoltageRange value: %1").arg((int)range);
+        return 0;
     }
 }
 

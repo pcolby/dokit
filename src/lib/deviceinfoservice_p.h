@@ -29,7 +29,7 @@ protected:
 private:
     Q_DECLARE_PUBLIC(DeviceInfoService)
     Q_DISABLE_COPY(DeviceInfoServicePrivate)
-    friend class TestDeviceInfoService;
+    QTPOKIT_BEFRIEND_TEST(DeviceInfoService)
 };
 
 QTPOKIT_END_NAMESPACE

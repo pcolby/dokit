@@ -83,22 +83,22 @@ void TestDataLoggerService::maxValue_data()
     QTest::addColumn<PokitProduct>("product");
     QTest::addColumn<quint8>("range");
     QTest::addColumn<DataLoggerService::Mode>("mode");
-    QTest::addColumn<QVariant>("expected");
+    QTest::addColumn<quint32>("expected");
 
     // We don't need to test exhaustively here - that's done by TestPokit{Meter,Pro}::maxValue* functions).
     // So here we just need to test that the right product's range is selected.
     QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                          << DataLoggerService::Mode::Idle << QVariant();
+                          << DataLoggerService::Mode::Idle << (quint32)0;
     QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
-                                   << DataLoggerService::Mode::AcVoltage << QVariant(300);
+                                   << DataLoggerService::Mode::AcVoltage << (quint32)300;
     QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
-                                 << DataLoggerService::Mode::AcVoltage<< QVariant(600000);
+                                 << DataLoggerService::Mode::AcVoltage<< (quint32)600000;
     QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                 << DataLoggerService::Mode::DcCurrent << QVariant(150000);
+                                 << DataLoggerService::Mode::DcCurrent << (quint32)150000;
     QTest::addRow("Pokit Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
-                               << DataLoggerService::Mode::DcCurrent << QVariant(500);
+                               << DataLoggerService::Mode::DcCurrent << (quint32)500;
     QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                 << DataLoggerService::Mode::Temperature << QVariant();
+                                 << DataLoggerService::Mode::Temperature << (quint32)0;
 }
 
 void TestDataLoggerService::maxValue()
@@ -106,7 +106,7 @@ void TestDataLoggerService::maxValue()
     QFETCH(PokitProduct, product);
     QFETCH(quint8, range);
     QFETCH(DataLoggerService::Mode, mode);
-    QFETCH(QVariant, expected);
+    QFETCH(quint32, expected);
 
     // Test the static version.
     QCOMPARE(DataLoggerService::maxValue(product, range, mode), expected);

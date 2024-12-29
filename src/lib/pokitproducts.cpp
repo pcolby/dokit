@@ -130,11 +130,11 @@ QTPOKIT_END_NAMESPACE
 namespace CapacitanceRange {
 
 /*!
- *  Returns \a product's capacitance \a range as a human-friendly string.
+ * Returns \a product's capacitance \a range as a human-friendly string.
  *
- *  \note Since Pokit Meters do not support capacitance measurement, \a product should not be PokitProduct::PokitMeter.
+ * \note Since Pokit Meters do not support capacitance measurement, \a product should not be PokitProduct::PokitMeter.
  *
- *  \see PokitPro::toString(const PokitPro::CapacitanceRange &range)
+ * \see PokitPro::toString(const PokitPro::CapacitanceRange &range)
  */
 QString toString(const PokitProduct product, const quint8 range)
 {
@@ -150,24 +150,23 @@ QString toString(const PokitProduct product, const quint8 range)
 }
 
 /*!
- *  Returns the maximum value for \a product's \a range in (integer) nanofarads, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in nanofarads, or 0 if \a range is not a known value for \a product.
  *
- *  \note Since Pokit Meters do not support capacitance measurement, \a product should not be PokitProduct::PokitMeter.
+ * \note Since Pokit Meters do not support capacitance measurement, \a product should not be PokitProduct::PokitMeter.
  *
- *  \see PokitPro::maxValue(const PokitPro::CapacitanceRange &range)
+ * \see PokitPro::maxValue(const PokitPro::CapacitanceRange &range)
  */
-QVariant maxValue(const PokitProduct product, const quint8 range)
+quint32 maxValue(const PokitProduct product, const quint8 range)
 {
     switch (product) {
     case PokitProduct::PokitMeter:
         qCWarning(lc).noquote() << Private::tr("Pokit Meter has no capacitance support");
-        return QVariant();
+        return 0;
     case PokitProduct::PokitPro:
         return PokitPro::maxValue(static_cast<PokitPro::CapacitanceRange>(range));
     }
     qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
-    return QVariant();
+    return 0;
 }
 
 }
@@ -176,10 +175,10 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
 namespace CurrentRange {
 
 /*!
- *  Returns \a product's current \a range as a human-friendly string.
+ * Returns \a product's current \a range as a human-friendly string.
  *
- *  \see PokitMeter::toString(const PokitMeter::CurrentRange &range)
- *  \see PokitPro::toString(const PokitPro::CurrentRange &range)
+ * \see PokitMeter::toString(const PokitMeter::CurrentRange &range)
+ * \see PokitPro::toString(const PokitPro::CurrentRange &range)
  */
 QString toString(const PokitProduct product, const quint8 range)
 {
@@ -194,13 +193,12 @@ QString toString(const PokitProduct product, const quint8 range)
 }
 
 /*!
- *  Returns the maximum value for \a product's \a range in (integer) microamps, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in microamps, or 0 if \a range is not a known value for \a product.
  *
- *  \see PokitMeter::maxValue(const PokitMeter::CurrentRange &range)
- *  \see PokitPro::maxValue(const PokitPro::CurrentRange &range)
+ * \see PokitMeter::maxValue(const PokitMeter::CurrentRange &range)
+ * \see PokitPro::maxValue(const PokitPro::CurrentRange &range)
  */
-QVariant maxValue(const PokitProduct product, const quint8 range)
+quint32 maxValue(const PokitProduct product, const quint8 range)
 {
     switch (product) {
     case PokitProduct::PokitMeter:
@@ -209,7 +207,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
         return PokitPro::maxValue(static_cast<PokitPro::CurrentRange>(range));
     }
     qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
-    return QVariant();
+    return 0;
 }
 
 }
@@ -218,10 +216,10 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
 namespace ResistanceRange {
 
 /*!
- *  Returns \a product's current \a range as a human-friendly string.
+ * Returns \a product's current \a range as a human-friendly string.
  *
- *  \see PokitMeter::toString(const PokitMeter::ResistanceRange &range)
- *  \see PokitPro::toString(const PokitPro::ResistanceRange &range)
+ * \see PokitMeter::toString(const PokitMeter::ResistanceRange &range)
+ * \see PokitPro::toString(const PokitPro::ResistanceRange &range)
  */
 QString toString(const PokitProduct product, const quint8 range)
 {
@@ -236,13 +234,12 @@ QString toString(const PokitProduct product, const quint8 range)
 }
 
 /*!
- *  Returns the maximum value for \a product's \a range in (integer) ohms, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in ohms, or 0 if \a range is not a known value for \a product.
  *
- *  \see PokitMeter::maxValue(const PokitMeter::ResistanceRange &range)
- *  \see PokitPro::maxValue(const PokitPro::ResistanceRange &range)
+ * \see PokitMeter::maxValue(const PokitMeter::ResistanceRange &range)
+ * \see PokitPro::maxValue(const PokitPro::ResistanceRange &range)
  */
-QVariant maxValue(const PokitProduct product, const quint8 range)
+quint32 maxValue(const PokitProduct product, const quint8 range)
 {
     switch (product) {
     case PokitProduct::PokitMeter:
@@ -251,7 +248,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
         return PokitPro::maxValue(static_cast<PokitPro::ResistanceRange>(range));
     }
     qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
-    return QVariant();
+    return 0;
 }
 
 }
@@ -260,10 +257,10 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
 namespace VoltageRange {
 
 /*!
- *  Returns \a product's current \a range as a human-friendly string.
+ * Returns \a product's current \a range as a human-friendly string.
  *
- *  \see PokitMeter::toString(const PokitMeter::VoltageRange &range)
- *  \see PokitPro::toString(const PokitPro::VoltageRange &range)
+ * \see PokitMeter::toString(const PokitMeter::VoltageRange &range)
+ * \see PokitPro::toString(const PokitPro::VoltageRange &range)
  */
 QString toString(const PokitProduct product, const quint8 range)
 {
@@ -278,13 +275,12 @@ QString toString(const PokitProduct product, const quint8 range)
 }
 
 /*!
- *  Returns the maximum value for \a product's \a range in (integer) millivolts, or the string "Auto".
- *  If \a range is not a known valid value, then an null QVariant is returned.
+ * Returns the maximum value for \a range in millivolts, or 0 if \a range is not a known value for \a product.
  *
- *  \see PokitMeter::maxValue(const PokitMeter::VoltageRange &range)
- *  \see PokitPro::maxValue(const PokitPro::VoltageRange &range)
+ * \see PokitMeter::maxValue(const PokitMeter::VoltageRange &range)
+ * \see PokitPro::maxValue(const PokitPro::VoltageRange &range)
  */
-QVariant maxValue(const PokitProduct product, const quint8 range)
+quint32 maxValue(const PokitProduct product, const quint8 range)
 {
     switch (product) {
     case PokitProduct::PokitMeter:
@@ -293,7 +289,7 @@ QVariant maxValue(const PokitProduct product, const quint8 range)
         return PokitPro::maxValue(static_cast<PokitPro::VoltageRange>(range));
     }
     qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
-    return QVariant();
+    return 0;
 }
 
 }

@@ -46,7 +46,7 @@ private slots:
     void deviceDiscovered(const QBluetoothDeviceInfo &info) override;
     void deviceDiscoveryFinished() override;
 
-    friend class TestDeviceCommand;
+    QTPOKIT_BEFRIEND_TEST(DeviceCommand)
 };
 
 #endif // DOKIT_DEVICECOMMAND_H

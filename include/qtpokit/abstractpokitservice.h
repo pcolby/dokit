@@ -55,7 +55,7 @@ protected:
 private:
     Q_DECLARE_PRIVATE(AbstractPokitService)
     Q_DISABLE_COPY(AbstractPokitService)
-    friend class TestAbstractPokitService;
+    QTPOKIT_BEFRIEND_TEST(AbstractPokitService)
 };
 
 QTPOKIT_END_NAMESPACE

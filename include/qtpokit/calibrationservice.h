@@ -58,7 +58,7 @@ protected:
 private:
     Q_DECLARE_PRIVATE(CalibrationService)
     Q_DISABLE_COPY(CalibrationService)
-    friend class TestCalibrationService;
+    QTPOKIT_BEFRIEND_TEST(CalibrationService)
 };
 
 QTPOKIT_END_NAMESPACE

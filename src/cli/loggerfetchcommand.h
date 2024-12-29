@@ -29,5 +29,5 @@ private slots:
     void metadataRead(const DataLoggerService::Metadata &data);
     void outputSamples(const DataLoggerService::Samples &samples);
 
-    friend class TestLoggerFetchCommand;
+    QTPOKIT_BEFRIEND_TEST(LoggerFetchCommand)
 };

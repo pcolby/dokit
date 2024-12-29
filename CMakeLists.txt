@@ -13,7 +13,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(
   Dokit
-  VERSION 0.5.3
+  VERSION 0.5.4
   DESCRIPTION "Cross-platform library, and desktop apps for Pokit measuring devices"
   HOMEPAGE_URL "https://github.com/pcolby/dokit"
   LANGUAGES CXX)

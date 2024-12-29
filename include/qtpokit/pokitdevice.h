@@ -62,7 +62,7 @@ protected:
 private:
     Q_DECLARE_PRIVATE(PokitDevice)
     Q_DISABLE_COPY(PokitDevice)
-    friend class TestPokitDevice;
+    QTPOKIT_BEFRIEND_TEST(PokitDevice)
 };
 
 QTPOKIT_END_NAMESPACE

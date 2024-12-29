@@ -55,6 +55,18 @@
   #define QTPOKIT_END_NAMESPACE
 #endif
 
+/*!
+ * \def QTPOKIT_BEFRIEND_TEST
+ *
+ * Macro for befriending a related unit test class, but only when QT_TESTLIB_LIB is defined.
+ */
+
+#ifdef QT_TESTLIB_LIB
+  #define QTPOKIT_BEFRIEND_TEST(Class) friend class Test##Class;
+#else
+  #define QTPOKIT_BEFRIEND_TEST(Class)
+#endif
+
 /// \endcond
 
 #endif // QTPOKIT_GLOBAL_H

@@ -13,8 +13,6 @@
 
 #include "abstractpokitservice_p.h"
 
-#include <optional>
-
 QTPOKIT_BEGIN_NAMESPACE
 
 class QTPOKIT_EXPORT StatusServicePrivate : public AbstractPokitServicePrivate
@@ -40,7 +38,7 @@ protected:
 private:
     Q_DECLARE_PUBLIC(StatusService)
     Q_DISABLE_COPY(StatusServicePrivate)
-    friend class TestStatusService;
+    QTPOKIT_BEFRIEND_TEST(StatusService)
 };
 
 QTPOKIT_END_NAMESPACE

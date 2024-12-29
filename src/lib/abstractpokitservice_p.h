@@ -16,8 +16,6 @@
 #include <QLowEnergyService>
 #include <QObject>
 
-#include <optional>
-
 class QLowEnergyController;
 
 QTPOKIT_BEGIN_NAMESPACE
@@ -73,7 +71,7 @@ protected Q_SLOTS:
 private:
     Q_DECLARE_PUBLIC(AbstractPokitService)
     Q_DISABLE_COPY(AbstractPokitServicePrivate)
-    friend class TestAbstractPokitService;
+    QTPOKIT_BEFRIEND_TEST(AbstractPokitService)
 };
 
 QTPOKIT_END_NAMESPACE

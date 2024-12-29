@@ -27,5 +27,5 @@ protected slots:
 private:
     DeviceInfoService * service { nullptr }; ///< Bluetooth service this command interracts with.
 
-    friend class TestInfoCommand;
+    QTPOKIT_BEFRIEND_TEST(InfoCommand)
 };

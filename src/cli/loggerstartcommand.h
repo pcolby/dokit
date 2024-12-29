@@ -38,5 +38,5 @@ private:
 private slots:
     void settingsWritten();
 
-    friend class TestLoggerStartCommand;
+    QTPOKIT_BEFRIEND_TEST(LoggerStartCommand)
 };

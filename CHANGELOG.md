@@ -2,12 +2,20 @@
 
 ## [Unreleased][]
 
+### Changed
+
+- Return `quint32` from all `maxValue` methods, instead of `QVariant` ([db8b841][])
+- Upgrade to Doxygen 1.13.0.
+
+## [0.5.3][] (2024-12-23)
+
 ### Added
 
 - Support for LLVM-based coverage reporting with Clang.
 
 ### Changed
 
+- Internationalisation improvements.
 - Upgrade to Doxygen 1.11.0.
 - Upgrade to Qt 6.8.0, and 6.7.3.
 
@@ -135,7 +143,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.2...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.3...HEAD
+[0.5.3]: https://github.com/pcolby/dokit/releases/tag/v0.5.3
 [0.5.2]: https://github.com/pcolby/dokit/releases/tag/v0.5.2
 [0.5.1]: https://github.com/pcolby/dokit/releases/tag/v0.5.1
 [0.5.0]: https://github.com/pcolby/dokit/releases/tag/v0.5.0
@@ -150,6 +159,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
 [899b007]:     https://github.com/pcolby/dokit/commit/899b007e73e64e724f2785acafddd2d3fc6f893e "Round command line options correctly"
+[db8b841]:     https://github.com/pcolby/dokit/commit/db8b84197d00b5a357974043f2dc0f3c0b7dfeff "Return quint32 from all maxValue methods"
 [#9]:          https://github.com/pcolby/dokit/issues/9
 [#17]:         https://github.com/pcolby/dokit/issues/17
 [#18]:         https://github.com/pcolby/dokit/issues/18

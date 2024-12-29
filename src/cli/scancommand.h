@@ -39,5 +39,5 @@ private:
     static QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass);
     static QString toString(const QBluetoothDeviceInfo::MajorDeviceClass &majorClass, const quint8 minorClass);
 
-    friend class TestScanCommand;
+    QTPOKIT_BEFRIEND_TEST(ScanCommand)
 };

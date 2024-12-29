@@ -43,5 +43,5 @@ private slots:
     void metadataRead(const DsoService::Metadata &data);
     void outputSamples(const DsoService::Samples &samples);
 
-    friend class TestDsoCommand;
+    QTPOKIT_BEFRIEND_TEST(DsoCommand)
 };

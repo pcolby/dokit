@@ -60,8 +60,8 @@ public:
 
     static QString toString(const PokitProduct product, const quint8 range, const Mode mode);
     QString toString(const quint8 range, const Mode mode) const;
-    static QVariant maxValue(const PokitProduct product, const quint8 range, const Mode mode);
-    QVariant maxValue(const quint8 range, const Mode mode) const;
+    static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);
+    quint32 maxValue(const quint8 range, const Mode mode) const;
 
     /// Attributes included in the `Settings` characterstic.
     struct Settings {
@@ -126,7 +126,7 @@ protected:
 private:
     Q_DECLARE_PRIVATE(DsoService)
     Q_DISABLE_COPY(DsoService)
-    friend class TestDsoService;
+    QTPOKIT_BEFRIEND_TEST(DsoService)
 };
 
 QTPOKIT_END_NAMESPACE

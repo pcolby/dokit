@@ -24,5 +24,5 @@ private:
 private slots:
     void settingsWritten();
 
-    friend class TestLoggerStopCommand;
+    QTPOKIT_BEFRIEND_TEST(LoggerStopCommand)
 };

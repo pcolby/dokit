@@ -4,6 +4,8 @@
 #ifndef DOKIT_ABSTRACTCOMMAND_H
 #define DOKIT_ABSTRACTCOMMAND_H
 
+#include <qtpokit/qtpokit_global.h>
+
 #include <QBluetoothDeviceInfo>
 #include <QCommandLineParser>
 #include <QLoggingCategory>
@@ -47,7 +49,7 @@ protected slots:
     virtual void deviceDiscovered(const QBluetoothDeviceInfo &info) = 0;
     virtual void deviceDiscoveryFinished() = 0;
 
-    friend class TestAbstractCommand;
+    QTPOKIT_BEFRIEND_TEST(AbstractCommand)
 };
 
 #endif // DOKIT_ABSTRACTCOMMAND_H
