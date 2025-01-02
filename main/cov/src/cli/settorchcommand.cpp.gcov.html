@@ -87,7 +87,7 @@
               <td>
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
-<span id="L1"><span class="lineNum">       1</span>              : // SPDX-FileCopyrightText: 2022-2024 Paul Colby &lt;git@colby.id.au&gt;</span>
+<span id="L1"><span class="lineNum">       1</span>              : // SPDX-FileCopyrightText: 2022-2025 Paul Colby &lt;git@colby.id.au&gt;</span>
 <span id="L2"><span class="lineNum">       2</span>              : // SPDX-License-Identifier: LGPL-3.0-or-later</span>
 <span id="L3"><span class="lineNum">       3</span>              : </span>
 <span id="L4"><span class="lineNum">       4</span>              : #include &quot;settorchcommand.h&quot;</span>
@@ -105,22 +105,22 @@
 <span id="L16"><span class="lineNum">      16</span>              : /*!</span>
 <span id="L17"><span class="lineNum">      17</span>              :  * Construct a new SetTorchCommand object with \a parent.</span>
 <span id="L18"><span class="lineNum">      18</span>              :  */</span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">         594 : SetTorchCommand::SetTorchCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         484 : {</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">         627 : SetTorchCommand::SetTorchCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         517 : {</span></span>
 <span id="L21"><span class="lineNum">      21</span>              : </span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">         902 : }</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">         957 : }</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         494 : QStringList SetTorchCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         572 : {</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        2418 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         572 :         QLatin1String(&quot;mode&quot;),</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">        1807 :     };</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         858 : }</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         520 : QStringList SetTorchCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         611 : {</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        2561 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         611 :         QLatin1String(&quot;mode&quot;),</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">        1898 :     };</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         897 : }</span></span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         228 : QStringList SetTorchCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         264 : {</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         492 :     return DeviceCommand::supportedOptions(parser);</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         264 : }</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         240 : QStringList SetTorchCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         282 : {</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         522 :     return DeviceCommand::supportedOptions(parser);</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         282 : }</span></span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
 <span id="L36"><span class="lineNum">      36</span>              : /*!</span>
 <span id="L37"><span class="lineNum">      37</span>              :  * \copybrief DeviceCommand::processOptions</span>
@@ -128,23 +128,23 @@
 <span id="L39"><span class="lineNum">      39</span>              :  * This implementation extends DeviceCommand::processOptions to process additional CLI options</span>
 <span id="L40"><span class="lineNum">      40</span>              :  * supported (or required) by this command.</span>
 <span id="L41"><span class="lineNum">      41</span>              :  */</span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         190 : QStringList SetTorchCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         220 : {</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         410 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         410 :     if (!errors.isEmpty()) {</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          44 :         return errors;</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          44 :     }</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         200 : QStringList SetTorchCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         235 : {</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         435 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         435 :     if (!errors.isEmpty()) {</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          47 :         return errors;</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          47 :     }</span></span>
 <span id="L48"><span class="lineNum">      48</span>              : </span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">         388 :     if (const QString value = parser.value(QLatin1String(&quot;mode&quot;));</span></span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         328 :         value.trimmed().compare(QLatin1String(&quot;on&quot;), Qt::CaseInsensitive) == 0) {</span></span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">          82 :         newStatus = StatusService::TorchStatus::On;</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         246 :     } else if (value.trimmed().compare(QLatin1String(&quot;off&quot;), Qt::CaseInsensitive) == 0) {</span></span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">          82 :         newStatus = StatusService::TorchStatus::Off;</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          88 :     } else {</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">         194 :         errors.append(tr(&quot;Invalid status value: %1&quot;).arg(value));</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         180 :     }</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">         328 :     return errors;</span></span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">         220 : }</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">         416 :     if (const QString value = parser.value(QLatin1String(&quot;mode&quot;));</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         348 :         value.trimmed().compare(QLatin1String(&quot;on&quot;), Qt::CaseInsensitive) == 0) {</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">          87 :         newStatus = StatusService::TorchStatus::On;</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         261 :     } else if (value.trimmed().compare(QLatin1String(&quot;off&quot;), Qt::CaseInsensitive) == 0) {</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">          87 :         newStatus = StatusService::TorchStatus::Off;</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          94 :     } else {</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">         208 :         errors.append(tr(&quot;Invalid status value: %1&quot;).arg(value));</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         186 :     }</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">         348 :     return errors;</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">         235 : }</span></span>
 <span id="L59"><span class="lineNum">      59</span>              : </span>
 <span id="L60"><span class="lineNum">      60</span>              : /*!</span>
 <span id="L61"><span class="lineNum">      61</span>              :  * \copybrief DeviceCommand::getService</span>
@@ -179,21 +179,21 @@
 <span id="L90"><span class="lineNum">      90</span>              : /*!</span>
 <span id="L91"><span class="lineNum">      91</span>              :  * Handles StatusService::torchStatusWritten events, by outputting the result and exiting.</span>
 <span id="L92"><span class="lineNum">      92</span>              :  */</span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         114 : void SetTorchCommand::torchStatusWritten()</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         132 : {</span></span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">         246 :     switch (format) {</span></span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">          82 :     case OutputFormat::Csv:</span></span>
-<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">          82 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;set_torch_result\nsuccess\n&quot;));</span></span>
-<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">          82 :         break;</span></span>
-<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">          44 :     case OutputFormat::Json:</span></span>
-<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">          93 :         std::cout &lt;&lt; qUtf8Printable(QLatin1String(&quot;true\n&quot;));</span></span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">          82 :         break;</span></span>
-<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">          82 :     case OutputFormat::Text:</span></span>
-<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">          82 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></span>
-<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">          82 :         break;</span></span>
-<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">         132 :     }</span></span>
-<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">         246 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>
-<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">         246 : }</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         120 : void SetTorchCommand::torchStatusWritten()</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         141 : {</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">         261 :     switch (format) {</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">          87 :     case OutputFormat::Csv:</span></span>
+<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">          87 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;set_torch_result\nsuccess\n&quot;));</span></span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">          87 :         break;</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">          47 :     case OutputFormat::Json:</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">          98 :         std::cout &lt;&lt; qUtf8Printable(QLatin1String(&quot;true\n&quot;));</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">          87 :         break;</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">          87 :     case OutputFormat::Text:</span></span>
+<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">          87 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">          87 :         break;</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">         141 :     }</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">         261 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">         261 : }</span></span>
         </pre>
               </td>
             </tr>

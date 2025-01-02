@@ -87,7 +87,7 @@
               <td>
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
-<span id="L1"><span class="lineNum">       1</span>              : // SPDX-FileCopyrightText: 2022-2024 Paul Colby &lt;git@colby.id.au&gt;</span>
+<span id="L1"><span class="lineNum">       1</span>              : // SPDX-FileCopyrightText: 2022-2025 Paul Colby &lt;git@colby.id.au&gt;</span>
 <span id="L2"><span class="lineNum">       2</span>              : // SPDX-License-Identifier: LGPL-3.0-or-later</span>
 <span id="L3"><span class="lineNum">       3</span>              : </span>
 <span id="L4"><span class="lineNum">       4</span>              : #ifndef DOKIT_ABSTRACTCOMMAND_H</span>
@@ -102,9 +102,9 @@
 <span id="L13"><span class="lineNum">      13</span>              : </span>
 <span id="L14"><span class="lineNum">      14</span>              : class PokitDiscoveryAgent;</span>
 <span id="L15"><span class="lineNum">      15</span>              : </span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">       16840 : class AbstractCommand : public QObject</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">       17744 : class AbstractCommand : public QObject</span></span>
 <span id="L17"><span class="lineNum">      17</span>              : {</span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         828 :     Q_OBJECT</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         874 :     Q_OBJECT</span></span>
 <span id="L19"><span class="lineNum">      19</span>              : </span>
 <span id="L20"><span class="lineNum">      20</span>              : public:</span>
 <span id="L21"><span class="lineNum">      21</span>              :     /// Supported output formats.</span>
@@ -132,7 +132,7 @@
 <span id="L43"><span class="lineNum">      43</span>              :     QString deviceToScanFor; ///&lt; Device (if any) that were passed to processOptions().</span>
 <span id="L44"><span class="lineNum">      44</span>              :     PokitDiscoveryAgent * discoveryAgent; ///&lt; Agent for Pokit device descovery.</span>
 <span id="L45"><span class="lineNum">      45</span>              :     OutputFormat format { OutputFormat::Text }; ///&lt; Selected output format.</span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">       57708 :     static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">       60431 :     static Q_LOGGING_CATEGORY(lc, &quot;dokit.cli.command&quot;, QtInfoMsg); ///&lt; Logging category for UI commands.</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
 <span id="L48"><span class="lineNum">      48</span>              : protected slots:</span>
 <span id="L49"><span class="lineNum">      49</span>              :     virtual void deviceDiscovered(const QBluetoothDeviceInfo &amp;info) = 0;</span>
