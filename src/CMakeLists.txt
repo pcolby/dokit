@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2022-2024 Paul Colby <git@colby.id.au>
+# SPDX-FileCopyrightText: 2022-2025 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
 add_subdirectory(cli)

@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2022-2024 Paul Colby <git@colby.id.au>
+# SPDX-FileCopyrightText: 2022-2025 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
 set(DokitCliSources
@@ -54,7 +54,7 @@ if(APPLE)
   set(MACOSX_BUNDLE_BUNDLE_VERSION       "${PROJECT_VERSION}")
   set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}")
   set(MACOSX_BUNDLE_BLUETOOTH            "${PROJECT_NAME} requires Bluetooth access to communicate with Pokit devices.")
-  set(MACOSX_BUNDLE_COPYRIGHT            "Copyright 2022-2024 Paul Colby &lt;git@colby.id.au&gt;")
+  set(MACOSX_BUNDLE_COPYRIGHT            "Copyright 2022-2025 Paul Colby &lt;git@colby.id.au&gt;")
   set_target_properties(
     cli
     PROPERTIES
