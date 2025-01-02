@@ -11,6 +11,8 @@
 #include <qtpokit/pokitmeter.h>
 #include <qtpokit/pokitpro.h>
 
+#include <QRegularExpression>
+
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(DataLoggerService::Metadata)
 
@@ -34,7 +36,7 @@ void TestLoggerFetchCommand::metadataRead()
         1000, 1234, (quint32)QDateTime::currentSecsSinceEpoch()
     };
     LoggerFetchCommand command(this);
-    QTest::ignoreMessage(QtInfoMsg, "Fetching 1,234 logger sample/s...");
+    QTest::ignoreMessage(QtInfoMsg, QRegularExpression(QStringLiteral(R"(Fetching 1,?234 logger sample/s\.{3})")));
     command.metadataRead(metadata);
     QCOMPARE(command.metadata.status,          metadata.status);
     QCOMPARE(command.metadata.scale,           metadata.scale);

@@ -27,7 +27,8 @@ jobs:
           - 6.5.3
           - 6.6.3
           - 6.7.3
-          - 6.8.0
+          - 6.8.1
+          - 6.9.0
         cc:
           - clang
           - gcc
@@ -59,6 +60,11 @@ jobs:
             ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                 (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
+          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
+          aqtsource: >-
+            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
+                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
       - name: Upload aqtinstall log file
         if: failure()
         uses: actions/upload-artifact@v4
@@ -162,7 +168,8 @@ jobs:
           - 6.5.3
           - 6.6.3
           - 6.7.3
-          - 6.8.0
+          - 6.8.1
+          - 6.9.0
         os:
           - macos-13
           - macos-14
@@ -196,7 +203,8 @@ jobs:
           - { qt: '6.5.3', cc: gcc }
           - { qt: '6.6.3', cc: gcc }
           - { qt: '6.7.3', cc: gcc }
-          - { qt: '6.8.0', cc: gcc }
+          - { qt: '6.8.1', cc: gcc }
+          - { qt: '6.9.0', cc: gcc }
     steps:
       - uses: actions/checkout@v4
       - name: Install lcov
@@ -212,6 +220,11 @@ jobs:
             ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                 (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
+          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
+          aqtsource: >-
+            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
+                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
       - name: Upload aqtinstall log file
         if: failure()
         uses: actions/upload-artifact@v4
@@ -340,7 +353,8 @@ jobs:
           - 6.5.3
           - 6.6.3
           - 6.7.3
-          - 6.8.0
+          - 6.8.1
+          - 6.9.0
         arch: [ x86, x86-64, arm64 ]
         toolchain: [ llvm, mingw, msvc ]
         exclude:
@@ -353,9 +367,10 @@ jobs:
           - { arch: arm64, qt: '5.13.2' }
           - { arch: arm64, qt: '5.14.2' }
           - { arch: arm64, qt: '5.15.2' }
-          # Also exclude arm64 for Qt 6.8 for now, as Qt 6.8 is moving to native-only (not cross-compiling) arm64 on
+          # Also exclude arm64 for Qt 6.8+ for now, as Qt 6.8 is moving to native-only (not cross-compiling) arm64 on
           # Windows (https://www.qt.io/blog/qt-for-windows-on-arm-may21-update) and there are not compatible runners.
-          - { arch: arm64, qt: '6.8.0' }
+          - { arch: arm64, qt: '6.8.1' } # \todo Qt 6.8.1 might have restored cross-compilation.
+          - { arch: arm64, qt: '6.9.0' } # \todo Qt 6.9.0 might have restored cross-compilation.
           # Exclude MinGW (including LLVM) builds for arm64, since Qt does not provide those binaries yet.
           - { arch: arm64, toolchain: llvm }
           - { arch: arm64, toolchain: mingw }
@@ -370,7 +385,8 @@ jobs:
           - { arch: x86, qt: '6.5.3' }
           - { arch: x86, qt: '6.6.3' }
           - { arch: x86, qt: '6.7.3' }
-          - { arch: x86, qt: '6.8.0' }
+          - { arch: x86, qt: '6.8.1' }
+          - { arch: x86, qt: '6.9.0' }
           # Exclude MinGW (including LLVM) builds for x86-64 with Qt's earlier than 5.12, since the Qt online
           # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
           - { arch: x86-64, qt: '5.9.9',  toolchain: llvm }
@@ -394,7 +410,8 @@ jobs:
           - { toolchain: llvm, qt: '6.6.3' }
           # \todo Temporarily exclude LLVM builds for Qt 6.7 and 6.8: https://github.com/miurahr/aqtinstall/issues/825
           - { toolchain: llvm, qt: '6.7.3' }
-          - { toolchain: llvm, qt: '6.8.0' }
+          - { toolchain: llvm, qt: '6.8.1' }
+          - { toolchain: llvm, qt: '6.9.0' }
         include:
           # Map the aqtinstall (aqt) architectures.
           - { qt: '5.9.9',   toolchain: mingw, arch: x86,    aqtArch: win32_mingw53 }
@@ -450,9 +467,12 @@ jobs:
           - { qt: '6.7.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.7.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.7.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
-          # { qt: '6.8.0',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
-          - { qt: '6.8.0',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
-          - { qt: '6.8.0',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
+          # { qt: '6.8.1',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.8.1',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.8.1',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
+          # { qt: '6.9.0',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.9.0',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.9.0',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           # Map the MSVC architecture.
           - { toolchain: msvc, arch: arm64,  msvcArch: amd64_arm64 }
           - { toolchain: msvc, arch: x86,    msvcArch: amd64_x86 }
@@ -468,7 +488,8 @@ jobs:
           - { toolchain: 'mingw', arch: x86-64, qt: '6.5.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.6.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.7.3',  aqtTools: 'tools_mingw1310' }
-          - { toolchain: 'mingw', arch: x86-64, qt: '6.8.0',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.8.1',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.9.0',  aqtTools: 'tools_mingw1310' }
     steps:
       - name: Configure path
         if: matrix.toolchain != 'msvc'
@@ -493,6 +514,11 @@ jobs:
           version: ${{ matrix.qt }}
           arch: win64_msvc2019_64
           set-env: false
+          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
+          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
+          aqtsource: >-
+            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
+                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
       - name: Upload aqtinstall log file
         if: matrix.arch == 'arm64' && failure()
         uses: actions/upload-artifact@v4
@@ -513,6 +539,11 @@ jobs:
              ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                  (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
+          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
+          aqtsource: >-
+            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
+                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
       - name: Upload aqtinstall log file
         if: failure()
         uses: actions/upload-artifact@v4

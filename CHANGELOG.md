@@ -6,6 +6,7 @@
 
 - Return `quint32` from all `maxValue` methods, instead of `QVariant` ([db8b841][])
 - Upgrade to Doxygen 1.13.0.
+- Upgrade to Qt 6.8.1, and 6.9.0 beta.
 
 ## [0.5.3][] (2024-12-23)
 
