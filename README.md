@@ -18,7 +18,7 @@ It consists if primarily three components:
 
 1. `QtPokit` cross-platform [Qt][] library - used extensively by the applications below, but
     also easily re-usable under the [LGPL][]; and
-2. dokit CLI console application demonstrating most of the features of [QtPokit]; and
+2. `dokit` console CLI application demonstrating most of the features of the `QtPokit` library; and
 3. Dokit GUI application - currently in very early stages of development.
 
 Most [Pokit Meter][] and [Pokit Pro][] functions are supported, including the multimeter,
