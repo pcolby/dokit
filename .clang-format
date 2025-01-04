@@ -1,0 +1,74 @@
+---
+BasedOnStyle: WebKit
+AlignAfterOpenBracket: DontAlign
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: true
+AlignEscapedNewlines: LeftWithLastLine
+AlignOperands: AlignAfterOperator
+AlignTrailingComments: Always
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Always
+AllowShortCompoundRequirementOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: false
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakBeforeMultilineStrings: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: true
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeElse: false
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+BreakConstructorInitializers: AfterColon
+ColumnLimit: 120
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: false
+IncludeBlocks: Regroup
+IncludeCategories:
+- CaseSensitive: true
+  Priority: 2
+  Regex: _global\.h"$
+  SortPriority: 1
+- CaseSensitive: false
+  Priority: 2
+  Regex: ^"
+- CaseSensitive: true
+  Priority: 3
+  Regex: ^<qtpokit/
+- CaseSensitive: true
+  Priority: 4
+  Regex: ^<Q
+- CaseSensitive: false
+  Priority: 5
+  Regex: ^<
+IndentPPDirectives: BeforeHash
+IndentWidth: 4
+LineEnding: LF
+PackConstructorInitializers: NextLine
+PointerAlignment: Right
+PPIndentWidth: 2
+QualifierAlignment: Left
+SortUsingDeclarations: Lexicographic
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceAroundPointerQualifiers: Both
+SpaceBeforeCpp11BracedList: true
+SpacesInAngles: Never
+Standard: Latest
+UseTab: Never
+#WrapNamespaceBodyWithEmptyLines: true \todo clang-format 20+
+...
