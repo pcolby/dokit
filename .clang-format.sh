@@ -5,6 +5,8 @@
 set -o errexit -o noclobber -o nounset -o pipefail
 shopt -s extglob globstar inherit_errexit
 
+clang-format --version
+
 for style in LLVM GNU Google Chromium Microsoft Mozilla WebKit; do
   #git checkout include src >& /dev/null
   sed -i -Ee "s|^(BasedOnStyle:).*|\1 ${style}|" .clang-format
