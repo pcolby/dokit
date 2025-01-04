@@ -6,6 +6,14 @@ permissions:
   contents: read
 
 jobs:
+  CodeFormat:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Format code
+        run: ./.clang-format.sh
+      # \todo Check for changes.
+
   CodeQL:
     permissions:
       contents: read

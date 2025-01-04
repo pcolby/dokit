@@ -1,7 +1,14 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2022-2025 Paul Colby <git@colby.id.au>
+# SPDX-License-Identifier: LGPL-3.0-or-later
+
+set -o errexit -o noclobber -o nounset -o pipefail
+shopt -s extglob globstar inherit_errexit
+
 for style in LLVM GNU Google Chromium Microsoft Mozilla WebKit; do
-#for style in WebKit; do
   #git checkout include src >& /dev/null
   sed -i -Ee "s|^(BasedOnStyle:).*|\1 ${style}|" .clang-format
-  clang-format -i include/qtpokit/*.h src/*/*.{cpp,h}
+  clang-format --dump-config >| .clang-format-dump-$style
+  clang-format -i **/*.{cpp,h}
   printf "%-9s %5d\n" "${style}" "$(git diff | wc -l)"
 done
