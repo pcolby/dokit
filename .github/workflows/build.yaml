@@ -667,7 +667,8 @@ jobs:
           tee -a "${GITHUB_PATH}" <<< "${RUNNER_TEMP}/lcov-${LCOV_VERSION}/bin"
       - name: Download test results
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh run download "$GITHUB_RUN_ID" --dir "$RUNNER_TEMP/artifacts" --pattern test-results-*
       - name: Generate test summary
         uses: pcolby/tap-summary@v1
