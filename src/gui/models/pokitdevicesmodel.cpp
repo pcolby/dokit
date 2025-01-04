@@ -4,8 +4,8 @@
 #include "pokitdevicesmodel.h"
 #include "../resources.h"
 
-#include "qtpokit/pokitdiscoveryagent.h"
-#include "qtpokit/pokitproducts.h"
+#include <qtpokit/pokitdiscoveryagent.h>
+#include <qtpokit/pokitproducts.h>
 
 #include <QBluetoothUuid>
 #include <QDebug>

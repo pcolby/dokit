@@ -6,7 +6,7 @@
  * Declares the PokitMeter namespace.
  */
 
-#include "qtpokit/pokitmeter.h"
+#include <qtpokit/pokitmeter.h>
 
 #include <QCoreApplication>
 #include <QLoggingCategory>

@@ -6,8 +6,8 @@
 #include <qtpokit/abstractpokitservice.h>
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/pokitdiscoveryagent.h>
-#include "qtpokit/pokitmeter.h"
-#include "qtpokit/pokitpro.h"
+#include <qtpokit/pokitmeter.h>
+#include <qtpokit/pokitpro.h>
 
 /*!
  * \class DeviceCommand
