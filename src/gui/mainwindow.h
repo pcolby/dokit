@@ -3,7 +3,7 @@
 
 #include "models/pokitdevicesmodel.h"
 
-#include "qtpokit/pokitdiscoveryagent.h"
+#include <qtpokit/pokitdiscoveryagent.h>
 
 #include <QLoggingCategory>
 #include <QMainWindow>

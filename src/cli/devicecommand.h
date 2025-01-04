@@ -5,7 +5,7 @@
 #define DOKIT_DEVICECOMMAND_H
 
 #include "abstractcommand.h"
-#include "qtpokit/pokitproducts.h"
+#include <qtpokit/pokitproducts.h>
 
 #include <QLowEnergyController>
 

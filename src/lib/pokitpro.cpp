@@ -6,7 +6,7 @@
  * Defined the PokitPro helper functions.
  */
 
-#include "qtpokit/pokitpro.h"
+#include <qtpokit/pokitpro.h>
 
 #include <QCoreApplication>
 #include <QLoggingCategory>
