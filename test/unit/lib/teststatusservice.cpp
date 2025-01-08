@@ -605,6 +605,13 @@ void TestStatusService::serviceDiscovered()
 
     // Pokit Meter's Status service UUId will be assigned.
     service.d_func()->serviceDiscovered(StatusService::ServiceUuids::pokitMeter);
+    #if defined(Q_OS_WIN) && defined(Q_CC_CLANG)
+        qInfo() << "service.d_func()->serviceUuid" << service.d_func()->serviceUuid;
+        qInfo() << "StatusService::ServiceUuids::pokitMeter" << StatusService::ServiceUuids::pokitMeter;
+        qInfo() << "\\todo Once llvm-mingw is updated such that the above two match, then remove the following QSKIP()";
+        qInfo() << "\\todo See https://github.com/llvm/llvm-project/issues/110975";
+        QSKIP("LLVM has known 'const static inline variable initialisation' bug on Windows #110975");
+    #endif
     QCOMPARE(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitMeter);
 
     // Pokit Pro's Status service UUId will be assigned.

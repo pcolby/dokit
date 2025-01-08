@@ -404,10 +404,6 @@ jobs:
           - { toolchain: llvm, qt: '6.4.3' }
           - { toolchain: llvm, qt: '6.5.3' }
           - { toolchain: llvm, qt: '6.6.3' }
-          # \todo Temporarily exclude LLVM builds for Qt 6.7 and 6.8: https://github.com/miurahr/aqtinstall/issues/825
-          - { toolchain: llvm, qt: '6.7.3' }
-          - { toolchain: llvm, qt: '6.8.1' }
-          - { toolchain: llvm, qt: '6.9.0' }
         include:
           # Map the aqtinstall (aqt) architectures.
           - { qt: '5.9.9',   toolchain: mingw, arch: x86,    aqtArch: win32_mingw53 }
@@ -459,15 +455,15 @@ jobs:
           - { qt: '6.6.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.6.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.6.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
-          # { qt: '6.7.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.7.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.7.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.7.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.7.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
-          # { qt: '6.8.1',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.8.1',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.8.1',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.8.1',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
           - { qt: '6.8.1',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
-          # { qt: '6.9.0',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw } \todo See temp exclusion above.
+          - { qt: '6.9.0',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.9.0',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.9.0',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
           - { qt: '6.9.0',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
@@ -476,7 +472,7 @@ jobs:
           - { toolchain: msvc, arch: x86,    msvcArch: amd64_x86 }
           - { toolchain: msvc, arch: x86-64, msvcArch: amd64 }
           # Define the generator and dll names per toolchain.
-          # { toolchain: 'llvm',  generator: 'MinGW Makefiles', dll: libQtPokit.dll } \todo See temp exclusion above.
+          - { toolchain: 'llvm',  generator: 'MinGW Makefiles', dll: libQtPokit.dll }
           - { toolchain: 'mingw', generator: 'MinGW Makefiles', dll: libQtPokit.dll }
           - { toolchain: 'msvc',  generator: 'NMake Makefiles', dll: QtPokit.dll }
           # Use Qt-provided 64-bit MinGW for recent Qt's (defaulting to GitHub's 12.2.0 version for older Qt versions).
@@ -485,8 +481,11 @@ jobs:
           - { toolchain: 'mingw', arch: x86-64, qt: '6.4.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.5.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.6.3',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'llvm',  arch: x86-64, qt: '6.7.3',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.7.3',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'llvm',  arch: x86-64, qt: '6.8.1',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.8.1',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'llvm',  arch: x86-64, qt: '6.9.0',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.9.0',  aqtTools: 'tools_mingw1310' }
     steps:
       - name: Configure path
@@ -602,6 +601,11 @@ jobs:
           copy /v /b src\lib\${{ matrix.dll }} /b test\unit\cli
           copy /v /b src\lib\${{ matrix.dll }} /b test\unit\lib
         working-directory: ${{ runner.temp }}/release
+      # \todo Remove this step when https://github.com/llvm/llvm-project/issues/110975 is resolved.
+      - name: Test StatusService for LLVM debugging
+        if: matrix.toolchain == 'llvm'
+        shell: bash
+        run: /d/a/_temp/coverage/test/unit/lib/testStatusService.exe -o output,txt || :; cat output
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --verbose
@@ -609,7 +613,7 @@ jobs:
         if: matrix.arch != 'arm64'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/release" --verbose
       - name: Collate test coverage
-        if: matrix.toolchain != 'msvc'
+        if: matrix.toolchain != 'msvc' && matrix.toolchain != 'llvm'
         run: cmake --build "%RUNNER_TEMP%/coverage" --target coverage --verbose
       - name: Upload test results
         if: matrix.arch != 'arm64' && ( matrix.toolchain != 'msvc' || fromJSON(steps.post-build.outputs.tap) )

@@ -108,16 +108,26 @@ endif()
 find_program(WINDEPLOYQT NAMES windeployqt windeployqt.exe)
 if (WINDEPLOYQT)
   message(STATUS "Found windeployqt: ${WINDEPLOYQT}")
+  if (CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
+    message(
+      NOTICE
+      "${CMAKE_CXX_COMPILER_ID} compiler runtime not supported by windeployqt, "
+      "so compiler runtime will not be included in portable builds.")
+    set(DOKIT_INCLUDE_COMPILER_RUNTIME false)
+  else()
+    set(DOKIT_INCLUDE_COMPILER_RUNTIME true)
+  endif()
   file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/portable)
   add_custom_target(
     cli-portable
     COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:cli>" "${PROJECT_BINARY_DIR}/portable"
     COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:QtPokit>" "${PROJECT_BINARY_DIR}/portable"
-    COMMAND ${WINDEPLOYQT} --compiler-runtime --release --verbose 2
+    COMMAND ${WINDEPLOYQT} "$<$<BOOL:${DOKIT_INCLUDE_COMPILER_RUNTIME}>:--compiler-runtime>" --release --verbose 2
       "$<TARGET_FILE_NAME:cli>"
       "$<TARGET_FILE_NAME:QtPokit>"
     COMMENT "Bundling portable version"
     DEPENDS cli QtPokit
+    COMMAND_EXPAND_LISTS
     VERBATIM
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/portable)
 endif()
