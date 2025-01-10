@@ -109,11 +109,11 @@
 <span id="L20"><span class="lineNum">      20</span>              : /*!</span>
 <span id="L21"><span class="lineNum">      21</span>              :  * Constructs a new Pokit service with \a parent.</span>
 <span id="L22"><span class="lineNum">      22</span>              :  */</span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        1426 : DeviceInfoService::DeviceInfoService(QLowEnergyController * const controller, QObject * parent)</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">        2046 :     : AbstractPokitService(new DeviceInfoServicePrivate(controller, this), parent)</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        1100 : {</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        1600 : DeviceInfoService::DeviceInfoService(QLowEnergyController * const controller, QObject * parent)</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">        2280 :     : AbstractPokitService(new DeviceInfoServicePrivate(controller, this), parent)</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        1160 : {</span></span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">        2526 : }</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">        2760 : }</span></span>
 <span id="L28"><span class="lineNum">      28</span>              : </span>
 <span id="L29"><span class="lineNum">      29</span>              : /*!</span>
 <span id="L30"><span class="lineNum">      30</span>              :  * \cond internal</span>
@@ -236,13 +236,13 @@
 <span id="L147"><span class="lineNum">     147</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</span>
 <span id="L148"><span class="lineNum">     148</span>              :  * null QString is returned.</span>
 <span id="L149"><span class="lineNum">     149</span>              :  */</span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         826 : QString DeviceInfoService::manufacturer() const</span></span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         395 : {</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         395 :     Q_D(const DeviceInfoService);</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">         395 :     const QLowEnergyCharacteristic characteristic =</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">        1221 :         d-&gt;getCharacteristic(CharacteristicUuids::manufacturerName);</span></span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">        2047 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">        1221 : }</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">        1000 : QString DeviceInfoService::manufacturer() const</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         455 : {</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">         455 :     Q_D(const DeviceInfoService);</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">         455 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">        1455 :         d-&gt;getCharacteristic(CharacteristicUuids::manufacturerName);</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">        2455 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">        1455 : }</span></span>
 <span id="L157"><span class="lineNum">     157</span>              : </span>
 <span id="L158"><span class="lineNum">     158</span>              : /*!</span>
 <span id="L159"><span class="lineNum">     159</span>              :  * Returns the most recent value of the `Device Info` service's `Model Number` characteristic.</span>
@@ -251,13 +251,13 @@
 <span id="L162"><span class="lineNum">     162</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</span>
 <span id="L163"><span class="lineNum">     163</span>              :  * null QString is returned.</span>
 <span id="L164"><span class="lineNum">     164</span>              :  */</span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         826 : QString DeviceInfoService::modelNumber() const</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         395 : {</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         395 :     Q_D(const DeviceInfoService);</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         395 :     const QLowEnergyCharacteristic characteristic =</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">        1221 :         d-&gt;getCharacteristic(CharacteristicUuids::modelNumber);</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">        2047 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">        1221 : }</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">        1000 : QString DeviceInfoService::modelNumber() const</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         455 : {</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         455 :     Q_D(const DeviceInfoService);</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         455 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">        1455 :         d-&gt;getCharacteristic(CharacteristicUuids::modelNumber);</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">        2455 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">        1455 : }</span></span>
 <span id="L172"><span class="lineNum">     172</span>              : </span>
 <span id="L173"><span class="lineNum">     173</span>              : /*!</span>
 <span id="L174"><span class="lineNum">     174</span>              :  * Returns the most recent value of the `Device Info` service's `Hardware Revision` characteristic.</span>
@@ -266,13 +266,13 @@
 <span id="L177"><span class="lineNum">     177</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</span>
 <span id="L178"><span class="lineNum">     178</span>              :  * null QString is returned.</span>
 <span id="L179"><span class="lineNum">     179</span>              :  */</span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">         826 : QString DeviceInfoService::hardwareRevision() const</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">         395 : {</span></span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">         395 :     Q_D(const DeviceInfoService);</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">         395 :     const QLowEnergyCharacteristic characteristic =</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">        1221 :         d-&gt;getCharacteristic(CharacteristicUuids::hardwareRevision);</span></span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">        2047 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">        1221 : }</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">        1000 : QString DeviceInfoService::hardwareRevision() const</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">         455 : {</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">         455 :     Q_D(const DeviceInfoService);</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">         455 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">        1455 :         d-&gt;getCharacteristic(CharacteristicUuids::hardwareRevision);</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">        2455 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">        1455 : }</span></span>
 <span id="L187"><span class="lineNum">     187</span>              : </span>
 <span id="L188"><span class="lineNum">     188</span>              : /*!</span>
 <span id="L189"><span class="lineNum">     189</span>              :  * Returns the most recent value of the `Device Info` service's `Firmware Revision` characteristic.</span>
@@ -281,13 +281,13 @@
 <span id="L192"><span class="lineNum">     192</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</span>
 <span id="L193"><span class="lineNum">     193</span>              :  * null QString is returned.</span>
 <span id="L194"><span class="lineNum">     194</span>              :  */</span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">         826 : QString DeviceInfoService::firmwareRevision() const</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         395 : {</span></span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         395 :     Q_D(const DeviceInfoService);</span></span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">         395 :     const QLowEnergyCharacteristic characteristic =</span></span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">        1221 :         d-&gt;getCharacteristic(CharacteristicUuids::firmwareRevision);</span></span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">        2047 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">        1221 : }</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">        1000 : QString DeviceInfoService::firmwareRevision() const</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         455 : {</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         455 :     Q_D(const DeviceInfoService);</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">         455 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">        1455 :         d-&gt;getCharacteristic(CharacteristicUuids::firmwareRevision);</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">        2455 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">        1455 : }</span></span>
 <span id="L202"><span class="lineNum">     202</span>              : </span>
 <span id="L203"><span class="lineNum">     203</span>              : /*!</span>
 <span id="L204"><span class="lineNum">     204</span>              :  * Returns the most recent value of the `Device Info` service's `Software Revision` characteristic.</span>
@@ -296,13 +296,13 @@
 <span id="L207"><span class="lineNum">     207</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</span>
 <span id="L208"><span class="lineNum">     208</span>              :  * null QString is returned.</span>
 <span id="L209"><span class="lineNum">     209</span>              :  */</span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">         826 : QString DeviceInfoService::softwareRevision() const</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">         395 : {</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         395 :     Q_D(const DeviceInfoService);</span></span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         395 :     const QLowEnergyCharacteristic characteristic =</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">        1221 :         d-&gt;getCharacteristic(CharacteristicUuids::softwareRevision);</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">        2047 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">        1221 : }</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">        1000 : QString DeviceInfoService::softwareRevision() const</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">         455 : {</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         455 :     Q_D(const DeviceInfoService);</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         455 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">        1455 :         d-&gt;getCharacteristic(CharacteristicUuids::softwareRevision);</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">        2455 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">        1455 : }</span></span>
 <span id="L217"><span class="lineNum">     217</span>              : </span>
 <span id="L218"><span class="lineNum">     218</span>              : /*!</span>
 <span id="L219"><span class="lineNum">     219</span>              :  * Returns the most recent value of the `Device Info` service's (undocumented) `Serial Number`</span>
@@ -312,19 +312,19 @@
 <span id="L223"><span class="lineNum">     223</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</span>
 <span id="L224"><span class="lineNum">     224</span>              :  * null QString is returned.</span>
 <span id="L225"><span class="lineNum">     225</span>              :  */</span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">         826 : QString DeviceInfoService::serialNumber() const</span></span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">         395 : {</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">         395 :     Q_D(const DeviceInfoService);</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">         395 :     const QLowEnergyCharacteristic characteristic =</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">        1221 :         d-&gt;getCharacteristic(CharacteristicUuids::serialNumber);</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">        1000 : QString DeviceInfoService::serialNumber() const</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">         455 : {</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">         455 :     Q_D(const DeviceInfoService);</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">         455 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">        1455 :         d-&gt;getCharacteristic(CharacteristicUuids::serialNumber);</span></span>
 <span id="L231"><span class="lineNum">     231</span>              :     /*!</span>
 <span id="L232"><span class="lineNum">     232</span>              :      * \cond internal</span>
 <span id="L233"><span class="lineNum">     233</span>              :      * \pokitApi Unlike other string characteristics, Pokit (Pro) devices always appear to add a trailing</span>
 <span id="L234"><span class="lineNum">     234</span>              :      * `null` byte to serial number strings. So here we strip any that are present.</span>
 <span id="L235"><span class="lineNum">     235</span>              :      * \endcond</span>
 <span id="L236"><span class="lineNum">     236</span>              :      */</span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">        2047 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()).remove(QLatin1Char('\0')) : QString();</span></span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">        1221 : }</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">        2455 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()).remove(QLatin1Char('\0')) : QString();</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">        1455 : }</span></span>
 <span id="L239"><span class="lineNum">     239</span>              : </span>
 <span id="L240"><span class="lineNum">     240</span>              : /*!</span>
 <span id="L241"><span class="lineNum">     241</span>              :  * \fn DeviceInfoService::manufacturerRead</span>
@@ -391,12 +391,12 @@
 <span id="L302"><span class="lineNum">     302</span>              :  * \internal</span>
 <span id="L303"><span class="lineNum">     303</span>              :  * Constructs a new DeviceInfoServicePrivate object with public implementation \a q.</span>
 <span id="L304"><span class="lineNum">     304</span>              :  */</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         620 : DeviceInfoServicePrivate::DeviceInfoServicePrivate(</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">        1426 :     QLowEnergyController * controller, DeviceInfoService * const q)</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        2046 :     : AbstractPokitServicePrivate(DeviceInfoService::serviceUuid, controller, q)</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">        1100 : {</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         680 : DeviceInfoServicePrivate::DeviceInfoServicePrivate(</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">        1600 :     QLowEnergyController * controller, DeviceInfoService * const q)</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        2280 :     : AbstractPokitServicePrivate(DeviceInfoService::serviceUuid, controller, q)</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">        1160 : {</span></span>
 <span id="L309"><span class="lineNum">     309</span>              : </span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">        1720 : }</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">        1840 : }</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
 <span id="L312"><span class="lineNum">     312</span>              : /*!</span>
 <span id="L313"><span class="lineNum">     313</span>              :  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a</span>

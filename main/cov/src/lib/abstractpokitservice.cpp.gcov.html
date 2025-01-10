@@ -113,12 +113,12 @@
 <span id="L24"><span class="lineNum">      24</span>              :  * \cond internal</span>
 <span id="L25"><span class="lineNum">      25</span>              :  * Constructs a new Pokit service with \a parent, and private implementation \a d.</span>
 <span id="L26"><span class="lineNum">      26</span>              :  */</span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">       15466 : AbstractPokitService::AbstractPokitService(</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">       15466 :     AbstractPokitServicePrivate * const d, QObject * const parent)</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">       22053 :     : QObject(parent), d_ptr(d)</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       10907 : {</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">       15640 : AbstractPokitService::AbstractPokitService(</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">       15640 :     AbstractPokitServicePrivate * const d, QObject * const parent)</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">       22287 :     : QObject(parent), d_ptr(d)</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       10967 : {</span></span>
 <span id="L31"><span class="lineNum">      31</span>              : </span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       26373 : }</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       26607 : }</span></span>
 <span id="L33"><span class="lineNum">      33</span>              : /// \endcond</span>
 <span id="L34"><span class="lineNum">      34</span>              : </span>
 <span id="L35"><span class="lineNum">      35</span>              : /*!</span>
@@ -254,23 +254,23 @@
 <span id="L165"><span class="lineNum">     165</span>              :  * \see StatusService::ServiceUuids</span>
 <span id="L166"><span class="lineNum">     166</span>              :  * \see StatusServicePrivate::serviceDiscovered</span>
 <span id="L167"><span class="lineNum">     167</span>              :  */</span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">       15466 : AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid,</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">       15466 :     QLowEnergyController * controller, AbstractPokitService * const q)</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">       22053 :     : controller(controller), serviceUuid(serviceUuid), q_ptr(q)</span></span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">       10907 : {</span></span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">       26373 :     if (controller) {</span></span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">       13617 :         connect(controller, &amp;QLowEnergyController::connected,</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">        6015 :                 this, &amp;AbstractPokitServicePrivate::connected);</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">       15640 : AbstractPokitServicePrivate::AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid,</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">       15640 :     QLowEnergyController * controller, AbstractPokitService * const q)</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">       22287 :     : controller(controller), serviceUuid(serviceUuid), q_ptr(q)</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">       10967 : {</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">       26607 :     if (controller) {</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">       13851 :         connect(controller, &amp;QLowEnergyController::connected,</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">        6075 :                 this, &amp;AbstractPokitServicePrivate::connected);</span></span>
 <span id="L175"><span class="lineNum">     175</span>              : </span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">       13617 :         connect(controller, &amp;QLowEnergyController::discoveryFinished,</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">        6015 :                 this, &amp;AbstractPokitServicePrivate::discoveryFinished);</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">       13851 :         connect(controller, &amp;QLowEnergyController::discoveryFinished,</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">        6075 :                 this, &amp;AbstractPokitServicePrivate::discoveryFinished);</span></span>
 <span id="L178"><span class="lineNum">     178</span>              : </span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">       13617 :         connect(controller, &amp;QLowEnergyController::serviceDiscovered,</span></span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">        6015 :                 this, &amp;AbstractPokitServicePrivate::serviceDiscovered);</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">       13851 :         connect(controller, &amp;QLowEnergyController::serviceDiscovered,</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">        6075 :                 this, &amp;AbstractPokitServicePrivate::serviceDiscovered);</span></span>
 <span id="L181"><span class="lineNum">     181</span>              : </span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">       13617 :         createServiceObject();</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">        4071 :     }</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">       26373 : }</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">       13851 :         createServiceObject();</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">        4131 :     }</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">       26607 : }</span></span>
 <span id="L185"><span class="lineNum">     185</span>              : </span>
 <span id="L186"><span class="lineNum">     186</span>              : /*!</span>
 <span id="L187"><span class="lineNum">     187</span>              :  * Creates an internal service object from the internal controller.</span>
@@ -279,26 +279,26 @@
 <span id="L190"><span class="lineNum">     190</span>              :  *</span>
 <span id="L191"><span class="lineNum">     191</span>              :  * Returns \c true if a service was created successfully, either now, or sometime previously.</span>
 <span id="L192"><span class="lineNum">     192</span>              :  */</span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">        9866 : bool AbstractPokitServicePrivate::createServiceObject()</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">        4297 : {</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">       14163 :     if (!controller) {</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">       10040 : bool AbstractPokitServicePrivate::createServiceObject()</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">        4357 : {</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">       14397 :     if (!controller) {</span></span>
 <span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         158 :         return false;</span></span>
 <span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         158 :     }</span></span>
 <span id="L198"><span class="lineNum">     198</span>              : </span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">       13845 :     if (service) {</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">       14079 :     if (service) {</span></span>
 <span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          67 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Already have service object:&quot;) &lt;&lt; service;</span></span>
 <span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">          47 :         return true;</span></span>
 <span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          17 :     }</span></span>
 <span id="L203"><span class="lineNum">     203</span>              : </span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">       13296 :     if (serviceUuid.isNull()) {</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">       13530 :     if (serviceUuid.isNull()) {</span></span>
 <span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         670 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service UUID not assigned yet.&quot;);</span></span>
 <span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">         470 :         return false;</span></span>
 <span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">         170 :     }</span></span>
 <span id="L208"><span class="lineNum">     208</span>              : </span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">       13218 :     service = controller-&gt;createServiceObject(serviceUuid, this);</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">       13218 :     if (!service) {</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">        3952 :         return false;</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">        3952 :     }</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">       13452 :     service = controller-&gt;createServiceObject(serviceUuid, this);</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">       13452 :     if (!service) {</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">        4012 :         return false;</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">        4012 :     }</span></span>
 <span id="L213"><span class="lineNum">     213</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service object created for %1 device:&quot;).arg(toString(*this-&gt;pokitProduct)) &lt;&lt; service;</span></span>
 <span id="L214"><span class="lineNum">     214</span>              : </span>
 <span id="L215"><span class="lineNum">     215</span> <span class="tlaUNC">           0 :     connect(service, &amp;QLowEnergyService::stateChanged,</span></span>
@@ -336,7 +336,7 @@
 <span id="L247"><span class="lineNum">     247</span> <span class="tlaUNC">           0 :         service-&gt;discoverDetails();</span></span>
 <span id="L248"><span class="lineNum">     248</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L249"><span class="lineNum">     249</span> <span class="tlaUNC">           0 :     return true;</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">        3952 : }</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">        4012 : }</span></span>
 <span id="L251"><span class="lineNum">     251</span>              : </span>
 <span id="L252"><span class="lineNum">     252</span>              : /*!</span>
 <span id="L253"><span class="lineNum">     253</span>              :  * Get \a uuid characteristc from the underlying service. This helper function is equivalent to</span>
@@ -351,13 +351,13 @@
 <span id="L262"><span class="lineNum">     262</span>              :  * \param uuid</span>
 <span id="L263"><span class="lineNum">     263</span>              :  * \return</span>
 <span id="L264"><span class="lineNum">     264</span>              :  */</span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        9316 : QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &amp;uuid) const</span></span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        6323 : {</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">       15639 :     if (!service) {</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       18229 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; requested before service assigned.)&quot;)</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">       10360 : QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &amp;uuid) const</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        6683 : {</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">       17043 :     if (!service) {</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       19633 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Characteristic %1 &quot;%2&quot; requested before service assigned.)&quot;)</span></span>
 <span id="L269"><span class="lineNum">     269</span> <span class="tlaUNC">           0 :             .arg(uuid.toString(), PokitDevice::charcteristicToString(uuid));</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">       15639 :         return QLowEnergyCharacteristic();</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        6323 :     }</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">       17043 :         return QLowEnergyCharacteristic();</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        6683 :     }</span></span>
 <span id="L272"><span class="lineNum">     272</span>              : </span>
 <span id="L273"><span class="lineNum">     273</span> <span class="tlaUNC">           0 :     if (const QLowEnergyCharacteristic characteristic = service-&gt;characteristic(uuid); characteristic.isValid()) {</span></span>
 <span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC">           0 :         return characteristic;</span></span>

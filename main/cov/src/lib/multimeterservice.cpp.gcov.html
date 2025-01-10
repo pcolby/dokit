@@ -122,22 +122,22 @@
 <span id="L33"><span class="lineNum">      33</span>              : </span>
 <span id="L34"><span class="lineNum">      34</span>              : /// Returns \a mode as a user-friendly string.</span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">        4000 : QString MultimeterService::toString(const Mode &amp;mode)</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        2450 : {</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">        6450 :     switch (mode) {</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        1116 :     case Mode::Idle:        return tr(&quot;Idle&quot;);</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         516 :     case Mode::DcVoltage:   return tr(&quot;DC voltage&quot;);</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">         516 :     case Mode::AcVoltage:   return tr(&quot;AC voltage&quot;);</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         516 :     case Mode::DcCurrent:   return tr(&quot;DC current&quot;);</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         516 :     case Mode::AcCurrent:   return tr(&quot;AC current&quot;);</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         516 :     case Mode::Resistance:  return tr(&quot;Resistance&quot;);</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         516 :     case Mode::Diode:       return tr(&quot;Diode&quot;);</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         945 :     case Mode::Continuity:  return tr(&quot;Continuity&quot;);</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         516 :     case Mode::Temperature: return tr(&quot;Temperature&quot;);</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         516 :     case Mode::Capacitance: return tr(&quot;Capacitance&quot;);</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        2090 : {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">        6090 :     switch (mode) {</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        1056 :     case Mode::Idle:        return tr(&quot;Idle&quot;);</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         486 :     case Mode::DcVoltage:   return tr(&quot;DC voltage&quot;);</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">         486 :     case Mode::AcVoltage:   return tr(&quot;AC voltage&quot;);</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         486 :     case Mode::DcCurrent:   return tr(&quot;DC current&quot;);</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         486 :     case Mode::AcCurrent:   return tr(&quot;AC current&quot;);</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         486 :     case Mode::Resistance:  return tr(&quot;Resistance&quot;);</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         486 :     case Mode::Diode:       return tr(&quot;Diode&quot;);</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         885 :     case Mode::Continuity:  return tr(&quot;Continuity&quot;);</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         486 :     case Mode::Temperature: return tr(&quot;Temperature&quot;);</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         486 :     case Mode::Capacitance: return tr(&quot;Capacitance&quot;);</span></span>
 <span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">          87 :     case Mode::ExternalTemperature: return tr(&quot;External temperature&quot;);</span></span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">        2450 :     }</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">        2090 :     }</span></span>
 <span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">          94 :     return QString();</span></span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">        2450 : }</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">        2090 : }</span></span>
 <span id="L52"><span class="lineNum">      52</span>              : </span>
 <span id="L53"><span class="lineNum">      53</span>              : /// Returns \a range as a user-friendly string, or a null QString if \a mode has no ranges.</span>
 <span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">        3800 : QString MultimeterService::toString(const PokitProduct product, const quint8 range, const Mode mode)</span></span>

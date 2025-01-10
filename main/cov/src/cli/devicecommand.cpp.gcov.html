@@ -107,10 +107,10 @@
 <span id="L18"><span class="lineNum">      18</span>              : /*!</span>
 <span id="L19"><span class="lineNum">      19</span>              :  * Construct a new DeviceCommand object with \a parent.</span>
 <span id="L20"><span class="lineNum">      20</span>              :  */</span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">       21711 : DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent)</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">       10835 : {</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">       21945 : DeviceCommand::DeviceCommand(QObject * const parent) : AbstractCommand(parent)</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">       10895 : {</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">       26061 : }</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">       26295 : }</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : </span>
 <span id="L26"><span class="lineNum">      26</span>              : /*!</span>
 <span id="L27"><span class="lineNum">      27</span>              :  * Begins scanning for the Pokit device.</span>
@@ -128,14 +128,14 @@
 <span id="L39"><span class="lineNum">      39</span>              :  * Disconnects the underlying Pokit device, and sets \a exitCode to be return to the OS once the</span>
 <span id="L40"><span class="lineNum">      40</span>              :  * disconnection has taken place.</span>
 <span id="L41"><span class="lineNum">      41</span>              :  */</span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">        1146 : void DeviceCommand::disconnect(int exitCode)</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         501 : {</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">        1977 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disconnecting Pokit device...&quot;);</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         501 :     Q_ASSERT(device);</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         501 :     Q_ASSERT(device-&gt;controller());</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">        1647 :     exitCodeOnDisconnect = exitCode;</span></span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">        1647 :     device-&gt;controller()-&gt;disconnectFromDevice();</span></span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">        1647 : }</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">        1320 : void DeviceCommand::disconnect(int exitCode)</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         561 : {</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">        2211 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Disconnecting Pokit device...&quot;);</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         561 :     Q_ASSERT(device);</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         561 :     Q_ASSERT(device-&gt;controller());</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">        1881 :     exitCodeOnDisconnect = exitCode;</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">        1881 :     device-&gt;controller()-&gt;disconnectFromDevice();</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">        1881 : }</span></span>
 <span id="L50"><span class="lineNum">      50</span>              : </span>
 <span id="L51"><span class="lineNum">      51</span>              : /*!</span>
 <span id="L52"><span class="lineNum">      52</span>              :  * \fn virtual AbstractPokitService * DeviceCommand::getService() = 0</span>
@@ -417,10 +417,10 @@
 <span id="L328"><span class="lineNum">     328</span>              :  * nothing more. Derived classes may (usually do) override this slot to provide their own processing</span>
 <span id="L329"><span class="lineNum">     329</span>              :  * when a services details have been discovered.</span>
 <span id="L330"><span class="lineNum">     330</span>              :  */</span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">         866 : void DeviceCommand::serviceDetailsDiscovered()</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         412 : {</span></span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        1538 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service details discovered.&quot;);</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">        1278 : }</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">        1040 : void DeviceCommand::serviceDetailsDiscovered()</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         472 : {</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        1772 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service details discovered.&quot;);</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">        1512 : }</span></span>
 <span id="L335"><span class="lineNum">     335</span>              : </span>
 <span id="L336"><span class="lineNum">     336</span>              : /*!</span>
 <span id="L337"><span class="lineNum">     337</span>              :  * Checks if \a info is the device (if any) we're looking for, and if so, create a contoller and</span>
