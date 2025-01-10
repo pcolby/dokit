@@ -11,6 +11,9 @@ on:
 permissions:
   contents: read
 
+env:
+  CMAKE_BUILD_PARALLEL_LEVEL: 4
+
 jobs:
   build-and-scan:
     runs-on: ubuntu-24.04

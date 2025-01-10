@@ -5,6 +5,12 @@ on: [ push, pull_request ]
 permissions:
   contents: read
 
+env:
+  # Currently, GitHub-hosted runners for public repos specify 4 cores, except macOS 14+
+  # See https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/
+  #     about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+  CMAKE_BUILD_PARALLEL_LEVEL: 4 # Default only; overridden where appriopriate, such as on macOS 14+ below.
+
 jobs:
   linux:
     runs-on: ubuntu-24.04
@@ -150,6 +156,8 @@ jobs:
 
   mac:
     runs-on: ${{ matrix.os }}
+    env:
+      CMAKE_BUILD_PARALLEL_LEVEL: ${{ matrix.os == 'macos-13' && 4 || 3 }}
     timeout-minutes: 15
     strategy:
       fail-fast: false
