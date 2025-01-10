@@ -113,15 +113,14 @@ void TestPokitProducts::isPokitProduct_Uuids()
 
 void TestPokitProducts::isPokitProduct_Controller_data()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
     isPokitProduct_data();
 }
 
 void TestPokitProducts::isPokitProduct_Controller()
 {
-    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
-        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
-    }
-
     QFETCH(QBluetoothUuid, uuid);
     QFETCH(bool, expected);
 
@@ -160,15 +159,14 @@ void TestPokitProducts::pokitProduct_Uuids()
 
 void TestPokitProducts::pokitProduct_Controller_data()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
     pokitProduct_data();
 }
 
 void TestPokitProducts::pokitProduct_Controller()
 {
-    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
-        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
-    }
-
     QFETCH(QBluetoothUuid, uuid);
     QFETCH(PokitProduct, expected);
 

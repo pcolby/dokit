@@ -10,6 +10,8 @@
 
 #include <qtpokit/pokitdevice.h>
 
+#include <QOperatingSystemVersion>
+
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 
 class MockDeviceCommand : public DeviceCommand
@@ -58,6 +60,10 @@ void TestInfoCommand::getService()
 
 void TestInfoCommand::serviceDetailsDiscovered_data()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QTest::addColumn<QBluetoothDeviceInfo>("info");
     QTest::addColumn<AbstractCommand::OutputFormat>("format");
 
@@ -88,25 +94,9 @@ void TestInfoCommand::serviceDetailsDiscovered_data()
 
 void TestInfoCommand::serviceDetailsDiscovered()
 {
-    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
-        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
-    }
-
     QFETCH(QBluetoothDeviceInfo, info);
     QFETCH(AbstractCommand::OutputFormat, format);
     LOADTESTDATA(expected);
-
-    #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
-    if (!info.deviceUuid().isNull()) {
-        // Fixed (though not called out) by https://bugreports.qt.io/browse/QTBUG-75348
-        QSKIP("QLowEnergyController fails to track device UUIDs prior to Qt 5.14.");
-    }
-    #if defined(Q_OS_MACOS)
-    if (!info.address().isNull()) {
-        QSKIP("On macOS, QLowEnergyController fails to track device addresses prior to Qt 5.14.");
-    }
-    #endif // macOS
-    #endif // < Qt 5.14
 
     const OutputStreamCapture capture(&std::cout);
     InfoCommand command(this);
@@ -114,6 +104,19 @@ void TestInfoCommand::serviceDetailsDiscovered()
     command.service = command.device->deviceInformation();
     command.format = format;
     command.serviceDetailsDiscovered();
+
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+    if ((!info.deviceUuid().isNull()) &&
+        (!(QOperatingSystemVersion::current() <= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 13)))) {
+        // Fixed (though not called out) by https://bugreports.qt.io/browse/QTBUG-75348
+        QEXPECT_FAIL("", "QLowEnergyController fails to track device UUIDs prior to Qt 5.14, except on macOS 13-", Continue);
+    }
+    #if defined(Q_OS_MACOS)
+    else if (!info.address().isNull()) {
+        QEXPECT_FAIL("", "On macOS, QLowEnergyController fails to track device addresses prior to Qt 5.14.", Continue);
+    }
+    #endif // macOS
+    #endif // < Qt 5.14
     QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
 }
 

@@ -51,6 +51,10 @@ void TestLoggerFetchCommand::metadataRead()
 
 void TestLoggerFetchCommand::outputSamples_data()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QTest::addColumn<DataLoggerService::Metadata>("metadata");
     QTest::addColumn<QList<DataLoggerService::Samples>>("samplesList");
     QTest::addColumn<AbstractCommand::OutputFormat>("format");
@@ -98,10 +102,6 @@ void TestLoggerFetchCommand::outputSamples_data()
 
 void TestLoggerFetchCommand::outputSamples()
 {
-    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
-        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
-    }
-
     QFETCH(DataLoggerService::Metadata, metadata);
     QFETCH(QList<DataLoggerService::Samples>, samplesList);
     QFETCH(AbstractCommand::OutputFormat, format);

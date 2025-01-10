@@ -71,6 +71,10 @@ void TestStatusCommand::serviceDetailsDiscovered()
 
 void TestStatusCommand::outputDeviceStatus_data()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QTest::addColumn<StatusService::DeviceCharacteristics>("chrs");
     QTest::addColumn<AbstractCommand::OutputFormat>("format");
 
@@ -103,10 +107,6 @@ void TestStatusCommand::outputDeviceStatus_data()
 
 void TestStatusCommand::outputDeviceStatus()
 {
-    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
-        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
-    }
-
     QFETCH(StatusService::DeviceCharacteristics, chrs);
     QFETCH(AbstractCommand::OutputFormat, format);
     LOADTESTDATA(expected);

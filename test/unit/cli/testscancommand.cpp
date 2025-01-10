@@ -131,14 +131,15 @@ void TestScanCommand::deviceDiscovered()
 
 void TestScanCommand::deviceUpdated_data()
 {
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
+    QSKIP("Not applicable before Qt version 5.12.");
+    #endif
     deviceDiscovered_data();
 }
 
 void TestScanCommand::deviceUpdated()
 {
-#if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    QSKIP("Not applicable before Qt version 5.12.");
-#else
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
     QFETCH(QList<QBluetoothDeviceInfo>, infos);
     QFETCH(AbstractCommand::OutputFormat, format);
     LOADTESTDATA(expected);
@@ -150,7 +151,7 @@ void TestScanCommand::deviceUpdated()
         command.deviceUpdated(info, QBluetoothDeviceInfo::Fields());
     }
     QCOMPARE(QByteArray::fromStdString(capture.data()), expected);
-#endif
+    #endif
 }
 
 void TestScanCommand::deviceDiscoveryFinished()

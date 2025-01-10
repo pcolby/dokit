@@ -347,6 +347,10 @@ void TestMeterCommand::settingsWritten()
 
 void TestMeterCommand::outputReading_data()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QTest::addColumn<QList<MultimeterService::Reading>>("readings");
     QTest::addColumn<AbstractCommand::OutputFormat>("format");
 
@@ -407,10 +411,6 @@ void TestMeterCommand::outputReading_data()
 
 void TestMeterCommand::outputReading()
 {
-    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
-        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
-    }
-
     QFETCH(QList<MultimeterService::Reading>, readings);
     QFETCH(AbstractCommand::OutputFormat, format);
     LOADTESTDATA(expected);

@@ -53,6 +53,10 @@ void TestDsoCommand::supportedOptions()
 
 void TestDsoCommand::processOptions_data()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QTest::addColumn<QStringList>("arguments");
     QTest::addColumn<DsoService::Settings>("expectedSettings");
     QTest::addColumn<minRangeFunc>("expectedMinRangeFunc");
@@ -368,10 +372,6 @@ void TestDsoCommand::processOptions_data()
 
 void TestDsoCommand::processOptions()
 {
-    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
-        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
-    }
-
     QFETCH(QStringList, arguments);
     QFETCH(DsoService::Settings, expectedSettings);
     QFETCH(minRangeFunc, expectedMinRangeFunc);
@@ -447,6 +447,10 @@ void TestDsoCommand::metadataRead()
 
 void TestDsoCommand::outputSamples_data()
 {
+    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
+        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
+    }
+
     QTest::addColumn<DsoService::Metadata>("metadata");
     QTest::addColumn<QList<DsoService::Samples>>("samplesList");
     QTest::addColumn<AbstractCommand::OutputFormat>("format");
@@ -492,10 +496,6 @@ void TestDsoCommand::outputSamples_data()
 
 void TestDsoCommand::outputSamples()
 {
-    if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
-        QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
-    }
-
     QFETCH(DsoService::Metadata, metadata);
     QFETCH(QList<DsoService::Samples>, samplesList);
     QFETCH(AbstractCommand::OutputFormat, format);

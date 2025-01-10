@@ -62,9 +62,10 @@ void TestPokitDiscoveryAgent::deviceDiscovered()
 
 void TestPokitDiscoveryAgent::deviceUpdated_data()
 {
-    #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
-    deviceDiscovered_data();
+    #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0)) // Required signal, and Fields, added in Qt 5.12.
+    QSKIP("Not applicable before Qt version 5.12.");
     #endif
+    deviceDiscovered_data();
 }
 
 void TestPokitDiscoveryAgent::deviceUpdated()
@@ -80,8 +81,6 @@ void TestPokitDiscoveryAgent::deviceUpdated()
     info.setServiceUuids({ uuid } DATA_COMPLETENESS);
     service.d_func()->deviceUpdated(info, QBluetoothDeviceInfo::Fields());
     QCOMPARE(spy.count(), (expected) ? 1 : 0);
-    #else
-    QSKIP("Not applicable before Qt version 5.12.");
     #endif
 }
 
