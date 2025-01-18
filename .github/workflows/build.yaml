@@ -13,7 +13,7 @@ env:
 
 jobs:
   linux:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04${{ matrix.arch == 'arm64' && '-arm' || '' }}
     strategy:
       fail-fast: false
       matrix:
@@ -35,13 +35,31 @@ jobs:
           - 6.7.3
           - 6.8.1
           - 6.9.0
+        arch:
+          - arm64
+          - x86-64
         cc:
           - clang
           - gcc
+        exclude:
+          # Qt's online installer only provides arm64 builds from Qt 6.7 onwards. Note, Ubuntu (Debian) does provide
+          # arm64 Qt builds, so we don't exclude `5` nor `6`, just the Qt online versions (5.x.y and 6.[0-6].y).
+          - { qt: 5.9.9,   arch: arm64 }
+          - { qt: 5.10.1,  arch: arm64 }
+          - { qt: 5.11.3,  arch: arm64 }
+          - { qt: 5.12.12, arch: arm64 }
+          - { qt: 5.13.2,  arch: arm64 }
+          - { qt: 5.14.2,  arch: arm64 }
+          - { qt: 5.15.2,  arch: arm64 }
+          - { qt: 6.2.4,   arch: arm64 }
+          - { qt: 6.3.2,   arch: arm64 }
+          - { qt: 6.4.3,   arch: arm64 }
+          - { qt: 6.5.3,   arch: arm64 }
+          - { qt: 6.6.3,   arch: arm64 }
     steps:
       - name: Upgrade OS
         run: |
-          sudo apt-mark hold firefox grub-efi-amd64-signed
+          sudo apt-mark hold firefox grub-efi-${{ matrix.arch == 'arm64' && 'arm64' || 'amd64' }}-signed
           sudo apt update && sudo apt upgrade
           sudo apt install lcov llvm
       - uses: actions/setup-python@v5
@@ -55,10 +73,31 @@ jobs:
         run: >
           sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}
       - name: Install online Qt version
-        if: contains(matrix.qt, '.') # ie if not using Ubuntu's Qt5/Qt6.
+        if: contains(matrix.qt, '.') && matrix.arch != 'arm64' # ie if not using Ubuntu's Qt5/Qt6.
         uses: jurplel/install-qt-action@v4
         with:
           version: ${{ matrix.qt }}
+          modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
+          setup-python: false
+          documentation: true
+          doc-archives: >-
+            ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
+                (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
+          doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
+          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
+          aqtsource: >-
+            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
+                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
+      - name: Install online Qt version for arm64
+        # \todo Revert to only using jurplel's action when issue #248 is resolved.
+        #       Note, can probably remove the host property below at the same time.
+        # \todo See https://github.com/jurplel/install-qt-action/issues/248
+        if: contains(matrix.qt, '.') && matrix.arch == 'arm64' # ie if not using Ubuntu's Qt5/Qt6.
+        uses: jdpurcell/install-qt-action@b45c67aaa9e0ea77e59a7031ec14a12d5ddf4b35
+        with:
+          version: ${{ matrix.qt }}
+          host: linux_arm64
           modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
           setup-python: false
           documentation: true
@@ -88,7 +127,7 @@ jobs:
         env:
           CC: ${{ matrix.cc }}
           CXX: ${{ matrix.cc == 'gcc' && 'g++' || 'clang++' }}
-          PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.cc }}.qt-${{ matrix.qt }}
+          PROJECT_BUILD_ID: ${{ github.run_number }}.linux.${{ matrix.arch }}.${{ matrix.cc }}.qt-${{ matrix.qt }}
         run: |
           [[ '${{ matrix.qt }}' =~ ^[56]$ ]] ||
             qtInstallDocs="$RUNNER_WORKSPACE/Qt/Docs/Qt-${QT_VERSION:-${{ matrix.qt }}}"
@@ -133,6 +172,9 @@ jobs:
         if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
         uses: coverallsapp/github-action@v2
         with:
+          # Note, the coverage-reporter-platform option is currently undocumented. See
+          # https://github.com/coverallsapp/github-action/issues/218#issuecomment-2436338747
+          coverage-reporter-platform: ${{ matrix.arch == 'arm64' && 'aarch64' || 'x86_64' }}
           file: ${{ runner.temp }}/coverage/coverage.info
           format: lcov
           flag-name: linux-${{ matrix.cc }}-${{ matrix.qt }}

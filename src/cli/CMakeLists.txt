@@ -82,7 +82,7 @@ target_link_libraries(
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 
-find_program(LINUXDEPLOY NAMES linuxdeploy linuxdeploy-x86_64.AppImage)
+find_program(LINUXDEPLOY NAMES linuxdeploy linuxdeploy-aarch64.AppImage linuxdeploy-x86_64.AppImage)
 if (LINUXDEPLOY)
   message(STATUS "Found linuxdeploy: ${LINUXDEPLOY}")
   configure_file(desktop.in dokit.desktop)
