@@ -103,10 +103,10 @@
 <span id="L14"><span class="lineNum">      14</span>              : // Qt 6.5.0 added new QDateTime::fromSecsSinceEpoch() and fromMSecsSinceEpoch()</span>
 <span id="L15"><span class="lineNum">      15</span>              : // overloads, then Qt 6.6.0 deprectated some of of the older ones.</span>
 <span id="L16"><span class="lineNum">      16</span>              : #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 5, 0))</span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">        4032 :     #define DOKIT_QT_UTC Qt::UTC</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">        4704 :     #define DOKIT_QT_UTC Qt::UTC</span></span>
 <span id="L18"><span class="lineNum">      18</span>              : #else</span>
 <span id="L19"><span class="lineNum">      19</span>              :     #include &lt;QTimeZone&gt;</span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">        1680 :     #define DOKIT_QT_UTC QTimeZone::UTC</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">        2688 :     #define DOKIT_QT_UTC QTimeZone::UTC</span></span>
 <span id="L21"><span class="lineNum">      21</span>              : #endif</span>
 <span id="L22"><span class="lineNum">      22</span>              : </span>
 <span id="L23"><span class="lineNum">      23</span>              : /*!</span>
@@ -118,10 +118,10 @@
 <span id="L29"><span class="lineNum">      29</span>              : /*!</span>
 <span id="L30"><span class="lineNum">      30</span>              :  * Construct a new LoggerFetchCommand object with \a parent.</span>
 <span id="L31"><span class="lineNum">      31</span>              :  */</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">        4389 : LoggerFetchCommand::LoggerFetchCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">        1369 : {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">        5159 : LoggerFetchCommand::LoggerFetchCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">        1754 : {</span></span>
 <span id="L34"><span class="lineNum">      34</span>              : </span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">        4449 : }</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">        5219 : }</span></span>
 <span id="L36"><span class="lineNum">      36</span>              : </span>
 <span id="L37"><span class="lineNum">      37</span>              : /*!</span>
 <span id="L38"><span class="lineNum">      38</span>              :  * \copybrief DeviceCommand::getService</span>
@@ -157,76 +157,76 @@
 <span id="L68"><span class="lineNum">      68</span>              : /*!</span>
 <span id="L69"><span class="lineNum">      69</span>              :  * Invoked when \a metadata has been received from the data logger.</span>
 <span id="L70"><span class="lineNum">      70</span>              :  */</span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        3040 : void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &amp;data)</span></span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">        1322 : {</span></span>
-<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        5122 :     qCDebug(lc) &lt;&lt; &quot;status:&quot;          &lt;&lt; (int)(data.status);</span></span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">        5122 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot;           &lt;&lt; data.scale;</span></span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">        5122 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot;            &lt;&lt; DataLoggerService::toString(data.mode) &lt;&lt; (quint8)data.mode;</span></span>
-<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        5122 :     qCDebug(lc) &lt;&lt; &quot;range:&quot;           &lt;&lt; service-&gt;toString(data.range, data.mode) &lt;&lt; data.range;</span></span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">        5122 :     qCDebug(lc) &lt;&lt; &quot;updateInterval:&quot;  &lt;&lt; (int)data.updateInterval;</span></span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">        5122 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        5122 :     qCDebug(lc) &lt;&lt; &quot;timestamp:&quot;       &lt;&lt; data.timestamp &lt;&lt; QDateTime::fromSecsSinceEpoch(data.timestamp, DOKIT_QT_UTC);</span></span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">        4362 :     this-&gt;metadata = data;</span></span>
-<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">        4362 :     this-&gt;samplesToGo = data.numberOfSamples;</span></span>
-<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        4362 :     this-&gt;timestamp = (quint64)data.timestamp * (quint64)1000;</span></span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">        8162 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Fetching %Ln logger sample/s...&quot;, nullptr, data.numberOfSamples);</span></span>
-<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">        4362 : }</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        3420 : void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &amp;data)</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">        1702 : {</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        6110 :     qCDebug(lc) &lt;&lt; &quot;status:&quot;          &lt;&lt; (int)(data.status);</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">        6110 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot;           &lt;&lt; data.scale;</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">        6110 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot;            &lt;&lt; DataLoggerService::toString(data.mode) &lt;&lt; (quint8)data.mode;</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        6110 :     qCDebug(lc) &lt;&lt; &quot;range:&quot;           &lt;&lt; service-&gt;toString(data.range, data.mode) &lt;&lt; data.range;</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">        6110 :     qCDebug(lc) &lt;&lt; &quot;updateInterval:&quot;  &lt;&lt; (int)data.updateInterval;</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">        6110 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        6110 :     qCDebug(lc) &lt;&lt; &quot;timestamp:&quot;       &lt;&lt; data.timestamp &lt;&lt; QDateTime::fromSecsSinceEpoch(data.timestamp, DOKIT_QT_UTC);</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">        5122 :     this-&gt;metadata = data;</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">        5122 :     this-&gt;samplesToGo = data.numberOfSamples;</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        5122 :     this-&gt;timestamp = (quint64)data.timestamp * (quint64)1000;</span></span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">        9530 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Fetching %Ln logger sample/s...&quot;, nullptr, data.numberOfSamples);</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">        5122 : }</span></span>
 <span id="L85"><span class="lineNum">      85</span>              : </span>
 <span id="L86"><span class="lineNum">      86</span>              : /*!</span>
 <span id="L87"><span class="lineNum">      87</span>              :  * Outputs logger \a samples in the selected ouput format.</span>
 <span id="L88"><span class="lineNum">      88</span>              :  */</span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">        3600 : void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &amp;samples)</span></span>
-<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">        1530 : {</span></span>
-<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">        3060 :     QString unit;</span></span>
-<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">        5130 :     switch (metadata.mode) {</span></span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">        1026 :     case DataLoggerService::Mode::DcVoltage: unit = QLatin1String(&quot;Vdc&quot;); break;</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">        1026 :     case DataLoggerService::Mode::AcVoltage: unit = QLatin1String(&quot;Vac&quot;); break;</span></span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        1026 :     case DataLoggerService::Mode::DcCurrent: unit = QLatin1String(&quot;Adc&quot;); break;</span></span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">        1026 :     case DataLoggerService::Mode::AcCurrent: unit = QLatin1String(&quot;Aac&quot;); break;</span></span>
-<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">        1332 :     case DataLoggerService::Mode::Temperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">        4050 : void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &amp;samples)</span></span>
+<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">        1980 : {</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">        3870 :     QString unit;</span></span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">        6030 :     switch (metadata.mode) {</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">        1206 :     case DataLoggerService::Mode::DcVoltage: unit = QLatin1String(&quot;Vdc&quot;); break;</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">        1206 :     case DataLoggerService::Mode::AcVoltage: unit = QLatin1String(&quot;Vac&quot;); break;</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        1206 :     case DataLoggerService::Mode::DcCurrent: unit = QLatin1String(&quot;Adc&quot;); break;</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">        1206 :     case DataLoggerService::Mode::AcCurrent: unit = QLatin1String(&quot;Aac&quot;); break;</span></span>
+<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">        1584 :     case DataLoggerService::Mode::Temperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
 <span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC">           0 :     default:</span></span>
 <span id="L99"><span class="lineNum">      99</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(No known unit for mode %1 &quot;%2&quot;.)&quot;).arg((int)metadata.mode)</span></span>
 <span id="L100"><span class="lineNum">     100</span> <span class="tlaUNC">           0 :             .arg(DataLoggerService::toString(metadata.mode));</span></span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">        1530 :     }</span></span>
-<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">        7200 :     const QString range = service-&gt;toString(metadata.range, metadata.mode);</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">        1980 :     }</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">        8190 :     const QString range = service-&gt;toString(metadata.range, metadata.mode);</span></span>
 <span id="L103"><span class="lineNum">     103</span>              : </span>
-<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">       27540 :     for (const qint16 &amp;sample: samples) {</span></span>
-<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">       23940 :         const QString timeString = (metadata.timestamp == 0) ? QString::number(timestamp)</span></span>
-<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">       23940 :             : QDateTime::fromMSecsSinceEpoch(timestamp, DOKIT_QT_UTC).toString(Qt::ISODateWithMs);</span></span>
-<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">       23940 :         const float value = sample * metadata.scale;</span></span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">       23940 :         switch (format) {</span></span>
-<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">        2380 :         case OutputFormat::Csv:</span></span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">        9120 :             for (; showCsvHeader; showCsvHeader = false) {</span></span>
-<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">        1480 :                 std::cout &lt;&lt; qUtf8Printable(tr(&quot;timestamp,value,unit,range\n&quot;));</span></span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         340 :             }</span></span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">       15960 :             std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4\n&quot;)</span></span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">        2380 :                 .arg(timeString).arg(value).arg(unit, range));</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">        7980 :             break;</span></span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">        7980 :         case OutputFormat::Json: {</span></span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">        2380 :             QJsonObject object{</span></span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">        4760 :                 { QLatin1String(&quot;timestamp&quot;), timeString },</span></span>
-<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">        4760 :                 { QLatin1String(&quot;value&quot;),     value },</span></span>
-<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">        4760 :                 { QLatin1String(&quot;unit&quot;),      unit },</span></span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">       11200 :                 { QLatin1String(&quot;mode&quot;),      DataLoggerService::toString(metadata.mode) },</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">       39060 :             };</span></span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">        7980 :             if (!range.isEmpty()) {</span></span>
-<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">        8624 :                 object.insert(QLatin1String(&quot;range&quot;), range);</span></span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">        1904 :             }</span></span>
-<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">       13580 :             std::cout &lt;&lt; QJsonDocument(object).toJson().toStdString();</span></span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        7980 :         }   break;</span></span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">        7980 :         case OutputFormat::Text:</span></span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">       15680 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;%1 %2 %3\n&quot;).arg(timeString).arg(value).arg(unit));</span></span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">        7980 :             break;</span></span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">        7140 :         }</span></span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">       23940 :         timestamp += metadata.updateInterval;</span></span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">       23940 :         --samplesToGo;</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">       16800 :     }</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">        5130 :     if (samplesToGo &lt;= 0) {</span></span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">       11700 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %Ln sample/s (with %L1 remaining).&quot;,</span></span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">        8730 :             nullptr, metadata.numberOfSamples).arg(samplesToGo);</span></span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">        5130 :         if (device) disconnect(); // Will exit the application once disconnected.</span></span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">        1530 :     }</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">       29770 : }</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">       32190 :     for (const qint16 &amp;sample: samples) {</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">       28140 :         const QString timeString = (metadata.timestamp == 0) ? QString::number(timestamp)</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">       28140 :             : QDateTime::fromMSecsSinceEpoch(timestamp, DOKIT_QT_UTC).toString(Qt::ISODateWithMs);</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">       28140 :         const float value = sample * metadata.scale;</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">       28140 :         switch (format) {</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">        3080 :         case OutputFormat::Csv:</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">       10720 :             for (; showCsvHeader; showCsvHeader = false) {</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">        1760 :                 std::cout &lt;&lt; qUtf8Printable(tr(&quot;timestamp,value,unit,range\n&quot;));</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         440 :             }</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">       18620 :             std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4\n&quot;)</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">        3080 :                 .arg(timeString).arg(value).arg(unit, range));</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">        9380 :             break;</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">        9380 :         case OutputFormat::Json: {</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">        3080 :             QJsonObject object{</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">        6020 :                 { QLatin1String(&quot;timestamp&quot;), timeString },</span></span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">        6020 :                 { QLatin1String(&quot;value&quot;),     value },</span></span>
+<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">        6020 :                 { QLatin1String(&quot;unit&quot;),      unit },</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">       12740 :                 { QLatin1String(&quot;mode&quot;),      DataLoggerService::toString(metadata.mode) },</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">       43960 :             };</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">        9380 :             if (!range.isEmpty()) {</span></span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">        9744 :                 object.insert(QLatin1String(&quot;range&quot;), range);</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">        2464 :             }</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">       15680 :             std::cout &lt;&lt; QJsonDocument(object).toJson().toStdString();</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        9380 :         }   break;</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">        9380 :         case OutputFormat::Text:</span></span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">       18200 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;%1 %2 %3\n&quot;).arg(timeString).arg(value).arg(unit));</span></span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">        9380 :             break;</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">        9240 :         }</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">       28140 :         timestamp += metadata.updateInterval;</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">       28140 :         --samplesToGo;</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">       19320 :     }</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">        6030 :     if (samplesToGo &lt;= 0) {</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">       13410 :         qCInfo(lc).noquote() &lt;&lt; tr(&quot;Finished fetching %Ln sample/s (with %L1 remaining).&quot;,</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">       10080 :             nullptr, metadata.numberOfSamples).arg(samplesToGo);</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">        6030 :         if (device) disconnect(); // Will exit the application once disconnected.</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">        1980 :     }</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">       33470 : }</span></span>
         </pre>
               </td>
             </tr>
