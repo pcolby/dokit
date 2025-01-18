@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+- Linux AArch64 / ARM64 binaries ([d54fbbc][])
+
 ### Changed
 
 - Return `quint32` from all `maxValue` methods, instead of `QVariant` ([db8b841][])
@@ -160,6 +164,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
 [899b007]:     https://github.com/pcolby/dokit/commit/899b007e73e64e724f2785acafddd2d3fc6f893e "Round command line options correctly"
+[d54fbbc]:     https://github.com/pcolby/dokit/commit/d54fbbcb2eacbce6b4e9bfb8a23a9ce43fd7524a "Support GitHub's Linux arm64 preview hosts"
 [db8b841]:     https://github.com/pcolby/dokit/commit/db8b84197d00b5a357974043f2dc0f3c0b7dfeff "Return quint32 from all maxValue methods"
 [#9]:          https://github.com/pcolby/dokit/issues/9
 [#17]:         https://github.com/pcolby/dokit/issues/17
