@@ -15,4 +15,4 @@ while IFS= read -d '' -r htmlFile; do
     -e '/headerItem">Test:</{s/>.*:/>Project:/;n;s/>.*</>${PROJECT_NAME}</}' \
     -e '/headerItem">(Test )?Date:</{s/>.*:/>Version:/;n;s/>.*</>${PROJECT_VERSION}${PROJECT_VERSION_SUFFIX}</}' \
     "$htmlFile" < /dev/null
-done < <(find '${PROJECT_BINARY_DIR}/coverage/' -name '*.html' -print0)
+done < <(find "${1:-@PROJECT_BINARY_DIR@/coverage/}" -name '*.html' -print0)

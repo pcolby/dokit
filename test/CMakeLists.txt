@@ -86,5 +86,5 @@ if (ENABLE_COVERAGE)
       VERBATIM
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
   endif()
-  configure_file(removeHtmlDates.sh.in ${PROJECT_BINARY_DIR}/removeHtmlDates.sh)
+  configure_file(removeHtmlDates.sh.in ${PROJECT_BINARY_DIR}/removeHtmlDates.sh @ONLY)
 endif()

@@ -735,9 +735,9 @@ jobs:
           # Combine all tracefiles into one. Note, ignoring inconsistencies between Clang and GCC reports :|
           lcov --ignore-errors inconsistent $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
           # Generate the HTML report. Note, ignoring inconsistencies between Clang and GCC reports :|
-          genhtml --ignore-errors inconsistent --no-sort --output-directory coverage/coverage coverage.info
+          genhtml --ignore-errors inconsistent --no-sort --output-directory coverage coverage.info
           # Can use any of the removeHtmlDates.sh scripts here, so the Ubuntu x86-64 GCC Qt6 job's version will do.
-          /usr/bin/env bash ./artifacts/test-results-*.x86-64.gcc.qt-6/coverage/removeHtmlDates.sh
+          /usr/bin/env bash ./artifacts/test-results-*.x86-64.gcc.qt-6/coverage/removeHtmlDates.sh coverage
           # Remove build numbers from pre-releases, and remove extra build info (such as ".linux.x86-64.gcc.qt-6")
           # from all releases, since this coverage report is an aggregation of many build hosts.
           sed -i -Ee 's/(headerValue">([0-9]+\.){2}[0-9]+)(((-pre)\+[0-9]+)|(\+[0-9]+))\..*</\1\5\6</' \
@@ -747,7 +747,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: "${{ runner.temp }}/coverage/coverage"
+          path: "${{ runner.temp }}/coverage"
           if-no-files-found: error
       - name: Report partial-finished to Codacy
         if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
