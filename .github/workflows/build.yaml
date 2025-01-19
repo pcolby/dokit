@@ -732,14 +732,12 @@ jobs:
           sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/*.macos-*/**/coverage.info
           # Update source code paths from Windows tracefiles to match Linux, and remove all \r chars from line endings.
           sed -i -Ee 's|\r$||' -e 's|\\|/|g' -e 's|^SF:D:/a|SF:/home/runner/work|' artifacts/*.win.*/**/coverage.info
-          # Combine all tracefiles into one.
-          tee -a "$HOME/.lcovrc" <<< 'check_data_consistency = 0'
-          lcov $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
-          # Generate the HTML report.
-          tee -a "$HOME/.lcovrc" <<< 'genhtml_sort = 0'
-          genhtml --output-directory coverage/coverage coverage.info
-          # Can use any of the removeHtmlDates.sh scripts here, so the Ubuntu GCC Qt6 job's version will do.
-          /usr/bin/env bash ./artifacts/test-results-*.gcc.qt-6/coverage/removeHtmlDates.sh
+          # Combine all tracefiles into one. Note, ignoring inconsistencies between Clang and GCC reports :|
+          lcov --ignore-errors inconsistent $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
+          # Generate the HTML report. Note, ignoring inconsistencies between Clang and GCC reports :|
+          genhtml --ignore-errors inconsistent --no-sort --output-directory coverage/coverage coverage.info
+          # Can use any of the removeHtmlDates.sh scripts here, so the Ubuntu x86-64 GCC Qt6 job's version will do.
+          /usr/bin/env bash ./artifacts/test-results-*.x86-64.gcc.qt-6/coverage/removeHtmlDates.sh
           # Remove build numbers from pre-releases, and remove extra build info (such as ".linux.x86-64.gcc.qt-6")
           # from all releases, since this coverage report is an aggregation of many build hosts.
           sed -i -Ee 's/(headerValue">([0-9]+\.){2}[0-9]+)(((-pre)\+[0-9]+)|(\+[0-9]+))\..*</\1\5\6</' \
