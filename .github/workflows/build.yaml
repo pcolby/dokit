@@ -735,7 +735,7 @@ jobs:
           # Combine all tracefiles into one. Note, ignoring inconsistencies between Clang and GCC reports :|
           lcov --ignore-errors inconsistent $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
           # Generate the HTML report. Note, ignoring inconsistencies between Clang and GCC reports :|
-          genhtml --ignore-errors inconsistent --no-sort --output-directory coverage coverage.info
+          genhtml --demangle-cpp --ignore-errors inconsistent --no-sort --output-directory coverage coverage.info
           # Can use any of the removeHtmlDates.sh scripts here, so the Ubuntu x86-64 GCC Qt6 job's version will do.
           /usr/bin/env bash ./artifacts/test-results-*.x86-64.gcc.qt-6/coverage/removeHtmlDates.sh coverage
           # Remove build numbers from pre-releases, and remove extra build info (such as ".linux.x86-64.gcc.qt-6")
