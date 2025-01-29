@@ -84,11 +84,7 @@ jobs:
             ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                 (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
-          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
-          aqtsource: >-
-            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
-                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
+          aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Install online Qt version for arm64
         # \todo Revert to only using jurplel's action when issue #248 is resolved.
         #       Note, can probably remove the host property below at the same time.
@@ -105,11 +101,7 @@ jobs:
             ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                 (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
-          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
-          aqtsource: >-
-            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
-                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
+          aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
         uses: actions/upload-artifact@v4
@@ -269,11 +261,7 @@ jobs:
             ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                 (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
-          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
-          aqtsource: >-
-            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
-                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
+          aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
         uses: actions/upload-artifact@v4
@@ -560,11 +548,7 @@ jobs:
           version: ${{ matrix.qt }}
           arch: ${{ startsWith(matrix.aqtArch, 'win64_msvc2019') && 'win64_msvc2019' || 'win64_msvc2022' }}_64
           set-env: false
-          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
-          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
-          aqtsource: >-
-            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
-                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
+          aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: matrix.arch == 'arm64' && failure()
         uses: actions/upload-artifact@v4
@@ -585,11 +569,7 @@ jobs:
              ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                  (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-          # \todo Use aqtinstall HEAD for Qt 6.8.1 and 6.9.0 support, until the fix for #843 is released (presumably in
-          # aqtinstall 3.1.22. See https://github.com/miurahr/aqtinstall/issues/843
-          aqtsource: >-
-            ${{ (startsWith(matrix.qt, '6.8') || startsWith(matrix.qt, '6.9')) &&
-                 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
+          aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
         uses: actions/upload-artifact@v4
