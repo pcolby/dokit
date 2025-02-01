@@ -1,6 +1,6 @@
 # Changelog[^1]
 
-## [Unreleased][]
+## [0.5.4][2025-02-01]
 
 ### Added
 
@@ -10,7 +10,7 @@
 
 - Return `quint32` from all `maxValue` methods, instead of `QVariant` ([db8b841][])
 - Upgrade to Doxygen 1.13.1.
-- Upgrade to Qt 6.8.1, and 6.9.0 beta.
+- Upgrade to Qt 6.8.2, and 6.9.0 beta.
 
 ## [0.5.3][] (2024-12-23)
 
@@ -148,7 +148,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.3...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.4...HEAD
+[0.5.4]: https://github.com/pcolby/dokit/releases/tag/v0.5.4
 [0.5.3]: https://github.com/pcolby/dokit/releases/tag/v0.5.3
 [0.5.2]: https://github.com/pcolby/dokit/releases/tag/v0.5.2
 [0.5.1]: https://github.com/pcolby/dokit/releases/tag/v0.5.1
