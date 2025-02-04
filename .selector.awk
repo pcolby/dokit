@@ -11,7 +11,7 @@ BEGIN {
 BEGINFILE {
   # Extract the version number from the file path.
   if (match(FILENAME, "^\\./([0-9.]{5,}|main)/(cov|doc|int)/", parts) == 0) {
-    print "Failed to extract version info from:" FILENAME > "/dev/stderr"
+    print "Failed to extract version info from file:", FILENAME > "/dev/stderr"
     exit 2
   }
   version = parts[1]
@@ -27,7 +27,7 @@ match($0, /(^.* id="projectnumber">)(.*<\/span>)?$/, parts) {
 # LCOV project version.
 match(prev, /<td class="headerItem">Version:<\/td>/) {
   if (match($0, "^.*class=\"headerValue\">", parts) == 0) {
-    print "Failed to recognise version header:" $0 > "/dev/stderr"
+    print "Failed to recognise version header:", $0 > "/dev/stderr"
     exit 3
   }
   printf "%s\n%s            </td>\n", parts[0], getSelector()
