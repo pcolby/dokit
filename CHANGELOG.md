@@ -1,5 +1,9 @@
 # Changelog[^1]
 
+## [Unreleased][]
+
+_Coming soon..._
+
 ## [0.5.4][2025-02-01]
 
 ### Added
