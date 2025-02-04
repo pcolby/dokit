@@ -1,0 +1,925 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - src/lib/statusservice.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/lib">src/lib</a> - statusservice.cpp<span style="font-size: 80%;"> (source / <a href="statusservice.cpp.func.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Project:</td>
+            <td class="headerValue">Dokit</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryMed">81.7&nbsp;%</td>
+            <td class="headerCovTableEntry">389</td>
+            <td class="headerCovTableEntry">318</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Version:</td>
+            <td class="headerValue">
+             <script>
+               function changeVersion(event) {
+                          console.log(event);
+                          newUrl = `../../../../${document.getElementById('version').value}/${document.getElementById('visibility').value}/index.html`;
+                          console.log(`Navigating to ${newUrl}`);
+                          window.location.assign(newUrl);
+               }
+             </script>
+             <select id="version" autocomplete="off" onchange="changeVersion(event)">
+              <option value="main">dev</option>
+              <option value="0.5.4" selected>v0.5.4</option>
+              <option value="0.5.3">v0.5.3</option>
+              <option value="0.5.2">v0.5.2</option>
+              <option value="0.5.1">v0.5.1</option>
+              <option value="0.5.0">v0.5.0</option>
+              <option value="0.4.0">v0.4.0</option>
+              <option value="0.3.0">v0.3.0</option>
+              <option value="0.2.0">v0.2.0</option>
+              <option value="0.1.2">v0.1.2</option>
+              <option value="0.1.1">v0.1.1</option>
+              <option value="0.1.0">v0.1.0</option>
+             </select>
+             <select id="visibility" autocomplete="off" onchange="changeVersion(event)">
+              <option value="doc">User docs</option>
+              <option value="int">Internal</option>
+              <option value="cov" selected>Coverage</option>
+             </select>
+            </td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">97.2&nbsp;%</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntry">35</td>
+          </tr>
+                  <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // SPDX-FileCopyrightText: 2022-2025 Paul Colby &lt;git@colby.id.au&gt;</span>
+<span id="L2"><span class="lineNum">       2</span>              : // SPDX-License-Identifier: LGPL-3.0-or-later</span>
+<span id="L3"><span class="lineNum">       3</span>              : </span>
+<span id="L4"><span class="lineNum">       4</span>              : /*!</span>
+<span id="L5"><span class="lineNum">       5</span>              :  * \file</span>
+<span id="L6"><span class="lineNum">       6</span>              :  * Defines the StatusService and StatusServicePrivate classes.</span>
+<span id="L7"><span class="lineNum">       7</span>              :  */</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span>              : #include &lt;qtpokit/statusservice.h&gt;</span>
+<span id="L10"><span class="lineNum">      10</span>              : #include &quot;statusservice_p.h&quot;</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : #include &lt;QtEndian&gt;</span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span>              : /*!</span>
+<span id="L15"><span class="lineNum">      15</span>              :  * \class StatusService</span>
+<span id="L16"><span class="lineNum">      16</span>              :  *</span>
+<span id="L17"><span class="lineNum">      17</span>              :  * The StatusService class accesses the `Pokit Status` service of Pokit devices.</span>
+<span id="L18"><span class="lineNum">      18</span>              :  */</span>
+<span id="L19"><span class="lineNum">      19</span>              : </span>
+<span id="L20"><span class="lineNum">      20</span>              : /*!</span>
+<span id="L21"><span class="lineNum">      21</span>              :  * \cond internal</span>
+<span id="L22"><span class="lineNum">      22</span>              :  * \struct StatusService::ServiceUuids</span>
+<span id="L23"><span class="lineNum">      23</span>              :  * \pokitApi Pokit API 1.00 (and 0.02) states the Status Service UUID as</span>
+<span id="L24"><span class="lineNum">      24</span>              :  * `57d3a771-267c-4394-8872-78223e92aec4` which is correct for the Pokit Meter, but Pokit Pro uses</span>
+<span id="L25"><span class="lineNum">      25</span>              :  * `57d3a771-267c-4394-8872-78223e92aec5` instead, that is the last digit is a `5` not `4`.</span>
+<span id="L26"><span class="lineNum">      26</span>              :  * \endcond</span>
+<span id="L27"><span class="lineNum">      27</span>              :  */</span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span>              : /*!</span>
+<span id="L30"><span class="lineNum">      30</span>              :  * Returns a string version of the \a status enum label.</span>
+<span id="L31"><span class="lineNum">      31</span>              :  */</span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         990 : QString StatusService::toString(const StatusService::DeviceStatus &amp;status)</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         874 : {</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">        1864 :     switch (status) {</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         370 :     case DeviceStatus::Idle:                 return  QLatin1String(&quot;Idle&quot;);</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          64 :     case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String(&quot;MultimeterDcVoltage&quot;);</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          64 :     case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String(&quot;MultimeterAcVoltage&quot;);</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">          64 :     case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String(&quot;MultimeterDcCurrent&quot;);</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          64 :     case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String(&quot;MultimeterAcCurrent&quot;);</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">          64 :     case DeviceStatus::MultimeterResistance: return  QLatin1String(&quot;MultimeterResistance&quot;);</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          64 :     case DeviceStatus::MultimeterDiode:      return  QLatin1String(&quot;MultimeterDiode&quot;);</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          64 :     case DeviceStatus::MultimeterContinuity: return  QLatin1String(&quot;MultimeterContinuity&quot;);</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          64 :     case DeviceStatus::MultimeterTemperature:return  QLatin1String(&quot;MultimeterTemperature&quot;);</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">          64 :     case DeviceStatus::DsoModeSampling:      return  QLatin1String(&quot;DsoModeSampling&quot;);</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          64 :     case DeviceStatus::LoggerModeSampling:   return  QLatin1String(&quot;LoggerModeSampling&quot;);</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         874 :     }</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">         874 : }</span></span>
+<span id="L49"><span class="lineNum">      49</span>              : </span>
+<span id="L50"><span class="lineNum">      50</span>              : /*!</span>
+<span id="L51"><span class="lineNum">      51</span>              :  * Returns a string version of the \a status enum label.</span>
+<span id="L52"><span class="lineNum">      52</span>              :  */</span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">         585 : QString StatusService::toString(const StatusService::BatteryStatus &amp;status)</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">         406 : {</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">         991 :     switch (status) {</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         370 :     case BatteryStatus::Low:  return QLatin1String(&quot;Low&quot;);</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">          64 :     case BatteryStatus::Good: return QLatin1String(&quot;Good&quot;);</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">         406 :     }</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">         406 : }</span></span>
+<span id="L61"><span class="lineNum">      61</span>              : </span>
+<span id="L62"><span class="lineNum">      62</span>              : /*!</span>
+<span id="L63"><span class="lineNum">      63</span>              :  * \cond internal</span>
+<span id="L64"><span class="lineNum">      64</span>              :  * \enum StatusService::SwitchPosition</span>
+<span id="L65"><span class="lineNum">      65</span>              :  * \pokitApi These enum values are undocumented, but easily testable with a physical Pokit Pro device.</span>
+<span id="L66"><span class="lineNum">      66</span>              :  * Internally, Pokit's Android app calls these: `SWITCH_MODE_VOLTAGE`, `SWITCH_MODE_ALL` and `SWITCH_MODE_CURRENT`.</span>
+<span id="L67"><span class="lineNum">      67</span>              :  * \endcond</span>
+<span id="L68"><span class="lineNum">      68</span>              :  */</span>
+<span id="L69"><span class="lineNum">      69</span>              : </span>
+<span id="L70"><span class="lineNum">      70</span>              : /*!</span>
+<span id="L71"><span class="lineNum">      71</span>              :  * Returns a string version of the \a position enum label.</span>
+<span id="L72"><span class="lineNum">      72</span>              :  */</span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">         785 : QString StatusService::toString(const StatusService::SwitchPosition &amp;position)</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         840 : {</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">        1625 :     switch (position) {</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">         196 :     case SwitchPosition::Voltage:     return QLatin1String(&quot;Voltage&quot;);</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         526 :     case SwitchPosition::MultiMode:   return QLatin1String(&quot;MultiMode&quot;);</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         130 :     case SwitchPosition::HighCurrent: return QLatin1String(&quot;HighCurrent&quot;);</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">         840 :     }</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">         840 : }</span></span>
+<span id="L82"><span class="lineNum">      82</span>              : </span>
+<span id="L83"><span class="lineNum">      83</span>              : /*!</span>
+<span id="L84"><span class="lineNum">      84</span>              :  * Returns a string version of the \a status enum label.</span>
+<span id="L85"><span class="lineNum">      85</span>              :  */</span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">         225 : QString StatusService::toString(const StatusService::ChargingStatus &amp;status)</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">         260 : {</span></span>
+<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">         485 :     switch (status) {</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">          64 :     case ChargingStatus::Discharging: return QLatin1String(&quot;Discharging&quot;);</span></span>
+<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">          64 :     case ChargingStatus::Charging:    return QLatin1String(&quot;Charging&quot;);</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">          64 :     case ChargingStatus::Charged:     return QLatin1String(&quot;Charged&quot;);</span></span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">         260 :     }</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         260 : }</span></span>
+<span id="L95"><span class="lineNum">      95</span>              : </span>
+<span id="L96"><span class="lineNum">      96</span>              : /*!</span>
+<span id="L97"><span class="lineNum">      97</span>              :  * Returns a string version of the \a status enum label.</span>
+<span id="L98"><span class="lineNum">      98</span>              :  */</span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">         572 : QString StatusService::toString(const StatusService::TorchStatus &amp;status)</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">         614 : {</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">        1186 :     switch (status) {</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">         394 :     case TorchStatus::Off: return QLatin1String(&quot;Off&quot;);</span></span>
+<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">         196 :     case TorchStatus::On:  return QLatin1String(&quot;On&quot;);</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">         614 :     }</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">         614 : }</span></span>
+<span id="L107"><span class="lineNum">     107</span>              : </span>
+<span id="L108"><span class="lineNum">     108</span>              : /*!</span>
+<span id="L109"><span class="lineNum">     109</span>              :  * Returns a string version of the \a status enum label.</span>
+<span id="L110"><span class="lineNum">     110</span>              :  */</span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">         393 : QString StatusService::toString(const StatusService::ButtonStatus &amp;status)</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         434 : {</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">         827 :     switch (status) {</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">         130 :     case ButtonStatus::Released: return QLatin1String(&quot;Released&quot;);</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">         130 :     case ButtonStatus::Pressed:  return QLatin1String(&quot;Pressed&quot;);</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">         130 :     case ButtonStatus::Held:     return QLatin1String(&quot;Held&quot;);</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">         434 :     }</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">         434 : }</span></span>
+<span id="L120"><span class="lineNum">     120</span>              : </span>
+<span id="L121"><span class="lineNum">     121</span>              : /*!</span>
+<span id="L122"><span class="lineNum">     122</span>              :  * Constructs a new Pokit service with \a parent.</span>
+<span id="L123"><span class="lineNum">     123</span>              :  */</span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">        1575 : StatusService::StatusService(QLowEnergyController * const controller, QObject * parent)</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">        2345 :     : AbstractPokitService(new StatusServicePrivate(controller, this), parent)</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">        1520 : {</span></span>
+<span id="L127"><span class="lineNum">     127</span>              : </span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">        3095 : }</span></span>
+<span id="L129"><span class="lineNum">     129</span>              : </span>
+<span id="L130"><span class="lineNum">     130</span>              : /*!</span>
+<span id="L131"><span class="lineNum">     131</span>              :  * \cond internal</span>
+<span id="L132"><span class="lineNum">     132</span>              :  * Constructs a new Pokit service with \a parent, and private implementation \a d.</span>
+<span id="L133"><span class="lineNum">     133</span>              :  */</span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC">           0 : StatusService::StatusService(</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC">           0 :     StatusServicePrivate * const d, QObject * const parent)</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaUNC">           0 :     : AbstractPokitService(d, parent)</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaUNC">           0 : {</span></span>
+<span id="L138"><span class="lineNum">     138</span>              : </span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 : }</span></span>
+<span id="L140"><span class="lineNum">     140</span>              : /// \endcond</span>
+<span id="L141"><span class="lineNum">     141</span>              : </span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">          45 : bool StatusService::readCharacteristics()</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">          74 :     const bool r1 = readDeviceCharacteristics();</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">          74 :     const bool r2 = readStatusCharacteristic();</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">          74 :     const bool r3 = readNameCharacteristic();</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          97 :     const bool r4 = ((service() != nullptr) &amp;&amp; (service()-&gt;characteristic(CharacteristicUuids::torch).isValid()))</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">          97 :         ? readTorchCharacteristic() : true;</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          97 :     const bool r5 = ((service() != nullptr) &amp;&amp; (service()-&gt;characteristic(CharacteristicUuids::buttonPress).isValid()))</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">          97 :         ? readButtonPressCharacteristic() : true;</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         142 :     return (r1 &amp;&amp; r2 &amp;&amp; r3 &amp;&amp; r4 &amp;&amp; r5);</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L153"><span class="lineNum">     153</span>              : </span>
+<span id="L154"><span class="lineNum">     154</span>              : /*!</span>
+<span id="L155"><span class="lineNum">     155</span>              :  * Read the `Status` service's `Device Characteristics` characteristic.</span>
+<span id="L156"><span class="lineNum">     156</span>              :  *</span>
+<span id="L157"><span class="lineNum">     157</span>              :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</span>
+<span id="L158"><span class="lineNum">     158</span>              :  * underlying controller it not yet connected to the Pokit device, or the device's services have</span>
+<span id="L159"><span class="lineNum">     159</span>              :  * not yet been discovered).</span>
+<span id="L160"><span class="lineNum">     160</span>              :  *</span>
+<span id="L161"><span class="lineNum">     161</span>              :  * Emits deviceCharacteristicsRead() if/when the characteristic has been read successfully.</span>
+<span id="L162"><span class="lineNum">     162</span>              :  */</span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">          67 : bool StatusService::readDeviceCharacteristics()</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">         104 : {</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         104 :     Q_D(StatusService);</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         194 :     return d-&gt;readCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         104 : }</span></span>
+<span id="L168"><span class="lineNum">     168</span>              : </span>
+<span id="L169"><span class="lineNum">     169</span>              : /*!</span>
+<span id="L170"><span class="lineNum">     170</span>              :  * Read the `Status` service's `Status` characteristic.</span>
+<span id="L171"><span class="lineNum">     171</span>              :  *</span>
+<span id="L172"><span class="lineNum">     172</span>              :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</span>
+<span id="L173"><span class="lineNum">     173</span>              :  * underlying controller it not yet connected to the Pokit device, or the device's services have</span>
+<span id="L174"><span class="lineNum">     174</span>              :  * not yet been discovered).</span>
+<span id="L175"><span class="lineNum">     175</span>              :  *</span>
+<span id="L176"><span class="lineNum">     176</span>              :  * Emits deviceStatusRead() if/when the characteristic has been read successfully.</span>
+<span id="L177"><span class="lineNum">     177</span>              :  */</span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">          67 : bool StatusService::readStatusCharacteristic()</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">         104 : {</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">         104 :     Q_D(StatusService);</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">         194 :     return d-&gt;readCharacteristic(CharacteristicUuids::status);</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">         104 : }</span></span>
+<span id="L183"><span class="lineNum">     183</span>              : </span>
+<span id="L184"><span class="lineNum">     184</span>              : /*!</span>
+<span id="L185"><span class="lineNum">     185</span>              :  * Read the `Status` service's `Name` characteristic.</span>
+<span id="L186"><span class="lineNum">     186</span>              :  *</span>
+<span id="L187"><span class="lineNum">     187</span>              :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</span>
+<span id="L188"><span class="lineNum">     188</span>              :  * underlying controller it not yet connected to the Pokit device, or the device's services have</span>
+<span id="L189"><span class="lineNum">     189</span>              :  * not yet been discovered).</span>
+<span id="L190"><span class="lineNum">     190</span>              :  *</span>
+<span id="L191"><span class="lineNum">     191</span>              :  * Emits deviceNameRead() if/when the characteristic has been read successfully.</span>
+<span id="L192"><span class="lineNum">     192</span>              :  */</span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">         134 : bool StatusService::readNameCharacteristic()</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         104 : {</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">         104 :     Q_D(StatusService);</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         194 :     return d-&gt;readCharacteristic(CharacteristicUuids::name);</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         104 : }</span></span>
+<span id="L198"><span class="lineNum">     198</span>              : </span>
+<span id="L199"><span class="lineNum">     199</span>              : /*!</span>
+<span id="L200"><span class="lineNum">     200</span>              :  * Read the `Status` service's (undocumented) `Torch` characteristic.</span>
+<span id="L201"><span class="lineNum">     201</span>              :  *</span>
+<span id="L202"><span class="lineNum">     202</span>              :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</span>
+<span id="L203"><span class="lineNum">     203</span>              :  * underlying controller it not yet connected to the Pokit device, or the device's services have</span>
+<span id="L204"><span class="lineNum">     204</span>              :  * not yet been discovered).</span>
+<span id="L205"><span class="lineNum">     205</span>              :  *</span>
+<span id="L206"><span class="lineNum">     206</span>              :  * Emits torchStatusRead() if/when the characteristic has been read successfully.</span>
+<span id="L207"><span class="lineNum">     207</span>              :  */</span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          45 : bool StatusService::readTorchCharacteristic()</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          52 :     Q_D(StatusService);</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          97 :     return d-&gt;readCharacteristic(CharacteristicUuids::torch);</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L213"><span class="lineNum">     213</span>              : </span>
+<span id="L214"><span class="lineNum">     214</span>              : /*!</span>
+<span id="L215"><span class="lineNum">     215</span>              :  * Read the `Status` service's (undocumented) `Button Press` characteristic.</span>
+<span id="L216"><span class="lineNum">     216</span>              :  *</span>
+<span id="L217"><span class="lineNum">     217</span>              :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</span>
+<span id="L218"><span class="lineNum">     218</span>              :  * underlying controller it not yet connected to the Pokit device, or the device's services have</span>
+<span id="L219"><span class="lineNum">     219</span>              :  * not yet been discovered).</span>
+<span id="L220"><span class="lineNum">     220</span>              :  *</span>
+<span id="L221"><span class="lineNum">     221</span>              :  * Emits buttonPressRead() if/when the characteristic has been read successfully.</span>
+<span id="L222"><span class="lineNum">     222</span>              :  */</span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          45 : bool StatusService::readButtonPressCharacteristic()</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          52 :     Q_D(StatusService);</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">          97 :     return d-&gt;readCharacteristic(CharacteristicUuids::buttonPress);</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L228"><span class="lineNum">     228</span>              : </span>
+<span id="L229"><span class="lineNum">     229</span>              : /*!</span>
+<span id="L230"><span class="lineNum">     230</span>              :  * Returns the most recent value of the `Status` service's `Device Characteristics` characteristic.</span>
+<span id="L231"><span class="lineNum">     231</span>              :  *</span>
+<span id="L232"><span class="lineNum">     232</span>              :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</span>
+<span id="L233"><span class="lineNum">     233</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</span>
+<span id="L234"><span class="lineNum">     234</span>              :  * null result is returned, which can be checked via the returned</span>
+<span id="L235"><span class="lineNum">     235</span>              :  * DeviceCharacteristics::firmwareVersion, like:</span>
+<span id="L236"><span class="lineNum">     236</span>              :  *</span>
+<span id="L237"><span class="lineNum">     237</span>              :  * ```</span>
+<span id="L238"><span class="lineNum">     238</span>              :  * const DeviceCharacteristics characteristics = service-&gt;deviceCharacteristics();</span>
+<span id="L239"><span class="lineNum">     239</span>              :  * if (!characteristics.firmwareVersion.isNull()) {</span>
+<span id="L240"><span class="lineNum">     240</span>              :  *     ...</span>
+<span id="L241"><span class="lineNum">     241</span>              :  * }</span>
+<span id="L242"><span class="lineNum">     242</span>              :  * ```</span>
+<span id="L243"><span class="lineNum">     243</span>              :  */</span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">          90 : StatusService::DeviceCharacteristics StatusService::deviceCharacteristics() const</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          74 : {</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">          74 :     Q_D(const StatusService);</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">          74 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         164 :         d-&gt;getCharacteristic(CharacteristicUuids::deviceCharacteristics);</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">         164 :     return (characteristic.isValid())</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         164 :         ? StatusServicePrivate::parseDeviceCharacteristics(characteristic.value())</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">         254 :         : StatusService::DeviceCharacteristics();</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">         164 : }</span></span>
+<span id="L253"><span class="lineNum">     253</span>              : </span>
+<span id="L254"><span class="lineNum">     254</span>              : /*!</span>
+<span id="L255"><span class="lineNum">     255</span>              :  * Returns the most recent value of the `Status` service's `Status` characteristic.</span>
+<span id="L256"><span class="lineNum">     256</span>              :  *</span>
+<span id="L257"><span class="lineNum">     257</span>              :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</span>
+<span id="L258"><span class="lineNum">     258</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then the</span>
+<span id="L259"><span class="lineNum">     259</span>              :  * returned StatusService::Status::batteryLevel member will be a quiet NaN, which can be checked</span>
+<span id="L260"><span class="lineNum">     260</span>              :  * like:</span>
+<span id="L261"><span class="lineNum">     261</span>              :  *</span>
+<span id="L262"><span class="lineNum">     262</span>              :  * ```</span>
+<span id="L263"><span class="lineNum">     263</span>              :  * const StatusService::Status status = statusService-&gt;status();</span>
+<span id="L264"><span class="lineNum">     264</span>              :  * if (qIsNaN(status.batteryVoltage)) {</span>
+<span id="L265"><span class="lineNum">     265</span>              :  *     // Handle failure.</span>
+<span id="L266"><span class="lineNum">     266</span>              :  * }</span>
+<span id="L267"><span class="lineNum">     267</span>              :  * ```</span>
+<span id="L268"><span class="lineNum">     268</span>              :  *</span>
+<span id="L269"><span class="lineNum">     269</span>              :  * Not all Pokit devices support the Status::batteryStatus member, in which case the member will be</span>
+<span id="L270"><span class="lineNum">     270</span>              :  * initilialised to the maximum value supported by the underlying type (ie `255`) to indicate &quot;not set&quot;</span>
+<span id="L271"><span class="lineNum">     271</span>              :  */</span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         450 : StatusService::Status StatusService::status() const</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         250 : {</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">         250 :     Q_D(const StatusService);</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">         250 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         700 :         d-&gt;getCharacteristic(CharacteristicUuids::status);</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">         700 :     return (characteristic.isValid()) ? StatusServicePrivate::parseStatus(characteristic.value())</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         250 :         : StatusService::Status{ DeviceStatus::Idle, std::numeric_limits&lt;float&gt;::quiet_NaN(),</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">        1150 :                                  BatteryStatus::Low, std::nullopt, std::nullopt };</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         700 : }</span></span>
+<span id="L281"><span class="lineNum">     281</span>              : </span>
+<span id="L282"><span class="lineNum">     282</span>              : /*!</span>
+<span id="L283"><span class="lineNum">     283</span>              :  * Enables client-side notifications of device status changes.</span>
+<span id="L284"><span class="lineNum">     284</span>              :  *</span>
+<span id="L285"><span class="lineNum">     285</span>              :  * This is an alternative to manually requesting individual reads via readStatusCharacteristic().</span>
+<span id="L286"><span class="lineNum">     286</span>              :  *</span>
+<span id="L287"><span class="lineNum">     287</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L288"><span class="lineNum">     288</span>              :  *</span>
+<span id="L289"><span class="lineNum">     289</span>              :  * Successfully read values (if any) will be emitted via the deviceStatusRead() signal.</span>
+<span id="L290"><span class="lineNum">     290</span>              :  */</span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">          45 : bool StatusService::enableStatusNotifications()</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">          52 :     Q_D(StatusService);</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          97 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::status);</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L296"><span class="lineNum">     296</span>              : </span>
+<span id="L297"><span class="lineNum">     297</span>              : /*!</span>
+<span id="L298"><span class="lineNum">     298</span>              :  * Disables client-side notifications of device status changes.</span>
+<span id="L299"><span class="lineNum">     299</span>              :  *</span>
+<span id="L300"><span class="lineNum">     300</span>              :  * Instantaneous status can still be fetched by readStatusCharacteristic().</span>
+<span id="L301"><span class="lineNum">     301</span>              :  *</span>
+<span id="L302"><span class="lineNum">     302</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L303"><span class="lineNum">     303</span>              :  */</span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          45 : bool StatusService::disableStatusNotifications()</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          52 :     Q_D(StatusService);</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">          97 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::status);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L309"><span class="lineNum">     309</span>              : </span>
+<span id="L310"><span class="lineNum">     310</span>              : /*!</span>
+<span id="L311"><span class="lineNum">     311</span>              :  * Returns the most recent value of the `Status` services's `Device Name` characteristic.</span>
+<span id="L312"><span class="lineNum">     312</span>              :  *</span>
+<span id="L313"><span class="lineNum">     313</span>              :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</span>
+<span id="L314"><span class="lineNum">     314</span>              :  * currently available (ie the serviceDetailsDiscovered signal has not been emitted yet), then a</span>
+<span id="L315"><span class="lineNum">     315</span>              :  * null QString is returned.</span>
+<span id="L316"><span class="lineNum">     316</span>              :  */</span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         450 : QString StatusService::deviceName() const</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">         250 : {</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">         250 :     Q_D(const StatusService);</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">         250 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         700 :         d-&gt;getCharacteristic(CharacteristicUuids::name);</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">        1150 :     return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()) : QString();</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         700 : }</span></span>
+<span id="L324"><span class="lineNum">     324</span>              : </span>
+<span id="L325"><span class="lineNum">     325</span>              : /*!</span>
+<span id="L326"><span class="lineNum">     326</span>              :  * Set's the Pokit device's name to \a name.</span>
+<span id="L327"><span class="lineNum">     327</span>              :  *</span>
+<span id="L328"><span class="lineNum">     328</span>              :  * Returns `true` if the write request was successfully queued, `false` otherwise.</span>
+<span id="L329"><span class="lineNum">     329</span>              :  *</span>
+<span id="L330"><span class="lineNum">     330</span>              :  * Emits deviceNameWritten() if/when the \a name has been set.</span>
+<span id="L331"><span class="lineNum">     331</span>              :  */</span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">          45 : bool StatusService::setDeviceName(const QString &amp;name)</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">          52 :     Q_D(const StatusService);</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">          52 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">          97 :         d-&gt;getCharacteristic(CharacteristicUuids::name);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">          97 :     if (!characteristic.isValid()) {</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">          52 :         return false;</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">          52 :     }</span></span>
+<span id="L340"><span class="lineNum">     340</span>              : </span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :     const QByteArray value = name.toUtf8();</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :     if (value.length() &gt; 11) {</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :         qCWarning(d-&gt;lc).noquote() &lt;&lt; tr(R&quot;(Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x3)&quot;)</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :             .arg(name).arg(value.length()).arg(QLatin1String(value.toHex()));</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC">           0 :         return false;</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L347"><span class="lineNum">     347</span>              : </span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">          45 : }</span></span>
+<span id="L351"><span class="lineNum">     351</span>              : </span>
+<span id="L352"><span class="lineNum">     352</span>              : /*!</span>
+<span id="L353"><span class="lineNum">     353</span>              :  * Flash the Pokit device's LED.</span>
+<span id="L354"><span class="lineNum">     354</span>              :  *</span>
+<span id="L355"><span class="lineNum">     355</span>              :  * Returns `true` if the flash request was successfully queued, `false` otherwise.</span>
+<span id="L356"><span class="lineNum">     356</span>              :  *</span>
+<span id="L357"><span class="lineNum">     357</span>              :  * Emits deviceLedFlashed() if/when the LED has flashed successfully.</span>
+<span id="L358"><span class="lineNum">     358</span>              :  *</span>
+<span id="L359"><span class="lineNum">     359</span>              :  * \note This operation is only supported by Pokit Meter devices. Pokit Pro devices will report an</span>
+<span id="L360"><span class="lineNum">     360</span>              :  * Bluetooth ATT error `0x80`.</span>
+<span id="L361"><span class="lineNum">     361</span>              :  *</span>
+<span id="L362"><span class="lineNum">     362</span>              :  * \cond internal</span>
+<span id="L363"><span class="lineNum">     363</span>              :  * \pokitApi The Android app can turn Pokit Pro LEDs on/off. Perhaps that is handled by an</span>
+<span id="L364"><span class="lineNum">     364</span>              :  * undocumented use of this characteristic. Or perhaps its via some other service.</span>
+<span id="L365"><span class="lineNum">     365</span>              :  * \endcond</span>
+<span id="L366"><span class="lineNum">     366</span>              :  */</span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaGNC">          45 : bool StatusService::flashLed()</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">          52 :     Q_D(const StatusService);</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">          52 :     const QLowEnergyCharacteristic characteristic =</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaGNC">          97 :         d-&gt;getCharacteristic(CharacteristicUuids::flashLed);</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaGNC">          97 :     if (!characteristic.isValid()) {</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">          52 :         return false;</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">          52 :     }</span></span>
+<span id="L375"><span class="lineNum">     375</span>              : </span>
+<span id="L376"><span class="lineNum">     376</span>              :     // The Flash LED characeristic is write-only, and takes a single uint8 &quot;LED&quot; parameter, which</span>
+<span id="L377"><span class="lineNum">     377</span>              :     // must always be 1. Presumably this is an index for which LED to flash, but the Pokit API docs</span>
+<span id="L378"><span class="lineNum">     378</span>              :     // say that &quot;any value other than 1 will be ignored&quot;, which makes sense given that all current</span>
+<span id="L379"><span class="lineNum">     379</span>              :     // Pokit devices have only one LED.</span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC">           0 :     const QByteArray value(1, '\x01');</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaUNC">           0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">          97 : }</span></span>
+<span id="L384"><span class="lineNum">     384</span>              : </span>
+<span id="L385"><span class="lineNum">     385</span>              : /*!</span>
+<span id="L386"><span class="lineNum">     386</span>              :  * Returns the most recent value of the `Status` services's `Torch` characteristic.</span>
+<span id="L387"><span class="lineNum">     387</span>              :  *</span>
+<span id="L388"><span class="lineNum">     388</span>              :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</span>
+<span id="L389"><span class="lineNum">     389</span>              :  * currently available (eg if the device does not support the Torch characteristic), then `nullopt`</span>
+<span id="L390"><span class="lineNum">     390</span>              :  * is returned.</span>
+<span id="L391"><span class="lineNum">     391</span>              :  */</span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         450 : std::optional&lt;StatusService::TorchStatus&gt; StatusService::torchStatus() const</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         250 : {</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         250 :     Q_D(const StatusService);</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         700 :     const QLowEnergyCharacteristic characteristic = d-&gt;getCharacteristic(CharacteristicUuids::torch);</span></span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">        1150 :     return (characteristic.isValid()) ? StatusServicePrivate::parseTorchStatus(characteristic.value()) : std::nullopt;</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         700 : }</span></span>
+<span id="L398"><span class="lineNum">     398</span>              : </span>
+<span id="L399"><span class="lineNum">     399</span>              : /*!</span>
+<span id="L400"><span class="lineNum">     400</span>              :  * Set the Pokit device's torch to \a status.</span>
+<span id="L401"><span class="lineNum">     401</span>              :  *</span>
+<span id="L402"><span class="lineNum">     402</span>              :  * Returns `true` if the request was successfully queued, `false` otherwise.</span>
+<span id="L403"><span class="lineNum">     403</span>              :  *</span>
+<span id="L404"><span class="lineNum">     404</span>              :  * Emits torchStatusWritten() if/when the LED has flashed successfully.</span>
+<span id="L405"><span class="lineNum">     405</span>              :  *</span>
+<span id="L406"><span class="lineNum">     406</span>              :  * \note This operation is only supported by Pokit Pro devices, and not Pokit Meter devices.</span>
+<span id="L407"><span class="lineNum">     407</span>              :  */</span>
+<span id="L408"><span class="lineNum">     408</span> <span class="tlaGNC">          45 : bool StatusService::setTorchStatus(const StatusService::TorchStatus status)</span></span>
+<span id="L409"><span class="lineNum">     409</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">          52 :     Q_D(const StatusService);</span></span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">          97 :     const QLowEnergyCharacteristic characteristic = d-&gt;getCharacteristic(CharacteristicUuids::torch);</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">          97 :     if (!characteristic.isValid()) {</span></span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">          52 :         return false;</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">          52 :     }</span></span>
+<span id="L415"><span class="lineNum">     415</span>              : </span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaUNC">           0 :     const QByteArray value(1, static_cast&lt;char&gt;(status));</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaUNC">           0 :     d-&gt;service-&gt;writeCharacteristic(characteristic, value);</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaUNC">           0 :     return (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</span></span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">          97 : }</span></span>
+<span id="L420"><span class="lineNum">     420</span>              : </span>
+<span id="L421"><span class="lineNum">     421</span>              : /*!</span>
+<span id="L422"><span class="lineNum">     422</span>              :  * Enables client-side notifications of torch status changes.</span>
+<span id="L423"><span class="lineNum">     423</span>              :  *</span>
+<span id="L424"><span class="lineNum">     424</span>              :  * This is an alternative to manually requesting individual reads via readTorchCharacteristic().</span>
+<span id="L425"><span class="lineNum">     425</span>              :  *</span>
+<span id="L426"><span class="lineNum">     426</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L427"><span class="lineNum">     427</span>              :  *</span>
+<span id="L428"><span class="lineNum">     428</span>              :  * Successfully read values (if any) will be emitted via the torchStatusRead() signal.</span>
+<span id="L429"><span class="lineNum">     429</span>              :  */</span>
+<span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">          45 : bool StatusService::enableTorchStatusNotifications()</span></span>
+<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L432"><span class="lineNum">     432</span> <span class="tlaGNC">          52 :     Q_D(StatusService);</span></span>
+<span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">          97 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::torch);</span></span>
+<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L435"><span class="lineNum">     435</span>              : </span>
+<span id="L436"><span class="lineNum">     436</span>              : /*!</span>
+<span id="L437"><span class="lineNum">     437</span>              :  * Disables client-side notifications of torch status changes.</span>
+<span id="L438"><span class="lineNum">     438</span>              :  *</span>
+<span id="L439"><span class="lineNum">     439</span>              :  * Instantaneous torch status can still be fetched by readTorchCharacteristic().</span>
+<span id="L440"><span class="lineNum">     440</span>              :  *</span>
+<span id="L441"><span class="lineNum">     441</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L442"><span class="lineNum">     442</span>              :  */</span>
+<span id="L443"><span class="lineNum">     443</span> <span class="tlaGNC">          45 : bool StatusService::disableTorchStatusNotifications()</span></span>
+<span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">          52 :     Q_D(StatusService);</span></span>
+<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">          97 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::torch);</span></span>
+<span id="L447"><span class="lineNum">     447</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L448"><span class="lineNum">     448</span>              : </span>
+<span id="L449"><span class="lineNum">     449</span>              : /*!</span>
+<span id="L450"><span class="lineNum">     450</span>              :  * Enables client-side notifications of button presses.</span>
+<span id="L451"><span class="lineNum">     451</span>              :  *</span>
+<span id="L452"><span class="lineNum">     452</span>              :  * This is an alternative to manually requesting individual reads via readButtonPressCharacteristic().</span>
+<span id="L453"><span class="lineNum">     453</span>              :  *</span>
+<span id="L454"><span class="lineNum">     454</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L455"><span class="lineNum">     455</span>              :  *</span>
+<span id="L456"><span class="lineNum">     456</span>              :  * Successfully read values (if any) will be emitted via the torchStatusRead() signal.</span>
+<span id="L457"><span class="lineNum">     457</span>              :  */</span>
+<span id="L458"><span class="lineNum">     458</span> <span class="tlaGNC">          45 : bool StatusService::enableButtonPressedNotifications()</span></span>
+<span id="L459"><span class="lineNum">     459</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L460"><span class="lineNum">     460</span> <span class="tlaGNC">          52 :     Q_D(StatusService);</span></span>
+<span id="L461"><span class="lineNum">     461</span> <span class="tlaGNC">          97 :     return d-&gt;enableCharacteristicNotificatons(CharacteristicUuids::buttonPress);</span></span>
+<span id="L462"><span class="lineNum">     462</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L463"><span class="lineNum">     463</span>              : </span>
+<span id="L464"><span class="lineNum">     464</span>              : /*!</span>
+<span id="L465"><span class="lineNum">     465</span>              :  * Disables client-side notifications of button presses.</span>
+<span id="L466"><span class="lineNum">     466</span>              :  *</span>
+<span id="L467"><span class="lineNum">     467</span>              :  * Instantaneous button press statussed can still be fetched by readButtonPressCharacteristic().</span>
+<span id="L468"><span class="lineNum">     468</span>              :  *</span>
+<span id="L469"><span class="lineNum">     469</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L470"><span class="lineNum">     470</span>              :  */</span>
+<span id="L471"><span class="lineNum">     471</span> <span class="tlaGNC">          45 : bool StatusService::disableButtonPressedNotifications()</span></span>
+<span id="L472"><span class="lineNum">     472</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L473"><span class="lineNum">     473</span> <span class="tlaGNC">          52 :     Q_D(StatusService);</span></span>
+<span id="L474"><span class="lineNum">     474</span> <span class="tlaGNC">          97 :     return d-&gt;disableCharacteristicNotificatons(CharacteristicUuids::buttonPress);</span></span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L476"><span class="lineNum">     476</span>              : </span>
+<span id="L477"><span class="lineNum">     477</span>              : /*!</span>
+<span id="L478"><span class="lineNum">     478</span>              :  * Returns the most recent value of the `Status` services's `Button Press` characteristic.</span>
+<span id="L479"><span class="lineNum">     479</span>              :  *</span>
+<span id="L480"><span class="lineNum">     480</span>              :  * The returned value, if any, is from the underlying Bluetooth stack's cache. If no such value is</span>
+<span id="L481"><span class="lineNum">     481</span>              :  * currently available (eg if the device does not support the Torch characteristic), then `nullopt`</span>
+<span id="L482"><span class="lineNum">     482</span>              :  * is returned.</span>
+<span id="L483"><span class="lineNum">     483</span>              :  */</span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">         450 : std::optional&lt;StatusService::ButtonStatus&gt; StatusService::buttonPress() const</span></span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">         250 : {</span></span>
+<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">         250 :     Q_D(const StatusService);</span></span>
+<span id="L487"><span class="lineNum">     487</span> <span class="tlaGNC">         700 :     const QLowEnergyCharacteristic characteristic = d-&gt;getCharacteristic(CharacteristicUuids::buttonPress);</span></span>
+<span id="L488"><span class="lineNum">     488</span> <span class="tlaGNC">        1150 :     return (characteristic.isValid()) ? StatusServicePrivate::parseButtonPress(characteristic.value()) : std::nullopt;</span></span>
+<span id="L489"><span class="lineNum">     489</span> <span class="tlaGNC">         700 : }</span></span>
+<span id="L490"><span class="lineNum">     490</span>              : </span>
+<span id="L491"><span class="lineNum">     491</span>              : /*!</span>
+<span id="L492"><span class="lineNum">     492</span>              :  * \fn StatusService::deviceCharacteristicsRead</span>
+<span id="L493"><span class="lineNum">     493</span>              :  *</span>
+<span id="L494"><span class="lineNum">     494</span>              :  * This signal is emitted when the `Device Characteristics` characteristic has been read</span>
+<span id="L495"><span class="lineNum">     495</span>              :  * successfully.</span>
+<span id="L496"><span class="lineNum">     496</span>              :  *</span>
+<span id="L497"><span class="lineNum">     497</span>              :  * \see readDeviceCharacteristics</span>
+<span id="L498"><span class="lineNum">     498</span>              :  */</span>
+<span id="L499"><span class="lineNum">     499</span>              : </span>
+<span id="L500"><span class="lineNum">     500</span>              : /*!</span>
+<span id="L501"><span class="lineNum">     501</span>              :  * \fn StatusService::deviceNameRead</span>
+<span id="L502"><span class="lineNum">     502</span>              :  *</span>
+<span id="L503"><span class="lineNum">     503</span>              :  * This signal is emitted when the `Device Name` characteristic has been read successfully.</span>
+<span id="L504"><span class="lineNum">     504</span>              :  *</span>
+<span id="L505"><span class="lineNum">     505</span>              :  * \see readDeviceName</span>
+<span id="L506"><span class="lineNum">     506</span>              :  */</span>
+<span id="L507"><span class="lineNum">     507</span>              : </span>
+<span id="L508"><span class="lineNum">     508</span>              : /*!</span>
+<span id="L509"><span class="lineNum">     509</span>              :  * \fn StatusService::deviceNameWritten</span>
+<span id="L510"><span class="lineNum">     510</span>              :  *</span>
+<span id="L511"><span class="lineNum">     511</span>              :  * This signal is emitted when the `Device Name` characteristic has been written successfully.</span>
+<span id="L512"><span class="lineNum">     512</span>              :  *</span>
+<span id="L513"><span class="lineNum">     513</span>              :  * \see setDeviceName</span>
+<span id="L514"><span class="lineNum">     514</span>              :  */</span>
+<span id="L515"><span class="lineNum">     515</span>              : </span>
+<span id="L516"><span class="lineNum">     516</span>              : /*!</span>
+<span id="L517"><span class="lineNum">     517</span>              :  * \fn StatusService::deviceStatusRead</span>
+<span id="L518"><span class="lineNum">     518</span>              :  *</span>
+<span id="L519"><span class="lineNum">     519</span>              :  * This signal is emitted when the `Status` characteristic has been read successfully.</span>
+<span id="L520"><span class="lineNum">     520</span>              :  *</span>
+<span id="L521"><span class="lineNum">     521</span>              :  * \see readDeviceStatus</span>
+<span id="L522"><span class="lineNum">     522</span>              :  */</span>
+<span id="L523"><span class="lineNum">     523</span>              : </span>
+<span id="L524"><span class="lineNum">     524</span>              : /*!</span>
+<span id="L525"><span class="lineNum">     525</span>              :  * \fn StatusService::deviceLedFlashed</span>
+<span id="L526"><span class="lineNum">     526</span>              :  *</span>
+<span id="L527"><span class="lineNum">     527</span>              :  * This signal is emitted when device's LED has flashed in response to a write of the `Flash LED`</span>
+<span id="L528"><span class="lineNum">     528</span>              :  * characteristic.</span>
+<span id="L529"><span class="lineNum">     529</span>              :  */</span>
+<span id="L530"><span class="lineNum">     530</span>              : </span>
+<span id="L531"><span class="lineNum">     531</span>              : /*!</span>
+<span id="L532"><span class="lineNum">     532</span>              :  * \fn StatusService::torchStatusRead</span>
+<span id="L533"><span class="lineNum">     533</span>              :  *</span>
+<span id="L534"><span class="lineNum">     534</span>              :  * This signal is emitted when the `Torch` characteristic has been read successfully.</span>
+<span id="L535"><span class="lineNum">     535</span>              :  *</span>
+<span id="L536"><span class="lineNum">     536</span>              :  * \see setTorchStatus</span>
+<span id="L537"><span class="lineNum">     537</span>              :  */</span>
+<span id="L538"><span class="lineNum">     538</span>              : </span>
+<span id="L539"><span class="lineNum">     539</span>              : /*!</span>
+<span id="L540"><span class="lineNum">     540</span>              :  * \fn StatusService::torchStatusWritten</span>
+<span id="L541"><span class="lineNum">     541</span>              :  *</span>
+<span id="L542"><span class="lineNum">     542</span>              :  * This signal is emitted when the `Torch` characteristic has been written successfully.</span>
+<span id="L543"><span class="lineNum">     543</span>              :  *</span>
+<span id="L544"><span class="lineNum">     544</span>              :  * \see readTorchCharacteristic</span>
+<span id="L545"><span class="lineNum">     545</span>              :  */</span>
+<span id="L546"><span class="lineNum">     546</span>              : </span>
+<span id="L547"><span class="lineNum">     547</span>              : /*!</span>
+<span id="L548"><span class="lineNum">     548</span>              :  * \fn StatusService::buttonPressRead</span>
+<span id="L549"><span class="lineNum">     549</span>              :  *</span>
+<span id="L550"><span class="lineNum">     550</span>              :  * This signal is emitted when the `Button Press` characteristic has been read successfully.</span>
+<span id="L551"><span class="lineNum">     551</span>              :  *</span>
+<span id="L552"><span class="lineNum">     552</span>              :  * \see readButtonPressCharacteristic</span>
+<span id="L553"><span class="lineNum">     553</span>              :  */</span>
+<span id="L554"><span class="lineNum">     554</span>              : </span>
+<span id="L555"><span class="lineNum">     555</span>              : /*!</span>
+<span id="L556"><span class="lineNum">     556</span>              :  * \cond internal</span>
+<span id="L557"><span class="lineNum">     557</span>              :  * \class StatusServicePrivate</span>
+<span id="L558"><span class="lineNum">     558</span>              :  *</span>
+<span id="L559"><span class="lineNum">     559</span>              :  * The StatusServicePrivate class provides private implementation for StatusService.</span>
+<span id="L560"><span class="lineNum">     560</span>              :  */</span>
+<span id="L561"><span class="lineNum">     561</span>              : </span>
+<span id="L562"><span class="lineNum">     562</span>              : /*!</span>
+<span id="L563"><span class="lineNum">     563</span>              :  * \internal</span>
+<span id="L564"><span class="lineNum">     564</span>              :  * Constructs a new StatusServicePrivate object with public implementation \a q.</span>
+<span id="L565"><span class="lineNum">     565</span>              :  */</span>
+<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC">        1295 : StatusServicePrivate::StatusServicePrivate(</span></span>
+<span id="L567"><span class="lineNum">     567</span> <span class="tlaGNC">        1575 :     QLowEnergyController * controller, StatusService * const q)</span></span>
+<span id="L568"><span class="lineNum">     568</span> <span class="tlaGNC">        2345 :     : AbstractPokitServicePrivate(QBluetoothUuid(), controller, q)</span></span>
+<span id="L569"><span class="lineNum">     569</span> <span class="tlaGNC">        1520 : {</span></span>
+<span id="L570"><span class="lineNum">     570</span>              : </span>
+<span id="L571"><span class="lineNum">     571</span> <span class="tlaGNC">        2815 : }</span></span>
+<span id="L572"><span class="lineNum">     572</span>              : </span>
+<span id="L573"><span class="lineNum">     573</span>              : /*!</span>
+<span id="L574"><span class="lineNum">     574</span>              :  * Parses the `Device Characteristics` \a value into a DeviceCharacteristics struct.</span>
+<span id="L575"><span class="lineNum">     575</span>              :  */</span>
+<span id="L576"><span class="lineNum">     576</span> <span class="tlaGNC">         180 : StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteristics(</span></span>
+<span id="L577"><span class="lineNum">     577</span>              :     const QByteArray &amp;value)</span>
+<span id="L578"><span class="lineNum">     578</span> <span class="tlaGNC">         208 : {</span></span>
+<span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">         388 :     StatusService::DeviceCharacteristics characteristics{</span></span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaGNC">         208 :         QVersionNumber(), 0, 0, 0, 0, 0, 0, QBluetoothAddress()</span></span>
+<span id="L581"><span class="lineNum">     581</span> <span class="tlaGNC">         312 :     };</span></span>
+<span id="L582"><span class="lineNum">     582</span> <span class="tlaGNC">         208 :     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.</span></span>
+<span id="L583"><span class="lineNum">     583</span>              : </span>
+<span id="L584"><span class="lineNum">     584</span> <span class="tlaGNC">         472 :     if (!checkSize(QLatin1String(&quot;Device Characteristics&quot;), value, 20, 20)) {</span></span>
+<span id="L585"><span class="lineNum">     585</span> <span class="tlaGNC">         104 :         return characteristics;</span></span>
+<span id="L586"><span class="lineNum">     586</span> <span class="tlaGNC">         104 :     }</span></span>
+<span id="L587"><span class="lineNum">     587</span>              : </span>
+<span id="L588"><span class="lineNum">     588</span> <span class="tlaGNC">         194 :     characteristics.firmwareVersion = QVersionNumber(</span></span>
+<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">         266 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(0,1).constData()),</span></span>
+<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">         250 :                                           qFromLittleEndian&lt;quint8 &gt;(value.mid(1,1).constData()));</span></span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaGNC">         236 :     characteristics.maximumVoltage      = qFromLittleEndian&lt;quint16&gt;(value.mid(2,2).constData());</span></span>
+<span id="L592"><span class="lineNum">     592</span> <span class="tlaGNC">         236 :     characteristics.maximumCurrent      = qFromLittleEndian&lt;quint16&gt;(value.mid(4,2).constData());</span></span>
+<span id="L593"><span class="lineNum">     593</span> <span class="tlaGNC">         236 :     characteristics.maximumResistance   = qFromLittleEndian&lt;quint16&gt;(value.mid(6,2).constData());</span></span>
+<span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">         236 :     characteristics.maximumSamplingRate = qFromLittleEndian&lt;quint16&gt;(value.mid(8,2).constData());</span></span>
+<span id="L595"><span class="lineNum">     595</span> <span class="tlaGNC">         236 :     characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.mid(10,2).constData());</span></span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">         236 :     characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.mid(12,2).constData());</span></span>
+<span id="L597"><span class="lineNum">     597</span> <span class="tlaGNC">         234 :     characteristics.macAddress = QBluetoothAddress(qFromBigEndian&lt;quint64&gt;</span></span>
+<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">         344 :                                                    ((QByteArray(2, '\0') + value.mid(14,6)).constData()));</span></span>
+<span id="L599"><span class="lineNum">     599</span>              : </span>
+<span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Firmware version:     &quot;) &lt;&lt; characteristics.firmwareVersion;</span></span>
+<span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum voltage:      &quot;) &lt;&lt; characteristics.maximumVoltage;</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum current:      &quot;) &lt;&lt; characteristics.maximumCurrent;</span></span>
+<span id="L603"><span class="lineNum">     603</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum resistance:   &quot;) &lt;&lt; characteristics.maximumResistance;</span></span>
+<span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum sampling rate:&quot;) &lt;&lt; characteristics.maximumSamplingRate;</span></span>
+<span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Sampling buffer size: &quot;) &lt;&lt; characteristics.samplingBufferSize;</span></span>
+<span id="L606"><span class="lineNum">     606</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Capability mask:      &quot;) &lt;&lt; characteristics.capabilityMask;</span></span>
+<span id="L607"><span class="lineNum">     607</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;MAC address:          &quot;) &lt;&lt; characteristics.macAddress;</span></span>
+<span id="L608"><span class="lineNum">     608</span>              : </span>
+<span id="L609"><span class="lineNum">     609</span> <span class="tlaGNC">         104 :     Q_ASSERT(!characteristics.firmwareVersion.isNull()); // How we indicate success.</span></span>
+<span id="L610"><span class="lineNum">     610</span> <span class="tlaGNC">         116 :     return characteristics;</span></span>
+<span id="L611"><span class="lineNum">     611</span> <span class="tlaGNC">         208 : }</span></span>
+<span id="L612"><span class="lineNum">     612</span>              : </span>
+<span id="L613"><span class="lineNum">     613</span>              : /*!</span>
+<span id="L614"><span class="lineNum">     614</span>              :  * Parses the `Status` \a value into a Status struct. Note, not all Pokit devices support all members</span>
+<span id="L615"><span class="lineNum">     615</span>              :  * in Status. Specifically, the batteryStatus member is not usually set by Pokit Meter devices, so</span>
+<span id="L616"><span class="lineNum">     616</span>              :  * will be an invlalid BatteryStatus enum value (`255`) in that case.</span>
+<span id="L617"><span class="lineNum">     617</span>              :  */</span>
+<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">         585 : StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &amp;value)</span></span>
+<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">         676 : {</span></span>
+<span id="L620"><span class="lineNum">     620</span> <span class="tlaGNC">        1261 :     StatusService::Status status{</span></span>
+<span id="L621"><span class="lineNum">     621</span> <span class="tlaGNC">         676 :         static_cast&lt;StatusService::DeviceStatus&gt;</span></span>
+<span id="L622"><span class="lineNum">     622</span> <span class="tlaGNC">         676 :             (std::numeric_limits&lt;std::underlying_type_t&lt;StatusService::DeviceStatus&gt;&gt;::max()),</span></span>
+<span id="L623"><span class="lineNum">     623</span> <span class="tlaGNC">         676 :         std::numeric_limits&lt;float&gt;::quiet_NaN(),</span></span>
+<span id="L624"><span class="lineNum">     624</span> <span class="tlaGNC">         676 :         static_cast&lt;StatusService::BatteryStatus&gt;</span></span>
+<span id="L625"><span class="lineNum">     625</span> <span class="tlaGNC">         676 :             (std::numeric_limits&lt;std::underlying_type_t&lt;StatusService::BatteryStatus&gt;&gt;::max()),</span></span>
+<span id="L626"><span class="lineNum">     626</span> <span class="tlaGNC">         676 :         std::nullopt, std::nullopt,</span></span>
+<span id="L627"><span class="lineNum">     627</span> <span class="tlaGNC">         676 :     };</span></span>
+<span id="L628"><span class="lineNum">     628</span>              : </span>
+<span id="L629"><span class="lineNum">     629</span>              :     /*!</span>
+<span id="L630"><span class="lineNum">     630</span>              :      * \pokitApi Pokit API 0.02 says the `Status` characteristic is 5 bytes. API 1.00 then added an</span>
+<span id="L631"><span class="lineNum">     631</span>              :      * additional byte for `Battery Status`, for 6 bytes in total. However, Pokit Pro devices return</span>
+<span id="L632"><span class="lineNum">     632</span>              :      * 8 bytes here. It appears that the first of those 2 extra bytes (ie the 7th byte) is used to</span>
+<span id="L633"><span class="lineNum">     633</span>              :      * indicate the physical switch position, while the other extra byte (ie the 8th byte) indicates</span>
+<span id="L634"><span class="lineNum">     634</span>              :      * the device's current charging status.</span>
+<span id="L635"><span class="lineNum">     635</span>              :      */</span>
+<span id="L636"><span class="lineNum">     636</span>              : </span>
+<span id="L637"><span class="lineNum">     637</span> <span class="tlaGNC">        1534 :     if (!checkSize(QLatin1String(&quot;Status&quot;), value, 5, 8)) {</span></span>
+<span id="L638"><span class="lineNum">     638</span> <span class="tlaGNC">         156 :         return status;</span></span>
+<span id="L639"><span class="lineNum">     639</span> <span class="tlaGNC">         104 :     }</span></span>
+<span id="L640"><span class="lineNum">     640</span>              : </span>
+<span id="L641"><span class="lineNum">     641</span> <span class="tlaGNC">        1067 :     status.deviceStatus = static_cast&lt;StatusService::DeviceStatus&gt;(value.at(0));</span></span>
+<span id="L642"><span class="lineNum">     642</span> <span class="tlaGNC">        1298 :     status.batteryVoltage = qFromLittleEndian&lt;float&gt;(value.mid(1,4).constData());</span></span>
+<span id="L643"><span class="lineNum">     643</span> <span class="tlaGNC">        1067 :     if (value.size() &gt;= 6) { // Battery Status added to Pokit API docs v1.00.</span></span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">         970 :         status.batteryStatus = static_cast&lt;StatusService::BatteryStatus&gt;(value.at(5));</span></span>
+<span id="L645"><span class="lineNum">     645</span> <span class="tlaGNC">         520 :     }</span></span>
+<span id="L646"><span class="lineNum">     646</span> <span class="tlaGNC">        1067 :     if (value.size() &gt;= 7) { // Switch Position - as yet, undocumented by Pokit Innovations.</span></span>
+<span id="L647"><span class="lineNum">     647</span> <span class="tlaGNC">         970 :         status.switchPosition = static_cast&lt;StatusService::SwitchPosition&gt;(value.at(6));</span></span>
+<span id="L648"><span class="lineNum">     648</span> <span class="tlaGNC">         520 :     }</span></span>
+<span id="L649"><span class="lineNum">     649</span> <span class="tlaGNC">        1067 :     if (value.size() &gt;= 8) { // Charging Status - as yet, undocumented by Pokit Innovations.</span></span>
+<span id="L650"><span class="lineNum">     650</span> <span class="tlaGNC">         970 :         status.chargingStatus = static_cast&lt;StatusService::ChargingStatus&gt;(value.at(7));</span></span>
+<span id="L651"><span class="lineNum">     651</span> <span class="tlaGNC">         520 :     }</span></span>
+<span id="L652"><span class="lineNum">     652</span> <span class="tlaGNC">        1210 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Device status:   %1 (%2)&quot;)</span></span>
+<span id="L653"><span class="lineNum">     653</span> <span class="tlaUNC">           0 :         .arg((quint8)status.deviceStatus).arg(StatusService::toString(status.deviceStatus));</span></span>
+<span id="L654"><span class="lineNum">     654</span> <span class="tlaGNC">        1210 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery voltage: %1 volts&quot;).arg(status.batteryVoltage);</span></span>
+<span id="L655"><span class="lineNum">     655</span> <span class="tlaGNC">        1210 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Battery status:  %1 (%2)&quot;)</span></span>
+<span id="L656"><span class="lineNum">     656</span> <span class="tlaUNC">           0 :         .arg((quint8)status.batteryStatus).arg(StatusService::toString(status.batteryStatus));</span></span>
+<span id="L657"><span class="lineNum">     657</span> <span class="tlaGNC">        1067 :     if (status.switchPosition) {</span></span>
+<span id="L658"><span class="lineNum">     658</span> <span class="tlaGNC">        1100 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Switch position: %1 (%2)&quot;)</span></span>
+<span id="L659"><span class="lineNum">     659</span> <span class="tlaUNC">           0 :             .arg((quint8)*status.switchPosition).arg(StatusService::toString(*status.switchPosition));</span></span>
+<span id="L660"><span class="lineNum">     660</span> <span class="tlaGNC">         520 :     }</span></span>
+<span id="L661"><span class="lineNum">     661</span> <span class="tlaGNC">        1067 :     if (status.chargingStatus) {</span></span>
+<span id="L662"><span class="lineNum">     662</span> <span class="tlaGNC">        1100 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Charging status: %1 (%2)&quot;)</span></span>
+<span id="L663"><span class="lineNum">     663</span> <span class="tlaUNC">           0 :         .arg((quint8)*status.chargingStatus).arg(StatusService::toString(*status.chargingStatus));</span></span>
+<span id="L664"><span class="lineNum">     664</span> <span class="tlaGNC">         520 :     }</span></span>
+<span id="L665"><span class="lineNum">     665</span> <span class="tlaGNC">         858 :     return status;</span></span>
+<span id="L666"><span class="lineNum">     666</span> <span class="tlaGNC">         676 : }</span></span>
+<span id="L667"><span class="lineNum">     667</span>              : </span>
+<span id="L668"><span class="lineNum">     668</span>              : /*!</span>
+<span id="L669"><span class="lineNum">     669</span>              :  * Parses the torch status \a value, and returns the corresponding TorchStatus.</span>
+<span id="L670"><span class="lineNum">     670</span>              :  */</span>
+<span id="L671"><span class="lineNum">     671</span> <span class="tlaGNC">         135 : std::optional&lt;StatusService::TorchStatus&gt; StatusServicePrivate::parseTorchStatus(const QByteArray &amp;value)</span></span>
+<span id="L672"><span class="lineNum">     672</span> <span class="tlaGNC">         156 : {</span></span>
+<span id="L673"><span class="lineNum">     673</span> <span class="tlaGNC">         354 :     if (!checkSize(QLatin1String(&quot;Torch&quot;), value, 1, 1)) {</span></span>
+<span id="L674"><span class="lineNum">     674</span> <span class="tlaGNC">          97 :         return std::nullopt;</span></span>
+<span id="L675"><span class="lineNum">     675</span> <span class="tlaGNC">          52 :     }</span></span>
+<span id="L676"><span class="lineNum">     676</span>              : </span>
+<span id="L677"><span class="lineNum">     677</span> <span class="tlaGNC">         194 :     const StatusService::TorchStatus status = static_cast&lt;StatusService::TorchStatus&gt;(value.at(0));</span></span>
+<span id="L678"><span class="lineNum">     678</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Torch status: %1 (%2)&quot;).arg((quint8)status).arg(StatusService::toString(status));</span></span>
+<span id="L679"><span class="lineNum">     679</span> <span class="tlaGNC">         194 :     return status;</span></span>
+<span id="L680"><span class="lineNum">     680</span> <span class="tlaGNC">         156 : }</span></span>
+<span id="L681"><span class="lineNum">     681</span>              : </span>
+<span id="L682"><span class="lineNum">     682</span>              : /*!</span>
+<span id="L683"><span class="lineNum">     683</span>              :  * Parses the button press \a value, and returns the corresponding ButtonStatus.</span>
+<span id="L684"><span class="lineNum">     684</span>              :  */</span>
+<span id="L685"><span class="lineNum">     685</span> <span class="tlaGNC">         180 : std::optional&lt;StatusService::ButtonStatus&gt; StatusServicePrivate::parseButtonPress(const QByteArray &amp;value)</span></span>
+<span id="L686"><span class="lineNum">     686</span> <span class="tlaGNC">         208 : {</span></span>
+<span id="L687"><span class="lineNum">     687</span> <span class="tlaGNC">         472 :     if (!checkSize(QLatin1String(&quot;Torch&quot;), value, 2, 2)) {</span></span>
+<span id="L688"><span class="lineNum">     688</span> <span class="tlaGNC">          97 :         return std::nullopt;</span></span>
+<span id="L689"><span class="lineNum">     689</span> <span class="tlaGNC">          52 :     }</span></span>
+<span id="L690"><span class="lineNum">     690</span>              : </span>
+<span id="L691"><span class="lineNum">     691</span>              :     /*!</span>
+<span id="L692"><span class="lineNum">     692</span>              :      * \pokitApi The button event is the second byte, but no idea what the first byte is. In all examples</span>
+<span id="L693"><span class="lineNum">     693</span>              :      * I've see it's always `0x02`. It appears that the Pokit Android app only ever looks at `bytes[1]`.</span>
+<span id="L694"><span class="lineNum">     694</span>              :      *</span>
+<span id="L695"><span class="lineNum">     695</span>              :      * \pokitApi Note, we can actually write to the Button Press characteristic too. If we do, then whatever</span>
+<span id="L696"><span class="lineNum">     696</span>              :      * we set as the first byte persists, and (unsurprisingly) the second byte reverts to the current</span>
+<span id="L697"><span class="lineNum">     697</span>              :      * button state. So still no idea what that first byte is for.</span>
+<span id="L698"><span class="lineNum">     698</span>              :      */</span>
+<span id="L699"><span class="lineNum">     699</span>              : </span>
+<span id="L700"><span class="lineNum">     700</span> <span class="tlaGNC">         291 :     const StatusService::ButtonStatus status = static_cast&lt;StatusService::ButtonStatus&gt;(value.at(1));</span></span>
+<span id="L701"><span class="lineNum">     701</span> <span class="tlaGNC">         330 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Button: %1 (%2)&quot;).arg((quint8)status).arg(StatusService::toString(status));</span></span>
+<span id="L702"><span class="lineNum">     702</span> <span class="tlaGNC">         291 :     return status;</span></span>
+<span id="L703"><span class="lineNum">     703</span> <span class="tlaGNC">         208 : }</span></span>
+<span id="L704"><span class="lineNum">     704</span>              : </span>
+<span id="L705"><span class="lineNum">     705</span>              : /*!</span>
+<span id="L706"><span class="lineNum">     706</span>              :  * Handles `QLowEnergyController::serviceDiscovered` events.</span>
+<span id="L707"><span class="lineNum">     707</span>              :  *</span>
+<span id="L708"><span class="lineNum">     708</span>              :  * Here we override the base implementation to detect if we're looking at a Pokit Meter, or Pokit</span>
+<span id="L709"><span class="lineNum">     709</span>              :  * Pro device, as the two devices have very slightly different Status Service UUIDs.</span>
+<span id="L710"><span class="lineNum">     710</span>              :  */</span>
+<span id="L711"><span class="lineNum">     711</span> <span class="tlaGNC">         180 : void StatusServicePrivate::serviceDiscovered(const QBluetoothUuid &amp;newService)</span></span>
+<span id="L712"><span class="lineNum">     712</span> <span class="tlaGNC">         208 : {</span></span>
+<span id="L713"><span class="lineNum">     713</span> <span class="tlaGNC">         388 :     if (newService == StatusService::ServiceUuids::pokitMeter) {</span></span>
+<span id="L714"><span class="lineNum">     714</span> <span class="tlaGNC">         110 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Found Status Service for a Pokit Meter device.&quot;);</span></span>
+<span id="L715"><span class="lineNum">     715</span> <span class="tlaGNC">          97 :         serviceUuid = StatusService::ServiceUuids::pokitMeter;</span></span>
+<span id="L716"><span class="lineNum">     716</span> <span class="tlaGNC">         291 :     } else if (newService == StatusService::ServiceUuids::pokitPro) {</span></span>
+<span id="L717"><span class="lineNum">     717</span> <span class="tlaGNC">         110 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Found Status Service for a Pokit Pro device.&quot;);</span></span>
+<span id="L718"><span class="lineNum">     718</span> <span class="tlaGNC">          97 :         serviceUuid = StatusService::ServiceUuids::pokitPro;</span></span>
+<span id="L719"><span class="lineNum">     719</span> <span class="tlaGNC">          52 :     }</span></span>
+<span id="L720"><span class="lineNum">     720</span> <span class="tlaGNC">         388 :     AbstractPokitServicePrivate::serviceDiscovered(newService);</span></span>
+<span id="L721"><span class="lineNum">     721</span> <span class="tlaGNC">         388 : }</span></span>
+<span id="L722"><span class="lineNum">     722</span>              : </span>
+<span id="L723"><span class="lineNum">     723</span>              : /*!</span>
+<span id="L724"><span class="lineNum">     724</span>              :  * Implements AbstractPokitServicePrivate::characteristicRead to parse \a value, then emit a</span>
+<span id="L725"><span class="lineNum">     725</span>              :  * specialised signal, for each supported \a characteristic.</span>
+<span id="L726"><span class="lineNum">     726</span>              :  */</span>
+<span id="L727"><span class="lineNum">     727</span> <span class="tlaGNC">          45 : void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></span>
+<span id="L728"><span class="lineNum">     728</span>              :                                               const QByteArray &amp;value)</span>
+<span id="L729"><span class="lineNum">     729</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L730"><span class="lineNum">     730</span> <span class="tlaGNC">          97 :     AbstractPokitServicePrivate::characteristicRead(characteristic, value);</span></span>
+<span id="L731"><span class="lineNum">     731</span>              : </span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaGNC">          52 :     Q_Q(StatusService);</span></span>
+<span id="L733"><span class="lineNum">     733</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></span>
+<span id="L734"><span class="lineNum">     734</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceCharacteristicsRead(parseDeviceCharacteristics(value));</span></span>
+<span id="L735"><span class="lineNum">     735</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L736"><span class="lineNum">     736</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L737"><span class="lineNum">     737</span>              : </span>
+<span id="L738"><span class="lineNum">     738</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></span>
+<span id="L739"><span class="lineNum">     739</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceStatusRead(parseStatus(value));</span></span>
+<span id="L740"><span class="lineNum">     740</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L741"><span class="lineNum">     741</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L742"><span class="lineNum">     742</span>              : </span>
+<span id="L743"><span class="lineNum">     743</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></span>
+<span id="L744"><span class="lineNum">     744</span> <span class="tlaUNC">           0 :         const QString deviceName = QString::fromUtf8(value);</span></span>
+<span id="L745"><span class="lineNum">     745</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Device name: &quot;%1&quot;)&quot;).arg(deviceName);</span></span>
+<span id="L746"><span class="lineNum">     746</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceNameRead(deviceName);</span></span>
+<span id="L747"><span class="lineNum">     747</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L748"><span class="lineNum">     748</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L749"><span class="lineNum">     749</span>              : </span>
+<span id="L750"><span class="lineNum">     750</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></span>
+<span id="L751"><span class="lineNum">     751</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Flash LED characteristic is write-only, but somehow read&quot;)</span></span>
+<span id="L752"><span class="lineNum">     752</span> <span class="tlaUNC">           0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L753"><span class="lineNum">     753</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L754"><span class="lineNum">     754</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L755"><span class="lineNum">     755</span>              : </span>
+<span id="L756"><span class="lineNum">     756</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {</span></span>
+<span id="L757"><span class="lineNum">     757</span> <span class="tlaUNC">           0 :         if (!checkSize(QLatin1String(&quot;Torch&quot;), value, 1, 1)) {</span></span>
+<span id="L758"><span class="lineNum">     758</span> <span class="tlaUNC">           0 :             return;</span></span>
+<span id="L759"><span class="lineNum">     759</span> <span class="tlaUNC">           0 :         }</span></span>
+<span id="L760"><span class="lineNum">     760</span> <span class="tlaUNC">           0 :         const StatusService::TorchStatus status = static_cast&lt;StatusService::TorchStatus&gt;(value.at(0));</span></span>
+<span id="L761"><span class="lineNum">     761</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Torch status:  %1 (%2)&quot;).arg((quint8)status).arg(StatusService::toString(status));</span></span>
+<span id="L762"><span class="lineNum">     762</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;torchStatusRead(status);</span></span>
+<span id="L763"><span class="lineNum">     763</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L764"><span class="lineNum">     764</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L765"><span class="lineNum">     765</span>              : </span>
+<span id="L766"><span class="lineNum">     766</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::buttonPress) {</span></span>
+<span id="L767"><span class="lineNum">     767</span> <span class="tlaUNC">           0 :         if (!checkSize(QLatin1String(&quot;Torch&quot;), value, 2, 2)) {</span></span>
+<span id="L768"><span class="lineNum">     768</span> <span class="tlaUNC">           0 :             return;</span></span>
+<span id="L769"><span class="lineNum">     769</span> <span class="tlaUNC">           0 :         }</span></span>
+<span id="L770"><span class="lineNum">     770</span> <span class="tlaUNC">           0 :         const StatusService::ButtonStatus status = static_cast&lt;StatusService::ButtonStatus&gt;(value.at(1));</span></span>
+<span id="L771"><span class="lineNum">     771</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Button status:  %1 (%2)&quot;).arg((quint8)status).arg(StatusService::toString(status));</span></span>
+<span id="L772"><span class="lineNum">     772</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;buttonPressRead(value.at(0), status);</span></span>
+<span id="L773"><span class="lineNum">     773</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L774"><span class="lineNum">     774</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L775"><span class="lineNum">     775</span>              : </span>
+<span id="L776"><span class="lineNum">     776</span> <span class="tlaGNC">         219 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Status service&quot;)</span></span>
+<span id="L777"><span class="lineNum">     777</span> <span class="tlaGNC">         163 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L778"><span class="lineNum">     778</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L779"><span class="lineNum">     779</span>              : </span>
+<span id="L780"><span class="lineNum">     780</span>              : /*!</span>
+<span id="L781"><span class="lineNum">     781</span>              :  * Implements AbstractPokitServicePrivate::characteristicWritten to parse \a newValue, then emit a</span>
+<span id="L782"><span class="lineNum">     782</span>              :  * specialised signal, for each supported \a characteristic.</span>
+<span id="L783"><span class="lineNum">     783</span>              :  */</span>
+<span id="L784"><span class="lineNum">     784</span> <span class="tlaGNC">          45 : void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></span>
+<span id="L785"><span class="lineNum">     785</span>              :                                                  const QByteArray &amp;newValue)</span>
+<span id="L786"><span class="lineNum">     786</span> <span class="tlaGNC">          52 : {</span></span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">          97 :     AbstractPokitServicePrivate::characteristicWritten(characteristic, newValue);</span></span>
+<span id="L788"><span class="lineNum">     788</span>              : </span>
+<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">          52 :     Q_Q(StatusService);</span></span>
+<span id="L790"><span class="lineNum">     790</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::deviceCharacteristics) {</span></span>
+<span id="L791"><span class="lineNum">     791</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Device Characteristics is read-only, but somehow written&quot;)</span></span>
+<span id="L792"><span class="lineNum">     792</span> <span class="tlaUNC">           0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L793"><span class="lineNum">     793</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L794"><span class="lineNum">     794</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L795"><span class="lineNum">     795</span>              : </span>
+<span id="L796"><span class="lineNum">     796</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::status) {</span></span>
+<span id="L797"><span class="lineNum">     797</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Status characteristic is read-only, but somehow written&quot;)</span></span>
+<span id="L798"><span class="lineNum">     798</span> <span class="tlaUNC">           0 :             &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L799"><span class="lineNum">     799</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L800"><span class="lineNum">     800</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L801"><span class="lineNum">     801</span>              : </span>
+<span id="L802"><span class="lineNum">     802</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::name) {</span></span>
+<span id="L803"><span class="lineNum">     803</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceNameWritten();</span></span>
+<span id="L804"><span class="lineNum">     804</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L805"><span class="lineNum">     805</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L806"><span class="lineNum">     806</span>              : </span>
+<span id="L807"><span class="lineNum">     807</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::flashLed) {</span></span>
+<span id="L808"><span class="lineNum">     808</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;deviceLedFlashed();</span></span>
+<span id="L809"><span class="lineNum">     809</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L810"><span class="lineNum">     810</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L811"><span class="lineNum">     811</span>              : </span>
+<span id="L812"><span class="lineNum">     812</span> <span class="tlaGNC">          97 :     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {</span></span>
+<span id="L813"><span class="lineNum">     813</span> <span class="tlaUNC">           0 :         Q_EMIT q-&gt;torchStatusWritten();</span></span>
+<span id="L814"><span class="lineNum">     814</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L815"><span class="lineNum">     815</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L816"><span class="lineNum">     816</span>              : </span>
+<span id="L817"><span class="lineNum">     817</span> <span class="tlaGNC">         219 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for Status service&quot;)</span></span>
+<span id="L818"><span class="lineNum">     818</span> <span class="tlaGNC">         163 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L819"><span class="lineNum">     819</span> <span class="tlaGNC">          52 : }</span></span>
+<span id="L820"><span class="lineNum">     820</span>              : </span>
+<span id="L821"><span class="lineNum">     821</span>              : /// \endcond</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
