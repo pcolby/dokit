@@ -10,4 +10,4 @@
 
 set -o errexit -o noclobber -o nounset -o pipefail
 
-find "${1:-.}" -mindepth 2 -name '*.html' | xargs -n 1000 -P 8 awk -f '.selector' -i 'inplace' --
+find "${1:-.}" -mindepth 2 -name '*.html' | xargs -n 1000 -P 8 -r awk -f '.selector' -i 'inplace' --
