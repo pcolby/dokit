@@ -208,15 +208,23 @@ Qt Versions</h1>
 <td class="markdownTableBodyNone">6.2   </td><td class="markdownTableBodyCenter">Yes   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">6.3   </td><td class="markdownTableBodyCenter">Yes   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">6.4   </td><td class="markdownTableBodyCenter">Yes   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">6.5   </td><td class="markdownTableBodyCenter">Yes   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">6.6   </td><td class="markdownTableBodyCenter">Yes   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">6.7   </td><td class="markdownTableBodyCenter">Yes   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">6.8   </td><td class="markdownTableBodyCenter">Yes   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">6.9   </td><td class="markdownTableBodyCenter">Yes   </td><td class="markdownTableBodyNone"></td></tr>
 </table>
 <h1><a class="anchor" id="autotoc_md8"></a>
 CMake Versions</h1>
-<p>In summary (of the below table), for <em>building</em> QtPokit:</p>
-<ul>
-<li>CMake 2.8.9 through to pre-3.0 <em>should</em> be possible, but the effort and resulting complexity is high enough to not be worth it.</li>
-<li>any CMake 3.x should be fine, except:</li>
-<li>CMake 3.12+ is needed for the full set of unit tests.</li>
-</ul>
+<p>CMake 3.15+ is required for <em>building</em> QtPokit.</p>
+<p>Some notes on specific features that imply minimum CMake versions:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadCenter">Version   </th><th class="markdownTableHeadNone">Dependency    </th></tr>
@@ -237,9 +245,17 @@ CMake Versions</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyCenter"></td><td class="markdownTableBodyNone"><code>target_sources</code> command.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">3.12   </td><td class="markdownTableBodyNone"><a href="https://cmake.org/cmake/help/latest/command/add_library.html#object-libraries">Object Libraries</a> for sharing binary objects between the console app and unit tests.    </td></tr>
+<td class="markdownTableBodyCenter">3.11   </td><td class="markdownTableBodyNone"><code>include(FetchContent)</code>    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">3.12   </td><td class="markdownTableBodyNone"><a href="https://cmake.org/cmake/help/latest/command/add_library.html#object-libraries">Object Libraries</a> for sharing binary objects between the console app and unit tests.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">3.13   </td><td class="markdownTableBodyNone"><code>-B</code> CLI option (handy, but not essential).    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter"></td><td class="markdownTableBodyNone"><code>add_link_options</code> command (for <code>--coverage</code>)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">3.14   </td><td class="markdownTableBodyNone"><code>FetchContent_MakeAvailable(FindQtDocs)</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">3.15   </td><td class="markdownTableBodyNone"><code>list(PREPEND CMAKE_MODULE_PATH "${findqtdocs_SOURCE_DIR}")</code>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">3.16   </td><td class="markdownTableBodyNone"><a href="https://github.com/qt/qtbase/blob/v6.2.0/.cmake.conf">Qt6.x shared</a>    </td></tr>
 <tr class="markdownTableRowEven">
