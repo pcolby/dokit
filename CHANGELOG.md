@@ -2,7 +2,21 @@
 
 ## [Unreleased][]
 
-_Coming soon..._
+### Added
+
+- Support for the `LANG` environment variable on macOS ([58d82dd][])
+- CI tests for localisations ([1bca548][])
+
+### Removed
+
+- Support for localisations on Linux with GCC and Qt 6.2. This was, in fact, never working. But only now revealed by
+  recently-added CI tests. If you must use the CLI application with Qt 6.2 on Linux, then Clang builds are recommended.
+  Of course, a more recent Qt version would be even better.
+
+### Fixed
+
+- Output buffering issue on MinGW builds with Qt 6.5, 6.6 and 6.7 [cc5ff57]()
+- Work around Qt 6.9.0 beta 3 broken translations ([45bd46d][])
 
 ## [0.5.4][2025-02-01]
 
@@ -166,11 +180,16 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [0.1.0]: https://github.com/pcolby/dokit/releases/tag/v0.1.0
 
 [073bce8]:     https://github.com/pcolby/dokit/commit/073bce82014a85e033639862fdb061c72b7971fd "Include switch and charging status in CLI output"
+[1bca548]:     https://github.com/pcolby/dokit/commit/1bca548c7abf9b9e59dd2ab2e5a27aac0dfa5119 "Add workflow steps for testing localisations"
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
+[45bd46d]:     https://github.com/pcolby/dokit/commit/45bd46d85433a3d3b8e04b9a1f8ba500fc3dcc5a "Work around Qt 6.9.0 beta 3 L10n bug"
+[58d82dd]:     https://github.com/pcolby/dokit/commit/58d82ddb70b166212e3c8c0a778dbd32a255db29 "Support the LANG environment variable on macOS"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
 [899b007]:     https://github.com/pcolby/dokit/commit/899b007e73e64e724f2785acafddd2d3fc6f893e "Round command line options correctly"
+[cc5ff57]:     https://github.com/pcolby/dokit/commit/cc5ff57bc2f94f4306687d88307cda4f3fbb3612 "Use fputs() instead of std::err for CLI error output"
 [d54fbbc]:     https://github.com/pcolby/dokit/commit/d54fbbcb2eacbce6b4e9bfb8a23a9ce43fd7524a "Support GitHub's Linux arm64 preview hosts"
 [db8b841]:     https://github.com/pcolby/dokit/commit/db8b84197d00b5a357974043f2dc0f3c0b7dfeff "Return quint32 from all maxValue methods"
+
 [#9]:          https://github.com/pcolby/dokit/issues/9
 [#17]:         https://github.com/pcolby/dokit/issues/17
 [#18]:         https://github.com/pcolby/dokit/issues/18
