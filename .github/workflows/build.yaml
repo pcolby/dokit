@@ -91,7 +91,7 @@ jobs:
         #       Note, can probably remove the host property below at the same time.
         # \todo See https://github.com/jurplel/install-qt-action/issues/248
         if: contains(matrix.qt, '.') && matrix.arch == 'arm64' # ie if not using Ubuntu's Qt5/Qt6.
-        uses: jdpurcell/install-qt-action@v4
+        uses: jdpurcell/install-qt-action@v5
         with:
           version: ${{ matrix.qt }}
           modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
