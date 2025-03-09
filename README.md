@@ -212,20 +212,10 @@ Command:
 
 ## Building from Source
 
-Prototypical [CMake][]-based out-of-source build and test process, for CMake 3.13 or later:
+Prototypical [CMake][]-based out-of-source build and test process:
 
 ```sh
 cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo> -B <tmp-build-dir>
-cmake --build <tmp-build-dir>
-ctest --test-dir <tmp-build-dir> --verbose
-```
-
-For CMake versions earlier than 3.13 (ie before CMake added the `-B <build-dir>` command line option):
-
-```sh
-cmake -E make_directory <tmp-build-dir>
-cd <tmp-build-dir>
-cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo>
 cmake --build <tmp-build-dir>
 ctest --test-dir <tmp-build-dir> --verbose
 ```

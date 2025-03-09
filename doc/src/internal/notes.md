@@ -57,15 +57,18 @@ QtPokit requires Qt's support Bluetooth Low Energy, in Central mode.
 | 6.1 | No       | Bluetooth module [ported to Qt6 in v6.2].|
 | 6.2 | Yes      |                                          |
 | 6.3 | Yes      |                                          |
+| 6.4 | Yes      |                                          |
+| 6.5 | Yes      |                                          |
+| 6.6 | Yes      |                                          |
+| 6.7 | Yes      |                                          |
+| 6.8 | Yes      |                                          |
+| 6.9 | Yes      |                                          |
 
 ## CMake Versions
 
-In summary (of the below table), for *building* QtPokit:
+CMake 3.15+ is required for *building* QtPokit.
 
-* CMake 2.8.9 through to pre-3.0 *should* be possible, but the effort and resulting complexity
-  is high enough to not be worth it.
-* any CMake 3.x should be fine, except:
-* CMake 3.12+ is needed for the full set of unit tests.
+Some notes on specific features that imply minimum CMake versions:
 
 | Version| Dependency                                                                           |
 |:------:|--------------------------------------------------------------------------------------|
@@ -77,8 +80,12 @@ In summary (of the below table), for *building* QtPokit:
 |  3.0   | `VERSION` option of the `project()` command.
 |  3.1   | [Qt 5.11+](https://github.com/qt/qtbase/blob/v5.11.0/src/corelib/Qt5Config.cmake.in) |
 |        | `target_sources` command. |
+|  3.11  | `include(FetchContent)` |
 |  3.12  | [Object Libraries] for sharing binary objects between the console app and unit tests.|
 |  3.13  | `-B` CLI option (handy, but not essential).                                          |
+|        | `add_link_options` command (for `--coverage`) |
+|  3.14  | `FetchContent_MakeAvailable(FindQtDocs)` |
+|  3.15  | `list(PREPEND CMAKE_MODULE_PATH "${findqtdocs_SOURCE_DIR}")` |
 |  3.16  | [Qt6.x shared](https://github.com/qt/qtbase/blob/v6.2.0/.cmake.conf)|
 |  3.18  | Not actually a requirement, but this is the minimum version that's regularly tested. |
 |  3.21  | [Qt6.x static](https://github.com/qt/qtbase/blob/v6.2.0/.cmake.conf)|
