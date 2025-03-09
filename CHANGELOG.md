@@ -15,8 +15,8 @@
 
 ### Fixed
 
-- Output buffering issue on MinGW builds with Qt 6.5, 6.6 and 6.7 ([cc5ff57][])
-- Work around Qt 6.9.0 beta 3 broken translations ([45bd46d][])
+- Output buffering issue for MinGW builds with Qt 6.5, 6.6 and 6.7 ([cc5ff57][])
+- Builds broken by Qt 6.9.0 Beta 3 CMake macro changes ([45bd46d][])
 
 ## [0.5.4][] (2025-02-01)
 
