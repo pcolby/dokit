@@ -286,12 +286,26 @@ int main(int argc, char *argv[])
         #endif
     ));
 
+#if defined(Q_OS_MACOS)
+    // Qt ignores shell locale overrides on macOS (QTBUG-51386), so mimic Qt's handling of LANG on *nixes.
+    const QString localeName = QString::fromLocal8Bit(qgetenv("LANG"));
+    if (!localeName.isEmpty()) {
+        const QLocale newLocale(localeName);
+        if (newLocale.name() != localeName.split(QLatin1Char('.')).constFirst()) {
+            qWarning() << "Could not find locale" << localeName;
+        } else {
+            QLocale::setDefault(newLocale);
+        }
+    }
+#endif
+
     // Install localised translators, if we have translations for the current locale.
+    const QLocale locale;
     QTranslator appTranslator, libTranslator;
-    if (appTranslator.load(QLocale(), QStringLiteral("cli"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {
+    if (appTranslator.load(locale, QStringLiteral("cli"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {
         QCoreApplication::installTranslator(&appTranslator);
     }
-    if (libTranslator.load(QLocale(), QStringLiteral("lib"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {
+    if (libTranslator.load(locale, QStringLiteral("lib"), QStringLiteral("/"), QStringLiteral(":/i18n"))) {
         QCoreApplication::installTranslator(&libTranslator);
     }
 
@@ -299,6 +313,7 @@ int main(int argc, char *argv[])
     const QStringList appArguments = QCoreApplication::arguments();
     QCommandLineParser parser;
     const Command commandType = parseCommandLine(appArguments, parser);
+    qCDebug(lc).noquote() << "Locale:" << locale << locale.uiLanguages();
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.
     qCDebug(lc).noquote() << "App translations:" <<
         (appTranslator.filePath().isEmpty() ? QStringLiteral("<none>") : appTranslator.filePath());
