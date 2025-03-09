@@ -10,6 +10,7 @@ env:
   # See https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/
   #     about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
   CMAKE_BUILD_PARALLEL_LEVEL: 4 # Default only; overridden where appriopriate, such as on macOS 14+ below.
+  QT_FORCE_STDERR_LOGGING: 1 # Make sure Qt logs errors (during Workflow runs) to console. Especially for Windows.
 
 jobs:
   linux:
@@ -143,6 +144,28 @@ jobs:
           ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
           ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
           cmake --build "$RUNNER_TEMP/coverage" --target coverage
+      - name: Test localisations
+        # \todo For unknown reasons, Qt 6.2.4 w/ GCC fails to include full set of *.qm file - happens locally too, not
+        # just on GitHub hosted runners.  We could diagnose further, but this one corner case is very low value today.
+        if: startsWith(matrix.qt, '6') && !(startsWith(matrix.qt, '6.2.') && matrix.cc == 'gcc')
+        run: |
+          declare -Ar languages=(
+            [en_AU]='Australia|Unrecognised'
+            [en_GB]='United Kingdom|Unrecognised'
+            [en_US]='United States|Unrecognized'
+          )
+          for langId in "${!languages[@]}"; do
+            IFS='|' read -r langName localText <<< "${languages[${langId}]}"
+            echo "Checking: ${langName} (${langId})"
+            output=$(
+              LANG="${langId}.UTF-8" \
+              "$RUNNER_TEMP/release/src/cli/dokit" calibrate --debug --temperature x 2>&1 || :)
+            printf '%s\n--------\n' "${output}"
+            grep "Locale:.*${langName}" <<< "${output}"
+            grep "App translations: :/i18n/cli/${langId}\.qm" <<< "${output}"
+            grep "Library translations: :/i18n/lib/${langId}\.qm" <<< "${output}"
+            grep "${localText} temperature format" <<< "${output}"
+          done
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
@@ -250,7 +273,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install lcov
-        run: brew install lcov
+        run: brew install bash lcov
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
@@ -325,6 +348,26 @@ jobs:
             ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
           ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
         timeout-minutes: 1
+      - name: Test localisations
+        if: startsWith(matrix.qt, '6')
+        run: |
+          declare -Ar languages=(
+            [en_AU]='Australia|Unrecognised'
+            [en_GB]='United Kingdom|Unrecognised'
+            [en_US]='United States|Unrecognized'
+          )
+          for langId in "${!languages[@]}"; do
+            IFS='|' read -r langName localText <<< "${languages[${langId}]}"
+            echo "Checking: ${langName} (${langId})"
+            output=$(
+              LANG="${langId}.UTF-8" \
+              "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" calibrate --debug --temperature x 2>&1 || :)
+            printf '%s\n--------\n' "${output}"
+            grep "Locale:.*${langName}" <<< "${output}"
+            grep "App translations: :/i18n/cli/${langId}\.qm" <<< "${output}"
+            grep "Library translations: :/i18n/lib/${langId}\.qm" <<< "${output}"
+            grep "${localText} temperature format" <<< "${output}"
+          done
       - name: Disable lcov consistency checks for gcc
         if: matrix.cc == 'gcc'
         run: echo 'check_data_consistency = 0' >> "$HOME/.lcovrc"
@@ -662,6 +705,35 @@ jobs:
         if: matrix.arch != 'arm64'
         shell: bash
         run: '"$RUNNER_TEMP/release/portable/dokit.exe" --version'
+      - name: Test localisations
+        if: matrix.arch != 'arm64' && startsWith(matrix.qt, '6')
+        shell: bash
+        run: |
+          declare -Ar languages=(
+            [en_AU]='Australia|Unrecognised'
+            [en_GB]='United Kingdom|Unrecognised'
+            [en_US]='United States|Unrecognized'
+          )
+          for langId in "${!languages[@]}"; do
+            IFS='|' read -r langName localText <<< "${languages[${langId}]}"
+            [[ ( "${QT_VERSION}" != 6.2.* && "${QT_VERSION}" != 6.3.* ) || "${langId}" == 'en_US' ]] || {
+              # Prior to Qt 6.4, Qt puts the system language first, which is always en_US on GitHub hosted runners.
+              echo "Skipping: ${langName} (${langId}) for Qt ${QT_VERSION} on GitHub hosted Windows runner"
+              continue
+            }
+            echo "Checking: ${langName} (${langId})"
+            export QT_LOGGING_RULES='*=true'
+            output=$(
+              LANG="${langId}.UTF-8" \
+              "$RUNNER_TEMP/release/portable/dokit.exe" calibrate --debug --temperature x 2>&1 || :)
+            printf '%s\n--------\n' "${output}"
+            grep "Locale:.*${langName}" <<< "${output}"
+            grep "App translations: :/i18n/cli/${langId}\.qm" <<< "${output}"
+            grep "Library translations: :/i18n/lib/${langId}\.qm" <<< "${output}"
+            grep "${localText} temperature format" <<< "${output}"
+          done
+        env:
+          QT_VERSION: ${{ matrix.qt }}
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
