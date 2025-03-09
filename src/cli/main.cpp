@@ -92,10 +92,9 @@ enum class Command {
 
 void showCliError(const QString &errorText)
 {
-    // Output the same way QCommandLineParser does (qcommandlineparser.cpp::showParserMessage).
-    const QString message = QCoreApplication::applicationName() + QLatin1String(": ")
-        + errorText + QLatin1Char('\n');
-    std::cerr << qUtf8Printable(message);
+    // Output the same way QCommandLineParser::showMessageAndExit() does.
+    const QString message = QCoreApplication::applicationName() + QLatin1String(": ") + errorText + u'\n';
+    fputs(qUtf8Printable(message), stderr);
 }
 
 Command getCliCommand(const QStringList &posArguments)
