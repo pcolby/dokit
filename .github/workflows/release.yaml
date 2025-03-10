@@ -4,21 +4,18 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Tag to release
+        description: Existing tag to draft a release for
         required: true
         type: string
 
 permissions:
   contents: write
 
-env:
-  GH_REPO: ${{ github.repository }}
-  GH_TOKEN: ${{ github.token }}
-
 jobs:
   release:
     runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v4
       - name: Create draft release
         run: .github/workflows/release.sh "${TAG_NAME}"
         env:
