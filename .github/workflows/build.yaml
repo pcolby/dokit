@@ -59,10 +59,10 @@ jobs:
           - { qt: 6.6.3,   arch: arm64 }
     steps:
       - run: ls /var/cache/apt/archives/
-      - name: Cache APT archives
-        uses: actions/cache@v4
+      - name: Restore APT archives
+        uses: actions/cache/restore@v4
         with:
-          path: /var/cache/apt/archives
+          path: /var/cache/apt/archives/*.deb
           key: ${{ runner.os }}-${{ runner.arch }}-apt-archives
       - run: ls /var/cache/apt/archives/
       - name: Upgrade OS
@@ -70,6 +70,12 @@ jobs:
           sudo apt-mark hold firefox grub-efi-${{ matrix.arch == 'arm64' && 'arm64' || 'amd64' }}-signed
           sudo apt update && sudo apt upgrade
           sudo apt install lcov llvm
+      - name: Cache APT archives
+        uses: actions/cache/restore@v4
+        with:
+          path: /var/cache/apt/archives/*.deb
+          key: ${{ runner.os }}-${{ runner.arch }}-apt-archives
+      - run: ls /var/cache/apt/archives/
       - uses: actions/setup-python@v5
         with:
           python-version: '>=3.9'
