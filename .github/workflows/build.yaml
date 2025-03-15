@@ -88,7 +88,6 @@ jobs:
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Install online Qt version for arm64
         # \todo Revert to only using jurplel's action when issue #248 is resolved.
-        #       Note, can probably remove the host property below at the same time.
         # \todo See https://github.com/jurplel/install-qt-action/issues/248
         if: contains(matrix.qt, '.') && matrix.arch == 'arm64' # ie if not using Ubuntu's Qt5/Qt6.
         uses: jdpurcell/install-qt-action@v4
