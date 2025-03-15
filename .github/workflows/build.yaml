@@ -59,6 +59,12 @@ jobs:
           - { qt: 6.6.3,   arch: arm64 }
     steps:
       - run: ls /var/cache/apt/archives/
+      - name: Cache APT archives
+        uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-${{ runner.arch }}-apt-archives
+      - run: ls /var/cache/apt/archives/
       - name: Upgrade OS
         run: |
           sudo apt-mark hold firefox grub-efi-${{ matrix.arch == 'arm64' && 'arm64' || 'amd64' }}-signed
