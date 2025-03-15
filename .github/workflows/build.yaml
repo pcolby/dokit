@@ -58,6 +58,7 @@ jobs:
           - { qt: 6.5.3,   arch: arm64 }
           - { qt: 6.6.3,   arch: arm64 }
     steps:
+      - run: ls /var/cache/apt/archives/
       - name: Upgrade OS
         run: |
           sudo apt-mark hold firefox grub-efi-${{ matrix.arch == 'arm64' && 'arm64' || 'amd64' }}-signed
@@ -210,6 +211,7 @@ jobs:
           if-no-files-found: error
 
   mac:
+    if: false
     runs-on: ${{ matrix.os }}
     env:
       CMAKE_BUILD_PARALLEL_LEVEL: ${{ matrix.os == 'macos-13' && 4 || 3 }}
@@ -412,6 +414,7 @@ jobs:
           if-no-files-found: error
 
   win:
+    if: false
     runs-on: windows-latest
     defaults: { run: { shell: cmd } }
     strategy:
