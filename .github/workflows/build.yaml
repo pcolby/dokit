@@ -34,7 +34,7 @@ jobs:
           - 6.5.3
           - 6.6.3
           - 6.7.3
-          - 6.8.2
+          - 6.8.3
           - 6.9.0
         arch:
           - arm64
@@ -231,7 +231,7 @@ jobs:
           - 6.5.3
           - 6.6.3
           - 6.7.3
-          - 6.8.2
+          - 6.8.3
           - 6.9.0
         os:
           - macos-13
@@ -266,7 +266,7 @@ jobs:
           - { qt: '6.5.3', cc: gcc }
           - { qt: '6.6.3', cc: gcc }
           - { qt: '6.7.3', cc: gcc }
-          - { qt: '6.8.2', cc: gcc }
+          - { qt: '6.8.3', cc: gcc }
           - { qt: '6.9.0', cc: gcc }
     steps:
       - uses: actions/checkout@v4
@@ -431,7 +431,7 @@ jobs:
           - 6.5.3
           - 6.6.3
           - 6.7.3
-          - 6.8.2
+          - 6.8.3
           - 6.9.0
         arch: [ x86, x86-64, arm64 ]
         toolchain: [ llvm, mingw, msvc ]
@@ -459,7 +459,7 @@ jobs:
           - { arch: x86, qt: '6.5.3' }
           - { arch: x86, qt: '6.6.3' }
           - { arch: x86, qt: '6.7.3' }
-          - { arch: x86, qt: '6.8.2' }
+          - { arch: x86, qt: '6.8.3' }
           - { arch: x86, qt: '6.9.0' }
           # Exclude MinGW (including LLVM) builds for x86-64 with Qt's earlier than 5.12, since the Qt online
           # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
@@ -537,10 +537,10 @@ jobs:
           - { qt: '6.7.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.7.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.7.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
-          - { qt: '6.8.2',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
-          - { qt: '6.8.2',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
-          - { qt: '6.8.2',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
-          - { qt: '6.8.2',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
+          - { qt: '6.8.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
+          - { qt: '6.8.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.8.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.8.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           - { qt: '6.9.0',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.9.0',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.9.0',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
@@ -561,8 +561,8 @@ jobs:
           - { toolchain: 'mingw', arch: x86-64, qt: '6.6.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'llvm',  arch: x86-64, qt: '6.7.3',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.7.3',  aqtTools: 'tools_mingw1310' }
-          - { toolchain: 'llvm',  arch: x86-64, qt: '6.8.2',  aqtTools: 'tools_llvm_mingw1706' }
-          - { toolchain: 'mingw', arch: x86-64, qt: '6.8.2',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'llvm',  arch: x86-64, qt: '6.8.3',  aqtTools: 'tools_llvm_mingw1706' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.8.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'llvm',  arch: x86-64, qt: '6.9.0',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.9.0',  aqtTools: 'tools_mingw1310' }
     steps:
