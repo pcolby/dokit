@@ -1,5 +1,11 @@
 # Changelog[^1]
 
+## [Unreleased][]
+
+### Changed
+
+- Upgrade to Qt 6.8.3.
+
 ## [0.5.5][] (2025-03-09)
 
 ### Added
