@@ -99,10 +99,6 @@ jobs:
           name: aqtinstall-log-linux-${{ matrix.cc }}-${{ matrix.qt }}
           path: aqtinstall.log
           if-no-files-found: error
-      - name: Install linuxdeploy
-        uses: pcolby/install-linuxdeploy@v1
-        with:
-          plugins: qt
       - uses: actions/checkout@v4
       - name: Build
         id: build
