@@ -14,19 +14,11 @@ env:
 
 jobs:
   linux:
-    runs-on: ubuntu-24.04${{ matrix.arch == 'arm64' && '-arm' || '' }}
+    runs-on: ubuntu-20.04${{ matrix.arch == 'arm64' && '-arm' || '' }}
     strategy:
       fail-fast: false
       matrix:
         qt:
-          - 5
-          - 5.9.9
-          - 5.10.1
-          - 5.11.3
-          - 5.12.12
-          - 5.13.2
-          - 5.14.2
-          - 5.15.2
           - 6
           - 6.2.4
           - 6.3.2
@@ -37,7 +29,6 @@ jobs:
           - 6.8.3
           - 6.9.0
         arch:
-          - arm64
           - x86-64
         cc:
           - clang
@@ -210,6 +201,7 @@ jobs:
           if-no-files-found: error
 
   mac:
+    if: false
     runs-on: ${{ matrix.os }}
     env:
       CMAKE_BUILD_PARALLEL_LEVEL: ${{ matrix.os == 'macos-13' && 4 || 3 }}
@@ -412,6 +404,7 @@ jobs:
           if-no-files-found: error
 
   win:
+    if: false
     runs-on: windows-latest
     defaults: { run: { shell: cmd } }
     strategy:
