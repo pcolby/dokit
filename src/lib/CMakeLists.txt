@@ -50,7 +50,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
       i18n/en_GB.ts
       i18n/en_US.ts
     RESOURCE_PREFIX "i18n/lib"
-    QM_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}" # \todo Temporary workaround for Qt 6.9.0 beta 3?
   )
 endif()
 
