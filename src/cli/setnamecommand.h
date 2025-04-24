@@ -3,7 +3,7 @@
 
 #include "devicecommand.h"
 
-class StatusService;
+QTPOKIT_FORWARD_DECLARE_CLASS(StatusService)
 
 class SetNameCommand : public DeviceCommand
 {

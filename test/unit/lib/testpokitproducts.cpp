@@ -13,7 +13,7 @@
 
 #include <QRegularExpression>
 
-Q_DECLARE_METATYPE(PokitProduct)
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
 
 #define POKIT_METER_STATUS_SERVICE_UUID QLatin1String("57d3a771-267c-4394-8872-78223e92aec4")
 #define POKIT_PRO_STATUS_SERVICE_UUID   QLatin1String("57d3a771-267c-4394-8872-78223e92aec5")
@@ -24,6 +24,8 @@ Q_DECLARE_METATYPE(PokitProduct)
 #else
 #define DATA_COMPLETENESS
 #endif
+
+QTPOKIT_BEGIN_NAMESPACE
 
 void TestPokitProducts::toString_PokitProduct_data()
 {
@@ -66,9 +68,9 @@ void TestPokitProducts::isPokitProduct()
     QFETCH(bool, expected);
 
     QBluetoothDeviceInfo info;
-    QVERIFY(!::isPokitProduct(info));
+    QVERIFY(!QTPOKIT_PREPEND_NAMESPACE(isPokitProduct(info)));
     info.setServiceUuids({ uuid } DATA_COMPLETENESS);
-    QCOMPARE(::isPokitProduct(info), expected);
+    QCOMPARE(QTPOKIT_PREPEND_NAMESPACE(isPokitProduct(info)), expected);
 }
 
 void TestPokitProducts::pokitProduct_data()
@@ -89,12 +91,12 @@ void TestPokitProducts::pokitProduct()
     QFETCH(PokitProduct, expected);
 
     QBluetoothDeviceInfo info;
-    QVERIFY(!::isPokitProduct(info));
+    QVERIFY(!QTPOKIT_PREPEND_NAMESPACE(isPokitProduct(info)));
     info.setServiceUuids({ uuid } DATA_COMPLETENESS);
     if (uuid.isNull()) {
         QTest::ignoreMessage(QtWarningMsg, "Device is not a Pokit product");
     }
-    QVERIFY(::pokitProduct(info) == expected);
+    QVERIFY(QTPOKIT_PREPEND_NAMESPACE(pokitProduct(info)) == expected);
 }
 
 void TestPokitProducts::isPokitProduct_Uuids_data()
@@ -107,8 +109,8 @@ void TestPokitProducts::isPokitProduct_Uuids()
     QFETCH(QBluetoothUuid, uuid);
     QFETCH(bool, expected);
 
-    QVERIFY(!::isPokitProduct(QList<QBluetoothUuid>{}));
-    QCOMPARE(::isPokitProduct(QList<QBluetoothUuid>{ uuid }), expected);
+    QVERIFY(!QTPOKIT_PREPEND_NAMESPACE(isPokitProduct(QList<QBluetoothUuid>{})));
+    QCOMPARE(QTPOKIT_PREPEND_NAMESPACE(isPokitProduct(QList<QBluetoothUuid>{ uuid })), expected);
 }
 
 void TestPokitProducts::isPokitProduct_Controller_data()
@@ -126,7 +128,7 @@ void TestPokitProducts::isPokitProduct_Controller()
 
     QBluetoothDeviceInfo info;
     QLowEnergyController * controller = QLowEnergyController::createCentral(info);
-    QVERIFY(!::isPokitProduct(*controller));
+    QVERIFY(!QTPOKIT_PREPEND_NAMESPACE(isPokitProduct(*controller)));
     delete controller;
 
     Q_UNUSED(uuid);
@@ -154,7 +156,7 @@ void TestPokitProducts::pokitProduct_Uuids()
         QTest::ignoreMessage(QtWarningMsg, "Device is not a Pokit product");
     }
 
-    QVERIFY(::pokitProduct(QList<QBluetoothUuid>{uuid}) == expected);
+    QVERIFY(QTPOKIT_PREPEND_NAMESPACE(pokitProduct(QList<QBluetoothUuid>{uuid})) == expected);
 }
 
 void TestPokitProducts::pokitProduct_Controller_data()
@@ -173,7 +175,7 @@ void TestPokitProducts::pokitProduct_Controller()
     QBluetoothDeviceInfo info;
     QLowEnergyController * controller = QLowEnergyController::createCentral(info);
     QTest::ignoreMessage(QtWarningMsg, "Device is not a Pokit product");
-    QVERIFY(::pokitProduct(*controller) == PokitProduct::PokitMeter);
+    QVERIFY(QTPOKIT_PREPEND_NAMESPACE(pokitProduct(*controller)) == PokitProduct::PokitMeter);
     delete controller;
 
     Q_UNUSED(uuid);
@@ -406,4 +408,6 @@ void TestPokitProducts::maxValue_Voltage()
     QCOMPARE(VoltageRange::maxValue(product, range), expected);
 }
 
-QTEST_MAIN(TestPokitProducts)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestPokitProducts))

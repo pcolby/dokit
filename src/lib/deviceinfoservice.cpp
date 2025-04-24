@@ -11,6 +11,8 @@
 
 #include <QtEndian>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class DeviceInfoService
  *
@@ -366,3 +368,5 @@ void DeviceInfoServicePrivate::characteristicRead(const QLowEnergyCharacteristic
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

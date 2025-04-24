@@ -3,7 +3,7 @@
 
 #include "devicecommand.h"
 
-class CalibrationService;
+QTPOKIT_FORWARD_DECLARE_CLASS(CalibrationService)
 
 class CalibrateCommand : public DeviceCommand
 {

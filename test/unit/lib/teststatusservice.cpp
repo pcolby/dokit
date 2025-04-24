@@ -8,17 +8,19 @@
 
 #include <QRegularExpression>
 
-Q_DECLARE_METATYPE(StatusService::BatteryStatus)
-Q_DECLARE_METATYPE(StatusService::ButtonStatus)
-Q_DECLARE_METATYPE(StatusService::ChargingStatus)
-Q_DECLARE_METATYPE(StatusService::DeviceCharacteristics)
-Q_DECLARE_METATYPE(StatusService::DeviceStatus)
-Q_DECLARE_METATYPE(StatusService::Status)
-Q_DECLARE_METATYPE(StatusService::SwitchPosition)
-Q_DECLARE_METATYPE(StatusService::TorchStatus)
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(StatusService::BatteryStatus))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(StatusService::ButtonStatus))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(StatusService::ChargingStatus))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(StatusService::DeviceCharacteristics))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(StatusService::DeviceStatus))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(StatusService::Status))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(StatusService::SwitchPosition))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(StatusService::TorchStatus))
 
-Q_DECLARE_METATYPE(std::optional<StatusService::ButtonStatus>)
-Q_DECLARE_METATYPE(std::optional<StatusService::TorchStatus>)
+Q_DECLARE_METATYPE(std::optional<QTPOKIT_PREPEND_NAMESPACE(StatusService::ButtonStatus)>)
+Q_DECLARE_METATYPE(std::optional<QTPOKIT_PREPEND_NAMESPACE(StatusService::TorchStatus)>)
+
+QTPOKIT_BEGIN_NAMESPACE
 
 // Serialiser for QCOMPARE to output QBluetoothAddress objects on test failures.
 char *toString(const QBluetoothAddress &address)
@@ -649,4 +651,6 @@ void TestStatusService::tr()
     QVERIFY(!service.tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestStatusService)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestStatusService))

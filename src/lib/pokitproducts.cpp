@@ -16,9 +16,9 @@
 #include <QCoreApplication>
 #include <QLoggingCategory>
 
-static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products", QtInfoMsg); ///< Logging category for this file.
-
 QTPOKIT_BEGIN_NAMESPACE
+
+static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products", QtInfoMsg); ///< Logging category for this file.
 
 namespace {
     class Private
@@ -123,8 +123,6 @@ PokitProduct pokitProduct(const QLowEnergyController &controller)
 {
     return pokitProduct(controller.services());
 }
-
-QTPOKIT_END_NAMESPACE
 
 /// Encapsulates convenience functions for working with capacitance ranges.
 namespace CapacitanceRange {
@@ -295,3 +293,5 @@ quint32 maxValue(const PokitProduct product, const quint8 range)
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

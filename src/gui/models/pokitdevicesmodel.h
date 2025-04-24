@@ -4,11 +4,14 @@
 #ifndef DOKIT_GUI_POKITDEVICESMODEL_H
 #define DOKIT_GUI_POKITDEVICESMODEL_H
 
+#include <qtpokit/qtpokit_global.h>
+
 #include <QBluetoothDeviceInfo>
 #include <QLoggingCategory>
 #include <QStandardItemModel>
 
-class PokitDiscoveryAgent;
+QTPOKIT_FORWARD_DECLARE_CLASS(PokitDiscoveryAgent)
+QTPOKIT_USE_NAMESPACE
 
 class PokitDevicesModel : public QStandardItemModel
 {

@@ -11,6 +11,8 @@
 #include <QCoreApplication>
 #include <QLoggingCategory>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 namespace PokitMeter {
 
 static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products.meter", QtInfoMsg); ///< Logging category for this file.
@@ -127,3 +129,5 @@ quint32 maxValue(const VoltageRange &range)
 }
 
 }
+
+QTPOKIT_END_NAMESPACE

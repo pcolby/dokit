@@ -14,6 +14,8 @@
 
 #include <QLowEnergyController>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class AbstractPokitService
  *
@@ -595,3 +597,5 @@ void AbstractPokitServicePrivate::characteristicChanged(
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

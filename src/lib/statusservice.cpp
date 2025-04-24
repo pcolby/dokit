@@ -11,6 +11,8 @@
 
 #include <QtEndian>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class StatusService
  *
@@ -819,3 +821,5 @@ void StatusServicePrivate::characteristicWritten(const QLowEnergyCharacteristic 
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

@@ -21,6 +21,8 @@
 #define DATA_COMPLETENESS
 #endif
 
+QTPOKIT_BEGIN_NAMESPACE
+
 //void TestPokitDiscoveryAgent::start()
 //{
 //    QSKIP("Cannot test without impacting Bluetooth devices.");
@@ -108,4 +110,6 @@ void TestPokitDiscoveryAgent::tr()
     QVERIFY(!service.tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestPokitDiscoveryAgent)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestPokitDiscoveryAgent))

@@ -14,6 +14,8 @@
 
 #include <QBluetoothUuid>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class PokitDiscoveryAgent
  *
@@ -210,3 +212,5 @@ void PokitDiscoveryAgentPrivate::finished() const
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

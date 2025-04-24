@@ -9,8 +9,9 @@
 
 #include <QLowEnergyController>
 
-class AbstractPokitService;
-class PokitDevice;
+QTPOKIT_FORWARD_DECLARE_CLASS(AbstractPokitService)
+QTPOKIT_FORWARD_DECLARE_CLASS(PokitDevice)
+QTPOKIT_USE_NAMESPACE
 
 class DeviceCommand : public AbstractCommand
 {

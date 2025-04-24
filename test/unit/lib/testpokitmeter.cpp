@@ -5,9 +5,11 @@
 
 #include <qtpokit/pokitmeter.h>
 
-Q_DECLARE_METATYPE(PokitMeter::CurrentRange)
-Q_DECLARE_METATYPE(PokitMeter::ResistanceRange)
-Q_DECLARE_METATYPE(PokitMeter::VoltageRange)
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitMeter::CurrentRange))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitMeter::ResistanceRange))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitMeter::VoltageRange))
+
+QTPOKIT_BEGIN_NAMESPACE
 
 void TestPokitMeter::toString_Current_data()
 {
@@ -170,4 +172,6 @@ void TestPokitMeter::operatorPlus_Voltage()
     QCOMPARE(+range, static_cast<quint8>(range));
 }
 
-QTEST_MAIN(TestPokitMeter)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestPokitMeter))

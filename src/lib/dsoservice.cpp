@@ -16,6 +16,8 @@
 #include <QIODevice>
 #include <QtEndian>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class DsoService
  *
@@ -473,3 +475,5 @@ void DsoServicePrivate::characteristicChanged(const QLowEnergyCharacteristic &ch
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

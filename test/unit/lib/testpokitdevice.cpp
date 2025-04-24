@@ -14,6 +14,8 @@
 #include <qtpokit/multimeterservice.h>
 #include <qtpokit/statusservice.h>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 void TestPokitDevice::controller()
 {
     PokitDevice device(nullptr);
@@ -286,4 +288,6 @@ void TestPokitDevice::tr()
     QVERIFY(!device.d_ptr->tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestPokitDevice)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestPokitDevice))

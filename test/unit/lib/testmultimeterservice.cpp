@@ -10,10 +10,12 @@
 
 #include <QRegularExpression>
 
-Q_DECLARE_METATYPE(MultimeterService::Mode)
-Q_DECLARE_METATYPE(MultimeterService::Settings)
-Q_DECLARE_METATYPE(MultimeterService::Reading)
-Q_DECLARE_METATYPE(PokitProduct)
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(MultimeterService::Mode))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(MultimeterService::Settings))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(MultimeterService::Reading))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
+
+QTPOKIT_BEGIN_NAMESPACE
 
 void TestMultimeterService::toString_Mode_data()
 {
@@ -327,4 +329,6 @@ void TestMultimeterService::tr()
     QVERIFY(!service.tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestMultimeterService)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestMultimeterService))

@@ -8,6 +8,8 @@
 
 #include <QRegularExpression>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 void TestDeviceInfoService::readCharacteristics()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
@@ -116,4 +118,6 @@ void TestDeviceInfoService::tr()
     QVERIFY(!service.tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestDeviceInfoService)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestDeviceInfoService))

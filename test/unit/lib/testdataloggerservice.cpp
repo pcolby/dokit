@@ -10,10 +10,12 @@
 
 #include <QRegularExpression>
 
-Q_DECLARE_METATYPE(DataLoggerService::Mode)
-Q_DECLARE_METATYPE(DataLoggerService::Settings)
-Q_DECLARE_METATYPE(DataLoggerService::Metadata)
-Q_DECLARE_METATYPE(PokitProduct)
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DataLoggerService::Mode))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DataLoggerService::Settings))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DataLoggerService::Metadata))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
+
+QTPOKIT_BEGIN_NAMESPACE
 
 void TestDataLoggerService::toString_Mode_data()
 {
@@ -442,4 +444,6 @@ void TestDataLoggerService::tr()
     QVERIFY(!service.tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestDataLoggerService)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestDataLoggerService))

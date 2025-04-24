@@ -11,6 +11,8 @@
 
 #include <QtEndian>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class CalibrationService
  *
@@ -134,3 +136,5 @@ void CalibrationServicePrivate::characteristicWritten(const QLowEnergyCharacteri
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

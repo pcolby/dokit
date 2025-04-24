@@ -3,7 +3,7 @@
 
 #include "devicecommand.h"
 
-class DeviceInfoService;
+QTPOKIT_FORWARD_DECLARE_CLASS(DeviceInfoService)
 
 class InfoCommand : public DeviceCommand
 {

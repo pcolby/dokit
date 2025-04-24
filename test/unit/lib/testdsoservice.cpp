@@ -10,10 +10,12 @@
 
 #include <QRegularExpression>
 
-Q_DECLARE_METATYPE(DsoService::Mode)
-Q_DECLARE_METATYPE(DsoService::Settings)
-Q_DECLARE_METATYPE(DsoService::Metadata)
-Q_DECLARE_METATYPE(PokitProduct)
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DsoService::Mode))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DsoService::Settings))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DsoService::Metadata))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
+
+QTPOKIT_BEGIN_NAMESPACE
 
 void TestDsoService::toString_Mode_data()
 {
@@ -373,4 +375,6 @@ void TestDsoService::tr()
     QVERIFY(!service.tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestDsoService)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestDsoService))

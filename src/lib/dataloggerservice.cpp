@@ -17,6 +17,8 @@
 #include <QLowEnergyController>
 #include <QtEndian>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class DataLoggerService
  *
@@ -528,3 +530,5 @@ void DataLoggerServicePrivate::characteristicChanged(const QLowEnergyCharacteris
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

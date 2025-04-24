@@ -19,6 +19,8 @@
 
 #include <QMutexLocker>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class PokitDevice
  *
@@ -406,3 +408,5 @@ void PokitDevicePrivate::stateChanged(QLowEnergyController::ControllerState stat
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE

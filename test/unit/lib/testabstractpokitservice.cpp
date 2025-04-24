@@ -11,7 +11,9 @@
 #include <QRegularExpression>
 #include <QSignalSpy>
 
-Q_DECLARE_METATYPE(PokitProduct)
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
+
+QTPOKIT_BEGIN_NAMESPACE
 
 class MockPokitService : public AbstractPokitService
 {
@@ -314,4 +316,6 @@ void TestAbstractPokitService::tr()
     QVERIFY(!service.tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestAbstractPokitService)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestAbstractPokitService))

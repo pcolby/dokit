@@ -10,6 +10,8 @@
 #include <QLowEnergyController>
 #include <QRegularExpression>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 void TestCalibrationService::readCharacteristics()
 {
     if (gitHubActionsRunnerOsVersion() >= QOperatingSystemVersion(QOperatingSystemVersion::MacOS, 14)) {
@@ -64,4 +66,6 @@ void TestCalibrationService::tr()
     QVERIFY(!service.tr("ignored").isEmpty());
 }
 
-QTEST_MAIN(TestCalibrationService)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestCalibrationService))

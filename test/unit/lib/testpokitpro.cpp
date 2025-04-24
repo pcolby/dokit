@@ -5,10 +5,12 @@
 
 #include <qtpokit/pokitpro.h>
 
-Q_DECLARE_METATYPE(PokitPro::CapacitanceRange)
-Q_DECLARE_METATYPE(PokitPro::CurrentRange)
-Q_DECLARE_METATYPE(PokitPro::ResistanceRange)
-Q_DECLARE_METATYPE(PokitPro::VoltageRange)
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitPro::CapacitanceRange))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitPro::CurrentRange))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitPro::ResistanceRange))
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitPro::VoltageRange))
+
+QTPOKIT_BEGIN_NAMESPACE
 
 void TestPokitPro::toString_Capacitance_data()
 {
@@ -232,4 +234,6 @@ void TestPokitPro::operatorPlus_Voltage()
     QCOMPARE(+range, static_cast<quint8>(range));
 }
 
-QTEST_MAIN(TestPokitPro)
+QTPOKIT_END_NAMESPACE
+
+QTEST_MAIN(QTPOKIT_PREPEND_NAMESPACE(TestPokitPro))

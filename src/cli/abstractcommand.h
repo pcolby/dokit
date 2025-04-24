@@ -11,7 +11,7 @@
 #include <QLoggingCategory>
 #include <QObject>
 
-class PokitDiscoveryAgent;
+QTPOKIT_FORWARD_DECLARE_CLASS(PokitDiscoveryAgent)
 
 class AbstractCommand : public QObject
 {

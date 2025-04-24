@@ -14,6 +14,8 @@
 #include <QIODevice>
 #include <QtEndian>
 
+QTPOKIT_BEGIN_NAMESPACE
+
 /*!
  * \class MultimeterService
  *
@@ -386,3 +388,5 @@ void MultimeterServicePrivate::characteristicChanged(const QLowEnergyCharacteris
 }
 
 /// \endcond
+
+QTPOKIT_END_NAMESPACE
