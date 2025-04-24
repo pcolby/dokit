@@ -529,16 +529,16 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 
 <p>Constructs a new Pokit service with <em class="arg">parent</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00024">24</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>    : AbstractPokitService(<span class="keyword">new</span> CalibrationServicePrivate(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">   26</span>{</div>
-<div class="line"><span class="lineno">   27</span> </div>
-<div class="line"><span class="lineno">   28</span>}</div>
+<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00026">26</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>    : AbstractPokitService(<span class="keyword">new</span> CalibrationServicePrivate(controller, <span class="keyword">this</span>), <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">   28</span>{</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>}</div>
 <div class="ttc" id="aqobject_html_parent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent</a></div><div class="ttdeci">QObject * parent() const const</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject::QObject()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="calibrationservice_8cpp_source.html#l00062">calibrateTemperature()</a>, <a class="el" href="calibrationservice_8cpp_source.html#l00048">readCharacteristics()</a>, and <a class="el" href="#a8a609fb2baf963bd2229ba71d3fceb7e">temperatureCalibrated()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="calibrationservice_8cpp_source.html#l00064">calibrateTemperature()</a>, <a class="el" href="calibrationservice_8cpp_source.html#l00050">readCharacteristics()</a>, and <a class="el" href="#a8a609fb2baf963bd2229ba71d3fceb7e">temperatureCalibrated()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -581,11 +581,11 @@ Here is the caller graph for this function:</div>
 
 <p>Constructs a new Pokit service with <em class="arg">parent</em>, and private implementation <em class="arg">d</em>. </p>
 
-<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00034">34</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>    : AbstractPokitService(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
-<div class="line"><span class="lineno">   37</span>{</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>}</div>
+<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00036">36</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>    : AbstractPokitService(d, <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#parent">parent</a>)</div>
+<div class="line"><span class="lineno">   39</span>{</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject::QObject()</a>.</p>
 <div class="dynheader">
@@ -616,31 +616,31 @@ Here is the call graph for this function:</div>
 <p>Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
 <p>Emits <a class="el" href="#a8a609fb2baf963bd2229ba71d3fceb7e" title="This signal is emitted when the Temperature characteristic has been written succesfully.">temperatureCalibrated()</a> if/when the <em class="arg">name</em> has been set. </p>
 
-<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00062">62</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(float) == 4, <span class="stringliteral">&quot;Pokit devices expect 32-bit floats&quot;</span>);</div>
-<div class="line"><span class="lineno">   65</span>    Q_D(<span class="keyword">const</span> <a class="code hl_function" href="#a6116051fc655e706a0a0f120f423c5b3">CalibrationService</a>);</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
-<div class="line"><span class="lineno">   67</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CharacteristicUuids::temperature</a>);</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   70</span>    }</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    <span class="keyword">const</span> QByteArray newValue = <a class="code hl_function" href="classCalibrationServicePrivate.html#a0da3f9cbe7dfb8a1d8e1cb94845702bc">CalibrationServicePrivate::encodeTemperature</a>(ambientTemperature);</div>
-<div class="line"><span class="lineno">   73</span>    qCDebug(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Writing new temperature %1 (0x%2).&quot;</span>)</div>
-<div class="line"><span class="lineno">   74</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(ambientTemperature).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(QLatin1String(newValue.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">toHex</a>()));</div>
-<div class="line"><span class="lineno">   75</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, newValue);</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
-<div class="line"><span class="lineno">   77</span>}</div>
-<div class="ttc" id="aclassCalibrationServicePrivate_html_a0da3f9cbe7dfb8a1d8e1cb94845702bc"><div class="ttname"><a href="classCalibrationServicePrivate.html#a0da3f9cbe7dfb8a1d8e1cb94845702bc">CalibrationServicePrivate::encodeTemperature</a></div><div class="ttdeci">static QByteArray encodeTemperature(const float value)</div><div class="ttdoc">Returns value in a format Pokit devices expect.</div><div class="ttdef"><b>Definition</b> <a href="calibrationservice_8cpp_source.html#l00109">calibrationservice.cpp:109</a></div></div>
-<div class="ttc" id="aclassCalibrationService_html_a6116051fc655e706a0a0f120f423c5b3"><div class="ttname"><a href="#a6116051fc655e706a0a0f120f423c5b3">CalibrationService::CalibrationService</a></div><div class="ttdeci">CalibrationService(QLowEnergyController *const pokitDevice, QObject *parent=nullptr)</div><div class="ttdoc">Constructs a new Pokit service with parent.</div><div class="ttdef"><b>Definition</b> <a href="calibrationservice_8cpp_source.html#l00024">calibrationservice.cpp:24</a></div></div>
+<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00064">64</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
+<div class="line"><span class="lineno">   66</span>    <span class="keyword">static_assert</span>(<span class="keyword">sizeof</span>(float) == 4, <span class="stringliteral">&quot;Pokit devices expect 32-bit floats&quot;</span>);</div>
+<div class="line"><span class="lineno">   67</span>    Q_D(<span class="keyword">const</span> <a class="code hl_function" href="#a6116051fc655e706a0a0f120f423c5b3">CalibrationService</a>);</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keyword">const</span> QLowEnergyCharacteristic characteristic =</div>
+<div class="line"><span class="lineno">   69</span>        d-&gt;getCharacteristic(<a class="code hl_variable" href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CharacteristicUuids::temperature</a>);</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (!characteristic.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">isValid</a>()) {</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   72</span>    }</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>    <span class="keyword">const</span> QByteArray newValue = <a class="code hl_function" href="classCalibrationServicePrivate.html#a0da3f9cbe7dfb8a1d8e1cb94845702bc">CalibrationServicePrivate::encodeTemperature</a>(ambientTemperature);</div>
+<div class="line"><span class="lineno">   75</span>    qCDebug(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Writing new temperature %1 (0x%2).&quot;</span>)</div>
+<div class="line"><span class="lineno">   76</span>        .<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(ambientTemperature).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(QLatin1String(newValue.<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">toHex</a>()));</div>
+<div class="line"><span class="lineno">   77</span>    d-&gt;service-&gt;writeCharacteristic(characteristic, newValue);</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">return</span> (d-&gt;service-&gt;error() != QLowEnergyService::ServiceError::CharacteristicWriteError);</div>
+<div class="line"><span class="lineno">   79</span>}</div>
+<div class="ttc" id="aclassCalibrationServicePrivate_html_a0da3f9cbe7dfb8a1d8e1cb94845702bc"><div class="ttname"><a href="classCalibrationServicePrivate.html#a0da3f9cbe7dfb8a1d8e1cb94845702bc">CalibrationServicePrivate::encodeTemperature</a></div><div class="ttdeci">static QByteArray encodeTemperature(const float value)</div><div class="ttdoc">Returns value in a format Pokit devices expect.</div><div class="ttdef"><b>Definition</b> <a href="calibrationservice_8cpp_source.html#l00111">calibrationservice.cpp:111</a></div></div>
+<div class="ttc" id="aclassCalibrationService_html_a6116051fc655e706a0a0f120f423c5b3"><div class="ttname"><a href="#a6116051fc655e706a0a0f120f423c5b3">CalibrationService::CalibrationService</a></div><div class="ttdeci">CalibrationService(QLowEnergyController *const pokitDevice, QObject *parent=nullptr)</div><div class="ttdoc">Constructs a new Pokit service with parent.</div><div class="ttdef"><b>Definition</b> <a href="calibrationservice_8cpp_source.html#l00026">calibrationservice.cpp:26</a></div></div>
 <div class="ttc" id="aqbytearray_html_toHex"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex</a></div><div class="ttdeci">QByteArray toHex() const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
 <div class="ttc" id="aqobject_html_tr"><div class="ttname"><a href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr</a></div><div class="ttdeci">QString tr(const char *sourceText, const char *disambiguation, int n)</div></div>
 <div class="ttc" id="aqstring_html_arg-1"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg</a></div><div class="ttdeci">QString arg(qlonglong a, int fieldWidth, int base, QChar fillChar) const const</div></div>
 <div class="ttc" id="astructCalibrationService_1_1CharacteristicUuids_html_aee6c3fbd10b0d2f1c59914f30fe23327"><div class="ttname"><a href="structCalibrationService_1_1CharacteristicUuids.html#aee6c3fbd10b0d2f1c59914f30fe23327">CalibrationService::CharacteristicUuids::temperature</a></div><div class="ttdeci">static const QBluetoothUuid temperature</div><div class="ttdoc">UUID of the Calibration service&#39;s Temperature characterstic.</div><div class="ttdef"><b>Definition</b> <a href="calibrationservice_8h_source.html#l00033">calibrationservice.h:33</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="calibrationservice_8cpp_source.html#l00024">CalibrationService()</a>, <a class="el" href="calibrationservice_8cpp_source.html#l00109">CalibrationServicePrivate::encodeTemperature()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="calibrationservice_8h_source.html#l00033">CalibrationService::CharacteristicUuids::temperature</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="calibrationservice_8cpp_source.html#l00026">CalibrationService()</a>, <a class="el" href="calibrationservice_8cpp_source.html#l00111">CalibrationServicePrivate::encodeTemperature()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid()</a>, <a class="el" href="calibrationservice_8h_source.html#l00033">CalibrationService::CharacteristicUuids::temperature</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qbytearray.html#toHex">QByteArray::toHex()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -677,14 +677,14 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classAbstractPokitService.html#ab1de532f20d46803d6e8b8ffea835b48">AbstractPokitService</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00048">48</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
-<div class="line"><span class="lineno">   50</span>    Q_D(<a class="code hl_function" href="#a6116051fc655e706a0a0f120f423c5b3">CalibrationService</a>);</div>
-<div class="line"><span class="lineno">   51</span>    qCDebug(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Ignoring read request; the Calibration service is write-only.&quot;</span>);</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   53</span>}</div>
+<p class="definition">Definition at line <a class="el" href="calibrationservice_8cpp_source.html#l00050">50</a> of file <a class="el" href="calibrationservice_8cpp_source.html">calibrationservice.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    Q_D(<a class="code hl_function" href="#a6116051fc655e706a0a0f120f423c5b3">CalibrationService</a>);</div>
+<div class="line"><span class="lineno">   53</span>    qCDebug(d-&gt;lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Ignoring read request; the Calibration service is write-only.&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   55</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="calibrationservice_8cpp_source.html#l00024">CalibrationService()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
+<p class="reference">References <a class="el" href="calibrationservice_8cpp_source.html#l00026">CalibrationService()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -719,7 +719,7 @@ Here is the call graph for this function:</div>
 <p>This signal is emitted when the <code>Temperature</code> characteristic has been written succesfully. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a301f5b733cacbebbf24459639f04af52" title="Calibrates the Pokit device&#39;s temperature to ambientTemperature.">calibrateTemperature</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="calibrationservice_8cpp_source.html#l00024">CalibrationService()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject::QObject()</a>.</p>
+<p class="reference">References <a class="el" href="calibrationservice_8cpp_source.html#l00026">CalibrationService()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#parent">QObject::parent()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#QObject">QObject::QObject()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="calibratecommand_8cpp_source.html#l00069">CalibrateCommand::getService()</a>.</p>
 <div class="dynheader">
@@ -761,7 +761,7 @@ Here is the caller graph for this function:</div>
 <p class="definition">Definition at line <a class="el" href="calibrationservice_8h_source.html#l00028">28</a> of file <a class="el" href="calibrationservice_8h_source.html">calibrationservice.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   28</span>{ QStringLiteral(<span class="stringliteral">&quot;6f53be2f-780b-49b8-a7c3-e8a052b3ae2c&quot;</span>) };</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00190">PokitDevice::serviceToString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pokitdevice_8cpp_source.html#l00192">PokitDevice::serviceToString()</a>.</p>
 
 </div>
 </div>

@@ -163,12 +163,11 @@ var NAVTREEINDEX1 =
 "classPokitDiscoveryAgentPrivate.html#ae1542948a66d68f1435337fe3121a614":[5,0,28,4],
 "classPokitDiscoveryAgentPrivate.html#af96c8bec6557e8ac44006081a7f82caf":[5,0,28,2],
 "classPokitDiscoveryAgentPrivate.html#afc40fda129c4f54986bf8c31fd803fb6":[5,0,28,3],
-"classPokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03_1_1Private.html":[4,0,2,0,0],
-"classPokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03_1_1Private.html":[5,0,0,0,0],
-"classPokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03_1_1Private.html":[4,0,3,0,0],
-"classPokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03_1_1Private.html":[5,0,1,0,0],
+"classPokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03_1_1Private.html":[4,0,3,0,0],
+"classPokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03_1_1Private.html":[5,0,1,0,0],
+"classPokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03_1_1Private.html":[4,0,4,0,0],
+"classPokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03_1_1Private.html":[5,0,2,0,0],
 "classPrivate.html":[5,0,29],
-"classQTPOKIT__BEGIN__NAMESPACE_1_1Private.html":[5,0,2,0],
 "classScanCommand.html":[5,0,31],
 "classScanCommand.html#a0004f4c780fb9cbd73bc7eba48613c7c":[5,0,31,8],
 "classScanCommand.html#a13d0237febd6f73fd1c8a1c6bf639a23":[5,0,31,16],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5":[5,0,35,7,8],
 "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4":[5,0,35,7,5],
 "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582":[5,0,35,7,6],
-"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ac5436b6539f4a0672077f7bc82afe76e":[5,0,35,7,2]
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ac5436b6539f4a0672077f7bc82afe76e":[5,0,35,7,2],
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c":[5,0,35,7,0]
 };

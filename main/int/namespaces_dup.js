@@ -1,5 +1,6 @@
 var namespaces_dup =
 [
+    [ "anonymous_namespace{pokitproducts.cpp}", "namespaceanonymous__namespace_02pokitproducts_8cpp_03.html", "namespaceanonymous__namespace_02pokitproducts_8cpp_03" ],
     [ "CapacitanceRange", "namespaceCapacitanceRange.html", [
       [ "maxValue", "namespaceCapacitanceRange.html#a1fcf8de47d4a5785e8916dd1fc5c6e8b", null ],
       [ "toString", "namespaceCapacitanceRange.html#a14203d0e3a636e5142dccade0c4b5c91", null ]

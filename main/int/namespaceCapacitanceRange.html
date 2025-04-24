@@ -174,26 +174,26 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>Since Pokit Meters do not support capacitance measurement, <em class="arg">product</em> should not be <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001" title="Pokit Meter.">PokitProduct::PokitMeter</a>.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacePokitPro.html#ae2ab8138755e0f9a6876f3bbc61fad60" title="Returns the maximum value for range in nanofarads, or 0 if range is not a known value for Pokit Pro d...">PokitPro::maxValue(const PokitPro::CapacitanceRange &amp;range)</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00159">159</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  160</span>{</div>
-<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">switch</span> (product) {</div>
-<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>:</div>
-<div class="line"><span class="lineno">  163</span>        qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Pokit Meter has no capacitance support&quot;</span>);</div>
-<div class="line"><span class="lineno">  164</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:</div>
-<div class="line"><span class="lineno">  166</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitPro.html#ae2ab8138755e0f9a6876f3bbc61fad60">PokitPro::maxValue</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitPro.html#adc67ba31bcd650dd7535939e42cec17a">PokitPro::CapacitanceRange</a><span class="keyword">&gt;</span>(range));</div>
-<div class="line"><span class="lineno">  167</span>    }</div>
-<div class="line"><span class="lineno">  168</span>    qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>).arg((<span class="keywordtype">int</span>)product);</div>
-<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  170</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00157">157</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>{</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">switch</span> (product) {</div>
+<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>:</div>
+<div class="line"><span class="lineno">  161</span>        qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Pokit Meter has no capacitance support&quot;</span>);</div>
+<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:</div>
+<div class="line"><span class="lineno">  164</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitPro.html#ae2ab8138755e0f9a6876f3bbc61fad60">PokitPro::maxValue</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitPro.html#adc67ba31bcd650dd7535939e42cec17a">PokitPro::CapacitanceRange</a><span class="keyword">&gt;</span>(range));</div>
+<div class="line"><span class="lineno">  165</span>    }</div>
+<div class="line"><span class="lineno">  166</span>    qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>).arg((<span class="keywordtype">int</span>)product);</div>
+<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  168</span>}</div>
 <div class="ttc" id="anamespacePokitPro_html_adc67ba31bcd650dd7535939e42cec17a"><div class="ttname"><a href="namespacePokitPro.html#adc67ba31bcd650dd7535939e42cec17a">PokitPro::CapacitanceRange</a></div><div class="ttdeci">CapacitanceRange</div><div class="ttdoc">Values supported by the Pokit Pro&#39;s Range attributes in Capacitance mode.</div><div class="ttdef"><b>Definition</b> <a href="pokitpro_8h_source.html#l00020">pokitpro.h:20</a></div></div>
-<div class="ttc" id="anamespacePokitPro_html_ae2ab8138755e0f9a6876f3bbc61fad60"><div class="ttname"><a href="namespacePokitPro.html#ae2ab8138755e0f9a6876f3bbc61fad60">PokitPro::maxValue</a></div><div class="ttdeci">QTPOKIT_EXPORT quint32 maxValue(const CapacitanceRange &amp;range)</div><div class="ttdoc">Returns the maximum value for range in nanofarads, or 0 if range is not a known value for Pokit Pro d...</div><div class="ttdef"><b>Definition</b> <a href="pokitpro_8cpp_source.html#l00049">pokitpro.cpp:49</a></div></div>
+<div class="ttc" id="anamespacePokitPro_html_ae2ab8138755e0f9a6876f3bbc61fad60"><div class="ttname"><a href="namespacePokitPro.html#ae2ab8138755e0f9a6876f3bbc61fad60">PokitPro::maxValue</a></div><div class="ttdeci">QTPOKIT_EXPORT quint32 maxValue(const CapacitanceRange &amp;range)</div><div class="ttdoc">Returns the maximum value for range in nanofarads, or 0 if range is not a known value for Pokit Pro d...</div><div class="ttdef"><b>Definition</b> <a href="pokitpro_8cpp_source.html#l00051">pokitpro.cpp:51</a></div></div>
 <div class="ttc" id="apokitproducts_8h_html_a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae"><div class="ttname"><a href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a></div><div class="ttdeci">@ PokitPro</div><div class="ttdoc">Pokit Pro.</div><div class="ttdef"><b>Definition</b> <a href="pokitproducts_8h_source.html#l00024">pokitproducts.h:24</a></div></div>
 <div class="ttc" id="apokitproducts_8h_html_a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001"><div class="ttname"><a href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a></div><div class="ttdeci">@ PokitMeter</div><div class="ttdoc">Pokit Meter.</div><div class="ttdef"><b>Definition</b> <a href="pokitproducts_8h_source.html#l00023">pokitproducts.h:23</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="pokitpro_8cpp_source.html#l00049">PokitPro::maxValue()</a>, <a class="el" href="pokitproducts_8h_source.html#l00023">PokitMeter</a>, and <a class="el" href="pokitproducts_8h_source.html#l00024">PokitPro</a>.</p>
+<p class="reference">References <a class="el" href="pokitpro_8cpp_source.html#l00051">PokitPro::maxValue()</a>, <a class="el" href="pokitproducts_8h_source.html#l00023">PokitMeter</a>, and <a class="el" href="pokitproducts_8h_source.html#l00024">PokitPro</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00088">MultimeterService::maxValue()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00090">MultimeterService::maxValue()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -230,24 +230,24 @@ Here is the caller graph for this function:</div>
 <dl class="section note"><dt>Note</dt><dd>Since Pokit Meters do not support capacitance measurement, <em class="arg">product</em> should not be <a class="el" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001" title="Pokit Meter.">PokitProduct::PokitMeter</a>.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4" title="Returns range as a user-friendly string.">PokitPro::toString(const PokitPro::CapacitanceRange &amp;range)</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00139">139</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>{</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">switch</span> (product) {</div>
-<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>:</div>
-<div class="line"><span class="lineno">  143</span>        qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Pokit Meter has no capacitance support&quot;</span>);</div>
-<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:</div>
-<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4">PokitPro::toString</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitPro.html#adc67ba31bcd650dd7535939e42cec17a">PokitPro::CapacitanceRange</a><span class="keyword">&gt;</span>(range));</div>
-<div class="line"><span class="lineno">  147</span>    }</div>
-<div class="line"><span class="lineno">  148</span>    qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>).arg((<span class="keywordtype">int</span>)product);</div>
-<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  150</span>}</div>
-<div class="ttc" id="anamespacePokitPro_html_a38ce307b844e4d67d94402b31461f7f4"><div class="ttname"><a href="namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4">PokitPro::toString</a></div><div class="ttdeci">QTPOKIT_EXPORT QString toString(const CapacitanceRange &amp;range)</div><div class="ttdoc">Returns range as a user-friendly string.</div><div class="ttdef"><b>Definition</b> <a href="pokitpro_8cpp_source.html#l00035">pokitpro.cpp:35</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00137">137</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>{</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">switch</span> (product) {</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>:</div>
+<div class="line"><span class="lineno">  141</span>        qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Pokit Meter has no capacitance support&quot;</span>);</div>
+<div class="line"><span class="lineno">  142</span>        <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4">PokitPro::toString</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitPro.html#adc67ba31bcd650dd7535939e42cec17a">PokitPro::CapacitanceRange</a><span class="keyword">&gt;</span>(range));</div>
+<div class="line"><span class="lineno">  145</span>    }</div>
+<div class="line"><span class="lineno">  146</span>    qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>).arg((<span class="keywordtype">int</span>)product);</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  148</span>}</div>
+<div class="ttc" id="anamespacePokitPro_html_a38ce307b844e4d67d94402b31461f7f4"><div class="ttname"><a href="namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4">PokitPro::toString</a></div><div class="ttdeci">QTPOKIT_EXPORT QString toString(const CapacitanceRange &amp;range)</div><div class="ttdoc">Returns range as a user-friendly string.</div><div class="ttdef"><b>Definition</b> <a href="pokitpro_8cpp_source.html#l00037">pokitpro.cpp:37</a></div></div>
 <div class="ttc" id="aqstring_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html">QString</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="pokitproducts_8h_source.html#l00023">PokitMeter</a>, <a class="el" href="pokitproducts_8h_source.html#l00024">PokitPro</a>, and <a class="el" href="pokitpro_8cpp_source.html#l00035">PokitPro::toString()</a>.</p>
+<p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="pokitproducts_8h_source.html#l00023">PokitMeter</a>, <a class="el" href="pokitproducts_8h_source.html#l00024">PokitPro</a>, and <a class="el" href="pokitpro_8cpp_source.html#l00037">PokitPro::toString()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00054">MultimeterService::toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00056">MultimeterService::toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

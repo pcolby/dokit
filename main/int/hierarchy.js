@@ -9,10 +9,10 @@ var hierarchy =
     [ "StatusService::DeviceCharacteristics", "structStatusService_1_1DeviceCharacteristics.html", null ],
     [ "DataLoggerService::Metadata", "structDataLoggerService_1_1Metadata.html", null ],
     [ "DsoService::Metadata", "structDsoService_1_1Metadata.html", null ],
+    [ "anonymous_namespace{pokitproducts.cpp}::Private", "classanonymous__namespace_02pokitproducts_8cpp_03_1_1Private.html", null ],
     [ "PokitMeter::anonymous_namespace{pokitmeter.cpp}::Private", "classPokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03_1_1Private.html", null ],
     [ "PokitPro::anonymous_namespace{pokitpro.cpp}::Private", "classPokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03_1_1Private.html", null ],
     [ "Private", "classPrivate.html", null ],
-    [ "QTPOKIT_BEGIN_NAMESPACE::Private", "classQTPOKIT__BEGIN__NAMESPACE_1_1Private.html", null ],
     [ "QObject", "https://doc.qt.io/qt-5/qobject.html", [
       [ "AbstractCommand", "classAbstractCommand.html", [
         [ "DeviceCommand", "classDeviceCommand.html", [

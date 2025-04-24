@@ -1,5 +1,8 @@
 var annotated_dup =
 [
+    [ "anonymous_namespace{pokitproducts.cpp}", "namespaceanonymous__namespace_02pokitproducts_8cpp_03.html", [
+      [ "Private", "classanonymous__namespace_02pokitproducts_8cpp_03_1_1Private.html", null ]
+    ] ],
     [ "PokitMeter", "namespacePokitMeter.html", [
       [ "anonymous_namespace{pokitmeter.cpp}", "namespacePokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03.html", [
         [ "Private", "classPokitMeter_1_1anonymous__namespace_02pokitmeter_8cpp_03_1_1Private.html", null ]
@@ -9,9 +12,6 @@ var annotated_dup =
       [ "anonymous_namespace{pokitpro.cpp}", "namespacePokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03.html", [
         [ "Private", "classPokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03_1_1Private.html", null ]
       ] ]
-    ] ],
-    [ "QTPOKIT_BEGIN_NAMESPACE", null, [
-      [ "Private", "classQTPOKIT__BEGIN__NAMESPACE_1_1Private.html", null ]
     ] ],
     [ "AbstractCommand", "classAbstractCommand.html", "classAbstractCommand" ],
     [ "AbstractPokitService", "classAbstractPokitService.html", "classAbstractPokitService" ],

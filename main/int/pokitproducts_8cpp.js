@@ -1,6 +1,6 @@
 var pokitproducts_8cpp =
 [
-    [ "QTPOKIT_BEGIN_NAMESPACE::Private", "classQTPOKIT__BEGIN__NAMESPACE_1_1Private.html", null ],
+    [ "anonymous_namespace{pokitproducts.cpp}::Private", "classanonymous__namespace_02pokitproducts_8cpp_03_1_1Private.html", null ],
     [ "isPokitProduct", "pokitproducts_8cpp.html#a4a5ebc5229da2cc0d2d00b43ba199bfb", null ],
     [ "isPokitProduct", "pokitproducts_8cpp.html#ae0f44a17c5df57e31ee3742b1794fac4", null ],
     [ "isPokitProduct", "pokitproducts_8cpp.html#a1e8475fe32ea6fbcbb0bd795448d43c8", null ],
@@ -11,7 +11,7 @@ var pokitproducts_8cpp =
     [ "pokitProduct", "pokitproducts_8cpp.html#a3d40e46dc22d896251e8ac089c34b566", null ],
     [ "pokitProduct", "pokitproducts_8cpp.html#a98f11fa57086c8c720a0d31c82169477", null ],
     [ "pokitProduct", "pokitproducts_8cpp.html#a9eed245788cc9e68dd314dc5153912b9", null ],
-    [ "Q_LOGGING_CATEGORY", "pokitproducts_8cpp.html#ae34719c67920c33413ec5a0789f048a5", null ],
+    [ "Q_LOGGING_CATEGORY", "pokitproducts_8cpp.html#a699c13eee51dfdfd08ab538fbb944595", null ],
     [ "CapacitanceRange::toString", "namespaceCapacitanceRange.html#a14203d0e3a636e5142dccade0c4b5c91", null ],
     [ "CurrentRange::toString", "namespaceCurrentRange.html#a683a82fdd02371d1d6acb4bbbd91e844", null ],
     [ "ResistanceRange::toString", "namespaceResistanceRange.html#a6f542c3fe27b9c58c03edc92ceab40ef", null ],
