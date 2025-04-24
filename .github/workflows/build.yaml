@@ -303,21 +303,37 @@ jobs:
           else arch='arm64;x86_64'; fi
           tee -a "$GITHUB_ENV" <<< "CMAKE_OSX_ARCHITECTURES=${arch}"
           tee -a "$GITHUB_OUTPUT" <<< "buildId=${arch//;/-}"
+      - name: Choose compiler toolchain
+        run: |
+          if [[ '${{ matrix.cc }}' == 'gcc' ]]; then
+            tee -a "$GITHUB_ENV" <<< 'CC=gcc-14'
+            tee -a "$GITHUB_ENV" <<< 'CXX=g++-14'
+            tee -a "$GITHUB_ENV" <<< 'GCOV=gcov-14'
+          else
+            case '${{ matrix.os }}' in
+              macos-13) llvmPrefix=$(brew --prefix 'llvm@15') ;; # Newer than non-brew llvm (v14).
+             #macos-14) llvmPrefix=$(brew --prefix 'llvm@15') ;; # *Not* newer than the non-new llvm (v16).
+              macos-15) llvmPrefix=$(brew --prefix 'llvm@18') ;; # Newer than non-brew llvm (v17).
+              *) llvmPrefix='/Library/Developer/CommandLineTools/usr' ;; # Host's non-brew llvm.
+            esac
+            tee -a "$GITHUB_ENV" <<< "CC=${llvmPrefix}/bin/clang"
+            tee -a "$GITHUB_ENV" <<< "CXX=${llvmPrefix}/bin/clang++"
+            tee -a "$GITHUB_ENV" <<< "LLVM_COV=${llvmPrefix}/bin/llvm-cov"
+            tee -a "$GITHUB_ENV" <<< "LLVM_PROFDATA=${llvmPrefix}/bin/llvm-profdata"
+          fi
       - name: Build
         id: build
         env:
-          CC: ${{ matrix.cc == 'gcc' && 'gcc-14' || 'clang' }}
-          CXX: ${{ matrix.cc == 'gcc' && 'g++-14' || 'clang++' }}
           PROJECT_BUILD_ID: "${{ github.run_number }}.${{ matrix.os }}.${{ steps.arch.outputs.buildId }}.\
             ${{ matrix.cc }}.qt-${{ matrix.qt }}"
         run: |
           # With coverage instrumentation (except macOS 13's llvm-lcov version does not support the --sources option)
           [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
           cmake -D CMAKE_BUILD_TYPE=Release \
-                -D CODECOV_GCOV=/usr/local/bin/gcov-14 \
+                -D CODECOV_GCOV="${GCOV:-}" \
                 -D ENABLE_COVERAGE=true \
-                -D LLVM_COV=/Library/Developer/CommandLineTools/usr/bin/llvm-cov \
-                -D LLVM_PROFDATA=/Library/Developer/CommandLineTools/usr/bin/llvm-profdata \
+                -D LLVM_COV="${LLVM_COV:-}" \
+                -D LLVM_PROFDATA="${LLVM_PROFDATA:-}" \
                 -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
                 -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/coverage"
           # Without coverage instrumentation.

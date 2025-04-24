@@ -15,6 +15,7 @@ if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang$")
   find_program(LLVM_COV llvm-cov)
   if (LLVM_PROFDATA AND LLVM_COV)
     message(STATUS "Found llvm-profdata ${LLVM_PROFDATA}")
+    message(STATUS "Found llvm-cov ${LLVM_COV}")
     file(
       GLOB_RECURSE LLVM_COV_SOURCES
       LIST_DIRECTORIES false
