@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "abstractcommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/pokitdiscoveryagent.h>
@@ -11,6 +12,8 @@
 
 #include <cmath>
 #include <ratio>
+
+QTPOKIT_USE_STRINGLITERALS
 
 /*!
  * \class AbstractCommand
@@ -84,10 +87,10 @@ QStringList AbstractCommand::requiredOptions(const QCommandLineParser &parser) c
 QStringList AbstractCommand::supportedOptions(const QCommandLineParser &parser) const
 {
     return requiredOptions(parser) + QStringList{
-        QLatin1String("debug"),
-        QLatin1String("device"), QLatin1String("d"),
-        QLatin1String("output"),
-        QLatin1String("timeout"),
+        u"debug"_s,
+        u"device"_s, u"d"_s,
+        u"output"_s,
+        u"timeout"_s,
     };
 }
 
@@ -275,20 +278,20 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     QStringList errors;
 
     // Parse the device (name/addr/uuid) option.
-    if (parser.isSet(QLatin1String("device"))) {
-        deviceToScanFor = parser.value(QLatin1String("device"));
+    if (parser.isSet(u"device"_s)) {
+        deviceToScanFor = parser.value(u"device"_s);
     }
 
     // Parse the output format options (if supported, and supplied).
-    if ((supportedOptionNames.contains(QLatin1String("output"))) && // Derived classes may have removed.
-        (parser.isSet(QLatin1String("output"))))
+    if ((supportedOptionNames.contains(u"output"_s)) && // Derived classes may have removed.
+        (parser.isSet(u"output"_s)))
     {
-        const QString output = parser.value(QLatin1String("output")).toLower();
-        if (output == QLatin1String("csv")) {
+        const QString output = parser.value(u"output"_s).toLower();
+        if (output == u"csv"_s) {
             format = OutputFormat::Csv;
-        } else if (output == QLatin1String("json")) {
+        } else if (output == u"json"_s) {
             format = OutputFormat::Json;
-        } else if (output == QLatin1String("text")) {
+        } else if (output == u"text"_s) {
             format = OutputFormat::Text;
         } else {
             errors.append(tr("Unknown output format: %1").arg(output));
@@ -296,10 +299,10 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the device scan timeout option.
-    if (parser.isSet(QLatin1String("timeout"))) {
-        const quint32 timeout = parseNumber<std::milli>(parser.value(QLatin1String("timeout")), QLatin1String("s"), 500);
+    if (parser.isSet(u"timeout"_s)) {
+        const quint32 timeout = parseNumber<std::milli>(parser.value(u"timeout"_s), u"s"_s, 500);
         if (timeout == 0) {
-            errors.append(tr("Invalid timeout: %1").arg(parser.value(QLatin1String("timeout"))));
+            errors.append(tr("Invalid timeout: %1").arg(parser.value(u"timeout"_s)));
         } else if (discoveryAgent->lowEnergyDiscoveryTimeout() == -1) {
             qCWarning(lc).noquote() << tr("Platform does not support Bluetooth scan timeout");
         } else {
