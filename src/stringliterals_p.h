@@ -6,11 +6,20 @@
  * Declares the QTPOKIT_USE_STRINGLITERALS macro, and related functions.
  *
  * This is only required to support Qt versions earlier than 6.4, since Qt added string literal operators in that
- * versions. This header can, and will, be removed entirely when support for pre-6.4 Qt is no longer necessary.
+ * versions. This header can, and will, be removed entirely when Dokit no long suppoers Qt versions earlier than 6.4.
  */
 
 #ifndef QTPOKIT_STRINGLITERALS_P_H
 #define QTPOKIT_STRINGLITERALS_P_H
+
+/// \cond internal
+
+/*!
+ * \def QTPOKIT_USE_STRINGLITERALS
+ *
+ * Internal macro for using either official Qt string literals (added in Qt 6.4), or our own equivalent ones for older Qt
+ * versions. This macro can, and will, be removed entirely when Dokit no long suppoers Qt versions earlier than 6.4.
+ */
 
 #include <QtGlobal>
 #if (QT_VERSION < QT_VERSION_CHECK(6, 4, 0))
@@ -52,5 +61,7 @@ QTPOKIT_END_NAMESPACE
 #else
 #define QTPOKIT_USE_STRINGLITERALS using namespace Qt::Literals::StringLiterals;
 #endif
+
+/// \endcond
 
 #endif // QTPOKIT_STIRNGLITERALS_P_H
