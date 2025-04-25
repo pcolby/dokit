@@ -4,52 +4,52 @@
 <context>
     <name>AbstractPokitServicePrivate</name>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="202"/>
+        <location filename="../abstractpokitservice.cpp" line="204"/>
         <source>Already have service object:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="207"/>
+        <location filename="../abstractpokitservice.cpp" line="209"/>
         <source>Service UUID not assigned yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="215"/>
+        <location filename="../abstractpokitservice.cpp" line="217"/>
         <source>Service object created for %1 device:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="228"/>
+        <location filename="../abstractpokitservice.cpp" line="230"/>
         <source>Descriptor &quot;%1&quot; (%2) read.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="235"/>
+        <location filename="../abstractpokitservice.cpp" line="237"/>
         <source>Descriptor &quot;%1&quot; (%2) written.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="289"/>
+        <location filename="../abstractpokitservice.cpp" line="291"/>
         <source>Current service state:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="317"/>
+        <location filename="../abstractpokitservice.cpp" line="319"/>
         <source>Reading characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="333"/>
+        <location filename="../abstractpokitservice.cpp" line="335"/>
         <source>Enabling CCCD for characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="368"/>
+        <location filename="../abstractpokitservice.cpp" line="370"/>
         <source>Disabling CCCD for characteristic %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="406"/>
+        <location filename="../abstractpokitservice.cpp" line="408"/>
         <source>%1 requires %n byte/s, but only %2 present: %3</source>
         <translation>
             <numerusform>%1 requires %n byte, but only %2 present: %3</numerusform>
@@ -57,7 +57,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="411"/>
+        <location filename="../abstractpokitservice.cpp" line="413"/>
         <source>%1 has %n extraneous byte/s: %2</source>
         <translation>
             <numerusform>%1 has %n extraneous byte: %2</numerusform>
@@ -65,12 +65,12 @@
         </translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="538"/>
+        <location filename="../abstractpokitservice.cpp" line="540"/>
         <source>Characteristic %1 &quot;%2&quot; supports %3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="566"/>
+        <location filename="../abstractpokitservice.cpp" line="568"/>
         <source>Characteristic %1 &quot;%2&quot; read %n byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; read %n byte: %3</numerusform>
@@ -78,7 +78,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="580"/>
+        <location filename="../abstractpokitservice.cpp" line="582"/>
         <source>Characteristic %1 &quot;%2&quot; written with %Ln byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; written with %Ln byte: %3</numerusform>
@@ -86,7 +86,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../abstractpokitservice.cpp" line="595"/>
+        <location filename="../abstractpokitservice.cpp" line="597"/>
         <source>Characteristic %1 &quot;%2&quot; changed to %Ln byte/s: %3</source>
         <translation>
             <numerusform>Characteristic %1 &quot;%2&quot; changed to %Ln byte: %3</numerusform>
@@ -94,68 +94,68 @@
         </translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="445"/>
+        <location filename="../abstractpokitservice.cpp" line="447"/>
         <source>Connected with no controller set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="270"/>
+        <location filename="../abstractpokitservice.cpp" line="272"/>
         <source>Characteristic %1 &quot;%2&quot; requested before service assigned.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="286"/>
+        <location filename="../abstractpokitservice.cpp" line="288"/>
         <source>Characteristic %1 &quot;%2&quot; requested before service %3 &quot;%4&quot; discovered.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="293"/>
+        <location filename="../abstractpokitservice.cpp" line="295"/>
         <source>Characteristic %1 &quot;%2&quot; not found in service %3 &quot;%4&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="343"/>
-        <location filename="../abstractpokitservice.cpp" line="378"/>
+        <location filename="../abstractpokitservice.cpp" line="345"/>
+        <location filename="../abstractpokitservice.cpp" line="380"/>
         <source>Characteristic %1 &quot;%2&quot; has no client configuration descriptor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="449"/>
+        <location filename="../abstractpokitservice.cpp" line="451"/>
         <source>Connected to &quot;%1&quot; (%2) at %3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="466"/>
+        <location filename="../abstractpokitservice.cpp" line="468"/>
         <source>Discovery finished with no controller set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="470"/>
+        <location filename="../abstractpokitservice.cpp" line="472"/>
         <source>Discovery finished for &quot;%1&quot; (%2) at %3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="475"/>
+        <location filename="../abstractpokitservice.cpp" line="477"/>
         <source>Discovery finished, but service not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="489"/>
+        <location filename="../abstractpokitservice.cpp" line="491"/>
         <source>Service error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="503"/>
+        <location filename="../abstractpokitservice.cpp" line="505"/>
         <source>Service discovered</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="518"/>
+        <location filename="../abstractpokitservice.cpp" line="520"/>
         <source>State changed to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractpokitservice.cpp" line="551"/>
+        <location filename="../abstractpokitservice.cpp" line="553"/>
         <source>Service details discovered.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -504,112 +504,112 @@
 <context>
     <name>PokitDevice</name>
     <message>
-        <location filename="../pokitdevice.cpp" line="195"/>
+        <location filename="../pokitdevice.cpp" line="197"/>
         <source>Calibration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="196"/>
+        <location filename="../pokitdevice.cpp" line="198"/>
         <source>Data Logger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="197"/>
+        <location filename="../pokitdevice.cpp" line="199"/>
         <source>DSO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="198"/>
+        <location filename="../pokitdevice.cpp" line="200"/>
         <source>Multimeter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="199"/>
+        <location filename="../pokitdevice.cpp" line="201"/>
         <source>Status (Pokit Meter)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="200"/>
+        <location filename="../pokitdevice.cpp" line="202"/>
         <source>Status (Pokit Pro)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="209"/>
+        <location filename="../pokitdevice.cpp" line="211"/>
         <source>OTA Firmware Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="223"/>
+        <location filename="../pokitdevice.cpp" line="225"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="224"/>
+        <location filename="../pokitdevice.cpp" line="226"/>
         <source>Get Param</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="225"/>
-        <source>Set Param</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../pokitdevice.cpp" line="227"/>
-        <location filename="../pokitdevice.cpp" line="231"/>
-        <source>Metadata</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pokitdevice.cpp" line="228"/>
-        <location filename="../pokitdevice.cpp" line="232"/>
-        <location filename="../pokitdevice.cpp" line="235"/>
-        <source>Reading</source>
+        <source>Set Param</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pokitdevice.cpp" line="229"/>
         <location filename="../pokitdevice.cpp" line="233"/>
-        <location filename="../pokitdevice.cpp" line="236"/>
+        <source>Metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="230"/>
+        <location filename="../pokitdevice.cpp" line="234"/>
+        <location filename="../pokitdevice.cpp" line="237"/>
+        <source>Reading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pokitdevice.cpp" line="231"/>
+        <location filename="../pokitdevice.cpp" line="235"/>
+        <location filename="../pokitdevice.cpp" line="238"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="238"/>
+        <location filename="../pokitdevice.cpp" line="240"/>
         <source>Device Characteristics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="239"/>
+        <location filename="../pokitdevice.cpp" line="241"/>
         <source>Flash LED</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="240"/>
+        <location filename="../pokitdevice.cpp" line="242"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="241"/>
+        <location filename="../pokitdevice.cpp" line="243"/>
         <source>Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="242"/>
+        <location filename="../pokitdevice.cpp" line="244"/>
         <source>Torch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="243"/>
+        <location filename="../pokitdevice.cpp" line="245"/>
         <source>Button Press</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="259"/>
+        <location filename="../pokitdevice.cpp" line="261"/>
         <source>OTA Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="260"/>
+        <location filename="../pokitdevice.cpp" line="262"/>
         <source>OTA Data Transfer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -617,62 +617,62 @@
 <context>
     <name>PokitDevicePrivate</name>
     <message>
-        <location filename="../pokitdevice.cpp" line="296"/>
+        <location filename="../pokitdevice.cpp" line="298"/>
         <source>Controller already set to:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="301"/>
+        <location filename="../pokitdevice.cpp" line="303"/>
         <source>Disconnecting signals from previous controller:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="306"/>
+        <location filename="../pokitdevice.cpp" line="308"/>
         <source>Setting new controller:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="312"/>
+        <location filename="../pokitdevice.cpp" line="314"/>
         <source>Set new controller &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="351"/>
+        <location filename="../pokitdevice.cpp" line="353"/>
         <source>PokitDevicePrivate::connected slot invoked without a controller.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="354"/>
+        <location filename="../pokitdevice.cpp" line="356"/>
         <source>Connected to &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="364"/>
+        <location filename="../pokitdevice.cpp" line="366"/>
         <source>Connection updated:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="374"/>
+        <location filename="../pokitdevice.cpp" line="376"/>
         <source>Device disconnected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="382"/>
+        <location filename="../pokitdevice.cpp" line="384"/>
         <source>Service discovery finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="390"/>
+        <location filename="../pokitdevice.cpp" line="392"/>
         <source>Controller error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="398"/>
+        <location filename="../pokitdevice.cpp" line="400"/>
         <source>Service discovered: %1 &quot;%2&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitdevice.cpp" line="407"/>
+        <location filename="../pokitdevice.cpp" line="409"/>
         <source>State changed to:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1013,26 +1013,26 @@
 <context>
     <name>PokitProducts</name>
     <message>
-        <location filename="../pokitproducts.cpp" line="108"/>
+        <location filename="../pokitproducts.cpp" line="110"/>
         <source>Device is not a Pokit product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="141"/>
-        <location filename="../pokitproducts.cpp" line="161"/>
+        <location filename="../pokitproducts.cpp" line="143"/>
+        <location filename="../pokitproducts.cpp" line="163"/>
         <source>Pokit Meter has no capacitance support</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pokitproducts.cpp" line="39"/>
-        <location filename="../pokitproducts.cpp" line="146"/>
-        <location filename="../pokitproducts.cpp" line="166"/>
-        <location filename="../pokitproducts.cpp" line="189"/>
-        <location filename="../pokitproducts.cpp" line="207"/>
-        <location filename="../pokitproducts.cpp" line="230"/>
-        <location filename="../pokitproducts.cpp" line="248"/>
-        <location filename="../pokitproducts.cpp" line="271"/>
-        <location filename="../pokitproducts.cpp" line="289"/>
+        <location filename="../pokitproducts.cpp" line="41"/>
+        <location filename="../pokitproducts.cpp" line="148"/>
+        <location filename="../pokitproducts.cpp" line="168"/>
+        <location filename="../pokitproducts.cpp" line="191"/>
+        <location filename="../pokitproducts.cpp" line="209"/>
+        <location filename="../pokitproducts.cpp" line="232"/>
+        <location filename="../pokitproducts.cpp" line="250"/>
+        <location filename="../pokitproducts.cpp" line="273"/>
+        <location filename="../pokitproducts.cpp" line="291"/>
         <source>Unknown PokitProduct value: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1040,7 +1040,7 @@
 <context>
     <name>StatusService</name>
     <message>
-        <location filename="../statusservice.cpp" line="345"/>
+        <location filename="../statusservice.cpp" line="347"/>
         <source>Device name &quot;%1&quot; is too long (%2 &gt; 11 bytes): 0x3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1048,127 +1048,127 @@
 <context>
     <name>StatusServicePrivate</name>
     <message>
-        <location filename="../statusservice.cpp" line="602"/>
+        <location filename="../statusservice.cpp" line="604"/>
         <source>Firmware version:     </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="603"/>
+        <location filename="../statusservice.cpp" line="605"/>
         <source>Maximum voltage:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="604"/>
+        <location filename="../statusservice.cpp" line="606"/>
         <source>Maximum current:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="605"/>
+        <location filename="../statusservice.cpp" line="607"/>
         <source>Maximum resistance:   </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="606"/>
+        <location filename="../statusservice.cpp" line="608"/>
         <source>Maximum sampling rate:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="607"/>
+        <location filename="../statusservice.cpp" line="609"/>
         <source>Sampling buffer size: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="608"/>
+        <location filename="../statusservice.cpp" line="610"/>
         <source>Capability mask:      </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="609"/>
+        <location filename="../statusservice.cpp" line="611"/>
         <source>MAC address:          </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="654"/>
+        <location filename="../statusservice.cpp" line="656"/>
         <source>Device status:   %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="656"/>
+        <location filename="../statusservice.cpp" line="658"/>
         <source>Battery voltage: %1 volts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="657"/>
+        <location filename="../statusservice.cpp" line="659"/>
         <source>Battery status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="660"/>
+        <location filename="../statusservice.cpp" line="662"/>
         <source>Switch position: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="664"/>
+        <location filename="../statusservice.cpp" line="666"/>
         <source>Charging status: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="680"/>
+        <location filename="../statusservice.cpp" line="682"/>
         <source>Torch status: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="703"/>
+        <location filename="../statusservice.cpp" line="705"/>
         <source>Button: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="716"/>
+        <location filename="../statusservice.cpp" line="718"/>
         <source>Found Status Service for a Pokit Meter device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="719"/>
+        <location filename="../statusservice.cpp" line="721"/>
         <source>Found Status Service for a Pokit Pro device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="747"/>
+        <location filename="../statusservice.cpp" line="749"/>
         <source>Device name: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="753"/>
+        <location filename="../statusservice.cpp" line="755"/>
         <source>Flash LED characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="763"/>
+        <location filename="../statusservice.cpp" line="765"/>
         <source>Torch status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="773"/>
+        <location filename="../statusservice.cpp" line="775"/>
         <source>Button status:  %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="778"/>
+        <location filename="../statusservice.cpp" line="780"/>
         <source>Unknown characteristic read for Status service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="793"/>
+        <location filename="../statusservice.cpp" line="795"/>
         <source>Device Characteristics is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="799"/>
+        <location filename="../statusservice.cpp" line="801"/>
         <source>Status characteristic is read-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusservice.cpp" line="819"/>
+        <location filename="../statusservice.cpp" line="821"/>
         <source>Unknown characteristic written for Status service</source>
         <translation type="unfinished"></translation>
     </message>
