@@ -100,47 +100,48 @@
 <span id="L9"><span class="lineNum">       9</span>              : </span>
 <span id="L10"><span class="lineNum">      10</span>              : #include &lt;QLowEnergyController&gt;</span>
 <span id="L11"><span class="lineNum">      11</span>              : </span>
-<span id="L12"><span class="lineNum">      12</span>              : class AbstractPokitService;</span>
-<span id="L13"><span class="lineNum">      13</span>              : class PokitDevice;</span>
-<span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span>              : class DeviceCommand : public AbstractCommand</span>
-<span id="L16"><span class="lineNum">      16</span>              : {</span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">         405 :     Q_OBJECT</span></span>
-<span id="L18"><span class="lineNum">      18</span>              : </span>
-<span id="L19"><span class="lineNum">      19</span>              : public:</span>
-<span id="L20"><span class="lineNum">      20</span>              :     explicit DeviceCommand(QObject * const parent = nullptr);</span>
-<span id="L21"><span class="lineNum">      21</span>              : </span>
-<span id="L22"><span class="lineNum">      22</span>              : public slots:</span>
-<span id="L23"><span class="lineNum">      23</span>              :     bool start() override;</span>
-<span id="L24"><span class="lineNum">      24</span>              : </span>
-<span id="L25"><span class="lineNum">      25</span>              : protected:</span>
-<span id="L26"><span class="lineNum">      26</span>              :     PokitDevice * device { nullptr }; ///&lt; Pokit Bluetooth device (if any) this command interracts with.</span>
-<span id="L27"><span class="lineNum">      27</span>              :     int exitCodeOnDisconnect { EXIT_FAILURE }; ///&lt; Exit code to return on device disconnection.</span>
-<span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span>              :     void disconnect(int exitCode=EXIT_SUCCESS);</span>
-<span id="L30"><span class="lineNum">      30</span>              :     virtual AbstractPokitService * getService() = 0;</span>
-<span id="L31"><span class="lineNum">      31</span>              : </span>
-<span id="L32"><span class="lineNum">      32</span>              :     template&lt;typename T&gt; static T minRange(const quint32 maxValue);</span>
-<span id="L33"><span class="lineNum">      33</span>              :     static quint8 minCapacitanceRange(const PokitProduct product, const quint32 maxValue);</span>
-<span id="L34"><span class="lineNum">      34</span>              :     static quint8 minCurrentRange(const PokitProduct product, const quint32 maxValue);</span>
-<span id="L35"><span class="lineNum">      35</span>              :     static quint8 minResistanceRange(const PokitProduct product, const quint32 maxValue);</span>
-<span id="L36"><span class="lineNum">      36</span>              :     static quint8 minVoltageRange(const PokitProduct product, const quint32 maxValue);</span>
-<span id="L37"><span class="lineNum">      37</span>              : </span>
-<span id="L38"><span class="lineNum">      38</span>              : protected slots:</span>
-<span id="L39"><span class="lineNum">      39</span>              :     virtual void controllerError(const QLowEnergyController::Error error);</span>
-<span id="L40"><span class="lineNum">      40</span>              :     virtual void deviceDisconnected();</span>
-<span id="L41"><span class="lineNum">      41</span>              :     virtual void serviceError(const QLowEnergyService::ServiceError error);</span>
-<span id="L42"><span class="lineNum">      42</span>              :     virtual void serviceDetailsDiscovered();</span>
-<span id="L43"><span class="lineNum">      43</span>              : </span>
-<span id="L44"><span class="lineNum">      44</span>              : private slots:</span>
-<span id="L45"><span class="lineNum">      45</span>              :     // These are protected in the base class, but hidden (private) for our descendents.</span>
-<span id="L46"><span class="lineNum">      46</span>              :     void deviceDiscovered(const QBluetoothDeviceInfo &amp;info) override;</span>
-<span id="L47"><span class="lineNum">      47</span>              :     void deviceDiscoveryFinished() override;</span>
-<span id="L48"><span class="lineNum">      48</span>              : </span>
-<span id="L49"><span class="lineNum">      49</span>              :     QTPOKIT_BEFRIEND_TEST(DeviceCommand)</span>
-<span id="L50"><span class="lineNum">      50</span>              : };</span>
-<span id="L51"><span class="lineNum">      51</span>              : </span>
-<span id="L52"><span class="lineNum">      52</span>              : #endif // DOKIT_DEVICECOMMAND_H</span>
+<span id="L12"><span class="lineNum">      12</span>              : QTPOKIT_FORWARD_DECLARE_CLASS(AbstractPokitService)</span>
+<span id="L13"><span class="lineNum">      13</span>              : QTPOKIT_FORWARD_DECLARE_CLASS(PokitDevice)</span>
+<span id="L14"><span class="lineNum">      14</span>              : QTPOKIT_USE_NAMESPACE</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span>              : class DeviceCommand : public AbstractCommand</span>
+<span id="L17"><span class="lineNum">      17</span>              : {</span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         405 :     Q_OBJECT</span></span>
+<span id="L19"><span class="lineNum">      19</span>              : </span>
+<span id="L20"><span class="lineNum">      20</span>              : public:</span>
+<span id="L21"><span class="lineNum">      21</span>              :     explicit DeviceCommand(QObject * const parent = nullptr);</span>
+<span id="L22"><span class="lineNum">      22</span>              : </span>
+<span id="L23"><span class="lineNum">      23</span>              : public slots:</span>
+<span id="L24"><span class="lineNum">      24</span>              :     bool start() override;</span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span>              : protected:</span>
+<span id="L27"><span class="lineNum">      27</span>              :     PokitDevice * device { nullptr }; ///&lt; Pokit Bluetooth device (if any) this command interracts with.</span>
+<span id="L28"><span class="lineNum">      28</span>              :     int exitCodeOnDisconnect { EXIT_FAILURE }; ///&lt; Exit code to return on device disconnection.</span>
+<span id="L29"><span class="lineNum">      29</span>              : </span>
+<span id="L30"><span class="lineNum">      30</span>              :     void disconnect(int exitCode=EXIT_SUCCESS);</span>
+<span id="L31"><span class="lineNum">      31</span>              :     virtual AbstractPokitService * getService() = 0;</span>
+<span id="L32"><span class="lineNum">      32</span>              : </span>
+<span id="L33"><span class="lineNum">      33</span>              :     template&lt;typename T&gt; static T minRange(const quint32 maxValue);</span>
+<span id="L34"><span class="lineNum">      34</span>              :     static quint8 minCapacitanceRange(const PokitProduct product, const quint32 maxValue);</span>
+<span id="L35"><span class="lineNum">      35</span>              :     static quint8 minCurrentRange(const PokitProduct product, const quint32 maxValue);</span>
+<span id="L36"><span class="lineNum">      36</span>              :     static quint8 minResistanceRange(const PokitProduct product, const quint32 maxValue);</span>
+<span id="L37"><span class="lineNum">      37</span>              :     static quint8 minVoltageRange(const PokitProduct product, const quint32 maxValue);</span>
+<span id="L38"><span class="lineNum">      38</span>              : </span>
+<span id="L39"><span class="lineNum">      39</span>              : protected slots:</span>
+<span id="L40"><span class="lineNum">      40</span>              :     virtual void controllerError(const QLowEnergyController::Error error);</span>
+<span id="L41"><span class="lineNum">      41</span>              :     virtual void deviceDisconnected();</span>
+<span id="L42"><span class="lineNum">      42</span>              :     virtual void serviceError(const QLowEnergyService::ServiceError error);</span>
+<span id="L43"><span class="lineNum">      43</span>              :     virtual void serviceDetailsDiscovered();</span>
+<span id="L44"><span class="lineNum">      44</span>              : </span>
+<span id="L45"><span class="lineNum">      45</span>              : private slots:</span>
+<span id="L46"><span class="lineNum">      46</span>              :     // These are protected in the base class, but hidden (private) for our descendents.</span>
+<span id="L47"><span class="lineNum">      47</span>              :     void deviceDiscovered(const QBluetoothDeviceInfo &amp;info) override;</span>
+<span id="L48"><span class="lineNum">      48</span>              :     void deviceDiscoveryFinished() override;</span>
+<span id="L49"><span class="lineNum">      49</span>              : </span>
+<span id="L50"><span class="lineNum">      50</span>              :     QTPOKIT_BEFRIEND_TEST(DeviceCommand)</span>
+<span id="L51"><span class="lineNum">      51</span>              : };</span>
+<span id="L52"><span class="lineNum">      52</span>              : </span>
+<span id="L53"><span class="lineNum">      53</span>              : #endif // DOKIT_DEVICECOMMAND_H</span>
         </pre>
               </td>
             </tr>
