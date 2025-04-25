@@ -4,7 +4,7 @@
 find_package(Qt${QT_VERSION_MAJOR}Test REQUIRED)
 
 function(add_dokit_unit_test name)
-  add_executable(test${name} ${ARGN} ../github.h)
+  add_executable(test${name} ${ARGN} ../github.h ${CMAKE_SOURCE_DIR}/src/stringliterals_p.h)
 
   target_include_directories(test${name} PRIVATE ${CMAKE_SOURCE_DIR}/src/lib)
 
