@@ -272,12 +272,12 @@ void TestMultimeterService::parseReading()
     QFETCH(QByteArray, value);
     QFETCH(MultimeterService::Reading, expected);
     if (value.size() < 7) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Reading requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Reading requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 7) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Reading has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Reading has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     const MultimeterService::Reading actual = MultimeterServicePrivate::parseReading(value);
     QCOMPARE(actual.status, expected.status);
@@ -300,8 +300,7 @@ void TestMultimeterService::characteristicRead()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     MultimeterService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic read for Multimeter service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic read for Multimeter service .*$"_s));
     service.d_func()->characteristicRead(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -309,8 +308,8 @@ void TestMultimeterService::characteristicWritten()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     MultimeterService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic written for Multimeter service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic written for Multimeter service .*$"_s));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -318,8 +317,8 @@ void TestMultimeterService::characteristicChanged()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     MultimeterService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic notified for Multimeter service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic notified for Multimeter service .*$"_s));
     service.d_func()->characteristicChanged(QLowEnergyCharacteristic(), QByteArray());
 }
 

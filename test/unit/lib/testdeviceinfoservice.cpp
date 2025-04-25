@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testdeviceinfoservice.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/deviceinfoservice.h>
 #include "deviceinfoservice_p.h"
@@ -9,6 +10,7 @@
 #include <QRegularExpression>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 void TestDeviceInfoService::readCharacteristics()
 {
@@ -105,8 +107,7 @@ void TestDeviceInfoService::characteristicRead()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DeviceInfoService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic read for Device Info service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic read for Device Info service .*$"_s));
     service.d_func()->characteristicRead(QLowEnergyCharacteristic(), QByteArray());
 }
 

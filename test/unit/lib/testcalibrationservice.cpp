@@ -3,6 +3,7 @@
 
 #include "testcalibrationservice.h"
 #include "../github.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/calibrationservice.h>
 #include "calibrationservice_p.h"
@@ -11,6 +12,7 @@
 #include <QRegularExpression>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 void TestCalibrationService::readCharacteristics()
 {
@@ -53,8 +55,8 @@ void TestCalibrationService::characteristicWritten()
 {
     // Verify safe error handling.
     CalibrationService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic written for Calibration service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic written for Calibration service .*$"_s));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 

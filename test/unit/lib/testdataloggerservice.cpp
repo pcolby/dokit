@@ -349,14 +349,14 @@ void TestDataLoggerService::parseMetadata()
     QFETCH(QByteArray, value);
     QFETCH(DataLoggerService::Metadata, expected);
     if (value.size() < 15) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Metadata requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Metadata requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 23) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Metadata has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Cannot decode metadata of \d+ byte/s: 0x[a-zA-Z0-9,.]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Metadata has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Cannot decode metadata of \d+ byte/s: 0x[a-zA-Z0-9,.]*$)"_s));
     }
     const DataLoggerService::Metadata actual = DataLoggerServicePrivate::parseMetadata(value);
     QCOMPARE(actual.status, expected.status);
@@ -405,8 +405,8 @@ void TestDataLoggerService::parseSamples()
     QFETCH(QByteArray, data);
     QFETCH(DataLoggerService::Samples, expected);
     if ((data.size()%2) != 0) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Samples value has odd size \d+ \(should be even\): 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Samples value has odd size \d+ \(should be even\): 0x[a-zA-Z0-9,]*$)"_s));
     }
     QCOMPARE(DataLoggerServicePrivate::parseSamples(data), expected);
 }
@@ -415,8 +415,7 @@ void TestDataLoggerService::characteristicRead()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DataLoggerService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic read for Data Logger service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic read for Data Logger service .*$"_s));
     service.d_func()->characteristicRead(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -424,8 +423,8 @@ void TestDataLoggerService::characteristicWritten()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DataLoggerService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic written for Data Logger service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic written for Data Logger service .*$"_s));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -433,8 +432,8 @@ void TestDataLoggerService::characteristicChanged()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DataLoggerService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic notified for Data Logger service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic notified for Data Logger service .*$"_s));
     service.d_func()->characteristicChanged(QLowEnergyCharacteristic(), QByteArray());
 }
 

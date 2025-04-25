@@ -92,8 +92,7 @@ void TestPokitDiscoveryAgent::error()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
     PokitDiscoveryAgent service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Pokit device scan error: .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Pokit device scan error: .*$"_s));
     service.d_func()->error(QBluetoothDeviceDiscoveryAgent::Error::UnknownError);
 }
 

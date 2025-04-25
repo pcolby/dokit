@@ -168,12 +168,12 @@ void TestAbstractPokitService::checkSize()
     QFETCH(bool, failOnMax);
     QFETCH(bool, expected);
     if (data.size() < min) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^<label> requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^<label> requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (data.size() > max) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^<label> has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^<label> has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     QCOMPARE(AbstractPokitServicePrivate::checkSize(label, data, min, max, failOnMax), expected);
 }

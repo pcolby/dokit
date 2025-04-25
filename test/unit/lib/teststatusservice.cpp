@@ -372,12 +372,12 @@ void TestStatusService::parseDeviceCharacteristics()
     QFETCH(QByteArray, value);
     QFETCH(StatusService::DeviceCharacteristics, expected);
     if (value.size() < 20) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Device Characteristics requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Device Characteristics requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 20) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Device Characteristics has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Device Characteristics has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     const StatusService::DeviceCharacteristics actual =
         StatusServicePrivate::parseDeviceCharacteristics(value);
@@ -535,12 +535,12 @@ void TestStatusService::parseStatus()
     QFETCH(QByteArray, value);
     QFETCH(StatusService::Status, expected);
     if (value.size() < 5) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Status requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Status requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 8) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Status has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Status has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     const StatusService::Status actual = StatusServicePrivate::parseStatus(value);
     QCOMPARE(actual.deviceStatus,   expected.deviceStatus);
@@ -631,8 +631,7 @@ void TestStatusService::characteristicRead()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     StatusService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic read for Status service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic read for Status service .*$"_s));
     service.d_func()->characteristicRead(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -640,8 +639,7 @@ void TestStatusService::characteristicWritten()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     StatusService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic written for Status service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic written for Status service .*$"_s));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 

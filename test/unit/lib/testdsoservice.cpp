@@ -282,12 +282,12 @@ void TestDsoService::parseMetadata()
     QFETCH(QByteArray, value);
     QFETCH(DsoService::Metadata, expected);
     if (value.size() < 17) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Metadata requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Metadata requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 17) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Metadata has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Metadata has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     const DsoService::Metadata actual = DsoServicePrivate::parseMetadata(value);
     QCOMPARE(actual.status,             expected.status);
@@ -336,8 +336,8 @@ void TestDsoService::parseSamples()
     QFETCH(QByteArray, data);
     QFETCH(DsoService::Samples, expected);
     if ((data.size()%2) != 0) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Samples value has odd size \d+ \(should be even\): 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Samples value has odd size \d+ \(should be even\): 0x[a-zA-Z0-9,]*$)"_s));
     }
     QCOMPARE(DsoServicePrivate::parseSamples(data), expected);
 }
@@ -346,8 +346,7 @@ void TestDsoService::characteristicRead()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DsoService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic read for DSO service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic read for DSO service .*$"_s));
     service.d_func()->characteristicRead(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -355,8 +354,7 @@ void TestDsoService::characteristicWritten()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DsoService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic written for DSO service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic written for DSO service .*$"_s));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -364,8 +362,7 @@ void TestDsoService::characteristicChanged()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DsoService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic notified for DSO service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic notified for DSO service .*$"_s));
     service.d_func()->characteristicChanged(QLowEnergyCharacteristic(), QByteArray());
 }
 
