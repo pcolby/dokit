@@ -112,7 +112,7 @@
 <span id="L21"><span class="lineNum">      21</span>              :  * Constructs a new Pokit service with \a parent.</span>
 <span id="L22"><span class="lineNum">      22</span>              :  */</span>
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        1800 : DeviceInfoService::DeviceInfoService(QLowEnergyController * const controller, QObject * parent)</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">        2680 :     : AbstractPokitService(new DeviceInfoServicePrivate(controller, this), parent)</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">        2920 :     : AbstractPokitService(new DeviceInfoServicePrivate(controller, this), parent)</span></span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        1360 : {</span></span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">        3160 : }</span></span>
@@ -395,7 +395,7 @@
 <span id="L304"><span class="lineNum">     304</span>              :  */</span>
 <span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         880 : DeviceInfoServicePrivate::DeviceInfoServicePrivate(</span></span>
 <span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">        1800 :     QLowEnergyController * controller, DeviceInfoService * const q)</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        2680 :     : AbstractPokitServicePrivate(DeviceInfoService::serviceUuid, controller, q)</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        2920 :     : AbstractPokitServicePrivate(DeviceInfoService::serviceUuid, controller, q)</span></span>
 <span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">        1360 : {</span></span>
 <span id="L309"><span class="lineNum">     309</span>              : </span>
 <span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">        2240 : }</span></span>

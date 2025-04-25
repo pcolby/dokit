@@ -142,7 +142,7 @@
 <span id="L51"><span class="lineNum">      51</span>              :  * Constructs a new Pokit device controller wrapper for \a controller, with \a parent.</span>
 <span id="L52"><span class="lineNum">      52</span>              :  */</span>
 <span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">         765 : PokitDevice::PokitDevice(QLowEnergyController *controller, QObject *parent)</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">        1139 :     : QObject(parent), d_ptr(new PokitDevicePrivate(this))</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">        1364 :     : QObject(parent), d_ptr(new PokitDevicePrivate(this))</span></span>
 <span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">         824 : {</span></span>
 <span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         824 :     Q_D(PokitDevice);</span></span>
 <span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">        1589 :     d-&gt;setController(controller);</span></span>
@@ -361,7 +361,7 @@
 <span id="L270"><span class="lineNum">     270</span>              : /*!</span>
 <span id="L271"><span class="lineNum">     271</span>              :  * Constructs a new PokitDevicePrivate object with public implementation \a q.</span>
 <span id="L272"><span class="lineNum">     272</span>              :  */</span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        3417 : PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q) : q_ptr(q)</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        3642 : PokitDevicePrivate::PokitDevicePrivate(PokitDevice * const q) : q_ptr(q)</span></span>
 <span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">        1572 : {</span></span>
 <span id="L275"><span class="lineNum">     275</span>              : </span>
 <span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">        3867 : }</span></span>
