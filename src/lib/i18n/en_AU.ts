@@ -184,37 +184,37 @@
 <context>
     <name>DataLoggerService</name>
     <message>
-        <location filename="../dataloggerservice.cpp" line="32"/>
+        <location filename="../dataloggerservice.cpp" line="34"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="33"/>
+        <location filename="../dataloggerservice.cpp" line="35"/>
         <source>DC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="34"/>
+        <location filename="../dataloggerservice.cpp" line="36"/>
         <source>AC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="35"/>
+        <location filename="../dataloggerservice.cpp" line="37"/>
         <source>DC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="36"/>
+        <location filename="../dataloggerservice.cpp" line="38"/>
         <source>AC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="37"/>
+        <location filename="../dataloggerservice.cpp" line="39"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="186"/>
+        <location filename="../dataloggerservice.cpp" line="188"/>
         <source>Settings command must be &apos;Start&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -222,12 +222,12 @@
 <context>
     <name>DataLoggerServicePrivate</name>
     <message>
-        <location filename="../dataloggerservice.cpp" line="429"/>
+        <location filename="../dataloggerservice.cpp" line="431"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dataloggerservice.cpp" line="416"/>
+        <location filename="../dataloggerservice.cpp" line="418"/>
         <source>Cannot decode metadata of %n byte/s: %1</source>
         <translation>
             <numerusform>Cannot decode metadata of %n byte: %1</numerusform>
@@ -235,7 +235,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dataloggerservice.cpp" line="436"/>
+        <location filename="../dataloggerservice.cpp" line="438"/>
         <source>Read %n sample/s from %1-bytes.</source>
         <translation>
             <numerusform>Read %n sample from %1-bytes.</numerusform>
@@ -243,42 +243,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="450"/>
+        <location filename="../dataloggerservice.cpp" line="452"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="462"/>
+        <location filename="../dataloggerservice.cpp" line="464"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="467"/>
+        <location filename="../dataloggerservice.cpp" line="469"/>
         <source>Unknown characteristic read for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="487"/>
+        <location filename="../dataloggerservice.cpp" line="489"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="493"/>
+        <location filename="../dataloggerservice.cpp" line="495"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="498"/>
+        <location filename="../dataloggerservice.cpp" line="500"/>
         <source>Unknown characteristic written for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="513"/>
+        <location filename="../dataloggerservice.cpp" line="515"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dataloggerservice.cpp" line="528"/>
+        <location filename="../dataloggerservice.cpp" line="530"/>
         <source>Unknown characteristic notified for Data Logger service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -286,37 +286,37 @@
 <context>
     <name>DeviceInfoServicePrivate</name>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="326"/>
+        <location filename="../deviceinfoservice.cpp" line="328"/>
         <source>Manufacturer name: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="333"/>
+        <location filename="../deviceinfoservice.cpp" line="335"/>
         <source>Model number: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="340"/>
+        <location filename="../deviceinfoservice.cpp" line="342"/>
         <source>Hardware revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="347"/>
+        <location filename="../deviceinfoservice.cpp" line="349"/>
         <source>Firmware revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="354"/>
+        <location filename="../deviceinfoservice.cpp" line="356"/>
         <source>Software revision: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="361"/>
+        <location filename="../deviceinfoservice.cpp" line="363"/>
         <source>Serial number: &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../deviceinfoservice.cpp" line="366"/>
+        <location filename="../deviceinfoservice.cpp" line="368"/>
         <source>Unknown characteristic read for Device Info service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -324,32 +324,32 @@
 <context>
     <name>DsoService</name>
     <message>
-        <location filename="../dsoservice.cpp" line="31"/>
+        <location filename="../dsoservice.cpp" line="33"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="32"/>
+        <location filename="../dsoservice.cpp" line="34"/>
         <source>DC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="33"/>
+        <location filename="../dsoservice.cpp" line="35"/>
         <source>AC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="34"/>
+        <location filename="../dsoservice.cpp" line="36"/>
         <source>DC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="35"/>
+        <location filename="../dsoservice.cpp" line="37"/>
         <source>AC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="177"/>
+        <location filename="../dsoservice.cpp" line="179"/>
         <source>Settings command must not be &apos;ResendData&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -357,12 +357,12 @@
 <context>
     <name>DsoServicePrivate</name>
     <message>
-        <location filename="../dsoservice.cpp" line="374"/>
+        <location filename="../dsoservice.cpp" line="376"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsoservice.cpp" line="381"/>
+        <location filename="../dsoservice.cpp" line="383"/>
         <source>Read %n sample/s from %1-bytes.</source>
         <translation>
             <numerusform>Read %n sample from %1-bytes.</numerusform>
@@ -370,42 +370,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="395"/>
+        <location filename="../dsoservice.cpp" line="397"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="407"/>
+        <location filename="../dsoservice.cpp" line="409"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="412"/>
+        <location filename="../dsoservice.cpp" line="414"/>
         <source>Unknown characteristic read for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="432"/>
+        <location filename="../dsoservice.cpp" line="434"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="438"/>
+        <location filename="../dsoservice.cpp" line="440"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="443"/>
+        <location filename="../dsoservice.cpp" line="445"/>
         <source>Unknown characteristic written for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="458"/>
+        <location filename="../dsoservice.cpp" line="460"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="473"/>
+        <location filename="../dsoservice.cpp" line="475"/>
         <source>Unknown characteristic notified for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
@@ -413,57 +413,57 @@
 <context>
     <name>MultimeterService</name>
     <message>
-        <location filename="../multimeterservice.cpp" line="40"/>
+        <location filename="../multimeterservice.cpp" line="42"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="41"/>
+        <location filename="../multimeterservice.cpp" line="43"/>
         <source>DC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="42"/>
+        <location filename="../multimeterservice.cpp" line="44"/>
         <source>AC voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="43"/>
+        <location filename="../multimeterservice.cpp" line="45"/>
         <source>DC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="44"/>
+        <location filename="../multimeterservice.cpp" line="46"/>
         <source>AC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="45"/>
+        <location filename="../multimeterservice.cpp" line="47"/>
         <source>Resistance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="46"/>
+        <location filename="../multimeterservice.cpp" line="48"/>
         <source>Diode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="47"/>
+        <location filename="../multimeterservice.cpp" line="49"/>
         <source>Continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="48"/>
+        <location filename="../multimeterservice.cpp" line="50"/>
         <source>Temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="49"/>
+        <location filename="../multimeterservice.cpp" line="51"/>
         <source>Capacitance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="50"/>
+        <location filename="../multimeterservice.cpp" line="52"/>
         <source>External temperature</source>
         <translation type="unfinished"></translation>
     </message>
@@ -471,32 +471,32 @@
 <context>
     <name>MultimeterServicePrivate</name>
     <message>
-        <location filename="../multimeterservice.cpp" line="331"/>
+        <location filename="../multimeterservice.cpp" line="333"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="336"/>
+        <location filename="../multimeterservice.cpp" line="338"/>
         <source>Unknown characteristic read for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="356"/>
+        <location filename="../multimeterservice.cpp" line="358"/>
         <source>Reading characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="361"/>
+        <location filename="../multimeterservice.cpp" line="363"/>
         <source>Unknown characteristic written for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="376"/>
+        <location filename="../multimeterservice.cpp" line="378"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multimeterservice.cpp" line="386"/>
+        <location filename="../multimeterservice.cpp" line="388"/>
         <source>Unknown characteristic notified for Multimeter service</source>
         <translation type="unfinished"></translation>
     </message>
