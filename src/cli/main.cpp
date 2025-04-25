@@ -281,7 +281,7 @@ int main(int argc, char *argv[])
     const QString localeName = QString::fromLocal8Bit(qgetenv("LANG"));
     if (!localeName.isEmpty()) {
         const QLocale newLocale(localeName);
-        if (newLocale.name() != localeName.split(QLatin1Char('.')).constFirst()) {
+        if (newLocale.name() != localeName.split('.'_L1).constFirst()) {
             qWarning() << "Could not find locale" << localeName;
         } else {
             QLocale::setDefault(newLocale);

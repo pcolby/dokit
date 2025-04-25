@@ -276,12 +276,12 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     }   break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Mode:   %1 (0x%2)\n").arg(MultimeterService::toString(reading.mode))
-            .arg((quint8)reading.mode,2,16,QLatin1Char('0')));
+            .arg((quint8)reading.mode,2,16,'0'_L1));
         std::cout << qUtf8Printable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(unit));
         std::cout << qUtf8Printable(tr("Status: %1 (0x%2)\n").arg(status)
-            .arg((quint8)reading.status,2,16,QLatin1Char('0')));
+            .arg((quint8)reading.status,2,16,'0'_L1));
         std::cout << qUtf8Printable(tr("Range:  %1 (0x%2)\n").arg(range)
-            .arg((quint8)reading.range,2,16,QLatin1Char('0')));
+            .arg((quint8)reading.range,2,16,'0'_L1));
         break;
     }
 
