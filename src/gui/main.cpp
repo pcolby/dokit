@@ -7,7 +7,7 @@
 #include <QApplication>
 #include <QDebug>
 
-QTPOKIT_USE_STRINGLITERALS
+DOKIT_USE_STRINGLITERALS
 
 int main(int argc, char *argv[])
 {

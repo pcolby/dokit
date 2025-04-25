@@ -11,7 +11,7 @@
 #include <QBluetoothUuid>
 #include <QDebug>
 
-QTPOKIT_USE_STRINGLITERALS
+DOKIT_USE_STRINGLITERALS
 
 PokitDevicesModel::PokitDevicesModel(QObject * const parent) : QStandardItemModel(parent)
 {

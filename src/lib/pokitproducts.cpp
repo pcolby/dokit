@@ -18,7 +18,7 @@
 #include <QLoggingCategory>
 
 QTPOKIT_BEGIN_NAMESPACE
-QTPOKIT_USE_STRINGLITERALS
+DOKIT_USE_STRINGLITERALS
 
 static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products", QtInfoMsg); ///< Logging category for this file.
 

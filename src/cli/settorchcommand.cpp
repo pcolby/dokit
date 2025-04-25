@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-QTPOKIT_USE_STRINGLITERALS
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class SetTorchCommand

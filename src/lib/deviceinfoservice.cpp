@@ -13,7 +13,7 @@
 #include <QtEndian>
 
 QTPOKIT_BEGIN_NAMESPACE
-QTPOKIT_USE_STRINGLITERALS
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class DeviceInfoService

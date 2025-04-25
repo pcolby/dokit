@@ -6,7 +6,7 @@
 
 #include <QDirIterator>
 
-QTPOKIT_USE_STRINGLITERALS
+DOKIT_USE_STRINGLITERALS
 
 QIcon loadIcon(const QString &path, const QStringList &nameFilters)
 {

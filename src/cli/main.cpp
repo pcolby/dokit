@@ -29,7 +29,7 @@
 #include <Windows.h>
 #endif
 
-QTPOKIT_USE_STRINGLITERALS
+DOKIT_USE_STRINGLITERALS
 
 static Q_LOGGING_CATEGORY(lc, "dokit.cli.main", QtInfoMsg);
 

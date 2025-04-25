@@ -21,7 +21,7 @@
     #define DOKIT_QT_UTC QTimeZone::UTC
 #endif
 
-QTPOKIT_USE_STRINGLITERALS
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class LoggerFetchCommand
