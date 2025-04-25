@@ -16,6 +16,7 @@ add_library(
   ${CMAKE_SOURCE_DIR}/include/qtpokit/pokitproducts.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/qtpokit_global.h
   ${CMAKE_SOURCE_DIR}/include/qtpokit/statusservice.h
+  ${CMAKE_SOURCE_DIR}/src/stringliterals_p.h
   abstractpokitservice.cpp
   abstractpokitservice_p.h
   calibrationservice.cpp

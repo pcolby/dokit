@@ -16,7 +16,7 @@
 #include <qtpokit/statusservice.h>
 
 #include "pokitdevice_p.h"
-#include "stringliterals_p.h"
+#include "../stringliterals_p.h"
 
 #include <QMutexLocker>
 

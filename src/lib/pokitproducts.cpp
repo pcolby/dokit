@@ -12,7 +12,7 @@
 #include <qtpokit/statusservice.h>
 
 #include "pokitproducts_p.h"
-#include "stringliterals_p.h"
+#include "../stringliterals_p.h"
 
 #include <QCoreApplication>
 #include <QLoggingCategory>

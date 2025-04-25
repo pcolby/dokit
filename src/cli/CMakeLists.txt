@@ -42,7 +42,7 @@ target_link_libraries(
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   PRIVATE Qt${QT_VERSION_MAJOR}::Bluetooth)
 
-add_executable(cli main.cpp)
+add_executable(cli main.cpp ../stringliterals_p.h)
 
 set_target_properties(cli PROPERTIES OUTPUT_NAME dokit)
 

@@ -8,7 +8,7 @@
 
 #include <qtpokit/statusservice.h>
 #include "statusservice_p.h"
-#include "stringliterals_p.h"
+#include "../stringliterals_p.h"
 
 #include <QtEndian>
 

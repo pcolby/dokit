@@ -9,7 +9,7 @@
 #include <qtpokit/abstractpokitservice.h>
 #include "abstractpokitservice_p.h"
 #include "pokitproducts_p.h"
-#include "stringliterals_p.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
