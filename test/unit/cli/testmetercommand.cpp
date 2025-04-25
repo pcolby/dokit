@@ -396,8 +396,7 @@ void TestMeterCommand::outputReading_data()
                          QList<MultimeterService::Reading>{ MultimeterService::Reading() });
 
     for (const MultimeterService::Reading &reading: readings) {
-        QString name = MultimeterService::toString(reading.mode)
-            .replace(QLatin1Char(' '), QLatin1Char('-'));
+        QString name = MultimeterService::toString(reading.mode).replace(' '_L1, '-'_L1);
         if ((reading.mode == MultimeterService::Mode::Continuity) &&
             (!((quint8)reading.status & (quint8)MultimeterService::MeterStatus::Continuity))) {
             name.prepend(u"No"_s); // ie NoContinuity.

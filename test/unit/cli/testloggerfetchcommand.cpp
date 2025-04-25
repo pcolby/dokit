@@ -90,8 +90,7 @@ void TestLoggerFetchCommand::outputSamples_data()
             << metadata << list << AbstractCommand::OutputFormat::Text
 
     for (const DataLoggerService::Metadata &metadata: metadatas) {
-        const QString namePrefix = DataLoggerService::toString(metadata.mode)
-            .replace(QLatin1Char(' '), QLatin1Char('-'));
+        const QString namePrefix = DataLoggerService::toString(metadata.mode).replace(' '_L1, '-'_L1);
         DOKIT_ADD_TEST_ROW(namePrefix + u"-null"_s,
                              metadata, QList<DataLoggerService::Samples>{ });
         for (const DataLoggerService::Samples &samples: samplesList) {

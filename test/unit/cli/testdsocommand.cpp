@@ -484,8 +484,7 @@ void TestDsoCommand::outputSamples_data()
             << metadata << list << AbstractCommand::OutputFormat::Text
 
     for (const DsoService::Metadata &metadata: metadatas) {
-        const QString namePrefix = DsoService::toString(metadata.mode)
-            .replace(QLatin1Char(' '), QLatin1Char('-'));
+        const QString namePrefix = DsoService::toString(metadata.mode).replace(' '_L1, '-'_L1);
         DOKIT_ADD_TEST_ROW(namePrefix + u"-null"_s,
                              metadata, QList<DsoService::Samples>{ });
         for (const DsoService::Samples &samples: samplesList) {

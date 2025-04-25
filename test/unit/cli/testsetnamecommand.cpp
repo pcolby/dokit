@@ -70,12 +70,12 @@ void TestSetNameCommand::processOptions_data()
         << QStringList{};
 
     QTest::addRow("11-char-new-name")
-        << QStringList{ u"--new-name"_s, QString(11, QLatin1Char('A')) }
+        << QStringList{ u"--new-name"_s, QString(11, 'A'_L1) }
         << u"AAAAAAAAAAA"_s
         << QStringList{};
 
     QTest::addRow("12-char-new-name")
-        << QStringList{ u"--new-name"_s, QString(12, QLatin1Char('A')) }
+        << QStringList{ u"--new-name"_s, QString(12, 'A'_L1) }
         << u"AAAAAAAAAAAA"_s
         << QStringList{ u"New name cannot exceed 11 characters."_s };
 }
