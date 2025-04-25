@@ -57,7 +57,7 @@ inline QString operator"" _s(const char16_t *str, size_t size) noexcept
 QTPOKIT_END_NAMESPACE
 #undef __QTPOKIT_DEST_SIZE_TYPE
 
-#define QTPOKIT_USE_STRINGLITERALS using namespace _dokit::Literals::StringLiterals;
+#define QTPOKIT_USE_STRINGLITERALS using namespace QTPOKIT_PREPEND_NAMESPACE(_dokit::Literals::StringLiterals);
 #else
 #define QTPOKIT_USE_STRINGLITERALS using namespace Qt::Literals::StringLiterals;
 #endif
