@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testdataloggerservice.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/dataloggerservice.h>
 #include <qtpokit/pokitmeter.h>
@@ -16,6 +17,7 @@ Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DataLoggerService::Metadata))
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 void TestDataLoggerService::toString_Mode_data()
 {
@@ -53,11 +55,11 @@ void TestDataLoggerService::toString_Range_data()
     QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
                           << DataLoggerService::Mode::Idle << QString();
     QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
-                                   << DataLoggerService::Mode::AcVoltage << QStringLiteral("Up to 300mV");
+                                   << DataLoggerService::Mode::AcVoltage << u"Up to 300mV"_s;
     QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
                                  << DataLoggerService::Mode::AcVoltage << QString::fromUtf8("Up to 600V");
     QTest::addRow("Current:Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                   << DataLoggerService::Mode::DcCurrent << QStringLiteral("Up to 150mA");
+                                   << DataLoggerService::Mode::DcCurrent << u"Up to 150mA"_s;
     QTest::addRow("Current:Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
                                  << DataLoggerService::Mode::DcCurrent << QString::fromUtf8("Up to 500μA");
     QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA

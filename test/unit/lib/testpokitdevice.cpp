@@ -3,6 +3,7 @@
 
 #include "testpokitdevice.h"
 #include "../github.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 #include "pokitdevice_p.h"
@@ -15,6 +16,7 @@
 #include <qtpokit/statusservice.h>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 void TestPokitDevice::controller()
 {
@@ -116,8 +118,8 @@ void TestPokitDevice::serviceToString_data()
         << QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAttribute);
 
     // Bonus, unsupported service (we're just aware of it).
-    QTest::addRow("OTA Service") << QBluetoothUuid(QStringLiteral("1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0"))
-        << QStringLiteral("OTA Firmware Update");
+    QTest::addRow("OTA Service") << QBluetoothUuid(u"1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0"_s)
+        << u"OTA Firmware Update"_s;
 }
 
 void TestPokitDevice::serviceToString()

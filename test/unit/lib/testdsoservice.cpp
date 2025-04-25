@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testdsoservice.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/dsoservice.h>
 #include <qtpokit/pokitmeter.h>
@@ -16,6 +17,7 @@ Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DsoService::Metadata))
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 void TestDsoService::toString_Mode_data()
 {
@@ -52,11 +54,11 @@ void TestDsoService::toString_Range_data()
     QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
                           << DsoService::Mode::Idle << QString();
     QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
-                                   << DsoService::Mode::AcVoltage << QStringLiteral("Up to 300mV");
+                                   << DsoService::Mode::AcVoltage << u"Up to 300mV"_s;
     QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
                                  << DsoService::Mode::AcVoltage << QString::fromUtf8("Up to 600V");
     QTest::addRow("Current:Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                   << DsoService::Mode::DcCurrent << QStringLiteral("Up to 150mA");
+                                   << DsoService::Mode::DcCurrent << u"Up to 150mA"_s;
     QTest::addRow("Current:Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
                                  << DsoService::Mode::DcCurrent << QString::fromUtf8("Up to 500μA");
 }

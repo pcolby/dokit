@@ -5,6 +5,7 @@
 #include "outputstreamcapture.h"
 #include "testdata.h"
 #include "../github.h"
+#include "../stringliterals_p.h"
 
 #include "loggerfetchcommand.h"
 
@@ -15,6 +16,8 @@
 
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(DataLoggerService::Metadata)
+
+DOKIT_USE_STRINGLITERALS
 
 void TestLoggerFetchCommand::getService()
 {
@@ -79,23 +82,23 @@ void TestLoggerFetchCommand::outputSamples_data()
     };
 
     #define DOKIT_ADD_TEST_ROW(name, metadata, list) \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv"))) \
+        QTest::newRow(qUtf8Printable(name + u".csv"_s)) \
             << metadata << list << AbstractCommand::OutputFormat::Csv; \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) \
+        QTest::newRow(qUtf8Printable(name + u".json"_s)) \
             << metadata << list << AbstractCommand::OutputFormat::Json; \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".txt"))) \
+        QTest::newRow(qUtf8Printable(name + u".txt"_s)) \
             << metadata << list << AbstractCommand::OutputFormat::Text
 
     for (const DataLoggerService::Metadata &metadata: metadatas) {
         const QString namePrefix = DataLoggerService::toString(metadata.mode)
             .replace(QLatin1Char(' '), QLatin1Char('-'));
-        DOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-null"),
+        DOKIT_ADD_TEST_ROW(namePrefix + u"-null"_s,
                              metadata, QList<DataLoggerService::Samples>{ });
         for (const DataLoggerService::Samples &samples: samplesList) {
             DOKIT_ADD_TEST_ROW(namePrefix + QString::number(samples.front()), metadata,
                                  QList<DataLoggerService::Samples>{ samples });
         }
-        DOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-all"), metadata, samplesList);
+        DOKIT_ADD_TEST_ROW(namePrefix + u"-all"_s, metadata, samplesList);
     }
     #undef DOKIT_ADD_TEST_ROW
 }

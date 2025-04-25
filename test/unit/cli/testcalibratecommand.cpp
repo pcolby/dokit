@@ -4,10 +4,13 @@
 #include "testcalibratecommand.h"
 #include "outputstreamcapture.h"
 #include "testdata.h"
+#include "../stringliterals_p.h"
 
 #include "calibratecommand.h"
 
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
+
+DOKIT_USE_STRINGLITERALS
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -28,7 +31,7 @@ void TestCalibrateCommand::requiredOptions()
     CalibrateCommand command(this);
     MockDeviceCommand mock;
     QCommandLineParser parser;
-    const QStringList expected = mock.requiredOptions(parser) + QStringList{ QStringLiteral("temperature") };
+    const QStringList expected = mock.requiredOptions(parser) + QStringList{ u"temperature"_s };
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
@@ -50,32 +53,32 @@ void TestCalibrateCommand::processOptions_data()
     QTest::addRow("missing")
         << QString()
         << std::numeric_limits<float>::quiet_NaN()
-        << QStringList{ QStringLiteral("Missing required option: temperature")};
+        << QStringList{ u"Missing required option: temperature"_s};
 
-    QTest::addRow("1")   << QStringLiteral("1")   <<   1.0f << QStringList{};
-    QTest::addRow("1.0") << QStringLiteral("1.0") <<   1.0f << QStringList{};
-    QTest::addRow("123") << QStringLiteral("123") << 123.0f << QStringList{};
-    QTest::addRow("-12") << QStringLiteral("-12") << -12.0f << QStringList{};
+    QTest::addRow("1")   << u"1"_s   <<   1.0f << QStringList{};
+    QTest::addRow("1.0") << u"1.0"_s <<   1.0f << QStringList{};
+    QTest::addRow("123") << u"123"_s << 123.0f << QStringList{};
+    QTest::addRow("-12") << u"-12"_s << -12.0f << QStringList{};
 
-    QTest::addRow("0")     << QStringLiteral("0")     << 0.0f   << QStringList{};
-    QTest::addRow("0.0")   << QStringLiteral("0.0")   << 0.0f   << QStringList{};
-    QTest::addRow("0.000") << QStringLiteral("0.000") << 0.0f   << QStringList{};
-    QTest::addRow("0.001") << QStringLiteral("0.001") << 0.001f << QStringList{};
+    QTest::addRow("0")     << u"0"_s     << 0.0f   << QStringList{};
+    QTest::addRow("0.0")   << u"0.0"_s   << 0.0f   << QStringList{};
+    QTest::addRow("0.000") << u"0.000"_s << 0.0f   << QStringList{};
+    QTest::addRow("0.001") << u"0.001"_s << 0.001f << QStringList{};
 
     QTest::addRow("empty")
-        << QStringLiteral("")
+        << u""_s
         << std::numeric_limits<float>::quiet_NaN()
-        << QStringList{ QStringLiteral("Unrecognised temperature format: ")};
+        << QStringList{ u"Unrecognised temperature format: "_s};
 
     QTest::addRow("extraneous")
-        << QStringLiteral("1.0extraneous")
+        << u"1.0extraneous"_s
         << std::numeric_limits<float>::quiet_NaN()
-        << QStringList{ QStringLiteral("Unrecognised temperature format: 1.0extraneous")};
+        << QStringList{ u"Unrecognised temperature format: 1.0extraneous"_s};
 
     QTest::addRow("invalid")
-        << QStringLiteral("invalid")
+        << u"invalid"_s
         << std::numeric_limits<float>::quiet_NaN()
-        << QStringList{ QStringLiteral("Unrecognised temperature format: invalid")};
+        << QStringList{ u"Unrecognised temperature format: invalid"_s};
 }
 
 void TestCalibrateCommand::processOptions()
@@ -84,13 +87,13 @@ void TestCalibrateCommand::processOptions()
     QFETCH(float, expected);
     QFETCH(QStringList, errors);
 
-    QStringList arguments{ QStringLiteral("dokit") }; // The first argument is always the app name.
+    QStringList arguments{ u"dokit"_s }; // The first argument is always the app name.
     if (!argument.isNull()) {
-        arguments += QStringList{ QStringLiteral("--temperature"), argument };
+        arguments += QStringList{ u"--temperature"_s, argument };
     }
 
     QCommandLineParser parser;
-    parser.addOption({QStringLiteral("temperature"), QStringLiteral("description"), QStringLiteral("degrees")});
+    parser.addOption({u"temperature"_s, u"description"_s, u"degrees"_s});
     parser.process(arguments);
 
     CalibrateCommand command(this);

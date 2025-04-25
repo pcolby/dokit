@@ -5,6 +5,7 @@
 #include "outputstreamcapture.h"
 #include "testdata.h"
 #include "../github.h"
+#include "../stringliterals_p.h"
 
 #include "statuscommand.h"
 
@@ -12,6 +13,8 @@
 
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(StatusService::DeviceCharacteristics)
+
+DOKIT_USE_STRINGLITERALS
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -93,13 +96,13 @@ void TestStatusCommand::outputDeviceStatus_data()
     // Sample from a real Pokit Meter device.
     DOKIT_ADD_TEST_ROW("PokitMeter", ({
         QVersionNumber(1,4), 60, 2, 1000, 1000, 8192, 0,
-        QBluetoothAddress(QStringLiteral("84:2E:14:2C:03:A8"))
+        QBluetoothAddress(u"84:2E:14:2C:03:A8"_s)
     }));
 
     // Sample from a real Pokit Pro device.
     DOKIT_ADD_TEST_ROW("PokitPro", ({
         QVersionNumber(1,3), 850, 10, 3000, 1000, 16384, 0,
-        QBluetoothAddress(QStringLiteral("5C:02:72:09:AA:25"))
+        QBluetoothAddress(u"5C:02:72:09:AA:25"_s)
     }));
 
     #undef DOKIT_ADD_TEST_ROW
