@@ -163,8 +163,7 @@ void TestDsoCommand::processOptions_data()
             DsoService::Command::FreeRunning, 0.123f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral(
-            "If either option is provided, then both must be: trigger-level, trigger-mode") };
+        << QStringList{ u"If either option is provided, then both must be: trigger-level, trigger-mode"_s };
 
     QTest::addRow("trigger-mode-requires-trigger-level")
         << QStringList{
@@ -175,8 +174,7 @@ void TestDsoCommand::processOptions_data()
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral(
-            "If either option is provided, then both must be: trigger-level, trigger-mode") };
+        << QStringList{ u"If either option is provided, then both must be: trigger-level, trigger-mode"_s };
 
     QTest::addRow("free-running")
         << QStringList{

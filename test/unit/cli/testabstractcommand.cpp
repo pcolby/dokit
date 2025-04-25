@@ -60,10 +60,10 @@ void TestAbstractCommand::escapeCsvField_data()
 {
     QTest::addColumn<QString>("field");
     QTest::addColumn<QString>("expected");
-    QTest::addRow("<empty>") << QString()              << QString();
-    QTest::addRow("abc")     << u"abc"_s  << u"abc"_s;
-    QTest::addRow("a,c")     << u"a,c"_s  << QStringLiteral(R"("a,c")");
-    QTest::addRow(R"(a"c)")  << QStringLiteral(R"(a"c)") << QStringLiteral(R"("a""c")");
+    QTest::addRow("<empty>") << QString()   << QString();
+    QTest::addRow("abc")     << u"abc"_s    << u"abc"_s;
+    QTest::addRow("a,c")     << u"a,c"_s    << uR"("a,c")"_s;
+    QTest::addRow(R"(a"c)")  << uR"(a"c)"_s << uR"("a""c")"_s;
 }
 
 void TestAbstractCommand::escapeCsvField()
