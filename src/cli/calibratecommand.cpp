@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "calibratecommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/calibrationservice.h>
 #include <qtpokit/pokitdevice.h>
@@ -10,6 +11,8 @@
 #include <QJsonObject>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class CalibrateCommand
@@ -28,7 +31,7 @@ CalibrateCommand::CalibrateCommand(QObject * const parent) : DeviceCommand(paren
 QStringList CalibrateCommand::requiredOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::requiredOptions(parser) + QStringList{
-        QLatin1String("temperature"),
+        u"temperature"_s,
     };
 }
 
@@ -50,7 +53,7 @@ QStringList CalibrateCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    const QString temperatureString = parser.value(QLatin1String("temperature"));
+    const QString temperatureString = parser.value(u"temperature"_s);
     bool ok;
     const float temperatureFloat = temperatureString.toFloat(&ok);
     if (ok) {
@@ -103,7 +106,7 @@ void CalibrateCommand::temperatureCalibrated()
         std::cout << qUtf8Printable(tr("calibration_result\nsuccess\n"));
         break;
     case OutputFormat::Json:
-        std::cout << qUtf8Printable(QLatin1String("true\n"));
+        std::cout << qUtf8Printable(u"true\n"_s);
         break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Done.\n"));

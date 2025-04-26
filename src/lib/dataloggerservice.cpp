@@ -9,6 +9,7 @@
 #include <qtpokit/dataloggerservice.h>
 #include "dataloggerservice_p.h"
 #include "pokitproducts_p.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/statusservice.h>
 
@@ -18,6 +19,7 @@
 #include <QtEndian>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class DataLoggerService
@@ -387,7 +389,7 @@ DataLoggerService::Metadata DataLoggerServicePrivate::parseMetadata(const QByteA
     };
 
     // Pokit Meter: 15 bytes, Pokit Pro: 23 bytes.
-    if (!checkSize(QLatin1String("Metadata"), value, 15, 23)) {
+    if (!checkSize(u"Metadata"_s, value, 15, 23)) {
         return metadata;
     }
 

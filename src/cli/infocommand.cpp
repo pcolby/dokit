@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "infocommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/deviceinfoservice.h>
 #include <qtpokit/pokitdevice.h>
@@ -10,6 +11,8 @@
 #include <QJsonObject>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class InfoCommand
@@ -94,23 +97,23 @@ void InfoCommand::serviceDetailsDiscovered()
         break;
     case OutputFormat::Json: {
         QJsonObject jsonObject{
-            { QLatin1String("manufacturerName"), service->manufacturer() },
-            { QLatin1String("modelNumber"),      service->modelNumber() },
-            { QLatin1String("hardwareRevision"), service->hardwareRevision() },
-            { QLatin1String("firmwareRevision"), service->firmwareRevision() },
-            { QLatin1String("softwareRevision"), service->softwareRevision() },
+            { u"manufacturerName"_s, service->manufacturer() },
+            { u"modelNumber"_s,      service->modelNumber() },
+            { u"hardwareRevision"_s, service->hardwareRevision() },
+            { u"firmwareRevision"_s, service->firmwareRevision() },
+            { u"softwareRevision"_s, service->softwareRevision() },
         };
         if (!deviceName.isEmpty()) {
-            jsonObject.insert(QLatin1String("deviceName"), deviceName);
+            jsonObject.insert(u"deviceName"_s, deviceName);
         }
         if (!deviceAddress.isNull()) {
-            jsonObject.insert(QLatin1String("deviceAddress"), deviceAddress.toString());
+            jsonObject.insert(u"deviceAddress"_s, deviceAddress.toString());
         }
         if (!deviceUuid.isNull()) {
-            jsonObject.insert(QLatin1String("deviceUuid"), deviceUuid.toString());
+            jsonObject.insert(u"deviceUuid"_s, deviceUuid.toString());
         }
         if (!serialNumber.isNull()) {
-            jsonObject.insert(QLatin1String("serialNumber"), serialNumber);
+            jsonObject.insert(u"serialNumber"_s, serialNumber);
         }
         std::cout << QJsonDocument(jsonObject).toJson().toStdString();
     }   break;

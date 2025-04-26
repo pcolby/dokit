@@ -2,11 +2,14 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "flashledcommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/statusservice.h>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class FlashLedCommand
@@ -90,7 +93,7 @@ void FlashLedCommand::deviceLedFlashed()
         std::cout << qUtf8Printable(tr("flash_led_result\nsuccess\n"));
         break;
     case OutputFormat::Json:
-        std::cout << qUtf8Printable(QLatin1String("true\n"));
+        std::cout << qUtf8Printable(u"true\n"_s);
         break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Done.\n"));

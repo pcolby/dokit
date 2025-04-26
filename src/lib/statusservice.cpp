@@ -8,10 +8,12 @@
 
 #include <qtpokit/statusservice.h>
 #include "statusservice_p.h"
+#include "../stringliterals_p.h"
 
 #include <QtEndian>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class StatusService
@@ -34,17 +36,17 @@ QTPOKIT_BEGIN_NAMESPACE
 QString StatusService::toString(const StatusService::DeviceStatus &status)
 {
     switch (status) {
-    case DeviceStatus::Idle:                 return  QLatin1String("Idle");
-    case DeviceStatus::MultimeterDcVoltage:  return  QLatin1String("MultimeterDcVoltage");
-    case DeviceStatus::MultimeterAcVoltage:  return  QLatin1String("MultimeterAcVoltage");
-    case DeviceStatus::MultimeterDcCurrent:  return  QLatin1String("MultimeterDcCurrent");
-    case DeviceStatus::MultimeterAcCurrent:  return  QLatin1String("MultimeterAcCurrent");
-    case DeviceStatus::MultimeterResistance: return  QLatin1String("MultimeterResistance");
-    case DeviceStatus::MultimeterDiode:      return  QLatin1String("MultimeterDiode");
-    case DeviceStatus::MultimeterContinuity: return  QLatin1String("MultimeterContinuity");
-    case DeviceStatus::MultimeterTemperature:return  QLatin1String("MultimeterTemperature");
-    case DeviceStatus::DsoModeSampling:      return  QLatin1String("DsoModeSampling");
-    case DeviceStatus::LoggerModeSampling:   return  QLatin1String("LoggerModeSampling");
+    case DeviceStatus::Idle:                 return  u"Idle"_s;
+    case DeviceStatus::MultimeterDcVoltage:  return  u"MultimeterDcVoltage"_s;
+    case DeviceStatus::MultimeterAcVoltage:  return  u"MultimeterAcVoltage"_s;
+    case DeviceStatus::MultimeterDcCurrent:  return  u"MultimeterDcCurrent"_s;
+    case DeviceStatus::MultimeterAcCurrent:  return  u"MultimeterAcCurrent"_s;
+    case DeviceStatus::MultimeterResistance: return  u"MultimeterResistance"_s;
+    case DeviceStatus::MultimeterDiode:      return  u"MultimeterDiode"_s;
+    case DeviceStatus::MultimeterContinuity: return  u"MultimeterContinuity"_s;
+    case DeviceStatus::MultimeterTemperature:return  u"MultimeterTemperature"_s;
+    case DeviceStatus::DsoModeSampling:      return  u"DsoModeSampling"_s;
+    case DeviceStatus::LoggerModeSampling:   return  u"LoggerModeSampling"_s;
     }
     return QString();
 }
@@ -55,8 +57,8 @@ QString StatusService::toString(const StatusService::DeviceStatus &status)
 QString StatusService::toString(const StatusService::BatteryStatus &status)
 {
     switch (status) {
-    case BatteryStatus::Low:  return QLatin1String("Low");
-    case BatteryStatus::Good: return QLatin1String("Good");
+    case BatteryStatus::Low:  return u"Low"_s;
+    case BatteryStatus::Good: return u"Good"_s;
     }
     return QString();
 }
@@ -75,9 +77,9 @@ QString StatusService::toString(const StatusService::BatteryStatus &status)
 QString StatusService::toString(const StatusService::SwitchPosition &position)
 {
     switch (position) {
-    case SwitchPosition::Voltage:     return QLatin1String("Voltage");
-    case SwitchPosition::MultiMode:   return QLatin1String("MultiMode");
-    case SwitchPosition::HighCurrent: return QLatin1String("HighCurrent");
+    case SwitchPosition::Voltage:     return u"Voltage"_s;
+    case SwitchPosition::MultiMode:   return u"MultiMode"_s;
+    case SwitchPosition::HighCurrent: return u"HighCurrent"_s;
     }
     return QString();
 }
@@ -88,9 +90,9 @@ QString StatusService::toString(const StatusService::SwitchPosition &position)
 QString StatusService::toString(const StatusService::ChargingStatus &status)
 {
     switch (status) {
-    case ChargingStatus::Discharging: return QLatin1String("Discharging");
-    case ChargingStatus::Charging:    return QLatin1String("Charging");
-    case ChargingStatus::Charged:     return QLatin1String("Charged");
+    case ChargingStatus::Discharging: return u"Discharging"_s;
+    case ChargingStatus::Charging:    return u"Charging"_s;
+    case ChargingStatus::Charged:     return u"Charged"_s;
     }
     return QString();
 }
@@ -101,8 +103,8 @@ QString StatusService::toString(const StatusService::ChargingStatus &status)
 QString StatusService::toString(const StatusService::TorchStatus &status)
 {
     switch (status) {
-    case TorchStatus::Off: return QLatin1String("Off");
-    case TorchStatus::On:  return QLatin1String("On");
+    case TorchStatus::Off: return u"Off"_s;
+    case TorchStatus::On:  return u"On"_s;
     }
     return QString();
 }
@@ -113,9 +115,9 @@ QString StatusService::toString(const StatusService::TorchStatus &status)
 QString StatusService::toString(const StatusService::ButtonStatus &status)
 {
     switch (status) {
-    case ButtonStatus::Released: return QLatin1String("Released");
-    case ButtonStatus::Pressed:  return QLatin1String("Pressed");
-    case ButtonStatus::Held:     return QLatin1String("Held");
+    case ButtonStatus::Released: return u"Released"_s;
+    case ButtonStatus::Pressed:  return u"Pressed"_s;
+    case ButtonStatus::Held:     return u"Held"_s;
     }
     return QString();
 }
@@ -583,7 +585,7 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
     };
     Q_ASSERT(characteristics.firmwareVersion.isNull());  // How we indicate failure.
 
-    if (!checkSize(QLatin1String("Device Characteristics"), value, 20, 20)) {
+    if (!checkSize(u"Device Characteristics"_s, value, 20, 20)) {
         return characteristics;
     }
 
@@ -636,7 +638,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
      * the device's current charging status.
      */
 
-    if (!checkSize(QLatin1String("Status"), value, 5, 8)) {
+    if (!checkSize(u"Status"_s, value, 5, 8)) {
         return status;
     }
 
@@ -672,7 +674,7 @@ StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
  */
 std::optional<StatusService::TorchStatus> StatusServicePrivate::parseTorchStatus(const QByteArray &value)
 {
-    if (!checkSize(QLatin1String("Torch"), value, 1, 1)) {
+    if (!checkSize(u"Torch"_s, value, 1, 1)) {
         return std::nullopt;
     }
 
@@ -686,7 +688,7 @@ std::optional<StatusService::TorchStatus> StatusServicePrivate::parseTorchStatus
  */
 std::optional<StatusService::ButtonStatus> StatusServicePrivate::parseButtonPress(const QByteArray &value)
 {
-    if (!checkSize(QLatin1String("Torch"), value, 2, 2)) {
+    if (!checkSize(u"Torch"_s, value, 2, 2)) {
         return std::nullopt;
     }
 
@@ -756,7 +758,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::torch) {
-        if (!checkSize(QLatin1String("Torch"), value, 1, 1)) {
+        if (!checkSize(u"Torch"_s, value, 1, 1)) {
             return;
         }
         const StatusService::TorchStatus status = static_cast<StatusService::TorchStatus>(value.at(0));
@@ -766,7 +768,7 @@ void StatusServicePrivate::characteristicRead(const QLowEnergyCharacteristic &ch
     }
 
     if (characteristic.uuid() == StatusService::CharacteristicUuids::buttonPress) {
-        if (!checkSize(QLatin1String("Torch"), value, 2, 2)) {
+        if (!checkSize(u"Torch"_s, value, 2, 2)) {
             return;
         }
         const StatusService::ButtonStatus status = static_cast<StatusService::ButtonStatus>(value.at(1));

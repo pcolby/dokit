@@ -3,6 +3,7 @@
 
 #include "testabstractpokitservice.h"
 #include "../github.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/abstractpokitservice.h>
 #include "abstractpokitservice_p.h"
@@ -14,6 +15,7 @@
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 class MockPokitService : public AbstractPokitService
 {
@@ -144,16 +146,16 @@ void TestAbstractPokitService::checkSize_data()
     QTest::addColumn<bool>("failOnMax");
     QTest::addColumn<bool>("expected");
 
-    QTest::addRow("ok") << QStringLiteral("<label>") << QByteArray(5, '\x01')
+    QTest::addRow("ok") << u"<label>"_s << QByteArray(5, '\x01')
         << 2 << 10 << false << true;
 
-    QTest::addRow("too-short") << QStringLiteral("<label>") << QByteArray("\x01")
+    QTest::addRow("too-short") << u"<label>"_s << QByteArray("\x01")
         << 2 << 10 << false << false;
 
-    QTest::addRow("long") << QStringLiteral("<label>") << QByteArray(20, '\x01')
+    QTest::addRow("long") << u"<label>"_s << QByteArray(20, '\x01')
         << 2 << 10 << false << true;
 
-    QTest::addRow("too-long") << QStringLiteral("<label>") << QByteArray(20,'\x01')
+    QTest::addRow("too-long") << u"<label>"_s << QByteArray(20,'\x01')
         << 2 << 10 << true << false;
 }
 
@@ -166,12 +168,12 @@ void TestAbstractPokitService::checkSize()
     QFETCH(bool, failOnMax);
     QFETCH(bool, expected);
     if (data.size() < min) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^<label> requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^<label> requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (data.size() > max) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^<label> has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^<label> has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     QCOMPARE(AbstractPokitServicePrivate::checkSize(label, data, min, max, failOnMax), expected);
 }
@@ -184,19 +186,19 @@ void TestAbstractPokitService::toHexString_data()
     QTest::addColumn<QString>("expected");
 
     QTest::addRow("empty") << QByteArray() << 10
-        << QStringLiteral("0x");
+        << u"0x"_s;
 
     QTest::addRow("ok") << QByteArray("\x01\x02\x03\x04\x05") << 10
-        << QStringLiteral("0x01,02,03,04,05");
+        << u"0x01,02,03,04,05"_s;
 
     QTest::addRow("just-ok") << QByteArray("\x01\x02\x03\x04\x05") << 5
-        << QStringLiteral("0x01,02,03,04,05");
+        << u"0x01,02,03,04,05"_s;
 
     QTest::addRow("just-over") << QByteArray("\x01\x02\x03\x04\x05") << 4
-        << QStringLiteral("0x01,...,05");
+        << u"0x01,...,05"_s;
 
     QTest::addRow("well-over") << QByteArray(1000, '\x01') << 10
-        << QStringLiteral("0x01,01,01,01,...,01,01,01,01");
+        << u"0x01,01,01,01,...,01,01,01,01"_s;
 }
 
 void TestAbstractPokitService::toHexString()

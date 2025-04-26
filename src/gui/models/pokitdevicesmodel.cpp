@@ -3,12 +3,15 @@
 
 #include "pokitdevicesmodel.h"
 #include "../resources.h"
+#include "../../stringliterals_p.h"
 
 #include <qtpokit/pokitdiscoveryagent.h>
 #include <qtpokit/pokitproducts.h>
 
 #include <QBluetoothUuid>
 #include <QDebug>
+
+DOKIT_USE_STRINGLITERALS
 
 PokitDevicesModel::PokitDevicesModel(QObject * const parent) : QStandardItemModel(parent)
 {
@@ -33,11 +36,11 @@ void PokitDevicesModel::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 
     switch (pokitProduct(info)) {
         case PokitProduct::PokitMeter: {
-            static QIcon pokitMeterIcon = loadPokitMeterIcon(QStringLiteral("transparent"));
+            static QIcon pokitMeterIcon = loadPokitMeterIcon(u"transparent"_s);
             item->setIcon(pokitMeterIcon);
         }   break;
         case PokitProduct::PokitPro: {
-            static QIcon pokitProIcon = loadPokitProIcon(QStringLiteral("gray"));
+            static QIcon pokitProIcon = loadPokitProIcon(u"gray"_s);
             item->setIcon(pokitProIcon);
         }   break;
         default: {

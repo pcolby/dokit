@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "loggerstartcommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
@@ -10,6 +11,8 @@
 #include <QJsonObject>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class LoggerStartCommand
@@ -28,16 +31,16 @@ LoggerStartCommand::LoggerStartCommand(QObject * const parent) : DeviceCommand(p
 QStringList LoggerStartCommand::requiredOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::requiredOptions(parser) + QStringList{
-        QLatin1String("mode"),
+        u"mode"_s,
     };
 }
 
 QStringList LoggerStartCommand::supportedOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::supportedOptions(parser) + QStringList{
-        QLatin1String("interval"),
-        QLatin1String("range"), // May still be required by processOptions(), depending on the --mode option's value.
-        QLatin1String("timestamp"),
+        u"interval"_s,
+        u"range"_s, // May still be required by processOptions(), depending on the --mode option's value.
+        u"timestamp"_s,
     };
 }
 
@@ -55,40 +58,40 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the (required) mode option.
-    if (const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
-        mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
+    if (const QString mode = parser.value(u"mode"_s).trimmed().toLower();
+        mode.startsWith(u"ac v"_s) || mode.startsWith(u"vac"_s)) {
         settings.mode = DataLoggerService::Mode::AcVoltage;
         minRangeFunc = minVoltageRange;
-    } else if (mode.startsWith(QLatin1String("dc v")) || mode.startsWith(QLatin1String("vdc"))) {
+    } else if (mode.startsWith(u"dc v"_s) || mode.startsWith(u"vdc"_s)) {
         settings.mode = DataLoggerService::Mode::DcVoltage;
         minRangeFunc = minVoltageRange;
-    } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
+    } else if (mode.startsWith(u"ac c"_s) || mode.startsWith(u"aac"_s)) {
         settings.mode = DataLoggerService::Mode::AcCurrent;
         minRangeFunc = minCurrentRange;
-    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
+    } else if (mode.startsWith(u"dc c"_s) || mode.startsWith(u"adc"_s)) {
         settings.mode = DataLoggerService::Mode::DcCurrent;
         minRangeFunc = minCurrentRange;
-    } else if (mode.startsWith(QLatin1String("temp"))) {
+    } else if (mode.startsWith(u"temp"_s)) {
         settings.mode = DataLoggerService::Mode::Temperature;
         minRangeFunc = nullptr;
     } else {
         minRangeFunc = nullptr;
-        errors.append(tr("Unknown logger mode: %1").arg(parser.value(QLatin1String("mode"))));
+        errors.append(tr("Unknown logger mode: %1").arg(parser.value(u"mode"_s)));
         return errors;
     }
 
     // Parse the range option.
     rangeOptionValue = 0;
-    if (parser.isSet(QLatin1String("range"))) {
-        const QString value = parser.value(QLatin1String("range"));
+    if (parser.isSet(u"range"_s)) {
+        const QString value = parser.value(u"range"_s);
         switch (settings.mode) {
         case DataLoggerService::Mode::DcVoltage:
         case DataLoggerService::Mode::AcVoltage:
-            rangeOptionValue = parseNumber<std::milli>(value, QLatin1String("V"), 50); // mV.
+            rangeOptionValue = parseNumber<std::milli>(value, u"V"_s, 50); // mV.
             break;
         case DataLoggerService::Mode::DcCurrent:
         case DataLoggerService::Mode::AcCurrent:
-            rangeOptionValue = parseNumber<std::milli>(value, QLatin1String("A"), 5); // mA.
+            rangeOptionValue = parseNumber<std::milli>(value, u"A"_s, 5); // mA.
             break;
         default:
             qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
@@ -97,14 +100,13 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
             errors.append(tr("Invalid range value: %1").arg(value));
         }
     } else if (settings.mode != DataLoggerService::Mode::Temperature) {
-        errors.append(tr("Missing required option for logger mode '%1': range")
-            .arg(parser.value(QLatin1String("mode"))));
+        errors.append(tr("Missing required option for logger mode '%1': range").arg(parser.value(u"mode"_s)));
     }
 
     // Parse the interval option.
-    if (parser.isSet(QLatin1String("interval"))) {
-        const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseNumber<std::milli>(value, QLatin1String("s"), 500);
+    if (parser.isSet(u"interval"_s)) {
+        const QString value = parser.value(u"interval"_s);
+        const quint32 interval = parseNumber<std::milli>(value, u"s"_s, 500);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
@@ -114,8 +116,8 @@ QStringList LoggerStartCommand::processOptions(const QCommandLineParser &parser)
 
     // Parse the timestamp option.
     settings.timestamp = (quint32)QDateTime::currentSecsSinceEpoch(); // Note, subject to Y2038 epochalypse.
-    if (parser.isSet(QLatin1String("timestamp"))) {
-        const QString value = parser.value(QLatin1String("timestamp"));
+    if (parser.isSet(u"timestamp"_s)) {
+        const QString value = parser.value(u"timestamp"_s);
         QLocale locale; bool ok;
         static_assert(sizeof(uint) == sizeof(settings.timestamp), "QLocale has no toUint32().");
         const int timestamp = locale.toUInt(value, &ok);
@@ -139,8 +141,7 @@ AbstractPokitService * LoggerStartCommand::getService()
     if (!service) {
         service = device->dataLogger();
         Q_ASSERT(service);
-        connect(service, &DataLoggerService::settingsWritten,
-                this, &LoggerStartCommand::settingsWritten);
+        connect(service, &DataLoggerService::settingsWritten, this, &LoggerStartCommand::settingsWritten);
     }
     return service;
 }
@@ -155,8 +156,7 @@ void LoggerStartCommand::serviceDetailsDiscovered()
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service->pokitProduct(), rangeOptionValue);
     const QString range = service->toString(settings.range, settings.mode);
-    qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3ms.").arg(
-        DataLoggerService::toString(settings.mode),
+    qCInfo(lc).noquote() << tr("Logging %1, with range %2, every %L3ms.").arg(DataLoggerService::toString(settings.mode),
         (range.isNull()) ? QString::fromLatin1("N/A") : range).arg(settings.updateInterval);
     service->setSettings(settings);
 }
@@ -186,7 +186,7 @@ void LoggerStartCommand::settingsWritten()
         std::cout << qUtf8Printable(tr("logger_start_result\nsuccess\n"));
         break;
     case OutputFormat::Json:
-        std::cout << qUtf8Printable(QLatin1String("true\n"));
+        std::cout << qUtf8Printable(u"true\n"_s);
         break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Done.\n"));

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testpokitpro.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitpro.h>
 
@@ -11,16 +12,17 @@ Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitPro::ResistanceRange))
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitPro::VoltageRange))
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 void TestPokitPro::toString_Capacitance_data()
 {
     QTest::addColumn<PokitPro::CapacitanceRange>("range");
     QTest::addColumn<QString>("expected");
 
-    QTest::addRow("100n") << PokitPro::CapacitanceRange::_100nF    << QStringLiteral("Up to 100nF");
+    QTest::addRow("100n") << PokitPro::CapacitanceRange::_100nF    << u"Up to 100nF"_s;
     QTest::addRow("10μF") << PokitPro::CapacitanceRange::_10uF     << QString::fromUtf8("Up to 10μF");
-    QTest::addRow("1mF")  << PokitPro::CapacitanceRange::_1mF      << QStringLiteral("Up to 1mF");
-    QTest::addRow("auto") << PokitPro::CapacitanceRange::AutoRange << QStringLiteral("Auto-range");
+    QTest::addRow("1mF")  << PokitPro::CapacitanceRange::_1mF      << u"Up to 1mF"_s;
+    QTest::addRow("auto") << PokitPro::CapacitanceRange::AutoRange << u"Auto-range"_s;
 }
 
 void TestPokitPro::toString_Capacitance()
@@ -54,13 +56,13 @@ void TestPokitPro::toString_Current_data()
     QTest::addColumn<QString>("expected");
 
     QTest::addRow("500μA") << PokitPro::CurrentRange::_500uA    << QString::fromUtf8("Up to 500μA");
-    QTest::addRow("2mA")   << PokitPro::CurrentRange::_2mA      << QStringLiteral("Up to 2mA");
-    QTest::addRow("10mA")  << PokitPro::CurrentRange::_10mA     << QStringLiteral("Up to 10mA");
-    QTest::addRow("125mA") << PokitPro::CurrentRange::_125mA    << QStringLiteral("Up to 125mA");
-    QTest::addRow("300mA") << PokitPro::CurrentRange::_300mA    << QStringLiteral("Up to 300mA");
-    QTest::addRow("3A")    << PokitPro::CurrentRange::_3A       << QStringLiteral("Up to 3A");
-    QTest::addRow("10A")   << PokitPro::CurrentRange::_10A      << QStringLiteral("Up to 10A");
-    QTest::addRow("auto")  << PokitPro::CurrentRange::AutoRange << QStringLiteral("Auto-range");
+    QTest::addRow("2mA")   << PokitPro::CurrentRange::_2mA      << u"Up to 2mA"_s;
+    QTest::addRow("10mA")  << PokitPro::CurrentRange::_10mA     << u"Up to 10mA"_s;
+    QTest::addRow("125mA") << PokitPro::CurrentRange::_125mA    << u"Up to 125mA"_s;
+    QTest::addRow("300mA") << PokitPro::CurrentRange::_300mA    << u"Up to 300mA"_s;
+    QTest::addRow("3A")    << PokitPro::CurrentRange::_3A       << u"Up to 3A"_s;
+    QTest::addRow("10A")   << PokitPro::CurrentRange::_10A      << u"Up to 10A"_s;
+    QTest::addRow("auto")  << PokitPro::CurrentRange::AutoRange << u"Auto-range"_s;
 }
 
 void TestPokitPro::toString_Current()
@@ -108,7 +110,7 @@ void TestPokitPro::toString_Resistance_data()
     QTest::addRow("700KΩ") << PokitPro::ResistanceRange::_700K     << QString::fromUtf8("Up to 700KΩ");
     QTest::addRow("1MΩ")   << PokitPro::ResistanceRange::_1M       << QString::fromUtf8("Up to 1MΩ");
     QTest::addRow("3MΩ")   << PokitPro::ResistanceRange::_3M       << QString::fromUtf8("Up to 3MΩ");
-    QTest::addRow("auto")  << PokitPro::ResistanceRange::AutoRange << QStringLiteral("Auto-range");
+    QTest::addRow("auto")  << PokitPro::ResistanceRange::AutoRange << u"Auto-range"_s;
 }
 
 void TestPokitPro::toString_Resistance()
@@ -149,15 +151,15 @@ void TestPokitPro::toString_Voltage_data()
     QTest::addColumn<PokitPro::VoltageRange>("range");
     QTest::addColumn<QString>("expected");
 
-    QTest::addRow("250mV") << PokitPro::VoltageRange::_250mV    << QStringLiteral("Up to 250mV");
-    QTest::addRow("2V")    << PokitPro::VoltageRange::_2V       << QStringLiteral("Up to 2V");
-    QTest::addRow("10V")   << PokitPro::VoltageRange::_10V      << QStringLiteral("Up to 10V");
-    QTest::addRow("30V")   << PokitPro::VoltageRange::_30V      << QStringLiteral("Up to 30V");
-    QTest::addRow("60V")   << PokitPro::VoltageRange::_60V      << QStringLiteral("Up to 60V");
-    QTest::addRow("125V")  << PokitPro::VoltageRange::_125V     << QStringLiteral("Up to 125V");
-    QTest::addRow("400V")  << PokitPro::VoltageRange::_400V     << QStringLiteral("Up to 400V");
-    QTest::addRow("600V")  << PokitPro::VoltageRange::_600V     << QStringLiteral("Up to 600V");
-    QTest::addRow("auto")  << PokitPro::VoltageRange::AutoRange << QStringLiteral("Auto-range");
+    QTest::addRow("250mV") << PokitPro::VoltageRange::_250mV    << u"Up to 250mV"_s;
+    QTest::addRow("2V")    << PokitPro::VoltageRange::_2V       << u"Up to 2V"_s;
+    QTest::addRow("10V")   << PokitPro::VoltageRange::_10V      << u"Up to 10V"_s;
+    QTest::addRow("30V")   << PokitPro::VoltageRange::_30V      << u"Up to 30V"_s;
+    QTest::addRow("60V")   << PokitPro::VoltageRange::_60V      << u"Up to 60V"_s;
+    QTest::addRow("125V")  << PokitPro::VoltageRange::_125V     << u"Up to 125V"_s;
+    QTest::addRow("400V")  << PokitPro::VoltageRange::_400V     << u"Up to 400V"_s;
+    QTest::addRow("600V")  << PokitPro::VoltageRange::_600V     << u"Up to 600V"_s;
+    QTest::addRow("auto")  << PokitPro::VoltageRange::AutoRange << u"Auto-range"_s;
 }
 
 void TestPokitPro::toString_Voltage()

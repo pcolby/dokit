@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "metercommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
@@ -9,6 +10,8 @@
 #include <QJsonObject>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class MeterCommand
@@ -27,16 +30,16 @@ MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent)
 QStringList MeterCommand::requiredOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::requiredOptions(parser) + QStringList{
-        QLatin1String("mode"),
+        u"mode"_s,
     };
 }
 
 QStringList MeterCommand::supportedOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::supportedOptions(parser) + QStringList{
-        QLatin1String("interval"),
-        QLatin1String("range"),
-        QLatin1String("samples"),
+        u"interval"_s,
+        u"range"_s,
+        u"samples"_s,
     };
 }
 
@@ -54,43 +57,43 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the (required) mode option.
-    if (const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
-        mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
+    if (const QString mode = parser.value(u"mode"_s).trimmed().toLower();
+        mode.startsWith(u"ac v"_s) || mode.startsWith(u"vac"_s)) {
         settings.mode = MultimeterService::Mode::AcVoltage;
         minRangeFunc = minVoltageRange;
-    } else if (mode.startsWith(QLatin1String("dc v")) || mode.startsWith(QLatin1String("vdc"))) {
+    } else if (mode.startsWith(u"dc v"_s) || mode.startsWith(u"vdc"_s)) {
         settings.mode = MultimeterService::Mode::DcVoltage;
         minRangeFunc = minVoltageRange;
-    } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
+    } else if (mode.startsWith(u"ac c"_s) || mode.startsWith(u"aac"_s)) {
         settings.mode = MultimeterService::Mode::AcCurrent;
         minRangeFunc = minCurrentRange;
-    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
+    } else if (mode.startsWith(u"dc c"_s) || mode.startsWith(u"adc"_s)) {
         settings.mode = MultimeterService::Mode::DcCurrent;
         minRangeFunc = minCurrentRange;
-    } else if (mode.startsWith(QLatin1String("res"))) {
+    } else if (mode.startsWith(u"res"_s)) {
         settings.mode = MultimeterService::Mode::Resistance;
         minRangeFunc = minResistanceRange;
-    } else if (mode.startsWith(QLatin1String("dio"))) {
+    } else if (mode.startsWith(u"dio"_s)) {
         settings.mode = MultimeterService::Mode::Diode;
         minRangeFunc = nullptr;
-    } else if (mode.startsWith(QLatin1String("cont"))) {
+    } else if (mode.startsWith(u"cont"_s)) {
         settings.mode = MultimeterService::Mode::Continuity;
         minRangeFunc = nullptr;
-    } else if (mode.startsWith(QLatin1String("temp"))) {
+    } else if (mode.startsWith(u"temp"_s)) {
         settings.mode = MultimeterService::Mode::Temperature;
         minRangeFunc = nullptr;
-    } else if (mode.startsWith(QLatin1String("cap"))) {
+    } else if (mode.startsWith(u"cap"_s)) {
         settings.mode = MultimeterService::Mode::Capacitance;
         minRangeFunc = minCapacitanceRange;
     } else {
-        errors.append(tr("Unknown meter mode: %1").arg(parser.value(QLatin1String("mode"))));
+        errors.append(tr("Unknown meter mode: %1").arg(parser.value(u"mode"_s)));
         return errors;
     }
 
     // Parse the interval option.
-    if (parser.isSet(QLatin1String("interval"))) {
-        const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseNumber<std::milli>(value, QLatin1String("s"), 500);
+    if (parser.isSet(u"interval"_s)) {
+        const QString value = parser.value(u"interval"_s);
+        const quint32 interval = parseNumber<std::milli>(value, u"s"_s, 500);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
@@ -100,23 +103,23 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
 
     // Parse the range option.
     rangeOptionValue = 0; // Default to auto.
-    if (parser.isSet(QLatin1String("range"))) {
-        const QString value = parser.value(QLatin1String("range"));
-        if (value.trimmed().compare(QLatin1String("auto"), Qt::CaseInsensitive) != 0) {
+    if (parser.isSet(u"range"_s)) {
+        const QString value = parser.value(u"range"_s);
+        if (value.trimmed().compare(u"auto"_s, Qt::CaseInsensitive) != 0) {
             switch (settings.mode) {
             case MultimeterService::Mode::DcVoltage:
             case MultimeterService::Mode::AcVoltage:
-                rangeOptionValue =  parseNumber<std::milli>(value, QLatin1String("V"), 50); // mV.
+                rangeOptionValue =  parseNumber<std::milli>(value, u"V"_s, 50); // mV.
                 break;
             case MultimeterService::Mode::DcCurrent:
             case MultimeterService::Mode::AcCurrent:
-                rangeOptionValue = parseNumber<std::milli>(value, QLatin1String("A"), 5); // mA.
+                rangeOptionValue = parseNumber<std::milli>(value, u"A"_s, 5); // mA.
                 break;
             case MultimeterService::Mode::Resistance:
-                rangeOptionValue = parseNumber<std::ratio<1>>(value, QLatin1String("ohms"));
+                rangeOptionValue = parseNumber<std::ratio<1>>(value, u"ohms"_s);
                 break;
             case MultimeterService::Mode::Capacitance:
-                rangeOptionValue = parseNumber<std::nano>(value, QLatin1String("F"), 500); // pF.
+                rangeOptionValue = parseNumber<std::nano>(value, u"F"_s, 500); // pF.
                 break;
             default:
                 qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);
@@ -128,9 +131,9 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the samples option.
-    if (parser.isSet(QLatin1String("samples"))) {
-        const QString value = parser.value(QLatin1String("samples"));
-        const quint32 samples = parseNumber<std::ratio<1>>(value, QLatin1String("S"));
+    if (parser.isSet(u"samples"_s)) {
+        const QString value = parser.value(u"samples"_s);
+        const quint32 samples = parseNumber<std::ratio<1>>(value, u"S"_s);
         if (samples == 0) {
             errors.append(tr("Invalid samples value: %1").arg(value));
         } else {
@@ -205,7 +208,7 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
 {
     QString status;
     if (reading.status == MultimeterService::MeterStatus::Error) {
-        status = QLatin1String("Error");
+        status = u"Error"_s;
     } else switch (reading.mode) {
     case MultimeterService::Mode::Idle:
         break;
@@ -232,10 +235,10 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
     QString unit;
     switch (reading.mode) {
     case MultimeterService::Mode::Idle:        break;
-    case MultimeterService::Mode::DcVoltage:   unit = QLatin1String("Vdc"); break;
-    case MultimeterService::Mode::AcVoltage:   unit = QLatin1String("Vac"); break;
-    case MultimeterService::Mode::DcCurrent:   unit = QLatin1String("Adc"); break;
-    case MultimeterService::Mode::AcCurrent:   unit = QLatin1String("Aac"); break;
+    case MultimeterService::Mode::DcVoltage:   unit = u"Vdc"_s; break;
+    case MultimeterService::Mode::AcVoltage:   unit = u"Vac"_s; break;
+    case MultimeterService::Mode::DcCurrent:   unit = u"Adc"_s; break;
+    case MultimeterService::Mode::AcCurrent:   unit = u"Aac"_s; break;
     case MultimeterService::Mode::Resistance:  unit = QString::fromUtf8("Ω"); break;
     case MultimeterService::Mode::Diode:       break;
     case MultimeterService::Mode::Continuity:  break;
@@ -258,27 +261,27 @@ void MeterCommand::outputReading(const MultimeterService::Reading &reading)
         break;
     case OutputFormat::Json: {
         QJsonObject object{
-            { QLatin1String("status"), status },
-            { QLatin1String("value"), qIsInf(reading.value) ?
+            { u"status"_s, status },
+            { u"value"_s, qIsInf(reading.value) ?
                 QJsonValue(tr("Infinity")) : QJsonValue(reading.value) },
-            { QLatin1String("mode"),   MultimeterService::toString(reading.mode) },
+            { u"mode"_s,   MultimeterService::toString(reading.mode) },
         };
         if (!unit.isNull()) {
-            object.insert(QLatin1String("unit"), unit);
+            object.insert(u"unit"_s, unit);
         }
         if (!range.isNull()) {
-            object.insert(QLatin1String("range"), range);
+            object.insert(u"range"_s, range);
         }
         std::cout << QJsonDocument(object).toJson().toStdString();
     }   break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Mode:   %1 (0x%2)\n").arg(MultimeterService::toString(reading.mode))
-            .arg((quint8)reading.mode,2,16,QLatin1Char('0')));
+            .arg((quint8)reading.mode,2,16,'0'_L1));
         std::cout << qUtf8Printable(tr("Value:  %1 %2\n").arg(reading.value,0,'f').arg(unit));
         std::cout << qUtf8Printable(tr("Status: %1 (0x%2)\n").arg(status)
-            .arg((quint8)reading.status,2,16,QLatin1Char('0')));
+            .arg((quint8)reading.status,2,16,'0'_L1));
         std::cout << qUtf8Printable(tr("Range:  %1 (0x%2)\n").arg(range)
-            .arg((quint8)reading.range,2,16,QLatin1Char('0')));
+            .arg((quint8)reading.range,2,16,'0'_L1));
         break;
     }
 

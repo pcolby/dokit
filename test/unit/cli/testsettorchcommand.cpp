@@ -4,6 +4,7 @@
 #include "testsettorchcommand.h"
 #include "outputstreamcapture.h"
 #include "testdata.h"
+#include "../stringliterals_p.h"
 
 #include "settorchcommand.h"
 
@@ -12,6 +13,8 @@
 
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(StatusService::TorchStatus)
+
+DOKIT_USE_STRINGLITERALS
 
 // Serialiser for QCOMPARE to output optional TorchStatus values on test failures.
 char *toString(const StatusService::TorchStatus &status)
@@ -39,7 +42,7 @@ void TestSetTorchCommand::requiredOptions()
     MockDeviceCommand mock;
     QCommandLineParser parser;
     const QStringList expected = mock.requiredOptions(parser) +
-        QStringList{ QStringLiteral("mode") };
+        QStringList{ u"mode"_s };
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
@@ -59,29 +62,29 @@ void TestSetTorchCommand::processOptions_data()
     QTest::addColumn<QStringList>("errors");
 
     QTest::addRow("on")
-        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("on") }
+        << QStringList{ u"--mode"_s,  u"on"_s }
         << StatusService::TorchStatus::On
         << QStringList{};
 
     QTest::addRow("off")
-        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("off") }
+        << QStringList{ u"--mode"_s,  u"off"_s }
         << StatusService::TorchStatus::Off
         << QStringList{};
 
     QTest::addRow("invalid")
-        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("invalid") }
+        << QStringList{ u"--mode"_s,  u"invalid"_s }
         << StatusService::TorchStatus{}
-        << QStringList{ QStringLiteral("Invalid status value: invalid") };
+        << QStringList{ u"Invalid status value: invalid"_s };
 
     QTest::addRow("missing")
         << QStringList{}
         << StatusService::TorchStatus{}
-        << QStringList{ QStringLiteral("Missing required option: mode") };
+        << QStringList{ u"Missing required option: mode"_s };
 
     QTest::addRow("empty")
-        << QStringList{ QStringLiteral("--mode"),  QStringLiteral("") }
+        << QStringList{ u"--mode"_s,  u""_s }
         << StatusService::TorchStatus{}
-        << QStringList{ QStringLiteral("Invalid status value: ") };
+        << QStringList{ u"Invalid status value: "_s };
 }
 
 void TestSetTorchCommand::processOptions()
@@ -90,10 +93,10 @@ void TestSetTorchCommand::processOptions()
     QFETCH(StatusService::TorchStatus, expected);
     QFETCH(QStringList, errors);
 
-    arguments.prepend(QStringLiteral("dokit")); // The first argument is always the app name.
+    arguments.prepend(u"dokit"_s); // The first argument is always the app name.
 
     QCommandLineParser parser;
-    parser.addOption({QStringLiteral("mode"), QStringLiteral("description"), QStringLiteral("name")});
+    parser.addOption({u"mode"_s, u"description"_s, u"name"_s});
     parser.process(arguments);
 
     SetTorchCommand command(this);

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "abstractcommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/pokitdiscoveryagent.h>
@@ -11,6 +12,8 @@
 
 #include <cmath>
 #include <ratio>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class AbstractCommand
@@ -84,10 +87,10 @@ QStringList AbstractCommand::requiredOptions(const QCommandLineParser &parser) c
 QStringList AbstractCommand::supportedOptions(const QCommandLineParser &parser) const
 {
     return requiredOptions(parser) + QStringList{
-        QLatin1String("debug"),
-        QLatin1String("device"), QLatin1String("d"),
-        QLatin1String("output"),
-        QLatin1String("timeout"),
+        u"debug"_s,
+        u"device"_s, u"d"_s,
+        u"output"_s,
+        u"timeout"_s,
     };
 }
 
@@ -105,11 +108,8 @@ QStringList AbstractCommand::supportedOptions(const QCommandLineParser &parser) 
  */
 QString AbstractCommand::escapeCsvField(const QString &field)
 {
-    if (field.contains(QLatin1Char(','))||field.contains(QLatin1Char('\r'))||
-        field.contains(QLatin1Char('"'))||field.contains(QLatin1Char('\n')))
-    {
-        return QString::fromLatin1(R"("%1")").arg(
-            QString(field).replace(QLatin1Char('"'), QLatin1String(R"("")")));
+    if (field.contains(','_L1) || field.contains('\r'_L1) || field.contains('"'_L1) || field.contains('\n'_L1)) {
+        return uR"("%1")"_s.arg(QString(field).replace('"'_L1, uR"("")"_s));
     } else return field;
 }
 
@@ -150,23 +150,23 @@ template<typename R>
 quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, const quint32 sensibleMinimum)
 {
     static const QMap<QChar, Ratio> unitPrefixScaleMap {
-        { QLatin1Char('E'), makeRatio<std::exa>()   },
-        { QLatin1Char('P'), makeRatio<std::peta>()  },
-        { QLatin1Char('T'), makeRatio<std::tera>()  },
-        { QLatin1Char('G'), makeRatio<std::giga>()  },
-        { QLatin1Char('M'), makeRatio<std::mega>()  },
-        { QLatin1Char('K'), makeRatio<std::kilo>()  }, // Not official SI unit prefix, but commonly used.
-        { QLatin1Char('k'), makeRatio<std::kilo>()  },
-        { QLatin1Char('h'), makeRatio<std::hecto>() },
-        { QLatin1Char('d'), makeRatio<std::deci>()  },
-        { QLatin1Char('c'), makeRatio<std::centi>() },
-        { QLatin1Char('m'), makeRatio<std::milli>() },
-        { QLatin1Char('u'), makeRatio<std::micro>() }, // Not official SI unit prefix, but commonly used.
-        { QChar   (0x00B5), makeRatio<std::micro>() }, // Unicode micro symbol (μ).
-        { QLatin1Char('n'), makeRatio<std::nano>()  },
-        { QLatin1Char('p'), makeRatio<std::pico>()  },
-        { QLatin1Char('f'), makeRatio<std::femto>() },
-        { QLatin1Char('a'), makeRatio<std::atto>()  },
+        { 'E'_L1,        makeRatio<std::exa>()   },
+        { 'P'_L1,        makeRatio<std::peta>()  },
+        { 'T'_L1,        makeRatio<std::tera>()  },
+        { 'G'_L1,        makeRatio<std::giga>()  },
+        { 'M'_L1,        makeRatio<std::mega>()  },
+        { 'K'_L1,        makeRatio<std::kilo>()  }, // Not official SI unit prefix, but commonly used.
+        { 'k'_L1,        makeRatio<std::kilo>()  },
+        { 'h'_L1,        makeRatio<std::hecto>() },
+        { 'd'_L1,        makeRatio<std::deci>()  },
+        { 'c'_L1,        makeRatio<std::centi>() },
+        { 'm'_L1,        makeRatio<std::milli>() },
+        { 'u'_L1,        makeRatio<std::micro>() }, // Not official SI unit prefix, but commonly used.
+        { QChar(0x00B5), makeRatio<std::micro>() }, // Unicode micro symbol (μ).
+        { 'n'_L1,        makeRatio<std::nano>()  },
+        { 'p'_L1,        makeRatio<std::pico>()  },
+        { 'f'_L1,        makeRatio<std::femto>() },
+        { 'a'_L1,        makeRatio<std::atto>()  },
     };
 
     // Remove the optional (whole) unit suffix.
@@ -275,20 +275,20 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     QStringList errors;
 
     // Parse the device (name/addr/uuid) option.
-    if (parser.isSet(QLatin1String("device"))) {
-        deviceToScanFor = parser.value(QLatin1String("device"));
+    if (parser.isSet(u"device"_s)) {
+        deviceToScanFor = parser.value(u"device"_s);
     }
 
     // Parse the output format options (if supported, and supplied).
-    if ((supportedOptionNames.contains(QLatin1String("output"))) && // Derived classes may have removed.
-        (parser.isSet(QLatin1String("output"))))
+    if ((supportedOptionNames.contains(u"output"_s)) && // Derived classes may have removed.
+        (parser.isSet(u"output"_s)))
     {
-        const QString output = parser.value(QLatin1String("output")).toLower();
-        if (output == QLatin1String("csv")) {
+        const QString output = parser.value(u"output"_s).toLower();
+        if (output == u"csv"_s) {
             format = OutputFormat::Csv;
-        } else if (output == QLatin1String("json")) {
+        } else if (output == u"json"_s) {
             format = OutputFormat::Json;
-        } else if (output == QLatin1String("text")) {
+        } else if (output == u"text"_s) {
             format = OutputFormat::Text;
         } else {
             errors.append(tr("Unknown output format: %1").arg(output));
@@ -296,10 +296,10 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the device scan timeout option.
-    if (parser.isSet(QLatin1String("timeout"))) {
-        const quint32 timeout = parseNumber<std::milli>(parser.value(QLatin1String("timeout")), QLatin1String("s"), 500);
+    if (parser.isSet(u"timeout"_s)) {
+        const quint32 timeout = parseNumber<std::milli>(parser.value(u"timeout"_s), u"s"_s, 500);
         if (timeout == 0) {
-            errors.append(tr("Invalid timeout: %1").arg(parser.value(QLatin1String("timeout"))));
+            errors.append(tr("Invalid timeout: %1").arg(parser.value(u"timeout"_s)));
         } else if (discoveryAgent->lowEnergyDiscoveryTimeout() == -1) {
             qCWarning(lc).noquote() << tr("Platform does not support Bluetooth scan timeout");
         } else {

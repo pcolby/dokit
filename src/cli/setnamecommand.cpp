@@ -2,11 +2,14 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "setnamecommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 #include <qtpokit/statusservice.h>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class SetNameCommand
@@ -25,7 +28,7 @@ SetNameCommand::SetNameCommand(QObject * const parent) : DeviceCommand(parent)
 QStringList SetNameCommand::requiredOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::requiredOptions(parser) + QStringList{
-        QLatin1String("new-name"),
+        u"new-name"_s,
     };
 }
 
@@ -47,7 +50,7 @@ QStringList SetNameCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    newName = parser.value(QLatin1String("new-name"));
+    newName = parser.value(u"new-name"_s);
     if (newName.isEmpty()) {
         errors.append(tr("New name cannot be empty."));
     } else if (newName.length() > 11) {
@@ -96,7 +99,7 @@ void SetNameCommand::deviceNameWritten()
         std::cout << qUtf8Printable(tr("set_name_result\nsuccess\n"));
         break;
     case OutputFormat::Json:
-        std::cout << qUtf8Printable(QLatin1String("true\n"));
+        std::cout << qUtf8Printable(u"true\n"_s);
         break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Done.\n"));

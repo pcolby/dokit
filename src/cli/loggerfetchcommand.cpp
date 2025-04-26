@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "loggerfetchcommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
@@ -19,6 +20,8 @@
     #include <QTimeZone>
     #define DOKIT_QT_UTC QTimeZone::UTC
 #endif
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class LoggerFetchCommand
@@ -90,10 +93,10 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
 {
     QString unit;
     switch (metadata.mode) {
-    case DataLoggerService::Mode::DcVoltage: unit = QLatin1String("Vdc"); break;
-    case DataLoggerService::Mode::AcVoltage: unit = QLatin1String("Vac"); break;
-    case DataLoggerService::Mode::DcCurrent: unit = QLatin1String("Adc"); break;
-    case DataLoggerService::Mode::AcCurrent: unit = QLatin1String("Aac"); break;
+    case DataLoggerService::Mode::DcVoltage: unit = u"Vdc"_s; break;
+    case DataLoggerService::Mode::AcVoltage: unit = u"Vac"_s; break;
+    case DataLoggerService::Mode::DcCurrent: unit = u"Adc"_s; break;
+    case DataLoggerService::Mode::AcCurrent: unit = u"Aac"_s; break;
     case DataLoggerService::Mode::Temperature: unit = QString::fromUtf8("°C"); break;
     default:
         qCDebug(lc).noquote() << tr(R"(No known unit for mode %1 "%2".)").arg((int)metadata.mode)
@@ -115,13 +118,13 @@ void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples
             break;
         case OutputFormat::Json: {
             QJsonObject object{
-                { QLatin1String("timestamp"), timeString },
-                { QLatin1String("value"),     value },
-                { QLatin1String("unit"),      unit },
-                { QLatin1String("mode"),      DataLoggerService::toString(metadata.mode) },
+                { u"timestamp"_s, timeString },
+                { u"value"_s,     value },
+                { u"unit"_s,      unit },
+                { u"mode"_s,      DataLoggerService::toString(metadata.mode) },
             };
             if (!range.isEmpty()) {
-                object.insert(QLatin1String("range"), range);
+                object.insert(u"range"_s, range);
             }
             std::cout << QJsonDocument(object).toJson().toStdString();
         }   break;

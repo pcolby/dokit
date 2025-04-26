@@ -9,12 +9,14 @@
 #include <qtpokit/multimeterservice.h>
 #include "multimeterservice_p.h"
 #include "pokitproducts_p.h"
+#include "../stringliterals_p.h"
 
 #include <QDataStream>
 #include <QIODevice>
 #include <QtEndian>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class MultimeterService
@@ -301,7 +303,7 @@ MultimeterService::Reading MultimeterServicePrivate::parseReading(const QByteArr
         MultimeterService::Mode::Idle, 0
     };
 
-    if (!checkSize(QLatin1String("Reading"), value, 7, 7)) {
+    if (!checkSize(u"Reading"_s, value, 7, 7)) {
         return reading;
     }
 

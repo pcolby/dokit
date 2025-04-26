@@ -8,10 +8,12 @@
 
 #include <qtpokit/deviceinfoservice.h>
 #include "deviceinfoservice_p.h"
+#include "../stringliterals_p.h"
 
 #include <QtEndian>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class DeviceInfoService
@@ -236,7 +238,7 @@ QString DeviceInfoService::serialNumber() const
      * `null` byte to serial number strings. So here we strip any that are present.
      * \endcond
      */
-    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()).remove(QLatin1Char('\0')) : QString();
+    return (characteristic.isValid()) ? QString::fromUtf8(characteristic.value()).remove('\0'_L1) : QString();
 }
 
 /*!

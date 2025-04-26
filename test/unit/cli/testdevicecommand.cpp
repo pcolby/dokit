@@ -3,6 +3,7 @@
 
 #include "testdevicecommand.h"
 #include "../github.h"
+#include "../stringliterals_p.h"
 
 #include "devicecommand.h"
 
@@ -17,6 +18,8 @@ Q_DECLARE_METATYPE(PokitPro::CapacitanceRange)
 Q_DECLARE_METATYPE(PokitPro::CurrentRange)
 Q_DECLARE_METATYPE(PokitPro::ResistanceRange)
 Q_DECLARE_METATYPE(PokitPro::VoltageRange)
+
+DOKIT_USE_STRINGLITERALS
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -55,7 +58,7 @@ void TestDeviceCommand::start()
     QTest::ignoreMessage(QtInfoMsg, "Looking for first available Pokit device...");
     QVERIFY(command.start());
 
-    command.deviceToScanFor = QStringLiteral("example");
+    command.deviceToScanFor = u"example"_s;
     QTest::ignoreMessage(QtInfoMsg, R"(Looking for device "example"...)");
     QVERIFY(command.start());
 }
@@ -374,7 +377,7 @@ void TestDeviceCommand::serviceDetailsDiscovered()
 void TestDeviceCommand::deviceDiscovered()
 {
     MockDeviceCommand command;
-    command.deviceToScanFor = QStringLiteral("example");
+    command.deviceToScanFor = u"example"_s;
     QBluetoothDeviceInfo info;
     info.setServiceUuids({StatusService::ServiceUuids::pokitMeter}
         #if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)
@@ -392,7 +395,7 @@ void TestDeviceCommand::deviceDiscoveryFinished()
     QTest::ignoreMessage(QtWarningMsg, "Failed to find any Pokit device.");
     command.deviceDiscoveryFinished();
 
-    command.deviceToScanFor = QStringLiteral("example");
+    command.deviceToScanFor = u"example"_s;
     QTest::ignoreMessage(QtWarningMsg, R"(Failed to find device "example".)");
     command.deviceDiscoveryFinished();
 }

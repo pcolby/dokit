@@ -2,9 +2,12 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "mainwindow.h"
+#include "../stringliterals_p.h"
 
 #include <QApplication>
 #include <QDebug>
+
+DOKIT_USE_STRINGLITERALS
 
 int main(int argc, char *argv[])
 {
@@ -19,13 +22,13 @@ int main(int argc, char *argv[])
         "+" PROJECT_BUILD_ID
         #endif
     ));
-    QApplication::setOrganizationName(QStringLiteral("pcolby"));        // Only used for QSettings. We should Manage these via
-    QApplication::setOrganizationDomain(QStringLiteral("colby.id.au")); // CMake if we ever add settings to the console app too.
+    QApplication::setOrganizationName(u"pcolby"_s);        // Only used for QSettings. We should Manage these via
+    QApplication::setOrganizationDomain(u"colby.id.au"_s); // CMake if we ever add settings to the console app too.
 
     /// \todo Install localised translators, if we have translations for the current locale.
 
     /// \todo Parse the command line.
-    // QLoggingCategory::setFilterRules(QStringLiteral("pokit.*.debug=true"));
+    // QLoggingCategory::setFilterRules(u"pokit.*.debug=true"_s);
 
     // Instantiate the main window.
     MainWindow mainWindow;

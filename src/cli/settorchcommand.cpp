@@ -2,10 +2,13 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "settorchcommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class SetTorchCommand
@@ -24,7 +27,7 @@ SetTorchCommand::SetTorchCommand(QObject * const parent) : DeviceCommand(parent)
 QStringList SetTorchCommand::requiredOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::requiredOptions(parser) + QStringList{
-        QLatin1String("mode"),
+        u"mode"_s,
     };
 }
 
@@ -46,10 +49,10 @@ QStringList SetTorchCommand::processOptions(const QCommandLineParser &parser)
         return errors;
     }
 
-    if (const QString value = parser.value(QLatin1String("mode"));
-        value.trimmed().compare(QLatin1String("on"), Qt::CaseInsensitive) == 0) {
+    if (const QString value = parser.value(u"mode"_s);
+        value.trimmed().compare(u"on"_s, Qt::CaseInsensitive) == 0) {
         newStatus = StatusService::TorchStatus::On;
-    } else if (value.trimmed().compare(QLatin1String("off"), Qt::CaseInsensitive) == 0) {
+    } else if (value.trimmed().compare(u"off"_s, Qt::CaseInsensitive) == 0) {
         newStatus = StatusService::TorchStatus::Off;
     } else {
         errors.append(tr("Invalid status value: %1").arg(value));
@@ -97,7 +100,7 @@ void SetTorchCommand::torchStatusWritten()
         std::cout << qUtf8Printable(tr("set_torch_result\nsuccess\n"));
         break;
     case OutputFormat::Json:
-        std::cout << qUtf8Printable(QLatin1String("true\n"));
+        std::cout << qUtf8Printable(u"true\n"_s);
         break;
     case OutputFormat::Text:
         std::cout << qUtf8Printable(tr("Done.\n"));

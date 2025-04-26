@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "teststatusservice.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/statusservice.h>
 #include "statusservice_p.h"
@@ -21,6 +22,7 @@ Q_DECLARE_METATYPE(std::optional<QTPOKIT_PREPEND_NAMESPACE(StatusService::Button
 Q_DECLARE_METATYPE(std::optional<QTPOKIT_PREPEND_NAMESPACE(StatusService::TorchStatus)>)
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 // Serialiser for QCOMPARE to output QBluetoothAddress objects on test failures.
 char *toString(const QBluetoothAddress &address)
@@ -271,7 +273,7 @@ void TestStatusService::setDeviceName()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
     StatusService service(nullptr);
-    QVERIFY(!service.setDeviceName(QStringLiteral("ignored")));
+    QVERIFY(!service.setDeviceName(u"ignored"_s));
 }
 
 void TestStatusService::flashLed()
@@ -352,7 +354,7 @@ void TestStatusService::parseDeviceCharacteristics_data()
                       "\x00\x20\x00\x00\x84\x2e\x14\x2c\x03\xa8", 20)
         << StatusService::DeviceCharacteristics{
            QVersionNumber(1,4), 60, 2, 1000, 1000, 8192, 0,
-           QBluetoothAddress(QStringLiteral("84:2E:14:2C:03:A8"))
+           QBluetoothAddress(u"84:2E:14:2C:03:A8"_s)
         };
 
     // Sample from a real Pokit Pro device.
@@ -361,7 +363,7 @@ void TestStatusService::parseDeviceCharacteristics_data()
                       "\x00\x40\x00\x00\x5c\x02\x72\x09\xaa\x25", 20)
         << StatusService::DeviceCharacteristics{
            QVersionNumber(1,3), 850, 10, 3000, 1000, 16384, 0,
-           QBluetoothAddress(QStringLiteral("5C:02:72:09:AA:25"))
+           QBluetoothAddress(u"5C:02:72:09:AA:25"_s)
         };
 }
 
@@ -370,12 +372,12 @@ void TestStatusService::parseDeviceCharacteristics()
     QFETCH(QByteArray, value);
     QFETCH(StatusService::DeviceCharacteristics, expected);
     if (value.size() < 20) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Device Characteristics requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Device Characteristics requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 20) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Device Characteristics has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Device Characteristics has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     const StatusService::DeviceCharacteristics actual =
         StatusServicePrivate::parseDeviceCharacteristics(value);
@@ -533,12 +535,12 @@ void TestStatusService::parseStatus()
     QFETCH(QByteArray, value);
     QFETCH(StatusService::Status, expected);
     if (value.size() < 5) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Status requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Status requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 8) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Status has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Status has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     const StatusService::Status actual = StatusServicePrivate::parseStatus(value);
     QCOMPARE(actual.deviceStatus,   expected.deviceStatus);
@@ -629,8 +631,7 @@ void TestStatusService::characteristicRead()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     StatusService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic read for Status service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic read for Status service .*$"_s));
     service.d_func()->characteristicRead(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -638,8 +639,7 @@ void TestStatusService::characteristicWritten()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     StatusService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic written for Status service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic written for Status service .*$"_s));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 

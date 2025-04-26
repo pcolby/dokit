@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "statuscommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
@@ -9,6 +10,8 @@
 #include <QJsonObject>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class StatusCommand
@@ -115,52 +118,52 @@ void StatusCommand::outputDeviceStatus(const StatusService::DeviceCharacteristic
         break;
     case OutputFormat::Json: {
         QJsonObject battery{
-            { QLatin1String("level"),  status.batteryVoltage },
+            { u"level"_s,  status.batteryVoltage },
         };
         if (!batteryLabel.isNull()) {
-            battery.insert(QLatin1String("status"), batteryLabel);
+            battery.insert(u"status"_s, batteryLabel);
         }
         QJsonObject object{
-                { QLatin1String("deviceName"),   deviceName },
-                { QLatin1String("firmwareVersion"), QJsonObject{
-                      { QLatin1String("major"), chrs.firmwareVersion.majorVersion() },
-                      { QLatin1String("minor"), chrs.firmwareVersion.minorVersion() },
+                { u"deviceName"_s,   deviceName },
+                { u"firmwareVersion"_s, QJsonObject{
+                      { u"major"_s, chrs.firmwareVersion.majorVersion() },
+                      { u"minor"_s, chrs.firmwareVersion.minorVersion() },
                 }},
-                { QLatin1String("maximumVoltage"),      chrs.maximumVoltage },
-                { QLatin1String("maximumCurrent"),      chrs.maximumCurrent },
-                { QLatin1String("maximumResistance"),   chrs.maximumResistance },
-                { QLatin1String("maximumSamplingRate"), chrs.maximumSamplingRate },
-                { QLatin1String("samplingBufferSize"),  chrs.samplingBufferSize },
-                { QLatin1String("capabilityMask"),      chrs.capabilityMask },
-                { QLatin1String("macAddress"),          chrs.macAddress.toString() },
-                { QLatin1String("deviceStatus"), QJsonObject{
-                      { QLatin1String("code"), (quint8)status.deviceStatus },
-                      { QLatin1String("label"), statusLabel },
+                { u"maximumVoltage"_s,      chrs.maximumVoltage },
+                { u"maximumCurrent"_s,      chrs.maximumCurrent },
+                { u"maximumResistance"_s,   chrs.maximumResistance },
+                { u"maximumSamplingRate"_s, chrs.maximumSamplingRate },
+                { u"samplingBufferSize"_s,  chrs.samplingBufferSize },
+                { u"capabilityMask"_s,      chrs.capabilityMask },
+                { u"macAddress"_s,          chrs.macAddress.toString() },
+                { u"deviceStatus"_s, QJsonObject{
+                      { u"code"_s, (quint8)status.deviceStatus },
+                      { u"label"_s, statusLabel },
                 }},
-                { QLatin1String("battery"), battery },
+                { u"battery"_s, battery },
             };
         if (torchStatus) {
-            object.insert(QStringLiteral("torchStatus"), QJsonObject{
-                { QLatin1String("code"), (quint8)*torchStatus },
-                { QLatin1String("label"), torchLabel },
+            object.insert(u"torchStatus"_s, QJsonObject{
+                { u"code"_s, (quint8)*torchStatus },
+                { u"label"_s, torchLabel },
             });
         }
         if (buttonStatus) {
-            object.insert(QStringLiteral("buttonStatus"), QJsonObject{
-                { QLatin1String("code"), (quint8)*buttonStatus },
-                { QLatin1String("label"), buttonLabel },
+            object.insert(u"buttonStatus"_s, QJsonObject{
+                { u"code"_s, (quint8)*buttonStatus },
+                { u"label"_s, buttonLabel },
             });
         }
         if (status.switchPosition) {
-            object.insert(QStringLiteral("switchStatus"), QJsonObject{
-                { QLatin1String("code"), (quint8)*status.switchPosition },
-                { QLatin1String("label"), switchLabel },
+            object.insert(u"switchStatus"_s, QJsonObject{
+                { u"code"_s, (quint8)*status.switchPosition },
+                { u"label"_s, switchLabel },
             });
         }
         if (status.chargingStatus) {
-            object.insert(QStringLiteral("chargingStatus"), QJsonObject{
-                { QLatin1String("code"), (quint8)*status.chargingStatus },
-                { QLatin1String("label"), chargingLabel },
+            object.insert(u"chargingStatus"_s, QJsonObject{
+                { u"code"_s, (quint8)*status.chargingStatus },
+                { u"label"_s, chargingLabel },
             });
         }
         std::cout << QJsonDocument(object).toJson().toStdString();

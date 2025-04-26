@@ -11,12 +11,14 @@
 #include <qtpokit/pokitpro.h>
 #include "dsoservice_p.h"
 #include "pokitproducts_p.h"
+#include "../stringliterals_p.h"
 
 #include <QDataStream>
 #include <QIODevice>
 #include <QtEndian>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class DsoService
@@ -350,7 +352,7 @@ DsoService::Metadata DsoServicePrivate::parseMetadata(const QByteArray &value)
         DsoService::Mode::Idle, 0, 0, 0, 0
     };
 
-    if (!checkSize(QLatin1String("Metadata"), value, 17, 17)) {
+    if (!checkSize(u"Metadata"_s, value, 17, 17)) {
         return metadata;
     }
 

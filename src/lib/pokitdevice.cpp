@@ -16,10 +16,12 @@
 #include <qtpokit/statusservice.h>
 
 #include "pokitdevice_p.h"
+#include "../stringliterals_p.h"
 
 #include <QMutexLocker>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class PokitDevice
@@ -206,7 +208,7 @@ QString PokitDevice::serviceToString(const QBluetoothUuid &uuid)
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAccess) },
         { QBluetoothUuid::ServiceClassUuid::GenericAttribute,
             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAttribute) },
-        { QBluetoothUuid(QStringLiteral("1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0")), tr("OTA Firmware Update") },
+        { QBluetoothUuid(u"1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0"_s), tr("OTA Firmware Update") },
     };
     return hash.value(uuid);
 }
@@ -256,8 +258,8 @@ QString PokitDevice::charcteristicToString(const QBluetoothUuid &uuid)
             QBluetoothUuid::characteristicToString(QBluetoothUuid::CharacteristicType::SerialNumberString) },
 
         // The next two are not specifically supported by this library, but strings provided for nicer debug output.
-        { QBluetoothUuid(QStringLiteral("f7bf3564-fb6d-4e53-88a4-5e37e0326063")), tr("OTA Control") },
-        { QBluetoothUuid(QStringLiteral("984227f3-34fc-4045-a5d0-2c581f81a153")), tr("OTA Data Transfer") },
+        { QBluetoothUuid(u"f7bf3564-fb6d-4e53-88a4-5e37e0326063"_s), tr("OTA Control") },
+        { QBluetoothUuid(u"984227f3-34fc-4045-a5d0-2c581f81a153"_s), tr("OTA Data Transfer") },
     };
     return hash.value(uuid);
 }

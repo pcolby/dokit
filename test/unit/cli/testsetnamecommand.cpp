@@ -4,6 +4,7 @@
 #include "testsetnamecommand.h"
 #include "outputstreamcapture.h"
 #include "testdata.h"
+#include "../stringliterals_p.h"
 
 #include "setnamecommand.h"
 
@@ -11,6 +12,8 @@
 #include <sstream>
 
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
+
+DOKIT_USE_STRINGLITERALS
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -32,7 +35,7 @@ void TestSetNameCommand::requiredOptions()
     MockDeviceCommand mock;
     QCommandLineParser parser;
     const QStringList expected = mock.requiredOptions(parser) +
-        QStringList{ QStringLiteral("new-name") };
+        QStringList{ u"new-name"_s };
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
@@ -54,27 +57,27 @@ void TestSetNameCommand::processOptions_data()
     QTest::addRow("missing-new-name")
         << QStringList{}
         << QString()
-        << QStringList{ QStringLiteral("Missing required option: new-name") };
+        << QStringList{ u"Missing required option: new-name"_s };
 
     QTest::addRow("empty-new-name")
-        << QStringList{ QStringLiteral("--new-name"), QStringLiteral("") }
-        << QStringLiteral("")
-        << QStringList{ QStringLiteral("New name cannot be empty.") };
+        << QStringList{ u"--new-name"_s, u""_s }
+        << u""_s
+        << QStringList{ u"New name cannot be empty."_s };
 
     QTest::addRow("valid-new-name")
-        << QStringList{ QStringLiteral("--new-name"), QStringLiteral("valid") }
-        << QStringLiteral("valid")
+        << QStringList{ u"--new-name"_s, u"valid"_s }
+        << u"valid"_s
         << QStringList{};
 
     QTest::addRow("11-char-new-name")
-        << QStringList{ QStringLiteral("--new-name"), QString(11, QLatin1Char('A')) }
-        << QStringLiteral("AAAAAAAAAAA")
+        << QStringList{ u"--new-name"_s, QString(11, 'A'_L1) }
+        << u"AAAAAAAAAAA"_s
         << QStringList{};
 
     QTest::addRow("12-char-new-name")
-        << QStringList{ QStringLiteral("--new-name"), QString(12, QLatin1Char('A')) }
-        << QStringLiteral("AAAAAAAAAAAA")
-        << QStringList{ QStringLiteral("New name cannot exceed 11 characters.") };
+        << QStringList{ u"--new-name"_s, QString(12, 'A'_L1) }
+        << u"AAAAAAAAAAAA"_s
+        << QStringList{ u"New name cannot exceed 11 characters."_s };
 }
 
 void TestSetNameCommand::processOptions()
@@ -83,10 +86,10 @@ void TestSetNameCommand::processOptions()
     QFETCH(QString, expected);
     QFETCH(QStringList, errors);
 
-    arguments.prepend(QStringLiteral("dokit")); // The first argument is always the app name.
+    arguments.prepend(u"dokit"_s); // The first argument is always the app name.
 
     QCommandLineParser parser;
-    parser.addOption({QStringLiteral("new-name"), QStringLiteral("description"), QStringLiteral("name")});
+    parser.addOption({u"new-name"_s, u"description"_s, u"name"_s});
     parser.process(arguments);
 
     SetNameCommand command(this);

@@ -33,7 +33,7 @@ target_link_libraries(
   PRIVATE Qt${QT_VERSION_MAJOR}::Charts
   PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-add_executable(gui MACOSX_BUNDLE main.cpp)
+add_executable(gui MACOSX_BUNDLE main.cpp ../stringliterals_p.h)
 
 set_target_properties(gui PROPERTIES OUTPUT_NAME Dokit)
 

@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "mainwindow.h"
+#include "../stringliterals_p.h"
+
 
 #include <QApplication>
 #include <QChartView>
@@ -22,9 +24,11 @@
 using namespace QtCharts;
 #endif
 
+DOKIT_USE_STRINGLITERALS
+
 MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QMainWindow(parent, flags)
 {
-    setWindowIcon(QIcon(QStringLiteral(":/dokit-icon-512.png")));
+    setWindowIcon(QIcon(u":/dokit-icon-512.png"_s));
     setWindowTitle(tr("%1 %2").arg(QApplication::applicationName(), QApplication::applicationVersion()));
     setupMenuBar();
 
@@ -51,9 +55,9 @@ MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QM
             << QPointF(5.2, 3.5) << QPointF(7.4, 16.5) << QPointF(8.3, 7.5) << QPointF(10, 17);
     chart->addSeries(series);
     QCategoryAxis *axisY3 = new QCategoryAxis;
-    axisY3->append(QStringLiteral("Low"), 5);
-    axisY3->append(QStringLiteral("Medium"), 12);
-    axisY3->append(QStringLiteral("High"), 17);
+    axisY3->append(u"Low"_s, 5);
+    axisY3->append(u"Medium"_s, 12);
+    axisY3->append(u"High"_s, 17);
     axisY3->setLinePenColor(series->pen().color());
     axisY3->setGridLinePen((series->pen()));
     chart->addAxis(axisY3, Qt::AlignRight);
@@ -69,15 +73,15 @@ MainWindow::MainWindow(QWidget * const parent, const Qt::WindowFlags flags) : QM
     auto pokitDevicesListView = new QListView(this);
     pokitDevicesListView->setModel(devicesModel);
     auto const scanDockWidget = new QDockWidget(tr("Pokit Devices"));
-    scanDockWidget->setObjectName(QStringLiteral("pokitDevicesDockWidget")); ///< For save/restore state.
+    scanDockWidget->setObjectName(u"pokitDevicesDockWidget"_s); ///< For save/restore state.
     scanDockWidget->setWidget(pokitDevicesListView);
     addDockWidget(Qt::RightDockWidgetArea, scanDockWidget);
 
     // Restore the window's geometry and state.
     QSettings settings;
-    settings.beginGroup(QStringLiteral("mainwindow"));
-    restoreGeometry(settings.value(QStringLiteral("geometry")).toByteArray());
-    restoreState(settings.value(QStringLiteral("state")).toByteArray());
+    settings.beginGroup(u"mainwindow"_s);
+    restoreGeometry(settings.value(u"geometry"_s).toByteArray());
+    restoreState(settings.value(u"state"_s).toByteArray());
 
     /// \todo Restore the model's default check states.
 
@@ -99,9 +103,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     // Save the window's geometry and state.
     QSettings settings;
-    settings.beginGroup(QStringLiteral("mainwindow"));
-    settings.setValue(QStringLiteral("geometry"), saveGeometry());
-    settings.setValue(QStringLiteral("state"), saveState());
+    settings.beginGroup(u"mainwindow"_s);
+    settings.setValue(u"geometry"_s, saveGeometry());
+    settings.setValue(u"state"_s, saveState());
 
     /// \todo Save the checked states of devices.
 

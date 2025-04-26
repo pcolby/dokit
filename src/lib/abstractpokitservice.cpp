@@ -9,12 +9,14 @@
 #include <qtpokit/abstractpokitservice.h>
 #include "abstractpokitservice_p.h"
 #include "pokitproducts_p.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
 #include <QLowEnergyController>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class AbstractPokitService
@@ -536,7 +538,7 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
             QTPOKIT_INTERNAL_TEST_AND_APPEND(ExtendedProperty)
             #undef QTPOKIT_INTERNAL_TEST_AND_APPEND
             qCDebug(lc).noquote() << tr(R"(Characteristic %1 "%2" supports %3.)").arg(characteristic.uuid().toString(),
-                PokitDevice::charcteristicToString(characteristic.uuid()), properties.join(QStringLiteral(", ")));
+                PokitDevice::charcteristicToString(characteristic.uuid()), properties.join(u", "_s));
         }
     }
 

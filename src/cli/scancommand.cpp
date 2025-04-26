@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "scancommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdiscoveryagent.h>
 
@@ -11,6 +12,8 @@
 #include <QJsonObject>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class ScanCommand
@@ -118,30 +121,30 @@ QJsonObject ScanCommand::toJson(const QBluetoothDeviceInfo &info)
         return QJsonObject();
     }
     QJsonObject json{
-        { QLatin1String("address"), info.address().toString() },
-        { QLatin1String("name"), info.name() },
-        { QLatin1String("isCached"), info.isCached() },
-        { QLatin1String("majorDeviceClass"), info.majorDeviceClass() },
-        { QLatin1String("majorDeviceClass"), toJson(info.majorDeviceClass()) },
-        { QLatin1String("minorDeviceClass"), toJson(info.majorDeviceClass(), info.minorDeviceClass()) },
-        { QLatin1String("signalStrength"), info.rssi() },
+        { u"address"_s, info.address().toString() },
+        { u"name"_s, info.name() },
+        { u"isCached"_s, info.isCached() },
+        { u"majorDeviceClass"_s, info.majorDeviceClass() },
+        { u"majorDeviceClass"_s, toJson(info.majorDeviceClass()) },
+        { u"minorDeviceClass"_s, toJson(info.majorDeviceClass(), info.minorDeviceClass()) },
+        { u"signalStrength"_s, info.rssi() },
     };
     if (info.coreConfigurations() != QBluetoothDeviceInfo::UnknownCoreConfiguration) {
-        json.insert(QLatin1String("coreConfiguration"), toJson(info.coreConfigurations()));
+        json.insert(u"coreConfiguration"_s, toJson(info.coreConfigurations()));
     }
     if (!info.deviceUuid().isNull()) {
-        json.insert(QLatin1String("deviceUuid"), info.deviceUuid().toString());
+        json.insert(u"deviceUuid"_s, info.deviceUuid().toString());
     }
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)) // Added in Qt 5.12.
     if (!info.manufacturerData().isEmpty()) {
-        json.insert(QLatin1String("manufacturerData"), toJson(info.manufacturerData()));
+        json.insert(u"manufacturerData"_s, toJson(info.manufacturerData()));
     }
     #endif
     if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {
-        json.insert(QLatin1String("serviceClasses"), toJson(info.serviceClasses()));
+        json.insert(u"serviceClasses"_s, toJson(info.serviceClasses()));
     }
     if (!info.serviceUuids().isEmpty()) {
-        json.insert(QLatin1String("serviceUuids"), toJson(info.serviceUuids()));
+        json.insert(u"serviceUuids"_s, toJson(info.serviceUuids()));
     }
     return json;
 }

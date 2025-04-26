@@ -12,11 +12,13 @@
 #include <qtpokit/statusservice.h>
 
 #include "pokitproducts_p.h"
+#include "../stringliterals_p.h"
 
 #include <QCoreApplication>
 #include <QLoggingCategory>
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 static Q_LOGGING_CATEGORY(lc, "dokit.pokit.products", QtInfoMsg); ///< Logging category for this file.
 
@@ -33,8 +35,8 @@ namespace {
 QString toString(const PokitProduct product)
 {
     switch (product) {
-    case PokitProduct::PokitMeter: return QStringLiteral("Pokit Meter");
-    case PokitProduct::PokitPro:   return QStringLiteral("Pokit Pro");
+    case PokitProduct::PokitMeter: return u"Pokit Meter"_s;
+    case PokitProduct::PokitPro:   return u"Pokit Pro"_s;
     }
     qCWarning(lc).noquote() << Private::tr("Unknown PokitProduct value: %1").arg((int)product);
     return QString();

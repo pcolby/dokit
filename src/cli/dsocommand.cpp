@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "dsocommand.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdevice.h>
 
@@ -9,6 +10,8 @@
 #include <QJsonObject>
 
 #include <iostream>
+
+DOKIT_USE_STRINGLITERALS
 
 /*!
  * \class DsoCommand
@@ -27,18 +30,18 @@ DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent)
 QStringList DsoCommand::requiredOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::requiredOptions(parser) + QStringList{
-        QLatin1String("mode"),
-        QLatin1String("range"),
+        u"mode"_s,
+        u"range"_s,
     };
 }
 
 QStringList DsoCommand::supportedOptions(const QCommandLineParser &parser) const
 {
     return DeviceCommand::supportedOptions(parser) + QStringList{
-        QLatin1String("interval"),
-        QLatin1String("samples"),
-        QLatin1String("trigger-level"),
-        QLatin1String("trigger-mode"),
+        u"interval"_s,
+        u"samples"_s,
+        u"trigger-level"_s,
+        u"trigger-mode"_s,
     };
 }
 
@@ -56,24 +59,24 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the (required) mode option.
-    if (const QString mode = parser.value(QLatin1String("mode")).trimmed().toLower();
-        mode.startsWith(QLatin1String("ac v")) || mode.startsWith(QLatin1String("vac"))) {
+    if (const QString mode = parser.value(u"mode"_s).trimmed().toLower();
+        mode.startsWith(u"ac v"_s) || mode.startsWith(u"vac"_s)) {
         settings.mode = DsoService::Mode::AcVoltage;
-    } else if (mode.startsWith(QLatin1String("dc v")) || mode.startsWith(QLatin1String("vdc"))) {
+    } else if (mode.startsWith(u"dc v"_s) || mode.startsWith(u"vdc"_s)) {
         settings.mode = DsoService::Mode::DcVoltage;
-    } else if (mode.startsWith(QLatin1String("ac c")) || mode.startsWith(QLatin1String("aac"))) {
+    } else if (mode.startsWith(u"ac c"_s) || mode.startsWith(u"aac"_s)) {
         settings.mode = DsoService::Mode::AcCurrent;
-    } else if (mode.startsWith(QLatin1String("dc c")) || mode.startsWith(QLatin1String("adc"))) {
+    } else if (mode.startsWith(u"dc c"_s) || mode.startsWith(u"adc"_s)) {
         settings.mode = DsoService::Mode::DcCurrent;
     } else {
-        errors.append(tr("Unknown DSO mode: %1").arg(parser.value(QLatin1String("mode"))));
+        errors.append(tr("Unknown DSO mode: %1").arg(parser.value(u"mode"_s)));
         return errors;
     }
 
     // Parse the (required) range option.
     QString unit;
     {
-        const QString value = parser.value(QLatin1String("range"));
+        const QString value = parser.value(u"range"_s);
         quint32 sensibleMinimum = 0;
         switch (settings.mode) {
         case DsoService::Mode::Idle:
@@ -82,13 +85,13 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         case DsoService::Mode::DcVoltage:
         case DsoService::Mode::AcVoltage:
             minRangeFunc = minVoltageRange;
-            unit = QLatin1String("V");
+            unit = u"V"_s;
             sensibleMinimum = 50; // mV.
             break;
         case DsoService::Mode::DcCurrent:
         case DsoService::Mode::AcCurrent:
             minRangeFunc = minCurrentRange;
-            unit = QLatin1String("A");
+            unit = u"A"_s;
             sensibleMinimum = 5; // mA.
             break;
         }
@@ -100,8 +103,8 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the trigger-level option.
-    if (parser.isSet(QLatin1String("trigger-level"))) {
-        const QString value = parser.value(QLatin1String("trigger-level"));
+    if (parser.isSet(u"trigger-level"_s)) {
+        const QString value = parser.value(u"trigger-level"_s);
         const quint32 level = parseNumber<std::micro>(value, unit);
         if (level == 0) {
             errors.append(tr("Invalid trigger-level value: %1").arg(value));
@@ -111,30 +114,28 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the trigger-mode option.
-    if (parser.isSet(QLatin1String("trigger-mode"))) {
-        const QString triggerMode = parser.value(QLatin1String("trigger-mode")).trimmed().toLower();
-        if (triggerMode.startsWith(QLatin1String("free"))) {
+    if (parser.isSet(u"trigger-mode"_s)) {
+        const QString triggerMode = parser.value(u"trigger-mode"_s).trimmed().toLower();
+        if (triggerMode.startsWith(u"free"_s)) {
             settings.command = DsoService::Command::FreeRunning;
-        } else if (triggerMode.startsWith(QLatin1String("ris"))) {
+        } else if (triggerMode.startsWith(u"ris"_s)) {
            settings.command = DsoService::Command::RisingEdgeTrigger;
-        } else if (triggerMode.startsWith(QLatin1String("fall"))) {
+        } else if (triggerMode.startsWith(u"fall"_s)) {
             settings.command = DsoService::Command::FallingEdgeTrigger;
         } else {
-            errors.append(tr("Unknown trigger mode: %1").arg(
-                parser.value(QLatin1String("trigger-mode"))));
+            errors.append(tr("Unknown trigger mode: %1").arg(parser.value(u"trigger-mode"_s)));
         }
     }
 
     // Ensure that if either trigger option is present, then both are.
-    if (parser.isSet(QLatin1String("trigger-level")) !=
-        parser.isSet(QLatin1String("trigger-mode"))) {
+    if (parser.isSet(u"trigger-level"_s) != parser.isSet(u"trigger-mode"_s)) {
         errors.append(tr("If either option is provided, then both must be: trigger-level, trigger-mode"));
     }
 
     // Parse the interval option.
-    if (parser.isSet(QLatin1String("interval"))) {
-        const QString value = parser.value(QLatin1String("interval"));
-        const quint32 interval = parseNumber<std::micro>(value, QLatin1String("s"), 500'000);
+    if (parser.isSet(u"interval"_s)) {
+        const QString value = parser.value(u"interval"_s);
+        const quint32 interval = parseNumber<std::micro>(value, u"s"_s, 500'000);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
@@ -143,9 +144,9 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     }
 
     // Parse the samples option.
-    if (parser.isSet(QLatin1String("samples"))) {
-        const QString value = parser.value(QLatin1String("samples"));
-        const quint32 samples = parseNumber<std::ratio<1>>(value, QLatin1String("S"));
+    if (parser.isSet(u"samples"_s)) {
+        const QString value = parser.value(u"samples"_s);
+        const quint32 samples = parseNumber<std::ratio<1>>(value, u"S"_s);
         if (samples == 0) {
             errors.append(tr("Invalid samples value: %1").arg(value));
         } else if (samples > std::numeric_limits<quint16>::max()) {
@@ -244,10 +245,10 @@ void DsoCommand::outputSamples(const DsoService::Samples &samples)
 {
     QString unit;
     switch (metadata.mode) {
-    case DsoService::Mode::DcVoltage: unit = QLatin1String("Vdc"); break;
-    case DsoService::Mode::AcVoltage: unit = QLatin1String("Vac"); break;
-    case DsoService::Mode::DcCurrent: unit = QLatin1String("Adc"); break;
-    case DsoService::Mode::AcCurrent: unit = QLatin1String("Aac"); break;
+    case DsoService::Mode::DcVoltage: unit = u"Vdc"_s; break;
+    case DsoService::Mode::AcVoltage: unit = u"Vac"_s; break;
+    case DsoService::Mode::DcCurrent: unit = u"Adc"_s; break;
+    case DsoService::Mode::AcCurrent: unit = u"Aac"_s; break;
     default:
         qCDebug(lc).noquote() << tr(R"(No known unit for mode %1 "%2".)").arg((int)metadata.mode)
             .arg(DsoService::toString(metadata.mode));
@@ -267,10 +268,10 @@ void DsoCommand::outputSamples(const DsoService::Samples &samples)
             break;
         case OutputFormat::Json:
             std::cout << QJsonDocument(QJsonObject{
-                    { QLatin1String("value"),  value },
-                    { QLatin1String("unit"),   unit },
-                    { QLatin1String("range"),  range },
-                    { QLatin1String("mode"),   DsoService::toString(metadata.mode) },
+                    { u"value"_s,  value },
+                    { u"unit"_s,   unit },
+                    { u"range"_s,  range },
+                    { u"mode"_s,   DsoService::toString(metadata.mode) },
                 }).toJson().toStdString();
             break;
         case OutputFormat::Text:

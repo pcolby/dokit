@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testpokitdiscoveryagent.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/pokitdiscoveryagent.h>
 #include <qtpokit/statusservice.h>
@@ -11,8 +12,8 @@
 #include <QRegularExpression>
 #include <QSignalSpy>
 
-#define POKIT_METER_STATUS_SERVICE_UUID QLatin1String("57d3a771-267c-4394-8872-78223e92aec4")
-#define POKIT_PRO_STATUS_SERVICE_UUID   QLatin1String("57d3a771-267c-4394-8872-78223e92aec5")
+#define POKIT_METER_STATUS_SERVICE_UUID u"57d3a771-267c-4394-8872-78223e92aec4"_s
+#define POKIT_PRO_STATUS_SERVICE_UUID   u"57d3a771-267c-4394-8872-78223e92aec5"_s
 
 // QBluetoothDeviceInfo::setServiceUuids deprecated the completeness argument in Qt 5.13.
 #if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
@@ -22,6 +23,7 @@
 #endif
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 //void TestPokitDiscoveryAgent::start()
 //{
@@ -90,8 +92,7 @@ void TestPokitDiscoveryAgent::error()
 {
     // Verify safe error handling (can't do much else without a Bluetooth device).
     PokitDiscoveryAgent service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Pokit device scan error: .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Pokit device scan error: .*$"_s));
     service.d_func()->error(QBluetoothDeviceDiscoveryAgent::Error::UnknownError);
 }
 

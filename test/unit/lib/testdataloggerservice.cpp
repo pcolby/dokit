@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testdataloggerservice.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/dataloggerservice.h>
 #include <qtpokit/pokitmeter.h>
@@ -16,6 +17,7 @@ Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DataLoggerService::Metadata))
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 void TestDataLoggerService::toString_Mode_data()
 {
@@ -53,11 +55,11 @@ void TestDataLoggerService::toString_Range_data()
     QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
                           << DataLoggerService::Mode::Idle << QString();
     QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
-                                   << DataLoggerService::Mode::AcVoltage << QStringLiteral("Up to 300mV");
+                                   << DataLoggerService::Mode::AcVoltage << u"Up to 300mV"_s;
     QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
                                  << DataLoggerService::Mode::AcVoltage << QString::fromUtf8("Up to 600V");
     QTest::addRow("Current:Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                   << DataLoggerService::Mode::DcCurrent << QStringLiteral("Up to 150mA");
+                                   << DataLoggerService::Mode::DcCurrent << u"Up to 150mA"_s;
     QTest::addRow("Current:Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
                                  << DataLoggerService::Mode::DcCurrent << QString::fromUtf8("Up to 500μA");
     QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
@@ -347,14 +349,14 @@ void TestDataLoggerService::parseMetadata()
     QFETCH(QByteArray, value);
     QFETCH(DataLoggerService::Metadata, expected);
     if (value.size() < 15) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Metadata requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Metadata requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 23) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Metadata has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Cannot decode metadata of \d+ byte/s: 0x[a-zA-Z0-9,.]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Metadata has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Cannot decode metadata of \d+ byte/s: 0x[a-zA-Z0-9,.]*$)"_s));
     }
     const DataLoggerService::Metadata actual = DataLoggerServicePrivate::parseMetadata(value);
     QCOMPARE(actual.status, expected.status);
@@ -403,8 +405,8 @@ void TestDataLoggerService::parseSamples()
     QFETCH(QByteArray, data);
     QFETCH(DataLoggerService::Samples, expected);
     if ((data.size()%2) != 0) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Samples value has odd size \d+ \(should be even\): 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Samples value has odd size \d+ \(should be even\): 0x[a-zA-Z0-9,]*$)"_s));
     }
     QCOMPARE(DataLoggerServicePrivate::parseSamples(data), expected);
 }
@@ -413,8 +415,7 @@ void TestDataLoggerService::characteristicRead()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DataLoggerService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic read for Data Logger service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic read for Data Logger service .*$"_s));
     service.d_func()->characteristicRead(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -422,8 +423,8 @@ void TestDataLoggerService::characteristicWritten()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DataLoggerService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic written for Data Logger service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic written for Data Logger service .*$"_s));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -431,8 +432,8 @@ void TestDataLoggerService::characteristicChanged()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     DataLoggerService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic notified for Data Logger service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic notified for Data Logger service .*$"_s));
     service.d_func()->characteristicChanged(QLowEnergyCharacteristic(), QByteArray());
 }
 

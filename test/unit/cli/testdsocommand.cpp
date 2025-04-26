@@ -5,6 +5,7 @@
 #include "outputstreamcapture.h"
 #include "testdata.h"
 #include "../github.h"
+#include "../stringliterals_p.h"
 
 #include "dsocommand.h"
 
@@ -15,6 +16,8 @@ Q_DECLARE_METATYPE(DsoService::Metadata)
 
 typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
 Q_DECLARE_METATYPE(minRangeFunc)
+
+DOKIT_USE_STRINGLITERALS
 
 class MockDeviceCommand : public DeviceCommand
 {
@@ -36,7 +39,7 @@ void TestDsoCommand::requiredOptions()
     MockDeviceCommand mock;
     QCommandLineParser parser;
     const QStringList expected = mock.requiredOptions(parser) +
-        QStringList{ QStringLiteral("mode"), QStringLiteral("range") };
+        QStringList{ u"mode"_s, u"range"_s };
     QCOMPARE(command.requiredOptions(parser), expected);
 }
 
@@ -46,8 +49,8 @@ void TestDsoCommand::supportedOptions()
     MockDeviceCommand mock;
     QCommandLineParser parser;
     const QStringList expected = command.requiredOptions(parser) + mock.supportedOptions(parser) +
-        QStringList{ QStringLiteral("interval"),      QStringLiteral("samples"),
-                     QStringLiteral("trigger-level"), QStringLiteral("trigger-mode") };
+        QStringList{ u"interval"_s,      u"samples"_s,
+                     u"trigger-level"_s, u"trigger-mode"_s };
     QCOMPARE(command.supportedOptions(parser), expected);
 }
 
@@ -70,31 +73,31 @@ void TestDsoCommand::processOptions_data()
             255, 1000*1000, 1000}
         << static_cast<minRangeFunc>(nullptr) << 0u
         << QStringList{
-            QStringLiteral("Missing required option: mode"),
-            QStringLiteral("Missing required option: range") };
+            u"Missing required option: mode"_s,
+            u"Missing required option: range"_s };
 
     QTest::addRow("missing-required-mode")
         << QStringList{
-           QStringLiteral("--range"), QStringLiteral("100")}
+           u"--range"_s, u"100"_s}
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             255, 1000*1000, 1000}
         << static_cast<minRangeFunc>(nullptr) << 0u
-        << QStringList{ QStringLiteral("Missing required option: mode") };
+        << QStringList{ u"Missing required option: mode"_s };
 
     QTest::addRow("missing-required-range")
         << QStringList{
-           QStringLiteral("--mode"), QStringLiteral("Vdc") }
+           u"--mode"_s, u"Vdc"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             255, 1000*1000, 1000}
         << static_cast<minRangeFunc>(nullptr) << 0u
-        << QStringList{ QStringLiteral("Missing required option: range") };
+        << QStringList{ u"Missing required option: range"_s };
 
     QTest::addRow("Vdc")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
@@ -103,8 +106,8 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("Vac")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vac"),
-           QStringLiteral("--range"), QStringLiteral("5V") }
+           u"--mode"_s,  u"Vac"_s,
+           u"--range"_s, u"5V"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::AcVoltage,
             +PokitMeter::VoltageRange::_6V, 1000*1000, 1000}
@@ -113,8 +116,8 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("Adc")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Adc"),
-           QStringLiteral("--range"), QStringLiteral("100mA") }
+           u"--mode"_s,  u"Adc"_s,
+           u"--range"_s, u"100mA"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcCurrent,
             +PokitMeter::CurrentRange::_150mA, 1000*1000, 1000}
@@ -123,8 +126,8 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("Aac")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Aac"),
-           QStringLiteral("--range"), QStringLiteral("2A") }
+           u"--mode"_s,  u"Aac"_s,
+           u"--range"_s, u"2A"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::AcCurrent,
             +PokitMeter::CurrentRange::_2A, 1000*1000, 1000}
@@ -133,54 +136,52 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("invalid-mode")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("invalid"),
-           QStringLiteral("--range"), QStringLiteral("123") }
+           u"--mode"_s,  u"invalid"_s,
+           u"--range"_s, u"123"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             255, 1000*1000, 1000}
         << static_cast<minRangeFunc>(nullptr) << 0u
-        << QStringList{ QStringLiteral("Unknown DSO mode: invalid") };
+        << QStringList{ u"Unknown DSO mode: invalid"_s };
 
     QTest::addRow("invalid-range")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("invalid") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"invalid"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             255, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 0u
-        << QStringList{ QStringLiteral("Invalid range value: invalid") };
+        << QStringList{ u"Invalid range value: invalid"_s };
 
     QTest::addRow("trigger-level-requires-trigger-mode")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-level"), QStringLiteral("123mV") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-level"_s, u"123mV"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.123f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral(
-            "If either option is provided, then both must be: trigger-level, trigger-mode") };
+        << QStringList{ u"If either option is provided, then both must be: trigger-level, trigger-mode"_s };
 
     QTest::addRow("trigger-mode-requires-trigger-level")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-mode"), QStringLiteral("free") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-mode"_s, u"free"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral(
-            "If either option is provided, then both must be: trigger-level, trigger-mode") };
+        << QStringList{ u"If either option is provided, then both must be: trigger-level, trigger-mode"_s };
 
     QTest::addRow("free-running")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-level"), QStringLiteral("123mV"),
-           QStringLiteral("--trigger-mode"),  QStringLiteral("free") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-level"_s, u"123mV"_s,
+           u"--trigger-mode"_s,  u"free"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.123f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
@@ -189,10 +190,10 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("rise")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-level"), QStringLiteral("123mV"),
-           QStringLiteral("--trigger-mode"),  QStringLiteral("rise") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-level"_s, u"123mV"_s,
+           u"--trigger-mode"_s,  u"rise"_s }
         << DsoService::Settings{
             DsoService::Command::RisingEdgeTrigger, 0.123f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
@@ -201,10 +202,10 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("rising")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-level"), QStringLiteral("123mV"),
-           QStringLiteral("--trigger-mode"),  QStringLiteral("rising") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-level"_s, u"123mV"_s,
+           u"--trigger-mode"_s,  u"rising"_s }
         << DsoService::Settings{
             DsoService::Command::RisingEdgeTrigger, 0.123f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
@@ -213,10 +214,10 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("fall")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-level"), QStringLiteral("123mV"),
-           QStringLiteral("--trigger-mode"),  QStringLiteral("fall") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-level"_s, u"123mV"_s,
+           u"--trigger-mode"_s,  u"fall"_s }
         << DsoService::Settings{
             DsoService::Command::FallingEdgeTrigger, 0.123f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
@@ -225,10 +226,10 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("falling")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-level"), QStringLiteral("123mV"),
-           QStringLiteral("--trigger-mode"),  QStringLiteral("falling") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-level"_s, u"123mV"_s,
+           u"--trigger-mode"_s,  u"falling"_s }
         << DsoService::Settings{
             DsoService::Command::FallingEdgeTrigger, 0.123f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
@@ -237,33 +238,33 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("invalid-trigger-level")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-level"), QStringLiteral("invalid"),
-           QStringLiteral("--trigger-mode"),  QStringLiteral("free") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-level"_s, u"invalid"_s,
+           u"--trigger-mode"_s,  u"free"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral("Invalid trigger-level value: invalid") };
+        << QStringList{ u"Invalid trigger-level value: invalid"_s };
 
     QTest::addRow("invalid-trigger-mode")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--trigger-level"), QStringLiteral("123mV"),
-           QStringLiteral("--trigger-mode"),  QStringLiteral("invalid") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--trigger-level"_s, u"123mV"_s,
+           u"--trigger-mode"_s,  u"invalid"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.123f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral("Unknown trigger mode: invalid") };
+        << QStringList{ u"Unknown trigger mode: invalid"_s };
 
     QTest::addRow("interval:100") // Defaults to 100 seconds (ie 100,000,000us).
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--interval"), QStringLiteral("100") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 100*1000*1000, 1000}
@@ -272,9 +273,9 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("interval:499999") // Defaults to 499.999 seconds.
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--interval"), QStringLiteral("499999") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"499999"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 499999000, 1000}
@@ -283,9 +284,9 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("interval:500000") // Defaults to 0.5 seconds (ie 500,000us).
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--interval"), QStringLiteral("500000") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"500000"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 500*1000, 1000}
@@ -294,31 +295,31 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("invalid-interval")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--interval"), QStringLiteral("invalid") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"invalid"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral("Invalid interval value: invalid") };
+        << QStringList{ u"Invalid interval value: invalid"_s };
 
     QTest::addRow("negative-interval")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--interval"), QStringLiteral("-123") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"-123"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral("Invalid interval value: -123") };
+        << QStringList{ u"Invalid interval value: -123"_s };
 
     QTest::addRow("samples:100")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--samples"), QStringLiteral("100") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--samples"_s, u"100"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 100}
@@ -327,31 +328,31 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("invalid-samples")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--samples"), QStringLiteral("invalid") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--samples"_s, u"invalid"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral("Invalid samples value: invalid") };
+        << QStringList{ u"Invalid samples value: invalid"_s };
 
     QTest::addRow("too-big-samples")
         << QStringList{
-            QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-            QStringLiteral("--range"), QStringLiteral("1000mV"),
-            QStringLiteral("--samples"), QStringLiteral("65536") }
+            u"--mode"_s,  u"Vdc"_s,
+            u"--range"_s, u"1000mV"_s,
+            u"--samples"_s, u"65536"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral("Samples value (65536) must be no greater than 65535") };
+        << QStringList{ u"Samples value (65536) must be no greater than 65535"_s };
 
     QTest::addRow("possibly-too-big-samples")
         << QStringList{
-            QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-            QStringLiteral("--range"), QStringLiteral("1000mV"),
-            QStringLiteral("--samples"), QStringLiteral("8193") }
+            u"--mode"_s,  u"Vdc"_s,
+            u"--range"_s, u"1000mV"_s,
+            u"--samples"_s, u"8193"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 8193}
@@ -360,14 +361,14 @@ void TestDsoCommand::processOptions_data()
 
     QTest::addRow("negative-samples")
         << QStringList{
-           QStringLiteral("--mode"),  QStringLiteral("Vdc"),
-           QStringLiteral("--range"), QStringLiteral("1000mV"),
-           QStringLiteral("--samples"), QStringLiteral("-123") }
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--samples"_s, u"-123"_s }
         << DsoService::Settings{
             DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
             +PokitMeter::VoltageRange::_2V, 1000*1000, 1000}
         << &DsoCommand::minVoltageRange << 1000u
-        << QStringList{ QStringLiteral("Invalid samples value: -123") };
+        << QStringList{ u"Invalid samples value: -123"_s };
 }
 
 void TestDsoCommand::processOptions()
@@ -378,15 +379,15 @@ void TestDsoCommand::processOptions()
     QFETCH(quint32, expectedRangeOptionValue);
     QFETCH(QStringList, expectedErrors);
 
-    arguments.prepend(QStringLiteral("dokit")); // The first argument is always the app name.
+    arguments.prepend(u"dokit"_s); // The first argument is always the app name.
 
     QCommandLineParser parser;
-    parser.addOption({QStringLiteral("mode"), QStringLiteral("description"), QStringLiteral("mode")});
-    parser.addOption({QStringLiteral("range"), QStringLiteral("description"), QStringLiteral("range")});
-    parser.addOption({QStringLiteral("trigger-level"), QStringLiteral("description"), QStringLiteral("trigger-level")});
-    parser.addOption({QStringLiteral("trigger-mode"), QStringLiteral("description"), QStringLiteral("trigger-mode")});
-    parser.addOption({QStringLiteral("interval"), QStringLiteral("description"), QStringLiteral("interval")});
-    parser.addOption({QStringLiteral("samples"), QStringLiteral("description"), QStringLiteral("samples")});
+    parser.addOption({u"mode"_s, u"description"_s, u"mode"_s});
+    parser.addOption({u"range"_s, u"description"_s, u"range"_s});
+    parser.addOption({u"trigger-level"_s, u"description"_s, u"trigger-level"_s});
+    parser.addOption({u"trigger-mode"_s, u"description"_s, u"trigger-mode"_s});
+    parser.addOption({u"interval"_s, u"description"_s, u"interval"_s});
+    parser.addOption({u"samples"_s, u"description"_s, u"samples"_s});
     parser.process(arguments);
 
     if (expectedSettings.numberOfSamples > 8192) {
@@ -473,23 +474,22 @@ void TestDsoCommand::outputSamples_data()
     };
 
     #define DOKIT_ADD_TEST_ROW(name, metadata, list) \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv"))) \
+        QTest::newRow(qUtf8Printable(name + u".csv"_s)) \
             << metadata << list << AbstractCommand::OutputFormat::Csv; \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) \
+        QTest::newRow(qUtf8Printable(name + u".json"_s)) \
             << metadata << list << AbstractCommand::OutputFormat::Json; \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".txt"))) \
+        QTest::newRow(qUtf8Printable(name + u".txt"_s)) \
             << metadata << list << AbstractCommand::OutputFormat::Text
 
     for (const DsoService::Metadata &metadata: metadatas) {
-        const QString namePrefix = DsoService::toString(metadata.mode)
-            .replace(QLatin1Char(' '), QLatin1Char('-'));
-        DOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-null"),
+        const QString namePrefix = DsoService::toString(metadata.mode).replace(' '_L1, '-'_L1);
+        DOKIT_ADD_TEST_ROW(namePrefix + u"-null"_s,
                              metadata, QList<DsoService::Samples>{ });
         for (const DsoService::Samples &samples: samplesList) {
             DOKIT_ADD_TEST_ROW(namePrefix + QString::number(samples.front()), metadata,
                                  QList<DsoService::Samples>{ samples });
         }
-        DOKIT_ADD_TEST_ROW(namePrefix + QStringLiteral("-all"), metadata, samplesList);
+        DOKIT_ADD_TEST_ROW(namePrefix + u"-all"_s, metadata, samplesList);
     }
     #undef DOKIT_ADD_TEST_ROW
 }

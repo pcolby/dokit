@@ -5,6 +5,7 @@
 #include "outputstreamcapture.h"
 #include "testdata.h"
 #include "../github.h"
+#include "../stringliterals_p.h"
 
 #include "scancommand.h"
 
@@ -22,6 +23,8 @@ Q_DECLARE_METATYPE(ManufacturerData)
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(QBluetoothDeviceInfo::CoreConfiguration)
 Q_DECLARE_METATYPE(QBluetoothDeviceInfo::ServiceClasses)
+
+DOKIT_USE_STRINGLITERALS
 
 // Serialiser for QCOMPARE to output QJsonArray objects on test failures.
 char *toString(const QJsonArray &array)
@@ -86,31 +89,31 @@ void TestScanCommand::deviceDiscovered_data()
     QTest::addColumn<AbstractCommand::OutputFormat>("format");
 
     QBluetoothDeviceInfo rssi(QBluetoothUuid(
-        QStringLiteral("661d1ed3-8e28-4f2b-88da-a1c02fe98aed")), QStringLiteral("rssi"), 0);
+        u"661d1ed3-8e28-4f2b-88da-a1c02fe98aed"_s), u"rssi"_s, 0);
     rssi.setRssi(12345);
 
     const QList<QBluetoothDeviceInfo> list{
-        { QBluetoothAddress(0), QStringLiteral("addr0"), 0},
-        { QBluetoothAddress(0xFFFFFFFFFFFFFFFF), QStringLiteral("addrMax"), 0xFFFFFFFF},
-        { QBluetoothAddress(QStringLiteral("0123456789ABC")), QStringLiteral("addrStr"), 0},
-        { QBluetoothUuid(QStringLiteral("5c0625b1-a46b-44f1-a6aa-058424ce69b0")), QStringLiteral("uuid1"), 123},
-        { QBluetoothUuid(QStringLiteral("e8ee1747-1e43-4699-bac6-88cab02c109c")), QStringLiteral("uuid2"), 456},
-        { QBluetoothUuid(QStringLiteral("381b1e3c-c25a-44a3-9230-2a737cf3f206")), QStringLiteral("uuid3"), 678 },
+        { QBluetoothAddress(0), u"addr0"_s, 0},
+        { QBluetoothAddress(0xFFFFFFFFFFFFFFFF), u"addrMax"_s, 0xFFFFFFFF},
+        { QBluetoothAddress(u"0123456789ABC"_s), u"addrStr"_s, 0},
+        { QBluetoothUuid(u"5c0625b1-a46b-44f1-a6aa-058424ce69b0"_s), u"uuid1"_s, 123},
+        { QBluetoothUuid(u"e8ee1747-1e43-4699-bac6-88cab02c109c"_s), u"uuid2"_s, 456},
+        { QBluetoothUuid(u"381b1e3c-c25a-44a3-9230-2a737cf3f206"_s), u"uuid3"_s, 678 },
         rssi
     };
 
     #define DOKIT_ADD_TEST_ROW(name, list) \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".csv")))  << list << AbstractCommand::OutputFormat::Csv; \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".json"))) << list << AbstractCommand::OutputFormat::Json; \
-        QTest::newRow(qUtf8Printable(name + QStringLiteral(".txt")))  << list << AbstractCommand::OutputFormat::Text
+        QTest::newRow(qUtf8Printable(name + u".csv"_s))  << list << AbstractCommand::OutputFormat::Csv; \
+        QTest::newRow(qUtf8Printable(name + u".json"_s)) << list << AbstractCommand::OutputFormat::Json; \
+        QTest::newRow(qUtf8Printable(name + u".txt"_s))  << list << AbstractCommand::OutputFormat::Text
 
-    DOKIT_ADD_TEST_ROW(QStringLiteral("null"), QList<QBluetoothDeviceInfo>{ QBluetoothDeviceInfo() });
+    DOKIT_ADD_TEST_ROW(u"null"_s, QList<QBluetoothDeviceInfo>{ QBluetoothDeviceInfo() });
 
     for (const QBluetoothDeviceInfo &info: list) {
         DOKIT_ADD_TEST_ROW(info.name(), QList<QBluetoothDeviceInfo>{ info });
     }
 
-    DOKIT_ADD_TEST_ROW(QStringLiteral("all"), list );
+    DOKIT_ADD_TEST_ROW(u"all"_s, list );
     #undef DOKIT_ADD_TEST_ROW
 }
 
@@ -168,16 +171,16 @@ void TestScanCommand::toJson_info_data()
     QTest::newRow("invalid") << QBluetoothDeviceInfo() << QJsonObject();
 
     const QUuid randomUuid = QUuid::createUuid();
-    QBluetoothDeviceInfo info(QBluetoothUuid(randomUuid), QLatin1String("foo"), 0);
+    QBluetoothDeviceInfo info(QBluetoothUuid(randomUuid), u"foo"_s, 0);
     QTest::newRow("uuid")
         << info
         << QJsonObject{
-            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("address"), u"00:00:00:00:00:00"_s },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
             { QString::fromLatin1("isCached"), false },
-            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
-            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
-            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("majorDeviceClass"), u"MiscellaneousDevice"_s },
+            { QString::fromLatin1("minorDeviceClass"), u"UncategorizedMiscellaneous"_s },
+            { QString::fromLatin1("name"), u"foo"_s },
             { QString::fromLatin1("signalStrength"), 0 },
         };
 
@@ -185,12 +188,12 @@ void TestScanCommand::toJson_info_data()
     QTest::newRow("cached")
         << info
         << QJsonObject{
-            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("address"), u"00:00:00:00:00:00"_s },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
             { QString::fromLatin1("isCached"), true },
-            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
-            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
-            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("majorDeviceClass"), u"MiscellaneousDevice"_s },
+            { QString::fromLatin1("minorDeviceClass"), u"UncategorizedMiscellaneous"_s },
+            { QString::fromLatin1("name"), u"foo"_s },
             { QString::fromLatin1("signalStrength"), 0 },
         };
 
@@ -198,15 +201,15 @@ void TestScanCommand::toJson_info_data()
     QTest::newRow("coreConfig")
         << info
         << QJsonObject{
-            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("address"), u"00:00:00:00:00:00"_s },
             { QString::fromLatin1("coreConfiguration"), QJsonArray{
                 QString::fromLatin1("LowEnergyCoreConfiguration"),
             } },
             { QString::fromLatin1("deviceUuid"), randomUuid.toString() },
             { QString::fromLatin1("isCached"), true },
-            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
-            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
-            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("majorDeviceClass"), u"MiscellaneousDevice"_s },
+            { QString::fromLatin1("minorDeviceClass"), u"UncategorizedMiscellaneous"_s },
+            { QString::fromLatin1("name"), u"foo"_s },
             { QString::fromLatin1("signalStrength"), 0 },
         };
 
@@ -218,7 +221,7 @@ void TestScanCommand::toJson_info_data()
     QTest::newRow("manufacturerData")
         << info
         << QJsonObject{
-            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("address"), u"00:00:00:00:00:00"_s },
             { QString::fromLatin1("coreConfiguration"), QJsonArray{
                 QString::fromLatin1("LowEnergyCoreConfiguration"),
             } },
@@ -233,9 +236,9 @@ void TestScanCommand::toJson_info_data()
                 } },
                 { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
             } },
-            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
-            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
-            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("majorDeviceClass"), u"MiscellaneousDevice"_s },
+            { QString::fromLatin1("minorDeviceClass"), u"UncategorizedMiscellaneous"_s },
+            { QString::fromLatin1("name"), u"foo"_s },
             { QString::fromLatin1("signalStrength"), 0 },
         };
     #endif
@@ -244,7 +247,7 @@ void TestScanCommand::toJson_info_data()
     QTest::newRow("rssi")
         << info
         << QJsonObject{
-            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("address"), u"00:00:00:00:00:00"_s },
             { QString::fromLatin1("coreConfiguration"), QJsonArray{
                 QString::fromLatin1("LowEnergyCoreConfiguration"),
             } },
@@ -261,9 +264,9 @@ void TestScanCommand::toJson_info_data()
                 { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
             } },
             #endif
-            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
-            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
-            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("majorDeviceClass"), u"MiscellaneousDevice"_s },
+            { QString::fromLatin1("minorDeviceClass"), u"UncategorizedMiscellaneous"_s },
+            { QString::fromLatin1("name"), u"foo"_s },
             { QString::fromLatin1("signalStrength"), -123 },
         };
 
@@ -275,7 +278,7 @@ void TestScanCommand::toJson_info_data()
     QTest::newRow("rssi")
         << info
         << QJsonObject{
-            { QString::fromLatin1("address"), QLatin1String("00:00:00:00:00:00") },
+            { QString::fromLatin1("address"), u"00:00:00:00:00:00"_s },
             { QString::fromLatin1("coreConfiguration"), QJsonArray{
                 QString::fromLatin1("LowEnergyCoreConfiguration"),
             } },
@@ -292,9 +295,9 @@ void TestScanCommand::toJson_info_data()
                 { QString::fromLatin1("1"), QJsonArray{QString::fromLatin1("b25l") } },
             } },
             #endif
-            { QString::fromLatin1("majorDeviceClass"), QLatin1String("MiscellaneousDevice") },
-            { QString::fromLatin1("minorDeviceClass"), QLatin1String("UncategorizedMiscellaneous") },
-            { QString::fromLatin1("name"), QLatin1String("foo") },
+            { QString::fromLatin1("majorDeviceClass"), u"MiscellaneousDevice"_s },
+            { QString::fromLatin1("minorDeviceClass"), u"UncategorizedMiscellaneous"_s },
+            { QString::fromLatin1("name"), u"foo"_s },
             { QString::fromLatin1("serviceUuids"), QJsonArray{
                 QString::fromLatin1("{e7481d2f-5781-442e-bb9a-fd4e3441dadc}"),
                 QString::fromLatin1("{1569801e-1425-4a7a-b617-a4f4ed719de6}")
@@ -302,15 +305,15 @@ void TestScanCommand::toJson_info_data()
             { QString::fromLatin1("signalStrength"), -123 },
         };
 
-    const QBluetoothAddress address(QLatin1String("12:34:56:78:9A:BC"));
+    const QBluetoothAddress address(u"12:34:56:78:9A:BC"_s);
     QTest::newRow("address")
-        << QBluetoothDeviceInfo(address, QLatin1String("bar"), 0xffff)
+        << QBluetoothDeviceInfo(address, u"bar"_s, 0xffff)
         << QJsonObject{
             { QString::fromLatin1("address"), address.toString() },
             { QString::fromLatin1("isCached"), false },
-            { QString::fromLatin1("majorDeviceClass"), QLatin1String("UncategorizedDevice") },
+            { QString::fromLatin1("majorDeviceClass"), u"UncategorizedDevice"_s },
             { QString::fromLatin1("minorDeviceClass"), 63 },
-            { QString::fromLatin1("name"), QLatin1String("bar") },
+            { QString::fromLatin1("name"), u"bar"_s },
             { QString::fromLatin1("serviceClasses"), QJsonArray{
                 QString::fromLatin1("PositioningService"),
                 QString::fromLatin1("NetworkingService"),
@@ -346,8 +349,8 @@ void TestScanCommand::toJson_coreConfig_data()
         << QBluetoothDeviceInfo::CoreConfiguration(
             QBluetoothDeviceInfo::BaseRateAndLowEnergyCoreConfiguration) \
         << QJsonArray{
-            QLatin1String("LowEnergyCoreConfiguration"),
-            QLatin1String("BaseRateCoreConfiguration"),
+            u"LowEnergyCoreConfiguration"_s,
+            u"BaseRateCoreConfiguration"_s,
         };
 }
 

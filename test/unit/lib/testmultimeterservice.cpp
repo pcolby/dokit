@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "testmultimeterservice.h"
+#include "../stringliterals_p.h"
 
 #include <qtpokit/multimeterservice.h>
 #include <qtpokit/pokitmeter.h>
@@ -16,6 +17,7 @@ Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(MultimeterService::Reading))
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
 
 QTPOKIT_BEGIN_NAMESPACE
+DOKIT_USE_STRINGLITERALS
 
 void TestMultimeterService::toString_Mode_data()
 {
@@ -58,11 +60,11 @@ void TestMultimeterService::toString_Range_data()
     QTest::addRow("Idle") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
                           << MultimeterService::Mode::Idle << QString();
     QTest::addRow("Voltage:Meter") << PokitProduct::PokitMeter << +PokitMeter::VoltageRange::_300mV
-                                   << MultimeterService::Mode::AcVoltage << QStringLiteral("Up to 300mV");
+                                   << MultimeterService::Mode::AcVoltage << u"Up to 300mV"_s;
     QTest::addRow("Voltage:Pro") << PokitProduct::PokitPro << +PokitPro::VoltageRange::_600V
                                  << MultimeterService::Mode::AcVoltage << QString::fromUtf8("Up to 600V");
     QTest::addRow("Current:Meter") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
-                                   << MultimeterService::Mode::DcCurrent << QStringLiteral("Up to 150mA");
+                                   << MultimeterService::Mode::DcCurrent << u"Up to 150mA"_s;
     QTest::addRow("Current:Pro") << PokitProduct::PokitPro << +PokitPro::CurrentRange::_500uA
                                  << MultimeterService::Mode::DcCurrent << QString::fromUtf8("Up to 500μA");
     QTest::addRow("Resistance:Meter") << PokitProduct::PokitMeter << +PokitMeter::ResistanceRange::_470K
@@ -72,7 +74,7 @@ void TestMultimeterService::toString_Range_data()
     QTest::addRow("Temperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
                              << MultimeterService::Mode::Temperature << QString();
     QTest::addRow("Capacitance") << PokitProduct::PokitPro << +PokitPro::CapacitanceRange::_1mF
-                                 << MultimeterService::Mode::Capacitance << QStringLiteral("Up to 1mF");
+                                 << MultimeterService::Mode::Capacitance << u"Up to 1mF"_s;
     QTest::addRow("ExtTemperature") << PokitProduct::PokitMeter << +PokitMeter::CurrentRange::_150mA
                                     << MultimeterService::Mode::ExternalTemperature << QString();
 }
@@ -270,12 +272,12 @@ void TestMultimeterService::parseReading()
     QFETCH(QByteArray, value);
     QFETCH(MultimeterService::Reading, expected);
     if (value.size() < 7) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Reading requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Reading requires \d+ byte/s, but only \d+ present: 0x[a-zA-Z0-9,]*$)"_s));
     }
     if (value.size() > 7) {
-        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-            R"(^Reading has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)")));
+        QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+            uR"(^Reading has \d+ extraneous byte/s: 0x[a-zA-Z0-9,]*$)"_s));
     }
     const MultimeterService::Reading actual = MultimeterServicePrivate::parseReading(value);
     QCOMPARE(actual.status, expected.status);
@@ -298,8 +300,7 @@ void TestMultimeterService::characteristicRead()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     MultimeterService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic read for Multimeter service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(u"^Unknown characteristic read for Multimeter service .*$"_s));
     service.d_func()->characteristicRead(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -307,8 +308,8 @@ void TestMultimeterService::characteristicWritten()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     MultimeterService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic written for Multimeter service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic written for Multimeter service .*$"_s));
     service.d_func()->characteristicWritten(QLowEnergyCharacteristic(), QByteArray());
 }
 
@@ -316,8 +317,8 @@ void TestMultimeterService::characteristicChanged()
 {
     // Unfortunately we cannot construct QLowEnergyCharacteristic objects to test signal emissions.
     MultimeterService service(nullptr);
-    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(QStringLiteral(
-        "^Unknown characteristic notified for Multimeter service .*$")));
+    QTest::ignoreMessage(QtWarningMsg, QRegularExpression(
+        u"^Unknown characteristic notified for Multimeter service .*$"_s));
     service.d_func()->characteristicChanged(QLowEnergyCharacteristic(), QByteArray());
 }
 
