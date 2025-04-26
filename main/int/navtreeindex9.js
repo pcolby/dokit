@@ -1,5 +1,8 @@
 var NAVTREEINDEX9 =
 {
+"structStatusService_1_1DeviceCharacteristics.html":[5,0,35,1],
+"structStatusService_1_1DeviceCharacteristics.html#a0b7a8478916ea9229ca98c9d78c96ee3":[5,0,35,1,3],
+"structStatusService_1_1DeviceCharacteristics.html#a20ea5dac3e01c2c333a1c9a77ef02d3c":[5,0,35,1,5],
 "structStatusService_1_1DeviceCharacteristics.html#a4ddb1ebddb04e6a7b445cff73379e932":[5,0,35,1,7],
 "structStatusService_1_1DeviceCharacteristics.html#aa254a7737f072c29aeb21b29140c738f":[5,0,35,1,6],
 "structStatusService_1_1DeviceCharacteristics.html#ac32620649e1f8a2cf4cc6e25a7859656":[5,0,35,1,0],

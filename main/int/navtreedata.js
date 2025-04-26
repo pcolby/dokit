@@ -78,7 +78,7 @@ var NAVTREEINDEX =
 "qt.html#Key-enum",
 "qt.html#MouseButton-enum",
 "qt.html#WidgetAttribute-enum",
-"structStatusService_1_1DeviceCharacteristics.html#a4ddb1ebddb04e6a7b445cff73379e932"
+"structStatusService_1_1DeviceCharacteristics.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

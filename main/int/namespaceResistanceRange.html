@@ -175,17 +175,17 @@ Functions</h2></td></tr>
 <dd>
 <a class="el" href="namespacePokitPro.html#a05e5f6a0b19a7f9040e0dfac636fe081" title="Returns the maximum value for range in ohms, or 0 if range is not a known value for Pokit Pro devices...">PokitPro::maxValue(const PokitPro::ResistanceRange &amp;range)</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00240">240</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  241</span>{</div>
-<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">switch</span> (product) {</div>
-<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>:</div>
-<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitMeter.html#adebf441800fe17506c357ebf019310bf">PokitMeter::maxValue</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitMeter.html#aacf3005969c4417f7eaeeeaf83d5e047">PokitMeter::ResistanceRange</a><span class="keyword">&gt;</span>(range));</div>
-<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:</div>
-<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitPro.html#ae2ab8138755e0f9a6876f3bbc61fad60">PokitPro::maxValue</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitPro.html#ac6fedf42d1268613f25da2b7c82832a7">PokitPro::ResistanceRange</a><span class="keyword">&gt;</span>(range));</div>
-<div class="line"><span class="lineno">  247</span>    }</div>
-<div class="line"><span class="lineno">  248</span>    qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>).arg((<span class="keywordtype">int</span>)product);</div>
-<div class="line"><span class="lineno">  249</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  250</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00242">242</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  243</span>{</div>
+<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">switch</span> (product) {</div>
+<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>:</div>
+<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitMeter.html#adebf441800fe17506c357ebf019310bf">PokitMeter::maxValue</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitMeter.html#aacf3005969c4417f7eaeeeaf83d5e047">PokitMeter::ResistanceRange</a><span class="keyword">&gt;</span>(range));</div>
+<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:</div>
+<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitPro.html#ae2ab8138755e0f9a6876f3bbc61fad60">PokitPro::maxValue</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitPro.html#ac6fedf42d1268613f25da2b7c82832a7">PokitPro::ResistanceRange</a><span class="keyword">&gt;</span>(range));</div>
+<div class="line"><span class="lineno">  249</span>    }</div>
+<div class="line"><span class="lineno">  250</span>    qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>).arg((<span class="keywordtype">int</span>)product);</div>
+<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  252</span>}</div>
 <div class="ttc" id="anamespacePokitMeter_html_aacf3005969c4417f7eaeeeaf83d5e047"><div class="ttname"><a href="namespacePokitMeter.html#aacf3005969c4417f7eaeeeaf83d5e047">PokitMeter::ResistanceRange</a></div><div class="ttdeci">ResistanceRange</div><div class="ttdoc">Values supported by the Pokit Meter&#39;s Range attributes in Resistance mode.</div><div class="ttdef"><b>Definition</b> <a href="pokitmeter_8h_source.html#l00032">pokitmeter.h:32</a></div></div>
 <div class="ttc" id="anamespacePokitMeter_html_adebf441800fe17506c357ebf019310bf"><div class="ttname"><a href="namespacePokitMeter.html#adebf441800fe17506c357ebf019310bf">PokitMeter::maxValue</a></div><div class="ttdeci">QTPOKIT_EXPORT quint32 maxValue(const CurrentRange &amp;range)</div><div class="ttdoc">Returns the maximum value for range in microamps, or 0 if range is not a known value for Pokit Meter ...</div><div class="ttdef"><b>Definition</b> <a href="pokitmeter_8cpp_source.html#l00044">pokitmeter.cpp:44</a></div></div>
 <div class="ttc" id="anamespacePokitPro_html_ac6fedf42d1268613f25da2b7c82832a7"><div class="ttname"><a href="namespacePokitPro.html#ac6fedf42d1268613f25da2b7c82832a7">PokitPro::ResistanceRange</a></div><div class="ttdeci">ResistanceRange</div><div class="ttdoc">Values supported by the Pokit Pro&#39;s Range attributes in Resistance mode.</div><div class="ttdef"><b>Definition</b> <a href="pokitpro_8h_source.html#l00045">pokitpro.h:45</a></div></div>
@@ -195,7 +195,7 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pokitmeter_8cpp_source.html#l00044">PokitMeter::maxValue()</a>, <a class="el" href="pokitpro_8cpp_source.html#l00051">PokitPro::maxValue()</a>, <a class="el" href="pokitproducts_8h_source.html#l00023">PokitMeter</a>, and <a class="el" href="pokitproducts_8h_source.html#l00024">PokitPro</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00090">MultimeterService::maxValue()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00092">MultimeterService::maxValue()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -233,24 +233,24 @@ Here is the caller graph for this function:</div>
 <dd>
 <a class="el" href="namespacePokitPro.html#ae6547e17145d57e3b18aa134e090d400" title="Returns range as a user-friendly string.">PokitPro::toString(const PokitPro::ResistanceRange &amp;range)</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00222">222</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  223</span>{</div>
-<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">switch</span> (product) {</div>
-<div class="line"><span class="lineno">  225</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>:</div>
-<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitMeter.html#a3c3db7b94b6f44af24f4a23e87a3569e">PokitMeter::toString</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitMeter.html#aacf3005969c4417f7eaeeeaf83d5e047">PokitMeter::ResistanceRange</a><span class="keyword">&gt;</span>(range));</div>
-<div class="line"><span class="lineno">  227</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:</div>
-<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4">PokitPro::toString</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitPro.html#ac6fedf42d1268613f25da2b7c82832a7">PokitPro::ResistanceRange</a><span class="keyword">&gt;</span>(range));</div>
-<div class="line"><span class="lineno">  229</span>    }</div>
-<div class="line"><span class="lineno">  230</span>    qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>).arg((<span class="keywordtype">int</span>)product);</div>
-<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
-<div class="line"><span class="lineno">  232</span>}</div>
+<p class="definition">Definition at line <a class="el" href="pokitproducts_8cpp_source.html#l00224">224</a> of file <a class="el" href="pokitproducts_8cpp_source.html">pokitproducts.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  225</span>{</div>
+<div class="line"><span class="lineno">  226</span>    <span class="keywordflow">switch</span> (product) {</div>
+<div class="line"><span class="lineno">  227</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4afbb216b5c2f76db3f733c4c5915b3001">PokitProduct::PokitMeter</a>:</div>
+<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitMeter.html#a3c3db7b94b6f44af24f4a23e87a3569e">PokitMeter::toString</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitMeter.html#aacf3005969c4417f7eaeeeaf83d5e047">PokitMeter::ResistanceRange</a><span class="keyword">&gt;</span>(range));</div>
+<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="pokitproducts_8h.html#a0c4f628f68ce0432a6db11681a41fda4abf3aeeb41cfa55672113dbb4a86da2ae">PokitProduct::PokitPro</a>:</div>
+<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4">PokitPro::toString</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="namespacePokitPro.html#ac6fedf42d1268613f25da2b7c82832a7">PokitPro::ResistanceRange</a><span class="keyword">&gt;</span>(range));</div>
+<div class="line"><span class="lineno">  231</span>    }</div>
+<div class="line"><span class="lineno">  232</span>    qCWarning(lc).noquote() &lt;&lt; Private::tr(<span class="stringliteral">&quot;Unknown PokitProduct value: %1&quot;</span>).arg((<span class="keywordtype">int</span>)product);</div>
+<div class="line"><span class="lineno">  233</span>    <span class="keywordflow">return</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a>();</div>
+<div class="line"><span class="lineno">  234</span>}</div>
 <div class="ttc" id="anamespacePokitMeter_html_a3c3db7b94b6f44af24f4a23e87a3569e"><div class="ttname"><a href="namespacePokitMeter.html#a3c3db7b94b6f44af24f4a23e87a3569e">PokitMeter::toString</a></div><div class="ttdeci">QTPOKIT_EXPORT QString toString(const CurrentRange &amp;range)</div><div class="ttdoc">Returns range as a user-friendly string.</div><div class="ttdef"><b>Definition</b> <a href="pokitmeter_8cpp_source.html#l00028">pokitmeter.cpp:28</a></div></div>
 <div class="ttc" id="anamespacePokitPro_html_a38ce307b844e4d67d94402b31461f7f4"><div class="ttname"><a href="namespacePokitPro.html#a38ce307b844e4d67d94402b31461f7f4">PokitPro::toString</a></div><div class="ttdeci">QTPOKIT_EXPORT QString toString(const CapacitanceRange &amp;range)</div><div class="ttdoc">Returns range as a user-friendly string.</div><div class="ttdef"><b>Definition</b> <a href="pokitpro_8cpp_source.html#l00037">pokitpro.cpp:37</a></div></div>
 <div class="ttc" id="aqstring_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qstring.html">QString</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="pokitproducts_8h_source.html#l00023">PokitMeter</a>, <a class="el" href="pokitproducts_8h_source.html#l00024">PokitPro</a>, <a class="el" href="pokitmeter_8cpp_source.html#l00028">PokitMeter::toString()</a>, and <a class="el" href="pokitpro_8cpp_source.html#l00037">PokitPro::toString()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00056">MultimeterService::toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="multimeterservice_8cpp_source.html#l00058">MultimeterService::toString()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
