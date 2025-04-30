@@ -43,7 +43,7 @@ add_compile_definitions(
 
 # Enable Qt's strict mode.
 add_compile_definitions(
-  QT_ENABLE_STRICT_MODE_UP_TO=0x060800
+  QT_ENABLE_STRICT_MODE_UP_TO=0x060900
   # Qt 6.0.0
   QT_NO_FOREACH
   QT_NO_CAST_FROM_ASCII
@@ -58,8 +58,9 @@ add_compile_definitions(
   QT_NO_CONTEXTLESS_CONNECT
   # Qt 6.8.0
   QT_NO_QASCONST
-  QT_NO_QSNPRINTF
   QT_USE_NODISCARD_FILE_OPEN
+  # Qt 6.9.0
+  QT_NO_QSNPRINTF
 )
 
 # Enable most compiler warnings, by default.
