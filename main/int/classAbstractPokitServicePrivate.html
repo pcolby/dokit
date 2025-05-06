@@ -162,7 +162,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2b105802085225fe68254dfdb6754ad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an internal service object from the internal controller.  <br /></td></tr>
 <tr class="separator:a2b105802085225fe68254dfdb6754ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaac3ef8e3590334acdddb2b029865eb0" id="r_aaac3ef8e3590334acdddb2b029865eb0"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html">QLowEnergyCharacteristic</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaac3ef8e3590334acdddb2b029865eb0">getCharacteristic</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> &amp;uuid) const</td></tr>
-<tr class="memdesc:aaac3ef8e3590334acdddb2b029865eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <em class="arg">uuid</em> characteristc from the underlying service.  <br /></td></tr>
+<tr class="memdesc:aaac3ef8e3590334acdddb2b029865eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <em class="arg">uuid</em> characteristic from the underlying service.  <br /></td></tr>
 <tr class="separator:aaac3ef8e3590334acdddb2b029865eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad58619e237f300294049c82b85d76875" id="r_ad58619e237f300294049c82b85d76875"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad58619e237f300294049c82b85d76875">readCharacteristic</a> (const <a class="elRef" href="https://doc.qt.io/qt-5/qbluetoothuuid.html">QBluetoothUuid</a> &amp;uuid)</td></tr>
 <tr class="memdesc:ad58619e237f300294049c82b85d76875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the <em class="arg">uuid</em> characteristic.  <br /></td></tr>
@@ -621,7 +621,7 @@ Here is the caller graph for this function:</div>
 
 <p>Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicChanged">QLowEnergyService::characteristicChanged</a></code> events. </p>
 <p>This base implementation simply debug logs the event.</p>
-<p>If derived classes support characteristics with client-side notification (ie Notify, as opposed to Read or Write operations), they should implement this function to handle the successful reads of <em class="arg">characteristic</em>, typically by parsing <em class="arg">value</em>, then emitting a speciailised signal. </p>
+<p>If derived classes support characteristics with client-side notification (ie Notify, as opposed to Read or Write operations), they should implement this function to handle the successful reads of <em class="arg">characteristic</em>, typically by parsing <em class="arg">value</em>, then emitting a specialised signal. </p>
 
 <p>Reimplemented in <a class="el" href="classDataLoggerServicePrivate.html#a687b443e1e36e2c07a9776a6ca02e688">DataLoggerServicePrivate</a>, <a class="el" href="classDsoServicePrivate.html#a7de9e2488240903fee3d88b89bf1d5ec">DsoServicePrivate</a>, and <a class="el" href="classMultimeterServicePrivate.html#af80ef46d902cc372a57bb1ba45313bcb">MultimeterServicePrivate</a>.</p>
 
@@ -683,7 +683,7 @@ Here is the caller graph for this function:</div>
 
 <p>Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicRead">QLowEnergyService::characteristicRead</a></code> events. </p>
 <p>This base implementation simply debug logs the event.</p>
-<p>Derived classes should implement this function to handle the successful reads of <em class="arg">characteristic</em>, typically by parsing <em class="arg">value</em>, then emitting a speciailised signal. </p>
+<p>Derived classes should implement this function to handle the successful reads of <em class="arg">characteristic</em>, typically by parsing <em class="arg">value</em>, then emitting a specialised signal. </p>
 
 <p>Reimplemented in <a class="el" href="classDataLoggerServicePrivate.html#a91ded6976e79e6054954eebe591214be">DataLoggerServicePrivate</a>, <a class="el" href="classDeviceInfoServicePrivate.html#a5ca3ccfe6cc8231247fed820e41551a1">DeviceInfoServicePrivate</a>, <a class="el" href="classDsoServicePrivate.html#a0eb9af767bd0ec01458d681a5831c07a">DsoServicePrivate</a>, <a class="el" href="classMultimeterServicePrivate.html#a2cb96a3c5ae351ca9d07ee7bc828029a">MultimeterServicePrivate</a>, and <a class="el" href="classStatusServicePrivate.html#a08d8faee04fb47ac19d3962609606d52">StatusServicePrivate</a>.</p>
 
@@ -738,7 +738,7 @@ Here is the caller graph for this function:</div>
 
 <p>Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicWritten">QLowEnergyService::characteristicWritten</a></code> events. </p>
 <p>This base implementation simply debug logs the event.</p>
-<p>Derived classes should implement this function to handle the successful writes of <em class="arg">characteristic</em>, typically by parsing <em class="arg">newValue</em>, then emitting a speciailised signal. </p>
+<p>Derived classes should implement this function to handle the successful writes of <em class="arg">characteristic</em>, typically by parsing <em class="arg">newValue</em>, then emitting a specialised signal. </p>
 
 <p>Reimplemented in <a class="el" href="classCalibrationServicePrivate.html#a1319763f3101ba47ad5e3dedacb630ac">CalibrationServicePrivate</a>, <a class="el" href="classDataLoggerServicePrivate.html#a6988cc8bf165d4bf1fcdacf7124ea6f9">DataLoggerServicePrivate</a>, <a class="el" href="classDsoServicePrivate.html#acd230f4773256fa6cea38cb43ed65df1">DsoServicePrivate</a>, <a class="el" href="classMultimeterServicePrivate.html#abe299f554929b4b345d5dd527fd7bcea">MultimeterServicePrivate</a>, and <a class="el" href="classStatusServicePrivate.html#a8de57b8b27437360d75bd44f74595db1">StatusServicePrivate</a>.</p>
 
@@ -865,7 +865,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#connected">QLowEnergyController::connected</a></code> events. </p>
-<p>If <code>autoDiscover</code> is enabled, this will begin service discovery on the newly connected contoller.</p>
+<p>If <code>autoDiscover</code> is enabled, this will begin service discovery on the newly connected controller.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#a65c2c9c6163744a7cf52de2c6a83f610" title="Returns true if autodiscovery of services and service details is enabled, false otherwise.">AbstractPokitService::autoDiscover()</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00444">444</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
@@ -1028,7 +1028,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Disables client (Pokit device) side notification for characteristic <em class="arg">uuid</em>. </p>
-<p>Returns <code>true</code> if the notication disable request was successfully queued, <code>false</code> otherwise.</p>
+<p>Returns <code>true</code> if the notification disable request was successfully queued, <code>false</code> otherwise.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a642431b7bfb76baa5d976ae24e90d9ef" title="Handles QLowEnergyService::characteristicChanged events.">AbstractPokitServicePrivate::characteristicChanged</a> </dd>
 <dd>
 <a class="el" href="#a7a024ab2e783e62b78568f4834eb6159" title="Enables client (Pokit device) side notification for characteristic uuid.">AbstractPokitServicePrivate::enableCharacteristicNotificatons</a> </dd></dl>
@@ -1059,7 +1059,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  391</span>    );</div>
 <div class="line"><span class="lineno">  392</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  393</span>}</div>
-<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aaac3ef8e3590334acdddb2b029865eb0"><div class="ttname"><a href="#aaac3ef8e3590334acdddb2b029865eb0">AbstractPokitServicePrivate::getCharacteristic</a></div><div class="ttdeci">QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &amp;uuid) const</div><div class="ttdoc">Get uuid characteristc from the underlying service.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00269">abstractpokitservice.cpp:269</a></div></div>
+<div class="ttc" id="aclassAbstractPokitServicePrivate_html_aaac3ef8e3590334acdddb2b029865eb0"><div class="ttname"><a href="#aaac3ef8e3590334acdddb2b029865eb0">AbstractPokitServicePrivate::getCharacteristic</a></div><div class="ttdeci">QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &amp;uuid) const</div><div class="ttdoc">Get uuid characteristic from the underlying service.</div><div class="ttdef"><b>Definition</b> <a href="abstractpokitservice_8cpp_source.html#l00269">abstractpokitservice.cpp:269</a></div></div>
 <div class="ttc" id="aqbytearray_html_fromHex"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbytearray.html#fromHex">QByteArray::fromHex</a></div><div class="ttdeci">QByteArray fromHex(const QByteArray &amp;hexEncoded)</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_descriptor"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#descriptor">QLowEnergyCharacteristic::descriptor</a></div><div class="ttdeci">QLowEnergyDescriptor descriptor(const QBluetoothUuid &amp;uuid) const const</div></div>
 <div class="ttc" id="aqlowenergycharacteristic_html_isValid"><div class="ttname"><a href="https://doc.qt.io/qt-5/qlowenergycharacteristic.html#isValid">QLowEnergyCharacteristic::isValid</a></div><div class="ttdeci">bool isValid() const const</div></div>
@@ -1098,7 +1098,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Handles <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergycontroller.html#discoveryFinished">QLowEnergyController::discoveryFinished</a></code> events. </p>
-<p>As this event indicates that the conroller has finished discovering services, this function will invoke <a class="el" href="#a2b105802085225fe68254dfdb6754ad9" title="Creates an internal service object from the internal controller.">createServiceObject()</a> to create the internal service object (if not already created). </p>
+<p>As this event indicates that the controller has finished discovering services, this function will invoke <a class="el" href="#a2b105802085225fe68254dfdb6754ad9" title="Creates an internal service object from the internal controller.">createServiceObject()</a> to create the internal service object (if not already created). </p>
 
 <p class="definition">Definition at line <a class="el" href="abstractpokitservice_8cpp_source.html#l00465">465</a> of file <a class="el" href="abstractpokitservice_8cpp_source.html">abstractpokitservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  466</span>{</div>
@@ -1151,7 +1151,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Enables client (Pokit device) side notification for characteristic <em class="arg">uuid</em>. </p>
-<p>Returns <code>true</code> if the notication enable request was successfully queued, <code>false</code> otherwise.</p>
+<p>Returns <code>true</code> if the notification enable request was successfully queued, <code>false</code> otherwise.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a642431b7bfb76baa5d976ae24e90d9ef" title="Handles QLowEnergyService::characteristicChanged events.">AbstractPokitServicePrivate::characteristicChanged</a> </dd>
 <dd>
 <a class="el" href="#a2922b59e5fc76b0e90ebef2a88adac9d" title="Disables client (Pokit device) side notification for characteristic uuid.">AbstractPokitServicePrivate::disableCharacteristicNotificatons</a> </dd></dl>
@@ -1256,7 +1256,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Get <em class="arg">uuid</em> characteristc from the underlying service. </p>
+<p>Get <em class="arg">uuid</em> characteristic from the underlying service. </p>
 <p>This helper function is equivalent to</p>
 <div class="fragment"><div class="line"><span class="keywordflow">return</span> <a class="code hl_variable" href="#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;characteristic(uuid);</div>
 </div><!-- fragment --><p>except that it performs some sanity checks, such as checking the service object pointer has been assigned first, and also logs failures in a consistent manner.</p>
@@ -1299,7 +1299,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  297</span><span class="stringliteral">        <a class="code hl_variable" href="#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;serviceUuid().toString(), <a class="code hl_function" href="classPokitDevice.html#aca9393595de5676f20e3d0fd795358b5">PokitDevice::serviceToString</a>(<a class="code hl_variable" href="#adc41ee1de2a4783623aa78d0a8beb85d">service</a>-&gt;serviceUuid()));</span></div>
 <div class="line"><span class="lineno">  298</span><span class="stringliteral">    </span><span class="keywordflow">return</span> QLowEnergyCharacteristic();</div>
 <div class="line"><span class="lineno">  299</span>}</div>
-<div class="ttc" id="aclassPokitDevice_html_aca9393595de5676f20e3d0fd795358b5"><div class="ttname"><a href="classPokitDevice.html#aca9393595de5676f20e3d0fd795358b5">PokitDevice::serviceToString</a></div><div class="ttdeci">static QString serviceToString(const QBluetoothUuid &amp;uuid)</div><div class="ttdoc">Returns a human-readable name for the uuid service, or a null QString if unknonw.</div><div class="ttdef"><b>Definition</b> <a href="pokitdevice_8cpp_source.html#l00194">pokitdevice.cpp:194</a></div></div>
+<div class="ttc" id="aclassPokitDevice_html_aca9393595de5676f20e3d0fd795358b5"><div class="ttname"><a href="classPokitDevice.html#aca9393595de5676f20e3d0fd795358b5">PokitDevice::serviceToString</a></div><div class="ttdeci">static QString serviceToString(const QBluetoothUuid &amp;uuid)</div><div class="ttdoc">Returns a human-readable name for the uuid service, or a null QString if unknown.</div><div class="ttdef"><b>Definition</b> <a href="pokitdevice_8cpp_source.html#l00194">pokitdevice.cpp:194</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">QString::arg()</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00222">PokitDevice::charcteristicToString()</a>, <a class="el" href="abstractpokitservice__p_8h_source.html#l00035">service</a>, <a class="el" href="pokitdevice_8cpp_source.html#l00194">PokitDevice::serviceToString()</a>, <a class="elRef" href="https://doc.qt.io/qt-5/quuid.html#toString">QUuid::toString()</a>, and <a class="elRef" href="https://doc.qt.io/qt-5/qobject.html#tr">QObject::tr()</a>.</p>
 
@@ -1333,7 +1333,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Read the <em class="arg">uuid</em> characteristic. </p>
-<p>If succesful, the <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicRead">QLowEnergyService::characteristicRead</a></code> signal will be emitted by the internal service object. For convenience, derived classes should implement the <a class="el" href="#a84bef330c6ff124f1e460bb8949d82da" title="Handles QLowEnergyService::characteristicRead events.">characteristicRead()</a> virtual function to handle the read value.</p>
+<p>If successful, the <code><a class="elRef" href="https://doc.qt.io/qt-5/qlowenergyservice.html#characteristicRead">QLowEnergyService::characteristicRead</a></code> signal will be emitted by the internal service object. For convenience, derived classes should implement the <a class="el" href="#a84bef330c6ff124f1e460bb8949d82da" title="Handles QLowEnergyService::characteristicRead events.">characteristicRead()</a> virtual function to handle the read value.</p>
 <p>Returns <code>true</code> if the characteristic read request was successfully queued, <code>false</code> otherwise.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classAbstractPokitService.html#ab1de532f20d46803d6e8b8ffea835b48" title="Read all characteristics.">AbstractPokitService::readCharacteristics()</a> </dd>
 <dd>

@@ -607,7 +607,7 @@ typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href
 </div><div class="memdoc">
 
 <p>Raw samples from the <code>Reading</code> characteristic. </p>
-<p>These raw samples are (supposedly) wihtin the range -2048 to +2047, and need to be multiplied by the <a class="el" href="structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085" title="Scale to apply to read samples.">Metadata::scale</a> value from the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characteristic.">Metadata</a></code> characteristc to get the true values.</p>
+<p>These raw samples are (supposedly) within the range -2048 to +2047, and need to be multiplied by the <a class="el" href="structDsoService_1_1Metadata.html#a6b8a8636619603ff9a52e0ef2eba1085" title="Scale to apply to read samples.">Metadata::scale</a> value from the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characteristic.">Metadata</a></code> characteristic to get the true values.</p>
 <p>Also supposedly, there should be no more than 10 samples at a time, according to Pokit's current API docs. There is not artificial limitation imposed by QtPokit, so devices may begin batching more samples in future. </p>
 
 <p class="definition">Definition at line <a class="el" href="dsoservice_8h_source.html#l00094">94</a> of file <a class="el" href="dsoservice_8h_source.html">dsoservice.h</a>.</p>
@@ -848,7 +848,7 @@ Here is the call graph for this function:</div>
 
 <p>Disables client-side notifications of DSO metadata changes. </p>
 <p>Instantaneous reads can still be fetched by <a class="el" href="#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Reads the DSO service&#39;s Metadata characteristic.">readMetadataCharacteristic()</a>.</p>
-<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
+<p>Returns <code>true</code> is the request was successfully submitted to the device queue, <code>false</code> otherwise. </p>
 
 <p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00248">248</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  249</span>{</div>
@@ -883,7 +883,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Disables client-side notifications of DSO readings. </p>
-<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise. </p>
+<p>Returns <code>true</code> is the request was successfully submitted to the device queue, <code>false</code> otherwise. </p>
 
 <p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00272">272</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  273</span>{</div>
@@ -918,7 +918,7 @@ Here is the call graph for this function:</div>
 
 <p>Enables client-side notifications of DSO metadata changes. </p>
 <p>This is an alternative to manually requesting individual reads via <a class="el" href="#ad8cd148690b9e4fd1b01071e8cfabd0c" title="Reads the DSO service&#39;s Metadata characteristic.">readMetadataCharacteristic()</a>.</p>
-<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
+<p>Returns <code>true</code> is the request was successfully submitted to the device queue, <code>false</code> otherwise.</p>
 <p>Successfully read values (if any) will be emitted via the <a class="el" href="#a19e4f10c45794762aa5b692aceee9e6c" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> signal. </p>
 
 <p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00235">235</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
@@ -952,7 +952,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Enables client-side notifications of DSO readings. </p>
-<p>Returns <code>true</code> is the request was successfully submited to the device queue, <code>false</code> otherwise.</p>
+<p>Returns <code>true</code> is the request was successfully submitted to the device queue, <code>false</code> otherwise.</p>
 <p>Successfully read samples (if any) will be emitted via the <a class="el" href="#afafabdcfc2d5812b32eac0e16c437789" title="This signal is emitted when the Reading characteristic has been notified.">samplesRead()</a> signal. </p>
 
 <p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00261">261</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
@@ -987,7 +987,7 @@ Here is the call graph for this function:</div>
 
 <p>Fetch DSO samples. </p>
 <p>This is just a convenience function equivalent to calling <a class="el" href="#a5714c8ccec6ab1d98241312b28a32e9e" title="Configures the Pokit device&#39;s DSO mode.">setSettings()</a> with the command set to DsoService::Command::Refresh.</p>
-<p>Once the Pokit device has processed this request succesffully, the device will begin notifying the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characteristic.">Metadata</a></code> and <code>Reading</code> characteristic, resulting in emits of metadataRead and samplesRead respectively. </p>
+<p>Once the Pokit device has processed this request successfully, the device will begin notifying the <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characteristic.">Metadata</a></code> and <code>Reading</code> characteristic, resulting in emits of metadataRead and samplesRead respectively. </p>
 
 <p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00195">195</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  196</span>{</div>
@@ -1260,7 +1260,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Reads the <code>DSO</code> service's <code><a class="el" href="structDsoService_1_1Metadata.html" title="Attributes included in the Metadata characteristic.">Metadata</a></code> characteristic. </p>
-<p>Returns <code>true</code> is the read request is succesfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
+<p>Returns <code>true</code> is the read request is successfully queued, <code>false</code> otherwise (ie if the underlying controller it not yet connected to the Pokit device, or the device's services have not yet been discovered).</p>
 <p>Emits <a class="el" href="#a19e4f10c45794762aa5b692aceee9e6c" title="This signal is emitted when the Metadata characteristic has been read successfully.">metadataRead()</a> if/when the characteristic has been read successfully. </p>
 
 <p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00137">137</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
@@ -1346,7 +1346,7 @@ Here is the caller graph for this function:</div>
 
 <p>Configures the Pokit device's DSO mode. </p>
 <p>Returns <code>true</code> if the write request was successfully queued, <code>false</code> otherwise.</p>
-<p>Emits <a class="el" href="#a5d5b1266a63ee479c91c4e048cdf0859" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em class="arg">settings</em> have been writtem successfully. </p>
+<p>Emits <a class="el" href="#a5d5b1266a63ee479c91c4e048cdf0859" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em class="arg">settings</em> have been written successfully. </p>
 
 <p class="definition">Definition at line <a class="el" href="dsoservice_8cpp_source.html#l00150">150</a> of file <a class="el" href="dsoservice_8cpp_source.html">dsoservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  151</span>{</div>

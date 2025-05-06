@@ -456,7 +456,7 @@ Protected Attributes</h2></td></tr>
 <tr class="memdesc:a07d979bc039d61f5c720cb1521b31208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device (if any) that were passed to <a class="el" href="#ad827a18a24776efeb955739459d48f7d" title="Processes the relevant options from the command line parser.">processOptions()</a>.  <br /></td></tr>
 <tr class="separator:a07d979bc039d61f5c720cb1521b31208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86878df43cd818f4a7f333a97dabac3c" id="r_a86878df43cd818f4a7f333a97dabac3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPokitDiscoveryAgent.html">PokitDiscoveryAgent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86878df43cd818f4a7f333a97dabac3c">discoveryAgent</a></td></tr>
-<tr class="memdesc:a86878df43cd818f4a7f333a97dabac3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agent for Pokit device descovery.  <br /></td></tr>
+<tr class="memdesc:a86878df43cd818f4a7f333a97dabac3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agent for Pokit device discovery.  <br /></td></tr>
 <tr class="separator:a86878df43cd818f4a7f333a97dabac3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a881d85cd96b6fcc0652b916c366dda7b" id="r_a881d85cd96b6fcc0652b916c366dda7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#aa2dadc72289ff2b0a02c1fb435f8a4dc">OutputFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a881d85cd96b6fcc0652b916c366dda7b">format</a> { <a class="el" href="#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675">OutputFormat::Text</a> }</td></tr>
 <tr class="memdesc:a881d85cd96b6fcc0652b916c366dda7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selected output format.  <br /></td></tr>
@@ -592,7 +592,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef"
 <div class="line"><span class="lineno">   45</span>    });</div>
 <div class="line"><span class="lineno">   46</span>}</div>
 <div class="ttc" id="aclassAbstractCommand_html_a6ea2745014149145e803d64ca51057d9"><div class="ttname"><a href="#a6ea2745014149145e803d64ca51057d9">AbstractCommand::deviceDiscovered</a></div><div class="ttdeci">virtual void deviceDiscovered(const QBluetoothDeviceInfo &amp;info)=0</div><div class="ttdoc">Handles PokitDiscoveryAgent::pokitDeviceDiscovered signal.</div></div>
-<div class="ttc" id="aclassAbstractCommand_html_a86878df43cd818f4a7f333a97dabac3c"><div class="ttname"><a href="#a86878df43cd818f4a7f333a97dabac3c">AbstractCommand::discoveryAgent</a></div><div class="ttdeci">PokitDiscoveryAgent * discoveryAgent</div><div class="ttdoc">Agent for Pokit device descovery.</div><div class="ttdef"><b>Definition</b> <a href="abstractcommand_8h_source.html#l00044">abstractcommand.h:44</a></div></div>
+<div class="ttc" id="aclassAbstractCommand_html_a86878df43cd818f4a7f333a97dabac3c"><div class="ttname"><a href="#a86878df43cd818f4a7f333a97dabac3c">AbstractCommand::discoveryAgent</a></div><div class="ttdeci">PokitDiscoveryAgent * discoveryAgent</div><div class="ttdoc">Agent for Pokit device discovery.</div><div class="ttdef"><b>Definition</b> <a href="abstractcommand_8h_source.html#l00044">abstractcommand.h:44</a></div></div>
 <div class="ttc" id="aclassAbstractCommand_html_adb456a44bfe2f353e3a16aa720aeb299"><div class="ttname"><a href="#adb456a44bfe2f353e3a16aa720aeb299">AbstractCommand::deviceDiscoveryFinished</a></div><div class="ttdeci">virtual void deviceDiscoveryFinished()=0</div><div class="ttdoc">Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal.</div></div>
 <div class="ttc" id="aclassPokitDiscoveryAgent_html_af38e511ae250a745cc900c0c4f356972"><div class="ttname"><a href="classPokitDiscoveryAgent.html#af38e511ae250a745cc900c0c4f356972">PokitDiscoveryAgent::pokitDeviceDiscovered</a></div><div class="ttdeci">void pokitDeviceDiscovered(const QBluetoothDeviceInfo &amp;info)</div><div class="ttdoc">This signal is emitted when the Pokit device described by info is discovered.</div></div>
 <div class="ttc" id="aqbluetoothdevicediscoveryagent_html_Error-enum"><div class="ttname"><a href="https://doc.qt.io/qt-5/qbluetoothdevicediscoveryagent.html#Error-enum">QBluetoothDeviceDiscoveryAgent::Error</a></div><div class="ttdeci">Error</div></div>
@@ -682,7 +682,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. </p>
-<p>Derived classes must implement this slot to perform whatever actions are appropraite when discovery is finished. For example, the 'scan' command would simply exit, whereas most other commands would verify that an appropriate device was found. </p>
+<p>Derived classes must implement this slot to perform whatever actions are appropriate when discovery is finished. For example, the 'scan' command would simply exit, whereas most other commands would verify that an appropriate device was found. </p>
 
 <p class="reference">References <a class="el" href="abstractcommand_8cpp_source.html#l00027">AbstractCommand()</a>.</p>
 
@@ -792,7 +792,7 @@ template&lt;typename R&gt; </div>
 <p>The string <em class="arg">value</em> may end with the optional <em class="arg">unit</em>, such as <code>V</code> or <code>s</code>, which may also be preceded with a SI unit prefix such as <code>m</code> for <code>milli</code>. If <em class="arg">value</em> contains no SI unit prefix, then the result will be multiplied by 1,000 enough times to be greater than <em class="arg">sensibleMinimum</em>. This allows for convenient use like:</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> quint32 timeout = <a class="code hl_function" href="#a29b2a2446ef034195183a2ae9d4bb911">parseNumber&lt;std::milli&gt;</a>(parser.value(<span class="stringliteral">&quot;window&quot;</span>), <span class="charliteral">&#39;s&#39;</span>, 500&#39;000);</div>
 <div class="ttc" id="aclassAbstractCommand_html_a29b2a2446ef034195183a2ae9d4bb911"><div class="ttname"><a href="#a29b2a2446ef034195183a2ae9d4bb911">AbstractCommand::parseNumber</a></div><div class="ttdeci">static quint32 parseNumber(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum=0)</div><div class="ttdoc">Returns value as an integer multiple of the ratio R.</div><div class="ttdef"><b>Definition</b> <a href="abstractcommand_8cpp_source.html#l00150">abstractcommand.cpp:150</a></div></div>
-</div><!-- fragment --><p>So that an unqalified period like "300" will be assumed to be 300 milliseconds, and not 300 microseconds, while a period like "1000" will be assume to be 1 second.</p>
+</div><!-- fragment --><p>So that an unqualified period like "300" will be assumed to be 300 milliseconds, and not 300 microseconds, while a period like "1000" will be assume to be 1 second.</p>
 <p>If conversion fails for any reason, 0 is returned. </p>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8cpp_source.html#l00150">150</a> of file <a class="el" href="abstractcommand_8cpp_source.html">abstractcommand.cpp</a>.</p>
@@ -919,7 +919,7 @@ Here is the caller graph for this function:</div>
 
 <p>Processes the relevant options from the command line <em class="arg">parser</em>. </p>
 <p>On success, returns an empty <a class="elRef" href="https://doc.qt.io/qt-5/qstringlist.html">QStringList</a>, otherwise returns a list of CLI errors that the caller should report appropriately before exiting.</p>
-<p>This base implementations performs some common checks, such as ensuring that required options are present. Derived classes should override this function to perform further processing, typically inovking this base implementation as a first step, such as:</p>
+<p>This base implementations performs some common checks, such as ensuring that required options are present. Derived classes should override this function to perform further processing, typically invoking this base implementation as a first step, such as:</p>
 <div class="fragment"><div class="line"><a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstringlist.html">QStringList</a> CustomCommand::processOptions(<span class="keyword">const</span> <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qcommandlineparser.html">QCommandLineParser</a> &amp;parser)</div>
 <div class="line">{</div>
 <div class="line">    <a class="code hl_classRef" href="https://doc.qt.io/qt-5/qstringlist.html">QStringList</a> errors = <a class="code hl_slot" href="#ad827a18a24776efeb955739459d48f7d">AbstractCommand::processOptions</a>(parser);</div>
@@ -1047,7 +1047,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Returns a list of CLI option names required by this command. </p>
-<p>The main console appication may use this list to output an eror (and exit) if any of the returned names are not found in the parsed CLI options.</p>
+<p>The main console appication may use this list to output an error (and exit) if any of the returned names are not found in the parsed CLI options.</p>
 <p>The (already parsed) <em class="arg">parser</em> may be used adjust the returned required options depending on the value of other options. For example, the <code>logger</code> command only requires the <code>--mode</code> option if the <code>--command</code> option is <code>start</code>.</p>
 <p>This base implementation simply returns an empty list. Derived classes should override this function to include any required options. </p>
 
@@ -1182,7 +1182,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Agent for Pokit device descovery. </p>
+<p>Agent for Pokit device discovery. </p>
 
 <p class="definition">Definition at line <a class="el" href="abstractcommand_8h_source.html#l00044">44</a> of file <a class="el" href="abstractcommand_8h_source.html">abstractcommand.h</a>.</p>
 
