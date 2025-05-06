@@ -121,13 +121,13 @@
 <span id="L30"><span class="lineNum">      30</span>              : </span>
 <span id="L31"><span class="lineNum">      31</span>              :     /// Characteristics available via the `DSO` service.</span>
 <span id="L32"><span class="lineNum">      32</span>              :     struct QTPOKIT_EXPORT CharacteristicUuids {</span>
-<span id="L33"><span class="lineNum">      33</span>              :         /// UUID of the `DSO` service's `Settings` characterstic.</span>
+<span id="L33"><span class="lineNum">      33</span>              :         /// UUID of the `DSO` service's `Settings` characteristic.</span>
 <span id="L34"><span class="lineNum">      34</span>              :         static inline const QBluetoothUuid settings { QStringLiteral(&quot;a81af1b6-b8b3-4244-8859-3da368d2be39&quot;) };</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span>              :         /// UUID of the `DSO` service's `Metadata` characterstic.</span>
+<span id="L36"><span class="lineNum">      36</span>              :         /// UUID of the `DSO` service's `Metadata` characteristic.</span>
 <span id="L37"><span class="lineNum">      37</span>              :         static inline const QBluetoothUuid metadata { QStringLiteral(&quot;970f00ba-f46f-4825-96a8-153a5cd0cda9&quot;) };</span>
 <span id="L38"><span class="lineNum">      38</span>              : </span>
-<span id="L39"><span class="lineNum">      39</span>              :         /// UUID of the `DSO` service's `Reading` characterstic.</span>
+<span id="L39"><span class="lineNum">      39</span>              :         /// UUID of the `DSO` service's `Reading` characteristic.</span>
 <span id="L40"><span class="lineNum">      40</span>              :         static inline const QBluetoothUuid reading  { QStringLiteral(&quot;98e14f8e-536e-4f24-b4f4-1debfed0a99e&quot;) };</span>
 <span id="L41"><span class="lineNum">      41</span>              :     };</span>
 <span id="L42"><span class="lineNum">      42</span>              : </span>
@@ -154,7 +154,7 @@
 <span id="L63"><span class="lineNum">      63</span>              :     static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);</span>
 <span id="L64"><span class="lineNum">      64</span>              :     quint32 maxValue(const quint8 range, const Mode mode) const;</span>
 <span id="L65"><span class="lineNum">      65</span>              : </span>
-<span id="L66"><span class="lineNum">      66</span>              :     /// Attributes included in the `Settings` characterstic.</span>
+<span id="L66"><span class="lineNum">      66</span>              :     /// Attributes included in the `Settings` characteristic.</span>
 <span id="L67"><span class="lineNum">      67</span>              :     struct Settings {</span>
 <span id="L68"><span class="lineNum">      68</span>              :         Command command;         ///&lt; Custom operation request.</span>
 <span id="L69"><span class="lineNum">      69</span>              :         float triggerLevel;      ///&lt; Trigger threshold level in Volts or Amps, depending on #mode.</span>
@@ -171,7 +171,7 @@
 <span id="L80"><span class="lineNum">      80</span>              :         Error      = 255 ///&lt; An error has occurred.</span>
 <span id="L81"><span class="lineNum">      81</span>              :     };</span>
 <span id="L82"><span class="lineNum">      82</span>              : </span>
-<span id="L83"><span class="lineNum">      83</span>              :     /// Attributes included in the `Metadata` characterstic.</span>
+<span id="L83"><span class="lineNum">      83</span>              :     /// Attributes included in the `Metadata` characteristic.</span>
 <span id="L84"><span class="lineNum">      84</span>              :     struct Metadata {</span>
 <span id="L85"><span class="lineNum">      85</span>              :         DsoStatus status;        ///&lt; Current DSO status.</span>
 <span id="L86"><span class="lineNum">      86</span>              :         float scale;             ///&lt; Scale to apply to read samples.</span>

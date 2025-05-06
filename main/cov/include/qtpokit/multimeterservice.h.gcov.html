@@ -120,10 +120,10 @@
 <span id="L29"><span class="lineNum">      29</span>              : </span>
 <span id="L30"><span class="lineNum">      30</span>              :     /// Characteristics available via the `Multimeter` service.</span>
 <span id="L31"><span class="lineNum">      31</span>              :     struct QTPOKIT_EXPORT CharacteristicUuids {</span>
-<span id="L32"><span class="lineNum">      32</span>              :         /// UUID of the `Multimeter` service's `Settings` characterstic.</span>
+<span id="L32"><span class="lineNum">      32</span>              :         /// UUID of the `Multimeter` service's `Settings` characteristic.</span>
 <span id="L33"><span class="lineNum">      33</span>              :         static inline const QBluetoothUuid settings { QStringLiteral(&quot;53dc9a7a-bc19-4280-b76b-002d0e23b078&quot;) };</span>
 <span id="L34"><span class="lineNum">      34</span>              : </span>
-<span id="L35"><span class="lineNum">      35</span>              :         /// UUID of the `Multimeter` service's `Reading` characterstic.</span>
+<span id="L35"><span class="lineNum">      35</span>              :         /// UUID of the `Multimeter` service's `Reading` characteristic.</span>
 <span id="L36"><span class="lineNum">      36</span>              :         static inline const QBluetoothUuid reading  { QStringLiteral(&quot;047d3559-8bee-423a-b229-4417fa603b90&quot;) };</span>
 <span id="L37"><span class="lineNum">      37</span>              :     };</span>
 <span id="L38"><span class="lineNum">      38</span>              : </span>
@@ -148,7 +148,7 @@
 <span id="L57"><span class="lineNum">      57</span>              :     static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);</span>
 <span id="L58"><span class="lineNum">      58</span>              :     quint32 maxValue(const quint8 range, const Mode mode) const;</span>
 <span id="L59"><span class="lineNum">      59</span>              : </span>
-<span id="L60"><span class="lineNum">      60</span>              :     /// Attributes included in the `Settings` characterstic.</span>
+<span id="L60"><span class="lineNum">      60</span>              :     /// Attributes included in the `Settings` characteristic.</span>
 <span id="L61"><span class="lineNum">      61</span>              :     struct Settings {</span>
 <span id="L62"><span class="lineNum">      62</span>              :         Mode mode;              ///&lt; Desired operation mode.</span>
 <span id="L63"><span class="lineNum">      63</span>              :         quint8 range;           ///&lt; Desired range.</span>
@@ -165,7 +165,7 @@
 <span id="L74"><span class="lineNum">      74</span>              :         Error        = 255 ///&lt; Error (all modes).</span>
 <span id="L75"><span class="lineNum">      75</span>              :     };</span>
 <span id="L76"><span class="lineNum">      76</span>              : </span>
-<span id="L77"><span class="lineNum">      77</span>              :     /// Attributes included in the `Reading` characterstic.</span>
+<span id="L77"><span class="lineNum">      77</span>              :     /// Attributes included in the `Reading` characteristic.</span>
 <span id="L78"><span class="lineNum">      78</span>              :     struct Reading {</span>
 <span id="L79"><span class="lineNum">      79</span>              :         MeterStatus status; ///&lt; Current multimeter status.</span>
 <span id="L80"><span class="lineNum">      80</span>              :         float value;        ///&lt; Last acquired value.</span>

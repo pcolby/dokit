@@ -126,22 +126,22 @@
 <span id="L35"><span class="lineNum">      35</span>              : </span>
 <span id="L36"><span class="lineNum">      36</span>              :     /// Characteristics available via the `Pokit Status` service.</span>
 <span id="L37"><span class="lineNum">      37</span>              :     struct QTPOKIT_EXPORT CharacteristicUuids {</span>
-<span id="L38"><span class="lineNum">      38</span>              :         /// UUID of the `Pokit Status` service's `Device Characteristics` characterstic.</span>
+<span id="L38"><span class="lineNum">      38</span>              :         /// UUID of the `Pokit Status` service's `Device Characteristics` characteristic.</span>
 <span id="L39"><span class="lineNum">      39</span>              :         static inline const QBluetoothUuid deviceCharacteristics  { QStringLiteral(&quot;6974f5e5-0e54-45c3-97dd-29e4b5fb0849&quot;) };</span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span>              :         /// UUID of the `Pokit Status` service's `Status` characterstic.</span>
+<span id="L41"><span class="lineNum">      41</span>              :         /// UUID of the `Pokit Status` service's `Status` characteristic.</span>
 <span id="L42"><span class="lineNum">      42</span>              :         static inline const QBluetoothUuid status { QStringLiteral(&quot;3dba36e1-6120-4706-8dfd-ed9c16e569b6&quot;) };</span>
 <span id="L43"><span class="lineNum">      43</span>              : </span>
-<span id="L44"><span class="lineNum">      44</span>              :         /// UUID of the `Pokit Status` service's `Device Name` characterstic.</span>
+<span id="L44"><span class="lineNum">      44</span>              :         /// UUID of the `Pokit Status` service's `Device Name` characteristic.</span>
 <span id="L45"><span class="lineNum">      45</span>              :         static inline const QBluetoothUuid name { QStringLiteral(&quot;7f0375de-077e-4555-8f78-800494509cc3&quot;) };</span>
 <span id="L46"><span class="lineNum">      46</span>              : </span>
-<span id="L47"><span class="lineNum">      47</span>              :         /// UUID of the `Pokit Status` service's `Flash LED` characterstic.</span>
+<span id="L47"><span class="lineNum">      47</span>              :         /// UUID of the `Pokit Status` service's `Flash LED` characteristic.</span>
 <span id="L48"><span class="lineNum">      48</span>              :         static inline const QBluetoothUuid flashLed { QStringLiteral(&quot;ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e&quot;) };</span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
-<span id="L50"><span class="lineNum">      50</span>              :         /// UUID of the `Pokit Status` service's (undocumented) `Torch` characterstic.</span>
+<span id="L50"><span class="lineNum">      50</span>              :         /// UUID of the `Pokit Status` service's (undocumented) `Torch` characteristic.</span>
 <span id="L51"><span class="lineNum">      51</span>              :         static inline const QBluetoothUuid torch { QStringLiteral(&quot;aaf3f6d5-43d4-4a83-9510-dff3d858d4cc&quot;) };</span>
 <span id="L52"><span class="lineNum">      52</span>              : </span>
-<span id="L53"><span class="lineNum">      53</span>              :         /// UUID of the `Pokit Status` service's (undocumented) `Button Press` characterstic.</span>
+<span id="L53"><span class="lineNum">      53</span>              :         /// UUID of the `Pokit Status` service's (undocumented) `Button Press` characteristic.</span>
 <span id="L54"><span class="lineNum">      54</span>              :         static inline const QBluetoothUuid buttonPress { QStringLiteral(&quot;8fe5b5a9-b5b4-4a7b-8ff2-87224b970f89&quot;) };</span>
 <span id="L55"><span class="lineNum">      55</span>              : </span>
 <span id="L56"><span class="lineNum">      56</span>              :         /*!</span>
@@ -154,7 +154,7 @@
 <span id="L63"><span class="lineNum">      63</span>              :          */</span>
 <span id="L64"><span class="lineNum">      64</span>              :     };</span>
 <span id="L65"><span class="lineNum">      65</span>              : </span>
-<span id="L66"><span class="lineNum">      66</span>              :     /// Attributes included in the `Device Characteristics` characterstic.</span>
+<span id="L66"><span class="lineNum">      66</span>              :     /// Attributes included in the `Device Characteristics` characteristic.</span>
 <span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">        2660 :     struct DeviceCharacteristics {</span></span>
 <span id="L68"><span class="lineNum">      68</span>              :         QVersionNumber firmwareVersion; ///&lt; Device's major and minor firmware version.</span>
 <span id="L69"><span class="lineNum">      69</span>              :         quint16 maximumVoltage;         ///&lt; Device's maximum input voltage.</span>
@@ -199,13 +199,13 @@
 <span id="L108"><span class="lineNum">     108</span>              : </span>
 <span id="L109"><span class="lineNum">     109</span>              :     /// Values supported by the (undocumented) `Charging Statue` attribute of the `Status` characteristic.</span>
 <span id="L110"><span class="lineNum">     110</span>              :     enum class ChargingStatus : quint8 {</span>
-<span id="L111"><span class="lineNum">     111</span>              :         Discharging = 0, ///&lt; Battery is dischargin.</span>
+<span id="L111"><span class="lineNum">     111</span>              :         Discharging = 0, ///&lt; Battery is discharging.</span>
 <span id="L112"><span class="lineNum">     112</span>              :         Charging    = 1, ///&lt; Battery is being charged.</span>
 <span id="L113"><span class="lineNum">     113</span>              :         Charged     = 2, ///&lt; Battery is fully charged.</span>
 <span id="L114"><span class="lineNum">     114</span>              :     };</span>
 <span id="L115"><span class="lineNum">     115</span>              :     static QString toString(const StatusService::ChargingStatus &amp;status);</span>
 <span id="L116"><span class="lineNum">     116</span>              : </span>
-<span id="L117"><span class="lineNum">     117</span>              :     /// Attributes included in the `Status` characterstic.</span>
+<span id="L117"><span class="lineNum">     117</span>              :     /// Attributes included in the `Status` characteristic.</span>
 <span id="L118"><span class="lineNum">     118</span>              :     struct Status {</span>
 <span id="L119"><span class="lineNum">     119</span>              :         DeviceStatus deviceStatus;   ///&lt; Current Pokit device status.</span>
 <span id="L120"><span class="lineNum">     120</span>              :         float batteryVoltage;        ///&lt; Current battery voltage level.</span>

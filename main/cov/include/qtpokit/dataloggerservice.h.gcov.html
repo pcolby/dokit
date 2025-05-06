@@ -120,13 +120,13 @@
 <span id="L29"><span class="lineNum">      29</span>              : </span>
 <span id="L30"><span class="lineNum">      30</span>              :     /// Characteristics available via the `DataLogger` service.</span>
 <span id="L31"><span class="lineNum">      31</span>              :     struct QTPOKIT_EXPORT CharacteristicUuids {</span>
-<span id="L32"><span class="lineNum">      32</span>              :         /// UUID of the `DataLogger` service's `Settings` characterstic.</span>
+<span id="L32"><span class="lineNum">      32</span>              :         /// UUID of the `DataLogger` service's `Settings` characteristic.</span>
 <span id="L33"><span class="lineNum">      33</span>              :         static inline const QBluetoothUuid settings { QStringLiteral(&quot;5f97c62b-a83b-46c6-b9cd-cac59e130a78&quot;) };</span>
 <span id="L34"><span class="lineNum">      34</span>              : </span>
-<span id="L35"><span class="lineNum">      35</span>              :         /// UUID of the `DataLogger` service's `Metadata` characterstic.</span>
+<span id="L35"><span class="lineNum">      35</span>              :         /// UUID of the `DataLogger` service's `Metadata` characteristic.</span>
 <span id="L36"><span class="lineNum">      36</span>              :         static inline const QBluetoothUuid metadata { QStringLiteral(&quot;9acada2e-3936-430b-a8f7-da407d97ca6e&quot;) };</span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
-<span id="L38"><span class="lineNum">      38</span>              :         /// UUID of the `DataLogger` service's `Reading` characterstic.</span>
+<span id="L38"><span class="lineNum">      38</span>              :         /// UUID of the `DataLogger` service's `Reading` characteristic.</span>
 <span id="L39"><span class="lineNum">      39</span>              :         static inline const QBluetoothUuid reading  { QStringLiteral(&quot;3c669dab-fc86-411c-9498-4f9415049cc0&quot;) };</span>
 <span id="L40"><span class="lineNum">      40</span>              :     };</span>
 <span id="L41"><span class="lineNum">      41</span>              : </span>
@@ -153,7 +153,7 @@
 <span id="L62"><span class="lineNum">      62</span>              :     static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);</span>
 <span id="L63"><span class="lineNum">      63</span>              :     quint32 maxValue(const quint8 range, const Mode mode) const;</span>
 <span id="L64"><span class="lineNum">      64</span>              : </span>
-<span id="L65"><span class="lineNum">      65</span>              :     /// Attributes included in the `Settings` characterstic.</span>
+<span id="L65"><span class="lineNum">      65</span>              :     /// Attributes included in the `Settings` characteristic.</span>
 <span id="L66"><span class="lineNum">      66</span>              :     struct Settings {</span>
 <span id="L67"><span class="lineNum">      67</span>              :         Command command;        ///&lt; Custom operation request.</span>
 <span id="L68"><span class="lineNum">      68</span>              :         quint16 arguments;      ///&lt; Reserved to used along with #command in future.</span>
@@ -171,7 +171,7 @@
 <span id="L80"><span class="lineNum">      80</span>              :         Error      = 255  ///&lt; An error has occurred.</span>
 <span id="L81"><span class="lineNum">      81</span>              :     };</span>
 <span id="L82"><span class="lineNum">      82</span>              : </span>
-<span id="L83"><span class="lineNum">      83</span>              :     /// Attributes included in the `Metadata` characterstic.</span>
+<span id="L83"><span class="lineNum">      83</span>              :     /// Attributes included in the `Metadata` characteristic.</span>
 <span id="L84"><span class="lineNum">      84</span>              :     struct Metadata {</span>
 <span id="L85"><span class="lineNum">      85</span>              :         LoggerStatus status;     ///&lt; Current data logger status.</span>
 <span id="L86"><span class="lineNum">      86</span>              :         float scale;             ///&lt; Scale to apply to read samples.</span>
