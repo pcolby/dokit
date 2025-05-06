@@ -387,7 +387,7 @@
 <span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">         194 : }</span></span>
 <span id="L297"><span class="lineNum">     297</span>              : </span>
 <span id="L298"><span class="lineNum">     298</span>              : /*!</span>
-<span id="L299"><span class="lineNum">     299</span>              :  * Handles devics disconnection events. This base implementation simply logs and exits the</span>
+<span id="L299"><span class="lineNum">     299</span>              :  * Handles device disconnection events. This base implementation simply logs and exits the</span>
 <span id="L300"><span class="lineNum">     300</span>              :  * application (via QCoreApplication::exit) with the current exitCodeOnDisconnect value, which is</span>
 <span id="L301"><span class="lineNum">     301</span>              :  * initialise to `EXIT_FAILURE` in the constructor, but should be set to `EXIT_SUCESS` if/when</span>
 <span id="L302"><span class="lineNum">     302</span>              :  * the derived command class has completed its actions and requested the disconnection (as opposed</span>
@@ -425,7 +425,7 @@
 <span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">        1772 : }</span></span>
 <span id="L335"><span class="lineNum">     335</span>              : </span>
 <span id="L336"><span class="lineNum">     336</span>              : /*!</span>
-<span id="L337"><span class="lineNum">     337</span>              :  * Checks if \a info is the device (if any) we're looking for, and if so, create a contoller and</span>
+<span id="L337"><span class="lineNum">     337</span>              :  * Checks if \a info is the device (if any) we're looking for, and if so, create a controller and</span>
 <span id="L338"><span class="lineNum">     338</span>              :  * service, and begins connecting to the device.</span>
 <span id="L339"><span class="lineNum">     339</span>              :  */</span>
 <span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          45 : void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</span></span>

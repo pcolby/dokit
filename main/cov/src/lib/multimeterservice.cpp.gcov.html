@@ -242,7 +242,7 @@
 <span id="L151"><span class="lineNum">     151</span>              : /*!</span>
 <span id="L152"><span class="lineNum">     152</span>              :  * Read the `Multimeter` service's `Reading` characteristic.</span>
 <span id="L153"><span class="lineNum">     153</span>              :  *</span>
-<span id="L154"><span class="lineNum">     154</span>              :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</span>
+<span id="L154"><span class="lineNum">     154</span>              :  * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the</span>
 <span id="L155"><span class="lineNum">     155</span>              :  * underlying controller it not yet connected to the Pokit device, or the device's services have</span>
 <span id="L156"><span class="lineNum">     156</span>              :  * not yet been discovered).</span>
 <span id="L157"><span class="lineNum">     157</span>              :  *</span>
@@ -259,7 +259,7 @@
 <span id="L168"><span class="lineNum">     168</span>              :  *</span>
 <span id="L169"><span class="lineNum">     169</span>              :  * Returns `true` if the write request was successfully queued, `false` otherwise.</span>
 <span id="L170"><span class="lineNum">     170</span>              :  *</span>
-<span id="L171"><span class="lineNum">     171</span>              :  * Emits settingsWritten() if/when the \a settings have been writtem successfully.</span>
+<span id="L171"><span class="lineNum">     171</span>              :  * Emits settingsWritten() if/when the \a settings have been written successfully.</span>
 <span id="L172"><span class="lineNum">     172</span>              :  */</span>
 <span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">          45 : bool MultimeterService::setSettings(const Settings &amp;settings)</span></span>
 <span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">          52 : {</span></span>
@@ -307,7 +307,7 @@
 <span id="L216"><span class="lineNum">     216</span>              :  *</span>
 <span id="L217"><span class="lineNum">     217</span>              :  * This is an alternative to manually requesting individual reads via readReadingCharacteristic().</span>
 <span id="L218"><span class="lineNum">     218</span>              :  *</span>
-<span id="L219"><span class="lineNum">     219</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L219"><span class="lineNum">     219</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L220"><span class="lineNum">     220</span>              :  *</span>
 <span id="L221"><span class="lineNum">     221</span>              :  * Successfully read values (if any) will be emitted via the readingRead() signal.</span>
 <span id="L222"><span class="lineNum">     222</span>              :  */</span>
@@ -322,7 +322,7 @@
 <span id="L231"><span class="lineNum">     231</span>              :  *</span>
 <span id="L232"><span class="lineNum">     232</span>              :  * Instantaneous reads can still be fetched by readReadingCharacteristic().</span>
 <span id="L233"><span class="lineNum">     233</span>              :  *</span>
-<span id="L234"><span class="lineNum">     234</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L234"><span class="lineNum">     234</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L235"><span class="lineNum">     235</span>              :  */</span>
 <span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          45 : bool MultimeterService::disableReadingNotifications()</span></span>
 <span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">          52 : {</span></span>

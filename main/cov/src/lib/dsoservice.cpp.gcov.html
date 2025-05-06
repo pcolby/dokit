@@ -181,9 +181,9 @@
 <span id="L90"><span class="lineNum">      90</span>              : /*!</span>
 <span id="L91"><span class="lineNum">      91</span>              :  * \typedef DsoService::Samples</span>
 <span id="L92"><span class="lineNum">      92</span>              :  *</span>
-<span id="L93"><span class="lineNum">      93</span>              :  * Raw samples from the `Reading` characteristic. These raw samples are (supposedly) wihtin the</span>
+<span id="L93"><span class="lineNum">      93</span>              :  * Raw samples from the `Reading` characteristic. These raw samples are (supposedly) within the</span>
 <span id="L94"><span class="lineNum">      94</span>              :  * range -2048 to +2047, and need to be multiplied by the Metadata::scale value from the `Metadata`</span>
-<span id="L95"><span class="lineNum">      95</span>              :  * characteristc to get the true values.</span>
+<span id="L95"><span class="lineNum">      95</span>              :  * characteristic to get the true values.</span>
 <span id="L96"><span class="lineNum">      96</span>              :  *</span>
 <span id="L97"><span class="lineNum">      97</span>              :  * Also supposedly, there should be no more than 10 samples at a time, according to Pokit's current</span>
 <span id="L98"><span class="lineNum">      98</span>              :  * API docs. There is not artificial limitation imposed by QtPokit, so devices may begin batching</span>
@@ -219,7 +219,7 @@
 <span id="L128"><span class="lineNum">     128</span>              : /*!</span>
 <span id="L129"><span class="lineNum">     129</span>              :  * Reads the `DSO` service's `Metadata` characteristic.</span>
 <span id="L130"><span class="lineNum">     130</span>              :  *</span>
-<span id="L131"><span class="lineNum">     131</span>              :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</span>
+<span id="L131"><span class="lineNum">     131</span>              :  * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the</span>
 <span id="L132"><span class="lineNum">     132</span>              :  * underlying controller it not yet connected to the Pokit device, or the device's services have</span>
 <span id="L133"><span class="lineNum">     133</span>              :  * not yet been discovered).</span>
 <span id="L134"><span class="lineNum">     134</span>              :  *</span>
@@ -236,7 +236,7 @@
 <span id="L145"><span class="lineNum">     145</span>              :  *</span>
 <span id="L146"><span class="lineNum">     146</span>              :  * Returns `true` if the write request was successfully queued, `false` otherwise.</span>
 <span id="L147"><span class="lineNum">     147</span>              :  *</span>
-<span id="L148"><span class="lineNum">     148</span>              :  * Emits settingsWritten() if/when the \a settings have been writtem successfully.</span>
+<span id="L148"><span class="lineNum">     148</span>              :  * Emits settingsWritten() if/when the \a settings have been written successfully.</span>
 <span id="L149"><span class="lineNum">     149</span>              :  */</span>
 <span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         225 : bool DsoService::setSettings(const Settings &amp;settings)</span></span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">         260 : {</span></span>
@@ -279,7 +279,7 @@
 <span id="L188"><span class="lineNum">     188</span>              :  * This is just a convenience function equivalent to calling setSettings() with the command set to</span>
 <span id="L189"><span class="lineNum">     189</span>              :  * DsoService::Command::Refresh.</span>
 <span id="L190"><span class="lineNum">     190</span>              :  *</span>
-<span id="L191"><span class="lineNum">     191</span>              :  * Once the Pokit device has processed this request succesffully, the device will begin notifying</span>
+<span id="L191"><span class="lineNum">     191</span>              :  * Once the Pokit device has processed this request successfully, the device will begin notifying</span>
 <span id="L192"><span class="lineNum">     192</span>              :  * the `Metadata` and `Reading` characteristic, resulting in emits of metadataRead and samplesRead</span>
 <span id="L193"><span class="lineNum">     193</span>              :  * respectively.</span>
 <span id="L194"><span class="lineNum">     194</span>              :  */</span>
@@ -319,7 +319,7 @@
 <span id="L228"><span class="lineNum">     228</span>              :  *</span>
 <span id="L229"><span class="lineNum">     229</span>              :  * This is an alternative to manually requesting individual reads via readMetadataCharacteristic().</span>
 <span id="L230"><span class="lineNum">     230</span>              :  *</span>
-<span id="L231"><span class="lineNum">     231</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L231"><span class="lineNum">     231</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L232"><span class="lineNum">     232</span>              :  *</span>
 <span id="L233"><span class="lineNum">     233</span>              :  * Successfully read values (if any) will be emitted via the metadataRead() signal.</span>
 <span id="L234"><span class="lineNum">     234</span>              :  */</span>
@@ -334,7 +334,7 @@
 <span id="L243"><span class="lineNum">     243</span>              :  *</span>
 <span id="L244"><span class="lineNum">     244</span>              :  * Instantaneous reads can still be fetched by readMetadataCharacteristic().</span>
 <span id="L245"><span class="lineNum">     245</span>              :  *</span>
-<span id="L246"><span class="lineNum">     246</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L246"><span class="lineNum">     246</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L247"><span class="lineNum">     247</span>              :  */</span>
 <span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">          45 : bool DsoService::disableMetadataNotifications()</span></span>
 <span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">          52 : {</span></span>
@@ -345,7 +345,7 @@
 <span id="L254"><span class="lineNum">     254</span>              : /*!</span>
 <span id="L255"><span class="lineNum">     255</span>              :  * Enables client-side notifications of DSO readings.</span>
 <span id="L256"><span class="lineNum">     256</span>              :  *</span>
-<span id="L257"><span class="lineNum">     257</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L257"><span class="lineNum">     257</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L258"><span class="lineNum">     258</span>              :  *</span>
 <span id="L259"><span class="lineNum">     259</span>              :  * Successfully read samples (if any) will be emitted via the samplesRead() signal.</span>
 <span id="L260"><span class="lineNum">     260</span>              :  */</span>
@@ -358,7 +358,7 @@
 <span id="L267"><span class="lineNum">     267</span>              : /*!</span>
 <span id="L268"><span class="lineNum">     268</span>              :  * Disables client-side notifications of DSO readings.</span>
 <span id="L269"><span class="lineNum">     269</span>              :  *</span>
-<span id="L270"><span class="lineNum">     270</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L270"><span class="lineNum">     270</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L271"><span class="lineNum">     271</span>              :  */</span>
 <span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          45 : bool DsoService::disableReadingNotifications()</span></span>
 <span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">          52 : {</span></span>

@@ -326,8 +326,8 @@
 <span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">         448 :     std::sort(keys.begin(), keys.end());</span></span>
 <span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">        1093 :     for (const quint16 key: keys) {</span></span>
 <span id="L237"><span class="lineNum">     237</span>              :         // Convert the key's values to a JSON array, reversing the order, because QMultiHash</span>
-<span id="L238"><span class="lineNum">     238</span>              :         // guarantees that the values are orderer &quot;from the most recently inserted to the least</span>
-<span id="L239"><span class="lineNum">     239</span>              :         // recently inserted&quot;, which is the oppoosit of what we want.</span>
+<span id="L238"><span class="lineNum">     238</span>              :         // guarantees that the values are order &quot;from the most recently inserted to the least</span>
+<span id="L239"><span class="lineNum">     239</span>              :         // recently inserted&quot;, which is the opposite of what we want.</span>
 <span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">         760 :         QList&lt;QByteArray&gt; values = data.values(key);</span></span>
 <span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">         640 :         std::reverse(values.begin(), values.end());</span></span>
 <span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">         820 :         QJsonArray array;</span></span>

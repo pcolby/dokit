@@ -138,7 +138,7 @@
 <span id="L47"><span class="lineNum">      47</span>              : </span>
 <span id="L48"><span class="lineNum">      48</span>              : /*!</span>
 <span id="L49"><span class="lineNum">      49</span>              :  * Returns a list of CLI option names required by this command. The main console appication may</span>
-<span id="L50"><span class="lineNum">      50</span>              :  * use this list to output an eror (and exit) if any of the returned names are not found in the</span>
+<span id="L50"><span class="lineNum">      50</span>              :  * use this list to output an error (and exit) if any of the returned names are not found in the</span>
 <span id="L51"><span class="lineNum">      51</span>              :  * parsed CLI options.</span>
 <span id="L52"><span class="lineNum">      52</span>              :  *</span>
 <span id="L53"><span class="lineNum">      53</span>              :  * The (already parsed) \a parser may be used adjust the returned required options depending on the</span>
@@ -232,7 +232,7 @@
 <span id="L141"><span class="lineNum">     141</span>              :  * const quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(&quot;window&quot;), 's', 500'000);</span>
 <span id="L142"><span class="lineNum">     142</span>              :  * ```</span>
 <span id="L143"><span class="lineNum">     143</span>              :  *</span>
-<span id="L144"><span class="lineNum">     144</span>              :  * So that an unqalified period like &quot;300&quot; will be assumed to be 300 milliseconds, and not 300</span>
+<span id="L144"><span class="lineNum">     144</span>              :  * So that an unqualified period like &quot;300&quot; will be assumed to be 300 milliseconds, and not 300</span>
 <span id="L145"><span class="lineNum">     145</span>              :  * microseconds, while a period like &quot;1000&quot; will be assume to be 1 second.</span>
 <span id="L146"><span class="lineNum">     146</span>              :  *</span>
 <span id="L147"><span class="lineNum">     147</span>              :  * If conversion fails for any reason, 0 is returned.</span>
@@ -337,7 +337,7 @@
 <span id="L246"><span class="lineNum">     246</span>              :  *</span>
 <span id="L247"><span class="lineNum">     247</span>              :  * This base implementations performs some common checks, such as ensuring that required options are</span>
 <span id="L248"><span class="lineNum">     248</span>              :  * present. Derived classes should override this function to perform further processing, typically</span>
-<span id="L249"><span class="lineNum">     249</span>              :  * inovking this base implementation as a first step, such as:</span>
+<span id="L249"><span class="lineNum">     249</span>              :  * invoking this base implementation as a first step, such as:</span>
 <span id="L250"><span class="lineNum">     250</span>              :  *</span>
 <span id="L251"><span class="lineNum">     251</span>              :  * ```</span>
 <span id="L252"><span class="lineNum">     252</span>              :  * QStringList CustomCommand::processOptions(const QCommandLineParser &amp;parser)</span>
@@ -430,7 +430,7 @@
 <span id="L339"><span class="lineNum">     339</span>              :  * \fn virtual void AbstractCommand::deviceDiscoveryFinished() = 0</span>
 <span id="L340"><span class="lineNum">     340</span>              :  *</span>
 <span id="L341"><span class="lineNum">     341</span>              :  * Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must</span>
-<span id="L342"><span class="lineNum">     342</span>              :  * implement this slot to perform whatever actions are appropraite when discovery is finished.</span>
+<span id="L342"><span class="lineNum">     342</span>              :  * implement this slot to perform whatever actions are appropriate when discovery is finished.</span>
 <span id="L343"><span class="lineNum">     343</span>              :  * For example, the 'scan' command would simply exit, whereas most other commands would verify that</span>
 <span id="L344"><span class="lineNum">     344</span>              :  * an appropriate device was found.</span>
 <span id="L345"><span class="lineNum">     345</span>              :  */</span>

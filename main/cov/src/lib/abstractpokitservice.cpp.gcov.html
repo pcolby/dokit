@@ -345,7 +345,7 @@
 <span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">        5192 : }</span></span>
 <span id="L255"><span class="lineNum">     255</span>              : </span>
 <span id="L256"><span class="lineNum">     256</span>              : /*!</span>
-<span id="L257"><span class="lineNum">     257</span>              :  * Get \a uuid characteristc from the underlying service. This helper function is equivalent to</span>
+<span id="L257"><span class="lineNum">     257</span>              :  * Get \a uuid characteristic from the underlying service. This helper function is equivalent to</span>
 <span id="L258"><span class="lineNum">     258</span>              :  *</span>
 <span id="L259"><span class="lineNum">     259</span>              :  * ```</span>
 <span id="L260"><span class="lineNum">     260</span>              :  * return service-&gt;characteristic(uuid);</span>
@@ -392,7 +392,7 @@
 <span id="L301"><span class="lineNum">     301</span>              : /*!</span>
 <span id="L302"><span class="lineNum">     302</span>              :  * Read the \a uuid characteristic.</span>
 <span id="L303"><span class="lineNum">     303</span>              :  *</span>
-<span id="L304"><span class="lineNum">     304</span>              :  * If succesful, the `QLowEnergyService::characteristicRead` signal will be emitted by the internal</span>
+<span id="L304"><span class="lineNum">     304</span>              :  * If successful, the `QLowEnergyService::characteristicRead` signal will be emitted by the internal</span>
 <span id="L305"><span class="lineNum">     305</span>              :  * service object.  For convenience, derived classes should implement the characteristicRead()</span>
 <span id="L306"><span class="lineNum">     306</span>              :  * virtual function to handle the read value.</span>
 <span id="L307"><span class="lineNum">     307</span>              :  *</span>
@@ -416,7 +416,7 @@
 <span id="L325"><span class="lineNum">     325</span>              : /*!</span>
 <span id="L326"><span class="lineNum">     326</span>              :  * Enables client (Pokit device) side notification for characteristic \a uuid.</span>
 <span id="L327"><span class="lineNum">     327</span>              :  *</span>
-<span id="L328"><span class="lineNum">     328</span>              :  * Returns \c true if the notication enable request was successfully queued, \c false otherwise.</span>
+<span id="L328"><span class="lineNum">     328</span>              :  * Returns \c true if the notification enable request was successfully queued, \c false otherwise.</span>
 <span id="L329"><span class="lineNum">     329</span>              :  *</span>
 <span id="L330"><span class="lineNum">     330</span>              :  * \see AbstractPokitServicePrivate::characteristicChanged</span>
 <span id="L331"><span class="lineNum">     331</span>              :  * \see AbstractPokitServicePrivate::disableCharacteristicNotificatons</span>
@@ -451,7 +451,7 @@
 <span id="L360"><span class="lineNum">     360</span>              : /*!</span>
 <span id="L361"><span class="lineNum">     361</span>              :  * Disables client (Pokit device) side notification for characteristic \a uuid.</span>
 <span id="L362"><span class="lineNum">     362</span>              :  *</span>
-<span id="L363"><span class="lineNum">     363</span>              :  * Returns \c true if the notication disable request was successfully queued, \c false otherwise.</span>
+<span id="L363"><span class="lineNum">     363</span>              :  * Returns \c true if the notification disable request was successfully queued, \c false otherwise.</span>
 <span id="L364"><span class="lineNum">     364</span>              :  *</span>
 <span id="L365"><span class="lineNum">     365</span>              :  * \see AbstractPokitServicePrivate::characteristicChanged</span>
 <span id="L366"><span class="lineNum">     366</span>              :  * \see AbstractPokitServicePrivate::enableCharacteristicNotificatons</span>
@@ -528,7 +528,7 @@
 <span id="L437"><span class="lineNum">     437</span>              : /*!</span>
 <span id="L438"><span class="lineNum">     438</span>              :  * Handles `QLowEnergyController::connected` events.</span>
 <span id="L439"><span class="lineNum">     439</span>              :  *</span>
-<span id="L440"><span class="lineNum">     440</span>              :  * If `autoDiscover` is enabled, this will begin service discovery on the newly connected contoller.</span>
+<span id="L440"><span class="lineNum">     440</span>              :  * If `autoDiscover` is enabled, this will begin service discovery on the newly connected controller.</span>
 <span id="L441"><span class="lineNum">     441</span>              :  *</span>
 <span id="L442"><span class="lineNum">     442</span>              :  * \see AbstractPokitService::autoDiscover()</span>
 <span id="L443"><span class="lineNum">     443</span>              :  */</span>
@@ -550,7 +550,7 @@
 <span id="L459"><span class="lineNum">     459</span>              : /*!</span>
 <span id="L460"><span class="lineNum">     460</span>              :  * Handles `QLowEnergyController::discoveryFinished` events.</span>
 <span id="L461"><span class="lineNum">     461</span>              :  *</span>
-<span id="L462"><span class="lineNum">     462</span>              :  * As this event indicates that the conroller has finished discovering services, this function will</span>
+<span id="L462"><span class="lineNum">     462</span>              :  * As this event indicates that the controller has finished discovering services, this function will</span>
 <span id="L463"><span class="lineNum">     463</span>              :  * invoke createServiceObject() to create the internal service object (if not already created).</span>
 <span id="L464"><span class="lineNum">     464</span>              :  */</span>
 <span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">          90 : void AbstractPokitServicePrivate::discoveryFinished()</span></span>
@@ -651,7 +651,7 @@
 <span id="L560"><span class="lineNum">     560</span>              :  * logs the event.</span>
 <span id="L561"><span class="lineNum">     561</span>              :  *</span>
 <span id="L562"><span class="lineNum">     562</span>              :  * Derived classes should implement this function to handle the successful reads of</span>
-<span id="L563"><span class="lineNum">     563</span>              :  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.</span>
+<span id="L563"><span class="lineNum">     563</span>              :  * \a characteristic, typically by parsing \a value, then emitting a specialised signal.</span>
 <span id="L564"><span class="lineNum">     564</span>              :  */</span>
 <span id="L565"><span class="lineNum">     565</span> <span class="tlaGNC">         270 : void AbstractPokitServicePrivate::characteristicRead(</span></span>
 <span id="L566"><span class="lineNum">     566</span>              :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;value)</span>
@@ -665,7 +665,7 @@
 <span id="L574"><span class="lineNum">     574</span>              :  * logs the event.</span>
 <span id="L575"><span class="lineNum">     575</span>              :  *</span>
 <span id="L576"><span class="lineNum">     576</span>              :  * Derived classes should implement this function to handle the successful writes of</span>
-<span id="L577"><span class="lineNum">     577</span>              :  * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.</span>
+<span id="L577"><span class="lineNum">     577</span>              :  * \a characteristic, typically by parsing \a newValue, then emitting a specialised signal.</span>
 <span id="L578"><span class="lineNum">     578</span>              :  */</span>
 <span id="L579"><span class="lineNum">     579</span> <span class="tlaGNC">         270 : void AbstractPokitServicePrivate::characteristicWritten(</span></span>
 <span id="L580"><span class="lineNum">     580</span>              :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</span>
@@ -680,7 +680,7 @@
 <span id="L589"><span class="lineNum">     589</span>              :  *</span>
 <span id="L590"><span class="lineNum">     590</span>              :  * If derived classes support characteristics with client-side notification (ie Notify, as opposed</span>
 <span id="L591"><span class="lineNum">     591</span>              :  * to Read or Write operations), they should implement this function to handle the successful reads of</span>
-<span id="L592"><span class="lineNum">     592</span>              :  * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.</span>
+<span id="L592"><span class="lineNum">     592</span>              :  * \a characteristic, typically by parsing \a value, then emitting a specialised signal.</span>
 <span id="L593"><span class="lineNum">     593</span>              :  */</span>
 <span id="L594"><span class="lineNum">     594</span> <span class="tlaGNC">         180 : void AbstractPokitServicePrivate::characteristicChanged(</span></span>
 <span id="L595"><span class="lineNum">     595</span>              :     const QLowEnergyCharacteristic &amp;characteristic, const QByteArray &amp;newValue)</span>

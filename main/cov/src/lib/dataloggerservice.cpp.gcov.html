@@ -189,7 +189,7 @@
 <span id="L98"><span class="lineNum">      98</span>              :  *</span>
 <span id="L99"><span class="lineNum">      99</span>              :  * Raw samples from the `Reading` characteristic. These raw samples are (supposedly) within the</span>
 <span id="L100"><span class="lineNum">     100</span>              :  * range -2048 to +2047, and need to be multiplied by the Metadata::scale value from the `Metadata`</span>
-<span id="L101"><span class="lineNum">     101</span>              :  * characteristc to get the true values.</span>
+<span id="L101"><span class="lineNum">     101</span>              :  * characteristic to get the true values.</span>
 <span id="L102"><span class="lineNum">     102</span>              :  *</span>
 <span id="L103"><span class="lineNum">     103</span>              :  * Also supposedly, there should be no more than 10 samples at a time, according to Pokit's current</span>
 <span id="L104"><span class="lineNum">     104</span>              :  * API docs. There is not artificial limitation imposed by QtPokit, so devices may begin batching</span>
@@ -226,7 +226,7 @@
 <span id="L135"><span class="lineNum">     135</span>              : /*!</span>
 <span id="L136"><span class="lineNum">     136</span>              :  * Reads the `DataLogger` service's `Metadata` characteristic.</span>
 <span id="L137"><span class="lineNum">     137</span>              :  *</span>
-<span id="L138"><span class="lineNum">     138</span>              :  * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the</span>
+<span id="L138"><span class="lineNum">     138</span>              :  * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the</span>
 <span id="L139"><span class="lineNum">     139</span>              :  * underlying controller it not yet connected to the Pokit device, or the device's services have</span>
 <span id="L140"><span class="lineNum">     140</span>              :  * not yet been discovered).</span>
 <span id="L141"><span class="lineNum">     141</span>              :  *</span>
@@ -243,7 +243,7 @@
 <span id="L152"><span class="lineNum">     152</span>              :  *</span>
 <span id="L153"><span class="lineNum">     153</span>              :  * Returns `true` if the write request was successfully queued, `false` otherwise.</span>
 <span id="L154"><span class="lineNum">     154</span>              :  *</span>
-<span id="L155"><span class="lineNum">     155</span>              :  * Emits settingsWritten() if/when the \a settings have been writtem successfully.</span>
+<span id="L155"><span class="lineNum">     155</span>              :  * Emits settingsWritten() if/when the \a settings have been written successfully.</span>
 <span id="L156"><span class="lineNum">     156</span>              :  */</span>
 <span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">         180 : bool DataLoggerService::setSettings(const Settings &amp;settings)</span></span>
 <span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">         208 : {</span></span>
@@ -302,7 +302,7 @@
 <span id="L211"><span class="lineNum">     211</span>              :  * This is just a convenience function equivalent to calling setSettings() with the command set to</span>
 <span id="L212"><span class="lineNum">     212</span>              :  * DataLoggerService::Command::Refresh.</span>
 <span id="L213"><span class="lineNum">     213</span>              :  *</span>
-<span id="L214"><span class="lineNum">     214</span>              :  * Once the Pokit device has processed this request succesffully, the device will begin notifying</span>
+<span id="L214"><span class="lineNum">     214</span>              :  * Once the Pokit device has processed this request successfully, the device will begin notifying</span>
 <span id="L215"><span class="lineNum">     215</span>              :  * the `Metadata` and `Reading` characteristic, resulting in emits of metadataRead and samplesRead</span>
 <span id="L216"><span class="lineNum">     216</span>              :  * respectively.</span>
 <span id="L217"><span class="lineNum">     217</span>              :  */</span>
@@ -342,7 +342,7 @@
 <span id="L251"><span class="lineNum">     251</span>              :  *</span>
 <span id="L252"><span class="lineNum">     252</span>              :  * This is an alternative to manually requesting individual reads via readMetadataCharacteristic().</span>
 <span id="L253"><span class="lineNum">     253</span>              :  *</span>
-<span id="L254"><span class="lineNum">     254</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L254"><span class="lineNum">     254</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L255"><span class="lineNum">     255</span>              :  *</span>
 <span id="L256"><span class="lineNum">     256</span>              :  * Successfully read values (if any) will be emitted via the metadataRead() signal.</span>
 <span id="L257"><span class="lineNum">     257</span>              :  */</span>
@@ -357,7 +357,7 @@
 <span id="L266"><span class="lineNum">     266</span>              :  *</span>
 <span id="L267"><span class="lineNum">     267</span>              :  * Instantaneous reads can still be fetched by readMetadataCharacteristic().</span>
 <span id="L268"><span class="lineNum">     268</span>              :  *</span>
-<span id="L269"><span class="lineNum">     269</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L269"><span class="lineNum">     269</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L270"><span class="lineNum">     270</span>              :  */</span>
 <span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">          45 : bool DataLoggerService::disableMetadataNotifications()</span></span>
 <span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          52 : {</span></span>
@@ -368,7 +368,7 @@
 <span id="L277"><span class="lineNum">     277</span>              : /*!</span>
 <span id="L278"><span class="lineNum">     278</span>              :  * Enables client-side notifications of Data Logger readings.</span>
 <span id="L279"><span class="lineNum">     279</span>              :  *</span>
-<span id="L280"><span class="lineNum">     280</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L280"><span class="lineNum">     280</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L281"><span class="lineNum">     281</span>              :  *</span>
 <span id="L282"><span class="lineNum">     282</span>              :  * Successfully read samples (if any) will be emitted via the samplesRead() signal.</span>
 <span id="L283"><span class="lineNum">     283</span>              :  */</span>
@@ -381,7 +381,7 @@
 <span id="L290"><span class="lineNum">     290</span>              : /*!</span>
 <span id="L291"><span class="lineNum">     291</span>              :  * Disables client-side notifications of Data Logger readings.</span>
 <span id="L292"><span class="lineNum">     292</span>              :  *</span>
-<span id="L293"><span class="lineNum">     293</span>              :  * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.</span>
+<span id="L293"><span class="lineNum">     293</span>              :  * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.</span>
 <span id="L294"><span class="lineNum">     294</span>              :  */</span>
 <span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          45 : bool DataLoggerService::disableReadingNotifications()</span></span>
 <span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          52 : {</span></span>
