@@ -13,7 +13,7 @@
 #include <iostream>
 
 // Qt 6.5.0 added new QDateTime::fromSecsSinceEpoch() and fromMSecsSinceEpoch()
-// overloads, then Qt 6.6.0 deprectated some of of the older ones.
+// overloads, then Qt 6.6.0 deprecated some of of the older ones.
 #if (QT_VERSION < QT_VERSION_CHECK(6, 5, 0))
     #define DOKIT_QT_UTC Qt::UTC
 #else
@@ -87,7 +87,7 @@ void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &data)
 }
 
 /*!
- * Outputs logger \a samples in the selected ouput format.
+ * Outputs logger \a samples in the selected output format.
  */
 void LoggerFetchCommand::outputSamples(const DataLoggerService::Samples &samples)
 {

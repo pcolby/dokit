@@ -54,7 +54,7 @@ bool isPokitProduct(const QBluetoothDeviceInfo &info)
 }
 
 /*!
- * Returns the #PokitProduct corresponding the Bluetotoh device \a info.
+ * Returns the #PokitProduct corresponding the Bluetooth device \a info.
  *
  * If \a info is not a Pokit device, then result is undefined.
  *

@@ -122,7 +122,7 @@ void InfoCommand::serviceDetailsDiscovered()
             std::cout << qUtf8Printable(tr("Device name:       %1\n").arg(deviceName));
         }
         if (!deviceAddress.isNull()) {
-            std::cout << qUtf8Printable(tr("Device addres:     %1\n").arg(deviceAddress.toString()));
+            std::cout << qUtf8Printable(tr("Device address:    %1\n").arg(deviceAddress.toString()));
         }
         if (!deviceUuid.isNull()) {
             std::cout << qUtf8Printable(tr("Device UUID:       %1\n").arg(deviceUuid.toString()));

@@ -19,7 +19,7 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    DataLoggerService * service { nullptr }; ///< Bluetooth service this command interracts with.
+    DataLoggerService * service { nullptr }; ///< Bluetooth service this command interacts with.
     DataLoggerService::Metadata metadata;    ///< Most recent data logging metadata.
     qint32 samplesToGo { 0 };    ///< Number of samples we're still expecting to receive.
     quint64 timestamp { 0 };     ///< Current sample's epoch milliseconds timestamp.

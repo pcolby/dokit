@@ -48,7 +48,7 @@
     </message>
     <message>
         <location filename="../calibratecommand.cpp" line="93"/>
-        <source>Calibrating temperature at %1 degrees celcius...</source>
+        <source>Calibrating temperature at %1 degrees celsius...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -256,7 +256,7 @@ success
     </message>
     <message>
         <location filename="../infocommand.cpp" line="125"/>
-        <source>Device addres:     %1
+        <source>Device address:    %1
 </source>
         <translation type="unfinished"></translation>
     </message>
@@ -779,7 +779,7 @@ success
     </message>
     <message>
         <location filename="../main.cpp" line="170"/>
-        <source>Set the format for output. Supported formats are: CSV, JSON and Text. All are case insenstitve. The default is Text.</source>
+        <source>Set the format for output. Supported formats are: CSV, JSON and Text. All are case insensitive. The default is Text.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

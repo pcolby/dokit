@@ -24,7 +24,7 @@ public slots:
     bool start() override;
 
 protected:
-    PokitDevice * device { nullptr }; ///< Pokit Bluetooth device (if any) this command interracts with.
+    PokitDevice * device { nullptr }; ///< Pokit Bluetooth device (if any) this command interacts with.
     int exitCodeOnDisconnect { EXIT_FAILURE }; ///< Exit code to return on device disconnection.
 
     void disconnect(int exitCode=EXIT_SUCCESS);

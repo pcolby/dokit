@@ -180,7 +180,7 @@ void MeterCommand::serviceDetailsDiscovered()
  * \var MeterCommand::minRangeFunc
  *
  * Pointer to function for converting #rangeOptionValue to a Pokit device's range enumerator. This function pointer
- * is assigned during the command line parsing, but is not invoked until after the device's services are discovere,
+ * is assigned during the command line parsing, but is not invoked until after the device's services are discovered,
  * because prior to that discovery, we don't know which product (Meter vs Pro vs Clamp, etc) we're talking to and thus
  * which enumerator list to be using.
  *
@@ -202,7 +202,7 @@ void MeterCommand::settingsWritten()
 }
 
 /*!
- * Outputs meter \a reading in the selected ouput format.
+ * Outputs meter \a reading in the selected output format.
  */
 void MeterCommand::outputReading(const MultimeterService::Reading &reading)
 {

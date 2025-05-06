@@ -649,7 +649,7 @@ void TestScanCommand::toString_minorClass_data()
     DOKIT_ADD_TEST_ROW(HealthDevice, HealthStepCounter);
     #undef DOKIT_ADD_TEST_ROW
 
-    // Test that all major classs fall through on out-of-range minor classes.
+    // Test that all major classes fall through on out-of-range minor classes.
     #define DOKIT_ADD_TEST_ROW(majorClass) QTest::addRow(#majorClass ".invalid") \
         << (int)QBluetoothDeviceInfo::majorClass << (quint8)999 << QString()
     DOKIT_ADD_TEST_ROW(MiscellaneousDevice);
@@ -666,7 +666,7 @@ void TestScanCommand::toString_minorClass_data()
     #undef DOKIT_ADD_TEST_ROW
     #undef MAJOR_CLASS_NETWORK_DEVICE
 
-    // There are no minor classed for UncategorizedDevice.
+    // There are no minor classes for UncategorizedDevice.
     QTest::addRow("UncategorizedDevice:0")
         << (int)QBluetoothDeviceInfo::UncategorizedDevice << (quint8)0 << QString();
     QTest::addRow("UncategorizedDevice:1")

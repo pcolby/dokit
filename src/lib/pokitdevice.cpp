@@ -34,7 +34,7 @@ DOKIT_USE_STRINGLITERALS
  * * consistent debug logging of QLowEnergyController events.
  *
  * But this class is entirely optional, in that all features of all other QtPokit classes can be
- * used wihtout this class.  It's just a (meaningful) convenience.
+ * used without this class.  It's just a (meaningful) convenience.
  */
 
 /*!
@@ -186,7 +186,7 @@ StatusService * PokitDevice::status()
 #undef QTPOKIT_INTERNAL_GET_SERVICE
 
 /*!
- * Returns a human-readable name for the \a uuid service, or a null QString if unknonw.
+ * Returns a human-readable name for the \a uuid service, or a null QString if unknown.
  *
  * This is equivalent to QBluetoothUuid::serviceClassToString() but for services provided by Pokit
  * devices.

@@ -81,7 +81,7 @@ bool CalibrationService::calibrateTemperature(const float ambientTemperature)
 /*!
  * \fn CalibrationService::temperatureCalibrated
  *
- * This signal is emitted when the `Temperature` characteristic has been written succesfully.
+ * This signal is emitted when the `Temperature` characteristic has been written successfully.
  *
  * \see calibrateTemperature
  */
@@ -105,7 +105,7 @@ CalibrationServicePrivate::CalibrationServicePrivate(
 }
 
 /*!
- * Returns \a value in a format Pokit devices expect. Specifically, this just enocdes \a value as
+ * Returns \a value in a format Pokit devices expect. Specifically, this just encodes \a value as
  * a 32-bit float in litte-endian byte order.
  */
 QByteArray CalibrationServicePrivate::encodeTemperature(const float value)

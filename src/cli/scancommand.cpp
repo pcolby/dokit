@@ -235,8 +235,8 @@ QJsonObject ScanCommand::toJson(const QMultiHash<quint16, QByteArray> &data)
     std::sort(keys.begin(), keys.end());
     for (const quint16 key: keys) {
         // Convert the key's values to a JSON array, reversing the order, because QMultiHash
-        // guarantees that the values are orderer "from the most recently inserted to the least
-        // recently inserted", which is the oppoosit of what we want.
+        // guarantees that the values are order "from the most recently inserted to the least
+        // recently inserted", which is the opposite of what we want.
         QList<QByteArray> values = data.values(key);
         std::reverse(values.begin(), values.end());
         QJsonArray array;

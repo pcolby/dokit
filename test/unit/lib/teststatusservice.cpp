@@ -418,7 +418,7 @@ void TestStatusService::parseStatus_data()
     };
 
     // Sample from a real Pokit Meter device. Note that the battery status is invalid (std::max)
-    // because Pokit Meter devices don't report the battery status (legnth is 5, not 6 bytes).
+    // because Pokit Meter devices don't report the battery status (length is 5, not 6 bytes).
     QTest::addRow("PokitMeter")
         << QByteArray("\x00\x25\x07\x33\x40", 5)
         << StatusService::Status{

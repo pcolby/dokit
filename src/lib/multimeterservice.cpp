@@ -151,7 +151,7 @@ bool MultimeterService::readCharacteristics()
 /*!
  * Read the `Multimeter` service's `Reading` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -168,7 +168,7 @@ bool MultimeterService::readReadingCharacteristic()
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
- * Emits settingsWritten() if/when the \a settings have been writtem successfully.
+ * Emits settingsWritten() if/when the \a settings have been written successfully.
  */
 bool MultimeterService::setSettings(const Settings &settings)
 {
@@ -216,7 +216,7 @@ MultimeterService::Reading MultimeterService::reading() const
  *
  * This is an alternative to manually requesting individual reads via readReadingCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  *
  * Successfully read values (if any) will be emitted via the readingRead() signal.
  */
@@ -231,7 +231,7 @@ bool MultimeterService::enableReadingNotifications()
  *
  * Instantaneous reads can still be fetched by readReadingCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  */
 bool MultimeterService::disableReadingNotifications()
 {

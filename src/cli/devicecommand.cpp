@@ -296,7 +296,7 @@ void DeviceCommand::controllerError(QLowEnergyController::Error error)
 }
 
 /*!
- * Handles devics disconnection events. This base implementation simply logs and exits the
+ * Handles device disconnection events. This base implementation simply logs and exits the
  * application (via QCoreApplication::exit) with the current exitCodeOnDisconnect value, which is
  * initialise to `EXIT_FAILURE` in the constructor, but should be set to `EXIT_SUCESS` if/when
  * the derived command class has completed its actions and requested the disconnection (as opposed
@@ -334,7 +334,7 @@ void DeviceCommand::serviceDetailsDiscovered()
 }
 
 /*!
- * Checks if \a info is the device (if any) we're looking for, and if so, create a contoller and
+ * Checks if \a info is the device (if any) we're looking for, and if so, create a controller and
  * service, and begins connecting to the device.
  */
 void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &info)

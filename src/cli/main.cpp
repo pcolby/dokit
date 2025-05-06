@@ -168,7 +168,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           Private::tr("Give the desired new name for the set-name command."), Private::tr("name")},
         {{u"output"_s},
           Private::tr("Set the format for output. Supported "
-          "formats are: CSV, JSON and Text. All are case insenstitve. The default is Text."),
+          "formats are: CSV, JSON and Text. All are case insensitive. The default is Text."),
           Private::tr("format"),
           Private::tr("text")},
         {{u"range"_s},

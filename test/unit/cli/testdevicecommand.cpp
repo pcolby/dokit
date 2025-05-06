@@ -36,7 +36,7 @@ public:
 };
 
 // Mock device command class that does nothing (but log) if real devices are actually discovered. That is, if testing
-// while real (physical) Pokit devices are within BLE range. This never happes in CI environments of course.
+// while real (physical) Pokit devices are within BLE range. This never happens in CI environments of course.
 class StartableDeviceCommand : public MockDeviceCommand
 {
 protected slots:

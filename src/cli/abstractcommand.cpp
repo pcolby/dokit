@@ -47,7 +47,7 @@ AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),
 
 /*!
  * Returns a list of CLI option names required by this command. The main console appication may
- * use this list to output an eror (and exit) if any of the returned names are not found in the
+ * use this list to output an error (and exit) if any of the returned names are not found in the
  * parsed CLI options.
  *
  * The (already parsed) \a parser may be used adjust the returned required options depending on the
@@ -141,7 +141,7 @@ template<typename R> constexpr Ratio makeRatio() { return Ratio{ R::num, R::den 
  * const quint32 timeout = parseNumber<std::milli>(parser.value("window"), 's', 500'000);
  * ```
  *
- * So that an unqalified period like "300" will be assumed to be 300 milliseconds, and not 300
+ * So that an unqualified period like "300" will be assumed to be 300 milliseconds, and not 300
  * microseconds, while a period like "1000" will be assume to be 1 second.
  *
  * If conversion fails for any reason, 0 is returned.
@@ -246,7 +246,7 @@ DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::atto);
  *
  * This base implementations performs some common checks, such as ensuring that required options are
  * present. Derived classes should override this function to perform further processing, typically
- * inovking this base implementation as a first step, such as:
+ * invoking this base implementation as a first step, such as:
  *
  * ```
  * QStringList CustomCommand::processOptions(const QCommandLineParser &parser)
@@ -339,7 +339,7 @@ QStringList AbstractCommand::processOptions(const QCommandLineParser &parser)
  * \fn virtual void AbstractCommand::deviceDiscoveryFinished() = 0
  *
  * Handles PokitDiscoveryAgent::deviceDiscoveryFinished signal. Derived classes must
- * implement this slot to perform whatever actions are appropraite when discovery is finished.
+ * implement this slot to perform whatever actions are appropriate when discovery is finished.
  * For example, the 'scan' command would simply exit, whereas most other commands would verify that
  * an appropriate device was found.
  */

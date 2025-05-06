@@ -330,7 +330,7 @@ void TestLoggerStartCommand::processOptions()
     QVERIFY (command.minRangeFunc      ==     expectedMinRangeFunc);
     QCOMPARE(command.rangeOptionValue,        expectedRangeOptionValue);
 
-    // Recoginise if/when LoggerStartCommand::processOptions automatically uses 'now' for timestamp.
+    // Recognise if/when LoggerStartCommand::processOptions automatically uses 'now' for timestamp.
     if (expectNowish) {
         Q_ASSERT(expectedSettings.timestamp == 0);
         // Fuzzy compare, with up 3 seconds tolerance. Using qMin and qMax here instead of qAbs to

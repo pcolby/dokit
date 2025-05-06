@@ -254,7 +254,7 @@ bool AbstractPokitServicePrivate::createServiceObject()
 }
 
 /*!
- * Get \a uuid characteristc from the underlying service. This helper function is equivalent to
+ * Get \a uuid characteristic from the underlying service. This helper function is equivalent to
  *
  * ```
  * return service->characteristic(uuid);
@@ -301,7 +301,7 @@ QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QB
 /*!
  * Read the \a uuid characteristic.
  *
- * If succesful, the `QLowEnergyService::characteristicRead` signal will be emitted by the internal
+ * If successful, the `QLowEnergyService::characteristicRead` signal will be emitted by the internal
  * service object.  For convenience, derived classes should implement the characteristicRead()
  * virtual function to handle the read value.
  *
@@ -325,7 +325,7 @@ bool AbstractPokitServicePrivate::readCharacteristic(const QBluetoothUuid &uuid)
 /*!
  * Enables client (Pokit device) side notification for characteristic \a uuid.
  *
- * Returns \c true if the notication enable request was successfully queued, \c false otherwise.
+ * Returns \c true if the notification enable request was successfully queued, \c false otherwise.
  *
  * \see AbstractPokitServicePrivate::characteristicChanged
  * \see AbstractPokitServicePrivate::disableCharacteristicNotificatons
@@ -360,7 +360,7 @@ bool AbstractPokitServicePrivate::enableCharacteristicNotificatons(const QBlueto
 /*!
  * Disables client (Pokit device) side notification for characteristic \a uuid.
  *
- * Returns \c true if the notication disable request was successfully queued, \c false otherwise.
+ * Returns \c true if the notification disable request was successfully queued, \c false otherwise.
  *
  * \see AbstractPokitServicePrivate::characteristicChanged
  * \see AbstractPokitServicePrivate::enableCharacteristicNotificatons
@@ -437,7 +437,7 @@ QString AbstractPokitServicePrivate::toHexString(const QByteArray &data, const i
 /*!
  * Handles `QLowEnergyController::connected` events.
  *
- * If `autoDiscover` is enabled, this will begin service discovery on the newly connected contoller.
+ * If `autoDiscover` is enabled, this will begin service discovery on the newly connected controller.
  *
  * \see AbstractPokitService::autoDiscover()
  */
@@ -459,7 +459,7 @@ void AbstractPokitServicePrivate::connected()
 /*!
  * Handles `QLowEnergyController::discoveryFinished` events.
  *
- * As this event indicates that the conroller has finished discovering services, this function will
+ * As this event indicates that the controller has finished discovering services, this function will
  * invoke createServiceObject() to create the internal service object (if not already created).
  */
 void AbstractPokitServicePrivate::discoveryFinished()
@@ -560,7 +560,7 @@ void AbstractPokitServicePrivate::stateChanged(QLowEnergyService::ServiceState n
  * logs the event.
  *
  * Derived classes should implement this function to handle the successful reads of
- * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.
+ * \a characteristic, typically by parsing \a value, then emitting a specialised signal.
  */
 void AbstractPokitServicePrivate::characteristicRead(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &value)
@@ -574,7 +574,7 @@ void AbstractPokitServicePrivate::characteristicRead(
  * logs the event.
  *
  * Derived classes should implement this function to handle the successful writes of
- * \a characteristic, typically by parsing \a newValue, then emitting a speciailised signal.
+ * \a characteristic, typically by parsing \a newValue, then emitting a specialised signal.
  */
 void AbstractPokitServicePrivate::characteristicWritten(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)
@@ -589,7 +589,7 @@ void AbstractPokitServicePrivate::characteristicWritten(
  *
  * If derived classes support characteristics with client-side notification (ie Notify, as opposed
  * to Read or Write operations), they should implement this function to handle the successful reads of
- * \a characteristic, typically by parsing \a value, then emitting a speciailised signal.
+ * \a characteristic, typically by parsing \a value, then emitting a specialised signal.
  */
 void AbstractPokitServicePrivate::characteristicChanged(
     const QLowEnergyCharacteristic &characteristic, const QByteArray &newValue)

@@ -158,7 +158,7 @@ bool StatusService::readCharacteristics()
 /*!
  * Read the `Status` service's `Device Characteristics` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -173,7 +173,7 @@ bool StatusService::readDeviceCharacteristics()
 /*!
  * Read the `Status` service's `Status` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -188,7 +188,7 @@ bool StatusService::readStatusCharacteristic()
 /*!
  * Read the `Status` service's `Name` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -203,7 +203,7 @@ bool StatusService::readNameCharacteristic()
 /*!
  * Read the `Status` service's (undocumented) `Torch` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -218,7 +218,7 @@ bool StatusService::readTorchCharacteristic()
 /*!
  * Read the `Status` service's (undocumented) `Button Press` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -288,7 +288,7 @@ StatusService::Status StatusService::status() const
  *
  * This is an alternative to manually requesting individual reads via readStatusCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  *
  * Successfully read values (if any) will be emitted via the deviceStatusRead() signal.
  */
@@ -303,7 +303,7 @@ bool StatusService::enableStatusNotifications()
  *
  * Instantaneous status can still be fetched by readStatusCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  */
 bool StatusService::disableStatusNotifications()
 {
@@ -377,7 +377,7 @@ bool StatusService::flashLed()
         return false;
     }
 
-    // The Flash LED characeristic is write-only, and takes a single uint8 "LED" parameter, which
+    // The Flash LED characteristic is write-only, and takes a single uint8 "LED" parameter, which
     // must always be 1. Presumably this is an index for which LED to flash, but the Pokit API docs
     // say that "any value other than 1 will be ignored", which makes sense given that all current
     // Pokit devices have only one LED.
@@ -427,7 +427,7 @@ bool StatusService::setTorchStatus(const StatusService::TorchStatus status)
  *
  * This is an alternative to manually requesting individual reads via readTorchCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  *
  * Successfully read values (if any) will be emitted via the torchStatusRead() signal.
  */
@@ -442,7 +442,7 @@ bool StatusService::enableTorchStatusNotifications()
  *
  * Instantaneous torch status can still be fetched by readTorchCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  */
 bool StatusService::disableTorchStatusNotifications()
 {
@@ -455,7 +455,7 @@ bool StatusService::disableTorchStatusNotifications()
  *
  * This is an alternative to manually requesting individual reads via readButtonPressCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  *
  * Successfully read values (if any) will be emitted via the torchStatusRead() signal.
  */
@@ -468,9 +468,9 @@ bool StatusService::enableButtonPressedNotifications()
 /*!
  * Disables client-side notifications of button presses.
  *
- * Instantaneous button press statussed can still be fetched by readButtonPressCharacteristic().
+ * Instantaneous button press statusses can still be fetched by readButtonPressCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  */
 bool StatusService::disableButtonPressedNotifications()
 {
@@ -617,7 +617,7 @@ StatusService::DeviceCharacteristics StatusServicePrivate::parseDeviceCharacteri
 /*!
  * Parses the `Status` \a value into a Status struct. Note, not all Pokit devices support all members
  * in Status. Specifically, the batteryStatus member is not usually set by Pokit Meter devices, so
- * will be an invlalid BatteryStatus enum value (`255`) in that case.
+ * will be an invalid BatteryStatus enum value (`255`) in that case.
  */
 StatusService::Status StatusServicePrivate::parseStatus(const QByteArray &value)
 {

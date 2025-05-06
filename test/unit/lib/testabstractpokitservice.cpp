@@ -84,7 +84,7 @@ void TestAbstractPokitService::createServiceObject()
     QCOMPARE(service.service(), nullptr);
 
     // Verify that existing, assigned BLE services will be left intact (even if they are completely
-    // invalid pointers we just re-intrerpreted... dangerous, but only short-lived for testing).
+    // invalid pointers we just re-interpreted... dangerous, but only short-lived for testing).
     // Note, we QCOMPARE with anonymous pointers below, because if our hacked pointer is presented
     // as a QObject-derived type then QCOMPARE will attempt to invoke QObject::objectName() on it.
     char x[sizeof(QLowEnergyService)];

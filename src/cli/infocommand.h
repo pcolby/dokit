@@ -25,7 +25,7 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    DeviceInfoService * service { nullptr }; ///< Bluetooth service this command interracts with.
+    DeviceInfoService * service { nullptr }; ///< Bluetooth service this command interacts with.
 
     QTPOKIT_BEFRIEND_TEST(InfoCommand)
 };

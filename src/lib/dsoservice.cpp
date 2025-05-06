@@ -90,9 +90,9 @@ quint32 DsoService::maxValue(const quint8 range, const Mode mode) const
 /*!
  * \typedef DsoService::Samples
  *
- * Raw samples from the `Reading` characteristic. These raw samples are (supposedly) wihtin the
+ * Raw samples from the `Reading` characteristic. These raw samples are (supposedly) within the
  * range -2048 to +2047, and need to be multiplied by the Metadata::scale value from the `Metadata`
- * characteristc to get the true values.
+ * characteristic to get the true values.
  *
  * Also supposedly, there should be no more than 10 samples at a time, according to Pokit's current
  * API docs. There is not artificial limitation imposed by QtPokit, so devices may begin batching
@@ -128,7 +128,7 @@ bool DsoService::readCharacteristics()
 /*!
  * Reads the `DSO` service's `Metadata` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -145,7 +145,7 @@ bool DsoService::readMetadataCharacteristic()
  *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
- * Emits settingsWritten() if/when the \a settings have been writtem successfully.
+ * Emits settingsWritten() if/when the \a settings have been written successfully.
  */
 bool DsoService::setSettings(const Settings &settings)
 {
@@ -188,7 +188,7 @@ bool DsoService::startDso(const Settings &settings)
  * This is just a convenience function equivalent to calling setSettings() with the command set to
  * DsoService::Command::Refresh.
  *
- * Once the Pokit device has processed this request succesffully, the device will begin notifying
+ * Once the Pokit device has processed this request successfully, the device will begin notifying
  * the `Metadata` and `Reading` characteristic, resulting in emits of metadataRead and samplesRead
  * respectively.
  */
@@ -228,7 +228,7 @@ DsoService::Metadata DsoService::metadata() const
  *
  * This is an alternative to manually requesting individual reads via readMetadataCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  *
  * Successfully read values (if any) will be emitted via the metadataRead() signal.
  */
@@ -243,7 +243,7 @@ bool DsoService::enableMetadataNotifications()
  *
  * Instantaneous reads can still be fetched by readMetadataCharacteristic().
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  */
 bool DsoService::disableMetadataNotifications()
 {
@@ -254,7 +254,7 @@ bool DsoService::disableMetadataNotifications()
 /*!
  * Enables client-side notifications of DSO readings.
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  *
  * Successfully read samples (if any) will be emitted via the samplesRead() signal.
  */
@@ -267,7 +267,7 @@ bool DsoService::enableReadingNotifications()
 /*!
  * Disables client-side notifications of DSO readings.
  *
- * Returns `true` is the request was successfully submited to the device queue, `false` otherwise.
+ * Returns `true` is the request was successfully submitted to the device queue, `false` otherwise.
  */
 bool DsoService::disableReadingNotifications()
 {

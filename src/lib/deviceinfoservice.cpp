@@ -57,7 +57,7 @@ bool DeviceInfoService::readCharacteristics()
 /*!
  * Read the `Device Info` service's `Firmware Revision` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -72,7 +72,7 @@ bool DeviceInfoService::readFirmwareRevisionCharacteristic()
 /*!
  * Read the `Device Info` service's `Hardware Revision` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -87,7 +87,7 @@ bool DeviceInfoService::readHardwareRevisionCharacteristic()
 /*!
  * Read the `Device Info` service's `Manufacturer Name` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -102,7 +102,7 @@ bool DeviceInfoService::readManufacturerCharacteristics()
 /*!
  * Read the `Device Info` service's `Model Number` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -117,7 +117,7 @@ bool DeviceInfoService::readModelNumberCharacteristic()
 /*!
  * Read the `Device Info` service's `Software Revision` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *
@@ -132,7 +132,7 @@ bool DeviceInfoService::readSoftwareRevisionCharacteristic()
 /*!
  * Read the `Device Info` service's (undocumented) `Serial Number` characteristic.
  *
- * Returns `true` is the read request is succesfully queued, `false` otherwise (ie if the
+ * Returns `true` is the read request is successfully queued, `false` otherwise (ie if the
  * underlying controller it not yet connected to the Pokit device, or the device's services have
  * not yet been discovered).
  *

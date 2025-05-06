@@ -29,7 +29,7 @@ protected slots:
 private:
     quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue) { nullptr };
     quint32 rangeOptionValue { 0 };          ///< The parsed value of range option.
-    DataLoggerService * service { nullptr }; ///< Bluetooth service this command interracts with.
+    DataLoggerService * service { nullptr }; ///< Bluetooth service this command interacts with.
     DataLoggerService::Settings settings {   ///< Settings for the Pokit device's data logger mode.
         DataLoggerService::Command::Start, 0, DataLoggerService::Mode::DcVoltage,
         +PokitMeter::VoltageRange::AutoRange, 60'000, 0

@@ -25,7 +25,7 @@ protected slots:
     void serviceDetailsDiscovered() override;
 
 private:
-    CalibrationService * service { nullptr }; ///< Bluetooth service this command interracts with.
+    CalibrationService * service { nullptr }; ///< Bluetooth service this command interacts with.
     float temperature { std::numeric_limits<float>::quiet_NaN() }; ///< Ambient temperature from the CLI options.
 
 private slots:

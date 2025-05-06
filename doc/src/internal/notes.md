@@ -76,7 +76,7 @@ Some notes on specific features that imply minimum CMake versions:
 | 2.8.11 | [`target_include_directories`](https://cmake.org/cmake/help/v2.8.11/cmake.html#command:target_include_directories) |
 | 2.8.11 | Has `-fPIC` issues with Qt. |
 | 2.8.12 | [`add_compile_options`](https://cmake.org/cmake/help/v2.8.12/cmake.html#command:add_compile_options)
-| 2.8.12 | Has compile isssues with Qt. |
+| 2.8.12 | Has compile issues with Qt. |
 |  3.0   | `VERSION` option of the `project()` command.
 |  3.1   | [Qt 5.11+](https://github.com/qt/qtbase/blob/v5.11.0/src/corelib/Qt5Config.cmake.in) |
 |        | `target_sources` command. |

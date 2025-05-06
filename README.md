@@ -158,7 +158,7 @@ Options:
                            the set-torch command supported modes are On and Off.
   --new-name <name>        Give the desired new name for the set-name command.
   --output <format>        Set the format for output. Supported formats are:
-                           CSV, JSON and Text. All are case insenstitve. The
+                           CSV, JSON and Text. All are case insensitive. The
                            default is Text.
   --range <range>          Set the desired measurement range. Pokit devices
                            support specific ranges, such as 0 to 300mV. Specify
