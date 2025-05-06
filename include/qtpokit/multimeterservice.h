@@ -29,10 +29,10 @@ public:
 
     /// Characteristics available via the `Multimeter` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        /// UUID of the `Multimeter` service's `Settings` characterstic.
+        /// UUID of the `Multimeter` service's `Settings` characteristic.
         static inline const QBluetoothUuid settings { QStringLiteral("53dc9a7a-bc19-4280-b76b-002d0e23b078") };
 
-        /// UUID of the `Multimeter` service's `Reading` characterstic.
+        /// UUID of the `Multimeter` service's `Reading` characteristic.
         static inline const QBluetoothUuid reading  { QStringLiteral("047d3559-8bee-423a-b229-4417fa603b90") };
     };
 
@@ -57,7 +57,7 @@ public:
     static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);
     quint32 maxValue(const quint8 range, const Mode mode) const;
 
-    /// Attributes included in the `Settings` characterstic.
+    /// Attributes included in the `Settings` characteristic.
     struct Settings {
         Mode mode;              ///< Desired operation mode.
         quint8 range;           ///< Desired range.
@@ -74,7 +74,7 @@ public:
         Error        = 255 ///< Error (all modes).
     };
 
-    /// Attributes included in the `Reading` characterstic.
+    /// Attributes included in the `Reading` characteristic.
     struct Reading {
         MeterStatus status; ///< Current multimeter status.
         float value;        ///< Last acquired value.

@@ -20,7 +20,7 @@ void TestCalibrationService::readCharacteristics()
         QSKIP("BLE controller operations hang on GitHub Actions's macOS 14 runners");
     }
 
-    // readCharacteristics always returns true, since the service has no readable characterstics.
+    // readCharacteristics always returns true, since the service has no readable characteristics.
     CalibrationService service(QLowEnergyController::createCentral(QBluetoothDeviceInfo()));
     QVERIFY(service.readCharacteristics());
 }

@@ -35,22 +35,22 @@ public:
 
     /// Characteristics available via the `Pokit Status` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        /// UUID of the `Pokit Status` service's `Device Characteristics` characterstic.
+        /// UUID of the `Pokit Status` service's `Device Characteristics` characteristic.
         static inline const QBluetoothUuid deviceCharacteristics  { QStringLiteral("6974f5e5-0e54-45c3-97dd-29e4b5fb0849") };
 
-        /// UUID of the `Pokit Status` service's `Status` characterstic.
+        /// UUID of the `Pokit Status` service's `Status` characteristic.
         static inline const QBluetoothUuid status { QStringLiteral("3dba36e1-6120-4706-8dfd-ed9c16e569b6") };
 
-        /// UUID of the `Pokit Status` service's `Device Name` characterstic.
+        /// UUID of the `Pokit Status` service's `Device Name` characteristic.
         static inline const QBluetoothUuid name { QStringLiteral("7f0375de-077e-4555-8f78-800494509cc3") };
 
-        /// UUID of the `Pokit Status` service's `Flash LED` characterstic.
+        /// UUID of the `Pokit Status` service's `Flash LED` characteristic.
         static inline const QBluetoothUuid flashLed { QStringLiteral("ec9bb1f3-05a9-4277-8dd0-60a7896f0d6e") };
 
-        /// UUID of the `Pokit Status` service's (undocumented) `Torch` characterstic.
+        /// UUID of the `Pokit Status` service's (undocumented) `Torch` characteristic.
         static inline const QBluetoothUuid torch { QStringLiteral("aaf3f6d5-43d4-4a83-9510-dff3d858d4cc") };
 
-        /// UUID of the `Pokit Status` service's (undocumented) `Button Press` characterstic.
+        /// UUID of the `Pokit Status` service's (undocumented) `Button Press` characteristic.
         static inline const QBluetoothUuid buttonPress { QStringLiteral("8fe5b5a9-b5b4-4a7b-8ff2-87224b970f89") };
 
         /*!
@@ -63,7 +63,7 @@ public:
          */
     };
 
-    /// Attributes included in the `Device Characteristics` characterstic.
+    /// Attributes included in the `Device Characteristics` characteristic.
     struct DeviceCharacteristics {
         QVersionNumber firmwareVersion; ///< Device's major and minor firmware version.
         quint16 maximumVoltage;         ///< Device's maximum input voltage.
@@ -108,13 +108,13 @@ public:
 
     /// Values supported by the (undocumented) `Charging Statue` attribute of the `Status` characteristic.
     enum class ChargingStatus : quint8 {
-        Discharging = 0, ///< Battery is dischargin.
+        Discharging = 0, ///< Battery is discharging.
         Charging    = 1, ///< Battery is being charged.
         Charged     = 2, ///< Battery is fully charged.
     };
     static QString toString(const StatusService::ChargingStatus &status);
 
-    /// Attributes included in the `Status` characterstic.
+    /// Attributes included in the `Status` characteristic.
     struct Status {
         DeviceStatus deviceStatus;   ///< Current Pokit device status.
         float batteryVoltage;        ///< Current battery voltage level.

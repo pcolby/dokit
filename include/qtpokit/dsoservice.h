@@ -30,13 +30,13 @@ public:
 
     /// Characteristics available via the `DSO` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        /// UUID of the `DSO` service's `Settings` characterstic.
+        /// UUID of the `DSO` service's `Settings` characteristic.
         static inline const QBluetoothUuid settings { QStringLiteral("a81af1b6-b8b3-4244-8859-3da368d2be39") };
 
-        /// UUID of the `DSO` service's `Metadata` characterstic.
+        /// UUID of the `DSO` service's `Metadata` characteristic.
         static inline const QBluetoothUuid metadata { QStringLiteral("970f00ba-f46f-4825-96a8-153a5cd0cda9") };
 
-        /// UUID of the `DSO` service's `Reading` characterstic.
+        /// UUID of the `DSO` service's `Reading` characteristic.
         static inline const QBluetoothUuid reading  { QStringLiteral("98e14f8e-536e-4f24-b4f4-1debfed0a99e") };
     };
 
@@ -63,7 +63,7 @@ public:
     static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);
     quint32 maxValue(const quint8 range, const Mode mode) const;
 
-    /// Attributes included in the `Settings` characterstic.
+    /// Attributes included in the `Settings` characteristic.
     struct Settings {
         Command command;         ///< Custom operation request.
         float triggerLevel;      ///< Trigger threshold level in Volts or Amps, depending on #mode.
@@ -80,7 +80,7 @@ public:
         Error      = 255 ///< An error has occurred.
     };
 
-    /// Attributes included in the `Metadata` characterstic.
+    /// Attributes included in the `Metadata` characteristic.
     struct Metadata {
         DsoStatus status;        ///< Current DSO status.
         float scale;             ///< Scale to apply to read samples.

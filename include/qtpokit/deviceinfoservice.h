@@ -30,27 +30,27 @@ public:
 
     /// Characteristics available via the `Device Info` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        /// UUID of the `Device Info` service's `Manufacturer Name String` characterstic.
+        /// UUID of the `Device Info` service's `Manufacturer Name String` characteristic.
         static inline const QBluetoothUuid manufacturerName
             { QBluetoothUuid::CharacteristicType::ManufacturerNameString }; // 0x2a29
 
-        /// UUID of the `Device Info` service's `Model Number String` characterstic.
+        /// UUID of the `Device Info` service's `Model Number String` characteristic.
         static inline const QBluetoothUuid modelNumber
             { QBluetoothUuid::CharacteristicType::ModelNumberString }; // 0x2a24
 
-        /// UUID of the `Device Info` service's `Firmware Revision String` characterstic.
+        /// UUID of the `Device Info` service's `Firmware Revision String` characteristic.
         static inline const QBluetoothUuid firmwareRevision
             { QBluetoothUuid::CharacteristicType::FirmwareRevisionString }; // 0x2a26
 
-        /// UUID of the `Device Info` service's `Hardware Revision String` characterstic.
+        /// UUID of the `Device Info` service's `Hardware Revision String` characteristic.
         static inline const QBluetoothUuid hardwareRevision
             { QBluetoothUuid::CharacteristicType::HardwareRevisionString }; // 0x2a27
 
-        /// UUID of the `Device Info` service's `Software Revision String` characterstic.
+        /// UUID of the `Device Info` service's `Software Revision String` characteristic.
         static inline const QBluetoothUuid softwareRevision
             { QBluetoothUuid::CharacteristicType::SoftwareRevisionString }; // 0x2a28
 
-        /// UUID of the `Device Info` service's `Serial Number String` characterstic.
+        /// UUID of the `Device Info` service's `Serial Number String` characteristic.
         static inline const QBluetoothUuid serialNumber
             { QBluetoothUuid::CharacteristicType::SerialNumberString }; // 0x2a25
     };

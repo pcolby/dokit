@@ -231,7 +231,7 @@ cmake --build <tmp-build-dir> --target doc doc-internal
 # ls <tmp-build-dir>/doc/internal  # Internal developer documentation
 ```
 
-These are regularly published to Github Pages via Github Actions:
+These are regularly published to GitHub Pages via GitHub Actions:
 
 * [public end-user docs](https://pcolby.github.io/dokit/main/doc/index.html)
 * [internal dev docs](https://pcolby.github.io/dokit/main/int/index.html)

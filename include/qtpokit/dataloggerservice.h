@@ -29,13 +29,13 @@ public:
 
     /// Characteristics available via the `DataLogger` service.
     struct QTPOKIT_EXPORT CharacteristicUuids {
-        /// UUID of the `DataLogger` service's `Settings` characterstic.
+        /// UUID of the `DataLogger` service's `Settings` characteristic.
         static inline const QBluetoothUuid settings { QStringLiteral("5f97c62b-a83b-46c6-b9cd-cac59e130a78") };
 
-        /// UUID of the `DataLogger` service's `Metadata` characterstic.
+        /// UUID of the `DataLogger` service's `Metadata` characteristic.
         static inline const QBluetoothUuid metadata { QStringLiteral("9acada2e-3936-430b-a8f7-da407d97ca6e") };
 
-        /// UUID of the `DataLogger` service's `Reading` characterstic.
+        /// UUID of the `DataLogger` service's `Reading` characteristic.
         static inline const QBluetoothUuid reading  { QStringLiteral("3c669dab-fc86-411c-9498-4f9415049cc0") };
     };
 
@@ -62,7 +62,7 @@ public:
     static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);
     quint32 maxValue(const quint8 range, const Mode mode) const;
 
-    /// Attributes included in the `Settings` characterstic.
+    /// Attributes included in the `Settings` characteristic.
     struct Settings {
         Command command;        ///< Custom operation request.
         quint16 arguments;      ///< Reserved to used along with #command in future.
@@ -80,7 +80,7 @@ public:
         Error      = 255  ///< An error has occurred.
     };
 
-    /// Attributes included in the `Metadata` characterstic.
+    /// Attributes included in the `Metadata` characteristic.
     struct Metadata {
         LoggerStatus status;     ///< Current data logger status.
         float scale;             ///< Scale to apply to read samples.
