@@ -690,7 +690,7 @@
 <span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">         236 :     characteristics.samplingBufferSize  = qFromLittleEndian&lt;quint16&gt;(value.mid(10,2).constData());</span></span>
 <span id="L600"><span class="lineNum">     600</span> <span class="tlaGNC">         236 :     characteristics.capabilityMask      = qFromLittleEndian&lt;quint16&gt;(value.mid(12,2).constData());</span></span>
 <span id="L601"><span class="lineNum">     601</span> <span class="tlaGNC">         234 :     characteristics.macAddress = QBluetoothAddress(qFromBigEndian&lt;quint64&gt;</span></span>
-<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">         332 :                                                    ((QByteArray(2, '\0') + value.mid(14,6)).constData()));</span></span>
+<span id="L602"><span class="lineNum">     602</span> <span class="tlaGNC">         338 :                                                    ((QByteArray(2, '\0') + value.mid(14,6)).constData()));</span></span>
 <span id="L603"><span class="lineNum">     603</span>              : </span>
 <span id="L604"><span class="lineNum">     604</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Firmware version:     &quot;) &lt;&lt; characteristics.firmwareVersion;</span></span>
 <span id="L605"><span class="lineNum">     605</span> <span class="tlaGNC">         220 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Maximum voltage:      &quot;) &lt;&lt; characteristics.maximumVoltage;</span></span>
