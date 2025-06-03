@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Upgrade to Qt 6.9.0
+- Upgrade to Qt 6.9.1
 
 ### Fixed
 
