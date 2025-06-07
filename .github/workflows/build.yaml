@@ -74,23 +74,8 @@ jobs:
         run: >
           sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}
       - name: Install online Qt version
-        if: contains(matrix.qt, '.') && matrix.arch != 'arm64' # ie if not using Ubuntu's Qt5/Qt6.
+        if: contains(matrix.qt, '.') # ie if not using Ubuntu's Qt5/Qt6.
         uses: jurplel/install-qt-action@v4
-        with:
-          version: ${{ matrix.qt }}
-          modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
-          setup-python: false
-          documentation: true
-          doc-archives: >-
-            ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
-                (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
-          doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-          aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
-      - name: Install online Qt version for arm64
-        # \todo Revert to only using jurplel's action when issue #248 is resolved.
-        # \todo See https://github.com/jurplel/install-qt-action/issues/248
-        if: contains(matrix.qt, '.') && matrix.arch == 'arm64' # ie if not using Ubuntu's Qt5/Qt6.
-        uses: jdpurcell/install-qt-action@v4
         with:
           version: ${{ matrix.qt }}
           modules: ${{ startsWith(matrix.qt, '6') && 'qtconnectivity' || '' }}
