@@ -366,9 +366,12 @@ jobs:
       - name: Grant Bluetooth access # Only needed for unit tests with older Qt's on newer runners.
         if: matrix.os != 'macos-13' && ( startsWith(matrix.qt, '5') || startsWith(matrix.qt, '6.2.') )
         run: >
-          sudo sqlite3 "$HOME/Library/Application Support/com.apple.TCC/TCC.db" "INSERT or REPLACE INTO access
-            ( service, client, client_type, auth_value, auth_reason, auth_version, flags ) VALUES
-            ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, 3, 1, 0 )"
+          for db in {"${HOME}",}'/Library/Application Support/com.apple.TCC/TCC.db'; do
+            echo "Upserting: ${db}"
+            sudo sqlite3 "${db}" "INSERT or REPLACE INTO access
+              ( service, client, client_type, auth_value, auth_reason, auth_version, flags ) VALUES
+              ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, 3, 1, 0 )"
+          done
       - name: Test w/ coverage
         if: matrix.os != 'macos-13' || matrix.cc != 'clang'
         run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
