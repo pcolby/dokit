@@ -345,8 +345,8 @@ jobs:
       - name: Test
         run: |
           [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
-            while !gtimeout 30 ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose; do sleep 1; done
-          while !gtimeout 30 ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose; do sleep 1; done
+            while ! gtimeout 30 ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose; do sleep 1; done
+          while ! gtimeout 30 ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose; do sleep 1; done
         timeout-minutes: 10
       - name: Test localisations
         if: startsWith(matrix.qt, '6')
