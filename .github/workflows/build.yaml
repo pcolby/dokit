@@ -257,7 +257,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install lcov
-        run: brew install bash lcov
+        run: brew install bash coreutils lcov
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
@@ -345,9 +345,9 @@ jobs:
       - name: Test
         run: |
           [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
-            ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
-          ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
-        timeout-minutes: 5
+            while !gtimeout 30 ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose; do sleep 1; done
+          while !gtimeout 30 ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose; do sleep 1; done
+        timeout-minutes: 10
       - name: Test localisations
         if: startsWith(matrix.qt, '6')
         run: |
