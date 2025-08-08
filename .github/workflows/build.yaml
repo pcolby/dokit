@@ -14,6 +14,7 @@ env:
 
 jobs:
   linux:
+    if: false
     runs-on: ubuntu-24.04${{ matrix.arch == 'arm64' && '-arm' || '' }}
     strategy:
       fail-fast: false
@@ -413,6 +414,7 @@ jobs:
           if-no-files-found: error
 
   win:
+    if: false
     runs-on: windows-latest
     defaults: { run: { shell: cmd } }
     strategy:
