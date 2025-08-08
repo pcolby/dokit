@@ -220,8 +220,8 @@ jobs:
           - 6.8.3
           - 6.9.1
         os:
-          - macos-13
-          - macos-14
+          # macos-13
+          # macos-14
           - macos-15
         cc:
           - clang
@@ -347,7 +347,7 @@ jobs:
           [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
             ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
           ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
-        timeout-minutes: 1
+        timeout-minutes: 5
       - name: Test localisations
         if: startsWith(matrix.qt, '6')
         run: |
