@@ -14,7 +14,7 @@ env:
 
 jobs:
   linux:
-    runs-on: ubuntu-24.04${{ matrix.arch == 'arm64' && '-arm' || '' }}
+    runs-on: ubuntu-${{ matrix.os }}${{ matrix.arch == 'arm64' && '-arm' || '' }}
     strategy:
       fail-fast: false
       matrix:
@@ -36,6 +36,9 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.1
+        os:
+          - 22.04
+          - 24.04
         arch:
           - arm64
           - x86-64
@@ -57,6 +60,9 @@ jobs:
           - { qt: 6.4.3,   arch: arm64 }
           - { qt: 6.5.3,   arch: arm64 }
           - { qt: 6.6.3,   arch: arm64 }
+          # Qt 6.8+ moc requires more a more recent glibc (specifically GLIBC_2.38) than Ubuntu 22.04 provides.
+          - { qt: 6.8.3,   arch: arm64, os: 22.04 }
+          - { qt: 6.9.1,   arch: arm64, os: 22.04 }
     steps:
       - name: Upgrade OS
         run: |
@@ -71,8 +77,9 @@ jobs:
         run: sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
       - name: Install Ubuntu's Qt6
         if: matrix.qt == 6
-        run: >
-          sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}
+        run: sudo apt install qt6-{base-dev{,-tools},connectivity-dev,l10n-tools,tools-dev{,-tools}} ${tagsPackages}
+        env: # The *.tags files (we want for building documentation) are not available in Ubuntu 22.04's Qt6 packages.
+          tagsPackages: ${{ matrix.os != '22.04' && 'qt6-base-doc-dev qt6-connectivity-doc-html' || '' }}
       - name: Install online Qt version
         if: contains(matrix.qt, '.') # ie if not using Ubuntu's Qt5/Qt6.
         uses: jurplel/install-qt-action@v4
@@ -90,7 +97,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: aqtinstall-log-linux-${{ matrix.cc }}-${{ matrix.qt }}
+          name: aqtinstall-log-linux-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.cc }}-${{ matrix.qt }}
           path: aqtinstall.log
           if-no-files-found: error
       - name: Install linuxdeploy
@@ -103,11 +110,13 @@ jobs:
         env:
           CC: ${{ matrix.cc }}
           CXX: ${{ matrix.cc == 'gcc' && 'g++' || 'clang++' }}
-          PROJECT_BUILD_ID: ${{ github.run_number }}.linux.${{ matrix.arch }}.${{ matrix.cc }}.qt-${{ matrix.qt }}
+          PROJECT_BUILD_ID: >-
+            ${{ github.run_number }}.linux.${{ matrix.os }}.${{ matrix.arch }}.${{ matrix.cc }}.qt-${{ matrix.qt }}
         run: |
           [[ '${{ matrix.qt }}' =~ ^[56]$ ]] ||
             qtInstallDocs="$RUNNER_WORKSPACE/Qt/Docs/Qt-${QT_VERSION:-${{ matrix.qt }}}"
-          # With coverage instrumentation.
+          # With coverage instrumentation (except Ubuntu 22.04's llvm-lcov version does not support `--sources`)
+          [[ '${{ matrix.os }}' == '22.04' && '${{ matrix.cc }}' == 'clang' ]] ||
           cmake -D CMAKE_BUILD_TYPE=Release \
                 -D ENABLE_COVERAGE=true \
                 ${qtInstallDocs:+-D "QT_INSTALL_DOCS=$qtInstallDocs"} \
@@ -118,19 +127,27 @@ jobs:
                 ${qtInstallDocs:+-D "QT_INSTALL_DOCS=$qtInstallDocs"} \
                 -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/release"
           tee -a "$GITHUB_OUTPUT" <<< "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")"
-          cmake --build "$RUNNER_TEMP/coverage"
+          [[ '${{ matrix.os }}' == '22.04' && '${{ matrix.cc }}' == 'clang' ]] ||
+            cmake --build "$RUNNER_TEMP/coverage"
           cmake --build "$RUNNER_TEMP/release"
-          "$RUNNER_TEMP/coverage/src/cli/dokit" --version
+          [[ '${{ matrix.os }}' == '22.04' && '${{ matrix.cc }}' == 'clang' ]] ||
+            "$RUNNER_TEMP/coverage/src/cli/dokit" --version
           "$RUNNER_TEMP/release/src/cli/dokit" --version
-      - name: Test
-        run: |
-          ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
-          ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
-          cmake --build "$RUNNER_TEMP/coverage" --target coverage
+      - name: Test w/ coverage
+        if: matrix.os != '22.04' || matrix.cc != 'clang'
+        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
+      - name: Test w/o coverage
+        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
+      - name: Collate test coverage
+        if: matrix.os != '22.04' || matrix.cc != 'clang'
+        run: cmake --build "$RUNNER_TEMP/coverage" --target coverage
       - name: Test localisations
         # \todo For unknown reasons, Qt 6.2.4 w/ GCC fails to include full set of *.qm file - happens locally too, not
         # just on GitHub hosted runners.  We could diagnose further, but this one corner case is very low value today.
-        if: startsWith(matrix.qt, '6') && !(startsWith(matrix.qt, '6.2.') && matrix.cc == 'gcc')
+        # Note, Ubuntu 22.04's Qt6 packages are (at the time of writing) Qt 6.2.4, so they are affected also.
+        if: >-
+          startsWith(matrix.qt, '6') &&
+          !( matrix.cc == 'gcc' && ( startsWith(matrix.qt, '6.2.') || (matrix.qt == '6' && matrix.os == '22.04') ) )
         run: |
           declare -Ar languages=(
             [en_AU]='Australia|Unrecognised'
@@ -150,6 +167,9 @@ jobs:
             grep "${localText} temperature format" <<< "${output}"
           done
       - name: Upload test results
+        if: >- # If we have coverage reports, and/or TAP files (TAP support added in Qt Test v5.12).
+          matrix.os != '22.04' || matrix.cc != 'clang' || !startsWith(matrix.qt, '5') ||
+          ( startsWith(matrix.qt, '5.1') && !startsWith(matrix.qt, '5.10') && !startsWith(matrix.qt, '5.11') )
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ steps.build.outputs.dokitVersion }}
@@ -160,14 +180,18 @@ jobs:
             ${{ runner.temp }}/release/test/**/*.tap
           if-no-files-found: error
       - name: Report parallel coverage to Codacy
-        if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+        if: >-
+          ( matrix.os != '22.04' || matrix.cc == 'gcc' )
+          && github.event_name == 'push' && github.actor != 'dependabot[bot]'
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: >
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial \
             -l CPP -r "${{ runner.temp }}/coverage/coverage.info"
       - name: Report parallel coverage to Coveralls
-        if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+        if: >-
+          ( matrix.os != '22.04' || matrix.cc == 'gcc' )
+          && github.event_name == 'push' && github.actor != 'dependabot[bot]'
         uses: coverallsapp/github-action@v2
         with:
           # Note, the coverage-reporter-platform option is currently undocumented. See
@@ -341,11 +365,12 @@ jobs:
           sudo sqlite3 "$HOME/Library/Application Support/com.apple.TCC/TCC.db" "INSERT or REPLACE INTO access
             ( service, client, client_type, auth_value, auth_reason, auth_version, flags ) VALUES
             ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, 3, 1, 0 )"
-      - name: Test
-        run: |
-          [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
-            ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
-          ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
+      - name: Test w/ coverage
+        if: matrix.os != 'macos-13' || matrix.cc != 'clang'
+        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
+        timeout-minutes: 1
+      - name: Test w/o coverage
+        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
         timeout-minutes: 1
       - name: Test localisations
         if: startsWith(matrix.qt, '6')
@@ -413,7 +438,7 @@ jobs:
           if-no-files-found: error
 
   win:
-    runs-on: windows-latest
+    runs-on: windows-${{ matrix.os }}
     defaults: { run: { shell: cmd } }
     strategy:
       fail-fast: false
@@ -434,6 +459,9 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.1
+        os:
+          - '2022'
+          - '2025'
         arch: [ x86, x86-64, arm64 ]
         toolchain: [ llvm, mingw, msvc ]
         exclude:
@@ -483,6 +511,13 @@ jobs:
           - { toolchain: llvm, qt: '6.4.3' }
           - { toolchain: llvm, qt: '6.5.3' }
           - { toolchain: llvm, qt: '6.6.3' }
+          # \todo Exclude some additional 64-bit MinGW builds on Windows 2025 (only) for now, as they segfault on
+          # std::cout. Probably due to some incompatibly runtime linkage.
+          - { toolchain: mingw, arch: x86-64, qt: '5.12.12', os: '2025' }
+          - { toolchain: mingw, arch: x86-64, qt: '5.13.2',  os: '2025' }
+          - { toolchain: mingw, arch: x86-64, qt: '6.2.4',   os: '2025' }
+          - { toolchain: mingw, arch: x86-64, qt: '6.3.2',   os: '2025' }
+
         include:
           # Map the aqtinstall (aqt) architectures.
           - { qt: '5.9.9',   toolchain: mingw, arch: x86,    aqtArch: win32_mingw53 }
@@ -566,6 +601,18 @@ jobs:
           - { toolchain: 'mingw', arch: x86-64, qt: '6.8.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'llvm',  arch: x86-64, qt: '6.9.1',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.9.1',  aqtTools: 'tools_mingw1310' }
+          ## Windows Server 2025-specific cases.
+          - { os: '2025', toolchain: 'mingw', arch: x86, qt: '5.9.9',
+              aqtTools: 'tools_mingw81,qt.tools.win32_mingw810' }
+          - { os: '2025', toolchain: 'mingw', arch: x86, qt: '5.10.1',
+              aqtTools: 'tools_mingw81,qt.tools.win32_mingw810' }
+          - { os: '2025', toolchain: 'mingw', arch: x86, qt: '5.11.3',
+              aqtTools: 'tools_mingw81,qt.tools.win32_mingw810' }
+          - { os: '2025', toolchain: 'mingw', arch: x86, qt: '5.12.12',
+              aqtTools: 'tools_mingw81,qt.tools.win32_mingw810' }
+          - { os: '2025', toolchain: 'mingw', arch: x86, qt: '5.13.2',
+              aqtTools: 'tools_mingw81,qt.tools.win32_mingw810' }
+
     steps:
       - name: Configure path
         if: matrix.toolchain != 'msvc'
@@ -595,7 +642,7 @@ jobs:
         if: matrix.arch == 'arm64' && failure()
         uses: actions/upload-artifact@v4
         with:
-          name: aqtinstall-log-win-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}-cross
+          name: aqtinstall-log-win-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}-cross
           path: aqtinstall.log
           if-no-files-found: error
       - name: Install Qt
@@ -616,7 +663,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: aqtinstall-log-win-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}
+          name: aqtinstall-log-win-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}
           path: aqtinstall.log
           if-no-files-found: error
       - name: Configure cross-compilation
@@ -635,7 +682,8 @@ jobs:
         if: matrix.toolchain != 'msvc'
         env:
           CMAKE_MESSAGE_LOG_LEVEL: VERBOSE
-          PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
+          PROJECT_BUILD_ID: >-
+            ${{ github.run_number }}.win${{ matrix.os }}.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
         run: |
           cmake -D CMAKE_BUILD_TYPE=Release ^
                 -D ENABLE_COVERAGE=true ^
@@ -646,7 +694,8 @@ jobs:
       - name: Build w/o coverage instrumentation
         env:
           CMAKE_MESSAGE_LOG_LEVEL: VERBOSE
-          PROJECT_BUILD_ID: ${{ github.run_number }}.win.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
+          PROJECT_BUILD_ID: >-
+            ${{ github.run_number }}.win${{ matrix.os }}.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
         run: |
           cmake -D CMAKE_BUILD_TYPE=Release ^
                 -D ENABLE_COVERAGE=false ^
@@ -676,15 +725,20 @@ jobs:
       - name: Test StatusService for LLVM debugging
         if: matrix.toolchain == 'llvm'
         shell: bash
-        run: /d/a/_temp/coverage/test/unit/lib/testStatusService.exe -o output,txt || :; cat output
+        run: '"${RUNNER_TEMP}/coverage/test/unit/lib/testStatusService.exe" -o output,txt || :; cat output'
       - name: Test w/ coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64' && matrix.toolchain != 'msvc'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/coverage" --verbose
       - name: Test w/o coverage # We can't execute arm64 binaries on an x86-64 host.
         if: matrix.arch != 'arm64'
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/release" --verbose
-      - name: Collate test coverage
-        if: matrix.toolchain != 'msvc' && matrix.toolchain != 'llvm'
+      - name: Collate test coverage # Currently available on MinGW builds only.
+        # \todo The MinGW versions needed for building and testing on 32-bin binaries on Windows 2025 with Qt 5.9 to
+        # 5.13, include a gcov binaries that can't be spawned by geninfo. We could probably work around this by somehow
+        # overriding `gcov.exe` and/or `geninfo` binaries (to us the host's), but this is a low priority.
+        if: >-
+          matrix.toolchain == 'mingw' && !( matrix.os == '2025' && matrix.arch == 'x86' &&
+          contains(fromJSON('["5.9.9", "5.10.1", "5.11.3", "5.12.12", "5.13.2"]'), matrix.qt) )
         run: cmake --build "%RUNNER_TEMP%/coverage" --target coverage --verbose
       - name: Upload test results
         if: matrix.arch != 'arm64' && ( matrix.toolchain != 'msvc' || fromJSON(steps.post-build.outputs.tap) )
@@ -782,14 +836,14 @@ jobs:
           # Update source code paths from macOS tracefiles to match Linux.
           sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/*.macos-*/**/coverage.info
           # Update source code paths from Windows tracefiles to match Linux, and remove all \r chars from line endings.
-          sed -i -Ee 's|\r$||' -e 's|\\|/|g' -e 's|^SF:D:/a|SF:/home/runner/work|' artifacts/*.win.*/**/coverage.info
+          sed -i -Ee 's|\r$||' -e 's|\\|/|g' -e 's|^SF:[CD]:/a|SF:/home/runner/work|' artifacts/*.win*/**/coverage.info
           # Combine all tracefiles into one. Note, ignoring inconsistencies between Clang and GCC reports :|
           lcov --ignore-errors inconsistent $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
           # Generate the HTML report. Note, ignoring inconsistencies between Clang and GCC reports :|
           genhtml --demangle-cpp --ignore-errors inconsistent --no-sort --output-directory coverage coverage.info
           # Can use any of the removeHtmlDates.sh scripts here, so the Ubuntu x86-64 GCC Qt6 job's version will do.
-          /usr/bin/env bash ./artifacts/test-results-*.x86-64.gcc.qt-6/coverage/removeHtmlDates.sh coverage
-          # Remove build numbers from pre-releases, and remove extra build info (such as ".linux.x86-64.gcc.qt-6")
+          /usr/bin/env bash ./artifacts/test-results-*.linux.24.04.x86-64.gcc.qt-6/coverage/removeHtmlDates.sh coverage
+          # Remove build numbers from pre-releases, and remove extra build info (such as ".linux.24.04.x86-64.gcc.qt-6")
           # from all releases, since this coverage report is an aggregation of many build hosts.
           sed -i -Ee 's/(headerValue">([0-9]+\.){2}[0-9]+)(((-pre)\+[0-9]+)|(\+[0-9]+))\..*</\1\5\6</' \
             coverage/**/*.html

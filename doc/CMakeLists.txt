@@ -5,14 +5,18 @@ include(FetchContent)
 FetchContent_Declare(FindQtDocs GIT_REPOSITORY "https://github.com/pcolby/cmake-modules" GIT_TAG "v1")
 FetchContent_MakeAvailable(FindQtDocs)
 list(PREPEND CMAKE_MODULE_PATH "${findqtdocs_SOURCE_DIR}")
-find_package(QtDocs REQUIRED COMPONENTS Core Bluetooth)
+find_package(QtDocs COMPONENTS Core Bluetooth)
 
 # Include Qt doc tagfiles, if available.
-set(QT_DOCS_BASEURL "https://doc.qt.io/qt-${QT_VERSION_MAJOR}/")
-message(STATUS "Using Qt doc tagfiles ${QT_INSTALL_DOCS} => ${QT_DOCS_BASEURL}")
-set(DOX_TAGFILES "\\
-  \"${QtDocs_Core_TAGS}=${QT_DOCS_BASEURL}\" \\
-  \"${QtDocs_Bluetooth_TAGS}=${QT_DOCS_BASEURL}\" \\")
+if (QtDocs_FOUND)
+  set(QT_DOCS_BASEURL "https://doc.qt.io/qt-${QT_VERSION_MAJOR}/")
+  message(STATUS "Using Qt doc tagfiles ${QT_INSTALL_DOCS} => ${QT_DOCS_BASEURL}")
+  set(DOX_TAGFILES "\\
+    \"${QtDocs_Core_TAGS}=${QT_DOCS_BASEURL}\" \\
+    \"${QtDocs_Bluetooth_TAGS}=${QT_DOCS_BASEURL}\" \\")
+else()
+  message(NOTICE "QtDocs not found. Project docs will be built without external links to Qt documentation.")
+endif()
 
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
