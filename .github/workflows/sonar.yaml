@@ -33,9 +33,9 @@ jobs:
           sudo apt update
           sudo apt upgrade
           sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
-      - name: Install sonar-scanner and build-wrapper
-        uses: SonarSource/sonarcloud-github-c-cpp@v3
-      - name: Run build-wrapper
+      - name: Install SonarQube build wrapper
+        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v5
+      - name: Build with SonarQube wrapper
         env:
           CC: ${{ matrix.env.cc }}
           CXX: ${{ matrix.env.cxx }}
@@ -43,11 +43,12 @@ jobs:
         run: |
           cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
           build-wrapper-linux-x86-64 --out-dir "$RUNNER_TEMP/sonar" cmake --build "$RUNNER_TEMP" --config Release
-      - name: Run sonar-scanner
+      - name: Scan with SonarQube
         if: github.actor != 'dependabot[bot]'
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner --define project.settings=.sonar.properties \
+        with:
+          args: >-
+            --define project.settings=.sonar.properties
             --define sonar.cfamily.compile-commands="$RUNNER_TEMP/sonar/compile_commands.json"
