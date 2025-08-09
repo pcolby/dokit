@@ -115,10 +115,10 @@
 <span id="L24"><span class="lineNum">      24</span>              : </span>
 <span id="L25"><span class="lineNum">      25</span>              : class QTPOKIT_EXPORT AbstractPokitServicePrivate : public QObject</span>
 <span id="L26"><span class="lineNum">      26</span>              : {</span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">         945 :     Q_OBJECT</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">        1575 :     Q_OBJECT</span></span>
 <span id="L28"><span class="lineNum">      28</span>              : </span>
 <span id="L29"><span class="lineNum">      29</span>              : public:</span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       20983 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ble.service&quot;, QtInfoMsg); ///&lt; Logging category.</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       34917 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ble.service&quot;, QtInfoMsg); ///&lt; Logging category.</span></span>
 <span id="L31"><span class="lineNum">      31</span>              : </span>
 <span id="L32"><span class="lineNum">      32</span>              :     bool autoDiscover { true };                    ///&lt; Whether autodiscovery is enabled or not.</span>
 <span id="L33"><span class="lineNum">      33</span>              :     QLowEnergyController * controller { nullptr }; ///&lt; BLE controller to fetch the service from.</span>
@@ -129,7 +129,7 @@
 <span id="L38"><span class="lineNum">      38</span>              :     AbstractPokitServicePrivate(const QBluetoothUuid &amp;serviceUuid,</span>
 <span id="L39"><span class="lineNum">      39</span>              :         QLowEnergyController * controller, AbstractPokitService * const q);</span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">        6444 :     virtual ~AbstractPokitServicePrivate() = default;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">        7104 :     virtual ~AbstractPokitServicePrivate() = default;</span></span>
 <span id="L42"><span class="lineNum">      42</span>              : </span>
 <span id="L43"><span class="lineNum">      43</span>              :     bool createServiceObject();</span>
 <span id="L44"><span class="lineNum">      44</span>              :     QLowEnergyCharacteristic getCharacteristic(const QBluetoothUuid &amp;uuid) const;</span>
@@ -160,7 +160,7 @@
 <span id="L69"><span class="lineNum">      69</span>              :                                        const QByteArray &amp;newValue);</span>
 <span id="L70"><span class="lineNum">      70</span>              : </span>
 <span id="L71"><span class="lineNum">      71</span>              : private:</span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         135 :     Q_DECLARE_PUBLIC(AbstractPokitService)</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         225 :     Q_DECLARE_PUBLIC(AbstractPokitService)</span></span>
 <span id="L73"><span class="lineNum">      73</span>              :     Q_DISABLE_COPY(AbstractPokitServicePrivate)</span>
 <span id="L74"><span class="lineNum">      74</span>              :     QTPOKIT_BEFRIEND_TEST(AbstractPokitService)</span>
 <span id="L75"><span class="lineNum">      75</span>              : };</span>

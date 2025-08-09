@@ -115,26 +115,26 @@
 <span id="L24"><span class="lineNum">      24</span>              : /*!</span>
 <span id="L25"><span class="lineNum">      25</span>              :  * Constructs a new command with \a parent.</span>
 <span id="L26"><span class="lineNum">      26</span>              :  */</span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">       35257 : AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">       35257 :     discoveryAgent(new PokitDiscoveryAgent(this))</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">       49516 : AbstractCommand::AbstractCommand(QObject * const parent) : QObject(parent),</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">       49516 :     discoveryAgent(new PokitDiscoveryAgent(this))</span></span>
 <span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">       17383 : {</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       38731 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::pokitDeviceDiscovered,</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">       22641 :             this, &amp;AbstractCommand::deviceDiscovered);</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       38731 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::finished,</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">       22641 :             this, &amp;AbstractCommand::deviceDiscoveryFinished);</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">       38731 :     connect(discoveryAgent,</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       52990 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::pokitDeviceDiscovered,</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">       26943 :             this, &amp;AbstractCommand::deviceDiscovered);</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       52990 :     connect(discoveryAgent, &amp;PokitDiscoveryAgent::finished,</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">       26943 :             this, &amp;AbstractCommand::deviceDiscoveryFinished);</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">       52990 :     connect(discoveryAgent,</span></span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">        7377 :         #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</span></span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        7377 :         QOverload&lt;PokitDiscoveryAgent::Error&gt;::of(&amp;PokitDiscoveryAgent::error),</span></span>
 <span id="L37"><span class="lineNum">      37</span>              :         #else</span>
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">       10006 :         &amp;PokitDiscoveryAgent::errorOccurred,</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">       10006 :         #endif</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       17481 :         this, [](const PokitDiscoveryAgent::Error &amp;error) {</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         430 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth discovery error:&quot;) &lt;&lt; error;</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          99 :         QTimer::singleShot(0, QCoreApplication::instance(), [](){</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       17559 :         this, [](const PokitDiscoveryAgent::Error &amp;error) {</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         661 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth discovery error:&quot;) &lt;&lt; error;</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         126 :         QTimer::singleShot(0, QCoreApplication::instance(), [](){</span></span>
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :             QCoreApplication::exit(EXIT_FAILURE);</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :         });</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         197 :     });</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">       38731 : }</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         287 :     });</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">       52990 : }</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
 <span id="L48"><span class="lineNum">      48</span>              : /*!</span>
 <span id="L49"><span class="lineNum">      49</span>              :  * Returns a list of CLI option names required by this command. The main console appication may</span>
@@ -148,10 +148,10 @@
 <span id="L57"><span class="lineNum">      57</span>              :  * This base implementation simply returns an empty list. Derived classes should override this</span>
 <span id="L58"><span class="lineNum">      58</span>              :  * function to include any required options.</span>
 <span id="L59"><span class="lineNum">      59</span>              :  */</span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">       14040 : QStringList AbstractCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">       23400 : QStringList AbstractCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
 <span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">       14544 : {</span></span>
 <span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">       14544 :     Q_UNUSED(parser)</span></span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">       28584 :     return QStringList();</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">       37944 :     return QStringList();</span></span>
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">       14544 : }</span></span>
 <span id="L65"><span class="lineNum">      65</span>              : </span>
 <span id="L66"><span class="lineNum">      66</span>              : /*!</span>
@@ -175,14 +175,14 @@
 <span id="L84"><span class="lineNum">      84</span>              :  * }</span>
 <span id="L85"><span class="lineNum">      85</span>              :  * ```</span>
 <span id="L86"><span class="lineNum">      86</span>              :  */</span>
-<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">        6840 : QStringList AbstractCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">       11400 : QStringList AbstractCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
 <span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">        7064 : {</span></span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">       57680 :     return requiredOptions(parser) + QStringList{</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">       89600 :     return requiredOptions(parser) + QStringList{</span></span>
 <span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">        7064 :         u&quot;debug&quot;_s,</span></span>
 <span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">        7064 :         u&quot;device&quot;_s, u&quot;d&quot;_s,</span></span>
 <span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">        7064 :         u&quot;output&quot;_s,</span></span>
 <span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">        7064 :         u&quot;timeout&quot;_s,</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">       52968 :     };</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">       83216 :     };</span></span>
 <span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        7064 : }</span></span>
 <span id="L96"><span class="lineNum">      96</span>              : </span>
 <span id="L97"><span class="lineNum">      97</span>              : /*!</span>
@@ -197,10 +197,10 @@
 <span id="L106"><span class="lineNum">     106</span>              :  * QCOMPARE(escapeCsvField(R&quot;(a&quot;c)&quot;), R(&quot;(&quot;a&quot;&quot;c&quot;)&quot;); // Existing double-quotes doubled, then wrapped.</span>
 <span id="L107"><span class="lineNum">     107</span>              :  * ```</span>
 <span id="L108"><span class="lineNum">     108</span>              :  */</span>
-<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">        5220 : QString AbstractCommand::escapeCsvField(const QString &amp;field)</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">        8715 : QString AbstractCommand::escapeCsvField(const QString &amp;field)</span></span>
 <span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">        3481 : {</span></span>
-<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">       22081 :     if (field.contains(','_L1) || field.contains('\r'_L1) || field.contains('&quot;'_L1) || field.contains('\n'_L1)) {</span></span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         200 :         return uR&quot;(&quot;%1&quot;)&quot;_s.arg(QString(field).replace('&quot;'_L1, uR&quot;(&quot;&quot;)&quot;_s));</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">       34541 :     if (field.contains(','_L1) || field.contains('\r'_L1) || field.contains('&quot;'_L1) || field.contains('\n'_L1)) {</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         264 :         return uR&quot;(&quot;%1&quot;)&quot;_s.arg(QString(field).replace('&quot;'_L1, uR&quot;(&quot;&quot;)&quot;_s));</span></span>
 <span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">        3377 :     } else return field;</span></span>
 <span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">        3481 : }</span></span>
 <span id="L115"><span class="lineNum">     115</span>              : </span>
@@ -212,7 +212,7 @@
 <span id="L121"><span class="lineNum">     121</span>              :     std::intmax_t num { 0 }; ///&lt; Numerator.</span>
 <span id="L122"><span class="lineNum">     122</span>              :     std::intmax_t den { 0 }; ///&lt; Denominator.</span>
 <span id="L123"><span class="lineNum">     123</span>              :     //! Returns \a true if both #num and #den are non-zero.</span>
-<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">        8329 :     bool isValid() const { return (num != 0) &amp;&amp; (den != 0); }</span></span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">       11239 :     bool isValid() const { return (num != 0) &amp;&amp; (den != 0); }</span></span>
 <span id="L125"><span class="lineNum">     125</span>              : };</span>
 <span id="L126"><span class="lineNum">     126</span>              : </span>
 <span id="L127"><span class="lineNum">     127</span>              : /*!</span>
@@ -238,9 +238,9 @@
 <span id="L147"><span class="lineNum">     147</span>              :  * If conversion fails for any reason, 0 is returned.</span>
 <span id="L148"><span class="lineNum">     148</span>              :  */</span>
 <span id="L149"><span class="lineNum">     149</span>              : template&lt;typename R&gt;</span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">        5805 : quint32 AbstractCommand::parseNumber(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum)</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">        9675 : quint32 AbstractCommand::parseNumber(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum)</span></span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">        5448 : {</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">       11493 :     static const QMap&lt;QChar, Ratio&gt; unitPrefixScaleMap {</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">       15403 :     static const QMap&lt;QChar, Ratio&gt; unitPrefixScaleMap {</span></span>
 <span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">        5448 :         { 'E'_L1,        makeRatio&lt;std::exa&gt;()   },</span></span>
 <span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">        5448 :         { 'P'_L1,        makeRatio&lt;std::peta&gt;()  },</span></span>
 <span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">        5448 :         { 'T'_L1,        makeRatio&lt;std::tera&gt;()  },</span></span>
@@ -263,50 +263,50 @@
 <span id="L172"><span class="lineNum">     172</span>              :     // Remove the optional (whole) unit suffix.</span>
 <span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">        5448 :     Ratio ratio;</span></span>
 <span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">        5448 :     QString number = value.trimmed();</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">       11253 :     if ((!unit.isEmpty()) &amp;&amp; (number.endsWith(unit, Qt::CaseInsensitive))) {</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">        5405 :         number.chop(unit.length());</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">       15123 :     if ((!unit.isEmpty()) &amp;&amp; (number.endsWith(unit, Qt::CaseInsensitive))) {</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">        7355 :         number.chop(unit.length());</span></span>
 <span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">        2480 :         ratio = makeRatio&lt;std::ratio&lt;1&gt;&gt;();</span></span>
 <span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">        2480 :     }</span></span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
 <span id="L180"><span class="lineNum">     180</span>              :     // Parse, and remove, the optional SI unit prefix.</span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">       11253 :     if (!number.isEmpty()) {</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">       15123 :     if (!number.isEmpty()) {</span></span>
 <span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">        5096 :         #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 10, 0))</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">        7784 :         const QChar siPrefix = number.back(); // QString::back() introduced in Qt 5.10.</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">        9960 :         const QChar siPrefix = number.back(); // QString::back() introduced in Qt 5.10.</span></span>
 <span id="L184"><span class="lineNum">     184</span>              :         #else</span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">         556 :         const QChar siPrefix = number.at(number.size() - 1);</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">         684 :         const QChar siPrefix = number.at(number.size() - 1);</span></span>
 <span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">         300 :         #endif</span></span>
 <span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">        5396 :         const auto iter = unitPrefixScaleMap.constFind(siPrefix);</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">       11156 :         if (iter != unitPrefixScaleMap.constEnd()) {</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">       14996 :         if (iter != unitPrefixScaleMap.constEnd()) {</span></span>
 <span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">        2368 :             Q_ASSERT(iter-&gt;isValid());</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">        5248 :             ratio = *iter;</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">        5248 :             number.chop(1);</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">        7168 :             ratio = *iter;</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">        7168 :             number.chop(1);</span></span>
 <span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">        2368 :         }</span></span>
 <span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">        5396 :     }</span></span>
 <span id="L194"><span class="lineNum">     194</span>              : </span>
 <span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">        5826 :     #define DOKIT_RESULT(var) (var * ratio.num * R::den / ratio.den / R::num)</span></span>
 <span id="L196"><span class="lineNum">     196</span>              :     // Parse the number as an (unsigned) integer.</span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">       11253 :     QLocale locale; bool ok;</span></span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">        8544 :     qulonglong integer = locale.toULongLong(number, &amp;ok);</span></span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">       11253 :     if (ok) {</span></span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">        7359 :         if (integer == 0) {</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">       15123 :     QLocale locale; bool ok;</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">       10221 :     qulonglong integer = locale.toULongLong(number, &amp;ok);</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">       15123 :     if (ok) {</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">        9969 :         if (integer == 0) {</span></span>
 <span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">          52 :             return 0;</span></span>
 <span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          52 :         }</span></span>
 <span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        3392 :         if (!ratio.isValid()) {</span></span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">        3028 :             for (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(integer) &lt; sensibleMinimum; ratio.num *= 1000);</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">        4048 :             for (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(integer) &lt; sensibleMinimum; ratio.num *= 1000);</span></span>
 <span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">        1016 :         }</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">        7262 :         return (integer == 0) ? 0u : (quint32)DOKIT_RESULT(integer);</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">        9842 :         return (integer == 0) ? 0u : (quint32)DOKIT_RESULT(integer);</span></span>
 <span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">        3444 :     }</span></span>
 <span id="L208"><span class="lineNum">     208</span>              : </span>
 <span id="L209"><span class="lineNum">     209</span>              :     // Parse the number as a (double) floating point number, and check that it is positive.</span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">        3894 :     if (const double dbl = locale.toDouble(number, &amp;ok); (ok) &amp;&amp; (dbl &gt; 0.0)) {</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">        5154 :     if (const double dbl = locale.toDouble(number, &amp;ok); (ok) &amp;&amp; (dbl &gt; 0.0)) {</span></span>
 <span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">         572 :         if (!ratio.isValid()) {</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         679 :             for (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(dbl) &lt; sensibleMinimum; ratio.num *= 1000);</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">         889 :             for (ratio = makeRatio&lt;R&gt;(); DOKIT_RESULT(dbl) &lt; sensibleMinimum; ratio.num *= 1000);</span></span>
 <span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">         260 :         }</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">        1067 :         return static_cast&lt;quint32&gt;(std::llround(DOKIT_RESULT(dbl)));</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">        1397 :         return static_cast&lt;quint32&gt;(std::llround(DOKIT_RESULT(dbl)));</span></span>
 <span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         572 :     }</span></span>
 <span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">        1432 :     #undef DOKIT_RESULT</span></span>
 <span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">        1432 :     return 0; // Failed to parse as either integer, or float.</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">        7809 : }</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">       11679 : }</span></span>
 <span id="L219"><span class="lineNum">     219</span>              : </span>
 <span id="L220"><span class="lineNum">     220</span>              : #define DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(type) template \</span>
 <span id="L221"><span class="lineNum">     221</span>              : quint32 AbstractCommand::parseNumber&lt;type&gt;(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum)</span>
@@ -353,61 +353,61 @@
 <span id="L262"><span class="lineNum">     262</span>              :  * }</span>
 <span id="L263"><span class="lineNum">     263</span>              :  * ```</span>
 <span id="L264"><span class="lineNum">     264</span>              :  */</span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        5895 : QStringList AbstractCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        9825 : QStringList AbstractCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
 <span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        5972 : {</span></span>
 <span id="L267"><span class="lineNum">     267</span>              :     // Report any supplied options that are not supported by this command.</span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       11867 :     const QStringList suppliedOptionNames = parser.optionNames();</span></span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">       11867 :     const QStringList supportedOptionNames = supportedOptions(parser);</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">       27611 :     for (const QString &amp;option: suppliedOptionNames) {</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">       21716 :         if (!supportedOptionNames.contains(option)) {</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         176 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       15797 :     const QStringList suppliedOptionNames = parser.optionNames();</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">       15797 :     const QStringList supportedOptionNames = supportedOptions(parser);</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">       38981 :     for (const QString &amp;option: suppliedOptionNames) {</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">       29156 :         if (!supportedOptionNames.contains(option)) {</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         264 :             qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring option: %1&quot;).arg(option);</span></span>
 <span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">          52 :         }</span></span>
 <span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">       10556 :     }</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        8723 :     QStringList errors;</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">       10950 :     QStringList errors;</span></span>
 <span id="L276"><span class="lineNum">     276</span>              : </span>
 <span id="L277"><span class="lineNum">     277</span>              :     // Parse the device (name/addr/uuid) option.</span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">       14618 :     if (parser.isSet(u&quot;device&quot;_s)) {</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         236 :         deviceToScanFor = parser.value(u&quot;device&quot;_s);</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">       20775 :     if (parser.isSet(u&quot;device&quot;_s)) {</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         330 :         deviceToScanFor = parser.value(u&quot;device&quot;_s);</span></span>
 <span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         104 :     }</span></span>
 <span id="L281"><span class="lineNum">     281</span>              : </span>
 <span id="L282"><span class="lineNum">     282</span>              :     // Parse the output format options (if supported, and supplied).</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">       17762 :     if ((supportedOptionNames.contains(u&quot;output&quot;_s)) &amp;&amp; // Derived classes may have removed.</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">       14618 :         (parser.isSet(u&quot;output&quot;_s)))</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">       28242 :     if ((supportedOptionNames.contains(u&quot;output&quot;_s)) &amp;&amp; // Derived classes may have removed.</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">       23252 :         (parser.isSet(u&quot;output&quot;_s)))</span></span>
 <span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">         676 :     {</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1846 :         const QString output = parser.value(u&quot;output&quot;_s).toLower();</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1261 :         if (output == u&quot;csv&quot;_s) {</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">         291 :             format = OutputFormat::Csv;</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">         970 :         } else if (output == u&quot;json&quot;_s) {</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">         291 :             format = OutputFormat::Json;</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         679 :         } else if (output == u&quot;text&quot;_s) {</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         291 :             format = OutputFormat::Text;</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        2626 :         const QString output = parser.value(u&quot;output&quot;_s).toLower();</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1651 :         if (output == u&quot;csv&quot;_s) {</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">         381 :             format = OutputFormat::Csv;</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        1270 :         } else if (output == u&quot;json&quot;_s) {</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">         381 :             format = OutputFormat::Json;</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         889 :         } else if (output == u&quot;text&quot;_s) {</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         381 :             format = OutputFormat::Text;</span></span>
 <span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">         208 :         } else {</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         472 :             errors.append(tr(&quot;Unknown output format: %1&quot;).arg(output));</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         660 :             errors.append(tr(&quot;Unknown output format: %1&quot;).arg(output));</span></span>
 <span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         208 :         }</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">         988 :     }</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">        1157 :     }</span></span>
 <span id="L297"><span class="lineNum">     297</span>              : </span>
 <span id="L298"><span class="lineNum">     298</span>              :     // Parse the device scan timeout option.</span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">       14618 :     if (parser.isSet(u&quot;timeout&quot;_s)) {</span></span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">        1599 :         const quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(u&quot;timeout&quot;_s), u&quot;s&quot;_s, 500);</span></span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">        1261 :         if (timeout == 0) {</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">         888 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(u&quot;timeout&quot;_s)));</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">         679 :         } else if (discoveryAgent-&gt;lowEnergyDiscoveryTimeout() == -1) {</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">         546 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Platform does not support Bluetooth scan timeout&quot;);</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">       20775 :     if (parser.isSet(u&quot;timeout&quot;_s)) {</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">        2249 :         const quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(u&quot;timeout&quot;_s), u&quot;s&quot;_s, 500);</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">        1651 :         if (timeout == 0) {</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">        1260 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(u&quot;timeout&quot;_s)));</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">         889 :         } else if (discoveryAgent-&gt;lowEnergyDiscoveryTimeout() == -1) {</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">         889 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Platform does not support Bluetooth scan timeout&quot;);</span></span>
 <span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         364 :         } else {</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         420 :             discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         476 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         497 :             discoveryAgent-&gt;setLowEnergyDiscoveryTimeout(timeout);</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         595 :             qCDebug(lc).noquote() &lt;&lt; tr(&quot;Set scan timeout to %1&quot;).arg(</span></span>
 <span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :                 discoveryAgent-&gt;lowEnergyDiscoveryTimeout());</span></span>
 <span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         301 :         }</span></span>
 <span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         676 :     }</span></span>
 <span id="L311"><span class="lineNum">     311</span>              : </span>
 <span id="L312"><span class="lineNum">     312</span>              :     // Return errors for any required options that are absent.</span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">       11867 :     const QStringList requiredOptionNames = this-&gt;requiredOptions(parser);</span></span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">       19370 :     for (const QString &amp;option: requiredOptionNames) {</span></span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">       13355 :         if (!parser.isSet(option)) {</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">        1178 :             errors.append(tr(&quot;Missing required option: %1&quot;).arg(option));</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">       15797 :     const QStringList requiredOptionNames = this-&gt;requiredOptions(parser);</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">       27950 :     for (const QString &amp;option: requiredOptionNames) {</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">       18005 :         if (!parser.isSet(option)) {</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">        1695 :             errors.append(tr(&quot;Missing required option: %1&quot;).arg(option));</span></span>
 <span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">         452 :         }</span></span>
 <span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">        6380 :     }</span></span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">       11867 :     return errors;</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">       15797 :     return errors;</span></span>
 <span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">        5972 : }</span></span>
 <span id="L321"><span class="lineNum">     321</span>              : </span>
 <span id="L322"><span class="lineNum">     322</span>              : /*!</span>
