@@ -104,7 +104,7 @@ jobs:
         uses: pcolby/install-linuxdeploy@v1
         with:
           plugins: qt
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Build
         id: build
         env:
@@ -278,7 +278,7 @@ jobs:
           - { qt: '6.8.3', cc: gcc }
           - { qt: '6.9.1', cc: gcc }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install lcov
         run: brew install bash lcov
       - name: Install Qt
@@ -629,7 +629,7 @@ jobs:
       - name: Install LCOV
         if: matrix.toolchain != 'msvc'
         run: pacman --sync --noconfirm --verbose mingw-w64-x86_64-lcov
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install host Qt for cross-compilation
         if: matrix.arch == 'arm64'
         uses: jurplel/install-qt-action@v4
@@ -809,7 +809,7 @@ jobs:
     env:
       LCOV_VERSION: 2.3.1 # Should stay in-step, or ahead of, the Ubuntu, macOS and Windows versions.
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install lcov
         run: |
           sudo apt-mark hold firefox grub-efi-amd64-signed
@@ -872,7 +872,7 @@ jobs:
     if: success() && (github.ref == 'refs/heads/main')
     needs: collate-test-results
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with: { ref: doc }
       - name: Clear previous coverage report
         run: rm -rf main/cov
