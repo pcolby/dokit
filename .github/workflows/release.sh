@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -o errexit -o noclobber -o nounset -o pipefail
 
-: "${ARTIFACTS_DIR:=$(realpath -m artifacts)}"
-: "${ASSETS_DIR:=$(realpath -m assets)}"
+: "${ARTIFACTS_DIR:=$(realpath -m artifacts || :)}"
+: "${ASSETS_DIR:=$(realpath -m assets || :)}"
 readonly ARTIFACTS_DIR ASSETS_DIR TAG_NAME="${1:?Usage: ${BASH_SOURCE[0]} <tag-name>}"
 [[ ! -a "${ARTIFACTS_DIR}" && ! -a "${ASSETS_DIR}" ]] || {
   echo 'One or more output directories already exist.'
@@ -63,12 +63,12 @@ echo 'Compressing docs'
 find "${ARTIFACTS_DIR}" -maxdepth 1 -type d -name '*-docs' -execdir zip -9 -r "${ASSETS_DIR}/{}.zip" '{}' \;
 
 # Create a new (draft) release.
-echo "Creating new draft release, with $(ls -1a "${ASSETS_DIR}" | wc -l) assets"
-lin=$(find "$ASSETS_DIR" -name '*.gcc.*.AppImage'                 -printf '%f\n' | sort -V | tail -n1)
-mac=$(find "$ASSETS_DIR" -name '*.macos-*.arm64-x86_64.clang.*'   -printf '%f\n' | sort -V | tail -n1)
-win=$(find "$ASSETS_DIR" -name '*.win.x86-64.msvc.*.portable.zip' -printf '%f\n' | sort -V | tail -n1)
+echo "Creating new draft release, with $(find "${ASSETS_DIR}" -type f | wc -l || :) assets"
+lin=$(find "${ASSETS_DIR}" -name '*.gcc.*.AppImage'                 -printf '%f\n' | sort -V | tail -n1)
+mac=$(find "${ASSETS_DIR}" -name '*.macos-*.arm64-x86_64.clang.*'   -printf '%f\n' | sort -V | tail -n1)
+win=$(find "${ASSETS_DIR}" -name '*.win.x86-64.msvc.*.portable.zip' -printf '%f\n' | sort -V | tail -n1)
 readonly baseUrl="https://github.com/pcolby/dokit/releases/download/${TAG_NAME}" lin mac win
-gh release create "${TAG_NAME}" --draft --generate-notes --notes-file <(cat <<--
+gh release create "${TAG_NAME}" --draft --generate-notes --notes-file <(cat <<-- || :
 	_Add release notes here._
 
 	### Recommended Downloads

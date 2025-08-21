@@ -204,9 +204,11 @@ Command:
 
 > [!TIP]
 > To install all dependencies on modern Ubuntu releases:
+>
 > * `sudo apt install cmake doxygen lcov`
 >
 > and then either:
+>
 > * Qt5: `sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}`
 > * Qt6: `sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}`
 
