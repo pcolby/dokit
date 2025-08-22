@@ -36,6 +36,7 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.1
+          - 6.10.0
         os:
           - 22.04
           - 24.04
@@ -63,6 +64,7 @@ jobs:
           # Qt 6.8+ moc requires more a more recent glibc (specifically GLIBC_2.38) than Ubuntu 22.04 provides.
           - { qt: 6.8.3,   arch: arm64, os: 22.04 }
           - { qt: 6.9.1,   arch: arm64, os: 22.04 }
+          # { qt: 6.10.0,  arch: arm64, os: 22.04 } # \todo Probably need this exclusion, but test first.
     steps:
       - name: Upgrade OS
         run: |
@@ -242,6 +244,7 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.1
+          - 6.10.0
         os:
           - macos-13
           - macos-14
@@ -277,6 +280,7 @@ jobs:
           - { qt: '6.7.3', cc: gcc }
           - { qt: '6.8.3', cc: gcc }
           - { qt: '6.9.1', cc: gcc }
+          - { qt: '6.10.0', cc: gcc } # \todo Probably need this exclusion, but test first.
     steps:
       - uses: actions/checkout@v5
       - name: Install lcov
@@ -459,6 +463,7 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.1
+          - 6.10.0
         os:
           - '2022'
           - '2025'
@@ -490,6 +495,7 @@ jobs:
           - { arch: x86, qt: '6.7.3' }
           - { arch: x86, qt: '6.8.3' }
           - { arch: x86, qt: '6.9.1' }
+          - { arch: x86, qt: '6.10.0' }
           # Exclude MinGW (including LLVM) builds for x86-64 with Qt's earlier than 5.12, since the Qt online
           # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
           - { arch: x86-64, qt: '5.9.9',  toolchain: llvm }
@@ -581,6 +587,10 @@ jobs:
           - { qt: '6.9.1',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.9.1',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
           - { qt: '6.9.1',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
+          - { qt: '6.10.0',  toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
+          - { qt: '6.10.0',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.10.0',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.10.0',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           # Map the MSVC architecture.
           - { toolchain: msvc, arch: arm64,  msvcArch: amd64_arm64 }
           - { toolchain: msvc, arch: x86,    msvcArch: amd64_x86 }
@@ -601,6 +611,8 @@ jobs:
           - { toolchain: 'mingw', arch: x86-64, qt: '6.8.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'llvm',  arch: x86-64, qt: '6.9.1',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.9.1',  aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'llvm',  arch: x86-64, qt: '6.10.0', aqtTools: 'tools_llvm_mingw1706' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.10.0', aqtTools: 'tools_mingw1310' }
           ## Windows Server 2025-specific cases.
           - { os: '2025', toolchain: 'mingw', arch: x86, qt: '5.9.9',
               aqtTools: 'tools_mingw81,qt.tools.win32_mingw810' }
