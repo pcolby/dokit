@@ -64,7 +64,7 @@ jobs:
           # Qt 6.8+ moc requires more a more recent glibc (specifically GLIBC_2.38) than Ubuntu 22.04 provides.
           - { qt: 6.8.3,   arch: arm64, os: 22.04 }
           - { qt: 6.9.1,   arch: arm64, os: 22.04 }
-          # { qt: 6.10.0,  arch: arm64, os: 22.04 } # \todo Probably need this exclusion, but test first.
+          - { qt: 6.10.0,  arch: arm64, os: 22.04 }
     steps:
       - name: Upgrade OS
         run: |
