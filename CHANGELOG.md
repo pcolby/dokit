@@ -5,7 +5,7 @@
 ### Changed
 
 - Upgrade to Qt 6.9.2
-- Support for Qt 6.10, including support for the `LANG` environment variable on MinGW
+- Support for Qt 6.10, including support for the `LANG` environment variable on MinGW ([d0cb2eb][])
 
 ### Fixed
 
@@ -200,6 +200,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [899b007]:     https://github.com/pcolby/dokit/commit/899b007e73e64e724f2785acafddd2d3fc6f893e "Round command line options correctly"
 [9a4d1cf]:     https://github.com/pcolby/dokit/commit/9a4d1cf13198fbf9a4d0bb0e8c3dd3001cefdf65 "Complete support for (optional) QTPOKIT_NAMESPACE"
 [cc5ff57]:     https://github.com/pcolby/dokit/commit/cc5ff57bc2f94f4306687d88307cda4f3fbb3612 "Use fputs() instead of std::err for CLI error output"
+[d0cb2eb]:     https://github.com/pcolby/dokit/commit/d0cb2ebe264ed035357a2dc12bde8e04e446423d "Add Qt 6.10 builds"
 [d54fbbc]:     https://github.com/pcolby/dokit/commit/d54fbbcb2eacbce6b4e9bfb8a23a9ce43fd7524a "Support GitHub's Linux arm64 preview hosts"
 [db8b841]:     https://github.com/pcolby/dokit/commit/db8b84197d00b5a357974043f2dc0f3c0b7dfeff "Return quint32 from all maxValue methods"
 
