@@ -113,10 +113,10 @@
 <span id="L22"><span class="lineNum">      22</span>              : /*!</span>
 <span id="L23"><span class="lineNum">      23</span>              :  * Construct a new LoggerStopCommand object with \a parent.</span>
 <span id="L24"><span class="lineNum">      24</span>              :  */</span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         448 : LoggerStopCommand::LoggerStopCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">         208 : {</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">         480 : LoggerStopCommand::LoggerStopCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">         224 : {</span></span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">         508 : }</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">         544 : }</span></span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
 <span id="L30"><span class="lineNum">      30</span>              : /*!</span>
 <span id="L31"><span class="lineNum">      31</span>              :  * \copybrief DeviceCommand::getService</span>
@@ -150,22 +150,22 @@
 <span id="L59"><span class="lineNum">      59</span>              : /*!</span>
 <span id="L60"><span class="lineNum">      60</span>              :  * Invoked when the data logger settings have been written.</span>
 <span id="L61"><span class="lineNum">      61</span>              :  */</span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">         225 : void LoggerStopCommand::settingsWritten()</span></span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">         156 : {</span></span>
-<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">         453 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has stopped.&quot;);</span></span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">         381 :     switch (format) {</span></span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">         127 :     case OutputFormat::Csv:</span></span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">         138 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_stop_result\nsuccess\n&quot;));</span></span>
-<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">         127 :         break;</span></span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">         127 :     case OutputFormat::Json:</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">         138 :         std::cout &lt;&lt; qUtf8Printable(u&quot;true\n&quot;_s);</span></span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         127 :         break;</span></span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         127 :     case OutputFormat::Text:</span></span>
-<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">         138 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         127 :         break;</span></span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">         156 :     }</span></span>
-<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">         381 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         381 : }</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">         240 : void LoggerStopCommand::settingsWritten()</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">         168 : {</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">         495 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has stopped.&quot;);</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">         408 :     switch (format) {</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">         136 :     case OutputFormat::Csv:</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">         148 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_stop_result\nsuccess\n&quot;));</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">         136 :         break;</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">         136 :     case OutputFormat::Json:</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">         148 :         std::cout &lt;&lt; qUtf8Printable(u&quot;true\n&quot;_s);</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         136 :         break;</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         136 :     case OutputFormat::Text:</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">         148 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         136 :         break;</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">         168 :     }</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">         408 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         408 : }</span></span>
         </pre>
               </td>
             </tr>
