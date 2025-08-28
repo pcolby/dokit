@@ -276,8 +276,9 @@ int main(int argc, char *argv[])
         #endif
     ));
 
-#if defined(Q_OS_MACOS)
+#if defined(Q_OS_MACOS) || defined(Q_CC_MINGW)
     // Qt ignores shell locale overrides on macOS (QTBUG-51386), so mimic Qt's handling of LANG on *nixes.
+    // Qt also applies LANG inconsistently with MinGW (QTBUG-139433), so mimic Qt's *nix handline there too.
     const QString localeName = QString::fromLocal8Bit(qgetenv("LANG"));
     if (!localeName.isEmpty()) {
         const QLocale newLocale(localeName);
