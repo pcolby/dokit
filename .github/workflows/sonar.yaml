@@ -51,4 +51,4 @@ jobs:
         with:
           args: >-
             --define project.settings=.sonar.properties
-            --define sonar.cfamily.compile-commands="$RUNNER_TEMP/sonar/compile_commands.json"
+            --define sonar.cfamily.compile-commands="${{ runner.temp }}/sonar/compile_commands.json"
