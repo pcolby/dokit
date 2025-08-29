@@ -644,21 +644,6 @@ jobs:
         if: matrix.toolchain != 'msvc'
         run: pacman --sync --noconfirm --verbose mingw-w64-x86_64-lcov
       - uses: actions/checkout@v5
-      - name: Install host Qt for cross-compilation
-        if: matrix.arch == 'arm64'
-        uses: jurplel/install-qt-action@v4
-        with:
-          version: ${{ matrix.qt }}
-          arch: ${{ startsWith(matrix.aqtArch, 'win64_msvc2019') && 'win64_msvc2019' || 'win64_msvc2022' }}_64
-          set-env: false
-          aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
-      - name: Upload aqtinstall log file
-        if: matrix.arch == 'arm64' && failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: aqtinstall-log-win-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}-cross
-          path: aqtinstall.log
-          if-no-files-found: error
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
