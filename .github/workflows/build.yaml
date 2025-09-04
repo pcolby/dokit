@@ -71,7 +71,7 @@ jobs:
           sudo apt-mark hold firefox grub-efi-${{ matrix.arch == 'arm64' && 'arm64' || 'amd64' }}-signed
           sudo apt update && sudo apt upgrade
           sudo apt install lcov llvm
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '>=3.9'
       - name: Install Ubuntu's Qt5
