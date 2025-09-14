@@ -249,6 +249,7 @@ jobs:
           - macos-13
           - macos-14
           - macos-15
+          # macos-2026 \todo https://github.blog/changelog/2025-09-11-actions-macos-26-image-now-in-public-preview/
         cc:
           - clang
           - gcc
@@ -318,6 +319,7 @@ jobs:
           tee -a "$GITHUB_OUTPUT" <<< "buildId=${arch//;/-}"
       - name: Choose compiler toolchain
         run: |
+          # \todo Try out gcc-15 sometime; now available on all three macos-* images.
           if [[ '${{ matrix.cc }}' == 'gcc' ]]; then
             tee -a "$GITHUB_ENV" <<< 'CC=gcc-14'
             tee -a "$GITHUB_ENV" <<< 'CXX=g++-14'
@@ -363,14 +365,15 @@ jobs:
           "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
           [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
             "$RUNNER_TEMP/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
-      - name: Grant Bluetooth access # Only needed for unit tests with older Qt's on newer runners.
-        if: matrix.os != 'macos-13' && ( startsWith(matrix.qt, '5') || startsWith(matrix.qt, '6.2.') )
-        run: >
+      - name: Grant Bluetooth access
+        run: |
           for db in {"${HOME}",}'/Library/Application Support/com.apple.TCC/TCC.db'; do
-            echo "Upserting: ${db}"
+            [[ "${db}" == "${HOME}"* ]] && reason=3 || reason=4 # 'User Set' or 'System Set'.
+            echo "Upserting: ${db} (${reason})"
             sudo sqlite3 "${db}" "INSERT or REPLACE INTO access
               ( service, client, client_type, auth_value, auth_reason, auth_version, flags ) VALUES
-              ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, 3, 1, 0 )"
+              ( 'kTCCServiceBluetoothAlways', '/opt/hca/hosted-compute-agent', 1, 2, ${reason}, 1, 0 ),
+              ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, ${reason}, 1, 0 )"
           done
       - name: Test w/ coverage
         if: matrix.os != 'macos-13' || matrix.cc != 'clang'
@@ -772,7 +775,6 @@ jobs:
           for langId in "${!languages[@]}"; do
             IFS='|' read -r langName localText <<< "${languages[${langId}]}"
             echo "Checking: ${langName} (${langId})"
-            export QT_LOGGING_RULES='*=true'
             [[ '${{ matrix.toolchain }}' != 'msvc' ]] || powershell Set-WinUserLanguageList -Force "${langId/_/-}"
             output=$(
               [[ '${{ matrix.toolchain }}' == 'msvc' ]] || export LANG="${langId}.UTF-8"
