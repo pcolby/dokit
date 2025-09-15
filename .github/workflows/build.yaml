@@ -321,7 +321,7 @@ jobs:
               macos-13) llvmPrefix=$(brew --prefix 'llvm@15') ;; # Newer than non-brew llvm (v14).
              #macos-14) llvmPrefix=$(brew --prefix 'llvm@15') ;; # *Not* newer than the non-new llvm (v16).
               macos-15) llvmPrefix=$(brew --prefix 'llvm@18') ;; # Newer than non-brew llvm (v17).
-             #macos-26) llvmPrefix=$(brew --prefix 'llvm@20') ;; # Newer than non-brew llvm (v17). \todo
+              macos-26) llvmPrefix=$(brew --prefix 'llvm@20') ;; # Newer than non-brew llvm (v17).
               *) llvmPrefix='/Library/Developer/CommandLineTools/usr' ;; # Host's non-brew llvm.
             esac
             tee -a "$GITHUB_ENV" <<< "CC=${llvmPrefix}/bin/clang"

@@ -34,18 +34,18 @@ namespace _dokit {
 inline namespace Literals {
 inline namespace StringLiterals {
 
-constexpr inline QLatin1Char operator"" _L1(char ch) noexcept
+constexpr inline QLatin1Char operator""_L1(char ch) noexcept
 {
     return QLatin1Char(ch);
 }
 
-constexpr inline QLatin1String/*View*/ operator"" _L1(const char *str, size_t size) noexcept
+constexpr inline QLatin1String/*View*/ operator""_L1(const char *str, size_t size) noexcept
 {
     //return {str, qsizetype(size)};
     return QLatin1String(str, __DOKIT_DEST_SIZE_TYPE(size));
 }
 
-inline QString operator"" _s(const char16_t *str, size_t size) noexcept
+inline QString operator""_s(const char16_t *str, size_t size) noexcept
 {
     //return QString(QStringPrivate(nullptr, const_cast<char16_t *>(str), qsizetype(size)));
     return QString::fromUtf16(str, __DOKIT_DEST_SIZE_TYPE(size));
