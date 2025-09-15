@@ -813,15 +813,25 @@ jobs:
         uses: pcolby/tap-summary@v1
         with:
           path: ${{ runner.temp }}/artifacts/**/*.tap
-      - name: Generate HTML coverage report
+      - name: Combine tracefiles
         run: |
-          shopt -s globstar
+          shopt -s globstar; lcov --version
           # Update source code paths from macOS tracefiles to match Linux.
           sed -i -Ee 's|^SF:/Users|SF:/home|' artifacts/*.macos-*/**/coverage.info
           # Update source code paths from Windows tracefiles to match Linux, and remove all \r chars from line endings.
           sed -i -Ee 's|\r$||' -e 's|\\|/|g' -e 's|^SF:[CD]:/a|SF:/home/runner/work|' artifacts/*.win*/**/coverage.info
           # Combine all tracefiles into one. Note, ignoring inconsistencies between Clang and GCC reports :|
           lcov --ignore-errors inconsistent $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
+        working-directory: ${{ runner.temp }}
+      - name: Upload combined tracefile
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-tracefile
+          path: "${{ runner.temp }}/coverage.info"
+          if-no-files-found: error
+      - name: Generate HTML coverage report
+        run: |
+          shopt -s globstar; genhtml --version
           # Generate the HTML report. Note, ignoring inconsistencies between Clang and GCC reports :|
           genhtml --demangle-cpp --ignore-errors inconsistent --no-sort --output-directory coverage coverage.info
           # Can use any of the removeHtmlDates.sh scripts here, so the Ubuntu x86-64 GCC Qt6 job's version will do.
