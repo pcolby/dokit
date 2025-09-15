@@ -306,11 +306,10 @@ jobs:
           tee -a "$GITHUB_OUTPUT" <<< "buildId=${arch//;/-}"
       - name: Choose compiler toolchain
         run: |
-          # \todo Try out gcc-15 sometime; now available on all three macos-* images.
           if [[ '${{ matrix.cc }}' == 'gcc' ]]; then
-            tee -a "$GITHUB_ENV" <<< 'CC=gcc-14'
-            tee -a "$GITHUB_ENV" <<< 'CXX=g++-14'
-            tee -a "$GITHUB_ENV" <<< 'GCOV=gcov-14'
+            tee -a "$GITHUB_ENV" <<< 'CC=gcc-15'
+            tee -a "$GITHUB_ENV" <<< 'CXX=g++-15'
+            tee -a "$GITHUB_ENV" <<< 'GCOV=gcov-15'
           else
             case '${{ matrix.os }}' in
               macos-13) llvmPrefix=$(brew --prefix 'llvm@15') ;; # Newer than non-brew llvm (v14).
