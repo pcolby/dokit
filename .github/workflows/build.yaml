@@ -7,8 +7,7 @@ permissions:
 
 env:
   # Currently, GitHub-hosted runners for public repos specify 4 cores, except macOS 14+
-  # See https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/
-  #     about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+  # See https://docs.github.com/en/actions/reference/runners/github-hosted-runners
   CMAKE_BUILD_PARALLEL_LEVEL: 4 # Default only; overridden where appropriate, such as on macOS 14+ below.
   QT_FORCE_STDERR_LOGGING: 1 # Make sure Qt logs errors (during Workflow runs) to console. Especially for Windows.
 
@@ -236,7 +235,7 @@ jobs:
           - macos-13
           - macos-14
           - macos-15
-          # macos-2026 \todo https://github.blog/changelog/2025-09-11-actions-macos-26-image-now-in-public-preview/
+          - macos-26
         cc:
           - clang
           - gcc
@@ -245,18 +244,25 @@ jobs:
           # Exclude Qt 5.x (and 6.0, 6.1) with GCC on macOS 14+. Also see the `arch` step below for more details.
           - { qt: '5.9.9',   os: macos-14, cc: gcc }
           - { qt: '5.9.9',   os: macos-15, cc: gcc }
+          - { qt: '5.9.9',   os: macos-26, cc: gcc }
           - { qt: '5.10.1',  os: macos-14, cc: gcc }
           - { qt: '5.10.1',  os: macos-15, cc: gcc }
+          - { qt: '5.10.1',  os: macos-26, cc: gcc }
           - { qt: '5.11.3',  os: macos-14, cc: gcc }
           - { qt: '5.11.3',  os: macos-15, cc: gcc }
+          - { qt: '5.11.3',  os: macos-26, cc: gcc }
           - { qt: '5.12.12', os: macos-14, cc: gcc }
           - { qt: '5.12.12', os: macos-15, cc: gcc }
+          - { qt: '5.12.12', os: macos-26, cc: gcc }
           - { qt: '5.13.2',  os: macos-14, cc: gcc }
           - { qt: '5.13.2',  os: macos-15, cc: gcc }
+          - { qt: '5.13.2',  os: macos-26, cc: gcc }
           - { qt: '5.14.2',  os: macos-14, cc: gcc }
           - { qt: '5.14.2',  os: macos-15, cc: gcc }
+          - { qt: '5.14.2',  os: macos-26, cc: gcc }
           - { qt: '5.15.2',  os: macos-14, cc: gcc }
           - { qt: '5.15.2',  os: macos-15, cc: gcc }
+          - { qt: '5.15.2',  os: macos-26, cc: gcc }
           # Exclude Qt 5.10 with GCC on macOS. See https://bugreports.qt.io/browse/QTBUG-66585
           - { qt: '5.10.1', cc: gcc }
           # Exclude Qt 6.x with GCC on macOS for now. See https://bugreports.qt.io/browse/QTBUG-107050
@@ -315,6 +321,7 @@ jobs:
               macos-13) llvmPrefix=$(brew --prefix 'llvm@15') ;; # Newer than non-brew llvm (v14).
              #macos-14) llvmPrefix=$(brew --prefix 'llvm@15') ;; # *Not* newer than the non-new llvm (v16).
               macos-15) llvmPrefix=$(brew --prefix 'llvm@18') ;; # Newer than non-brew llvm (v17).
+             #macos-26) llvmPrefix=$(brew --prefix 'llvm@20') ;; # Newer than non-brew llvm (v17). \todo
               *) llvmPrefix='/Library/Developer/CommandLineTools/usr' ;; # Host's non-brew llvm.
             esac
             tee -a "$GITHUB_ENV" <<< "CC=${llvmPrefix}/bin/clang"
