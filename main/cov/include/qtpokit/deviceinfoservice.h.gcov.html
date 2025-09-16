@@ -31,8 +31,8 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">8.1&nbsp;%</td>
+            <td class="headerCovTableEntry">37</td>
             <td class="headerCovTableEntry">3</td>
           </tr>
           <tr>
@@ -70,8 +70,8 @@
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -113,41 +113,41 @@
 <span id="L22"><span class="lineNum">      22</span>              : class QTPOKIT_EXPORT DeviceInfoService : public AbstractPokitService</span>
 <span id="L23"><span class="lineNum">      23</span>              : {</span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          80 :     Q_OBJECT</span></span>
-<span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span>              : public:</span>
-<span id="L27"><span class="lineNum">      27</span>              :     /// UUID of the &quot;Device Info&quot; service.</span>
-<span id="L28"><span class="lineNum">      28</span>              :     static inline const QBluetoothUuid serviceUuid</span>
-<span id="L29"><span class="lineNum">      29</span>              :         { QBluetoothUuid::ServiceClassUuid::DeviceInformation }; // 0x180a</span>
-<span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span>              :     /// Characteristics available via the `Device Info` service.</span>
-<span id="L32"><span class="lineNum">      32</span>              :     struct QTPOKIT_EXPORT CharacteristicUuids {</span>
-<span id="L33"><span class="lineNum">      33</span>              :         /// UUID of the `Device Info` service's `Manufacturer Name String` characteristic.</span>
-<span id="L34"><span class="lineNum">      34</span>              :         static inline const QBluetoothUuid manufacturerName</span>
-<span id="L35"><span class="lineNum">      35</span>              :             { QBluetoothUuid::CharacteristicType::ManufacturerNameString }; // 0x2a29</span>
-<span id="L36"><span class="lineNum">      36</span>              : </span>
-<span id="L37"><span class="lineNum">      37</span>              :         /// UUID of the `Device Info` service's `Model Number String` characteristic.</span>
-<span id="L38"><span class="lineNum">      38</span>              :         static inline const QBluetoothUuid modelNumber</span>
-<span id="L39"><span class="lineNum">      39</span>              :             { QBluetoothUuid::CharacteristicType::ModelNumberString }; // 0x2a24</span>
-<span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span>              :         /// UUID of the `Device Info` service's `Firmware Revision String` characteristic.</span>
-<span id="L42"><span class="lineNum">      42</span>              :         static inline const QBluetoothUuid firmwareRevision</span>
-<span id="L43"><span class="lineNum">      43</span>              :             { QBluetoothUuid::CharacteristicType::FirmwareRevisionString }; // 0x2a26</span>
-<span id="L44"><span class="lineNum">      44</span>              : </span>
-<span id="L45"><span class="lineNum">      45</span>              :         /// UUID of the `Device Info` service's `Hardware Revision String` characteristic.</span>
-<span id="L46"><span class="lineNum">      46</span>              :         static inline const QBluetoothUuid hardwareRevision</span>
-<span id="L47"><span class="lineNum">      47</span>              :             { QBluetoothUuid::CharacteristicType::HardwareRevisionString }; // 0x2a27</span>
-<span id="L48"><span class="lineNum">      48</span>              : </span>
-<span id="L49"><span class="lineNum">      49</span>              :         /// UUID of the `Device Info` service's `Software Revision String` characteristic.</span>
-<span id="L50"><span class="lineNum">      50</span>              :         static inline const QBluetoothUuid softwareRevision</span>
-<span id="L51"><span class="lineNum">      51</span>              :             { QBluetoothUuid::CharacteristicType::SoftwareRevisionString }; // 0x2a28</span>
-<span id="L52"><span class="lineNum">      52</span>              : </span>
-<span id="L53"><span class="lineNum">      53</span>              :         /// UUID of the `Device Info` service's `Serial Number String` characteristic.</span>
-<span id="L54"><span class="lineNum">      54</span>              :         static inline const QBluetoothUuid serialNumber</span>
-<span id="L55"><span class="lineNum">      55</span>              :             { QBluetoothUuid::CharacteristicType::SerialNumberString }; // 0x2a25</span>
-<span id="L56"><span class="lineNum">      56</span>              :     };</span>
-<span id="L57"><span class="lineNum">      57</span>              : </span>
-<span id="L58"><span class="lineNum">      58</span>              :     DeviceInfoService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">        1680 :     ~DeviceInfoService() = default;</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 : public:</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :     /// UUID of the &quot;Device Info&quot; service.</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :     static inline const QBluetoothUuid serviceUuid</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :         { QBluetoothUuid::ServiceClassUuid::DeviceInformation }; // 0x180a</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :     /// Characteristics available via the `Device Info` service.</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :     struct QTPOKIT_EXPORT CharacteristicUuids {</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :         /// UUID of the `Device Info` service's `Manufacturer Name String` characteristic.</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid manufacturerName</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :             { QBluetoothUuid::CharacteristicType::ManufacturerNameString }; // 0x2a29</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :         /// UUID of the `Device Info` service's `Model Number String` characteristic.</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid modelNumber</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :             { QBluetoothUuid::CharacteristicType::ModelNumberString }; // 0x2a24</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :         /// UUID of the `Device Info` service's `Firmware Revision String` characteristic.</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid firmwareRevision</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :             { QBluetoothUuid::CharacteristicType::FirmwareRevisionString }; // 0x2a26</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :         /// UUID of the `Device Info` service's `Hardware Revision String` characteristic.</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid hardwareRevision</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :             { QBluetoothUuid::CharacteristicType::HardwareRevisionString }; // 0x2a27</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :         /// UUID of the `Device Info` service's `Software Revision String` characteristic.</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid softwareRevision</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC">           0 :             { QBluetoothUuid::CharacteristicType::SoftwareRevisionString }; // 0x2a28</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaUNC">           0 :         /// UUID of the `Device Info` service's `Serial Number String` characteristic.</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid serialNumber</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaUNC">           0 :             { QBluetoothUuid::CharacteristicType::SerialNumberString }; // 0x2a25</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaUNC">           0 :     };</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaUNC">           0 :     DeviceInfoService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">        1920 :     ~DeviceInfoService() = default;</span></span>
 <span id="L60"><span class="lineNum">      60</span>              : </span>
 <span id="L61"><span class="lineNum">      61</span>              :     bool readCharacteristics() override;</span>
 <span id="L62"><span class="lineNum">      62</span>              :     bool readFirmwareRevisionCharacteristic();</span>
@@ -195,7 +195,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.1-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.2-1</a></td></tr>
           </table>
           <br>
 

@@ -31,8 +31,8 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">4.7&nbsp;%</td>
+            <td class="headerCovTableEntry">64</td>
             <td class="headerCovTableEntry">3</td>
           </tr>
           <tr>
@@ -70,8 +70,8 @@
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -113,68 +113,68 @@
 <span id="L22"><span class="lineNum">      22</span>              : class QTPOKIT_EXPORT MultimeterService : public AbstractPokitService</span>
 <span id="L23"><span class="lineNum">      23</span>              : {</span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">        7920 :     Q_OBJECT</span></span>
-<span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span>              : public:</span>
-<span id="L27"><span class="lineNum">      27</span>              :     /// UUID of the `Multimeter` service.</span>
-<span id="L28"><span class="lineNum">      28</span>              :     static inline const QBluetoothUuid serviceUuid { QStringLiteral(&quot;e7481d2f-5781-442e-bb9a-fd4e3441dadc&quot;) };</span>
-<span id="L29"><span class="lineNum">      29</span>              : </span>
-<span id="L30"><span class="lineNum">      30</span>              :     /// Characteristics available via the `Multimeter` service.</span>
-<span id="L31"><span class="lineNum">      31</span>              :     struct QTPOKIT_EXPORT CharacteristicUuids {</span>
-<span id="L32"><span class="lineNum">      32</span>              :         /// UUID of the `Multimeter` service's `Settings` characteristic.</span>
-<span id="L33"><span class="lineNum">      33</span>              :         static inline const QBluetoothUuid settings { QStringLiteral(&quot;53dc9a7a-bc19-4280-b76b-002d0e23b078&quot;) };</span>
-<span id="L34"><span class="lineNum">      34</span>              : </span>
-<span id="L35"><span class="lineNum">      35</span>              :         /// UUID of the `Multimeter` service's `Reading` characteristic.</span>
-<span id="L36"><span class="lineNum">      36</span>              :         static inline const QBluetoothUuid reading  { QStringLiteral(&quot;047d3559-8bee-423a-b229-4417fa603b90&quot;) };</span>
-<span id="L37"><span class="lineNum">      37</span>              :     };</span>
-<span id="L38"><span class="lineNum">      38</span>              : </span>
-<span id="L39"><span class="lineNum">      39</span>              :     /// Values supported by the `Mode` attribute of the `Settings` and `Reading` characteristics.</span>
-<span id="L40"><span class="lineNum">      40</span>              :     enum class Mode : quint8 {</span>
-<span id="L41"><span class="lineNum">      41</span>              :         Idle        = 0, ///&lt; Make device idle.</span>
-<span id="L42"><span class="lineNum">      42</span>              :         DcVoltage   = 1, ///&lt; Measure DC voltage.</span>
-<span id="L43"><span class="lineNum">      43</span>              :         AcVoltage   = 2, ///&lt; Measure AC voltage.</span>
-<span id="L44"><span class="lineNum">      44</span>              :         DcCurrent   = 3, ///&lt; Measure DC current.</span>
-<span id="L45"><span class="lineNum">      45</span>              :         AcCurrent   = 4, ///&lt; Measure AC current.</span>
-<span id="L46"><span class="lineNum">      46</span>              :         Resistance  = 5, ///&lt; Measure resistance.</span>
-<span id="L47"><span class="lineNum">      47</span>              :         Diode       = 6, ///&lt; Measure diode.</span>
-<span id="L48"><span class="lineNum">      48</span>              :         Continuity  = 7, ///&lt; Measure continuity.</span>
-<span id="L49"><span class="lineNum">      49</span>              :         Temperature = 8, ///&lt; Measure temperature.</span>
-<span id="L50"><span class="lineNum">      50</span>              :         Capacitance = 9, ///&lt; Measure capacitance.</span>
-<span id="L51"><span class="lineNum">      51</span>              :         ExternalTemperature = 10, ///&lt; Measure temperature via an external temperature probe.</span>
-<span id="L52"><span class="lineNum">      52</span>              :     };</span>
-<span id="L53"><span class="lineNum">      53</span>              :     static QString toString(const Mode &amp;mode);</span>
-<span id="L54"><span class="lineNum">      54</span>              : </span>
-<span id="L55"><span class="lineNum">      55</span>              :     static QString toString(const PokitProduct product, const quint8 range, const Mode mode);</span>
-<span id="L56"><span class="lineNum">      56</span>              :     QString toString(const quint8 range, const Mode mode) const;</span>
-<span id="L57"><span class="lineNum">      57</span>              :     static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);</span>
-<span id="L58"><span class="lineNum">      58</span>              :     quint32 maxValue(const quint8 range, const Mode mode) const;</span>
-<span id="L59"><span class="lineNum">      59</span>              : </span>
-<span id="L60"><span class="lineNum">      60</span>              :     /// Attributes included in the `Settings` characteristic.</span>
-<span id="L61"><span class="lineNum">      61</span>              :     struct Settings {</span>
-<span id="L62"><span class="lineNum">      62</span>              :         Mode mode;              ///&lt; Desired operation mode.</span>
-<span id="L63"><span class="lineNum">      63</span>              :         quint8 range;           ///&lt; Desired range.</span>
-<span id="L64"><span class="lineNum">      64</span>              :         quint32 updateInterval; ///&lt; Desired update interval in milliseconds.</span>
-<span id="L65"><span class="lineNum">      65</span>              :     };</span>
-<span id="L66"><span class="lineNum">      66</span>              : </span>
-<span id="L67"><span class="lineNum">      67</span>              :     /// Values supported by the `Status` attribute of the `Settings` characteristic.</span>
-<span id="L68"><span class="lineNum">      68</span>              :     enum class MeterStatus : quint8 {</span>
-<span id="L69"><span class="lineNum">      69</span>              :         AutoRangeOff = 0,  ///&lt; Auto-range is disabled (voltage, current and resistance modes only).</span>
-<span id="L70"><span class="lineNum">      70</span>              :         AutoRangeOn  = 1,  ///&lt; Auto-range is enabled (voltage, current and resistance modes only).</span>
-<span id="L71"><span class="lineNum">      71</span>              :         NoContinuity = 0,  ///&lt; No continuity (continuity mode only).</span>
-<span id="L72"><span class="lineNum">      72</span>              :         Continuity   = 1,  ///&lt; Continuity (continuity mode only).</span>
-<span id="L73"><span class="lineNum">      73</span>              :         Ok           = 0,  ///&lt; Ok (temperature and diode modes only).</span>
-<span id="L74"><span class="lineNum">      74</span>              :         Error        = 255 ///&lt; Error (all modes).</span>
-<span id="L75"><span class="lineNum">      75</span>              :     };</span>
-<span id="L76"><span class="lineNum">      76</span>              : </span>
-<span id="L77"><span class="lineNum">      77</span>              :     /// Attributes included in the `Reading` characteristic.</span>
-<span id="L78"><span class="lineNum">      78</span>              :     struct Reading {</span>
-<span id="L79"><span class="lineNum">      79</span>              :         MeterStatus status; ///&lt; Current multimeter status.</span>
-<span id="L80"><span class="lineNum">      80</span>              :         float value;        ///&lt; Last acquired value.</span>
-<span id="L81"><span class="lineNum">      81</span>              :         Mode mode;          ///&lt; Current operation mode.</span>
-<span id="L82"><span class="lineNum">      82</span>              :         quint8 range;       ///&lt; Current range.</span>
-<span id="L83"><span class="lineNum">      83</span>              :     };</span>
-<span id="L84"><span class="lineNum">      84</span>              : </span>
-<span id="L85"><span class="lineNum">      85</span>              :     MultimeterService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">        3360 :     ~MultimeterService() = default;</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 : public:</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :     /// UUID of the `Multimeter` service.</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :     static inline const QBluetoothUuid serviceUuid { QStringLiteral(&quot;e7481d2f-5781-442e-bb9a-fd4e3441dadc&quot;) };</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :     /// Characteristics available via the `Multimeter` service.</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :     struct QTPOKIT_EXPORT CharacteristicUuids {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :         /// UUID of the `Multimeter` service's `Settings` characteristic.</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid settings { QStringLiteral(&quot;53dc9a7a-bc19-4280-b76b-002d0e23b078&quot;) };</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :         /// UUID of the `Multimeter` service's `Reading` characteristic.</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid reading  { QStringLiteral(&quot;047d3559-8bee-423a-b229-4417fa603b90&quot;) };</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :     };</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :     /// Values supported by the `Mode` attribute of the `Settings` and `Reading` characteristics.</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :     enum class Mode : quint8 {</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :         Idle        = 0, ///&lt; Make device idle.</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :         DcVoltage   = 1, ///&lt; Measure DC voltage.</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :         AcVoltage   = 2, ///&lt; Measure AC voltage.</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :         DcCurrent   = 3, ///&lt; Measure DC current.</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :         AcCurrent   = 4, ///&lt; Measure AC current.</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 :         Resistance  = 5, ///&lt; Measure resistance.</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :         Diode       = 6, ///&lt; Measure diode.</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaUNC">           0 :         Continuity  = 7, ///&lt; Measure continuity.</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :         Temperature = 8, ///&lt; Measure temperature.</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :         Capacitance = 9, ///&lt; Measure capacitance.</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC">           0 :         ExternalTemperature = 10, ///&lt; Measure temperature via an external temperature probe.</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaUNC">           0 :     };</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaUNC">           0 :     static QString toString(const Mode &amp;mode);</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaUNC">           0 :     static QString toString(const PokitProduct product, const quint8 range, const Mode mode);</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaUNC">           0 :     QString toString(const quint8 range, const Mode mode) const;</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC">           0 :     static quint32 maxValue(const PokitProduct product, const quint8 range, const Mode mode);</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaUNC">           0 :     quint32 maxValue(const quint8 range, const Mode mode) const;</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :     /// Attributes included in the `Settings` characteristic.</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :     struct Settings {</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :         Mode mode;              ///&lt; Desired operation mode.</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :         quint8 range;           ///&lt; Desired range.</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC">           0 :         quint32 updateInterval; ///&lt; Desired update interval in milliseconds.</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaUNC">           0 :     };</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaUNC">           0 :     /// Values supported by the `Status` attribute of the `Settings` characteristic.</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :     enum class MeterStatus : quint8 {</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaUNC">           0 :         AutoRangeOff = 0,  ///&lt; Auto-range is disabled (voltage, current and resistance modes only).</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaUNC">           0 :         AutoRangeOn  = 1,  ///&lt; Auto-range is enabled (voltage, current and resistance modes only).</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaUNC">           0 :         NoContinuity = 0,  ///&lt; No continuity (continuity mode only).</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaUNC">           0 :         Continuity   = 1,  ///&lt; Continuity (continuity mode only).</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaUNC">           0 :         Ok           = 0,  ///&lt; Ok (temperature and diode modes only).</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaUNC">           0 :         Error        = 255 ///&lt; Error (all modes).</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaUNC">           0 :     };</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaUNC">           0 :     /// Attributes included in the `Reading` characteristic.</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaUNC">           0 :     struct Reading {</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaUNC">           0 :         MeterStatus status; ///&lt; Current multimeter status.</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaUNC">           0 :         float value;        ///&lt; Last acquired value.</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaUNC">           0 :         Mode mode;          ///&lt; Current operation mode.</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaUNC">           0 :         quint8 range;       ///&lt; Current range.</span></span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaUNC">           0 :     };</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L85"><span class="lineNum">      85</span> <span class="tlaUNC">           0 :     MultimeterService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</span></span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">        3840 :     ~MultimeterService() = default;</span></span>
 <span id="L87"><span class="lineNum">      87</span>              : </span>
 <span id="L88"><span class="lineNum">      88</span>              :     bool readCharacteristics() override;</span>
 <span id="L89"><span class="lineNum">      89</span>              :     bool readReadingCharacteristic();</span>
@@ -213,7 +213,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.1-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.2-1</a></td></tr>
           </table>
           <br>
 

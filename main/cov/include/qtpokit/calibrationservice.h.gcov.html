@@ -31,8 +31,8 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">14.3&nbsp;%</td>
+            <td class="headerCovTableEntry">21</td>
             <td class="headerCovTableEntry">3</td>
           </tr>
           <tr>
@@ -70,8 +70,8 @@
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -113,25 +113,25 @@
 <span id="L22"><span class="lineNum">      22</span>              : class QTPOKIT_EXPORT CalibrationService : public AbstractPokitService</span>
 <span id="L23"><span class="lineNum">      23</span>              : {</span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          80 :     Q_OBJECT</span></span>
-<span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span>              : public:</span>
-<span id="L27"><span class="lineNum">      27</span>              :     /// UUID of the `Calibration` service.</span>
-<span id="L28"><span class="lineNum">      28</span>              :     static inline const QBluetoothUuid serviceUuid { QStringLiteral(&quot;6f53be2f-780b-49b8-a7c3-e8a052b3ae2c&quot;) };</span>
-<span id="L29"><span class="lineNum">      29</span>              : </span>
-<span id="L30"><span class="lineNum">      30</span>              :     /// Characteristics available via the `Calibration` service.</span>
-<span id="L31"><span class="lineNum">      31</span>              :     struct QTPOKIT_EXPORT CharacteristicUuids {</span>
-<span id="L32"><span class="lineNum">      32</span>              :         /// UUID of the `Calibration` service's `Temperature` characteristic.</span>
-<span id="L33"><span class="lineNum">      33</span>              :         static inline const QBluetoothUuid temperature { QStringLiteral(&quot;0cd0f713-f5aa-4572-9e23-f8049f6bcaaa&quot;) };</span>
-<span id="L34"><span class="lineNum">      34</span>              : </span>
-<span id="L35"><span class="lineNum">      35</span>              :         /// \todo UUID of the `Calibration` service's (undocumented) `Get Parameter` characteristic.</span>
-<span id="L36"><span class="lineNum">      36</span>              :         static inline const QBluetoothUuid getParam { QStringLiteral(&quot;b6728f91-409c-4d6c-864e-272a6a7a0204&quot;) };</span>
-<span id="L37"><span class="lineNum">      37</span>              : </span>
-<span id="L38"><span class="lineNum">      38</span>              :         /// \todo UUID of the `Calibration` service's (undocumented) `Set Parameter` characteristic.</span>
-<span id="L39"><span class="lineNum">      39</span>              :         static inline const QBluetoothUuid setParam { QStringLiteral(&quot;5588e47b-cb81-4f7b-acc4-6029a3f39f72&quot;) };</span>
-<span id="L40"><span class="lineNum">      40</span>              :     };</span>
-<span id="L41"><span class="lineNum">      41</span>              : </span>
-<span id="L42"><span class="lineNum">      42</span>              :     CalibrationService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         416 :     ~CalibrationService() = default;</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 : public:</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :     /// UUID of the `Calibration` service.</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :     static inline const QBluetoothUuid serviceUuid { QStringLiteral(&quot;6f53be2f-780b-49b8-a7c3-e8a052b3ae2c&quot;) };</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :     /// Characteristics available via the `Calibration` service.</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :     struct QTPOKIT_EXPORT CharacteristicUuids {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :         /// UUID of the `Calibration` service's `Temperature` characteristic.</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid temperature { QStringLiteral(&quot;0cd0f713-f5aa-4572-9e23-f8049f6bcaaa&quot;) };</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :         /// \todo UUID of the `Calibration` service's (undocumented) `Get Parameter` characteristic.</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid getParam { QStringLiteral(&quot;b6728f91-409c-4d6c-864e-272a6a7a0204&quot;) };</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :         /// \todo UUID of the `Calibration` service's (undocumented) `Set Parameter` characteristic.</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :         static inline const QBluetoothUuid setParam { QStringLiteral(&quot;5588e47b-cb81-4f7b-acc4-6029a3f39f72&quot;) };</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :     };</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :     CalibrationService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         464 :     ~CalibrationService() = default;</span></span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
 <span id="L45"><span class="lineNum">      45</span>              :     bool readCharacteristics() override;</span>
 <span id="L46"><span class="lineNum">      46</span>              : </span>
@@ -163,7 +163,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.1-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.2-1</a></td></tr>
           </table>
           <br>
 

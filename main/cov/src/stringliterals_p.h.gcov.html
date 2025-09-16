@@ -116,31 +116,31 @@
 <span id="L25"><span class="lineNum">      25</span>              : #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 4, 0))</span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
 <span id="L27"><span class="lineNum">      27</span>              : #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">      124430 : #define __DOKIT_DEST_SIZE_TYPE int</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">      152932 : #define __DOKIT_DEST_SIZE_TYPE int</span></span>
 <span id="L29"><span class="lineNum">      29</span>              : #else</span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       31682 : #define __DOKIT_DEST_SIZE_TYPE qsizetype</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       39972 : #define __DOKIT_DEST_SIZE_TYPE qsizetype</span></span>
 <span id="L31"><span class="lineNum">      31</span>              : #endif</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
 <span id="L33"><span class="lineNum">      33</span>              : namespace _dokit {</span>
 <span id="L34"><span class="lineNum">      34</span>              : inline namespace Literals {</span>
 <span id="L35"><span class="lineNum">      35</span>              : inline namespace StringLiterals {</span>
 <span id="L36"><span class="lineNum">      36</span>              : </span>
-<span id="L37"><span class="lineNum">      37</span>              : constexpr inline QLatin1Char operator&quot;&quot; _L1(char ch) noexcept</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">       12163 : {</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">       12163 :     return QLatin1Char(ch);</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       12163 : }</span></span>
+<span id="L37"><span class="lineNum">      37</span>              : constexpr inline QLatin1Char operator&quot;&quot;_L1(char ch) noexcept</span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">       14215 : {</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">       14215 :     return QLatin1Char(ch);</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       14215 : }</span></span>
 <span id="L41"><span class="lineNum">      41</span>              : </span>
-<span id="L42"><span class="lineNum">      42</span>              : constexpr inline QLatin1String/*View*/ operator&quot;&quot; _L1(const char *str, size_t size) noexcept</span>
+<span id="L42"><span class="lineNum">      42</span>              : constexpr inline QLatin1String/*View*/ operator&quot;&quot;_L1(const char *str, size_t size) noexcept</span>
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 : {</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :     //return {str, qsizetype(size)};</span></span>
 <span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :     return QLatin1String(str, __DOKIT_DEST_SIZE_TYPE(size));</span></span>
 <span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 : }</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
-<span id="L48"><span class="lineNum">      48</span>              : inline QString operator&quot;&quot; _s(const char16_t *str, size_t size) noexcept</span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">      156112 : {</span></span>
+<span id="L48"><span class="lineNum">      48</span>              : inline QString operator&quot;&quot;_s(const char16_t *str, size_t size) noexcept</span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">      192904 : {</span></span>
 <span id="L50"><span class="lineNum">      50</span>              :     //return QString(QStringPrivate(nullptr, const_cast&lt;char16_t *&gt;(str), qsizetype(size)));</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">      201564 :     return QString::fromUtf16(str, __DOKIT_DEST_SIZE_TYPE(size));</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">      156112 : }</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">      238356 :     return QString::fromUtf16(str, __DOKIT_DEST_SIZE_TYPE(size));</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">      192904 : }</span></span>
 <span id="L53"><span class="lineNum">      53</span>              : </span>
 <span id="L54"><span class="lineNum">      54</span>              : } } } // _dokit::Literals::StringLiterals</span>
 <span id="L55"><span class="lineNum">      55</span>              : </span>
@@ -162,7 +162,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.1-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.2-1</a></td></tr>
           </table>
           <br>
 

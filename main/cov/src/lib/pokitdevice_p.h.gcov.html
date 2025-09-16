@@ -31,8 +31,8 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">5.3&nbsp;%</td>
+            <td class="headerCovTableEntry">38</td>
             <td class="headerCovTableEntry">2</td>
           </tr>
           <tr>
@@ -69,9 +69,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">50.0&nbsp;%</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -122,43 +122,43 @@
 <span id="L31"><span class="lineNum">      31</span>              : class QTPOKIT_EXPORT PokitDevicePrivate : public QObject</span>
 <span id="L32"><span class="lineNum">      32</span>              : {</span>
 <span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         240 :     Q_OBJECT</span></span>
-<span id="L34"><span class="lineNum">      34</span>              : </span>
-<span id="L35"><span class="lineNum">      35</span>              : public:</span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 : public:</span></span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        8656 :     static Q_LOGGING_CATEGORY(lc, &quot;pokit.ble.controller&quot;, QtInfoMsg); ///&lt; Logging category.</span></span>
-<span id="L37"><span class="lineNum">      37</span>              : </span>
-<span id="L38"><span class="lineNum">      38</span>              :     QLowEnergyController * controller { nullptr };    ///&lt; BLE controller for accessing the Pokit device.</span>
-<span id="L39"><span class="lineNum">      39</span>              : </span>
-<span id="L40"><span class="lineNum">      40</span>              :     CalibrationService * calibration { nullptr };     ///&lt; Calibration service for this Pokit device.</span>
-<span id="L41"><span class="lineNum">      41</span>              :     DataLoggerService * dataLogger { nullptr };       ///&lt; Data Logger service for this Pokit device.</span>
-<span id="L42"><span class="lineNum">      42</span>              :     DeviceInfoService * deviceInfo { nullptr };       ///&lt; Device Info service for this Pokit device.</span>
-<span id="L43"><span class="lineNum">      43</span>              :     DsoService * dso { nullptr };                     ///&lt; DSO service for this Pokit device.</span>
-<span id="L44"><span class="lineNum">      44</span>              :     MultimeterService * multimeter { nullptr };       ///&lt; Multimeter service for this Pokit device.</span>
-<span id="L45"><span class="lineNum">      45</span>              :     StatusService * status { nullptr };               ///&lt; Status service for this Pokit device.</span>
-<span id="L46"><span class="lineNum">      46</span>              : </span>
-<span id="L47"><span class="lineNum">      47</span>              :     QMutex calibrationMutex;   ///&lt; Mutex for protecting access to #calibration.</span>
-<span id="L48"><span class="lineNum">      48</span>              :     QMutex dataLoggerMutex;    ///&lt; Mutex for protecting access to #dataLogger.</span>
-<span id="L49"><span class="lineNum">      49</span>              :     QMutex deviceInfoMutex;    ///&lt; Mutex for protecting access to #deviceInfo.</span>
-<span id="L50"><span class="lineNum">      50</span>              :     QMutex dsoMutex;           ///&lt; Mutex for protecting access to #dso.</span>
-<span id="L51"><span class="lineNum">      51</span>              :     QMutex multimeterMutex;    ///&lt; Mutex for protecting access to #multimeter.</span>
-<span id="L52"><span class="lineNum">      52</span>              :     QMutex statusMutex;        ///&lt; Mutex for protecting access to #status.</span>
-<span id="L53"><span class="lineNum">      53</span>              : </span>
-<span id="L54"><span class="lineNum">      54</span>              :     explicit PokitDevicePrivate(PokitDevice * const q);</span>
-<span id="L55"><span class="lineNum">      55</span>              : </span>
-<span id="L56"><span class="lineNum">      56</span>              :     void setController(QLowEnergyController * newController);</span>
-<span id="L57"><span class="lineNum">      57</span>              : </span>
-<span id="L58"><span class="lineNum">      58</span>              : public Q_SLOTS:</span>
-<span id="L59"><span class="lineNum">      59</span>              :     void connected() const;</span>
-<span id="L60"><span class="lineNum">      60</span>              :     void connectionUpdated(const QLowEnergyConnectionParameters &amp;newParameters) const;</span>
-<span id="L61"><span class="lineNum">      61</span>              :     void disconnected() const;</span>
-<span id="L62"><span class="lineNum">      62</span>              :     void discoveryFinished() const;</span>
-<span id="L63"><span class="lineNum">      63</span>              :     void errorOccurred(QLowEnergyController::Error newError) const;</span>
-<span id="L64"><span class="lineNum">      64</span>              :     void serviceDiscovered(const QBluetoothUuid &amp;newService) const;</span>
-<span id="L65"><span class="lineNum">      65</span>              :     void stateChanged(QLowEnergyController::ControllerState state) const;</span>
-<span id="L66"><span class="lineNum">      66</span>              : </span>
-<span id="L67"><span class="lineNum">      67</span>              : protected:</span>
-<span id="L68"><span class="lineNum">      68</span>              :     PokitDevice * q_ptr; ///&lt; Internal q-pointer.</span>
-<span id="L69"><span class="lineNum">      69</span>              : </span>
-<span id="L70"><span class="lineNum">      70</span>              : private:</span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :     QLowEnergyController * controller { nullptr };    ///&lt; BLE controller for accessing the Pokit device.</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :     CalibrationService * calibration { nullptr };     ///&lt; Calibration service for this Pokit device.</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :     DataLoggerService * dataLogger { nullptr };       ///&lt; Data Logger service for this Pokit device.</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :     DeviceInfoService * deviceInfo { nullptr };       ///&lt; Device Info service for this Pokit device.</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :     DsoService * dso { nullptr };                     ///&lt; DSO service for this Pokit device.</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :     MultimeterService * multimeter { nullptr };       ///&lt; Multimeter service for this Pokit device.</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :     StatusService * status { nullptr };               ///&lt; Status service for this Pokit device.</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :     QMutex calibrationMutex;   ///&lt; Mutex for protecting access to #calibration.</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaUNC">           0 :     QMutex dataLoggerMutex;    ///&lt; Mutex for protecting access to #dataLogger.</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :     QMutex deviceInfoMutex;    ///&lt; Mutex for protecting access to #deviceInfo.</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :     QMutex dsoMutex;           ///&lt; Mutex for protecting access to #dso.</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC">           0 :     QMutex multimeterMutex;    ///&lt; Mutex for protecting access to #multimeter.</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaUNC">           0 :     QMutex statusMutex;        ///&lt; Mutex for protecting access to #status.</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaUNC">           0 :     explicit PokitDevicePrivate(PokitDevice * const q);</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaUNC">           0 :     void setController(QLowEnergyController * newController);</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaUNC">           0 : public Q_SLOTS:</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaUNC">           0 :     void connected() const;</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :     void connectionUpdated(const QLowEnergyConnectionParameters &amp;newParameters) const;</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :     void disconnected() const;</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :     void discoveryFinished() const;</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :     void errorOccurred(QLowEnergyController::Error newError) const;</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC">           0 :     void serviceDiscovered(const QBluetoothUuid &amp;newService) const;</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaUNC">           0 :     void stateChanged(QLowEnergyController::ControllerState state) const;</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaUNC">           0 : protected:</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :     PokitDevice * q_ptr; ///&lt; Internal q-pointer.</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaUNC">           0 : private:</span></span>
 <span id="L71"><span class="lineNum">      71</span>              :     Q_DECLARE_PUBLIC(PokitDevice)</span>
 <span id="L72"><span class="lineNum">      72</span>              :     Q_DISABLE_COPY(PokitDevicePrivate)</span>
 <span id="L73"><span class="lineNum">      73</span>              :     QTPOKIT_BEFRIEND_TEST(PokitDevice)</span>
@@ -175,7 +175,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.1-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.2-1</a></td></tr>
           </table>
           <br>
 

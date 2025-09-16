@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/lib">src/lib</a> - statusservice_p.h</td>
+            <td width="10%" class="headerValue"><a href="../../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory src/lib">src/lib</a> - statusservice_p.h<span style="font-size: 80%;"> (source / <a href="statusservice_p.h.func.html" title="Click to go to function table">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -31,8 +31,8 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">10.0&nbsp;%</td>
+            <td class="headerCovTableEntry">20</td>
             <td class="headerCovTableEntry">2</td>
           </tr>
           <tr>
@@ -69,9 +69,9 @@
             </td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">-</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
                   <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -109,24 +109,24 @@
 <span id="L18"><span class="lineNum">      18</span>              : class QTPOKIT_EXPORT StatusServicePrivate : public AbstractPokitServicePrivate</span>
 <span id="L19"><span class="lineNum">      19</span>              : {</span>
 <span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         160 :     Q_OBJECT</span></span>
-<span id="L21"><span class="lineNum">      21</span>              : </span>
-<span id="L22"><span class="lineNum">      22</span>              : public:</span>
-<span id="L23"><span class="lineNum">      23</span>              :     explicit StatusServicePrivate(QLowEnergyController * controller, StatusService * const q);</span>
-<span id="L24"><span class="lineNum">      24</span>              : </span>
-<span id="L25"><span class="lineNum">      25</span>              :     static StatusService::DeviceCharacteristics parseDeviceCharacteristics(const QByteArray &amp;value);</span>
-<span id="L26"><span class="lineNum">      26</span>              :     static StatusService::Status parseStatus(const QByteArray &amp;value);</span>
-<span id="L27"><span class="lineNum">      27</span>              :     static std::optional&lt;StatusService::TorchStatus&gt; parseTorchStatus(const QByteArray &amp;value);</span>
-<span id="L28"><span class="lineNum">      28</span>              :     static std::optional&lt;StatusService::ButtonStatus&gt; parseButtonPress(const QByteArray &amp;value);</span>
-<span id="L29"><span class="lineNum">      29</span>              : </span>
-<span id="L30"><span class="lineNum">      30</span>              : protected:</span>
-<span id="L31"><span class="lineNum">      31</span>              :     void serviceDiscovered(const QBluetoothUuid &amp;newService) override;</span>
-<span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span>              :     void characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span>
-<span id="L34"><span class="lineNum">      34</span>              :                             const QByteArray &amp;value) override;</span>
-<span id="L35"><span class="lineNum">      35</span>              :     void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span>
-<span id="L36"><span class="lineNum">      36</span>              :                                const QByteArray &amp;newValue) override;</span>
-<span id="L37"><span class="lineNum">      37</span>              : </span>
-<span id="L38"><span class="lineNum">      38</span>              : private:</span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 : public:</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC">           0 :     explicit StatusServicePrivate(QLowEnergyController * controller, StatusService * const q);</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :     static StatusService::DeviceCharacteristics parseDeviceCharacteristics(const QByteArray &amp;value);</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :     static StatusService::Status parseStatus(const QByteArray &amp;value);</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :     static std::optional&lt;StatusService::TorchStatus&gt; parseTorchStatus(const QByteArray &amp;value);</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :     static std::optional&lt;StatusService::ButtonStatus&gt; parseButtonPress(const QByteArray &amp;value);</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 : protected:</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :     void serviceDiscovered(const QBluetoothUuid &amp;newService) override;</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :     void characteristicRead(const QLowEnergyCharacteristic &amp;characteristic,</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :                             const QByteArray &amp;value) override;</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :     void characteristicWritten(const QLowEnergyCharacteristic &amp;characteristic,</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :                                const QByteArray &amp;newValue) override;</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 : </span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 : private:</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         160 :     Q_DECLARE_PUBLIC(StatusService)</span></span>
 <span id="L40"><span class="lineNum">      40</span>              :     Q_DISABLE_COPY(StatusServicePrivate)</span>
 <span id="L41"><span class="lineNum">      41</span>              :     QTPOKIT_BEFRIEND_TEST(StatusService)</span>
@@ -143,7 +143,7 @@
 
           <table width="100%" border=0 cellspacing=0 cellpadding=0>
             <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.1-1</a></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.3.2-1</a></td></tr>
           </table>
           <br>
 
