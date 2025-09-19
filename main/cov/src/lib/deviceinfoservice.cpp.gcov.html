@@ -140,9 +140,9 @@
 <span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">         117 :     const bool r3 = readSoftwareRevisionCharacteristic();</span></span>
 <span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         117 :     const bool r4 = readManufacturerCharacteristics();</span></span>
 <span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">         117 :     const bool r5 = readModelNumberCharacteristic();</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         173 :     const bool r6 = ((service() != nullptr) &amp;&amp; (service()-&gt;characteristic(CharacteristicUuids::serialNumber).isValid()))</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         170 :     const bool r6 = ((service() != nullptr) &amp;&amp; (service()-&gt;characteristic(CharacteristicUuids::serialNumber).isValid()))</span></span>
 <span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">         152 :         ? readSerialNumberCharacteristic() : true;</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">         173 :     return (r1 &amp;&amp; r2 &amp;&amp; r3 &amp;&amp; r4 &amp;&amp; r5 &amp;&amp; r6);</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">         170 :     return (r1 &amp;&amp; r2 &amp;&amp; r3 &amp;&amp; r4 &amp;&amp; r5 &amp;&amp; r6);</span></span>
 <span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          72 : }</span></span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
 <span id="L57"><span class="lineNum">      57</span>              : /*!</span>
@@ -456,8 +456,8 @@
 <span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L366"><span class="lineNum">     366</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L367"><span class="lineNum">     367</span>              : </span>
-<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">         370 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Device Info service&quot;)</span></span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">         242 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaGNC">         372 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for Device Info service&quot;)</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaGNC">         247 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L370"><span class="lineNum">     370</span> <span class="tlaGNC">          72 : }</span></span>
 <span id="L371"><span class="lineNum">     371</span>              : </span>
 <span id="L372"><span class="lineNum">     372</span>              : /// \endcond</span>

@@ -128,8 +128,8 @@
 <span id="L37"><span class="lineNum">      37</span>              :         #else</span>
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">       13569 :         &amp;PokitDiscoveryAgent::errorOccurred,</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">       13569 :         #endif</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       22703 :         this, [](const PokitDiscoveryAgent::Error &amp;error) {</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         724 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth discovery error:&quot;) &lt;&lt; error;</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       22700 :         this, [](const PokitDiscoveryAgent::Error &amp;error) {</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         730 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth discovery error:&quot;) &lt;&lt; error;</span></span>
 <span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         147 :         QTimer::singleShot(0, QCoreApplication::instance(), [](){</span></span>
 <span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :             QCoreApplication::exit(EXIT_FAILURE);</span></span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :         });</span></span>
@@ -240,7 +240,7 @@
 <span id="L149"><span class="lineNum">     149</span>              : template&lt;typename R&gt;</span>
 <span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">       10320 : quint32 AbstractCommand::parseNumber(const QString &amp;value, const QString &amp;unit, const quint32 sensibleMinimum)</span></span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">        7272 : {</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">       17872 :     static const QMap&lt;QChar, Ratio&gt; unitPrefixScaleMap {</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">       17882 :     static const QMap&lt;QChar, Ratio&gt; unitPrefixScaleMap {</span></span>
 <span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">        7272 :         { 'E'_L1,        makeRatio&lt;std::exa&gt;()   },</span></span>
 <span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">        7272 :         { 'P'_L1,        makeRatio&lt;std::peta&gt;()  },</span></span>
 <span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">        7272 :         { 'T'_L1,        makeRatio&lt;std::tera&gt;()  },</span></span>
@@ -371,8 +371,8 @@
 <span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         144 :     }</span></span>
 <span id="L281"><span class="lineNum">     281</span>              : </span>
 <span id="L282"><span class="lineNum">     282</span>              :     // Parse the output format options (if supported, and supplied).</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">       31799 :     if ((supportedOptionNames.contains(u&quot;output&quot;_s)) &amp;&amp; // Derived classes may have removed.</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">       26796 :         (parser.isSet(u&quot;output&quot;_s)))</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">       31406 :     if ((supportedOptionNames.contains(u&quot;output&quot;_s)) &amp;&amp; // Derived classes may have removed.</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">       26429 :         (parser.isSet(u&quot;output&quot;_s)))</span></span>
 <span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">         936 :     {</span></span>
 <span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        3016 :         const QString output = parser.value(u&quot;output&quot;_s).toLower();</span></span>
 <span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1976 :         if (output == u&quot;csv&quot;_s) {</span></span>
@@ -390,7 +390,7 @@
 <span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">       24201 :     if (parser.isSet(u&quot;timeout&quot;_s)) {</span></span>
 <span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">        2652 :         const quint32 timeout = parseNumber&lt;std::milli&gt;(parser.value(u&quot;timeout&quot;_s), u&quot;s&quot;_s, 500);</span></span>
 <span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">        1976 :         if (timeout == 0) {</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">        1446 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(u&quot;timeout&quot;_s)));</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">        1458 :             errors.append(tr(&quot;Invalid timeout: %1&quot;).arg(parser.value(u&quot;timeout&quot;_s)));</span></span>
 <span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">        1064 :         } else if (discoveryAgent-&gt;lowEnergyDiscoveryTimeout() == -1) {</span></span>
 <span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">         945 :             qCWarning(lc).noquote() &lt;&lt; tr(&quot;Platform does not support Bluetooth scan timeout&quot;);</span></span>
 <span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         504 :         } else {</span></span>

@@ -519,10 +519,10 @@
 <span id="L428"><span class="lineNum">     428</span> <span class="tlaGNC">        2080 : QString AbstractPokitServicePrivate::toHexString(const QByteArray &amp;data, const int maxSize)</span></span>
 <span id="L429"><span class="lineNum">     429</span> <span class="tlaGNC">        1872 : {</span></span>
 <span id="L430"><span class="lineNum">     430</span> <span class="tlaGNC">        2990 :     return (data.size() &lt;= maxSize)</span></span>
-<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">        7160 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></span>
+<span id="L431"><span class="lineNum">     431</span> <span class="tlaGNC">        7238 :         ? QString::fromLatin1(&quot;0x%1&quot;).arg(QLatin1String(data.toHex(',')))</span></span>
 <span id="L432"><span class="lineNum">     432</span> <span class="tlaGNC">        2372 :         : QString::fromLatin1(&quot;0x%1,...,%2&quot;).arg(</span></span>
 <span id="L433"><span class="lineNum">     433</span> <span class="tlaGNC">        2665 :             QLatin1String(data.left(maxSize/2-1).toHex(',')),</span></span>
-<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">        8977 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></span>
+<span id="L434"><span class="lineNum">     434</span> <span class="tlaGNC">        8899 :             QLatin1String(data.right(maxSize/2-1).toHex(',')));</span></span>
 <span id="L435"><span class="lineNum">     435</span> <span class="tlaGNC">        1872 : }</span></span>
 <span id="L436"><span class="lineNum">     436</span>              : </span>
 <span id="L437"><span class="lineNum">     437</span>              : /*!</span>
@@ -535,7 +535,7 @@
 <span id="L444"><span class="lineNum">     444</span> <span class="tlaGNC">         160 : void AbstractPokitServicePrivate::connected()</span></span>
 <span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">          48 : {</span></span>
 <span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">         208 :     if (!controller) {</span></span>
-<span id="L447"><span class="lineNum">     447</span> <span class="tlaGNC">         244 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Connected with no controller set&quot;) &lt;&lt; sender();</span></span>
+<span id="L447"><span class="lineNum">     447</span> <span class="tlaGNC">         246 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Connected with no controller set&quot;) &lt;&lt; sender();</span></span>
 <span id="L448"><span class="lineNum">     448</span> <span class="tlaGNC">          75 :         return;</span></span>
 <span id="L449"><span class="lineNum">     449</span> <span class="tlaGNC">          24 :     }</span></span>
 <span id="L450"><span class="lineNum">     450</span>              : </span>
@@ -556,7 +556,7 @@
 <span id="L465"><span class="lineNum">     465</span> <span class="tlaGNC">         160 : void AbstractPokitServicePrivate::discoveryFinished()</span></span>
 <span id="L466"><span class="lineNum">     466</span> <span class="tlaGNC">          48 : {</span></span>
 <span id="L467"><span class="lineNum">     467</span> <span class="tlaGNC">         208 :     if (!controller) {</span></span>
-<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">         244 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Discovery finished with no controller set&quot;) &lt;&lt; sender();</span></span>
+<span id="L468"><span class="lineNum">     468</span> <span class="tlaGNC">         246 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Discovery finished with no controller set&quot;) &lt;&lt; sender();</span></span>
 <span id="L469"><span class="lineNum">     469</span> <span class="tlaGNC">          75 :         return;</span></span>
 <span id="L470"><span class="lineNum">     470</span> <span class="tlaGNC">          24 :     }</span></span>
 <span id="L471"><span class="lineNum">     471</span>              : </span>

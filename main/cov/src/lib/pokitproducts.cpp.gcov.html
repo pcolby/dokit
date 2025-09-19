@@ -111,7 +111,7 @@
 <span id="L20"><span class="lineNum">      20</span>              : QTPOKIT_BEGIN_NAMESPACE</span>
 <span id="L21"><span class="lineNum">      21</span>              : DOKIT_USE_STRINGLITERALS</span>
 <span id="L22"><span class="lineNum">      22</span>              : </span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        3122 : static Q_LOGGING_CATEGORY(lc, &quot;dokit.pokit.products&quot;, QtInfoMsg); ///&lt; Logging category for this file.</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        3101 : static Q_LOGGING_CATEGORY(lc, &quot;dokit.pokit.products&quot;, QtInfoMsg); ///&lt; Logging category for this file.</span></span>
 <span id="L24"><span class="lineNum">      24</span>              : </span>
 <span id="L25"><span class="lineNum">      25</span>              : namespace {</span>
 <span id="L26"><span class="lineNum">      26</span>              :     class Private</span>
@@ -252,12 +252,12 @@
 <span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">         760 :     switch (product) {</span></span>
 <span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         152 :     case PokitProduct::PokitMeter:</span></span>
 <span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         304 :         qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Pokit Meter has no capacitance support&quot;);</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          81 :         return 0;</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          82 :         return 0;</span></span>
 <span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         456 :     case PokitProduct::PokitPro:</span></span>
 <span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         456 :         return PokitPro::maxValue(static_cast&lt;PokitPro::CapacitanceRange&gt;(range));</span></span>
 <span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         360 :     }</span></span>
 <span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         368 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          81 :     return 0;</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          82 :     return 0;</span></span>
 <span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         360 : }</span></span>
 <span id="L171"><span class="lineNum">     171</span>              : </span>
 <span id="L172"><span class="lineNum">     172</span>              : }</span>
@@ -298,7 +298,7 @@
 <span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">        1064 :         return PokitPro::maxValue(static_cast&lt;PokitPro::CurrentRange&gt;(range));</span></span>
 <span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">        1080 :     }</span></span>
 <span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">         528 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          81 :     return 0;</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          82 :     return 0;</span></span>
 <span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">        1080 : }</span></span>
 <span id="L212"><span class="lineNum">     212</span>              : </span>
 <span id="L213"><span class="lineNum">     213</span>              : }</span>
@@ -339,7 +339,7 @@
 <span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         456 :         return PokitPro::maxValue(static_cast&lt;PokitPro::ResistanceRange&gt;(range));</span></span>
 <span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">         504 :     }</span></span>
 <span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         400 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">          81 :     return 0;</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">          82 :     return 0;</span></span>
 <span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">         504 : }</span></span>
 <span id="L253"><span class="lineNum">     253</span>              : </span>
 <span id="L254"><span class="lineNum">     254</span>              : }</span>
@@ -380,7 +380,7 @@
 <span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        1064 :         return PokitPro::maxValue(static_cast&lt;PokitPro::VoltageRange&gt;(range));</span></span>
 <span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1080 :     }</span></span>
 <span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         528 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          81 :     return 0;</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          82 :     return 0;</span></span>
 <span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        1080 : }</span></span>
 <span id="L294"><span class="lineNum">     294</span>              : </span>
 <span id="L295"><span class="lineNum">     295</span>              : }</span>

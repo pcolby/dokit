@@ -382,7 +382,7 @@
 <span id="L291"><span class="lineNum">     291</span>              :  */</span>
 <span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         160 : void DeviceCommand::controllerError(QLowEnergyController::Error error)</span></span>
 <span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">         144 : {</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         744 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth controller error:&quot;) &lt;&lt; error;</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         748 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth controller error:&quot;) &lt;&lt; error;</span></span>
 <span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         304 :     QCoreApplication::exit(EXIT_FAILURE);</span></span>
 <span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">         304 : }</span></span>
 <span id="L297"><span class="lineNum">     297</span>              : </span>
@@ -410,7 +410,7 @@
 <span id="L319"><span class="lineNum">     319</span>              :  */</span>
 <span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">         160 : void DeviceCommand::serviceError(const QLowEnergyService::ServiceError error)</span></span>
 <span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         144 : {</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         744 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth service error:&quot;) &lt;&lt; error;</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         748 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth service error:&quot;) &lt;&lt; error;</span></span>
 <span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         304 :     QCoreApplication::exit(EXIT_FAILURE);</span></span>
 <span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         304 : }</span></span>
 <span id="L325"><span class="lineNum">     325</span>              : </span>
@@ -439,7 +439,7 @@
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
 <span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         320 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         395 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         397 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></span>
 <span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         232 :         ((!info.deviceUuid().isNull()) &amp;&amp; (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))</span></span>
 <span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :     {</span></span>
 <span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Found Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
@@ -474,7 +474,7 @@
 <span id="L383"><span class="lineNum">     383</span>              : </span>
 <span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         181 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
 <span id="L385"><span class="lineNum">     385</span> <span class="tlaUNC">           0 :         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          81 :     return;</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">          82 :     return;</span></span>
 <span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">          72 : }</span></span>
 <span id="L388"><span class="lineNum">     388</span>              : </span>
 <span id="L389"><span class="lineNum">     389</span>              : /*!</span>
