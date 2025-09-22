@@ -80,7 +80,7 @@ var searchData=
   ['hostconnectable_77',['HostConnectable',['https://doc.qt.io/qt-5/qbluetoothlocaldevice.html#HostMode-enum',1,'QBluetoothLocalDevice']]],
   ['hostdiscoverable_78',['HostDiscoverable',['https://doc.qt.io/qt-5/qbluetoothlocaldevice.html#HostMode-enum',1,'QBluetoothLocalDevice']]],
   ['hostdiscoverablelimitedinquiry_79',['HostDiscoverableLimitedInquiry',['https://doc.qt.io/qt-5/qbluetoothlocaldevice.html#HostMode-enum',1,'QBluetoothLocalDevice']]],
-  ['hostnotfounderror_80',['HostNotFoundError',['https://doc.qt.io/qt-5/qbluetoothsocket.html#SocketError-enum',1,'QBluetoothSocket::HostNotFoundError'],['https://doc.qt.io/qt-5/qbluetoothtransferreply.html#TransferError-enum',1,'QBluetoothTransferReply::HostNotFoundError']]],
+  ['hostnotfounderror_80',['HostNotFoundError',['https://doc.qt.io/qt-5/qbluetoothtransferreply.html#TransferError-enum',1,'QBluetoothTransferReply::HostNotFoundError'],['https://doc.qt.io/qt-5/qbluetoothsocket.html#SocketError-enum',1,'QBluetoothSocket::HostNotFoundError']]],
   ['hostpoweredoff_81',['HostPoweredOff',['https://doc.qt.io/qt-5/qbluetoothlocaldevice.html#HostMode-enum',1,'QBluetoothLocalDevice']]],
   ['hoverenter_82',['HoverEnter',['https://doc.qt.io/qt-5/qevent.html#Type-enum',1,'QEvent']]],
   ['hoverleave_83',['HoverLeave',['https://doc.qt.io/qt-5/qevent.html#Type-enum',1,'QEvent']]],

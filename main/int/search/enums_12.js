@@ -27,7 +27,7 @@ var searchData=
   ['splitbehavior_24',['SplitBehavior',['https://doc.qt.io/qt-5/qstring-obsolete.html#SplitBehavior-enum',1,'QString']]],
   ['splitbehaviorflags_25',['SplitBehaviorFlags',['https://doc.qt.io/qt-5/qt.html#SplitBehaviorFlags-enum',1,'Qt']]],
   ['standardlocation_26',['StandardLocation',['https://doc.qt.io/qt-5/qstandardpaths.html#StandardLocation-enum',1,'QStandardPaths']]],
-  ['state_27',['State',['https://doc.qt.io/qt-5/qabstractanimation.html#State-enum',1,'QAbstractAnimation::State'],['https://doc.qt.io/qt-5/qtimeline.html#State-enum',1,'QTimeLine::State']]],
+  ['state_27',['State',['https://doc.qt.io/qt-5/qtimeline.html#State-enum',1,'QTimeLine::State'],['https://doc.qt.io/qt-5/qabstractanimation.html#State-enum',1,'QAbstractAnimation::State']]],
   ['status_28',['Status',['https://doc.qt.io/qt-5/qdatastream.html#Status-enum',1,'QDataStream::Status'],['https://doc.qt.io/qt-5/qsettings.html#Status-enum',1,'QSettings::Status'],['https://doc.qt.io/qt-5/qtextstream.html#Status-enum',1,'QTextStream::Status']]],
   ['stringformat_29',['StringFormat',['https://doc.qt.io/qt-5/quuid.html#StringFormat-enum',1,'QUuid']]],
   ['stringresultcode_30',['StringResultCode',['https://doc.qt.io/qt-5/qcborstreamreader.html#StringResultCode-enum',1,'QCborStreamReader']]],

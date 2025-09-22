@@ -100,7 +100,7 @@ var searchData=
   ['tifinaghscript_97',['TifinaghScript',['https://doc.qt.io/qt-5/qlocale.html#Script-enum',1,'QLocale']]],
   ['tigre_98',['Tigre',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
   ['tigrinya_99',['Tigrinya',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
-  ['time_100',['Time',['https://doc.qt.io/qt-5/qdir.html#SortFlag-enum',1,'QDir::Time'],['https://doc.qt.io/qt-5/quuid.html#Version-enum',1,'QUuid::Time'],['https://doc.qt.io/qt-5/qvariant-obsolete.html#Type-enum',1,'QVariant::Time']]],
+  ['time_100',['Time',['https://doc.qt.io/qt-5/qvariant-obsolete.html#Type-enum',1,'QVariant::Time'],['https://doc.qt.io/qt-5/quuid.html#Version-enum',1,'QUuid::Time'],['https://doc.qt.io/qt-5/qdir.html#SortFlag-enum',1,'QDir::Time']]],
   ['timeaccuracy_101',['TimeAccuracy',['https://doc.qt.io/qt-5/qbluetoothuuid.html#CharacteristicType-enum',1,'QBluetoothUuid']]],
   ['timeattribute_102',['TimeAttribute',['https://doc.qt.io/qt-5/qbluetoothtransferrequest.html#Attribute-enum',1,'QBluetoothTransferRequest']]],
   ['timecriticalpriority_103',['TimeCriticalPriority',['https://doc.qt.io/qt-5/qthread.html#Priority-enum',1,'QThread']]],
