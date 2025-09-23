@@ -177,13 +177,13 @@
 <span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">         304 :         settings.mode = MultimeterService::Mode::Capacitance;</span></span>
 <span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">         304 :         minRangeFunc = minCapacitanceRange;</span></span>
 <span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">         144 :     } else {</span></span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         243 :         errors.append(tr(&quot;Unknown meter mode: %1&quot;).arg(parser.value(u&quot;mode&quot;_s)));</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         241 :         errors.append(tr(&quot;Unknown meter mode: %1&quot;).arg(parser.value(u&quot;mode&quot;_s)));</span></span>
 <span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">          72 :         return errors;</span></span>
 <span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">         960 :     }</span></span>
 <span id="L92"><span class="lineNum">      92</span>              : </span>
 <span id="L93"><span class="lineNum">      93</span>              :     // Parse the interval option.</span>
 <span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">        4485 :     if (parser.isSet(u&quot;interval&quot;_s)) {</span></span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        1015 :         const QString value = parser.value(u&quot;interval&quot;_s);</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        1020 :         const QString value = parser.value(u&quot;interval&quot;_s);</span></span>
 <span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">         760 :         const quint32 interval = parseNumber&lt;std::milli&gt;(value, u&quot;s&quot;_s, 500);</span></span>
 <span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">         760 :         if (interval == 0) {</span></span>
 <span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">         390 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></span>
@@ -195,7 +195,7 @@
 <span id="L104"><span class="lineNum">     104</span>              :     // Parse the range option.</span>
 <span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">        3496 :     rangeOptionValue = 0; // Default to auto.</span></span>
 <span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">        4485 :     if (parser.isSet(u&quot;range&quot;_s)) {</span></span>
-<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">        2233 :         const QString value = parser.value(u&quot;range&quot;_s);</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">        2244 :         const QString value = parser.value(u&quot;range&quot;_s);</span></span>
 <span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">        2145 :         if (value.trimmed().compare(u&quot;auto&quot;_s, Qt::CaseInsensitive) != 0) {</span></span>
 <span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">        1064 :             switch (settings.mode) {</span></span>
 <span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">         384 :             case MultimeterService::Mode::DcVoltage:</span></span>
@@ -223,7 +223,7 @@
 <span id="L132"><span class="lineNum">     132</span>              : </span>
 <span id="L133"><span class="lineNum">     133</span>              :     // Parse the samples option.</span>
 <span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">        4485 :     if (parser.isSet(u&quot;samples&quot;_s)) {</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">         609 :         const QString value = parser.value(u&quot;samples&quot;_s);</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">         612 :         const QString value = parser.value(u&quot;samples&quot;_s);</span></span>
 <span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         456 :         const quint32 samples = parseNumber&lt;std::ratio&lt;1&gt;&gt;(value, u&quot;S&quot;_s);</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         456 :         if (samples == 0) {</span></span>
 <span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">         390 :             errors.append(tr(&quot;Invalid samples value: %1&quot;).arg(value));</span></span>
@@ -319,7 +319,7 @@
 <span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">        1104 :     case MultimeterService::Mode::Temperature:</span></span>
 <span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">         144 :     case MultimeterService::Mode::ExternalTemperature:</span></span>
 <span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">         288 :     case MultimeterService::Mode::Diode:</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         852 :         status = tr(&quot;Ok&quot;);</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         876 :         status = tr(&quot;Ok&quot;);</span></span>
 <span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        1248 :         break;</span></span>
 <span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">        1656 :     }</span></span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
@@ -345,18 +345,18 @@
 <span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">        4056 :         for (; showCsvHeader; showCsvHeader = false) {</span></span>
 <span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">        2058 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;mode,value,unit,status,range\n&quot;));</span></span>
 <span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">         336 :         }</span></span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">        6550 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5\n&quot;)</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">        6500 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5\n&quot;)</span></span>
 <span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">         600 :             .arg(escapeCsvField(MultimeterService::toString(reading.mode)))</span></span>
 <span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">         600 :             .arg(reading.value, 0, 'f').arg(unit, status, range)</span></span>
 <span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">         600 :             );</span></span>
 <span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">        2600 :         break;</span></span>
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">        2600 :     case OutputFormat::Json: {</span></span>
 <span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">         600 :         QJsonObject object{</span></span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        3325 :             { u&quot;status&quot;_s, status },</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3975 :             { u&quot;value&quot;_s, qIsInf(reading.value) ?</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        3300 :             { u&quot;status&quot;_s, status },</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        4000 :             { u&quot;value&quot;_s, qIsInf(reading.value) ?</span></span>
 <span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        2675 :                 QJsonValue(tr(&quot;Infinity&quot;)) : QJsonValue(reading.value) },</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">        5225 :             { u&quot;mode&quot;_s,   MultimeterService::toString(reading.mode) },</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       11650 :         };</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">        5200 :             { u&quot;mode&quot;_s,   MultimeterService::toString(reading.mode) },</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">       11775 :         };</span></span>
 <span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        2600 :         if (!unit.isNull()) {</span></span>
 <span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">        2954 :             object.insert(u&quot;unit&quot;_s, unit);</span></span>
 <span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">         336 :         }</span></span>
@@ -379,7 +379,7 @@
 <span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        7800 :     if ((samplesToGo &gt; 0) &amp;&amp; (--samplesToGo == 0)) {</span></span>
 <span id="L289"><span class="lineNum">     289</span> <span class="tlaUNC">           0 :         if (device) disconnect(); // Will exit the application once disconnected.</span></span>
 <span id="L290"><span class="lineNum">     290</span> <span class="tlaUNC">           0 :     }</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">       13350 : }</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">       13100 : }</span></span>
         </pre>
               </td>
             </tr>

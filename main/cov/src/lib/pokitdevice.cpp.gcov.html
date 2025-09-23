@@ -285,7 +285,7 @@
 <span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         800 : QString PokitDevice::serviceToString(const QBluetoothUuid &amp;uuid)</span></span>
 <span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">         720 : {</span></span>
 <span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         720 :     static const QHash&lt;QBluetoothUuid, QString&gt; hash{</span></span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         829 :         { CalibrationService::serviceUuid, tr(&quot;Calibration&quot;) },</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">         828 :         { CalibrationService::serviceUuid, tr(&quot;Calibration&quot;) },</span></span>
 <span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">         800 :         { DataLoggerService::serviceUuid,  tr(&quot;Data Logger&quot;) },</span></span>
 <span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">         800 :         { DsoService::serviceUuid,         tr(&quot;DSO&quot;) },</span></span>
 <span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">         800 :         { MultimeterService::serviceUuid,  tr(&quot;Multimeter&quot;) },</span></span>
@@ -300,8 +300,8 @@
 <span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">         720 :         { QBluetoothUuid::ServiceClassUuid::GenericAttribute,</span></span>
 <span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">         880 :             QBluetoothUuid::serviceClassToString(QBluetoothUuid::ServiceClassUuid::GenericAttribute) },</span></span>
 <span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">         855 :         { QBluetoothUuid(u&quot;1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0&quot;_s), tr(&quot;OTA Firmware Update&quot;) },</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">        2468 :     };</span></span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">        1560 :     return hash.value(uuid);</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">        2465 :     };</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">        1570 :     return hash.value(uuid);</span></span>
 <span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">         720 : }</span></span>
 <span id="L215"><span class="lineNum">     215</span>              : </span>
 <span id="L216"><span class="lineNum">     216</span>              : /*!</span>
@@ -313,7 +313,7 @@
 <span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">        1760 : QString PokitDevice::charcteristicToString(const QBluetoothUuid &amp;uuid)</span></span>
 <span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">        1584 : {</span></span>
 <span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">        1584 :     static const QHash&lt;QBluetoothUuid, QString&gt; hash{</span></span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        1693 :         { CalibrationService::CharacteristicUuids::temperature, tr(&quot;Temperature&quot;) },</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        1692 :         { CalibrationService::CharacteristicUuids::temperature, tr(&quot;Temperature&quot;) },</span></span>
 <span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">        1664 :         { CalibrationService::CharacteristicUuids::getParam,    tr(&quot;Get Param&quot;) },</span></span>
 <span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">        1664 :         { CalibrationService::CharacteristicUuids::setParam,    tr(&quot;Set Param&quot;) },</span></span>
 <span id="L228"><span class="lineNum">     228</span>              : </span>
@@ -351,8 +351,8 @@
 <span id="L260"><span class="lineNum">     260</span>              :         // The next two are not specifically supported by this library, but strings provided for nicer debug output.</span>
 <span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">        1719 :         { QBluetoothUuid(u&quot;f7bf3564-fb6d-4e53-88a4-5e37e0326063&quot;_s), tr(&quot;OTA Control&quot;) },</span></span>
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">        1719 :         { QBluetoothUuid(u&quot;984227f3-34fc-4045-a5d0-2c581f81a153&quot;_s), tr(&quot;OTA Data Transfer&quot;) },</span></span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">        5492 :     };</span></span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        3432 :     return hash.value(uuid);</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">        5489 :     };</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        3454 :     return hash.value(uuid);</span></span>
 <span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        1584 : }</span></span>
 <span id="L266"><span class="lineNum">     266</span>              : </span>
 <span id="L267"><span class="lineNum">     267</span>              : /*!</span>

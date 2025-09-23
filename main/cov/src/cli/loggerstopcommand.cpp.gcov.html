@@ -155,13 +155,13 @@
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">         543 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Settings written; data logger has stopped.&quot;);</span></span>
 <span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">         456 :     switch (format) {</span></span>
 <span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">         152 :     case OutputFormat::Csv:</span></span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">         162 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_stop_result\nsuccess\n&quot;));</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">         164 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;logger_stop_result\nsuccess\n&quot;));</span></span>
 <span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">         152 :         break;</span></span>
 <span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">         152 :     case OutputFormat::Json:</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">         162 :         std::cout &lt;&lt; qUtf8Printable(u&quot;true\n&quot;_s);</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">         164 :         std::cout &lt;&lt; qUtf8Printable(u&quot;true\n&quot;_s);</span></span>
 <span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         152 :         break;</span></span>
 <span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         152 :     case OutputFormat::Text:</span></span>
-<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">         162 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">         164 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></span>
 <span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         152 :         break;</span></span>
 <span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">         216 :     }</span></span>
 <span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">         456 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>

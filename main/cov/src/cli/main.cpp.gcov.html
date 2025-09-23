@@ -154,8 +154,8 @@
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :         QLoggingCategory::setFilterRules(u&quot;dokit.*.debug=true\npokit.*.debug=true&quot;_s);</span></span>
 <span id="L64"><span class="lineNum">      64</span>              :     }</span>
 <span id="L65"><span class="lineNum">      65</span>              : </span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">          84 :     if (const QString color = parser.value(u&quot;color&quot;_s);</span></span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">         188 :         (color == u&quot;yes&quot;_s) || (color == u&quot;auto&quot;_s &amp;&amp; haveConsole())) {</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">          85 :     if (const QString color = parser.value(u&quot;color&quot;_s);</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">         187 :         (color == u&quot;yes&quot;_s) || (color == u&quot;auto&quot;_s &amp;&amp; haveConsole())) {</span></span>
 <span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :         messagePattern.prepend(QStringLiteral(</span></span>
 <span id="L69"><span class="lineNum">      69</span>              :         &quot;%{if-debug}\x1b[37m%{endif}&quot;      // White</span>
 <span id="L70"><span class="lineNum">      70</span>              :         &quot;%{if-info}\x1b[32m%{endif}&quot;       // Green</span>
@@ -226,7 +226,7 @@
 <span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">          49 : Command parseCommandLine(const QStringList &amp;appArguments, QCommandLineParser &amp;parser)</span></span>
 <span id="L136"><span class="lineNum">     136</span>              : {</span>
 <span id="L137"><span class="lineNum">     137</span>              :     // Setup the command line options.</span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">         399 :     parser.addOptions({</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">         411 :     parser.addOptions({</span></span>
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">          71 :         { u&quot;color&quot;_s,</span></span>
 <span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Colors the console output. Valid options are: yes, no and auto. The default is auto.&quot;),</span></span>
 <span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">          49 :           u&quot;yes|no|auto&quot;_s, u&quot;auto&quot;_s},</span></span>
@@ -238,7 +238,7 @@
 <span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          49 :           Private::tr(&quot;device&quot;)},</span></span>
 <span id="L148"><span class="lineNum">     148</span>              :     });</span>
 <span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          49 :     parser.addHelpOption();</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         878 :     parser.addOptions({</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         925 :     parser.addOptions({</span></span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          71 :         {{u&quot;interval&quot;_s},</span></span>
 <span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Set the update interval for DOS, meter and &quot;</span></span>
 <span id="L153"><span class="lineNum">     153</span>              :           &quot;logger modes. Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. &quot;</span>
@@ -246,7 +246,7 @@
 <span id="L155"><span class="lineNum">     155</span>              :           &quot;interval. If the option itself is not specified, a sensible default will be chosen &quot;</span>
 <span id="L156"><span class="lineNum">     156</span>              :           &quot;according to the selected command.&quot;),</span>
 <span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">          49 :           Private::tr(&quot;interval&quot;)},</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">          59 :         {{u&quot;mode&quot;_s},</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">          58 :         {{u&quot;mode&quot;_s},</span></span>
 <span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Set the desired operation mode. For &quot;</span></span>
 <span id="L160"><span class="lineNum">     160</span>              :           &quot;meter, dso, and logger commands, the supported modes are: AC Voltage, DC Voltage, AC Current, &quot;</span>
 <span id="L161"><span class="lineNum">     161</span>              :           &quot;DC Current, Resistance, Diode, Continuity, and Temperature. All are case insensitive. &quot;</span>
@@ -255,9 +255,9 @@
 <span id="L164"><span class="lineNum">     164</span>              :           &quot;requires firmware v1.5 or later for Pokit devices to support it. For the set-torch command &quot;</span>
 <span id="L165"><span class="lineNum">     165</span>              :           &quot;supported modes are On and Off.&quot;),</span>
 <span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">          49 :           Private::tr(&quot;mode&quot;)},</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          59 :         {{u&quot;new-name&quot;_s},</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">          58 :         {{u&quot;new-name&quot;_s},</span></span>
 <span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Give the desired new name for the set-name command.&quot;), Private::tr(&quot;name&quot;)},</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          59 :         {{u&quot;output&quot;_s},</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          58 :         {{u&quot;output&quot;_s},</span></span>
 <span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Set the format for output. Supported &quot;</span></span>
 <span id="L171"><span class="lineNum">     171</span>              :           &quot;formats are: CSV, JSON and Text. All are case insensitive. The default is Text.&quot;),</span>
 <span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">          49 :           Private::tr(&quot;format&quot;),</span></span>
@@ -269,19 +269,19 @@
 <span id="L178"><span class="lineNum">     178</span>              :           &quot;range feature. The default is 'auto'.&quot;),</span>
 <span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          49 :           Private::tr(&quot;range&quot;), u&quot;auto&quot;_s},</span></span>
 <span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          49 :         {{u&quot;samples&quot;_s}, Private::tr(&quot;Set the number of samples to acquire.&quot;), Private::tr(&quot;count&quot;)},</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          59 :         {{u&quot;temperature&quot;_s},</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          58 :         {{u&quot;temperature&quot;_s},</span></span>
 <span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Set the current ambient temperature for the calibration command.&quot;), Private::tr(&quot;degrees&quot;)},</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          59 :         {{u&quot;timeout&quot;_s},</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          58 :         {{u&quot;timeout&quot;_s},</span></span>
 <span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Set the device discovery scan timeout. &quot;</span></span>
 <span id="L185"><span class="lineNum">     185</span>              :           &quot;Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. &quot;</span>
 <span id="L186"><span class="lineNum">     186</span>              :           &quot;If no suffix is present, the units will be inferred from the magnitide of the given &quot;</span>
 <span id="L187"><span class="lineNum">     187</span>              :           &quot;interval. The default behaviour is no timeout.&quot;),</span>
 <span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          49 :           Private::tr(&quot;period&quot;)},</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          59 :         {{u&quot;timestamp&quot;_s},</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          58 :         {{u&quot;timestamp&quot;_s},</span></span>
 <span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Set the optional starting timestamp for data logging. Default to 'now'.&quot;),</span></span>
 <span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          49 :           Private::tr(&quot;period&quot;)},</span></span>
 <span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          49 :         {{u&quot;trigger-level&quot;_s}, Private::tr(&quot;Set the DSO trigger level.&quot;), Private::tr(&quot;level&quot;)},</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          59 :         {{u&quot;trigger-mode&quot;_s},</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          58 :         {{u&quot;trigger-mode&quot;_s},</span></span>
 <span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          49 :           Private::tr(&quot;Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.&quot;),</span></span>
 <span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          49 :           Private::tr(&quot;mode&quot;), u&quot;free&quot;_s},</span></span>
 <span id="L196"><span class="lineNum">     196</span>              :     });</span>
@@ -328,7 +328,7 @@
 <span id="L237"><span class="lineNum">     237</span>              :     // Process the command for real (ie throw errors for unknown options, etc).</span>
 <span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          49 :     parser.process(appArguments);</span></span>
 <span id="L239"><span class="lineNum">     239</span> <span class="tlaUNC">           0 :     return command;</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">         780 : }</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">         700 : }</span></span>
 <span id="L241"><span class="lineNum">     241</span>              : </span>
 <span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC">           0 : AbstractCommand * getCommandObject(const Command command, QObject * const parent)</span></span>
 <span id="L243"><span class="lineNum">     243</span>              : {</span>

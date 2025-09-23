@@ -167,7 +167,7 @@
 <span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        6792 :         for (; showCsvHeader; showCsvHeader = false) {</span></span>
 <span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">        3321 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;uuid,address,name,major_class,minor_class,signal_strength\n&quot;));</span></span>
 <span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">        1188 :         }</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">       10515 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5,%6\n&quot;).arg(info.deviceUuid().toString(),</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">       10455 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5,%6\n&quot;).arg(info.deviceUuid().toString(),</span></span>
 <span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">        1980 :             info.address().toString(), escapeCsvField(info.name()), toString(info.majorDeviceClass()),</span></span>
 <span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">        1980 :             toString(info.majorDeviceClass(), info.minorDeviceClass())).arg(info.rssi()));</span></span>
 <span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        4245 :         break;</span></span>
@@ -214,31 +214,31 @@
 <span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">        2340 :     QJsonObject json{</span></span>
 <span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">        7670 :         { u&quot;address&quot;_s, info.address().toString() },</span></span>
 <span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">        7670 :         { u&quot;name&quot;_s, info.name() },</span></span>
-<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">        6815 :         { u&quot;isCached&quot;_s, info.isCached() },</span></span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        6885 :         { u&quot;majorDeviceClass&quot;_s, info.majorDeviceClass() },</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">        6850 :         { u&quot;isCached&quot;_s, info.isCached() },</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        6920 :         { u&quot;majorDeviceClass&quot;_s, info.majorDeviceClass() },</span></span>
 <span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">        7670 :         { u&quot;majorDeviceClass&quot;_s, toJson(info.majorDeviceClass()) },</span></span>
 <span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">        7670 :         { u&quot;minorDeviceClass&quot;_s, toJson(info.majorDeviceClass(), info.minorDeviceClass()) },</span></span>
 <span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">        7670 :         { u&quot;signalStrength&quot;_s, info.rssi() },</span></span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">       30635 :     };</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">       31265 :     };</span></span>
 <span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">        5005 :     if (info.coreConfigurations() != QBluetoothDeviceInfo::UnknownCoreConfiguration) {</span></span>
 <span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">        1006 :         json.insert(u&quot;coreConfiguration&quot;_s, toJson(info.coreConfigurations()));</span></span>
 <span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">         276 :     }</span></span>
 <span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">        5223 :     if (!info.deviceUuid().isNull()) {</span></span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">        6154 :         json.insert(u&quot;deviceUuid&quot;_s, info.deviceUuid().toString());</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">        6110 :         json.insert(u&quot;deviceUuid&quot;_s, info.deviceUuid().toString());</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">        1476 :     }</span></span>
 <span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">        2100 :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Added in Qt 5.12.</span></span>
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">        4585 :     if (!info.manufacturerData().isEmpty()) {</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">         756 :         json.insert(u&quot;manufacturerData&quot;_s, toJson(info.manufacturerData()));</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">         753 :         json.insert(u&quot;manufacturerData&quot;_s, toJson(info.manufacturerData()));</span></span>
 <span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         180 :     }</span></span>
 <span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">        2100 :     #endif</span></span>
 <span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">        5005 :     if (info.serviceClasses() != QBluetoothDeviceInfo::NoService) {</span></span>
 <span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">        1235 :         json.insert(u&quot;serviceClasses&quot;_s, toJson(info.serviceClasses()));</span></span>
 <span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">         336 :     }</span></span>
 <span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">        6510 :     if (!info.serviceUuids().isEmpty()) {</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">         292 :         json.insert(u&quot;serviceUuids&quot;_s, toJson(info.serviceUuids()));</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">         290 :         json.insert(u&quot;serviceUuids&quot;_s, toJson(info.serviceUuids()));</span></span>
 <span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">          72 :     }</span></span>
 <span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">        4290 :     return json;</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">       20319 : }</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">       19584 : }</span></span>
 <span id="L151"><span class="lineNum">     151</span>              : </span>
 <span id="L152"><span class="lineNum">     152</span>              : /*!</span>
 <span id="L153"><span class="lineNum">     153</span>              :  * Returns \a configuration as a JSON array of strings.</span>
@@ -310,7 +310,7 @@
 <span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">         432 : {</span></span>
 <span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         912 :     QJsonArray array;</span></span>
 <span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">        2304 :     for (const QBluetoothUuid &amp;uuid: uuids) {</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">        2220 :         array.append(uuid.toString());</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">        2196 :         array.append(uuid.toString());</span></span>
 <span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">         864 :     }</span></span>
 <span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">         912 :     return array;</span></span>
 <span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">         432 : }</span></span>
@@ -332,7 +332,7 @@
 <span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">        1030 :         std::reverse(values.begin(), values.end());</span></span>
 <span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">        1310 :         QJsonArray array;</span></span>
 <span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">        2621 :         for (const QByteArray &amp;value: values) {</span></span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        3276 :             array.append(QLatin1String(value.toBase64()));</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        3246 :             array.append(QLatin1String(value.toBase64()));</span></span>
 <span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">         876 :         }</span></span>
 <span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">        1670 :         object.insert(QString::number(key), array);</span></span>
 <span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">        1310 :     }</span></span>
@@ -352,20 +352,20 @@
 <span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">       26160 :         if (majorClass == QBluetoothDeviceInfo::value) \</span></span>
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">       26160 :             return QLatin1String(#value)</span></span>
 <span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">       13506 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(MiscellaneousDevice);</span></span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        3748 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ComputerDevice);</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3076 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PhoneDevice);</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        3891 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ComputerDevice);</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3189 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PhoneDevice);</span></span>
 <span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">         448 :     #if (QT_VERSION &lt; QT_VERSION_CHECK(5, 13, 0))</span></span>
 <span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">         448 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(LANAccessDevice); // Deprecated since Qt 5.13.</span></span>
 <span id="L268"><span class="lineNum">     268</span>              :     #else</span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        1780 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkDevice); // Added in Qt 5.13.</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        1871 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkDevice); // Added in Qt 5.13.</span></span>
 <span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">        1624 :     #endif</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        2084 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(AudioVideoDevice);</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">        1940 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PeripheralDevice);</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        1796 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagingDevice);</span></span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">        1652 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableDevice);</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        1508 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDevice);</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">        1364 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">        1418 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        2169 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(AudioVideoDevice);</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">        2019 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PeripheralDevice);</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        1869 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ImagingDevice);</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">        1719 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableDevice);</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        1569 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(ToyDevice);</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">        1419 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HealthDevice);</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">        1458 :     DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedDevice);</span></span>
 <span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         432 :     #undef DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN</span></span>
 <span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">        1250 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Unknown major class %1.&quot;).arg(majorClass);</span></span>
 <span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         432 :     return QString(); // Null QString indicates unknown minor class.</span></span>
@@ -419,23 +419,23 @@
 <span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">         364 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(NetworkNoService);</span></span>
 <span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">         144 :         break;</span></span>
 <span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">        5472 :     case QBluetoothDeviceInfo::AudioVideoDevice:</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">        3664 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedAudioVideoDevice);</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">        2492 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHeadsetDevice);</span></span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        2348 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandsFreeDevice);</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">        2204 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Microphone);</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">        2060 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Loudspeaker);</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">        1916 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Headphones);</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">        1772 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PortableAudioDevice);</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">        1628 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CarAudio);</span></span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">        1484 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SetTopBox);</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">        1340 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HiFiAudioDevice);</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">        1196 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Vcr);</span></span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">        1052 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoCamera);</span></span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         908 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Camcorder);</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         764 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoMonitor);</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         620 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoDisplayAndLoudspeaker);</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         476 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoConferencing);</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         332 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamingDevice);</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">        3770 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedAudioVideoDevice);</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">        2592 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(WearableHeadsetDevice);</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        2442 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HandsFreeDevice);</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">        2292 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Microphone);</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaGNC">        2142 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Loudspeaker);</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">        1992 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Headphones);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">        1842 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(PortableAudioDevice);</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">        1692 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(CarAudio);</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">        1542 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(SetTopBox);</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">        1392 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(HiFiAudioDevice);</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">        1242 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Vcr);</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">        1092 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoCamera);</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         942 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(Camcorder);</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         792 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoMonitor);</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">         642 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoDisplayAndLoudspeaker);</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">         492 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(VideoConferencing);</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaGNC">         342 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(GamingDevice);</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaGNC">         144 :         break;</span></span>
 <span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">        3344 :     case QBluetoothDeviceInfo::PeripheralDevice:</span></span>
 <span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">        2444 :         DOKIT_INTERNAL_IF_EQUAL_THEN_RETURN(UncategorizedPeripheral);</span></span>

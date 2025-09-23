@@ -464,15 +464,15 @@
 <span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC">         288 : {</span></span>
 <span id="L374"><span class="lineNum">     374</span> <span class="tlaGNC">         460 :     DsoService::Samples samples;</span></span>
 <span id="L375"><span class="lineNum">     375</span> <span class="tlaGNC">         608 :     if ((value.size()%2) != 0) {</span></span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         290 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Samples value has odd size %1 (should be even): %2&quot;)</span></span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         242 :             .arg(value.size()).arg(toHexString(value));</span></span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">          82 :         return samples;</span></span>
+<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">         289 :         qCWarning(lc).noquote() &lt;&lt; tr(&quot;Samples value has odd size %1 (should be even): %2&quot;)</span></span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">         241 :             .arg(value.size()).arg(toHexString(value));</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">          81 :         return samples;</span></span>
 <span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">          72 :     }</span></span>
 <span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">        2584 :     while ((samples.size()*2) &lt; value.size()) {</span></span>
 <span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">        2730 :         samples.append(qFromLittleEndian&lt;qint16&gt;(value.mid(samples.size()*2,2).constData()));</span></span>
 <span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">        1008 :     }</span></span>
 <span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         543 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Read %n sample/s from %1-bytes.&quot;, nullptr, samples.size()).arg(value.size());</span></span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         246 :     return samples;</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         243 :     return samples;</span></span>
 <span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         288 : }</span></span>
 <span id="L386"><span class="lineNum">     386</span>              : </span>
 <span id="L387"><span class="lineNum">     387</span>              : /*!</span>
@@ -502,8 +502,8 @@
 <span id="L411"><span class="lineNum">     411</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L412"><span class="lineNum">     412</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L413"><span class="lineNum">     413</span>              : </span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">         372 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for DSO service&quot;)</span></span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">         247 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">         370 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic read for DSO service&quot;)</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">         242 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">          72 : }</span></span>
 <span id="L417"><span class="lineNum">     417</span>              : </span>
 <span id="L418"><span class="lineNum">     418</span>              : /*!</span>
@@ -533,8 +533,8 @@
 <span id="L442"><span class="lineNum">     442</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L443"><span class="lineNum">     443</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L444"><span class="lineNum">     444</span>              : </span>
-<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">         372 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for DSO service&quot;)</span></span>
-<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">         247 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L445"><span class="lineNum">     445</span> <span class="tlaGNC">         370 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic written for DSO service&quot;)</span></span>
+<span id="L446"><span class="lineNum">     446</span> <span class="tlaGNC">         242 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L447"><span class="lineNum">     447</span> <span class="tlaGNC">          72 : }</span></span>
 <span id="L448"><span class="lineNum">     448</span>              : </span>
 <span id="L449"><span class="lineNum">     449</span>              : /*!</span>
@@ -563,8 +563,8 @@
 <span id="L472"><span class="lineNum">     472</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L473"><span class="lineNum">     473</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L474"><span class="lineNum">     474</span>              : </span>
-<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">         372 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for DSO service&quot;)</span></span>
-<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">         247 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
+<span id="L475"><span class="lineNum">     475</span> <span class="tlaGNC">         370 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Unknown characteristic notified for DSO service&quot;)</span></span>
+<span id="L476"><span class="lineNum">     476</span> <span class="tlaGNC">         242 :         &lt;&lt; serviceUuid &lt;&lt; characteristic.name() &lt;&lt; characteristic.uuid();</span></span>
 <span id="L477"><span class="lineNum">     477</span> <span class="tlaGNC">          72 : }</span></span>
 <span id="L478"><span class="lineNum">     478</span>              : </span>
 <span id="L479"><span class="lineNum">     479</span>              : /// \endcond</span>
