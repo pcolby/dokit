@@ -209,7 +209,7 @@ jobs:
   mac:
     runs-on: ${{ matrix.os }}
     env:
-      CMAKE_BUILD_PARALLEL_LEVEL: ${{ matrix.os == 'macos-13' && 4 || 3 }}
+      CMAKE_BUILD_PARALLEL_LEVEL: 3
     timeout-minutes: 15
     strategy:
       fail-fast: false
@@ -232,7 +232,6 @@ jobs:
           - 6.9.3
           - 6.10.0
         os:
-          - macos-13
           - macos-14
           - macos-15
           - macos-26
@@ -242,29 +241,13 @@ jobs:
         exclude:
           # GitHub's macOS 14+ gcc can only target arm64, but Qt didn't add Apple arm64 support until Qt 6.2, so:
           # Exclude Qt 5.x (and 6.0, 6.1) with GCC on macOS 14+. Also see the `arch` step below for more details.
-          - { qt: '5.9.9',   os: macos-14, cc: gcc }
-          - { qt: '5.9.9',   os: macos-15, cc: gcc }
-          - { qt: '5.9.9',   os: macos-26, cc: gcc }
-          - { qt: '5.10.1',  os: macos-14, cc: gcc }
-          - { qt: '5.10.1',  os: macos-15, cc: gcc }
-          - { qt: '5.10.1',  os: macos-26, cc: gcc }
-          - { qt: '5.11.3',  os: macos-14, cc: gcc }
-          - { qt: '5.11.3',  os: macos-15, cc: gcc }
-          - { qt: '5.11.3',  os: macos-26, cc: gcc }
-          - { qt: '5.12.12', os: macos-14, cc: gcc }
-          - { qt: '5.12.12', os: macos-15, cc: gcc }
-          - { qt: '5.12.12', os: macos-26, cc: gcc }
-          - { qt: '5.13.2',  os: macos-14, cc: gcc }
-          - { qt: '5.13.2',  os: macos-15, cc: gcc }
-          - { qt: '5.13.2',  os: macos-26, cc: gcc }
-          - { qt: '5.14.2',  os: macos-14, cc: gcc }
-          - { qt: '5.14.2',  os: macos-15, cc: gcc }
-          - { qt: '5.14.2',  os: macos-26, cc: gcc }
-          - { qt: '5.15.2',  os: macos-14, cc: gcc }
-          - { qt: '5.15.2',  os: macos-15, cc: gcc }
-          - { qt: '5.15.2',  os: macos-26, cc: gcc }
-          # Exclude Qt 5.10 with GCC on macOS. See https://bugreports.qt.io/browse/QTBUG-66585
-          - { qt: '5.10.1', cc: gcc }
+          - { qt: '5.9.9',   cc: gcc }
+          - { qt: '5.10.1',  cc: gcc } # Also https://bugreports.qt.io/browse/QTBUG-66585
+          - { qt: '5.11.3',  cc: gcc }
+          - { qt: '5.12.12', cc: gcc }
+          - { qt: '5.13.2',  cc: gcc }
+          - { qt: '5.14.2',  cc: gcc }
+          - { qt: '5.15.2',  cc: gcc }
           # Exclude Qt 6.x with GCC on macOS for now. See https://bugreports.qt.io/browse/QTBUG-107050
           - { qt: '6.2.4', cc: gcc }
           - { qt: '6.3.2', cc: gcc }
@@ -304,8 +287,7 @@ jobs:
           if [[ '${{ matrix.qt }}' =~ ^(5|6\.[01])\. ]]; then arch=x86_64
           # GitHub runners' (homebrew'd) gcc's only support support x86-64 prior to macos-14, and only arm64 after.
           # Note: if we attempt to use multiple archs, gcc will warn, but continue, resulting in later failures.
-          elif [[ '${{ matrix.cc }}' == 'gcc' ]]; then
-            if [[ '${{ matrix.os }}' == 'macos-13' ]]; then arch='x86_64'; else arch='arm64'; fi
+          elif [[ '${{ matrix.cc }}' == 'gcc' ]]; then arch='arm64'
           # Otherwise, default to universal binaries, where possible.
           else arch='arm64;x86_64'; fi
           tee -a "$GITHUB_ENV" <<< "CMAKE_OSX_ARCHITECTURES=${arch}"
@@ -318,7 +300,6 @@ jobs:
             tee -a "$GITHUB_ENV" <<< 'GCOV=gcov-15'
           else
             case '${{ matrix.os }}' in
-              macos-13) llvmPrefix=$(brew --prefix 'llvm@15') ;; # Newer than non-brew llvm (v14).
              #macos-14) llvmPrefix=$(brew --prefix 'llvm@15') ;; # *Not* newer than the non-new llvm (v16).
               macos-15) llvmPrefix=$(brew --prefix 'llvm@18') ;; # Newer than non-brew llvm (v17).
               macos-26) llvmPrefix=$(brew --prefix 'llvm@20') ;; # Newer than non-brew llvm (v17).
@@ -335,8 +316,7 @@ jobs:
           PROJECT_BUILD_ID: "${{ github.run_number }}.${{ matrix.os }}.${{ steps.arch.outputs.buildId }}.\
             ${{ matrix.cc }}.qt-${{ matrix.qt }}"
         run: |
-          # With coverage instrumentation (except macOS 13's llvm-lcov version does not support the --sources option)
-          [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
+          # With coverage instrumentation.
           cmake -D CMAKE_BUILD_TYPE=Release \
                 -D CODECOV_GCOV="${GCOV:-}" \
                 -D ENABLE_COVERAGE=true \
@@ -352,12 +332,10 @@ jobs:
           tee -a "$GITHUB_OUTPUT" <<< "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")"
           { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
             tee -a "$GITHUB_OUTPUT"
-          [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
-            cmake --build "$RUNNER_TEMP/coverage" -- VERBOSE=1
+          cmake --build "$RUNNER_TEMP/coverage" -- VERBOSE=1
           cmake --build "$RUNNER_TEMP/release" -- VERBOSE=1
+          "$RUNNER_TEMP/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
           "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
-          [[ '${{ matrix.os }}' == 'macos-13' && '${{ matrix.cc }}' == 'clang' ]] ||
-            "$RUNNER_TEMP/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
       - name: Grant Bluetooth access
         run: |
           for db in {"${HOME}",}'/Library/Application Support/com.apple.TCC/TCC.db'; do
@@ -369,7 +347,6 @@ jobs:
               ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, ${reason}, 1, 0 )"
           done
       - name: Test w/ coverage
-        if: matrix.os != 'macos-13' || matrix.cc != 'clang'
         run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
         timeout-minutes: 1
       - name: Test w/o coverage
@@ -399,10 +376,8 @@ jobs:
         if: matrix.cc == 'gcc'
         run: echo 'check_data_consistency = 0' >> "$HOME/.lcovrc"
       - name: Collate test coverage
-        if: matrix.os != 'macos-13' || matrix.cc == 'gcc'
         run: cmake --build "$RUNNER_TEMP/coverage" --target coverage
       - name: Upload test results
-        if: matrix.os != 'macos-13' || fromJSON(steps.build.outputs.tap)
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ steps.build.outputs.dokitVersion }}
@@ -413,9 +388,7 @@ jobs:
             ${{ runner.temp }}/release/test/**/*.tap
           if-no-files-found: error
       - name: Report parallel coverage to Codacy
-        if: >-
-          ( matrix.os != 'macos-13' || matrix.cc == 'gcc' )
-          && github.event_name == 'push' && github.actor != 'dependabot[bot]'
+        if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: >
