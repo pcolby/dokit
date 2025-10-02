@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Upgrade to Qt 6.9.2
+- Upgrade to Qt 6.9.3
 - Support for Qt 6.10, including support for the `LANG` environment variable on MinGW ([d0cb2eb][])
 
 ### Fixed
