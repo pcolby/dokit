@@ -112,7 +112,7 @@
 <span id="L21"><span class="lineNum">      21</span>              : </span>
 <span id="L22"><span class="lineNum">      22</span>              : class QTPOKIT_EXPORT StatusService : public AbstractPokitService</span>
 <span id="L23"><span class="lineNum">      23</span>              : {</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          80 :     Q_OBJECT</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          76 :     Q_OBJECT</span></span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 : </span></span>
 <span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 : public:</span></span>
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :     /// UUIDs of the `Pokit Status` service.</span></span>
@@ -155,7 +155,7 @@
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC">           0 :     };</span></span>
 <span id="L65"><span class="lineNum">      65</span> <span class="tlaUNC">           0 : </span></span>
 <span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 :     /// Attributes included in the `Device Characteristics` characteristic.</span></span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">        4481 :     struct DeviceCharacteristics {</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">        4189 :     struct DeviceCharacteristics {</span></span>
 <span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :         QVersionNumber firmwareVersion; ///&lt; Device's major and minor firmware version.</span></span>
 <span id="L69"><span class="lineNum">      69</span> <span class="tlaUNC">           0 :         quint16 maximumVoltage;         ///&lt; Device's maximum input voltage.</span></span>
 <span id="L70"><span class="lineNum">      70</span> <span class="tlaUNC">           0 :         quint16 maximumCurrent;         ///&lt; Device's maximum input current.</span></span>
@@ -230,7 +230,7 @@
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 :     static QString toString(const StatusService::ButtonStatus &amp;status);</span></span>
 <span id="L140"><span class="lineNum">     140</span> <span class="tlaUNC">           0 : </span></span>
 <span id="L141"><span class="lineNum">     141</span> <span class="tlaUNC">           0 :     StatusService(QLowEnergyController * const pokitDevice, QObject * parent = nullptr);</span></span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">        3072 :     ~StatusService() = default;</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">        2976 :     ~StatusService() = default;</span></span>
 <span id="L143"><span class="lineNum">     143</span>              : </span>
 <span id="L144"><span class="lineNum">     144</span>              :     bool readCharacteristics() override;</span>
 <span id="L145"><span class="lineNum">     145</span>              :     bool readDeviceCharacteristics();</span>
@@ -281,7 +281,7 @@
 <span id="L190"><span class="lineNum">     190</span>              :     /// \endcond</span>
 <span id="L191"><span class="lineNum">     191</span>              : </span>
 <span id="L192"><span class="lineNum">     192</span>              : private:</span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">        5370 :     Q_DECLARE_PRIVATE(StatusService)</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">        5106 :     Q_DECLARE_PRIVATE(StatusService)</span></span>
 <span id="L194"><span class="lineNum">     194</span>              :     Q_DISABLE_COPY(StatusService)</span>
 <span id="L195"><span class="lineNum">     195</span>              :     QTPOKIT_BEFRIEND_TEST(StatusService)</span>
 <span id="L196"><span class="lineNum">     196</span>              : };</span>
