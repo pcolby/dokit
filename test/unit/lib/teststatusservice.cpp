@@ -614,7 +614,7 @@ void TestStatusService::serviceDiscovered()
         qInfo() << "StatusService::ServiceUuids::pokitMeter" << StatusService::ServiceUuids::pokitMeter;
         qInfo() << "\\todo Once llvm-mingw is updated such that the above two match, then remove the following QSKIP()";
         qInfo() << "\\todo See https://github.com/llvm/llvm-project/issues/110975";
-        QSKIP("LLVM has known 'const static inline variable initialisation' bug on Windows #110975");
+        //QSKIP("LLVM has known 'const static inline variable initialisation' bug on Windows #110975");
     #endif
     QCOMPARE(service.d_func()->serviceUuid, StatusService::ServiceUuids::pokitMeter);
 

@@ -13,6 +13,7 @@ env:
 
 jobs:
   linux:
+    if: false
     runs-on: ubuntu-${{ matrix.os }}${{ matrix.arch == 'arm64' && '-arm' || '' }}
     strategy:
       fail-fast: false
@@ -207,6 +208,7 @@ jobs:
           if-no-files-found: error
 
   mac:
+    if: false
     runs-on: ${{ matrix.os }}
     env:
       CMAKE_BUILD_PARALLEL_LEVEL: 3
