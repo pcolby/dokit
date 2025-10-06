@@ -336,16 +336,6 @@ jobs:
           cmake --build "$RUNNER_TEMP/release" -- VERBOSE=1
           "$RUNNER_TEMP/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
           "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
-      - name: Grant Bluetooth access
-        run: |
-          for db in {"${HOME}",}'/Library/Application Support/com.apple.TCC/TCC.db'; do
-            [[ "${db}" == "${HOME}"* ]] && reason=3 || reason=4 # 'User Set' or 'System Set'.
-            echo "Upserting: ${db} (${reason})"
-            sudo sqlite3 "${db}" "INSERT or REPLACE INTO access
-              ( service, client, client_type, auth_value, auth_reason, auth_version, flags ) VALUES
-              ( 'kTCCServiceBluetoothAlways', '/opt/hca/hosted-compute-agent', 1, 2, ${reason}, 1, 0 ),
-              ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, ${reason}, 1, 0 )"
-          done
       - name: Test w/ coverage
         run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
         timeout-minutes: 1
