@@ -417,11 +417,32 @@ jobs:
           - 6.9.3
           - 6.10.0
         os:
+          - 11-arm
           - '2022'
           - '2025'
         arch: [ x86, x86-64, arm64 ]
         toolchain: [ llvm, mingw, msvc ]
         exclude:
+          # Exclude Qt's earlier than 6.8 for windows-11-arm, since Qt only added native Win ARM builds in Qt 6.8.
+          - { os: 11-arm, qt: 5.9.9 }
+          - { os: 11-arm, qt: 5.10.1 }
+          - { os: 11-arm, qt: 5.11.3 }
+          - { os: 11-arm, qt: 5.12.12 }
+          - { os: 11-arm, qt: 5.13.2 }
+          - { os: 11-arm, qt: 5.14.2 }
+          - { os: 11-arm, qt: 5.15.2 }
+          - { os: 11-arm, qt: 6.2.4  }
+          - { os: 11-arm, qt: 6.3.2 }
+          - { os: 11-arm, qt: 6.4.3 }
+          - { os: 11-arm, qt: 6.5.3 }
+          - { os: 11-arm, qt: 6.6.3 }
+          - { os: 11-arm, qt: 6.7.3 }
+          # Exclude non-arm64 builds and non-MSVC toolchains for windows-11-arm, since Qt doesn't support native
+          # Windows ARM64 builds for any of those.
+          - { os: 11-arm, arch: x86 }
+          - { os: 11-arm, arch: x86-64 }
+          - { os: 11-arm, toolchain: llvm }
+          - { os: 11-arm, toolchain: mingw }
           # Exclude arm64 builds for Qt's earlier than 6.2, since Qt only added (Windows) arm64
           # 'Technology Preview' support in 6.2.
           - { arch: arm64, qt: '5.9.9' }
@@ -431,8 +452,6 @@ jobs:
           - { arch: arm64, qt: '5.13.2' }
           - { arch: arm64, qt: '5.14.2' }
           - { arch: arm64, qt: '5.15.2' }
-          # \todo Temporarily exclude arm64 builds for Qt 6.10. See https://github.com/miurahr/aqtinstall/issues/939
-          - { arch: arm64, qt: '6.10.0' }
           # Exclude MinGW (including LLVM) builds for arm64, since Qt does not provide those binaries yet.
           - { arch: arm64, toolchain: llvm }
           - { arch: arm64, toolchain: mingw }
@@ -536,14 +555,17 @@ jobs:
           - { qt: '6.8.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.8.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.8.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.8.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
           - { qt: '6.8.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           - { qt: '6.9.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.9.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.9.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.9.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
           - { qt: '6.9.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           - { qt: '6.10.0',  toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.10.0',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
-          # { qt: '6.10.0',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled } \todo
+          - { qt: '6.10.0',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.10.0',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
           - { qt: '6.10.0',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           # Map the MSVC architecture.
           - { toolchain: msvc, arch: arm64,  msvcArch: amd64_arm64 }
