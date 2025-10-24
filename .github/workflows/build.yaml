@@ -496,6 +496,25 @@ jobs:
           - { toolchain: mingw, arch: x86-64, qt: '5.13.2',  os: '2025' }
           - { toolchain: mingw, arch: x86-64, qt: '6.2.4',   os: '2025' }
           - { toolchain: mingw, arch: x86-64, qt: '6.3.2',   os: '2025' }
+          # Exclude Windows 2022 builds with MinGW fo Qt's earlier than 5.14, and earlier than 6.4, because GitHub's
+          # runners have begun segfaulting all unit tests. These had been passing fine until somewhere between
+          # 2025-10-17 (good) and 2025-10-22 (bad), with no code or Qt changes in that time. \todo I could track these
+          # down, and potentially report an issue to GitHub, but the priorities for these sepcific builds are very low.
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.9.9' }
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.10.1' }
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.11.3' }
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.12.12' }
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.13.2' }
+          - { toolchain: mingw, os: 2022, arch: x86-64, qt: '5.12.12' }
+          - { toolchain: mingw, os: 2022, arch: x86-64, qt: '5.13.2' }
+          - { toolchain: mingw, os: 2022, arch: x86-64, qt: '6.2.4' }
+          - { toolchain: mingw, os: 2022, arch: x86-64, qt: '6.3.2' }
+          # Exclude Windows 2025 x86 builds with MinGW for Qt's 5.14 and 5.15, because GitHub's runners have begun
+          # failing CMake's "working compiler" check. These had been passing fine until somewhere between
+          # 2025-10-17 (good) and 2025-10-22 (bad), with no code or Qt changes in that time. \todo I could track these
+          # down, and potentially report an issue to GitHub, but the priorities for these sepcific builds are very low.
+          - { toolchain: mingw, os: 2025, arch: x86, qt: '5.14.2' }
+          - { toolchain: mingw, os: 2025, arch: x86, qt: '5.15.2' }
 
         include:
           # Map the aqtinstall (aqt) architectures.
@@ -514,12 +533,12 @@ jobs:
           - { qt: '5.11.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
           - { qt: '5.11.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.12.12', toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
-          - { qt: '5.12.12', toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          # { qt: '5.12.12', toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
           - { qt: '5.12.12', toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
           - { qt: '5.12.12', toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
           - { qt: '5.12.12', toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.13.2',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
-          - { qt: '5.13.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          # { qt: '5.13.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
           - { qt: '5.13.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
           - { qt: '5.13.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
           - { qt: '5.13.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
@@ -533,10 +552,10 @@ jobs:
           - { qt: '5.15.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2019 }
           - { qt: '5.15.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
           - { qt: '5.15.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
-          - { qt: '6.2.4',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          # { qt: '6.2.4',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.2.4',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.2.4',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
-          - { qt: '6.3.2',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          # { qt: '6.3.2',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.3.2',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.3.2',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
           - { qt: '6.4.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
