@@ -21,6 +21,6 @@ jobs:
       - uses: actions/checkout@v5
       - name: Check translation files
         run: |
-          cmake -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-          cmake --build "$RUNNER_TEMP" --target {cli,QtPokit}_lupdate # \todo Include gui too, when relevant.
-          [[ -z $(git status --porcelain | tee /dev/stderr) ]]
+          cmake -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}"
+          cmake --build "${RUNNER_TEMP}" --target {cli,QtPokit}_lupdate # \todo Include gui too, when relevant.
+          [[ -z $(git status --porcelain | tee /dev/stderr || :) ]]

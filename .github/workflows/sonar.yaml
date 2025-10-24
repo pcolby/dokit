@@ -41,8 +41,8 @@ jobs:
           CXX: ${{ matrix.env.cxx }}
           PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}
         run: |
-          cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-          build-wrapper-linux-x86-64 --out-dir "$RUNNER_TEMP/sonar" cmake --build "$RUNNER_TEMP" --config Release
+          cmake -D CMAKE_BUILD_TYPE=Release -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}"
+          build-wrapper-linux-x86-64 --out-dir "${RUNNER_TEMP}/sonar" cmake --build "${RUNNER_TEMP}" --config Release
       - name: Scan with SonarQube
         if: github.actor != 'dependabot[bot]'
         uses: SonarSource/sonarqube-scan-action@v6
