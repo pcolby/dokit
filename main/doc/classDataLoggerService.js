@@ -1,8 +1,8 @@
 var classDataLoggerService =
 [
     [ "CharacteristicUuids", "structDataLoggerService_1_1CharacteristicUuids.html", null ],
-    [ "Metadata", "structDataLoggerService_1_1Metadata.html", "structDataLoggerService_1_1Metadata" ],
     [ "Settings", "structDataLoggerService_1_1Settings.html", "structDataLoggerService_1_1Settings" ],
+    [ "Metadata", "structDataLoggerService_1_1Metadata.html", "structDataLoggerService_1_1Metadata" ],
     [ "Samples", "classDataLoggerService.html#a4b0bdeebb95d622831a2c0690450e613", null ],
     [ "Command", "classDataLoggerService.html#a8662772916319f96aa7aeb16c87665cc", [
       [ "Start", "classDataLoggerService.html#a8662772916319f96aa7aeb16c87665ccaa6122a65eaa676f700ae68d393054a37", null ],

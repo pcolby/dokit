@@ -1,8 +1,8 @@
 var classStatusService =
 [
+    [ "ServiceUuids", "structStatusService_1_1ServiceUuids.html", null ],
     [ "CharacteristicUuids", "structStatusService_1_1CharacteristicUuids.html", null ],
     [ "DeviceCharacteristics", "structStatusService_1_1DeviceCharacteristics.html", "structStatusService_1_1DeviceCharacteristics" ],
-    [ "ServiceUuids", "structStatusService_1_1ServiceUuids.html", null ],
     [ "Status", "structStatusService_1_1Status.html", "structStatusService_1_1Status" ],
     [ "BatteryStatus", "classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68", [
       [ "Low", "classStatusService.html#a26ca2c6e0c1127261cc28a778512bf68a28d0edd045e05cf5af64e35ae0c4c6ef", null ],

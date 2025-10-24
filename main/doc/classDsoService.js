@@ -1,8 +1,8 @@
 var classDsoService =
 [
     [ "CharacteristicUuids", "structDsoService_1_1CharacteristicUuids.html", null ],
-    [ "Metadata", "structDsoService_1_1Metadata.html", "structDsoService_1_1Metadata" ],
     [ "Settings", "structDsoService_1_1Settings.html", "structDsoService_1_1Settings" ],
+    [ "Metadata", "structDsoService_1_1Metadata.html", "structDsoService_1_1Metadata" ],
     [ "Samples", "classDsoService.html#a3aebaedb7bf4c20d4ea205b984ef534e", null ],
     [ "Command", "classDsoService.html#af2baee0dc3fa5e308be06c691dece236", [
       [ "FreeRunning", "classDsoService.html#af2baee0dc3fa5e308be06c691dece236a75564fb3d5bebd9283b77cc37a30463f", null ],

@@ -1,8 +1,8 @@
 var classMultimeterService =
 [
     [ "CharacteristicUuids", "structMultimeterService_1_1CharacteristicUuids.html", null ],
-    [ "Reading", "structMultimeterService_1_1Reading.html", "structMultimeterService_1_1Reading" ],
     [ "Settings", "structMultimeterService_1_1Settings.html", "structMultimeterService_1_1Settings" ],
+    [ "Reading", "structMultimeterService_1_1Reading.html", "structMultimeterService_1_1Reading" ],
     [ "MeterStatus", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286", [
       [ "AutoRangeOff", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a8818f11dac54bd1d102f7ab891d02849", null ],
       [ "AutoRangeOn", "classMultimeterService.html#a43c735e6c80c4ada9bc8640d06fbe286a5e657c7063a35c1ab8cf463cc74e0541", null ],
