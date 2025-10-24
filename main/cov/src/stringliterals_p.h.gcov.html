@@ -139,7 +139,7 @@
 <span id="L48"><span class="lineNum">      48</span>              : inline QString operator&quot;&quot;_s(const char16_t *str, size_t size) noexcept</span>
 <span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">      192904 : {</span></span>
 <span id="L50"><span class="lineNum">      50</span>              :     //return QString(QStringPrivate(nullptr, const_cast&lt;char16_t *&gt;(str), qsizetype(size)));</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">      238020 :     return QString::fromUtf16(str, __DOKIT_DEST_SIZE_TYPE(size));</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">      226778 :     return QString::fromUtf16(str, __DOKIT_DEST_SIZE_TYPE(size));</span></span>
 <span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">      192904 : }</span></span>
 <span id="L53"><span class="lineNum">      53</span>              : </span>
 <span id="L54"><span class="lineNum">      54</span>              : } } } // _dokit::Literals::StringLiterals</span>

@@ -111,20 +111,20 @@
 <span id="L20"><span class="lineNum">      20</span>              : /*!</span>
 <span id="L21"><span class="lineNum">      21</span>              :  * Construct a new FlashLedCommand object with \a parent.</span>
 <span id="L22"><span class="lineNum">      22</span>              :  */</span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">         924 : FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">         847 : FlashLedCommand::FlashLedCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">         504 : {</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        1036 : }</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">         959 : }</span></span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">         380 : QStringList FlashLedCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">         325 : QStringList FlashLedCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
 <span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">         360 : {</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">        1120 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         975 :     };</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">        1010 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         865 :     };</span></span>
 <span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         360 : }</span></span>
 <span id="L33"><span class="lineNum">      33</span>              : </span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         152 : QStringList FlashLedCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         130 : QStringList FlashLedCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         144 : {</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         296 :     return DeviceCommand::supportedOptions(parser);</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         274 :     return DeviceCommand::supportedOptions(parser);</span></span>
 <span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         144 : }</span></span>
 <span id="L38"><span class="lineNum">      38</span>              : </span>
 <span id="L39"><span class="lineNum">      39</span>              : /*!</span>
@@ -133,9 +133,9 @@
 <span id="L42"><span class="lineNum">      42</span>              :  * This implementation extends DeviceCommand::processOptions to process additional CLI options</span>
 <span id="L43"><span class="lineNum">      43</span>              :  * supported (or required) by this command.</span>
 <span id="L44"><span class="lineNum">      44</span>              :  */</span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          76 : QStringList FlashLedCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          65 : QStringList FlashLedCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
 <span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          72 : {</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         148 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         137 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
 <span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">          72 :     if (!errors.isEmpty()) {</span></span>
 <span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :         return errors;</span></span>
 <span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :     }</span></span>
@@ -177,21 +177,21 @@
 <span id="L86"><span class="lineNum">      86</span>              : /*!</span>
 <span id="L87"><span class="lineNum">      87</span>              :  * Handles StatusService::deviceLedFlashed events, by outputting the result and exiting.</span>
 <span id="L88"><span class="lineNum">      88</span>              :  */</span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         228 : void FlashLedCommand::deviceLedFlashed()</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         195 : void FlashLedCommand::deviceLedFlashed()</span></span>
 <span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">         216 : {</span></span>
-<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">         444 :     switch (format) {</span></span>
-<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">         148 :     case OutputFormat::Csv:</span></span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         160 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;flash_led_result\nsuccess\n&quot;));</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         148 :         break;</span></span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">         148 :     case OutputFormat::Json:</span></span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">         160 :         std::cout &lt;&lt; qUtf8Printable(u&quot;true\n&quot;_s);</span></span>
-<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">         148 :         break;</span></span>
-<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">         148 :     case OutputFormat::Text:</span></span>
-<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">         160 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></span>
-<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">         148 :         break;</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">         411 :     switch (format) {</span></span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">         137 :     case OutputFormat::Csv:</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         149 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;flash_led_result\nsuccess\n&quot;));</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         137 :         break;</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">         137 :     case OutputFormat::Json:</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">         149 :         std::cout &lt;&lt; qUtf8Printable(u&quot;true\n&quot;_s);</span></span>
+<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">         137 :         break;</span></span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">         137 :     case OutputFormat::Text:</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">         149 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Done.\n&quot;));</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">         137 :         break;</span></span>
 <span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">         216 :     }</span></span>
-<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">         444 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>
-<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">         444 : }</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">         411 :     if (device) disconnect(); // Will exit the application once disconnected.</span></span>
+<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">         411 : }</span></span>
         </pre>
               </td>
             </tr>
