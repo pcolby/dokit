@@ -17,7 +17,7 @@ jobs:
   generate:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install Doxygen
@@ -58,7 +58,7 @@ jobs:
     if: success() && (github.ref == 'refs/heads/main')
     needs: generate
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with: { ref: doc }
       - name: Clear previous docs
         run: rm -rf main/{doc,int}

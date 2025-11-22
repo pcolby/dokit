@@ -20,7 +20,7 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install Qt
         run: |
           sudo apt-mark hold firefox grub-efi-amd64-signed
@@ -47,7 +47,7 @@ jobs:
           sudo apt update
           sudo apt upgrade
           sudo apt install cppcheck
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Perform Cppcheck Analysis
         run: ./.cppcheck.sh --xml --xml-version=2 2> "${RUNNER_TEMP}/cppcheck.xml"
       - name: Generate Report
@@ -65,7 +65,7 @@ jobs:
   Linters:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Check Markdown files
         run: npm install markdownlint-cli2 --global && markdownlint-cli2
       - name: Check shell scripts
