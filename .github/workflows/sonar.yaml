@@ -34,7 +34,7 @@ jobs:
           sudo apt upgrade
           sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
       - name: Install SonarQube build wrapper
-        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v6
+        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v7
       - name: Build with SonarQube wrapper
         env:
           CC: ${{ matrix.env.cc }}
@@ -45,7 +45,7 @@ jobs:
           build-wrapper-linux-x86-64 --out-dir "${RUNNER_TEMP}/sonar" cmake --build "${RUNNER_TEMP}" --config Release
       - name: Scan with SonarQube
         if: github.actor != 'dependabot[bot]'
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarqube-scan-action@v7
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
