@@ -63,12 +63,12 @@ jobs:
       - name: Clear previous docs
         run: rm -rf main/{doc,int}
       - name: Download public docs
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: public-docs
           path: main/doc
       - name: Download internal docs
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: internal-docs
           path: main/int
