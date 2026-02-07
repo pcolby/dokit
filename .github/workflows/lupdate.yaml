@@ -18,9 +18,9 @@ jobs:
           sudo apt update
           sudo apt upgrade
           sudo apt install qt6-{base-{dev{,-tools},doc-dev},connectivity-{dev,doc-html},l10n-tools,tools-dev{,-tools}}
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Check translation files
         run: |
-          cmake -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-          cmake --build "$RUNNER_TEMP" --target {cli,QtPokit}_lupdate # \todo Include gui too, when relevant.
-          [[ -z $(git status --porcelain | tee /dev/stderr) ]]
+          cmake -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}"
+          cmake --build "${RUNNER_TEMP}" --target {cli,QtPokit}_lupdate # \todo Include gui too, when relevant.
+          [[ -z $(git status --porcelain | tee /dev/stderr || :) ]]

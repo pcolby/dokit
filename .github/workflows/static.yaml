@@ -8,6 +8,10 @@ permissions:
 env:
   CMAKE_BUILD_PARALLEL_LEVEL: 4
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   CodeQL:
     permissions:
@@ -16,7 +20,7 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install Qt
         run: |
           sudo apt-mark hold firefox grub-efi-amd64-signed
@@ -24,15 +28,15 @@ jobs:
           sudo apt upgrade
           sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: cpp
       - name: Build
         run: |
-          cmake -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-          cmake --build "$RUNNER_TEMP"
+          cmake -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}"
+          cmake --build "${RUNNER_TEMP}"
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
 
   Cppcheck:
     runs-on: ubuntu-24.04
@@ -43,17 +47,17 @@ jobs:
           sudo apt update
           sudo apt upgrade
           sudo apt install cppcheck
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Perform Cppcheck Analysis
-        run: ./.cppcheck.sh --xml --xml-version=2 2> "$RUNNER_TEMP/cppcheck.xml"
+        run: ./.cppcheck.sh --xml --xml-version=2 2> "${RUNNER_TEMP}/cppcheck.xml"
       - name: Generate Report
         if: ${{ failure() }}
         run: |
-          cppcheck-htmlreport --title=Dokit --file="$RUNNER_TEMP/cppcheck.xml" \
-            --report-dir="$RUNNER_TEMP/report" --source-dir="$GITHUB_WORKSPACE"
+          cppcheck-htmlreport --title=Dokit --file="${RUNNER_TEMP}/cppcheck.xml" \
+            --report-dir="${RUNNER_TEMP}/report" --source-dir="${GITHUB_WORKSPACE}"
       - name: Upload Report
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: Cppcheck HTML Report
           path: "${{ runner.temp }}/report"
@@ -61,7 +65,14 @@ jobs:
   Linters:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
-      - run: npm install markdownlint-cli2 --global && markdownlint-cli2
-      - run: find -name '*.sh' -print -execdir shellcheck --check-sourced --enable=all --external-sources --norc {} +
-      - run: yamllint --strict .
+      - uses: actions/checkout@v6
+      - name: Check Markdown files
+        run: npm install markdownlint-cli2 --global && markdownlint-cli2
+      - name: Check shell scripts
+        run: find . -name '*.sh' -print -execdir shellcheck --check-sourced --enable=all --external-sources --norc {} +
+      - name: Check workflow scripts
+        uses: pcolby/check-run-scripts@v1
+        with:
+          external-variables: QT_ROOT_DIR,RUNNER_WORKSPACE
+      - name: Check YAML files
+        run: yamllint --strict .

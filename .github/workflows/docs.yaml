@@ -7,13 +7,17 @@ permissions:
 
 env:
   CMAKE_BUILD_PARALLEL_LEVEL: 4
-  DOXYGEN_VERSION: 1.14.0
+  DOXYGEN_VERSION: 1.15.0
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   generate:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install Doxygen
@@ -25,23 +29,23 @@ jobs:
           sudo apt upgrade
           sudo apt install graphviz qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
           curl --location --silent "${BASE_URL}${DOXYGEN_VERSION//./_}/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz" |
-            tar --extract --gzip --directory "$RUNNER_TEMP"
-          "$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" --version
+            tar --extract --gzip --directory "${RUNNER_TEMP}"
+          "${RUNNER_TEMP}/doxygen-${DOXYGEN_VERSION}/bin/doxygen" --version
       - name: Build docs
         run: |
-          cmake -D "DOXYGEN_EXECUTABLE=$RUNNER_TEMP/doxygen-${DOXYGEN_VERSION}/bin/doxygen" \
-            -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-          grep -Ee 'qt(core|bluetooth)\.tags' "$RUNNER_TEMP/doc/public.doxy"   # Verify that tagfiles were configured,
-          grep -Ee 'qt(core|bluetooth)\.tags' "$RUNNER_TEMP/doc/internal.doxy" # since they're optional in CMakeLists.
-          cmake --build "$RUNNER_TEMP" --target doc doc-internal
+          cmake -D "DOXYGEN_EXECUTABLE=${RUNNER_TEMP}/doxygen-${DOXYGEN_VERSION}/bin/doxygen" \
+            -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}"
+          grep -Ee 'qt(core|bluetooth)\.tags' "${RUNNER_TEMP}/doc/public.doxy"   # Verify that tagfiles were configured,
+          grep -Ee 'qt(core|bluetooth)\.tags' "${RUNNER_TEMP}/doc/internal.doxy" # since they're optional in CMakeLists.
+          cmake --build "${RUNNER_TEMP}" --target doc doc-internal
       - name: Upload public docs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: public-docs
           path: "${{ runner.temp }}/doc/public"
           if-no-files-found: error
       - name: Upload internal docs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: internal-docs
           path: "${{ runner.temp }}/doc/internal"
@@ -54,17 +58,17 @@ jobs:
     if: success() && (github.ref == 'refs/heads/main')
     needs: generate
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with: { ref: doc }
       - name: Clear previous docs
         run: rm -rf main/{doc,int}
       - name: Download public docs
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: public-docs
           path: main/doc
       - name: Download internal docs
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: internal-docs
           path: main/int
@@ -76,7 +80,7 @@ jobs:
           git diff
       - name: Push updates
         run: |
-          [[ -z $(git status --porcelain) ]] || {
+          [[ -z $(git status --porcelain || :) ]] || {
             git config user.name github-actions
             git config user.email github-actions@github.com
             git pull

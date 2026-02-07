@@ -11,6 +11,10 @@ env:
   CMAKE_BUILD_PARALLEL_LEVEL: 4 # Default only; overridden where appropriate, such as on macOS 14+ below.
   QT_FORCE_STDERR_LOGGING: 1 # Make sure Qt logs errors (during Workflow runs) to console. Especially for Windows.
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   linux:
     if: false
@@ -36,7 +40,7 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.3
-          - 6.10.0
+          - 6.10.2
         os:
           - 22.04
           - 24.04
@@ -64,7 +68,7 @@ jobs:
           # Qt 6.8+ moc requires more a more recent glibc (specifically GLIBC_2.38) than Ubuntu 22.04 provides.
           - { qt: 6.8.3,   arch: arm64, os: 22.04 }
           - { qt: 6.9.3,   arch: arm64, os: 22.04 }
-          - { qt: 6.10.0,  arch: arm64, os: 22.04 }
+          - { qt: 6.10.2,  arch: arm64, os: 22.04 }
     steps:
       - name: Upgrade OS
         run: |
@@ -79,7 +83,9 @@ jobs:
         run: sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
       - name: Install Ubuntu's Qt6
         if: matrix.qt == 6
-        run: sudo apt install qt6-{base-dev{,-tools},connectivity-dev,l10n-tools,tools-dev{,-tools}} ${tagsPackages}
+        run: |
+          # shellcheck disable=SC2086 # We intentionally want ${tagsPackages} to undergo word splitting.
+          sudo apt install qt6-{base-dev{,-tools},connectivity-dev,l10n-tools,tools-dev{,-tools}} ${tagsPackages}
         env: # The *.tags files (we want for building documentation) are not available in Ubuntu 22.04's Qt6 packages.
           tagsPackages: ${{ matrix.os != '22.04' && 'qt6-base-doc-dev qt6-connectivity-doc-html' || '' }}
       - name: Install online Qt version
@@ -97,7 +103,7 @@ jobs:
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: aqtinstall-log-linux-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.cc }}-${{ matrix.qt }}
           path: aqtinstall.log
@@ -106,43 +112,45 @@ jobs:
         uses: pcolby/install-linuxdeploy@v1
         with:
           plugins: qt
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Build
         id: build
         env:
           CC: ${{ matrix.cc }}
           CXX: ${{ matrix.cc == 'gcc' && 'g++' || 'clang++' }}
+          MATRIX_QT: ${{ matrix.os }}
+          MATRIX_OS: ${{ matrix.os }}
           PROJECT_BUILD_ID: >-
             ${{ github.run_number }}.linux.${{ matrix.os }}.${{ matrix.arch }}.${{ matrix.cc }}.qt-${{ matrix.qt }}
         run: |
-          [[ '${{ matrix.qt }}' =~ ^[56]$ ]] ||
-            qtInstallDocs="$RUNNER_WORKSPACE/Qt/Docs/Qt-${QT_VERSION:-${{ matrix.qt }}}"
+          [[ "${MATRIX_QT}" =~ ^[56]$ ]] ||
+            qtInstallDocs="${RUNNER_WORKSPACE}/Qt/Docs/Qt-${QT_VERSION:-${{ matrix.qt }}}"
           # With coverage instrumentation (except Ubuntu 22.04's llvm-lcov version does not support `--sources`)
-          [[ '${{ matrix.os }}' == '22.04' && '${{ matrix.cc }}' == 'clang' ]] ||
+          [[ "${MATRIX_OS}" == '22.04' && "${CC}" == 'clang' ]] ||
           cmake -D CMAKE_BUILD_TYPE=Release \
                 -D ENABLE_COVERAGE=true \
-                ${qtInstallDocs:+-D "QT_INSTALL_DOCS=$qtInstallDocs"} \
-                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/coverage"
+                ${qtInstallDocs:+-D "QT_INSTALL_DOCS=${qtInstallDocs}"} \
+                -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}/coverage"
           # Without coverage instrumentation.
           cmake -D CMAKE_BUILD_TYPE=Release \
                 -D ENABLE_COVERAGE=false \
-                ${qtInstallDocs:+-D "QT_INSTALL_DOCS=$qtInstallDocs"} \
-                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/release"
-          tee -a "$GITHUB_OUTPUT" <<< "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")"
-          [[ '${{ matrix.os }}' == '22.04' && '${{ matrix.cc }}' == 'clang' ]] ||
-            cmake --build "$RUNNER_TEMP/coverage"
-          cmake --build "$RUNNER_TEMP/release"
-          [[ '${{ matrix.os }}' == '22.04' && '${{ matrix.cc }}' == 'clang' ]] ||
-            "$RUNNER_TEMP/coverage/src/cli/dokit" --version
-          "$RUNNER_TEMP/release/src/cli/dokit" --version
+                ${qtInstallDocs:+-D "QT_INSTALL_DOCS=${qtInstallDocs}"} \
+                -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}/release"
+          tee -a "${GITHUB_OUTPUT}" <<< "dokitVersion=$(cat "${RUNNER_TEMP}/release/version.txt" || :)"
+          [[ "${MATRIX_OS}" == '22.04' && "${CC}" == 'clang' ]] || {
+            cmake --build "${RUNNER_TEMP}/coverage"
+            "${RUNNER_TEMP}/coverage/src/cli/dokit" --version
+          }
+          cmake --build "${RUNNER_TEMP}/release"
+          "${RUNNER_TEMP}/release/src/cli/dokit" --version
       - name: Test w/ coverage
         if: matrix.os != '22.04' || matrix.cc != 'clang'
-        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
+        run: ctest --output-on-failure --test-dir "${RUNNER_TEMP}/coverage" --verbose
       - name: Test w/o coverage
-        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
+        run: ctest --output-on-failure --test-dir "${RUNNER_TEMP}/release" --verbose
       - name: Collate test coverage
         if: matrix.os != '22.04' || matrix.cc != 'clang'
-        run: cmake --build "$RUNNER_TEMP/coverage" --target coverage
+        run: cmake --build "${RUNNER_TEMP}/coverage" --target coverage
       - name: Test localisations
         # \todo For unknown reasons, Qt 6.2.4 w/ GCC fails to include full set of *.qm file - happens locally too, not
         # just on GitHub hosted runners.  We could diagnose further, but this one corner case is very low value today.
@@ -161,7 +169,7 @@ jobs:
             echo "Checking: ${langName} (${langId})"
             output=$(
               LANG="${langId}.UTF-8" \
-              "$RUNNER_TEMP/release/src/cli/dokit" calibrate --debug --temperature x 2>&1 || :)
+              "${RUNNER_TEMP}/release/src/cli/dokit" calibrate --debug --temperature x 2>&1 || :)
             printf '%s\n--------\n' "${output}"
             grep "Locale:.*${langName}" <<< "${output}"
             grep "App translations: :/i18n/cli/${langId}\.qm" <<< "${output}"
@@ -172,7 +180,7 @@ jobs:
         if: >- # If we have coverage reports, and/or TAP files (TAP support added in Qt Test v5.12).
           matrix.os != '22.04' || matrix.cc != 'clang' || !startsWith(matrix.qt, '5') ||
           ( startsWith(matrix.qt, '5.1') && !startsWith(matrix.qt, '5.10') && !startsWith(matrix.qt, '5.11') )
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: test-results-${{ steps.build.outputs.dokitVersion }}
           path: |
@@ -188,12 +196,12 @@ jobs:
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: >
-          bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial \
+          bash <(curl -Ls https://coverage.codacy.com/get.sh || :) report --partial \
             -l CPP -r "${{ runner.temp }}/coverage/coverage.info"
       - name: Build AppImage
-        run: cmake --build "$RUNNER_TEMP/release" --target cli-appimage
+        run: cmake --build "${RUNNER_TEMP}/release" --target cli-appimage
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}
           path: |
@@ -201,7 +209,7 @@ jobs:
             ${{ runner.temp }}/release/src/cli/dokit
           if-no-files-found: error
       - name: Upload AppImage
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
           path: ${{ runner.temp }}/release/dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
@@ -212,6 +220,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       CMAKE_BUILD_PARALLEL_LEVEL: 3
+      MATRIX_CC: ${{ matrix.cc }}
+      MATRIX_OS: ${{ matrix.os }}
+      MATRIX_QT: ${{ matrix.qt }}
     timeout-minutes: 15
     strategy:
       fail-fast: false
@@ -232,7 +243,7 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.3
-          - 6.10.0
+          - 6.10.2
         os:
           - macos-14
           - macos-15
@@ -259,9 +270,9 @@ jobs:
           - { qt: '6.7.3', cc: gcc }
           - { qt: '6.8.3', cc: gcc }
           - { qt: '6.9.3', cc: gcc }
-          - { qt: '6.10.0', cc: gcc }
+          - { qt: '6.10.2', cc: gcc }
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install lcov
         run: brew install bash lcov
       - name: Install Qt
@@ -277,7 +288,7 @@ jobs:
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: aqtinstall-log-${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.qt }}
           path: aqtinstall.log
@@ -286,31 +297,31 @@ jobs:
         id: arch
         run: |
           # Qt only supports x86-64 (not arm64) prior to Qt 6.2.0. See https://www.qt.io/blog/qt-on-apple-silicon
-          if [[ '${{ matrix.qt }}' =~ ^(5|6\.[01])\. ]]; then arch=x86_64
+          if [[ "${MATRIX_QT}" =~ ^(5|6\.[01])\. ]]; then arch=x86_64
           # GitHub runners' (homebrew'd) gcc's only support support x86-64 prior to macos-14, and only arm64 after.
           # Note: if we attempt to use multiple archs, gcc will warn, but continue, resulting in later failures.
-          elif [[ '${{ matrix.cc }}' == 'gcc' ]]; then arch='arm64'
+          elif [[ "${MATRIX_CC}" == 'gcc' ]]; then arch='arm64'
           # Otherwise, default to universal binaries, where possible.
           else arch='arm64;x86_64'; fi
-          tee -a "$GITHUB_ENV" <<< "CMAKE_OSX_ARCHITECTURES=${arch}"
-          tee -a "$GITHUB_OUTPUT" <<< "buildId=${arch//;/-}"
+          tee -a "${GITHUB_ENV}" <<< "CMAKE_OSX_ARCHITECTURES=${arch}"
+          tee -a "${GITHUB_OUTPUT}" <<< "buildId=${arch//;/-}"
       - name: Choose compiler toolchain
         run: |
-          if [[ '${{ matrix.cc }}' == 'gcc' ]]; then
-            tee -a "$GITHUB_ENV" <<< 'CC=gcc-15'
-            tee -a "$GITHUB_ENV" <<< 'CXX=g++-15'
-            tee -a "$GITHUB_ENV" <<< 'GCOV=gcov-15'
+          if [[ "${MATRIX_CC}" == 'gcc' ]]; then
+            tee -a "${GITHUB_ENV}" <<< 'CC=gcc-15'
+            tee -a "${GITHUB_ENV}" <<< 'CXX=g++-15'
+            tee -a "${GITHUB_ENV}" <<< 'GCOV=gcov-15'
           else
-            case '${{ matrix.os }}' in
+            case "${MATRIX_OS}" in
              #macos-14) llvmPrefix=$(brew --prefix 'llvm@15') ;; # *Not* newer than the non-new llvm (v16).
               macos-15) llvmPrefix=$(brew --prefix 'llvm@18') ;; # Newer than non-brew llvm (v17).
               macos-26) llvmPrefix=$(brew --prefix 'llvm@20') ;; # Newer than non-brew llvm (v17).
               *) llvmPrefix='/Library/Developer/CommandLineTools/usr' ;; # Host's non-brew llvm.
             esac
-            tee -a "$GITHUB_ENV" <<< "CC=${llvmPrefix}/bin/clang"
-            tee -a "$GITHUB_ENV" <<< "CXX=${llvmPrefix}/bin/clang++"
-            tee -a "$GITHUB_ENV" <<< "LLVM_COV=${llvmPrefix}/bin/llvm-cov"
-            tee -a "$GITHUB_ENV" <<< "LLVM_PROFDATA=${llvmPrefix}/bin/llvm-profdata"
+            tee -a "${GITHUB_ENV}" <<< "CC=${llvmPrefix}/bin/clang"
+            tee -a "${GITHUB_ENV}" <<< "CXX=${llvmPrefix}/bin/clang++"
+            tee -a "${GITHUB_ENV}" <<< "LLVM_COV=${llvmPrefix}/bin/llvm-cov"
+            tee -a "${GITHUB_ENV}" <<< "LLVM_PROFDATA=${llvmPrefix}/bin/llvm-profdata"
           fi
       - name: Build
         id: build
@@ -324,35 +335,25 @@ jobs:
                 -D ENABLE_COVERAGE=true \
                 -D LLVM_COV="${LLVM_COV:-}" \
                 -D LLVM_PROFDATA="${LLVM_PROFDATA:-}" \
-                -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
-                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/coverage"
+                -D QT_INSTALL_DOCS="${RUNNER_WORKSPACE}/Qt/Docs/Qt-${MATRIX_QT}" \
+                -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}/coverage"
           # Without coverage instrumentation.
           cmake -D CMAKE_BUILD_TYPE=Release \
                 -D ENABLE_COVERAGE=false \
-                -D QT_INSTALL_DOCS="$RUNNER_WORKSPACE/Qt/Docs/Qt-${{ matrix.qt }}" \
-                -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP/release"
-          tee -a "$GITHUB_OUTPUT" <<< "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")"
-          { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
-            tee -a "$GITHUB_OUTPUT"
-          cmake --build "$RUNNER_TEMP/coverage" -- VERBOSE=1
-          cmake --build "$RUNNER_TEMP/release" -- VERBOSE=1
-          "$RUNNER_TEMP/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
-          "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
-      - name: Grant Bluetooth access
-        run: |
-          for db in {"${HOME}",}'/Library/Application Support/com.apple.TCC/TCC.db'; do
-            [[ "${db}" == "${HOME}"* ]] && reason=3 || reason=4 # 'User Set' or 'System Set'.
-            echo "Upserting: ${db} (${reason})"
-            sudo sqlite3 "${db}" "INSERT or REPLACE INTO access
-              ( service, client, client_type, auth_value, auth_reason, auth_version, flags ) VALUES
-              ( 'kTCCServiceBluetoothAlways', '/opt/hca/hosted-compute-agent', 1, 2, ${reason}, 1, 0 ),
-              ( 'kTCCServiceBluetoothAlways', '/usr/local/opt/runner/provisioner/provisioner', 1, 2, ${reason}, 1, 0 )"
-          done
+                -D QT_INSTALL_DOCS="${RUNNER_WORKSPACE}/Qt/Docs/Qt-${MATRIX_QT}" \
+                -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}/release"
+          tee -a "${GITHUB_OUTPUT}" <<< "dokitVersion=$(cat "${RUNNER_TEMP}/release/version.txt" || :)"
+          { echo -n 'tap='; [[ "${MATRIX_QT}" =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
+            tee -a "${GITHUB_OUTPUT}"
+          cmake --build "${RUNNER_TEMP}/coverage" -- VERBOSE=1
+          cmake --build "${RUNNER_TEMP}/release" -- VERBOSE=1
+          "${RUNNER_TEMP}/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
+          "${RUNNER_TEMP}/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
       - name: Test w/ coverage
-        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/coverage" --verbose
+        run: ctest --output-on-failure --test-dir "${RUNNER_TEMP}/coverage" --verbose
         timeout-minutes: 1
       - name: Test w/o coverage
-        run: ctest --output-on-failure --test-dir "$RUNNER_TEMP/release" --verbose
+        run: ctest --output-on-failure --test-dir "${RUNNER_TEMP}/release" --verbose
         timeout-minutes: 1
       - name: Test localisations
         if: startsWith(matrix.qt, '6')
@@ -366,8 +367,8 @@ jobs:
             IFS='|' read -r langName localText <<< "${languages[${langId}]}"
             echo "Checking: ${langName} (${langId})"
             output=$(
-              LANG="${langId}.UTF-8" \
-              "$RUNNER_TEMP/release/src/cli/dokit.app/Contents/MacOS/dokit" calibrate --debug --temperature x 2>&1 || :)
+              LANG="${langId}.UTF-8" "${RUNNER_TEMP}/release/src/cli/dokit.app/Contents/MacOS/dokit" \
+                calibrate --debug --temperature x 2>&1 || :)
             printf '%s\n--------\n' "${output}"
             grep "Locale:.*${langName}" <<< "${output}"
             grep "App translations: :/i18n/cli/${langId}\.qm" <<< "${output}"
@@ -376,11 +377,11 @@ jobs:
           done
       - name: Disable lcov consistency checks for gcc
         if: matrix.cc == 'gcc'
-        run: echo 'check_data_consistency = 0' >> "$HOME/.lcovrc"
+        run: echo 'check_data_consistency = 0' >> "${HOME}/.lcovrc"
       - name: Collate test coverage
-        run: cmake --build "$RUNNER_TEMP/coverage" --target coverage
+        run: cmake --build "${RUNNER_TEMP}/coverage" --target coverage
       - name: Upload test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: test-results-${{ steps.build.outputs.dokitVersion }}
           path: |
@@ -394,12 +395,12 @@ jobs:
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: >
-          bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial \
+          bash <(curl -Ls https://coverage.codacy.com/get.sh || :) report --partial \
             -l CPP -r "${{ runner.temp }}/coverage/coverage.info"
       - name: Make app bundle
-        run: macdeployqt "$RUNNER_TEMP/release/src/cli/dokit.app" -dmg -verbose=2
+        run: macdeployqt "${RUNNER_TEMP}/release/src/cli/dokit.app" -dmg -verbose=2
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}
           path: ${{ runner.temp }}/release/src/cli/*.app
@@ -407,7 +408,13 @@ jobs:
 
   win:
     runs-on: windows-${{ matrix.os }}
-    defaults: { run: { shell: cmd } }
+    env:
+      MATRIX_ARCH: ${{ matrix.arch }}
+      MATRIX_QT: ${{ matrix.qt }}
+      MATRIX_TOOLCHAIN: ${{ matrix.toolchain }}
+    defaults:
+      run:
+        shell: cmd
     strategy:
       fail-fast: false
       matrix:
@@ -427,13 +434,34 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.3
-          - 6.10.0
+          - 6.10.2
         os:
+          - 11-arm
           - '2022'
           - '2025'
         arch: [ x86, x86-64, arm64 ]
         toolchain: [ llvm, mingw, msvc ]
         exclude:
+          # Exclude Qt's earlier than 6.8 for windows-11-arm, since Qt only added native Win ARM builds in Qt 6.8.
+          - { os: 11-arm, qt: 5.9.9 }
+          - { os: 11-arm, qt: 5.10.1 }
+          - { os: 11-arm, qt: 5.11.3 }
+          - { os: 11-arm, qt: 5.12.12 }
+          - { os: 11-arm, qt: 5.13.2 }
+          - { os: 11-arm, qt: 5.14.2 }
+          - { os: 11-arm, qt: 5.15.2 }
+          - { os: 11-arm, qt: 6.2.4 }
+          - { os: 11-arm, qt: 6.3.2 }
+          - { os: 11-arm, qt: 6.4.3 }
+          - { os: 11-arm, qt: 6.5.3 }
+          - { os: 11-arm, qt: 6.6.3 }
+          - { os: 11-arm, qt: 6.7.3 }
+          # Exclude non-arm64 builds and non-MSVC toolchains for windows-11-arm, since Qt doesn't support native
+          # Windows ARM64 builds for any of those.
+          - { os: 11-arm, arch: x86 }
+          - { os: 11-arm, arch: x86-64 }
+          - { os: 11-arm, toolchain: llvm }
+          - { os: 11-arm, toolchain: mingw }
           # Exclude arm64 builds for Qt's earlier than 6.2, since Qt only added (Windows) arm64
           # 'Technology Preview' support in 6.2.
           - { arch: arm64, qt: '5.9.9' }
@@ -443,8 +471,6 @@ jobs:
           - { arch: arm64, qt: '5.13.2' }
           - { arch: arm64, qt: '5.14.2' }
           - { arch: arm64, qt: '5.15.2' }
-          # \todo Temporarily exclude arm64 builds for Qt 6.10. See https://github.com/miurahr/aqtinstall/issues/939
-          - { arch: arm64, qt: '6.10.0' }
           # Exclude MinGW (including LLVM) builds for arm64, since Qt does not provide those binaries yet.
           - { arch: arm64, toolchain: llvm }
           - { arch: arm64, toolchain: mingw }
@@ -461,7 +487,7 @@ jobs:
           - { arch: x86, qt: '6.7.3' }
           - { arch: x86, qt: '6.8.3' }
           - { arch: x86, qt: '6.9.3' }
-          - { arch: x86, qt: '6.10.0' }
+          - { arch: x86, qt: '6.10.2' }
           # Exclude MinGW (including LLVM) builds for x86-64 with Qt's earlier than 5.12, since the Qt online
           # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
           - { arch: x86-64, qt: '5.9.9',  toolchain: llvm }
@@ -489,6 +515,25 @@ jobs:
           - { toolchain: mingw, arch: x86-64, qt: '5.13.2',  os: '2025' }
           - { toolchain: mingw, arch: x86-64, qt: '6.2.4',   os: '2025' }
           - { toolchain: mingw, arch: x86-64, qt: '6.3.2',   os: '2025' }
+          # Exclude Windows 2022 builds with MinGW fo Qt's earlier than 5.14, and earlier than 6.4, because GitHub's
+          # runners have begun segfaulting all unit tests. These had been passing fine until somewhere between
+          # 2025-10-17 (good) and 2025-10-22 (bad), with no code or Qt changes in that time. \todo I could track these
+          # down, and potentially report an issue to GitHub, but the priorities for these sepcific builds are very low.
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.9.9' }
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.10.1' }
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.11.3' }
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.12.12' }
+          - { toolchain: mingw, os: 2022, arch: x86, qt: '5.13.2' }
+          - { toolchain: mingw, os: 2022, arch: x86-64, qt: '5.12.12' }
+          - { toolchain: mingw, os: 2022, arch: x86-64, qt: '5.13.2' }
+          - { toolchain: mingw, os: 2022, arch: x86-64, qt: '6.2.4' }
+          - { toolchain: mingw, os: 2022, arch: x86-64, qt: '6.3.2' }
+          # Exclude Windows 2025 x86 builds with MinGW for Qt's 5.14 and 5.15, because GitHub's runners have begun
+          # failing CMake's "working compiler" check. These had been passing fine until somewhere between
+          # 2025-10-17 (good) and 2025-10-22 (bad), with no code or Qt changes in that time. \todo I could track these
+          # down, and potentially report an issue to GitHub, but the priorities for these sepcific builds are very low.
+          - { toolchain: mingw, os: 2025, arch: x86, qt: '5.14.2' }
+          - { toolchain: mingw, os: 2025, arch: x86, qt: '5.15.2' }
 
         include:
           # Map the aqtinstall (aqt) architectures.
@@ -507,12 +552,12 @@ jobs:
           - { qt: '5.11.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
           - { qt: '5.11.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.12.12', toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
-          - { qt: '5.12.12', toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          # { qt: '5.12.12', toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
           - { qt: '5.12.12', toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
           - { qt: '5.12.12', toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
           - { qt: '5.12.12', toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
           - { qt: '5.13.2',  toolchain: mingw, arch: x86,    aqtArch: win32_mingw73 }
-          - { qt: '5.13.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
+          # { qt: '5.13.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw73 }
           - { qt: '5.13.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2017 }
           - { qt: '5.13.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
           - { qt: '5.13.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2017_64 }
@@ -526,10 +571,10 @@ jobs:
           - { qt: '5.15.2',  toolchain: msvc,  arch: x86,    aqtArch: win32_msvc2019 }
           - { qt: '5.15.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2015_64 }
           - { qt: '5.15.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
-          - { qt: '6.2.4',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          # { qt: '6.2.4',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.2.4',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.2.4',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
-          - { qt: '6.3.2',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          # { qt: '6.3.2',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.3.2',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2019_arm64 }
           - { qt: '6.3.2',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2019_64 }
           - { qt: '6.4.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
@@ -548,15 +593,18 @@ jobs:
           - { qt: '6.8.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.8.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.8.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.8.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
           - { qt: '6.8.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           - { qt: '6.9.3',   toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.9.3',   toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.9.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.9.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
           - { qt: '6.9.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
-          - { qt: '6.10.0',  toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
-          - { qt: '6.10.0',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
-          # { qt: '6.10.0',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled } \todo
-          - { qt: '6.10.0',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
+          - { qt: '6.10.2',  toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
+          - { qt: '6.10.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.10.2',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.10.2',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
+          - { qt: '6.10.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           # Map the MSVC architecture.
           - { toolchain: msvc, arch: arm64,  msvcArch: amd64_arm64 }
           - { toolchain: msvc, arch: x86,    msvcArch: amd64_x86 }
@@ -577,8 +625,8 @@ jobs:
           - { toolchain: 'mingw', arch: x86-64, qt: '6.8.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'llvm',  arch: x86-64, qt: '6.9.3',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.9.3',  aqtTools: 'tools_mingw1310' }
-          - { toolchain: 'llvm',  arch: x86-64, qt: '6.10.0', aqtTools: 'tools_llvm_mingw1706' }
-          - { toolchain: 'mingw', arch: x86-64, qt: '6.10.0', aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'llvm',  arch: x86-64, qt: '6.10.2', aqtTools: 'tools_llvm_mingw1706' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.10.2', aqtTools: 'tools_mingw1310' }
           ## Windows Server 2025-specific cases.
           - { os: '2025', toolchain: 'mingw', arch: x86, qt: '5.9.9',
               aqtTools: 'tools_mingw81,qt.tools.win32_mingw810' }
@@ -598,16 +646,16 @@ jobs:
         run: |
           # Paths needed for MSYS2's LCOV to function properly. Note, its important that we add the mingw64 one here
           # before any later mingw installs (including those from install-qt-action) or this would interfere with those.
-          tee -a "$GITHUB_PATH" <<< 'C:\msys64\usr\bin'     # Else geninfo will fail to find .gcda files (not sure why).
-          tee -a "$GITHUB_PATH" <<< 'C:\msys64\mingw64\bin' # Else lcov will fail to find its own geninfo command.
+          tee -a "${GITHUB_PATH}" <<< 'C:\msys64\usr\bin' # Else geninfo will fail to find .gcda files (not sure why).
+          tee -a "${GITHUB_PATH}" <<< 'C:\msys64\mingw64\bin' # Else lcov will fail to find its own geninfo command.
           # For 32-bit (x86) MinGW builds, place GitHub's mingw32 at the head of the path (install-qt-actions would
           # supersede this below, but we never install (32-bit) mingw32 via install-qt-actions, so not an issue).
-          [[ '${{ matrix.toolchain }}' != 'mingw' || '${{ matrix.arch }}' != 'x86' ]] ||
-            tee -a "$GITHUB_PATH" <<< 'C:\mingw32\bin'
+          [[ "${MATRIX_TOOLCHAIN}" != 'mingw' || "${MATRIX_ARCH}" != 'x86' ]] ||
+            tee -a "${GITHUB_PATH}" <<< 'C:\mingw32\bin'
       - name: Install LCOV
         if: matrix.toolchain != 'msvc'
         run: pacman --sync --noconfirm --verbose mingw-w64-x86_64-lcov
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
@@ -621,10 +669,14 @@ jobs:
              ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                  (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
+          # \todo Remove aqtsource after next aqtinstall release. See https://github.com/miurahr/aqtinstall/issues/998
+          aqtsource: |- # Use aqtinstall HEAD when cross-compiling for ARM64 with Qt 6.10.x
+            ${{ matrix.arch == 'arm64' && matrix.os != '11-arm' && startsWith(matrix.qt, '6.10.') &&
+              'git+https://github.com/miurahr/aqtinstall.git' || '' }}
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: aqtinstall-log-win-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}
           path: aqtinstall.log
@@ -670,9 +722,9 @@ jobs:
         id: post-build
         shell: bash
         run: |
-          tee -a "${GITHUB_OUTPUT}" <<< "dokitVersion=$(cat "$RUNNER_TEMP/release/version.txt")"
-          { echo -n 'tap='; [[ '${{ matrix.qt }}' =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
-            tee -a "$GITHUB_OUTPUT"
+          tee -a "${GITHUB_OUTPUT}" <<< "dokitVersion=$(cat "${RUNNER_TEMP}/release/version.txt" || :)"
+          { echo -n 'tap='; [[ "${MATRIX_QT}" =~ ^5\.1[2-9]|6 ]] && echo true || echo false; } |
+            tee -a "${GITHUB_OUTPUT}"
       - name: Install DLL for tests w/ coverage
         if: matrix.toolchain != 'msvc'
         run: |
@@ -705,7 +757,7 @@ jobs:
         run: cmake --build "%RUNNER_TEMP%/coverage" --target coverage --verbose
       - name: Upload test results
         if: matrix.arch != 'arm64' && ( matrix.toolchain != 'msvc' || fromJSON(steps.post-build.outputs.tap) )
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: test-results-${{ steps.post-build.outputs.dokitVersion }}
           path: |
@@ -720,7 +772,7 @@ jobs:
       - name: Check portable version
         if: matrix.arch != 'arm64'
         shell: bash
-        run: '"$RUNNER_TEMP/release/portable/dokit.exe" --version'
+        run: '"${RUNNER_TEMP}/release/portable/dokit.exe" --version'
       - name: Test localisations
         if: matrix.arch != 'arm64' && startsWith(matrix.qt, '6')
         shell: bash
@@ -733,10 +785,10 @@ jobs:
           for langId in "${!languages[@]}"; do
             IFS='|' read -r langName localText <<< "${languages[${langId}]}"
             echo "Checking: ${langName} (${langId})"
-            [[ '${{ matrix.toolchain }}' != 'msvc' ]] || powershell Set-WinUserLanguageList -Force "${langId/_/-}"
+            [[ "${MATRIX_TOOLCHAIN}" != 'msvc' ]] || powershell Set-WinUserLanguageList -Force "${langId/_/-}"
             output=$(
-              [[ '${{ matrix.toolchain }}' == 'msvc' ]] || export LANG="${langId}.UTF-8"
-              "$RUNNER_TEMP/release/portable/dokit.exe" calibrate --debug --temperature x 2>&1 || :)
+              [[ "${MATRIX_TOOLCHAIN}" == 'msvc' ]] || export LANG="${langId}.UTF-8"
+              "${RUNNER_TEMP}/release/portable/dokit.exe" calibrate --debug --temperature x 2>&1 || :)
             printf '%s\n--------\n' "${output}"
             grep "Locale: .*${langName}" <<< "${output}"
             grep "App translations: :/i18n/cli/${langId}\.qm" <<< "${output}"
@@ -746,7 +798,7 @@ jobs:
         env:
           QT_VERSION: ${{ matrix.qt }}
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dokit-${{ steps.post-build.outputs.dokitVersion }}
           path: |
@@ -755,7 +807,7 @@ jobs:
           if-no-files-found: error
       - name: Upload artifacts (portable)
         if: matrix.arch != 'arm64'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dokit-${{ steps.post-build.outputs.dokitVersion }}.portable
           path: ${{ runner.temp }}/release/portable
@@ -767,7 +819,7 @@ jobs:
     env:
       LCOV_VERSION: 2.3.2 # Should stay in-step, or ahead of, the Ubuntu, macOS and Windows versions.
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install lcov
         run: |
           sudo apt-mark hold firefox grub-efi-amd64-signed
@@ -783,7 +835,7 @@ jobs:
         env:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh run download "$GITHUB_RUN_ID" --dir "$RUNNER_TEMP/artifacts" --pattern test-results-*
+        run: gh run download "${GITHUB_RUN_ID}" --dir "${RUNNER_TEMP}/artifacts" --pattern test-results-*
       - name: Generate test summary
         uses: pcolby/tap-summary@v1
         with:
@@ -796,10 +848,11 @@ jobs:
           # Update source code paths from Windows tracefiles to match Linux, and remove all \r chars from line endings.
           sed -i -Ee 's|\r$||' -e 's|\\|/|g' -e 's|^SF:[CD]:/a|SF:/home/runner/work|' artifacts/*.win*/**/coverage.info
           # Combine all tracefiles into one. Note, ignoring inconsistencies between Clang and GCC reports :|
-          lcov --ignore-errors inconsistent $(find artifacts -name '*.info' -type f -printf '-a %p\n') -o coverage.info
+          read -a infoFileArgs -r <<< "$(find artifacts -name '*.info' -type f -printf '-a %p ' || :)"
+          lcov --ignore-errors inconsistent "${infoFileArgs[@]}" -o coverage.info
         working-directory: ${{ runner.temp }}
       - name: Upload combined tracefile
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: coverage-tracefile
           path: "${{ runner.temp }}/coverage.info"
@@ -817,7 +870,7 @@ jobs:
             coverage/**/*.html
         working-directory: ${{ runner.temp }}
       - name: Upload HTML coverage report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: coverage-report
           path: "${{ runner.temp }}/coverage"
@@ -826,7 +879,7 @@ jobs:
         if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        run: bash <(curl -Ls https://coverage.codacy.com/get.sh) final
+        run: bash <(curl -Ls https://coverage.codacy.com/get.sh || :) final
 
   update-tests-on-doc-branch:
     permissions:
@@ -835,12 +888,12 @@ jobs:
     if: success() && (github.ref == 'refs/heads/main')
     needs: collate-test-results
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with: { ref: doc }
       - name: Clear previous coverage report
         run: rm -rf main/cov
       - name: Download HTML report
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: coverage-report
           path: main/cov
@@ -850,7 +903,7 @@ jobs:
         run: git status && git diff
       - name: Push updates
         run: |
-          [[ -z $(git status --porcelain) ]] || {
+          [[ -z $(git status --porcelain || :) ]] || {
             git config user.name github-actions
             git config user.email github-actions@github.com
             git pull

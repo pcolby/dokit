@@ -24,7 +24,7 @@ jobs:
           - { cc: clang, cxx: clang++ }
           - { cc: gcc, cxx: g++ }
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Install Qt
@@ -34,18 +34,18 @@ jobs:
           sudo apt upgrade
           sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
       - name: Install SonarQube build wrapper
-        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v6
+        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v7
       - name: Build with SonarQube wrapper
         env:
           CC: ${{ matrix.env.cc }}
           CXX: ${{ matrix.env.cxx }}
           PROJECT_BUILD_ID: ${{ github.run_number }}.linux.x86-64.${{ matrix.env.cc }}
         run: |
-          cmake -D CMAKE_BUILD_TYPE=Release -S "$GITHUB_WORKSPACE" -B "$RUNNER_TEMP"
-          build-wrapper-linux-x86-64 --out-dir "$RUNNER_TEMP/sonar" cmake --build "$RUNNER_TEMP" --config Release
+          cmake -D CMAKE_BUILD_TYPE=Release -S "${GITHUB_WORKSPACE}" -B "${RUNNER_TEMP}"
+          build-wrapper-linux-x86-64 --out-dir "${RUNNER_TEMP}/sonar" cmake --build "${RUNNER_TEMP}" --config Release
       - name: Scan with SonarQube
         if: github.actor != 'dependabot[bot]'
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarqube-scan-action@v7
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
