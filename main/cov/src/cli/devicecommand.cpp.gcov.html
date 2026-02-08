@@ -121,7 +121,7 @@
 <span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          48 : {</span></span>
 <span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         366 :     qCInfo(lc).noquote() &lt;&lt; ((deviceToScanFor.isNull())</span></span>
 <span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         243 :         ? tr(&quot;Looking for first available Pokit device...&quot;)</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         353 :         : tr(R&quot;(Looking for device &quot;%1&quot;...)&quot;).arg(deviceToScanFor));</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         349 :         : tr(R&quot;(Looking for device &quot;%1&quot;...)&quot;).arg(deviceToScanFor));</span></span>
 <span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         178 :     discoveryAgent-&gt;start();</span></span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         178 :     return true;</span></span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          48 : }</span></span>
@@ -438,7 +438,7 @@
 <span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :         return;</span></span>
 <span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         275 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         268 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></span>
 <span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         335 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></span>
 <span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         202 :         ((!info.deviceUuid().isNull()) &amp;&amp; (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))</span></span>
 <span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :     {</span></span>
@@ -485,7 +485,7 @@
 <span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         274 :     if (!device) {</span></span>
 <span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         462 :         qCWarning(lc).noquote() &lt;&lt; ((deviceToScanFor.isNull())</span></span>
 <span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">         339 :             ? tr(&quot;Failed to find any Pokit device.&quot;)</span></span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         449 :             : tr(R&quot;(Failed to find device &quot;%1&quot;.)&quot;).arg(deviceToScanFor));</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         445 :             : tr(R&quot;(Failed to find device &quot;%1&quot;.)&quot;).arg(deviceToScanFor));</span></span>
 <span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">         242 :         QCoreApplication::exit(EXIT_FAILURE);</span></span>
 <span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">         144 :     }</span></span>
 <span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">         274 : }</span></span>
