@@ -6,7 +6,7 @@ permissions:
   contents: read
 
 env:
-  CMAKE_BUILD_PARALLEL_LEVEL: 4
+  CMAKE_BUILD_PARALLEL_LEVEL: 1
   DOXYGEN_VERSION: 1.16.1
 
 defaults:
@@ -15,7 +15,7 @@ defaults:
 
 jobs:
   generate:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
         with:
@@ -54,7 +54,7 @@ jobs:
   publish:
     permissions:
       contents: write
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     if: success() && (github.ref == 'refs/heads/main')
     needs: generate
     steps:

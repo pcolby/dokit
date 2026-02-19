@@ -813,7 +813,7 @@ jobs:
 
   collate-test-results:
     needs: [ linux, mac, win ]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     env:
       LCOV_VERSION: 2.4 # Should stay in-step, or ahead of, the Ubuntu, macOS and Windows versions.
     steps:
@@ -882,7 +882,7 @@ jobs:
   update-tests-on-doc-branch:
     permissions:
       contents: write
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     if: success() && (github.ref == 'refs/heads/main')
     needs: collate-test-results
     steps:

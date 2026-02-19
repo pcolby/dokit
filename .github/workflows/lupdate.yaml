@@ -6,11 +6,11 @@ permissions:
   contents: read
 
 env:
-  CMAKE_BUILD_PARALLEL_LEVEL: 4
+  CMAKE_BUILD_PARALLEL_LEVEL: 1
 
 jobs:
   lupdate:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - name: Install Qt
         run: |

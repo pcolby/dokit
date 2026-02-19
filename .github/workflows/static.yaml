@@ -6,7 +6,7 @@ permissions:
   contents: read
 
 env:
-  CMAKE_BUILD_PARALLEL_LEVEL: 4
+  CMAKE_BUILD_PARALLEL_LEVEL: 1
 
 defaults:
   run:
@@ -18,7 +18,7 @@ jobs:
       contents: read
       security-events: write
     if: github.actor != 'dependabot[bot]'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
       - name: Install Qt
@@ -39,7 +39,7 @@ jobs:
         uses: github/codeql-action/analyze@v4
 
   Cppcheck:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - name: Install Cppcheck
         run: |
@@ -63,7 +63,7 @@ jobs:
           path: "${{ runner.temp }}/report"
 
   Linters:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
       - name: Check Markdown files
