@@ -813,17 +813,17 @@ jobs:
 
   collate-test-results:
     needs: [ linux, mac, win ]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     env:
       LCOV_VERSION: 2.4 # Should stay in-step, or ahead of, the Ubuntu, macOS and Windows versions.
     steps:
       - uses: actions/checkout@v6
       - name: Install lcov
         run: |
-          sudo apt-mark hold firefox grub-efi-amd64-signed
+          sudo apt-mark hold firefox grub-efi-amd64-signed || :
           sudo apt update
           sudo apt upgrade
-          sudo apt install libcapture-tiny-perl libdatetime-perl libtimedate-perl libjson-perl libperlio-gzip-perl
+          sudo apt install gawk libcapture-tiny-perl libdatetime-perl libtimedate-perl libjson-perl libperlio-gzip-perl
           curl --location --silent \
             "https://github.com/linux-test-project/lcov/releases/download/v${LCOV_VERSION}/lcov-${LCOV_VERSION}.tar.gz"|
             tar --extract --gzip --directory "${RUNNER_TEMP}"
@@ -882,7 +882,7 @@ jobs:
   update-tests-on-doc-branch:
     permissions:
       contents: write
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     if: success() && (github.ref == 'refs/heads/main')
     needs: collate-test-results
     steps:

@@ -39,11 +39,11 @@ jobs:
         uses: github/codeql-action/analyze@v4
 
   Cppcheck:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - name: Install Cppcheck
         run: |
-          sudo apt-mark hold firefox grub-efi-amd64-signed
+          sudo apt-mark hold firefox grub-efi-amd64-signed || :
           sudo apt update
           sudo apt upgrade
           sudo apt install cppcheck
@@ -63,7 +63,7 @@ jobs:
           path: "${{ runner.temp }}/report"
 
   Linters:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
       - name: Check Markdown files
@@ -74,5 +74,8 @@ jobs:
         uses: pcolby/check-run-scripts@v1
         with:
           external-variables: QT_ROOT_DIR,RUNNER_WORKSPACE
+      - name: Install yamllint
+        # \todo if: image is slim ; ie only needed for ubuntu-slim.
+        run: sudo apt update && sudo apt install yamllint
       - name: Check YAML files
         run: yamllint --strict .

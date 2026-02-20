@@ -54,7 +54,7 @@ jobs:
   publish:
     permissions:
       contents: write
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     if: success() && (github.ref == 'refs/heads/main')
     needs: generate
     steps:
