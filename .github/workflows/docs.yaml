@@ -24,7 +24,7 @@ jobs:
         env:
           BASE_URL: https://github.com/doxygen/doxygen/releases/download/Release_
         run: |
-          sudo apt-mark hold firefox grub-efi-amd64-signed
+          sudo apt-mark hold firefox grub-efi-amd64-signed || :
           sudo apt update
           sudo apt upgrade
           sudo apt install graphviz qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
