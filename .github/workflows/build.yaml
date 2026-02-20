@@ -71,7 +71,7 @@ jobs:
     steps:
       - name: Upgrade OS
         run: |
-          sudo apt-mark hold firefox grub-efi-${{ matrix.arch == 'arm64' && 'arm64' || 'amd64' }}-signed || :
+          sudo apt-mark hold firefox grub-efi-${{ matrix.arch == 'arm64' && 'arm64' || 'amd64' }}-signed
           sudo apt update && sudo apt upgrade
           sudo apt install lcov llvm
       - uses: actions/setup-python@v6
@@ -823,7 +823,7 @@ jobs:
           sudo apt-mark hold firefox grub-efi-amd64-signed || :
           sudo apt update
           sudo apt upgrade
-          sudo apt install libcapture-tiny-perl libdatetime-perl libtimedate-perl libjson-perl libperlio-gzip-perl
+          sudo apt install gawk libcapture-tiny-perl libdatetime-perl libtimedate-perl libjson-perl libperlio-gzip-perl
           curl --location --silent \
             "https://github.com/linux-test-project/lcov/releases/download/v${LCOV_VERSION}/lcov-${LCOV_VERSION}.tar.gz"|
             tar --extract --gzip --directory "${RUNNER_TEMP}"

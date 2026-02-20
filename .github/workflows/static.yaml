@@ -6,7 +6,7 @@ permissions:
   contents: read
 
 env:
-  CMAKE_BUILD_PARALLEL_LEVEL: 1
+  CMAKE_BUILD_PARALLEL_LEVEL: 4
 
 defaults:
   run:
@@ -18,12 +18,12 @@ jobs:
       contents: read
       security-events: write
     if: github.actor != 'dependabot[bot]'
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
       - name: Install Qt
         run: |
-          sudo apt-mark hold firefox grub-efi-amd64-signed || :
+          sudo apt-mark hold firefox grub-efi-amd64-signed
           sudo apt update
           sudo apt upgrade
           sudo apt install qtbase5{,-doc}-dev qtconnectivity5-{dev,doc-html} qttools5-dev{,-tools}
@@ -74,5 +74,8 @@ jobs:
         uses: pcolby/check-run-scripts@v1
         with:
           external-variables: QT_ROOT_DIR,RUNNER_WORKSPACE
+      - name: Install yamllint
+        # \todo if: image is slim ; ie only needed for ubuntu-slim.
+        run: sudo apt update && sudo apt install yamllint
       - name: Check YAML files
         run: yamllint --strict .
