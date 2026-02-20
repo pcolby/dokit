@@ -896,7 +896,7 @@ jobs:
           name: coverage-report
           path: main/cov
       - name: Inject version selectors
-        run: ./.selector.sh
+        run: sudo apt update && sudo apt install gawk && ./.selector.sh
       - name: Inspect changes # for diagnostics only.
         run: git status && git diff
       - name: Push updates
