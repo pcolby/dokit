@@ -102,7 +102,7 @@ jobs:
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: aqtinstall-log-linux-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.cc }}-${{ matrix.qt }}
           path: aqtinstall.log
@@ -179,7 +179,7 @@ jobs:
         if: >- # If we have coverage reports, and/or TAP files (TAP support added in Qt Test v5.12).
           matrix.os != '22.04' || matrix.cc != 'clang' || !startsWith(matrix.qt, '5') ||
           ( startsWith(matrix.qt, '5.1') && !startsWith(matrix.qt, '5.10') && !startsWith(matrix.qt, '5.11') )
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: test-results-${{ steps.build.outputs.dokitVersion }}
           path: |
@@ -200,7 +200,7 @@ jobs:
       - name: Build AppImage
         run: cmake --build "${RUNNER_TEMP}/release" --target cli-appimage
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}
           path: |
@@ -208,7 +208,7 @@ jobs:
             ${{ runner.temp }}/release/src/cli/dokit
           if-no-files-found: error
       - name: Upload AppImage
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
           path: ${{ runner.temp }}/release/dokit-${{ steps.build.outputs.dokitVersion }}.AppImage
@@ -286,7 +286,7 @@ jobs:
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: aqtinstall-log-${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.qt }}
           path: aqtinstall.log
@@ -379,7 +379,7 @@ jobs:
       - name: Collate test coverage
         run: cmake --build "${RUNNER_TEMP}/coverage" --target coverage
       - name: Upload test results
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: test-results-${{ steps.build.outputs.dokitVersion }}
           path: |
@@ -398,7 +398,7 @@ jobs:
       - name: Make app bundle
         run: macdeployqt "${RUNNER_TEMP}/release/src/cli/dokit.app" -dmg -verbose=2
       - name: Upload artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: dokit-${{ steps.build.outputs.dokitVersion }}
           path: ${{ runner.temp }}/release/src/cli/*.app
@@ -674,7 +674,7 @@ jobs:
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: aqtinstall-log-win-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.toolchain }}-${{ matrix.qt }}
           path: aqtinstall.log
@@ -755,7 +755,7 @@ jobs:
         run: cmake --build "%RUNNER_TEMP%/coverage" --target coverage --verbose
       - name: Upload test results
         if: matrix.arch != 'arm64' && ( matrix.toolchain != 'msvc' || fromJSON(steps.post-build.outputs.tap) )
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: test-results-${{ steps.post-build.outputs.dokitVersion }}
           path: |
@@ -796,7 +796,7 @@ jobs:
         env:
           QT_VERSION: ${{ matrix.qt }}
       - name: Upload artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: dokit-${{ steps.post-build.outputs.dokitVersion }}
           path: |
@@ -805,7 +805,7 @@ jobs:
           if-no-files-found: error
       - name: Upload artifacts (portable)
         if: matrix.arch != 'arm64'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: dokit-${{ steps.post-build.outputs.dokitVersion }}.portable
           path: ${{ runner.temp }}/release/portable
@@ -850,7 +850,7 @@ jobs:
           lcov --ignore-errors inconsistent "${infoFileArgs[@]}" -o coverage.info
         working-directory: ${{ runner.temp }}
       - name: Upload combined tracefile
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-tracefile
           path: "${{ runner.temp }}/coverage.info"
@@ -868,7 +868,7 @@ jobs:
             coverage/**/*.html
         working-directory: ${{ runner.temp }}
       - name: Upload HTML coverage report
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-report
           path: "${{ runner.temp }}/coverage"

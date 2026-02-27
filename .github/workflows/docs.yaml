@@ -39,13 +39,13 @@ jobs:
           grep -Ee 'qt(core|bluetooth)\.tags' "${RUNNER_TEMP}/doc/internal.doxy" # since they're optional in CMakeLists.
           cmake --build "${RUNNER_TEMP}" --target doc doc-internal
       - name: Upload public docs
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: public-docs
           path: "${{ runner.temp }}/doc/public"
           if-no-files-found: error
       - name: Upload internal docs
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: internal-docs
           path: "${{ runner.temp }}/doc/internal"
