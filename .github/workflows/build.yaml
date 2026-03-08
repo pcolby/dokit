@@ -687,6 +687,7 @@ jobs:
           #   ${{ matrix.arch == 'arm64' && matrix.os != '11-arm' &&
           #     ( startsWith(matrix.qt, '6.10.') || startsWith(matrix.qt, '6.11.') ) &&
           #     'git+https://github.com/miurahr/aqtinstall.git' || '' }}
+          # \todo Waiting for https://github.com/miurahr/aqtinstall/issues/959 to be resolved.
           aqtsource: |-
             ${{ ( startsWith(matrix.qt, '6.10.') || startsWith(matrix.qt, '6.11.') ) &&
               'git+https://github.com/miurahr/aqtinstall.git' || '' }}
