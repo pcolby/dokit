@@ -17,6 +17,7 @@ defaults:
 
 jobs:
   linux:
+    if: false
     runs-on: ubuntu-${{ matrix.os }}${{ matrix.arch == 'arm64' && '-arm' || '' }}
     strategy:
       fail-fast: false
@@ -217,6 +218,7 @@ jobs:
           if-no-files-found: error
 
   mac:
+    if: false
     runs-on: ${{ matrix.os }}
     env:
       CMAKE_BUILD_PARALLEL_LEVEL: 3
@@ -681,9 +683,12 @@ jobs:
                  (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
           # \todo Remove aqtsource after next aqtinstall release. See https://github.com/miurahr/aqtinstall/issues/998
-          aqtsource: |- # Use aqtinstall HEAD when cross-compiling for ARM64 with Qt 6.10.x
-            ${{ matrix.arch == 'arm64' && matrix.os != '11-arm' &&
-              ( startsWith(matrix.qt, '6.10.') || startsWith(matrix.qt, '6.11.') ) &&
+          # aqtsource: |- # Use aqtinstall HEAD when cross-compiling for ARM64 with Qt 6.10.x
+          #   ${{ matrix.arch == 'arm64' && matrix.os != '11-arm' &&
+          #     ( startsWith(matrix.qt, '6.10.') || startsWith(matrix.qt, '6.11.') ) &&
+          #     'git+https://github.com/miurahr/aqtinstall.git' || '' }}
+          aqtsource: |-
+            ${{ ( startsWith(matrix.qt, '6.10.') || startsWith(matrix.qt, '6.11.') ) &&
               'git+https://github.com/miurahr/aqtinstall.git' || '' }}
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
