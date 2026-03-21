@@ -1,6 +1,11 @@
 # SPDX-FileCopyrightText: 2022-2025 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
+set(TranslationSourceFiles
+  i18n/en_AU.ts
+  i18n/en_GB.ts
+  i18n/en_US.ts)
+
 add_subdirectory(cli)
 add_subdirectory(lib)
 

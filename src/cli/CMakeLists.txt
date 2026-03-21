@@ -65,14 +65,20 @@ endif()
 # Only include localisation for Qt6+ for now. We could support Qt5
 # too, but we'd need to manually implement some of Qt6's CMake
 # functions, which would be easier if we had a bespoke qrc file.
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-  qt_add_translations(
-    cli TS_FILES
-      i18n/en_AU.ts
-      i18n/en_GB.ts
-      i18n/en_US.ts
-    RESOURCE_PREFIX "i18n/cli"
-    SOURCES main.cpp ${DokitCliSources})
+if(${QT_VERSION_MAJOR} EQUAL 6)
+  if(${QT_VERSION_MINOR} GREATER_EQUAL 7) # Signature added in Qt 6.7.
+    qt_add_translations(
+      TARGETS cli
+      SOURCE_TARGETS cli
+      TS_FILES ${TranslationSourceFiles}
+      RESOURCE_PREFIX "i18n/cli"
+      SOURCES main.cpp ${DokitCliSources})
+  elseif(${QT_VERSION_MINOR} GREATER_EQUAL 2) # Signature added in Qt 6.2, but deprecated in Qt 6.7.
+    qt_add_translations(cli
+      TS_FILES ${TranslationSourceFiles}
+      RESOURCE_PREFIX "i18n/cli"
+      SOURCES main.cpp ${DokitCliSources})
+  endif()
 endif()
 
 target_link_libraries(

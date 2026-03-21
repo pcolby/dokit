@@ -40,14 +40,20 @@ set_target_properties(gui PROPERTIES OUTPUT_NAME Dokit)
 # Only include localisation for Qt6+ for now. We could support Qt5
 # too, but we'd need to manually implement some of Qt6's CMake
 # functions, which would be easier if we had a bespoke qrc file.
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-  qt_add_translations(
-    gui TS_FILES
-      i18n/en_AU.ts
-      i18n/en_GB.ts
-      i18n/en_US.ts
-    RESOURCE_PREFIX "i18n/gui"
-    SOURCES main.cpp ${DokitGuiSources})
+if(${QT_VERSION_MAJOR} EQUAL 6)
+  if(${QT_VERSION_MINOR} GREATER_EQUAL 7) # Signature added in Qt 6.7.
+    qt_add_translations(
+      TARGETS gui
+      SOURCE_TARGETS gui
+      TS_FILES ${TranslationSourceFiles}
+      RESOURCE_PREFIX "i18n/gui"
+      SOURCES main.cpp ${DokitGuiSources})
+  elseif(${QT_VERSION_MINOR} GREATER_EQUAL 2) # Signature added in Qt 6.2, but deprecated in Qt 6.7.
+    qt_add_translations(gui
+      TS_FILES ${TranslationSourceFiles}
+      RESOURCE_PREFIX "i18n/gui"
+      SOURCES main.cpp ${DokitGuiSources})
+  endif()
 endif()
 
 target_link_libraries(
