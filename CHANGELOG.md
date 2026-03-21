@@ -4,8 +4,8 @@
 
 ### Changed
 
-- Upgrade to Qt 6.9.3
-- Support for Qt 6.10, including support for the `LANG` environment variable on MinGW ([d0cb2eb][])
+- Support updating translations with Qt 6.7+ ([4064e45])
+- Update to Qt 6.10, including support for the `LANG` environment variable on MinGW ([d0cb2eb][])
 
 ### Fixed
 
@@ -193,6 +193,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 
 [073bce8]:     https://github.com/pcolby/dokit/commit/073bce82014a85e033639862fdb061c72b7971fd "Include switch and charging status in CLI output"
 [1bca548]:     https://github.com/pcolby/dokit/commit/1bca548c7abf9b9e59dd2ab2e5a27aac0dfa5119 "Add workflow steps for testing localisations"
+[4064e45]:     https://github.com/pcolby/dokit/commit/4064e453ec33535ae28104a9f10ef9c6f2d7993f "Support updating translations with Qt 6.7+"
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [45bd46d]:     https://github.com/pcolby/dokit/commit/45bd46d85433a3d3b8e04b9a1f8ba500fc3dcc5a "Work around Qt 6.9.0 beta 3 L10n bug"
 [58d82dd]:     https://github.com/pcolby/dokit/commit/58d82ddb70b166212e3c8c0a778dbd32a255db29 "Support the LANG environment variable on macOS"
