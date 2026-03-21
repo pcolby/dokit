@@ -66,7 +66,7 @@ find "${ARTIFACTS_DIR}" -maxdepth 1 -type d -name '*-docs' -execdir zip -9 -r "$
 echo "Creating new draft release, with $(find "${ASSETS_DIR}" -type f | wc -l || :) assets"
 lin=$(find "${ASSETS_DIR}" -name '*.gcc.*.AppImage'                 -printf '%f\n' | sort -V | tail -n1)
 mac=$(find "${ASSETS_DIR}" -name '*.macos-*.arm64-x86_64.clang.*'   -printf '%f\n' | sort -V | tail -n1)
-win=$(find "${ASSETS_DIR}" -name '*.win.x86-64.msvc.*.portable.zip' -printf '%f\n' | sort -V | tail -n1)
+win=$(find "${ASSETS_DIR}" -name '*.win2025.x86-64.msvc.*.portable.*' -printf '%f\n' | sort -V | tail -n1)
 readonly baseUrl="https://github.com/pcolby/dokit/releases/download/${TAG_NAME}" lin mac win
 gh release create "${TAG_NAME}" --draft --generate-notes --notes-file <(cat <<-- || :
 	_Add release notes here._
