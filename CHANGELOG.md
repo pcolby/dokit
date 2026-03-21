@@ -1,11 +1,15 @@
 # Changelog[^1]
 
-## [Unreleased][]
+## [0.5.6][] (2026-03-21)
+
+### Added
+
+- Support for updating translations with Qt 6.7+ ([4064e45])
 
 ### Changed
 
-- Support updating translations with Qt 6.7+ ([4064e45])
-- Update to Qt 6.10, including support for the `LANG` environment variable on MinGW ([d0cb2eb][])
+- Upgrade to Qt 6.10.2, including support for the `LANG` environment variable on MinGW ([d0cb2eb][])
+- Upgrade to Doxygen 1.16.1.
 
 ### Fixed
 
@@ -177,7 +181,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.5...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.6...HEAD
+[0.5.6]: https://github.com/pcolby/dokit/releases/tag/v0.5.6
 [0.5.5]: https://github.com/pcolby/dokit/releases/tag/v0.5.5
 [0.5.4]: https://github.com/pcolby/dokit/releases/tag/v0.5.4
 [0.5.3]: https://github.com/pcolby/dokit/releases/tag/v0.5.3
