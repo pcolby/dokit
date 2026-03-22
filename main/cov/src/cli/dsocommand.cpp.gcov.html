@@ -114,28 +114,28 @@
 <span id="L22"><span class="lineNum">      22</span>              : /*!</span>
 <span id="L23"><span class="lineNum">      23</span>              :  * Construct a new DsoCommand object with \a parent.</span>
 <span id="L24"><span class="lineNum">      24</span>              :  */</span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        8316 : DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        2400 : {</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        8444 : DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        2528 : {</span></span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">        8380 : }</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">        8508 : }</span></span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
 <span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">        3835 : QStringList DsoCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        1560 : {</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       19201 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">        1560 :         u&quot;mode&quot;_s,</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">        1560 :         u&quot;range&quot;_s,</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">       15189 :     };</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        1560 : }</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        1656 : {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       19297 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">        1656 :         u&quot;mode&quot;_s,</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">        1656 :         u&quot;range&quot;_s,</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">       15285 :     };</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        1656 : }</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        1885 : QStringList DsoCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         744 : {</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       13069 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         744 :         u&quot;interval&quot;_s,</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         744 :         u&quot;samples&quot;_s,</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         744 :         u&quot;trigger-level&quot;_s,</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         744 :         u&quot;trigger-mode&quot;_s,</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">       11213 :     };</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         744 : }</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         776 : {</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       13101 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         776 :         u&quot;interval&quot;_s,</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         776 :         u&quot;samples&quot;_s,</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         776 :         u&quot;trigger-level&quot;_s,</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         776 :         u&quot;trigger-mode&quot;_s,</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">       11245 :     };</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         776 : }</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
 <span id="L48"><span class="lineNum">      48</span>              : /*!</span>
 <span id="L49"><span class="lineNum">      49</span>              :  * \copybrief DeviceCommand::processOptions</span>
@@ -318,17 +318,17 @@
 <span id="L226"><span class="lineNum">     226</span>              :  * Invoked when \a metadata has been received from the DSO.</span>
 <span id="L227"><span class="lineNum">     227</span>              :  */</span>
 <span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">        3965 : void DsoCommand::metadataRead(const DsoService::Metadata &amp;data)</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">        1512 : {</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">        7246 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(data.status);</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">        7246 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; data.scale;</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        7246 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DsoService::toString(data.mode);</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">        7246 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; service-&gt;toString(data.range, data.mode);</span></span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">        7246 :     qCDebug(lc) &lt;&lt; &quot;samplingWindow:&quot; &lt;&lt; (int)data.samplingWindow;</span></span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">        7246 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">        7246 :     qCDebug(lc) &lt;&lt; &quot;samplingRate:&quot; &lt;&lt; data.samplingRate &lt;&lt; &quot;Hz&quot;;</span></span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">        5477 :     this-&gt;metadata = data;</span></span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">        5477 :     this-&gt;samplesToGo = data.numberOfSamples;</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">        5477 : }</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">        1544 : {</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">        7278 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(data.status);</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">        7278 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; data.scale;</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        7278 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DsoService::toString(data.mode);</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">        7278 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; service-&gt;toString(data.range, data.mode);</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">        7278 :     qCDebug(lc) &lt;&lt; &quot;samplingWindow:&quot; &lt;&lt; (int)data.samplingWindow;</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">        7278 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">        7278 :     qCDebug(lc) &lt;&lt; &quot;samplingRate:&quot; &lt;&lt; data.samplingRate &lt;&lt; &quot;Hz&quot;;</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">        5509 :     this-&gt;metadata = data;</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">        5509 :     this-&gt;samplesToGo = data.numberOfSamples;</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">        5509 : }</span></span>
 <span id="L240"><span class="lineNum">     240</span>              : </span>
 <span id="L241"><span class="lineNum">     241</span>              : /*!</span>
 <span id="L242"><span class="lineNum">     242</span>              :  * Outputs DSO \a samples in the selected output format.</span>

@@ -125,14 +125,14 @@
 <span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :  * Returns \c product as user-friendly string.</span></span>
 <span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :  */</span></span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         195 : QString toString(const PokitProduct product)</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         216 : {</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         411 :     switch (product) {</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">         137 :     case PokitProduct::PokitMeter: return u&quot;Pokit Meter&quot;_s;</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         137 :     case PokitProduct::PokitPro:   return u&quot;Pokit Pro&quot;_s;</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">         216 :     }</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         304 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          72 :     return QString();</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         216 : }</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         312 : {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         507 :     switch (product) {</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">         169 :     case PokitProduct::PokitMeter: return u&quot;Pokit Meter&quot;_s;</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         169 :     case PokitProduct::PokitPro:   return u&quot;Pokit Pro&quot;_s;</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">         312 :     }</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">         400 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         312 : }</span></span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
 <span id="L45"><span class="lineNum">      45</span>              : /*!</span>
 <span id="L46"><span class="lineNum">      46</span>              :  * Returns \c true if \a info describes a Pokit device.</span>
@@ -141,9 +141,9 @@
 <span id="L49"><span class="lineNum">      49</span>              :  * Status service, but this test criteria might be swapped for something else sometime.</span>
 <span id="L50"><span class="lineNum">      50</span>              :  */</span>
 <span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">        1849 : bool isPokitProduct(const QBluetoothDeviceInfo &amp;info)</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">        2016 : {</span></span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">        4648 :     return isPokitProduct(info.serviceUuids());</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">        2016 : }</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">        2908 : {</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">        5540 :     return isPokitProduct(info.serviceUuids());</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">        2908 : }</span></span>
 <span id="L55"><span class="lineNum">      55</span>              : </span>
 <span id="L56"><span class="lineNum">      56</span>              : /*!</span>
 <span id="L57"><span class="lineNum">      57</span>              :  * Returns the #PokitProduct corresponding the Bluetooth device \a info.</span>
@@ -153,9 +153,9 @@
 <span id="L61"><span class="lineNum">      61</span>              :  * \see isPokitProduct</span>
 <span id="L62"><span class="lineNum">      62</span>              :  */</span>
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">         325 : PokitProduct pokitProduct(const QBluetoothDeviceInfo &amp;info)</span></span>
-<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">         360 : {</span></span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">         890 :     return pokitProduct(info.serviceUuids());</span></span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">         360 : }</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">         520 : {</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">        1050 :     return pokitProduct(info.serviceUuids());</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">         520 : }</span></span>
 <span id="L67"><span class="lineNum">      67</span>              : </span>
 <span id="L68"><span class="lineNum">      68</span>              : /// \cond internal</span>
 <span id="L69"><span class="lineNum">      69</span>              : </span>
@@ -165,10 +165,10 @@
 <span id="L73"><span class="lineNum">      73</span>              :  * Currently, this is the only known way to detect a Pokit device.</span>
 <span id="L74"><span class="lineNum">      74</span>              :  */</span>
 <span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">        3019 : bool isPokitProduct(const QList&lt;QBluetoothUuid&gt; &amp;serviceUuids)</span></span>
-<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        3024 : {</span></span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">        7111 :     return (serviceUuids.contains(StatusService::ServiceUuids::pokitMeter) ||</span></span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">        6043 :             serviceUuids.contains(StatusService::ServiceUuids::pokitPro));</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        3024 : }</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        4300 : {</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">        8387 :     return (serviceUuids.contains(StatusService::ServiceUuids::pokitMeter) ||</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">        7319 :             serviceUuids.contains(StatusService::ServiceUuids::pokitPro));</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        4300 : }</span></span>
 <span id="L80"><span class="lineNum">      80</span>              : </span>
 <span id="L81"><span class="lineNum">      81</span>              : </span>
 <span id="L82"><span class="lineNum">      82</span>              : /*!</span>
@@ -193,17 +193,17 @@
 <span id="L101"><span class="lineNum">     101</span>              :  * \see isPokitProduct</span>
 <span id="L102"><span class="lineNum">     102</span>              :  */</span>
 <span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">         975 : PokitProduct pokitProduct(const QList&lt;QBluetoothUuid&gt; &amp;serviceUuids)</span></span>
-<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">         840 : {</span></span>
-<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">        1815 :     if (serviceUuids.contains(StatusService::ServiceUuids::pokitMeter)) {</span></span>
-<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">         288 :         return PokitProduct::PokitMeter;</span></span>
-<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">        1267 :     } else if (serviceUuids.contains(StatusService::ServiceUuids::pokitPro)) {</span></span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">         288 :         return PokitProduct::PokitPro;</span></span>
-<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">         360 :     } else {</span></span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">        1664 :         qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Device is not a Pokit product&quot;);</span></span>
-<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">         922 :         qCDebug(lc).noquote() &lt;&lt; &quot;Service UUIDs:&quot; &lt;&lt; serviceUuids;</span></span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         516 :         return PokitProduct::PokitMeter; // Need to fallback to something; Pokit Meter is just the lowest product.</span></span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">         264 :     }</span></span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">         840 : }</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">        1160 : {</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">        2135 :     if (serviceUuids.contains(StatusService::ServiceUuids::pokitMeter)) {</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">         416 :         return PokitProduct::PokitMeter;</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">        1459 :     } else if (serviceUuids.contains(StatusService::ServiceUuids::pokitPro)) {</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">         416 :         return PokitProduct::PokitPro;</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">         488 :     } else {</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">        1728 :         qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Device is not a Pokit product&quot;);</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">         986 :         qCDebug(lc).noquote() &lt;&lt; &quot;Service UUIDs:&quot; &lt;&lt; serviceUuids;</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         580 :         return PokitProduct::PokitMeter; // Need to fallback to something; Pokit Meter is just the lowest product.</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">         328 :     }</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">        1160 : }</span></span>
 <span id="L115"><span class="lineNum">     115</span>              : </span>
 <span id="L116"><span class="lineNum">     116</span>              : /*!</span>
 <span id="L117"><span class="lineNum">     117</span>              :  * Returns the #PokitProduct corresponding to the Bluetooth \a controller.</span>
@@ -229,17 +229,17 @@
 <span id="L137"><span class="lineNum">     137</span>              :  * \see PokitPro::toString(const PokitPro::CapacitanceRange &amp;range)</span>
 <span id="L138"><span class="lineNum">     138</span>              :  */</span>
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         715 : QString toString(const PokitProduct product, const quint8 range)</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">         504 : {</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">        1219 :     switch (product) {</span></span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">         404 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">         944 :         qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Pokit Meter has no capacitance support&quot;);</span></span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">         144 :         return QString();</span></span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">         678 :     case PokitProduct::PokitPro:</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">         678 :         return PokitPro::toString(static_cast&lt;PokitPro::CapacitanceRange&gt;(range));</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">         504 :     }</span></span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         336 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          72 :     return QString();</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         504 : }</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">         664 : {</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">        1379 :     switch (product) {</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">         436 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">         976 :         qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Pokit Meter has no capacitance support&quot;);</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">         176 :         return QString();</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">         774 :     case PokitProduct::PokitPro:</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">         774 :         return PokitPro::toString(static_cast&lt;PokitPro::CapacitanceRange&gt;(range));</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">         664 :     }</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         496 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         664 : }</span></span>
 <span id="L151"><span class="lineNum">     151</span>              : </span>
 <span id="L152"><span class="lineNum">     152</span>              : /*!</span>
 <span id="L153"><span class="lineNum">     153</span>              :  * Returns the maximum value for \a range in nanofarads, or 0 if \a range is not a known value for \a product.</span>
@@ -249,17 +249,17 @@
 <span id="L157"><span class="lineNum">     157</span>              :  * \see PokitPro::maxValue(const PokitPro::CapacitanceRange &amp;range)</span>
 <span id="L158"><span class="lineNum">     158</span>              :  */</span>
 <span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">         325 : quint32 maxValue(const PokitProduct product, const quint8 range)</span></span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         360 : {</span></span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">         685 :     switch (product) {</span></span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         137 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         272 :         qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Pokit Meter has no capacitance support&quot;);</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">          80 :         return 0;</span></span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         411 :     case PokitProduct::PokitPro:</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         411 :         return PokitPro::maxValue(static_cast&lt;PokitPro::CapacitanceRange&gt;(range));</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         360 :     }</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         336 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">          80 :     return 0;</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         360 : }</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">         520 : {</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">         845 :     switch (product) {</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">         169 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">         304 :         qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Pokit Meter has no capacitance support&quot;);</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">         112 :         return 0;</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">         507 :     case PokitProduct::PokitPro:</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">         507 :         return PokitPro::maxValue(static_cast&lt;PokitPro::CapacitanceRange&gt;(range));</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">         520 :     }</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         496 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">         112 :     return 0;</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         520 : }</span></span>
 <span id="L171"><span class="lineNum">     171</span>              : </span>
 <span id="L172"><span class="lineNum">     172</span>              : }</span>
 <span id="L173"><span class="lineNum">     173</span>              : </span>
@@ -273,16 +273,16 @@
 <span id="L181"><span class="lineNum">     181</span>              :  * \see PokitPro::toString(const PokitPro::CurrentRange &amp;range)</span>
 <span id="L182"><span class="lineNum">     182</span>              :  */</span>
 <span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">        6435 : QString toString(const PokitProduct product, const quint8 range)</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">        3096 : {</span></span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">        9531 :     switch (product) {</span></span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">        8435 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">        8435 :         return PokitMeter::toString(static_cast&lt;PokitMeter::CurrentRange&gt;(range));</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">         959 :     case PokitProduct::PokitPro:</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">         959 :         return PokitPro::toString(static_cast&lt;PokitPro::CurrentRange&gt;(range));</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">        3096 :     }</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">         496 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          72 :     return QString();</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">        3096 : }</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">        3576 : {</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">       10011 :     switch (product) {</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">        8659 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">        8659 :         return PokitMeter::toString(static_cast&lt;PokitMeter::CurrentRange&gt;(range));</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">        1183 :     case PokitProduct::PokitPro:</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">        1183 :         return PokitPro::toString(static_cast&lt;PokitPro::CurrentRange&gt;(range));</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">        3576 :     }</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">         976 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">        3576 : }</span></span>
 <span id="L194"><span class="lineNum">     194</span>              : </span>
 <span id="L195"><span class="lineNum">     195</span>              : /*!</span>
 <span id="L196"><span class="lineNum">     196</span>              :  * Returns the maximum value for \a range in microamps, or 0 if \a range is not a known value for \a product.</span>
@@ -291,16 +291,16 @@
 <span id="L199"><span class="lineNum">     199</span>              :  * \see PokitPro::maxValue(const PokitPro::CurrentRange &amp;range)</span>
 <span id="L200"><span class="lineNum">     200</span>              :  */</span>
 <span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">         975 : quint32 maxValue(const PokitProduct product, const quint8 range)</span></span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">        1080 : {</span></span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        2055 :     switch (product) {</span></span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">         959 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">         959 :         return PokitMeter::maxValue(static_cast&lt;PokitMeter::CurrentRange&gt;(range));</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">         959 :     case PokitProduct::PokitPro:</span></span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">         959 :         return PokitPro::maxValue(static_cast&lt;PokitPro::CurrentRange&gt;(range));</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">        1080 :     }</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">         496 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          80 :     return 0;</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">        1080 : }</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">        1560 : {</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">        2535 :     switch (product) {</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">        1183 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">        1183 :         return PokitMeter::maxValue(static_cast&lt;PokitMeter::CurrentRange&gt;(range));</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">        1183 :     case PokitProduct::PokitPro:</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">        1183 :         return PokitPro::maxValue(static_cast&lt;PokitPro::CurrentRange&gt;(range));</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">        1560 :     }</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">         976 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">         112 :     return 0;</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">        1560 : }</span></span>
 <span id="L212"><span class="lineNum">     212</span>              : </span>
 <span id="L213"><span class="lineNum">     213</span>              : }</span>
 <span id="L214"><span class="lineNum">     214</span>              : </span>
@@ -314,16 +314,16 @@
 <span id="L222"><span class="lineNum">     222</span>              :  * \see PokitPro::toString(const PokitPro::ResistanceRange &amp;range)</span>
 <span id="L223"><span class="lineNum">     223</span>              :  */</span>
 <span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">         845 : QString toString(const PokitProduct product, const quint8 range)</span></span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">         648 : {</span></span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">        1493 :     switch (product) {</span></span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">         945 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">         945 :         return PokitMeter::toString(static_cast&lt;PokitMeter::ResistanceRange&gt;(range));</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">         411 :     case PokitProduct::PokitPro:</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">         411 :         return PokitPro::toString(static_cast&lt;PokitPro::ResistanceRange&gt;(range));</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         648 :     }</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">         368 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">          72 :     return QString();</span></span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">         648 : }</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">         872 : {</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">        1717 :     switch (product) {</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">        1041 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">        1041 :         return PokitMeter::toString(static_cast&lt;PokitMeter::ResistanceRange&gt;(range));</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">         507 :     case PokitProduct::PokitPro:</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">         507 :         return PokitPro::toString(static_cast&lt;PokitPro::ResistanceRange&gt;(range));</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">         872 :     }</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">         592 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">         872 : }</span></span>
 <span id="L235"><span class="lineNum">     235</span>              : </span>
 <span id="L236"><span class="lineNum">     236</span>              : /*!</span>
 <span id="L237"><span class="lineNum">     237</span>              :  * Returns the maximum value for \a range in ohms, or 0 if \a range is not a known value for \a product.</span>
@@ -332,16 +332,16 @@
 <span id="L240"><span class="lineNum">     240</span>              :  * \see PokitPro::maxValue(const PokitPro::ResistanceRange &amp;range)</span>
 <span id="L241"><span class="lineNum">     241</span>              :  */</span>
 <span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">         455 : quint32 maxValue(const PokitProduct product, const quint8 range)</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">         504 : {</span></span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">         959 :     switch (product) {</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">         411 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">         411 :         return PokitMeter::maxValue(static_cast&lt;PokitMeter::ResistanceRange&gt;(range));</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         411 :     case PokitProduct::PokitPro:</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         411 :         return PokitPro::maxValue(static_cast&lt;PokitPro::ResistanceRange&gt;(range));</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">         504 :     }</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         368 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">          80 :     return 0;</span></span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">         504 : }</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">         728 : {</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        1183 :     switch (product) {</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">         507 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">         507 :         return PokitMeter::maxValue(static_cast&lt;PokitMeter::ResistanceRange&gt;(range));</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         507 :     case PokitProduct::PokitPro:</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         507 :         return PokitPro::maxValue(static_cast&lt;PokitPro::ResistanceRange&gt;(range));</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">         728 :     }</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">         592 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">         112 :     return 0;</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">         728 : }</span></span>
 <span id="L253"><span class="lineNum">     253</span>              : </span>
 <span id="L254"><span class="lineNum">     254</span>              : }</span>
 <span id="L255"><span class="lineNum">     255</span>              : </span>
@@ -355,16 +355,16 @@
 <span id="L263"><span class="lineNum">     263</span>              :  * \see PokitPro::toString(const PokitPro::VoltageRange &amp;range)</span>
 <span id="L264"><span class="lineNum">     264</span>              :  */</span>
 <span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        6435 : QString toString(const PokitProduct product, const quint8 range)</span></span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        3096 : {</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">        9531 :     switch (product) {</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">        8435 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        8435 :         return PokitMeter::toString(static_cast&lt;PokitMeter::VoltageRange&gt;(range));</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">         959 :     case PokitProduct::PokitPro:</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">         959 :         return PokitPro::toString(static_cast&lt;PokitPro::VoltageRange&gt;(range));</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">        3096 :     }</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         496 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">          72 :     return QString();</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        3096 : }</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        3576 : {</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">       10011 :     switch (product) {</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">        8659 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        8659 :         return PokitMeter::toString(static_cast&lt;PokitMeter::VoltageRange&gt;(range));</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">        1183 :     case PokitProduct::PokitPro:</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        1183 :         return PokitPro::toString(static_cast&lt;PokitPro::VoltageRange&gt;(range));</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">        3576 :     }</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         976 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">         104 :     return QString();</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">        3576 : }</span></span>
 <span id="L276"><span class="lineNum">     276</span>              : </span>
 <span id="L277"><span class="lineNum">     277</span>              : /*!</span>
 <span id="L278"><span class="lineNum">     278</span>              :  * Returns the maximum value for \a range in millivolts, or 0 if \a range is not a known value for \a product.</span>
@@ -373,16 +373,16 @@
 <span id="L281"><span class="lineNum">     281</span>              :  * \see PokitPro::maxValue(const PokitPro::VoltageRange &amp;range)</span>
 <span id="L282"><span class="lineNum">     282</span>              :  */</span>
 <span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">         975 : quint32 maxValue(const PokitProduct product, const quint8 range)</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">        1080 : {</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        2055 :     switch (product) {</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">         959 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">         959 :         return PokitMeter::maxValue(static_cast&lt;PokitMeter::VoltageRange&gt;(range));</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">         959 :     case PokitProduct::PokitPro:</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">         959 :         return PokitPro::maxValue(static_cast&lt;PokitPro::VoltageRange&gt;(range));</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1080 :     }</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         496 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          80 :     return 0;</span></span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        1080 : }</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">        1560 : {</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        2535 :     switch (product) {</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1183 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        1183 :         return PokitMeter::maxValue(static_cast&lt;PokitMeter::VoltageRange&gt;(range));</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        1183 :     case PokitProduct::PokitPro:</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        1183 :         return PokitPro::maxValue(static_cast&lt;PokitPro::VoltageRange&gt;(range));</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1560 :     }</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         976 :     qCWarning(lc).noquote() &lt;&lt; Private::tr(&quot;Unknown PokitProduct value: %1&quot;).arg((int)product);</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         112 :     return 0;</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        1560 : }</span></span>
 <span id="L294"><span class="lineNum">     294</span>              : </span>
 <span id="L295"><span class="lineNum">     295</span>              : }</span>
 <span id="L296"><span class="lineNum">     296</span>              : </span>
