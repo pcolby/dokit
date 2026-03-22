@@ -231,7 +231,7 @@ jobs:
       MATRIX_CC: ${{ matrix.cc }}
       MATRIX_OS: ${{ matrix.os }}
       MATRIX_QT: ${{ matrix.qt }}
-    timeout-minutes: 15
+    timeout-minutes: 30 # Often need more than 15 minutes on macos-*-intel runners.
     strategy:
       fail-fast: false
       matrix:
@@ -255,7 +255,9 @@ jobs:
         os:
           - macos-14
           - macos-15
+          - macos-15-intel
           - macos-26
+          - macos-26-intel
         cc:
           - clang
           - gcc
