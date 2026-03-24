@@ -145,14 +145,12 @@ jobs:
           cmake --build "${RUNNER_TEMP}/release"
           "${RUNNER_TEMP}/release/src/cli/dokit" --version
       - name: Check translation files # For Qt6 only.
-        # Also exclude lupdate targets using Clang on Ubuntu 24.04, as they produce a "?? default.profraw" error.
-        if: startsWith(matrix.qt, '6') && !(matrix.os == '24.04' && matrix.cc == 'clang')
-          && !startsWith(matrix.qt, '6.11') # \todo https://qt-project.atlassian.net/browse/QTBUG-145179
+        if: startsWith(matrix.qt, '6') && matrix.qt != '6.11.0' # https://qt-project.atlassian.net/browse/QTBUG-145179
         run: |
           declare -a targets=(update_translations)
           [[ "${MATRIX_QT}" =~ ^6\.([0-9]+)\.[0-9]+$ && "${BASH_REMATCH[1]}" -ge 7 ]] || targets=({cli,QtPokit}_lupdate)
           cmake --build "${RUNNER_TEMP}/release" --target "${targets[@]}"
-          [[ -z $(git status --porcelain | tee /dev/stderr || :) ]]
+          [[ -z $(git status --porcelain src | tee /dev/stderr || :) ]]
         env:
           MATRIX_QT: ${{ matrix.qt }}
       - name: Test w/ coverage
