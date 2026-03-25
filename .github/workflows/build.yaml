@@ -114,7 +114,8 @@ jobs:
         with:
           plugins: qt
       - uses: actions/checkout@v6
-      - name: Build
+      # Add step to determine if coverage is available, and use it's output in the remaining steps.
+      - name: Build # \todo Split this into separate 'Generate buildsystem' and 'Build' steps.
         id: build
         env:
           CC: ${{ matrix.cc }}
@@ -336,7 +337,7 @@ jobs:
             tee -a "${GITHUB_ENV}" <<< "LLVM_COV=${llvmPrefix}/bin/llvm-cov"
             tee -a "${GITHUB_ENV}" <<< "LLVM_PROFDATA=${llvmPrefix}/bin/llvm-profdata"
           fi
-      - name: Build
+      - name: Build # \todo Split this into separate 'Generate buildsystem' and 'Build' steps.
         id: build
         env:
           PROJECT_BUILD_ID: "${{ github.run_number }}.${{ matrix.os }}.${{ steps.arch.outputs.buildId }}.\
@@ -362,6 +363,8 @@ jobs:
           cmake --build "${RUNNER_TEMP}/release" -- VERBOSE=1
           "${RUNNER_TEMP}/coverage/src/cli/dokit.app/Contents/MacOS/dokit" --version
           "${RUNNER_TEMP}/release/src/cli/dokit.app/Contents/MacOS/dokit" --version
+      - name: Check Info.plist
+        run: plutil -lint "${RUNNER_TEMP}/release/src/cli/dokit.app/Contents/Info.plist"
       - name: Test w/ coverage
         run: ctest --output-on-failure --test-dir "${RUNNER_TEMP}/coverage" --verbose
         timeout-minutes: 1
