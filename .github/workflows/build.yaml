@@ -691,19 +691,15 @@ jobs:
              ${{ (startsWith(matrix.qt, '5.10.') || startsWith(matrix.qt, '5.11.')) && 'qt' ||
                  (startsWith(matrix.qt, '5') && 'qtcore qtbluetooth' || 'qtcore') }}
           doc-modules: ${{ startsWith(matrix.qt, '6') && 'qtbluetooth' || '' }}
-          # \todo Remove aqtsource when the following are released/resolved:
-          # * https://github.com/miurahr/aqtinstall/issues/959 -> Qt 6.11, fix not merged.
+          # \todo Remove aqtsource when the following are released (presumably in v3.4.0).
+          # * https://github.com/miurahr/aqtinstall/issues/959 -> Qt 6.11, fixed in HEAD.
           # * https://github.com/miurahr/aqtinstall/issues/998 -> Qt 6.10, fixed in HEAD.
           # * https://github.com/miurahr/aqtinstall/pull/952   -> Qt 6.10, merged to HEAD.
-          # * https://github.com/miurahr/aqtinstall/pull/1000  -> Qt 6.11, not yet merged.
-          aqtsource: |- # Use aqtinstall HEAD when cross-compiling for ARM64 with Qt 6.10.x
-            ${{
-              ( startsWith(matrix.qt, '6.10.') && matrix.arch == 'arm64' && matrix.os != '11-arm' &&
-                'git+https://github.com/miurahr/aqtinstall.git' ) ||
-              ( startsWith(matrix.qt, '6.11.') && matrix.os != '11-arm' &&
-                'git+https://github.com/miurahr/aqtinstall.git@refs/pull/1000/head' )
-              || ''
-            }}
+          # * https://github.com/miurahr/aqtinstall/pull/1000  -> Qt 6.11, merged to HEAD.
+          aqtsource: >- # Use aqtinstall HEAD when cross-compiling for ARM64 with Qt 6.10.x, or using Qt 6.11.
+            ${{ matrix.os != '11-arm' &&
+            ( (startsWith(matrix.qt, '6.10.') && matrix.arch == 'arm64') || startsWith(matrix.qt, '6.11.') )
+            && 'git+https://github.com/miurahr/aqtinstall.git' || '' }}
           aqtversion: '>=3.2.0' # 3.2.0+ required for Qt 6.8+ support; https://github.com/miurahr/aqtinstall/issues/843
       - name: Upload aqtinstall log file
         if: failure()
