@@ -120,13 +120,13 @@ jobs:
         env:
           CC: ${{ matrix.cc }}
           CXX: ${{ matrix.cc == 'gcc' && 'g++' || 'clang++' }}
-          MATRIX_QT: ${{ matrix.os }}
+          MATRIX_QT: ${{ matrix.qt }}
           MATRIX_OS: ${{ matrix.os }}
           PROJECT_BUILD_ID: >-
             ${{ github.run_number }}.linux.${{ matrix.os }}.${{ matrix.arch }}.${{ matrix.cc }}.qt-${{ matrix.qt }}
         run: |
           [[ "${MATRIX_QT}" =~ ^[56]$ ]] ||
-            qtInstallDocs="${RUNNER_WORKSPACE}/Qt/Docs/Qt-${QT_VERSION:-${{ matrix.qt }}}"
+            qtInstallDocs="${RUNNER_WORKSPACE}/Qt/Docs/Qt-${QT_VERSION:-${MATRIX_QT}}"
           # With coverage instrumentation (except Ubuntu 22.04's llvm-lcov version does not support `--sources`)
           [[ "${MATRIX_OS}" == '22.04' && "${CC}" == 'clang' ]] ||
           cmake -D CMAKE_BUILD_TYPE=Release \
