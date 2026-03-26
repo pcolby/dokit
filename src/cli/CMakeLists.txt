@@ -60,6 +60,9 @@ if(APPLE)
     PROPERTIES
       MACOSX_BUNDLE true
       MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist.in)
+  if((${QT_VERSION_MAJOR} EQUAL 6) AND (${QT_VERSION_MINOR} GREATER_EQUAL 5))
+    qt_import_plugins(cli INCLUDE Qt6::QDarwinBluetoothPermissionPlugin) # Plugin added in Qt 6.5.0.
+  endif()
 endif()
 
 # Only include localisation for Qt6+ for now. We could support Qt5
