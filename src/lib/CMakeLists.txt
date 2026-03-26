@@ -46,6 +46,7 @@ add_library(
 # functions, which would be easier if we had a bespoke qrc file.
 if(${QT_VERSION_MAJOR} EQUAL 6)
   if(${QT_VERSION_MINOR} GREATER_EQUAL 7) # Signature added in Qt 6.7.
+    list(TRANSFORM TranslationSourceFiles PREPEND "${CMAKE_CURRENT_SOURCE_DIR}/")
     qt_add_translations(
       TARGETS QtPokit
       SOURCE_TARGETS QtPokit
