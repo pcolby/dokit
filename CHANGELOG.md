@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Include Qt's macOS Bluetooth Permission Plugin, required for Qt 6.5.0 and later ([#44], [637b4b1])
+
 ### Changed
 
 - Upgrade to Qt 6.11.0 ([3edd9ee])
@@ -209,6 +213,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [45bd46d]:     https://github.com/pcolby/dokit/commit/45bd46d85433a3d3b8e04b9a1f8ba500fc3dcc5a "Work around Qt 6.9.0 beta 3 L10n bug"
 [58d82dd]:     https://github.com/pcolby/dokit/commit/58d82ddb70b166212e3c8c0a778dbd32a255db29 "Support the LANG environment variable on macOS"
+[637b4b1]:     https://github.com/pcolby/dokit/commit/637b4b1225edcfb05ba2ab124f1dc4a3bc7dc9b7 "Include QDarwinBluetoothPermissionPlugin for Qt 6.5+"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
 [899b007]:     https://github.com/pcolby/dokit/commit/899b007e73e64e724f2785acafddd2d3fc6f893e "Round command line options correctly"
 [9a4d1cf]:     https://github.com/pcolby/dokit/commit/9a4d1cf13198fbf9a4d0bb0e8c3dd3001cefdf65 "Complete support for (optional) QTPOKIT_NAMESPACE"
@@ -220,6 +225,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [#9]:          https://github.com/pcolby/dokit/issues/9
 [#17]:         https://github.com/pcolby/dokit/issues/17
 [#18]:         https://github.com/pcolby/dokit/issues/18
+[#44]:         https://github.com/pcolby/dokit/issues/44
 [Pokit Meter]: https://www.pokitinnovations.com/pokit-meter/
 [Pokit Pro]:   https://www.pokitinnovations.com/pokit-pro/
 [Qt]:          https://www.qt.io/
