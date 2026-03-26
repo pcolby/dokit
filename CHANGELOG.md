@@ -1,14 +1,14 @@
 # Changelog[^1]
 
-## [Unreleased]
-
-### Fixed
-
-- Include Qt's macOS Bluetooth Permission Plugin, required for Qt 6.5.0 and later ([#44], [637b4b1])
+## [0.5.7] (2026-03-27)
 
 ### Changed
 
 - Upgrade to Qt 6.11.0 ([3edd9ee])
+
+### Fixed
+
+- Include Qt's macOS Bluetooth Permission Plugin, required for Qt 6.5.0 and later ([#44], [637b4b1])
 
 ## [0.5.6][] (2026-03-21)
 
@@ -191,7 +191,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.6...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.7...HEAD
+[0.5.7]: https://github.com/pcolby/dokit/releases/tag/v0.5.7
 [0.5.6]: https://github.com/pcolby/dokit/releases/tag/v0.5.6
 [0.5.5]: https://github.com/pcolby/dokit/releases/tag/v0.5.5
 [0.5.4]: https://github.com/pcolby/dokit/releases/tag/v0.5.4
