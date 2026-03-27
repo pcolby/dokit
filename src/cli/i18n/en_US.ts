@@ -825,7 +825,7 @@ success
     <message>
         <location filename="../main.cpp" line="184"/>
         <source>Set the device discovery scan timeout. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitude of the given interval. The default behaviour is no timeout.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Set the device discovery scan timeout. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitude of the given interval. The default behavior is no timeout.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="188"/>
