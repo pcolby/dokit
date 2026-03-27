@@ -747,11 +747,6 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="152"/>
-        <source>Set the update interval for DOS, meter and logger modes. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. If the option itself is not specified, a sensible default will be chosen according to the selected command.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../main.cpp" line="157"/>
         <source>interval</source>
         <translation type="unfinished"></translation>
@@ -823,8 +818,13 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../main.cpp" line="152"/>
+        <source>Set the update interval for DOS, meter and logger modes. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitude of the given interval. If the option itself is not specified, a sensible default will be chosen according to the selected command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../main.cpp" line="184"/>
-        <source>Set the device discovery scan timeout. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitide of the given interval. The default behaviour is no timeout.</source>
+        <source>Set the device discovery scan timeout. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitude of the given interval. The default behaviour is no timeout.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

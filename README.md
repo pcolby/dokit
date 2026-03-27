@@ -142,7 +142,7 @@ Options:
   --interval <interval>    Set the update interval for DOS, meter and logger
                            modes. Suffixes such as 's' and 'ms' (for seconds and
                            milliseconds) may be used. If no suffix is present,
-                           the units will be inferred from the magnitide of the
+                           the units will be inferred from the magnitude of the
                            given interval. If the option itself is not
                            specified, a sensible default will be chosen
                            according to the selected command.
@@ -171,7 +171,7 @@ Options:
   --timeout <period>       Set the device discovery scan timeout.Suffixes such
                            as 's' and 'ms' (for seconds and milliseconds) may be
                            used. If no suffix is present, the units will be
-                           inferred from the magnitide of the given interval.
+                           inferred from the magnitude of the given interval.
                            The default behaviour is no timeout.
   --timestamp <period>     Set the optional starting timestamp for data
                            logging. Default to 'now'.

@@ -151,7 +151,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         {{u"interval"_s},
           Private::tr("Set the update interval for DOS, meter and "
           "logger modes. Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. "
-          "If no suffix is present, the units will be inferred from the magnitide of the given "
+          "If no suffix is present, the units will be inferred from the magnitude of the given "
           "interval. If the option itself is not specified, a sensible default will be chosen "
           "according to the selected command."),
           Private::tr("interval")},
@@ -183,7 +183,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         {{u"timeout"_s},
           Private::tr("Set the device discovery scan timeout. "
           "Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. "
-          "If no suffix is present, the units will be inferred from the magnitide of the given "
+          "If no suffix is present, the units will be inferred from the magnitude of the given "
           "interval. The default behaviour is no timeout."),
           Private::tr("period")},
         {{u"timestamp"_s},
