@@ -14,7 +14,7 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
 
 Dokit is a set of cross-platform, open source tools for accessing [Pokit][] measuring devices.
-It consists if primarily three components:
+It consists of three primary components:
 
 1. `QtPokit` cross-platform [Qt][] library - used extensively by the applications below, but
     also easily re-usable under the [LGPL][]; and
