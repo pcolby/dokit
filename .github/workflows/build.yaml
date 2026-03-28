@@ -39,7 +39,7 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.3
-          - 6.10.2
+          - 6.10.3
           - 6.11.0
         os:
           - 22.04
@@ -68,7 +68,7 @@ jobs:
           # Qt 6.8+ moc requires more a more recent glibc (specifically GLIBC_2.38) than Ubuntu 22.04 provides.
           - { qt: 6.8.3,   arch: arm64, os: 22.04 }
           - { qt: 6.9.3,   arch: arm64, os: 22.04 }
-          - { qt: 6.10.2,  arch: arm64, os: 22.04 }
+          - { qt: 6.10.3,  arch: arm64, os: 22.04 }
           - { qt: 6.11.0,  arch: arm64, os: 22.04 }
     steps:
       - name: Upgrade OS
@@ -253,7 +253,7 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.3
-          - 6.10.2
+          - 6.10.3
           - 6.11.0
         os:
           - macos-14
@@ -283,7 +283,7 @@ jobs:
           - { qt: '6.7.3', cc: gcc }
           - { qt: '6.8.3', cc: gcc }
           - { qt: '6.9.3', cc: gcc }
-          - { qt: '6.10.2', cc: gcc }
+          - { qt: '6.10.3', cc: gcc }
           - { qt: '6.11.0', cc: gcc }
     steps:
       - uses: actions/checkout@v6
@@ -450,7 +450,7 @@ jobs:
           - 6.7.3
           - 6.8.3
           - 6.9.3
-          - 6.10.2
+          - 6.10.3
           - 6.11.0
         os:
           - 11-arm
@@ -504,7 +504,7 @@ jobs:
           - { arch: x86, qt: '6.7.3' }
           - { arch: x86, qt: '6.8.3' }
           - { arch: x86, qt: '6.9.3' }
-          - { arch: x86, qt: '6.10.2' }
+          - { arch: x86, qt: '6.10.3' }
           - { arch: x86, qt: '6.11.0' }
           # Exclude MinGW (including LLVM) builds for x86-64 with Qt's earlier than 5.12, since the Qt online
           # installer (as used by aqtinstaller) did not include x86-64 binaries until Qt 5.12.
@@ -618,11 +618,11 @@ jobs:
           - { qt: '6.9.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
           - { qt: '6.9.3',   toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
           - { qt: '6.9.3',   toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
-          - { qt: '6.10.2',  toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
-          - { qt: '6.10.2',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
-          - { qt: '6.10.2',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
-          - { qt: '6.10.2',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
-          - { qt: '6.10.2',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
+          - { qt: '6.10.3',  toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
+          - { qt: '6.10.3',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
+          - { qt: '6.10.3',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
+          - { qt: '6.10.3',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64, os: 11-arm }
+          - { qt: '6.10.3',  toolchain: msvc,  arch: x86-64, aqtArch: win64_msvc2022_64 }
           - { qt: '6.11.0',  toolchain: llvm,  arch: x86-64, aqtArch: win64_llvm_mingw }
           - { qt: '6.11.0',  toolchain: mingw, arch: x86-64, aqtArch: win64_mingw }
           - { qt: '6.11.0',  toolchain: msvc,  arch: arm64,  aqtArch: win64_msvc2022_arm64_cross_compiled }
@@ -648,8 +648,8 @@ jobs:
           - { toolchain: 'mingw', arch: x86-64, qt: '6.8.3',  aqtTools: 'tools_mingw1310' }
           - { toolchain: 'llvm',  arch: x86-64, qt: '6.9.3',  aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.9.3',  aqtTools: 'tools_mingw1310' }
-          - { toolchain: 'llvm',  arch: x86-64, qt: '6.10.2', aqtTools: 'tools_llvm_mingw1706' }
-          - { toolchain: 'mingw', arch: x86-64, qt: '6.10.2', aqtTools: 'tools_mingw1310' }
+          - { toolchain: 'llvm',  arch: x86-64, qt: '6.10.3', aqtTools: 'tools_llvm_mingw1706' }
+          - { toolchain: 'mingw', arch: x86-64, qt: '6.10.3', aqtTools: 'tools_mingw1310' }
           - { toolchain: 'llvm',  arch: x86-64, qt: '6.11.0', aqtTools: 'tools_llvm_mingw1706' }
           - { toolchain: 'mingw', arch: x86-64, qt: '6.11.0', aqtTools: 'tools_mingw1310' }
           ## Windows Server 2025-specific cases.
