@@ -262,8 +262,7 @@ quint8 DeviceCommand::minResistanceRange(const PokitProduct product, const quint
 }
 
 /*!
- t
-* Returns the \a product's lowest voltage range that can measure at least up to \a maxValue (mV), or AutoRange if no
+ * Returns the \a product's lowest voltage range that can measure at least up to \a maxValue (mV), or AutoRange if no
  * such range is available.
  *
  * \see DeviceCommand::minRange<PokitMeter::VoltageRange>(const quint32 maxValue)
