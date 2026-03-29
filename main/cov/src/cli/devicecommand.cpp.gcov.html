@@ -355,142 +355,141 @@
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">         222 : }</span></span>
 <span id="L263"><span class="lineNum">     263</span>              : </span>
 <span id="L264"><span class="lineNum">     264</span>              : /*!</span>
-<span id="L265"><span class="lineNum">     265</span>              :  t</span>
-<span id="L266"><span class="lineNum">     266</span>              : * Returns the \a product's lowest voltage range that can measure at least up to \a maxValue (mV), or AutoRange if no</span>
-<span id="L267"><span class="lineNum">     267</span>              :  * such range is available.</span>
-<span id="L268"><span class="lineNum">     268</span>              :  *</span>
-<span id="L269"><span class="lineNum">     269</span>              :  * \see DeviceCommand::minRange&lt;PokitMeter::VoltageRange&gt;(const quint32 maxValue)</span>
-<span id="L270"><span class="lineNum">     270</span>              :  * \see minRange&lt;PokitPro::VoltageRange&gt;(const quint32 maxValue)</span>
-<span id="L271"><span class="lineNum">     271</span>              :  */</span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         140 : quint8 DeviceCommand::minVoltageRange(const PokitProduct product, const quint32 maxValue)</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         222 : {</span></span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">         362 :     switch (product) {</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">         181 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         181 :         return +minRange&lt;PokitMeter::VoltageRange&gt;(maxValue);</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">         181 :     case PokitProduct::PokitPro:</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         181 :         return +minRange&lt;PokitPro::VoltageRange&gt;(maxValue);</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         222 :     }</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         102 :     Q_ASSERT_X(false, &quot;DeviceCommand::minVoltageRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaUNC">           0 :     return 255;</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">         222 : }</span></span>
-<span id="L283"><span class="lineNum">     283</span>              : </span>
-<span id="L284"><span class="lineNum">     284</span>              : #undef DOKIT_CLI_IF_LESS_THAN_RETURN</span>
+<span id="L265"><span class="lineNum">     265</span>              :  * Returns the \a product's lowest voltage range that can measure at least up to \a maxValue (mV), or AutoRange if no</span>
+<span id="L266"><span class="lineNum">     266</span>              :  * such range is available.</span>
+<span id="L267"><span class="lineNum">     267</span>              :  *</span>
+<span id="L268"><span class="lineNum">     268</span>              :  * \see DeviceCommand::minRange&lt;PokitMeter::VoltageRange&gt;(const quint32 maxValue)</span>
+<span id="L269"><span class="lineNum">     269</span>              :  * \see minRange&lt;PokitPro::VoltageRange&gt;(const quint32 maxValue)</span>
+<span id="L270"><span class="lineNum">     270</span>              :  */</span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">         140 : quint8 DeviceCommand::minVoltageRange(const PokitProduct product, const quint32 maxValue)</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">         222 : {</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">         362 :     switch (product) {</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">         181 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">         181 :         return +minRange&lt;PokitMeter::VoltageRange&gt;(maxValue);</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">         181 :     case PokitProduct::PokitPro:</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">         181 :         return +minRange&lt;PokitPro::VoltageRange&gt;(maxValue);</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         222 :     }</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">         102 :     Q_ASSERT_X(false, &quot;DeviceCommand::minVoltageRange&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaUNC">           0 :     return 255;</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         222 : }</span></span>
+<span id="L282"><span class="lineNum">     282</span>              : </span>
+<span id="L283"><span class="lineNum">     283</span>              : #undef DOKIT_CLI_IF_LESS_THAN_RETURN</span>
+<span id="L284"><span class="lineNum">     284</span>              : </span>
 <span id="L285"><span class="lineNum">     285</span>              : </span>
-<span id="L286"><span class="lineNum">     286</span>              : </span>
-<span id="L287"><span class="lineNum">     287</span>              : /*!</span>
-<span id="L288"><span class="lineNum">     288</span>              :  * Handles controller error events. This base implementation simply logs \a error and then exits</span>
-<span id="L289"><span class="lineNum">     289</span>              :  * with `EXIT_FAILURE`. Derived classes may override this slot to implement their own error</span>
-<span id="L290"><span class="lineNum">     290</span>              :  * handing if desired.</span>
-<span id="L291"><span class="lineNum">     291</span>              :  */</span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         140 : void DeviceCommand::controllerError(QLowEnergyController::Error error)</span></span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">         222 : {</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         776 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth controller error:&quot;) &lt;&lt; error;</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         362 :     QCoreApplication::exit(EXIT_FAILURE);</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">         362 : }</span></span>
-<span id="L297"><span class="lineNum">     297</span>              : </span>
-<span id="L298"><span class="lineNum">     298</span>              : /*!</span>
-<span id="L299"><span class="lineNum">     299</span>              :  * Handles device disconnection events. This base implementation simply logs and exits the</span>
-<span id="L300"><span class="lineNum">     300</span>              :  * application (via QCoreApplication::exit) with the current exitCodeOnDisconnect value, which is</span>
-<span id="L301"><span class="lineNum">     301</span>              :  * initialise to `EXIT_FAILURE` in the constructor, but should be set to `EXIT_SUCESS` if/when</span>
-<span id="L302"><span class="lineNum">     302</span>              :  * the derived command class has completed its actions and requested the disconnection (as opposed</span>
-<span id="L303"><span class="lineNum">     303</span>              :  * to a spontaneous disconnection on error).</span>
-<span id="L304"><span class="lineNum">     304</span>              :  */</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          70 : void DeviceCommand::deviceDisconnected()</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         111 : {</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">         215 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Pokit device disconnected. Exiting with code %1.&quot;)</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :         .arg(exitCodeOnDisconnect);</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         181 :     QCoreApplication::exit(exitCodeOnDisconnect);</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">         181 : }</span></span>
-<span id="L311"><span class="lineNum">     311</span>              : </span>
-<span id="L312"><span class="lineNum">     312</span>              : /*!</span>
-<span id="L313"><span class="lineNum">     313</span>              :  * Handles service error events. This base implementation simply logs \a error and then exits</span>
-<span id="L314"><span class="lineNum">     314</span>              :  * with `EXIT_FAILURE`. Derived classes may override this slot to implement their own error</span>
-<span id="L315"><span class="lineNum">     315</span>              :  * handing if desired.</span>
-<span id="L316"><span class="lineNum">     316</span>              :  *</span>
-<span id="L317"><span class="lineNum">     317</span>              :  * \note As this base class does not construct services (derived classed do), its up to the derived</span>
-<span id="L318"><span class="lineNum">     318</span>              :  * classed to connect this slot to the relevant service's error signal if desired.</span>
-<span id="L319"><span class="lineNum">     319</span>              :  */</span>
-<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">         140 : void DeviceCommand::serviceError(const QLowEnergyService::ServiceError error)</span></span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         222 : {</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         776 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth service error:&quot;) &lt;&lt; error;</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         362 :     QCoreApplication::exit(EXIT_FAILURE);</span></span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">         362 : }</span></span>
-<span id="L325"><span class="lineNum">     325</span>              : </span>
-<span id="L326"><span class="lineNum">     326</span>              : /*!</span>
-<span id="L327"><span class="lineNum">     327</span>              :  * Handles service detail discovery events. This base implementation simply logs the event, and</span>
-<span id="L328"><span class="lineNum">     328</span>              :  * nothing more. Derived classes may (usually do) override this slot to provide their own processing</span>
-<span id="L329"><span class="lineNum">     329</span>              :  * when a services details have been discovered.</span>
-<span id="L330"><span class="lineNum">     330</span>              :  */</span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">        1820 : void DeviceCommand::serviceDetailsDiscovered()</span></span>
-<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">         761 : {</span></span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        3465 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service details discovered.&quot;);</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">        2581 : }</span></span>
-<span id="L335"><span class="lineNum">     335</span>              : </span>
-<span id="L336"><span class="lineNum">     336</span>              : /*!</span>
-<span id="L337"><span class="lineNum">     337</span>              :  * Checks if \a info is the device (if any) we're looking for, and if so, create a controller and</span>
-<span id="L338"><span class="lineNum">     338</span>              :  * service, and begins connecting to the device.</span>
-<span id="L339"><span class="lineNum">     339</span>              :  */</span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">          70 : void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</span></span>
-<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">         111 : {</span></span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC">         111 :     Q_ASSERT(isPokitProduct(info));</span></span>
-<span id="L343"><span class="lineNum">     343</span>              : </span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         181 :     if (device) {</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :         return;</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :     }</span></span>
-<span id="L349"><span class="lineNum">     349</span>              : </span>
-<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         323 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         392 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">         251 :         ((!info.deviceUuid().isNull()) &amp;&amp; (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :     {</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Found Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC">           0 :         discoveryAgent-&gt;stop();</span></span>
-<span id="L357"><span class="lineNum">     357</span>              : </span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :         device = new PokitDevice(info, this);</span></span>
-<span id="L359"><span class="lineNum">     359</span> <span class="tlaUNC">           0 :         connect(device-&gt;controller(), &amp;QLowEnergyController::disconnected,</span></span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :                 this, &amp;DeviceCommand::deviceDisconnected);</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaUNC">           0 :         connect(device-&gt;controller(),</span></span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC">           0 :             #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC">           0 :             QOverload&lt;QLowEnergyController::Error&gt;::of(&amp;QLowEnergyController::error),</span></span>
-<span id="L364"><span class="lineNum">     364</span>              :             #else</span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC">           0 :             &amp;QLowEnergyController::errorOccurred,</span></span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaUNC">           0 :             #endif</span></span>
-<span id="L367"><span class="lineNum">     367</span> <span class="tlaUNC">           0 :             this, &amp;DeviceCommand::controllerError, Qt::QueuedConnection);</span></span>
-<span id="L368"><span class="lineNum">     368</span>              : </span>
-<span id="L369"><span class="lineNum">     369</span> <span class="tlaUNC">           0 :         AbstractPokitService * const service = getService();</span></span>
-<span id="L370"><span class="lineNum">     370</span> <span class="tlaUNC">           0 :         service-&gt;setPokitProduct(pokitProduct(info));</span></span>
-<span id="L371"><span class="lineNum">     371</span>              : </span>
-<span id="L372"><span class="lineNum">     372</span> <span class="tlaUNC">           0 :         Q_ASSERT(service);</span></span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaUNC">           0 :         connect(service, &amp;AbstractPokitService::serviceDetailsDiscovered,</span></span>
-<span id="L374"><span class="lineNum">     374</span> <span class="tlaUNC">           0 :                 this, &amp;DeviceCommand::serviceDetailsDiscovered);</span></span>
-<span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC">           0 :         connect(service, &amp;AbstractPokitService::serviceErrorOccurred,</span></span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaUNC">           0 :                 this, &amp;DeviceCommand::serviceError);</span></span>
-<span id="L377"><span class="lineNum">     377</span>              : </span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connecting to %1 device &quot;%2&quot; (%3) at (%4).)&quot;).arg(</span></span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaUNC">           0 :             toString(*service-&gt;pokitProduct()), info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC">           0 :         device-&gt;controller()-&gt;connectToDevice();</span></span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :         return;</span></span>
-<span id="L382"><span class="lineNum">     382</span> <span class="tlaUNC">           0 :     }</span></span>
-<span id="L383"><span class="lineNum">     383</span>              : </span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">         215 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaUNC">           0 :         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         119 :     return;</span></span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">         111 : }</span></span>
-<span id="L388"><span class="lineNum">     388</span>              : </span>
-<span id="L389"><span class="lineNum">     389</span>              : /*!</span>
-<span id="L390"><span class="lineNum">     390</span>              :  * Checks that the requested device was discovered, and if not, reports and error and exits.</span>
-<span id="L391"><span class="lineNum">     391</span>              :  */</span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         140 : void DeviceCommand::deviceDiscoveryFinished()</span></span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         222 : {</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         362 :     if (!device) {</span></span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         570 :         qCWarning(lc).noquote() &lt;&lt; ((deviceToScanFor.isNull())</span></span>
-<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">         432 :             ? tr(&quot;Failed to find any Pokit device.&quot;)</span></span>
-<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         548 :             : tr(R&quot;(Failed to find device &quot;%1&quot;.)&quot;).arg(deviceToScanFor));</span></span>
-<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">         260 :         QCoreApplication::exit(EXIT_FAILURE);</span></span>
-<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">         222 :     }</span></span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">         362 : }</span></span>
+<span id="L286"><span class="lineNum">     286</span>              : /*!</span>
+<span id="L287"><span class="lineNum">     287</span>              :  * Handles controller error events. This base implementation simply logs \a error and then exits</span>
+<span id="L288"><span class="lineNum">     288</span>              :  * with `EXIT_FAILURE`. Derived classes may override this slot to implement their own error</span>
+<span id="L289"><span class="lineNum">     289</span>              :  * handing if desired.</span>
+<span id="L290"><span class="lineNum">     290</span>              :  */</span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">         140 : void DeviceCommand::controllerError(QLowEnergyController::Error error)</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         222 : {</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">         776 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth controller error:&quot;) &lt;&lt; error;</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         362 :     QCoreApplication::exit(EXIT_FAILURE);</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         362 : }</span></span>
+<span id="L296"><span class="lineNum">     296</span>              : </span>
+<span id="L297"><span class="lineNum">     297</span>              : /*!</span>
+<span id="L298"><span class="lineNum">     298</span>              :  * Handles device disconnection events. This base implementation simply logs and exits the</span>
+<span id="L299"><span class="lineNum">     299</span>              :  * application (via QCoreApplication::exit) with the current exitCodeOnDisconnect value, which is</span>
+<span id="L300"><span class="lineNum">     300</span>              :  * initialise to `EXIT_FAILURE` in the constructor, but should be set to `EXIT_SUCESS` if/when</span>
+<span id="L301"><span class="lineNum">     301</span>              :  * the derived command class has completed its actions and requested the disconnection (as opposed</span>
+<span id="L302"><span class="lineNum">     302</span>              :  * to a spontaneous disconnection on error).</span>
+<span id="L303"><span class="lineNum">     303</span>              :  */</span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          70 : void DeviceCommand::deviceDisconnected()</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">         111 : {</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">         215 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Pokit device disconnected. Exiting with code %1.&quot;)</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaUNC">           0 :         .arg(exitCodeOnDisconnect);</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">         181 :     QCoreApplication::exit(exitCodeOnDisconnect);</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">         181 : }</span></span>
+<span id="L310"><span class="lineNum">     310</span>              : </span>
+<span id="L311"><span class="lineNum">     311</span>              : /*!</span>
+<span id="L312"><span class="lineNum">     312</span>              :  * Handles service error events. This base implementation simply logs \a error and then exits</span>
+<span id="L313"><span class="lineNum">     313</span>              :  * with `EXIT_FAILURE`. Derived classes may override this slot to implement their own error</span>
+<span id="L314"><span class="lineNum">     314</span>              :  * handing if desired.</span>
+<span id="L315"><span class="lineNum">     315</span>              :  *</span>
+<span id="L316"><span class="lineNum">     316</span>              :  * \note As this base class does not construct services (derived classed do), its up to the derived</span>
+<span id="L317"><span class="lineNum">     317</span>              :  * classed to connect this slot to the relevant service's error signal if desired.</span>
+<span id="L318"><span class="lineNum">     318</span>              :  */</span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">         140 : void DeviceCommand::serviceError(const QLowEnergyService::ServiceError error)</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">         222 : {</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         776 :     qCWarning(lc).noquote() &lt;&lt; tr(&quot;Bluetooth service error:&quot;) &lt;&lt; error;</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">         362 :     QCoreApplication::exit(EXIT_FAILURE);</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">         362 : }</span></span>
+<span id="L324"><span class="lineNum">     324</span>              : </span>
+<span id="L325"><span class="lineNum">     325</span>              : /*!</span>
+<span id="L326"><span class="lineNum">     326</span>              :  * Handles service detail discovery events. This base implementation simply logs the event, and</span>
+<span id="L327"><span class="lineNum">     327</span>              :  * nothing more. Derived classes may (usually do) override this slot to provide their own processing</span>
+<span id="L328"><span class="lineNum">     328</span>              :  * when a services details have been discovered.</span>
+<span id="L329"><span class="lineNum">     329</span>              :  */</span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">        1820 : void DeviceCommand::serviceDetailsDiscovered()</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">         761 : {</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">        3465 :     qCDebug(lc).noquote() &lt;&lt; tr(&quot;Service details discovered.&quot;);</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        2581 : }</span></span>
+<span id="L334"><span class="lineNum">     334</span>              : </span>
+<span id="L335"><span class="lineNum">     335</span>              : /*!</span>
+<span id="L336"><span class="lineNum">     336</span>              :  * Checks if \a info is the device (if any) we're looking for, and if so, create a controller and</span>
+<span id="L337"><span class="lineNum">     337</span>              :  * service, and begins connecting to the device.</span>
+<span id="L338"><span class="lineNum">     338</span>              :  */</span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">          70 : void DeviceCommand::deviceDiscovered(const QBluetoothDeviceInfo &amp;info)</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaGNC">         111 : {</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC">         111 :     Q_ASSERT(isPokitProduct(info));</span></span>
+<span id="L342"><span class="lineNum">     342</span>              : </span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC">         181 :     if (device) {</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC">           0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L348"><span class="lineNum">     348</span>              : </span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaGNC">         323 :     if ((deviceToScanFor.isEmpty()) || (deviceToScanFor == info.name()) ||</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaGNC">         392 :         ((!info.address().isNull()) &amp;&amp; (info.address() == QBluetoothAddress(deviceToScanFor))) ||</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC">         251 :         ((!info.deviceUuid().isNull()) &amp;&amp; (info.deviceUuid() == QBluetoothUuid(deviceToScanFor))))</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :     {</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Found Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :             .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :         discoveryAgent-&gt;stop();</span></span>
+<span id="L356"><span class="lineNum">     356</span>              : </span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaUNC">           0 :         device = new PokitDevice(info, this);</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :         connect(device-&gt;controller(), &amp;QLowEnergyController::disconnected,</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaUNC">           0 :                 this, &amp;DeviceCommand::deviceDisconnected);</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :         connect(device-&gt;controller(),</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaUNC">           0 :             #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC">           0 :             QOverload&lt;QLowEnergyController::Error&gt;::of(&amp;QLowEnergyController::error),</span></span>
+<span id="L363"><span class="lineNum">     363</span>              :             #else</span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC">           0 :             &amp;QLowEnergyController::errorOccurred,</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC">           0 :             #endif</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaUNC">           0 :             this, &amp;DeviceCommand::controllerError, Qt::QueuedConnection);</span></span>
+<span id="L367"><span class="lineNum">     367</span>              : </span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaUNC">           0 :         AbstractPokitService * const service = getService();</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaUNC">           0 :         service-&gt;setPokitProduct(pokitProduct(info));</span></span>
+<span id="L370"><span class="lineNum">     370</span>              : </span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaUNC">           0 :         Q_ASSERT(service);</span></span>
+<span id="L372"><span class="lineNum">     372</span> <span class="tlaUNC">           0 :         connect(service, &amp;AbstractPokitService::serviceDetailsDiscovered,</span></span>
+<span id="L373"><span class="lineNum">     373</span> <span class="tlaUNC">           0 :                 this, &amp;DeviceCommand::serviceDetailsDiscovered);</span></span>
+<span id="L374"><span class="lineNum">     374</span> <span class="tlaUNC">           0 :         connect(service, &amp;AbstractPokitService::serviceErrorOccurred,</span></span>
+<span id="L375"><span class="lineNum">     375</span> <span class="tlaUNC">           0 :                 this, &amp;DeviceCommand::serviceError);</span></span>
+<span id="L376"><span class="lineNum">     376</span>              : </span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaUNC">           0 :         qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Connecting to %1 device &quot;%2&quot; (%3) at (%4).)&quot;).arg(</span></span>
+<span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :             toString(*service-&gt;pokitProduct()), info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaUNC">           0 :         device-&gt;controller()-&gt;connectToDevice();</span></span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaUNC">           0 :         return;</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L382"><span class="lineNum">     382</span>              : </span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">         215 :     qCDebug(lc).noquote() &lt;&lt; tr(R&quot;(Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).)&quot;)</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaUNC">           0 :         .arg(info.name(), info.deviceUuid().toString(), info.address().toString());</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">         119 :     return;</span></span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaGNC">         111 : }</span></span>
+<span id="L387"><span class="lineNum">     387</span>              : </span>
+<span id="L388"><span class="lineNum">     388</span>              : /*!</span>
+<span id="L389"><span class="lineNum">     389</span>              :  * Checks that the requested device was discovered, and if not, reports and error and exits.</span>
+<span id="L390"><span class="lineNum">     390</span>              :  */</span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">         140 : void DeviceCommand::deviceDiscoveryFinished()</span></span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">         222 : {</span></span>
+<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">         362 :     if (!device) {</span></span>
+<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">         570 :         qCWarning(lc).noquote() &lt;&lt; ((deviceToScanFor.isNull())</span></span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">         432 :             ? tr(&quot;Failed to find any Pokit device.&quot;)</span></span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">         548 :             : tr(R&quot;(Failed to find device &quot;%1&quot;.)&quot;).arg(deviceToScanFor));</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">         260 :         QCoreApplication::exit(EXIT_FAILURE);</span></span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">         222 :     }</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">         362 : }</span></span>
         </pre>
               </td>
             </tr>
