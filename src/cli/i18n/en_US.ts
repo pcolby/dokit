@@ -83,52 +83,52 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="294"/>
+        <location filename="../devicecommand.cpp" line="293"/>
         <source>Bluetooth controller error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="307"/>
+        <location filename="../devicecommand.cpp" line="306"/>
         <source>Pokit device disconnected. Exiting with code %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="322"/>
+        <location filename="../devicecommand.cpp" line="321"/>
         <source>Bluetooth service error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="333"/>
+        <location filename="../devicecommand.cpp" line="332"/>
         <source>Service details discovered.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="345"/>
+        <location filename="../devicecommand.cpp" line="344"/>
         <source>Ignoring additional Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="354"/>
+        <location filename="../devicecommand.cpp" line="353"/>
         <source>Found Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="378"/>
+        <location filename="../devicecommand.cpp" line="377"/>
         <source>Connecting to %1 device &quot;%2&quot; (%3) at (%4).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="384"/>
+        <location filename="../devicecommand.cpp" line="383"/>
         <source>Ignoring non-matching Pokit device &quot;%1&quot; (%2) at (%3).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="396"/>
+        <location filename="../devicecommand.cpp" line="395"/>
         <source>Failed to find any Pokit device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../devicecommand.cpp" line="397"/>
+        <location filename="../devicecommand.cpp" line="396"/>
         <source>Failed to find device &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
