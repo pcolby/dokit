@@ -12,6 +12,9 @@ class TestDsoService : public QObject
     Q_OBJECT
 
 private slots:
+    void toString_Command_data();
+    void toString_Command();
+
     void toString_Mode_data();
     void toString_Mode();
 

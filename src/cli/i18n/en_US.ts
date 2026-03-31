@@ -4,37 +4,37 @@
 <context>
     <name>AbstractCommand</name>
     <message>
-        <location filename="../abstractcommand.cpp" line="41"/>
+        <location filename="../abstractcommand.cpp" line="42"/>
         <source>Bluetooth discovery error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="272"/>
+        <location filename="../abstractcommand.cpp" line="296"/>
         <source>Ignoring option: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="294"/>
+        <location filename="../abstractcommand.cpp" line="318"/>
         <source>Unknown output format: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="302"/>
+        <location filename="../abstractcommand.cpp" line="326"/>
         <source>Invalid timeout: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="304"/>
+        <location filename="../abstractcommand.cpp" line="328"/>
         <source>Platform does not support Bluetooth scan timeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="307"/>
+        <location filename="../abstractcommand.cpp" line="331"/>
         <source>Set scan timeout to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="316"/>
+        <location filename="../abstractcommand.cpp" line="340"/>
         <source>Missing required option: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -146,50 +146,59 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="110"/>
+        <location filename="../dsocommand.cpp" line="119"/>
         <source>Invalid trigger-level value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dsocommand.cpp" line="126"/>
+        <source>Trigger-level %1%2 is outside range ±%3%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="142"/>
         <source>Unknown trigger mode: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="132"/>
+        <location filename="../dsocommand.cpp" line="148"/>
         <source>If either option is provided, then both must be: trigger-level, trigger-mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="140"/>
+        <location filename="../dsocommand.cpp" line="156"/>
         <source>Invalid interval value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="151"/>
+        <location filename="../dsocommand.cpp" line="167"/>
         <source>Invalid samples value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="153"/>
+        <location filename="../dsocommand.cpp" line="169"/>
         <source>Samples value (%1) must be no greater than %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="157"/>
+        <location filename="../dsocommand.cpp" line="173"/>
         <source>Pokit devices do not officially support great than 8192 samples</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="209"/>
+        <source>, and a %1 at %2%3%4</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="192"/>
         <source>Sampling %1, with range %2, %Ln sample/s over %L3us</source>
-        <translation>
+        <translation type="vanished">
             <numerusform>Sampling %1, with range %2, %Ln sample over %L3us</numerusform>
             <numerusform>Sampling %1, with range %2, %Ln samples over %L3us</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="284"/>
+        <location filename="../dsocommand.cpp" line="304"/>
         <source>Finished fetching %Ln sample/s (with %L2 to remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L2 to remaining).</numerusform>
@@ -197,23 +206,31 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="218"/>
+        <location filename="../dsocommand.cpp" line="238"/>
         <source>Settings written; DSO has started.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <location filename="../dsocommand.cpp" line="212"/>
+        <source>Sampling %1, with range %2, %Ln sample/s over %L3us%4.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../dsocommand.cpp" line="253"/>
+        <location filename="../dsocommand.cpp" line="273"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="264"/>
+        <location filename="../dsocommand.cpp" line="284"/>
         <source>sample_number,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="278"/>
+        <location filename="../dsocommand.cpp" line="298"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>

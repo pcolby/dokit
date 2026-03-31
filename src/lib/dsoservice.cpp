@@ -26,6 +26,18 @@ DOKIT_USE_STRINGLITERALS
  * The DsoService class accesses the `DSO` (Digital Storage Oscilloscope) service of Pokit devices.
  */
 
+/// Returns \a command as a user-friendly string.
+QString DsoService::toString(const Command &command)
+{
+    switch (command) {
+    case Command::FreeRunning:        return tr("Free running");
+    case Command::RisingEdgeTrigger:  return tr("Rising edge trigger");
+    case Command::FallingEdgeTrigger: return tr("Falling edge trigger");
+    case Command::ResendData:         return tr("Resend data");
+    default:                          return QString();
+    }
+}
+
 /// Returns \a mode as a user-friendly string.
 QString DsoService::toString(const Mode &mode)
 {

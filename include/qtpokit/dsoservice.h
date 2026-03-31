@@ -47,6 +47,7 @@ public:
         FallingEdgeTrigger = 2, ///< Trigger on a falling edge.
         ResendData         = 3  ///< Resend the last acquired data.
     };
+    static QString toString(const Command &command);
 
     /// Values supported by the `Mode` attribute of the `Settings` and `Metadata` characteristics.
     enum class Mode : quint8 {

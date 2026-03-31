@@ -104,12 +104,28 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
 
     // Parse the trigger-level option.
     if (parser.isSet(u"trigger-level"_s)) {
-        const QString value = parser.value(u"trigger-level"_s);
-        const quint32 level = parseNumber<std::micro>(value, unit);
+        float sign = 1.0;
+        const QString rawValue = parser.value(u"trigger-level"_s);
+        QString absValue = rawValue;
+        DOKIT_STRING_INDEX_TYPE nonSpacePos;
+        for (nonSpacePos = 0; (nonSpacePos < rawValue.length()) && (rawValue.at(nonSpacePos) == u' '); ++nonSpacePos);
+        if ((nonSpacePos < rawValue.length()) && (rawValue.at(nonSpacePos) == u'-')) {
+            absValue = rawValue.mid(nonSpacePos+1);
+            sign = -1.0;
+        }
+        const quint32 level = parseNumber<std::micro>(absValue, unit);
+        qCDebug(lc) << "Trigger level" << rawValue << absValue << nonSpacePos << sign << level;
         if (level == 0) {
-            errors.append(tr("Invalid trigger-level value: %1").arg(value));
+            errors.append(tr("Invalid trigger-level value: %1").arg(rawValue));
         } else {
-            settings.triggerLevel = (float)(level/1'000'000.0);
+            settings.triggerLevel = sign * (float)(level/1'000'000.0);
+            qCDebug(lc) << "Trigger level" << settings.triggerLevel;
+            // Check the trigger level is within the Votage / Current range.
+            /// \todo Does Pokit Pro allow 'Auto' in DSO mode?
+            if ((rangeOptionValue != 0) && (qAbs(settings.triggerLevel) > (rangeOptionValue/1000.0))) {
+                errors.append(tr("Trigger-level %1%2 is outside range ±%3%2").arg(
+                    appendSiPrefix(settings.triggerLevel), unit, appendSiPrefix(rangeOptionValue / 1000.0)));
+            }
         }
     }
 
@@ -189,9 +205,13 @@ void DsoCommand::serviceDetailsDiscovered()
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service->pokitProduct(), rangeOptionValue);
     const QString range = service->toString(settings.range, settings.mode);
-    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %Ln sample/s over %L3us", nullptr, settings.numberOfSamples)
+    const QString triggerInfo = (settings.command == DsoService::Command::FreeRunning) ? QString() :
+        tr(", and a %1 at %2%3%4").arg(DsoService::toString(settings.command).toLower(),
+            (settings.triggerLevel < 0.) ? u"-"_s : u""_s, appendSiPrefix(qAbs(settings.triggerLevel)),
+            range.at(range.size()-1));
+    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %Ln sample/s over %L3us%4.", nullptr, settings.numberOfSamples)
         .arg(DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range)
-        .arg(settings.samplingWindow);
+        .arg(settings.samplingWindow).arg(triggerInfo);
     service->setSettings(settings);
 }
 

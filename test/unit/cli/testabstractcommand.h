@@ -12,6 +12,9 @@ private slots:
 
     void supportedOptions();
 
+    void appendSiPrefix_data();
+    void appendSiPrefix();
+
     void escapeCsvField_data();
     void escapeCsvField();
 

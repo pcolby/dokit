@@ -11,6 +11,7 @@
 
 #include <QRegularExpression>
 
+Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DsoService::Command))
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DsoService::Mode))
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DsoService::Settings))
 Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(DsoService::Metadata))
@@ -18,6 +19,28 @@ Q_DECLARE_METATYPE(QTPOKIT_PREPEND_NAMESPACE(PokitProduct))
 
 QTPOKIT_BEGIN_NAMESPACE
 DOKIT_USE_STRINGLITERALS
+
+void TestDsoService::toString_Command_data()
+{
+    QTest::addColumn<DsoService::Command>("command");
+    QTest::addColumn<QString>("expected");
+    #define DOKIT_ADD_TEST_ROW(command, expected) \
+        QTest::addRow(#command) << DsoService::Command::command << QStringLiteral(expected)
+    DOKIT_ADD_TEST_ROW(FreeRunning,        "Free running");
+    DOKIT_ADD_TEST_ROW(RisingEdgeTrigger,  "Rising edge trigger");
+    DOKIT_ADD_TEST_ROW(FallingEdgeTrigger, "Falling edge trigger");
+    DOKIT_ADD_TEST_ROW(ResendData,         "Resend data");
+    #undef DOKIT_ADD_TEST_ROW
+    QTest::addRow("invalid") << (DsoService::Command)5    << QString();
+    QTest::addRow("max")     << (DsoService::Command)0xFF << QString();
+}
+
+void TestDsoService::toString_Command()
+{
+    QFETCH(DsoService::Command, command);
+    QFETCH(QString, expected);
+    QCOMPARE(DsoService::toString(command), expected);
+}
 
 void TestDsoService::toString_Mode_data()
 {

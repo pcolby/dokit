@@ -56,6 +56,32 @@ void TestAbstractCommand::supportedOptions()
     QVERIFY(mock.supportedOptions(parser).contains(u"mockRequired"_s));
 }
 
+void TestAbstractCommand::appendSiPrefix_data()
+{
+    QTest::addColumn<double>("value");
+    QTest::addColumn<int>("precision");
+    QTest::addColumn<QString>("expected");
+    QTest::addRow("0")         << 0.        << 6 << u"0"_s;
+    QTest::addRow("0.000'001") << 0.000'001 << 6 << u"1μ"_s;
+    QTest::addRow("0.000'012") << 0.000'012 << 6 << u"12μ"_s;
+    QTest::addRow("0.000'123") << 0.000'123 << 6 << u"123μ"_s;
+    QTest::addRow("0.000'999") << 0.000'999 << 6 << u"999μ"_s;
+    QTest::addRow("0.001")     << 0.001     << 6 << u"1m"_s;
+    QTest::addRow("0.012")     << 0.012     << 6 << u"12m"_s;
+    QTest::addRow("0.123")     << 0.123     << 6 << u"123m"_s;
+    QTest::addRow("0.999")     << 0.999     << 6 << u"999m"_s;
+    QTest::addRow("1")         << 1.        << 6 << u"1"_s;
+    QTest::addRow("99")        << 99.       << 6 << u"99"_s;
+}
+
+void TestAbstractCommand::appendSiPrefix()
+{
+    QFETCH(double, value);
+    QFETCH(int, precision);
+    QFETCH(QString, expected);
+    QCOMPARE(AbstractCommand::appendSiPrefix(value, precision), expected);
+}
+
 void TestAbstractCommand::escapeCsvField_data()
 {
     QTest::addColumn<QString>("field");

@@ -9,6 +9,7 @@
 
 #include <QLocale>
 #include <QTimer>
+#include <QtMath>
 
 #include <cmath>
 #include <ratio>
@@ -92,6 +93,29 @@ QStringList AbstractCommand::supportedOptions(const QCommandLineParser &parser) 
         u"output"_s,
         u"timeout"_s,
     };
+}
+
+/*!
+ * Returns a human-readable version of \a value, with up-to \a precision decimal digits, and SI unit prefix when
+ * appropiate.
+ *
+ * \note Only supports positive values. Tip: use appendSiPrefix(qAbs(...)) for now.
+ */
+QString AbstractCommand::appendSiPrefix(const double value, int precision) {
+    // Scale the number to an appropriate SI prefix.
+    QStringList siPrefixes{ u""_s, u"m"_s, u"μ"_s };
+    int index = 0;
+    if (value != 0.)
+        for (index=0; (index < siPrefixes.length()-1) && (qAbs(value) * qPow(1000.0, (double)index) < 1); ++index);
+    QString number = QString::number(value * qPow(1000.0, (double)index), 'f', precision);
+
+    // Trim trailing zeros, and decimal indicator if no decimals remain.
+    if (const DOKIT_STRING_INDEX_TYPE decimalPos = number.indexOf(u'.'); decimalPos > 0) {
+        DOKIT_STRING_INDEX_TYPE nonZeroPos;
+        for (nonZeroPos = number.length()-1; (nonZeroPos > decimalPos) && (number.at(nonZeroPos) == u'0'); --nonZeroPos);
+        number.truncate((nonZeroPos == decimalPos) ? nonZeroPos : nonZeroPos+1);
+    }
+    return QString(u"%1%2"_s).arg(number, siPrefixes.at(index));
 }
 
 /*!

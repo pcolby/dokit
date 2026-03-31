@@ -30,6 +30,7 @@ public:
     virtual QStringList requiredOptions(const QCommandLineParser &parser) const;
     virtual QStringList supportedOptions(const QCommandLineParser &parser) const;
 
+    static QString appendSiPrefix(const double value, int precision = 6);
     static QString escapeCsvField(const QString &field);
 
     template<typename R>

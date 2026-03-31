@@ -325,31 +325,51 @@
     <name>DsoService</name>
     <message>
         <location filename="../dsoservice.cpp" line="33"/>
-        <source>Idle</source>
+        <source>Free running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dsoservice.cpp" line="34"/>
-        <source>DC voltage</source>
+        <source>Rising edge trigger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dsoservice.cpp" line="35"/>
-        <source>AC voltage</source>
+        <source>Falling edge trigger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dsoservice.cpp" line="36"/>
+        <source>Resend data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsoservice.cpp" line="45"/>
+        <source>Idle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsoservice.cpp" line="46"/>
+        <source>DC voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsoservice.cpp" line="47"/>
+        <source>AC voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsoservice.cpp" line="48"/>
         <source>DC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="37"/>
+        <location filename="../dsoservice.cpp" line="49"/>
         <source>AC current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="179"/>
+        <location filename="../dsoservice.cpp" line="191"/>
         <source>Settings command must not be &apos;ResendData&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -357,12 +377,12 @@
 <context>
     <name>DsoServicePrivate</name>
     <message>
-        <location filename="../dsoservice.cpp" line="376"/>
+        <location filename="../dsoservice.cpp" line="388"/>
         <source>Samples value has odd size %1 (should be even): %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsoservice.cpp" line="383"/>
+        <location filename="../dsoservice.cpp" line="395"/>
         <source>Read %n sample/s from %1-bytes.</source>
         <translation>
             <numerusform>Read %n sample from %1-bytes.</numerusform>
@@ -370,42 +390,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="397"/>
+        <location filename="../dsoservice.cpp" line="409"/>
         <source>Settings characteristic is write-only, but somehow read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="409"/>
+        <location filename="../dsoservice.cpp" line="421"/>
         <source>Reading characteristic is notify-only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="414"/>
+        <location filename="../dsoservice.cpp" line="426"/>
         <source>Unknown characteristic read for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="434"/>
+        <location filename="../dsoservice.cpp" line="446"/>
         <source>Metadata characteristic is read/notify, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="440"/>
+        <location filename="../dsoservice.cpp" line="452"/>
         <source>Reading characteristic is notify-only, but somehow written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="445"/>
+        <location filename="../dsoservice.cpp" line="457"/>
         <source>Unknown characteristic written for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="460"/>
+        <location filename="../dsoservice.cpp" line="472"/>
         <source>Settings characteristic is write-only, but somehow updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsoservice.cpp" line="475"/>
+        <location filename="../dsoservice.cpp" line="487"/>
         <source>Unknown characteristic notified for DSO service</source>
         <translation type="unfinished"></translation>
     </message>
