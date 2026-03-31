@@ -263,7 +263,6 @@ bool AbstractPokitServicePrivate::createServiceObject()
  * except that it performs some sanity checks, such as checking the service object pointer has been
  * assigned first, and also logs failures in a consistent manner.
  *
- * \param uuid
  * \return
  */
 QLowEnergyCharacteristic AbstractPokitServicePrivate::getCharacteristic(const QBluetoothUuid &uuid) const
