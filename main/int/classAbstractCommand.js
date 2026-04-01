@@ -10,7 +10,7 @@ var classAbstractCommand =
     [ "deviceDiscovered", "classAbstractCommand.html#a6ea2745014149145e803d64ca51057d9", null ],
     [ "deviceDiscoveryFinished", "classAbstractCommand.html#adb456a44bfe2f353e3a16aa720aeb299", null ],
     [ "escapeCsvField", "classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813", null ],
-    [ "parseNumber", "classAbstractCommand.html#a29b2a2446ef034195183a2ae9d4bb911", null ],
+    [ "parseNumber", "classAbstractCommand.html#a5aec16e8b277caae4a2bf1f6bab8b2cb", null ],
     [ "processOptions", "classAbstractCommand.html#ad827a18a24776efeb955739459d48f7d", null ],
     [ "Q_LOGGING_CATEGORY", "classAbstractCommand.html#ac8bafb6db670b3c127ab59130584274f", null ],
     [ "requiredOptions", "classAbstractCommand.html#afd6f41cfc925751415cfa45e3b2d0b4a", null ],
