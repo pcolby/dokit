@@ -1,5 +1,12 @@
 # Changelog[^1]
 
+## 0.6.0 (_[Unreleased]_)
+
+### Fixed
+
+- Support negative triggers in Digital Storage Oscilloscope (DSO) mode ([cde4962]).
+- Support zero (`0`) triggers in Digital Storage Oscilloscope (DSO) mode ([cf84d77]).
+
 ## [0.5.7] (2026-03-27)
 
 ### Changed
@@ -218,7 +225,9 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
 [899b007]:     https://github.com/pcolby/dokit/commit/899b007e73e64e724f2785acafddd2d3fc6f893e "Round command line options correctly"
 [9a4d1cf]:     https://github.com/pcolby/dokit/commit/9a4d1cf13198fbf9a4d0bb0e8c3dd3001cefdf65 "Complete support for (optional) QTPOKIT_NAMESPACE"
+[cde4962]:     https://github.com/pcolby/dokit/commit/cde4962997813e59bd7b16aaee657aad91f426ff "Support negative trigger levels"
 [cc5ff57]:     https://github.com/pcolby/dokit/commit/cc5ff57bc2f94f4306687d88307cda4f3fbb3612 "Use fputs() instead of std::err for CLI error output"
+[cf84d77]:     https://github.com/pcolby/dokit/commit/cf84d77c828da381d793c5806609ac8bf207a85b "Support zero trigger levels"
 [d0cb2eb]:     https://github.com/pcolby/dokit/commit/d0cb2ebe264ed035357a2dc12bde8e04e446423d "Add Qt 6.10 builds"
 [d54fbbc]:     https://github.com/pcolby/dokit/commit/d54fbbcb2eacbce6b4e9bfb8a23a9ce43fd7524a "Support GitHub's Linux arm64 preview hosts"
 [db8b841]:     https://github.com/pcolby/dokit/commit/db8b84197d00b5a357974043f2dc0f3c0b7dfeff "Return quint32 from all maxValue methods"
