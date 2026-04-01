@@ -212,7 +212,7 @@
 <span id="L119"><span class="lineNum">     119</span> <span class="tlaUNC">           0 :                 rangeOptionValue = parseNumber&lt;std::ratio&lt;1&gt;&gt;(value, u&quot;ohms&quot;_s);</span></span>
 <span id="L120"><span class="lineNum">     120</span> <span class="tlaUNC">           0 :                 break;</span></span>
 <span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">         181 :             case MultimeterService::Mode::Capacitance:</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">         181 :                 rangeOptionValue = parseNumber&lt;std::nano&gt;(value, u&quot;F&quot;_s, (quint32)500); // pF.</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">         181 :                 rangeOptionValue = parseNumber&lt;std::nano&gt;(value, u&quot;F&quot;_s, 500); // pF.</span></span>
 <span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">         181 :                 break;</span></span>
 <span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">         181 :             default:</span></span>
 <span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">         331 :                 qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring range value: %1&quot;).arg(value);</span></span>

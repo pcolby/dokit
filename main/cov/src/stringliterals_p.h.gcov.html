@@ -129,9 +129,9 @@
 <span id="L36"><span class="lineNum">      36</span>              : </span>
 <span id="L37"><span class="lineNum">      37</span>              : // Although qsizetype was added in Qt 5.10.0, it wasn't used for QString indexes until 6.0.</span>
 <span id="L38"><span class="lineNum">      38</span>              : #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0))</span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">      215332 : #define DOKIT_STRING_INDEX_TYPE int</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">      212912 : #define DOKIT_STRING_INDEX_TYPE int</span></span>
 <span id="L40"><span class="lineNum">      40</span>              : #else</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">       58745 : #define DOKIT_STRING_INDEX_TYPE qsizetype</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">       58085 : #define DOKIT_STRING_INDEX_TYPE qsizetype</span></span>
 <span id="L42"><span class="lineNum">      42</span>              : #endif</span>
 <span id="L43"><span class="lineNum">      43</span>              : </span>
 <span id="L44"><span class="lineNum">      44</span>              : #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 4, 0)) // String literals added in Qt 6.4.0.</span>
@@ -141,9 +141,9 @@
 <span id="L48"><span class="lineNum">      48</span>              : inline namespace StringLiterals {</span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
 <span id="L50"><span class="lineNum">      50</span>              : constexpr inline QLatin1Char operator&quot;&quot;_L1(char ch) noexcept</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">       20287 : {</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">       20287 :     return QLatin1Char(ch);</span></span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">       20287 : }</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">       18319 : {</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">       18319 :     return QLatin1Char(ch);</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">       18319 : }</span></span>
 <span id="L54"><span class="lineNum">      54</span>              : </span>
 <span id="L55"><span class="lineNum">      55</span>              : constexpr inline QLatin1String/*View*/ operator&quot;&quot;_L1(const char *str, size_t size) noexcept</span>
 <span id="L56"><span class="lineNum">      56</span> <span class="tlaUNC">           0 : {</span></span>
@@ -152,10 +152,10 @@
 <span id="L59"><span class="lineNum">      59</span> <span class="tlaUNC">           0 : }</span></span>
 <span id="L60"><span class="lineNum">      60</span>              : </span>
 <span id="L61"><span class="lineNum">      61</span>              : inline QString operator&quot;&quot;_s(const char16_t *str, size_t size) noexcept</span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">      272648 : {</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">      269568 : {</span></span>
 <span id="L63"><span class="lineNum">      63</span>              :     //return QString(QStringPrivate(nullptr, const_cast&lt;char16_t *&gt;(str), qsizetype(size)));</span>
-<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">      307050 :     return QString::fromUtf16(str, DOKIT_STRING_INDEX_TYPE(size));</span></span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">      272648 : }</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">      303640 :     return QString::fromUtf16(str, DOKIT_STRING_INDEX_TYPE(size));</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">      269568 : }</span></span>
 <span id="L66"><span class="lineNum">      66</span>              : </span>
 <span id="L67"><span class="lineNum">      67</span>              : } } } // _dokit::Literals::StringLiterals</span>
 <span id="L68"><span class="lineNum">      68</span>              : </span>
