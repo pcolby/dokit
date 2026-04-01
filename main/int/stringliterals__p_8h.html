@@ -146,6 +146,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a2ffeed944ae7eb0f7c7f4df48bb614d4" id="r_a2ffeed944ae7eb0f7c7f4df48bb614d4"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2ffeed944ae7eb0f7c7f4df48bb614d4">DOKIT_STRING_INDEX_TYPE</a>&#160;&#160;&#160;qsizetype</td></tr>
+<tr class="memdesc:a2ffeed944ae7eb0f7c7f4df48bb614d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal macro for matching the index type used by <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> methods.  <br /></td></tr>
 <tr class="memitem:a57e8f069736bf60390dcfd9dbd83c96a" id="r_a57e8f069736bf60390dcfd9dbd83c96a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a57e8f069736bf60390dcfd9dbd83c96a">DOKIT_USE_STRINGLITERALS</a>&#160;&#160;&#160;using namespace Qt::Literals::StringLiterals;</td></tr>
 <tr class="memdesc:a57e8f069736bf60390dcfd9dbd83c96a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal macro for using either official <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> string literals (added in <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> 6.4), or our own equivalent ones for older <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> versions.  <br /></td></tr>
 </table>
@@ -155,6 +157,28 @@ Macros</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="stringliterals__p_8h_source.html">stringliterals_p.h</a>.</p>
 </div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
+<a id="a2ffeed944ae7eb0f7c7f4df48bb614d4" name="a2ffeed944ae7eb0f7c7f4df48bb614d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ffeed944ae7eb0f7c7f4df48bb614d4">&#9670;&#160;</a></span>DOKIT_STRING_INDEX_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOKIT_STRING_INDEX_TYPE&#160;&#160;&#160;qsizetype</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal macro for matching the index type used by <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> methods. </p>
+<p>Specifically, from <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> 6.0.0 onwards, <a class="elRef" href="https://doc.qt.io/qt-5/qstring.html">QString</a> (and related classes, and methods) use qsizetype for index positions, while Qt5 used int instead.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo</a></b></dt><dd>Remove this macro when Dokit no longer supports Qt5. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stringliterals__p_8h_source.html#l00041">41</a> of file <a class="el" href="stringliterals__p_8h_source.html">stringliterals_p.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="abstractcommand_8cpp_source.html#l00104">AbstractCommand::appendSiPrefix()</a>, and <a class="el" href="dsocommand_8cpp_source.html#l00054">DsoCommand::processOptions()</a>.</p>
+
+</div>
+</div>
 <a id="a57e8f069736bf60390dcfd9dbd83c96a" name="a57e8f069736bf60390dcfd9dbd83c96a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a57e8f069736bf60390dcfd9dbd83c96a">&#9670;&#160;</a></span>DOKIT_USE_STRINGLITERALS</h2>
 
@@ -168,9 +192,9 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Internal macro for using either official <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> string literals (added in <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> 6.4), or our own equivalent ones for older <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> versions. </p>
-<p>This macro can, and will, be removed entirely when Dokit no longer supports <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> versions earlier than 6.4. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo</a></b></dt><dd>Remove this macro when Dokit no longer supports <a class="elRef" href="https://doc.qt.io/qt-5/qt.html">Qt</a> versions earlier than 6.4. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="stringliterals__p_8h_source.html#l00060">60</a> of file <a class="el" href="stringliterals__p_8h_source.html">stringliterals_p.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stringliterals__p_8h_source.html#l00071">71</a> of file <a class="el" href="stringliterals__p_8h_source.html">stringliterals_p.h</a>.</p>
 
 </div>
 </div>

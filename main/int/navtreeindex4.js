@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"qt.html#DayOfWeek-enum":[4,0,6,1121],
+"qt.html#DayOfWeek-enum":[4,0,6,1150],
 "qt.html#DayOfWeek-enum":[4,0,6,1286],
 "qt.html#DockWidgetArea-enum":[4,0,6,21],
 "qt.html#DockWidgetArea-enum":[4,0,6,168],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "qt.html#Key-enum":[4,0,6,447],
 "qt.html#Key-enum":[4,0,6,448],
 "qt.html#Key-enum":[4,0,6,449],
-"qt.html#Key-enum":[4,0,6,450],
-"qt.html#Key-enum":[4,0,6,451],
-"qt.html#Key-enum":[4,0,6,452]
+"qt.html#Key-enum":[4,0,6,450]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"qt.html#WidgetAttribute-enum":[4,0,6,1220],
+"qt.html#WidgetAttribute-enum":[4,0,6,1221],
 "qt.html#WidgetAttribute-enum":[4,0,6,1222],
 "qt.html#WidgetAttribute-enum":[4,0,6,1223],
 "qt.html#WidgetAttribute-enum":[4,0,6,1224],
@@ -176,7 +178,8 @@ var NAVTREEINDEX8 =
 "statusservice__p_8h.html":[6,0,0,0,1,1,21],
 "statusservice__p_8h_source.html":[6,0,0,0,1,1,21],
 "stringliterals__p_8h.html":[6,0,0,0,1,2],
-"stringliterals__p_8h.html#a57e8f069736bf60390dcfd9dbd83c96a":[6,0,0,0,1,2,0],
+"stringliterals__p_8h.html#a2ffeed944ae7eb0f7c7f4df48bb614d4":[6,0,0,0,1,2,0],
+"stringliterals__p_8h.html#a57e8f069736bf60390dcfd9dbd83c96a":[6,0,0,0,1,2,1],
 "stringliterals__p_8h_source.html":[6,0,0,0,1,2],
 "structCalibrationService_1_1CharacteristicUuids.html":[5,0,7,0],
 "structCalibrationService_1_1CharacteristicUuids.html#a03a5bb3dc948f18b0c87b5bb9e0120f5":[5,0,7,0,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX8 =
 "structStatusService_1_1CharacteristicUuids.html":[5,0,35,1],
 "structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8":[5,0,35,1,3],
 "structStatusService_1_1CharacteristicUuids.html#a8e558d76deeac993d962763fec80aa3d":[5,0,35,1,5],
-"structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0":[5,0,35,1,1],
-"structStatusService_1_1CharacteristicUuids.html#ae2abf1183b8b6f2cd2e0cb5206a3975f":[5,0,35,1,0],
-"structStatusService_1_1CharacteristicUuids.html#aeb51331d2510873d95a5993e62aa2cf0":[5,0,35,1,2],
-"structStatusService_1_1CharacteristicUuids.html#af27d015f60e86b0de464eab455c56f7c":[5,0,35,1,4]
+"structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0":[5,0,35,1,1]
 };

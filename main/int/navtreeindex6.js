@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"qt.html#Key-enum":[4,0,6,701],
+"qt.html#Key-enum":[4,0,6,702],
 "qt.html#Key-enum":[4,0,6,703],
 "qt.html#Key-enum":[4,0,6,704],
 "qt.html#Key-enum":[4,0,6,705],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "qt.html#MouseButton-enum":[4,0,6,315],
 "qt.html#MouseButton-enum":[4,0,6,316],
 "qt.html#MouseButton-enum":[4,0,6,317],
-"qt.html#MouseButton-enum":[4,0,6,318],
-"qt.html#MouseButton-enum":[4,0,6,319],
-"qt.html#MouseButton-enum":[4,0,6,320]
+"qt.html#MouseButton-enum":[4,0,6,318]
 };

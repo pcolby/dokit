@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"qt.html#Key-enum":[4,0,6,451],
+"qt.html#Key-enum":[4,0,6,452],
 "qt.html#Key-enum":[4,0,6,453],
 "qt.html#Key-enum":[4,0,6,454],
 "qt.html#Key-enum":[4,0,6,455],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "qt.html#Key-enum":[4,0,6,697],
 "qt.html#Key-enum":[4,0,6,698],
 "qt.html#Key-enum":[4,0,6,699],
-"qt.html#Key-enum":[4,0,6,700],
-"qt.html#Key-enum":[4,0,6,701],
-"qt.html#Key-enum":[4,0,6,702]
+"qt.html#Key-enum":[4,0,6,700]
 };

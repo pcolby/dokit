@@ -6,6 +6,7 @@ var classAbstractCommand =
       [ "Text", "classAbstractCommand.html#aa2dadc72289ff2b0a02c1fb435f8a4dca9dffbf69ffba8bc38bc4e01abf4b1675", null ]
     ] ],
     [ "AbstractCommand", "classAbstractCommand.html#a0d6fde269511e87aa6f178c1733073ae", null ],
+    [ "appendSiPrefix", "classAbstractCommand.html#a535ad584b6ca6e77bdb68778f773e426", null ],
     [ "deviceDiscovered", "classAbstractCommand.html#a6ea2745014149145e803d64ca51057d9", null ],
     [ "deviceDiscoveryFinished", "classAbstractCommand.html#adb456a44bfe2f353e3a16aa720aeb299", null ],
     [ "escapeCsvField", "classAbstractCommand.html#af85c842568f8a3a893e336e449ef7813", null ],
