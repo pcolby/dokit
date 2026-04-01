@@ -29,7 +29,7 @@ namespace PokitPro {
 
     /// Values supported by the Pokit Pro's `Range` attributes in `*Current` modes.
     enum class CurrentRange : quint8 {
-        _500uA    = 0,  ///< Up to 5µA.
+        _500uA    = 0,  ///< Up to 5μA.
         _2mA      = 1,  ///< Up to 2mA.
         _10mA     = 2,  ///< Up to 10mA.
         _125mA    = 3,  ///< Up to 125mA.

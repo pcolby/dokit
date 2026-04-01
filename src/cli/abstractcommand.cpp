@@ -155,23 +155,23 @@ struct Ratio {
 template<typename R> constexpr Ratio makeRatio() { return Ratio{ R::num, R::den }; }
 
 /*!
- * Returns \a value as an integer multiple of the ratio \a R. The string \a value
+ * Returns \a value as an integer multiple of the ratio \a R, as number of type \a T. The string \a value
  * may end with the optional \a unit, such as `V` or `s`, which may also be preceded with a SI unit
  * prefix such as `m` for `milli`. If \a value contains no SI unit prefix, then the result will be
  * multiplied by 1,000 enough times to be greater than \a sensibleMinimum. This allows for
  * convenient use like:
  *
  * ```
- * const quint32 timeout = parseNumber<std::milli>(parser.value("window"), 's', 500'000);
+ * const quint32 timeout = parseNumber<std::milli>(parser.value("window"), 's', (quint32)500'000);
  * ```
  *
  * So that an unqualified period like "300" will be assumed to be 300 milliseconds, and not 300
  * microseconds, while a period like "1000" will be assume to be 1 second.
  *
- * If conversion fails for any reason, 0 is returned.
+ * If conversion fails for any reason, quiet-NaN (if supported by \a T) or 0 is returned.
  */
-template<typename R>
-quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, const quint32 sensibleMinimum)
+template<typename R, typename T>
+T AbstractCommand::parseNumber(const QString &value, const QString &unit, const T sensibleMinimum)
 {
     static const QMap<QChar, Ratio> unitPrefixScaleMap {
         { 'E'_L1,        makeRatio<std::exa>()   },
@@ -186,7 +186,8 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         { 'c'_L1,        makeRatio<std::centi>() },
         { 'm'_L1,        makeRatio<std::milli>() },
         { 'u'_L1,        makeRatio<std::micro>() }, // Not official SI unit prefix, but commonly used.
-        { QChar(0x00B5), makeRatio<std::micro>() }, // Unicode micro symbol (μ).
+        { QChar(0x00B5), makeRatio<std::micro>() }, // Unicode micro symbol (µ).
+        { QChar(0x03BC), makeRatio<std::micro>() }, // Unicode lower mu (μ).
         { 'n'_L1,        makeRatio<std::nano>()  },
         { 'p'_L1,        makeRatio<std::pico>()  },
         { 'f'_L1,        makeRatio<std::femto>() },
@@ -216,50 +217,57 @@ quint32 AbstractCommand::parseNumber(const QString &value, const QString &unit, 
         }
     }
 
-    #define DOKIT_RESULT(var) (var * ratio.num * R::den / ratio.den / R::num)
     // Parse the number as an (unsigned) integer.
     QLocale locale; bool ok;
-    qulonglong integer = locale.toULongLong(number, &ok);
-    if (ok) {
+    if (const qulonglong integer = locale.toULongLong(number, &ok); (ok)) {
         if (integer == 0) {
-            return 0;
+            return static_cast<T>(integer); // Otherwise the next for loop would be be infinite.
         }
+        #define DOKIT_RESULT(var) (static_cast<T>(var) * ratio.num * R::den / ratio.den / R::num)
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(integer) < sensibleMinimum; ratio.num *= 1000);
         }
-        return (integer == 0) ? 0u : (quint32)DOKIT_RESULT(integer);
+        return DOKIT_RESULT(integer);
+        #undef DOKIT_RESULT
     }
 
     // Parse the number as a (double) floating point number, and check that it is positive.
     if (const double dbl = locale.toDouble(number, &ok); (ok) && (dbl > 0.0)) {
+        if (dbl == 0.) {
+            return static_cast<T>(dbl); // Otherwise the next for loop would be be infinite.
+        }
+        #define DOKIT_RESULT(var) (var * ratio.num * R::den / ratio.den / R::num)
         if (!ratio.isValid()) {
             for (ratio = makeRatio<R>(); DOKIT_RESULT(dbl) < sensibleMinimum; ratio.num *= 1000);
         }
-        return static_cast<quint32>(std::llround(DOKIT_RESULT(dbl)));
+        return (std::is_integral_v<T>) ? static_cast<T>(std::llround(DOKIT_RESULT(dbl))) : DOKIT_RESULT(dbl);
+        #undef DOKIT_RESULT
     }
-    #undef DOKIT_RESULT
-    return 0; // Failed to parse as either integer, or float.
+
+    // Failed to parse as either integer, or float.
+    return (std::numeric_limits<T>::has_quiet_NaN) ? std::numeric_limits<T>::quiet_NaN() : 0;
 }
 
-#define DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(type) template \
-quint32 AbstractCommand::parseNumber<type>(const QString &value, const QString &unit, const quint32 sensibleMinimum)
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::exa);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::peta);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::tera);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::giga);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::mega);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::kilo);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::hecto);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deca);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::ratio<1>);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deci);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::centi);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::milli);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::micro);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::nano);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::pico);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::femto);
-DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::atto);
+#define DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(Ratio, Type) template \
+Type AbstractCommand::parseNumber<Ratio>(const QString &value, const QString &unit, const Type sensibleMinimum)
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::exa,      quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::peta,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::tera,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::giga,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::mega,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::kilo,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::hecto,    quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deca,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::ratio<1>, quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::ratio<1>, float);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::deci,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::centi,    quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::milli,    quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::micro,    quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::nano,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::pico,     quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::femto,    quint32);
+DOKIT_INSTANTIATE_TEMPLATE_FUNCTION(std::atto,     quint32);
 #undef DOKIT_INSTANTIATE_TEMPLATE_FUNCTION
 
 /*!

@@ -9,32 +9,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="296"/>
+        <location filename="../abstractcommand.cpp" line="304"/>
         <source>Ignoring option: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="318"/>
+        <location filename="../abstractcommand.cpp" line="326"/>
         <source>Unknown output format: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="326"/>
+        <location filename="../abstractcommand.cpp" line="334"/>
         <source>Invalid timeout: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="328"/>
+        <location filename="../abstractcommand.cpp" line="336"/>
         <source>Platform does not support Bluetooth scan timeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="331"/>
+        <location filename="../abstractcommand.cpp" line="339"/>
         <source>Set scan timeout to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../abstractcommand.cpp" line="340"/>
+        <location filename="../abstractcommand.cpp" line="348"/>
         <source>Missing required option: %1</source>
         <translation type="unfinished"></translation>
     </message>

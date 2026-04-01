@@ -119,7 +119,7 @@ QStringList MeterCommand::processOptions(const QCommandLineParser &parser)
                 rangeOptionValue = parseNumber<std::ratio<1>>(value, u"ohms"_s);
                 break;
             case MultimeterService::Mode::Capacitance:
-                rangeOptionValue = parseNumber<std::nano>(value, u"F"_s, 500); // pF.
+                rangeOptionValue = parseNumber<std::nano>(value, u"F"_s, (quint32)500); // pF.
                 break;
             default:
                 qCInfo(lc).noquote() << tr("Ignoring range value: %1").arg(value);

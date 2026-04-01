@@ -224,7 +224,7 @@ quint8 DeviceCommand::minCapacitanceRange(const PokitProduct product, const quin
 }
 
 /*!
- * Returns the \a product's lowest current range that can measure at least up to \a maxValue (µA), or AutoRange if no
+ * Returns the \a product's lowest current range that can measure at least up to \a maxValue (μA), or AutoRange if no
  * such range is available.
  *
  * \see DeviceCommand::minRange<PokitMeter::CurrentRange>(const quint32 maxValue)

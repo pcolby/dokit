@@ -33,8 +33,8 @@ public:
     static QString appendSiPrefix(const double value, int precision = 6);
     static QString escapeCsvField(const QString &field);
 
-    template<typename R>
-    static quint32 parseNumber(const QString &value, const QString &unit, const quint32 sensibleMinimum = 0);
+    template<typename R, typename T = quint32>
+    static T parseNumber(const QString &value, const QString &unit, const T sensibleMinimum = 0);
 
 public slots:
     virtual QStringList processOptions(const QCommandLineParser &parser);

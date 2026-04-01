@@ -108,6 +108,8 @@ void TestAbstractCommand::parseMicroValue_data()
 
     // With valid units (so sensibleMinimum is ignored).
     QTest::addRow("123us") << u"123us"_s << u"s"_s << (quint32)100 << (quint32)123;
+    QTest::addRow("123µs") << u"123µs"_s << u"s"_s << (quint32)100 << (quint32)123;
+    QTest::addRow("123μs") << u"123μs"_s << u"s"_s << (quint32)100 << (quint32)123;
     QTest::addRow("123ms") << u"123ms"_s << u"s"_s << (quint32)100 << (quint32)123000;
     QTest::addRow("123s")  << u"123s"_s << u"s"_s << (quint32)100 << (quint32)123000000;
 
@@ -137,6 +139,12 @@ void TestAbstractCommand::parseMicroValue()
     QFETCH(QString, unit);
     QFETCH(quint32, sensibleMinimum);
     QFETCH(quint32, expected);
+
+#if defined(Q_OS_WIN) && defined(_MSC_VER) && (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    QEXPECT_FAIL("123µs", "Platform has known Unicode bugs", Continue);
+    QEXPECT_FAIL("123μs", "Platform has known Unicode bugs", Continue);
+#endif
+
     QCOMPARE(AbstractCommand::parseNumber<std::micro>(value, unit, sensibleMinimum), expected);
 }
 
@@ -216,6 +224,80 @@ void TestAbstractCommand::parseWholeValue()
     QFETCH(QString, unit);
     QFETCH(quint32, expected);
     const auto actual = AbstractCommand::parseNumber<std::ratio<1>>(value, unit);
+    QCOMPARE(actual, expected);
+}
+
+void TestAbstractCommand::parseWholeValue_float_data()
+{
+    QTest::addColumn<QString>("value");
+    QTest::addColumn<QString>("unit");
+    QTest::addColumn<float>("expected");
+
+    // With valid units.
+    QTest::addRow("123V")  << u"123V"_s  << u"V"_s << 123.f;
+    QTest::addRow("123KV") << u"123KV"_s << u"V"_s << 123000.f;
+    QTest::addRow("123MV") << u"123MV"_s << u"V"_s << 123000000.f;
+
+    // Without units.
+    QTest::addRow("123")  << u"123"_s  << u"V"_s << 123.f;
+    QTest::addRow("123k") << u"123k"_s << u"V"_s << 123000.f;
+    QTest::addRow("123M") << u"123M"_s << u"V"_s << 123000000.f;
+
+    // Floats work the same.
+    QTest::addRow("123.0") << u"123.0"_s << QString() << 123.f;
+    QTest::addRow("1.23K") << u"1.23K"_s << QString() << 1230.f;
+    QTest::addRow("1.23M") << u"1.23M"_s << QString() << 1230000.f;
+
+    // Micro and Milli units.
+    QTest::addRow(  "1uA") <<   u"1uA"_s << u"A"_s << 0.000001f;
+    QTest::addRow( "12uA") <<  u"12uA"_s << u"A"_s << 0.000012f;
+    QTest::addRow("123uA") << u"123uA"_s << u"A"_s << 0.000123f;
+    QTest::addRow("999uA") << u"999uA"_s << u"A"_s << 0.000999f;
+    QTest::addRow(  "1µA") <<   u"1µA"_s << u"A"_s << 0.000001f;
+    QTest::addRow( "12µA") <<  u"12µA"_s << u"A"_s << 0.000012f;
+    QTest::addRow("123µA") << u"123µA"_s << u"A"_s << 0.000123f;
+    QTest::addRow("999µA") << u"999µA"_s << u"A"_s << 0.000999f;
+    QTest::addRow(  "1μA") <<   u"1μA"_s << u"A"_s << 0.000001f;
+    QTest::addRow( "12μA") <<  u"12μA"_s << u"A"_s << 0.000012f;
+    QTest::addRow("123μA") << u"123μA"_s << u"A"_s << 0.000123f;
+    QTest::addRow("999μA") << u"999μA"_s << u"A"_s << 0.000999f;
+    QTest::addRow(  "1mA") <<   u"1mA"_s << u"A"_s << 0.001f;
+    QTest::addRow( "12mA") <<  u"12mA"_s << u"A"_s << 0.012f;
+    QTest::addRow("123mA") << u"123mA"_s << u"A"_s << 0.123f;
+    QTest::addRow("999mA") << u"999mA"_s << u"A"_s << 0.999f;
+
+    // Invalid numbers return NaN.
+    QTest::addRow("xxx") << u"xxx"_s << QString() << std::numeric_limits<float>::quiet_NaN();
+    QTest::addRow("12x") << u"12x"_s << QString() << std::numeric_limits<float>::quiet_NaN();
+
+    // Negative numbers are invalid too (ie also return 0).
+    QTest::addRow("-1")   << u"-1"_s   << QString() << std::numeric_limits<float>::quiet_NaN();
+    QTest::addRow("-0.1") << u"-0.1"_s << QString() << std::numeric_limits<float>::quiet_NaN();
+}
+
+void TestAbstractCommand::parseWholeValue_float()
+{
+    QFETCH(QString, value);
+    QFETCH(QString, unit);
+    QFETCH(float, expected);
+    const auto actual = AbstractCommand::parseNumber<std::ratio<1>, float>(value, unit);
+
+#if defined(Q_OS_WIN) && defined(_MSC_VER) && (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    QEXPECT_FAIL(  "1µA", "Platform has known Unicode bugs", Continue);
+    QEXPECT_FAIL( "12µA", "Platform has known Unicode bugs", Continue);
+    QEXPECT_FAIL("123µA", "Platform has known Unicode bugs", Continue);
+    QEXPECT_FAIL("999µA", "Platform has known Unicode bugs", Continue);
+    QEXPECT_FAIL(  "1μA", "Platform has known Unicode bugs", Continue);
+    QEXPECT_FAIL( "12μA", "Platform has known Unicode bugs", Continue);
+    QEXPECT_FAIL("123μA", "Platform has known Unicode bugs", Continue);
+    QEXPECT_FAIL("999μA", "Platform has known Unicode bugs", Continue);
+#endif
+
+#if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+    if (qIsNaN(expected)) {
+        QCOMPARE(qIsNaN(actual), qIsNaN(actual));
+    } else // Pre Qt 5.12, QCOMPARE would see two NaN's as not matching.
+#endif
     QCOMPARE(actual, expected);
 }
 

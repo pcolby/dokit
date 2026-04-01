@@ -27,6 +27,9 @@ private slots:
     void parseWholeValue_data();
     void parseWholeValue();
 
+    void parseWholeValue_float_data();
+    void parseWholeValue_float();
+
     void processOptions();
 
     void processOptions_device_data();

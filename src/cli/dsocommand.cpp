@@ -113,12 +113,12 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
             absValue = rawValue.mid(nonSpacePos+1);
             sign = -1.0;
         }
-        const quint32 level = parseNumber<std::micro>(absValue, unit);
+        const float level = parseNumber<std::ratio<1>,float>(absValue, unit, 0.f);
         qCDebug(lc) << "Trigger level" << rawValue << absValue << nonSpacePos << sign << level;
-        if (level == 0) {
+        if (qIsNaN(level)) {
             errors.append(tr("Invalid trigger-level value: %1").arg(rawValue));
         } else {
-            settings.triggerLevel = sign * (float)(level/1'000'000.0);
+            settings.triggerLevel = sign * level;
             qCDebug(lc) << "Trigger level" << settings.triggerLevel;
             // Check the trigger level is within the Votage / Current range.
             /// \todo Does Pokit Pro allow 'Auto' in DSO mode?
@@ -151,7 +151,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     // Parse the interval option.
     if (parser.isSet(u"interval"_s)) {
         const QString value = parser.value(u"interval"_s);
-        const quint32 interval = parseNumber<std::micro>(value, u"s"_s, 500'000);
+        const quint32 interval = parseNumber<std::micro>(value, u"s"_s, (quint32)500'000);
         if (interval == 0) {
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
