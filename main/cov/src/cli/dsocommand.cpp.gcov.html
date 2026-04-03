@@ -206,12 +206,12 @@
 <span id="L113"><span class="lineNum">     113</span> <span class="tlaUNC">           0 :             absValue = rawValue.mid(nonSpacePos+1);</span></span>
 <span id="L114"><span class="lineNum">     114</span> <span class="tlaUNC">           0 :             sign = -1.0;</span></span>
 <span id="L115"><span class="lineNum">     115</span> <span class="tlaUNC">           0 :         }</span></span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">         768 :         const quint32 level = parseNumber&lt;std::micro&gt;(absValue, unit);</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">         768 :         const float level = parseNumber&lt;std::ratio&lt;1&gt;,float&gt;(absValue, unit, 0.f);</span></span>
 <span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">        1040 :         qCDebug(lc) &lt;&lt; &quot;Trigger level&quot; &lt;&lt; rawValue &lt;&lt; absValue &lt;&lt; nonSpacePos &lt;&lt; sign &lt;&lt; level;</span></span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">         768 :         if (level == 0) {</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">         768 :         if (qIsNaN(level)) {</span></span>
 <span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">         142 :             errors.append(tr(&quot;Invalid trigger-level value: %1&quot;).arg(rawValue));</span></span>
 <span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">         182 :         } else {</span></span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">         672 :             settings.triggerLevel = sign * (float)(level/1'000'000.0);</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">         672 :             settings.triggerLevel = sign * level;</span></span>
 <span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">         910 :             qCDebug(lc) &lt;&lt; &quot;Trigger level&quot; &lt;&lt; settings.triggerLevel;</span></span>
 <span id="L123"><span class="lineNum">     123</span>              :             // Check the trigger level is within the Votage / Current range.</span>
 <span id="L124"><span class="lineNum">     124</span>              :             /// \todo Does Pokit Pro allow 'Auto' in DSO mode?</span>
@@ -244,7 +244,7 @@
 <span id="L151"><span class="lineNum">     151</span>              :     // Parse the interval option.</span>
 <span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">        3408 :     if (parser.isSet(u&quot;interval&quot;_s)) {</span></span>
 <span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">         755 :         const QString value = parser.value(u&quot;interval&quot;_s);</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">         480 :         const quint32 interval = parseNumber&lt;std::micro&gt;(value, u&quot;s&quot;_s, 500'000);</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">         480 :         const quint32 interval = parseNumber&lt;std::micro&gt;(value, u&quot;s&quot;_s, (quint32)500'000);</span></span>
 <span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">         480 :         if (interval == 0) {</span></span>
 <span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">         284 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></span>
 <span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">          78 :         } else {</span></span>
