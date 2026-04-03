@@ -723,7 +723,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="keywordflow">if</span> (qIsNaN(<a class="code hl_function" href="#afda4aa4a55ff0af205f10ccf8c77cbf5">metadata</a>.scale)) {</div>
 <div class="line">    <span class="comment">// Handle failure.</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassDsoService_html_afda4aa4a55ff0af205f10ccf8c77cbf5"><div class="ttname"><a href="#afda4aa4a55ff0af205f10ccf8c77cbf5">DsoService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DSO service&#39;s Metadata characteristic.</div><div class="ttdef"><b>Definition</b> dsoservice.cpp:229</div></div>
+<div class="ttc" id="aclassDsoService_html_afda4aa4a55ff0af205f10ccf8c77cbf5"><div class="ttname"><a href="#afda4aa4a55ff0af205f10ccf8c77cbf5">DsoService::metadata</a></div><div class="ttdeci">Metadata metadata() const</div><div class="ttdoc">Returns the most recent value of the DSO service&#39;s Metadata characteristic.</div><div class="ttdef"><b>Definition</b> dsoservice.cpp:233</div></div>
 <div class="ttc" id="astructDsoService_1_1Metadata_html"><div class="ttname"><a href="structDsoService_1_1Metadata.html">DsoService::Metadata</a></div><div class="ttdoc">Attributes included in the Metadata characteristic.</div><div class="ttdef"><b>Definition</b> dsoservice.h:85</div></div>
 </div><!-- fragment --> <div class="dynheader">
 Here is the call graph for this function:</div>
@@ -879,6 +879,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Configures the Pokit device's DSO mode. </p>
+<p>Note, Pokit devices do not allow AutoRange in DSO service, so <em class="arg">settings.range</em> should not be <code>AutoRange</code>.</p>
 <p>Returns <span class="tt">true</span> if the write request was successfully queued, <span class="tt">false</span> otherwise.</p>
 <p>Emits <a class="el" href="#a5d5b1266a63ee479c91c4e048cdf0859" title="This signal is emitted when the Settings characteristic has been written successfully.">settingsWritten()</a> if/when the <em class="arg">settings</em> have been written successfully. </p>
 <div class="dynheader">
