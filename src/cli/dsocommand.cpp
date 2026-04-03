@@ -121,7 +121,6 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
             settings.triggerLevel = sign * level;
             qCDebug(lc) << "Trigger level" << settings.triggerLevel;
             // Check the trigger level is within the Votage / Current range.
-            /// \todo Does Pokit Pro allow 'Auto' in DSO mode?
             if ((rangeOptionValue != 0) && (qAbs(settings.triggerLevel) > (rangeOptionValue/1000.0))) {
                 errors.append(tr("Trigger-level %1%2 is outside range ±%3%2").arg(
                     appendSiPrefix(settings.triggerLevel), unit, appendSiPrefix(rangeOptionValue / 1000.0)));

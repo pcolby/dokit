@@ -36,7 +36,7 @@ namespace PokitPro {
         _300mA    = 4,  ///< Up to 300mA.
         _3A       = 5,  ///< Up to 3A.
         _10A      = 6,  ///< Up to 10A.
-        AutoRange = 255 ///< Auto-range.
+        AutoRange = 255 ///< Auto-range. Note, Pokit Pro does *not* allow AutoRange in DSO service.
     };
     QTPOKIT_EXPORT QString toString(const CurrentRange &range);
     QTPOKIT_EXPORT quint32 maxValue(const CurrentRange &range);
@@ -69,7 +69,7 @@ namespace PokitPro {
         _125V     = 5,  ///< Up to 125V.
         _400V     = 6,  ///< Up to 400V.
         _600V     = 7,  ///< Up to 600V.
-        AutoRange = 255 ///< Auto-range.
+        AutoRange = 255 ///< Auto-range. Note, Pokit Pro does *not* allow AutoRange in DSO service.
     };
     QTPOKIT_EXPORT QString toString(const VoltageRange &range);
     QTPOKIT_EXPORT quint32 maxValue(const VoltageRange &range);

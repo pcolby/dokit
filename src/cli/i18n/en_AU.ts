@@ -151,42 +151,42 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="126"/>
+        <location filename="../dsocommand.cpp" line="125"/>
         <source>Trigger-level %1%2 is outside range ±%3%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="142"/>
+        <location filename="../dsocommand.cpp" line="141"/>
         <source>Unknown trigger mode: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="148"/>
+        <location filename="../dsocommand.cpp" line="147"/>
         <source>If either option is provided, then both must be: trigger-level, trigger-mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="156"/>
+        <location filename="../dsocommand.cpp" line="155"/>
         <source>Invalid interval value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="167"/>
+        <location filename="../dsocommand.cpp" line="166"/>
         <source>Invalid samples value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="169"/>
+        <location filename="../dsocommand.cpp" line="168"/>
         <source>Samples value (%1) must be no greater than %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="173"/>
+        <location filename="../dsocommand.cpp" line="172"/>
         <source>Pokit devices do not officially support great than 8192 samples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="209"/>
+        <location filename="../dsocommand.cpp" line="208"/>
         <source>, and a %1 at %2%3%4</source>
         <translation type="unfinished"></translation>
     </message>
@@ -198,7 +198,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="304"/>
+        <location filename="../dsocommand.cpp" line="303"/>
         <source>Finished fetching %Ln sample/s (with %L2 to remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L2 to remaining).</numerusform>
@@ -206,12 +206,12 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="238"/>
+        <location filename="../dsocommand.cpp" line="237"/>
         <source>Settings written; DSO has started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="212"/>
+        <location filename="../dsocommand.cpp" line="211"/>
         <source>Sampling %1, with range %2, %Ln sample/s over %L3us%4.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -219,18 +219,18 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="273"/>
+        <location filename="../dsocommand.cpp" line="272"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="284"/>
+        <location filename="../dsocommand.cpp" line="283"/>
         <source>sample_number,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="298"/>
+        <location filename="../dsocommand.cpp" line="297"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>

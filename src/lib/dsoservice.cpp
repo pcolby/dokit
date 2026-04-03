@@ -155,12 +155,16 @@ bool DsoService::readMetadataCharacteristic()
 /*!
  * Configures the Pokit device's DSO mode.
  *
+ * Note, Pokit devices do not allow AutoRange in DSO service, so \a settings.range should not be \c AutoRange.
+ *
  * Returns `true` if the write request was successfully queued, `false` otherwise.
  *
  * Emits settingsWritten() if/when the \a settings have been written successfully.
  */
 bool DsoService::setSettings(const Settings &settings)
 {
+    Q_ASSERT_X(settings.range != 255, "DsoService::setSettings", "Pokit devices do not allow AutoRange in DSO service");
+
     Q_D(const DsoService);
     const QLowEnergyCharacteristic characteristic =
         d->getCharacteristic(CharacteristicUuids::settings);
