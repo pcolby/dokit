@@ -76,7 +76,7 @@ gh release create "${TAG_NAME}" --draft --generate-notes --notes-file <(cat <<--
 	Feel free to download any of the assets below, but the recommended starting point would be:
 
 	* Linux: [${lin}](${baseUrl}/${lin})
-	* macOS: [${mac}](${baseUrl}/${mac}) - tip: \`brew install qt6\`
+	* macOS: [${mac}](${baseUrl}/${mac})
 	* Windows: [${win}](${baseUrl}/${win}) - tip: run the included \`vc_redist.x64.exe\` if you don't have the necessary Microsoft Visual C++ runtime installed already.
 	-
 ) --verify-tag "${ASSETS_DIR}/"*
