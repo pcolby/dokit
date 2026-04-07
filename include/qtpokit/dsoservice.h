@@ -89,7 +89,7 @@ public:
         quint8 range;            ///< Range used during last acquisition.
         quint32 samplingWindow;  ///< Sampling window (microseconds) used during last acquisition.
         quint16 numberOfSamples; ///< Number of samples acquired (1 to 8192).
-        quint32 samplingRate;    ///< Sampling rate  used during last acquisition (1 to 1MHz).
+        quint32 samplingRate;    ///< Sampling rate used during last acquisition (1 to 1MHz).
     };
 
     typedef QVector<qint16> Samples;
