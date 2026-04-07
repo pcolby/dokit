@@ -250,7 +250,7 @@ void DsoCommand::metadataRead(const DsoService::Metadata &data)
     qCDebug(lc) << "scale:" << data.scale;
     qCDebug(lc) << "mode:" << DsoService::toString(data.mode);
     qCDebug(lc) << "range:" << service->toString(data.range, data.mode);
-    qCDebug(lc) << "samplingWindow:" << (int)data.samplingWindow;
+    qCDebug(lc) << "samplingWindow:" << data.samplingWindow;
     qCDebug(lc) << "numberOfSamples:" << data.numberOfSamples;
     qCDebug(lc) << "samplingRate:" << data.samplingRate << "Hz";
     this->metadata = data;
