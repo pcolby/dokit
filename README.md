@@ -220,6 +220,7 @@ Prototypical [CMake][]-based out-of-source build and test process:
 cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo> -B <tmp-build-dir>
 cmake --build <tmp-build-dir>
 ctest --test-dir <tmp-build-dir> --verbose
+<tmp-build-dir>/src/cli/dokit --help # Replace `/` with `\` for Windows.
 ```
 
 ### Documentation
