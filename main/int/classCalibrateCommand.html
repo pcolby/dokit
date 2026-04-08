@@ -676,7 +676,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">   91</span>    Q_ASSERT(<a class="code hl_variable" href="#a56afc1351c17bb715a06d72839a57a4e">service</a>);</div>
 <div class="line"><span class="lineno">   92</span>    <a class="code hl_slot" href="classDeviceCommand.html#a906fd97d832be0e8d2ba1c917fba41db">DeviceCommand::serviceDetailsDiscovered</a>(); <span class="comment">// Just logs consistently.</span></div>
 <div class="line"><span class="lineno">   93</span>    qCInfo(lc).noquote() &lt;&lt; <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qobject.html#tr">tr</a>(<span class="stringliteral">&quot;Calibrating temperature at %1 degrees celsius...&quot;</span>).<a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qstring.html#arg-1">arg</a>(<a class="code hl_variable" href="#a9264056f0326352a3368b2f09f4cca7d">temperature</a>);</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a56afc1351c17bb715a06d72839a57a4e">service</a>-&gt;calibrateTemperature(0)) {</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a56afc1351c17bb715a06d72839a57a4e">service</a>-&gt;calibrateTemperature(<a class="code hl_variable" href="#a9264056f0326352a3368b2f09f4cca7d">temperature</a>)) {</div>
 <div class="line"><span class="lineno">   95</span>        <a class="code hl_functionRef" href="https://doc.qt.io/qt-5/qcoreapplication.html#exit">QCoreApplication::exit</a>(EXIT_FAILURE);</div>
 <div class="line"><span class="lineno">   96</span>    }</div>
 <div class="line"><span class="lineno">   97</span>}</div>
