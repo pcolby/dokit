@@ -91,7 +91,7 @@ void CalibrateCommand::serviceDetailsDiscovered()
     Q_ASSERT(service);
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     qCInfo(lc).noquote() << tr("Calibrating temperature at %1 degrees celsius...").arg(temperature);
-    if (!service->calibrateTemperature(0)) {
+    if (!service->calibrateTemperature(temperature)) {
         QCoreApplication::exit(EXIT_FAILURE);
     }
 }
