@@ -1,5 +1,11 @@
 # Changelog[^1]
 
+## 0.6.0 (_unreleased_)
+
+### Fixed
+
+- Temperature calibration command ([52e8a13]).
+
 ## [0.5.8] (2026-04-07)
 
 ### Fixed
@@ -221,6 +227,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [4064e45]:     https://github.com/pcolby/dokit/commit/4064e453ec33535ae28104a9f10ef9c6f2d7993f "Support updating translations with Qt 6.7+"
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
 [45bd46d]:     https://github.com/pcolby/dokit/commit/45bd46d85433a3d3b8e04b9a1f8ba500fc3dcc5a "Work around Qt 6.9.0 beta 3 L10n bug"
+[52e8a13]:     https://github.com/pcolby/dokit/commit/52e8a13a1c51249c0c7ed556c4bbaa33beea99ad "Fix bug in calibration command"
 [58d82dd]:     https://github.com/pcolby/dokit/commit/58d82ddb70b166212e3c8c0a778dbd32a255db29 "Support the LANG environment variable on macOS"
 [637b4b1]:     https://github.com/pcolby/dokit/commit/637b4b1225edcfb05ba2ab124f1dc4a3bc7dc9b7 "Include QDarwinBluetoothPermissionPlugin for Qt 6.5+"
 [7f70715]:     https://github.com/pcolby/dokit/commit/7f7071554cdb8170aeeaa7fb51fec26535f00321 "Correctly exit on discovery agent errors"
