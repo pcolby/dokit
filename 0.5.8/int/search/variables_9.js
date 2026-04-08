@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['jalali_0',['Jalali',['https://doc.qt.io/qt-5/qcalendar.html#System-enum',1,'QCalendar']]],
+  ['jamaica_1',['Jamaica',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['jamoscript_2',['JamoScript',['https://doc.qt.io/qt-5/qlocale.html#Script-enum',1,'QLocale']]],
+  ['japan_3',['Japan',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['japanese_4',['Japanese',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['japanesescript_5',['JapaneseScript',['https://doc.qt.io/qt-5/qlocale.html#Script-enum',1,'QLocale']]],
+  ['javanese_6',['Javanese',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['javanesescript_7',['JavaneseScript',['https://doc.qt.io/qt-5/qlocale.html#Script-enum',1,'QLocale']]],
+  ['jersey_8',['Jersey',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['jju_9',['Jju',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['joining_5fcausing_10',['Joining_Causing',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5fdual_11',['Joining_Dual',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5fleft_12',['Joining_Left',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5fnone_13',['Joining_None',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5fright_14',['Joining_Right',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['joining_5ftransparent_15',['Joining_Transparent',['https://doc.qt.io/qt-5/qchar.html#JoiningType-enum',1,'QChar']]],
+  ['jolafonyi_16',['JolaFonyi',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['jordan_17',['Jordan',['https://doc.qt.io/qt-5/qlocale.html#Country-enum',1,'QLocale']]],
+  ['joystickperipheral_18',['JoystickPeripheral',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#MinorPeripheralClass-enum',1,'QBluetoothDeviceInfo']]],
+  ['julian_19',['Julian',['https://doc.qt.io/qt-5/qcalendar.html#System-enum',1,'QCalendar']]]
+];
