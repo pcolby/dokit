@@ -237,12 +237,8 @@ success
     </message>
     <message>
         <location filename="../dsocommand.cpp" line="187"/>
-        <source>Pokit devices do not officially support windows greater than 16,384 samples</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../dsocommand.cpp" line="220"/>
-        <source>Pokit devices do not officially support great than 16,384 samples</source>
+        <source>Pokit devices do not officially support windows greater than 16,384 samples</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
