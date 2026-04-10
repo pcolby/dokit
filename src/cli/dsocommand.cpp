@@ -152,7 +152,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     // Parse the sample-rate option.
     if (parser.isSet(u"sample-rate"_s)) {
         const QString value = parser.value(u"sample-rate"_s);
-        sampleRateValue = parseNumber<std::ratio<1,1>>(value, u"Hz"_s, (quint32)500'000);
+        sampleRateValue = parseNumber<std::ratio<1,1>>(value, u"Hz"_s, (quint32)50'000);
         if (sampleRateValue == 0) {
             errors.append(tr("Invalid sample-rate value: %1").arg(value));
         } else if (sampleRateValue > 10'000'000) { // \todo Use a PokitPro::* constant.
@@ -179,7 +179,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
             errors.append(tr("Invalid window-size value: %1").arg(value));
         } else if (samples > std::numeric_limits<quint16>::max()) {
             errors.append(tr("Window size value (%1) must be no greater than %2")
-                              .arg(value).arg(std::numeric_limits<quint16>::max()));
+                .arg(value).arg(std::numeric_limits<quint16>::max()));
         } else {
             settings.numberOfSamples = (quint16)samples;
             if (settings.numberOfSamples > 16'384) {
@@ -217,7 +217,7 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         } else {
             /// \todo Remove this limit (it's been moved to the window-size paramter instead).
             if (samples > 16'384) {
-                qCWarning(lc).noquote() << tr("Pokit devices do not officially support great than 16,384 samples");
+                qCWarning(lc).noquote() << tr("Pokit devices do not officially support windows greater than 16,384 samples");
             }
             settings.numberOfSamples = (quint16)samples;
         }

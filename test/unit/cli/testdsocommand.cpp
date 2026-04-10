@@ -286,6 +286,90 @@ void TestDsoCommand::processOptions_data()
         << &DsoCommand::minVoltageRange << 1000u << 500'000u
         << QStringList{ u"Unknown trigger mode: invalid"_s };
 
+    QTest::addRow("sample-rate:100") // Defaults to 100kHz.
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100"_s,
+           u"--sample-rate"_s, u"100"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100*1000*1000, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 100'000u
+        << QStringList{ };
+
+    QTest::addRow("sample-rate:499999") // Defaults to 100kHz.
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100"_s,
+           u"--sample-rate"_s, u"499999"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100*1000*1000, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 499'999u
+        << QStringList{ };
+
+    QTest::addRow("sample-rate:500000") // Defaults to 100kHz.
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100"_s,
+           u"--sample-rate"_s, u"500000"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100*1000*1000, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 500'000u
+        << QStringList{ };
+
+    QTest::addRow("sample-rate:123kHz")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100"_s,
+           u"--sample-rate"_s, u"123"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100*1000*1000, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 123'000u
+        << QStringList{ };
+
+    QTest::addRow("sample-rate:9.9M")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100"_s,
+           u"--sample-rate"_s, u"9.9M"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100*1000*1000, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 9'900'000u
+        << QStringList{ };
+
+    QTest::addRow("invalid-sample-rate")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100"_s,
+           u"--sample-rate"_s, u"invalid"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100*1000*1000, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 0u
+        << QStringList{ u"Invalid sample-rate value: invalid"_s };
+
+    QTest::addRow("negative-sample-rate")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100"_s,
+           u"--sample-rate"_s, u"-123"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100*1000*1000, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 0u
+        << QStringList{ u"Invalid sample-rate value: -123"_s };
+
     QTest::addRow("interval:100") // Defaults to 100 seconds (ie 100,000,000us).
         << QStringList{
            u"--mode"_s,  u"Vdc"_s,
@@ -345,6 +429,108 @@ void TestDsoCommand::processOptions_data()
             +PokitMeter::VoltageRange::_2V, 0, 0 }
         << &DsoCommand::minVoltageRange << 1000u << 500'000u
         << QStringList{ u"Invalid interval value: -123"_s };
+
+    QTest::addRow("window-size:100")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--sample-rate"_s, u"500kHz"_s,
+           u"--window-size"_s, u"100"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 0, 100 }
+        << &DsoCommand::minVoltageRange << 1000u << 500'000u
+        << QStringList{ };
+
+    QTest::addRow("window-size:1000")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--sample-rate"_s, u"500kHz"_s,
+           u"--window-size"_s, u"1000"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 0, 1000 }
+        << &DsoCommand::minVoltageRange << 1000u << 500'000u
+        << QStringList{ };
+
+    QTest::addRow("invalid-window-size")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--sample-rate"_s, u"500kHz"_s,
+           u"--window-size"_s, u"invalid"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 0, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 500'000u
+        << QStringList{ u"Invalid window-size value: invalid"_s };
+
+    QTest::addRow("negative-window-size")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--sample-rate"_s, u"500kHz"_s,
+           u"--window-size"_s, u"-123"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 0, 0 }
+        << &DsoCommand::minVoltageRange << 1000u << 500'000u
+        << QStringList{ u"Invalid window-size value: -123"_s };
+
+    QTest::addRow("too-big-window-size")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--sample-rate"_s, u"500kHz"_s,
+           u"--window-size"_s, u"16385"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 0, 16385 }
+        << &DsoCommand::minVoltageRange << 1000u << 500'000u
+        << QStringList{ };
+
+    // Sample-rate is not required, if both interval and window-size are provided.
+    QTest::addRow("interval-and-window-size")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--interval"_s, u"100ms"_s,
+           u"--window-size"_s, u"8k"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100'000, 8000 }
+        << &DsoCommand::minVoltageRange << 1000u << 0u
+        << QStringList{ };
+
+    // But if all three are present, the must match.
+    QTest::addRow("sample-rate-interval-and-window-size")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--sample-rate"_s, u"80kHz"_s,
+           u"--interval"_s, u"100ms"_s,
+           u"--window-size"_s, u"8k"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100'000, 8000 }
+        << &DsoCommand::minVoltageRange << 1000u << 80'000u
+        << QStringList{ };
+
+    QTest::addRow("sample-rate-interval-and-window-size:mismatch")
+        << QStringList{
+           u"--mode"_s,  u"Vdc"_s,
+           u"--range"_s, u"1000mV"_s,
+           u"--sample-rate"_s, u"250kHz"_s,
+           u"--interval"_s, u"100ms"_s,
+           u"--window-size"_s, u"8k"_s }
+        << DsoService::Settings{
+            DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,
+            +PokitMeter::VoltageRange::_2V, 100'000, 8000 }
+        << &DsoCommand::minVoltageRange << 1000u << 250'000u
+        << QStringList{ u"Windows size (8000 samples) and interval (100000ns) yield a sample rate of 80000Hz, which "
+            "does not match the supplied sample-rate (250000Hz). Tip: leave one option unset to have dokit calculate "
+            "the remaining option."_s };
 
     QTest::addRow("samples:100")
         << QStringList{
@@ -431,7 +617,7 @@ void TestDsoCommand::processOptions()
     parser.process(arguments);
 
     if (expectedSettings.numberOfSamples > 16384) {
-        QTest::ignoreMessage(QtWarningMsg, "Pokit devices do not officially support great than 16,384 samples");
+        QTest::ignoreMessage(QtWarningMsg, "Pokit devices do not officially support windows greater than 16,384 samples");
     }
 
     DsoCommand command(this);
