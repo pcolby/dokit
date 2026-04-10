@@ -149,7 +149,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
     parser.addHelpOption();
     parser.addOptions({
         {{u"interval"_s},
-          Private::tr("Set the update interval for DOS, meter and "
+          Private::tr("Set the update interval for DSO, meter and "
           "logger modes. Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. "
           "If no suffix is present, the units will be inferred from the magnitude of the given "
           "interval. If the option itself is not specified, a sensible default will be chosen "
@@ -178,6 +178,9 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           "range feature. The default is 'auto'."),
           Private::tr("range"), u"auto"_s},
         {{u"samples"_s}, Private::tr("Set the number of samples to acquire."), Private::tr("count")},
+        {{u"sample-rate"_s}, Private::tr("Set the DSO sample rate. Suffixes such as 'k', 'M' and 'MHz' may be used. "
+          "If no suffix is present, the scale will be inferred from the magnitude of the given rate."),
+          Private::tr("rate")},
         {{u"temperature"_s},
           Private::tr("Set the current ambient temperature for the calibration command."), Private::tr("degrees")},
         {{u"timeout"_s},
@@ -193,6 +196,9 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         {{u"trigger-mode"_s},
           Private::tr("Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free."),
           Private::tr("mode"), u"free"_s},
+        {{u"window-size"_s}, Private::tr("Set the DSO window size. If not specified, a sensible value will be chosen"
+          "according to the connect Pokit device's capabilities. Note, the limit is Pokit device dependant."),
+          Private::tr("samples")},
     });
     parser.addVersionOption();
 

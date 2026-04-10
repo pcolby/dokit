@@ -131,15 +131,15 @@ For full usage information (albeit brief), use the `--help` option, which curren
 Usage: dokit <command> [options]
 
 Options:
-  --color <yes|no|auto>    Colors the console output. Valid options are: yes,
+  --color <yes|no|auto>    Colours the console output. Valid options are: yes,
                            no and auto. The default is auto.
   --debug                  Enable debug output.
   -d, --device <device>    Set the name, hardware address or macOS UUID of
                            Pokit device to use. If not specified, the first
                            discovered Pokit device will be used.
   -h, --help               Displays help on commandline options.
-  --help-all               Displays help including Qt specific options.
-  --interval <interval>    Set the update interval for DOS, meter and logger
+  --help-all               Displays help, including generic Qt options.
+  --interval <interval>    Set the update interval for DSO, meter and logger
                            modes. Suffixes such as 's' and 'ms' (for seconds and
                            milliseconds) may be used. If no suffix is present,
                            the units will be inferred from the magnitude of the
@@ -166,9 +166,13 @@ Options:
                            selected, or use 'auto' to enable the Pokit device's
                            auto-range feature. The default is 'auto'.
   --samples <count>        Set the number of samples to acquire.
+  --sample-rate <rate>     Set the DSO sample rate. Suffixes such as 'k', 'M'
+                           and 'MHz' may be used. If no suffix is present, the
+                           scale will be inferred from the magnitude of the
+                           given rate.
   --temperature <degrees>  Set the current ambient temperature for the
                            calibration command.
-  --timeout <period>       Set the device discovery scan timeout.Suffixes such
+  --timeout <period>       Set the device discovery scan timeout. Suffixes such
                            as 's' and 'ms' (for seconds and milliseconds) may be
                            used. If no suffix is present, the units will be
                            inferred from the magnitude of the given interval.
@@ -178,6 +182,10 @@ Options:
   --trigger-level <level>  Set the DSO trigger level.
   --trigger-mode <mode>    Set the DSO trigger mode. Supported modes are: free,
                            rising and falling. The default is free.
+  --window-size <samples>  Set the DSO window size. If not specified, a
+                           sensible value will be chosenaccording to the connect
+                           Pokit device's capabilities. Note, the limit is Pokit
+                           device dependant.
   -v, --version            Displays version information.
 
 Command:

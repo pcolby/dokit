@@ -40,8 +40,10 @@ QStringList DsoCommand::supportedOptions(const QCommandLineParser &parser) const
     return DeviceCommand::supportedOptions(parser) + QStringList{
         u"interval"_s,
         u"samples"_s,
+        u"sample-rate"_s,
         u"trigger-level"_s,
         u"trigger-mode"_s,
+        u"window-size"_s,
     };
 }
 
@@ -147,6 +149,17 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         errors.append(tr("If either option is provided, then both must be: trigger-level, trigger-mode"));
     }
 
+    // Parse the sample-rate option.
+    if (parser.isSet(u"sample-rate"_s)) {
+        const QString value = parser.value(u"sample-rate"_s);
+        sampleRateValue = parseNumber<std::ratio<1,1>>(value, u"Hz"_s, (quint32)500'000);
+        if (sampleRateValue == 0) {
+            errors.append(tr("Invalid sample-rate value: %1").arg(value));
+        } else if (sampleRateValue > 10'000'000) { // \todo Use a PokitPro::* constant.
+            qCWarning(lc).noquote() << tr("Pokit devices do not officially support sample rates greater than 10Mhz");
+        }
+    }
+
     // Parse the interval option.
     if (parser.isSet(u"interval"_s)) {
         const QString value = parser.value(u"interval"_s);
@@ -155,6 +168,40 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
             errors.append(tr("Invalid interval value: %1").arg(value));
         } else {
             settings.samplingWindow = interval;
+        }
+    }
+
+    // Parse the window-size option.
+    if (parser.isSet(u"window-size"_s)) {
+        const QString value = parser.value(u"window-size"_s);
+        const quint32 samples = parseNumber<std::ratio<1>>(value, u"S"_s);
+        if (samples == 0) {
+            errors.append(tr("Invalid window-size value: %1").arg(value));
+        } else if (samples > std::numeric_limits<quint16>::max()) {
+            errors.append(tr("Window size value (%1) must be no greater than %2")
+                              .arg(value).arg(std::numeric_limits<quint16>::max()));
+        } else {
+            settings.numberOfSamples = (quint16)samples;
+            if (settings.numberOfSamples > 16'384) {
+                qCWarning(lc).noquote() <<
+                    tr("Pokit devices do not officially support windows greater than 16,384 samples");
+            }
+        }
+    }
+
+    // Ensure that we have at least: sample-rate, or both interval and window-size.
+    if ((!parser.isSet(u"sample-rate"_s)) && !(parser.isSet(u"interval"_s) && parser.isSet(u"window-size"_s))) {
+        errors.append(tr("Missing required option/s: either sample-rate, or both interval and window-size"));
+    }
+
+    // If we have all three sample-rate related options, ensure they agree.
+    if ((sampleRateValue != 0) && (settings.numberOfSamples != 0) && (settings.samplingWindow != 0)) {
+        const quint32 sampleRate = settings.numberOfSamples * 1'000'000ull / settings.samplingWindow;
+        if (sampleRate != sampleRateValue) {
+            errors.append(tr("Windows size (%1 samples) and interval (%2ns) yield a sample rate of %3Hz, which does "
+                "not match the supplied sample-rate (%4Hz). Tip: leave one option unset to have dokit calculate the "
+                "remaining option.").arg(settings.numberOfSamples).arg(settings.samplingWindow).arg(sampleRate)
+                .arg(sampleRateValue));
         }
     }
 
@@ -168,8 +215,9 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
             errors.append(tr("Samples value (%1) must be no greater than %2")
                 .arg(value).arg(std::numeric_limits<quint16>::max()));
         } else {
-            if (samples > 8192) {
-                qCWarning(lc).noquote() << tr("Pokit devices do not officially support great than 8192 samples");
+            /// \todo Remove this limit (it's been moved to the window-size paramter instead).
+            if (samples > 16'384) {
+                qCWarning(lc).noquote() << tr("Pokit devices do not officially support great than 16,384 samples");
             }
             settings.numberOfSamples = (quint16)samples;
         }

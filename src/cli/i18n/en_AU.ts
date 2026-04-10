@@ -136,57 +136,82 @@ success
 <context>
     <name>DsoCommand</name>
     <message>
-        <location filename="../dsocommand.cpp" line="72"/>
+        <location filename="../dsocommand.cpp" line="74"/>
         <source>Unknown DSO mode: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="101"/>
+        <location filename="../dsocommand.cpp" line="103"/>
         <source>Invalid range value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="119"/>
+        <location filename="../dsocommand.cpp" line="121"/>
         <source>Invalid trigger-level value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="125"/>
+        <location filename="../dsocommand.cpp" line="127"/>
         <source>Trigger-level %1%2 is outside range ±%3%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="141"/>
+        <location filename="../dsocommand.cpp" line="143"/>
         <source>Unknown trigger mode: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="147"/>
+        <location filename="../dsocommand.cpp" line="149"/>
         <source>If either option is provided, then both must be: trigger-level, trigger-mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="155"/>
-        <source>Invalid interval value: %1</source>
+        <location filename="../dsocommand.cpp" line="157"/>
+        <source>Invalid sample-rate value: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="166"/>
-        <source>Invalid samples value: %1</source>
+        <location filename="../dsocommand.cpp" line="159"/>
+        <source>Pokit devices do not officially support sample rates greater than 10Mhz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dsocommand.cpp" line="168"/>
+        <source>Invalid interval value: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="179"/>
+        <source>Invalid window-size value: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="181"/>
+        <source>Window size value (%1) must be no greater than %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="194"/>
+        <source>Missing required option/s: either sample-rate, or both interval and window-size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="201"/>
+        <source>Windows size (%1 samples) and interval (%2ns) yield a sample rate of %3Hz, which does not match the supplied sample-rate (%4Hz). Tip: leave one option unset to have dokit calculate the remaining option.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="213"/>
+        <source>Invalid samples value: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="215"/>
         <source>Samples value (%1) must be no greater than %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="172"/>
-        <source>Pokit devices do not officially support great than 8192 samples</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dsocommand.cpp" line="208"/>
+        <location filename="../dsocommand.cpp" line="256"/>
         <source>, and a %1 at %2%3%4</source>
         <translation type="unfinished"></translation>
     </message>
@@ -198,7 +223,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="303"/>
+        <location filename="../dsocommand.cpp" line="351"/>
         <source>Finished fetching %Ln sample/s (with %L2 to remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L2 to remaining).</numerusform>
@@ -206,12 +231,22 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="237"/>
+        <location filename="../dsocommand.cpp" line="285"/>
         <source>Settings written; DSO has started.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="187"/>
+        <source>Pokit devices do not officially support windows greater than 16,384 samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="220"/>
+        <source>Pokit devices do not officially support great than 16,384 samples</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="211"/>
+        <location filename="../dsocommand.cpp" line="259"/>
         <source>Sampling %1, with range %2, %Ln sample/s over %L3us%4.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -219,18 +254,18 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="272"/>
+        <location filename="../dsocommand.cpp" line="320"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="283"/>
+        <location filename="../dsocommand.cpp" line="331"/>
         <source>sample_number,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="297"/>
+        <location filename="../dsocommand.cpp" line="345"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
@@ -764,6 +799,11 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../main.cpp" line="152"/>
+        <source>Set the update interval for DSO, meter and logger modes. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitude of the given interval. If the option itself is not specified, a sensible default will be chosen according to the selected command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../main.cpp" line="157"/>
         <source>interval</source>
         <translation type="unfinished"></translation>
@@ -775,7 +815,7 @@ success
     </message>
     <message>
         <location filename="../main.cpp" line="166"/>
-        <location filename="../main.cpp" line="195"/>
+        <location filename="../main.cpp" line="198"/>
         <source>mode</source>
         <translation type="unfinished"></translation>
     </message>
@@ -825,119 +865,134 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="182"/>
+        <location filename="../main.cpp" line="181"/>
+        <source>Set the DSO sample rate. Suffixes such as &apos;k&apos;, &apos;M&apos; and &apos;MHz&apos; may be used. If no suffix is present, the scale will be inferred from the magnitude of the given rate.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="183"/>
+        <source>rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="185"/>
         <source>Set the current ambient temperature for the calibration command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="182"/>
+        <location filename="../main.cpp" line="185"/>
         <source>degrees</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="152"/>
-        <source>Set the update interval for DOS, meter and logger modes. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitude of the given interval. If the option itself is not specified, a sensible default will be chosen according to the selected command.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="184"/>
+        <location filename="../main.cpp" line="187"/>
         <source>Set the device discovery scan timeout. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitude of the given interval. The default behaviour is no timeout.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="188"/>
         <location filename="../main.cpp" line="191"/>
+        <location filename="../main.cpp" line="194"/>
         <source>period</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="190"/>
+        <location filename="../main.cpp" line="193"/>
         <source>Set the optional starting timestamp for data logging. Default to &apos;now&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="192"/>
+        <location filename="../main.cpp" line="195"/>
         <source>Set the DSO trigger level.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="192"/>
+        <location filename="../main.cpp" line="195"/>
         <source>level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="194"/>
+        <location filename="../main.cpp" line="197"/>
         <source>Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="200"/>
-        <source>Get Pokit device information</source>
+        <location filename="../main.cpp" line="199"/>
+        <source>Set the DSO window size. If not specified, a sensible value will be chosenaccording to the connect Pokit device&apos;s capabilities. Note, the limit is Pokit device dependant.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="201"/>
-        <source>Get Pokit device status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="202"/>
-        <source>Access Pokit device&apos;s multimeter mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="203"/>
-        <source>Access Pokit device&apos;s DSO mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="204"/>
-        <source>Start Pokit device&apos;s data logger mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="205"/>
-        <source>Stop Pokit device&apos;s data logger mode</source>
+        <source>samples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="206"/>
-        <source>Fetch Pokit device&apos;s data logger samples</source>
+        <source>Get Pokit device information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="207"/>
-        <source>Scan Bluetooth for Pokit devices</source>
+        <source>Get Pokit device status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="208"/>
-        <source>Set Pokit device&apos;s name</source>
+        <source>Access Pokit device&apos;s multimeter mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="209"/>
-        <source>Set Pokit device&apos;s torch on or off</source>
+        <source>Access Pokit device&apos;s DSO mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="210"/>
-        <source>Flash Pokit device&apos;s LED (Pokit Meter only)</source>
+        <source>Start Pokit device&apos;s data logger mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="211"/>
+        <source>Stop Pokit device&apos;s data logger mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="212"/>
+        <source>Fetch Pokit device&apos;s data logger samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="213"/>
+        <source>Scan Bluetooth for Pokit devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="214"/>
+        <source>Set Pokit device&apos;s name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="215"/>
+        <source>Set Pokit device&apos;s torch on or off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="216"/>
+        <source>Flash Pokit device&apos;s LED (Pokit Meter only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="217"/>
         <source>Calibrate Pokit device temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="246"/>
+        <location filename="../main.cpp" line="252"/>
         <source>Missing argument: &lt;command&gt;
 See --help for usage information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="261"/>
+        <location filename="../main.cpp" line="267"/>
         <source>Unknown command (%1)</source>
         <translation type="unfinished"></translation>
     </message>
