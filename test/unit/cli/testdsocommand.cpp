@@ -645,6 +645,22 @@ void TestDsoCommand::getService()
     // Unable to safely invoke DsoCommand::getService() without a valid Bluetooth device.
 }
 
+void TestDsoCommand::maxWindowSize_data()
+{
+    QTest::addColumn<PokitProduct>("product");
+    QTest::addColumn<quint32>("expected");
+
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << 8'191u;
+    QTest::addRow("Pokit Pro")   << PokitProduct::PokitPro << 16'384u;
+}
+
+void TestDsoCommand::maxWindowSize()
+{
+    QFETCH(PokitProduct, product);
+    QFETCH(quint32, expected);
+    QCOMPARE(DsoCommand::maxWindowSize(product), expected);
+}
+
 void TestDsoCommand::serviceDetailsDiscovered()
 {
     // Unable to safely invoke DsoCommand::serviceDetailsDiscovered() without a valid service.
