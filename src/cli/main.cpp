@@ -289,7 +289,7 @@ int main(int argc, char *argv[])
     if (!localeName.isEmpty()) {
         const QLocale newLocale(localeName);
         if (newLocale.name() != localeName.split('.'_L1).constFirst()) {
-            qWarning() << "Could not find locale" << localeName;
+            qCWarning(lc) << "Could not find locale" << localeName;
         } else {
             QLocale::setDefault(newLocale);
         }
