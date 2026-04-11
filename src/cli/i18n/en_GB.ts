@@ -244,7 +244,7 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="333"/>
+        <location filename="../dsocommand.cpp" line="332"/>
         <source>Calculated %Ln sample/s</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -252,7 +252,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="337"/>
+        <location filename="../dsocommand.cpp" line="343"/>
         <source>Calculating sampling-window for %Ln sample/s at %1Hz</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -260,17 +260,22 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="342"/>
+        <location filename="../dsocommand.cpp" line="347"/>
         <source>Calculated %1us</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="362"/>
+        <location filename="../dsocommand.cpp" line="349"/>
+        <source>Failed to calculate a valid sampling window for a %L1 samples at %1Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="372"/>
         <source>, and a %1 at %2%3%4 (%5Hz)</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="365"/>
+        <location filename="../dsocommand.cpp" line="375"/>
         <source>Sampling %1, with range %2, at %L3Hz (%Ln sample/s over %L4us)%5</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -285,7 +290,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="464"/>
+        <location filename="../dsocommand.cpp" line="474"/>
         <source>Finished fetching %Ln sample/s (with %L2 to remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L2 to remaining).</numerusform>
@@ -293,7 +298,7 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="402"/>
+        <location filename="../dsocommand.cpp" line="412"/>
         <source>Settings written; DSO has started.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -309,28 +314,33 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="370"/>
+        <location filename="../dsocommand.cpp" line="334"/>
+        <source>Failed to calculate a valid number of samples for a %L1us period at %2Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="380"/>
         <source>Failed to enable metadata notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="375"/>
+        <location filename="../dsocommand.cpp" line="385"/>
         <source>Failed to enable reading notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="433"/>
+        <location filename="../dsocommand.cpp" line="443"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="444"/>
+        <location filename="../dsocommand.cpp" line="454"/>
         <source>sample_number,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="458"/>
+        <location filename="../dsocommand.cpp" line="468"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>

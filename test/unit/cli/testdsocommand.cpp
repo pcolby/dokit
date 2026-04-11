@@ -648,17 +648,117 @@ void TestDsoCommand::getService()
 void TestDsoCommand::maxWindowSize_data()
 {
     QTest::addColumn<PokitProduct>("product");
-    QTest::addColumn<quint32>("expected");
+    QTest::addColumn<quint16>("expected");
 
-    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << 8'191u;
-    QTest::addRow("Pokit Pro")   << PokitProduct::PokitPro << 16'384u;
+    QTest::addRow("Pokit Meter") << PokitProduct::PokitMeter << (quint16)8'191;
+    QTest::addRow("Pokit Pro")   << PokitProduct::PokitPro << (quint16)16'384;
 }
 
 void TestDsoCommand::maxWindowSize()
 {
     QFETCH(PokitProduct, product);
-    QFETCH(quint32, expected);
+    QFETCH(quint16, expected);
     QCOMPARE(DsoCommand::maxWindowSize(product), expected);
+}
+
+void TestDsoCommand::configureWindow_data()
+{
+    QTest::addColumn<PokitProduct>("product");
+    QTest::addColumn<quint32>("sampleRate");
+    QTest::addColumn<quint32>("samplingWindow");
+    QTest::addColumn<quint16>("numberOfSamples");
+    QTest::addColumn<bool>("expectSuccess");
+    QTest::addColumn<quint32>("expectedSamplingWindow");
+    QTest::addColumn<quint16>("expectedNumberOfSamples");
+
+    // Sample-rates only.
+    QTest::addRow("PokitMeter:1Hz")
+        << PokitProduct::PokitMeter << (quint32)1 << (quint32)0 << (quint16)0
+        << true << (quint32)1'000'000 << (quint16)1;
+    QTest::addRow("PokitMeter:123kHz")
+        << PokitProduct::PokitMeter << (quint32)123'000 << (quint32)0 << (quint16)0
+        << true << (quint32)66'000 << (quint16)8'118;
+    QTest::addRow("PokitMeter:1MHz")
+        << PokitProduct::PokitMeter << (quint32)1'000'000 << (quint32)0 << (quint16)0
+        << true << (quint32)8'191 << (quint16)8'191;
+    QTest::addRow("PokitPro:1Hz")
+        << PokitProduct::PokitPro << (quint32)1 << (quint32)0 << (quint16)0
+        << true << (quint32)1'000'000 << (quint16)1;
+    QTest::addRow("PokitPro:123kHz")
+        << PokitProduct::PokitPro << (quint32)123'000 << (quint32)0 << (quint16)0
+        << true << (quint32)133'000 << (quint16)16'359;
+    QTest::addRow("PokitPro:1MHz")
+        << PokitProduct::PokitPro << (quint32)1'000'000 << (quint32)0 << (quint16)0
+        << true << (quint32)16'384 << (quint16)16'384;
+
+    // Sample rates, plus sampling windows.
+    QTest::addRow("PokitMeter:1Hz,500ms")
+        << PokitProduct::PokitMeter << (quint32)1 << (quint32)500'000 << (quint16)0
+        << false << (quint32)500'000 << (quint16)0;
+    QTest::addRow("PokitMeter:1Hz,2s")
+        << PokitProduct::PokitMeter << (quint32)1 << (quint32)2'000'000 << (quint16)0
+        << true << (quint32)2'000'000 << (quint16)2;
+    QTest::addRow("PokitMeter:123kHz,456us")
+        << PokitProduct::PokitMeter << (quint32)123'000 << (quint32)456 << (quint16)0
+        << true << (quint32)456 << (quint16)56;
+    QTest::addRow("PokitMeter:1MHz,789us")
+        << PokitProduct::PokitMeter << (quint32)1'000'000 << (quint32)789 << (quint16)0
+        << true << (quint32)789 << (quint16)789;
+    QTest::addRow("PokitPro:1Hz,10ms")
+        << PokitProduct::PokitPro << (quint32)1 << (quint32)10 << (quint16)0
+        << false << (quint32)10 << (quint16)0;
+    QTest::addRow("PokitPro:1Hz,2s")
+        << PokitProduct::PokitPro << (quint32)1 << (quint32)2'000'000 << (quint16)0
+        << true << (quint32)2'000'000 << (quint16)2;
+    QTest::addRow("PokitPro:123kHz,456us")
+        << PokitProduct::PokitPro << (quint32)123'000 << (quint32)456 << (quint16)0
+        << true << (quint32)456 << (quint16)56;
+    QTest::addRow("PokitPro:1MHz,789us")
+        << PokitProduct::PokitPro << (quint32)1'000'000 << (quint32)789 << (quint16)0
+        << true << (quint32)789 << (quint16)789;
+
+    // Sample rates, plus sampling windows.
+    QTest::addRow("PokitMeter:1Hz,123x")
+        << PokitProduct::PokitMeter << (quint32)1 << (quint32)0 << (quint16)123
+        << true << (quint32)123'000'000 << (quint16)123;
+    QTest::addRow("PokitMeter:123kHz,456x")
+        << PokitProduct::PokitMeter << (quint32)123'000 << (quint32)0 << (quint16)456
+        << true << (quint32)3707 << (quint16)456;
+    QTest::addRow("PokitMeter:1MHz,789x")
+        << PokitProduct::PokitMeter << (quint32)1'000'000 << (quint32)789 << (quint16)789
+        << true << (quint32)789 << (quint16)789;
+    QTest::addRow("PokitPro:1Hz,1234x")
+        << PokitProduct::PokitPro << (quint32)1 << (quint32)1234 << (quint16)1234
+        << true << (quint32)1234 << (quint16)1234;
+    QTest::addRow("PokitPro:123kHz,5678x")
+        << PokitProduct::PokitPro << (quint32)123'000 << (quint32)5678 << (quint16)5678
+        << true << (quint32)5678 << (quint16)5678;
+    QTest::addRow("PokitPro:1MHz,9012x")
+        << PokitProduct::PokitPro << (quint32)1'000'000 << (quint32)9012 << (quint16)9012
+        << true << (quint32)9012 << (quint16)9012;
+}
+
+void TestDsoCommand::configureWindow()
+{
+    QFETCH(PokitProduct, product);
+    QFETCH(quint32, sampleRate);
+    QFETCH(quint32, samplingWindow);
+    QFETCH(quint16, numberOfSamples);
+    QFETCH(bool, expectSuccess);
+    QFETCH(quint32, expectedSamplingWindow);
+    QFETCH(quint16, expectedNumberOfSamples);
+
+    DsoService::Settings settings {
+        DsoService::Command::ResendData, 123.45f, DsoService::Mode::AcVoltage,
+        +PokitMeter::VoltageRange::_6V, samplingWindow, numberOfSamples
+    };
+    QCOMPARE(DsoCommand::configureWindow(product, sampleRate, settings), expectSuccess);
+    QCOMPARE(settings.command, DsoService::Command::ResendData); // ie not touched.
+    QCOMPARE(settings.triggerLevel, 123.45f);                    // ie not touched.
+    QCOMPARE(settings.mode, DsoService::Mode::AcVoltage);        // ie not touched.
+    QCOMPARE(settings.range, +PokitMeter::VoltageRange::_6V);    // ie not touched.
+    QCOMPARE(settings.samplingWindow, expectedSamplingWindow);
+    QCOMPARE(settings.numberOfSamples, expectedNumberOfSamples);
 }
 
 void TestDsoCommand::serviceDetailsDiscovered()

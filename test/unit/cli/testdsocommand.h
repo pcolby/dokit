@@ -20,6 +20,9 @@ private slots:
     void maxWindowSize_data();
     void maxWindowSize();
 
+    void configureWindow_data();
+    void configureWindow();
+
     void serviceDetailsDiscovered();
 
     void settingsWritten();

@@ -249,7 +249,7 @@ AbstractPokitService * DsoCommand::getService()
  * \pokitApi Pokit's official documentation claim the maximum is 8,192. However, my Pokit Meter fails for window size
  * greater than 8,191, while my Pokit Pro supports up to 16,384 samples per window.
  */
-quint32 DsoCommand::maxWindowSize(const PokitProduct product)
+quint16 DsoCommand::maxWindowSize(const PokitProduct product)
 {
     switch (product) {
     case PokitProduct::PokitMeter:
@@ -304,19 +304,19 @@ bool DsoCommand::configureWindow(const PokitProduct product, const quint32 sampl
         double smallestDifference = std::numeric_limits<double>::quiet_NaN();
         for (quint32 windowSize = maxWindowSize; windowSize > 0; --windowSize) {
             const quint32 period = windowSize * 1'000'000ull / sampleRate;
-            const double effectiveRate = double(windowSize) * 1'000'000.0 / (double)period - 0.5;
+            const double effectiveRate = double(windowSize) * 1'000'000.0 / (double)period;
             if (effectiveRate > maxSampleRate) continue; // Skip sizes that would exceed the device's max sample rate.
             if (const quint32 effectivePeriod = windowSize * 1'000'000ull / sampleRate;
                 effectivePeriod > 1'000'000) continue; // Skip sizes that would take longer than 1s to fetch.
             const double difference = qAbs(effectiveRate - sampleRate);
-            // qDebug(lc).noquote() << tr("%1 samples, %2us, %3Hz, %4Hz, ±%5Hz").arg(windowSize).arg(period)
+            // qCDebug(lc).noquote() << tr("%1 samples, %2us, %3Hz, %4Hz, ±%5Hz").arg(windowSize).arg(period)
             //     .arg(effectiveRate, 0, 'f').arg(sampleRate).arg(difference, 0, 'f');
             if ((settings.numberOfSamples == 0) || (difference < smallestDifference)) {
                 settings.numberOfSamples = windowSize;
                 smallestDifference = difference;
             }
         }
-        qDebug(lc).noquote() << tr("Chose %Ln sample/s, with error ±%2Hz", nullptr,
+        qCDebug(lc).noquote() << tr("Chose %Ln sample/s, with error ±%2Hz", nullptr,
             settings.numberOfSamples).arg(smallestDifference, 0, 'f');
         if (settings.numberOfSamples == 0) {
             qCCritical(lc).noquote() << tr("Failed to select a compatible window size for sample rate %1Hz").arg(sampleRate);
@@ -328,9 +328,15 @@ bool DsoCommand::configureWindow(const PokitProduct product, const quint32 sampl
         qCDebug(lc).noquote() << tr("Calculating number-of-samples for %1us window at %2Hz")
             .arg(settings.samplingWindow).arg(sampleRate);
         Q_ASSERT(settings.samplingWindow != 0);
-        settings.numberOfSamples = sampleRate / settings.samplingWindow;
-        Q_ASSERT(settings.samplingWindow * settings.numberOfSamples <= sampleRate); // Due to integer truncation.
-        qCDebug(lc).noquote() << tr("Calculated %Ln sample/s", nullptr, settings.numberOfSamples);
+        const auto numberOfSamples = sampleRate * settings.samplingWindow / 1'000'000ull;
+        qCDebug(lc).noquote() << tr("Calculated %Ln sample/s", nullptr, numberOfSamples);
+        if ((numberOfSamples == 0) || (numberOfSamples > maxWindowSize)) {
+            qCCritical(lc).noquote() << tr("Failed to calculate a valid number of samples for a %L1us period at %2Hz")
+                .arg(settings.samplingWindow).arg(sampleRate);
+            return false;
+        }
+        settings.numberOfSamples = numberOfSamples; // Note the implicit uint64 to uint16 conversion.
+        Q_ASSERT(settings.numberOfSamples * 1'000'000ull / settings.samplingWindow <= sampleRate); // Due to integer truncation.
     }
 
     if (settings.samplingWindow == 0) {
@@ -338,8 +344,12 @@ bool DsoCommand::configureWindow(const PokitProduct product, const quint32 sampl
             settings.numberOfSamples).arg(sampleRate);
         Q_ASSERT(settings.numberOfSamples != 0);
         settings.samplingWindow = settings.numberOfSamples * 1'000'000ull / sampleRate;
-        // Q_ASSERT(settings.samplingWindow * settings.numberOfSamples <= sampleRate); // Due to integer truncation.
         qCDebug(lc).noquote() << tr("Calculated %1us").arg(settings.samplingWindow);
+        if (settings.samplingWindow == 0) {
+            qCCritical(lc).noquote() << tr("Failed to calculate a valid sampling window for a %L1 samples at %1Hz")
+            .arg(settings.numberOfSamples).arg(sampleRate);
+            return false;
+        }
     }
     return true;
 }
@@ -367,12 +377,12 @@ void DsoCommand::serviceDetailsDiscovered()
         .arg(settings.numberOfSamples * 1'000'000ull / settings.samplingWindow).arg(settings.samplingWindow)
         .arg(triggerInfo);
     if (!service->enableMetadataNotifications()) {
-        qCCritical(lc) << tr("Failed to enable metadata notifications");
+        qCCritical(lc).noquote() << tr("Failed to enable metadata notifications");
         disconnect(EXIT_FAILURE);
         return;
     }
     if (!service->enableReadingNotifications()) {
-        qCCritical(lc) << tr("Failed to enable reading notifications");
+        qCCritical(lc).noquote() << tr("Failed to enable reading notifications");
         disconnect(EXIT_FAILURE);
         return;
     }
