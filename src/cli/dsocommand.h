@@ -22,6 +22,8 @@ public slots:
 
 protected:
     AbstractPokitService * getService() override;
+    static quint32 maxWindowSize(const PokitProduct product);
+    static bool configureWindow(const PokitProduct product, const quint32 sampleRate, DsoService::Settings &settings);
 
 protected slots:
     void serviceDetailsDiscovered() override;

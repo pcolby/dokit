@@ -171,11 +171,6 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="159"/>
-        <source>Pokit devices do not officially support sample rates greater than 10Mhz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../dsocommand.cpp" line="168"/>
         <source>Invalid interval value: %1</source>
         <translation type="unfinished"></translation>
@@ -211,7 +206,71 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="256"/>
+        <location filename="../dsocommand.cpp" line="278"/>
+        <source>The requested sample rate (%1Hz) likely exceeds the connected device&apos;s limit (%2Hz)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="284"/>
+        <source>Requested window size (%1 samples) likely exceeds the connected device&apos;s limit (%2) samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="294"/>
+        <source>Ignoring sample-rate, as interval and window-size both provided</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="303"/>
+        <source>Choosing best number-of-samples for sample-rate %2Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="310"/>
+        <source>%1 samples, %2us, %3Hz, %4Hz, ±%5Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../dsocommand.cpp" line="317"/>
+        <source>Chose %Ln sample/s, with error ±%2Hz</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="320"/>
+        <source>Failed to select a compatible window size for sample rate %1Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="326"/>
+        <source>Calculating number-of-samples for %1us window at %2Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../dsocommand.cpp" line="331"/>
+        <source>Calculated %Ln sample/s</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../dsocommand.cpp" line="335"/>
+        <source>Calculating sampling-window for %Ln sample/s at %1Hz</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="340"/>
+        <source>Calculated %1us</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="360"/>
         <source>, and a %1 at %2%3%4</source>
         <translation type="unfinished"></translation>
     </message>
@@ -223,7 +282,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="351"/>
+        <location filename="../dsocommand.cpp" line="461"/>
         <source>Finished fetching %Ln sample/s (with %L2 to remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L2 to remaining).</numerusform>
@@ -231,8 +290,13 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="285"/>
+        <location filename="../dsocommand.cpp" line="399"/>
         <source>Settings written; DSO has started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="159"/>
+        <source>Pokit devices do not officially support sample rates greater than 1Mhz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -242,7 +306,7 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="259"/>
+        <location filename="../dsocommand.cpp" line="363"/>
         <source>Sampling %1, with range %2, %Ln sample/s over %L3us%4.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -250,18 +314,28 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="320"/>
+        <location filename="../dsocommand.cpp" line="367"/>
+        <source>Failed to enable metadata notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="372"/>
+        <source>Failed to enable reading notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dsocommand.cpp" line="430"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="331"/>
+        <location filename="../dsocommand.cpp" line="441"/>
         <source>sample_number,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="345"/>
+        <location filename="../dsocommand.cpp" line="455"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
@@ -811,7 +885,7 @@ success
     </message>
     <message>
         <location filename="../main.cpp" line="166"/>
-        <location filename="../main.cpp" line="198"/>
+        <location filename="../main.cpp" line="199"/>
         <source>mode</source>
         <translation type="unfinished"></translation>
     </message>
@@ -862,133 +936,133 @@ success
     </message>
     <message>
         <location filename="../main.cpp" line="181"/>
-        <source>Set the DSO sample rate. Suffixes such as &apos;k&apos;, &apos;M&apos; and &apos;MHz&apos; may be used. If no suffix is present, the scale will be inferred from the magnitude of the given rate.</source>
+        <source>Set the DSO sample rate. Suffixes such as &apos;k&apos;, &apos;M&apos; and &apos;MHz&apos; may be used. If no suffix is present, the scale will be inferred from the magnitude of the given rate. Rate must be between ?? and 1MHz.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="183"/>
+        <location filename="../main.cpp" line="184"/>
         <source>rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="185"/>
+        <location filename="../main.cpp" line="186"/>
         <source>Set the current ambient temperature for the calibration command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="185"/>
+        <location filename="../main.cpp" line="186"/>
         <source>degrees</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="187"/>
+        <location filename="../main.cpp" line="188"/>
         <source>Set the device discovery scan timeout. Suffixes such as &apos;s&apos; and &apos;ms&apos; (for seconds and milliseconds) may be used. If no suffix is present, the units will be inferred from the magnitude of the given interval. The default behaviour is no timeout.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="191"/>
-        <location filename="../main.cpp" line="194"/>
+        <location filename="../main.cpp" line="192"/>
+        <location filename="../main.cpp" line="195"/>
         <source>period</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="193"/>
+        <location filename="../main.cpp" line="194"/>
         <source>Set the optional starting timestamp for data logging. Default to &apos;now&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="195"/>
+        <location filename="../main.cpp" line="196"/>
         <source>Set the DSO trigger level.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="195"/>
+        <location filename="../main.cpp" line="196"/>
         <source>level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="197"/>
+        <location filename="../main.cpp" line="198"/>
         <source>Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="199"/>
+        <location filename="../main.cpp" line="200"/>
         <source>Set the DSO window size. If not specified, a sensible value will be chosenaccording to the connect Pokit device&apos;s capabilities. Note, the limit is Pokit device dependant.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="201"/>
+        <location filename="../main.cpp" line="202"/>
         <source>samples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="206"/>
+        <location filename="../main.cpp" line="207"/>
         <source>Get Pokit device information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="207"/>
+        <location filename="../main.cpp" line="208"/>
         <source>Get Pokit device status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="208"/>
+        <location filename="../main.cpp" line="209"/>
         <source>Access Pokit device&apos;s multimeter mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="209"/>
+        <location filename="../main.cpp" line="210"/>
         <source>Access Pokit device&apos;s DSO mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="210"/>
+        <location filename="../main.cpp" line="211"/>
         <source>Start Pokit device&apos;s data logger mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="211"/>
+        <location filename="../main.cpp" line="212"/>
         <source>Stop Pokit device&apos;s data logger mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="212"/>
+        <location filename="../main.cpp" line="213"/>
         <source>Fetch Pokit device&apos;s data logger samples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="213"/>
+        <location filename="../main.cpp" line="214"/>
         <source>Scan Bluetooth for Pokit devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="214"/>
+        <location filename="../main.cpp" line="215"/>
         <source>Set Pokit device&apos;s name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="215"/>
+        <location filename="../main.cpp" line="216"/>
         <source>Set Pokit device&apos;s torch on or off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="216"/>
+        <location filename="../main.cpp" line="217"/>
         <source>Flash Pokit device&apos;s LED (Pokit Meter only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="217"/>
+        <location filename="../main.cpp" line="218"/>
         <source>Calibrate Pokit device temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="252"/>
+        <location filename="../main.cpp" line="253"/>
         <source>Missing argument: &lt;command&gt;
 See --help for usage information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="267"/>
+        <location filename="../main.cpp" line="268"/>
         <source>Unknown command (%1)</source>
         <translation type="unfinished"></translation>
     </message>

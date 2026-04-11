@@ -155,8 +155,8 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
         sampleRateValue = parseNumber<std::ratio<1,1>>(value, u"Hz"_s, (quint32)50'000);
         if (sampleRateValue == 0) {
             errors.append(tr("Invalid sample-rate value: %1").arg(value));
-        } else if (sampleRateValue > 10'000'000) { // \todo Use a PokitPro::* constant.
-            qCWarning(lc).noquote() << tr("Pokit devices do not officially support sample rates greater than 10Mhz");
+        } else if (sampleRateValue > 1'000'000) {
+            qCWarning(lc).noquote() << tr("Pokit devices do not officially support sample rates greater than 1Mhz");
         }
     }
 
@@ -244,6 +244,105 @@ AbstractPokitService * DsoCommand::getService()
 }
 
 /*!
+ * Returns the \a product's maximum sampling window size.
+ *
+ * \pokitApi Pokit's official documentation claim the maximum is 8,192. However, my Pokit Meter fails for window size
+ * greater than 8,191, while my Pokit Pro supports up to 16,384 samples per window.
+ */
+quint32 DsoCommand::maxWindowSize(const PokitProduct product)
+{
+    switch (product) {
+    case PokitProduct::PokitMeter:
+        return 8'191;
+    case PokitProduct::PokitPro:
+        return 16'384;
+    }
+    Q_ASSERT_X(false, "DsoCommand::maxWindowSize", "Unknown PokitProduct enum value");
+    return 0;
+}
+
+/*!
+ * Configures the \a settings.numberOfSamples and/or \a settings.samplingWindow, if not already set, according to the
+ * requested \a sampleRate. The chosen \a settings will be limited to \a product's capaibilities.
+ *
+ * Returns \c true os settings were set (either by this function, or they were already set), or \c false if the
+ * settings could not be determined succesfully (eg, because \a sampleRate was too high for the \a product).
+ */
+bool DsoCommand::configureWindow(const PokitProduct product, const quint32 sampleRate, DsoService::Settings &settings)
+{
+    const quint32 maxSampleRate = 1'000'000; // Pokit Meter and Pokit Pro both sample up to 1MHz.
+    const quint32 maxWindowSize = DsoCommand::maxWindowSize(product);
+
+    if (sampleRate > maxSampleRate) {
+        qCWarning(lc).noquote() <<
+            tr("The requested sample rate (%1Hz) likely exceeds the connected device's limit (%2Hz)")
+            .arg(sampleRate).arg(maxSampleRate);
+    }
+
+    if (settings.numberOfSamples > maxWindowSize) {
+        qCWarning(lc).noquote() <<
+            tr("Requested window size (%1 samples) likely exceeds the connected device's limit (%2) samples")
+            .arg(settings.samplingWindow).arg(maxWindowSize);
+    }
+
+    if ((settings.numberOfSamples != 0) && (settings.samplingWindow != 0)) {
+        qCDebug(lc).noquote() << "Both numberOfSamples and samplingWindow are set, so no need to derive either";
+        if (sampleRate != 0) {
+            const quint32 derivedRate = settings.numberOfSamples * 1'000'000ull / settings.samplingWindow;
+            qCDebug(lc).noquote() << "derivedRate" << derivedRate << sampleRate;
+            if (sampleRate != derivedRate) {
+                qCWarning(lc).noquote() << tr("Ignoring sample-rate, as interval and window-size both provided");
+            }
+        }
+        return true; // Nothing more to do.
+    }
+    Q_ASSERT_X(sampleRate > 0, "DsoCommand::configureWindow", "processOptions should have rejected already");
+
+    // If both window parameters are unset, choose the best window size (we'll choose a window period later).
+    if ((settings.numberOfSamples == 0) && (settings.samplingWindow == 0)) {
+        qCDebug(lc).noquote() << tr("Choosing best number-of-samples for sample-rate %2Hz").arg(sampleRate);
+        double smallestDifference = std::numeric_limits<double>::quiet_NaN();
+        for (quint32 windowSize = maxWindowSize; windowSize > 0; --windowSize) {
+            const quint32 period = windowSize * 1'000'000ull / sampleRate;
+            const double effectiveRate = double(windowSize) * 1'000'000.0 / (double)period - 0.5;
+            if (effectiveRate > maxSampleRate) continue;
+            const double difference = qAbs(effectiveRate - sampleRate);
+            qDebug(lc).noquote() << tr("%1 samples, %2us, %3Hz, %4Hz, ±%5Hz").arg(windowSize).arg(period)
+                .arg(effectiveRate, 0, 'f').arg(sampleRate).arg(difference, 0, 'f');
+            if ((settings.numberOfSamples == 0) || (difference < smallestDifference)) {
+                settings.numberOfSamples = windowSize;
+                smallestDifference = difference;
+            }
+        }
+        qDebug(lc).noquote() << tr("Chose %Ln sample/s, with error ±%2Hz", nullptr,
+            settings.numberOfSamples).arg(smallestDifference, 0, 'f');
+        if (settings.numberOfSamples == 0) {
+            qCCritical(lc).noquote() << tr("Failed to select a compatible window size for sample rate %1Hz").arg(sampleRate);
+            return false;
+        }
+    }
+
+    if (settings.numberOfSamples == 0) {
+        qCDebug(lc).noquote() << tr("Calculating number-of-samples for %1us window at %2Hz")
+            .arg(settings.samplingWindow).arg(sampleRate);
+        Q_ASSERT(settings.samplingWindow != 0);
+        settings.numberOfSamples = sampleRate / settings.samplingWindow;
+        Q_ASSERT(settings.samplingWindow * settings.numberOfSamples <= sampleRate); // Due to integer truncation.
+        qCDebug(lc).noquote() << tr("Calculated %Ln sample/s", nullptr, settings.numberOfSamples);
+    }
+
+    if (settings.samplingWindow == 0) {
+        qCDebug(lc).noquote() << tr("Calculating sampling-window for %Ln sample/s at %1Hz", nullptr,
+            settings.numberOfSamples).arg(sampleRate);
+        Q_ASSERT(settings.numberOfSamples != 0);
+        settings.samplingWindow = settings.numberOfSamples * 1'000'000ull / sampleRate;
+        // Q_ASSERT(settings.samplingWindow * settings.numberOfSamples <= sampleRate); // Due to integer truncation.
+        qCDebug(lc).noquote() << tr("Calculated %1us").arg(settings.samplingWindow);
+    }
+    return true;
+}
+
+/*!
  * \copybrief DeviceCommand::serviceDetailsDiscovered
  *
  * This override fetches the current device's status, and outputs it in the selected format.
@@ -252,6 +351,10 @@ void DsoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service->pokitProduct(), rangeOptionValue);
+    if (!configureWindow(*service->pokitProduct(), sampleRateValue, settings)) {
+        disconnect(EXIT_FAILURE);
+        return;
+    }
     const QString range = service->toString(settings.range, settings.mode);
     const QString triggerInfo = (settings.command == DsoService::Command::FreeRunning) ? QString() :
         tr(", and a %1 at %2%3%4").arg(DsoService::toString(settings.command).toLower(),
@@ -262,11 +365,13 @@ void DsoCommand::serviceDetailsDiscovered()
         .arg(settings.samplingWindow).arg(triggerInfo);
     if (!service->enableMetadataNotifications()) {
         qCCritical(lc) << tr("Failed to enable metadata notifications");
-        QCoreApplication::exit(EXIT_FAILURE);
+        disconnect(EXIT_FAILURE);
+        return;
     }
     if (!service->enableReadingNotifications()) {
         qCCritical(lc) << tr("Failed to enable reading notifications");
-        QCoreApplication::exit(EXIT_FAILURE);
+        disconnect(EXIT_FAILURE);
+        return;
     }
     service->setSettings(settings);
 }

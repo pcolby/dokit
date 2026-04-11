@@ -88,7 +88,7 @@ public:
         Mode mode;               ///< Operation mode used during last acquisition.
         quint8 range;            ///< Range used during last acquisition.
         quint32 samplingWindow;  ///< Sampling window (microseconds) used during last acquisition.
-        quint16 numberOfSamples; ///< Number of samples acquired (1 to 8192).
+        quint16 numberOfSamples; ///< Number of samples acquired (1 to 8,192|16,384 for Pokit Meter|Pro).
         quint32 samplingRate;    ///< Sampling rate used during last acquisition (1 to 1MHz).
     };
 
