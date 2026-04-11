@@ -236,8 +236,9 @@ AbstractPokitService * DsoCommand::getService()
     if (!service) {
         service = device->dso();
         Q_ASSERT(service);
-        connect(service, &DsoService::settingsWritten,
-                this, &DsoCommand::settingsWritten);
+        connect(service, &DsoService::metadataRead,    this, &DsoCommand::metadataRead);
+        connect(service, &DsoService::samplesRead,     this, &DsoCommand::outputSamples);
+        connect(service, &DsoService::settingsWritten, this, &DsoCommand::settingsWritten);
     }
     return service;
 }
@@ -259,6 +260,14 @@ void DsoCommand::serviceDetailsDiscovered()
     qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %Ln sample/s over %L3us%4.", nullptr, settings.numberOfSamples)
         .arg(DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range)
         .arg(settings.samplingWindow).arg(triggerInfo);
+    if (!service->enableMetadataNotifications()) {
+        qCCritical(lc) << tr("Failed to enable metadata notifications");
+        QCoreApplication::exit(EXIT_FAILURE);
+    }
+    if (!service->enableReadingNotifications()) {
+        qCCritical(lc) << tr("Failed to enable reading notifications");
+        QCoreApplication::exit(EXIT_FAILURE);
+    }
     service->setSettings(settings);
 }
 
@@ -283,10 +292,6 @@ void DsoCommand::settingsWritten()
 {
     Q_ASSERT(service);
     qCDebug(lc).noquote() << tr("Settings written; DSO has started.");
-    connect(service, &DsoService::metadataRead, this, &DsoCommand::metadataRead);
-    connect(service, &DsoService::samplesRead, this, &DsoCommand::outputSamples);
-    service->enableMetadataNotifications();
-    service->enableReadingNotifications();
 }
 
 /*!
