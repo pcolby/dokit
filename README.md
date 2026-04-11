@@ -169,7 +169,7 @@ Options:
   --sample-rate <rate>     Set the DSO sample rate. Suffixes such as 'k', 'M'
                            and 'MHz' may be used. If no suffix is present, the
                            scale will be inferred from the magnitude of the
-                           given rate.
+                           given rate. Rate must be between 1Hz and 1MHz.
   --temperature <degrees>  Set the current ambient temperature for the
                            calibration command.
   --timeout <period>       Set the device discovery scan timeout. Suffixes such

@@ -180,7 +180,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
         {{u"samples"_s}, Private::tr("Set the number of samples to acquire."), Private::tr("count")},
         {{u"sample-rate"_s}, Private::tr("Set the DSO sample rate. Suffixes such as 'k', 'M' and 'MHz' may be used. "
           "If no suffix is present, the scale will be inferred from the magnitude of the given rate. Rate must be "
-          "between ?? and 1MHz."), /// \todo Test the minimum.
+          "between 1Hz and 1MHz."),
           Private::tr("rate")},
         {{u"temperature"_s},
           Private::tr("Set the current ambient temperature for the calibration command."), Private::tr("degrees")},

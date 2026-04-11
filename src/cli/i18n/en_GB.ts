@@ -225,13 +225,8 @@ success
         <source>Choosing best number-of-samples for sample-rate %2Hz</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../dsocommand.cpp" line="310"/>
-        <source>%1 samples, %2us, %3Hz, %4Hz, ±%5Hz</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="317"/>
+        <location filename="../dsocommand.cpp" line="319"/>
         <source>Chose %Ln sample/s, with error ±%2Hz</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -239,17 +234,17 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="320"/>
+        <location filename="../dsocommand.cpp" line="322"/>
         <source>Failed to select a compatible window size for sample rate %1Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="326"/>
+        <location filename="../dsocommand.cpp" line="328"/>
         <source>Calculating number-of-samples for %1us window at %2Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="331"/>
+        <location filename="../dsocommand.cpp" line="333"/>
         <source>Calculated %Ln sample/s</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -257,7 +252,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="335"/>
+        <location filename="../dsocommand.cpp" line="337"/>
         <source>Calculating sampling-window for %Ln sample/s at %1Hz</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -265,14 +260,22 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="340"/>
+        <location filename="../dsocommand.cpp" line="342"/>
         <source>Calculated %1us</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="360"/>
-        <source>, and a %1 at %2%3%4</source>
+        <location filename="../dsocommand.cpp" line="362"/>
+        <source>, and a %1 at %2%3%4 (%5Hz)</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../dsocommand.cpp" line="365"/>
+        <source>Sampling %1, with range %2, at %L3Hz (%Ln sample/s over %L4us)%5</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>Sampling %1, with range %2, %Ln sample/s over %L3us</source>
@@ -282,7 +285,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="461"/>
+        <location filename="../dsocommand.cpp" line="464"/>
         <source>Finished fetching %Ln sample/s (with %L2 to remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L2 to remaining).</numerusform>
@@ -290,7 +293,7 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="399"/>
+        <location filename="../dsocommand.cpp" line="402"/>
         <source>Settings written; DSO has started.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -305,37 +308,29 @@ success
         <source>Pokit devices do not officially support windows greater than 16,384 samples</source>
         <translation type="unfinished"></translation>
     </message>
-    <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="363"/>
-        <source>Sampling %1, with range %2, %Ln sample/s over %L3us%4.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
     <message>
-        <location filename="../dsocommand.cpp" line="367"/>
+        <location filename="../dsocommand.cpp" line="370"/>
         <source>Failed to enable metadata notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="372"/>
+        <location filename="../dsocommand.cpp" line="375"/>
         <source>Failed to enable reading notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="430"/>
+        <location filename="../dsocommand.cpp" line="433"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="441"/>
+        <location filename="../dsocommand.cpp" line="444"/>
         <source>sample_number,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="455"/>
+        <location filename="../dsocommand.cpp" line="458"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
@@ -936,7 +931,7 @@ success
     </message>
     <message>
         <location filename="../main.cpp" line="181"/>
-        <source>Set the DSO sample rate. Suffixes such as &apos;k&apos;, &apos;M&apos; and &apos;MHz&apos; may be used. If no suffix is present, the scale will be inferred from the magnitude of the given rate. Rate must be between ?? and 1MHz.</source>
+        <source>Set the DSO sample rate. Suffixes such as &apos;k&apos;, &apos;M&apos; and &apos;MHz&apos; may be used. If no suffix is present, the scale will be inferred from the magnitude of the given rate. Rate must be between 1Hz and 1MHz.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

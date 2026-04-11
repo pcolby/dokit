@@ -305,10 +305,12 @@ bool DsoCommand::configureWindow(const PokitProduct product, const quint32 sampl
         for (quint32 windowSize = maxWindowSize; windowSize > 0; --windowSize) {
             const quint32 period = windowSize * 1'000'000ull / sampleRate;
             const double effectiveRate = double(windowSize) * 1'000'000.0 / (double)period - 0.5;
-            if (effectiveRate > maxSampleRate) continue;
+            if (effectiveRate > maxSampleRate) continue; // Skip sizes that would exceed the device's max sample rate.
+            if (const quint32 effectivePeriod = windowSize * 1'000'000ull / sampleRate;
+                effectivePeriod > 1'000'000) continue; // Skip sizes that would take longer than 1s to fetch.
             const double difference = qAbs(effectiveRate - sampleRate);
-            qDebug(lc).noquote() << tr("%1 samples, %2us, %3Hz, %4Hz, ±%5Hz").arg(windowSize).arg(period)
-                .arg(effectiveRate, 0, 'f').arg(sampleRate).arg(difference, 0, 'f');
+            // qDebug(lc).noquote() << tr("%1 samples, %2us, %3Hz, %4Hz, ±%5Hz").arg(windowSize).arg(period)
+            //     .arg(effectiveRate, 0, 'f').arg(sampleRate).arg(difference, 0, 'f');
             if ((settings.numberOfSamples == 0) || (difference < smallestDifference)) {
                 settings.numberOfSamples = windowSize;
                 smallestDifference = difference;
@@ -357,12 +359,13 @@ void DsoCommand::serviceDetailsDiscovered()
     }
     const QString range = service->toString(settings.range, settings.mode);
     const QString triggerInfo = (settings.command == DsoService::Command::FreeRunning) ? QString() :
-        tr(", and a %1 at %2%3%4").arg(DsoService::toString(settings.command).toLower(),
+        tr(", and a %1 at %2%3%4 (%5Hz)").arg(DsoService::toString(settings.command).toLower(),
             (settings.triggerLevel < 0.) ? u"-"_s : u""_s, appendSiPrefix(qAbs(settings.triggerLevel)),
             range.at(range.size()-1));
-    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, %Ln sample/s over %L3us%4.", nullptr, settings.numberOfSamples)
+    qCInfo(lc).noquote() << tr("Sampling %1, with range %2, at %L3Hz (%Ln sample/s over %L4us)%5", nullptr, settings.numberOfSamples)
         .arg(DsoService::toString(settings.mode), (range.isNull()) ? QString::fromLatin1("N/A") : range)
-        .arg(settings.samplingWindow).arg(triggerInfo);
+        .arg(settings.numberOfSamples * 1'000'000ull / settings.samplingWindow).arg(settings.samplingWindow)
+        .arg(triggerInfo);
     if (!service->enableMetadataNotifications()) {
         qCCritical(lc) << tr("Failed to enable metadata notifications");
         disconnect(EXIT_FAILURE);
