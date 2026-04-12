@@ -9,6 +9,8 @@
 
 #include "dsocommand.h"
 
+#include <QRegularExpression>
+
 Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(DsoService::Mode)
 Q_DECLARE_METATYPE(DsoService::Settings)
@@ -618,7 +620,8 @@ void TestDsoCommand::processOptions()
     parser.process(arguments);
 
     if (expectedSettings.numberOfSamples > 16'384) {
-        QTest::ignoreMessage(QtWarningMsg, "No Pokit device officially supports windows greater than 16,384 samples");
+        QTest::ignoreMessage(QtWarningMsg,
+            QRegularExpression(u"^No Pokit device officially supports windows greater than 16,?384 samples$"_s));
     }
 
     DsoCommand command(this);
