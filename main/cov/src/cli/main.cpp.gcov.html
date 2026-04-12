@@ -31,9 +31,9 @@
             <td class="headerValue">Dokit</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">54.1&nbsp;%</td>
-            <td class="headerCovTableEntry">157</td>
-            <td class="headerCovTableEntry">85</td>
+            <td class="headerCovTableEntryLo">55.3&nbsp;%</td>
+            <td class="headerCovTableEntry">161</td>
+            <td class="headerCovTableEntry">89</td>
           </tr>
           <tr>
             <td class="headerItem">Version:</td>
@@ -129,7 +129,7 @@
 <span id="L35"><span class="lineNum">      35</span>              : </span>
 <span id="L36"><span class="lineNum">      36</span>              : class Private</span>
 <span id="L37"><span class="lineNum">      37</span>              : {</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        1248 :     Q_DECLARE_TR_FUNCTIONS(cli_main)</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        1344 :     Q_DECLARE_TR_FUNCTIONS(cli_main)</span></span>
 <span id="L39"><span class="lineNum">      39</span>              : };</span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
 <span id="L41"><span class="lineNum">      41</span>              : inline bool haveConsole()</span>
@@ -241,9 +241,9 @@
 <span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">          48 :           Private::tr(&quot;device&quot;)},</span></span>
 <span id="L148"><span class="lineNum">     148</span>              :     });</span>
 <span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">          48 :     parser.addHelpOption();</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         934 :     parser.addOptions({</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">        1087 :     parser.addOptions({</span></span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">          66 :         {{u&quot;interval&quot;_s},</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the update interval for DOS, meter and &quot;</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the update interval for DSO, meter and &quot;</span></span>
 <span id="L153"><span class="lineNum">     153</span>              :           &quot;logger modes. Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. &quot;</span>
 <span id="L154"><span class="lineNum">     154</span>              :           &quot;If no suffix is present, the units will be inferred from the magnitude of the given &quot;</span>
 <span id="L155"><span class="lineNum">     155</span>              :           &quot;interval. If the option itself is not specified, a sensible default will be chosen &quot;</span>
@@ -272,156 +272,163 @@
 <span id="L178"><span class="lineNum">     178</span>              :           &quot;range feature. The default is 'auto'.&quot;),</span>
 <span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">          48 :           Private::tr(&quot;range&quot;), u&quot;auto&quot;_s},</span></span>
 <span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">          48 :         {{u&quot;samples&quot;_s}, Private::tr(&quot;Set the number of samples to acquire.&quot;), Private::tr(&quot;count&quot;)},</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          57 :         {{u&quot;temperature&quot;_s},</span></span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the current ambient temperature for the calibration command.&quot;), Private::tr(&quot;degrees&quot;)},</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">          57 :         {{u&quot;timeout&quot;_s},</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the device discovery scan timeout. &quot;</span></span>
-<span id="L185"><span class="lineNum">     185</span>              :           &quot;Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. &quot;</span>
-<span id="L186"><span class="lineNum">     186</span>              :           &quot;If no suffix is present, the units will be inferred from the magnitude of the given &quot;</span>
-<span id="L187"><span class="lineNum">     187</span>              :           &quot;interval. The default behaviour is no timeout.&quot;),</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          48 :           Private::tr(&quot;period&quot;)},</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          57 :         {{u&quot;timestamp&quot;_s},</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the optional starting timestamp for data logging. Default to 'now'.&quot;),</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">          48 :           Private::tr(&quot;period&quot;)},</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          48 :         {{u&quot;trigger-level&quot;_s}, Private::tr(&quot;Set the DSO trigger level.&quot;), Private::tr(&quot;level&quot;)},</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          57 :         {{u&quot;trigger-mode&quot;_s},</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.&quot;),</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          48 :           Private::tr(&quot;mode&quot;), u&quot;free&quot;_s},</span></span>
-<span id="L196"><span class="lineNum">     196</span>              :     });</span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">          48 :     parser.addVersionOption();</span></span>
-<span id="L198"><span class="lineNum">     198</span>              : </span>
-<span id="L199"><span class="lineNum">     199</span>              :     // Add supported 'commands' (as positional arguments, so they'll appear in the help text).</span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;info&quot;_s,         Private::tr(&quot;Get Pokit device information&quot;), u&quot; &quot;_s);</span></span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;status&quot;_s,       Private::tr(&quot;Get Pokit device status&quot;), u&quot; &quot;_s);</span></span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;meter&quot;_s,        Private::tr(&quot;Access Pokit device's multimeter mode&quot;), u&quot; &quot;_s);</span></span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;dso&quot;_s,          Private::tr(&quot;Access Pokit device's DSO mode&quot;), u&quot; &quot;_s);</span></span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;logger-start&quot;_s, Private::tr(&quot;Start Pokit device's data logger mode&quot;), u&quot; &quot;_s);</span></span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;logger-stop&quot;_s,  Private::tr(&quot;Stop Pokit device's data logger mode&quot;), u&quot; &quot;_s);</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;logger-fetch&quot;_s, Private::tr(&quot;Fetch Pokit device's data logger samples&quot;), u&quot; &quot;_s);</span></span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;scan&quot;_s,         Private::tr(&quot;Scan Bluetooth for Pokit devices&quot;), u&quot; &quot;_s);</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;set-name&quot;_s,     Private::tr(&quot;Set Pokit device's name&quot;), u&quot; &quot;_s);</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;set-torch&quot;_s,    Private::tr(&quot;Set Pokit device's torch on or off&quot;), u&quot; &quot;_s);</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;flash-led&quot;_s,    Private::tr(&quot;Flash Pokit device's LED (Pokit Meter only)&quot;), u&quot; &quot;_s);</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;calibrate&quot;_s,    Private::tr(&quot;Calibrate Pokit device temperature&quot;), u&quot; &quot;_s);</span></span>
-<span id="L212"><span class="lineNum">     212</span>              : </span>
-<span id="L213"><span class="lineNum">     213</span>              :     // Do the initial parse, the see if we have a command specified yet.</span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          48 :     parser.parse(appArguments);</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">          48 :     configureLogging(parser);</span></span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">          68 :     qCDebug(lc).noquote() &lt;&lt; QCoreApplication::applicationName() &lt;&lt; QCoreApplication::applicationVersion();</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">          68 :     qCDebug(lc).noquote() &lt;&lt; &quot;Qt &quot; QT_VERSION_STR &quot; compile-time&quot;;</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">          68 :     qCDebug(lc).noquote() &lt;&lt; &quot;Qt&quot; &lt;&lt; qVersion() &lt;&lt; &quot;runtime&quot;;</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">          48 :     const Command command = getCliCommand(parser.positionalArguments());</span></span>
-<span id="L220"><span class="lineNum">     220</span>              : </span>
-<span id="L221"><span class="lineNum">     221</span>              :     // If we have a (single, valid) command, then remove the commands list from the help text.</span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          48 :     if (command != Command::None) {</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaUNC">           0 :         parser.clearPositionalArguments();</span></span>
-<span id="L224"><span class="lineNum">     224</span>              :     }</span>
-<span id="L225"><span class="lineNum">     225</span>              : </span>
-<span id="L226"><span class="lineNum">     226</span>              :     // Handle -h|--help explicitly, so we can tweak the output to include the &lt;command&gt; info.</span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">          78 :     if (parser.isSet(u&quot;help&quot;_s)) {</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaUNC">           0 :         const QString commandString = (command == Command::None) ? u&quot;&lt;command&gt;&quot;_s</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaUNC">           0 :                 : parser.positionalArguments().constFirst();</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaUNC">           0 :         std::cout &lt;&lt; qUtf8Printable(parser.helpText()</span></span>
-<span id="L231"><span class="lineNum">     231</span>              :             .replace(u&quot;[options]&quot;_s, commandString + u&quot; [options]&quot;_s)</span>
-<span id="L232"><span class="lineNum">     232</span>              :             .replace(u&quot;Arguments:&quot;_s,  u&quot;Command:&quot;_s)</span>
-<span id="L233"><span class="lineNum">     233</span>              :         );</span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaUNC">           0 :         ::exit(EXIT_SUCCESS);</span></span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC">           0 :     }</span></span>
-<span id="L236"><span class="lineNum">     236</span>              : </span>
-<span id="L237"><span class="lineNum">     237</span>              :     // Process the command for real (ie throw errors for unknown options, etc).</span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">          48 :     parser.process(appArguments);</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaUNC">           0 :     return command;</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">         698 : }</span></span>
-<span id="L241"><span class="lineNum">     241</span>              : </span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC">           0 : AbstractCommand * getCommandObject(const Command command, QObject * const parent)</span></span>
-<span id="L243"><span class="lineNum">     243</span>              : {</span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC">           0 :     switch (command) {</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaUNC">           0 :     case Command::None:</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaUNC">           0 :         showCliError(Private::tr(&quot;Missing argument: &lt;command&gt;\nSee --help for usage information.&quot;));</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaUNC">           0 :         return nullptr;</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaUNC">           0 :     case Command::Calibrate:   return new CalibrateCommand(parent);</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaUNC">           0 :     case Command::DSO:         return new DsoCommand(parent);</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaUNC">           0 :     case Command::FlashLed:    return new FlashLedCommand(parent);</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC">           0 :     case Command::Info:        return new InfoCommand(parent);</span></span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaUNC">           0 :     case Command::LoggerStart: return new LoggerStartCommand(parent);</span></span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC">           0 :     case Command::LoggerStop:  return new LoggerStopCommand(parent);</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaUNC">           0 :     case Command::LoggerFetch: return new LoggerFetchCommand(parent);</span></span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaUNC">           0 :     case Command::Meter:       return new MeterCommand(parent);</span></span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC">           0 :     case Command::Scan:        return new ScanCommand(parent);</span></span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaUNC">           0 :     case Command::Status:      return new StatusCommand(parent);</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaUNC">           0 :     case Command::SetName:     return new SetNameCommand(parent);</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC">           0 :     case Command::SetTorch:    return new SetTorchCommand(parent);</span></span>
-<span id="L260"><span class="lineNum">     260</span>              :     }</span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaUNC">           0 :     showCliError(Private::tr(&quot;Unknown command (%1)&quot;).arg((int)command));</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC">           0 :     return nullptr;</span></span>
-<span id="L263"><span class="lineNum">     263</span>              : }</span>
-<span id="L264"><span class="lineNum">     264</span>              : </span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">          48 : int main(int argc, char *argv[])</span></span>
-<span id="L266"><span class="lineNum">     266</span>              : {</span>
-<span id="L267"><span class="lineNum">     267</span>              :     // Setup the core application.</span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">          48 :     QCoreApplication app(argc, argv);</span></span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">          78 :     QCoreApplication::setApplicationName(QStringLiteral(PROJECT_NAME));</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">          48 :     QCoreApplication::setApplicationVersion(QString::fromLatin1(PROJECT_VERSION</span></span>
-<span id="L271"><span class="lineNum">     271</span>              :         #ifdef PROJECT_PRE_RELEASE</span>
-<span id="L272"><span class="lineNum">     272</span>              :         &quot;-&quot; PROJECT_PRE_RELEASE</span>
-<span id="L273"><span class="lineNum">     273</span>              :         #endif</span>
-<span id="L274"><span class="lineNum">     274</span>              :         #ifdef PROJECT_BUILD_ID</span>
-<span id="L275"><span class="lineNum">     275</span>              :         &quot;+&quot; PROJECT_BUILD_ID</span>
-<span id="L276"><span class="lineNum">     276</span>              :         #endif</span>
-<span id="L277"><span class="lineNum">     277</span>              :     ));</span>
-<span id="L278"><span class="lineNum">     278</span>              : </span>
-<span id="L279"><span class="lineNum">     279</span>              : #if defined(Q_OS_MACOS) || defined(Q_CC_MINGW)</span>
-<span id="L280"><span class="lineNum">     280</span>              :     // Qt ignores shell locale overrides on macOS (QTBUG-51386), so mimic Qt's handling of LANG on *nixes.</span>
-<span id="L281"><span class="lineNum">     281</span>              :     // Qt also applies LANG inconsistently with MinGW (QTBUG-139433), so mimic Qt's *nix handline there too.</span>
-<span id="L282"><span class="lineNum">     282</span>              :     const QString localeName = QString::fromLocal8Bit(qgetenv(&quot;LANG&quot;));</span>
-<span id="L283"><span class="lineNum">     283</span>              :     if (!localeName.isEmpty()) {</span>
-<span id="L284"><span class="lineNum">     284</span>              :         const QLocale newLocale(localeName);</span>
-<span id="L285"><span class="lineNum">     285</span>              :         if (newLocale.name() != localeName.split('.'_L1).constFirst()) {</span>
-<span id="L286"><span class="lineNum">     286</span>              :             qWarning() &lt;&lt; &quot;Could not find locale&quot; &lt;&lt; localeName;</span>
-<span id="L287"><span class="lineNum">     287</span>              :         } else {</span>
-<span id="L288"><span class="lineNum">     288</span>              :             QLocale::setDefault(newLocale);</span>
-<span id="L289"><span class="lineNum">     289</span>              :         }</span>
-<span id="L290"><span class="lineNum">     290</span>              :     }</span>
-<span id="L291"><span class="lineNum">     291</span>              : #endif</span>
-<span id="L292"><span class="lineNum">     292</span>              : </span>
-<span id="L293"><span class="lineNum">     293</span>              :     // Install localised translators, if we have translations for the current locale.</span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">          48 :     const QLocale locale;</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">          48 :     QTranslator appTranslator, libTranslator;</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">          78 :     if (appTranslator.load(locale, u&quot;cli&quot;_s, u&quot;/&quot;_s, u&quot;:/i18n&quot;_s)) {</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaUNC">           0 :         QCoreApplication::installTranslator(&amp;appTranslator);</span></span>
-<span id="L298"><span class="lineNum">     298</span>              :     }</span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">          78 :     if (libTranslator.load(locale, u&quot;lib&quot;_s, u&quot;/&quot;_s, u&quot;:/i18n&quot;_s)) {</span></span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaUNC">           0 :         QCoreApplication::installTranslator(&amp;libTranslator);</span></span>
-<span id="L301"><span class="lineNum">     301</span>              :     }</span>
-<span id="L302"><span class="lineNum">     302</span>              : </span>
-<span id="L303"><span class="lineNum">     303</span>              :     // Parse the command line.</span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          48 :     const QStringList appArguments = QCoreApplication::arguments();</span></span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">          48 :     QCommandLineParser parser;</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          48 :     const Command commandType = parseCommandLine(appArguments, parser);</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Locale:&quot; &lt;&lt; locale &lt;&lt; locale.uiLanguages();</span></span>
-<span id="L308"><span class="lineNum">     308</span>              : #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.</span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;App translations:&quot; &lt;&lt;</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC">           0 :         (appTranslator.filePath().isEmpty() ? u&quot;&lt;none&gt;&quot;_s : appTranslator.filePath());</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Library translations:&quot; &lt;&lt;</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC">           0 :         (libTranslator.filePath().isEmpty() ? u&quot;&lt;none&gt;&quot;_s : libTranslator.filePath());</span></span>
-<span id="L313"><span class="lineNum">     313</span>              : #else</span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;App translations:&quot; &lt;&lt; (!appTranslator.isEmpty());</span></span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Lib translations:&quot; &lt;&lt; (!libTranslator.isEmpty());</span></span>
-<span id="L316"><span class="lineNum">     316</span>              : #endif</span>
-<span id="L317"><span class="lineNum">     317</span>              : </span>
-<span id="L318"><span class="lineNum">     318</span>              :     // Handle the given command.</span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :     AbstractCommand * const command = getCommandObject(commandType, &amp;app);</span></span>
-<span id="L320"><span class="lineNum">     320</span> <span class="tlaUNC">           0 :     if (command == nullptr) {</span></span>
-<span id="L321"><span class="lineNum">     321</span>              :         return EXIT_FAILURE; // getCommandObject will have logged the reason already.</span>
-<span id="L322"><span class="lineNum">     322</span>              :     }</span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaUNC">           0 :     const QStringList cliErrors = command-&gt;processOptions(parser);</span></span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC">           0 :     for (const QString &amp;error: cliErrors) {</span></span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :         showCliError(error);</span></span>
-<span id="L326"><span class="lineNum">     326</span>              :     }</span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaUNC">           0 :     const int result = ((cliErrors.isEmpty()) &amp;&amp; (command-&gt;start())) ? QCoreApplication::exec() : EXIT_FAILURE;</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaUNC">           0 :     delete command; // We don't strictly need to do this, but it does fix QTBUG-119063, and is probably good practice.</span></span>
-<span id="L329"><span class="lineNum">     329</span>              :     return result;</span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC">           0 : }</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">          48 :         {{u&quot;sample-rate&quot;_s}, Private::tr(&quot;Set the DSO sample rate. Suffixes such as 'k', 'M' and 'MHz' may be used. &quot;</span></span>
+<span id="L182"><span class="lineNum">     182</span>              :           &quot;If no suffix is present, the scale will be inferred from the magnitude of the given rate. Rate must be &quot;</span>
+<span id="L183"><span class="lineNum">     183</span>              :           &quot;between 1Hz and 1MHz.&quot;),</span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">          48 :           Private::tr(&quot;rate&quot;)},</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">          57 :         {{u&quot;temperature&quot;_s},</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the current ambient temperature for the calibration command.&quot;), Private::tr(&quot;degrees&quot;)},</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">          57 :         {{u&quot;timeout&quot;_s},</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the device discovery scan timeout. &quot;</span></span>
+<span id="L189"><span class="lineNum">     189</span>              :           &quot;Suffixes such as 's' and 'ms' (for seconds and milliseconds) may be used. &quot;</span>
+<span id="L190"><span class="lineNum">     190</span>              :           &quot;If no suffix is present, the units will be inferred from the magnitude of the given &quot;</span>
+<span id="L191"><span class="lineNum">     191</span>              :           &quot;interval. The default behaviour is no timeout.&quot;),</span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">          48 :           Private::tr(&quot;period&quot;)},</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          57 :         {{u&quot;timestamp&quot;_s},</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the optional starting timestamp for data logging. Default to 'now'.&quot;),</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">          48 :           Private::tr(&quot;period&quot;)},</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">          48 :         {{u&quot;trigger-level&quot;_s}, Private::tr(&quot;Set the DSO trigger level.&quot;), Private::tr(&quot;level&quot;)},</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">          57 :         {{u&quot;trigger-mode&quot;_s},</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">          48 :           Private::tr(&quot;Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free.&quot;),</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">          48 :           Private::tr(&quot;mode&quot;), u&quot;free&quot;_s},</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">          48 :         {{u&quot;window-size&quot;_s}, Private::tr(&quot;Set the DSO window size. If not specified, a sensible value will be chosen&quot;</span></span>
+<span id="L201"><span class="lineNum">     201</span>              :           &quot;according to the connected Pokit device's capabilities. Note, the limit is Pokit device dependant.&quot;),</span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">          48 :           Private::tr(&quot;samples&quot;)},</span></span>
+<span id="L203"><span class="lineNum">     203</span>              :     });</span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">          48 :     parser.addVersionOption();</span></span>
+<span id="L205"><span class="lineNum">     205</span>              : </span>
+<span id="L206"><span class="lineNum">     206</span>              :     // Add supported 'commands' (as positional arguments, so they'll appear in the help text).</span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;info&quot;_s,         Private::tr(&quot;Get Pokit device information&quot;), u&quot; &quot;_s);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;status&quot;_s,       Private::tr(&quot;Get Pokit device status&quot;), u&quot; &quot;_s);</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;meter&quot;_s,        Private::tr(&quot;Access Pokit device's multimeter mode&quot;), u&quot; &quot;_s);</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;dso&quot;_s,          Private::tr(&quot;Access Pokit device's DSO mode&quot;), u&quot; &quot;_s);</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;logger-start&quot;_s, Private::tr(&quot;Start Pokit device's data logger mode&quot;), u&quot; &quot;_s);</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;logger-stop&quot;_s,  Private::tr(&quot;Stop Pokit device's data logger mode&quot;), u&quot; &quot;_s);</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;logger-fetch&quot;_s, Private::tr(&quot;Fetch Pokit device's data logger samples&quot;), u&quot; &quot;_s);</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;scan&quot;_s,         Private::tr(&quot;Scan Bluetooth for Pokit devices&quot;), u&quot; &quot;_s);</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;set-name&quot;_s,     Private::tr(&quot;Set Pokit device's name&quot;), u&quot; &quot;_s);</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;set-torch&quot;_s,    Private::tr(&quot;Set Pokit device's torch on or off&quot;), u&quot; &quot;_s);</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;flash-led&quot;_s,    Private::tr(&quot;Flash Pokit device's LED (Pokit Meter only)&quot;), u&quot; &quot;_s);</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">          78 :     parser.addPositionalArgument(u&quot;calibrate&quot;_s,    Private::tr(&quot;Calibrate Pokit device temperature&quot;), u&quot; &quot;_s);</span></span>
+<span id="L219"><span class="lineNum">     219</span>              : </span>
+<span id="L220"><span class="lineNum">     220</span>              :     // Do the initial parse, the see if we have a command specified yet.</span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">          48 :     parser.parse(appArguments);</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          48 :     configureLogging(parser);</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">          68 :     qCDebug(lc).noquote() &lt;&lt; QCoreApplication::applicationName() &lt;&lt; QCoreApplication::applicationVersion();</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          68 :     qCDebug(lc).noquote() &lt;&lt; &quot;Qt &quot; QT_VERSION_STR &quot; compile-time&quot;;</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">          68 :     qCDebug(lc).noquote() &lt;&lt; &quot;Qt&quot; &lt;&lt; qVersion() &lt;&lt; &quot;runtime&quot;;</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">          48 :     const Command command = getCliCommand(parser.positionalArguments());</span></span>
+<span id="L227"><span class="lineNum">     227</span>              : </span>
+<span id="L228"><span class="lineNum">     228</span>              :     // If we have a (single, valid) command, then remove the commands list from the help text.</span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">          48 :     if (command != Command::None) {</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaUNC">           0 :         parser.clearPositionalArguments();</span></span>
+<span id="L231"><span class="lineNum">     231</span>              :     }</span>
+<span id="L232"><span class="lineNum">     232</span>              : </span>
+<span id="L233"><span class="lineNum">     233</span>              :     // Handle -h|--help explicitly, so we can tweak the output to include the &lt;command&gt; info.</span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">          78 :     if (parser.isSet(u&quot;help&quot;_s)) {</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC">           0 :         const QString commandString = (command == Command::None) ? u&quot;&lt;command&gt;&quot;_s</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaUNC">           0 :                 : parser.positionalArguments().constFirst();</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaUNC">           0 :         std::cout &lt;&lt; qUtf8Printable(parser.helpText()</span></span>
+<span id="L238"><span class="lineNum">     238</span>              :             .replace(u&quot;[options]&quot;_s, commandString + u&quot; [options]&quot;_s)</span>
+<span id="L239"><span class="lineNum">     239</span>              :             .replace(u&quot;Arguments:&quot;_s,  u&quot;Command:&quot;_s)</span>
+<span id="L240"><span class="lineNum">     240</span>              :         );</span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC">           0 :         ::exit(EXIT_SUCCESS);</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L243"><span class="lineNum">     243</span>              : </span>
+<span id="L244"><span class="lineNum">     244</span>              :     // Process the command for real (ie throw errors for unknown options, etc).</span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">          48 :     parser.process(appArguments);</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaUNC">           0 :     return command;</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         802 : }</span></span>
+<span id="L248"><span class="lineNum">     248</span>              : </span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaUNC">           0 : AbstractCommand * getCommandObject(const Command command, QObject * const parent)</span></span>
+<span id="L250"><span class="lineNum">     250</span>              : {</span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC">           0 :     switch (command) {</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaUNC">           0 :     case Command::None:</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC">           0 :         showCliError(Private::tr(&quot;Missing argument: &lt;command&gt;\nSee --help for usage information.&quot;));</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaUNC">           0 :         return nullptr;</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaUNC">           0 :     case Command::Calibrate:   return new CalibrateCommand(parent);</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC">           0 :     case Command::DSO:         return new DsoCommand(parent);</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaUNC">           0 :     case Command::FlashLed:    return new FlashLedCommand(parent);</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaUNC">           0 :     case Command::Info:        return new InfoCommand(parent);</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC">           0 :     case Command::LoggerStart: return new LoggerStartCommand(parent);</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC">           0 :     case Command::LoggerStop:  return new LoggerStopCommand(parent);</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaUNC">           0 :     case Command::LoggerFetch: return new LoggerFetchCommand(parent);</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC">           0 :     case Command::Meter:       return new MeterCommand(parent);</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaUNC">           0 :     case Command::Scan:        return new ScanCommand(parent);</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaUNC">           0 :     case Command::Status:      return new StatusCommand(parent);</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaUNC">           0 :     case Command::SetName:     return new SetNameCommand(parent);</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaUNC">           0 :     case Command::SetTorch:    return new SetTorchCommand(parent);</span></span>
+<span id="L267"><span class="lineNum">     267</span>              :     }</span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaUNC">           0 :     showCliError(Private::tr(&quot;Unknown command (%1)&quot;).arg((int)command));</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaUNC">           0 :     return nullptr;</span></span>
+<span id="L270"><span class="lineNum">     270</span>              : }</span>
+<span id="L271"><span class="lineNum">     271</span>              : </span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          48 : int main(int argc, char *argv[])</span></span>
+<span id="L273"><span class="lineNum">     273</span>              : {</span>
+<span id="L274"><span class="lineNum">     274</span>              :     // Setup the core application.</span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">          48 :     QCoreApplication app(argc, argv);</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">          78 :     QCoreApplication::setApplicationName(QStringLiteral(PROJECT_NAME));</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">          48 :     QCoreApplication::setApplicationVersion(QString::fromLatin1(PROJECT_VERSION</span></span>
+<span id="L278"><span class="lineNum">     278</span>              :         #ifdef PROJECT_PRE_RELEASE</span>
+<span id="L279"><span class="lineNum">     279</span>              :         &quot;-&quot; PROJECT_PRE_RELEASE</span>
+<span id="L280"><span class="lineNum">     280</span>              :         #endif</span>
+<span id="L281"><span class="lineNum">     281</span>              :         #ifdef PROJECT_BUILD_ID</span>
+<span id="L282"><span class="lineNum">     282</span>              :         &quot;+&quot; PROJECT_BUILD_ID</span>
+<span id="L283"><span class="lineNum">     283</span>              :         #endif</span>
+<span id="L284"><span class="lineNum">     284</span>              :     ));</span>
+<span id="L285"><span class="lineNum">     285</span>              : </span>
+<span id="L286"><span class="lineNum">     286</span>              : #if defined(Q_OS_MACOS) || defined(Q_CC_MINGW)</span>
+<span id="L287"><span class="lineNum">     287</span>              :     // Qt ignores shell locale overrides on macOS (QTBUG-51386), so mimic Qt's handling of LANG on *nixes.</span>
+<span id="L288"><span class="lineNum">     288</span>              :     // Qt also applies LANG inconsistently with MinGW (QTBUG-139433), so mimic Qt's *nix handline there too.</span>
+<span id="L289"><span class="lineNum">     289</span>              :     const QString localeName = QString::fromLocal8Bit(qgetenv(&quot;LANG&quot;));</span>
+<span id="L290"><span class="lineNum">     290</span>              :     if (!localeName.isEmpty()) {</span>
+<span id="L291"><span class="lineNum">     291</span>              :         const QLocale newLocale(localeName);</span>
+<span id="L292"><span class="lineNum">     292</span>              :         if (newLocale.name() != localeName.split('.'_L1).constFirst()) {</span>
+<span id="L293"><span class="lineNum">     293</span>              :             qCWarning(lc) &lt;&lt; &quot;Could not find locale&quot; &lt;&lt; localeName;</span>
+<span id="L294"><span class="lineNum">     294</span>              :         } else {</span>
+<span id="L295"><span class="lineNum">     295</span>              :             QLocale::setDefault(newLocale);</span>
+<span id="L296"><span class="lineNum">     296</span>              :         }</span>
+<span id="L297"><span class="lineNum">     297</span>              :     }</span>
+<span id="L298"><span class="lineNum">     298</span>              : #endif</span>
+<span id="L299"><span class="lineNum">     299</span>              : </span>
+<span id="L300"><span class="lineNum">     300</span>              :     // Install localised translators, if we have translations for the current locale.</span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">          48 :     const QLocale locale;</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">          48 :     QTranslator appTranslator, libTranslator;</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">          78 :     if (appTranslator.load(locale, u&quot;cli&quot;_s, u&quot;/&quot;_s, u&quot;:/i18n&quot;_s)) {</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC">           0 :         QCoreApplication::installTranslator(&amp;appTranslator);</span></span>
+<span id="L305"><span class="lineNum">     305</span>              :     }</span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">          78 :     if (libTranslator.load(locale, u&quot;lib&quot;_s, u&quot;/&quot;_s, u&quot;:/i18n&quot;_s)) {</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaUNC">           0 :         QCoreApplication::installTranslator(&amp;libTranslator);</span></span>
+<span id="L308"><span class="lineNum">     308</span>              :     }</span>
+<span id="L309"><span class="lineNum">     309</span>              : </span>
+<span id="L310"><span class="lineNum">     310</span>              :     // Parse the command line.</span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">          48 :     const QStringList appArguments = QCoreApplication::arguments();</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">          48 :     QCommandLineParser parser;</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC">          48 :     const Command commandType = parseCommandLine(appArguments, parser);</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Locale:&quot; &lt;&lt; locale &lt;&lt; locale.uiLanguages();</span></span>
+<span id="L315"><span class="lineNum">     315</span>              : #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 15, 0)) // QTranslator::filePath() added in Qt 5.15.</span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;App translations:&quot; &lt;&lt;</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaUNC">           0 :         (appTranslator.filePath().isEmpty() ? u&quot;&lt;none&gt;&quot;_s : appTranslator.filePath());</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Library translations:&quot; &lt;&lt;</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :         (libTranslator.filePath().isEmpty() ? u&quot;&lt;none&gt;&quot;_s : libTranslator.filePath());</span></span>
+<span id="L320"><span class="lineNum">     320</span>              : #else</span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;App translations:&quot; &lt;&lt; (!appTranslator.isEmpty());</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaUNC">           0 :     qCDebug(lc).noquote() &lt;&lt; &quot;Lib translations:&quot; &lt;&lt; (!libTranslator.isEmpty());</span></span>
+<span id="L323"><span class="lineNum">     323</span>              : #endif</span>
+<span id="L324"><span class="lineNum">     324</span>              : </span>
+<span id="L325"><span class="lineNum">     325</span>              :     // Handle the given command.</span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC">           0 :     AbstractCommand * const command = getCommandObject(commandType, &amp;app);</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaUNC">           0 :     if (command == nullptr) {</span></span>
+<span id="L328"><span class="lineNum">     328</span>              :         return EXIT_FAILURE; // getCommandObject will have logged the reason already.</span>
+<span id="L329"><span class="lineNum">     329</span>              :     }</span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC">           0 :     const QStringList cliErrors = command-&gt;processOptions(parser);</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC">           0 :     for (const QString &amp;error: cliErrors) {</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaUNC">           0 :         showCliError(error);</span></span>
+<span id="L333"><span class="lineNum">     333</span>              :     }</span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :     const int result = ((cliErrors.isEmpty()) &amp;&amp; (command-&gt;start())) ? QCoreApplication::exec() : EXIT_FAILURE;</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC">           0 :     delete command; // We don't strictly need to do this, but it does fix QTBUG-119063, and is probably good practice.</span></span>
+<span id="L336"><span class="lineNum">     336</span>              :     return result;</span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaUNC">           0 : }</span></span>
         </pre>
               </td>
             </tr>

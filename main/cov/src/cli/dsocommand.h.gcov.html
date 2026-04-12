@@ -101,9 +101,9 @@
 <span id="L7"><span class="lineNum">       7</span>              : #include &lt;qtpokit/pokitmeter.h&gt;</span>
 <span id="L8"><span class="lineNum">       8</span>              : #include &lt;qtpokit/pokitpro.h&gt;</span>
 <span id="L9"><span class="lineNum">       9</span>              : </span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">        6160 : class DsoCommand : public DeviceCommand</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">        7140 : class DsoCommand : public DeviceCommand</span></span>
 <span id="L11"><span class="lineNum">      11</span>              : {</span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">       14910 :     Q_OBJECT</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">       11830 :     Q_OBJECT</span></span>
 <span id="L13"><span class="lineNum">      13</span>              : </span>
 <span id="L14"><span class="lineNum">      14</span>              : public:</span>
 <span id="L15"><span class="lineNum">      15</span>              :     explicit DsoCommand(QObject * const parent = nullptr);</span>
@@ -116,29 +116,33 @@
 <span id="L22"><span class="lineNum">      22</span>              : </span>
 <span id="L23"><span class="lineNum">      23</span>              : protected:</span>
 <span id="L24"><span class="lineNum">      24</span>              :     AbstractPokitService * getService() override;</span>
-<span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span>              : protected slots:</span>
-<span id="L27"><span class="lineNum">      27</span>              :     void serviceDetailsDiscovered() override;</span>
-<span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span>              : private:</span>
-<span id="L30"><span class="lineNum">      30</span>              :     quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue) { nullptr };</span>
-<span id="L31"><span class="lineNum">      31</span>              :     quint32 rangeOptionValue { 0 };   ///&lt; The parsed value of range option.</span>
-<span id="L32"><span class="lineNum">      32</span>              :     DsoService * service { nullptr }; ///&lt; Bluetooth service this command interacts with.</span>
-<span id="L33"><span class="lineNum">      33</span>              :     DsoService::Settings settings {   ///&lt; Settings for the Pokit device's DSO mode.</span>
-<span id="L34"><span class="lineNum">      34</span>              :         DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,</span>
-<span id="L35"><span class="lineNum">      35</span>              :         +PokitMeter::VoltageRange::AutoRange, 1'000'000, 1000</span>
-<span id="L36"><span class="lineNum">      36</span>              :     };</span>
-<span id="L37"><span class="lineNum">      37</span>              :     DsoService::Metadata metadata; ///&lt; Most recent DSO metadata.</span>
-<span id="L38"><span class="lineNum">      38</span>              :     qint32 samplesToGo { 0 };      ///&lt; Number of samples we're expecting in the current window.</span>
-<span id="L39"><span class="lineNum">      39</span>              :     bool showCsvHeader { true };   ///&lt; Whether or not to show a header as the first line of CSV output.</span>
-<span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span>              : private slots:</span>
-<span id="L42"><span class="lineNum">      42</span>              :     void settingsWritten();</span>
-<span id="L43"><span class="lineNum">      43</span>              :     void metadataRead(const DsoService::Metadata &amp;data);</span>
-<span id="L44"><span class="lineNum">      44</span>              :     void outputSamples(const DsoService::Samples &amp;samples);</span>
-<span id="L45"><span class="lineNum">      45</span>              : </span>
-<span id="L46"><span class="lineNum">      46</span>              :     QTPOKIT_BEFRIEND_TEST(DsoCommand)</span>
-<span id="L47"><span class="lineNum">      47</span>              : };</span>
+<span id="L25"><span class="lineNum">      25</span>              :     static quint16 maxWindowSize(const PokitProduct product);</span>
+<span id="L26"><span class="lineNum">      26</span>              :     static bool configureWindow(const PokitProduct product, const quint32 sampleRate, DsoService::Settings &amp;settings);</span>
+<span id="L27"><span class="lineNum">      27</span>              : </span>
+<span id="L28"><span class="lineNum">      28</span>              : protected slots:</span>
+<span id="L29"><span class="lineNum">      29</span>              :     void serviceDetailsDiscovered() override;</span>
+<span id="L30"><span class="lineNum">      30</span>              : </span>
+<span id="L31"><span class="lineNum">      31</span>              : private:</span>
+<span id="L32"><span class="lineNum">      32</span>              :     quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue) { nullptr };</span>
+<span id="L33"><span class="lineNum">      33</span>              :     quint32 rangeOptionValue { 0 };   ///&lt; The parsed value of range option.</span>
+<span id="L34"><span class="lineNum">      34</span>              :     quint32 sampleRateValue { 0 };    ///&lt; The parsed value of the sample-rate option.</span>
+<span id="L35"><span class="lineNum">      35</span>              :     quint32 samplesValue { 0 };       ///&lt; The parsed value of the samples option.</span>
+<span id="L36"><span class="lineNum">      36</span>              :     DsoService * service { nullptr }; ///&lt; Bluetooth service this command interacts with.</span>
+<span id="L37"><span class="lineNum">      37</span>              :     DsoService::Settings settings {   ///&lt; Settings for the Pokit device's DSO mode.</span>
+<span id="L38"><span class="lineNum">      38</span>              :         DsoService::Command::FreeRunning, 0.0f, DsoService::Mode::DcVoltage,</span>
+<span id="L39"><span class="lineNum">      39</span>              :         +PokitMeter::VoltageRange::AutoRange, 0, 0</span>
+<span id="L40"><span class="lineNum">      40</span>              :     };</span>
+<span id="L41"><span class="lineNum">      41</span>              :     DsoService::Metadata metadata; ///&lt; Most recent DSO metadata.</span>
+<span id="L42"><span class="lineNum">      42</span>              :     qint32 samplesToGo { 0 };      ///&lt; Number of samples we're expecting in the current window.</span>
+<span id="L43"><span class="lineNum">      43</span>              :     bool showCsvHeader { true };   ///&lt; Whether or not to show a header as the first line of CSV output.</span>
+<span id="L44"><span class="lineNum">      44</span>              : </span>
+<span id="L45"><span class="lineNum">      45</span>              : private slots:</span>
+<span id="L46"><span class="lineNum">      46</span>              :     void settingsWritten();</span>
+<span id="L47"><span class="lineNum">      47</span>              :     void metadataRead(const DsoService::Metadata &amp;data);</span>
+<span id="L48"><span class="lineNum">      48</span>              :     void outputSamples(const DsoService::Samples &amp;samples);</span>
+<span id="L49"><span class="lineNum">      49</span>              : </span>
+<span id="L50"><span class="lineNum">      50</span>              :     QTPOKIT_BEFRIEND_TEST(DsoCommand)</span>
+<span id="L51"><span class="lineNum">      51</span>              : };</span>
         </pre>
               </td>
             </tr>

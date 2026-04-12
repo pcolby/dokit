@@ -134,12 +134,12 @@
 <span id="L40"><span class="lineNum">      40</span>              : /*!</span>
 <span id="L41"><span class="lineNum">      41</span>              :  * Constructs a new Pokit device discovery agent with \a parent.</span>
 <span id="L42"><span class="lineNum">      42</span>              :  */</span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">       34382 : PokitDiscoveryAgent::PokitDiscoveryAgent(QObject * parent)</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">       29553 :     : QBluetoothDeviceDiscoveryAgent(parent),</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">       63935 :       d_ptr(new PokitDiscoveryAgentPrivate(this))</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">       33755 : {</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">       35362 : PokitDiscoveryAgent::PokitDiscoveryAgent(QObject * parent)</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">       29917 :     : QBluetoothDeviceDiscoveryAgent(parent),</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">       65279 :       d_ptr(new PokitDiscoveryAgentPrivate(this))</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">       34119 : {</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">       68137 : }</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">       69481 : }</span></span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
 <span id="L50"><span class="lineNum">      50</span>              : /*!</span>
 <span id="L51"><span class="lineNum">      51</span>              :  * \cond internal</span>
@@ -168,10 +168,10 @@
 <span id="L74"><span class="lineNum">      74</span>              : /*!</span>
 <span id="L75"><span class="lineNum">      75</span>              :  * Destroys this PokitDiscoveryAgent object.</span>
 <span id="L76"><span class="lineNum">      76</span>              :  */</span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">       67680 : PokitDiscoveryAgent::~PokitDiscoveryAgent()</span></span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">       33755 : {</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">       68137 :     delete d_ptr;</span></span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">      101435 : }</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">       69640 : PokitDiscoveryAgent::~PokitDiscoveryAgent()</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">       34119 : {</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">       69481 :     delete d_ptr;</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">      103759 : }</span></span>
 <span id="L81"><span class="lineNum">      81</span>              : </span>
 <span id="L82"><span class="lineNum">      82</span>              : /*!</span>
 <span id="L83"><span class="lineNum">      83</span>              :  * Starts Pokit device discovery.</span>
@@ -222,31 +222,31 @@
 <span id="L128"><span class="lineNum">     128</span>              :  * \internal</span>
 <span id="L129"><span class="lineNum">     129</span>              :  * Constructs a new PokitDiscoveryAgentPrivate object with public implementation \a q.</span>
 <span id="L130"><span class="lineNum">     130</span>              :  */</span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">       34382 : PokitDiscoveryAgentPrivate::PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * const q)</span></span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">       63935 :     : q_ptr(q)</span></span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">       33755 : {</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">       68137 :     connect(q, &amp;QBluetoothDeviceDiscoveryAgent::canceled,</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">       48575 :             this, &amp;PokitDiscoveryAgentPrivate::canceled);</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">       35362 : PokitDiscoveryAgentPrivate::PokitDiscoveryAgentPrivate(PokitDiscoveryAgent * const q)</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">       65279 :     : q_ptr(q)</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">       34119 : {</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">       69481 :     connect(q, &amp;QBluetoothDeviceDiscoveryAgent::canceled,</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">       49359 :             this, &amp;PokitDiscoveryAgentPrivate::canceled);</span></span>
 <span id="L136"><span class="lineNum">     136</span>              : </span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">       68137 :     connect(q, &amp;QBluetoothDeviceDiscoveryAgent::deviceDiscovered,</span></span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">       48575 :             this, &amp;PokitDiscoveryAgentPrivate::deviceDiscovered);</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">       69481 :     connect(q, &amp;QBluetoothDeviceDiscoveryAgent::deviceDiscovered,</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">       49359 :             this, &amp;PokitDiscoveryAgentPrivate::deviceDiscovered);</span></span>
 <span id="L139"><span class="lineNum">     139</span>              : </span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">       29072 :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Signal added in Qt 5.12.</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">       60688 :     connect(q, &amp;QBluetoothDeviceDiscoveryAgent::deviceUpdated,</span></span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">       43892 :             this, &amp;PokitDiscoveryAgentPrivate::deviceUpdated);</span></span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">       29072 :     #endif</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">       29394 :     #if (QT_VERSION &gt;= QT_VERSION_CHECK(5, 12, 0)) // Signal added in Qt 5.12.</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">       61906 :     connect(q, &amp;QBluetoothDeviceDiscoveryAgent::deviceUpdated,</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">       44634 :             this, &amp;PokitDiscoveryAgentPrivate::deviceUpdated);</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">       29394 :     #endif</span></span>
 <span id="L144"><span class="lineNum">     144</span>              : </span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">       68137 :     connect(q,</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">       12707 :         #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">       12707 :             QOverload&lt;PokitDiscoveryAgent::Error&gt;::of(&amp;PokitDiscoveryAgent::error),</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">       69481 :     connect(q,</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">       12833 :         #if (QT_VERSION &lt; QT_VERSION_CHECK(6, 2, 0))</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">       12833 :             QOverload&lt;PokitDiscoveryAgent::Error&gt;::of(&amp;PokitDiscoveryAgent::error),</span></span>
 <span id="L148"><span class="lineNum">     148</span>              :         #else</span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">       21048 :             &amp;QBluetoothDeviceDiscoveryAgent::errorOccurred,</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">       21048 :         #endif</span></span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">       48575 :         this, &amp;PokitDiscoveryAgentPrivate::error);</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">       21286 :             &amp;QBluetoothDeviceDiscoveryAgent::errorOccurred,</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">       21286 :         #endif</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">       49359 :         this, &amp;PokitDiscoveryAgentPrivate::error);</span></span>
 <span id="L152"><span class="lineNum">     152</span>              : </span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">       68137 :     connect(q, &amp;QBluetoothDeviceDiscoveryAgent::finished,</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">       48575 :             this, &amp;PokitDiscoveryAgentPrivate::finished);</span></span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">       68137 : }</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">       69481 :     connect(q, &amp;QBluetoothDeviceDiscoveryAgent::finished,</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">       49359 :             this, &amp;PokitDiscoveryAgentPrivate::finished);</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">       69481 : }</span></span>
 <span id="L156"><span class="lineNum">     156</span>              : </span>
 <span id="L157"><span class="lineNum">     157</span>              : /*!</span>
 <span id="L158"><span class="lineNum">     158</span>              :  * Handle scan canceled signals, by simply logging the event for diagnostic purposes.</span>
