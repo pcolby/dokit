@@ -1,5 +1,9 @@
 var NAVTREEINDEX4 =
 {
+"qt.html#DayOfWeek-enum":[4,0,6,342],
+"qt.html#DayOfWeek-enum":[4,0,6,951],
+"qt.html#DayOfWeek-enum":[4,0,6,1045],
+"qt.html#DayOfWeek-enum":[4,0,6,1079],
 "qt.html#DayOfWeek-enum":[4,0,6,1121],
 "qt.html#DayOfWeek-enum":[4,0,6,1150],
 "qt.html#DayOfWeek-enum":[4,0,6,1286],
@@ -245,9 +249,5 @@ var NAVTREEINDEX4 =
 "qt.html#Key-enum":[4,0,6,443],
 "qt.html#Key-enum":[4,0,6,444],
 "qt.html#Key-enum":[4,0,6,445],
-"qt.html#Key-enum":[4,0,6,446],
-"qt.html#Key-enum":[4,0,6,447],
-"qt.html#Key-enum":[4,0,6,448],
-"qt.html#Key-enum":[4,0,6,449],
-"qt.html#Key-enum":[4,0,6,450]
+"qt.html#Key-enum":[4,0,6,446]
 };

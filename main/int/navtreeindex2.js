@@ -1,5 +1,9 @@
 var NAVTREEINDEX2 =
 {
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a822a755216a42f263e6b20e8edbd536b":[5,0,35,7,3],
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a8c9853c1b8ace5cb84259e2b72ee1ec5":[5,0,35,7,8],
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35aa44739725ce1db60f3612f375b280ac4":[5,0,35,7,5],
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ab1d9e2e752fecd6a87793d19b0315582":[5,0,35,7,6],
 "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ac5436b6539f4a0672077f7bc82afe76e":[5,0,35,7,2],
 "classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ae599161956d626eda4cb0a5ffb85271c":[5,0,35,7,0],
 "classStatusService.html#a5d86bed23202402cade7fa8bb09f9c48":[5,0,35,25],
@@ -245,9 +249,5 @@ var NAVTREEINDEX2 =
 "namespacePokitPro_1_1anonymous__namespace_02pokitpro_8cpp_03.html":[4,0,4,0],
 "namespaceResistanceRange.html":[4,0,7],
 "namespaceResistanceRange.html#a6f542c3fe27b9c58c03edc92ceab40ef":[4,0,7,1],
-"namespaceResistanceRange.html#af5acf674597a3fe0021d98d3a0d35342":[4,0,7,0],
-"namespaceVoltageRange.html":[4,0,8],
-"namespaceVoltageRange.html#a51a1090e2e5ef6067e50141a20d92e0f":[4,0,8,0],
-"namespaceVoltageRange.html#a843ef4bfc3538988c695fa643adcd4d0":[4,0,8,1],
-"namespaceanonymous__namespace_02pokitproducts_8cpp_03.html":[4,0,0]
+"namespaceResistanceRange.html#af5acf674597a3fe0021d98d3a0d35342":[4,0,7,0]
 };

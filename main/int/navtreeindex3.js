@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"namespaceVoltageRange.html":[4,0,8],
+"namespaceVoltageRange.html#a51a1090e2e5ef6067e50141a20d92e0f":[4,0,8,0],
+"namespaceVoltageRange.html#a843ef4bfc3538988c695fa643adcd4d0":[4,0,8,1],
+"namespaceanonymous__namespace_02pokitproducts_8cpp_03.html":[4,0,0],
 "namespacemembers.html":[4,1,0],
 "namespacemembers_enum.html":[4,1,2],
 "namespacemembers_func.html":[4,1,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "qt.html#DateFormat-enum":[4,0,6,1084],
 "qt.html#DateFormat-enum":[4,0,6,1085],
 "qt.html#DateFormat-enum":[4,0,6,1099],
-"qt.html#DayOfWeek-enum":[4,0,6,20],
-"qt.html#DayOfWeek-enum":[4,0,6,342],
-"qt.html#DayOfWeek-enum":[4,0,6,951],
-"qt.html#DayOfWeek-enum":[4,0,6,1045],
-"qt.html#DayOfWeek-enum":[4,0,6,1079]
+"qt.html#DayOfWeek-enum":[4,0,6,20]
 };

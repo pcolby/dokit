@@ -661,8 +661,8 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Parses the button press <em class="arg">value</em>, and returns the corresponding ButtonStatus. </p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000014">Pokit Bluetooth API errata</a></b></dt><dd>The button event is the second byte, but no idea what the first byte is. In all examples I've see it's always <span class="tt">0x02</span>. It appears that the Pokit Android app only ever looks at <span class="tt">bytes[1]</span>.</dd></dl>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000015">Pokit Bluetooth API errata</a></b></dt><dd>Note, we can actually write to the Button Press characteristic too. If we do, then whatever we set as the first byte persists, and (unsurprisingly) the second byte reverts to the current button state. So still no idea what that first byte is for. </dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000015">Pokit Bluetooth API errata</a></b></dt><dd>The button event is the second byte, but no idea what the first byte is. In all examples I've see it's always <span class="tt">0x02</span>. It appears that the Pokit Android app only ever looks at <span class="tt">bytes[1]</span>.</dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000016">Pokit Bluetooth API errata</a></b></dt><dd>Note, we can actually write to the Button Press characteristic too. If we do, then whatever we set as the first byte persists, and (unsurprisingly) the second byte reverts to the current button state. So still no idea what that first byte is for. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00689">689</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  690</span>{</div>
@@ -813,7 +813,7 @@ Here is the caller graph for this function:</div>
 
 <p>Parses the <span class="tt">Status</span> <em class="arg">value</em> into a Status struct. </p>
 <p>Note, not all Pokit devices support all members in Status. Specifically, the batteryStatus member is not usually set by Pokit Meter devices, so will be an invalid BatteryStatus enum value (<span class="tt">255</span>) in that case. </p>
-<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000013">Pokit Bluetooth API errata</a></b></dt><dd>Pokit API 0.02 says the <span class="tt">Status</span> characteristic is 5 bytes. API 1.00 then added an additional byte for <span class="tt">Battery Status</span>, for 6 bytes in total. However, Pokit Pro devices return 8 bytes here. It appears that the first of those 2 extra bytes (ie the 7th byte) is used to indicate the physical switch position, while the other extra byte (ie the 8th byte) indicates the device's current charging status. </dd></dl>
+<dl class="pokit"><dt><b><a class="el" href="pokit.html#_pokit000014">Pokit Bluetooth API errata</a></b></dt><dd>Pokit API 0.02 says the <span class="tt">Status</span> characteristic is 5 bytes. API 1.00 then added an additional byte for <span class="tt">Battery Status</span>, for 6 bytes in total. However, Pokit Pro devices return 8 bytes here. It appears that the first of those 2 extra bytes (ie the 7th byte) is used to indicate the physical switch position, while the other extra byte (ie the 8th byte) indicates the device's current charging status. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="statusservice_8cpp_source.html#l00622">622</a> of file <a class="el" href="statusservice_8cpp_source.html">statusservice.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  623</span>{</div>

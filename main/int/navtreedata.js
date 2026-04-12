@@ -70,15 +70,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "abstractcommand_8cpp_source.html",
-"classFlashLedCommand.html",
-"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35ac5436b6539f4a0672077f7bc82afe76e",
-"namespacemembers.html",
+"classDsoServicePrivate.html#acd230f4773256fa6cea38cb43ed65df1",
+"classStatusService.html#a50ae778be2cb8e49b85ef159be19af35a822a755216a42f263e6b20e8edbd536b",
+"namespaceVoltageRange.html",
 "qt.html#DayOfWeek-enum",
 "qt.html#Key-enum",
 "qt.html#Key-enum",
 "qt.html#MouseButton-enum",
 "qt.html#WidgetAttribute-enum",
-"structStatusService_1_1CharacteristicUuids.html#ae2abf1183b8b6f2cd2e0cb5206a3975f"
+"structStatusService_1_1CharacteristicUuids.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -1,5 +1,9 @@
 var NAVTREEINDEX8 =
 {
+"qt.html#WidgetAttribute-enum":[4,0,6,1216],
+"qt.html#WidgetAttribute-enum":[4,0,6,1217],
+"qt.html#WidgetAttribute-enum":[4,0,6,1218],
+"qt.html#WidgetAttribute-enum":[4,0,6,1219],
 "qt.html#WidgetAttribute-enum":[4,0,6,1220],
 "qt.html#WidgetAttribute-enum":[4,0,6,1221],
 "qt.html#WidgetAttribute-enum":[4,0,6,1222],
@@ -245,9 +249,5 @@ var NAVTREEINDEX8 =
 "structRatio.html":[5,0,30],
 "structRatio.html#a8e07dbd09bf3610c9e3f2d7ddf3f4691":[5,0,30,2],
 "structRatio.html#a9ae669a5646b7743df8d6be0427b918e":[5,0,30,1],
-"structRatio.html#abbfb48e8ebeec5666385f38b31f94215":[5,0,30,0],
-"structStatusService_1_1CharacteristicUuids.html":[5,0,35,1],
-"structStatusService_1_1CharacteristicUuids.html#a3ca6f44f245a642f2a5e9147255a7bd8":[5,0,35,1,3],
-"structStatusService_1_1CharacteristicUuids.html#a8e558d76deeac993d962763fec80aa3d":[5,0,35,1,5],
-"structStatusService_1_1CharacteristicUuids.html#ab883f16924c3c325a3400a5146d48ac0":[5,0,35,1,1]
+"structRatio.html#abbfb48e8ebeec5666385f38b31f94215":[5,0,30,0]
 };

@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"qt.html#MouseButton-enum":[4,0,6,315],
+"qt.html#MouseButton-enum":[4,0,6,316],
+"qt.html#MouseButton-enum":[4,0,6,317],
+"qt.html#MouseButton-enum":[4,0,6,318],
 "qt.html#MouseButton-enum":[4,0,6,319],
 "qt.html#MouseButton-enum":[4,0,6,320],
 "qt.html#MouseButton-enum":[4,0,6,321],
@@ -245,9 +249,5 @@ var NAVTREEINDEX7 =
 "qt.html#WidgetAttribute-enum":[4,0,6,1212],
 "qt.html#WidgetAttribute-enum":[4,0,6,1213],
 "qt.html#WidgetAttribute-enum":[4,0,6,1214],
-"qt.html#WidgetAttribute-enum":[4,0,6,1215],
-"qt.html#WidgetAttribute-enum":[4,0,6,1216],
-"qt.html#WidgetAttribute-enum":[4,0,6,1217],
-"qt.html#WidgetAttribute-enum":[4,0,6,1218],
-"qt.html#WidgetAttribute-enum":[4,0,6,1219]
+"qt.html#WidgetAttribute-enum":[4,0,6,1215]
 };
