@@ -183,9 +183,9 @@ Options:
   --trigger-mode <mode>    Set the DSO trigger mode. Supported modes are: free,
                            rising and falling. The default is free.
   --window-size <samples>  Set the DSO window size. If not specified, a
-                           sensible value will be chosenaccording to the connect
-                           Pokit device's capabilities. Note, the limit is Pokit
-                           device dependant.
+                           sensible value will be chosenaccording to the
+                           connected Pokit device's capabilities. Note, the
+                           limit is Pokit device dependant.
   -v, --version            Displays version information.
 
 Command:

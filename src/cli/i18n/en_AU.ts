@@ -1001,7 +1001,7 @@ success
     </message>
     <message>
         <location filename="../main.cpp" line="200"/>
-        <source>Set the DSO window size. If not specified, a sensible value will be chosenaccording to the connect Pokit device&apos;s capabilities. Note, the limit is Pokit device dependant.</source>
+        <source>Set the DSO window size. If not specified, a sensible value will be chosenaccording to the connected Pokit device&apos;s capabilities. Note, the limit is Pokit device dependant.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

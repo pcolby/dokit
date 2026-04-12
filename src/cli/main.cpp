@@ -198,7 +198,7 @@ Command parseCommandLine(const QStringList &appArguments, QCommandLineParser &pa
           Private::tr("Set the DSO trigger mode. Supported modes are: free, rising and falling. The default is free."),
           Private::tr("mode"), u"free"_s},
         {{u"window-size"_s}, Private::tr("Set the DSO window size. If not specified, a sensible value will be chosen"
-          "according to the connect Pokit device's capabilities. Note, the limit is Pokit device dependant."),
+          "according to the connected Pokit device's capabilities. Note, the limit is Pokit device dependant."),
           Private::tr("samples")},
     });
     parser.addVersionOption();
