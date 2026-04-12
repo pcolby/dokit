@@ -182,9 +182,9 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
                 .arg(value).arg(std::numeric_limits<quint16>::max()));
         } else {
             settings.numberOfSamples = (quint16)samples;
-            if (settings.numberOfSamples > 16'384) {
+            if (const auto maxSamples = maxWindowSize(PokitProduct::PokitPro); settings.numberOfSamples > maxSamples) {
                 qCWarning(lc).noquote() <<
-                    tr("Pokit devices do not officially support windows greater than 16,384 samples");
+                    tr("No Pokit device officially supports windows greater than %L1 samples").arg(maxSamples);
             }
         }
     }
@@ -216,8 +216,9 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
                 .arg(value).arg(std::numeric_limits<quint16>::max()));
         } else {
             /// \todo Remove this limit (it's been moved to the window-size paramter instead).
-            if (samples > 16'384) {
-                qCWarning(lc).noquote() << tr("Pokit devices do not officially support windows greater than 16,384 samples");
+            if (const auto maxSamples = maxWindowSize(PokitProduct::PokitPro); samples > maxSamples) {
+                qCWarning(lc).noquote() <<
+                    tr("No Pokit device officially supports windows greater than %L1 samples").arg(maxSamples);
             }
             settings.numberOfSamples = (quint16)samples;
         }

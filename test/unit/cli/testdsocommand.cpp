@@ -617,8 +617,8 @@ void TestDsoCommand::processOptions()
     parser.addOption({u"window-size"_s, u"description"_s, u"samples"_s});
     parser.process(arguments);
 
-    if (expectedSettings.numberOfSamples > 16384) {
-        QTest::ignoreMessage(QtWarningMsg, "Pokit devices do not officially support windows greater than 16,384 samples");
+    if (expectedSettings.numberOfSamples > 16'384) {
+        QTest::ignoreMessage(QtWarningMsg, "No Pokit device officially supports windows greater than 16,384 samples");
     }
 
     DsoCommand command(this);
