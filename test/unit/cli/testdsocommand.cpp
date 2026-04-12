@@ -13,6 +13,7 @@ Q_DECLARE_METATYPE(AbstractCommand::OutputFormat)
 Q_DECLARE_METATYPE(DsoService::Mode)
 Q_DECLARE_METATYPE(DsoService::Settings)
 Q_DECLARE_METATYPE(DsoService::Metadata)
+Q_DECLARE_METATYPE(PokitProduct)
 
 typedef quint8 (* minRangeFunc)(const PokitProduct product, const quint32 maxValue);
 Q_DECLARE_METATYPE(minRangeFunc)
