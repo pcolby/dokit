@@ -4,26 +4,26 @@
 
 ### Added
 
-- New parameters to control DSO sampling:
+- New parameters to control DSO sampling ([#47]):
   - `--sample-rate` can be used to simple set the DSO sampling rate, from which `dokit` will caclculate an appropriate
     sampling window for the connected device;
   - `--window-size` to set (or override) the number of samples within the samplong window;
 
 ### Changed
 
-- `--interval` is now _optional_ for the DSO command, when the (new) `--sample-rate` option is present.
+- `--interval` is now _optional_ for the DSO command, when the (new) `--sample-rate` option is present ([#47])
 
 ### Fixed
 
-- Race condition causing some early Bluetooth messages being missed.
+- Race condition causing some early Bluetooth messages being missed ([45243d9], [d3cbc81])
 - Temperature calibration command ([52e8a13]).
 
 ## [0.5.8] (2026-04-07)
 
 ### Fixed
 
-- Support negative triggers in Digital Storage Oscilloscope (DSO) mode ([cde4962]).
-- Support zero (`0`) triggers in Digital Storage Oscilloscope (DSO) mode ([cf84d77]).
+- Support negative triggers in Digital Storage Oscilloscope (DSO) mode ([cde4962])
+- Support zero (`0`) triggers in Digital Storage Oscilloscope (DSO) mode ([cf84d77])
 
 ## [0.5.7] (2026-03-27)
 
@@ -238,6 +238,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [3edd9ee]:     https://github.com/pcolby/dokit/commit/3edd9eec838aff2bff95942fa7b4102f4db18fe8 "Enabled CI builds for Qt 6.11.0"
 [4064e45]:     https://github.com/pcolby/dokit/commit/4064e453ec33535ae28104a9f10ef9c6f2d7993f "Support updating translations with Qt 6.7+"
 [4094bfb]:     https://github.com/pcolby/dokit/commit/4094bfb218df20e1d34222b0b701fad8f57b0f2b "Warn when requesting an unsupported scan timeout"
+[45243d9]:     https://github.com/pcolby/dokit/commit/45243d93110022f5c9fb95ab484fd255053dfcf7 "Connect (DSO) slots earlier"
 [45bd46d]:     https://github.com/pcolby/dokit/commit/45bd46d85433a3d3b8e04b9a1f8ba500fc3dcc5a "Work around Qt 6.9.0 beta 3 L10n bug"
 [52e8a13]:     https://github.com/pcolby/dokit/commit/52e8a13a1c51249c0c7ed556c4bbaa33beea99ad "Fix bug in calibration command"
 [58d82dd]:     https://github.com/pcolby/dokit/commit/58d82ddb70b166212e3c8c0a778dbd32a255db29 "Support the LANG environment variable on macOS"
@@ -249,6 +250,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [cc5ff57]:     https://github.com/pcolby/dokit/commit/cc5ff57bc2f94f4306687d88307cda4f3fbb3612 "Use fputs() instead of std::err for CLI error output"
 [cf84d77]:     https://github.com/pcolby/dokit/commit/cf84d77c828da381d793c5806609ac8bf207a85b "Support zero trigger levels"
 [d0cb2eb]:     https://github.com/pcolby/dokit/commit/d0cb2ebe264ed035357a2dc12bde8e04e446423d "Add Qt 6.10 builds"
+[d3cbc81]:     https://github.com/pcolby/dokit/commit/d3cbc8101aa2b775c2788ce9e7ea4990188a5098 "Improve BLE notification enablement"
 [d54fbbc]:     https://github.com/pcolby/dokit/commit/d54fbbcb2eacbce6b4e9bfb8a23a9ce43fd7524a "Support GitHub's Linux arm64 preview hosts"
 [db8b841]:     https://github.com/pcolby/dokit/commit/db8b84197d00b5a357974043f2dc0f3c0b7dfeff "Return quint32 from all maxValue methods"
 
@@ -256,6 +258,7 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [#17]:         https://github.com/pcolby/dokit/issues/17
 [#18]:         https://github.com/pcolby/dokit/issues/18
 [#44]:         https://github.com/pcolby/dokit/issues/44
+[#47]:         https://github.com/pcolby/dokit/issues/47
 [Pokit Meter]: https://www.pokitinnovations.com/pokit-meter/
 [Pokit Pro]:   https://www.pokitinnovations.com/pokit-pro/
 [Qt]:          https://www.qt.io/
