@@ -173,6 +173,11 @@ void MeterCommand::serviceDetailsDiscovered()
     qCInfo(lc).noquote() << tr("Measuring %1, with range %2, every %L3ms.").arg(
         MultimeterService::toString(settings.mode),
         (range.isNull()) ? QString::fromLatin1("N/A") : range).arg(settings.updateInterval);
+    if (!service->enableReadingNotifications()) {
+        qCCritical(lc).noquote() << tr("Failed to enable reading notifications");
+        disconnect(EXIT_FAILURE);
+        return;
+    }
     service->setSettings(settings);
 }
 
@@ -198,7 +203,6 @@ void MeterCommand::settingsWritten()
     qCDebug(lc).noquote() << tr("Settings written; starting meter readings...");
     connect(service, &MultimeterService::readingRead,
             this, &MeterCommand::outputReading);
-    service->enableReadingNotifications();
 }
 
 /*!

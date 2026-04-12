@@ -446,8 +446,18 @@ success
         <source>Fetching logger samples...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../loggerfetchcommand.cpp" line="67"/>
+        <source>Failed to enable metadata notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loggerfetchcommand.cpp" line="72"/>
+        <source>Failed to enable reading notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../loggerfetchcommand.cpp" line="86"/>
+        <location filename="../loggerfetchcommand.cpp" line="94"/>
         <source>Fetching %Ln logger sample/s...</source>
         <translation>
             <numerusform>Fetching %Ln logger sample...</numerusform>
@@ -455,24 +465,24 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="102"/>
+        <location filename="../loggerfetchcommand.cpp" line="110"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="114"/>
+        <location filename="../loggerfetchcommand.cpp" line="122"/>
         <source>timestamp,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../loggerfetchcommand.cpp" line="132"/>
+        <location filename="../loggerfetchcommand.cpp" line="140"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../loggerfetchcommand.cpp" line="139"/>
+        <location filename="../loggerfetchcommand.cpp" line="147"/>
         <source>Finished fetching %Ln sample/s (with %L1 remaining).</source>
         <translation>
             <numerusform>Finished fetching %Ln sample (with %L1 remaining).</numerusform>
@@ -595,66 +605,71 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="255"/>
+        <location filename="../metercommand.cpp" line="259"/>
         <source>mode,value,unit,status,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="198"/>
+        <location filename="../metercommand.cpp" line="203"/>
         <source>Settings written; starting meter readings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="222"/>
+        <location filename="../metercommand.cpp" line="177"/>
+        <source>Failed to enable reading notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../metercommand.cpp" line="226"/>
         <source>Auto Range On</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="222"/>
+        <location filename="../metercommand.cpp" line="226"/>
         <source>Auto Range Off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="226"/>
+        <location filename="../metercommand.cpp" line="230"/>
         <source>Continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="226"/>
+        <location filename="../metercommand.cpp" line="230"/>
         <source>No continuity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="231"/>
+        <location filename="../metercommand.cpp" line="235"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="266"/>
+        <location filename="../metercommand.cpp" line="270"/>
         <source>Infinity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="278"/>
+        <location filename="../metercommand.cpp" line="282"/>
         <source>Mode:   %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="280"/>
+        <location filename="../metercommand.cpp" line="284"/>
         <source>Value:  %1 %2
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="281"/>
+        <location filename="../metercommand.cpp" line="285"/>
         <source>Status: %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../metercommand.cpp" line="283"/>
+        <location filename="../metercommand.cpp" line="287"/>
         <source>Range:  %1 (0x%2)
 </source>
         <translation type="unfinished"></translation>

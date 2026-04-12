@@ -63,8 +63,16 @@ void LoggerFetchCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     qCInfo(lc).noquote() << tr("Fetching logger samples...");
-    service->enableMetadataNotifications();
-    service->enableReadingNotifications();
+    if (!service->enableMetadataNotifications()) {
+        qCCritical(lc).noquote() << tr("Failed to enable metadata notifications");
+        disconnect(EXIT_FAILURE);
+        return;
+    }
+    if (!service->enableReadingNotifications()) {
+        qCCritical(lc).noquote() << tr("Failed to enable reading notifications");
+        disconnect(EXIT_FAILURE);
+        return;
+    }
     service->fetchSamples();
 }
 
