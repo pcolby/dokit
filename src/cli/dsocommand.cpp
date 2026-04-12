@@ -208,19 +208,9 @@ QStringList DsoCommand::processOptions(const QCommandLineParser &parser)
     // Parse the samples option.
     if (parser.isSet(u"samples"_s)) {
         const QString value = parser.value(u"samples"_s);
-        const quint32 samples = parseNumber<std::ratio<1>>(value, u"S"_s);
-        if (samples == 0) {
+        samplesValue = parseNumber<std::ratio<1>>(value, u"S"_s);
+        if (samplesValue == 0) {
             errors.append(tr("Invalid samples value: %1").arg(value));
-        } else if (samples > std::numeric_limits<quint16>::max()) {
-            errors.append(tr("Samples value (%1) must be no greater than %2")
-                .arg(value).arg(std::numeric_limits<quint16>::max()));
-        } else {
-            /// \todo Remove this limit (it's been moved to the window-size paramter instead).
-            if (const auto maxSamples = maxWindowSize(PokitProduct::PokitPro); samples > maxSamples) {
-                qCWarning(lc).noquote() <<
-                    tr("No Pokit device officially supports windows greater than %L1 samples").arg(maxSamples);
-            }
-            settings.numberOfSamples = (quint16)samples;
         }
     }
     return errors;
@@ -364,6 +354,9 @@ void DsoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service->pokitProduct(), rangeOptionValue);
+    if ((settings.numberOfSamples == 0) && (samplesValue < maxWindowSize(*service->pokitProduct()))) {
+        settings.numberOfSamples = samplesValue; // Set the window size to the small number of samples requested.
+    }
     if (!configureWindow(*service->pokitProduct(), sampleRateValue, settings)) {
         disconnect(EXIT_FAILURE);
         return;
@@ -447,7 +440,7 @@ void DsoCommand::outputSamples(const DsoService::Samples &samples)
     const QString range = service->toString(metadata.range, metadata.mode);
 
     for (const qint16 &sample: samples) {
-        static int sampleNumber = 0; ++sampleNumber;
+        static quint32 sampleNumber = 0; ++sampleNumber;
         const float value = sample * metadata.scale;
         switch (format) {
         case OutputFormat::Csv:
@@ -470,10 +463,18 @@ void DsoCommand::outputSamples(const DsoService::Samples &samples)
             break;
         }
         --samplesToGo;
+
+        if ((sampleNumber > samplesValue) && (samplesValue != 0)) {
+            qCInfo(lc).noquote() << tr("Finished fetching %Ln sample/s. Disconnecting.", nullptr, sampleNumber);
+            if (device) disconnect(); // Will exit the application once disconnected.
+            return;
+        }
     }
+
+    // If we've received all the data for the current window, begin fetching another.
     if (samplesToGo <= 0) {
-        qCInfo(lc).noquote() << tr("Finished fetching %Ln sample/s (with %L2 to remaining).",
+        qCDebug(lc).noquote() << tr("Finished fetching %Ln window sample/s (with %L2 to remaining).",
             nullptr, metadata.numberOfSamples).arg(samplesToGo);
-        if (device) disconnect(); // Will exit the application once disconnected.
+        if (settings.range != +PokitMeter::VoltageRange::AutoRange) service->setSettings(settings);
     }
 }

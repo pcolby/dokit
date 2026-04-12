@@ -187,7 +187,6 @@ success
     </message>
     <message>
         <location filename="../dsocommand.cpp" line="187"/>
-        <location filename="../dsocommand.cpp" line="221"/>
         <source>No Pokit device officially supports windows greater than %L1 samples</source>
         <translation type="unfinished"></translation>
     </message>
@@ -207,32 +206,27 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="215"/>
-        <source>Samples value (%1) must be no greater than %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dsocommand.cpp" line="279"/>
+        <location filename="../dsocommand.cpp" line="269"/>
         <source>The requested sample rate (%1Hz) likely exceeds the connected device&apos;s limit (%2Hz)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="285"/>
+        <location filename="../dsocommand.cpp" line="275"/>
         <source>Requested window size (%1 samples) likely exceeds the connected device&apos;s limit (%2) samples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="295"/>
+        <location filename="../dsocommand.cpp" line="285"/>
         <source>Ignoring sample-rate, as interval and window-size both provided</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="304"/>
+        <location filename="../dsocommand.cpp" line="294"/>
         <source>Choosing best number-of-samples for sample-rate %2Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="320"/>
+        <location filename="../dsocommand.cpp" line="310"/>
         <source>Chose %Ln sample/s, with error ±%2Hz</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -240,17 +234,17 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="323"/>
+        <location filename="../dsocommand.cpp" line="313"/>
         <source>Failed to select a compatible window size for sample rate %1Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="329"/>
+        <location filename="../dsocommand.cpp" line="319"/>
         <source>Calculating number-of-samples for %1us window at %2Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="333"/>
+        <location filename="../dsocommand.cpp" line="323"/>
         <source>Calculated %Ln sample/s</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -258,7 +252,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="344"/>
+        <location filename="../dsocommand.cpp" line="334"/>
         <source>Calculating sampling-window for %Ln sample/s at %1Hz</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -266,23 +260,39 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="348"/>
+        <location filename="../dsocommand.cpp" line="338"/>
         <source>Calculated %1us</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="350"/>
+        <location filename="../dsocommand.cpp" line="340"/>
         <source>Failed to calculate a valid sampling window for a %L1 samples at %1Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="373"/>
+        <location filename="../dsocommand.cpp" line="366"/>
         <source>, and a %1 at %2%3%4 (%5Hz)</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="376"/>
+        <location filename="../dsocommand.cpp" line="369"/>
         <source>Sampling %1, with range %2, at %L3Hz (%Ln sample/s over %L4us)%5</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../dsocommand.cpp" line="468"/>
+        <source>Finished fetching %Ln sample/s. Disconnecting.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../dsocommand.cpp" line="476"/>
+        <source>Finished fetching %Ln window sample/s (with %L2 to remaining).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -296,15 +306,14 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="475"/>
         <source>Finished fetching %Ln sample/s (with %L2 to remaining).</source>
-        <translation>
+        <translation type="vanished">
             <numerusform>Finished fetching %Ln sample (with %L2 to remaining).</numerusform>
             <numerusform>Finished fetching %Ln samples (with %L2 to remaining).</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="413"/>
+        <location filename="../dsocommand.cpp" line="406"/>
         <source>Settings written; DSO has started.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -314,33 +323,33 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="335"/>
+        <location filename="../dsocommand.cpp" line="325"/>
         <source>Failed to calculate a valid number of samples for a %L1us period at %2Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="381"/>
+        <location filename="../dsocommand.cpp" line="374"/>
         <source>Failed to enable metadata notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="386"/>
+        <location filename="../dsocommand.cpp" line="379"/>
         <source>Failed to enable reading notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="444"/>
+        <location filename="../dsocommand.cpp" line="437"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="455"/>
+        <location filename="../dsocommand.cpp" line="448"/>
         <source>sample_number,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="469"/>
+        <location filename="../dsocommand.cpp" line="462"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
