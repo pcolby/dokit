@@ -1,6 +1,6 @@
 # Changelog[^1]
 
-## 0.6.0 (_unreleased_)
+## [0.6.0] (2026-04-12)
 
 ### Added
 
@@ -216,7 +216,8 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Support for Linux, macOS and Windows.
 - Support for [Qt][] 5.4+ and 6.2+
 
-[Unreleased]: https://github.com/pcolby/dokit/compare/v0.5.8...HEAD
+[Unreleased]: https://github.com/pcolby/dokit/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/pcolby/dokit/releases/tag/v0.6.0
 [0.5.8]: https://github.com/pcolby/dokit/releases/tag/v0.5.8
 [0.5.7]: https://github.com/pcolby/dokit/releases/tag/v0.5.7
 [0.5.6]: https://github.com/pcolby/dokit/releases/tag/v0.5.6
