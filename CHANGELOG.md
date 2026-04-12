@@ -2,8 +2,20 @@
 
 ## 0.6.0 (_unreleased_)
 
+### Added
+
+- New parameters to control DSO sampling:
+  - `--sample-rate` can be used to simple set the DSO sampling rate, from which `dokit` will caclculate an appropriate
+    sampling window for the connected device;
+  - `--window-size` to set (or override) the number of samples within the samplong window;
+
+### Changed
+
+- `--interval` is now _optional_ for the DSO command, when the (new) `--sample-rate` option is present.
+
 ### Fixed
 
+- Race condition causing some early Bluetooth messages being missed.
 - Temperature calibration command ([52e8a13]).
 
 ## [0.5.8] (2026-04-07)
