@@ -354,13 +354,11 @@ void DsoCommand::serviceDetailsDiscovered()
 {
     DeviceCommand::serviceDetailsDiscovered(); // Just logs consistently.
     settings.range = (minRangeFunc == nullptr) ? 0 : minRangeFunc(*service->pokitProduct(), rangeOptionValue);
-    if ((settings.numberOfSamples == 0) && (samplesValue < maxWindowSize(*service->pokitProduct()))) {
-        settings.numberOfSamples = samplesValue; // Set the window size to the small number of samples requested.
-    }
     if (!configureWindow(*service->pokitProduct(), sampleRateValue, settings)) {
         disconnect(EXIT_FAILURE);
         return;
     }
+    if (samplesValue == 0) samplesValue = settings.numberOfSamples;
     const QString range = service->toString(settings.range, settings.mode);
     const QString triggerInfo = (settings.command == DsoService::Command::FreeRunning) ? QString() :
         tr(", and a %1 at %2%3%4 (%5Hz)").arg(DsoService::toString(settings.command).toLower(),

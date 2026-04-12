@@ -270,12 +270,12 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="366"/>
+        <location filename="../dsocommand.cpp" line="364"/>
         <source>, and a %1 at %2%3%4 (%5Hz)</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="369"/>
+        <location filename="../dsocommand.cpp" line="367"/>
         <source>Sampling %1, with range %2, at %L3Hz (%Ln sample/s over %L4us)%5</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -283,7 +283,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="468"/>
+        <location filename="../dsocommand.cpp" line="466"/>
         <source>Finished fetching %Ln sample/s. Disconnecting.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -291,7 +291,7 @@ success
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../dsocommand.cpp" line="476"/>
+        <location filename="../dsocommand.cpp" line="474"/>
         <source>Finished fetching %Ln window sample/s (with %L2 to remaining).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -313,7 +313,7 @@ success
         </translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="406"/>
+        <location filename="../dsocommand.cpp" line="404"/>
         <source>Settings written; DSO has started.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -328,28 +328,28 @@ success
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="374"/>
+        <location filename="../dsocommand.cpp" line="372"/>
         <source>Failed to enable metadata notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="379"/>
+        <location filename="../dsocommand.cpp" line="377"/>
         <source>Failed to enable reading notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="437"/>
+        <location filename="../dsocommand.cpp" line="435"/>
         <source>No known unit for mode %1 &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="448"/>
+        <location filename="../dsocommand.cpp" line="446"/>
         <source>sample_number,value,unit,range
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dsocommand.cpp" line="462"/>
+        <location filename="../dsocommand.cpp" line="460"/>
         <source>%1 %2 %3
 </source>
         <translation type="unfinished"></translation>
