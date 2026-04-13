@@ -5,9 +5,9 @@
 ### Added
 
 - New parameters to control DSO sampling ([#47]):
-  - `--sample-rate` can be used to simple set the DSO sampling rate, from which `dokit` will caclculate an appropriate
+  - `--sample-rate` can be used to simple set the DSO sampling rate, from which `dokit` will calculate an appropriate
     sampling window for the connected device;
-  - `--window-size` to set (or override) the number of samples within the samplong window;
+  - `--window-size` to set (or override) the number of samples within the sampling window;
 
 ### Changed
 
