@@ -13,23 +13,23 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pcolby_dokit&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pcolby_dokit)
 
-Dokit is a set of cross-platform, open source tools for accessing [Pokit][] measuring devices.
+Dokit is a set of cross-platform, open source tools for accessing [Pokit] measuring devices.
 It consists of three primary components:
 
-1. `QtPokit` cross-platform [Qt][] library - used extensively by the applications below, but
-    also easily re-usable under the [LGPL][]; and
+1. `QtPokit` cross-platform [Qt] library - used extensively by the applications below, but
+    also easily re-usable under the [LGPL]; and
 2. `dokit` console CLI application demonstrating most of the features of the `QtPokit` library; and
 3. Dokit GUI application - currently in very early stages of development.
 
-Most [Pokit Meter][] and [Pokit Pro][] functions are supported, including the multimeter,
+Most [Pokit Meter] and [Pokit Pro] functions are supported, including the multimeter,
 oscilloscope and data logger functions. The one real feature missing currently is
-[Pokit Pro][]'s capacitance mode, which is not currently documented by [Pokit][] (support will
-be added as soon as [Pokit][] updates their documentation to include it... or I get around to
+[Pokit Pro]'s capacitance mode, which is not currently documented by [Pokit] (support will
+be added as soon as [Pokit] updates their documentation to include it... or I get around to
 reverse engineering it).
 
 Also worth noting, is that while this project has extensive automated tests that run
 regularly on Linux, macOS and Windows, using a range of Qt versions from 5.9 to 6.4, most of
-the hands-on testing so far has been performed on Linux only. Testers with [Pokit][] devices
+the hands-on testing so far has been performed on Linux only. Testers with [Pokit] devices
 on macOS and Windows would be most welcome to help!
 
 ## Usage
@@ -37,7 +37,7 @@ on macOS and Windows would be most welcome to help!
 ### QtPokit Library
 
 For shared library usage (for developers to create their own Pokit device applications), see
-the latest [API docs][].
+the latest [API docs].
 
 ### `dokit` Command
 
@@ -207,8 +207,8 @@ Command:
 
 * Qt5 v5.4+[^minQt5] or Qt6 v6.2+[^minQt6]
 * a Qt-supported platform, such as Linux, macOS or Windows
-* a [Pokit][] device, such as a [Pokit Meter][] or [Pokit Pro][]
-* [CMake][] (for building Dokit itself) 3.15+
+* a [Pokit] device, such as a [Pokit Meter] or [Pokit Pro]
+* [CMake] (for building Dokit itself) 3.15+
 
 > [!TIP]
 > To install all dependencies on modern Ubuntu releases:
@@ -222,7 +222,7 @@ Command:
 
 ## Building from Source
 
-Prototypical [CMake][]-based out-of-source build and test process:
+Prototypical [CMake]-based out-of-source build and test process:
 
 ```sh
 cmake -D CMAKE_BUILD_TYPE=Release -S <path-to-cloned-repo> -B <tmp-build-dir>

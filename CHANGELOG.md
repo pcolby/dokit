@@ -35,7 +35,7 @@
 
 - Include Qt's macOS Bluetooth Permission Plugin, required for Qt 6.5.0 and later ([#44], [637b4b1])
 
-## [0.5.6][] (2026-03-21)
+## [0.5.6] (2026-03-21)
 
 ### Added
 
@@ -43,19 +43,19 @@
 
 ### Changed
 
-- Upgrade to Qt 6.10.2, including support for the `LANG` environment variable on MinGW ([d0cb2eb][])
+- Upgrade to Qt 6.10.2, including support for the `LANG` environment variable on MinGW ([d0cb2eb])
 - Upgrade to Doxygen 1.16.1.
 
 ### Fixed
 
-- Support for (optional) `QTPOKIT_NAMESPACE` ([9a4d1cf][])
+- Support for (optional) `QTPOKIT_NAMESPACE` ([9a4d1cf])
 
-## [0.5.5][] (2025-03-09)
+## [0.5.5] (2025-03-09)
 
 ### Added
 
-- Support for the `LANG` environment variable on macOS ([58d82dd][])
-- CI tests for localisations ([1bca548][])
+- Support for the `LANG` environment variable on macOS ([58d82dd])
+- CI tests for localisations ([1bca548])
 
 ### Removed
 
@@ -65,22 +65,22 @@
 
 ### Fixed
 
-- Output buffering issue for MinGW builds with Qt 6.5, 6.6 and 6.7 ([cc5ff57][])
-- Builds broken by Qt 6.9.0 Beta 3 CMake macro changes ([45bd46d][])
+- Output buffering issue for MinGW builds with Qt 6.5, 6.6 and 6.7 ([cc5ff57])
+- Builds broken by Qt 6.9.0 Beta 3 CMake macro changes ([45bd46d])
 
-## [0.5.4][] (2025-02-01)
+## [0.5.4] (2025-02-01)
 
 ### Added
 
-- Linux AArch64 / ARM64 binaries ([d54fbbc][])
+- Linux AArch64 / ARM64 binaries ([d54fbbc])
 
 ### Changed
 
-- Return `quint32` from all `maxValue` methods, instead of `QVariant` ([db8b841][])
+- Return `quint32` from all `maxValue` methods, instead of `QVariant` ([db8b841])
 - Upgrade to Doxygen 1.13.1.
 - Upgrade to Qt 6.8.2, and 6.9.0 beta.
 
-## [0.5.3][] (2024-12-23)
+## [0.5.3] (2024-12-23)
 
 ### Added
 
@@ -94,9 +94,9 @@
 
 ### Fixed
 
-- Correctly round CLI arguments ([899b007][])
+- Correctly round CLI arguments ([899b007])
 
-## [0.5.2][] (2024-05-06)
+## [0.5.2] (2024-05-06)
 
 ### Changed
 
@@ -104,11 +104,11 @@
 - Upgrade to Qt 6.6.3.
 - Raise CMake minimum to 3.15.
 
-## [0.5.1][] (2023-12-28)
+## [0.5.1] (2023-12-28)
 
 ### Added
 
-- Include switch and charging status in CLI output ([073bce8][])
+- Include switch and charging status in CLI output ([073bce8])
 
 ### Changed
 
@@ -121,11 +121,11 @@
 
 Thanks to [@NET-Code-Dev](https://github.com/NET-Code-Dev) for contributing to this release.
 
-## [0.5.0][] (2023-11-25)
+## [0.5.0] (2023-11-25)
 
 ### Added
 
-- Warn when requesting an unsupported scan timeout ([4094bfb][])
+- Warn when requesting an unsupported scan timeout ([4094bfb])
 
 ### Changed
 
@@ -134,9 +134,9 @@ Thanks to [@NET-Code-Dev](https://github.com/NET-Code-Dev) for contributing to t
 
 ### Fixed
 
-- Correctly exit on discovery agent errors ([7f70715][])
+- Correctly exit on discovery agent errors ([7f70715])
 
-## [0.4.0][] (2023-06-03)
+## [0.4.0] (2023-06-03)
 
 ### Added
 
@@ -151,7 +151,7 @@ Thanks to [@NET-Code-Dev](https://github.com/NET-Code-Dev) for contributing to t
 
 - Upgrade to Qt 6.5.1.
 
-## [0.3.0][] (2023-05-21)
+## [0.3.0] (2023-05-21)
 
 This release breaks backward compatibility by changing some QtPokit APIs to support [Pokit Pro]'s
 divergent (and not at all documented by Pokit) measurement range enumeration values.
@@ -168,7 +168,7 @@ divergent (and not at all documented by Pokit) measurement range enumeration val
 - Upgrade to Doxygen 1.9.7.
 - Upgrade to Qt 6.5.0 (except for portable Windows builds; [QTBUG-112204])
 
-## [0.2.0][] (2023-05-07)
+## [0.2.0] (2023-05-07)
 
 ### Added
 
@@ -180,7 +180,7 @@ divergent (and not at all documented by Pokit) measurement range enumeration val
 
 - Renamed the project to `Dokit` (the shared library is still `QtPokit`).
 
-## [0.1.2][] (2023-03-30)
+## [0.1.2] (2023-03-30)
 
 ### Added
 
@@ -195,7 +195,7 @@ divergent (and not at all documented by Pokit) measurement range enumeration val
 
 Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 
-## [0.1.1][] (2022-11-05)
+## [0.1.1] (2022-11-05)
 
 ### Added
 
@@ -207,14 +207,14 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 - Improve debug logging.
 - Upgrade to Doxygen 1.9.5.
 
-## [0.1.0][] (2022-08-26)
+## [0.1.0] (2022-08-26)
 
 ### Added
 
-- Support for [Pokit Meter][] and [Pokit Pro][] devices.
+- Support for [Pokit Meter] and [Pokit Pro] devices.
 - Support for multimeter, oscilloscope and data-logger modes.
 - Support for Linux, macOS and Windows.
-- Support for [Qt][] 5.4+ and 6.2+
+- Support for [Qt] 5.4+ and 6.2+
 
 [Unreleased]: https://github.com/pcolby/dokit/compare/v0.6.0...HEAD
 [0.6.0]: https://github.com/pcolby/dokit/releases/tag/v0.6.0
