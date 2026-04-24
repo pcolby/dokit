@@ -163,9 +163,9 @@ jobs:
         if: matrix.os != '22.04' || matrix.cc != 'clang'
         run: cmake --build "${RUNNER_TEMP}/coverage" --target coverage
       - name: Test localisations
-        # \todo For unknown reasons, Qt 6.2.4 w/ GCC fails to include full set of *.qm file - happens locally too, not
-        # just on GitHub hosted runners.  We could diagnose further, but this one corner case is very low value today.
-        # Note, Ubuntu 22.04's Qt6 packages are (at the time of writing) Qt 6.2.4, so they are affected also.
+        # \todo For unknown reasons, Qt 6.2.4 w/ GCC fails to include a full set of *.qm files - happens locally too,
+        # not just on GitHub hosted runners.  We could diagnose further, but this one corner case is very low value
+        # today. Note, Ubuntu 22.04's Qt6 packages are (at the time of writing) Qt 6.2.4, so they are affected also.
         if: >-
           startsWith(matrix.qt, '6') &&
           !( matrix.cc == 'gcc' && ( startsWith(matrix.qt, '6.2.') || (matrix.qt == '6' && matrix.os == '22.04') ) )
@@ -528,7 +528,7 @@ jobs:
           - { toolchain: llvm, qt: '6.5.3' }
           - { toolchain: llvm, qt: '6.6.3' }
           # \todo Exclude some additional 64-bit MinGW builds on Windows 2025 (only) for now, as they segfault on
-          # std::cout. Probably due to some incompatibly runtime linkage.
+          # std::cout. Probably due to some incompatible runtime linkage.
           - { toolchain: mingw, arch: x86-64, qt: '5.12.12', os: '2025' }
           - { toolchain: mingw, arch: x86-64, qt: '5.13.2',  os: '2025' }
           - { toolchain: mingw, arch: x86-64, qt: '6.2.4',   os: '2025' }
@@ -779,8 +779,8 @@ jobs:
         run: ctest --output-on-failure --test-dir "%RUNNER_TEMP%/release" --verbose
       - name: Collate test coverage # Currently available on MinGW builds only.
         # \todo The MinGW versions needed for building and testing on 32-bin binaries on Windows 2025 with Qt 5.9 to
-        # 5.13, include a gcov binaries that can't be spawned by geninfo. We could probably work around this by somehow
-        # overriding `gcov.exe` and/or `geninfo` binaries (to us the host's), but this is a low priority.
+        # 5.13 include gcov binaries that can't be spawned by geninfo. We could probably work around this by somehow
+        # overriding `gcov.exe` and/or `geninfo` binaries (to use the hosts'), but this is a low priority.
         if: >-
           matrix.toolchain == 'mingw' && !( matrix.os == '2025' && matrix.arch == 'x86' &&
           contains(fromJSON('["5.9.9", "5.10.1", "5.11.3", "5.12.12", "5.13.2"]'), matrix.qt) )
