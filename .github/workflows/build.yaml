@@ -113,7 +113,7 @@ jobs:
         uses: pcolby/install-linuxdeploy@v1
         with:
           plugins: qt
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       # Add step to determine if coverage is available, and use it's output in the remaining steps.
       - name: Build # \todo Split this into separate 'Generate buildsystem' and 'Build' steps.
         id: build
@@ -285,7 +285,7 @@ jobs:
           - { qt: '6.10.3', cc: gcc }
           - { qt: '6.11.1', cc: gcc }
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install lcov
         run: brew install bash lcov
       - name: Install Qt
@@ -685,7 +685,7 @@ jobs:
       - name: Install LCOV
         if: matrix.toolchain != 'msvc'
         run: pacman --sync --noconfirm --verbose mingw-w64-x86_64-lcov
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
@@ -854,7 +854,7 @@ jobs:
     env:
       LCOV_VERSION: 2.4 # Should stay in-step, or ahead of, the Ubuntu, macOS and Windows versions.
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install lcov
         run: |
           sudo apt-mark hold firefox grub-efi-amd64-signed || :
@@ -923,7 +923,7 @@ jobs:
     if: success() && (github.ref == 'refs/heads/main')
     needs: collate-test-results
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with: { ref: doc }
       - name: Clear previous coverage report
         run: rm -rf main/cov
