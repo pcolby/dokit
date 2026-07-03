@@ -256,7 +256,6 @@ jobs:
           - 6.10.3
           - 6.11.1
         os:
-          - macos-14
           - macos-15
           - macos-15-intel
           - macos-26
@@ -312,7 +311,7 @@ jobs:
         run: |
           # Qt only supports x86-64 (not arm64) prior to Qt 6.2.0. See https://www.qt.io/blog/qt-on-apple-silicon
           if [[ "${MATRIX_QT}" =~ ^(5|6\.[01])\. ]]; then arch=x86_64
-          # GitHub runners' (homebrew'd) gcc's only support support x86-64 prior to macos-14, and only arm64 after.
+          # GitHub runners' (homebrew'd) gcc's only support arm64 (not x86-64) from macOS-15 onwards.
           # Note: if we attempt to use multiple archs, gcc will warn, but continue, resulting in later failures.
           elif [[ "${MATRIX_CC}" == 'gcc' ]]; then arch='arm64'
           # Otherwise, default to universal binaries, where possible.
@@ -327,7 +326,6 @@ jobs:
             tee -a "${GITHUB_ENV}" <<< 'GCOV=gcov-15'
           else
             case "${MATRIX_OS}" in
-             #macos-14) llvmPrefix=$(brew --prefix 'llvm@15') ;; # *Not* newer than the non-new llvm (v16).
               macos-15) llvmPrefix=$(brew --prefix 'llvm@18') ;; # Newer than non-brew llvm (v17).
               macos-26) llvmPrefix=$(brew --prefix 'llvm@20') ;; # Newer than non-brew llvm (v17).
               *) llvmPrefix='/Library/Developer/CommandLineTools/usr' ;; # Host's non-brew llvm.
