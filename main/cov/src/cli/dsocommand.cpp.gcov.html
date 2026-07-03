@@ -118,29 +118,29 @@
 <span id="L23"><span class="lineNum">      23</span>              :  * Construct a new DsoCommand object with \a parent.</span>
 <span id="L24"><span class="lineNum">      24</span>              :  */</span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">       10448 : DsoCommand::DsoCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        3096 : {</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        3028 : {</span></span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">       10516 : }</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">       10448 : }</span></span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
 <span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">       11970 : QStringList DsoCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        4701 : {</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       59934 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">        4701 :         u&quot;mode&quot;_s,</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">        4701 :         u&quot;range&quot;_s,</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">       46767 :     };</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        4701 : }</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        4650 : {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       59883 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">        4650 :         u&quot;mode&quot;_s,</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">        4650 :         u&quot;range&quot;_s,</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">       46716 :     };</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        4650 : }</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        5950 : QStringList DsoCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">        2295 : {</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       52870 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">        2295 :         u&quot;interval&quot;_s,</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">        2295 :         u&quot;samples&quot;_s,</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">        2295 :         u&quot;sample-rate&quot;_s,</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">        2295 :         u&quot;trigger-level&quot;_s,</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">        2295 :         u&quot;trigger-mode&quot;_s,</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">        2295 :         u&quot;window-size&quot;_s,</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">       47005 :     };</span></span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">        2295 : }</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">        2278 : {</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">       52853 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">        2278 :         u&quot;interval&quot;_s,</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">        2278 :         u&quot;samples&quot;_s,</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">        2278 :         u&quot;sample-rate&quot;_s,</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">        2278 :         u&quot;trigger-level&quot;_s,</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">        2278 :         u&quot;trigger-mode&quot;_s,</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">        2278 :         u&quot;window-size&quot;_s,</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">       46988 :     };</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">        2278 : }</span></span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
 <span id="L50"><span class="lineNum">      50</span>              : /*!</span>
 <span id="L51"><span class="lineNum">      51</span>              :  * \copybrief DeviceCommand::processOptions</span>
@@ -336,16 +336,16 @@
 <span id="L241"><span class="lineNum">     241</span>              :  * greater than 8,191, while my Pokit Pro supports up to 16,384 samples per window.</span>
 <span id="L242"><span class="lineNum">     242</span>              :  */</span>
 <span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">        1420 : quint16 DsoCommand::maxWindowSize(const PokitProduct product)</span></span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        2754 : {</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">        4174 :     switch (product) {</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">        1221 :     case PokitProduct::PokitMeter:</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">        1221 :         return 8'191;</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">        2783 :     case PokitProduct::PokitPro:</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">        2783 :         return 16'384;</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">        2754 :     }</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        2380 : {</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">        3800 :     switch (product) {</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">        1034 :     case PokitProduct::PokitMeter:</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">        1034 :         return 8'191;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">        2596 :     case PokitProduct::PokitPro:</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">        2596 :         return 16'384;</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">        2380 :     }</span></span>
 <span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">        1122 :     Q_ASSERT_X(false, &quot;DsoCommand::maxWindowSize&quot;, &quot;Unknown PokitProduct enum value&quot;);</span></span>
 <span id="L252"><span class="lineNum">     252</span> <span class="tlaUNC">           0 :     return 0;</span></span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">        2754 : }</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">        2380 : }</span></span>
 <span id="L254"><span class="lineNum">     254</span>              : </span>
 <span id="L255"><span class="lineNum">     255</span>              : /*!</span>
 <span id="L256"><span class="lineNum">     256</span>              :  * Configures the \a settings.numberOfSamples and/or \a settings.samplingWindow, if not already set, according to the</span>
@@ -355,90 +355,90 @@
 <span id="L260"><span class="lineNum">     260</span>              :  * settings could not be determined succesfully (eg, because \a sampleRate was too high for the \a product).</span>
 <span id="L261"><span class="lineNum">     261</span>              :  */</span>
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">        1400 : bool DsoCommand::configureWindow(const PokitProduct product, const quint32 sampleRate, DsoService::Settings &amp;settings)</span></span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">        2220 : {</span></span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        2220 :     const quint32 maxSampleRate = 1'000'000; // Pokit Meter and Pokit Pro both sample up to 1MHz.</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3620 :     const quint32 maxWindowSize = DsoCommand::maxWindowSize(product);</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">        1880 : {</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        1880 :     const quint32 maxSampleRate = 1'000'000; // Pokit Meter and Pokit Pro both sample up to 1MHz.</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3280 :     const quint32 maxWindowSize = DsoCommand::maxWindowSize(product);</span></span>
 <span id="L266"><span class="lineNum">     266</span>              : </span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">        3620 :     if (sampleRate &gt; maxSampleRate) {</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">        3280 :     if (sampleRate &gt; maxSampleRate) {</span></span>
 <span id="L268"><span class="lineNum">     268</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt;</span></span>
 <span id="L269"><span class="lineNum">     269</span> <span class="tlaUNC">           0 :             tr(&quot;The requested sample rate (%1Hz) likely exceeds the connected device's limit (%2Hz)&quot;)</span></span>
 <span id="L270"><span class="lineNum">     270</span> <span class="tlaUNC">           0 :             .arg(sampleRate).arg(maxSampleRate);</span></span>
 <span id="L271"><span class="lineNum">     271</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L272"><span class="lineNum">     272</span>              : </span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        3620 :     if (settings.numberOfSamples &gt; maxWindowSize) {</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        3280 :     if (settings.numberOfSamples &gt; maxWindowSize) {</span></span>
 <span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC">           0 :         qCWarning(lc).noquote() &lt;&lt;</span></span>
 <span id="L275"><span class="lineNum">     275</span> <span class="tlaUNC">           0 :             tr(&quot;Requested window size (%1 samples) likely exceeds the connected device's limit (%2) samples&quot;)</span></span>
 <span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC">           0 :             .arg(settings.samplingWindow).arg(maxWindowSize);</span></span>
 <span id="L277"><span class="lineNum">     277</span> <span class="tlaUNC">           0 :     }</span></span>
 <span id="L278"><span class="lineNum">     278</span>              : </span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">        3620 :     if ((settings.numberOfSamples != 0) &amp;&amp; (settings.samplingWindow != 0)) {</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         860 :         qCDebug(lc).noquote() &lt;&lt; &quot;Both numberOfSamples and samplingWindow are set, so no need to derive either&quot;;</span></span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         724 :         if (sampleRate != 0) {</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">         724 :             const quint32 derivedRate = settings.numberOfSamples * 1'000'000ull / settings.samplingWindow;</span></span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">         860 :             qCDebug(lc).noquote() &lt;&lt; &quot;derivedRate&quot; &lt;&lt; derivedRate &lt;&lt; sampleRate;</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">         724 :             if (sampleRate != derivedRate) {</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">         662 :                 qCWarning(lc).noquote() &lt;&lt; tr(&quot;Ignoring sample-rate, as interval and window-size both provided&quot;);</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">         222 :             }</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">         444 :         }</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">         724 :         return true; // Nothing more to do.</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">         444 :     }</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1980 :     Q_ASSERT_X(sampleRate &gt; 0, &quot;DsoCommand::configureWindow&quot;, &quot;processOptions should have rejected already&quot;);</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">        3280 :     if ((settings.numberOfSamples != 0) &amp;&amp; (settings.samplingWindow != 0)) {</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">         792 :         qCDebug(lc).noquote() &lt;&lt; &quot;Both numberOfSamples and samplingWindow are set, so no need to derive either&quot;;</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">         656 :         if (sampleRate != 0) {</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">         656 :             const quint32 derivedRate = settings.numberOfSamples * 1'000'000ull / settings.samplingWindow;</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">         792 :             qCDebug(lc).noquote() &lt;&lt; &quot;derivedRate&quot; &lt;&lt; derivedRate &lt;&lt; sampleRate;</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">         656 :             if (sampleRate != derivedRate) {</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">         628 :                 qCWarning(lc).noquote() &lt;&lt; tr(&quot;Ignoring sample-rate, as interval and window-size both provided&quot;);</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">         188 :             }</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">         376 :         }</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">         656 :         return true; // Nothing more to do.</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">         376 :     }</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        1708 :     Q_ASSERT_X(sampleRate &gt; 0, &quot;DsoCommand::configureWindow&quot;, &quot;processOptions should have rejected already&quot;);</span></span>
 <span id="L291"><span class="lineNum">     291</span>              : </span>
 <span id="L292"><span class="lineNum">     292</span>              :     // If both window parameters are unset, choose the best window size (we'll choose a window period later).</span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        2896 :     if ((settings.numberOfSamples == 0) &amp;&amp; (settings.samplingWindow == 0)) {</span></span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">        1290 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Choosing best number-of-samples for sample-rate %2Hz&quot;).arg(sampleRate);</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         666 :         double smallestDifference = std::numeric_limits&lt;double&gt;::quiet_NaN();</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">    13345311 :         for (quint32 windowSize = maxWindowSize; windowSize &gt; 0; --windowSize) {</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">    13344225 :             const quint32 period = windowSize * 1'000'000ull / sampleRate;</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">    13344225 :             const double effectiveRate = double(windowSize) * 1'000'000.0 / (double)period;</span></span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">    13344225 :             if (effectiveRate &gt; maxSampleRate) continue; // Skip sizes that would exceed the device's max sample rate.</span></span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">    13344225 :             if (const quint32 effectivePeriod = windowSize * 1'000'000ull / sampleRate;</span></span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">     9903305 :                 effectivePeriod &gt; 1'000'000) continue; // Skip sizes that would take longer than 1s to fetch.</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">     8897236 :             const double difference = qAbs(effectiveRate - sampleRate);</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">        2624 :     if ((settings.numberOfSamples == 0) &amp;&amp; (settings.samplingWindow == 0)) {</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">        1188 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Choosing best number-of-samples for sample-rate %2Hz&quot;).arg(sampleRate);</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">         564 :         double smallestDifference = std::numeric_limits&lt;double&gt;::quiet_NaN();</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">    12091884 :         for (quint32 windowSize = maxWindowSize; windowSize &gt; 0; --windowSize) {</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">    12090900 :             const quint32 period = windowSize * 1'000'000ull / sampleRate;</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">    12090900 :             const double effectiveRate = double(windowSize) * 1'000'000.0 / (double)period;</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">    12090900 :             if (effectiveRate &gt; maxSampleRate) continue; // Skip sizes that would exceed the device's max sample rate.</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaGNC">    12090900 :             if (const quint32 effectivePeriod = windowSize * 1'000'000ull / sampleRate;</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">     8649980 :                 effectivePeriod &gt; 1'000'000) continue; // Skip sizes that would take longer than 1s to fetch.</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">     8061584 :             const double difference = qAbs(effectiveRate - sampleRate);</span></span>
 <span id="L303"><span class="lineNum">     303</span>              :             // qCDebug(lc).noquote() &lt;&lt; tr(&quot;%1 samples, %2us, %3Hz, %4Hz, ±%5Hz&quot;).arg(windowSize).arg(period)</span>
 <span id="L304"><span class="lineNum">     304</span>              :             //     .arg(effectiveRate, 0, 'f').arg(sampleRate).arg(difference, 0, 'f');</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">     8897236 :             if ((settings.numberOfSamples == 0) || (difference &lt; smallestDifference)) {</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">        3258 :                 settings.numberOfSamples = windowSize;</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        1998 :                 smallestDifference = difference;</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">        1998 :             }</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">     5456316 :         }</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">        1290 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Chose %Ln sample/s, with error ±%2Hz&quot;, nullptr,</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">     8061584 :             if ((settings.numberOfSamples == 0) || (difference &lt; smallestDifference)) {</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">        2952 :                 settings.numberOfSamples = windowSize;</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">        1692 :                 smallestDifference = difference;</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">        1692 :             }</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">     4620664 :         }</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">        1188 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Chose %Ln sample/s, with error ±%2Hz&quot;, nullptr,</span></span>
 <span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :             settings.numberOfSamples).arg(smallestDifference, 0, 'f');</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">        1086 :         if (settings.numberOfSamples == 0) {</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaGNC">         984 :         if (settings.numberOfSamples == 0) {</span></span>
 <span id="L313"><span class="lineNum">     313</span> <span class="tlaUNC">           0 :             qCCritical(lc).noquote() &lt;&lt; tr(&quot;Failed to select a compatible window size for sample rate %1Hz&quot;).arg(sampleRate);</span></span>
 <span id="L314"><span class="lineNum">     314</span> <span class="tlaUNC">           0 :             return false;</span></span>
 <span id="L315"><span class="lineNum">     315</span> <span class="tlaUNC">           0 :         }</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         666 :     }</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">         564 :     }</span></span>
 <span id="L317"><span class="lineNum">     317</span>              : </span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">        2896 :     if (settings.numberOfSamples == 0) {</span></span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">        1720 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Calculating number-of-samples for %1us window at %2Hz&quot;)</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">        2624 :     if (settings.numberOfSamples == 0) {</span></span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">        1584 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Calculating number-of-samples for %1us window at %2Hz&quot;)</span></span>
 <span id="L320"><span class="lineNum">     320</span> <span class="tlaUNC">           0 :             .arg(settings.samplingWindow).arg(sampleRate);</span></span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         888 :         Q_ASSERT(settings.samplingWindow != 0);</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">        1448 :         const auto numberOfSamples = sampleRate * settings.samplingWindow / 1'000'000ull;</span></span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">        1720 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Calculated %Ln sample/s&quot;, nullptr, numberOfSamples);</span></span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">        1448 :         if ((numberOfSamples == 0) || (numberOfSamples &gt; maxWindowSize)) {</span></span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">         600 :             qCCritical(lc).noquote() &lt;&lt; tr(&quot;Failed to calculate a valid number of samples for a %L1us period at %2Hz&quot;)</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">         484 :                 .arg(settings.samplingWindow).arg(sampleRate);</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">         294 :             return false;</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">         222 :         }</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">        1086 :         settings.numberOfSamples = numberOfSamples; // Note the implicit uint64 to uint16 conversion.</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         666 :         Q_ASSERT(settings.numberOfSamples * 1'000'000ull / settings.samplingWindow &lt;= sampleRate); // Due to integer truncation.</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">         666 :     }</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaGNC">         752 :         Q_ASSERT(settings.samplingWindow != 0);</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaGNC">        1312 :         const auto numberOfSamples = sampleRate * settings.samplingWindow / 1'000'000ull;</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">        1584 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Calculated %Ln sample/s&quot;, nullptr, numberOfSamples);</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">        1312 :         if ((numberOfSamples == 0) || (numberOfSamples &gt; maxWindowSize)) {</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">         566 :             qCCritical(lc).noquote() &lt;&lt; tr(&quot;Failed to calculate a valid number of samples for a %L1us period at %2Hz&quot;)</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">         450 :                 .arg(settings.samplingWindow).arg(sampleRate);</span></span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">         260 :             return false;</span></span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">         188 :         }</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">         984 :         settings.numberOfSamples = numberOfSamples; // Note the implicit uint64 to uint16 conversion.</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaGNC">         564 :         Q_ASSERT(settings.numberOfSamples * 1'000'000ull / settings.samplingWindow &lt;= sampleRate); // Due to integer truncation.</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaGNC">         564 :     }</span></span>
 <span id="L332"><span class="lineNum">     332</span>              : </span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        2534 :     if (settings.samplingWindow == 0) {</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">        1720 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Calculating sampling-window for %Ln sample/s at %1Hz&quot;, nullptr,</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaGNC">        2296 :     if (settings.samplingWindow == 0) {</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaGNC">        1584 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Calculating sampling-window for %Ln sample/s at %1Hz&quot;, nullptr,</span></span>
 <span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC">           0 :             settings.numberOfSamples).arg(sampleRate);</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         888 :         Q_ASSERT(settings.numberOfSamples != 0);</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">        1448 :         settings.samplingWindow = settings.numberOfSamples * 1'000'000ull / sampleRate;</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">        1720 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Calculated %1us&quot;).arg(settings.samplingWindow);</span></span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">        1448 :         if (settings.samplingWindow == 0) {</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaGNC">         752 :         Q_ASSERT(settings.numberOfSamples != 0);</span></span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaGNC">        1312 :         settings.samplingWindow = settings.numberOfSamples * 1'000'000ull / sampleRate;</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC">        1584 :         qCDebug(lc).noquote() &lt;&lt; tr(&quot;Calculated %1us&quot;).arg(settings.samplingWindow);</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaGNC">        1312 :         if (settings.samplingWindow == 0) {</span></span>
 <span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :             qCCritical(lc).noquote() &lt;&lt; tr(&quot;Failed to calculate a valid sampling window for a %L1 samples at %1Hz&quot;)</span></span>
 <span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :             .arg(settings.numberOfSamples).arg(sampleRate);</span></span>
 <span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :             return false;</span></span>
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :         }</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         888 :     }</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">        1554 :     return true;</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">        1554 : }</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">         752 :     }</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">        1316 :     return true;</span></span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">        1316 : }</span></span>
 <span id="L347"><span class="lineNum">     347</span>              : </span>
 <span id="L348"><span class="lineNum">     348</span>              : /*!</span>
 <span id="L349"><span class="lineNum">     349</span>              :  * \copybrief DeviceCommand::serviceDetailsDiscovered</span>
@@ -503,17 +503,17 @@
 <span id="L408"><span class="lineNum">     408</span>              :  * Invoked when \a metadata has been received from the DSO.</span>
 <span id="L409"><span class="lineNum">     409</span>              :  */</span>
 <span id="L410"><span class="lineNum">     410</span> <span class="tlaGNC">        4270 : void DsoCommand::metadataRead(const DsoService::Metadata &amp;data)</span></span>
-<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">        1671 : {</span></span>
-<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">        8015 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(data.status);</span></span>
-<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">        8015 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; data.scale;</span></span>
-<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">        8015 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DsoService::toString(data.mode);</span></span>
-<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">        8015 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; service-&gt;toString(data.range, data.mode);</span></span>
-<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">        8015 :     qCDebug(lc) &lt;&lt; &quot;samplingWindow:&quot; &lt;&lt; data.samplingWindow;</span></span>
-<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">        8015 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></span>
-<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">        8015 :     qCDebug(lc) &lt;&lt; &quot;samplingRate:&quot; &lt;&lt; data.samplingRate &lt;&lt; &quot;Hz&quot;;</span></span>
-<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">        5941 :     this-&gt;metadata = data;</span></span>
-<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">        5941 :     this-&gt;samplesToGo = data.numberOfSamples;</span></span>
-<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">        5941 : }</span></span>
+<span id="L411"><span class="lineNum">     411</span> <span class="tlaGNC">        1654 : {</span></span>
+<span id="L412"><span class="lineNum">     412</span> <span class="tlaGNC">        7998 :     qCDebug(lc) &lt;&lt; &quot;status:&quot; &lt;&lt; (int)(data.status);</span></span>
+<span id="L413"><span class="lineNum">     413</span> <span class="tlaGNC">        7998 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot; &lt;&lt; data.scale;</span></span>
+<span id="L414"><span class="lineNum">     414</span> <span class="tlaGNC">        7998 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot; &lt;&lt; DsoService::toString(data.mode);</span></span>
+<span id="L415"><span class="lineNum">     415</span> <span class="tlaGNC">        7998 :     qCDebug(lc) &lt;&lt; &quot;range:&quot; &lt;&lt; service-&gt;toString(data.range, data.mode);</span></span>
+<span id="L416"><span class="lineNum">     416</span> <span class="tlaGNC">        7998 :     qCDebug(lc) &lt;&lt; &quot;samplingWindow:&quot; &lt;&lt; data.samplingWindow;</span></span>
+<span id="L417"><span class="lineNum">     417</span> <span class="tlaGNC">        7998 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></span>
+<span id="L418"><span class="lineNum">     418</span> <span class="tlaGNC">        7998 :     qCDebug(lc) &lt;&lt; &quot;samplingRate:&quot; &lt;&lt; data.samplingRate &lt;&lt; &quot;Hz&quot;;</span></span>
+<span id="L419"><span class="lineNum">     419</span> <span class="tlaGNC">        5924 :     this-&gt;metadata = data;</span></span>
+<span id="L420"><span class="lineNum">     420</span> <span class="tlaGNC">        5924 :     this-&gt;samplesToGo = data.numberOfSamples;</span></span>
+<span id="L421"><span class="lineNum">     421</span> <span class="tlaGNC">        5924 : }</span></span>
 <span id="L422"><span class="lineNum">     422</span>              : </span>
 <span id="L423"><span class="lineNum">     423</span>              : /*!</span>
 <span id="L424"><span class="lineNum">     424</span>              :  * Outputs DSO \a samples in the selected output format.</span>

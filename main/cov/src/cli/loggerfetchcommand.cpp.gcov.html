@@ -128,9 +128,9 @@
 <span id="L33"><span class="lineNum">      33</span>              :  * Construct a new LoggerFetchCommand object with \a parent.</span>
 <span id="L34"><span class="lineNum">      34</span>              :  */</span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">        7528 : LoggerFetchCommand::LoggerFetchCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        2172 : {</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">        2138 : {</span></span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        7562 : }</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        7528 : }</span></span>
 <span id="L39"><span class="lineNum">      39</span>              : </span>
 <span id="L40"><span class="lineNum">      40</span>              : /*!</span>
 <span id="L41"><span class="lineNum">      41</span>              :  * \copybrief DeviceCommand::getService</span>
@@ -175,19 +175,19 @@
 <span id="L80"><span class="lineNum">      80</span>              :  * Invoked when \a metadata has been received from the data logger.</span>
 <span id="L81"><span class="lineNum">      81</span>              :  */</span>
 <span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        5320 : void LoggerFetchCommand::metadataRead(const DataLoggerService::Metadata &amp;data)</span></span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">        2061 : {</span></span>
-<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">        9965 :     qCDebug(lc) &lt;&lt; &quot;status:&quot;          &lt;&lt; (int)(data.status);</span></span>
-<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">        9965 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot;           &lt;&lt; data.scale;</span></span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">        9965 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot;            &lt;&lt; DataLoggerService::toString(data.mode) &lt;&lt; (quint8)data.mode;</span></span>
-<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">        9965 :     qCDebug(lc) &lt;&lt; &quot;range:&quot;           &lt;&lt; service-&gt;toString(data.range, data.mode) &lt;&lt; data.range;</span></span>
-<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">        9965 :     qCDebug(lc) &lt;&lt; &quot;updateInterval:&quot;  &lt;&lt; (int)data.updateInterval;</span></span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">        9585 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></span>
-<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">        9585 :     qCDebug(lc) &lt;&lt; &quot;timestamp:&quot;       &lt;&lt; data.timestamp &lt;&lt; QDateTime::fromSecsSinceEpoch(data.timestamp, DOKIT_QT_UTC);</span></span>
-<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">        7381 :     this-&gt;metadata = data;</span></span>
-<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">        7381 :     this-&gt;samplesToGo = data.numberOfSamples;</span></span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">        7381 :     this-&gt;timestamp = (quint64)data.timestamp * (quint64)1000;</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">       15285 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Fetching %Ln logger sample/s...&quot;, nullptr, data.numberOfSamples);</span></span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        7381 : }</span></span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">        2044 : {</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">        9948 :     qCDebug(lc) &lt;&lt; &quot;status:&quot;          &lt;&lt; (int)(data.status);</span></span>
+<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">        9948 :     qCDebug(lc) &lt;&lt; &quot;scale:&quot;           &lt;&lt; data.scale;</span></span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">        9948 :     qCDebug(lc) &lt;&lt; &quot;mode:&quot;            &lt;&lt; DataLoggerService::toString(data.mode) &lt;&lt; (quint8)data.mode;</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">        9948 :     qCDebug(lc) &lt;&lt; &quot;range:&quot;           &lt;&lt; service-&gt;toString(data.range, data.mode) &lt;&lt; data.range;</span></span>
+<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">        9948 :     qCDebug(lc) &lt;&lt; &quot;updateInterval:&quot;  &lt;&lt; (int)data.updateInterval;</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">        9568 :     qCDebug(lc) &lt;&lt; &quot;numberOfSamples:&quot; &lt;&lt; data.numberOfSamples;</span></span>
+<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">        9568 :     qCDebug(lc) &lt;&lt; &quot;timestamp:&quot;       &lt;&lt; data.timestamp &lt;&lt; QDateTime::fromSecsSinceEpoch(data.timestamp, DOKIT_QT_UTC);</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">        7364 :     this-&gt;metadata = data;</span></span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">        7364 :     this-&gt;samplesToGo = data.numberOfSamples;</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">        7364 :     this-&gt;timestamp = (quint64)data.timestamp * (quint64)1000;</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">       15268 :     qCInfo(lc).noquote() &lt;&lt; tr(&quot;Fetching %Ln logger sample/s...&quot;, nullptr, data.numberOfSamples);</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        7364 : }</span></span>
 <span id="L96"><span class="lineNum">      96</span>              : </span>
 <span id="L97"><span class="lineNum">      97</span>              : /*!</span>
 <span id="L98"><span class="lineNum">      98</span>              :  * Outputs logger \a samples in the selected output format.</span>
