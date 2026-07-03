@@ -1,5 +1,16 @@
 # Changelog[^1]
 
+## 0.6.1 (_unreleased_)
+
+### Changed
+
+- Upgrade to Qt 6.11.1 ([d00d967])
+
+### Removed
+
+- macOS 14 builds in CI/CD ([de85a9b]) - those runners are [now deprecated by GitHub](
+https://github.com/actions/runner-images/issues/13518).
+
 ## [0.6.0] (2026-04-12)
 
 ### Added
@@ -250,10 +261,12 @@ Thanks to [@lnxsr](https://github.com/lnxsr) for contributing to this release.
 [cde4962]:     https://github.com/pcolby/dokit/commit/cde4962997813e59bd7b16aaee657aad91f426ff "Support negative trigger levels"
 [cc5ff57]:     https://github.com/pcolby/dokit/commit/cc5ff57bc2f94f4306687d88307cda4f3fbb3612 "Use fputs() instead of std::err for CLI error output"
 [cf84d77]:     https://github.com/pcolby/dokit/commit/cf84d77c828da381d793c5806609ac8bf207a85b "Support zero trigger levels"
+[d00d967]:     https://github.com/pcolby/dokit/commit/d00d9674e9ea00a7c2bc449a718e5b426ac7bb21 "Bump the Qt 6.11.x builds to Qt 6.11.1"
 [d0cb2eb]:     https://github.com/pcolby/dokit/commit/d0cb2ebe264ed035357a2dc12bde8e04e446423d "Add Qt 6.10 builds"
 [d3cbc81]:     https://github.com/pcolby/dokit/commit/d3cbc8101aa2b775c2788ce9e7ea4990188a5098 "Improve BLE notification enablement"
 [d54fbbc]:     https://github.com/pcolby/dokit/commit/d54fbbcb2eacbce6b4e9bfb8a23a9ce43fd7524a "Support GitHub's Linux arm64 preview hosts"
 [db8b841]:     https://github.com/pcolby/dokit/commit/db8b84197d00b5a357974043f2dc0f3c0b7dfeff "Return quint32 from all maxValue methods"
+[de85a9b]:     https://github.com/pcolby/dokit/commit/de85a9b868e61995e242096d0f754a4e8a0f60cb "Remove the deprecated macOS-14 runners"
 
 [#9]:          https://github.com/pcolby/dokit/issues/9
 [#17]:         https://github.com/pcolby/dokit/issues/17
