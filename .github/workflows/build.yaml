@@ -479,6 +479,13 @@ jobs:
           - { os: 11-arm, arch: x86-64 }
           - { os: 11-arm, toolchain: llvm }
           - { os: 11-arm, toolchain: mingw }
+          # Exclude Qt's 6.0 to 6.5 with MSVC for Windows 2025, since GitHub's Windows 2025 images' MSVC compilers have
+          # removed the non-standard `stdext` namespace, so are no longer compatible with those Qt versions. They result
+          # errors like: error C3861: 'stdext': identifier not found
+          - { os: 2025, toolchain: msvc, qt: 6.2.4 }
+          - { os: 2025, toolchain: msvc, qt: 6.3.2 }
+          - { os: 2025, toolchain: msvc, qt: 6.4.3 }
+          - { os: 2025, toolchain: msvc, qt: 6.5.3 }
           # Exclude arm64 builds for Qt's earlier than 6.2, since Qt only added (Windows) arm64
           # 'Technology Preview' support in 6.2.
           - { arch: arm64, qt: '5.9.9' }
