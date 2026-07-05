@@ -17,6 +17,7 @@ env:
 jobs:
   build-and-scan:
     runs-on: ubuntu-24.04
+    continue-on-error: true # \todo Remove when SonarQube fixes their upstream failures. Or remove workflow entirely.
     strategy:
       fail-fast: false
       matrix:
