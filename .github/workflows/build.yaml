@@ -10,6 +10,7 @@ permissions:
   contents: read
 
 env:
+  AQT_CONFIG: .github/workflows/aqtinstall.ini
   # Currently, GitHub-hosted runners for public repos specify 4 cores, except macOS 14+
   # See https://docs.github.com/en/actions/reference/runners/github-hosted-runners
   CMAKE_BUILD_PARALLEL_LEVEL: 4 # Default only; overridden where appropriate, such as on macOS 14+ below.
