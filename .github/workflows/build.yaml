@@ -9,6 +9,7 @@ env:
   # Currently, GitHub-hosted runners for public repos specify 4 cores, except macOS 14+
   # See https://docs.github.com/en/actions/reference/runners/github-hosted-runners
   CMAKE_BUILD_PARALLEL_LEVEL: 4 # Default only; overridden where appropriate, such as on macOS 14+ below.
+  CMAKE_MESSAGE_LOG_LEVEL: VERBOSE # ERROR, WARNING, NOTICE, STATUS, VERBOSE, DEBUG, or TRACE.
   QT_FORCE_STDERR_LOGGING: 1 # Make sure Qt logs errors (during Workflow runs) to console. Especially for Windows.
 
 defaults:
@@ -44,6 +45,7 @@ jobs:
         os:
           - 22.04
           - 24.04
+          - 26.04
         arch:
           - arm64
           - x86-64
@@ -146,13 +148,17 @@ jobs:
           cmake --build "${RUNNER_TEMP}/release"
           "${RUNNER_TEMP}/release/src/cli/dokit" --version
       - name: Check translation files # For Qt6 only.
-        if: startsWith(matrix.qt, '6') && matrix.qt != '6.11.1' # https://qt-project.atlassian.net/browse/QTBUG-145179
+        if: startsWith(matrix.qt, '6') && matrix.qt != '6.11.0' # https://qt-project.atlassian.net/browse/QTBUG-145179
         run: |
+          # Use the update_translations target for Qt 6.7+, or the *_lupdate targets before then. Note, the OS-provided
+          # Qt6 is pre-6.7 on Ubuntu 22.04 and 25.04, but post 6.7 (eg eg 6.10) on Ubuntu 26.04.
           declare -a targets=(update_translations)
-          [[ "${MATRIX_QT}" =~ ^6\.([0-9]+)\.[0-9]+$ && "${BASH_REMATCH[1]}" -ge 7 ]] || targets=({cli,QtPokit}_lupdate)
+          [[ ( "${MATRIX_QT}" =~ ^6\.([0-9]+)\.[0-9]+$ && "${BASH_REMATCH[1]}" -ge 7 ) ||
+             ( "${MATRIX_QT}" = 6 && "${MATRIX_OS}" = 26.04 ) ]] || targets=({cli,QtPokit}_lupdate)
           cmake --build "${RUNNER_TEMP}/release" --target "${targets[@]}"
           [[ -z $(git status --porcelain src | tee /dev/stderr || :) ]]
         env:
+          MATRIX_OS: ${{ matrix.os }}
           MATRIX_QT: ${{ matrix.qt }}
       - name: Test w/ coverage
         if: matrix.os != '22.04' || matrix.cc != 'clang'
@@ -731,7 +737,6 @@ jobs:
       - name: Build w/ coverage instrumentation
         if: matrix.toolchain != 'msvc'
         env:
-          CMAKE_MESSAGE_LOG_LEVEL: VERBOSE
           PROJECT_BUILD_ID: >-
             ${{ github.run_number }}.win${{ matrix.os }}.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
         run: |
@@ -743,7 +748,6 @@ jobs:
           cmake --build "%RUNNER_TEMP%/coverage" --verbose
       - name: Build w/o coverage instrumentation
         env:
-          CMAKE_MESSAGE_LOG_LEVEL: VERBOSE
           PROJECT_BUILD_ID: >-
             ${{ github.run_number }}.win${{ matrix.os }}.${{ matrix.arch }}.${{ matrix.toolchain }}.qt-${{ matrix.qt }}
         run: |

@@ -48,28 +48,49 @@ if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   if (CODECOV_LCOV)
     message(STATUS "Found gcov ${CODECOV_GCOV}")
     message(STATUS "Found lcov ${CODECOV_LCOV}")
+
+    # Determine the LCOV version.
+    execute_process(
+      COMMAND ${CODECOV_LCOV} --version
+      OUTPUT_VARIABLE LCOV_VERSION_STRING
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
+    message(DEBUG "LCOV: version string: ${LCOV_VERSION_STRING}")
+    string(REGEX MATCH "^(.*version )?(.+)$" _ "${LCOV_VERSION_STRING}")
+    set(LCOV_VERSION "${CMAKE_MATCH_2}")
+    message(VERBOSE "LCOV: version: ${LCOV_VERSION}")
+
+    # Build the LCOV --ignore-errors list.
+    set(ignoreErrors --ignore-errors gcov,gcov)
+    if ("${LCOV_VERSION}" VERSION_GREATER_EQUAL 2)
+      # 'inconsistent' was added to --ignore-errors in LCOV 2.0.
+      set(ignoreErrors "${ignoreErrors},inconsistent,inconsistent")
+    endif()
+    set(removeCoverage "${ignoreErrors},unused,unused" --remove coverage.info)
+    message(DEBUG "LCOV: ignoreErrors: ${ignoreErrors}")
+    message(DEBUG "LCOV: removeCoverage: ${removeCoverage}")
+
     add_custom_target(
       coverage
-      COMMAND ${CODECOV_LCOV} --capture --directory . --gcov-tool ${CODECOV_GCOV} --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --list coverage.info
+      COMMAND ${CODECOV_LCOV} --capture --directory . --gcov-tool ${CODECOV_GCOV} ${ignoreErrors} --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${ignoreErrors} --list coverage.info
       # Linux/macOS
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info /usr/* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */.qt/* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */.rcc/* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */moc_*.cpp --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */mocs_compilation.cpp --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */qt/* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */Qt/* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info */test/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} /usr/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} */.qt/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} */.rcc/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} */moc_*.cpp --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} */mocs_compilation.cpp --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} */qt/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} */Qt/* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} */test/* --output-file coverage.info
       # Windows
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *:\\mingw32\\* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *:\\mingw64\\* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\.qt\\* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\.rcc\\* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\moc_*.cpp --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\Qt\\* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --ignore-errors unused --remove coverage.info *\\test\\* --output-file coverage.info
-      COMMAND ${CODECOV_LCOV} --list coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} *:\\mingw32\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} *:\\mingw64\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} *\\.qt\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} *\\.rcc\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} *\\moc_*.cpp --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} *\\Qt\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${removeCoverage} *\\test\\* --output-file coverage.info
+      COMMAND ${CODECOV_LCOV} ${ignoreErrors} --list coverage.info
       COMMENT "Collating coverage data"
       VERBATIM
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
