@@ -375,10 +375,10 @@ jobs:
         run: plutil -lint "${RUNNER_TEMP}/release/src/cli/dokit.app/Contents/Info.plist"
       - name: Test w/ coverage
         run: ctest --output-on-failure --test-dir "${RUNNER_TEMP}/coverage" --verbose
-        timeout-minutes: 1
+        timeout-minutes: 2 # Occasionally need more than 1 minute on macos runners.
       - name: Test w/o coverage
         run: ctest --output-on-failure --test-dir "${RUNNER_TEMP}/release" --verbose
-        timeout-minutes: 1
+        timeout-minutes: 2 # Occasionally need more than 1 minute on macos runners.
       - name: Test localisations
         if: startsWith(matrix.qt, '6')
         run: |
