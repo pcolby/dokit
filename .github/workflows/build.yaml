@@ -235,7 +235,7 @@ jobs:
   mac:
     runs-on: ${{ matrix.os }}
     env:
-      CMAKE_BUILD_PARALLEL_LEVEL: 3
+      CMAKE_BUILD_PARALLEL_LEVEL: ${{ case(endsWith(matrix.os, '-intel'), 4, 3) }} # Intel runners have 4 cores, not 3.
       MATRIX_CC: ${{ matrix.cc }}
       MATRIX_OS: ${{ matrix.os }}
       MATRIX_QT: ${{ matrix.qt }}
