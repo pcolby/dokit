@@ -924,7 +924,8 @@ jobs:
         if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        run: bash <(curl -Ls https://coverage.codacy.com/get.sh || :) final --http-timeout 300000
+          CODACY_REPORTER_OPTIONS: --http-timeout 300000 --num-retries 10
+        run: bash <(curl -Ls https://coverage.codacy.com/get.sh || :) final
 
   update-tests-on-doc-branch:
     permissions:
