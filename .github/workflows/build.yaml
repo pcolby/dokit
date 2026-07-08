@@ -15,6 +15,7 @@ env:
   # See https://docs.github.com/en/actions/reference/runners/github-hosted-runners
   CMAKE_BUILD_PARALLEL_LEVEL: 4 # Default only; overridden where appropriate, such as on macOS 14+ below.
   CMAKE_MESSAGE_LOG_LEVEL: VERBOSE # ERROR, WARNING, NOTICE, STATUS, VERBOSE, DEBUG, or TRACE.
+  CODACY_REPORTER_OPTIONS: --http-timeout 50 --num-retries 10
   QT_FORCE_STDERR_LOGGING: 1 # Make sure Qt logs errors (during Workflow runs) to console. Especially for Windows.
 
 defaults:
@@ -923,7 +924,7 @@ jobs:
         if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        run: bash <(curl -Ls https://coverage.codacy.com/get.sh || :) final
+        run: bash <(curl -Ls https://coverage.codacy.com/get.sh || :) final --http-timeout 300
 
   update-tests-on-doc-branch:
     permissions:
