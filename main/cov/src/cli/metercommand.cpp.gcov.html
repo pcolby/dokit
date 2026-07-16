@@ -117,26 +117,26 @@
 <span id="L22"><span class="lineNum">      22</span>              : /*!</span>
 <span id="L23"><span class="lineNum">      23</span>              :  * Construct a new MeterCommand object with \a parent.</span>
 <span id="L24"><span class="lineNum">      24</span>              :  */</span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">       12264 : MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        5544 : {</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">       13146 : MeterCommand::MeterCommand(QObject * const parent) : DeviceCommand(parent)</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        5936 : {</span></span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">       12264 : }</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">       13146 : }</span></span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">        5088 : QStringList MeterCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        6360 : {</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       21995 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">        6360 :         u&quot;mode&quot;_s,</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">       19981 :     };</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">        6360 : }</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">        5459 : QStringList MeterCommand::requiredOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        6784 : {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       23585 :     return DeviceCommand::requiredOptions(parser) + QStringList{</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">        6784 :         u&quot;mode&quot;_s,</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">       21253 :     };</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">        6784 : }</span></span>
 <span id="L36"><span class="lineNum">      36</span>              : </span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">        2496 : QStringList MeterCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        3120 : {</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">       14326 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">        3120 :         u&quot;interval&quot;_s,</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">        3120 :         u&quot;range&quot;_s,</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">        3120 :         u&quot;samples&quot;_s,</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">       14794 :     };</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">        3120 : }</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">        2678 : QStringList MeterCommand::supportedOptions(const QCommandLineParser &amp;parser) const</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">        3328 : {</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">       15366 :     return DeviceCommand::supportedOptions(parser) + QStringList{</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">        3328 :         u&quot;interval&quot;_s,</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">        3328 :         u&quot;range&quot;_s,</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">        3328 :         u&quot;samples&quot;_s,</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">       15782 :     };</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">        3328 : }</span></span>
 <span id="L45"><span class="lineNum">      45</span>              : </span>
 <span id="L46"><span class="lineNum">      46</span>              : /*!</span>
 <span id="L47"><span class="lineNum">      47</span>              :  * \copybrief DeviceCommand::processOptions</span>
@@ -144,99 +144,99 @@
 <span id="L49"><span class="lineNum">      49</span>              :  * This implementation extends DeviceCommand::processOptions to process additional CLI options</span>
 <span id="L50"><span class="lineNum">      50</span>              :  * supported (or required) by this command.</span>
 <span id="L51"><span class="lineNum">      51</span>              :  */</span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">        2400 : QStringList MeterCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">        3000 : {</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">        5400 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">        5400 :     if (!errors.isEmpty()) {</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         120 :         return errors;</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">         120 :     }</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">        2575 : QStringList MeterCommand::processOptions(const QCommandLineParser &amp;parser)</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">        3200 : {</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">        5775 :     QStringList errors = DeviceCommand::processOptions(parser);</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">        5775 :     if (!errors.isEmpty()) {</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         128 :         return errors;</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">         128 :     }</span></span>
 <span id="L58"><span class="lineNum">      58</span>              : </span>
 <span id="L59"><span class="lineNum">      59</span>              :     // Parse the (required) mode option.</span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">        7488 :     if (const QString mode = parser.value(u&quot;mode&quot;_s).trimmed().toLower();</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">        9000 :         mode.startsWith(u&quot;ac v&quot;_s) || mode.startsWith(u&quot;vac&quot;_s)) {</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">         216 :         settings.mode = MultimeterService::Mode::AcVoltage;</span></span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">         216 :         minRangeFunc = minVoltageRange;</span></span>
-<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">        8625 :     } else if (mode.startsWith(u&quot;dc v&quot;_s) || mode.startsWith(u&quot;vdc&quot;_s)) {</span></span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">        2376 :         settings.mode = MultimeterService::Mode::DcVoltage;</span></span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">        2376 :         minRangeFunc = minVoltageRange;</span></span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">        4500 :     } else if (mode.startsWith(u&quot;ac c&quot;_s) || mode.startsWith(u&quot;aac&quot;_s)) {</span></span>
-<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">         216 :         settings.mode = MultimeterService::Mode::AcCurrent;</span></span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">         216 :         minRangeFunc = minCurrentRange;</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">        4125 :     } else if (mode.startsWith(u&quot;dc c&quot;_s) || mode.startsWith(u&quot;adc&quot;_s)) {</span></span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         432 :         settings.mode = MultimeterService::Mode::DcCurrent;</span></span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         432 :         minRangeFunc = minCurrentRange;</span></span>
-<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        2511 :     } else if (mode.startsWith(u&quot;res&quot;_s)) {</span></span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         432 :         settings.mode = MultimeterService::Mode::Resistance;</span></span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">         432 :         minRangeFunc = minResistanceRange;</span></span>
-<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        1953 :     } else if (mode.startsWith(u&quot;dio&quot;_s)) {</span></span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         432 :         settings.mode = MultimeterService::Mode::Diode;</span></span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         432 :         minRangeFunc = nullptr;</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        1395 :     } else if (mode.startsWith(u&quot;cont&quot;_s)) {</span></span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">         216 :         settings.mode = MultimeterService::Mode::Continuity;</span></span>
-<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">         216 :         minRangeFunc = nullptr;</span></span>
-<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        1116 :     } else if (mode.startsWith(u&quot;temp&quot;_s)) {</span></span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         216 :         settings.mode = MultimeterService::Mode::Temperature;</span></span>
-<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">         216 :         minRangeFunc = nullptr;</span></span>
-<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">         837 :     } else if (mode.startsWith(u&quot;cap&quot;_s)) {</span></span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">         432 :         settings.mode = MultimeterService::Mode::Capacitance;</span></span>
-<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">         432 :         minRangeFunc = minCapacitanceRange;</span></span>
-<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">         240 :     } else {</span></span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         332 :         errors.append(tr(&quot;Unknown meter mode: %1&quot;).arg(parser.value(u&quot;mode&quot;_s)));</span></span>
-<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">         120 :         return errors;</span></span>
-<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">         912 :     }</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">        8016 :     if (const QString mode = parser.value(u&quot;mode&quot;_s).trimmed().toLower();</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">        9696 :         mode.startsWith(u&quot;ac v&quot;_s) || mode.startsWith(u&quot;vac&quot;_s)) {</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">         231 :         settings.mode = MultimeterService::Mode::AcVoltage;</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">         231 :         minRangeFunc = minVoltageRange;</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">        9292 :     } else if (mode.startsWith(u&quot;dc v&quot;_s) || mode.startsWith(u&quot;vdc&quot;_s)) {</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">        2541 :         settings.mode = MultimeterService::Mode::DcVoltage;</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">        2541 :         minRangeFunc = minVoltageRange;</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">        4848 :     } else if (mode.startsWith(u&quot;ac c&quot;_s) || mode.startsWith(u&quot;aac&quot;_s)) {</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">         231 :         settings.mode = MultimeterService::Mode::AcCurrent;</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">         231 :         minRangeFunc = minCurrentRange;</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">        4444 :     } else if (mode.startsWith(u&quot;dc c&quot;_s) || mode.startsWith(u&quot;adc&quot;_s)) {</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         462 :         settings.mode = MultimeterService::Mode::DcCurrent;</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         462 :         minRangeFunc = minCurrentRange;</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        2709 :     } else if (mode.startsWith(u&quot;res&quot;_s)) {</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         462 :         settings.mode = MultimeterService::Mode::Resistance;</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">         462 :         minRangeFunc = minResistanceRange;</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">        2107 :     } else if (mode.startsWith(u&quot;dio&quot;_s)) {</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         462 :         settings.mode = MultimeterService::Mode::Diode;</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         462 :         minRangeFunc = nullptr;</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        1505 :     } else if (mode.startsWith(u&quot;cont&quot;_s)) {</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">         231 :         settings.mode = MultimeterService::Mode::Continuity;</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">         231 :         minRangeFunc = nullptr;</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">        1204 :     } else if (mode.startsWith(u&quot;temp&quot;_s)) {</span></span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         231 :         settings.mode = MultimeterService::Mode::Temperature;</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaGNC">         231 :         minRangeFunc = nullptr;</span></span>
+<span id="L85"><span class="lineNum">      85</span> <span class="tlaGNC">         903 :     } else if (mode.startsWith(u&quot;cap&quot;_s)) {</span></span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">         462 :         settings.mode = MultimeterService::Mode::Capacitance;</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">         462 :         minRangeFunc = minCapacitanceRange;</span></span>
+<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">         256 :     } else {</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         361 :         errors.append(tr(&quot;Unknown meter mode: %1&quot;).arg(parser.value(u&quot;mode&quot;_s)));</span></span>
+<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">         128 :         return errors;</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">         920 :     }</span></span>
 <span id="L92"><span class="lineNum">      92</span>              : </span>
 <span id="L93"><span class="lineNum">      93</span>              :     // Parse the interval option.</span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">        6417 :     if (parser.isSet(u&quot;interval&quot;_s)) {</span></span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        1440 :         const QString value = parser.value(u&quot;interval&quot;_s);</span></span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">        1080 :         const quint32 interval = parseNumber&lt;std::milli&gt;(value, u&quot;s&quot;_s, 500);</span></span>
-<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">        1080 :         if (interval == 0) {</span></span>
-<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">         558 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></span>
-<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">         360 :         } else {</span></span>
-<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">         648 :             settings.updateInterval = interval;</span></span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">         360 :         }</span></span>
-<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">         765 :     }</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">        6923 :     if (parser.isSet(u&quot;interval&quot;_s)) {</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">        1550 :         const QString value = parser.value(u&quot;interval&quot;_s);</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">        1155 :         const quint32 interval = parseNumber&lt;std::milli&gt;(value, u&quot;s&quot;_s, 500);</span></span>
+<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">        1155 :         if (interval == 0) {</span></span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">         602 :             errors.append(tr(&quot;Invalid interval value: %1&quot;).arg(value));</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">         384 :         } else {</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">         693 :             settings.updateInterval = interval;</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">         384 :         }</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">         805 :     }</span></span>
 <span id="L103"><span class="lineNum">     103</span>              : </span>
 <span id="L104"><span class="lineNum">     104</span>              :     // Parse the range option.</span>
-<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">        4968 :     rangeOptionValue = 0; // Default to auto.</span></span>
-<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">        6417 :     if (parser.isSet(u&quot;range&quot;_s)) {</span></span>
-<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">        3168 :         const QString value = parser.value(u&quot;range&quot;_s);</span></span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">        3069 :         if (value.trimmed().compare(u&quot;auto&quot;_s, Qt::CaseInsensitive) != 0) {</span></span>
-<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">        1512 :             switch (settings.mode) {</span></span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">         528 :             case MultimeterService::Mode::DcVoltage:</span></span>
-<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">         360 :             case MultimeterService::Mode::AcVoltage:</span></span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         648 :                 rangeOptionValue =  parseNumber&lt;std::milli&gt;(value, u&quot;V&quot;_s, 50); // mV.</span></span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">         648 :                 break;</span></span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">         312 :             case MultimeterService::Mode::DcCurrent:</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">         240 :             case MultimeterService::Mode::AcCurrent:</span></span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">         432 :                 rangeOptionValue = parseNumber&lt;std::milli&gt;(value, u&quot;A&quot;_s, 5); // mA.</span></span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">         432 :                 break;</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">        5313 :     rangeOptionValue = 0; // Default to auto.</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">        6923 :     if (parser.isSet(u&quot;range&quot;_s)) {</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">        3410 :         const QString value = parser.value(u&quot;range&quot;_s);</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">        3311 :         if (value.trimmed().compare(u&quot;auto&quot;_s, Qt::CaseInsensitive) != 0) {</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">        1617 :             switch (settings.mode) {</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">         565 :             case MultimeterService::Mode::DcVoltage:</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">         384 :             case MultimeterService::Mode::AcVoltage:</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         693 :                 rangeOptionValue =  parseNumber&lt;std::milli&gt;(value, u&quot;V&quot;_s, 50); // mV.</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">         693 :                 break;</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">         334 :             case MultimeterService::Mode::DcCurrent:</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">         256 :             case MultimeterService::Mode::AcCurrent:</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">         462 :                 rangeOptionValue = parseNumber&lt;std::milli&gt;(value, u&quot;A&quot;_s, 5); // mA.</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">         462 :                 break;</span></span>
 <span id="L118"><span class="lineNum">     118</span> <span class="tlaUNC">           0 :             case MultimeterService::Mode::Resistance:</span></span>
 <span id="L119"><span class="lineNum">     119</span> <span class="tlaUNC">           0 :                 rangeOptionValue = parseNumber&lt;std::ratio&lt;1&gt;&gt;(value, u&quot;ohms&quot;_s);</span></span>
 <span id="L120"><span class="lineNum">     120</span> <span class="tlaUNC">           0 :                 break;</span></span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">         216 :             case MultimeterService::Mode::Capacitance:</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">         216 :                 rangeOptionValue = parseNumber&lt;std::nano&gt;(value, u&quot;F&quot;_s, (quint32)500); // pF.</span></span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">         216 :                 break;</span></span>
-<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">         216 :             default:</span></span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">         423 :                 qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring range value: %1&quot;).arg(value);</span></span>
-<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">         840 :             }</span></span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        1512 :             if ((minRangeFunc != nullptr) &amp;&amp; (rangeOptionValue == 0)) {</span></span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">         279 :                 errors.append(tr(&quot;Invalid range value: %1&quot;).arg(value));</span></span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">         120 :             }</span></span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">         840 :         }</span></span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">        1683 :     }</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">         231 :             case MultimeterService::Mode::Capacitance:</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">         231 :                 rangeOptionValue = parseNumber&lt;std::nano&gt;(value, u&quot;F&quot;_s, (quint32)500); // pF.</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">         231 :                 break;</span></span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">         231 :             default:</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">         459 :                 qCInfo(lc).noquote() &lt;&lt; tr(&quot;Ignoring range value: %1&quot;).arg(value);</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">         896 :             }</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">        1617 :             if ((minRangeFunc != nullptr) &amp;&amp; (rangeOptionValue == 0)) {</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">         301 :                 errors.append(tr(&quot;Invalid range value: %1&quot;).arg(value));</span></span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">         128 :             }</span></span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">         896 :         }</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">        1771 :     }</span></span>
 <span id="L132"><span class="lineNum">     132</span>              : </span>
 <span id="L133"><span class="lineNum">     133</span>              :     // Parse the samples option.</span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">        6417 :     if (parser.isSet(u&quot;samples&quot;_s)) {</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">         864 :         const QString value = parser.value(u&quot;samples&quot;_s);</span></span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         648 :         const quint32 samples = parseNumber&lt;std::ratio&lt;1&gt;&gt;(value, u&quot;S&quot;_s);</span></span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         648 :         if (samples == 0) {</span></span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">         558 :             errors.append(tr(&quot;Invalid samples value: %1&quot;).arg(value));</span></span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         240 :         } else {</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">         216 :             samplesToGo = samples;</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         120 :         }</span></span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">         459 :     }</span></span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">        2760 :     return errors;</span></span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">        2760 : }</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">        6923 :     if (parser.isSet(u&quot;samples&quot;_s)) {</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">         930 :         const QString value = parser.value(u&quot;samples&quot;_s);</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         693 :         const quint32 samples = parseNumber&lt;std::ratio&lt;1&gt;&gt;(value, u&quot;S&quot;_s);</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         693 :         if (samples == 0) {</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">         602 :             errors.append(tr(&quot;Invalid samples value: %1&quot;).arg(value));</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">         256 :         } else {</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">         231 :             samplesToGo = samples;</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         128 :         }</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">         483 :     }</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">        2944 :     return errors;</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">        2944 : }</span></span>
 <span id="L145"><span class="lineNum">     145</span>              : </span>
 <span id="L146"><span class="lineNum">     146</span>              : /*!</span>
 <span id="L147"><span class="lineNum">     147</span>              :  * \copybrief DeviceCommand::getService</span>
@@ -303,91 +303,91 @@
 <span id="L208"><span class="lineNum">     208</span>              : /*!</span>
 <span id="L209"><span class="lineNum">     209</span>              :  * Outputs meter \a reading in the selected output format.</span>
 <span id="L210"><span class="lineNum">     210</span>              :  */</span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">        7200 : void MeterCommand::outputReading(const MultimeterService::Reading &amp;reading)</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">        3900 : {</span></span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">        8625 :     QString status;</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">       11100 :     if (reading.status == MultimeterService::MeterStatus::Error) {</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         888 :         status = u&quot;Error&quot;_s;</span></span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">       10212 :     } else switch (reading.mode) {</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         468 :     case MultimeterService::Mode::Idle:</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         468 :         break;</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">        3768 :     case MultimeterService::Mode::DcVoltage:</span></span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         624 :     case MultimeterService::Mode::AcVoltage:</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">         936 :     case MultimeterService::Mode::DcCurrent:</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">        1248 :     case MultimeterService::Mode::AcCurrent:</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">        1560 :     case MultimeterService::Mode::Resistance:</span></span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">        1872 :     case MultimeterService::Mode::Capacitance:</span></span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        1872 :         status = (reading.status == MultimeterService::MeterStatus::AutoRangeOn)</span></span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">        6516 :             ? tr(&quot;Auto Range On&quot;) : tr(&quot;Auto Range Off&quot;);</span></span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">        5328 :         break;</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">        1776 :     case MultimeterService::Mode::Continuity:</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">         624 :         status = (reading.status == MultimeterService::MeterStatus::Continuity)</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">        2172 :             ? tr(&quot;Continuity&quot;) : tr(&quot;No continuity&quot;);</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">        1776 :         break;</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        1464 :     case MultimeterService::Mode::Temperature:</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         312 :     case MultimeterService::Mode::ExternalTemperature:</span></span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">         624 :     case MultimeterService::Mode::Diode:</span></span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">        1176 :         status = tr(&quot;Ok&quot;);</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">        1776 :         break;</span></span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">        3588 :     }</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">        7725 : void MeterCommand::outputReading(const MultimeterService::Reading &amp;reading)</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">        4200 : {</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">        9450 :     QString status;</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">       11925 :     if (reading.status == MultimeterService::MeterStatus::Error) {</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         954 :         status = u&quot;Error&quot;_s;</span></span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">       10971 :     } else switch (reading.mode) {</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         504 :     case MultimeterService::Mode::Idle:</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">         504 :         break;</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">        4044 :     case MultimeterService::Mode::DcVoltage:</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">         672 :     case MultimeterService::Mode::AcVoltage:</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">        1008 :     case MultimeterService::Mode::DcCurrent:</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">        1344 :     case MultimeterService::Mode::AcCurrent:</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">        1680 :     case MultimeterService::Mode::Resistance:</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">        2016 :     case MultimeterService::Mode::Capacitance:</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">        2016 :         status = (reading.status == MultimeterService::MeterStatus::AutoRangeOn)</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">        6912 :             ? tr(&quot;Auto Range On&quot;) : tr(&quot;Auto Range Off&quot;);</span></span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">        5724 :         break;</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">        1908 :     case MultimeterService::Mode::Continuity:</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">         672 :         status = (reading.status == MultimeterService::MeterStatus::Continuity)</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">        2304 :             ? tr(&quot;Continuity&quot;) : tr(&quot;No continuity&quot;);</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">        1908 :         break;</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">        1572 :     case MultimeterService::Mode::Temperature:</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">         336 :     case MultimeterService::Mode::ExternalTemperature:</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">         672 :     case MultimeterService::Mode::Diode:</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">        1236 :         status = tr(&quot;Ok&quot;);</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">        1908 :         break;</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">        3864 :     }</span></span>
 <span id="L238"><span class="lineNum">     238</span>              : </span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">       11100 :     QString unit;</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">       11100 :     switch (reading.mode) {</span></span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">         780 :     case MultimeterService::Mode::Idle:        break;</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">        1266 :     case MultimeterService::Mode::DcVoltage:   unit = u&quot;Vdc&quot;_s; break;</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">        1266 :     case MultimeterService::Mode::AcVoltage:   unit = u&quot;Vac&quot;_s; break;</span></span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        1266 :     case MultimeterService::Mode::DcCurrent:   unit = u&quot;Adc&quot;_s; break;</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">        1266 :     case MultimeterService::Mode::AcCurrent:   unit = u&quot;Aac&quot;_s; break;</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">        1266 :     case MultimeterService::Mode::Resistance:  unit = QString::fromUtf8(&quot;Ω&quot;); break;</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         312 :     case MultimeterService::Mode::Diode:       break;</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         624 :     case MultimeterService::Mode::Continuity:  break;</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">        1266 :     case MultimeterService::Mode::Temperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">        1266 :     case MultimeterService::Mode::Capacitance: unit = QString::fromUtf8(&quot;F&quot;);  break;</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">       11925 :     QString unit;</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">       11925 :     switch (reading.mode) {</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">         840 :     case MultimeterService::Mode::Idle:        break;</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">        1374 :     case MultimeterService::Mode::DcVoltage:   unit = u&quot;Vdc&quot;_s; break;</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">        1374 :     case MultimeterService::Mode::AcVoltage:   unit = u&quot;Vac&quot;_s; break;</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">        1374 :     case MultimeterService::Mode::DcCurrent:   unit = u&quot;Adc&quot;_s; break;</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">        1374 :     case MultimeterService::Mode::AcCurrent:   unit = u&quot;Aac&quot;_s; break;</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">        1374 :     case MultimeterService::Mode::Resistance:  unit = QString::fromUtf8(&quot;Ω&quot;); break;</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">         336 :     case MultimeterService::Mode::Diode:       break;</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">         672 :     case MultimeterService::Mode::Continuity:  break;</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">        1374 :     case MultimeterService::Mode::Temperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">        1374 :     case MultimeterService::Mode::Capacitance: unit = QString::fromUtf8(&quot;F&quot;);  break;</span></span>
 <span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC">           0 :     case MultimeterService::Mode::ExternalTemperature: unit = QString::fromUtf8(&quot;°C&quot;); break;</span></span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">        3900 :     }</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">        4200 :     }</span></span>
 <span id="L253"><span class="lineNum">     253</span>              : </span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">       13575 :     const QString range = service-&gt;toString(reading.range, reading.mode);</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">       14400 :     const QString range = service-&gt;toString(reading.range, reading.mode);</span></span>
 <span id="L255"><span class="lineNum">     255</span>              : </span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">       11100 :     switch (format) {</span></span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">        1300 :     case OutputFormat::Csv:</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">        5772 :         for (; showCsvHeader; showCsvHeader = false) {</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">        2954 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;mode,value,unit,status,range\n&quot;));</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">         728 :         }</span></span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">        9000 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5\n&quot;)</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">        1300 :             .arg(escapeCsvField(MultimeterService::toString(reading.mode)))</span></span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">        1300 :             .arg(reading.value, 0, 'f').arg(unit, status, range)</span></span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        1300 :             );</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3700 :         break;</span></span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        3700 :     case OutputFormat::Json: {</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">        1300 :         QJsonObject object{</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">        4300 :             { u&quot;status&quot;_s, status },</span></span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        5725 :             { u&quot;value&quot;_s, qIsInf(reading.value) ?</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">        3775 :                 QJsonValue(tr(&quot;Infinity&quot;)) : QJsonValue(reading.value) },</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        6475 :             { u&quot;mode&quot;_s,   MultimeterService::toString(reading.mode) },</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">       14475 :         };</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        3700 :         if (!unit.isNull()) {</span></span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">        3864 :             object.insert(u&quot;unit&quot;_s, unit);</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">         728 :         }</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">        3700 :         if (!range.isNull()) {</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">        3036 :             object.insert(u&quot;range&quot;_s, range);</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         572 :         }</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">        6100 :         std::cout &lt;&lt; QJsonDocument(object).toJson().toStdString();</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">        3700 :     }   break;</span></span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">        3700 :     case OutputFormat::Text:</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">        7425 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Mode:   %1 (0x%2)\n&quot;).arg(MultimeterService::toString(reading.mode))</span></span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">        1300 :             .arg((quint8)reading.mode,2,16,'0'_L1));</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">        8025 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Value:  %1 %2\n&quot;).arg(reading.value,0,'f').arg(unit));</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        6850 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Status: %1 (0x%2)\n&quot;).arg(status)</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1300 :             .arg((quint8)reading.status,2,16,'0'_L1));</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        6350 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Range:  %1 (0x%2)\n&quot;).arg(range)</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        1300 :             .arg((quint8)reading.range,2,16,'0'_L1));</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        3700 :         break;</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        3900 :     }</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">       11925 :     switch (format) {</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">        1400 :     case OutputFormat::Csv:</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">        6201 :         for (; showCsvHeader; showCsvHeader = false) {</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">        3206 :             std::cout &lt;&lt; qUtf8Printable(tr(&quot;mode,value,unit,status,range\n&quot;));</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">         784 :         }</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">        9800 :         std::cout &lt;&lt; qUtf8Printable(QString::fromLatin1(&quot;%1,%2,%3,%4,%5\n&quot;)</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">        1400 :             .arg(escapeCsvField(MultimeterService::toString(reading.mode)))</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">        1400 :             .arg(reading.value, 0, 'f').arg(unit, status, range)</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">        1400 :             );</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">        3975 :         break;</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">        3975 :     case OutputFormat::Json: {</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">        1400 :         QJsonObject object{</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">        4575 :             { u&quot;status&quot;_s, status },</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">        6175 :             { u&quot;value&quot;_s, qIsInf(reading.value) ?</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">        4050 :                 QJsonValue(tr(&quot;Infinity&quot;)) : QJsonValue(reading.value) },</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">        6925 :             { u&quot;mode&quot;_s,   MultimeterService::toString(reading.mode) },</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">       15475 :         };</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">        3975 :         if (!unit.isNull()) {</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">        4158 :             object.insert(u&quot;unit&quot;_s, unit);</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">         784 :         }</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">        3975 :         if (!range.isNull()) {</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">        3267 :             object.insert(u&quot;range&quot;_s, range);</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">         616 :         }</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">        6550 :         std::cout &lt;&lt; QJsonDocument(object).toJson().toStdString();</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">        3975 :     }   break;</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">        3975 :     case OutputFormat::Text:</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">        8225 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Mode:   %1 (0x%2)\n&quot;).arg(MultimeterService::toString(reading.mode))</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">        1400 :             .arg((quint8)reading.mode,2,16,'0'_L1));</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">        8800 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Value:  %1 %2\n&quot;).arg(reading.value,0,'f').arg(unit));</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">        7475 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Status: %1 (0x%2)\n&quot;).arg(status)</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">        1400 :             .arg((quint8)reading.status,2,16,'0'_L1));</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">        6825 :         std::cout &lt;&lt; qUtf8Printable(tr(&quot;Range:  %1 (0x%2)\n&quot;).arg(range)</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">        1400 :             .arg((quint8)reading.range,2,16,'0'_L1));</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC">        3975 :         break;</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">        4200 :     }</span></span>
 <span id="L291"><span class="lineNum">     291</span>              : </span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">       11100 :     if ((samplesToGo &gt; 0) &amp;&amp; (--samplesToGo == 0)) {</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">       11925 :     if ((samplesToGo &gt; 0) &amp;&amp; (--samplesToGo == 0)) {</span></span>
 <span id="L293"><span class="lineNum">     293</span> <span class="tlaUNC">           0 :         if (device) disconnect(); // Will exit the application once disconnected.</span></span>
 <span id="L294"><span class="lineNum">     294</span> <span class="tlaUNC">           0 :     }</span></span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">       16375 : }</span></span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">       17500 : }</span></span>
         </pre>
               </td>
             </tr>
