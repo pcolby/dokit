@@ -12,7 +12,7 @@ var classDsoCommand =
     [ "settingsWritten", "classDsoCommand.html#a96c56e497f56ab5ed43201ad13aede7b", null ],
     [ "supportedOptions", "classDsoCommand.html#a6569d0fd7b8307d6098e93092859301a", null ],
     [ "metadata", "classDsoCommand.html#ae2d7e39e8a5d61680d8e6da0cf2bc9df", null ],
-    [ "minRangeFunc", "classDsoCommand.html#a24309dd456a3595b034f45cae208b61c", null ],
+    [ "minRangeFunc", "classDsoCommand.html#ab9826099bed11e6ab33d5ebf6f2edb3b", null ],
     [ "rangeOptionValue", "classDsoCommand.html#ab326ab6d226da73c0682c020fc8132af", null ],
     [ "sampleRateValue", "classDsoCommand.html#ad14da40b5d0f021b95e48bc553e73409", null ],
     [ "samplesToGo", "classDsoCommand.html#a2fba285441bb9d0a76f3e43d1b718015", null ],

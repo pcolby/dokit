@@ -153,9 +153,7 @@ var searchData=
   ['number_5fdecimaldigit_150',['Number_DecimalDigit',['https://doc.qt.io/qt-5/qchar.html#Category-enum',1,'QChar']]],
   ['number_5fletter_151',['Number_Letter',['https://doc.qt.io/qt-5/qchar.html#Category-enum',1,'QChar']]],
   ['number_5fother_152',['Number_Other',['https://doc.qt.io/qt-5/qchar.html#Category-enum',1,'QChar']]],
-  ['numberflags_153',['NumberFlags',['https://doc.qt.io/qt-5/qtextstream.html#NumberFlag-enum',1,'QTextStream']]],
-  ['numberofsamples_154',['numberOfSamples',['../structDataLoggerService_1_1Metadata.html#a5e40e39f2d21dbf609403f111537b2b0',1,'DataLoggerService::Metadata::numberOfSamples'],['../structDsoService_1_1Settings.html#ad118943a951c606915bd12c45ded6cd6',1,'DsoService::Settings::numberOfSamples'],['../structDsoService_1_1Metadata.html#aa2c92c1dd91d2351dbe06c1e7910c78d',1,'DsoService::Metadata::numberOfSamples']]],
-  ['numberoptions_155',['NumberOptions',['https://doc.qt.io/qt-5/qlocale.html#NumberOption-enum',1,'QLocale']]],
-  ['nyanja_156',['Nyanja',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
-  ['nyankole_157',['Nyankole',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]]
+  ['numberofsamples_153',['numberOfSamples',['../structDataLoggerService_1_1Metadata.html#a5e40e39f2d21dbf609403f111537b2b0',1,'DataLoggerService::Metadata::numberOfSamples'],['../structDsoService_1_1Settings.html#ad118943a951c606915bd12c45ded6cd6',1,'DsoService::Settings::numberOfSamples'],['../structDsoService_1_1Metadata.html#aa2c92c1dd91d2351dbe06c1e7910c78d',1,'DsoService::Metadata::numberOfSamples']]],
+  ['nyanja_154',['Nyanja',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]],
+  ['nyankole_155',['Nyankole',['https://doc.qt.io/qt-5/qlocale.html#Language-enum',1,'QLocale']]]
 ];

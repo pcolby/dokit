@@ -232,7 +232,7 @@ var searchData=
   ['minorversion_229',['minorVersion',['https://doc.qt.io/qt-5/qversionnumber.html#minorVersion',1,'QVersionNumber::minorVersion()'],['https://doc.qt.io/qt-5/qoperatingsystemversion.html#minorVersion',1,'QOperatingSystemVersion::minorVersion()']]],
   ['minorwearableclass_230',['MinorWearableClass',['https://doc.qt.io/qt-5/qbluetoothdeviceinfo.html#MinorWearableClass-enum',1,'QBluetoothDeviceInfo']]],
   ['minrange_231',['minRange',['../classDeviceCommand.html#abb9d2e113e372130dca9360791e7ce5b',1,'DeviceCommand']]],
-  ['minrangefunc_232',['minRangeFunc',['../classDsoCommand.html#a24309dd456a3595b034f45cae208b61c',1,'DsoCommand::minRangeFunc'],['../classLoggerStartCommand.html#abde1ca7823faf7bb3459f0706756ea44',1,'LoggerStartCommand::minRangeFunc'],['../classMeterCommand.html#aed2c787884f9f1c0359010036e637829',1,'MeterCommand::minRangeFunc']]],
+  ['minrangefunc_232',['minRangeFunc',['../classDsoCommand.html#ab9826099bed11e6ab33d5ebf6f2edb3b',1,'DsoCommand::minRangeFunc'],['../classLoggerStartCommand.html#a4df5edfd2edf6bd82fec311cd8d73b59',1,'LoggerStartCommand::minRangeFunc'],['../classMeterCommand.html#aaabbd433c25bdccb5d097baffd4af8cc',1,'MeterCommand::minRangeFunc']]],
   ['minresistancerange_233',['minResistanceRange',['../classDeviceCommand.html#a1ce3ce094a91ec500e9d50e620b0cc6d',1,'DeviceCommand']]],
   ['minutcoffsetsecs_234',['MinUtcOffsetSecs',['https://doc.qt.io/qt-5/qtimezone.html#anonymous-enum',1,'QTimeZone']]],
   ['minute_235',['minute',['https://doc.qt.io/qt-5/qtime.html#minute',1,'QTime']]],
