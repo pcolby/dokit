@@ -405,7 +405,7 @@ std::optional<StatusService::TorchStatus> StatusService::torchStatus() const
  *
  * Returns `true` if the request was successfully queued, `false` otherwise.
  *
- * Emits torchStatusWritten() if/when the LED has flashed successfully.
+ * Emits torchStatusWritten() if/when the torch's \a status has been set.
  *
  * \note This operation is only supported by Pokit Pro devices, and not Pokit Meter devices.
  */
