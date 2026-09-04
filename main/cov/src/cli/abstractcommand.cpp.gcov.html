@@ -227,7 +227,7 @@
 <span id="L132"><span class="lineNum">     132</span>              :  */</span>
 <span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">       12019 : QString AbstractCommand::escapeCsvField(const QString &amp;field)</span></span>
 <span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC">        8786 : {</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">       50500 :     if (field.contains(','_L1) || field.contains('\r'_L1) || field.contains('&quot;'_L1) || field.contains('\n'_L1)) {</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">       48400 :     if (field.contains(','_L1) || field.contains('\r'_L1) || field.contains('&quot;'_L1) || field.contains('\n'_L1)) {</span></span>
 <span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">         552 :         return uR&quot;(&quot;%1&quot;)&quot;_s.arg(QString(field).replace('&quot;'_L1, uR&quot;(&quot;&quot;)&quot;_s));</span></span>
 <span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">        8530 :     } else return field;</span></span>
 <span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">        8786 : }</span></span>

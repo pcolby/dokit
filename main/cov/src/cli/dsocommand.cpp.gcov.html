@@ -205,8 +205,8 @@
 <span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">        3808 :         const QString rawValue = parser.value(u&quot;trigger-level&quot;_s);</span></span>
 <span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">         896 :         QString absValue = rawValue;</span></span>
 <span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         896 :         DOKIT_STRING_INDEX_TYPE nonSpacePos;</span></span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">        2544 :         for (nonSpacePos = 0; (nonSpacePos &lt; rawValue.length()) &amp;&amp; (rawValue.at(nonSpacePos) == u' '); ++nonSpacePos);</span></span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">        2544 :         if ((nonSpacePos &lt; rawValue.length()) &amp;&amp; (rawValue.at(nonSpacePos) == u'-')) {</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">        2640 :         for (nonSpacePos = 0; (nonSpacePos &lt; rawValue.length()) &amp;&amp; (rawValue.at(nonSpacePos) == u' '); ++nonSpacePos);</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">        2640 :         if ((nonSpacePos &lt; rawValue.length()) &amp;&amp; (rawValue.at(nonSpacePos) == u'-')) {</span></span>
 <span id="L115"><span class="lineNum">     115</span> <span class="tlaUNC">           0 :             absValue = rawValue.mid(nonSpacePos+1);</span></span>
 <span id="L116"><span class="lineNum">     116</span> <span class="tlaUNC">           0 :             sign = -1.0;</span></span>
 <span id="L117"><span class="lineNum">     117</span> <span class="tlaUNC">           0 :         }</span></span>
