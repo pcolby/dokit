@@ -79,7 +79,6 @@ jobs:
         with:
           external-variables: QT_ROOT_DIR,RUNNER_WORKSPACE
       - name: Install yamllint
-        # \todo if: image is slim ; ie only needed for ubuntu-slim.
-        run: sudo apt update && sudo apt install yamllint
+        run: type -P yamllint || { sudo apt update && sudo apt install yamllint; } # Necessary for ubuntu-slim only.
       - name: Check YAML files
         run: yamllint --strict .
